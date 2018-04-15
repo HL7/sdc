@@ -5,8 +5,18 @@
 <xsl:stylesheet version="1.0" xmlns:xsl="http://www.w3.org/1999/XSL/Transform" xmlns:f="http://hl7.org/fhir">
   <xsl:param name="spec"/>
   <xsl:param name="version"/>
+  <xsl:param name="license"/>
   <xsl:param name="fhirVersion" select="/f:ImplementationGuide/f:fhirVersion/@value"/>
-  <xsl:param name="snomedRelease" select="substring(/f:ImplementationGuide/f:*/f:coding[f:system/@value='urn:iso:std:iso:3166']/f:code/@value, 1, 2)"/>
+  <xsl:param name="snomedRelease">
+    <xsl:choose>
+      <xsl:when test="/f:ImplementationGuide/f:*/f:coding/f:system/@value='urn:iso:std:iso:3166'">
+        <xsl:value-of select="substring(/f:ImplementationGuide/f:*/f:coding[f:system/@value='urn:iso:std:iso:3166']/f:code/@value, 1, 2)"/>
+      </xsl:when>
+      <xsl:otherwise>
+        <xsl:value-of select="/f:ImplementationGuide/f:*/f:coding[f:system/@value='http://unstats.un.org/unsd/methods/m49/m49.htm']/f:code/@value"/>
+      </xsl:otherwise>
+    </xsl:choose>
+  </xsl:param>
   <xsl:param name="excludexml" select="'No'"/>
   <xsl:param name="excludejson" select="'No'"/>
   <xsl:param name="excludettl" select="'No'"/>
@@ -15,6 +25,14 @@
   <xsl:variable name="includeXml" select="not(translate(substring($excludexml,1,1), $uppercase, $lowercase)='y')"/>
   <xsl:variable name="includeJson" select="not(translate(substring($excludejson,1,1), $uppercase, $lowercase)='y')"/>
   <xsl:variable name="includeTtl" select="not(translate(substring($excludettl,1,1), $uppercase, $lowercase)='y')"/>
+  <xsl:variable name="realm">
+    <xsl:choose>
+      <xsl:when test="$snomedRelease='001'">uv</xsl:when>
+      <xsl:otherwise>
+        <xsl:value-of select="translate($snomedRelease, $uppercase, $lowercase)"/>
+      </xsl:otherwise>
+    </xsl:choose>
+  </xsl:variable>
   <xsl:output method="text" encoding="UTF-8"/>
   <xsl:template match="/f:ImplementationGuide">
     <xsl:variable name="snomedReleaseNumber">
@@ -27,7 +45,7 @@
         <xsl:when test="$snomedRelease='SE'">45991000052106</xsl:when>
         <xsl:when test="$snomedRelease='UK'">999000041000000102</xsl:when>
         <xsl:when test="$snomedRelease='US'">731000124108</xsl:when>
-        <xsl:when test="$snomedRelease='UV'">900000000000207008</xsl:when>
+        <xsl:when test="$snomedRelease='001'">900000000000207008</xsl:when>
         <xsl:otherwise>
           <xsl:message terminate="yes">
             <xsl:value-of select="concat('ERROR: Unsupported snomedRelease: ', $snomedRelease)"/>
@@ -47,6 +65,8 @@
     <xsl:value-of select="concat('&quot;fixed-business-version&quot;: &quot;', $version, '&quot;,&#xa;  ')"/>
   </xsl:if>
   <xsl:text>"html-template": "template-page.html",&#xa;  </xsl:text>
+  <xsl:value-of select="concat('&quot;license&quot;: &quot;', $license, '&quot;,&#xa;  ')"/>
+  <xsl:value-of select="concat('&quot;npn-name&quot;: &quot;', $realm, '-', f:id/@value, '&quot;,&#xa;  ')"/>
   <xsl:text>"paths": {
     "resources": ["resources", "../src/resources", "../src/vocabulary", "../src/examples"],
     "pages": ["../src/images", "pages"],
@@ -59,6 +79,7 @@
     <xsl:value-of select="$spec"/>
     <xsl:text>"
   },
+  "suppressedWarningFile": "../src/ignoreWarnings.txt",
   "pre-process": [
     {"folder": "../framework/assets",
      "relativePath": "assets"},
@@ -101,15 +122,15 @@
   ],
   "defaults": {
     "Any": {
-  </xsl:text>
+      "java" : false,&#x0a;</xsl:text>
   <xsl:if test="not($includeXml)">
-    <xsl:text>    "xml" : false,&#x0a;</xsl:text>
+    <xsl:text>      "xml" : false,&#x0a;</xsl:text>
   </xsl:if>
   <xsl:if test="not($includeJson)">
-    <xsl:text>    "json" : false,&#x0a;</xsl:text>
+    <xsl:text>      "json" : false,&#x0a;</xsl:text>
   </xsl:if>
   <xsl:if test="not($includeTtl)">
-    <xsl:text>    "ttl" : false,&#x0a;</xsl:text>
+    <xsl:text>      "ttl" : false,&#x0a;</xsl:text>
   </xsl:if>
   <xsl:text>      "template-base": "../framework/templates/template-instance-base.html",
       "template-format": "../framework/templates/template-instance-format.html",
@@ -156,9 +177,9 @@
   <xsl:text>",
   "no-inactive-codes" : "true",
   "canonicalBase": "</xsl:text>
-  <xsl:value-of select="substring-before(f:url/@value, '/ImplementationGuide')"/>
+  <xsl:value-of select="substring-before(/f:ImplementationGuide/f:url/@value, '/ImplementationGuide')"/>
   <xsl:text>",&#xa;  </xsl:text>
-  <xsl:for-each select="f:dependency[f:type/@value='reference']/f:uri/@value">
+  <xsl:for-each select="f:dependency[f:type/@value='reference']/f:uri/@value|f:dependsOn/f:uri/@value">
     <xsl:variable name="code">
       <xsl:call-template name="findLast">
         <xsl:with-param name="string" select="."/>
@@ -172,19 +193,19 @@
   <xsl:value-of select="f:id/@value"/>
   <xsl:text>.xml",
   "spreadsheets": [</xsl:text>
-    <xsl:for-each select="f:package/f:extension[@url='http://hl7.org/fhir/tools-profile-spreadsheet']/f:valueUri/@value">
+    <xsl:for-each select="//f:extension[@url='http://hl7.org/fhir/tools-profile-spreadsheet']/f:valueUri/@value">
       <xsl:if test="position()!=1">,</xsl:if>
       <xsl:value-of select="concat('&#xa;    &quot;', ., '&quot;')"/>
     </xsl:for-each>
     <xsl:text>
   ],
   "resources": {</xsl:text>
-    <xsl:for-each select="f:package/f:resource">
-      <xsl:variable name="type" select="substring-before(f:sourceReference/f:reference/@value, '/')"/>
-      <xsl:variable name="id" select="substring-after(f:sourceReference/f:reference/@value, '/')"/>
+    <xsl:for-each select="f:package/f:resource|f:definition/f:resource">
+      <xsl:variable name="type" select="substring-before(*[self::f:reference or self::f:sourceReference]/f:reference/@value, '/')"/>
+      <xsl:variable name="id" select="substring-after(*[self::f:reference or self::f:sourceReference]/f:reference/@value, '/')"/>
       <xsl:if test="position()!=1">,</xsl:if>
-      <xsl:value-of select="concat('&#xa;    &quot;', f:sourceReference/f:reference/@value, '&quot;:{&#xa;')"/>
-      <xsl:if test="f:example/@value='true'">
+      <xsl:value-of select="concat('&#xa;    &quot;', *[self::f:reference or self::f:sourceReference]/f:reference/@value, '&quot;:{&#xa;')"/>
+      <xsl:if test="f:example/@value='true' or f:exampleBoolean/@value='true' or f:exampleReference">
         <xsl:choose>
           <xsl:when test="$type='ValueSet'">
             <xsl:text>    "template-base": "../framework/templates/template-instance-base.html",&#xa;</xsl:text>
@@ -206,7 +227,7 @@
           </xsl:when>
         </xsl:choose>
       </xsl:if>
-      <xsl:if test="not(f:example/@value='true') and (ancestor::f:ImplementationGuide//f:page[f:source/@value=concat('extension-', $id, '.html')] or starts-with($id, 'ext-')) and $type='StructureDefinition'">
+      <xsl:if test="not(f:example/@value='true' or f:exampleBoolean='true' or f:exampleFor) and (ancestor::f:ImplementationGuide//f:page[*[self::f:source or self::f:nameUrl]/@value=concat('extension-', $id, '.html')] or starts-with($id, 'ext-')) and $type='StructureDefinition'">
         <xsl:text>      "template-base": "../framework/templates/template-ext.html",&#xa;</xsl:text>
         <xsl:text>      "template-defns": "../framework/templates/template-ext-definitions.html",&#xa;</xsl:text>
         <xsl:text>      "template-mappings": "../framework/templates/template-ext-mappings.html",&#xa;</xsl:text>

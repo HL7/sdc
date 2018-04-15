@@ -2,7 +2,7 @@
 <!-- 
 Note: The URLs used for LOINC objects have not been approved by the LOINC organization.  If/when LOINC begins officially exposing their content as FHIR objects, the URLs may differ
 -->
-<Bundle xmlns="http://hl7.org/fhir" xmlns:f="http://hl7.org/fhir" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://hl7.org/fhir ../../../../schema/fhir-single.xsd">
+<Bundle xmlns="http://hl7.org/fhir" xmlns:f="http://hl7.org/fhir" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://hl7.org/fhir ../../src-generated/schemas/fhir-single.xsd">
   <id value="questionnaire-sdc-profile-example-ussg-fht"/>
   <type value="transaction"/>
   <entry>
@@ -20,156 +20,182 @@ Note: The URLs used for LOINC objects have not been approved by the LOINC organi
             <code value="1.1.1"/>
             <target>
               <code value="54125-0"/>
+              <equivalence value="equal"/>
             </target>
           </element>
           <element>
             <code value="1.1.2"/>
             <target>
               <code value="54131-8"/>
+              <equivalence value="equal"/>
             </target>
           </element>
           <element>
             <code value="1.1.3"/>
             <target>
               <code value="21112-8"/>
+              <equivalence value="equal"/>
             </target>
           </element>
           <element>
             <code value="1.1.4"/>
             <target>
               <code value="54132-6"/>
+              <equivalence value="equal"/>
             </target>
           </element>
           <element>
             <code value="1.1.5"/>
             <target>
               <code value="54128-4"/>
+              <equivalence value="equal"/>
             </target>
           </element>
           <element>
             <code value="1.1.6"/>
             <target>
               <code value="54135-9"/>
+              <equivalence value="equal"/>
             </target>
           </element>
           <element>
             <code value="1.1.7"/>
             <target>
               <code value="8302-2"/>
+              <equivalence value="equal"/>
             </target>
           </element>
           <element>
             <code value="1.1.8"/>
             <target>
               <code value="29463-7"/>
+              <equivalence value="equal"/>
             </target>
           </element>
           <element>
             <code value="1.1.10"/>
             <target>
               <code value="54134-2"/>
+              <equivalence value="equal"/>
             </target>
           </element>
           <element>
             <code value="1.1.11"/>
             <target>
               <code value="54133-4"/>
+              <equivalence value="equal"/>
             </target>
           </element>
           <element>
             <code value="1.2.1"/>
             <target>
               <code value="54140-9"/>
+              <equivalence value="equal"/>
             </target>
           </element>
           <element>
             <code value="1.2.2"/>
             <target>
               <code value="54130-0"/>
+              <equivalence value="equal"/>
             </target>
           </element>
           <element>
             <code value="2.1.1.1"/>
             <target>
               <code value="54136-7"/>
+              <equivalence value="equal"/>
             </target>
           </element>
           <element>
             <code value="2.1.1.2"/>
             <target>
               <code value="54138-3"/>
+              <equivalence value="equal"/>
             </target>
           </element>
           <element>
             <code value="2.1.1.3"/>
             <target>
               <code value="54123-5"/>
+              <equivalence value="equal"/>
             </target>
           </element>
           <element>
             <code value="2.1.1.4"/>
             <target>
               <code value="54139-1"/>
+              <equivalence value="equal"/>
             </target>
           </element>
           <element>
             <code value="2.1.1.4.1.1"/>
             <target>
               <code value="54112-8"/>
+              <equivalence value="equal"/>
             </target>
           </element>
           <element>
             <code value="2.1.1.4.1.2"/>
             <target>
               <code value="54113-6"/>
+              <equivalence value="equal"/>
             </target>
           </element>
           <element>
             <code value="2.1.1.4.2.1"/>
             <target>
               <code value="54124-3"/>
+              <equivalence value="equal"/>
             </target>
           </element>
           <element>
             <code value="2.1.1.4.2.2"/>
             <target>
               <code value="54141-7"/>
+              <equivalence value="equal"/>
             </target>
           </element>
           <element>
             <code value="2.1.1.5"/>
             <target>
               <code value="54121-9"/>
+              <equivalence value="equal"/>
             </target>
           </element>
           <element>
             <code value="2.1.1.6"/>
             <target>
               <code value="54122-7"/>
+              <equivalence value="equal"/>
             </target>
           </element>
           <element>
             <code value="2.1.1.7"/>
             <target>
               <code value="54119-3"/>
+              <equivalence value="equal"/>
             </target>
           </element>
           <element>
             <code value="2.1.1.8"/>
             <target>
               <code value="54120-1"/>
+              <equivalence value="equal"/>
             </target>
           </element>
           <element>
             <code value="2.1.2.1"/>
             <target>
               <code value="54116-9"/>
+              <equivalence value="equal"/>
             </target>
           </element>
           <element>
             <code value="2.1.2.2"/>
             <target>
               <code value="54115-1"/>
+              <equivalence value="equal"/>
             </target>
           </element>
         </group>
@@ -248,12 +274,16 @@ Note: The URLs used for LOINC objects have not been approved by the LOINC organi
         <title value="US Surgeon General - Family Health Portrait"/>
         <status value="active"/>
         <experimental value="true"/>
+        <subjectType value="Patient"/>
         <date value="2015"/>
         <publisher value="Regenstrief Institute, Inc and the LOINC Committee"/>
+        <contact>
+          <telecom>
+            <system value="url"/>
+            <value value="http://loinc.org"/>
+          </telecom>
+        </contact>
         <description value="This represents an implementation of the &quot;US Surgeon General family health portrait&quot; form found at https://lforms-demo.nlm.nih.gov"/>
-        <purpose value="Captures basic family history information"/>
-        <approvalDate value="2015-10-31"/>
-        <lastReviewDate value="2017-03-15"/>
         <useContext>
           <code>
             <system value="http://hl7.org/fhir/usage-context-type"/>
@@ -273,19 +303,15 @@ Note: The URLs used for LOINC objects have not been approved by the LOINC organi
             <code value="US"/>
           </coding>
         </jurisdiction>
-        <contact>
-          <telecom>
-            <system value="url"/>
-            <value value="http://loinc.org"/>
-          </telecom>
-        </contact>
+        <purpose value="Captures basic family history information"/>
         <copyright value="(c) 2015 Regenstrief Institute"/>
+        <approvalDate value="2015-10-31"/>
+        <lastReviewDate value="2017-03-15"/>
         <code>
           <system value="http://loinc.org"/>
           <code value="54127-6"/>
           <display value="US Surgeon General family health portrait [USSG-FHT]"/>
         </code>
-        <subjectType value="Patient"/>
         <item>
           <linkId value="0"/>
           <type value="group"/>
@@ -332,10 +358,7 @@ Note: The URLs used for LOINC objects have not been approved by the LOINC organi
               <text value="Gender"/>
               <type value="choice"/>
               <required value="true"/>
-              <options>
-                <reference value="http://hl7.org/fhir/us/sdc/ValueSet/LL1-9"/>
-                <display value="Gender_M/F"/>
-              </options>
+              <options value="http://hl7.org/fhir/us/sdc/ValueSet/LL1-9"/>
               <item>
                 <linkId value="1.1.2.1.1"/>
                 <text value="Please specify"/>
@@ -354,35 +377,28 @@ Note: The URLs used for LOINC objects have not been approved by the LOINC organi
               <definition value="http://loinc.org/fhir/DataElement/54132-6"/>
               <text value="Were you born a twin?"/>
               <type value="choice"/>
-              <options>
-                <reference value="http://hl7.org/fhir/us/sdc/ValueSet/LL623-0"/>
-                <display value="USSG-FHT twin"/>
-              </options>
-              <initialCoding>
-                <system value="http://loinc.org"/>
-                <code value="LA32-8"/>
-                <display value="No"/>
-              </initialCoding>
+              <options value="http://hl7.org/fhir/us/sdc/ValueSet/LL623-0"/>
+              <initial>
+                <valueCoding>
+                  <system value="http://loinc.org"/>
+                  <code value="LA32-8"/>
+                  <display value="No"/>
+                </valueCoding>
+              </initial>
             </item>
             <item>
               <linkId value="1.1.5"/>
               <definition value="http://loinc.org/fhir/DataElement/54128-4"/>
               <text value="Were you adopted?"/>
               <type value="choice"/>
-              <options>
-                <reference value="http://hl7.org/fhir/us/sdc/ValueSet/LL361-7"/>
-                <display value="Y/N1"/>
-              </options>
+              <options value="http://hl7.org/fhir/us/sdc/ValueSet/LL361-7"/>
             </item>
             <item>
               <linkId value="1.1.6"/>
               <definition value="http://loinc.org/fhir/DataElement/54135-9"/>
               <text value="Are your parents related to each other in any way other than marriage?"/>
               <type value="choice"/>
-              <options>
-                <reference value="http://hl7.org/fhir/us/sdc/ValueSet/LL361-7"/>
-                <display value="Y/N1"/>
-              </options>
+              <options value="http://hl7.org/fhir/us/sdc/ValueSet/LL361-7"/>
             </item>
             <item>
               <linkId value="1.1.7"/>
@@ -394,9 +410,7 @@ Note: The URLs used for LOINC objects have not been approved by the LOINC organi
                 <linkId value="1.1.7.1.1"/>
                 <text value="Units"/>
                 <type value="choice"/>
-                <options>
-                  <reference value="#length"/>
-                </options>
+                <options value="#length"/>
               </item>
             </item>
             <item>
@@ -408,9 +422,7 @@ Note: The URLs used for LOINC objects have not been approved by the LOINC organi
                 <linkId value="1.1.8.1.1"/>
                 <text value="Units"/>
                 <type value="choice"/>
-                <options>
-                  <reference value="#weight"/>
-                </options>
+                <options value="#weight"/>
               </item>
             </item>
             <item>
@@ -427,10 +439,7 @@ Note: The URLs used for LOINC objects have not been approved by the LOINC organi
               <text value="Race"/>
               <type value="choice"/>
               <required value="true"/>
-              <options>
-                <reference value="http://hl7.org/fhir/us/sdc/ValueSet/LL629-7"/>
-                <display value="USSG-FHT race"/>
-              </options>
+              <options value="http://hl7.org/fhir/us/sdc/ValueSet/LL629-7"/>
             </item>
             <item>
               <linkId value="1.1.11"/>
@@ -438,10 +447,7 @@ Note: The URLs used for LOINC objects have not been approved by the LOINC organi
               <text value="Ethnicity"/>
               <type value="choice"/>
               <repeats value="true"/>
-              <options>
-                <reference value="http://hl7.org/fhir/us/sdc/ValueSet/LL628-9"/>
-                <display value="USSG-FHT ethnicity"/>
-              </options>
+              <options value="http://hl7.org/fhir/us/sdc/ValueSet/LL628-9"/>
             </item>
           </item>
           <item>
@@ -455,20 +461,14 @@ Note: The URLs used for LOINC objects have not been approved by the LOINC organi
               <definition value="http://loinc.org/fhir/DataElement/54140-9"/>
               <text value="Disease or Condition"/>
               <type value="choice"/>
-              <options>
-                <reference value="http://hl7.org/fhir/us/sdc/ValueSet/LL626-3"/>
-                <display value="USSG-FHT diseases"/>
-              </options>
+              <options value="http://hl7.org/fhir/us/sdc/ValueSet/LL626-3"/>
             </item>
             <item>
               <linkId value="1.2.2"/>
               <definition value="http://loinc.org/fhir/DataElement/54130-0"/>
               <text value="Age at Diagnosis"/>
               <type value="choice"/>
-              <options>
-                <reference value="http://hl7.org/fhir/us/sdc/ValueSet/LL619-8"/>
-                <display value="USSG-FHT age"/>
-              </options>
+              <options value="http://hl7.org/fhir/us/sdc/ValueSet/LL619-8"/>
             </item>
           </item>
         </item>
@@ -489,10 +489,7 @@ Note: The URLs used for LOINC objects have not been approved by the LOINC organi
                 <definition value="http://loinc.org/fhir/DataElement/54136-7"/>
                 <text value="Relationship to you"/>
                 <type value="choice"/>
-                <options>
-                  <reference value="http://hl7.org/fhir/us/sdc/ValueSet/LL621-4"/>
-                  <display value="USSG-FHT relationship"/>
-                </options>
+                <options value="http://hl7.org/fhir/us/sdc/ValueSet/LL621-4"/>
               </item>
               <item>
                 <linkId value="2.1.1.2"/>
@@ -505,10 +502,7 @@ Note: The URLs used for LOINC objects have not been approved by the LOINC organi
                 <definition value="http://loinc.org/fhir/DataElement/54123-5"/>
                 <text value="Gender"/>
                 <type value="choice"/>
-                <options>
-                  <reference value="http://hl7.org/fhir/us/sdc/ValueSet/LL1-9"/>
-                  <display value="Gender_M/F"/>
-                </options>
+                <options value="http://hl7.org/fhir/us/sdc/ValueSet/LL1-9"/>
                 <item>
                   <linkId value="2.1.1.3.1.1"/>
                   <text value="Please specify"/>
@@ -521,10 +515,7 @@ Note: The URLs used for LOINC objects have not been approved by the LOINC organi
                 <definition value="http://loinc.org/fhir/DataElement/54139-1"/>
                 <text value="Living?"/>
                 <type value="choice"/>
-                <options>
-                  <reference value="http://hl7.org/fhir/us/sdc/ValueSet/LL361-7"/>
-                  <display value="Y/N1"/>
-                </options>
+                <options value="http://hl7.org/fhir/us/sdc/ValueSet/LL361-7"/>
                 <item>
                   <linkId value="2.1.1.4.1"/>
                   <type value="group"/>
@@ -533,9 +524,7 @@ Note: The URLs used for LOINC objects have not been approved by the LOINC organi
                     <definition value="http://loinc.org/fhir/DataElement/54112-8"/>
                     <text value="Cause of Death"/>
                     <type value="choice"/>
-                    <options>
-                      <reference value="http://hl7.org/fhir/us/sdc/ValueSet/LL627-1"/>
-                    </options>
+                    <options value="http://hl7.org/fhir/us/sdc/ValueSet/LL627-1"/>
                     <item>
                       <linkId value="2.1.1.4.1.1.1"/>
                       <text value="Please specify"/>
@@ -547,10 +536,7 @@ Note: The URLs used for LOINC objects have not been approved by the LOINC organi
                     <definition value="http://loinc.org/fhir/DataElement/54113-6"/>
                     <text value="Age at Death"/>
                     <type value="choice"/>
-                    <options>
-                      <reference value="http://hl7.org/fhir/us/sdc/ValueSet/LL619-8"/>
-                      <display value="USSG-FHT age"/>
-                    </options>
+                    <options value="http://hl7.org/fhir/us/sdc/ValueSet/LL619-8"/>
                   </item>
                 </item>
                 <item>
@@ -575,18 +561,14 @@ Note: The URLs used for LOINC objects have not been approved by the LOINC organi
                 <definition value="http://loinc.org/fhir/DataElement/54121-9"/>
                 <text value="Was this person born a twin?"/>
                 <type value="choice"/>
-                <options>
-                  <reference value="http://hl7.org/fhir/us/sdc/ValueSet/LL623-0"/>
-                </options>
+                <options value="http://hl7.org/fhir/us/sdc/ValueSet/LL623-0"/>
               </item>
               <item>
                 <linkId value="2.1.1.6"/>
                 <definition value="http://loinc.org/fhir/DataElement/54122-7"/>
                 <text value="Was this person adopted?"/>
                 <type value="choice"/>
-                <options>
-                  <reference value="http://hl7.org/fhir/us/sdc/ValueSet/LL623-0"/>
-                </options>
+                <options value="http://hl7.org/fhir/us/sdc/ValueSet/LL623-0"/>
               </item>
               <item>
                 <linkId value="2.1.1.7"/>
@@ -594,10 +576,7 @@ Note: The URLs used for LOINC objects have not been approved by the LOINC organi
                 <text value="Race"/>
                 <type value="choice"/>
                 <repeats value="true"/>
-                <options>
-                  <reference value="http://hl7.org/fhir/us/sdc/ValueSet/LL629-7"/>
-                  <display value="USSG-FHT race"/>
-                </options>
+                <options value="http://hl7.org/fhir/us/sdc/ValueSet/LL629-7"/>
               </item>
               <item>
                 <linkId value="2.1.1.8"/>
@@ -605,10 +584,7 @@ Note: The URLs used for LOINC objects have not been approved by the LOINC organi
                 <text value="Ethnicity"/>
                 <type value="choice"/>
                 <repeats value="true"/>
-                <options>
-                  <reference value="http://hl7.org/fhir/us/sdc/ValueSet/LL628-9"/>
-                  <display value="USSG-FHT ethnicity"/>
-                </options>
+                <options value="http://hl7.org/fhir/us/sdc/ValueSet/LL628-9"/>
               </item>
             </item>
             <item>
@@ -623,20 +599,14 @@ Note: The URLs used for LOINC objects have not been approved by the LOINC organi
                 <text value="Disease or Condition"/>
                 <type value="choice"/>
                 <required value="true"/>
-                <options>
-                  <reference value="http://hl7.org/fhir/us/sdc/ValueSet/LL626-3"/>
-                  <display value="USSG-FHT diseases"/>
-                </options>
+                <options value="http://hl7.org/fhir/us/sdc/ValueSet/LL626-3"/>
               </item>
               <item>
                 <linkId value="2.1.2.2"/>
                 <definition value="http://loinc.org/fhir/DataElement/54115-1"/>
                 <text value="Age at Diagnosis"/>
                 <type value="choice"/>
-                <options>
-                  <reference value="http://hl7.org/fhir/us/sdc/ValueSet/LL619-8"/>
-                  <display value="USSG-FHT age"/>
-                </options>
+                <options value="http://hl7.org/fhir/us/sdc/ValueSet/LL619-8"/>
               </item>
               <item>
                 <linkId value="2.1.2.3"/>

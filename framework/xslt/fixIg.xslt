@@ -15,14 +15,14 @@
   </xsl:template>
   <xsl:template match="@xsi:schemaLocation|f:extension[@url=('http://hl7.org/fhir/tools-profile-spreadsheet')]"/>
   <xsl:template match="f:resource[f:extension[@url='http://hl7.org/fhir/StructureDefinition/implementationguide-spreadsheet-profile' and f:valueBoolean/@value=true()]]"/>
-  <xsl:template match="f:package">
-    <xsl:if test="f:resource[not(f:extension[@url='http://hl7.org/fhir/StructureDefinition/implementationguide-spreadsheet-profile' and f:valueBoolean/@value=true()])]">
+  <xsl:template match="f:resource">
+    <xsl:if test="not(f:extension[@url='http://hl7.org/fhir/StructureDefinition/implementationguide-spreadsheet-profile' and f:valueBoolean/@value=true()])">
       <xsl:copy>
         <xsl:apply-templates select="@*|node()"/>
       </xsl:copy>
     </xsl:if>
   </xsl:template>
-  <xsl:template match="f:page[f:source/@value='artifacts.html']">
+  <xsl:template match="f:page[*[self::f:source or self::f:nameUrl]/@value='artifacts.html']">
     <xsl:variable name="name">
       <xsl:choose>
         <xsl:when test="f:name">name</xsl:when>
@@ -33,10 +33,10 @@
       <xsl:apply-templates select="@*|node()[not(self::f:page)]"/>
       <xsl:if test="not(f:page[f:format/@value='generated'])">
         <xsl:copy-of select="f:page"/>
-        <xsl:for-each select="ancestor::f:ImplementationGuide/f:package/f:resource">
+        <xsl:for-each select="ancestor::f:ImplementationGuide/f:package/f:resource|ancestor::f:ImplementationGuide/f:definition/f:resource">
           <page>
-            <xsl:variable name="type" select="substring-before(f:sourceReference/f:reference/@value, '/')"/>
-            <xsl:variable name="id" select="substring-after(f:sourceReference/f:reference/@value, '/')"/>
+            <xsl:variable name="type" select="substring-before(*[self::f:sourceReference or self::f:reference]/f:reference/@value, '/')"/>
+            <xsl:variable name="id" select="substring-after(*[self::f:sourceReference or self::f:reference]/f:reference/@value, '/')"/>
             <xsl:variable name="value">
               <xsl:choose>
                 <xsl:when test="starts-with($id, 'ext-')">
@@ -50,27 +50,43 @@
                 </xsl:otherwise>
               </xsl:choose>
             </xsl:variable>
-            <source value="{$value}"/>
+            <xsl:choose>
+              <xsl:when test="source">
+                <source value="{$value}"/>
+              </xsl:when>
+              <xsl:otherwise>
+                <nameUrl value="{$value}"/>
+              </xsl:otherwise>
+            </xsl:choose>
             <xsl:element name="{$name}" namespace="http://hl7.org/fhir">
               <xsl:attribute name="value">
                 <xsl:value-of select="f:name/@value"/>
               </xsl:attribute>
             </xsl:element>
-            <xsl:variable name="kind">
-              <xsl:choose>
-                <xsl:when test="$type='Conformance' or $type='SearchParameter' or contains($id, 'example')">example</xsl:when>
-                <xsl:otherwise>resource</xsl:otherwise>
-              </xsl:choose>
-            </xsl:variable>
-            <kind value="{$kind}"/>
             <xsl:choose>
-              <xsl:when test="$type='Conformance' or $type='SearchParameter'">
-                <format value="generated-resource"/>
+              <xsl:when test="@kind and ($type='Conformance' or $type='CapabilityStatement' or $type='SearchParameter' or contains($id, 'example'))">
+                <kind value="example"/>
               </xsl:when>
-              <xsl:otherwise>
-                <format value="generated"/>
-              </xsl:otherwise>
+              <xsl:when test="@kind">
+                <kind value="resource"/>
+              </xsl:when>
             </xsl:choose>
+            <xsl:if test="@kind">
+              <xsl:choose>
+                <xsl:when test="$type='Conformance' or $type='SearchParameter'">
+                  <format value="generated-resource"/>
+                </xsl:when>
+                <xsl:otherwise>
+                  <format value="generated"/>
+                </xsl:otherwise>
+              </xsl:choose>
+            </xsl:if>
+            <xsl:if test="not(@kind)">
+              <generation value="generated"/>
+<!--              <extension url="http://hl7.org/fhir/StructureDefinition/implementationguide-page-generated">
+                <valueBoolean value="true"/>
+              </extension>-->
+            </xsl:if>
           </page>
         </xsl:for-each>
       </xsl:if>

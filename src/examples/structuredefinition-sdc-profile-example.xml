@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<StructureDefinition xmlns="http://hl7.org/fhir" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://hl7.org/fhir ../../src-generated/schemas/fhir-single.xsd">
+  <id value="structuredefinition-sdc-profile-example"/>
+  <url value="http://hl7.org/fhir/us/sdc/StructureDefinition/structuredefinition-sdc-profile-example"/>
+  <identifier>
+    <system value="http://nlm.nih.gov/some_other_text/data_element_identifier"/>
+    <value value="DE42AHRQ"/>
+  </identifier>
+  <name value="SDCExample"/>
+  <title value="Patient Gender"/>
+  <status value="draft"/>
+  <date value="2015-02-04"/>
+  <publisher value="Health Level Seven, International"/>
+  <contact>
+    <telecom>
+      <system value="other"/>
+      <value value="http://hl7.org"/>
+    </telecom>
+  </contact>
+  <mapping>
+    <identity value="c-cda"/>
+    <uri value="http://hl7.org/C-CDA-not-a-real-url"/>
+    <name value="Consolidated CDA R2"/>
+  </mapping>
+  <kind value="logical"/>
+  <abstract value="false"/>
+  <type value="dataelement-sdc-profile-example"/>
+  <baseDefinition value="http://hl7.org/fhir/StructureDefinition/Element"/>
+  <differential>
+    <element id="dataelement-sdc-profile-example">
+      <path value="dataelement-sdc-profile-example"/>
+      <definition value="The gender (i.e., the behavioral, cultural, or psychological traits typically associated with one sex) of a living subject as defined for administrative purposes."/>
+      <type>
+        <code value="CodeableConcept"/>
+      </type>
+      <binding>
+        <strength value="required"/>
+        <valueSetCanonical value="http://hl7.org/fhir/ValueSet/administrative-gender"/>
+      </binding>
+      <mapping>
+        <identity value="c-cda"/>
+        <language value="xpath"/>
+        <map value="/ClinicalDocument/recordTarget/patientRole/patient/administrativeGender"/>
+      </mapping>
+    </element>
+  </differential>
+</StructureDefinition>

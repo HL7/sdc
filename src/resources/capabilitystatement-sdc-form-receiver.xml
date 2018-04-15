@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<CapabilityStatement xmlns="http://hl7.org/fhir" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://hl7.org/fhir ../../../../schema/fhir-single.xsd">
+<CapabilityStatement xmlns="http://hl7.org/fhir" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://hl7.org/fhir ../../src-generated/schemas/fhir-single.xsd">
   <id value="sdc-form-receiver"/>
   <text>
     <status value="generated"/>
@@ -11,18 +11,20 @@
       </p>
       <p>This profile defines the expected capabilities of the <i>SDC Form Receiver</i> role when conforming to the S&amp;I Framework's <a href="index.html">Structured Data Capture FHIR implementation guide</a>.  This role is responsible for accepting and processing completed and partially-completed forms.</p>
       <h2>General</h2>
-      <table>
-        <tbody>
-          <tr>
-            <th>FHIR Version:</th>
-            <td>$ver$</td>
-          </tr>
-          <tr>
-            <th>Supported formats:</th>
-            <td>xml, json</td>
-          </tr>
-        </tbody>
-      </table>
+      <div class="table-wrapper">
+        <table>
+          <tbody>
+            <tr>
+              <th>FHIR Version:</th>
+              <td>$ver$</td>
+            </tr>
+            <tr>
+              <th>Supported formats:</th>
+              <td>xml, json</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
       <h2>REST  behavior</h2>
       <p>
         <b>Security:</b>
@@ -33,7 +35,7 @@
       </p>
       <ul>
         <li>
-          <a href="http://hl7.org/fhir/us/sdc/operationdefinition/Questionnaire-process-response">process-response</a>
+          <a href="http://hl7.org/fhir/us/sdc/operationdefinition/questionnaire-process-response">process-response</a>
         </li>
       </ul>
     </div>
@@ -52,7 +54,6 @@
   <description value="This profile defines the expected capabilities of the ''SDC Form Receiver'' role when conforming to the S&amp;I Framework's [[index|Structured Data Capture FHIR implementation guide]].  This role is responsible for accepting and processing completed and partially-completed forms."/>
   <kind value="requirements"/>
   <fhirVersion value="1.0.0"/>
-  <acceptUnknown value="extensions"/>
   <format value="xml"/>
   <format value="json"/>
   <rest>
@@ -62,9 +63,7 @@
     </security>
     <operation>
       <name value="process-response"/>
-      <definition>
-        <reference value="http://hl7.org/fhir/us/sdc/OperationDefinition/Questionnaire-process-response"/>
-      </definition>
+      <definition value="http://hl7.org/fhir/us/sdc/OperationDefinition/Questionnaire-process-response"/>
     </operation>
   </rest>
 </CapabilityStatement>

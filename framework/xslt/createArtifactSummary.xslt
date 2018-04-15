@@ -7,7 +7,7 @@
     <div>
       <div class="itoc">
         <p>Artifact Packages</p>
-        <xsl:for-each select="f:package">
+        <xsl:for-each select="f:package|f:definition/f:package">
           <p class="link">-
             <a href="#{position()}">
               <xsl:value-of select="f:name/@value"/>
@@ -16,7 +16,7 @@
         </xsl:for-each>
       </div>
       <p>This page provides a list of the FHIR artifacts defined as part of this implementation guide.</p>
-      <xsl:for-each select="f:package">
+      <xsl:for-each select="f:package|f:definition/f:package">
         <h2 class="self-link-parent">
           <a name="{position()}">
             <xsl:value-of select="' '"/>
@@ -37,16 +37,16 @@
     <p>
       <table>
         <tbody>
-          <xsl:for-each select="f:resource">
+          <xsl:for-each select="f:resource|parent::f:definition/f:resource[f:package/@id=current()/@id]">
             <tr>
               <td style="column-width:30%">
                 <xsl:choose>
-                  <xsl:when test="f:sourceReference">
-                    <xsl:variable name="type" select="substring-before(f:sourceReference/f:reference/@value, '/')"/>
-                    <xsl:variable name="id" select="substring-after(f:sourceReference/f:reference/@value, '/')"/>
+                  <xsl:when test="f:sourceReference or f:reference">
+                    <xsl:variable name="type" select="substring-before(*[self::f:sourceReference or self::f:reference]/f:reference/@value, '/')"/>
+                    <xsl:variable name="id" select="substring-after(*[self::f:sourceReference or self::f:reference]/f:reference/@value, '/')"/>
                     <xsl:variable name="href">
                       <xsl:choose>
-                        <xsl:when test="$type='ValueSet' and not(f:example/@value='true' or f:purpose/@value='example')">
+                        <xsl:when test="$type='ValueSet' and not(f:example/@value='true' or f:exampleBoolean/@value='true' or f:exampleReference or f:purpose/@value='example')">
                           <xsl:value-of select="concat('valueset-', $id, '.html')"/>
                         </xsl:when>
                         <xsl:when test="starts-with($id, 'ext')">

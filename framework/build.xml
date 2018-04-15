@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <project name="org.hl7.fhir.tools" basedir=".." default="publish-ig">
+  <property name="updatePublisher" value="Y"/>
   <!-- Where the main FHIR build publish folder is -->
   <property name="jar.publisher" value="http://build.fhir.org/org.hl7.fhir.igpublisher.jar"/>
   <!-- Project-specific inputs -->
@@ -27,13 +28,18 @@
       <targetfilelist dir="${dir.srcgenned}" files="${guidename}.json"/>
       <targetfilelist dir="${dir.schemas}" files="fhir-single.xsd fhir-xhtml.xsd xml.xsd xmldsig-core-schema.xsd"/>
     </dependset>
-    <get src="${jar.publisher}" dest="${dir.srcgenned}" usetimestamp="true"/>
-    <get src="${fhirspec}/fhir-single.xsd" dest="${dir.schemas}" usetimestamp="true"/>
-    <get src="${fhirspec}/fhir-xhtml.xsd" dest="${dir.schemas}" usetimestamp="true"/>
-    <get src="${fhirspec}/xml.xsd" dest="${dir.schemas}" usetimestamp="true"/>
-    <get src="${fhirspec}/xmldsig-core-schema.xsd" dest="${dir.schemas}" usetimestamp="true"/>
+    <condition property="downloads">
+      <equals arg1="${updatePublisher}" arg2="Y"/>
+    </condition>
   </target>
-  <target name="publisher-setup" depends="local-setup"  description="--> Generate setup files, then run IG build">
+  <target name="local-downloads" depends="local-setup" if="downloads" description="--Download current IG generator files">
+    <get src="${jar.publisher}" dest="${dir.srcgenned}" usetimestamp="true"/>
+    <get src="${fhirspec}fhir-single.xsd" dest="${dir.schemas}" usetimestamp="true"/>
+    <get src="${fhirspec}fhir-xhtml.xsd" dest="${dir.schemas}" usetimestamp="true"/>
+    <get src="${fhirspec}xml.xsd" dest="${dir.schemas}" usetimestamp="true"/>
+    <get src="${fhirspec}xmldsig-core-schema.xsd" dest="${dir.schemas}" usetimestamp="true"/>
+  </target>
+  <target name="publisher-setup" depends="local-downloads"  description="--> Generate setup files, then run IG build">
     <copy todir="${dir.pages}"> <!-- This needs to be in two places to work properly -->
       <file file="${basedir}/${dir.framework.assets}/js/jquery.js"/>
     </copy>
@@ -52,6 +58,7 @@
     <xslt in="${dir.src}/${guidename}.xml" out="${dir.srcgenned}/${guidename}.json" style="${dir.xslt}/igToConfig.xslt">
       <param name="spec" expression="${fhirspec}"/>
       <param name="version" expression="${version}"/>
+      <param name="license" expression="${license}"/>
       <param name="excludexml" expression="${excludexml}"/>
       <param name="excludejson" expression="${excludejson}"/>
       <param name="excludettl" expression="${excludettl}"/>

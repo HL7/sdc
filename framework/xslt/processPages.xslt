@@ -9,6 +9,23 @@
       <xsl:apply-templates select="@*|node()"/>
     </xsl:copy>
   </xsl:template>
+  <xsl:template match="*[not(self::html:*)]" priority="10">
+    <xsl:message terminate="yes">Only XHTML-namespaced content is permitted</xsl:message>
+  </xsl:template>
+  <xsl:template match="comment()[normalize-space(translate(., 'DRAFT','draft'))='draft']">
+    <blockquote class="stu-note">
+      <table>
+        <tbody>
+          <tr>
+            <td>
+              <img src="work-98936_640.png" alt="Work in Progress icon" height="30" width="30"/>
+            </td>
+            <td>The content in this section has not undergone work group review and may be significantly revised prior to the next ballot.</td>
+          </tr>
+        </tbody>
+      </table>
+    </blockquote>
+  </xsl:template>
   <xsl:template match="@xsi:schemaLocation"/>
   <xsl:template priority="10" match="/html:div">
     <div>
