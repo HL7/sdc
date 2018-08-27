@@ -123,6 +123,7 @@
                 <a title="Not all servers will support deletion of code systems.  Status change to 'retired' will be more typical, though deletion of draft value sets may keep repositories cleaner." href="#CodeSystem-delete">Yes</a>
               </td>
             </tr>
+			<!-- Remove DataElement Aug 2018
             <tr>
               <th>StructureDefinition (<a href="http://hl7.org/fhir/us/sdc/StructureDefinition/sdc-dataelement.html">Profile</a>)</th>
               <td>
@@ -148,6 +149,7 @@
                 <a title="Allows maintaining data elements while creating and editing forms.  Note that not all servers will support deleting data elements." href="#StructureDefinition-delete">Yes</a>
               </td>
             </tr>
+			-->
           </tbody>
         </table>
       </div>
@@ -405,6 +407,7 @@
       <h3>
         <a href="{{site.data.fhir.path}}structuredefinition.html">StructureDefinition</a>
       </h3>
+	  <!-- Remove DataElement Aug 2018
       <p>Profile: <a href="http://hl7.org/fhir/us/sdc/StructureDefinition/sdc-dataelement.html">http://hl7.org/fhir/us/sdc/StructureDefinition/sdc-dataelement</a>
       </p>
       <h4>Interactions</h4>
@@ -482,7 +485,7 @@
             </tr>
           </tbody>
         </table>
-      </div>
+      </div>-->
     </div>
   </text>
   <url value="http://hl7.org/fhir/us/sdc/CapabilityStatement/sdc-form-designer"/>
@@ -668,6 +671,7 @@
       </interaction>
     </resource>
     <!--  Do we want to define what search criteria must be supported?  -->
+	<!-- Remove DataElement Aug 2018
     <resource>
       <type value="StructureDefinition"/>
       <profile value="http://hl7.org/fhir/us/sdc/StructureDefinition/sdc-dataelement"/>
@@ -692,7 +696,6 @@
         <code value="vread"/>
         <documentation value="Allows viewing of specific versions of a data element if the form references a specific version"/>
       </interaction>
-      <!--  Do we need this to be SHALL too?  -->
       <interaction>
         <extension url="http://hl7.org/fhir/StructureDefinition/capabilitystatement-expectation">
           <valueCode value="SHOULD"/>
@@ -722,5 +725,6 @@
         <documentation value="Allows maintaining data elements while creating and editing forms.  Note that not all servers will support deleting data elements."/>
       </interaction>
     </resource>
+	-->
   </rest>
 </CapabilityStatement>

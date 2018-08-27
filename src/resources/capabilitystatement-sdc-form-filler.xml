@@ -105,7 +105,7 @@
               <td/>
             </tr>
             <tr>
-              <th>QuestionnaireResponse (<a href="http://hl7.org/fhir/us/sdc/StructureDefinition/sdc-dataelement.html">Profile</a>)</th>
+              <th>QuestionnaireResponse (<a href="http://hl7.org/fhir/us/sdc/StructureDefinition/sdc-questionnaireresponse.html">Profile</a>)</th>
               <td>
                 <a title="Allows a user to search for existing completed or partially-completed forms.  Generally used to find partially-completed forms for update." href="#QuestionnaireResponse-search-type">Yes</a>
               </td>
@@ -331,7 +331,7 @@
       <h3>
         <a href="{{site.data.fhir.path}}questionnaireresponse.html">QuestionnaireResponse</a>
       </h3>
-      <p>Profile: <a href="http://hl7.org/fhir/us/sdc/StructureDefinition/sdc-dataelement.html">http://hl7.org/fhir/us/sdc/StructureDefinition/sdc-dataelement</a>
+      <p>Profile: <a href="http://hl7.org/fhir/us/sdc/StructureDefinition/sdc-questionnaireresponse.html">http://hl7.org/fhir/us/sdc/StructureDefinition/sdc-questionnaireresponse</a>
       </p>
       <h4>Interactions</h4>
       <div class="table-wrapper">
@@ -391,7 +391,7 @@
           </tbody>
         </table>
       </div>
-      <br/>
+	  <br/>
       <br/>
       <h3>
         <a href="{{site.data.fhir.path}}documentreference.html">DocumentReference</a>
@@ -563,7 +563,7 @@
     </resource>
     <resource>
       <type value="QuestionnaireResponse"/>
-      <profile value="http://hl7.org/fhir/us/sdc/StructureDefinition/sdc-dataelement"/>
+      <profile value="http://hl7.org/fhir/us/sdc/StructureDefinition/sdc-questionnaireresponse"/>
       <interaction>
         <extension url="http://hl7.org/fhir/StructureDefinition/capabilitystatement-expectation">
           <valueCode value="SHALL"/>

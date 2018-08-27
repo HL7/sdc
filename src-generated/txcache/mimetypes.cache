@@ -1,0 +1,88 @@
+-------------------------------------------------------------------------------------
+{"hierarchical" : false, "valueSet" :{
+  "resourceType" : "ValueSet",
+  "compose" : {
+    "include" : [{
+      "system" : "urn:ietf:bcp:13"
+    }]
+  }
+}}
+####
+e: {
+  "valueSet" : {
+  "resourceType" : "ValueSet",
+  "expansion" : {
+    "extension" : [{
+      "url" : "http://hl7.org/fhir/StructureDefinition/valueset-toocostly",
+      "valueBoolean" : true
+    }],
+    "identifier" : "urn:uuid:f25774a4-9df8-48c4-b094-c71011413f65",
+    "timestamp" : "2018-08-27T15:02:14.685Z",
+    "parameter" : [{
+      "name" : "limitedExpansion",
+      "valueString" : "-1"
+    },
+    {
+      "name" : "excludeNested",
+      "valueString" : "-1"
+    }]
+  }
+},
+  "error" : ""
+}
+-------------------------------------------------------------------------------------
+{"hierarchical" : false, "valueSet" :{
+  "resourceType" : "ValueSet",
+  "compose" : {
+    "include" : [{
+      "system" : "urn:ietf:bcp:13",
+      "concept" : [{
+        "code" : "application/sparql-results+xml",
+        "display" : "SPARQL"
+      },
+      {
+        "code" : "application/sql",
+        "display" : "SQL"
+      },
+      {
+        "code" : "application/xquery",
+        "display" : "X-Query"
+      }]
+    }]
+  }
+}}
+####
+e: {
+  "valueSet" : {
+  "resourceType" : "ValueSet",
+  "expansion" : {
+    "identifier" : "urn:uuid:4511b328-780b-4a56-8d48-2b997ec103ad",
+    "timestamp" : "2018-08-27T15:02:14.904Z",
+    "parameter" : [{
+      "name" : "limitedExpansion",
+      "valueString" : "-1"
+    },
+    {
+      "name" : "excludeNested",
+      "valueString" : "-1"
+    }],
+    "contains" : [{
+      "system" : "urn:ietf:bcp:13",
+      "code" : "application/sparql-results+xml",
+      "display" : "SPARQL"
+    },
+    {
+      "system" : "urn:ietf:bcp:13",
+      "code" : "application/sql",
+      "display" : "SQL"
+    },
+    {
+      "system" : "urn:ietf:bcp:13",
+      "code" : "application/xquery",
+      "display" : "X-Query"
+    }]
+  }
+},
+  "error" : ""
+}
+-------------------------------------------------------------------------------------

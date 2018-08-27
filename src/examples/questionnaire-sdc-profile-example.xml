@@ -901,7 +901,7 @@
         <publisher value="Agency for Healthcare Research and Quality (AHRQ)"/>
         <useContext>
           <code>
-            <system value="http://hl7.org/fhir/usage-context-type"/>
+            <system value="http://terminology.hl7.org/CodeSystem/usage-context-type"/>
             <code value="venue"/>
           </code>
           <valueCodeableConcept>
@@ -957,7 +957,7 @@
               <text value="What type of medication/substance was involved?"/>
               <type value="open-choice"/>
               <required value="true"/>
-              <options value="#d1e551-vs"/>
+              <answerValueSet value="#d1e551-vs"/>
               <item>
                 <extension url="http://hl7.org/fhir/StructureDefinition/minLength">
                   <valueInteger value="7"/>
@@ -967,7 +967,7 @@
                 <text value="What type of medication?"/>
                 <type value="open-choice"/>
                 <required value="true"/>
-                <options value="#d1e639-vs"/>
+                <answerValueSet value="#d1e639-vs"/>
                 <item>
                   <extension url="http://hl7.org/fhir/StructureDefinition/minLength">
                     <valueInteger value="0"/>
@@ -986,7 +986,7 @@
                 <linkId value="Medication/DE279"/>
                 <text value="What type of biological product?"/>
                 <type value="open-choice"/>
-                <options value="#d1e910-vs"/>
+                <answerValueSet value="#d1e910-vs"/>
                 <item>
                   <linkId value="Medication/DE282"/>
                   <text value="What was the lot number of the vaccine?"/>
@@ -999,7 +999,7 @@
                 <text value="What type of nutritional product?"/>
                 <type value="open-choice"/>
                 <required value="true"/>
-                <options value="#d1e1125-vs"/>
+                <answerValueSet value="#d1e1125-vs"/>
               </item>
             </item>
             <item>
@@ -1007,40 +1007,40 @@
               <text value="Which of the following best characterizes the event?"/>
               <type value="open-choice"/>
               <required value="true"/>
-              <options value="#d1e1558-vs"/>
+              <answerValueSet value="#d1e1558-vs"/>
             </item>
             <item>
               <linkId value="Medication/DE291"/>
               <text value="What was the incorrect action?"/>
               <type value="open-choice"/>
-              <options value="#d1e1746-vs"/>
+              <answerValueSet value="#d1e1746-vs"/>
               <item>
                 <linkId value="Medication/DE294"/>
                 <text value="Which best describes the incorrect dose(s)?"/>
                 <type value="open-choice"/>
                 <required value="true"/>
-                <options value="#d1e1863-vs"/>
+                <answerValueSet value="#d1e1863-vs"/>
               </item>
               <item>
                 <linkId value="Medication/DE297"/>
                 <text value="Which best describes the incorrect timing?"/>
                 <type value="open-choice"/>
                 <required value="true"/>
-                <options value="#d1e2109-vs"/>
+                <answerValueSet value="#d1e2109-vs"/>
               </item>
               <item>
                 <linkId value="Medication/DE300"/>
                 <text value="Which best describes the incorrect rate?"/>
                 <type value="open-choice"/>
                 <required value="true"/>
-                <options value="#d1e2272-vs"/>
+                <answerValueSet value="#d1e2272-vs"/>
               </item>
               <item>
                 <linkId value="Medication/DE303"/>
                 <text value="Which best describes the incorrect strength or concentration?"/>
                 <type value="open-choice"/>
                 <required value="true"/>
-                <options value="#d1e2489-vs"/>
+                <answerValueSet value="#d1e2489-vs"/>
               </item>
               <item>
                 <linkId value="Medication/DE306"/>
@@ -1053,14 +1053,14 @@
                 <text value="Was there a documented history of allergies or sensitivities to the medication/substance administered?"/>
                 <type value="open-choice"/>
                 <required value="true"/>
-                <options value="#d1e2768-vs"/>
+                <answerValueSet value="#d1e2768-vs"/>
               </item>
               <item>
                 <linkId value="Medication/DE312"/>
                 <text value="What was the contraindication (potential or actual interaction)?"/>
                 <type value="open-choice"/>
                 <required value="true"/>
-                <options value="#d1e2928-vs"/>
+                <answerValueSet value="#d1e2928-vs"/>
               </item>
             </item>
             <item>
@@ -1068,7 +1068,7 @@
               <text value="At what stage in the process did the event originate, regardless of the stage at which it was discovered?"/>
               <type value="open-choice"/>
               <required value="true"/>
-              <options value="#d1e3159-vs"/>
+              <answerValueSet value="#d1e3159-vs"/>
             </item>
           </item>
           <item>
@@ -1160,14 +1160,14 @@
               <text value="Was this medication/substance prescribed for this patient?"/>
               <type value="open-choice"/>
               <required value="true"/>
-              <options value="#d1e4024-vs"/>
+              <answerValueSet value="#d1e4024-vs"/>
             </item>
             <item>
               <linkId value="Medication/DE336"/>
               <text value="Was this medication/substance given to this patient?"/>
               <type value="open-choice"/>
               <required value="true"/>
-              <options value="#d1e4118-vs"/>
+              <answerValueSet value="#d1e4118-vs"/>
             </item>
           </item>
           <item>
@@ -1178,14 +1178,14 @@
               <text value="What was the intended route of administration?"/>
               <type value="open-choice"/>
               <required value="true"/>
-              <options value="#d1e4236-vs"/>
+              <answerValueSet value="#d1e4236-vs"/>
             </item>
             <item>
               <linkId value="Medication/DE351"/>
               <text value="What was the actual route of administration (attempted or completed)?"/>
               <type value="open-choice"/>
               <required value="true"/>
-              <options value="#d1e4716-vs"/>
+              <answerValueSet value="#d1e4716-vs"/>
             </item>
           </item>
           <item>
@@ -1522,7 +1522,7 @@
             <text value="What is being reported?"/>
             <type value="open-choice"/>
             <required value="true"/>
-            <options value="#d1e5879-vs"/>
+            <answerValueSet value="#d1e5879-vs"/>
           </item>
           <item>
             <extension url="http://hl7.org/fhir/StructureDefinition/questionnaire-maxOccurs">
@@ -1553,7 +1553,7 @@
             <type value="open-choice"/>
             <required value="true"/>
             <repeats value="true"/>
-            <options value="#d1e6177-vs"/>
+            <answerValueSet value="#d1e6177-vs"/>
           </item>
         </item>
         <item>
@@ -1630,7 +1630,7 @@
             <linkId value="HERF/DE42"/>
             <text value="Patients' Gender"/>
             <type value="open-choice"/>
-            <options value="#d1e6853-vs"/>
+            <answerValueSet value="#d1e6853-vs"/>
           </item>
         </item>
         <item>
@@ -1646,7 +1646,7 @@
             <linkId value="HERF/Hidden"/>
             <text value="Is this event a perinatal incident that affected a neonate?"/>
             <type value="open-choice"/>
-            <options value="#d1e7006-vs"/>
+            <answerValueSet value="#d1e7006-vs"/>
             <item>
               <linkId value="HERF/DE34"/>
               <text value="Neonate's Name"/>
@@ -1668,7 +1668,7 @@
               <text value="Neonate's Gender"/>
               <type value="open-choice"/>
               <required value="true"/>
-              <options value="#d1e7220-vs"/>
+              <answerValueSet value="#d1e7220-vs"/>
             </item>
           </item>
         </item>
@@ -1680,7 +1680,7 @@
             <linkId value="HERF/DE33"/>
             <text value="Anonymous Reporter"/>
             <type value="open-choice"/>
-            <options value="#d1e7422-vs"/>
+            <answerValueSet value="#d1e7422-vs"/>
             <item>
               <linkId value="HERF/DE50"/>
               <text value="Reporter's Name"/>
@@ -1980,7 +1980,7 @@
             <definition value="http://nci.nih.gov/xml/owl/cadsr/data_element_scoped_identifier#3914869v1.0"/>
             <text value="Diagnosis Type"/>
             <type value="open-choice"/>
-            <options value="#d1e8086-vs"/>
+            <answerValueSet value="#d1e8086-vs"/>
           </item>
           <item>
             <linkId value="3921065v1.0"/>
@@ -2003,7 +2003,7 @@
             <definition value="http://nci.nih.gov/xml/owl/cadsr/data_element_scoped_identifier#2816923v1.0"/>
             <text value="Diagnosis Time Point"/>
             <type value="open-choice"/>
-            <options value="#d1e8407-vs"/>
+            <answerValueSet value="#d1e8407-vs"/>
           </item>
         </item>
         <item>
@@ -2035,14 +2035,14 @@
             <definition value="http://nci.nih.gov/xml/owl/cadsr/data_element_scoped_identifier#3914983v1.0"/>
             <text value="Assessment Method"/>
             <type value="open-choice"/>
-            <options value="#d1e8830-vs"/>
+            <answerValueSet value="#d1e8830-vs"/>
           </item>
           <item>
             <linkId value="3921085v1.0"/>
             <definition value="http://nci.nih.gov/xml/owl/cadsr/data_element_scoped_identifier#2785839v2.0"/>
             <text value="Tumor grade"/>
             <type value="open-choice"/>
-            <options value="#d1e9025-vs"/>
+            <answerValueSet value="#d1e9025-vs"/>
           </item>
         </item>
       </Questionnaire>
@@ -2660,7 +2660,7 @@
             <definition value="http://nci.nih.gov/xml/owl/cadsr/data_element_scoped_identifier#2200604v3.0"/>
             <text value="Gender"/>
             <type value="open-choice"/>
-            <options value="#d1e9892-vs"/>
+            <answerValueSet value="#d1e9892-vs"/>
           </item>
           <item>
             <extension url="http://hl7.org/fhir/StructureDefinition/minLength">
@@ -2670,7 +2670,7 @@
             <definition value="http://nci.nih.gov/xml/owl/cadsr/data_element_scoped_identifier#2192199v1.0"/>
             <text value="Race"/>
             <type value="open-choice"/>
-            <options value="#d1e10146-vs"/>
+            <answerValueSet value="#d1e10146-vs"/>
           </item>
           <item>
             <linkId value="3702903v4.0"/>
@@ -2686,7 +2686,7 @@
             <definition value="http://nci.nih.gov/xml/owl/cadsr/data_element_scoped_identifier#2192217v2.0"/>
             <text value="Ethnicity"/>
             <type value="open-choice"/>
-            <options value="#d1e10593-vs"/>
+            <answerValueSet value="#d1e10593-vs"/>
           </item>
         </item>
         <item>
@@ -2709,7 +2709,7 @@
             <definition value="http://nci.nih.gov/xml/owl/cadsr/data_element_scoped_identifier#2865130v1.0"/>
             <text value="Payment Method"/>
             <type value="open-choice"/>
-            <options value="#d1e10923-vs"/>
+            <answerValueSet value="#d1e10923-vs"/>
           </item>
           <item>
             <linkId value="3702932v4.0"/>
@@ -2750,21 +2750,21 @@
             <definition value="http://nci.nih.gov/xml/owl/cadsr/data_element_scoped_identifier#2681552v1.0"/>
             <text value="Highest Education Level"/>
             <type value="open-choice"/>
-            <options value="#d1e11887-vs"/>
+            <answerValueSet value="#d1e11887-vs"/>
           </item>
           <item>
             <linkId value="3702952v4.0"/>
             <definition value="http://nci.nih.gov/xml/owl/cadsr/data_element_scoped_identifier#2001708v5.0"/>
             <text value="Country of Birth"/>
             <type value="open-choice"/>
-            <options value="#d1e12384-vs"/>
+            <answerValueSet value="#d1e12384-vs"/>
           </item>
           <item>
             <linkId value="3702957v4.0"/>
             <definition value="http://nci.nih.gov/xml/owl/cadsr/data_element_scoped_identifier#2674076v2.0"/>
             <text value="Highest Education Level"/>
             <type value="open-choice"/>
-            <options value="#d1e12630-vs"/>
+            <answerValueSet value="#d1e12630-vs"/>
           </item>
           <item>
             <extension url="http://hl7.org/fhir/StructureDefinition/entryFormat">
@@ -2780,7 +2780,7 @@
             <definition value="http://nci.nih.gov/xml/owl/cadsr/data_element_scoped_identifier#2188083v2.0"/>
             <text value="Marital Status"/>
             <type value="open-choice"/>
-            <options value="#d1e14027-vs"/>
+            <answerValueSet value="#d1e14027-vs"/>
           </item>
         </item>
       </Questionnaire>
@@ -11538,7 +11538,7 @@
             <definition value="http://nci.nih.gov/xml/owl/cadsr/data_element_scoped_identifier#3125302v1.1"/>
             <text value="Adverse Event Term (v4.0)"/>
             <type value="open-choice"/>
-            <options value="#d1e14927-vs"/>
+            <answerValueSet value="#d1e14927-vs"/>
           </item>
           <item>
             <linkId value="3557006v2.0"/>
@@ -11554,7 +11554,7 @@
             <definition value="http://nci.nih.gov/xml/owl/cadsr/data_element_scoped_identifier#2944515v1.0"/>
             <text value="Adverse Event Grade"/>
             <type value="open-choice"/>
-            <options value="#d1e54652-vs"/>
+            <answerValueSet value="#d1e54652-vs"/>
           </item>
         </item>
         <item>
@@ -11586,7 +11586,7 @@
             <definition value="http://nci.nih.gov/xml/owl/cadsr/data_element_scoped_identifier#2552398v1.0"/>
             <text value="Was patient hospitalized for toxicity?"/>
             <type value="open-choice"/>
-            <options value="#d1e55041-vs"/>
+            <answerValueSet value="#d1e55041-vs"/>
           </item>
           <item>
             <linkId value="3557025v2.0"/>
@@ -11609,7 +11609,7 @@
             <definition value="http://nci.nih.gov/xml/owl/cadsr/data_element_scoped_identifier#2179892v2.0"/>
             <text value="To what is the AE attributed?"/>
             <type value="open-choice"/>
-            <options value="#d1e55265-vs"/>
+            <answerValueSet value="#d1e55265-vs"/>
           </item>
           <item>
             <linkId value="3557863v2.0"/>
@@ -11631,7 +11631,7 @@
             <definition value="http://nci.nih.gov/xml/owl/cadsr/data_element_scoped_identifier#2943864v1.0"/>
             <text value="MedDRA System Organ Class (SOC)"/>
             <type value="open-choice"/>
-            <options value="#d1e56008-vs"/>
+            <answerValueSet value="#d1e56008-vs"/>
           </item>
           <item>
             <extension url="http://hl7.org/fhir/StructureDefinition/minLength">
@@ -11641,7 +11641,7 @@
             <definition value="http://nci.nih.gov/xml/owl/cadsr/data_element_scoped_identifier#3133353v1.0"/>
             <text value="MedDRA AE Code (CTCAE v4.0)"/>
             <type value="open-choice"/>
-            <options value="#d1e57358-vs"/>
+            <answerValueSet value="#d1e57358-vs"/>
           </item>
           <item>
             <extension url="http://hl7.org/fhir/StructureDefinition/minLength">
@@ -11651,7 +11651,7 @@
             <definition value="http://nci.nih.gov/xml/owl/cadsr/data_element_scoped_identifier#1285v3.0"/>
             <text value="AE Attribution"/>
             <type value="open-choice"/>
-            <options value="#d1e97042-vs"/>
+            <answerValueSet value="#d1e97042-vs"/>
           </item>
           <item>
             <linkId value="3557849v2.0"/>
@@ -11667,7 +11667,7 @@
             <definition value="http://nci.nih.gov/xml/owl/cadsr/data_element_scoped_identifier#2179971v1.0"/>
             <text value="Were adverse events assessed during most recent period"/>
             <type value="open-choice"/>
-            <options value="#d1e97392-vs"/>
+            <answerValueSet value="#d1e97392-vs"/>
           </item>
           <item>
             <extension url="http://hl7.org/fhir/StructureDefinition/minLength">
@@ -11677,7 +11677,7 @@
             <definition value="http://nci.nih.gov/xml/owl/cadsr/data_element_scoped_identifier#2183619v1.0"/>
             <text value="Expected? (Yes/No)"/>
             <type value="open-choice"/>
-            <options value="#d1e97594-vs"/>
+            <answerValueSet value="#d1e97594-vs"/>
           </item>
           <item>
             <extension url="http://hl7.org/fhir/StructureDefinition/minLength">
@@ -11687,7 +11687,7 @@
             <definition value="http://nci.nih.gov/xml/owl/cadsr/data_element_scoped_identifier#2199908v1.0"/>
             <text value="Serious?"/>
             <type value="open-choice"/>
-            <options value="#d1e97746-vs"/>
+            <answerValueSet value="#d1e97746-vs"/>
           </item>
           <item>
             <linkId value="3557911v2.0"/>
@@ -11715,7 +11715,7 @@
             <definition value="http://nci.nih.gov/xml/owl/cadsr/data_element_scoped_identifier#2746280v1.0"/>
             <text value="Pre-existing AE?"/>
             <type value="open-choice"/>
-            <options value="#d1e98036-vs"/>
+            <answerValueSet value="#d1e98036-vs"/>
           </item>
           <item>
             <linkId value="3557904v2.0"/>
@@ -11731,21 +11731,21 @@
             <definition value="http://nci.nih.gov/xml/owl/cadsr/data_element_scoped_identifier#2746311v1.0"/>
             <text value="AE Ongoing?"/>
             <type value="open-choice"/>
-            <options value="#d1e98234-vs"/>
+            <answerValueSet value="#d1e98234-vs"/>
           </item>
           <item>
             <linkId value="3557896v2.0"/>
             <definition value="http://nci.nih.gov/xml/owl/cadsr/data_element_scoped_identifier#2746517v1.0"/>
             <text value="Participant Status/Outcome"/>
             <type value="open-choice"/>
-            <options value="#d1e98385-vs"/>
+            <answerValueSet value="#d1e98385-vs"/>
           </item>
           <item>
             <linkId value="3557906v2.0"/>
             <definition value="http://nci.nih.gov/xml/owl/cadsr/data_element_scoped_identifier#2008418v1.0"/>
             <text value="Adverse Event Condition Pattern"/>
             <type value="open-choice"/>
-            <options value="#d1e98732-vs"/>
+            <answerValueSet value="#d1e98732-vs"/>
           </item>
           <item>
             <extension url="http://hl7.org/fhir/StructureDefinition/minLength">
@@ -11755,7 +11755,7 @@
             <definition value="http://nci.nih.gov/xml/owl/cadsr/data_element_scoped_identifier#2179615v1.0"/>
             <text value="Did event reappear after study agent was reintroduced?"/>
             <type value="open-choice"/>
-            <options value="#d1e98928-vs"/>
+            <answerValueSet value="#d1e98928-vs"/>
           </item>
           <item>
             <extension url="http://hl7.org/fhir/StructureDefinition/minLength">
@@ -11784,7 +11784,7 @@
             <definition value="http://nci.nih.gov/xml/owl/cadsr/data_element_scoped_identifier#2179679v3.0"/>
             <text value="Why serious?"/>
             <type value="open-choice"/>
-            <options value="#d1e99214-vs"/>
+            <answerValueSet value="#d1e99214-vs"/>
           </item>
           <item>
             <extension url="http://hl7.org/fhir/StructureDefinition/minLength">
@@ -11794,7 +11794,7 @@
             <definition value="http://nci.nih.gov/xml/owl/cadsr/data_element_scoped_identifier#2004106v3.0"/>
             <text value="Dose-Limiting Toxicity?"/>
             <type value="open-choice"/>
-            <options value="#d1e99668-vs"/>
+            <answerValueSet value="#d1e99668-vs"/>
           </item>
         </item>
       </Questionnaire>

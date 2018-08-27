@@ -14,30 +14,30 @@
 			<text value="Status of surgical margin involvement by tumor (observable entity)"/>
 			<type value="choice"/>
 			<required value="true"/>
-			<option>
+			<answerOption>
 				<valueCoding>
 					<code value="M1"/>
 					<display value="Margins univolved by tumor"/>
 				</valueCoding>
-			</option>
-			<option>
+			</answerOption>
+			<answerOption>
 				<valueCoding>
 					<code value="M2"/>
 					<display value="Margin(s) involved by tumor"/>
 				</valueCoding>
-			</option>
-			<option>
+			</answerOption>
+			<answerOption>
 				<valueCoding>
 					<code value="M3"/>
 					<display value="Cannot be determined"/>
 				</valueCoding>
-			</option>
-			<option>
+			</answerOption>
+			<answerOption>
 				<valueCoding>
 					<code value="M4"/>
 					<display value="Not applicable"/>
 				</valueCoding>
-			</option>
+			</answerOption>
 			<item>
 				<linkId value="1.1.1"/>
 				<type value="group"/>
@@ -53,18 +53,18 @@
 					<linkId value="1.1.1.1"/>
 					<text value="Distance from Closest Margin"/>
 					<type value="choice"/>
-					<option>
+					<answerOption>
 						<valueCoding>
 							<code value="D1"/>
 							<display value="Specify (mm)"/>
 						</valueCoding>
-					</option>
-					<option>
+					</answerOption>
+					<answerOption>
 						<valueCoding>
 							<code value="D2"/>
 							<display value="Cannot be assessed (explain)"/>
 						</valueCoding>
-					</option>
+					</answerOption>
 					<item>
 						<extension url="http://hl7.org/fhir/StructureDefinition/minValue">
 							<valueDecimal value="0.01"/>
@@ -91,18 +91,18 @@
 					<linkId value="1.1.1.2"/>
 					<text value="Specify Margin, if possible"/>
 					<type value="choice"/>
-					<option>
+					<answerOption>
 						<valueCoding>
 							<code value="W1"/>
 							<display value="Specify margin"/>
 						</valueCoding>
-					</option>
-					<option>
+					</answerOption>
+					<answerOption>
 						<valueCoding>
 							<code value="W2"/>
 							<display value="Cannot be determined (explain)"/>
 						</valueCoding>
-					</option>
+					</answerOption>
 					<item>
 						<linkId value="1.1.1.2.1.1"/>
 						<text value="Specify margin"/>
@@ -122,18 +122,18 @@
 				<text value="Specify Margin(s), if possible"/>
 				<type value="choice"/>
 				<required value="true"/>
-				<option>
+				<answerOption>
 					<valueCoding>
 						<code value="I1"/>
 						<display value="Specify margin(s)"/>
 					</valueCoding>
-				</option>
-				<option>
+				</answerOption>
+				<answerOption>
 					<valueCoding>
 						<code value="I2"/>
 						<display value="Cannot be determined (explain)"/>
 					</valueCoding>
-				</option>
+				</answerOption>
 				<item>
 					<linkId value="1.1.2.1.1.1"/>
 					<text value="Specify margin(s)"/>
@@ -170,24 +170,24 @@
 			<linkId value="2.1"/>
 			<text value="Treatment Effect (applicable to carcinomas treated with neoadjuvant therapy)"/>
 			<type value="choice"/>
-			<option>
+			<answerOption>
 				<valueCoding>
 					<code value="E1"/>
 					<display value="Not identified"/>
 				</valueCoding>
-			</option>
-			<option>
+			</answerOption>
+			<answerOption>
 				<valueCoding>
 					<code value="E2"/>
 					<display value="Present (specify)"/>
 				</valueCoding>
-			</option>
-			<option>
+			</answerOption>
+			<answerOption>
 				<valueCoding>
 					<code value="E3"/>
 					<display value="Indeterminate"/>
 				</valueCoding>
-			</option>
+			</answerOption>
 			<item>
 				<linkId value="2.1.1.1"/>
 				<text value="Not identified"/>
@@ -212,53 +212,53 @@
 			<text value="Tumor Description"/>
 			<type value="choice"/>
 			<repeats value="true"/>
-			<option>
+			<answerOption>
 				<valueCoding>
 					<code value="U1"/>
 					<display value="Hemorrhagic"/>
 				</valueCoding>
-			</option>
-			<option>
+			</answerOption>
+			<answerOption>
 				<valueCoding>
 					<code value="U2"/>
 					<display value="Necrotic"/>
 				</valueCoding>
-			</option>
-			<option>
+			</answerOption>
+			<answerOption>
 				<valueCoding>
 					<code value="U3"/>
 					<display value="Invasion"/>
 				</valueCoding>
-			</option>
-			<option>
+			</answerOption>
+			<answerOption>
 				<valueCoding>
 					<code value="U4"/>
 					<display value="Other (specify)"/>
 				</valueCoding>
-			</option>
+			</answerOption>
 			<item>
 				<linkId value="2.2.1.1"/>
 				<text value="??"/>
 				<type value="choice"/>
 				<repeats value="true"/>
-				<option>
+				<answerOption>
 					<valueCoding>
 						<code value="V1"/>
 						<display value="Capsule"/>
 					</valueCoding>
-				</option>
-				<option>
+				</answerOption>
+				<answerOption>
 					<valueCoding>
 						<code value="V2"/>
 						<display value="Vessels"/>
 					</valueCoding>
-				</option>
-				<option>
+				</answerOption>
+				<answerOption>
 					<valueCoding>
 						<code value="V3"/>
 						<display value="Extra-adrenal (specify)"/>
 					</valueCoding>
-				</option>
+				</answerOption>
 				<item>
 					<linkId value="2.2.1.1.1.1"/>
 					<text value="Extra-adrenal (specify)"/>

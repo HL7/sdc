@@ -25,7 +25,9 @@
     </package>
     <package id="profiles">
       
-      
+<!--      <extension url="http://hl7.org/fhir/tools-profile-spreadsheet">
+        <valueUri value="structuredefinition-sdc-profile-spreadsheet.xml"/>
+      </extension>-->
       
       
       
@@ -110,7 +112,18 @@
     
     
     
-    
+<!--    <resource>
+      <extension url="http://hl7.org/fhir/StructureDefinition/implementationguide-spreadsheet-profile">
+        <valueBoolean value="true"/>
+      </extension>
+      <reference>
+        <reference value="StructureDefinition/sdc-dataelement"/>
+      </reference>
+      <name value="SDC Data Element"/>
+      <description value="Sets expectations for SDC-conformant systems around the creation of data elements that support population of questionnaires."/>
+      <exampleBoolean value="false"/>
+      <package value="conformance"/>
+    </resource>-->
     <resource>
       <reference>
         <reference value="StructureDefinition/sdc-questionnaire-endpoint"/>
@@ -138,7 +151,18 @@
       <exampleBoolean value="false"/>
       <package value="extensions"/>
     </resource>
-    
+<!--    <resource>
+      <extension url="http://hl7.org/fhir/StructureDefinition/implementationguide-spreadsheet-profile">
+        <valueBoolean value="true"/>
+      </extension>
+      <reference>
+        <reference value="ValueSet/dex-mimetype"/>
+      </reference>
+      <name value="DEX mapping language mime types"/>
+      <description value="The list of mime types that identify mapping languages supported by DEX."/>
+      <exampleBoolean value="false"/>
+      <package value="terminology"/>
+    </resource>-->
     <resource>
       <reference>
         <reference value="ValueSet/species"/>
@@ -229,7 +253,7 @@
       <exampleCanonical value="http://hl7.org/fhir/us/sdc/StructureDefinition/sdc-valueset"/>
       <package value="examples"/>
     </resource>
-    <resource>
+<!--    <resource>
       <reference>
         <reference value="StructureDefinition/structuredefinition-sdc-profile-example"/>
       </reference>
@@ -237,7 +261,7 @@
       <description value="FHIR Gender with mapping to C-CDA"/>
       <exampleCanonical value="http://hl7.org/fhir/us/sdc/StructureDefinition/sdc-dataelement"/>
       <package value="examples"/>
-    </resource>
+    </resource>-->
     <page>
       <nameUrl value="toc.html"/>
       <title value="Table of Contents"/>
@@ -312,83 +336,68 @@
 <generation value="generated"/>
 </page>
 <page>
-<nameUrl value="sdc-dataelement.html"/>
-<ns10:title xmlns:ns10="http://hl7.org/fhir" value="SDC Data Element"/>
-<generation value="generated"/>
-</page>
-<page>
 <nameUrl value="sdc-questionnaire-endpoint.html"/>
-<ns11:title xmlns:ns11="http://hl7.org/fhir" value="Endpoint"/>
+<ns10:title xmlns:ns10="http://hl7.org/fhir" value="Endpoint"/>
 <generation value="generated"/>
 </page>
 <page>
 <nameUrl value="sdc-questionnaire-optionalDisplay.html"/>
-<ns12:title xmlns:ns12="http://hl7.org/fhir" value="Optional Display?"/>
+<ns11:title xmlns:ns11="http://hl7.org/fhir" value="Optional Display?"/>
 <generation value="generated"/>
 </page>
 <page>
 <nameUrl value="sdc-questionnaire-provenanceSignatureRequired.html"/>
-<ns13:title xmlns:ns13="http://hl7.org/fhir" value="Provenance Signature Required?"/>
-<generation value="generated"/>
-</page>
-<page>
-<nameUrl value="valueset-dex-mimetype.html"/>
-<ns14:title xmlns:ns14="http://hl7.org/fhir" value="DEX mapping language mime types"/>
+<ns12:title xmlns:ns12="http://hl7.org/fhir" value="Provenance Signature Required?"/>
 <generation value="generated"/>
 </page>
 <page>
 <nameUrl value="valueset-species.html"/>
-<ns15:title xmlns:ns15="http://hl7.org/fhir" value="Questionnaire Context Species"/>
+<ns13:title xmlns:ns13="http://hl7.org/fhir" value="Questionnaire Context Species"/>
 <generation value="generated"/>
 </page>
 <page>
 <nameUrl value="Questionnaire-process-response.html"/>
-<ns16:title xmlns:ns16="http://hl7.org/fhir" value="Questionnaire process response"/>
+<ns14:title xmlns:ns14="http://hl7.org/fhir" value="Questionnaire process response"/>
 <generation value="generated"/>
 </page>
 <page>
 <nameUrl value="questionnaire-definition.html"/>
-<ns17:title xmlns:ns17="http://hl7.org/fhir" value="Questionnaire Item definition"/>
+<ns15:title xmlns:ns15="http://hl7.org/fhir" value="Questionnaire Item definition"/>
 <generation value="generated"/>
 </page>
 <page>
 <nameUrl value="questionnaire-sdc-profile-example.html"/>
-<ns18:title xmlns:ns18="http://hl7.org/fhir" value="SDC - Combination"/>
+<ns16:title xmlns:ns16="http://hl7.org/fhir" value="SDC - Combination"/>
 <generation value="generated"/>
 </page>
 <page>
 <nameUrl value="questionnaire-sdc-profile-example-cap.html"/>
-<ns19:title xmlns:ns19="http://hl7.org/fhir" value="SDC-Pathology"/>
+<ns17:title xmlns:ns17="http://hl7.org/fhir" value="SDC-Pathology"/>
 <generation value="generated"/>
 </page>
 <page>
 <nameUrl value="questionnaire-sdc-profile-example-loinc.html"/>
-<ns20:title xmlns:ns20="http://hl7.org/fhir" value="SDC-LOINC AHRQ"/>
+<ns18:title xmlns:ns18="http://hl7.org/fhir" value="SDC-LOINC AHRQ"/>
 <generation value="generated"/>
 </page>
 <page>
 <nameUrl value="questionnaire-sdc-profile-example-ussg-fht.html"/>
-<ns21:title xmlns:ns21="http://hl7.org/fhir" value="SDC-LOINC USSG Family History"/>
+<ns19:title xmlns:ns19="http://hl7.org/fhir" value="SDC-LOINC USSG Family History"/>
 <generation value="generated"/>
 </page>
 <page>
 <nameUrl value="questionnaireresponse-sdc-profile-example.html"/>
-<ns22:title xmlns:ns22="http://hl7.org/fhir" value="SDC - Response to Diagnosis NCI Standard Template"/>
+<ns20:title xmlns:ns20="http://hl7.org/fhir" value="SDC - Response to Diagnosis NCI Standard Template"/>
 <generation value="generated"/>
 </page>
 <page>
 <nameUrl value="questionnaireresponse-sdc-example-ussg-fht-answers.html"/>
-<ns23:title xmlns:ns23="http://hl7.org/fhir" value="SDC-LOINC USSG Family History Response"/>
+<ns21:title xmlns:ns21="http://hl7.org/fhir" value="SDC-LOINC USSG Family History Response"/>
 <generation value="generated"/>
 </page>
 <page>
 <nameUrl value="valueset-sdc-profile-example.html"/>
-<ns24:title xmlns:ns24="http://hl7.org/fhir" value="SDC-ValueSet AHRQ_Medication_Q1"/>
-<generation value="generated"/>
-</page>
-<page>
-<nameUrl value="structuredefinition-sdc-profile-example.html"/>
-<ns25:title xmlns:ns25="http://hl7.org/fhir" value="C-CDA-Gender"/>
+<ns22:title xmlns:ns22="http://hl7.org/fhir" value="SDC-ValueSet AHRQ_Medication_Q1"/>
 <generation value="generated"/>
 </page>
 </page>
