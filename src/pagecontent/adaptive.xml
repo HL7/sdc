@@ -1,2 +1,167 @@
 <div xmlns="http://www.w3.org/1999/xhtml" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://hl7.org/fhir ../../src-generated/schemas/fhir-single.xsd">
+<a name="Adaptive Questionnaire Background"> </a>
+<h2>Adaptive Questionnaire Background</h2>
+	<p> Adaptive Forms follow an architecture where a questionnnaire is not pre-defined, rather the questionnaire is dynamically developed based on previous answers to questions chosen from an item bank of questions.
+    This type of administration is also known as Computerized Adaptive Testing (CAT), or administration of Adaptive Questionnaires. In these cases a set of questions typically 4 to 12 are administered from a question bank containing a large number of questions. 
+    The selected questions is based on Item Response Theory (IRT) algorithms which look at the answers provided and select the next question based on IRT algorithms. 
+    The questions are selected to quickly obtain the necessary outcomes (e.g assessing a person's physical function) using fewer questions rather than administer a large question bank. 
+    These small set of questions still provide the necessary confidence and scores required to interpret the data appropriately as if the whole questionnaire was administered. 
+    </p>
+
+<a name="Adaptive Questionnaire Administration Abstract Model and Actors"></a>
+<h2>Adaptive Questionnaire Administration Abstract Model and Actors</h2>
+    <p> The section explains the process of administering an Adaptive Questionnaire and the actors (systems) involved.
+    Fig 1 below shows the abstract model of the administration process.
+    </p>
+    <a name="Fig 1: Adaptive Questionnaire Administration Abstract Model"></a>
+    <img src="adaptive-questionnaire-model.png" alt="Adaptive Questionnaire Administration Abstract Model"/>
+    <p>
+		<b>Figure 1: Adaptive Questionnaire Administration Abstract Model</b>
+	</p>
+    <a name="Actors, Definitions and DataFlow"></a>
+    <h3>Actors, Definitions and DataFlow</h3>
+    
+    <p>
+    <b>External Assessment Center:</b> The External IRT based Assessment Center is a system that is capable of administering a questionnaire based on IRT algorithms. 
+    The data that is necessary for the administration is only the initial item bank. 
+    The External Assessment Center does not need to know about the specific patient identity or any other clinical information. 
+    The Assessment Center will use alogorithms recommended by the Questionnaire designer to determine how to administer the questionnaire.
+    </p>
+    <p>
+    <b>Patient Facing Administration App:</b> The Patient Facing Administration App is the actual app that is being used to present the questions to the patient. 
+    It can be an EHR, a SMART on FHIR App, an Independent PRO Administration App.
+    </p>
+    <p>
+    <b>Data Flow Description for Adaptive Questionnaires Administration</b>
+
+    As shown in Figure 1 above, the Patient Facing Administration App (EHR, Care Delivery System, Independent App or SMART on FHIR App) acts as the client and initiates the administration process.<br/> 
+    In the first step, the available adaptive questionnaires are loaded into the Assessment Center.
+    
+    The following are the steps that take place during the administration.
+	<ul>
+      <li><b>Step 2:</b>The administration is initiated with a specific Adaptive Questionnaire.<br/>
+      <br/>
+      <b><i>Request</i></b><br/>
+      <code>POST [BaseURL]/Questionnaire/[id]/next-q</code><br/>      
+      
+      <b>Request Body</b><br/>
+      <pre><code>
+      
+      { // start body
+		  "resourceType": "Parameters",
+		  "parameter": [
+			    {
+			    "name": "questionnaire-response",
+			    "resource": {
+			    "resourceType": "QuestionnaireResponse",
+			    "meta": {
+			      "profile": [
+			        http://hl7.org/fhir/uv/sdc/StructureDefinition/sdc-questionnaireresponse-adapt
+			      ],
+			     },// meta
+			     
+			    // contained Questionnaire
+			    "contained": [
+			      {
+			        "resourceType": "Questionnaire",
+			        "id": "Id of the Questionnaire Instance on which operation is being invoked",
+			        "meta": {
+			          "profile": [
+			            "http://hl7.org/fhir/uv/sdc/StructureDefinition/sdc-questionnaire-adapt"
+			          ]
+			        },
+			        "identifier": "Physical Function 2.0"
+			        //no items since initiating the adaptive questionnaire
+			      ...
+			      }
+    			    ], // Contained Questionnaire
+    			    
+			    //references the contained Questionnaire
+			    "questionnaire": "http://hl7.org/fhir/us/sdc/StructureDefinition/sdc-questionnaire-dynamic"
+			   
+    				"status": "in-progress",
+   				...
+  				 //no items since is just getting started
+  			 }// questionnaire response
+  		}// parameter
+ 	]//parameters
+  
+  }// end body
+  </code></pre>
+  <br/>
+ 
+ </li>
+  
+      <li><b>Step 3:</b>The Assessment Center responds to the start request with a Questionnaire and the first item for administration.<br/>
+      
+  <b>Response Body</b><br/>
+  <pre><code>
+
+  { // start response body 
+  
+  		  "resourceType": "Parameters",
+		  "parameter": [
+			    {
+			    "name": "return",
+			    "resource": {
+			    "resourceType": "QuestionnaireResponse",
+			    "meta": {
+			      "profile": [
+			        http://hl7.org/fhir/uv/sdc/StructureDefinition/sdc-questionnaireresponse-adapt
+			      ],
+			     },// meta
+			     
+			    // contained Questionnaire
+			    "contained": [
+			      {
+			        "resourceType": "Questionnaire",
+			        "id": "Id of the Questionnaire Instance on which operation is being invoked",
+			        "meta": {
+			          "profile": [
+			            "http://hl7.org/fhir/uv/sdc/StructureDefinition/sdc-questionnaire-adapt"
+			          ]
+			        },
+			        "identifier": "Physical Function 2.0"
+			        
+			        <b>First Item being sent back</b>
+			        "item": [
+			           {
+			              "linkId": "1.1" // unique id of the question within the questionnaire 
+			              "code" : {
+			                "system": "http://loinc.org",
+			                "code": "LA1",
+			                }
+			                "text": "Are you able to walk for 30 minutes ?",
+			                "type": "question",
+			                "answerValueSet": "http://loinc.org/LA1234"
+			                "answerOption": [
+			                    "valueCoding": {
+			                        
+			                    }
+			                ] // answer option              
+			           } // item
+			        
+			        ]
+			      
+			      }
+    			    ], // Contained Questionnaire
+    			    
+  			 }// questionnaire response
+  		}// parameter
+ 	]//parameters
+  } // end response body
+ </code></pre>
+ <br/>
+      
+ </li>
+ 
+      <li><b>Step 4:</b>The Patient Facing Administration App will then display the question to the user and collect the response.</li>
+
+      <li><b>Step 5:</b>The Patient Facing Administration App will then send the answer to the Assessment Center and ask for the next question.
+      The Assessment Center will use the answer to determine the next question based on the algorithm and respond back with the next question until the assessment is done.</li>
+      <li><b>Step 6:</b>If the Assessment Center determines that the assessment is done, it will respond with the final results which will contain all the questions that were answered, along with the answers, the individual scores and the overall score.</li>
+    </ul>
+    </p>
+
+
 </div>
