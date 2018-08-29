@@ -3,6 +3,33 @@
     This provides a list of changes to the SDC specification since its initial release
   </p>
 	<p>
+		<b>2017-03-20 v2.1 - SDC R3 (STU) Ballot Candidate</b> based on FHIR R4 (STU) ballot candidate
+  </p>
+	<ul>
+		<li>Updated to reflect changes to the Questionnaire, QuestionnaireResponse and ValueSet resources including alignment of data elements and search criteria.  Significant changes include:
+      <ul>
+				<li>Renaming of option and options to answerOption and answerValueSet</li>
+				<li>revamping enableWhen to have an operator</li>
+				<li>Additional metadata elements have been added to Questionnaire and a few elements have been renamed</li>
+				<li>The deReference extension has been replaced by Questionnaire.item.definition</li>
+				<li>Sort order of elements has shifted in all resources to better align with other definitional resources</li>
+			</ul>
+		</li>
+		<li>Removed the data element profile and the focus on using independently maintained data elements as a mechanism for population, including the use of the deMap extension</li>
+		<li>Changed the realm from 'us' to 'uv' as there are no longer any US-specific constraints</li>
+		<li>Revamped population mechanisms to focus on FHIR-based population leveraging mechanisms found useful in existing production systems</li>
+		<li>Added support for extracting information from a QuestionnaireResponse into FHIR resources</li>
+		<li>Added support for dynamic questionnaires</li>
+		<li>Split the sdc-questionnaire profile into 3 profiles:
+      <ul>
+        <li><i>sdc-questionnaire</i> which focuses on base capabilities, discoverability and core workflow</li>
+        <li><i>sdc-questionaire-render</i> which focuses on advanced rendering and formatting control</li>
+        <li><i>sdc-questionaire-behave</i> which focuses on advanced behavioral controls and calculations</li>
+      </ul>
+		</li>
+		<li>Reorganized the implementation guide such that each set of behavior is described in a separate section</li>
+	</ul>
+	<p>
 		<b>2017-03-20 v2.0 - SDC R2 (STU) Official Publication</b> based on FHIR R3 (STU)
   </p>
 	<ul>

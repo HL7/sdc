@@ -1,0 +1,106 @@
+<div xmlns="http://www.w3.org/1999/xhtml" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://hl7.org/fhir ../../src-generated/schemas/fhir-single.xsd">
+	<a name="overview"> </a>
+	<h2>Initiative Overview</h2>
+	<p>
+    The Structured Data Capture (SDC) Initiative identifies and recommends standards for the interoperable representation and 
+    transmission of the following:
+  </p>
+	<ul>
+		<li>Standard form designs;</li>
+		<!--<li>Minimum data element attributes for the purpose of using them in form designs;</li>-->
+		<li>Query for form;</li>
+		<li>Return a form;</li>
+		<li>Submit completed form data to an external data repository.</li>
+	</ul>
+
+	<a name="capabilitystatement"> </a>
+	<h3>Capability Statements</h3>
+	<p>
+    FHIR Capability statements define the expectations for particular system "roles" within an SDC environment.  To be considered SDC-conformant, a system 
+    must adhere to the requirements defined by at least one of these statements.  Some systems might choose to comply with more than one.
+  </p>
+	<ul>
+		<li>
+			<a href="sdc-form-designer.html">SDC Form Designer</a> - System responsible for creating and editing form designs</li>
+		<li>
+			<a href="sdc-form-filler.html">SDC Form Filler</a> - System responsible for capturing user form input to produce partially or fully completed forms</li>
+		<li>
+			<a href="sdc-form-manager.html">SDC Form Manager</a> - Repository for form definitions.  May also perform pre-population</li>
+		<li>
+			<a href="sdc-form-response-manager.html">SDC Form Response Manager</a> - Searchable repository for storage and retrieval of completed and partially completed forms.</li>
+		<li>
+			<a href="sdc-form-receiver.html">SDC Form Receiver</a> - Write-only destination to which forms are sent for processing</li>
+		<li>
+			<a href="sdc-form-archiver.html">SDC Form Archiver</a> - Write-only system responsible for archiving completed forms as well as works in progress</li>
+	</ul>
+	<p>
+    In addition to the above, there are two other roles that are not defined by this implementation guide:
+  </p>
+  <ul>
+    <li><b>Clinical or Administrative Data Source</b> - This is an Electronic Medical Record (EMR) or similar system that is a repository of data potentially relevant for populating a form that might be 
+      queried as part of the form population process.  Responsibilities would be to respond to queries from the <a href="sdc-form-filler.html">SDC Form Filler</a> and/or 
+      <a href="sdc-form-manager.html">SDC Form Manager</a> during the form population process</li>  
+    <li>
+      <b>Data Element Source</b> - A repository of FHIR <a href="{{site.data.fhir.path}}structuredefinition.html">StructureDefinitions</a> (resources, data types, profiles, and/or logical models) or <a href="{{site.data.fhir.path}}codesystem.html">CodeSystems</a> that can be used to look up item definitions or codes to help in defining questions and groups.</li>
+  </ul>
+	<p>
+    The relationship between these roles and a summary of how they can interact is shown in <a href="#fig1">Figure 1</a>.
+  </p>
+	<a name="fig1"> </a>
+	<img alt="Role operations" src="sdc-form-operations.png" />
+	<p>
+		<b>Figure 1: Role operations</b>
+	</p>
+
+	<a name="workflow"> </a>
+	<h2>Workflows</h2>
+	<p>
+    There are two primary workflows that fall within the scope of the SDC implementation guide - form creation/curation and form filling.
+  </p>
+	<a name="fig2"> </a>
+	<img alt="Diagram showing interaction between Form Designer, Form Manager and Data Element Registry" src="sdc-form-curation.png"/>
+	<p>
+		<b>Figure 2: Form Curation Workflow</b>
+	</p>
+	<p>
+    In form curation, the Form Designer interacts with both the Form Manager and the Data Element Registry to create, edit and update forms,
+    including identifying and defining associated terminologies and data elements.  This is an iterative process where an initial version is
+    created and then subsequently updated and maintained, eventually changing status to <i>active</i> and later <i>retired</i>.
+  </p>
+	<p/>
+	<p>
+    The more significant (and complex) workflow in SDC is to complete (and potentially submit) a completed questionnaire response.
+  </p>
+	<a name="fig3"> </a>
+	<img alt="Generic Workflow" src="sdc-generic-workflow.png" />
+	<p>
+		<b>Figure 3: Form Filling Workflow</b>
+	</p>
+	<p>
+		<i>
+			<b>Note</b>: The diagram depicts the optional storage of the completed form by the EHR. This can occur when the EHR stores a copy of 
+      the form as they send it to the External Data Repository or by the external data repository returning a copy of the form to 
+      the sender who can store an internal version of the form.
+    </i>
+	</p>
+	<p>The driver of this workflow is the
+    <a href="sdc-form-filler.html">Form Filler</a> system.  It retrieves a form (Questionnaire) from the
+    <a href="sdc-form-manager.html">Form Manager</a>.  It may also request that the Form Manager generate an initial QuestionnaireResponse,
+    potentially partially populated with information known by the Form Manager, supplied by the Form Filler or queried from the underlying EHR.  The Form Filler could generate the
+    QuestionnaireResponse itself without the assistance of the Form Manager and in either case could partially fill in the response based on information
+    known by the form filler.
+  </p>
+	<p>
+    When as much of the questionnaire response as possible has been filled in by automated means, the form is displayed to
+    an end-user who reviews and edits the automatically populated content as well as completing those portions of the form that were not populated
+    automatically.  In some cases, the form may be stored locally or using a <a href="sdc-form-response-manager.html">Form Response Manager</a> to allow a user to 
+    stop and resume editing at a later point.  
+  </p>
+	<p>
+    The Form Filler (possibly with help from the Form Manager) is responsible for verifying that a completed form is actually
+    complete and valid against the corresponding Questionnaire.  Once valid, the form filler submits the form to one or more target repositories 
+    (<a href="sdc-form-receiver.html">Form Receiver</a> allows the completed form to be subsequently retrieved,
+    <a href="sdc-form-archiver.html">Form Archiver</a> does not) and/or stores the completed form itself.  (Note - Form Receivers may perform validation on forms
+    prior to consumption, Form Archivers typically will not.)  The receiver of the completed form might then extract the data into relevant FHIR resources.
+  </p>
+</div>

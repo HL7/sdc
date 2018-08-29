@@ -6,8 +6,8 @@
     <div xmlns="http://www.w3.org/1999/xhtml">
       <h2>SDC Form Response Manager</h2>
       <p>(Requirements Definition)</p>
-      <p>http://hl7.org/fhir/us/sdc/CapabilityStatement/sdc-form-response-manager Published: 2014-07-06 (draft)</p>
-      <p>Published by: <b>U.S. Office of the National Coordinator (ONC)</b>
+      <p>http://hl7.org/fhir/uv/sdc/CapabilityStatement/sdc-form-response-manager Published: 2014-07-06 (draft)</p>
+      <p>Published by: <b>HL7 International - FHIR Infrastructure</b>
       </p>
       <p>This profile defines the expected capabilities of the <i>SDC Form Response Manager</i> role when conforming to the S&amp;I Framework's <a href="index.html">Structured Data Capture FHIR implementation guide</a>.  This role is responsible for providing read/write access to QuestionnaireResponses.  This is typically to support light-weight clients that want to be able to complete forms but don't have local storage to save work in progress.</p>
       <h2>General</h2>
@@ -29,7 +29,7 @@
       <p>
         <b>Security:</b>
       </p>
-      <p>Implementations must meet the general security requirements documented in the <a href="sdc-security.html">SDC implementation guide</a>.  Systems may wish to ensure that QuestionnaireResponse instances are only accessible to the user (or at least the organization) who was responsible for creating them.</p>
+      <p>Implementations must meet the general security requirements documented in the <a href="security.html">SDC implementation guide</a>.  Systems may wish to ensure that QuestionnaireResponse instances are only accessible to the user (or at least the organization) who was responsible for creating them.</p>
       <h3>Resource summary</h3>
       <div class="table-wrapper">
         <table class="grid">
@@ -48,7 +48,7 @@
           </thead>
           <tbody>
             <tr>
-              <th>QuestionnaireResponse (<a href="http://hl7.org/fhir/us/sdc/StructureDefinition/sdc-questionnaireresponse.html">Profile</a>)</th>
+              <th>QuestionnaireResponse (<a href="http://hl7.org/fhir/uv/sdc/StructureDefinition/sdc-questionnaireresponse.html">Profile</a>)</th>
               <td>
                 <a title="This allows a user to find previously created responses - whether created by themselves or others.  For thin clients without persistence, this feature is essential to allow them to find a draft of a previously created response" href="#QuestionnaireResponse-search-type">Yes</a>
               </td>
@@ -78,7 +78,7 @@
       <h3>
         <a href="{{site.data.fhir.path}}questionnaireresponse.html">QuestionnaireResponse</a>
       </h3>
-      <p>Profile: <a href="http://hl7.org/fhir/us/sdc/StructureDefinition/sdc-questionnaireresponse.html">http://hl7.org/fhir/us/sdc/StructureDefinition/sdc-questionnaireresponse</a>
+      <p>Profile: <a href="http://hl7.org/fhir/uv/sdc/StructureDefinition/sdc-questionnaireresponse.html">http://hl7.org/fhir/uv/sdc/StructureDefinition/sdc-questionnaireresponse</a>
       </p>
       <h4>Interactions</h4>
       <div class="table-wrapper">
@@ -149,11 +149,11 @@
       </div>
     </div>
   </text>
-  <url value="http://hl7.org/fhir/us/sdc/CapabilityStatement/sdc-form-response-manager"/>
+  <url value="http://hl7.org/fhir/uv/sdc/CapabilityStatement/sdc-form-response-manager"/>
   <name value="SDC Form Response Manager"/>
   <status value="draft"/>
   <date value="2014-07-06"/>
-  <publisher value="U.S. Office of the National Coordinator (ONC)"/>
+  <publisher value="HL7 International - FHIR Infrastructure"/>
   <contact>
     <telecom>
       <system value="other"/>
@@ -162,18 +162,18 @@
   </contact>
   <description value="This profile defines the expected capabilities of the ''SDC Form Response Manager'' role when conforming to the S&amp;I Framework's [[index|Structured Data Capture FHIR implementation guide]].  This role is responsible for providing read/write access to QuestionnaireResponses.  This is typically to support light-weight clients that want to be able to complete forms but don't have local storage to save work in progress."/>
   <kind value="requirements"/>
-  <instantiates value="http://hl7.org/fhir/us/sdc/CapabilityStatement/sdc-form-manager"/>
+  <instantiates value="http://hl7.org/fhir/uv/sdc/CapabilityStatement/sdc-form-manager"/>
   <fhirVersion value="1.0.0"/>
   <format value="xml"/>
   <format value="json"/>
   <rest>
     <mode value="server"/>
     <security>
-      <description value="Implementations must meet the general security requirements documented in the [[sdc-security|SDC implementation guide]].  Systems may wish to ensure that QuestionnaireResponse instances are only accessible to the user (or at least the organization) who was responsible for creating them."/>
+      <description value="Implementations must meet the general security requirements documented in the [[security|SDC implementation guide]].  Systems may wish to ensure that QuestionnaireResponse instances are only accessible to the user (or at least the organization) who was responsible for creating them."/>
     </security>
     <resource>
       <type value="QuestionnaireResponse"/>
-      <profile value="http://hl7.org/fhir/us/sdc/StructureDefinition/sdc-questionnaireresponse"/>
+      <profile value="http://hl7.org/fhir/uv/sdc/StructureDefinition/sdc-questionnaireresponse"/>
       <documentation value="This allows QuestionnaireResponses to be created, updated and retrieved.  Note that storing a QuestionnaireResponse does not imply any execution of behavior on the basis of the stored data."/>
       <interaction>
         <extension url="http://hl7.org/fhir/StructureDefinition/capabilitystatement-expectation">

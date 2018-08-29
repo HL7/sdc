@@ -6,13 +6,13 @@ Note: The URLs used for LOINC objects have not been approved by the LOINC organi
   <id value="questionnaire-sdc-profile-example-ussg-fht"/>
   <type value="transaction"/>
   <entry>
-    <fullUrl value="http://hl7.org/fhir/us/sdc/ConceptMap/ussgfht-loincde"/>
+    <fullUrl value="http://hl7.org/fhir/uv/sdc/ConceptMap/ussgfht-loincde"/>
     <resource>
       <ConceptMap>
         <id value="ussgfht-loincde"/>
         <status value="active"/>
-        <sourceUri value="http://hl7.org/fhir/us/sdc/Questionnaire/54127-6"/>
-        <targetUri value="http://hl7.org/fhir/us/sdc/DataElement"/>
+        <sourceUri value="http://hl7.org/fhir/uv/sdc/Questionnaire/54127-6"/>
+        <targetUri value="http://hl7.org/fhir/uv/sdc/DataElement"/>
         <group>
           <source value="http://hl7.org/fhir"/>
           <target value="http://loinc.org"/>
@@ -203,22 +203,22 @@ Note: The URLs used for LOINC objects have not been approved by the LOINC organi
     </resource>
     <request>
       <method value="PUT"/>
-      <url value="http://hl7.org/fhir/us/sdc/ConceptMap/ussgfht-loincde"/>
+      <url value="http://hl7.org/fhir/uv/sdc/ConceptMap/ussgfht-loincde"/>
     </request>
   </entry>
   <entry>
-    <fullUrl value="http://hl7.org/fhir/us/sdc/Questionnaire/54127-6"/>
+    <fullUrl value="http://hl7.org/fhir/uv/sdc/Questionnaire/54127-6"/>
     <resource>
       <Questionnaire>
         <id value="54127-6"/>
         <meta>
-          <profile value="http://hl7.org/fhir/us/sdc/StructureDefinition/sdc-questionnaire"/>
+          <profile value="http://hl7.org/fhir/uv/sdc/StructureDefinition/sdc-questionnaire"/>
         </meta>
         <contained>
           <ValueSet>
             <id value="length"/>
             <meta>
-              <profile value="http://hl7.org/fhir/us/sdc/StructureDefinition/sdc-valueset"/>
+              <profile value="http://hl7.org/fhir/uv/sdc/StructureDefinition/sdc-valueset"/>
             </meta>
             <name value="Length Units"/>
             <status value="active"/>
@@ -243,7 +243,7 @@ Note: The URLs used for LOINC objects have not been approved by the LOINC organi
           <ValueSet>
             <id value="weight"/>
             <meta>
-              <profile value="http://hl7.org/fhir/us/sdc/StructureDefinition/sdc-valueset"/>
+              <profile value="http://hl7.org/fhir/uv/sdc/StructureDefinition/sdc-valueset"/>
             </meta>
             <name value="Weight Units"/>
             <status value="active"/>
@@ -264,7 +264,7 @@ Note: The URLs used for LOINC objects have not been approved by the LOINC organi
             </compose>
           </ValueSet>
         </contained>
-        <url value="http://hl7.org/fhir/us/sdc/Questionnaire/54127-6"/>
+        <url value="http://hl7.org/fhir/uv/sdc/Questionnaire/54127-6"/>
         <identifier>
           <system value="http://example.org/panel-id"/>
           <value value="54127-6"/>
@@ -356,7 +356,7 @@ Note: The URLs used for LOINC objects have not been approved by the LOINC organi
               <text value="Gender"/>
               <type value="choice"/>
               <required value="true"/>
-              <answerValueSet value="http://hl7.org/fhir/us/sdc/ValueSet/LL1-9"/>
+              <answerValueSet value="http://hl7.org/fhir/uv/sdc/ValueSet/LL1-9"/>
               <item>
                 <linkId value="1.1.2.1.1"/>
                 <text value="Please specify"/>
@@ -383,7 +383,7 @@ Note: The URLs used for LOINC objects have not been approved by the LOINC organi
               <definition value="http://loinc.org/fhir/DataElement/54132-6"/>
               <text value="Were you born a twin?"/>
               <type value="choice"/>
-              <answerValueSet value="http://hl7.org/fhir/us/sdc/ValueSet/LL623-0"/>
+              <answerValueSet value="http://hl7.org/fhir/uv/sdc/ValueSet/LL623-0"/>
               <initial>
                 <valueCoding>
                   <system value="http://loinc.org"/>
@@ -397,14 +397,14 @@ Note: The URLs used for LOINC objects have not been approved by the LOINC organi
               <definition value="http://loinc.org/fhir/DataElement/54128-4"/>
               <text value="Were you adopted?"/>
               <type value="choice"/>
-              <answerValueSet value="http://hl7.org/fhir/us/sdc/ValueSet/LL361-7"/>
+              <answerValueSet value="http://hl7.org/fhir/uv/sdc/ValueSet/LL361-7"/>
             </item>
             <item>
               <linkId value="1.1.6"/>
               <definition value="http://loinc.org/fhir/DataElement/54135-9"/>
               <text value="Are your parents related to each other in any way other than marriage?"/>
               <type value="choice"/>
-              <answerValueSet value="http://hl7.org/fhir/us/sdc/ValueSet/LL361-7"/>
+              <answerValueSet value="http://hl7.org/fhir/uv/sdc/ValueSet/LL361-7"/>
             </item>
             <item>
               <linkId value="1.1.7"/>
@@ -445,7 +445,7 @@ Note: The URLs used for LOINC objects have not been approved by the LOINC organi
               <text value="Race"/>
               <type value="choice"/>
               <required value="true"/>
-              <answerValueSet value="http://hl7.org/fhir/us/sdc/ValueSet/LL629-7"/>
+              <answerValueSet value="http://hl7.org/fhir/uv/sdc/ValueSet/LL629-7"/>
             </item>
             <item>
               <linkId value="1.1.11"/>
@@ -453,7 +453,7 @@ Note: The URLs used for LOINC objects have not been approved by the LOINC organi
               <text value="Ethnicity"/>
               <type value="choice"/>
               <repeats value="true"/>
-              <answerValueSet value="http://hl7.org/fhir/us/sdc/ValueSet/LL628-9"/>
+              <answerValueSet value="http://hl7.org/fhir/uv/sdc/ValueSet/LL628-9"/>
             </item>
           </item>
           <item>
@@ -467,14 +467,14 @@ Note: The URLs used for LOINC objects have not been approved by the LOINC organi
               <definition value="http://loinc.org/fhir/DataElement/54140-9"/>
               <text value="Disease or Condition"/>
               <type value="choice"/>
-              <answerValueSet value="http://hl7.org/fhir/us/sdc/ValueSet/LL626-3"/>
+              <answerValueSet value="http://hl7.org/fhir/uv/sdc/ValueSet/LL626-3"/>
             </item>
             <item>
               <linkId value="1.2.2"/>
               <definition value="http://loinc.org/fhir/DataElement/54130-0"/>
               <text value="Age at Diagnosis"/>
               <type value="choice"/>
-              <answerValueSet value="http://hl7.org/fhir/us/sdc/ValueSet/LL619-8"/>
+              <answerValueSet value="http://hl7.org/fhir/uv/sdc/ValueSet/LL619-8"/>
             </item>
           </item>
         </item>
@@ -492,7 +492,7 @@ Note: The URLs used for LOINC objects have not been approved by the LOINC organi
               <definition value="http://loinc.org/fhir/DataElement/54136-7"/>
               <text value="Relationship to you"/>
               <type value="choice"/>
-              <answerValueSet value="http://hl7.org/fhir/us/sdc/ValueSet/LL621-4"/>
+              <answerValueSet value="http://hl7.org/fhir/uv/sdc/ValueSet/LL621-4"/>
             </item>
             <item>
               <linkId value="2.1.1.2"/>
@@ -505,7 +505,7 @@ Note: The URLs used for LOINC objects have not been approved by the LOINC organi
               <definition value="http://loinc.org/fhir/DataElement/54123-5"/>
               <text value="Gender"/>
               <type value="choice"/>
-              <answerValueSet value="http://hl7.org/fhir/us/sdc/ValueSet/LL1-9"/>
+              <answerValueSet value="http://hl7.org/fhir/uv/sdc/ValueSet/LL1-9"/>
               <item>
                 <linkId value="2.1.1.3.1.1"/>
                 <text value="Please specify"/>
@@ -526,7 +526,7 @@ Note: The URLs used for LOINC objects have not been approved by the LOINC organi
               <definition value="http://loinc.org/fhir/DataElement/54139-1"/>
               <text value="Living?"/>
               <type value="choice"/>
-              <answerValueSet value="http://hl7.org/fhir/us/sdc/ValueSet/LL361-7"/>
+              <answerValueSet value="http://hl7.org/fhir/uv/sdc/ValueSet/LL361-7"/>
               <item>
                 <linkId value="2.1.1.4.1"/>
                 <type value="group"/>
@@ -535,7 +535,7 @@ Note: The URLs used for LOINC objects have not been approved by the LOINC organi
                   <definition value="http://loinc.org/fhir/DataElement/54112-8"/>
                   <text value="Cause of Death"/>
                   <type value="choice"/>
-                  <answerValueSet value="http://hl7.org/fhir/us/sdc/ValueSet/LL627-1"/>
+                  <answerValueSet value="http://hl7.org/fhir/uv/sdc/ValueSet/LL627-1"/>
                   <item>
                     <linkId value="2.1.1.4.1.1.1"/>
                     <text value="Please specify"/>
@@ -555,7 +555,7 @@ Note: The URLs used for LOINC objects have not been approved by the LOINC organi
                   <definition value="http://loinc.org/fhir/DataElement/54113-6"/>
                   <text value="Age at Death"/>
                   <type value="choice"/>
-                  <answerValueSet value="http://hl7.org/fhir/us/sdc/ValueSet/LL619-8"/>
+                  <answerValueSet value="http://hl7.org/fhir/uv/sdc/ValueSet/LL619-8"/>
                 </item>
               </item>
               <item>
@@ -580,14 +580,14 @@ Note: The URLs used for LOINC objects have not been approved by the LOINC organi
               <definition value="http://loinc.org/fhir/DataElement/54121-9"/>
               <text value="Was this person born a twin?"/>
               <type value="choice"/>
-              <answerValueSet value="http://hl7.org/fhir/us/sdc/ValueSet/LL623-0"/>
+              <answerValueSet value="http://hl7.org/fhir/uv/sdc/ValueSet/LL623-0"/>
             </item>
             <item>
               <linkId value="2.1.1.6"/>
               <definition value="http://loinc.org/fhir/DataElement/54122-7"/>
               <text value="Was this person adopted?"/>
               <type value="choice"/>
-              <answerValueSet value="http://hl7.org/fhir/us/sdc/ValueSet/LL623-0"/>
+              <answerValueSet value="http://hl7.org/fhir/uv/sdc/ValueSet/LL623-0"/>
             </item>
             <item>
               <linkId value="2.1.1.7"/>
@@ -595,7 +595,7 @@ Note: The URLs used for LOINC objects have not been approved by the LOINC organi
               <text value="Race"/>
               <type value="choice"/>
               <repeats value="true"/>
-              <answerValueSet value="http://hl7.org/fhir/us/sdc/ValueSet/LL629-7"/>
+              <answerValueSet value="http://hl7.org/fhir/uv/sdc/ValueSet/LL629-7"/>
             </item>
             <item>
               <linkId value="2.1.1.8"/>
@@ -603,7 +603,7 @@ Note: The URLs used for LOINC objects have not been approved by the LOINC organi
               <text value="Ethnicity"/>
               <type value="choice"/>
               <repeats value="true"/>
-              <answerValueSet value="http://hl7.org/fhir/us/sdc/ValueSet/LL628-9"/>
+              <answerValueSet value="http://hl7.org/fhir/uv/sdc/ValueSet/LL628-9"/>
             </item>
           </item>
           <item>
@@ -618,14 +618,14 @@ Note: The URLs used for LOINC objects have not been approved by the LOINC organi
               <text value="Disease or Condition"/>
               <type value="choice"/>
               <required value="true"/>
-              <answerValueSet value="http://hl7.org/fhir/us/sdc/ValueSet/LL626-3"/>
+              <answerValueSet value="http://hl7.org/fhir/uv/sdc/ValueSet/LL626-3"/>
             </item>
             <item>
               <linkId value="2.1.2.2"/>
               <definition value="http://loinc.org/fhir/DataElement/54115-1"/>
               <text value="Age at Diagnosis"/>
               <type value="choice"/>
-              <answerValueSet value="http://hl7.org/fhir/us/sdc/ValueSet/LL619-8"/>
+              <answerValueSet value="http://hl7.org/fhir/uv/sdc/ValueSet/LL619-8"/>
             </item>
             <item>
               <linkId value="2.1.2.3"/>
@@ -648,16 +648,16 @@ Note: The URLs used for LOINC objects have not been approved by the LOINC organi
     </resource>
     <request>
       <method value="PUT"/>
-      <url value="http://hl7.org/fhir/us/sdc/Questionnaire/54127-6"/>
+      <url value="http://hl7.org/fhir/uv/sdc/Questionnaire/54127-6"/>
     </request>
   </entry>
   <entry>
-    <fullUrl value="http://hl7.org/fhir/us/sdc/ValueSet/LL1-9"/>
+    <fullUrl value="http://hl7.org/fhir/uv/sdc/ValueSet/LL1-9"/>
     <resource>
       <ValueSet>
         <id value="LL1-9"/>
         <meta>
-          <profile value="http://hl7.org/fhir/us/sdc/StructureDefinition/sdc-valueset"/>
+          <profile value="http://hl7.org/fhir/uv/sdc/StructureDefinition/sdc-valueset"/>
         </meta>
         <url value="http://details.loinc.org/AnswerList/LL1-9"/>
         <name value="Gender_M/F"/>
@@ -687,16 +687,16 @@ Note: The URLs used for LOINC objects have not been approved by the LOINC organi
     </resource>
     <request>
       <method value="PUT"/>
-      <url value="http://hl7.org/fhir/us/sdc/ValueSet/LL1-9"/>
+      <url value="http://hl7.org/fhir/uv/sdc/ValueSet/LL1-9"/>
     </request>
   </entry>
   <entry>
-    <fullUrl value="http://hl7.org/fhir/us/sdc/ValueSet/LL623-0"/>
+    <fullUrl value="http://hl7.org/fhir/uv/sdc/ValueSet/LL623-0"/>
     <resource>
       <ValueSet>
         <id value="LL623-0"/>
         <meta>
-          <profile value="http://hl7.org/fhir/us/sdc/StructureDefinition/sdc-valueset"/>
+          <profile value="http://hl7.org/fhir/uv/sdc/StructureDefinition/sdc-valueset"/>
         </meta>
         <url value="http://details.loinc.org/AnswerList/LL623-0"/>
         <name value="USSG-FHT twin"/>
@@ -726,16 +726,16 @@ Note: The URLs used for LOINC objects have not been approved by the LOINC organi
     </resource>
     <request>
       <method value="PUT"/>
-      <url value="http://hl7.org/fhir/us/sdc/ValueSet/LL623-0"/>
+      <url value="http://hl7.org/fhir/uv/sdc/ValueSet/LL623-0"/>
     </request>
   </entry>
   <entry>
-    <fullUrl value="http://hl7.org/fhir/us/sdc/ValueSet/LL361-7"/>
+    <fullUrl value="http://hl7.org/fhir/uv/sdc/ValueSet/LL361-7"/>
     <resource>
       <ValueSet>
         <id value="LL361-7"/>
         <meta>
-          <profile value="http://hl7.org/fhir/us/sdc/StructureDefinition/sdc-valueset"/>
+          <profile value="http://hl7.org/fhir/uv/sdc/StructureDefinition/sdc-valueset"/>
         </meta>
         <url value="http://details.loinc.org/AnswerList/LL361-7"/>
         <name value="Y/N1"/>
@@ -761,16 +761,16 @@ Note: The URLs used for LOINC objects have not been approved by the LOINC organi
     </resource>
     <request>
       <method value="PUT"/>
-      <url value="http://hl7.org/fhir/us/sdc/ValueSet/LL361-7"/>
+      <url value="http://hl7.org/fhir/uv/sdc/ValueSet/LL361-7"/>
     </request>
   </entry>
   <entry>
-    <fullUrl value="http://hl7.org/fhir/us/sdc/ValueSet/LL629-7"/>
+    <fullUrl value="http://hl7.org/fhir/uv/sdc/ValueSet/LL629-7"/>
     <resource>
       <ValueSet>
         <id value="LL629-7"/>
         <meta>
-          <profile value="http://hl7.org/fhir/us/sdc/StructureDefinition/sdc-valueset"/>
+          <profile value="http://hl7.org/fhir/uv/sdc/StructureDefinition/sdc-valueset"/>
         </meta>
         <url value="http://details.loinc.org/AnswerList/LL629-7"/>
         <name value="USSG-FHT race"/>
@@ -860,16 +860,16 @@ Note: The URLs used for LOINC objects have not been approved by the LOINC organi
     </resource>
     <request>
       <method value="PUT"/>
-      <url value="http://hl7.org/fhir/us/sdc/ValueSet/LL629-7"/>
+      <url value="http://hl7.org/fhir/uv/sdc/ValueSet/LL629-7"/>
     </request>
   </entry>
   <entry>
-    <fullUrl value="http://hl7.org/fhir/us/sdc/ValueSet/LL628-9"/>
+    <fullUrl value="http://hl7.org/fhir/uv/sdc/ValueSet/LL628-9"/>
     <resource>
       <ValueSet>
         <id value="LL628-9"/>
         <meta>
-          <profile value="http://hl7.org/fhir/us/sdc/StructureDefinition/sdc-valueset"/>
+          <profile value="http://hl7.org/fhir/uv/sdc/StructureDefinition/sdc-valueset"/>
         </meta>
         <url value="http://details.loinc.org/AnswerList/LL628-9"/>
         <name value="USSG-FHT ethnicity"/>
@@ -935,16 +935,16 @@ Note: The URLs used for LOINC objects have not been approved by the LOINC organi
     </resource>
     <request>
       <method value="PUT"/>
-      <url value="http://hl7.org/fhir/us/sdc/ValueSet/LL628-9"/>
+      <url value="http://hl7.org/fhir/uv/sdc/ValueSet/LL628-9"/>
     </request>
   </entry>
   <entry>
-    <fullUrl value="http://hl7.org/fhir/us/sdc/ValueSet/LL626-3"/>
+    <fullUrl value="http://hl7.org/fhir/uv/sdc/ValueSet/LL626-3"/>
     <resource>
       <ValueSet>
         <id value="LL626-3"/>
         <meta>
-          <profile value="http://hl7.org/fhir/us/sdc/StructureDefinition/sdc-valueset"/>
+          <profile value="http://hl7.org/fhir/uv/sdc/StructureDefinition/sdc-valueset"/>
         </meta>
         <url value="http://details.loinc.org/AnswerList/LL626-3"/>
         <name value="USSG-FHT diseases"/>
@@ -1226,16 +1226,16 @@ Note: The URLs used for LOINC objects have not been approved by the LOINC organi
     </resource>
     <request>
       <method value="PUT"/>
-      <url value="http://hl7.org/fhir/us/sdc/ValueSet/LL626-3"/>
+      <url value="http://hl7.org/fhir/uv/sdc/ValueSet/LL626-3"/>
     </request>
   </entry>
   <entry>
-    <fullUrl value="http://hl7.org/fhir/us/sdc/ValueSet/LL619-8"/>
+    <fullUrl value="http://hl7.org/fhir/uv/sdc/ValueSet/LL619-8"/>
     <resource>
       <ValueSet>
         <id value="LL619-8"/>
         <meta>
-          <profile value="http://hl7.org/fhir/us/sdc/StructureDefinition/sdc-valueset"/>
+          <profile value="http://hl7.org/fhir/uv/sdc/StructureDefinition/sdc-valueset"/>
         </meta>
         <url value="http://details.loinc.org/AnswerList/LL619-8"/>
         <name value="USSG-FHT age"/>
@@ -1297,16 +1297,16 @@ Note: The URLs used for LOINC objects have not been approved by the LOINC organi
     </resource>
     <request>
       <method value="PUT"/>
-      <url value="http://hl7.org/fhir/us/sdc/ValueSet/LL619-8"/>
+      <url value="http://hl7.org/fhir/uv/sdc/ValueSet/LL619-8"/>
     </request>
   </entry>
   <entry>
-    <fullUrl value="http://hl7.org/fhir/us/sdc/ValueSet/LL621-4"/>
+    <fullUrl value="http://hl7.org/fhir/uv/sdc/ValueSet/LL621-4"/>
     <resource>
       <ValueSet>
         <id value="LL621-4"/>
         <meta>
-          <profile value="http://hl7.org/fhir/us/sdc/StructureDefinition/sdc-valueset"/>
+          <profile value="http://hl7.org/fhir/uv/sdc/StructureDefinition/sdc-valueset"/>
         </meta>
         <url value="http://details.loinc.org/AnswerList/LL621-4"/>
         <name value="USSG-FHT relationship"/>
@@ -1412,16 +1412,16 @@ Note: The URLs used for LOINC objects have not been approved by the LOINC organi
     </resource>
     <request>
       <method value="PUT"/>
-      <url value="http://hl7.org/fhir/us/sdc/ValueSet/LL621-4"/>
+      <url value="http://hl7.org/fhir/uv/sdc/ValueSet/LL621-4"/>
     </request>
   </entry>
   <entry>
-    <fullUrl value="http://hl7.org/fhir/us/sdc/ValueSet/LL624-8"/>
+    <fullUrl value="http://hl7.org/fhir/uv/sdc/ValueSet/LL624-8"/>
     <resource>
       <ValueSet>
         <id value="LL624-8"/>
         <meta>
-          <profile value="http://hl7.org/fhir/us/sdc/StructureDefinition/sdc-valueset"/>
+          <profile value="http://hl7.org/fhir/uv/sdc/StructureDefinition/sdc-valueset"/>
         </meta>
         <url value="http://details.loinc.org/AnswerList/LL624-8"/>
         <name value="USSG-FHT living"/>
@@ -1451,16 +1451,16 @@ Note: The URLs used for LOINC objects have not been approved by the LOINC organi
     </resource>
     <request>
       <method value="PUT"/>
-      <url value="http://hl7.org/fhir/us/sdc/ValueSet/LL624-8"/>
+      <url value="http://hl7.org/fhir/uv/sdc/ValueSet/LL624-8"/>
     </request>
   </entry>
   <entry>
-    <fullUrl value="http://hl7.org/fhir/us/sdc/ValueSet/LL627-1"/>
+    <fullUrl value="http://hl7.org/fhir/uv/sdc/ValueSet/LL627-1"/>
     <resource>
       <ValueSet>
         <id value="LL627-1"/>
         <meta>
-          <profile value="http://hl7.org/fhir/us/sdc/StructureDefinition/sdc-valueset"/>
+          <profile value="http://hl7.org/fhir/uv/sdc/StructureDefinition/sdc-valueset"/>
         </meta>
         <url value="http://details.loinc.org/AnswerList/LL627-1"/>
         <name value="USSG-FHT diseases &amp; cause of death"/>
@@ -1759,7 +1759,7 @@ Note: The URLs used for LOINC objects have not been approved by the LOINC organi
     </resource>
     <request>
       <method value="PUT"/>
-      <url value="http://hl7.org/fhir/us/sdc/ValueSet/LL627-1"/>
+      <url value="http://hl7.org/fhir/uv/sdc/ValueSet/LL627-1"/>
     </request>
   </entry>
 </Bundle>

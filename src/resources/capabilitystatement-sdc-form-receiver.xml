@@ -6,8 +6,8 @@
     <div xmlns="http://www.w3.org/1999/xhtml">
       <h2>SDC Form Receiver</h2>
       <p>(Requirements Definition)</p>
-      <p>http://hl7.org/fhir/us/sdc/CapabilityStatement/sdc-form-receiver Published: 2014-07-06 (draft)</p>
-      <p>Published by: <b>U.S. Office of the National Coordinator (ONC)</b>
+      <p>http://hl7.org/fhir/uv/sdc/CapabilityStatement/sdc-form-receiver Published: 2014-07-06 (draft)</p>
+      <p>Published by: <b>HL7 International - FHIR Infrastructure</b>
       </p>
       <p>This profile defines the expected capabilities of the <i>SDC Form Receiver</i> role when conforming to the S&amp;I Framework's <a href="index.html">Structured Data Capture FHIR implementation guide</a>.  This role is responsible for accepting and processing completed and partially-completed forms.</p>
       <h2>General</h2>
@@ -29,22 +29,22 @@
       <p>
         <b>Security:</b>
       </p>
-      <p>Implementations must meet the general security requirements documented in the <a href="sdc-security.html">SDC implementation guide</a>.</p>
+      <p>Implementations must meet the general security requirements documented in the <a href="security.html">SDC implementation guide</a>.</p>
       <p>
         <b>Operations:</b>
       </p>
       <ul>
         <li>
-          <a href="http://hl7.org/fhir/us/sdc/operationdefinition/questionnaire-process-response">process-response</a>
+          <a href="http://hl7.org/fhir/uv/sdc/operationdefinition/questionnaire-process-response">process-response</a>
         </li>
       </ul>
     </div>
   </text>
-  <url value="http://hl7.org/fhir/us/sdc/CapabilityStatement/sdc-form-receiver"/>
+  <url value="http://hl7.org/fhir/uv/sdc/CapabilityStatement/sdc-form-receiver"/>
   <name value="SDC Form Receiver"/>
   <status value="draft"/>
   <date value="2014-07-06"/>
-  <publisher value="U.S. Office of the National Coordinator (ONC)"/>
+  <publisher value="HL7 International - FHIR Infrastructure"/>
   <contact>
     <telecom>
       <system value="other"/>
@@ -59,11 +59,11 @@
   <rest>
     <mode value="server"/>
     <security>
-      <description value="Implementations must meet the general security requirements documented in the [[sdc-security|SDC implementation guide]]."/>
+      <description value="Implementations must meet the general security requirements documented in the [[security|SDC implementation guide]]."/>
     </security>
     <operation>
       <name value="process-response"/>
-      <definition value="http://hl7.org/fhir/us/sdc/OperationDefinition/Questionnaire-process-response"/>
+      <definition value="http://hl7.org/fhir/uv/sdc/OperationDefinition/Questionnaire-process-response"/>
     </operation>
   </rest>
 </CapabilityStatement>

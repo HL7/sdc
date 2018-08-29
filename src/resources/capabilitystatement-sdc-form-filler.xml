@@ -6,8 +6,8 @@
     <div xmlns="http://www.w3.org/1999/xhtml">
       <h2>SDC Form Filler</h2>
       <p>(Requirements Definition)</p>
-      <p>http://hl7.org/fhir/us/sdc/CapabilityStatement/sdc-form-filler Published: 2014-07-06 (draft)</p>
-      <p>Published by: <b>U.S. Office of the National Coordinator (ONC)</b>
+      <p>http://hl7.org/fhir/uv/sdc/CapabilityStatement/sdc-form-filler Published: 2014-07-06 (draft)</p>
+      <p>Published by: <b>HL7 International - FHIR Infrastructure</b>
       </p>
       <p>This profile defines the expected capabilities of the <i>SDC Form Filler</i> role when conforming to the S&amp;I Framework's <a href="index.html">Structured Data Capture FHIR implementation guide</a>.  This role is responsible for retrieving pre-defined forms, requesting pre-population of forms and/or auto-populating forms, guiding the user through verifying populated data and submitting completed or partially-completed forms.</p>
       <p>Note that Form Fillers may also take on the role of <a href="sdc-form-archiver.html">Form Archiver</a> if they have a requirement to retain the completed version of a form (and potentially the source data that was used to complete it).</p>
@@ -33,7 +33,7 @@
       <p>
         <b>Security:</b>
       </p>
-      <p>Implementations must meet the general security requirements documented in the <a href="sdc-security.html">SDC implementation guide</a>.</p>
+      <p>Implementations must meet the general security requirements documented in the <a href="security.html">SDC implementation guide</a>.</p>
       <h3>Resource summary</h3>
       <div class="table-wrapper">
         <table class="grid">
@@ -52,7 +52,7 @@
           </thead>
           <tbody>
             <tr>
-              <th>Questionnaire (<a href="http://hl7.org/fhir/us/sdc/StructureDefinition/sdc-questionnaire.html">Profile</a>)</th>
+              <th>Questionnaire (<a href="http://hl7.org/fhir/uv/sdc/StructureDefinition/sdc-questionnaire.html">Profile</a>)</th>
               <td>
                 <a title="Allows discovery of existing questionnaires to be completed" href="#Questionnaire-search-type">Yes</a>
               </td>
@@ -71,7 +71,7 @@
               <td/>
             </tr>
             <tr>
-              <th>ValueSet (<a href="http://hl7.org/fhir/us/sdc/StructureDefinition/sdc-valueset.html">Profile</a>)</th>
+              <th>ValueSet (<a href="http://hl7.org/fhir/uv/sdc/StructureDefinition/sdc-valueset.html">Profile</a>)</th>
               <td/>
               <td>
                 <a title="Allows retrieval of a specific value set by id (as referenced in a Questionnaire)" href="#ValueSet-read">Yes</a>
@@ -88,7 +88,7 @@
               <td/>
             </tr>
             <tr>
-              <th>CodeSystem (<a href="http://hl7.org/fhir/us/sdc/StructureDefinition/sdc-codesystem.html">Profile</a>)</th>
+              <th>CodeSystem (<a href="http://hl7.org/fhir/uv/sdc/StructureDefinition/sdc-codesystem.html">Profile</a>)</th>
               <td/>
               <td>
                 <a title="Allows retrieval of a specific code system by id (as referenced by a ValueSet used in a Questionnaire)" href="#CodeSystem-read">Yes</a>
@@ -105,7 +105,7 @@
               <td/>
             </tr>
             <tr>
-              <th>QuestionnaireResponse (<a href="http://hl7.org/fhir/us/sdc/StructureDefinition/sdc-questionnaireresponse.html">Profile</a>)</th>
+              <th>QuestionnaireResponse (<a href="http://hl7.org/fhir/uv/sdc/StructureDefinition/sdc-questionnaireresponse.html">Profile</a>)</th>
               <td>
                 <a title="Allows a user to search for existing completed or partially-completed forms.  Generally used to find partially-completed forms for update." href="#QuestionnaireResponse-search-type">Yes</a>
               </td>
@@ -181,7 +181,7 @@
       <h3>
         <a href="{{site.data.fhir.path}}questionnaire.html">Questionnaire</a>
       </h3>
-      <p>Profile: <a href="http://hl7.org/fhir/us/sdc/StructureDefinition/sdc-questionnaire.html">http://hl7.org/fhir/us/sdc/StructureDefinition/sdc-questionnaire</a>
+      <p>Profile: <a href="http://hl7.org/fhir/uv/sdc/StructureDefinition/sdc-questionnaire.html">http://hl7.org/fhir/uv/sdc/StructureDefinition/sdc-questionnaire</a>
       </p>
       <h4>Interactions</h4>
       <div class="table-wrapper">
@@ -237,7 +237,7 @@
       <h3>
         <a href="{{site.data.fhir.path}}valueset.html">ValueSet</a>
       </h3>
-      <p>Profile: <a href="http://hl7.org/fhir/us/sdc/StructureDefinition/sdc-valueset.html">http://hl7.org/fhir/us/sdc/StructureDefinition/sdc-valueset</a>
+      <p>Profile: <a href="http://hl7.org/fhir/uv/sdc/StructureDefinition/sdc-valueset.html">http://hl7.org/fhir/uv/sdc/StructureDefinition/sdc-valueset</a>
       </p>
       <h4>Interactions</h4>
       <div class="table-wrapper">
@@ -284,7 +284,7 @@
       <h3>
         <a href="{{site.data.fhir.path}}codesystem.html">CodeSystem</a>
       </h3>
-      <p>Profile: <a href="http://hl7.org/fhir/us/sdc/StructureDefinition/sdc-codesystem.html">http://hl7.org/fhir/us/sdc/StructureDefinition/sdc-codesystem</a>
+      <p>Profile: <a href="http://hl7.org/fhir/uv/sdc/StructureDefinition/sdc-codesystem.html">http://hl7.org/fhir/uv/sdc/StructureDefinition/sdc-codesystem</a>
       </p>
       <h4>Interactions</h4>
       <div class="table-wrapper">
@@ -331,7 +331,7 @@
       <h3>
         <a href="{{site.data.fhir.path}}questionnaireresponse.html">QuestionnaireResponse</a>
       </h3>
-      <p>Profile: <a href="http://hl7.org/fhir/us/sdc/StructureDefinition/sdc-questionnaireresponse.html">http://hl7.org/fhir/us/sdc/StructureDefinition/sdc-questionnaireresponse</a>
+      <p>Profile: <a href="http://hl7.org/fhir/uv/sdc/StructureDefinition/sdc-questionnaireresponse.html">http://hl7.org/fhir/uv/sdc/StructureDefinition/sdc-questionnaireresponse</a>
       </p>
       <h4>Interactions</h4>
       <div class="table-wrapper">
@@ -456,11 +456,11 @@
       </div>
     </div>
   </text>
-  <url value="http://hl7.org/fhir/us/sdc/CapabilityStatement/sdc-form-filler"/>
+  <url value="http://hl7.org/fhir/uv/sdc/CapabilityStatement/sdc-form-filler"/>
   <name value="SDC Form Filler"/>
   <status value="draft"/>
   <date value="2014-07-06"/>
-  <publisher value="U.S. Office of the National Coordinator (ONC)"/>
+  <publisher value="HL7 International - FHIR Infrastructure"/>
   <contact>
     <telecom>
       <system value="other"/>
@@ -476,11 +476,11 @@
     <mode value="client"/>
     <documentation value="The [[Questionnaire]], [[ValueSet]] and [[CodeSystem]] resources are retrieved to allow the system to guide the user through the entry process.  The [[Binary]] and [[DocumentReference]] resources allow the system to find existing clinical documents that can be within the pre-population process.  (Support for retrieval operations on these resources is optional as the relevant CDA or FHIR structures may also be directly generated by the ''Form Filler'' itself.)  Finally, the [[QuestionnaireResponse]] resource is used to record the populated form.&lt;br/&gt;Note: Form Fillers that support the 'populate' operation will need to be capable of consuming and rendering a partially completed QuestionnaireResponse in the same manner as if they had retrieved such a QuestionnaireResponse from a ''Form Response Manager''"/>
     <security>
-      <description value="Implementations must meet the general security requirements documented in the [[sdc-security|SDC implementation guide]]."/>
+      <description value="Implementations must meet the general security requirements documented in the [[security|SDC implementation guide]]."/>
     </security>
     <resource>
       <type value="Questionnaire"/>
-      <profile value="http://hl7.org/fhir/us/sdc/StructureDefinition/sdc-questionnaire"/>
+      <profile value="http://hl7.org/fhir/uv/sdc/StructureDefinition/sdc-questionnaire"/>
       <interaction>
         <extension url="http://hl7.org/fhir/StructureDefinition/capabilitystatement-expectation">
           <valueCode value="SHALL"/>
@@ -513,7 +513,7 @@
     <!--  Do we want to define what search criteria must be supported?  -->
     <resource>
       <type value="ValueSet"/>
-      <profile value="http://hl7.org/fhir/us/sdc/StructureDefinition/sdc-valueset"/>
+      <profile value="http://hl7.org/fhir/uv/sdc/StructureDefinition/sdc-valueset"/>
       <interaction>
         <extension url="http://hl7.org/fhir/StructureDefinition/capabilitystatement-expectation">
           <valueCode value="SHALL"/>
@@ -538,7 +538,7 @@
     </resource>
     <resource>
       <type value="CodeSystem"/>
-      <profile value="http://hl7.org/fhir/us/sdc/StructureDefinition/sdc-codesystem"/>
+      <profile value="http://hl7.org/fhir/uv/sdc/StructureDefinition/sdc-codesystem"/>
       <interaction>
         <extension url="http://hl7.org/fhir/StructureDefinition/capabilitystatement-expectation">
           <valueCode value="SHALL"/>
@@ -563,7 +563,7 @@
     </resource>
     <resource>
       <type value="QuestionnaireResponse"/>
-      <profile value="http://hl7.org/fhir/us/sdc/StructureDefinition/sdc-questionnaireresponse"/>
+      <profile value="http://hl7.org/fhir/uv/sdc/StructureDefinition/sdc-questionnaireresponse"/>
       <interaction>
         <extension url="http://hl7.org/fhir/StructureDefinition/capabilitystatement-expectation">
           <valueCode value="SHALL"/>
