@@ -123,7 +123,7 @@
 			        },
 			        "identifier": "Physical Function 2.0"
 			        
-			        <b>First Item being sent back</b>
+			        //<b>First Item being sent back</b>
 			        "item": [
 			           {
 			              "linkId": "1.1" // unique id of the question within the questionnaire 
@@ -158,7 +158,80 @@
       <li><b>Step 4:</b>The Patient Facing Administration App will then display the question to the user and collect the response.</li>
 
       <li><b>Step 5:</b>The Patient Facing Administration App will then send the answer to the Assessment Center and ask for the next question.
-      The Assessment Center will use the answer to determine the next question based on the algorithm and respond back with the next question until the assessment is done.</li>
+      The Assessment Center will use the answer to determine the next question based on the algorithm and respond back with the next question until the assessment is done.<br/>
+      <br/>
+      <b><i>Request</i></b><br/>
+      <code>POST [BaseURL]/Questionnaire/[id]/next-q</code><br/>      
+      
+      <b>Request Body</b><br/>
+      <pre><code>
+      
+      { // start body
+		  "resourceType": "Parameters",
+		  "parameter": [
+			    {
+			    "name": "questionnaire-response",
+			    "resource": {
+			    "resourceType": "QuestionnaireResponse",
+			    "meta": {
+			      "profile": [
+			        http://hl7.org/fhir/uv/sdc/StructureDefinition/sdc-questionnaireresponse-adapt
+			      ],
+			     },// meta
+			     
+			    // contained Questionnaire
+			    "contained": [
+			      {
+			        "resourceType": "Questionnaire",
+			        "id": "Id of the Questionnaire Instance on which operation is being invoked",
+			        "meta": {
+			          "profile": [
+			            "http://hl7.org/fhir/uv/sdc/StructureDefinition/sdc-questionnaire-adapt"
+			          ]
+			        },
+			        "identifier": "Physical Function 2.0"
+			        //no items since initiating the adaptive questionnaire
+			      ...
+			      }
+    			    ], // Contained Questionnaire
+    			    
+			    //references the contained Questionnaire
+			    "questionnaire": "http://hl7.org/fhir/us/sdc/StructureDefinition/sdc-questionnaire-dynamic"
+			   
+    				"status": "in-progress",
+   				...
+   				
+   				//<b>First Item being sent back with answer to be used to determine completeness or next question.</b>
+			        "item": [
+			           {
+			              "linkId": "1.1" // unique id of the question within the questionnaire 
+			              "code" : {
+			                "system": "http://loinc.org",
+			                "code": "LA1",
+			                }
+			                "text": "Are you able to walk for 30 minutes ?",
+			                "type": "question",
+			                "answerValueSet": "http://loinc.org/LA1234"
+			                "answerOption": [
+			                    "valueCoding": {
+			                        "system": "http://loinc.org",
+			                        "code": "LA1234"
+			                    }
+			                ] // answer option              
+			           } // item
+  				 //no items since is just getting started
+  			 }// questionnaire response
+  		}// parameter
+ 	]//parameters
+  
+  }// end body
+  </code></pre>
+  <br/>
+ 
+ </li>
+      
+      
+      
       <li><b>Step 6:</b>If the Assessment Center determines that the assessment is done, it will respond with the final results which will contain all the questions that were answered, along with the answers, the individual scores and the overall score.</li>
     </ul>
     </p>
