@@ -25,7 +25,7 @@
   </ul>
   
   <a name="caveats"> </a>
-  <h3>Caveats with form population</h3>
+  <h3>Caveats and considerations with form population</h3>
   <ul>
     <li>
       In order for form population to work, the designer of the Questionnaire must do a fair bit of work defining the queries and the filters needed to select what elements to use in
@@ -79,6 +79,15 @@
       as possible, even if it may not always be needed.  However, such data should not be shown to the user until the given item is "enabled".  And once the questionnaire is completed, data for any
       non-enabled elements should be removed.
     </li>
+    <li>
+      Sometimes the author interested in making a Questionnare "populatable" doesn't have authority to make changes to the "official" Questionnaire.  In other cases, there might be one
+      official Questionnaire, but a need to populate it from resources that comply with different sets of profiles (e.g. that comply with requirements from different countries) - and thus a need 
+      for different metadata in the Questionnaire to support
+      the poulation process.  In this case, rather than invoking the population on the original Questionnaire, it can be done on a derived Questionnaire - one that has a 
+      <code>Questionnaire.derivedFrom</code> relationship to the canonical URL of the desired Questionnaire.  The derived Questionnaire would contain the same content as the
+      base Questionnaire, but would have additional extensions inserted to support population.  Once the QuestionnaireResponse was generated/completed, it would be updated to assert
+      a <code>QuestionnaireResponse.questionnaire</code> of the original Questionnaire's canonical URL rather than that of the derived Questionnaire that drove the population process.</li>
+    <!-- TODO: How do we pass in a token that allows the population system the ability to query the system that owns the data - and how do they even know where that system is? -->
   </ul>
 
 	<a name="service"> </a>
@@ -279,7 +288,7 @@
     In practice, the server might not support the _sort or _count parameters, so the filtering for "most recent" might need to be done locally - especially if there's a need to check for matching data type.
   </p>
   <p>
-    Some additional considerations:
+    Considerations when using this approach:
   </p>
   <ul>
     <li>If the units of measure are constrained for the Questionnaire item, the system can choose to convert the data (if the units are coded and the conversion factor is known), grab the most recent Observation
@@ -295,7 +304,7 @@
     <li>Where an Observation is known to directly correlate to another resource element value (e.g. LOINC 21112-8 corresponds to <code>Patient.birthDate</code>), systems MAY take advantage of this knowledge to
       populate the answer of a question by retrieving data from resource elements other than <code>Observation.value</code> and <code>Observation.component.value</code>.</li>
     <li>The same data elements used to populate a QuestionnaireResponse from Observations can also be used to generate/update Observations from a completed Questionnaire.  See the 
-      <a href="extraction.html#extract-obs">Extraction</a> page of this implementation guide for more information.</li>
+      <a href="extraction.html#obs-extract">Extraction</a> page of this implementation guide for more information.</li>
     <li>This mechanism can be used in parallel with the <a href="#path-pop">FHIRPath</a> mechanism described below - i.e. some elements might be populated from Observation.value elements based on the 
       <code>item.code</code> while other questions in the same form might be populated based on queries and FHIRPaths specified in the form.</li>
     <li>This mechanism only supports <a href="#mode">Full Population</a>.  It does not work for other modes.</li>
@@ -374,7 +383,7 @@
     <li>
       When crafting queries, be sure to filter all relevent elements.  For example, ensuring status excludes entered-in-error elements, practitioners are active, etc.</li>
     <li>
-      Take care to ensure that variable names as set by questionnaire-context, variable and questionnaire-item-context remain unique within the hierarchy of the questionnaire.  It's technically ok
+      Take care to ensure that variable names as set by questionnaire-context, variable and questionnaire-itemContext remain unique within the hierarchy of the questionnaire.  It's technically ok
       to have sibling items define the same variable name - they won't collide.  However, if doing so, make sure it's being used for the same purpose to avoid confusion.</li>
     <li>
       If the initialExpression evalutes to a collection size that exceeds the maximum cardinality requirements of the item, the system may either choose not to populate the item at all, or instead
@@ -404,7 +413,7 @@
   <a name="map-pop"> </a>
   <h3>StructureMap-based Population</h3>
   <p>
-    The <a href="{{site.data.fhir.path}}structuremap.html">StructureMap</a> approach is the most sophisticated approach of the three, and the most powerful.  It allows iteration of groups based on
+    The <a href="{{site.data.fhir.path}}structuremap.html">StructureMap</a> approach is the most sophisticated approach of the three - and the most powerful.  It allows iteration of groups based on
     repeating elements within resources, supports concept translation using structure maps and provides access to transformation capabilities not available with the FHIRPath approach.  It also allows the
     conversion process between data and Questionnaire to be maintained independently and to draw on shared sources across Questionnaires.  This can be an advantage in certain environments where the content 
     of the questionnaire may need tight control but the data environment can be more dynamic.  This comes at the cost of requiring expertise in the <a href="{{site.data.fhir.path}}mapping-language.html">FHIR 
@@ -476,7 +485,7 @@
   <ul>
     <li>
       This approach will only work for pre-population using the <a href="#mode">Full Population</a> mode.  It cannot support continuous population or "Choice Selection" or "Answer Context" modes.</li>
-    <li>This mode has the drawback that if the StructureMap execution fails, there will generally not be any QuestionnaireResponse as output - as a result the StructureMap must be designed to be
+    <li>This mode has the drawback that if the StructureMap execution fails, there will generally not be any QuestionnaireResponse as output.  As a result, the StructureMap must be designed to be
       very robust in the face of missing or potentially 'bad' data.</li>
     <li>
       The ability of StructureMaps to reference other StructureMaps allows for the possibility of re-use if certain sections of multiple questionnaires are consistent</li>

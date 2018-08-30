@@ -338,6 +338,15 @@
     </resource>
     <resource>
       <reference>
+        <reference value="OperationDefinition/Questionnaire-next-question"/>
+      </reference>
+      <name value="Adaptive questionnaire next question"/>
+      <description value="Returns the next question or set of questions for an adaptive questionnaire"/>
+      <exampleBoolean value="true"/>
+      <package value="operations"/>
+    </resource>
+    <resource>
+      <reference>
         <reference value="OperationDefinition/Questionnaire-process-response"/>
       </reference>
       <name value="Questionnaire process response"/>
@@ -347,10 +356,10 @@
     </resource>
     <resource>
       <reference>
-        <reference value="OperationDefinition/Questionnaire-next-question"/>
+        <reference value="OperationDefinition/Questionnaire-extract"/>
       </reference>
-      <name value="Adaptive Questionnaire Next Question"/>
-      <description value="Returns the next question or set of questions for an adaptive questionnaire"/>
+      <name value="Questionnaire response extract to resource(s)"/>
+      <description value="Converts a QuestionnaireResponse to a clinical or administrative resource or a Transaction Bundle of them"/>
       <exampleBoolean value="true"/>
       <package value="operations"/>
     </resource>
@@ -405,7 +414,7 @@
       </reference>
       <name value="SDC-LOINC USSG Family History"/>
       <description value="LOINC US Surgeon General family history including data elements and value sets."/>
-      <exampleCanonical value="http://hl7.org/fhir/uv/sdc/StructureDefinition/sdc-questionnaire"/>
+      <exampleCanonical value="http://hl7.org/fhir/uv/sdc/StructureDefinition/sdc-questionnaire-populate"/>
       <package value="examples"/>
     </resource>
     <resource>

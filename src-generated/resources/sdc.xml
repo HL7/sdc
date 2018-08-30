@@ -208,6 +208,15 @@
     </resource>
     <resource>
       <reference>
+        <reference value="OperationDefinition/Questionnaire-next-question"/>
+      </reference>
+      <name value="Adaptive questionnaire next question"/>
+      <description value="Returns the next question or set of questions for an adaptive questionnaire"/>
+      <exampleBoolean value="true"/>
+      <package value="operations"/>
+    </resource>
+    <resource>
+      <reference>
         <reference value="OperationDefinition/Questionnaire-process-response"/>
       </reference>
       <name value="Questionnaire process response"/>
@@ -217,10 +226,10 @@
     </resource>
     <resource>
       <reference>
-        <reference value="OperationDefinition/Questionnaire-next-question"/>
+        <reference value="OperationDefinition/Questionnaire-extract"/>
       </reference>
-      <name value="Adaptive Questionnaire Next Question"/>
-      <description value="Returns the next question or set of questions for an adaptive questionnaire"/>
+      <name value="Questionnaire response extract to resource(s)"/>
+      <description value="Converts a QuestionnaireResponse to a clinical or administrative resource or a Transaction Bundle of them"/>
       <exampleBoolean value="true"/>
       <package value="operations"/>
     </resource>
@@ -275,7 +284,7 @@
       </reference>
       <name value="SDC-LOINC USSG Family History"/>
       <description value="LOINC US Surgeon General family history including data elements and value sets."/>
-      <exampleCanonical value="http://hl7.org/fhir/uv/sdc/StructureDefinition/sdc-questionnaire"/>
+      <exampleCanonical value="http://hl7.org/fhir/uv/sdc/StructureDefinition/sdc-questionnaire-populate"/>
       <package value="examples"/>
     </resource>
     <resource>
@@ -488,58 +497,63 @@
 <generation value="generated"/>
 </page>
 <page>
-<nameUrl value="Questionnaire-process-response.html"/>
-<ns24:title xmlns:ns24="http://hl7.org/fhir" value="Questionnaire process response"/>
+<nameUrl value="Questionnaire-next-question.html"/>
+<ns24:title xmlns:ns24="http://hl7.org/fhir" value="Adaptive questionnaire next question"/>
 <generation value="generated"/>
 </page>
 <page>
-<nameUrl value="Questionnaire-next-question.html"/>
-<ns25:title xmlns:ns25="http://hl7.org/fhir" value="Adaptive Questionnaire Next Question"/>
+<nameUrl value="Questionnaire-process-response.html"/>
+<ns25:title xmlns:ns25="http://hl7.org/fhir" value="Questionnaire process response"/>
+<generation value="generated"/>
+</page>
+<page>
+<nameUrl value="Questionnaire-extract.html"/>
+<ns26:title xmlns:ns26="http://hl7.org/fhir" value="Questionnaire response extract to resource(s)"/>
 <generation value="generated"/>
 </page>
 <page>
 <nameUrl value="questionnaire-definition.html"/>
-<ns26:title xmlns:ns26="http://hl7.org/fhir" value="Questionnaire Item definition"/>
+<ns27:title xmlns:ns27="http://hl7.org/fhir" value="Questionnaire Item definition"/>
 <generation value="generated"/>
 </page>
 <page>
 <nameUrl value="questionnaire-sdc-profile-example-render.html"/>
-<ns27:title xmlns:ns27="http://hl7.org/fhir" value="SDC-Advanced Rendering"/>
+<ns28:title xmlns:ns28="http://hl7.org/fhir" value="SDC-Advanced Rendering"/>
 <generation value="generated"/>
 </page>
 <page>
 <nameUrl value="questionnaire-sdc-profile-example.html"/>
-<ns28:title xmlns:ns28="http://hl7.org/fhir" value="SDC - Combination"/>
+<ns29:title xmlns:ns29="http://hl7.org/fhir" value="SDC - Combination"/>
 <generation value="generated"/>
 </page>
 <page>
 <nameUrl value="questionnaire-sdc-profile-example-cap.html"/>
-<ns29:title xmlns:ns29="http://hl7.org/fhir" value="SDC-Pathology"/>
+<ns30:title xmlns:ns30="http://hl7.org/fhir" value="SDC-Pathology"/>
 <generation value="generated"/>
 </page>
 <page>
 <nameUrl value="questionnaire-sdc-profile-example-loinc.html"/>
-<ns30:title xmlns:ns30="http://hl7.org/fhir" value="SDC-LOINC AHRQ"/>
+<ns31:title xmlns:ns31="http://hl7.org/fhir" value="SDC-LOINC AHRQ"/>
 <generation value="generated"/>
 </page>
 <page>
 <nameUrl value="questionnaire-sdc-profile-example-ussg-fht.html"/>
-<ns31:title xmlns:ns31="http://hl7.org/fhir" value="SDC-LOINC USSG Family History"/>
+<ns32:title xmlns:ns32="http://hl7.org/fhir" value="SDC-LOINC USSG Family History"/>
 <generation value="generated"/>
 </page>
 <page>
 <nameUrl value="questionnaireresponse-sdc-profile-example.html"/>
-<ns32:title xmlns:ns32="http://hl7.org/fhir" value="SDC - Response to Diagnosis NCI Standard Template"/>
+<ns33:title xmlns:ns33="http://hl7.org/fhir" value="SDC - Response to Diagnosis NCI Standard Template"/>
 <generation value="generated"/>
 </page>
 <page>
 <nameUrl value="questionnaireresponse-sdc-example-ussg-fht-answers.html"/>
-<ns33:title xmlns:ns33="http://hl7.org/fhir" value="SDC-LOINC USSG Family History Response"/>
+<ns34:title xmlns:ns34="http://hl7.org/fhir" value="SDC-LOINC USSG Family History Response"/>
 <generation value="generated"/>
 </page>
 <page>
 <nameUrl value="valueset-sdc-profile-example.html"/>
-<ns34:title xmlns:ns34="http://hl7.org/fhir" value="SDC-ValueSet AHRQ_Medication_Q1"/>
+<ns35:title xmlns:ns35="http://hl7.org/fhir" value="SDC-ValueSet AHRQ_Medication_Q1"/>
 <generation value="generated"/>
 </page>
 </page>
