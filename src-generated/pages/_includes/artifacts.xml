@@ -197,6 +197,27 @@
 </td>
 <td>If true, indicates that QuestionnaireResponse instances created against this questionnaire must have an associated Provenance record.</td>
 </tr>
+<tr>
+<td style="column-width:30%">
+<a href="sdc-questionnaire-sourceQueries.html">
+                        •  Source queries for population mapping</a>
+</td>
+<td>A Batch Bundle containing a set of queries that should be executed to provide source data for a StructureMap to create a populated QuestionnaireRsponse</td>
+</tr>
+<tr>
+<td style="column-width:30%">
+<a href="sdc-questionnaire-candidateExpression.html">
+                        •  Candidate Answers Expression</a>
+</td>
+<td>A FHIRPath expression or FHIR Query that resolves to a list of candidate answers for the question item or that establishes context for a group item</td>
+</tr>
+<tr>
+<td style="column-width:30%">
+<a href="sdc-questionnaire-contextExpression.html">
+                        •  Answer Context Expression</a>
+</td>
+<td>A FHIR Query that resolves to one or more resources that can be displayed to the user to help provide context for answering a question</td>
+</tr>
 </tbody>
 </table>
 </p>
@@ -273,6 +294,13 @@
 <p>
 <table>
 <tbody>
+<tr>
+<td style="column-width:30%">
+<a href="questionnaire-sdc-profile-example-render.html">
+                        •  SDC-Advanced Rendering</a>
+</td>
+<td>Example showing most of the advanced rendering capabilities of SDC</td>
+</tr>
 <tr>
 <td style="column-width:30%">
 <a href="questionnaire-sdc-profile-example.html">

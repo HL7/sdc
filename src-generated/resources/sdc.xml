@@ -158,6 +158,33 @@
       <exampleBoolean value="false"/>
       <package value="extensions"/>
     </resource>
+    <resource>
+      <reference>
+        <reference value="StructureDefinition/sdc-questionnaire-sourceQueries"/>
+      </reference>
+      <name value="Source queries for population mapping"/>
+      <description value="A Batch Bundle containing a set of queries that should be executed to provide source data for a StructureMap to create a populated QuestionnaireRsponse"/>
+      <exampleBoolean value="false"/>
+      <package value="extensions"/>
+    </resource>
+    <resource>
+      <reference>
+        <reference value="StructureDefinition/sdc-questionnaire-candidateExpression"/>
+      </reference>
+      <name value="Candidate Answers Expression"/>
+      <description value="A FHIRPath expression or FHIR Query that resolves to a list of candidate answers for the question item or that establishes context for a group item"/>
+      <exampleBoolean value="false"/>
+      <package value="extensions"/>
+    </resource>
+    <resource>
+      <reference>
+        <reference value="StructureDefinition/sdc-questionnaire-contextExpression"/>
+      </reference>
+      <name value="Answer Context Expression"/>
+      <description value="A FHIR Query that resolves to one or more resources that can be displayed to the user to help provide context for answering a question"/>
+      <exampleBoolean value="false"/>
+      <package value="extensions"/>
+    </resource>
 <!--    <resource>
       <extension url="http://hl7.org/fhir/StructureDefinition/implementationguide-spreadsheet-profile">
         <valueBoolean value="true"/>
@@ -205,6 +232,15 @@
       <description value="Allows searching by 'definition' element within a Questionnaire's items"/>
       <exampleBoolean value="true"/>
       <package value="search"/>
+    </resource>
+    <resource>
+      <reference>
+        <reference value="Questionnaire/questionnaire-sdc-profile-example-render"/>
+      </reference>
+      <name value="SDC-Advanced Rendering"/>
+      <description value="Example showing most of the advanced rendering capabilities of SDC"/>
+      <exampleCanonical value="http://hl7.org/fhir/uv/sdc/StructureDefinition/sdc-questionnaire-render"/>
+      <package value="examples"/>
     </resource>
     <resource>
       <reference>
@@ -432,58 +468,78 @@
 <generation value="generated"/>
 </page>
 <page>
+<nameUrl value="sdc-questionnaire-sourceQueries.html"/>
+<ns20:title xmlns:ns20="http://hl7.org/fhir" value="Source queries for population mapping"/>
+<generation value="generated"/>
+</page>
+<page>
+<nameUrl value="sdc-questionnaire-candidateExpression.html"/>
+<ns21:title xmlns:ns21="http://hl7.org/fhir" value="Candidate Answers Expression"/>
+<generation value="generated"/>
+</page>
+<page>
+<nameUrl value="sdc-questionnaire-contextExpression.html"/>
+<ns22:title xmlns:ns22="http://hl7.org/fhir" value="Answer Context Expression"/>
+<generation value="generated"/>
+</page>
+<page>
 <nameUrl value="valueset-species.html"/>
-<ns20:title xmlns:ns20="http://hl7.org/fhir" value="Questionnaire Context Species"/>
+<ns23:title xmlns:ns23="http://hl7.org/fhir" value="Questionnaire Context Species"/>
 <generation value="generated"/>
 </page>
 <page>
 <nameUrl value="Questionnaire-process-response.html"/>
-<ns21:title xmlns:ns21="http://hl7.org/fhir" value="Questionnaire process response"/>
+<ns24:title xmlns:ns24="http://hl7.org/fhir" value="Questionnaire process response"/>
 <generation value="generated"/>
 </page>
 <page>
 <nameUrl value="Questionnaire-next-question.html"/>
-<ns22:title xmlns:ns22="http://hl7.org/fhir" value="Adaptive Questionnaire Next Question"/>
+<ns25:title xmlns:ns25="http://hl7.org/fhir" value="Adaptive Questionnaire Next Question"/>
 <generation value="generated"/>
 </page>
 <page>
 <nameUrl value="questionnaire-definition.html"/>
-<ns23:title xmlns:ns23="http://hl7.org/fhir" value="Questionnaire Item definition"/>
+<ns26:title xmlns:ns26="http://hl7.org/fhir" value="Questionnaire Item definition"/>
+<generation value="generated"/>
+</page>
+<page>
+<nameUrl value="questionnaire-sdc-profile-example-render.html"/>
+<ns27:title xmlns:ns27="http://hl7.org/fhir" value="SDC-Advanced Rendering"/>
 <generation value="generated"/>
 </page>
 <page>
 <nameUrl value="questionnaire-sdc-profile-example.html"/>
-<ns24:title xmlns:ns24="http://hl7.org/fhir" value="SDC - Combination"/>
+<ns28:title xmlns:ns28="http://hl7.org/fhir" value="SDC - Combination"/>
 <generation value="generated"/>
 </page>
 <page>
 <nameUrl value="questionnaire-sdc-profile-example-cap.html"/>
-<ns25:title xmlns:ns25="http://hl7.org/fhir" value="SDC-Pathology"/>
+<ns29:title xmlns:ns29="http://hl7.org/fhir" value="SDC-Pathology"/>
 <generation value="generated"/>
 </page>
 <page>
 <nameUrl value="questionnaire-sdc-profile-example-loinc.html"/>
-<ns26:title xmlns:ns26="http://hl7.org/fhir" value="SDC-LOINC AHRQ"/>
+<ns30:title xmlns:ns30="http://hl7.org/fhir" value="SDC-LOINC AHRQ"/>
 <generation value="generated"/>
 </page>
 <page>
 <nameUrl value="questionnaire-sdc-profile-example-ussg-fht.html"/>
-<ns27:title xmlns:ns27="http://hl7.org/fhir" value="SDC-LOINC USSG Family History"/>
+<ns31:title xmlns:ns31="http://hl7.org/fhir" value="SDC-LOINC USSG Family History"/>
 <generation value="generated"/>
 </page>
 <page>
 <nameUrl value="questionnaireresponse-sdc-profile-example.html"/>
-<ns28:title xmlns:ns28="http://hl7.org/fhir" value="SDC - Response to Diagnosis NCI Standard Template"/>
+<ns32:title xmlns:ns32="http://hl7.org/fhir" value="SDC - Response to Diagnosis NCI Standard Template"/>
 <generation value="generated"/>
 </page>
 <page>
 <nameUrl value="questionnaireresponse-sdc-example-ussg-fht-answers.html"/>
-<ns29:title xmlns:ns29="http://hl7.org/fhir" value="SDC-LOINC USSG Family History Response"/>
+<ns33:title xmlns:ns33="http://hl7.org/fhir" value="SDC-LOINC USSG Family History Response"/>
 <generation value="generated"/>
 </page>
 <page>
 <nameUrl value="valueset-sdc-profile-example.html"/>
-<ns30:title xmlns:ns30="http://hl7.org/fhir" value="SDC-ValueSet AHRQ_Medication_Q1"/>
+<ns34:title xmlns:ns34="http://hl7.org/fhir" value="SDC-ValueSet AHRQ_Medication_Q1"/>
 <generation value="generated"/>
 </page>
 </page>

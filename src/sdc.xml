@@ -288,6 +288,33 @@
       <exampleBoolean value="false"/>
       <package value="extensions"/>
     </resource>
+    <resource>
+      <reference>
+        <reference value="StructureDefinition/sdc-questionnaire-sourceQueries"/>
+      </reference>
+      <name value="Source queries for population mapping"/>
+      <description value="A Batch Bundle containing a set of queries that should be executed to provide source data for a StructureMap to create a populated QuestionnaireRsponse"/>
+      <exampleBoolean value="false"/>
+      <package value="extensions"/>
+    </resource>
+    <resource>
+      <reference>
+        <reference value="StructureDefinition/sdc-questionnaire-candidateExpression"/>
+      </reference>
+      <name value="Candidate Answers Expression"/>
+      <description value="A FHIRPath expression or FHIR Query that resolves to a list of candidate answers for the question item or that establishes context for a group item"/>
+      <exampleBoolean value="false"/>
+      <package value="extensions"/>
+    </resource>
+    <resource>
+      <reference>
+        <reference value="StructureDefinition/sdc-questionnaire-contextExpression"/>
+      </reference>
+      <name value="Answer Context Expression"/>
+      <description value="A FHIR Query that resolves to one or more resources that can be displayed to the user to help provide context for answering a question"/>
+      <exampleBoolean value="false"/>
+      <package value="extensions"/>
+    </resource>
 <!--    <resource>
       <extension url="http://hl7.org/fhir/StructureDefinition/implementationguide-spreadsheet-profile">
         <valueBoolean value="true"/>
@@ -335,6 +362,15 @@
       <description value="Allows searching by 'definition' element within a Questionnaire's items"/>
       <exampleBoolean value="true"/>
       <package value="search"/>
+    </resource>
+    <resource>
+      <reference>
+        <reference value="Questionnaire/questionnaire-sdc-profile-example-render"/>
+      </reference>
+      <name value="SDC-Advanced Rendering"/>
+      <description value="Example showing most of the advanced rendering capabilities of SDC"/>
+      <exampleCanonical value="http://hl7.org/fhir/uv/sdc/StructureDefinition/sdc-questionnaire-render"/>
+      <package value="examples"/>
     </resource>
     <resource>
       <reference>
