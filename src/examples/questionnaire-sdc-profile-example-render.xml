@@ -1,227 +1,418 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Questionnaire xmlns="http://hl7.org/fhir" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://hl7.org/fhir ../../src-generated/schemas/fhir-single.xsd">
-  <!-- -->
-  <id value="questionnaire-sdc-profile-example-render"/>
-  <text>
-    <status value="generated"/>
-    <div xmlns="http://www.w3.org/1999/xhtml">
-      <pre>
-        &lt;html xml:lang="en" xmlns="http://www.w3.org/1999/xhtml" lang="en"&gt;
-        &lt;head&gt;
-          &lt;meta content="text/html;charset=utf-8" http-equiv="Content-Type"/&gt;
-          &lt;title&gt;Advanced Rendering Questionnaire Demonstration&lt;/title&gt;
-        &lt;/head&gt;
-        &lt;body&gt;
-          &lt;div id='questionnaire-title'&gt;
-            &lt;h1&gt;&lt;span style='color:blue;'&gt;&lt;b&gt;Advanced&lt;/b&gt; &lt;i&gt;Rendering&lt;/i&gt; &lt;u&gt;Questionnaire&lt;/u&gt; &lt;b&gt;&lt;i&gt;Demonstration&lt;/i&gt;&lt;/b&gt;&lt;/span&gt;&lt;/h1&gt;
-          &lt;/div&gt;
-          &lt;div id='linkitem-1' class='group'&gt;
-            &lt;h2&gt;&lt;span style='color:red;'&gt;&lt;u&gt;1&lt;/u&gt;&lt;/span&gt; Demographics&lt;/h2&gt;
-            &lt;div id='linkitem-1.0' class='display'&gt;
-              &lt;p&gt;
-                &lt;span style='color:green;'&gt;&lt;i&gt;Please&lt;/i&gt; complete the questionnaire&lt;/span&gt;
-              &lt;/p&gt;
-              &lt;!-- Instructions | The text provides guidance on how to populate or use a portion of the questionnaire (or the questionnaire as a whole). --&gt;
-              &lt;span id='linkitem-1.0-displayCategory' style='display:none;'&gt;Instructions | The text provides guidance on how to populate or use a portion of the questionnaire (or the questionnaire as a whole).&lt;/span&gt;
-            &lt;/div&gt;
-            &lt;div id='linkitem-1.1' class='string'&gt;
-              &lt;form action='http://hl7.org/fhir/'&gt;
-                First Name
-                &lt;input type="text"/&gt;
-              &lt;/form&gt;
-              &lt;!-- optionalDisplay=true --&gt;
-            &lt;/div&gt;
-            &lt;div id='linkitem-1.2' class='string' style='display:none;'&gt;
-              &lt;form action='http://hl7.org/fhir/'&gt;
-                Hidden Name
-                &lt;input type="text"/&gt;
-              &lt;/form&gt;
-            &lt;/div&gt;
-            &lt;div id='linkitem-1.3' class='string'&gt;
-              &lt;form action='http://hl7.org/fhir/'&gt;
-                &lt;a href='http://hl7.org/fhir/'&gt;Middle Name&lt;/a&gt;
-                &lt;input type="text"/&gt;
-              &lt;/form&gt;
-            &lt;/div&gt;
-            &lt;div id='linkitem-1.4' class='string'&gt;
-              &lt;form action='http://hl7.org/fhir/'&gt;
-                Last Name
-                &lt;input type="text"/&gt;
-              &lt;/form&gt;
-            &lt;/div&gt;
-            &lt;div id='linkitem-1.5' class='string'&gt;
-              &lt;form action='http://hl7.org/fhir/'&gt;
-                Gender
-                &lt;input type='radio' name='(a) Female' value='F'/&gt;(a) Female 
-                &lt;input type='radio' name='Male' value='M'/&gt;Male 
-                &lt;input type='radio' name='Other' value='O'/&gt;Other 
-                &lt;input type='radio' name='Unknown' value='U'/&gt;Unknown 
-              &lt;/form&gt;
-            &lt;/div&gt;
-          &lt;/div&gt;
-        &lt;/body&gt;
-        &lt;/html&gt;
-      </pre>
-    </div>
-  </text>
-  <!-- rendering-styleSensitive extension - Are styles important for processing? -->
-  <extension xmlns="http://hl7.org/fhir" url="http://hl7.org/fhir/StructureDefinition/rendering-styleSensitive">
-    <valueBoolean value="true"/>
-  </extension>
-  <url value="http://hl7.org/fhir/uv/sdc/Questionnaire/questionnaire-sdc-profile-example-render"/>
-  <title value="Advanced Rendering Questionnaire Profile Demonstration">
-    <!-- title/rendering-style extension - Html style value-->
-    <extension xmlns="http://hl7.org/fhir" url="http://hl7.org/fhir/StructureDefinition/rendering-style">
-      <valueString value="color:blue;"/>
-    </extension>
-    <!-- -->
-    <!-- title/rendering-xhtml extension - String equivalent with HTML markup -->
-    <extension xmlns="http://hl7.org/fhir" url="http://hl7.org/fhir/StructureDefinition/rendering-xhtml">
-      <valueString value="&lt;b&gt;Advanced&lt;/b&gt; &lt;i&gt;Rendering&lt;/i&gt; &lt;u&gt;Questionnaire&lt;/u&gt; &lt;b&gt;&lt;i&gt;Demonstration&lt;/i&gt;&lt;/b&gt;"/>
-    </extension>
-    <!-- -->
-  </title>
-  <status value="draft"/>
-  <subjectType value="Patient"/>
-  <date value="2018-08"/>
-  <item>
-    <linkId value="1"/>
-    <code>
-      <system value="http://example.org/system/code/sections"/>
-      <code value="DEMOGRAPHICS"/>
-    </code>
-    <prefix value="1">
-      <!-- item/prefix/rendering-style extension - Html style value-->
-      <extension xmlns="http://hl7.org/fhir" url="http://hl7.org/fhir/StructureDefinition/rendering-style">
-        <valueString value="color:red;"/>
-      </extension>
-      <!-- -->
-      <!-- item/prefix/rendering-xhtml extension - String equivalent with HTML markup -->
-      <extension xmlns="http://hl7.org/fhir" url="http://hl7.org/fhir/StructureDefinition/rendering-xhtml">
-        <valueString value="&lt;u&gt;1&lt;/u&gt;"/>
-      </extension>
-      <!-- -->
-    </prefix>
-    <text value="Demographics"/>
-    <type value="group"/>
-    <item>
-      <!-- item/questionnaire-displayCategory - Purpose of rendered text -->
-      <extension xmlns="http://hl7.org/fhir" url="http://hl7.org/fhir/StructureDefinition/questionnaire-displayCategory">
-        <valueCodeableConcept>
-          <coding>
-            <system value="http://hl7.org/fhir/questionnaire-display-category"/>
-            <code value="instructions"/>
-            <display value="Instructions"/>
-          </coding>
-          <text value="The text provides guidance on how to populate or use a portion of the questionnaire (or the questionnaire as a whole)."/>
-        </valueCodeableConcept>
-      </extension>
-      <!-- -->
-      <linkId value="1.0"/>
-      <text value="Please complete the questionnaire">
-        <!-- item/text/rendering-style extension - Html style value-->
-        <extension xmlns="http://hl7.org/fhir" url="http://hl7.org/fhir/StructureDefinition/rendering-style">
-          <valueString value="color:green;"/>
-        </extension>
-        <!-- -->
-        <!-- item/text/rendering-xhtml extension - String equivalent with HTML markup -->
-        <extension xmlns="http://hl7.org/fhir" url="http://hl7.org/fhir/StructureDefinition/rendering-xhtml">
-          <valueString value="&lt;i&gt;Please&lt;/i&gt; complete the questionnaire"/>
-        </extension>
-        <!-- -->
-      </text>
-      <type value="display"/>
-    </item>
-    <item>
-      <!-- item/sdc-questionnaire-optionalDisplay - Can suppress from display to user -->
-      <extension xmlns="http://hl7.org/fhir" url="http://hl7.org/fhir/uv/sdc/StructureDefinition/sdc-questionnaire-optionalDisplay">
-        <valueBoolean value="true"/>
-      </extension>
-      <!-- -->
-      <linkId value="1.1"/>
-      <text value="First Name"/>
-      <type value="string"/>
-    </item>
-    <item>
-      <!-- item/questionnaire-hidden - Don't display to user -->
-      <extension xmlns="http://hl7.org/fhir" url="http://hl7.org/fhir/StructureDefinition/questionnaire-hidden">
-        <valueBoolean value="true"/>
-      </extension>
-      <!-- -->
-      <linkId value="1.2"/>
-      <text value="Hidden Name"/>
-      <type value="string"/>
-    </item>
-    <item>
-      <!-- item/questionnaire-supportLink - Supporting information -->
-      <extension xmlns="http://hl7.org/fhir" url="http://hl7.org/fhir/StructureDefinition/questionnaire-supportLink">
-        <valueUri value="http://hl7.org/fhir/"/>
-      </extension>
-      <!-- -->
-      <linkId value="1.3"/>
-      <text value="Middle Name"/>
-      <type value="string"/>
-    </item>
-    <item>
-      <!-- item/sdc-questionnaire-usageMode - capture | display | display-non-empty | capture-display | capture-display-non-empty -->
-      <modifierExtension xmlns="http://hl7.org/fhir" url="http://hl7.org/fhir/StructureDefinition/questionnaire-usageMode">
-        <valueCode value="capture"/>
-      </modifierExtension>
-      <!-- -->
-      <linkId value="1.4"/>
-      <text value="Last Name"/>
-      <type value="string"/>
-    </item>
-    <item>
-      <!-- item/sdc-questionnaire-choiceOrientation - horizontal | vertical -->
-      <extension xmlns="http://hl7.org/fhir" url="http://hl7.org/fhir/StructureDefinition/questionnaire-choiceOrientation">
-        <valueCode value="horizontal"/>
-      </extension>
-      <!-- -->
-      <!-- item/questionnaire-itemControl - 	E.g. Fly-over, Table, Checkbox, Combo-box, Lookup, etc. -->
-      <extension xmlns="http://hl7.org/fhir" url="http://hl7.org/fhir/StructureDefinition/questionnaire-itemControl">
-        <valueCodeableConcept>
-          <coding>
-            <system value="http://hl7.org/fhir/questionnaire-item-control"/>
-            <code value="radio-button"/>
-            <display value="Radio Button"/>
-          </coding>
-          <text value="A control where choices are listed with a button beside them. The button can be toggled to select or de-select a given choice. Selecting one item deselects all others."/>
-        </valueCodeableConcept>
-      </extension>
-      <!-- -->
-      <linkId value="1.5"/>
-      <text value="Gender"/>
-      <type value="choice"/>
-      <answerOption>
-        <!-- item/answerOption/questionnaire-optionPrefix - E.g. "(a)", "1.", etc. -->
-        <extension xmlns="http://hl7.org/fhir" url="http://hl7.org/fhir/StructureDefinition/questionnaire-optionPrefix">
-          <valueString value="(a)"/>
-        </extension>
-        <!-- -->
-        <valueCoding>
-          <code value="F"/>
-          <display value="Female"/>
-        </valueCoding>
-      </answerOption>
-      <answerOption>
-        <valueCoding>
-          <code value="M"/>
-          <display value="Male"/>
-        </valueCoding>
-      </answerOption>
-      <answerOption>
-        <valueCoding>
-          <code value="O"/>
-          <display value="Other"/>
-        </valueCoding>
-      </answerOption>
-      <answerOption>
-        <valueCoding>
-          <code value="U"/>
-          <display value="Unknown"/>
-        </valueCoding>
-      </answerOption>
-    </item>
-  </item>
+	<id value="questionnaire-sdc-profile-example-render"/>
+	<text>
+		<status value="generated"/>
+		<div xmlns="http://www.w3.org/1999/xhtml">
+			<pre>
+				&lt;html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en"&gt;
+					&lt;head&gt;
+						&lt;meta content="text/html;charset=utf-8" http-equiv="Content-Type"/&gt;
+						&lt;title&gt;Advanced Rendering Questionnaire Demonstration&lt;/title&gt;
+					&lt;/head&gt;
+					&lt;body&gt;
+						&lt;div id="questionnaire-title"&gt;
+							&lt;h1&gt;
+								&lt;span style="color:blue;"&gt;
+									&lt;b&gt;Advanced&lt;/b&gt;
+									&lt;i&gt;Rendering&lt;/i&gt;
+									&lt;u&gt;Questionnaire&lt;/u&gt;
+									&lt;b&gt;
+										&lt;i&gt;Demonstration&lt;/i&gt;
+									&lt;/b&gt;
+								&lt;/span&gt;
+							&lt;/h1&gt;
+						&lt;/div&gt;
+						&lt;div id="linkitem-1" class="group"&gt;
+							&lt;h2&gt;&lt;span style="color:red;"&gt;&lt;u&gt;1&lt;/u&gt;&lt;/span&gt; Demographics&lt;/h2&gt;
+							&lt;div id="linkitem-1.0" class="display"&gt;
+								&lt;p&gt;
+									&lt;span style="color:green;"&gt;&lt;i&gt;Please&lt;/i&gt; complete the questionnaire&lt;/span&gt;
+								&lt;/p&gt;
+								&lt;!-- Instructions | The text provides guidance on how to populate or use a portion of the questionnaire (or the questionnaire as a whole). --&gt;
+								&lt;span id="linkitem-1.0-displayCategory" style="display:none;"&gt;Instructions | The text provides guidance on how to populate or use a portion of the questionnaire (or the questionnaire as a whole).&lt;/span&gt;
+							&lt;/div&gt;
+							&lt;div id="linkitem-1.1" class="string"&gt;
+								&lt;form action="http://hl7.org/fhir/"&gt;
+								First Name
+								&lt;input id="linkitem-1.1-input" type="text"/&gt;
+							&lt;/form&gt;
+								&lt;!-- optionalDisplay=true --&gt;
+							&lt;/div&gt;
+							&lt;div id="linkitem-1.2" class="string" style="display:none;"&gt;
+								&lt;form action="http://hl7.org/fhir/"&gt;
+								Hidden Name
+								&lt;input id="linkitem-1.2-input" type="text"/&gt;
+							&lt;/form&gt;
+							&lt;/div&gt;
+							&lt;div id="linkitem-1.3" class="string"&gt;
+								&lt;form action="http://hl7.org/fhir/"&gt;
+									&lt;a href="http://hl7.org/fhir/"&gt;Middle Name&lt;/a&gt;
+									&lt;input id="linkitem-1.3-input" type="text"/&gt;
+								&lt;/form&gt;
+							&lt;/div&gt;
+							&lt;div id="linkitem-1.4" class="string"&gt;
+								&lt;form action="http://hl7.org/fhir/"&gt;
+								Last Name
+								&lt;input id="linkitem-1.4-input" type="text"/&gt;
+							&lt;/form&gt;
+							&lt;/div&gt;
+							&lt;div id="linkitem-1.5" class="string"&gt;
+								&lt;form action="http://hl7.org/fhir/"&gt;
+								Gender
+								&lt;input id="linkitem-1.5-f" type="radio" name="Gender" value="F" checked="checked"/&gt;(a) Female&#xA0;
+								&lt;input id="linkitem-1.5-m" type="radio" name="Gender" value="M"/&gt;Male&#xA0;
+								&lt;input id="linkitem-1.5-o" type="radio" name="Gender" value="O"/&gt;Other&#xA0;
+								&lt;input id="linkitem-1.5-u" type="radio" name="Gender" value="U"/&gt;Unknown&#xA0;
+							&lt;/form&gt;
+							&lt;/div&gt;
+						&lt;/div&gt;
+						&lt;div id="linkitem-2" class="group"&gt;
+							&lt;h2&gt;2 Medical History&lt;/h2&gt;
+							&lt;form action="http://hl7.org/fhir/"&gt;
+								&lt;table border="1"&gt;
+									&lt;col width="65%"/&gt;
+									&lt;col width="35%"/&gt;
+									&lt;tr&gt;
+										&lt;td&gt;
+											Diabetes
+										&lt;/td&gt;
+										&lt;td&gt;
+											Other Information
+										&lt;/td&gt;
+									&lt;/tr&gt;
+									&lt;tr&gt;
+										&lt;td&gt;
+											&lt;input id="linkitem-2.1-choice1" type="checkbox" name="diabetes-type1" value="diabetes-type1"/&gt;Type 1
+										&lt;/td&gt;
+										&lt;td&gt;
+											&lt;input id="linkitem-2.2-choice1" type="checkbox" name="otherinformation-hypertension" value="otherinformation-hypertension"/&gt;Hypertension
+										&lt;/td&gt;
+									&lt;/tr&gt;
+									&lt;tr&gt;
+										&lt;td&gt;
+											&lt;input id="linkitem-2.1-choice2" type="checkbox" name="diabetes-type2" value="diabetes-type2"/&gt;Type 2
+										&lt;/td&gt;
+										&lt;td&gt;
+											&lt;input id="linkitem-2.2-choice2" type="checkbox" name="otherinformation-smoker" value="otherinformation-smoker"/&gt;Smoker
+										&lt;/td&gt;
+									&lt;/tr&gt;
+								&lt;/table&gt;
+							&lt;/form&gt;
+						&lt;/div&gt;
+						&lt;div id="linkitem-3" class="group"&gt;
+							&lt;h2&gt;3 Slider demonstration&lt;/h2&gt;
+							&lt;div id="linkitem-3.1" class="slidecontainer"&gt;
+							Adjust the slider&lt;br/&gt;
+							&lt;form action="http://hl7.org/fhir/"&gt;
+								&lt;input type="range" min="0" max="100" value="50" step="10" class="slider" id="linkitem-3.1-slider"/&gt;
+							&lt;/form&gt;
+						&lt;/div&gt;
+						&lt;/div&gt;
+					&lt;/body&gt;
+				&lt;/html&gt;
+			</pre>
+		</div>
+	</text>
+	<!-- sdc-questionnaire-provenanceSignatureRequired - Is associated Provenance needed? -->
+	<extension xmlns="http://hl7.org/fhir" url="http://hl7.org/fhir/uv/sdc/StructureDefinition/sdc-questionnaire-provenanceSignatureRequired">
+		<valueBoolean value="false"/>
+	</extension>
+	<!-- -->
+	<!-- questionnaire-signatureRequired - Is signature needed? -->
+	<extension xmlns="http://hl7.org/fhir" url="http://hl7.org/fhir/StructureDefinition/questionnaire-signatureRequired">
+		<valueCodeableConcept>
+			<coding>
+				<system value="urn:iso-astm:E1762-95:2013"/>
+				<code value="1.2.840.10065.1.12.1.1"/>
+				<display value="Author's Signature"/>
+			</coding>
+			<text value="the signature of the primary or sole author of a health information document. There can be only one primary author of a health information document."/>
+		</valueCodeableConcept>
+	</extension>
+	<!-- -->
+	<!-- rendering-styleSensitive - Are styles important for processing? -->
+	<extension xmlns="http://hl7.org/fhir" url="http://hl7.org/fhir/StructureDefinition/rendering-styleSensitive">
+		<valueBoolean value="true"/>
+	</extension>
+	<!-- -->
+	<url value="http://hl7.org/fhir/uv/sdc/Questionnaire/questionnaire-sdc-profile-example-render"/>
+	<title value="Advanced Rendering Questionnaire Profile Demonstration">
+		<!-- title/rendering-style - Html style value-->
+		<extension xmlns="http://hl7.org/fhir" url="http://hl7.org/fhir/StructureDefinition/rendering-style">
+			<valueString value="color:blue;"/>
+		</extension>
+		<!-- -->
+		<!-- title/rendering-xhtml - String equivalent with HTML markup -->
+		<extension xmlns="http://hl7.org/fhir" url="http://hl7.org/fhir/StructureDefinition/rendering-xhtml">
+			<valueString value="&lt;b&gt;Advanced&lt;/b&gt; &lt;i&gt;Rendering&lt;/i&gt; &lt;u&gt;Questionnaire&lt;/u&gt; &lt;b&gt;&lt;i&gt;Demonstration&lt;/i&gt;&lt;/b&gt;"/>
+		</extension>
+		<!-- -->
+	</title>
+	<status value="draft"/>
+	<subjectType value="Patient"/>
+	<date value="2018-08"/>
+	<item>
+		<linkId value="1"/>
+		<code>
+			<system value="http://example.org/system/code/sections"/>
+			<code value="DEMOGRAPHICS"/>
+		</code>
+		<prefix value="1">
+			<!-- item/prefix/rendering-style - Html style value-->
+			<extension xmlns="http://hl7.org/fhir" url="http://hl7.org/fhir/StructureDefinition/rendering-style">
+				<valueString value="color:red;"/>
+			</extension>
+			<!-- -->
+			<!-- item/prefix/rendering-xhtml - String equivalent with HTML markup -->
+			<extension xmlns="http://hl7.org/fhir" url="http://hl7.org/fhir/StructureDefinition/rendering-xhtml">
+				<valueString value="&lt;u&gt;1&lt;/u&gt;"/>
+			</extension>
+			<!-- -->
+		</prefix>
+		<text value="Demographics"/>
+		<type value="group"/>
+		<item>
+			<!-- item/questionnaire-displayCategory - Purpose of rendered text -->
+			<extension xmlns="http://hl7.org/fhir" url="http://hl7.org/fhir/StructureDefinition/questionnaire-displayCategory">
+				<valueCodeableConcept>
+					<coding>
+						<system value="http://hl7.org/fhir/questionnaire-display-category"/>
+						<code value="instructions"/>
+						<display value="Instructions"/>
+					</coding>
+					<text value="The text provides guidance on how to populate or use a portion of the questionnaire (or the questionnaire as a whole)."/>
+				</valueCodeableConcept>
+			</extension>
+			<!-- -->
+			<linkId value="1.0"/>
+			<text value="Please complete the questionnaire">
+				<!-- item/text/rendering-style - Html style value-->
+				<extension xmlns="http://hl7.org/fhir" url="http://hl7.org/fhir/StructureDefinition/rendering-style">
+					<valueString value="color:green;"/>
+				</extension>
+				<!-- -->
+				<!-- item/text/rendering-xhtml - String equivalent with HTML markup -->
+				<extension xmlns="http://hl7.org/fhir" url="http://hl7.org/fhir/StructureDefinition/rendering-xhtml">
+					<valueString value="&lt;i&gt;Please&lt;/i&gt; complete the questionnaire"/>
+				</extension>
+				<!-- -->
+			</text>
+			<type value="display"/>
+		</item>
+		<item>
+			<!-- item/sdc-questionnaire-optionalDisplay - Can suppress from display to user -->
+			<extension xmlns="http://hl7.org/fhir" url="http://hl7.org/fhir/uv/sdc/StructureDefinition/sdc-questionnaire-optionalDisplay">
+				<valueBoolean value="true"/>
+			</extension>
+			<!-- -->
+			<linkId value="1.1"/>
+			<text value="First Name"/>
+			<type value="string"/>
+		</item>
+		<item>
+			<!-- item/questionnaire-hidden - Don't display to user -->
+			<extension xmlns="http://hl7.org/fhir" url="http://hl7.org/fhir/StructureDefinition/questionnaire-hidden">
+				<valueBoolean value="true"/>
+			</extension>
+			<!-- -->
+			<linkId value="1.2"/>
+			<text value="Hidden Name"/>
+			<type value="string"/>
+		</item>
+		<item>
+			<!-- item/questionnaire-supportLink - Supporting information -->
+			<extension xmlns="http://hl7.org/fhir" url="http://hl7.org/fhir/StructureDefinition/questionnaire-supportLink">
+				<valueUri value="http://hl7.org/fhir/"/>
+			</extension>
+			<!-- -->
+			<linkId value="1.3"/>
+			<text value="Middle Name"/>
+			<type value="string"/>
+		</item>
+		<item>
+			<!-- item/questionnaire-signatureRequired - Is signature needed? -->
+			<extension xmlns="http://hl7.org/fhir" url="http://hl7.org/fhir/StructureDefinition/questionnaire-signatureRequired">
+				<valueCodeableConcept>
+					<coding>
+						<system value="urn:iso-astm:E1762-95:2013"/>
+						<code value="1.2.840.10065.1.12.1.8"/>
+						<display value="Signature Witness Signature"/>
+					</coding>
+					<text value="the signature of a witness to any other signature."/>
+				</valueCodeableConcept>
+			</extension>
+			<!-- -->
+			<!-- item/sdc-questionnaire-usageMode - capture | display | display-non-empty | capture-display | capture-display-non-empty -->
+			<modifierExtension xmlns="http://hl7.org/fhir" url="http://hl7.org/fhir/StructureDefinition/questionnaire-usageMode">
+				<valueCode value="capture"/>
+			</modifierExtension>
+			<!-- -->
+			<linkId value="1.4"/>
+			<text value="Last Name"/>
+			<type value="string"/>
+		</item>
+		<item>
+			<!-- item/sdc-questionnaire-choiceOrientation - horizontal | vertical -->
+			<extension xmlns="http://hl7.org/fhir" url="http://hl7.org/fhir/StructureDefinition/questionnaire-choiceOrientation">
+				<valueCode value="horizontal"/>
+			</extension>
+			<!-- -->
+			<!-- item/questionnaire-itemControl - 	E.g. Fly-over, Table, Checkbox, Combo-box, Lookup, etc. -->
+			<extension xmlns="http://hl7.org/fhir" url="http://hl7.org/fhir/StructureDefinition/questionnaire-itemControl">
+				<valueCodeableConcept>
+					<coding>
+						<system value="http://hl7.org/fhir/questionnaire-item-control"/>
+						<code value="radio-button"/>
+						<display value="Radio Button"/>
+					</coding>
+					<text value="A control where choices are listed with a button beside them. The button can be toggled to select or de-select a given choice. Selecting one item deselects all others."/>
+				</valueCodeableConcept>
+			</extension>
+			<!-- -->
+			<linkId value="1.5"/>
+			<text value="Gender"/>
+			<type value="choice"/>
+			<answerOption>
+				<!-- item/answerOption/questionnaire-optionPrefix - E.g. "(a)", "1.", etc. -->
+				<extension xmlns="http://hl7.org/fhir" url="http://hl7.org/fhir/StructureDefinition/questionnaire-optionPrefix">
+					<valueString value="(a)"/>
+				</extension>
+				<!-- -->
+				<valueCoding>
+					<code value="F"/>
+					<display value="Female"/>
+				</valueCoding>
+				<initialSelected value="true"/>
+			</answerOption>
+			<answerOption>
+				<valueCoding>
+					<code value="M"/>
+					<display value="Male"/>
+				</valueCoding>
+			</answerOption>
+			<answerOption>
+				<valueCoding>
+					<code value="O"/>
+					<display value="Other"/>
+				</valueCoding>
+			</answerOption>
+			<answerOption>
+				<valueCoding>
+					<code value="U"/>
+					<display value="Unknown"/>
+				</valueCoding>
+			</answerOption>
+		</item>
+	</item>
+	<item>
+		<!-- item/questionnaire-itemControl - 	E.g. Fly-over, Table, Checkbox, Combo-box, Lookup, etc. -->
+		<extension xmlns="http://hl7.org/fhir" url="http://hl7.org/fhir/StructureDefinition/questionnaire-itemControl">
+			<valueCodeableConcept>
+				<coding>
+					<system value="http://hl7.org/fhir/questionnaire-item-control"/>
+					<code value="htable"/>
+					<display value="Horizontal Answer Table"/>
+				</coding>
+				<text value="Questions within the group are columns in the table with possible answers as rows. Used for 'choice' questions."/>
+			</valueCodeableConcept>
+		</extension>
+		<!-- -->
+		<linkId value="2"/>
+		<code>
+			<system value="http://example.org/system/code/sections"/>
+			<code value="FAMILYDOC"/>
+		</code>
+		<prefix value="2"/>
+		<text value="Family Physician Name"/>
+		<type value="group"/>
+		<item>
+			<!-- item/questionnaire-width  - Width of column for question
+			<extension xmlns="http://hl7.org/fhir" url="http://hl7.org/fhir/StructureDefinition/questionnaire-width">
+				<valueQuantity>
+					<value value="65"/>
+					<system value="http://unitsofmeasure.org"/>
+					<code value="%"/>
+				</valueQuantity>
+			</extension>
+			-->
+			<linkId value="2.1"/>
+			<text value="Diabetes"/>
+			<type value="choice"/>
+			<answerOption>
+				<valueCoding>
+					<code value="diabetes-type1"/>
+					<display value="Type 1"/>
+				</valueCoding>
+			</answerOption>
+			<answerOption>
+				<valueCoding>
+					<code value="diabetes-type2"/>
+					<display value="Type 2"/>
+				</valueCoding>
+			</answerOption>
+		</item>
+		<item>
+			<linkId value="2.2"/>
+			<text value="Other Information"/>
+			<type value="choice"/>
+			<answerOption>
+				<valueCoding>
+					<code value="otherinformation-hypertension"/>
+					<display value="Hypertension"/>
+				</valueCoding>
+			</answerOption>
+			<answerOption>
+				<valueCoding>
+					<code value="otherinformation-smoker"/>
+					<display value="Smoker"/>
+				</valueCoding>
+			</answerOption>
+		</item>
+	</item>
+	<item>
+		<linkId value="3"/>
+		<code>
+			<system value="http://example.org/system/code/sections"/>
+			<code value="SLIDER"/>
+		</code>
+		<prefix value="3"/>
+		<text value="Slider demonstration"/>
+		<type value="group"/>
+		<item>
+			<!-- item/questionnaire-itemControl - E.g. Fly-over, Table, Checkbox, Combo-box, Lookup, etc. -->
+			<extension xmlns="http://hl7.org/fhir" url="http://hl7.org/fhir/StructureDefinition/questionnaire-itemControl">
+				<valueCodeableConcept>
+					<coding>
+						<system value="http://hl7.org/fhir/questionnaire-item-control"/>
+						<code value="slider"/>
+						<display value="Slider"/>
+					</coding>
+					<text value="A control where an axis is displayed between the high and low values and the control can be visually manipulated to select a value anywhere on the axis."/>
+				</valueCodeableConcept>
+			</extension>
+			<!-- -->
+			<!-- item/questionnaire-sliderStepValue - Increment value for slider -->
+			<extension xmlns="http://hl7.org/fhir" url="http://hl7.org/fhir/StructureDefinition/questionnaire-sliderStepValue">
+				<valueInteger value="10"/>
+			</extension>
+			<!-- -->
+			<!-- minValue -->
+			<extension xmlns="http://hl7.org/fhir" url="http://hl7.org/fhir/StructureDefinition/minValue">
+				<valueInteger value="0"/>
+			</extension>
+			<!-- -->
+			<!-- maxValue -->
+			<extension xmlns="http://hl7.org/fhir" url="http://hl7.org/fhir/StructureDefinition/maxValue">
+				<valueInteger value="100"/>
+			</extension>
+			<!-- -->
+			<linkId value="3.1"/>
+			<text value="Adjust the slider"/>
+			<type value="integer"/>
+			<initial>
+				<valueInteger value="50"/>
+			</initial>
+		</item>
+	</item>
 </Questionnaire>

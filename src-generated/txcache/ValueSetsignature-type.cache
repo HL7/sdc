@@ -1,0 +1,43 @@
+-------------------------------------------------------------------------------------
+{"code" : {
+  "coding" : [{
+    "system" : "http://hl7.org/fhir/ValueSet/signature-type",
+    "code" : "1.2.840.10065.1.12.1.1",
+    "display" : "Author's Signature"
+  }],
+  "text" : "the signature of the primary or sole author of a health information document. There can be only one primary author of a health information document."
+}, "valueSet" :{
+  "resourceType" : "ValueSet",
+  "compose" : {
+    "include" : [{
+      "system" : "urn:iso-astm:E1762-95:2013"
+    }]
+  }
+}}####
+v: {
+  "display" : "",
+  "severity" : "error",
+  "error" : "Unable to provide support for code system http://hl7.org/fhir/ValueSet/signature-type"
+}
+-------------------------------------------------------------------------------------
+{"code" : {
+  "coding" : [{
+    "system" : "http://hl7.org/fhir/ValueSet/signature-type",
+    "code" : "1.2.840.10065.1.12.1.8",
+    "display" : "Signature Witness Signature"
+  }],
+  "text" : "the signature of a witness to any other signature."
+}, "valueSet" :{
+  "resourceType" : "ValueSet",
+  "compose" : {
+    "include" : [{
+      "system" : "urn:iso-astm:E1762-95:2013"
+    }]
+  }
+}}####
+v: {
+  "display" : "",
+  "severity" : "error",
+  "error" : "Unable to provide support for code system http://hl7.org/fhir/ValueSet/signature-type"
+}
+-------------------------------------------------------------------------------------

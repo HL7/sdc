@@ -157,7 +157,7 @@
   </code>
   <p>
     When performing the extraction process, the system will create a batch that will contain creates or updates of Observation instances.  It will go through the QuestionnaireResponse and identify 
-    all answers for which the corresponding Questionnaire item has a <a href="{{site.data.fhir.path}}extension-questionnaire-observationLinkPeriod.html">questionnaire-observationLinkPeriod</a> extension.  
+    all answers for which the corresponding Questionnaire item has a <a href="{{site.data.fhir.path}}extension-questionnaire-observationlinkperiod.html">questionnaire-observationLinkPeriod</a> extension.  
     For each of those it will then determine whether to create a new observation, update an existing observation or do nothing.  Guidelines for making this decision are as follows:
   </p>
   <table class="grid">
@@ -272,7 +272,7 @@
       data that is sliced or has fixed values for some properties.).  The definition SHALL have the full canonical URL of the resource (or profile) followed by '#' followed by the snapshot.path of the element
       the Questionnaire item corresponds to.</li>
     <li>If necessary, define <a href="{{site.data.fhir.path}}extension-questionnaire-hidden.html">questionnaire-hidden</a> items that have <code>Questionnaire.initialValue[x]</code> or that use the 
-      <a href="{{site.data.fhir.path}}extension-questionnaire-initialExpression.html">questionnaire-initialExpression</a> extension to define their content to use to populate resource elements that the
+      <a href="{{site.data.fhir.path}}extension-questionnaire-initialexpression.html">questionnaire-initialExpression</a> extension to define their content to use to populate resource elements that the
       user will not be filling in.  (The initialExpressions might in turn depend on <a href="{{site.data.fhir.path}}extension-variable.html">variable</a> and 
       <a href="{{site.data.fhir.path}}extension-questionnaire-context.html">questionnaire-context</a> extensions, used as described in the <a href="populate.html#path-pop">Path-based population</a>
       section.</li>

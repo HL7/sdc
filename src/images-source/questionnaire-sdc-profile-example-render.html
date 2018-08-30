@@ -1,0 +1,107 @@
+<?xml version="1.0"?>
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+	<head>
+		<meta content="text/html;charset=utf-8" http-equiv="Content-Type"/>
+		<title>Advanced Rendering Questionnaire Demonstration</title>
+	</head>
+	<body>
+		<div id="questionnaire-title">
+			<h1>
+				<span style="color:blue;">
+					<b>Advanced</b>
+					<i>Rendering</i>
+					<u>Questionnaire</u>
+					<b>
+						<i>Demonstration</i>
+					</b>
+				</span>
+			</h1>
+		</div>
+		<div id="linkitem-1" class="group">
+			<h2><span style="color:red;"><u>1</u></span> Demographics</h2>
+			<div id="linkitem-1.0" class="display">
+				<p>
+					<span style="color:green;"><i>Please</i> complete the questionnaire</span>
+				</p>
+				<!-- Instructions | The text provides guidance on how to populate or use a portion of the questionnaire (or the questionnaire as a whole). -->
+				<span id="linkitem-1.0-displayCategory" style="display:none;">Instructions | The text provides guidance on how to populate or use a portion of the questionnaire (or the questionnaire as a whole).</span>
+			</div>
+			<div id="linkitem-1.1" class="string">
+				<form action="http://hl7.org/fhir/">
+				First Name
+				<input id="linkitem-1.1-input" type="text"/>
+			</form>
+				<!-- optionalDisplay=true -->
+			</div>
+			<div id="linkitem-1.2" class="string" style="display:none;">
+				<form action="http://hl7.org/fhir/">
+				Hidden Name
+				<input id="linkitem-1.2-input" type="text"/>
+			</form>
+			</div>
+			<div id="linkitem-1.3" class="string">
+				<form action="http://hl7.org/fhir/">
+					<a href="http://hl7.org/fhir/">Middle Name</a>
+					<input id="linkitem-1.3-input" type="text"/>
+				</form>
+			</div>
+			<div id="linkitem-1.4" class="string">
+				<form action="http://hl7.org/fhir/">
+				Last Name
+				<input id="linkitem-1.4-input" type="text"/>
+			</form>
+			</div>
+			<div id="linkitem-1.5" class="string">
+				<form action="http://hl7.org/fhir/">
+				Gender
+				<input id="linkitem-1.5-f" type="radio" name="Gender" value="F" checked="checked"/>(a) Female&#xA0;
+				<input id="linkitem-1.5-m" type="radio" name="Gender" value="M"/>Male&#xA0;
+				<input id="linkitem-1.5-o" type="radio" name="Gender" value="O"/>Other&#xA0;
+				<input id="linkitem-1.5-u" type="radio" name="Gender" value="U"/>Unknown&#xA0;
+			</form>
+			</div>
+		</div>
+		<div id="linkitem-2" class="group">
+			<h2>2 Medical History</h2>
+			<form action="http://hl7.org/fhir/">
+				<table border="1">
+					<col width="65%"/>
+					<col width="35%"/>
+					<tr>
+						<td>
+							Diabetes
+						</td>
+						<td>
+							Other Information
+						</td>
+					</tr>
+					<tr>
+						<td>
+							<input id="linkitem-2.1-choice1" type="checkbox" name="diabetes-type1" value="diabetes-type1"/>Type 1
+						</td>
+						<td>
+							<input id="linkitem-2.2-choice1" type="checkbox" name="otherinformation-hypertension" value="otherinformation-hypertension"/>Hypertension
+						</td>
+					</tr>
+					<tr>
+						<td>
+							<input id="linkitem-2.1-choice2" type="checkbox" name="diabetes-type2" value="diabetes-type2"/>Type 2
+						</td>
+						<td>
+							<input id="linkitem-2.2-choice2" type="checkbox" name="otherinformation-smoker" value="otherinformation-smoker"/>Smoker
+						</td>
+					</tr>
+				</table>
+			</form>
+		</div>
+		<div id="linkitem-3" class="group">
+			<h2>3 Slider demonstration</h2>
+			<div id="linkitem-3.1" class="slidecontainer">
+			Adjust the slider<br/>
+			<form action="http://hl7.org/fhir/">
+				<input type="range" min="0" max="100" value="50" step="10" class="slider" id="linkitem-3.1-slider"/>
+			</form>
+		</div>
+		</div>
+	</body>
+</html>
