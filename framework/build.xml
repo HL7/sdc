@@ -48,6 +48,7 @@
     <fail unless="fhirspec" message="'fhirspec' must be defined in properties.txt. e.g. 'http://build.fhir.org/'"/>
     <fail unless="copyrightyear" message="'copyrightyear' must be defined in properties.txt. e.g. '2015+'"/>
     <echo file="${dir.data}/info.json">{
+  "ballotstatus":"${ballotstatus}",
   "copyrightyear":"${copyrightyear}",
   "excludexml":"${excludexml}",
   "excludejson":"${excludejson}",

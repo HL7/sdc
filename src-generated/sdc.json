@@ -3,10 +3,10 @@
   "tool": "jekyll",
   "logging": ["html"],
   "version": "",
-  "fixed-business-version": "3.4",
+  "fixed-business-version": "3.5",
   "html-template": "template-page.html",
   "license": "CC0-1.0",
-  "npm-name": "hl7.fhir.us.sdc",
+  "npm-name": "hl7.fhir.uv.sdc",
   "paths": {
     "resources": ["resources", "../src/resources", "../src/vocabulary", "../src/examples"],
     "pages": ["../src/images", "pages"],
@@ -15,7 +15,7 @@
     "txCache": "txcache",
     "history" : "history.html",
     "qa": "../temp/qa",
-    "specification": "http://build.fhir.org/"
+    "specification": "http://hl7.org/fhir/2016Sep/"
   },
   "suppressedWarningFile": "../src/ignoreWarnings.txt",
   "pre-process": [
@@ -89,7 +89,7 @@
       "format": "valueset-{{[id]}}.{{[fmt]}}.html"
     }
   },
-  "sct-edition" : "http://snomed.info/sct/731000124108",
+  "sct-edition" : "http://snomed.info/sct/900000000000207008",
   "no-inactive-codes" : "true",
   "canonicalBase": "http://hl7.org/fhir/uv/sdc",
   "source": "sdc.xml",
