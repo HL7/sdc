@@ -3,7 +3,7 @@
 {% include fragment-pagebegin.html %}
 {% assign excludexml = site.data.info.excludexml | downcase | slice: 0 %}
 {% assign excludejson = site.data.info.excludejson | downcase | slice: 0 %}
-<div class="col-12">
+<div style="counter-reset: section 9" class="col-12">
   <ul class="nav nav-tabs">
     <li>
       <a href="{{[id]}}.html">Content</a>
@@ -32,12 +32,7 @@
     </li>
   </ul>
   <a name="root"> </a>
-  <h4 class="self-link-parent">
-    <span class="sectioncount">{{site.data.pages[page.path].label}}.11</span> StructureDefinition: {{[title]}} - Turtle Profile 
-    <a title="link to here" class="self-link" href="{{[id]}}.profile.ttl.html#root">
-      <img src="assets/images/link.svg" class="self-link" width="20" height="20"/>
-    </a>
-  </h4>
+  <h2 id="root">StructureDefinition: {{[title]}} - Turtle Profile</h2>
   <p>Turtle representation of the {{[id]}} Profile.</p>
   {% assign intro = site.data.pages[page.path].intro %}
   {% if site.data.pages[page.path].intro != null %}

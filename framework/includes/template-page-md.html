@@ -9,6 +9,14 @@ h6:before{color:silver;counter-increment:more-detail;content:var(--heading-prefi
 <div class="col-12">
   <h2>{{site.data.pages[page.path].title}}</h2>
   {% assign path = page.path | split: '.html' %}
-  {% include {{path}}.xml %}
+  {% capture content %}
+  {::options parse_block_html="true" /}  
+<div class="markdown-toc" markdown="1">
+{:toc}
+* This will not be displayed
+</div>
+{% include {{path}}.md %}
+  {% endcapture %}
+  {{ content | markdownify }}
 </div>
 {% include fragment-pageend.html %}

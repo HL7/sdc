@@ -4,7 +4,7 @@
 {% assign excludexml = site.data.info.excludexml | downcase | slice: 0 %}
 {% assign excludejson = site.data.info.excludejson | downcase | slice: 0 %}
 {% assign excludettl = site.data.info.excludettl | downcase | slice: 0 %}
-<div class="col-12">
+<div style="counter-reset: section 4" class="col-12">
   <ul class="nav nav-tabs">
     <li>
       <a href="{{[id]}}.html">Content</a>
@@ -35,12 +35,7 @@
 {% endunless %}
   </ul>
   <a name="root"> </a>
-  <h4 class="self-link-parent">
-    <span class="sectioncount">{{site.data.pages[page.path].label}}.6</span> StructureDefinition: {{[title]}} - Detailed Descriptions 
-    <a title="link to here" class="self-link" href="{{[id]}}-definitions.html#root">
-      <img src="assets/images/link.svg" class="self-link" width="20" height="20"/>
-    </a>
-  </h4>
+  <h2 id="root">StructureDefinition: {{[title]}} - Detailed Descriptions</h2>
   <p>Definitions for the {{[id]}} Profile.</p>
   {% assign intro = site.data.pages[page.path].intro %}
   {% if site.data.pages[page.path].intro != null %}

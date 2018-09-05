@@ -3,7 +3,7 @@
 {% include fragment-pagebegin.html %}
 {% assign excludexml = site.data.info.excludexml | downcase | slice: 0 %}
 {% assign excludettl = site.data.info.excludettl | downcase | slice: 0 %}
-<div class="col-12">
+<div style="counter-reset: section 7" class="col-12">
   <ul class="nav nav-tabs">
     <li>
       <a href="extension-{{[id]}}.html">Content</a>
@@ -29,12 +29,7 @@
 {% endunless %}
   </ul>
   <a name="root"> </a>
-  <h4 class="self-link-parent">
-    <span class="sectioncount">{{site.data.pages[page.path].label}}.9</span> Extension: {{[title]}} - JSON Profile 
-    <a title="link to here" class="self-link" href="extension-{{[id]}}.profile.json.html#root">
-      <img src="assets/images/link.svg" class="self-link" width="20" height="20"/>
-    </a>
-  </h4>
+  <h2 id="root">Extension: {{[title]}} - JSON Profile</h2>
   <p>JSON representation of the {{[id]}} Extension</p>
   {% assign intro = site.data.pages[page.path].intro %}
   {% if site.data.pages[page.path].intro != null %}

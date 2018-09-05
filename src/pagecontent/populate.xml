@@ -338,10 +338,10 @@
     <li>For <a href="#mode">Full Population</a>, use the <a href="{{site.data.fhir.path}}extension-questionnaire-initialexpression.html">questionnaire-initialExpression</a> to cause the initial answer for
       the question to be set to the specified expression.  This should always be a FHIRPath that resolves to an item of the appropriate type unless the element has a type of Reference, in which case the
       expression can be a FHIR query - and the item will be populated with a reference to the resource.  Note, this extension SHALL NOT appear on groups.</li>
-    <li>For <a href="#mode">Choice Selection</a>, use the <a href="sdc-questionnaire-candidateExpression.html">sdc-questionnaire-candidateExpression</a> to make available a list of possible answers for
+    <li>For <a href="#mode">Choice Selection</a>, use the <a href="extension-sdc-questionnaire-candidateExpression.html">sdc-questionnaire-candidateExpression</a> to make available a list of possible answers for
       the user to choose from.  As with initialExpression, this should always be a FHIRPath that resolves to an item of the appropriate type unless the element has a type of Reference, in which case the
       expression can be a FHIR query - and any selected item will be populated with a reference to that resource</li>
-    <li>For <a href="#mode">Answer Context</a>, use the <a href="sdc-questionnaire-contextExpression.html">sdc-questionnaire-contextExpression</a> to indicate the resources to make available for display
+    <li>For <a href="#mode">Answer Context</a>, use the <a href="extension-sdc-questionnaire-contextExpression.html">sdc-questionnaire-contextExpression</a> to indicate the resources to make available for display
       to the user to aid in answering the question.  The information SHOULD be made available through user action (clicking a button or link) rather than being presented by default.</li>
   </ol>
   <p>
@@ -426,7 +426,7 @@
     <li>As done for the FHIRPath approach, include the <a href="{{site.data.fhir.path}}extension-questionnaire-context.html">questionnaire-context</a> extension to identify any contextual information that
       needs to be passed into the population process.  Typical contexts would be the Patient or Encounter resources in whose context the questionnaire is being completed, but other elements are also possible (e.g. an
       AdverseEvent if performing an adverse event report).  These 'context' elements will be available as FHIRPath variables for use in subsequent steps.</li>
-    <li>Include the <a href="sdc-questionnaire-sourceQueries.html">sdc-questionnaire-sourceQueries</a> extension which SHALL point to a <a href="{{site.data.fhir.path}}http.html#transaction">Batch</a> consisting
+    <li>Include the <a href="extension-sdc-questionnaire-sourceQueries.html">sdc-questionnaire-sourceQueries</a> extension which SHALL point to a <a href="{{site.data.fhir.path}}http.html#transaction">Batch</a> consisting
       of one or more queries to execute.  Prior to executing, FHIRPaths embedded in the queries (referring to elements from the questionnaire-context variables) SHALL be resolved.</li>
     <li>Include the <a href="{{site.data.fhir.path}}extension-questionnaire-sourcestructuremap.html">questionnaire-sourceStructureMap</a> extension.  This SHALL define a transform between the Bundle of Bundles that 
       will result from executing the sourceQueries Batch and a QuestionnaireResponse that complies with the Questionnaire</li>

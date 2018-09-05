@@ -365,3 +365,66 @@ a.to-top {
 ----------------------------------------------------------------------------------------*/
 /* D-I-D AREA
 ----------------------------------------------------------------------------------------*/
+
+ul.markdown-toc
+{
+  margin: 4px;
+  padding: 4px;
+  float: right;
+  z-index: 10;
+  width: 150px;
+  background-color: #ffeb7e;
+  border: 1px solid navy;
+}
+
+ul.markdown-toc p
+{
+  font-size: 10px;
+  font-weight: bold;
+  margin: 5px;
+  padding: 0px;
+}
+
+ul.markdown-toc p.link
+{
+  font-size: 10px;
+  padding-left: 8px;
+  margin: 0px;
+}
+
+div.markdown-toc
+{
+  margin: 4px;
+  padding: 4px;
+  float: right;
+  z-index: 10;
+  width: 150px;
+  background-color: #ffeb7e;
+  border: 1px solid navy;
+}
+
+div.markdown-toc p
+{
+  font-size: 10px;
+  font-weight: bold;
+  margin: 5px;
+  padding: 0px;
+}
+
+div.markdown-toc p.link
+{
+  font-size: 10px;
+  padding-left: 8px;
+  margin: 0px;
+}
+/* Common content for section numbering */
+body{counter-reset:section}
+h2{counter-reset:sub-section}
+h3{counter-reset:composite}
+h4{counter-reset:detail}
+h5{counter-reset:more-detail}
+h2:before{color:silver;counter-increment:section;content:var(--heading-prefix) "." counter(section) " ";}
+h3:before{color:silver;counter-increment:sub-section;content:var(--heading-prefix) "." counter(section) "." counter(sub-section) " ";}
+h4:before{color:silver;counter-increment:composite;content:var(--heading-prefix) "." counter(section) "." counter(sub-section) "." counter(composite) " ";}
+h5:before{color:silver;counter-increment:detail;content:var(--heading-prefix) "." counter(section) "." counter(sub-section) "." counter(composite) "." counter(detail) " ";}
+h6:before{color:silver;counter-increment:more-detail;content:var(--heading-prefix) "." counter(section) "." counter(sub-section) "." counter(composite) "." counter(detail) "." counter(more-detail)" ";}

@@ -24,11 +24,8 @@
 </p>
 </div>
 <p>This page provides a list of the FHIR artifacts defined as part of this implementation guide.</p>
-<h2 class="self-link-parent">
-<a name="1"> </a>Conformance Statements <a href="#1" title="link to here" class="self-link">
-<img src="assets/images/link.svg" width="20" class="self-link" height="20"/>
-</a>
-</h2>
+<a name="1"> </a>
+<h3>Conformance Statements </h3>
 <p>Capabilities of systems claiming to be conformant to the SDC implementation guide</p>
 <p>
 <table>
@@ -78,11 +75,8 @@
 </tbody>
 </table>
 </p>
-<h2 class="self-link-parent">
-<a name="2"> </a>Profiles <a href="#2" title="link to here" class="self-link">
-<img src="assets/images/link.svg" width="20" class="self-link" height="20"/>
-</a>
-</h2>
+<a name="2"> </a>
+<h3>Profiles </h3>
 <p>Constraints on FHIR resources to be adhered to as part of the SDC implementation guide</p>
 <p>
 <table>
@@ -167,53 +161,50 @@
 </tbody>
 </table>
 </p>
-<h2 class="self-link-parent">
-<a name="3"> </a>Extensions <a href="#3" title="link to here" class="self-link">
-<img src="assets/images/link.svg" width="20" class="self-link" height="20"/>
-</a>
-</h2>
+<a name="3"> </a>
+<h3>Extensions </h3>
 <p>Extensions defined as part of the SDC implementation guide</p>
 <p>
 <table>
 <tbody>
 <tr>
 <td style="column-width:30%">
-<a href="sdc-questionnaire-endpoint.html">
+<a href="extension-sdc-questionnaire-endpoint.html">
                         •  Endpoint</a>
 </td>
 <td>The base URL for the server to which questionnaire response associated with this questionnaire should be submitted</td>
 </tr>
 <tr>
 <td style="column-width:30%">
-<a href="sdc-questionnaire-optionalDisplay.html">
+<a href="extension-sdc-questionnaire-optionalDisplay.html">
                         •  Optional Display?</a>
 </td>
 <td>If set to true, it means that the system displaying the form (or the individual encoding the form for data capture) can choose to omit the item from display to the user.</td>
 </tr>
 <tr>
 <td style="column-width:30%">
-<a href="sdc-questionnaire-provenanceSignatureRequired.html">
+<a href="extension-sdc-questionnaire-provenanceSignatureRequired.html">
                         •  Provenance Signature Required?</a>
 </td>
 <td>If true, indicates that QuestionnaireResponse instances created against this questionnaire must have an associated Provenance record.</td>
 </tr>
 <tr>
 <td style="column-width:30%">
-<a href="sdc-questionnaire-sourceQueries.html">
+<a href="extension-sdc-questionnaire-sourceQueries.html">
                         •  Source queries for population mapping</a>
 </td>
 <td>A Batch Bundle containing a set of queries that should be executed to provide source data for a StructureMap to create a populated QuestionnaireRsponse</td>
 </tr>
 <tr>
 <td style="column-width:30%">
-<a href="sdc-questionnaire-candidateExpression.html">
+<a href="extension-sdc-questionnaire-candidateExpression.html">
                         •  Candidate Answers Expression</a>
 </td>
 <td>A FHIRPath expression or FHIR Query that resolves to a list of candidate answers for the question item or that establishes context for a group item</td>
 </tr>
 <tr>
 <td style="column-width:30%">
-<a href="sdc-questionnaire-contextExpression.html">
+<a href="extension-sdc-questionnaire-contextExpression.html">
                         •  Answer Context Expression</a>
 </td>
 <td>A FHIR Query that resolves to one or more resources that can be displayed to the user to help provide context for answering a question</td>
@@ -221,11 +212,8 @@
 </tbody>
 </table>
 </p>
-<h2 class="self-link-parent">
-<a name="4"> </a>Terminology <a href="#4" title="link to here" class="self-link">
-<img src="assets/images/link.svg" width="20" class="self-link" height="20"/>
-</a>
-</h2>
+<a name="4"> </a>
+<h3>Terminology </h3>
 <p>ValueSets (and Code Systems) defined for use within the SDC implementation guide</p>
 <p>
 <table>
@@ -240,11 +228,8 @@
 </tbody>
 </table>
 </p>
-<h2 class="self-link-parent">
-<a name="5"> </a>Operation Definitions <a href="#5" title="link to here" class="self-link">
-<img src="assets/images/link.svg" width="20" class="self-link" height="20"/>
-</a>
-</h2>
+<a name="5"> </a>
+<h3>Operation Definitions </h3>
 <p>Additional operations defined for use within the SDC implementation guide</p>
 <p>
 <table>
@@ -273,11 +258,8 @@
 </tbody>
 </table>
 </p>
-<h2 class="self-link-parent">
-<a name="6"> </a>Search Parameters <a href="#6" title="link to here" class="self-link">
-<img src="assets/images/link.svg" width="20" class="self-link" height="20"/>
-</a>
-</h2>
+<a name="6"> </a>
+<h3>Search Parameters </h3>
 <p>Additional search parameters defined for use within the SDC implementation guide</p>
 <p>
 <table>
@@ -292,11 +274,8 @@
 </tbody>
 </table>
 </p>
-<h2 class="self-link-parent">
-<a name="7"> </a>Example(s) <a href="#7" title="link to here" class="self-link">
-<img src="assets/images/link.svg" width="20" class="self-link" height="20"/>
-</a>
-</h2>
+<a name="7"> </a>
+<h3>Example(s) </h3>
 <p>Example(s) showing the use of the SDC profiles</p>
 <p>
 <table>
@@ -352,7 +331,7 @@
 </tr>
 <tr>
 <td style="column-width:30%">
-<a href="valueset-sdc-profile-example.html">
+<a href="sdc-profile-example.html">
                         •  SDC-ValueSet AHRQ_Medication_Q1</a>
 </td>
 <td>The answer list for question 1 on the AHRQ 'Medication or Other Substance' form</td>
