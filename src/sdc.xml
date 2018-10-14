@@ -19,13 +19,14 @@
       <code value="001"/>
     </coding>
   </jurisdiction>
+  <packageId value="hl7.fhir.uv.sdc"/>
   <fhirVersion value="3.6.0"/>
   <definition>
-    <package id="conformance">
+    <grouping id="conformance">
       <name value="Conformance Statements"/>
       <description value="Capabilities of systems claiming to be conformant to the SDC implementation guide"/>
-    </package>
-    <package id="profiles">
+    </grouping>
+    <grouping id="profiles">
       <extension url="http://hl7.org/fhir/tools-profile-spreadsheet">
         <valueUri value="codesystem-sdc-profile-spreadsheet.xml"/>
       </extension>
@@ -43,27 +44,27 @@
       </extension>
       <name value="Profiles"/>
       <description value="Constraints on FHIR resources to be adhered to as part of the SDC implementation guide"/>
-    </package>
-    <package id="extensions">
+    </grouping>
+    <grouping id="extensions">
       <name value="Extensions"/>
       <description value="Extensions defined as part of the SDC implementation guide"/>
-    </package>
-    <package id="terminology">
+    </grouping>
+    <grouping id="terminology">
       <name value="Terminology"/>
       <description value="ValueSets (and Code Systems) defined for use within the SDC implementation guide"/>
-    </package>
-    <package id="operations">
+    </grouping>
+    <grouping id="operations">
       <name value="Operation Definitions"/>
       <description value="Additional operations defined for use within the SDC implementation guide"/>
-    </package>
-    <package id="search">
+    </grouping>
+    <grouping id="search">
       <name value="Search Parameters"/>
       <description value="Additional search parameters defined for use within the SDC implementation guide"/>
-    </package>
-    <package id="examples">
+    </grouping>
+    <grouping id="examples">
       <name value="Example(s)"/>
       <description value="Example(s) showing the use of the SDC profiles"/>
-    </package>
+    </grouping>
     <resource>
       <reference>
         <reference value="CapabilityStatement/sdc-form-designer"/>
@@ -71,7 +72,7 @@
       <name value="SDC Form Designer"/>
       <description value="SDC Form authoring system"/>
       <exampleBoolean value="true"/>
-      <package value="conformance"/>
+      <groupingId value="conformance"/>
     </resource>
     <resource>
       <reference>
@@ -80,7 +81,7 @@
       <name value="SDC Form Response Manager"/>
       <description value="SDC Form response management system"/>
       <exampleBoolean value="true"/>
-      <package value="conformance"/>
+      <groupingId value="conformance"/>
     </resource>
     <resource>
       <reference>
@@ -89,7 +90,7 @@
       <name value="SDC Form Filler"/>
       <description value="SDC System for completing forms"/>
       <exampleBoolean value="true"/>
-      <package value="conformance"/>
+      <groupingId value="conformance"/>
     </resource>
     <resource>
       <reference>
@@ -98,7 +99,7 @@
       <name value="SDC Form Manager"/>
       <description value="SDC Repository for forms"/>
       <exampleBoolean value="true"/>
-      <package value="conformance"/>
+      <groupingId value="conformance"/>
     </resource>
     <resource>
       <reference>
@@ -107,7 +108,7 @@
       <name value="SDC Form Receiver"/>
       <description value="SDC Repository for completed forms"/>
       <exampleBoolean value="true"/>
-      <package value="conformance"/>
+      <groupingId value="conformance"/>
     </resource>
     <resource>
       <reference>
@@ -116,7 +117,7 @@
       <name value="SDC Form Archiver"/>
       <description value="SDC System for archiving and retrieving the completed forms"/>
       <exampleBoolean value="true"/>
-      <package value="conformance"/>
+      <groupingId value="conformance"/>
     </resource>
     <resource>
       <extension url="http://hl7.org/fhir/StructureDefinition/implementationguide-spreadsheet-profile">
@@ -128,7 +129,7 @@
       <name value="SDC Questionnaire"/>
       <description value="Sets expectations for SDC-conformant systems around how to create questionnaires"/>
       <exampleBoolean value="false"/>
-      <package value="profiles"/>
+      <groupingId value="profiles"/>
     </resource>
     <resource>
       <extension url="http://hl7.org/fhir/StructureDefinition/implementationguide-spreadsheet-profile">
@@ -140,7 +141,7 @@
       <name value="Advanced Rendering Questionnaire"/>
       <description value="Defines additional capabilities for controlling the rendering of the questionnaire."/>
       <exampleBoolean value="false"/>
-      <package value="profiles"/>
+      <groupingId value="profiles"/>
     </resource>
     <resource>
       <extension url="http://hl7.org/fhir/StructureDefinition/implementationguide-spreadsheet-profile">
@@ -152,7 +153,7 @@
       <name value="Advanced Behavior Questionnaire"/>
       <description value="Defines additional capabilities for controlling data entry and calculating values within the questionnaire."/>
       <exampleBoolean value="false"/>
-      <package value="profiles"/>
+      <groupingId value="profiles"/>
     </resource>
     <resource>
       <extension url="http://hl7.org/fhir/StructureDefinition/implementationguide-spreadsheet-profile">
@@ -164,7 +165,7 @@
       <name value="Populateable Questionnaire"/>
       <description value="Defines elements that support auto-population and pre-population of questionnaires"/>
       <exampleBoolean value="false"/>
-      <package value="profiles"/>
+      <groupingId value="profiles"/>
     </resource>
     <resource>
       <extension url="http://hl7.org/fhir/StructureDefinition/implementationguide-spreadsheet-profile">
@@ -176,7 +177,7 @@
       <name value="Extractable Questionnaire"/>
       <description value="Defines elements that allow conversion of a QuestionnaireResponse to a FHIR resource or Bundle of FHIR resources"/>
       <exampleBoolean value="false"/>
-      <package value="profiles"/>
+      <groupingId value="profiles"/>
     </resource>
     <resource>
       <extension url="http://hl7.org/fhir/StructureDefinition/implementationguide-spreadsheet-profile">
@@ -188,7 +189,7 @@
       <name value="Adaptive Questionnaire"/>
       <description value="Defines the metadata that should be present to embedding a adaptive Questionnaire as part of a QuestionnaireResponse"/>
       <exampleBoolean value="false"/>
-      <package value="profiles"/>
+      <groupingId value="profiles"/>
     </resource>
     <resource>
       <extension url="http://hl7.org/fhir/StructureDefinition/implementationguide-spreadsheet-profile">
@@ -200,7 +201,7 @@
       <name value="Adaptive Questionnaire - search"/>
       <description value="Defines the metadata that should be present to support searching for adaptive questionnaires."/>
       <exampleBoolean value="false"/>
-      <package value="profiles"/>
+      <groupingId value="profiles"/>
     </resource>
     <resource>
       <extension url="http://hl7.org/fhir/StructureDefinition/implementationguide-spreadsheet-profile">
@@ -212,7 +213,7 @@
       <name value="SDC Questionnaire Response"/>
       <description value="Sets expectations for SDC-conformant systems around how to create responses to questionnaires."/>
       <exampleBoolean value="false"/>
-      <package value="profiles"/>
+      <groupingId value="profiles"/>
     </resource>
     <resource>
       <extension url="http://hl7.org/fhir/StructureDefinition/implementationguide-spreadsheet-profile">
@@ -224,7 +225,7 @@
       <name value="Adaptive Questionnaire Response"/>
       <description value="Represents a response to a questionnaire that is dynamically built as each question is answered."/>
       <exampleBoolean value="false"/>
-      <package value="profiles"/>
+      <groupingId value="profiles"/>
     </resource>
     <resource>
       <extension url="http://hl7.org/fhir/StructureDefinition/implementationguide-spreadsheet-profile">
@@ -236,7 +237,7 @@
       <name value="SDC Value Set"/>
       <description value="Sets expectations for SDC-conformant systems around the definition of value sets for use with questionnaires."/>
       <exampleBoolean value="false"/>
-      <package value="profiles"/>
+      <groupingId value="profiles"/>
     </resource>
     <resource>
       <extension url="http://hl7.org/fhir/StructureDefinition/implementationguide-spreadsheet-profile">
@@ -248,7 +249,7 @@
       <name value="SDC Code System"/>
       <description value="Sets expectations for SDC-conformant systems around the definition of code systems to provide values for choices within questionnaires."/>
       <exampleBoolean value="false"/>
-      <package value="profiles"/>
+      <groupingId value="profiles"/>
     </resource>
 <!--    <resource>
       <extension url="http://hl7.org/fhir/StructureDefinition/implementationguide-spreadsheet-profile">
@@ -260,7 +261,7 @@
       <name value="SDC Data Element"/>
       <description value="Sets expectations for SDC-conformant systems around the creation of data elements that support population of questionnaires."/>
       <exampleBoolean value="false"/>
-      <package value="profiles"/>
+      <groupingId value="profiles"/>
     </resource>-->
     <resource>
       <reference>
@@ -269,7 +270,7 @@
       <name value="Endpoint"/>
       <description value="The base URL for the server to which questionnaire response associated with this questionnaire should be submitted"/>
       <exampleBoolean value="false"/>
-      <package value="extensions"/>
+      <groupingId value="extensions"/>
     </resource>
     <resource>
       <reference>
@@ -278,7 +279,7 @@
       <name value="Optional Display?"/>
       <description value="If set to true, it means that the system displaying the form (or the individual encoding the form for data capture) can choose to omit the item from display to the user."/>
       <exampleBoolean value="false"/>
-      <package value="extensions"/>
+      <groupingId value="extensions"/>
     </resource>
     <resource>
       <reference>
@@ -287,7 +288,7 @@
       <name value="Provenance Signature Required?"/>
       <description value="If true, indicates that QuestionnaireResponse instances created against this questionnaire must have an associated Provenance record."/>
       <exampleBoolean value="false"/>
-      <package value="extensions"/>
+      <groupingId value="extensions"/>
     </resource>
     <resource>
       <reference>
@@ -296,7 +297,7 @@
       <name value="Source queries for population mapping"/>
       <description value="A Batch Bundle containing a set of queries that should be executed to provide source data for a StructureMap to create a populated QuestionnaireRsponse"/>
       <exampleBoolean value="false"/>
-      <package value="extensions"/>
+      <groupingId value="extensions"/>
     </resource>
     <resource>
       <reference>
@@ -305,7 +306,7 @@
       <name value="Candidate Answers Expression"/>
       <description value="A FHIRPath expression or FHIR Query that resolves to a list of candidate answers for the question item or that establishes context for a group item"/>
       <exampleBoolean value="false"/>
-      <package value="extensions"/>
+      <groupingId value="extensions"/>
     </resource>
     <resource>
       <reference>
@@ -314,7 +315,7 @@
       <name value="Answer Context Expression"/>
       <description value="A FHIR Query that resolves to one or more resources that can be displayed to the user to help provide context for answering a question"/>
       <exampleBoolean value="false"/>
-      <package value="extensions"/>
+      <groupingId value="extensions"/>
     </resource>
 <!--    <resource>
       <extension url="http://hl7.org/fhir/StructureDefinition/implementationguide-spreadsheet-profile">
@@ -326,7 +327,7 @@
       <name value="DEX mapping language mime types"/>
       <description value="The list of mime types that identify mapping languages supported by DEX."/>
       <exampleBoolean value="false"/>
-      <package value="terminology"/>
+      <groupingId value="terminology"/>
     </resource>-->
     <resource>
       <reference>
@@ -335,7 +336,7 @@
       <name value="Questionnaire Context Species"/>
       <description value="Species for defining the context of Questionnaires"/>
       <exampleBoolean value="false"/>
-      <package value="terminology"/>
+      <groupingId value="terminology"/>
     </resource>
     <resource>
       <reference>
@@ -344,7 +345,7 @@
       <name value="Adaptive questionnaire next question"/>
       <description value="Returns the next question or set of questions for an adaptive questionnaire"/>
       <exampleBoolean value="true"/>
-      <package value="operations"/>
+      <groupingId value="operations"/>
     </resource>
     <resource>
       <reference>
@@ -353,7 +354,7 @@
       <name value="Questionnaire process response"/>
       <description value="Allows submission of a QuestionnaireRespone for 'processing' by the target server"/>
       <exampleBoolean value="true"/>
-      <package value="operations"/>
+      <groupingId value="operations"/>
     </resource>
     <resource>
       <reference>
@@ -362,7 +363,7 @@
       <name value="Questionnaire response extract to resource(s)"/>
       <description value="Converts a QuestionnaireResponse to a clinical or administrative resource or a Transaction Bundle of them"/>
       <exampleBoolean value="true"/>
-      <package value="operations"/>
+      <groupingId value="operations"/>
     </resource>
     <resource>
       <reference>
@@ -371,7 +372,7 @@
       <name value="Questionnaire Item definition"/>
       <description value="Allows searching by 'definition' element within a Questionnaire's items"/>
       <exampleBoolean value="true"/>
-      <package value="search"/>
+      <groupingId value="search"/>
     </resource>
     <resource>
       <reference>
@@ -380,7 +381,7 @@
       <name value="SDC-Advanced Rendering"/>
       <description value="Example showing most of the advanced rendering capabilities of SDC"/>
       <exampleCanonical value="http://hl7.org/fhir/uv/sdc/StructureDefinition/sdc-questionnaire-render"/>
-      <package value="examples"/>
+      <groupingId value="examples"/>
     </resource>
     <resource>
       <reference>
@@ -389,7 +390,7 @@
       <name value="SDC - Combination"/>
       <description value="Set of several examples - medication, AHRQ and NCI forms"/>
       <exampleCanonical value="http://hl7.org/fhir/uv/sdc/StructureDefinition/sdc-questionnaire"/>
-      <package value="examples"/>
+      <groupingId value="examples"/>
     </resource>
     <resource>
       <reference>
@@ -398,7 +399,7 @@
       <name value="SDC-Pathology"/>
       <description value="Cancer pathology questionnaire with flow-control extensions"/>
       <exampleCanonical value="http://hl7.org/fhir/uv/sdc/StructureDefinition/sdc-questionnaire"/>
-      <package value="examples"/>
+      <groupingId value="examples"/>
     </resource>
     <resource>
       <reference>
@@ -407,7 +408,7 @@
       <name value="SDC-LOINC AHRQ"/>
       <description value="LOINC perspective on the AHRQ form found in the SDC - Combination set of questionnaires"/>
       <exampleCanonical value="http://hl7.org/fhir/uv/sdc/StructureDefinition/sdc-questionnaire"/>
-      <package value="examples"/>
+      <groupingId value="examples"/>
     </resource>
     <resource>
       <reference>
@@ -416,7 +417,7 @@
       <name value="SDC-LOINC USSG Family History"/>
       <description value="LOINC US Surgeon General family history including data elements and value sets."/>
       <exampleCanonical value="http://hl7.org/fhir/uv/sdc/StructureDefinition/sdc-questionnaire-populate"/>
-      <package value="examples"/>
+      <groupingId value="examples"/>
     </resource>
     <resource>
       <reference>
@@ -425,7 +426,7 @@
       <name value="SDC - Response to Diagnosis NCI Standard Template"/>
       <description value="Responses to the questionnaire found in the SDC - Combination list of questionnaires"/>
       <exampleCanonical value="http://hl7.org/fhir/uv/sdc/StructureDefinition/sdc-questionnaireresponse"/>
-      <package value="examples"/>
+      <groupingId value="examples"/>
     </resource>
     <resource>
       <reference>
@@ -434,7 +435,7 @@
       <name value="SDC-LOINC USSG Family History Response"/>
       <description value="Example response to the SDC-LOINC USSG Family History questionnaire"/>
       <exampleCanonical value="http://hl7.org/fhir/uv/sdc/StructureDefinition/sdc-questionnaireresponse"/>
-      <package value="examples"/>
+      <groupingId value="examples"/>
     </resource>
     <resource>
       <reference>
@@ -443,7 +444,7 @@
       <name value="SDC-ValueSet AHRQ_Medication_Q1"/>
       <description value="The answer list for question 1 on the AHRQ &#39;Medication or Other Substance&#39; form"/>
       <exampleCanonical value="http://hl7.org/fhir/uv/sdc/StructureDefinition/sdc-valueset"/>
-      <package value="examples"/>
+      <groupingId value="examples"/>
     </resource>
 <!--    <resource>
       <reference>
@@ -452,7 +453,7 @@
       <name value="C-CDA-Gender"/>
       <description value="FHIR Gender with mapping to C-CDA"/>
       <exampleCanonical value="http://hl7.org/fhir/uv/sdc/StructureDefinition/sdc-dataelement"/>
-      <package value="examples"/>
+      <groupingId value="examples"/>
     </resource>-->
     <page>
       <nameUrl value="toc.html"/>

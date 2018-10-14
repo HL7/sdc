@@ -8,7 +8,7 @@
     <div>
       <div class="itoc">
         <p>Artifact Packages</p>
-        <xsl:for-each select="f:package|f:definition/f:package">
+        <xsl:for-each select="f:grouping|f:package|f:definition/f:package">
           <p class="link">-
             <a href="#{position()}">
               <xsl:value-of select="f:name/@value"/>
@@ -17,10 +17,10 @@
         </xsl:for-each>
       </div>
       <p>This page provides a list of the FHIR artifacts defined as part of this implementation guide.</p>
-      <xsl:for-each select="f:package|f:definition/f:package">
+      <xsl:for-each select="f:package|f:definition/f:package|f:definition/f:grouping">
         <xsl:variable name="relevantResources">
           <xsl:for-each select="f:resource[not(f:extension[@url='http://hl7.org/fhir/StructureDefinition/tools-alternateVersion'] or $version) or (f:extension[@url='http://hl7.org/fhir/StructureDefinition/tools-alternateVersion']/f:valueCode/@value=$version)]|
-          parent::f:definition/f:resource[f:package/@value=current()/@id][not(f:extension[@url='http://hl7.org/fhir/StructureDefinition/tools-alternateVersion'] or $version) or (f:extension[@url='http://hl7.org/fhir/StructureDefinition/tools-alternateVersion']/f:valueCode/@value=$version)]">content</xsl:for-each>
+          parent::f:definition/f:resource[f:package/@value=current()/@id or f:groupingId/@value=current()/@id][not(f:extension[@url='http://hl7.org/fhir/StructureDefinition/tools-alternateVersion'] or $version) or (f:extension[@url='http://hl7.org/fhir/StructureDefinition/tools-alternateVersion']/f:valueCode/@value=$version)]">content</xsl:for-each>
         </xsl:variable>
         <xsl:if test="$relevantResources">
           <a name="{position()}">
@@ -34,7 +34,7 @@
       </xsl:for-each>
     </div>
   </xsl:template>
-  <xsl:template match="f:package">
+  <xsl:template match="f:package|f:grouping">
     <p>
       <xsl:value-of select="f:description/@value"/>
     </p>
@@ -42,7 +42,7 @@
       <table>
         <tbody>
           <xsl:for-each select="f:resource[not(f:extension[@url='http://hl7.org/fhir/StructureDefinition/tools-alternateVersion'] or $version) or (f:extension[@url='http://hl7.org/fhir/StructureDefinition/tools-alternateVersion']/f:valueCode/@value=$version)]
-          |parent::f:definition/f:resource[f:package/@value=current()/@id][not(f:extension[@url='http://hl7.org/fhir/StructureDefinition/tools-alternateVersion'] or $version) or (f:extension[@url='http://hl7.org/fhir/StructureDefinition/tools-alternateVersion']/f:valueCode/@value=$version)]">
+          |parent::f:definition/f:resource[f:package/@value=current()/@id or f:groupingId/@value=current()/@id][not(f:extension[@url='http://hl7.org/fhir/StructureDefinition/tools-alternateVersion'] or $version) or (f:extension[@url='http://hl7.org/fhir/StructureDefinition/tools-alternateVersion']/f:valueCode/@value=$version)]">
             <tr>
               <td style="column-width:30%">
                 <xsl:choose>
@@ -54,7 +54,7 @@
                         <xsl:when test="$type='ValueSet' and not(f:example/@value='true' or f:exampleBoolean/@value='true' or f:exampleReference or f:exampleCanonical or f:purpose/@value='example')">
                           <xsl:value-of select="concat('valueset-', $id, '.html')"/>
                         </xsl:when>
-                        <xsl:when test="starts-with($id, 'ext') or contains(f:package/@value, 'xtension')">
+                        <xsl:when test="starts-with($id, 'ext') or contains(f:package/@value, 'xtension') or contains(f:groupingId/@value, 'xtension')">
                           <xsl:value-of select="concat('extension-', $id, '.html')"/>
                         </xsl:when>
                         <xsl:otherwise>
@@ -92,12 +92,12 @@
       </table>
     </p>
   </xsl:template>
-  <xsl:template match="f:package" mode="first">
+  <xsl:template match="f:package|f:grouping" mode="first">
     <tr>
-      <xsl:apply-templates select=".|following-sibling::f:package[position() &lt; $columns]" mode="next"/>
-      <xsl:if test="count(following-sibling::f:package) &lt; ($columns - 1)">
+      <xsl:apply-templates select=".|following-sibling::*[self::f:package or self::grouping][position() &lt; $columns]" mode="next"/>
+      <xsl:if test="count(following-sibling::*[self::f:package or self::f:grouping]) &lt; ($columns - 1)">
         <xsl:call-template name="emptycell">
-          <xsl:with-param name="cells" select="$columns - 1 - count(following-sibling::f:package)"/>
+          <xsl:with-param name="cells" select="$columns - 1 - count(following-sibling::*[self::f:package or self::grouping])"/>
         </xsl:call-template>
       </xsl:if>
     </tr>
@@ -105,7 +105,7 @@
       <td>&#160;</td>
     </tr>
   </xsl:template>
-  <xsl:template match="f:package" mode="next">
+  <xsl:template match="f:package|f:grouping" mode="next">
     <td style="column-width:30%">
       <a href="{translate(concat('#',name/@value), ' ', '_')}">
         <xsl:number/>. <xsl:value-of select="f:name/@value"/> &#160;&#160;&#160;&#9654;</a>

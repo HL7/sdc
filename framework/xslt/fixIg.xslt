@@ -62,7 +62,7 @@
     </xsl:if>
   </xsl:template>
   <xsl:template mode="STU3" match="f:definition">
-    <xsl:apply-templates mode="STU3" select="f:package|descendant::f:page[f:nameUrl/@value='STU3/artifacts.html'][1]"/>
+    <xsl:apply-templates mode="STU3" select="f:package|f:grouping|descendant::f:page[f:nameUrl/@value='STU3/artifacts.html'][1]"/>
   </xsl:template>
   <xsl:template match="f:resource">
     <xsl:if test="not(f:extension[@url='http://hl7.org/fhir/StructureDefinition/implementationguide-spreadsheet-profile' and f:valueBoolean/@value=true()])">
@@ -161,7 +161,7 @@
           <xsl:variable name="id" select="substring-after(*[self::f:sourceReference or self::f:reference]/f:reference/@value, '/')"/>
           <xsl:variable name="value">
             <xsl:choose>
-              <xsl:when test="starts-with($id, 'ext-') or contains(f:package/@value, 'xtension')">
+              <xsl:when test="starts-with($id, 'ext-') or contains(f:package/@value, 'xtension') or contains(f:groupingId/@value, 'xtension')">
                 <xsl:value-of select="concat('extension-', $id, '.html')"/>
               </xsl:when>
               <xsl:when test="$type='ValueSet' and not(f:example/@value='true' or f:exampleBoolean/@value='true' or f:exampleReference or f:exampleCanonical or f:purpose/@value='example')">

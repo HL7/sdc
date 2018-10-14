@@ -83,7 +83,7 @@
         <xsl:value-of select="concat('.', translate($additional, $uppercase, $lowercase))"/>
       </xsl:if>
     </xsl:variable>
-    <xsl:value-of select="concat('&quot;npm-name&quot;: &quot;', $prefix, '.fhir.', $realm, '.', f:id/@value, $suffix, '&quot;,&#xa;  ')"/>
+    <xsl:value-of select="concat('&quot;npm-name&quot;: &quot;', f:packageId/@value, '&quot;,&#xa;  ')"/>
     <xsl:text>"paths": {&#xa;    "resources": ["resources</xsl:text>
     <xsl:if test="$additional">
       <xsl:value-of select="$additional"/>
@@ -280,7 +280,7 @@
           </xsl:when>
         </xsl:choose>
       </xsl:if>
-      <xsl:if test="not(f:example/@value='true' or f:exampleBoolean='true' or f:exampleCanonical or f:exampleFor) and (ancestor::f:ImplementationGuide//f:page[*[self::f:source or self::f:nameUrl]/@value=concat('extension-', $id, '.html')] or starts-with($id, 'ext-') or contains(f:package/@value, 'xtension')) and $type='StructureDefinition'">
+      <xsl:if test="not(f:example/@value='true' or f:exampleBoolean='true' or f:exampleCanonical or f:exampleFor) and (ancestor::f:ImplementationGuide//f:page[*[self::f:source or self::f:nameUrl]/@value=concat('extension-', $id, '.html')] or starts-with($id, 'ext-') or contains(f:package/@value, 'xtension') or contains(f:groupingId/@value, 'xtension')) and $type='StructureDefinition'">
         <xsl:text>      "template-base": "../framework/templates/template-ext.html",&#xa;</xsl:text>
         <xsl:text>      "template-defns": "../framework/templates/template-ext-definitions.html",&#xa;</xsl:text>
         <xsl:text>      "template-mappings": "../framework/templates/template-ext-mappings.html",&#xa;</xsl:text>
