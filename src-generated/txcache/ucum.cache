@@ -1,6 +1,4 @@
 -------------------------------------------------------------------------------------
-
-
 {"code" : {
   "system" : "http://unitsofmeasure.org",
   "code" : "[in_i]",
@@ -12,21 +10,17 @@ v: {
   "error" : "The display \"inches\" is not a valid display for the code {http://unitsofmeasure.org}[in_i] - should be one of [[in_i]]"
 }
 -------------------------------------------------------------------------------------
-
-
 {"code" : {
   "system" : "http://unitsofmeasure.org",
-  "code" : "[lb_i]",
+  "code" : "[lb_av]",
   "display" : "pounds"
 }, "valueSet" :null}####
 v: {
   "display" : "",
   "severity" : "error",
-  "error" : "Error processing Unit: '[lb_i]': The unit \"[lb_i]\" is unknown at character 1; The code \"[lb_i]\" is not valid in the system http://unitsofmeasure.org; The code provided (http://unitsofmeasure.org#[lb_i]) is not  valid in the value set All codes known to the system"
+  "error" : "Error sending HTTP Post/Put Payload"
 }
 -------------------------------------------------------------------------------------
-
-
 {"code" : {
   "system" : "http://unitsofmeasure.org",
   "code" : "[in_i]",
@@ -51,73 +45,6 @@ v: {
   "display" : "inch (international)",
   "severity" : "warning",
   "error" : "The display \"inches\" is not a valid display for the code {http://unitsofmeasure.org}[in_i] - should be one of [\"inch (international)\"]"
-}
--------------------------------------------------------------------------------------
-
-
-{"code" : {
-  "system" : "http://unitsofmeasure.org",
-  "code" : "[lb_i]",
-  "display" : "pounds"
-}, "valueSet" :{
-  "resourceType" : "ValueSet",
-  "compose" : {
-    "include" : [{
-      "system" : "http://unitsofmeasure.org",
-      "concept" : [{
-        "code" : "[lb_i]",
-        "display" : "pounds"
-      },
-      {
-        "code" : "km",
-        "display" : "kilograms"
-      }]
-    }]
-  }
-}}####
-v: {
-  "display" : "",
-  "severity" : "error",
-  "error" : "Error processing Unit: '[lb_i]': The unit \"[lb_i]\" is unknown at character 1; The code \"[lb_i]\" is not valid in the system http://unitsofmeasure.org; The code provided (http://unitsofmeasure.org#[lb_i]) is not  valid in the value set Weight Units"
-}
--------------------------------------------------------------------------------------
-
-{"code" : {
-  "system" : "http://unitsofmeasure.org",
-  "code" : "[lb_av]",
-  "display" : "pounds"
-}, "valueSet" :null}####
-v: {
-  "display" : "[lb_av]",
-  "severity" : "warning",
-  "error" : "The display \"pounds\" is not a valid display for the code {http://unitsofmeasure.org}[lb_av] - should be one of [[lb_av]]"
-}
--------------------------------------------------------------------------------------
-
-{"code" : {
-  "system" : "http://unitsofmeasure.org",
-  "code" : "[lb_av]",
-  "display" : "pounds"
-}, "valueSet" :{
-  "resourceType" : "ValueSet",
-  "compose" : {
-    "include" : [{
-      "system" : "http://unitsofmeasure.org",
-      "concept" : [{
-        "code" : "[lb_i]",
-        "display" : "pounds"
-      },
-      {
-        "code" : "km",
-        "display" : "kilograms"
-      }]
-    }]
-  }
-}}####
-v: {
-  "display" : "",
-  "severity" : "error",
-  "error" : "The display \"pounds\" is not a valid display for the code ,{http://unitsofmeasure.org}[lb_av] - should be one of [[lb_av]]; The code provided (http://unitsofmeasure.org#[lb_av]) is not  valid in the value set Weight Units"
 }
 -------------------------------------------------------------------------------------
 {"code" : {
