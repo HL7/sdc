@@ -188,6 +188,90 @@
 </td>
 <td>A FHIR Query that resolves to one or more resources that can be displayed to the user to help provide context for answering a question</td>
 </tr>
+<tr>
+<td style="column-width:30%">
+<a href="extension-sdc-questionnaire-calculatedExpression.html">
+                        •  Calculated Expression</a>
+</td>
+<td>Calculated value for a question answer as determined by an evaluated expression</td>
+</tr>
+<tr>
+<td style="column-width:30%">
+<a href="extension-sdc-questionnaire-choiceColumn.html">
+                        •  Choice column</a>
+</td>
+<td>Provides guidelines for rendering multi-column choices</td>
+</tr>
+<tr>
+<td style="column-width:30%">
+<a href="extension-sdc-questionnaire-width.html">
+                        •  Width of column</a>
+</td>
+<td>When used with an item control that causes the question to appear as a column in a table, indicates the width to give to the column for this question.</td>
+</tr>
+<tr>
+<td style="column-width:30%">
+<a href="extension-sdc-questionnaire-launchContext.html">
+                        •  Context resources</a>
+</td>
+<td>Resources that provide context for form processing logic (pre-population, flow-control, drop-down selection, etc.) when creating/displaying/editing a QuestionnaireResponse</td>
+</tr>
+<tr>
+<td style="column-width:30%">
+<a href="extension-sdc-questionnaire-enableWhenExpression.html">
+                        •  Enable when?</a>
+</td>
+<td>An expression that returns a boolean value for whether to enable the item</td>
+</tr>
+<tr>
+<td style="column-width:30%">
+<a href="extension-sdc-questionnaire-isSubject.html">
+                        •  Is subject?</a>
+</td>
+<td>If present and true, indicates that the item establishes a different subject for the group in a response</td>
+</tr>
+<tr>
+<td style="column-width:30%">
+<a href="extension-sdc-questionnaire-itemContext.html">
+                        •  Item context</a>
+</td>
+<td>Specifies a query that identifies the resource (or set of resources for a repeating item) that should be used to populate this Questionnaire.item on initial population or to be extracted from this item once the QuestionnaireResponse is complete</td>
+</tr>
+<tr>
+<td style="column-width:30%">
+<a href="extension-sdc-questionnaire-lookupQuestionnaire.html">
+                        •  Lookup questionnaire</a>
+</td>
+<td>For items of type reference, the reference can be populated either by picking an existing entity or by creating a new one. In the latter case, this Questionnaire allows specifying the Questionnaire to use in creating the target instance. This can be direct (if the Reference is to a Questionnaire) or indirect via mapping if the Reference is to some other sort of resource.</td>
+</tr>
+<tr>
+<td style="column-width:30%">
+<a href="extension-sdc-questionnaire-observationLinkPeriod.html">
+                        •  Obervation link period</a>
+</td>
+<td>Indicates the time-period (from 'now') to search for observations that match the Questionnaire.item.code and Questionnaire.subject when pre-populating the QuestionnaireResponse.</td>
+</tr>
+<tr>
+<td style="column-width:30%">
+<a href="extension-sdc-questionnaire-sourceStructureMap.html">
+                        •  Source structure map</a>
+</td>
+<td>StructureMaps that have this QuestionnaireResponses for this Questionnaire as 'target' - i.e. that can be used to create QuestionnaireResponses that are valid against this Questionnaire.</td>
+</tr>
+<tr>
+<td style="column-width:30%">
+<a href="extension-sdc-questionnaire-targetStructureMap.html">
+                        •  Target structure map</a>
+</td>
+<td>StructureMaps that have QuestionnaireResponses of this Questionnaire as 'source'- i.e. that can be used to create other artifacts from QuestionnaireResponses that are valid against this Questionnaire.</td>
+</tr>
+<tr>
+<td style="column-width:30%">
+<a href="extension-sdc-questionnaireresponse-isSubject.html">
+                        •  Is subject (response)?</a>
+</td>
+<td>If present and true, indicates that the item indicates a different subject for this group</td>
+</tr>
 </tbody>
 </table>
 </p>
@@ -203,6 +287,13 @@
                         •  Questionnaire Context Species</a>
 </td>
 <td>Species for defining the context of Questionnaires</td>
+</tr>
+<tr>
+<td style="column-width:30%">
+<a href="valueset-launchContext.html">
+                        •  Questionnaire Launch Context</a>
+</td>
+<td>Defines standard context of Questionnaires at launch time</td>
 </tr>
 </tbody>
 </table>

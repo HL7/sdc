@@ -317,6 +317,114 @@
       <exampleBoolean value="false"/>
       <groupingId value="extensions"/>
     </resource>
+    <resource>
+      <reference>
+        <reference value="StructureDefinition/sdc-questionnaire-calculatedExpression"/>
+      </reference>
+      <name value="Calculated Expression"/>
+      <description value="Calculated value for a question answer as determined by an evaluated expression"/>
+      <exampleBoolean value="false"/>
+      <groupingId value="extensions"/>
+    </resource>
+	<resource>
+      <reference>
+         <reference value="StructureDefinition/sdc-questionnaire-choiceColumn"/>
+      </reference>
+      <name value="Choice column"/>
+      <description value="Provides guidelines for rendering multi-column choices"/>
+      <exampleBoolean value="false"/>
+      <groupingId value="extensions"/>
+    </resource>
+	<resource>
+      <reference>
+        <reference value="StructureDefinition/sdc-questionnaire-width"/>
+      </reference>
+      <name value="Width of column"/>
+      <description value="When used with an item control that causes the question to appear as a column in a table, indicates the width to give to the column for this question."/>
+      <exampleBoolean value="false"/>
+      <groupingId value="extensions"/>
+    </resource>
+	<resource>
+      <reference>
+        <reference value="StructureDefinition/sdc-questionnaire-launchContext"/>
+      </reference>
+      <name value="Context resources"/>
+      <description value="Resources that provide context for form processing logic (pre-population, flow-control, drop-down selection, etc.) when creating/displaying/editing a QuestionnaireResponse"/>
+      <exampleBoolean value="false"/>
+      <groupingId value="extensions"/>
+    </resource>
+	<resource>
+      <reference>
+        <reference value="StructureDefinition/sdc-questionnaire-enableWhenExpression"/>
+      </reference>
+      <name value="Enable when?"/>
+      <description value="An expression that returns a boolean value for whether to enable the item"/>
+      <exampleBoolean value="false"/>
+      <groupingId value="extensions"/>
+    </resource>
+	<resource>
+      <reference>
+        <reference value="StructureDefinition/sdc-questionnaire-isSubject"/>
+      </reference>
+      <name value="Is subject?"/>
+      <description value="If present and true, indicates that the item establishes a different subject for the group in a response"/>
+      <exampleBoolean value="false"/>
+      <groupingId value="extensions"/>
+    </resource>
+	<resource>
+      <reference>
+        <reference value="StructureDefinition/sdc-questionnaire-itemContext"/>
+      </reference>
+      <name value="Item context"/>
+      <description value="Specifies a query that identifies the resource (or set of resources for a repeating item) that should be used to populate this Questionnaire.item on initial population or to be extracted from this item once the QuestionnaireResponse is complete"/>
+      <exampleBoolean value="false"/>
+      <groupingId value="extensions"/>
+    </resource>
+	<resource>
+      <reference>
+        <reference value="StructureDefinition/sdc-questionnaire-lookupQuestionnaire"/>
+      </reference>
+      <name value="Lookup questionnaire"/>
+      <description value="For items of type reference, the reference can be populated either by picking an existing entity or by creating a new one. In the latter case, this Questionnaire allows specifying the Questionnaire to use in creating the target instance. This can be direct (if the Reference is to a Questionnaire) or indirect via mapping if the Reference is to some other sort of resource."/>
+      <exampleBoolean value="false"/>
+      <groupingId value="extensions"/>
+    </resource>
+	<resource>
+      <reference>
+        <reference value="StructureDefinition/sdc-questionnaire-observationLinkPeriod"/>
+      </reference>
+      <name value="Obervation link period"/>
+      <description value="Indicates the time-period (from 'now') to search for observations that match the Questionnaire.item.code and Questionnaire.subject when pre-populating the QuestionnaireResponse."/>
+      <exampleBoolean value="false"/>
+      <groupingId value="extensions"/>
+    </resource>
+	<resource>
+      <reference>
+        <reference value="StructureDefinition/sdc-questionnaire-sourceStructureMap"/>
+      </reference>
+      <name value="Source structure map"/>
+      <description value="StructureMaps that have this QuestionnaireResponses for this Questionnaire as 'target' - i.e. that can be used to create QuestionnaireResponses that are valid against this Questionnaire."/>
+      <exampleBoolean value="false"/>
+      <groupingId value="extensions"/>
+    </resource>
+	<resource>
+      <reference>
+        <reference value="StructureDefinition/sdc-questionnaire-targetStructureMap"/>
+      </reference>
+      <name value="Target structure map"/>
+      <description value="StructureMaps that have QuestionnaireResponses of this Questionnaire as 'source'- i.e. that can be used to create other artifacts from QuestionnaireResponses that are valid against this Questionnaire."/>
+      <exampleBoolean value="false"/>
+      <groupingId value="extensions"/>
+    </resource>
+	<resource>
+      <reference>
+        <reference value="StructureDefinition/sdc-questionnaireresponse-isSubject"/>
+      </reference>
+      <name value="Is subject (response)?"/>
+      <description value="If present and true, indicates that the item indicates a different subject for this group"/>
+      <exampleBoolean value="false"/>
+      <groupingId value="extensions"/>
+    </resource>
 <!--    <resource>
       <extension url="http://hl7.org/fhir/StructureDefinition/implementationguide-spreadsheet-profile">
         <valueBoolean value="true"/>
@@ -335,6 +443,15 @@
       </reference>
       <name value="Questionnaire Context Species"/>
       <description value="Species for defining the context of Questionnaires"/>
+      <exampleBoolean value="false"/>
+      <groupingId value="terminology"/>
+    </resource>
+	 <resource>
+      <reference>
+        <reference value="ValueSet/launchContext"/>
+      </reference>
+      <name value="Questionnaire Launch Context"/>
+      <description value="Defines standard context of Questionnaires at launch time"/>
       <exampleBoolean value="false"/>
       <groupingId value="terminology"/>
     </resource>

@@ -187,6 +187,114 @@
       <exampleBoolean value="false"/>
       <groupingId value="extensions"/>
     </resource>
+    <resource>
+      <reference>
+        <reference value="StructureDefinition/sdc-questionnaire-calculatedExpression"/>
+      </reference>
+      <name value="Calculated Expression"/>
+      <description value="Calculated value for a question answer as determined by an evaluated expression"/>
+      <exampleBoolean value="false"/>
+      <groupingId value="extensions"/>
+    </resource>
+	<resource>
+      <reference>
+         <reference value="StructureDefinition/sdc-questionnaire-choiceColumn"/>
+      </reference>
+      <name value="Choice column"/>
+      <description value="Provides guidelines for rendering multi-column choices"/>
+      <exampleBoolean value="false"/>
+      <groupingId value="extensions"/>
+    </resource>
+	<resource>
+      <reference>
+        <reference value="StructureDefinition/sdc-questionnaire-width"/>
+      </reference>
+      <name value="Width of column"/>
+      <description value="When used with an item control that causes the question to appear as a column in a table, indicates the width to give to the column for this question."/>
+      <exampleBoolean value="false"/>
+      <groupingId value="extensions"/>
+    </resource>
+	<resource>
+      <reference>
+        <reference value="StructureDefinition/sdc-questionnaire-launchContext"/>
+      </reference>
+      <name value="Context resources"/>
+      <description value="Resources that provide context for form processing logic (pre-population, flow-control, drop-down selection, etc.) when creating/displaying/editing a QuestionnaireResponse"/>
+      <exampleBoolean value="false"/>
+      <groupingId value="extensions"/>
+    </resource>
+	<resource>
+      <reference>
+        <reference value="StructureDefinition/sdc-questionnaire-enableWhenExpression"/>
+      </reference>
+      <name value="Enable when?"/>
+      <description value="An expression that returns a boolean value for whether to enable the item"/>
+      <exampleBoolean value="false"/>
+      <groupingId value="extensions"/>
+    </resource>
+	<resource>
+      <reference>
+        <reference value="StructureDefinition/sdc-questionnaire-isSubject"/>
+      </reference>
+      <name value="Is subject?"/>
+      <description value="If present and true, indicates that the item establishes a different subject for the group in a response"/>
+      <exampleBoolean value="false"/>
+      <groupingId value="extensions"/>
+    </resource>
+	<resource>
+      <reference>
+        <reference value="StructureDefinition/sdc-questionnaire-itemContext"/>
+      </reference>
+      <name value="Item context"/>
+      <description value="Specifies a query that identifies the resource (or set of resources for a repeating item) that should be used to populate this Questionnaire.item on initial population or to be extracted from this item once the QuestionnaireResponse is complete"/>
+      <exampleBoolean value="false"/>
+      <groupingId value="extensions"/>
+    </resource>
+	<resource>
+      <reference>
+        <reference value="StructureDefinition/sdc-questionnaire-lookupQuestionnaire"/>
+      </reference>
+      <name value="Lookup questionnaire"/>
+      <description value="For items of type reference, the reference can be populated either by picking an existing entity or by creating a new one. In the latter case, this Questionnaire allows specifying the Questionnaire to use in creating the target instance. This can be direct (if the Reference is to a Questionnaire) or indirect via mapping if the Reference is to some other sort of resource."/>
+      <exampleBoolean value="false"/>
+      <groupingId value="extensions"/>
+    </resource>
+	<resource>
+      <reference>
+        <reference value="StructureDefinition/sdc-questionnaire-observationLinkPeriod"/>
+      </reference>
+      <name value="Obervation link period"/>
+      <description value="Indicates the time-period (from 'now') to search for observations that match the Questionnaire.item.code and Questionnaire.subject when pre-populating the QuestionnaireResponse."/>
+      <exampleBoolean value="false"/>
+      <groupingId value="extensions"/>
+    </resource>
+	<resource>
+      <reference>
+        <reference value="StructureDefinition/sdc-questionnaire-sourceStructureMap"/>
+      </reference>
+      <name value="Source structure map"/>
+      <description value="StructureMaps that have this QuestionnaireResponses for this Questionnaire as 'target' - i.e. that can be used to create QuestionnaireResponses that are valid against this Questionnaire."/>
+      <exampleBoolean value="false"/>
+      <groupingId value="extensions"/>
+    </resource>
+	<resource>
+      <reference>
+        <reference value="StructureDefinition/sdc-questionnaire-targetStructureMap"/>
+      </reference>
+      <name value="Target structure map"/>
+      <description value="StructureMaps that have QuestionnaireResponses of this Questionnaire as 'source'- i.e. that can be used to create other artifacts from QuestionnaireResponses that are valid against this Questionnaire."/>
+      <exampleBoolean value="false"/>
+      <groupingId value="extensions"/>
+    </resource>
+	<resource>
+      <reference>
+        <reference value="StructureDefinition/sdc-questionnaireresponse-isSubject"/>
+      </reference>
+      <name value="Is subject (response)?"/>
+      <description value="If present and true, indicates that the item indicates a different subject for this group"/>
+      <exampleBoolean value="false"/>
+      <groupingId value="extensions"/>
+    </resource>
 <!--    <resource>
       <extension url="http://hl7.org/fhir/StructureDefinition/implementationguide-spreadsheet-profile">
         <valueBoolean value="true"/>
@@ -205,6 +313,15 @@
       </reference>
       <name value="Questionnaire Context Species"/>
       <description value="Species for defining the context of Questionnaires"/>
+      <exampleBoolean value="false"/>
+      <groupingId value="terminology"/>
+    </resource>
+	 <resource>
+      <reference>
+        <reference value="ValueSet/launchContext"/>
+      </reference>
+      <name value="Questionnaire Launch Context"/>
+      <description value="Defines standard context of Questionnaires at launch time"/>
       <exampleBoolean value="false"/>
       <groupingId value="terminology"/>
     </resource>
@@ -494,68 +611,133 @@
 <generation value="generated"/>
 </page>
 <page>
+<nameUrl value="extension-sdc-questionnaire-calculatedExpression.html"/>
+<ns23:title xmlns:ns23="http://hl7.org/fhir" value="Calculated Expression"/>
+<generation value="generated"/>
+</page>
+<page>
+<nameUrl value="extension-sdc-questionnaire-choiceColumn.html"/>
+<ns24:title xmlns:ns24="http://hl7.org/fhir" value="Choice column"/>
+<generation value="generated"/>
+</page>
+<page>
+<nameUrl value="extension-sdc-questionnaire-width.html"/>
+<ns25:title xmlns:ns25="http://hl7.org/fhir" value="Width of column"/>
+<generation value="generated"/>
+</page>
+<page>
+<nameUrl value="extension-sdc-questionnaire-launchContext.html"/>
+<ns26:title xmlns:ns26="http://hl7.org/fhir" value="Context resources"/>
+<generation value="generated"/>
+</page>
+<page>
+<nameUrl value="extension-sdc-questionnaire-enableWhenExpression.html"/>
+<ns27:title xmlns:ns27="http://hl7.org/fhir" value="Enable when?"/>
+<generation value="generated"/>
+</page>
+<page>
+<nameUrl value="extension-sdc-questionnaire-isSubject.html"/>
+<ns28:title xmlns:ns28="http://hl7.org/fhir" value="Is subject?"/>
+<generation value="generated"/>
+</page>
+<page>
+<nameUrl value="extension-sdc-questionnaire-itemContext.html"/>
+<ns29:title xmlns:ns29="http://hl7.org/fhir" value="Item context"/>
+<generation value="generated"/>
+</page>
+<page>
+<nameUrl value="extension-sdc-questionnaire-lookupQuestionnaire.html"/>
+<ns30:title xmlns:ns30="http://hl7.org/fhir" value="Lookup questionnaire"/>
+<generation value="generated"/>
+</page>
+<page>
+<nameUrl value="extension-sdc-questionnaire-observationLinkPeriod.html"/>
+<ns31:title xmlns:ns31="http://hl7.org/fhir" value="Obervation link period"/>
+<generation value="generated"/>
+</page>
+<page>
+<nameUrl value="extension-sdc-questionnaire-sourceStructureMap.html"/>
+<ns32:title xmlns:ns32="http://hl7.org/fhir" value="Source structure map"/>
+<generation value="generated"/>
+</page>
+<page>
+<nameUrl value="extension-sdc-questionnaire-targetStructureMap.html"/>
+<ns33:title xmlns:ns33="http://hl7.org/fhir" value="Target structure map"/>
+<generation value="generated"/>
+</page>
+<page>
+<nameUrl value="extension-sdc-questionnaireresponse-isSubject.html"/>
+<ns34:title xmlns:ns34="http://hl7.org/fhir" value="Is subject (response)?"/>
+<generation value="generated"/>
+</page>
+<page>
 <nameUrl value="valueset-species.html"/>
-<ns23:title xmlns:ns23="http://hl7.org/fhir" value="Questionnaire Context Species"/>
+<ns35:title xmlns:ns35="http://hl7.org/fhir" value="Questionnaire Context Species"/>
+<generation value="generated"/>
+</page>
+<page>
+<nameUrl value="valueset-launchContext.html"/>
+<ns36:title xmlns:ns36="http://hl7.org/fhir" value="Questionnaire Launch Context"/>
 <generation value="generated"/>
 </page>
 <page>
 <nameUrl value="Questionnaire-next-question.html"/>
-<ns24:title xmlns:ns24="http://hl7.org/fhir" value="Adaptive questionnaire next question"/>
+<ns37:title xmlns:ns37="http://hl7.org/fhir" value="Adaptive questionnaire next question"/>
 <generation value="generated"/>
 </page>
 <page>
 <nameUrl value="Questionnaire-process-response.html"/>
-<ns25:title xmlns:ns25="http://hl7.org/fhir" value="Questionnaire process response"/>
+<ns38:title xmlns:ns38="http://hl7.org/fhir" value="Questionnaire process response"/>
 <generation value="generated"/>
 </page>
 <page>
 <nameUrl value="Questionnaire-extract.html"/>
-<ns26:title xmlns:ns26="http://hl7.org/fhir" value="Questionnaire response extract to resource(s)"/>
+<ns39:title xmlns:ns39="http://hl7.org/fhir" value="Questionnaire response extract to resource(s)"/>
 <generation value="generated"/>
 </page>
 <page>
 <nameUrl value="questionnaire-definition.html"/>
-<ns27:title xmlns:ns27="http://hl7.org/fhir" value="Questionnaire Item definition"/>
+<ns40:title xmlns:ns40="http://hl7.org/fhir" value="Questionnaire Item definition"/>
 <generation value="generated"/>
 </page>
 <page>
 <nameUrl value="questionnaire-sdc-profile-example-render.html"/>
-<ns28:title xmlns:ns28="http://hl7.org/fhir" value="SDC-Advanced Rendering"/>
+<ns41:title xmlns:ns41="http://hl7.org/fhir" value="SDC-Advanced Rendering"/>
 <generation value="generated"/>
 </page>
 <page>
 <nameUrl value="questionnaire-sdc-profile-example.html"/>
-<ns29:title xmlns:ns29="http://hl7.org/fhir" value="SDC - Combination"/>
+<ns42:title xmlns:ns42="http://hl7.org/fhir" value="SDC - Combination"/>
 <generation value="generated"/>
 </page>
 <page>
 <nameUrl value="questionnaire-sdc-profile-example-cap.html"/>
-<ns30:title xmlns:ns30="http://hl7.org/fhir" value="SDC-Pathology"/>
+<ns43:title xmlns:ns43="http://hl7.org/fhir" value="SDC-Pathology"/>
 <generation value="generated"/>
 </page>
 <page>
 <nameUrl value="questionnaire-sdc-profile-example-loinc.html"/>
-<ns31:title xmlns:ns31="http://hl7.org/fhir" value="SDC-LOINC AHRQ"/>
+<ns44:title xmlns:ns44="http://hl7.org/fhir" value="SDC-LOINC AHRQ"/>
 <generation value="generated"/>
 </page>
 <page>
 <nameUrl value="questionnaire-sdc-profile-example-ussg-fht.html"/>
-<ns32:title xmlns:ns32="http://hl7.org/fhir" value="SDC-LOINC USSG Family History"/>
+<ns45:title xmlns:ns45="http://hl7.org/fhir" value="SDC-LOINC USSG Family History"/>
 <generation value="generated"/>
 </page>
 <page>
 <nameUrl value="questionnaireresponse-sdc-profile-example.html"/>
-<ns33:title xmlns:ns33="http://hl7.org/fhir" value="SDC - Response to Diagnosis NCI Standard Template"/>
+<ns46:title xmlns:ns46="http://hl7.org/fhir" value="SDC - Response to Diagnosis NCI Standard Template"/>
 <generation value="generated"/>
 </page>
 <page>
 <nameUrl value="questionnaireresponse-sdc-example-ussg-fht-answers.html"/>
-<ns34:title xmlns:ns34="http://hl7.org/fhir" value="SDC-LOINC USSG Family History Response"/>
+<ns47:title xmlns:ns47="http://hl7.org/fhir" value="SDC-LOINC USSG Family History Response"/>
 <generation value="generated"/>
 </page>
 <page>
 <nameUrl value="sdc-profile-example.html"/>
-<ns35:title xmlns:ns35="http://hl7.org/fhir" value="SDC-ValueSet AHRQ_Medication_Q1"/>
+<ns48:title xmlns:ns48="http://hl7.org/fhir" value="SDC-ValueSet AHRQ_Medication_Q1"/>
 <generation value="generated"/>
 </page>
 </page>
