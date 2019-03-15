@@ -30,7 +30,7 @@
       <extension url="http://hl7.org/fhir/tools-profile-spreadsheet">
         <valueUri value="codesystem-sdc-profile-spreadsheet.xml"/>
       </extension>
-<!--      <extension url="http://hl7.org/fhir/tools-profile-spreadsheet">
+      <!--      <extension url="http://hl7.org/fhir/tools-profile-spreadsheet">
         <valueUri value="structuredefinition-sdc-profile-spreadsheet.xml"/>
       </extension>-->
       <extension url="http://hl7.org/fhir/tools-profile-spreadsheet">
@@ -65,7 +65,7 @@
       <name value="Example(s)"/>
       <description value="Example(s) showing the use of the SDC profiles"/>
     </grouping>
-	<resource>
+    <resource>
       <reference>
         <reference value="CapabilityStatement/sdc-form-designer"/>
       </reference>
@@ -128,6 +128,27 @@
       </reference>
       <name value="SDC Questionnaire"/>
       <description value="Sets expectations for SDC-conformant systems around how to create questionnaires"/>
+      <exampleBoolean value="false"/>
+      <groupingId value="profiles"/>
+    </resource>
+    <resource>
+      <reference>
+        <reference value="StructureDefinition/sdc-usagecontext"/>
+      </reference>
+      <name value="SDC Usage Context"/>
+      <description value="Constraints on the codes and values of UsageContext to help ensure consistent usage in SDC Questionnaires"/>
+      <exampleBoolean value="false"/>
+      <groupingId value="profiles"/>
+    </resource>
+    <resource>
+      <extension url="http://hl7.org/fhir/StructureDefinition/implementationguide-spreadsheet-profile">
+        <valueBoolean value="true"/>
+      </extension>
+      <reference>
+        <reference value="StructureDefinition/sdc-questionnaire-search"/>
+      </reference>
+      <name value="Search Questionnaire"/>
+      <description value="Defines properties that must be supported for systems that support searching for and returning Questionnaires"/>
       <exampleBoolean value="false"/>
       <groupingId value="profiles"/>
     </resource>
@@ -251,7 +272,7 @@
       <exampleBoolean value="false"/>
       <groupingId value="profiles"/>
     </resource>
-<!--    <resource>
+    <!--    <resource>
       <extension url="http://hl7.org/fhir/StructureDefinition/implementationguide-spreadsheet-profile">
         <valueBoolean value="true"/>
       </extension>
@@ -299,7 +320,7 @@
       <exampleBoolean value="false"/>
       <groupingId value="extensions"/>
     </resource>
-	<resource>
+    <resource>
       <reference>
         <reference value="StructureDefinition/sdc-questionnaire-candidateExpression"/>
       </reference>
@@ -326,16 +347,16 @@
       <exampleBoolean value="false"/>
       <groupingId value="extensions"/>
     </resource>
-	<resource>
+    <resource>
       <reference>
-         <reference value="StructureDefinition/sdc-questionnaire-choiceColumn"/>
+        <reference value="StructureDefinition/sdc-questionnaire-choiceColumn"/>
       </reference>
       <name value="Choice column"/>
       <description value="Provides guidelines for rendering multi-column choices"/>
       <exampleBoolean value="false"/>
       <groupingId value="extensions"/>
     </resource>
-	<resource>
+    <resource>
       <reference>
         <reference value="StructureDefinition/sdc-questionnaire-width"/>
       </reference>
@@ -344,7 +365,7 @@
       <exampleBoolean value="false"/>
       <groupingId value="extensions"/>
     </resource>
-	<resource>
+    <resource>
       <reference>
         <reference value="StructureDefinition/sdc-questionnaire-launchContext"/>
       </reference>
@@ -353,7 +374,7 @@
       <exampleBoolean value="false"/>
       <groupingId value="extensions"/>
     </resource>
-	<resource>
+    <resource>
       <reference>
         <reference value="StructureDefinition/sdc-questionnaire-enableWhenExpression"/>
       </reference>
@@ -362,7 +383,7 @@
       <exampleBoolean value="false"/>
       <groupingId value="extensions"/>
     </resource>
-	<resource>
+    <resource>
       <reference>
         <reference value="StructureDefinition/sdc-questionnaire-isSubject"/>
       </reference>
@@ -371,7 +392,7 @@
       <exampleBoolean value="false"/>
       <groupingId value="extensions"/>
     </resource>
-	<resource>
+    <resource>
       <reference>
         <reference value="StructureDefinition/sdc-questionnaire-itemContext"/>
       </reference>
@@ -380,7 +401,7 @@
       <exampleBoolean value="false"/>
       <groupingId value="extensions"/>
     </resource>
-	<resource>
+    <resource>
       <reference>
         <reference value="StructureDefinition/sdc-questionnaire-lookupQuestionnaire"/>
       </reference>
@@ -389,7 +410,7 @@
       <exampleBoolean value="false"/>
       <groupingId value="extensions"/>
     </resource>
-	<resource>
+    <resource>
       <reference>
         <reference value="StructureDefinition/sdc-questionnaire-observationLinkPeriod"/>
       </reference>
@@ -398,7 +419,7 @@
       <exampleBoolean value="false"/>
       <groupingId value="extensions"/>
     </resource>
-	<resource>
+    <resource>
       <reference>
         <reference value="StructureDefinition/sdc-questionnaire-sourceStructureMap"/>
       </reference>
@@ -407,7 +428,7 @@
       <exampleBoolean value="false"/>
       <groupingId value="extensions"/>
     </resource>
-	<resource>
+    <resource>
       <reference>
         <reference value="StructureDefinition/sdc-questionnaire-targetStructureMap"/>
       </reference>
@@ -416,7 +437,7 @@
       <exampleBoolean value="false"/>
       <groupingId value="extensions"/>
     </resource>
-	<resource>
+    <resource>
       <reference>
         <reference value="StructureDefinition/sdc-questionnaireresponse-isSubject"/>
       </reference>
@@ -425,7 +446,7 @@
       <exampleBoolean value="false"/>
       <groupingId value="extensions"/>
     </resource>
-<!--    <resource>
+    <!--    <resource>
       <extension url="http://hl7.org/fhir/StructureDefinition/implementationguide-spreadsheet-profile">
         <valueBoolean value="true"/>
       </extension>
@@ -455,7 +476,7 @@
       <exampleBoolean value="false"/>
       <groupingId value="terminology"/>
     </resource>
-	<resource>
+    <resource>
       <reference>
         <reference value="CodeSystem/launchContext"/>
       </reference>
@@ -572,7 +593,7 @@
       <exampleCanonical value="http://hl7.org/fhir/uv/sdc/StructureDefinition/sdc-valueset"/>
       <groupingId value="examples"/>
     </resource>
-<!--    <resource>
+    <!--    <resource>
       <reference>
         <reference value="StructureDefinition/structuredefinition-sdc-profile-example"/>
       </reference>
