@@ -65,7 +65,7 @@
       <name value="Example(s)"/>
       <description value="Example(s) showing the use of the SDC profiles"/>
     </grouping>
-    <resource>
+	<resource>
       <reference>
         <reference value="CapabilityStatement/sdc-form-designer"/>
       </reference>
@@ -162,7 +162,7 @@
       <reference>
         <reference value="StructureDefinition/sdc-questionnaire-populate"/>
       </reference>
-      <name value="Populateable Questionnaire"/>
+      <name value="Populatable Questionnaire"/>
       <description value="Defines elements that support auto-population and pre-population of questionnaires"/>
       <exampleBoolean value="false"/>
       <groupingId value="profiles"/>
@@ -283,15 +283,6 @@
     </resource>
     <resource>
       <reference>
-        <reference value="StructureDefinition/sdc-questionnaire-provenanceSignatureRequired"/>
-      </reference>
-      <name value="Provenance Signature Required?"/>
-      <description value="If true, indicates that QuestionnaireResponse instances created against this questionnaire must have an associated Provenance record."/>
-      <exampleBoolean value="false"/>
-      <groupingId value="extensions"/>
-    </resource>
-    <resource>
-      <reference>
         <reference value="StructureDefinition/sdc-questionnaire-sourceQueries"/>
       </reference>
       <name value="Source queries for population mapping"/>
@@ -300,6 +291,15 @@
       <groupingId value="extensions"/>
     </resource>
     <resource>
+      <reference>
+        <reference value="StructureDefinition/sdc-questionnaire-initialExpression"/>
+      </reference>
+      <name value="Initial Expression"/>
+      <description value="Initial value for a question answer as determined by an evaluated expression"/>
+      <exampleBoolean value="false"/>
+      <groupingId value="extensions"/>
+    </resource>
+	<resource>
       <reference>
         <reference value="StructureDefinition/sdc-questionnaire-candidateExpression"/>
       </reference>
@@ -446,9 +446,18 @@
       <exampleBoolean value="false"/>
       <groupingId value="terminology"/>
     </resource>
-	 <resource>
+    <resource>
       <reference>
         <reference value="ValueSet/launchContext"/>
+      </reference>
+      <name value="Questionnaire Launch Context"/>
+      <description value="Defines standard context of Questionnaires at launch time"/>
+      <exampleBoolean value="false"/>
+      <groupingId value="terminology"/>
+    </resource>
+	<resource>
+      <reference>
+        <reference value="CodeSystem/launchContext"/>
       </reference>
       <name value="Questionnaire Launch Context"/>
       <description value="Defines standard context of Questionnaires at launch time"/>

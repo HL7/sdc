@@ -84,7 +84,7 @@
 <tr>
 <td style="column-width:30%">
 <a href="sdc-questionnaire-populate.html">
-                        •  Populateable Questionnaire</a>
+                        •  Populatable Questionnaire</a>
 </td>
 <td>Defines elements that support auto-population and pre-population of questionnaires</td>
 </tr>
@@ -162,17 +162,17 @@
 </tr>
 <tr>
 <td style="column-width:30%">
-<a href="extension-sdc-questionnaire-provenanceSignatureRequired.html">
-                        •  Provenance Signature Required?</a>
-</td>
-<td>If true, indicates that QuestionnaireResponse instances created against this questionnaire must have an associated Provenance record.</td>
-</tr>
-<tr>
-<td style="column-width:30%">
 <a href="extension-sdc-questionnaire-sourceQueries.html">
                         •  Source queries for population mapping</a>
 </td>
 <td>A Batch Bundle containing a set of queries that should be executed to provide source data for a StructureMap to create a populated QuestionnaireRsponse</td>
+</tr>
+<tr>
+<td style="column-width:30%">
+<a href="extension-sdc-questionnaire-initialExpression.html">
+                        •  Initial Expression</a>
+</td>
+<td>Initial value for a question answer as determined by an evaluated expression</td>
 </tr>
 <tr>
 <td style="column-width:30%">
@@ -291,6 +291,13 @@
 <tr>
 <td style="column-width:30%">
 <a href="valueset-launchContext.html">
+                        •  Questionnaire Launch Context</a>
+</td>
+<td>Defines standard context of Questionnaires at launch time</td>
+</tr>
+<tr>
+<td style="column-width:30%">
+<a href="launchContext.html">
                         •  Questionnaire Launch Context</a>
 </td>
 <td>Defines standard context of Questionnaires at launch time</td>
