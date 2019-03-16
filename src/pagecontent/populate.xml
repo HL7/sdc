@@ -110,7 +110,7 @@
 			</tr>
 			<tr>
 				<td>
-					<a href="{{site.data.fhir.path}}questionnaire-operations.html#populate">populate</a>
+					<a href="Questionnaire-populate.html">populate</a>
 				</td>
 				<td>
           This operation supports generating a <a href="{{site.data.fhir.path}}questionnaireresponse.html">QuestionnaireResponse</a> instance based on a specified
@@ -120,7 +120,7 @@
 			</tr>
 			<tr>
 				<td>
-					<a href="{{site.data.fhir.path}}questionnaire-operations.html#populatehtml">populatehtml</a>
+					<a href="Questionnaire-populate.html">populatehtml</a>
 				</td>
 				<td>
           This operation produces an HTML web page as a <a href="{{site.data.fhir.path}}binary.html">Binary</a> instance.  The HTML page provides an interactive rendering
@@ -132,7 +132,7 @@
 			</tr>
 			<tr>
 				<td>
-					<a href="{{site.data.fhir.path}}questionnaire-operations.html#populatelink">populatelink</a>
+					<a href="Questionnaire-populatelink.html">populatelink</a>
 				</td>
 				<td>
           This operation returns a URL leading to an web page with an interactive rendering of the form that allows a user navigating to the link with a browser to
@@ -221,7 +221,7 @@
       multiple <code>Observation.component</code> elements.  Child question items can then assert the <code>item.code</code> of the "member-of" Observations or the 
       <code>Observation.component.code</code> values</li>
     <li>To signal that the item.code is actually intended for use in population (as opposed to just providing metadata about the Questionnaire item, the 
-      <a href="{{site.data.fhir.path}}extension-questionnaire-observationlinkperiod.html">questionnaire-observationLinkPeriod</a> extension must also be included.  This extension indicates
+      <a href="extension-sdc-questionnaire-observationLinkPeriod.html">questionnaire-observationLinkPeriod</a> extension must also be included.  This extension indicates
       the period of time over which to search for matching observations.  If there are no observations within that window, no population will occur.  For observations where how recent they
       are doesn't matter (e.g. blood type), simply set the duration to a long period of time - e.g. 200 years.</li>
     <li>Multiple <code>item.code</code> elements might be present.  If so, each are considered to be an acceptable Observation.code for the desired population value.</li>
@@ -325,17 +325,17 @@
     To use this method:
   </p>
   <ol>
-    <li>Include the <a href="{{site.data.fhir.path}}extension-questionnaire-context.html">questionnaire-context</a> extension to identify any contextual information that needs to be passed into the 
+    <li>Include the <a href="extension-sdc-questionnaire-launchContext.html">questionnaire-launchContext</a> extension to identify any contextual information that needs to be passed into the 
       population process.  Typical contexts would be the Patient or Encounter resources in whose context the questionnaire is being completed, but other elements are also possible (e.g. an
       AdverseEvent if performing an adverse event report).  These 'context' elements will be available as FHIRPath variables for use in subsequent steps.</li>
     <li>Use the <a href="{{site.data.fhir.path}}extension-variable.html">variable</a> extension to query for any additional data required, possibly based on context variables set in the previous step,
-      and/or other variable extensions.  (NOTE: questionnaire-context elemenets are evaluated first, then all Questionnaire-level variables, in order of appearance in the Questionnaire.)</li>
-    <li>If appropriate, use the <a href="{{site.data.fhir.path}}extension-questionnaire-itemcontext.html">questionnaire-itemContext</a> on group items to establish the context for a particular group.  
+      and/or other variable extensions.  (NOTE: questionnaire-launchContext elements are evaluated first, then all Questionnaire-level variables, in order of appearance in the Questionnaire.)</li>
+    <li>If appropriate, use the <a href="extension-sdc-questionnaire-itemContext.html">questionnaire-itemContext</a> on group items to establish the context for a particular group.  
       When populating the questionnaire, this will do two things: it will create a group repetition for each row returned from the query; and it will set the specified variable name to that
       resource repetition for use in processing items within the group.</li>
     <li>Use the <a href="{{site.data.fhir.path}}extension-variable.html">variable</a> extension on items as well to perform intermediary calculations or additional queries that are based on itemContext
       values.</li>
-    <li>For <a href="#mode">Full Population</a>, use the <a href="{{site.data.fhir.path}}extension-questionnaire-initialexpression.html">questionnaire-initialExpression</a> to cause the initial answer for
+    <li>For <a href="#mode">Full Population</a>, use the <a href="extension-sdc-questionnaire-initialExpression.html">questionnaire-initialExpression</a> to cause the initial answer for
       the question to be set to the specified expression.  This should always be a FHIRPath that resolves to an item of the appropriate type unless the element has a type of Reference, in which case the
       expression can be a FHIR query - and the item will be populated with a reference to the resource.  Note, this extension SHALL NOT appear on groups.</li>
     <li>For <a href="#mode">Choice Selection</a>, use the <a href="extension-sdc-questionnaire-candidateExpression.html">sdc-questionnaire-candidateExpression</a> to make available a list of possible answers for
@@ -344,9 +344,9 @@
     <li>For <a href="#mode">Answer Context</a>, use the <a href="extension-sdc-questionnaire-contextExpression.html">sdc-questionnaire-contextExpression</a> to indicate the resources to make available for display
       to the user to aid in answering the question.  The information SHOULD be made available through user action (clicking a button or link) rather than being presented by default.</li>
   </ol>
-  <p>
+<!--  <p>
     An example of a questionnaire using this approach can be found <a href="todo">here</a>.
-  </p>
+  </p>-->
   <p>
     Considerations when using this approach:
   </p>
@@ -367,7 +367,7 @@
       severity, onset date, etc. could automatically be populated using an initialExpression based on the variable name from the candidateExpression.</li>
     <li>
       When an initialExpression, candidateExpression or contextExpression will return a resource, backbone element or complex data type, the 
-      <a href="{{site.data.fhir.path}}extension-questionnaire-choicecolumn.html">questionnaire-choiceColumn</a> extension can be used to control which data elements should be exposed to the user
+      <a href="extension-sdc-questionnaire-choiceColumn.html">questionnaire-choiceColumn</a> extension can be used to control which data elements should be exposed to the user
       (and what labels and widths should be allocated to each element so exposed).</li>
     <li>
       When an item has an associated candidateExpression or contextExpression, consider whether there should be a preceding 'display' item that provides instructions on how to filter from the available
@@ -383,7 +383,7 @@
     <li>
       When crafting queries, be sure to filter all relevent elements.  For example, ensuring status excludes entered-in-error elements, practitioners are active, etc.</li>
     <li>
-      Take care to ensure that variable names as set by questionnaire-context, variable and questionnaire-itemContext remain unique within the hierarchy of the questionnaire.  It's technically ok
+      Take care to ensure that variable names as set by questionnaire-launchContext, variable and questionnaire-itemContext remain unique within the hierarchy of the questionnaire.  It's technically ok
       to have sibling items define the same variable name - they won't collide.  However, if doing so, make sure it's being used for the same purpose to avoid confusion.</li>
     <li>
       If the initialExpression evalutes to a collection size that exceeds the maximum cardinality requirements of the item, the system may either choose not to populate the item at all, or instead
@@ -423,12 +423,12 @@
     To use this method:
   </p>
   <ol>
-    <li>As done for the FHIRPath approach, include the <a href="{{site.data.fhir.path}}extension-questionnaire-context.html">questionnaire-context</a> extension to identify any contextual information that
+    <li>As done for the FHIRPath approach, include the <a href="extension-sdc-questionnaire-launchContext.html">questionnaire-launchContext</a> extension to identify any contextual information that
       needs to be passed into the population process.  Typical contexts would be the Patient or Encounter resources in whose context the questionnaire is being completed, but other elements are also possible (e.g. an
       AdverseEvent if performing an adverse event report).  These 'context' elements will be available as FHIRPath variables for use in subsequent steps.</li>
     <li>Include the <a href="extension-sdc-questionnaire-sourceQueries.html">sdc-questionnaire-sourceQueries</a> extension which SHALL point to a <a href="{{site.data.fhir.path}}http.html#transaction">Batch</a> consisting
-      of one or more queries to execute.  Prior to executing, FHIRPaths embedded in the queries (referring to elements from the questionnaire-context variables) SHALL be resolved.</li>
-    <li>Include the <a href="{{site.data.fhir.path}}extension-questionnaire-sourcestructuremap.html">questionnaire-sourceStructureMap</a> extension.  This SHALL define a transform between the Bundle of Bundles that 
+      of one or more queries to execute.  Prior to executing, FHIRPaths embedded in the queries (referring to elements from the questionnaire-launchContext variables) SHALL be resolved.</li>
+    <li>Include the <a href="extension-sdc-questionnaire-sourceStructureMap.html">questionnaire-sourceStructureMap</a> extension.  This SHALL define a transform between the Bundle of Bundles that 
       will result from executing the sourceQueries Batch and a QuestionnaireResponse that complies with the Questionnaire</li>
   </ol>
   <p>
@@ -438,7 +438,7 @@
     <![CDATA[
       <Questionnaire>
         ...
-        <extension url="http://hl7.org/fhir/StructureDefinition/questionnaire-context">
+        <extension url="http://hl7.org/fhir/StructureDefinition/questionnaire-launchContext">
           <extension url="name">
             <valueId value="patient"/>
           </extension>
@@ -449,7 +449,7 @@
             <valueString value="The patient the questionnaire is being completed for"/>
           </extension>
         </extension>
-        <extension url="http://hl7.org/fhir/StructureDefinition/questionnaire-context">
+        <extension url="http://hl7.org/fhir/StructureDefinition/questionnaire-launchContext">
           <extension url="name">
             <valueId value="encounter"/>
           </extension>
@@ -476,7 +476,7 @@
   </code>
   <p>
     To populate the QuestionnaireResponse, evaluate the FHIRPaths in the sourceQueries batch, execute the sourceQueries batch and then execute the StructureMap on the resulting Bundle.  The result of that
-    will be the pre-populated QueryResponse.  A sample questionnaire that shows this approach can be found <a href="todo">here</a>.
+    will be the pre-populated QueryResponse.  <!--A sample questionnaire that shows this approach can be found <a href="todo">here</a>.-->
   </p>
   
   <p>

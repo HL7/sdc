@@ -103,7 +103,7 @@
       multiple <code>Observation.component</code> elements.  Child question items can then assert the <code>item.code</code> of the "member-of" Observations or the 
       <code>Observation.component.code</code> values</li>
     <li>To signal that the item.code is actually intended for use in extraction (as opposed to just providing metadata about the Questionnaire item, the 
-      <a href="{{site.data.fhir.path}}extension-questionnaire-observationlinkperiod.html">questionnaire-observationLinkPeriod</a> extension must also be included.  This extension indicates
+      <a href="extension-sdc-questionnaire-observationLinkPeriod.html">questionnaire-observationLinkPeriod</a> extension must also be included.  This extension indicates
       the period of time over which to search for matching observations.  If there are no observations within that window, no population will occur and any data entered will be treated
       as a create.  For observations where how recent they
       are doesn't matter (e.g. blood type), simply set the duration to a long period of time - e.g. 200 years.</li>
@@ -157,7 +157,7 @@
   </code>
   <p>
     When performing the extraction process, the system will create a batch that will contain creates or updates of Observation instances.  It will go through the QuestionnaireResponse and identify 
-    all answers for which the corresponding Questionnaire item has a <a href="{{site.data.fhir.path}}extension-questionnaire-observationlinkperiod.html">questionnaire-observationLinkPeriod</a> extension.  
+    all answers for which the corresponding Questionnaire item has a <a href="extension-sdc-questionnaire-observationLinkPeriod.html">questionnaire-observationLinkPeriod</a> extension.  
     For each of those it will then determine whether to create a new observation, update an existing observation or do nothing.  Guidelines for making this decision are as follows:
   </p>
   <table class="grid">
@@ -266,15 +266,15 @@
     To use this method:
   </p>
   <ol>
-    <li>Include the <a href="{{site.data.fhir.path}}extension-questionnaire-itemcontext.html">questionnaire-itemContext</a> extension either on the Questionnaire root or on 'group' items within the
+    <li>Include the <a href="extension-sdc-questionnaire-itemContext.html">questionnaire-itemContext</a> extension either on the Questionnaire root or on 'group' items within the
       Questionnaire to identify the resource that will serve as the context for any population.</li>
     <li>On descendant items of that element, fill in the <code>Questionnaire.definition</code> to point to the resource or profile element that Questionnaire item corresponds to.  (Profiles may be relevant for
       data that is sliced or has fixed values for some properties.).  The definition SHALL have the full canonical URL of the resource (or profile) followed by '#' followed by the snapshot.path of the element
       the Questionnaire item corresponds to.</li>
     <li>If necessary, define <a href="{{site.data.fhir.path}}extension-questionnaire-hidden.html">questionnaire-hidden</a> items that have <code>Questionnaire.initialValue[x]</code> or that use the 
-      <a href="{{site.data.fhir.path}}extension-questionnaire-initialexpression.html">questionnaire-initialExpression</a> extension to define their content to use to populate resource elements that the
+      <a href="extension-sdc-questionnaire-initialExpression.html">questionnaire-initialExpression</a> extension to define their content to use to populate resource elements that the
       user will not be filling in.  (The initialExpressions might in turn depend on <a href="{{site.data.fhir.path}}extension-variable.html">variable</a> and 
-      <a href="{{site.data.fhir.path}}extension-questionnaire-context.html">questionnaire-context</a> extensions, used as described in the <a href="populate.html#path-pop">Path-based population</a>
+      <a href="extension-sdc-questionnaire-launchContext.html">questionnaire-launchContext</a> extensions, used as described in the <a href="populate.html#path-pop">Path-based population</a>
       section.</li>
   </ol>
   
@@ -288,19 +288,19 @@
   </ul>
   <p>
     If updating, the answer values from the questionnaire (including hidden, calculated answers) will be propagated to the context resource.  If creating, then for each occurrence of each item
-    asserting a questionnaire-context, a resource of the context type will be defined.  It will be populated with answers to questions (hidden or not) that have a definition that matches the
+    asserting a questionnaire-itemContext, a resource of the context type will be defined.  It will be populated with answers to questions (hidden or not) that have a definition that matches the
     resource type of the context.  As well, if the definitions refer to a profile, any child elements of the profile that have fixed values or patterns declared will also be included in the instance
     with values matching the fixed or pattern values.
   </p>
-  <p>
+<!--  <p>
     An example of a questionnaire using this approach can be found <a href="todo">here</a>.
-  </p>
+  </p>-->
   <p>
     Considerations when using this approach:
   </p>
   <ul>
     <li>
-      FHIR queries found in the questionnaire-context variables may contain embedded FHIRPath expressions (surrounded by double curly-braces).  Systems SHALL evaluate and substitute the results of 
+      FHIR queries found in the questionnaire-expressionContext variables may contain embedded FHIRPath expressions (surrounded by double curly-braces).  Systems SHALL evaluate and substitute the results of 
       such queries before executing them</li>
     <li>
       If the result of evaluating the FHIRPath expressions is an invalid query, that is an error.  Systems SHOULD log it and continue on with population as if the query had returned no data.</li>
@@ -308,7 +308,7 @@
       When crafting queries, be sure to filter all relevent elements.  For example, ensuring status excludes entered-in-error elements, practitioners are active, etc.</li>
     <li>
       In some cases, the context of an element will switch.  For example, an item might have a definition of "http://hl7.org/fhir/MedicationStatement#MedicationStatement.medicationReference" and
-      a questionnaire-context extension that shifts the context to "Medication".  Subsequent children would then uave definitions based on the "http://hl7.org/fhir/Medication" resource.</li>
+      a questionnaire-itemContext extension that shifts the context to "Medication".  Subsequent children would then have definitions based on the "http://hl7.org/fhir/Medication" resource.</li>
     <li>
       Note that only one context can be in play at the same time.  When a new context is declared, it takes the place of the old context.</li>
     <li>
@@ -329,11 +329,11 @@
     To use this method:
   </p>
   <ol>
-    <li>Include the <a href="{{site.data.fhir.path}}extension-questionnaire-targetstructuremap.html">questionnaire-targetStructureMap</a> extension.  This SHALL define a transform between the QuestionnaireResponse
+    <li>Include the <a href="extension-sdc-questionnaire-targetStructureMap.html">questionnaire-targetStructureMap</a> extension.  This SHALL define a transform between the QuestionnaireResponse
       and either a single resource or a transaction Bundle containing the set of resources extracted from the QuestionnaireResponse.</li>
   </ol>
   <p>
-    To extract data from the completed QuestionnaireResponse, simply invoke execute the StructureMap on it.  A sample Questionnaire and associated StructureMap that shows this approach can be found <a href="todo">here</a>.
+    To extract data from the completed QuestionnaireResponse, simply invoke execute the StructureMap on it.  <!--A sample Questionnaire and associated StructureMap that shows this approach can be found <a href="todo">here</a>.-->
   </p>
   
   <p>

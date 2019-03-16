@@ -114,11 +114,6 @@
 			</pre>
 		</div>
 	</text>
-	<!-- sdc-questionnaire-provenanceSignatureRequired - Is associated Provenance needed? -->
-	<extension xmlns="http://hl7.org/fhir" url="http://hl7.org/fhir/uv/sdc/StructureDefinition/sdc-questionnaire-provenanceSignatureRequired">
-		<valueBoolean value="false"/>
-	</extension>
-	<!-- -->
 	<!-- questionnaire-signatureRequired - Is signature needed? -->
 	<extension xmlns="http://hl7.org/fhir" url="http://hl7.org/fhir/StructureDefinition/questionnaire-signatureRequired">
 		<valueCodeableConcept>
@@ -244,9 +239,9 @@
 			</extension>
 			<!-- -->
 			<!-- item/sdc-questionnaire-usageMode - capture | display | display-non-empty | capture-display | capture-display-non-empty -->
-			<modifierExtension xmlns="http://hl7.org/fhir" url="http://hl7.org/fhir/StructureDefinition/questionnaire-usageMode">
+			<extension xmlns="http://hl7.org/fhir" url="http://hl7.org/fhir/StructureDefinition/questionnaire-usageMode">
 				<valueCode value="capture"/>
-			</modifierExtension>
+			</extension>
 			<!-- -->
 			<linkId value="1.4"/>
 			<text value="Last Name"/>

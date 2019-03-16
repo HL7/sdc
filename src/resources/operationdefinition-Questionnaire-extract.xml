@@ -15,6 +15,7 @@
   <system value="false"/>
   <type value="true"/>
   <instance value="true"/>
+  <inputProfile value="http://hl7.org/fhir/uv/sdc/StructureDefinition/parameters-questionnaire-extract-in"/>
   <parameter>
     <name value="questionnaire-response"/>
     <use value="in"/>
@@ -22,7 +23,6 @@
     <max value="1"/>
     <documentation value="The QuestionnaireResponse to extract data from.  The QuestionnaireResponse must either reference a Questionnaire that complies with a the [Questionnaire Extract Profile](sdc-questionnaire-extract.html) or the operation must be invoked on a Questionnaire that complies with the profile.  This is necessary to ensure appropriate metadata is available to support extraction."/>
     <type value="Resource"/>
-    <targetProfile value="http://hl7.org/fhir/uv/sdc/StructureDefinition/sdc-questionnaireresponse"/>
   </parameter>
   <parameter>
     <name value="return"/>

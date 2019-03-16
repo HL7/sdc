@@ -2,14 +2,15 @@
 <ImplementationGuide xmlns="http://hl7.org/fhir" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://hl7.org/fhir ../src-generated/schemas/fhir-single.xsd">
   <id value="sdc"/>
   <url value="http://hl7.org/fhir/uv/sdc/ImplementationGuide/sdc"/>
-  <name value="Structured Data Capture"/>
+  <name value="StructuredDataCapture"/>
+  <title value="Structured Data Capture"/>
   <status value="draft"/>
   <experimental value="false"/>
-  <publisher value="HL7 International (OO work group)"/>
+  <publisher value="HL7 International - FHIR Infrastructure Work Group"/>
   <contact>
     <telecom>
       <system value="other"/>
-      <value value="http://www.hl7.org/Special/committees/orders/index.cfm"/>
+      <value value="http://www.hl7.org/Special/committees/fiwg"/>
     </telecom>
   </contact>
   <description value="The SDC specification provides an infrastructure to standardize the capture and expanded use of patient-level data collected within an EHR.&lt;br/&gt;This includes two components:&lt;br/&gt;* Support more sophisticated questionnaire/form use-cases such as those needed for research, oncology, pathology and other clinical domains.&lt;br/&gt;*Support pre-population and auto-population of EHR data into forms/questionnaires for uses outside direct clinical care (patient safety, adverse event reporting, public health reporting, etc.)."/>
@@ -272,6 +273,42 @@
       <exampleBoolean value="false"/>
       <groupingId value="profiles"/>
     </resource>
+    <resource>
+      <reference>
+        <reference value="StructureDefinition/parameters-questionnaire-next-question-in"/>
+      </reference>
+      <name value="Next question operation input parameters"/>
+      <description value="Profile used to validate the parameters that are the input of the 'next question' adaptive questionnaire operation"/>
+      <exampleBoolean value="false"/>
+      <groupingId value="profiles"/>
+    </resource>
+    <resource>
+      <reference>
+        <reference value="StructureDefinition/parameters-questionnaire-extract-in"/>
+      </reference>
+      <name value="Questionnnaire extract operation input parameters"/>
+      <description value="Profile used to validate the parameters that are the input of the 'extract' questionnaire operation"/>
+      <exampleBoolean value="false"/>
+      <groupingId value="profiles"/>
+    </resource>
+    <resource>
+      <reference>
+        <reference value="StructureDefinition/parameters-questionnaire-next-question-out"/>
+      </reference>
+      <name value="Next question operation output parameters"/>
+      <description value="Profile used to validate the parameters that are the output of the 'next question' adaptive questionnaire operation"/>
+      <exampleBoolean value="false"/>
+      <groupingId value="profiles"/>
+    </resource>
+    <resource>
+      <reference>
+        <reference value="StructureDefinition/parameters-questionnaire-process-response-in"/>
+      </reference>
+      <name value="Process response operation intput parameters"/>
+      <description value="Profile used to validate the parameters that are the input of the 'process response' questionnaire operation"/>
+      <exampleBoolean value="false"/>
+      <groupingId value="profiles"/>
+    </resource>
     <!--    <resource>
       <extension url="http://hl7.org/fhir/StructureDefinition/implementationguide-spreadsheet-profile">
         <valueBoolean value="true"/>
@@ -496,6 +533,33 @@
     </resource>
     <resource>
       <reference>
+        <reference value="OperationDefinition/Questionnaire-populate"/>
+      </reference>
+      <name value="Populate Questionnaire"/>
+      <description value="Generates a QuestionnaireResponse from a Questionnaire, possibly with data partially populated"/>
+      <exampleBoolean value="true"/>
+      <groupingId value="operations"/>
+    </resource>
+    <resource>
+      <reference>
+        <reference value="OperationDefinition/Questionnaire-populatehtml"/>
+      </reference>
+      <name value="Populate HTML Questionnaire"/>
+      <description value="Generates an HTML representation of the Questionnaire as a form, possibly partially populated with data"/>
+      <exampleBoolean value="true"/>
+      <groupingId value="operations"/>
+    </resource>
+    <resource>
+      <reference>
+        <reference value="OperationDefinition/Questionnaire-populatelink"/>
+      </reference>
+      <name value="Populate Questionnaire Link"/>
+      <description value="Generates a link to an HTML page that can be used to complete the Questionnaire, possibly partially populated with data"/>
+      <exampleBoolean value="true"/>
+      <groupingId value="operations"/>
+    </resource>
+    <resource>
+      <reference>
         <reference value="OperationDefinition/Questionnaire-process-response"/>
       </reference>
       <name value="Questionnaire process response"/>
@@ -624,6 +688,11 @@
       <page>
         <nameUrl value="workflow.html"/>
         <title value="Basic SDC workflow"/>
+        <generation value="html"/>
+      </page>
+      <page>
+        <nameUrl value="search.html"/>
+        <title value="Finding a Questionnaire"/>
         <generation value="html"/>
       </page>
       <page>

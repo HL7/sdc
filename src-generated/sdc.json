@@ -3,7 +3,7 @@
   "tool": "jekyll",
   "logging": ["html"],
   "version": "4.0.0",
-  "fixed-business-version": "4.0",
+  "fixed-business-version": "2.7.0",
   "html-template": "template-page.html",
   "md-template": "template-page-md.html",
   "license": "CC0-1.0",
@@ -16,7 +16,7 @@
     "txCache": "txcache",
     "history" : "history.html",
     "qa": "../temp/qa",
-    "specification": "http://build.fhir.org/"
+    "specification": "http://hl7.org/fhir/R4/"
   },
   "suppressedWarningFile": "../src/ignoreWarnings.txt",
   "includeHeadings": false,
@@ -118,6 +118,10 @@
     },
     "StructureDefinition/sdc-questionnaire":{
     },
+    "StructureDefinition/sdc-usagecontext":{
+    },
+    "StructureDefinition/sdc-questionnaire-search":{
+    },
     "StructureDefinition/sdc-questionnaire-render":{
     },
     "StructureDefinition/sdc-questionnaire-behave":{
@@ -137,6 +141,14 @@
     "StructureDefinition/sdc-valueset":{
     },
     "StructureDefinition/sdc-codesystem":{
+    },
+    "StructureDefinition/parameters-questionnaire-next-question-in":{
+    },
+    "StructureDefinition/parameters-questionnaire-extract-in":{
+    },
+    "StructureDefinition/parameters-questionnaire-next-question-out":{
+    },
+    "StructureDefinition/parameters-questionnaire-process-response-in":{
     },
     "StructureDefinition/sdc-questionnaire-endpoint":{
       "template-base": "../framework/templates/template-ext.html",
@@ -451,6 +463,12 @@
     "CodeSystem/launchContext":{
     },
     "OperationDefinition/Questionnaire-next-question":{
+    },
+    "OperationDefinition/Questionnaire-populate":{
+    },
+    "OperationDefinition/Questionnaire-populatehtml":{
+    },
+    "OperationDefinition/Questionnaire-populatelink":{
     },
     "OperationDefinition/Questionnaire-process-response":{
     },

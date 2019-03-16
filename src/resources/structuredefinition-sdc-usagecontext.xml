@@ -14,7 +14,7 @@
   <baseDefinition value="http://hl7.org/fhir/StructureDefinition/UsageContext"/>
   <derivation value="constraint"/>
   <differential>
-    <element>
+    <element id="UsageContext">
       <path value="UsageContext"/>
       <constraint>
         <key value="sdc-uc-1"/>
@@ -25,12 +25,36 @@
       </constraint>
       <mustSupport value="true"/>
     </element>
-    <element>
+    <element id="UsageContext.code">
       <path value="UsageContext.code"/>
       <mustSupport value="true"/>
     </element>
-    <element>
+    <element id="UsageContext.value[x]">
       <path value="UsageContext.value[x]"/>
+      <mustSupport value="true"/>
+    </element>
+    <element id="UsageContext.valueCoding">
+      <path value="UsageContext.valueCoding"/>
+      <mustSupport value="true"/>
+    </element>
+    <element id="UsageContext.valueCoding.system">
+      <path value="UsageContext.valueCoding.system"/>
+      <mustSupport value="true"/>
+    </element>
+    <element id="UsageContext.valueCoding.code">
+      <path value="UsageContext.valueCoding.code"/>
+      <mustSupport value="true"/>
+    </element>
+    <element id="UsageContext.valueRange">
+      <path value="UsageContext.valueRange"/>
+      <mustSupport value="true"/>
+    </element>
+    <element id="UsageContext.valueRange.low">
+      <path value="UsageContext.valueRange.low"/>
+      <mustSupport value="true"/>
+    </element>
+    <element id="UsageContext.valueRange.high">
+      <path value="UsageContext.valueRange.high"/>
       <mustSupport value="true"/>
     </element>
   </differential>

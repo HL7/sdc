@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<StructureDefinition xmlns="http://hl7.org/fhir" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://hl7.org/fhir ../../src-generated/schemas/fhir-single.xsd">
+  <id value="parameters-questionnaire-next-question-in"/>
+  <url value="http://hl7.org/fhir/uv/sdc/StructureDefinition/parameters-questionnaire-next-question-in"/>
+  <name value="ParametersQuestionnaireNextQuestionnaireIn"/>
+  <title value="Next question operation input parameters"/>
+  <status value="draft"/>
+  <description value="Profile used to validate the parameters that are the input of the 'next question' adaptive questionnaire operation"/>
+  <fhirVersion value="4.0.0"/>
+  <kind value="resource"/>
+  <abstract value="false"/>
+  <type value="Parameters"/>
+  <baseDefinition value="http://hl7.org/fhir/StructureDefinition/Parameters"/>
+  <derivation value="constraint"/>
+  <differential>
+    <element id="Parameters">
+      <path value="Parameters"/>
+    </element>
+    <element id="Parameters.parameter">
+      <path value="Parameters.parameter"/>
+      <slicing>
+        <discriminator>
+          <type value="value"/>
+          <path value="name"/>
+        </discriminator>
+        <rules value="open"/>
+      </slicing>
+    </element>
+    <element id="Parameters.parameter:in">
+      <path value="Parameters.parameter"/>
+      <sliceName value="in"/>
+    </element>
+    <element id="Parameters.parameter:in.name">
+      <path value="Parameters.parameter.name"/>
+      <fixedString value="in"/>
+    </element>
+    <element id="Parameters.parameter:in.value[x]">
+      <path value="Parameters.parameter.value[x]"/>
+      <max value="0"/>
+    </element>
+    <element id="Parameters.parameter:in.resource">
+      <path value="Parameters.parameter.resource"/>
+      <type>
+        <code value="Resource"/>
+        <profile value="http://hl7.org/fhir/uv/sdc/StructureDefinition/sdc-questionnaire-adapt"/>
+      </type>
+    </element>
+    <element id="Parameters.parameter:in.part">
+      <path value="Parameters.parameter.part"/>
+      <max value="0"/>
+    </element>
+  </differential>
+</StructureDefinition>
