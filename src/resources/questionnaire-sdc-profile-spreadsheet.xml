@@ -17228,7 +17228,7 @@
     <Cell ss:StyleID="s110"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s111"><NamedCell ss:Name="_FilterDatabase"/></Cell>
    </Row>
-   <Row ss:Height="195">
+   <Row ss:AutoFitHeight="0" ss:Height="195">
     <Cell ss:StyleID="s129"><Data ss:Type="String">contextExpression</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s107"><Data ss:Type="String">Resource</Data><NamedCell
@@ -17347,7 +17347,7 @@
     <Cell ss:StyleID="s110"/>
     <Cell ss:StyleID="s111"/>
    </Row>
-   <Row ss:AutoFitHeight="0" ss:Height="135">
+   <Row ss:AutoFitHeight="0" ss:Height="262.5">
     <Cell ss:StyleID="s129"><Data ss:Type="String">choiceColumn</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s107"><Data ss:Type="String">Resource</Data><NamedCell
@@ -17374,10 +17374,10 @@
     <Cell ss:StyleID="s107"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s107"><Data ss:Type="String">Guide for rendering multi-column choices</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s108"><Data ss:Type="String">Provides guidelines for rendering multi-column choices</Data><NamedCell
+    <Cell ss:StyleID="s108"><Data ss:Type="String">Provides guidelines for rendering multi-column choices.  I.e. when displaying a list of codes (for `choice` or `open-choice` items) or a list of resources (for `reference` items), this extension allows the drop-down to have multiple columns.  For codes, the author can pick additional code system properties to display - such as alternate display names strength or form for drug codes, etc.  For references, the author can choose particular columns from the resource (e.g. first name, last name, specialty, address).</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s107"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s108"><Data ss:Type="String">This can be used for choices drawn from value sets (where additional columns can be drawn from code system properties), for References where columns can be drawn from resource properties.</Data><NamedCell
+    <Cell ss:StyleID="s108"><Data ss:Type="String">Each repetition represents a column to display.</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:Index="23" ss:StyleID="s109"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:Index="25" ss:StyleID="s109"><NamedCell ss:Name="_FilterDatabase"/></Cell>
@@ -17510,7 +17510,7 @@
     <Cell ss:StyleID="s107"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s107"><Data ss:Type="String">Use for display ?</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s108"><Data ss:Type="String">If true, indicates that this column should be used as (or as part of) the display value for code or reference</Data><NamedCell
+    <Cell ss:StyleID="s108"><Data ss:Type="String">If true, indicates that this column should be used as (or as part of) the display value for the coding or reference once selected.  I.e. Coding.display or Reference.display as stored in the QuestionnaireResponse and displayed to the user as the selected answer.</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s107"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s108"><Data ss:Type="String">For codes, only one column can be picked and it must be a column that corresponds to a legal display name for the code from the value set.  For references, multiple columns can be picked.  If more than one column is chosen, the Reference.display will contain concatenate the column values in the order defined separating them with a single space.</Data><NamedCell
@@ -18224,9 +18224,9 @@
    <FreezePanes/>
    <FrozenNoSplit/>
    <SplitHorizontal>1</SplitHorizontal>
-   <TopRowBottomPane>6</TopRowBottomPane>
+   <TopRowBottomPane>10</TopRowBottomPane>
    <SplitVertical>1</SplitVertical>
-   <LeftColumnRightPane>6</LeftColumnRightPane>
+   <LeftColumnRightPane>10</LeftColumnRightPane>
    <ActivePane>0</ActivePane>
    <Panes>
     <Pane>
@@ -18242,8 +18242,7 @@
     </Pane>
     <Pane>
      <Number>0</Number>
-     <ActiveRow>7</ActiveRow>
-     <ActiveCol>12</ActiveCol>
+     <ActiveCol>18</ActiveCol>
     </Pane>
    </Panes>
    <ProtectObjects>False</ProtectObjects>
