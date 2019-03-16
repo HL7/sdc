@@ -1,6 +1,6 @@
 <div xmlns="http://www.w3.org/1999/xhtml" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://hl7.org/fhir ../../src-generated/schemas/fhir-single.xsd">
 	<a name="overview"> </a>
-	<h2>Initiative Overview</h2>
+	<h3>Initiative Overview</h3>
 	<p>
     The Structured Data Capture (SDC) Initiative identifies and recommends standards for the interoperable representation and 
     transmission of the following:
@@ -14,7 +14,7 @@
 	</ul>
 
 	<a name="capabilitystatement"> </a>
-	<h3>Capability Statements</h3>
+	<h4>Capability Statements</h4>
 	<p>
     FHIR Capability statements define the expectations for particular system "roles" within an SDC environment.  To be considered SDC-conformant, a system 
     must adhere to the requirements defined by at least one of these statements.  Some systems might choose to comply with more than one.
@@ -47,18 +47,18 @@
     The relationship between these roles and a summary of how they can interact is shown in <a href="#fig1">Figure 1</a>.
   </p>
 	<a name="fig1"> </a>
-	<img alt="Role operations" src="sdc-form-operations.png" />
+	<img style="width:450px" alt="Role operations" src="sdc-form-operations.png" />
 	<p>
 		<b>Figure 1: Role operations</b>
 	</p>
 
 	<a name="workflow"> </a>
-	<h2>Workflows</h2>
+	<h3>Workflows</h3>
 	<p>
     There are two primary workflows that fall within the scope of the SDC implementation guide - form creation/curation and form filling.
   </p>
 	<a name="fig2"> </a>
-	<img alt="Diagram showing interaction between Form Designer, Form Manager and Data Element Registry" src="sdc-form-curation.png"/>
+	<img style="width:400px" alt="Diagram showing interaction between Form Designer, Form Manager and Data Element Registry" src="sdc-form-curation.png"/>
 	<p>
 		<b>Figure 2: Form Curation Workflow</b>
 	</p>
@@ -72,7 +72,7 @@
     The more significant (and complex) workflow in SDC is to complete (and potentially submit) a completed questionnaire response.
   </p>
 	<a name="fig3"> </a>
-	<img alt="Generic Workflow" src="sdc-generic-workflow.png" />
+	<img style="width:1000px" alt="Generic Workflow" src="sdc-generic-workflow.png" />
 	<p>
 		<b>Figure 3: Form Filling Workflow</b>
 	</p>

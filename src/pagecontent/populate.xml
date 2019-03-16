@@ -180,7 +180,7 @@
     heard of any systems that do this successfully in a production environment
   </p>
   <a name="design"> </a>
-  <h2>Designing Questionnaires to support 'populate'</h2>
+  <h3>Designing Questionnaires to support 'populate'</h3>
   <p>
     This specification defines three different mechanisms to embed information in Questionnaires to support population:
   </p>
@@ -204,7 +204,7 @@
     population mechanisms.  Instead, each system should choose which approach(es) it wishes to use and support the elements described in that section of the implementation guide.
   </p>
   <a name="obs-pop"> </a>
-  <h3>Observation-based Population</h3>
+  <h4>Observation-based Population</h4>
   <p>
     This is the simplest of the population mechanisms.  It takes advantage of the fact that the vast majority of questions in the healthcare space typically correspond to the
     <code>value</code> element of an Observation.  It also takes advantage of the <code>Questionnaire.item.code</code> element that identifies what a concept each question or
@@ -310,7 +310,7 @@
     <li>Obviously, this mechanism only works for questionnaire items that correspond to Observation values.</li>
   </ul>
   <a name="path-pop"> </a>
-  <h3>FHIRPath-based Population</h3>
+  <h4>FHIRPath-based Population</h4>
   <p>
     This approach to population is more generic.  It supports retrieving data from any queriable FHIR resources available on the source system.  Those queries can be based on the context in which
     the QuestionnaireResponse is being generated and/or on the results of other queries.  Furthermore, it permits <a href="http://hl7.org/fhirpath">FHIRPath</a> operations to be done
@@ -406,7 +406,7 @@
     <li>If the units of measure are constrained for the Questionnaire item, the system can choose to convert the data (if the units are coded and the conversion factor is known) or choose not to populate.</li>
   </ul>
   <a name="map-pop"> </a>
-  <h3>StructureMap-based Population</h3>
+  <h4>StructureMap-based Population</h4>
   <p>
     The <a href="{{site.data.fhir.path}}structuremap.html">StructureMap</a> approach is the most sophisticated approach of the three - and the most powerful.  It allows iteration of groups based on
     repeating elements within resources, supports concept translation using structure maps and provides access to transformation capabilities not available with the FHIRPath approach.  It also allows the

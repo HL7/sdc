@@ -58,7 +58,7 @@
     NOTE: It's the responsibility of the client system to ensure that any generated resources are valid against necessary profiles, etc. before using content produced by this operation.
   </p>
   <a name="design"> </a>
-  <h2>Designing Questionnaires to support data extraction</h2>
+  <h3>Designing Questionnaires to support data extraction</h3>
   <p>
     This specification defines three different mechanisms to embed information in Questionnaires to support subsequent resource extraction:
   </p>
@@ -82,7 +82,7 @@
     extraction mechanisms.  Instead, each system should choose which approach(es) it wishes to use and support the elements described in that section of the implementation guide.
   </p>
   <a name="obs-extract"> </a>
-  <h3>Observation-based extraction</h3>
+  <h4>Observation-based extraction</h4>
   <p>
     This is the simplest of the extraction mechanisms.  It leverages the same data elements as are used for the <a href="populate.html#obs-pop">Observation-based population</a>
     mechanism.  It takes advantage of the fact that the vast majority of questions in the healthcare space typically correspond to the
@@ -255,7 +255,7 @@
     <li>Obviously, this mechanism only works for questionnaire items that correspond to Observation values.</li>
   </ul>
   <a name="definition-extract"> </a>
-  <h3>Definition-based extraction</h3>
+  <h4>Definition-based extraction</h4>
   <p>
     This approach to population is more generic.  It supports extracting data into any type of FHIR resource rather than being limited to only Observation.  It also supports more Observation data elements
     than can be gathered using the Observation element - for example, explicit effective time ranges, interpretations, comments, etc.
@@ -313,7 +313,7 @@
   </ul>
   <!-- Todo - can multiple profiles for the same resource be in play? -->
   <a name="map-extract"> </a>
-  <h3>StructureMap-based extraction</h3>
+  <h4>StructureMap-based extraction</h4>
   <p>
     The <a href="{{site.data.fhir.path}}structuremap.html">StructureMap</a> approach is the most sophisticated approach of the three - and the most powerful.  It allows significant transformation of
     data, including code translations when generating output resources.  It also allows the

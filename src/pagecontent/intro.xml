@@ -1,6 +1,6 @@
 <div xmlns="http://www.w3.org/1999/xhtml" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://hl7.org/fhir ../../src-generated/schemas/fhir-single.xsd">
 	<a name="fhir"> </a>
-	<h2>Understanding FHIR</h2>
+	<h3>Understanding FHIR</h3>
 	<p>
     This implementation guide is based on the HL7 <a href="{{site.data.fhir.path}}index.html">FHIR</a> standard.  It uses terminology, notations and design principles that are
     specific to FHIR.  Before reading this implementation guide, it's important to be familiar with some of the basic principles of FHIR as well 
@@ -42,7 +42,7 @@
   </p>
 
 	<a name="resources"> </a>
-	<h3>Resources</h3>
+	<h4>Resources</h4>
 	<p>
     This implementation guide defines profiles on several resources.  Implementations are expected to be conformant with these profiles in order
     to be conformant with this implementation guide.
@@ -152,7 +152,7 @@
 	</p>
 
 	<a name="terminologyops"> </a>
-	<h3>Terminology Operations</h3>
+	<h4>Terminology Operations</h4>
 	<p>
     In addition to the QuestionnaireResponse <a href="populate.html">population operations</a>, <a href="Questionnaire-extract.html">extract operation</a> and <a href="Questionnaire-next-question.html">next-question operation</a>, it will be useful for Form Filler and Form Manager systems to support some of FHIR's
     <a href="{{site.data.fhir.path}}terminology-service.html">terminology service</a> capabilities - specifically the 
@@ -162,7 +162,7 @@
   </p>
 
   <a name="conformance"> </a>
-  <h3>Conformance and Must Support</h3>
+  <h4>Conformance and Must Support</h4>
 	<p>
     FHIR defines the notion of <a href="{{site.data.fhir.path}}conformance-rules.html#mustSupport">Must Support</a> to help establish conformance expectations for systems.  The specific meaning of 
     "must support" is left to be defined in individual implementation guides.  For the purposes of <i>this</i> implementation guide, "must support" shall be interpreted as follows:
@@ -176,7 +176,7 @@
 
 
   <a name="fhirpath"> </a>
-	<h2>Understanding FHIRPath</h2>
+	<h3>Understanding FHIRPath</h3>
   <p>
     In addition to the base FHIR specification, some of the more advanced capabilities defined in this implementation guide - specifically around
     <a href="behavior.html">behavior</a>, <a href="populate.html">population</a> and <a href="extraction.html">extraction</a> rely on
@@ -188,7 +188,7 @@
   </p>
 
   <a name="contexts"> </a>
-  <h3>Questionnaire context</h3>
+  <h4>Questionnaire context</h4>
   <p>
     To support using FHIRPath with questionnaires, this implementation guide defines a set of additional FHIRPath contexts: TODO
   </p>
