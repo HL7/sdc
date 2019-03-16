@@ -1,29 +1,31 @@
 <div xmlns="http://www.w3.org/1999/xhtml" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://hl7.org/fhir ../../src-generated/schemas/fhir-single.xsd">
-	<p>
+  <p>
 	  One of the objectives of the SDC implementation guide is to reduce data entry into forms when the relevant data already exists in discrete form within the clinical or administrative
 	  system completing the form.  This saves user time and increases accuracy.  If a Questionnaire is created with knowledge of where the data for different questions within the form
 	  is expected to come from, the <a href="sdc-form-filler.html">Form Filler</a> or <a href="sdc-form-manager.html">Form Manager</a> system can query for the relevant information and
 	  automatically fill in some of the answers.  FHIR's REST interface provides a standard way to query this data, regardless of the type of client.
 	</p>
-	<p>
+  <p>
 	  There are four different modes of "population" possible:
 	</p>
-	
-	<a name="mode"> </a>
-	<ul>
-    <li><b>Full population:</b> The questionnaire is able to identify the specific data element (or set of data elements) that should be used to populate the form.  No user intervention
+  <a name="mode"> </a>
+  <ul>
+    <li>
+      <b>Full population:</b> The questionnaire is able to identify the specific data element (or set of data elements) that should be used to populate the form.  No user intervention
       is required other than to review the content.  E.g. capturing the patient's gender, birth date, most recent weight measurement, etc.  In some cases, this might involve performing a
       calculation based on data retrieved.  For example, determining the patient's BMI by querying the most recent weight and height observations.</li>
-    <li><b>Choice selection:</b> The questionnaire is able to identify the candidate answers but the user must choose which of those should be included in the form response.  For example, 
+    <li>
+      <b>Choice selection:</b> The questionnaire is able to identify the candidate answers but the user must choose which of those should be included in the form response.  For example, 
       a question might say "List any relevant concomitent medical conditions".  The notion of "relevant" will typically require human decision-making.  However, the system rendering the 
       questionnaire can easily bring up a list of concomitent medical conditions and allow the user to select which ones are "relevant" and include those in the answer.</li>
-    <li><b>Answer context:</b> The specific answer to the question will not exist as data in the client system, but might be able to be determined by the user based on data that is available
+    <li>
+      <b>Answer context:</b> The specific answer to the question will not exist as data in the client system, but might be able to be determined by the user based on data that is available
       in the clinical system.  For example the question "Has the patient ever exibited a similar reaction in the past?" with a yes/no/unknown answer choice is not a data element that will
       exist in the clinical system.  However, it is possible to provide the clinician with a list of AdverseEvent, Observation and Condition instances that might be relevant they can scan
       in choosing how to answer the question.</li>
-    <li><b>No population</b> There is no way to query information relevant to the answer - the user will have to fill out that portion of the form unassisted.</li>
+    <li>
+      <b>No population</b> There is no way to query information relevant to the answer - the user will have to fill out that portion of the form unassisted.</li>
   </ul>
-  
   <a name="caveats"> </a>
   <h3>Caveats and considerations with form population</h3>
   <ul>
@@ -47,7 +49,7 @@
       not be able to see when navigating the source system directly.  In some cases, this means that an answer in a form might not be populated even though the data exists - because the user
       doesn't have authority to see that data.
     </li>
-		<li>
+    <li>
       <p>
         Defining the rules for populating a questionnaire is essentially a mapping process.  The author is mapping between the data element defined by a particular question or group item and
         a corresponding element in a FHIR resource or profile.
@@ -60,15 +62,15 @@
         Even with this precaution, care should be taken when performing data mappings, including:
       </p>
       <ul>
-				<li>Be aware that the risk of incorrect mapping occurring can be significantly higher when mapping complex questionnaires and/or complex data structures and 
+        <li>Be aware that the risk of incorrect mapping occurring can be significantly higher when mapping complex questionnaires and/or complex data structures and 
           especially high when mapping both.</li>
-				<li>The degree of risk is implementation dependent (type of data, type of questionnaire, type of source, mapping mechanism, type of user, etc.)</li>
-				<li>Both mappings and the implementation of those mappings should be carefully verified and in some situations should be subject to certification or external 
+        <li>The degree of risk is implementation dependent (type of data, type of questionnaire, type of source, mapping mechanism, type of user, etc.)</li>
+        <li>Both mappings and the implementation of those mappings should be carefully verified and in some situations should be subject to certification or external 
           verification</li>
-				<li>Mapping from profiles not specifically defined for use in the context of a particular questionnaire or set of questionnaires (i.e. with a defined 
+        <li>Mapping from profiles not specifically defined for use in the context of a particular questionnaire or set of questionnaires (i.e. with a defined 
           context) magnifies the risk of erroneous population.</li>
-			</ul>
-		</li>
+      </ul>
+    </li>
     <li>
       Of the four population <a href="#mode">modes</a>, the 'Full Population' approach can be done either as a single step for all items in the questionnaire prior to presenting the form to the user -
       "pre-population".  Alternatively, it can be done continuously as the user encounters each item when completing the form - "continuous population".  "Choice selection" and "answer context" can
@@ -89,96 +91,94 @@
       a <code>QuestionnaireResponse.questionnaire</code> of the original Questionnaire's canonical URL rather than that of the derived Questionnaire that drove the population process.</li>
     <!-- TODO: How do we pass in a token that allows the population system the ability to query the system that owns the data - and how do they even know where that system is? -->
   </ul>
-
-	<a name="service"> </a>
-	<h3>Pre-population service</h3>
-	<p>
+  <a name="service"> </a>
+  <h3>Pre-population service</h3>
+  <p>
     Populating a QuestionnaireResponse is a complex task.  The system must be able to query resources, use FHIRPath to extract and potentially calculate relevant data 
     elements, manage conditionality rules around enableWhen as part of the population process, etc.  As a result, some client systems might prefer to offload the
     responsibility for handling pre-population of a form to a separate system.  The FHIR specification defines a set of services that can be used to to this which
     provide a variable degree of offloading - from just handling the population aspect through to handling the rendering of the form and interactive data capture completely through a
     separate site.
 	</p>
-	<p>
+  <p>
     There are three operations:
   </p>
-	<table class="grid" cellpadding="5">
-		<tbody>
-			<tr>
-				<th>Operation</th>
-				<th>Description</th>
-			</tr>
-			<tr>
-				<td>
-					<a href="Questionnaire-populate.html">populate</a>
-				</td>
-				<td>
+  <table class="grid" cellpadding="5">
+    <tbody>
+      <tr>
+        <th>Operation</th>
+        <th>Description</th>
+      </tr>
+      <tr>
+        <td>
+          <a href="Questionnaire-populate.html">populate</a>
+        </td>
+        <td>
           This operation supports generating a <a href="{{site.data.fhir.path}}questionnaireresponse.html">QuestionnaireResponse</a> instance based on a specified
           <a href="{{site.data.fhir.path}}questionnaire.html">Questionnaire</a>.  If matching data is available for any of the questions and the server supports 
           the pre-population capability, the answers for those questions will be populated in the returned QuestionnaireResponse instance.
         </td>
-			</tr>
-			<tr>
-				<td>
-					<a href="Questionnaire-populate.html">populatehtml</a>
-				</td>
-				<td>
+      </tr>
+      <tr>
+        <td>
+          <a href="Questionnaire-populate.html">populatehtml</a>
+        </td>
+        <td>
           This operation produces an HTML web page as a <a href="{{site.data.fhir.path}}binary.html">Binary</a> instance.  The HTML page provides an interactive rendering
           of the form, using html-based controls to capture user inputs and scripting languages to support form validation and submission to the server that
           generated the form and/or the recipient(s) designated by the <a href="{{site.data.fhir.path}}questionnaire.html">Questionnaire</a>.  If matching data is available 
           for any of the questions and the server supports the pre-population capability, the form will initially render with the answers for those questions filled in.<br/>
           NOTE: because the Binary will contain active content, client systems must ensure they trust the server performing the <code>populatehtml</code> operation.
         </td>
-			</tr>
-			<tr>
-				<td>
-					<a href="Questionnaire-populatelink.html">populatelink</a>
-				</td>
-				<td>
+      </tr>
+      <tr>
+        <td>
+          <a href="Questionnaire-populatelink.html">populatelink</a>
+        </td>
+        <td>
           This operation returns a URL leading to an web page with an interactive rendering of the form that allows a user navigating to the link with a browser to
           complete and submit a response to the questionnaire.  The response will be transmitted to the server generating the link, hosting the form and/or as
           designated as part of the <a href="{{site.data.fhir.path}}questionnaire.html">Questionnaire</a> itself.  If matching data is available 
           for any of the questions and the server supports the pre-population capability, the form will initially render with the answers for those questions filled in.
         </td>
-			</tr>
-		</tbody>
-	</table>
-	<p>
+      </tr>
+    </tbody>
+  </table>
+  <p>
     In addition to these operations, another alternative is to use the <a href="adaptive.html">Adaptive Form</a> mechanism.  It hides the design of the questionnaire entirely
     and, in principle, allows the service determining the next question to automatically fill in (or perhaps even suppress asking questions) based on data the service is able to
     access about the patient.
 	</p>
-	<p>
+  <p>
     For SDC purposes, server systems claiming to support roles that require support for the <code>populate</code>, <code>populatehtml</code> or <code>populatelink</code>
     operations (<a href="sdc-form-manager.html">SDC Form Manager</a>) SHALL, at minimum:
   </p>
-	<ul>
-		<li>Handle the input parameters <code>identifier</code>, <code>questionnaire</code>, <code>questionnaireRef</code>, <code>subject</code> and <code>content</code>
-		</li>
-		<li>Support passing at least* the <a href="{{site.data.fhir.path}}patient.html">Patient</a> resource using the <code>content</code> parameter</li>
-		<li>Populate the returned <a href="{{site.data.fhir.path}}questionnaireresponse.html">QuestionnaireResponse</a> instance or rendered form for all questions referencing
+  <ul>
+    <li>Handle the input parameters <code>identifier</code>, <code>questionnaire</code>, <code>questionnaireRef</code>, <code>subject</code> and <code>content</code>
+    </li>
+    <li>Support passing at least* the <a href="{{site.data.fhir.path}}patient.html">Patient</a> resource using the <code>content</code> parameter</li>
+    <li>Populate the returned <a href="{{site.data.fhir.path}}questionnaireresponse.html">QuestionnaireResponse</a> instance or rendered form for all questions referencing
       data element logical model <a href="{{site.data.fhir.path}}structuredefinition.html">StructureDefinition</a> that are mapped to C-CDA content</li>
-	</ul>
-	<p>
+  </ul>
+  <p>
     Similarly, client systems claiming to support the <code>populate</code>, <code>populatehtml</code> and/or <code>populatelink</code> operations
     (<a href="sdc-form-filler.html">SDC Form Filler</a>) SHALL, at a minimum:
   </p>
-	<ul>
-		<li>Be capable of invoking the operation(s) on a selected questionnaire both directly (<code>Questionnaire/[identifier]/$populate</code>)
+  <ul>
+    <li>Be capable of invoking the operation(s) on a selected questionnaire both directly (<code>Questionnaire/[identifier]/$populate</code>)
       as well as indirectly either by <code>identifier</code> or <code>questionnaire</code>
-		</li>
-		<li>Support passing at least* the <a href="{{site.data.fhir.path}}patient.html">Patient</a> resource using the <code>content</code> parameter</li>
-		<li>Be able to accept an incoming partially-populated <a href="{{site.data.fhir.path}}questionnaireresponse.html">QuestionnaireResponse</a> and render it as if they had 
+    </li>
+    <li>Support passing at least* the <a href="{{site.data.fhir.path}}patient.html">Patient</a> resource using the <code>content</code> parameter</li>
+    <li>Be able to accept an incoming partially-populated <a href="{{site.data.fhir.path}}questionnaireresponse.html">QuestionnaireResponse</a> and render it as if they had 
       retrieved a saved partially-completed <a href="{{site.data.fhir.path}}questionnaireresponse.html">QuestionnaireResponse</a>
-		</li>
-		<li> It is the responsibility of the <a href="sdc-form-filler.html">SDC Form Filler</a> to ensure the form is valid after a human has reviewed and edited the form.</li>
-	</ul>
-	<p>
+    </li>
+    <li> It is the responsibility of the <a href="sdc-form-filler.html">SDC Form Filler</a> to ensure the form is valid after a human has reviewed and edited the form.</li>
+  </ul>
+  <p>
     * Supporting additional resources relevant to the context of the form is also encouraged.  Past versions of this specification mandated support for passing C-CDA resources as
     FHIR Binary instances and this is still permitted.  However, this specification no longer provides recommendations for extracting data elements from C-CDA and we have not yet
     heard of any systems that do this successfully in a production environment
   </p>
-  
   <a name="design"> </a>
   <h2>Designing Questionnaires to support 'populate'</h2>
   <p>
@@ -203,7 +203,6 @@
     None of the additional resource elements or extensions are marked as "mustSupport" because there is no expectation that systems will support all of (or any of) the different
     population mechanisms.  Instead, each system should choose which approach(es) it wishes to use and support the elements described in that section of the implementation guide.
   </p>
-  
   <a name="obs-pop"> </a>
   <h3>Observation-based Population</h3>
   <p>
@@ -229,49 +228,47 @@
   <p>
     For example:
   </p>
-  <code>
-    <![CDATA[
-          <item>
-            <extension url="http://hl7.org/fhir/StructureDefinition/questionnaire-observationLinkPeriod">
-              <valueDuration>
-                <value value="3"/>
-                <system value="http://unitsofmeasure.org"/>
-                <code value="mo"/>
-              </valueDuration>
-            </extension>
-            <linkId value="code-pop-demo"/>
-            <code>
-              <system value="http://loinc.org"/>
-              <code value="29463-7"/>
-              <display value="Body weight"/>
-            </code>
-            <code>
-              <system value="http://loinc.org"/>
-              <code value="3141-9"/>
-              <display value="Body weight Measured"/>
-            </code>
-            <code>
-              <system value="http://loinc.org"/>
-              <code value="8341-0"/>
-              <display value="Dry body weight Measured"/>
-            </code>
-            <text value="What is your current weight?"/>
-            <type value="quantity"/>
-            <answerOption>
-              <valueCoding>
-                <system value="http://unitsofmeasure.org"/>
-                <code value="kg"/>
-              </valueCoding>
-            </answerOption>
-            <answerOption>
-              <valueCoding>
-                <system value="http://unitsofmeasure.org"/>
-                <code value="[lb_av]"/>
-              </valueCoding>
-            </answerOption>
-          </item>
-    ]]>
-  </code>
+  <pre>
+    <code><![CDATA[<item>
+      <extension url="http://hl7.org/fhir/StructureDefinition/questionnaire-observationLinkPeriod">
+        <valueDuration>
+          <value value="3"/>
+          <system value="http://unitsofmeasure.org"/>
+          <code value="mo"/>
+        </valueDuration>
+      </extension>
+      <linkId value="code-pop-demo"/>
+      <code>
+        <system value="http://loinc.org"/>
+        <code value="29463-7"/>
+        <display value="Body weight"/>
+      </code>
+      <code>
+        <system value="http://loinc.org"/>
+        <code value="3141-9"/>
+        <display value="Body weight Measured"/>
+      </code>
+      <code>
+        <system value="http://loinc.org"/>
+        <code value="8341-0"/>
+        <display value="Dry body weight Measured"/>
+      </code>
+      <text value="What is your current weight?"/>
+      <type value="quantity"/>
+      <answerOption>
+        <valueCoding>
+          <system value="http://unitsofmeasure.org"/>
+          <code value="kg"/>
+        </valueCoding>
+      </answerOption>
+      <answerOption>
+        <valueCoding>
+          <system value="http://unitsofmeasure.org"/>
+          <code value="[lb_av]"/>
+        </valueCoding>
+      </answerOption>
+    </item>]]></code>
+  </pre>
   <p>
     When performing the population operation, the system would look for questions that have the <code>questionnaire-observationLinkPeriod</code> extension
     and would then perform a query on the Observation using the context of the QuestionnaireResponse's subject - typically a Patient.  The query would retrieve
@@ -312,7 +309,6 @@
     <li>This mechanism can be used either for a pre-population step - before the user fills in any data, or as a "continuous" population process, where data is only retrieved when a given element becomes "enabled"</li>
     <li>Obviously, this mechanism only works for questionnaire items that correspond to Observation values.</li>
   </ul>
-  
   <a name="path-pop"> </a>
   <h3>FHIRPath-based Population</h3>
   <p>
@@ -344,7 +340,7 @@
     <li>For <a href="#mode">Answer Context</a>, use the <a href="extension-sdc-questionnaire-contextExpression.html">sdc-questionnaire-contextExpression</a> to indicate the resources to make available for display
       to the user to aid in answering the question.  The information SHOULD be made available through user action (clicking a button or link) rather than being presented by default.</li>
   </ol>
-<!--  <p>
+  <!--  <p>
     An example of a questionnaire using this approach can be found <a href="todo">here</a>.
   </p>-->
   <p>
@@ -409,7 +405,6 @@
       prompt the user as to whether the question should be updated to the 'new' auto-populated value.  Systems SHALL NOT replace already filled in answers without user approval.  </li>
     <li>If the units of measure are constrained for the Questionnaire item, the system can choose to convert the data (if the units are coded and the conversion factor is known) or choose not to populate.</li>
   </ul>
-
   <a name="map-pop"> </a>
   <h3>StructureMap-based Population</h3>
   <p>
@@ -434,51 +429,48 @@
   <p>
     For example:
   </p>
-  <code>
-    <![CDATA[
-      <Questionnaire>
-        ...
-        <extension url="http://hl7.org/fhir/StructureDefinition/questionnaire-launchContext">
-          <extension url="name">
-            <valueId value="patient"/>
-          </extension>
-          <extension url="type">
-            <valueCode value="Patient"/>
-          </extension>
-          <extension url="description">
-            <valueString value="The patient the questionnaire is being completed for"/>
-          </extension>
+  <pre>
+    <code><![CDATA[<Questionnaire>
+      ...
+      <extension url="http://hl7.org/fhir/StructureDefinition/questionnaire-launchContext">
+        <extension url="name">
+          <valueId value="patient"/>
         </extension>
-        <extension url="http://hl7.org/fhir/StructureDefinition/questionnaire-launchContext">
-          <extension url="name">
-            <valueId value="encounter"/>
-          </extension>
-          <extension url="type">
-            <valueCode value="Encounter"/>
-          </extension>
-          <extension url="description">
-            <valueString value="The encounter this discharge questionnaire is being completed for"/>
-          </extension>
+        <extension url="type">
+          <valueCode value="Patient"/>
         </extension>
-        <extension url="http://hl7.org/fhir/uv/sdc/StructureDefinition/sdc-questionnaire-sourceQueries">
-          <valueReference>
-            <reference value="Bundle/someQueryBatch"/>
-          </valueReference>
+        <extension url="description">
+          <valueString value="The patient the questionnaire is being completed for"/>
         </extension>
-        <extension url="http://hl7.org/fhir/StructureDefinition/questionnaire-sourceStructureMap">
-          <valueReference>
-            <reference value="StructureMap/someStructureMap"/>
-          </valueReference>
+      </extension>
+      <extension url="http://hl7.org/fhir/StructureDefinition/questionnaire-launchContext">
+        <extension url="name">
+          <valueId value="encounter"/>
         </extension>
-        ...
-      </Questionnaire>
-    ]]>
-  </code>
+        <extension url="type">
+          <valueCode value="Encounter"/>
+        </extension>
+        <extension url="description">
+          <valueString value="The encounter this discharge questionnaire is being completed for"/>
+        </extension>
+      </extension>
+      <extension url="http://hl7.org/fhir/uv/sdc/StructureDefinition/sdc-questionnaire-sourceQueries">
+        <valueReference>
+          <reference value="Bundle/someQueryBatch"/>
+        </valueReference>
+      </extension>
+      <extension url="http://hl7.org/fhir/StructureDefinition/questionnaire-sourceStructureMap">
+        <valueReference>
+          <reference value="StructureMap/someStructureMap"/>
+        </valueReference>
+      </extension>
+      ...
+    </Questionnaire>]]></code>
+  </pre>
   <p>
     To populate the QuestionnaireResponse, evaluate the FHIRPaths in the sourceQueries batch, execute the sourceQueries batch and then execute the StructureMap on the resulting Bundle.  The result of that
     will be the pre-populated QueryResponse.  <!--A sample questionnaire that shows this approach can be found <a href="todo">here</a>.-->
   </p>
-  
   <p>
     Considerations when using this approach:
   </p>

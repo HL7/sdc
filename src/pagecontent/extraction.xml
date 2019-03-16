@@ -11,7 +11,6 @@
     that can convert any arbitrary QuestionnaireResponse into appropriate FHIR resources leveraging metadata embedded in the Questionnaire.  This portion of the SDC guide defines mechanisms
     for doing so.
   </p>
-
   <a name="caveats"> </a>
   <h3>Caveats and considerations with form population</h3>
   <ul>
@@ -46,9 +45,8 @@
       <code>Questionnaire.derivedFrom</code> relationship to the same canonical URL the QuestionnaireResponse refers to.  The derived Questionnaire would contain the same content as the
       base Questionnaire, but would have additional extensions inserted to support data extraction.</li>
   </ul>
-
-	<a name="service"> </a>
-	<h3>Extraction service</h3>
+  <a name="service"> </a>
+  <h3>Extraction service</h3>
   <p>
     Like <a href="populate.html">Questionnaire population</a>, extracting data from a QuestionnaireResponse is a complex process involving querying existing FHIR data and using more advanced
     technologies such as FHIRPath and StructureMap.  It's therefore a function that systems may also wish to offload to a separate system.  The 
@@ -59,7 +57,6 @@
   <p>
     NOTE: It's the responsibility of the client system to ensure that any generated resources are valid against necessary profiles, etc. before using content produced by this operation.
   </p>
-  
   <a name="design"> </a>
   <h2>Designing Questionnaires to support data extraction</h2>
   <p>
@@ -84,7 +81,6 @@
     None of the additional resource elements or extensions are marked as "mustSupport" because there is no expectation that systems will support all of (or any of) the different
     extraction mechanisms.  Instead, each system should choose which approach(es) it wishes to use and support the elements described in that section of the implementation guide.
   </p>
-  
   <a name="obs-extract"> </a>
   <h3>Observation-based extraction</h3>
   <p>
@@ -112,49 +108,47 @@
   <p>
     For example:
   </p>
-  <code>
-    <![CDATA[
-          <item>
-            <extension url="http://hl7.org/fhir/StructureDefinition/questionnaire-observationLinkPeriod">
-              <valueDuration>
-                <value value="3"/>
-                <system value="http://unitsofmeasure.org"/>
-                <code value="mo"/>
-              </valueDuration>
-            </extension>
-            <linkId value="code-pop-demo"/>
-            <code>
-              <system value="http://loinc.org"/>
-              <code value="29463-7"/>
-              <display value="Body weight"/>
-            </code>
-            <code>
-              <system value="http://loinc.org"/>
-              <code value="3141-9"/>
-              <display value="Body weight Measured"/>
-            </code>
-            <code>
-              <system value="http://loinc.org"/>
-              <code value="8341-0"/>
-              <display value="Dry body weight Measured"/>
-            </code>
-            <text value="What is your current weight?"/>
-            <type value="quantity"/>
-            <answerOption>
-              <valueCoding>
-                <system value="http://unitsofmeasure.org"/>
-                <code value="kg"/>
-              </valueCoding>
-            </answerOption>
-            <answerOption>
-              <valueCoding>
-                <system value="http://unitsofmeasure.org"/>
-                <code value="[lb_av]"/>
-              </valueCoding>
-            </answerOption>
-          </item>
-    ]]>
-  </code>
+  <pre>
+    <code><![CDATA[<item>
+      <extension url="http://hl7.org/fhir/StructureDefinition/questionnaire-observationLinkPeriod">
+        <valueDuration>
+          <value value="3"/>
+          <system value="http://unitsofmeasure.org"/>
+          <code value="mo"/>
+        </valueDuration>
+      </extension>
+      <linkId value="code-pop-demo"/>
+      <code>
+        <system value="http://loinc.org"/>
+        <code value="29463-7"/>
+        <display value="Body weight"/>
+      </code>
+      <code>
+        <system value="http://loinc.org"/>
+        <code value="3141-9"/>
+        <display value="Body weight Measured"/>
+      </code>
+      <code>
+        <system value="http://loinc.org"/>
+        <code value="8341-0"/>
+        <display value="Dry body weight Measured"/>
+      </code>
+      <text value="What is your current weight?"/>
+      <type value="quantity"/>
+      <answerOption>
+        <valueCoding>
+          <system value="http://unitsofmeasure.org"/>
+          <code value="kg"/>
+        </valueCoding>
+      </answerOption>
+      <answerOption>
+        <valueCoding>
+          <system value="http://unitsofmeasure.org"/>
+          <code value="[lb_av]"/>
+        </valueCoding>
+      </answerOption>
+    </item>]]></code>
+  </pre>
   <p>
     When performing the extraction process, the system will create a batch that will contain creates or updates of Observation instances.  It will go through the QuestionnaireResponse and identify 
     all answers for which the corresponding Questionnaire item has a <a href="extension-sdc-questionnaire-observationLinkPeriod.html">questionnaire-observationLinkPeriod</a> extension.  
@@ -206,18 +200,23 @@
     <li>
       <code>Observation.code</code> - add all of the <code>Questionnaire.item.code</code> values as <code>Observation.code.coding</code> instances</li>
     <li>
-      <code>Observation.subject</code> - set to <code>QuestionnaireResponse.subject</code></li>
+      <code>Observation.subject</code> - set to <code>QuestionnaireResponse.subject</code>
+    </li>
     <li>
       <code>Observation.encounter</code> - set to <code>QuestionnaireResponse.context</code> (if an Encounter)</li>
     <li>
-      <code>Observation.effectiveDateTime</code> - set to <code>QuestionnaireResponse.authored</code>.<br/><br/>Note, this is an inference.  It is important that the question text implies that
+      <code>Observation.effectiveDateTime</code> - set to <code>QuestionnaireResponse.authored</code>.<br/>
+      <br/>Note, this is an inference.  It is important that the question text implies that
       the value is 'current' not 'historical' for this to be safe - otherwise don't include the 'observationLinkPeriod' extension that marks the question as appropriate for population and extraction.</li>
     <li>
-      <code>Observation.issued</code> - set to <code>QuestionnaireResponse.authored</code></li>
+      <code>Observation.issued</code> - set to <code>QuestionnaireResponse.authored</code>
+    </li>
     <li>
-      <code>Observation.performer</code> - set to <code>QuestionnaireResponse.author</code></li>
+      <code>Observation.performer</code> - set to <code>QuestionnaireResponse.author</code>
+    </li>
     <li>
-      <code>Observation.value[x]</code> - set to <code>QuestionnaireResponse.item.answer.value[x]</code></li>
+      <code>Observation.value[x]</code> - set to <code>QuestionnaireResponse.item.answer.value[x]</code>
+    </li>
     <li>
       <code>Observation.derivedFrom</code> - set to a reference to the QuestionnaireResponse</li>
     <li>
@@ -249,13 +248,12 @@
       Implementers are free to try combining this mechanism with the <a href="#definition-extract">Definition-based</a> approach.  If they do, they should take care that a given item (and its children) are only
       handled by one approach or the other - not both.</li>
     <li>
-      This approach does not allow for observations where <code>Observation.focus</code> is relevant or for capturing <code>Observation.dataAbsentReason</code></li>
+      This approach does not allow for observations where <code>Observation.focus</code> is relevant or for capturing <code>Observation.dataAbsentReason</code>
+    </li>
     <li>Where an Observation is known to directly correlate to another resource element value (e.g. LOINC 21112-8 corresponds to <code>Patient.birthDate</code>), systems MAY take advantage of this knowledge to
       update the value of resources other than Observations, however such use is discouraged - using one of the other extraction techniques is likely better and safer.</li>
     <li>Obviously, this mechanism only works for questionnaire items that correspond to Observation values.</li>
-    
   </ul>
-
   <a name="definition-extract"> </a>
   <h3>Definition-based extraction</h3>
   <p>
@@ -277,13 +275,12 @@
       <a href="extension-sdc-questionnaire-launchContext.html">questionnaire-launchContext</a> extensions, used as described in the <a href="populate.html#path-pop">Path-based population</a>
       section.</li>
   </ol>
-  
   <p>
     To perform the population process, first determine whether the context resource should be updated or created:
   </p>
   <ul>
     <li>If the context resource existed and was used in the population of the resource and data has changed, the resource will typically be updated.  (Note that this means
-      the system must capture the resource ids as hidden items in the Questionnaire so they're available for update.)</li>  
+      the system must capture the resource ids as hidden items in the Questionnaire so they're available for update.)</li>
     <li>In other cases, the record will be created</li>
   </ul>
   <p>
@@ -292,7 +289,7 @@
     resource type of the context.  As well, if the definitions refer to a profile, any child elements of the profile that have fixed values or patterns declared will also be included in the instance
     with values matching the fixed or pattern values.
   </p>
-<!--  <p>
+  <!--  <p>
     An example of a questionnaire using this approach can be found <a href="todo">here</a>.
   </p>-->
   <p>
@@ -314,8 +311,7 @@
     <li>
       The items in the Questionnaire might not have the same order as those in the resource.  When serializing into XML, the official order must still be respected.</li>
   </ul>
-<!-- Todo - can multiple profiles for the same resource be in play? -->
-  
+  <!-- Todo - can multiple profiles for the same resource be in play? -->
   <a name="map-extract"> </a>
   <h3>StructureMap-based extraction</h3>
   <p>
@@ -335,7 +331,6 @@
   <p>
     To extract data from the completed QuestionnaireResponse, simply invoke execute the StructureMap on it.  <!--A sample Questionnaire and associated StructureMap that shows this approach can be found <a href="todo">here</a>.-->
   </p>
-  
   <p>
     Considerations when using this approach:
   </p>
