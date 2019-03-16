@@ -1,14 +1,24 @@
 <div xmlns="http://www.w3.org/1999/xhtml" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://hl7.org/fhir ../../src-generated/schemas/fhir-single.xsd">
   <p>
-    FHIR provides numerous extensions for Questionnaire, many of them related to how the questionnaire should be rendered.  SDC defines the
-    <a href="sdc-questionnaire-render.html">sdc-questionnaire-render</a> profile to highlight what extensions are available and where they are intended to be used.
+    FHIR provides numerous extensions for Questionnaire, many of them related to how the questionnaire should be rendered.  SDC includes the
+    <a href="sdc-questionnaire-render.html">sdc-questionnaire-render</a> profile which highlights what extensions are available and where they are intended 
+    to be used.
   </p>
   <p>
     <a href="questionnaire-sdc-profile-example-render.html">This example</a> highlights most of these extensions and shows how they should be used. This 
     <a href="questionnaire-sdc-profile-example-render.pdf">companion PDF</a> shows what a system rendering the Questionnaire according to the extensions included
     might look like.
   </p>
+  <h3>Rendering Extensions</h3>
   <p>
     TODO: Walkthrough of the extensions
   </p>
+  <h3>Additional rendering considerations</h3>
+  <ul>
+    <li>Questionnaires will be rendered by a variety of tools on a variety of devices.  Not all tools will necessarily support all extensions - or even
+      all core elements.  Authors should recognize this and only depend on extensions if they're confident that all systems using the Questionnaire will
+      support the needed extensions.  Note that this doesn't mean that extensions can't be used, only that the Questionnaire should be safe to use if
+      extensions that the author isn't certain will be supported are not supported.</li>
+    <li>Tools that use HTML to render forms should consider disabling browser-based auto-completion unless such behavior is is desired</li>
+  </ul>
 </div>
