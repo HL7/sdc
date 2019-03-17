@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <StructureDefinition xmlns="http://hl7.org/fhir" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://hl7.org/fhir ../../src-generated/schemas/fhir-single.xsd">
-  <id value="parameters-questionnaire-extract-in"/>
-  <url value="http://hl7.org/fhir/uv/sdc/StructureDefinition/parameters-questionnaire-extract-in"/>
-  <name value="ParametersQuestionnaireExtractIn"/>
-  <title value="Questionnnaire extract operation input parameters"/>
+  <id value="parameters-questionnaireresponse-extract-in"/>
+  <url value="http://hl7.org/fhir/uv/sdc/StructureDefinition/parameters-questionnaireresponse-extract-in"/>
+  <name value="ParametersQuestionnaireResponseExtractIn"/>
+  <title value="Questionnnaire response extract operation input parameters"/>
   <status value="draft"/>
-  <description value="Profile used to validate the parameters that are the input of the 'extract' questionnaire operation"/>
+  <description value="Profile used to validate the parameters that are the input of the 'extract' questionnaire response operation"/>
   <fhirVersion value="4.0.0"/>
   <kind value="resource"/>
   <abstract value="false"/>
@@ -42,7 +42,7 @@
       <path value="Parameters.parameter.resource"/>
       <type>
         <code value="Resource"/>
-        <profile value="http://hl7.org/fhir/uv/sdc/StructureDefinition/sdc-questionnaireresponse"/>
+        <profile value="http://hl7.org/fhir/uv/sdc/StructureDefinition/sdc-questionnaire-extract"/>
       </type>
     </element>
     <element id="Parameters.parameter:in.part">

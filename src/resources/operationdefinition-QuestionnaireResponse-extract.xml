@@ -1,0 +1,35 @@
+<OperationDefinition xmlns="http://hl7.org/fhir" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://hl7.org/fhir ../../src-generated/schemas/fhir-single.xsd">
+  <id value="QuestionnaireResponse-extract"/>
+  <url value="http://hl7.org/fhir/uv/sdc/OperationDefinition/QuestionnaireResponse-extract"/>
+  <version value="0.0.0"/>
+  <name value="QuestionnaireResponseExtract"/>
+  <title value="Questionnaire response extract to resource(s)"/>
+  <status value="draft"/>
+  <kind value="operation"/>
+  <date value="2018-08-30"/>
+  <publisher value="HL7 International - FHIR Infrastructure"/>
+  <description value="The Extract operation takes a completed QuestionnaireRespponse and converts it to a FHIR resource or Bundle of resources by using metadata embedded in the Questionnaire the QuestionnaireResponse is based on.  The extracted resources might include Observations, MedicationStatements and other standard FHIR resources which can then be shared and manipulated."/>
+  <code value="extract"/>
+  <comment value="The QuestionnaireResponse must identify a QuestionnaireResponse instance containing appropriate metadata to allow extraction.  (Refer to the [Data Extraction](extraction.html) page for more details."/>
+  <resource value="Questionnaire"/>
+  <system value="false"/>
+  <type value="true"/>
+  <instance value="true"/>
+  <inputProfile value="http://hl7.org/fhir/uv/sdc/StructureDefinition/parameters-questionnaireresponse-extract-in"/>
+  <parameter>
+    <name value="questionnaire-response"/>
+    <use value="in"/>
+    <min value="0"/>
+    <max value="1"/>
+    <documentation value="The QuestionnaireResponse to extract data from.  Used when the operation is invoked at the 'type' level."/>
+    <type value="Resource"/>
+  </parameter>
+  <parameter>
+    <name value="return"/>
+    <use value="out"/>
+    <min value="1"/>
+    <max value="1"/>
+    <documentation value="The resulting FHIR resource produced after extracting data.  This will either be a single resource or a Transaction Bundle that contains multiple resources.  The operations in the Bundle might be creates, updates and/or conditional versions of both depending on the nature of the extraction mappings"/>
+    <type value="Resource"/>
+  </parameter>
+</OperationDefinition>

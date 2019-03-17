@@ -72,7 +72,29 @@
     Of these, the first 3 are relevant to all SDC implementations.  Sections 4-8 are optional - implementers can decide which are necessary for their purposes.  Section 9 acts as an index and covers artifacts from 
     all of the various sections.
 	</p>
-
+	<a name="boundaries"> </a>
+	<h3>Boundaries and Relationships</h3>
+	<p>
+    In addition to defining its own extensions, this implementation guide leverages extensions defined in the <a href="{{site.data.fhir.path}}">core
+    specification.</a>  The definitions of these extensions can be found in the following sections. (Note - not all extensions from these sections are
+    relevant.  Relevant extensions are noted in each SDC profile, along with an indication of whether the extensions must be supported or not.)
+	</p>
+	<ul>
+			<li>
+				<a href="{{site.data.fhir.path}}questionnaire-extensions.html">questionnaire-extensions</a> defines a number of less common properties for questionnaire, group and 
+        question, several of which are mandated for this profile.</li>
+			<li>
+				<a href="{{site.data.fhir.path}}element-extensions.html">element-extensions</a> defines extensions describing constraints on the values for 
+				data elements (e.g. field length, min and max values, etc.)  There are used here to constrain the allowed values for questions.</li>
+			<li>
+				<a href="{{site.data.fhir.path}}general-extensions.html">general-extensions</a> provides an extension for strings allowing the conveying of
+				translations, which may be relevant in some environments</li>
+			<li>
+				<a href="{{site.data.fhir.path}}rendering-extensions.html">rendering-extensions</a> defines properties to give fine-grained control over 
+				how questions, labels and other strings are rendered, such as providing HTML or markdown equivalents.</li>
+      <li>
+        <a href="{{site.data.fhir.path}}codesystem-extensions.html">codesystem-extensions</a> defines </li>
+  </ul>
 	<a name="project"> </a>
 	<h3>Project</h3>
 	<p>
