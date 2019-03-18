@@ -1,9 +1,10 @@
 <div xmlns="http://www.w3.org/1999/xhtml" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://hl7.org/fhir ../../src-generated/schemas/fhir-single.xsd">
   <p>
-	  One of the objectives of the SDC implementation guide is to reduce data entry into forms when the relevant data already exists in discrete form within the clinical or administrative
-	  system completing the form.  This saves user time and increases accuracy.  If a Questionnaire is created with knowledge of where the data for different questions within the form
-	  is expected to come from, the <a href="sdc-form-filler.html">Form Filler</a> or <a href="sdc-form-manager.html">Form Manager</a> system can query for the relevant information and
-	  automatically fill in some of the answers.  FHIR's REST interface provides a standard way to query this data, regardless of the type of client.
+	  One of the objectives of the SDC implementation guide is to reduce data entry into forms when the relevant data already exists in discrete form within 
+	  the clinical or administrative system completing the form.  This saves user time and increases accuracy.  If a Questionnaire is created with knowledge 
+	  of where the data for different questions within the form is expected to come from, the <a href="sdc-form-filler.html">Form Filler</a> or 
+	  <a href="sdc-form-manager.html">Form Manager</a> system can query for the relevant information and automatically fill in some of the answers.  FHIR's 
+	  REST interface provides a standard way to query this data, regardless of the type of client.
 	</p>
   <p>
 	  There are four different modes of "population" possible:
@@ -11,9 +12,10 @@
   <a name="mode"> </a>
   <ul>
     <li>
-      <b>Full population:</b> The questionnaire is able to identify the specific data element (or set of data elements) that should be used to populate the form.  No user intervention
-      is required other than to review the content.  E.g. capturing the patient's gender, birth date, most recent weight measurement, etc.  In some cases, this might involve performing a
-      calculation based on data retrieved.  For example, determining the patient's BMI by querying the most recent weight and height observations.</li>
+      <b>Full population:</b> The questionnaire is able to identify the specific data element (or set of data elements) that should be used to populate the 
+      form.  No user intervention is required other than to review the content.  E.g. capturing the patient's gender, birth date, most recent weight 
+      measurement, etc.  In some cases, this might involve performing a calculation based on data retrieved.  For example, determining the patient's BMI by 
+      querying the most recent weight and height observations.</li>
     <li>
       <b>Choice selection:</b> The questionnaire is able to identify the candidate answers but the user must choose which of those should be included in the form response.  For example, 
       a question might say "List any relevant concomitent medical conditions".  The notion of "relevant" will typically require human decision-making.  However, the system rendering the 

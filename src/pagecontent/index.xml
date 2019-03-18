@@ -2,18 +2,20 @@
   <!--ReleaseHeader-->
   <p style="background-color: yellow; border: 1px solid maroon; padding: 5px;">
     This is the {{site.data.info.ballotstatus}} version of the {{site.data.fhir.igName}} Implementation Guide,  based on <a href="{{site.data.fhir.path}}">FHIR Version {{site.data.fhir.version}}</a>.  
-    See the <a href="{{site.data.fhir.canonical}}/history.html">Directory of published versions</a> for other versions and for a change history.
+    See the <a href="{{site.data.fhir.canonical}}/history.html">Directory of published versions</a> for other versions and for a change history.<br/>
+    This specification was developed by <a href="{{site.data.fhir.ig.contact[0].telecom[0]}}">{{site.data.fhir.ig.publisher}}</a>
   </p>
   <!--EndReleaseHeader-->
   <a name="scope"> </a>
   <h3>Scope</h3>
 	<p>
-    Forms permeate healthcare.  They are used to capture administrative data, claims data, clinical information, research information, for public health reporting - every type of data that is manipulated 
-    by healthcare systems.  They provide a user-friendly mechanism for capturing data in a consistent way.  In FHIR, forms are represented using the 
-    <a href="{{site.data.fhir.path}}questionnaire.html">Questionnaire</a> resource and completed forms are represented using the 
-    <a href="{{site.data.fhir.path}}questionnaireresponse.html">QuestionnaireResponse</a> resource.  The base FHIR specification defines these resources but doesn't provide much guidance around 
-    how they should be used, nor does it set minimal expectations for interoperation.  This implementation guide provides a set of guidance around the use of Questionnaire and QuestionnaireResponse.  
-    Specifically, it provides answers to - and conformance expectations around - questions like the following:
+    Questionnaires and forms permeate healthcare.  They are used to capture administrative data, claims data, clinical information, research information, 
+    for public health reporting - every type of data that is manipulated by healthcare systems.  They provide a user-friendly mechanism for capturing data 
+    in a consistent way.  In FHIR, forms are represented using the <a href="{{site.data.fhir.path}}questionnaire.html">Questionnaire</a> resource and 
+    completed forms are represented using the <a href="{{site.data.fhir.path}}questionnaireresponse.html">QuestionnaireResponse</a> resource.  The base FHIR 
+    specification defines these resources but doesn't provide much guidance around how they should be used, nor does it set minimal expectations for 
+    interoperation.  This implementation guide provides a set of guidance around the use of Questionnaire and QuestionnaireResponse.  
+    Specifically, it provides answers to - and conformance expectations around - questions such as:
   </p>
 	<ul>
     <li>What are the minimum capabilities a system should have to properly support FHIR-based forms?</li>
@@ -21,7 +23,8 @@
     <li>I want help text to appear in red - how do I do that?</li>
     <li>What's the mechanism to calculate and display a score for a completed form?</li>
     <li>I don't want to expose the logic of the questionnaire to other systems, but I still want to support form completion.  How do I do that using FHIR?</li>
-    <li>Some of the data in this form already exists in the patient's record.  How can I save the time (and prevent the transcription errors) associated with re-entering it into a form?</li>
+    <li>Some of the data in this form already exists in the patient's record.  How can I save the time (and prevent the transcription errors) associated 
+      with re-entering it into a form?</li>
     <li>Once a form's complete, I want to import the data into other FHIR resources - is there an easy way to do that?</li>
 	</ul>
 	<p>
@@ -36,42 +39,58 @@
     approach also allows implementers to easily navigate to the information needed to perform a particular task.
   </p>
 	<p>
-    A <a href="toc.html">Table of Contents</a> page is provided that lists all of the pages defined as part of this implementation guide.  (Do be aware that some pages 
-    have multiple tabs.)  A table of contents is also available for the full <a href="{{site.data.fhir.path}}toc.html">FHIR specification</a> if you really want to read 
-    absolutely everything.  There's also an <a href="artifacts.html">Artifact index</a> that lists all formal FHIR artifacts defined within this implementation guide.
+    A <a href="toc.html">Table of Contents</a> page is provided that lists all of the pages defined as part of this implementation guide.  (Do be aware 
+    that some pages have multiple tabs.)  A table of contents is also available for the full <a href="{{site.data.fhir.path}}toc.html">FHIR specification</a> 
+    if you really want to read absolutely everything.  There's also an <a href="artifacts.html">Artifact index</a> that lists all formal FHIR artifacts 
+    defined within this implementation guide.  The <i>Support</i> menu provides links to the HL7 standards used by this implementation guide as well as
+    providing a <a href="downloads.html">downloads</a> link to retrieve a local copy of this implementation guide and/or particular subsets of it.
   </p>
 	<p>
     Bread-crumb navigation is provided in the gray bar just below the menu at the top of each page, allowing
     easy navigation back to the main SDC page.
   </p>
-	<p>This implementation guide is organized into several sections:</p>
+	<p>This implementation guide is organized into two sets of sections: SDC Background and the SDC Specification</p>
+	<h4>SDC Background</h4>
+	<p>
+    These sections provide information relevant to all SDC implementers, regardless of which SDC capabilities they're interested in using.
+	</p>
 	<ol>
 		<li>
-			<a href="intro.html">FHIR usage</a> provides information about the FHIR and FHIRPath standards used by this IG and an overview of the resources used and base conformance expectations</li>
+			<a href="intro.html">FHIR usage</a> provides information about the FHIR and FHIRPath standards used by this IG and an overview of the resources used 
+			and base conformance expectations</li>
 		<li>
 			<a href="security.html">Security</a> sets base security expectations for systems claiming conformance with this implementation guide</li>
 		<li>
-			<a href="workflow.html">Workflow</a> describes the expectations for systems managing the creation, discovery and completion of questionnaires.  Systems conforming to SDC are expected to conform 
-			to one of the CapabilityStatements defined in this section</li>
+			<a href="workflow.html">Workflow</a> describes the expectations for systems managing the creation, discovery and completion of questionnaires.  
+			Systems conforming to SDC are expected to conform to one of the CapabilityStatements defined in this section</li>
 		<li>
-			<a href="search.html">Finding a Questionnaire</a> describes expectations for systems serving as form repositories as well as clients who will need to search for forms.</li>
-		<li>
-			<a href="rendering.html">Advanced Rendering</a> describes how to use various questions and the base capabilities of Questionnaire to render different types of form elements</li>
-		<li>
-			<a href="behavior.html">Form Behavior</a> describes how to design 'active' forms that adjust what information is displayed and/or that perform calculations based on user input</li>
-		<li>
-			<a href="adaptive.html">Adaptive Forms</a> describes an architecture to support completing forms where the questionnaire is not pre-defined and instead is dynamically developed based on the user's answers</li>
-		<li>
-			<a href="populate.html">Questionnaire Population</a> describes how to design questionnaires to support pre-population of answers and how to use services that support pre-populating forms</li>
-		<li>
-			<a href="extraction.html">Data Extraction</a> describes how to design questionnaires to support converting completed forms into a FHIR resource or Bundle of FHIR resources for subsequent analysis</li>
-		<li>
-			<a href="artifacts.html">Artifact List</a> provides a complete list of all of the profiles, extensions, capability statements, operations, value sets and other artifacts defined as part of this implementation guide</li>
+			<a href="expressions.html">Using Expressions</a> describes the use of FHIRPath and CQL within Questionnaires and defines additional contexts and
+			rules for using these technologies in FHIR Questionnaires.  (These are technologies used to support several of the SDC capabilities.)</li>
 	</ol>
+	<h4>SDC Specification</h4>
 	<p>
-    Of these, the first 3 are relevant to all SDC implementations.  Sections 4-8 are optional - implementers can decide which are necessary for their purposes.  Section 9 acts as an index and covers artifacts from 
-    all of the various sections.
+    These sections define the different use-cases supported by SDC, specify the profile(s) needed to meet the use-cases.
 	</p>
+	<ol>
+		<li>
+			<a href="search.html">Finding a Questionnaire</a> describes expectations for systems serving as form repositories as well as clients who will need 
+      to search for forms.</li>
+		<li>
+			<a href="rendering.html">Advanced Rendering</a> describes how to use various questions and the base capabilities of Questionnaire to render 
+			different types of form elements</li>
+		<li>
+			<a href="behavior.html">Form Behavior</a> describes how to design 'active' forms that adjust what information is displayed and/or that 
+			perform calculations based on user input</li>
+		<li>
+			<a href="adaptive.html">Adaptive Forms</a> describes an architecture to support completing forms where the questionnaire is not pre-defined and 
+			instead is dynamically developed based on the user's answers</li>
+		<li>
+			<a href="populate.html">Questionnaire Population</a> describes how to design questionnaires to support pre-population of answers and how to use 
+			services that support pre-populating forms</li>
+		<li>
+			<a href="extraction.html">Data Extraction</a> describes how to design questionnaires to support converting completed forms into a FHIR resource or 
+			Bundle of FHIR resources for subsequent analysis</li>
+	</ol>
 	<a name="boundaries"> </a>
 	<h3>Boundaries and Relationships</h3>
 	<p>
@@ -80,43 +99,47 @@
     relevant.  Relevant extensions are noted in each SDC profile, along with an indication of whether the extensions must be supported or not.)
 	</p>
 	<ul>
-			<li>
-				<a href="{{site.data.fhir.path}}questionnaire-extensions.html">questionnaire-extensions</a> defines a number of less common properties for questionnaire, group and 
-        question, several of which are mandated for this profile.</li>
-			<li>
-				<a href="{{site.data.fhir.path}}element-extensions.html">element-extensions</a> defines extensions describing constraints on the values for 
-				data elements (e.g. field length, min and max values, etc.)  There are used here to constrain the allowed values for questions.</li>
-			<li>
-				<a href="{{site.data.fhir.path}}general-extensions.html">general-extensions</a> provides an extension for strings allowing the conveying of
-				translations, which may be relevant in some environments</li>
-			<li>
-				<a href="{{site.data.fhir.path}}rendering-extensions.html">rendering-extensions</a> defines properties to give fine-grained control over 
-				how questions, labels and other strings are rendered, such as providing HTML or markdown equivalents.</li>
-      <li>
-        <a href="{{site.data.fhir.path}}codesystem-extensions.html">codesystem-extensions</a> defines </li>
+    <li>
+      <a href="{{site.data.fhir.path}}questionnaire-extensions.html">questionnaire-extensions</a> defines a number of less common properties for 
+      questionnaire, group and question, several of which are mandated for this profile.</li>
+    <li>
+      <a href="{{site.data.fhir.path}}element-extensions.html">element-extensions</a> defines extensions describing constraints on the values for 
+      data elements (e.g. field length, min and max values, etc.)  There are used here to constrain the allowed values for questions.</li>
+    <li>
+      <a href="{{site.data.fhir.path}}general-extensions.html">general-extensions</a> provides an extension for strings allowing the conveying of
+      translations, which may be relevant in some environments</li>
+    <li>
+      <a href="{{site.data.fhir.path}}rendering-extensions.html">rendering-extensions</a> defines properties to give fine-grained control over 
+      how questions, labels and other strings are rendered, such as providing HTML or markdown equivalents.</li>
+    <li>
+      <a href="{{site.data.fhir.path}}codesystem-extensions.html">codesystem-extensions</a> defines </li>
   </ul>
 	<a name="project"> </a>
 	<h3>Project</h3>
 	<p>
-    The original version of this implementation guide was prepared as a U.S. Realm Specification on behalf of the 
-    Structured Data Capture project - an effort under the <a href="http://www.healthit.gov/newsroom/about-onc">U.S. Office of the National Coordinator (ONC)</a>'s Standards and 
-    Infrastructure (S &amp; I) Framework.
+    The original version of this implementation guide was prepared as a U.S. Realm Specification on behalf of the Structured Data Capture project - an 
+    effort under the <a href="http://www.healthit.gov/newsroom/about-onc">U.S. Office of the National Coordinator (ONC)</a>'s Standards and Infrastructure 
+    (S &amp; I) Framework.
   </p>
   <p>
     The new version of this guide was developed by the FHIR Infrastructure work group in collaboration with the 
-    <a href="https://lhncbc.nlm.nih.gov/">Lister Hill National Center for Biomedical Communications</a> of the <a href="https://www.nlm.nih.gov/">U.S. National Library of Medicine (NLM)</a>.  
-    As part of the revision of the implementation guide, the very limited portions of the implementation guide that were U.S. specific have been relaxed, making the guide applicable to all countries.  
-    Representatives from several non-U.S. jurisdictions were part of the project calls where the revisions to the implementation guide were determined.  Project details, minutes and call information
-    can be found on the <a href="https://confluence.hl7.org/display/FHIRI/FHIR+Structured+Data+Capture">project Confluence page</a>.  Additional participants are welcome to join as we further refine the implementation 
-    guide and work to increase adoption through connectathons, open source projects and other mechanisms.
+    <a href="https://lhncbc.nlm.nih.gov/">Lister Hill National Center for Biomedical Communications</a> of the <a href="https://www.nlm.nih.gov/">U.S. 
+    National Library of Medicine (NLM)</a>.
+  </p>
+  <p>
+    As part of the revision of the implementation guide, the very limited portions of the implementation guide that were U.S. specific have been relaxed, 
+    making the guide applicable to all countries.  Representatives from several non-U.S. jurisdictions were part of the project calls where the revisions 
+    to the implementation guide were determined.  Project details, minutes and call information can be found on the 
+    <a href="https://confluence.hl7.org/display/FHIRI/FHIR+Structured+Data+Capture">project Confluence page</a>.  Additional participants are welcome to 
+    join as we further refine the implementation guide and work to increase adoption through connectathons, open source projects and other mechanisms.
   </p>
   
 	<a name="ip"> </a>
 	<h3>Intellectual Property Considerations</h3>
 	<p>
-    While this implementation guide and the underlying FHIR are licensed as public domain, this guide includes examples making use of terminologies such as LOINC, SNOMED CT and
-    others which have more restrictive licensing requirements.  Implementers should make themselves familiar with licensing and any other constraints of terminologies,
-    questionnaires, and other components used as part of their implementation process.  In some cases, licensing requirements may limit the systems
-    that data captured using certain questionnaires may be shared with.
+    While this implementation guide and the underlying FHIR are licensed as public domain, this guide includes examples making use of terminologies such 
+    as LOINC, SNOMED CT and others which have more restrictive licensing requirements.  Implementers should make themselves familiar with licensing and 
+    any other constraints of terminologies, questionnaires, and other components used as part of their implementation process.  In some cases, 
+    licensing requirements may limit the systems that data captured using certain questionnaires may be shared with.
   </p>
 </div>

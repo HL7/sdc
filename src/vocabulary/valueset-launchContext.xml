@@ -8,23 +8,7 @@
   <description value="The standard context for Questionnaire at launch time"/>
   <compose>
     <include>
-      <system value="http://hl7.org/fhir/uv/sdc/CodeSystem/launchContext"/>
-      <concept>
-        <code value="patient"/>
-		<display value="Patient in context at launch time (FHIR Patient resource)"/>
-      </concept>    
-	  <concept>
-        <code value="encounter"/>
-		<display value="Encounter context at launch time (FHIR Encounter resource)"/>
-      </concept>    
-	  <concept>
-        <code value="location"/>
-		<display value="Location context at launch time (FHIR Location resource)"/>
-      </concept>    
-	  <concept>
-        <code value="user"/>
-		<display value="User in context at launch time (FHIR Device, PractitionerRole, Practitioner, RelatedPerson, Organization or Patient resource)"/>
-      </concept>    
+      <system value="http://hl7.org/fhir/uv/sdc/CodeSystem/launchContext"/>  
     </include>
   </compose>
 </ValueSet>
