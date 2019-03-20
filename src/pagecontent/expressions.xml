@@ -27,7 +27,9 @@
     </li>
     <li>
       <code>reference</code> points to the expression if it's not inline.  For SDC purposes, reference must refer to content from a library imported
-      using the <a href="#cqf-library">cqf-library</a> extension.  The specific reference URL must look like this:<br/>
+      using the <a href="#cqf-library">cqf-library</a> extension.  For CQL, if the expression contains the name of the CQL content, the reference URL
+      can simply be the canonical URL of the libaray.  If the expression is blank for CQL or if conveying FHIRPath or a query, the specific reference URL 
+      must look like this:<br/>
       <code>[canonical URL of library]#[id element of the 'content' repetition whose Attachment.data holds the expression]</code>
       E.g. <code>http://somewhere.org/fhir/Library/12345#a2</code>
     </li>
