@@ -30,7 +30,7 @@
   <contact>
     <telecom>
       <system value="other"/>
-      <value value="http://www.hl7.org/Special/committees/fiwg"/>
+      <value value="http://hl7.org/Special/committees/fiwg"/>
     </telecom>
   </contact>
   <description value="The SDC specification provides an infrastructure to standardize the capture and expanded use of patient-level data collected within an EHR.&lt;br/&gt;This includes two components:&lt;br/&gt;* Support more sophisticated questionnaire/form use-cases such as those needed for research, oncology, pathology and other clinical domains.&lt;br/&gt;*Support pre-population and auto-population of EHR data into forms/questionnaires for uses outside direct clinical care (patient safety, adverse event reporting, public health reporting, etc.)."/>
@@ -171,6 +171,15 @@
       <description value="Profile used to validate the parameters that are the input of the &#39;process response&#39; questionnaire operation"/>
       <exampleBoolean value="false"/>
       <groupingId value="profiles"/>
+    </resource>
+    <resource>
+      <reference>
+        <reference value="StructureDefinition/sdc-questionnaire-entryMode"/>
+      </reference>
+      <name value="Entry mode"/>
+      <description value="An indication of how the user should be prompted for answers when completing a QuestionnaireResponse"/>
+      <exampleBoolean value="false"/>
+      <groupingId value="extensions"/>
     </resource>
     <resource>
       <reference>
@@ -358,6 +367,24 @@
       </reference>
       <name value="Questionnaire Launch Context"/>
       <description value="Defines standard context of Questionnaires at launch time"/>
+      <exampleBoolean value="false"/>
+      <groupingId value="terminology"/>
+    </resource>
+    <resource>
+      <reference>
+        <reference value="ValueSet/entryMode"/>
+      </reference>
+      <name value="Questionnaire Entry Mode"/>
+      <description value="Defines mechanisms of capturing data in a QuestionnaireResponse"/>
+      <exampleBoolean value="false"/>
+      <groupingId value="terminology"/>
+    </resource>
+    <resource>
+      <reference>
+        <reference value="CodeSystem/entryMode"/>
+      </reference>
+      <name value="Questionnaire Entry Mode"/>
+      <description value="Defines mechanisms of capturing data in a QuestionnaireResponse"/>
       <exampleBoolean value="false"/>
       <groupingId value="terminology"/>
     </resource>
@@ -590,13 +617,13 @@
           <generation value="generated"/>
         </page>
         <page>
-          <nameUrl value="sdc-questionnaire.html"/>
-          <title value="SDC Questionnaire"/>
+          <nameUrl value="sdc-usagecontext.html"/>
+          <title value="SDC Usage Context"/>
           <generation value="generated"/>
         </page>
         <page>
-          <nameUrl value="sdc-usagecontext.html"/>
-          <title value="SDC Usage Context"/>
+          <nameUrl value="sdc-questionnaire.html"/>
+          <title value="SDC Questionnaire"/>
           <generation value="generated"/>
         </page>
         <page>
@@ -672,6 +699,11 @@
         <page>
           <nameUrl value="parameters-questionnaire-process-response-in.html"/>
           <title value="Process response operation intput parameters"/>
+          <generation value="generated"/>
+        </page>
+        <page>
+          <nameUrl value="extension-sdc-questionnaire-entryMode.html"/>
+          <title value="Entry mode"/>
           <generation value="generated"/>
         </page>
         <page>
@@ -777,6 +809,16 @@
         <page>
           <nameUrl value="launchContext.html"/>
           <title value="Questionnaire Launch Context"/>
+          <generation value="generated"/>
+        </page>
+        <page>
+          <nameUrl value="valueset-entryMode.html"/>
+          <title value="Questionnaire Entry Mode"/>
+          <generation value="generated"/>
+        </page>
+        <page>
+          <nameUrl value="entryMode.html"/>
+          <title value="Questionnaire Entry Mode"/>
           <generation value="generated"/>
         </page>
         <page>

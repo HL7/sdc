@@ -35,7 +35,7 @@
   "contact" : [{
     "telecom" : [{
       "system" : "other",
-      "value" : "http://www.hl7.org/Special/committees/fiwg"
+      "value" : "http://hl7.org/Special/committees/fiwg"
     }]
   }],
   "description" : "The SDC specification provides an infrastructure to standardize the capture and expanded use of patient-level data collected within an EHR.<br/>This includes two components:<br/>* Support more sophisticated questionnaire/form use-cases such as those needed for research, oncology, pathology and other clinical domains.<br/>*Support pre-population and auto-population of EHR data into forms/questionnaires for uses outside direct clinical care (patient safety, adverse event reporting, public health reporting, etc.).",
@@ -183,6 +183,15 @@
       "description" : "Profile used to validate the parameters that are the input of the 'process response' questionnaire operation",
       "exampleBoolean" : false,
       "groupingId" : "profiles"
+    },
+    {
+      "reference" : {
+        "reference" : "StructureDefinition/sdc-questionnaire-entryMode"
+      },
+      "name" : "Entry mode",
+      "description" : "An indication of how the user should be prompted for answers when completing a QuestionnaireResponse",
+      "exampleBoolean" : false,
+      "groupingId" : "extensions"
     },
     {
       "reference" : {
@@ -370,6 +379,24 @@
       },
       "name" : "Questionnaire Launch Context",
       "description" : "Defines standard context of Questionnaires at launch time",
+      "exampleBoolean" : false,
+      "groupingId" : "terminology"
+    },
+    {
+      "reference" : {
+        "reference" : "ValueSet/entryMode"
+      },
+      "name" : "Questionnaire Entry Mode",
+      "description" : "Defines mechanisms of capturing data in a QuestionnaireResponse",
+      "exampleBoolean" : false,
+      "groupingId" : "terminology"
+    },
+    {
+      "reference" : {
+        "reference" : "CodeSystem/entryMode"
+      },
+      "name" : "Questionnaire Entry Mode",
+      "description" : "Defines mechanisms of capturing data in a QuestionnaireResponse",
       "exampleBoolean" : false,
       "groupingId" : "terminology"
     },
@@ -602,13 +629,13 @@
           "generation" : "generated"
         },
         {
-          "nameUrl" : "sdc-questionnaire.html",
-          "title" : "SDC Questionnaire",
+          "nameUrl" : "sdc-usagecontext.html",
+          "title" : "SDC Usage Context",
           "generation" : "generated"
         },
         {
-          "nameUrl" : "sdc-usagecontext.html",
-          "title" : "SDC Usage Context",
+          "nameUrl" : "sdc-questionnaire.html",
+          "title" : "SDC Questionnaire",
           "generation" : "generated"
         },
         {
@@ -684,6 +711,11 @@
         {
           "nameUrl" : "parameters-questionnaire-process-response-in.html",
           "title" : "Process response operation intput parameters",
+          "generation" : "generated"
+        },
+        {
+          "nameUrl" : "extension-sdc-questionnaire-entryMode.html",
+          "title" : "Entry mode",
           "generation" : "generated"
         },
         {
@@ -789,6 +821,16 @@
         {
           "nameUrl" : "launchContext.html",
           "title" : "Questionnaire Launch Context",
+          "generation" : "generated"
+        },
+        {
+          "nameUrl" : "valueset-entryMode.html",
+          "title" : "Questionnaire Entry Mode",
+          "generation" : "generated"
+        },
+        {
+          "nameUrl" : "entryMode.html",
+          "title" : "Questionnaire Entry Mode",
           "generation" : "generated"
         },
         {

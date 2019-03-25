@@ -106,9 +106,17 @@
       </xsl:when>
       <xsl:otherwise>output</xsl:otherwise>
     </xsl:choose>
+    <xsl:variable name="canonical">
+      <xsl:value-of select="substring-before(/f:ImplementationGuide/f:url/@value, '/ImplementationGuide')"/>
+      <xsl:if test="$additional">
+        <xsl:value-of select="concat('/', $additional)"/>
+      </xsl:if>
+    </xsl:variable>
     <text>",
     "txCache": "txcache",
-    "history" : "history.html",
+    "history" : "</text>
+    <xsl:value-of select="concat($canonical, '/')"/>
+    <text>history.cfml",
     "qa": "../temp</text>
     <xsl:if test="$additional">
       <xsl:value-of select="$additional"/>
@@ -219,10 +227,7 @@
     <xsl:text>",
   "no-inactive-codes" : "true",
   "canonicalBase": "</xsl:text>
-    <xsl:value-of select="substring-before(/f:ImplementationGuide/f:url/@value, '/ImplementationGuide')"/>
-    <xsl:if test="$additional">
-      <xsl:value-of select="concat('/', $additional)"/>
-    </xsl:if>
+    <xsl:value-of select="$canonical"/>
     <xsl:text>",&#xa;  </xsl:text>
     <xsl:if test="f:*[(self::f:dependency and f:type/@value='reference') or self::f:dependsOn][not(f:extension[@url='http://hl7.org/fhir/StructureDefinition/tools-alternateVersion'] or $additional) or (f:extension[@url='http://hl7.org/fhir/StructureDefinition/tools-alternateVersion']/f:valueCode/@value=$additional)]">
       <xsl:text>&quot;dependencyList&quot;: [&#xa;</xsl:text>
@@ -233,7 +238,7 @@
             <xsl:with-param name="split" select="'/'"/>
           </xsl:call-template>
         </xsl:variable>
-        <xsl:value-of select="concat('    {&#xa;      &quot;name&quot; : &quot;', $code, '&quot;,&#xa;      &quot;version&quot; : &quot;', f:version/@value, 
+        <xsl:value-of select="concat('    {&#xa;      &quot;name&quot; : &quot;', translate($code, '-', '_'), '&quot;,&#xa;      &quot;version&quot; : &quot;', f:version/@value, 
         '&quot;,&#xa;      &quot;location&quot; : &quot;', f:uri/@value, 
         '&quot;,&#xa;      &quot;source&quot; : &quot;../../', $code, '2/website&quot;&#xa;    }')"/>
         <xsl:if test="position()!=last()">

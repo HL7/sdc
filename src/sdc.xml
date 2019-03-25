@@ -10,7 +10,7 @@
   <contact>
     <telecom>
       <system value="other"/>
-      <value value="http://www.hl7.org/Special/committees/fiwg"/>
+      <value value="http://hl7.org/Special/committees/fiwg"/>
     </telecom>
   </contact>
   <description value="The SDC specification provides an infrastructure to standardize the capture and expanded use of patient-level data collected within an EHR.&lt;br/&gt;This includes two components:&lt;br/&gt;* Support more sophisticated questionnaire/form use-cases such as those needed for research, oncology, pathology and other clinical domains.&lt;br/&gt;*Support pre-population and auto-population of EHR data into forms/questionnaires for uses outside direct clinical care (patient safety, adverse event reporting, public health reporting, etc.)."/>
@@ -121,6 +121,15 @@
       <groupingId value="conformance"/>
     </resource>
     <resource>
+      <reference>
+        <reference value="StructureDefinition/sdc-usagecontext"/>
+      </reference>
+      <name value="SDC Usage Context"/>
+      <description value="Constraints on the codes and values of UsageContext to help ensure consistent usage in SDC Questionnaires"/>
+      <exampleBoolean value="false"/>
+      <groupingId value="profiles"/>
+    </resource>
+    <resource>
       <extension url="http://hl7.org/fhir/StructureDefinition/implementationguide-spreadsheet-profile">
         <valueBoolean value="true"/>
       </extension>
@@ -129,15 +138,6 @@
       </reference>
       <name value="SDC Questionnaire"/>
       <description value="Sets expectations for SDC-conformant systems around how to create questionnaires"/>
-      <exampleBoolean value="false"/>
-      <groupingId value="profiles"/>
-    </resource>
-    <resource>
-      <reference>
-        <reference value="StructureDefinition/sdc-usagecontext"/>
-      </reference>
-      <name value="SDC Usage Context"/>
-      <description value="Constraints on the codes and values of UsageContext to help ensure consistent usage in SDC Questionnaires"/>
       <exampleBoolean value="false"/>
       <groupingId value="profiles"/>
     </resource>
@@ -321,6 +321,15 @@
       <exampleBoolean value="false"/>
       <groupingId value="profiles"/>
     </resource>-->
+    <resource>
+      <reference>
+        <reference value="StructureDefinition/sdc-questionnaire-entryMode"/>
+      </reference>
+      <name value="Entry mode"/>
+      <description value="An indication of how the user should be prompted for answers when completing a QuestionnaireResponse"/>
+      <exampleBoolean value="false"/>
+      <groupingId value="extensions"/>
+    </resource>
     <resource>
       <reference>
         <reference value="StructureDefinition/sdc-questionnaire-endpoint"/>
@@ -519,6 +528,24 @@
       </reference>
       <name value="Questionnaire Launch Context"/>
       <description value="Defines standard context of Questionnaires at launch time"/>
+      <exampleBoolean value="false"/>
+      <groupingId value="terminology"/>
+    </resource>
+    <resource>
+      <reference>
+        <reference value="ValueSet/entryMode"/>
+      </reference>
+      <name value="Questionnaire Entry Mode"/>
+      <description value="Defines mechanisms of capturing data in a QuestionnaireResponse"/>
+      <exampleBoolean value="false"/>
+      <groupingId value="terminology"/>
+    </resource>
+    <resource>
+      <reference>
+        <reference value="CodeSystem/entryMode"/>
+      </reference>
+      <name value="Questionnaire Entry Mode"/>
+      <description value="Defines mechanisms of capturing data in a QuestionnaireResponse"/>
       <exampleBoolean value="false"/>
       <groupingId value="terminology"/>
     </resource>

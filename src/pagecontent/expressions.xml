@@ -46,8 +46,8 @@
       <b>Extension</b>: The code for the extension (and a link to the extension definition)</li>
     <li>
       <b>Source</b>: Indicates where the extension is defined - the FHIR Core specification (core) or this implementation guide (SDC).  Items marked as 
-      'core' will have a canonical URL of `http://hl7.org/fhir/StructureDefinition/[code]`.  Those from SDC will have 
-      `http://hl7.org/fhir/uv/sdc/StructureDefinition/sdc-questionnaire-[code]`</li>
+      'core' will have a canonical URL of <code>http://hl7.org/fhir/StructureDefinition/[code]</code>.  Those from SDC will have 
+      <code>http://hl7.org/fhir/uv/sdc/StructureDefinition/sdc-questionnaire-[code]</code></li>
     <li>
       <b>Location</b>: Indicates whether the extension can appear directly on the Questionnaire (root) on any item (item) or only on items that have at 
       type allowing a question answer (question)</li>
@@ -61,7 +61,7 @@
   <p>
     Beneath each extension row is an explanation of the purpose of the extension and guidance on its use.
   </p>
-  <table>
+  <table class="grid">
     <thead>
       <tr>
         <th>Extension</th>
@@ -75,7 +75,7 @@
       <tr>
         <td>
           <a name="variable"> </a>
-          <a href="http://hl7.org/fhir/StructureDefinition/variable">variable</a>
+          <a href="{{site.data.fhir.path}}extension-variable.html">variable</a>
         </td>
         <td>Core</td>
         <td>root or item</td>
@@ -304,7 +304,7 @@
   <p>
     There are a couple of additional extensions that are also relevant when working with expressions.  They are:
   </p>
-  <table>
+  <table class="grid">
     <thead>
       <tr>
         <th>Extension</th>
@@ -317,7 +317,7 @@
       <tr>
         <td>
           <a name="cqf-library"> </a>
-          <a href="http://hl7.org/fhir/StructureDefinition/cqf-library">library</a>
+          <a href="{{site.data.fhir.path}}extension-cqf-library.html">library</a>
         </td>
         <td>core</td>
         <td>root</td>

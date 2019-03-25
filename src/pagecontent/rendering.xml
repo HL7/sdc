@@ -1,24 +1,521 @@
 <div xmlns="http://www.w3.org/1999/xhtml" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://hl7.org/fhir ../../src-generated/schemas/fhir-single.xsd">
   <p>
-    FHIR provides numerous extensions for Questionnaire, many of them related to how the questionnaire should be rendered.  SDC includes the
+    The base questionnaire resource provides limited capabilities around rendering.  The <code>label</code> and <code>text</code> elements for each item
+    are rendered in order, possibly with renderer-specific styles reflecting whether they represent the label for a group, the content of a display item or
+    the text of a question.  As well, the options for choice questions (whether enumerated or expressed as a value set) are made available to the user through
+    renderer-determined controls.  In fact, the render makes the choice of controls to capture the answers to all question types.
+  </p>
+  <p>
+    For many questionnaires, that's good enough.  However, for some types of forms, there's a need for the author to have greater control.  The core 
+    specification defines a few core elements and a number of extensions for this purpose - both questionnaire-specific as well as general-purpose that can 
+    appear in other places as well.   This implementation guide defines several more.  In addition, this guide defines the
     <a href="sdc-questionnaire-render.html">sdc-questionnaire-render</a> profile which highlights what extensions are available and where they are intended 
-    to be used.
+    to be used.  It also identifies specific 'must support' extensions that systems that claim to support SDC rendering SHALL be capable of authoring and/or 
+    rendering, as befits the CapabilityStatement(s) they claim conformance to.
   </p>
+  <a name="extensions"> </a>
+  <h3>Extension Overview</h3>
   <p>
-    <a href="questionnaire-sdc-profile-example-render.html">This example</a> highlights most of these extensions and shows how they should be used. This 
-    <a href="questionnaire-sdc-profile-example-render.pdf">companion PDF</a> shows what a system rendering the Questionnaire according to the extensions included
-    might look like.
+    The following sub-sections describe the different core elements and extensions available to control the 'rendering' of a questionnaire.  
+    Each extension includes the following information:
   </p>
-  <h3>Rendering Extensions</h3>
+  <ul>
+    <li>
+      <b>Code:</b> This is the name of the core element or the unique label for the extension.  The extension label appears at the end of the URL of the 
+      'source' (below).  In this implementation guide, extensions are generally just referred to by their code.</li>
+    <li>
+      <b>Source:</b> This will either 'N/A', 'Core', 'Questionnaire' or 'SDC'.  'N/A' indicates that the element is part of the core spec, not an extension.
+      'Core' indicates that the extension is defined in the core specification and is not
+      specific to the Questionnaire resource.  The base URL for 'core' extensions is <code>http://hl7.org/fhir/StructureDefinition/</code>.  Questionnaire
+      indicates an extension defined in the core specification that is specific to Questionnaires.  The base URL for 'Questionnaire' extensions is 
+      <code>http://hl7.org/fhir/StructureDefinition/questionnaire-</code>.  SDC extensions are defined within this implementation guide.  Their base URL
+      is <code>http://hl7.org/fhir/uv/sdc/StructureDefinition/sdc-questionnaire-</code>
+    </li>
+    <li>
+      <b>Location:</b> This indicates where the element or extension is allowed to appear.  Possible values are 'root' (for those that appear directly on the 
+      <code>Questionnaire</code> element), 'item' (for those that can appear on any type of item) or 'question' for those that can only appear on question
+      items.  In some cases, additional restrictions/guidance will be provided</li>
+    <li>
+      <b>Data Type:</b> Indicates what content the element or extension can have.</li>
+  </ul>
   <p>
-    TODO: Walkthrough of the extensions
+    Each extension will then have explanatory text that provides additional guidance on how the extension is used.
   </p>
+  <a name="appearance"> </a>
+  <h4>Text Appearance</h4>
+  <p>
+    The following extensions change the appearance of the item as a whole or text elements within the item - i.e. the item prefix and/or item text
+  </p>
+  <table class="grid">
+    <thead>
+      <tr>
+        <td>Code</td>
+        <td>Source</td>
+        <td>Location</td>
+        <td>Data Type</td>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>
+          <a name="rendering-style"> </a>
+          <a href="{{site.data.fhir.path}}extension-rendering-style.html">rendering-style</a>
+        </td>
+        <td>Core</td>
+        <td>Questionnaire.title, item.label, item.text, <a href="#valueset-label">valueset-label</a>, Valueset.compose.include.concept.display, 
+          Valueset.compose.include.concept.designation.value (and expansion equivalents), CodeSystem.concept.designation.value</td>
+        <td>string</td>
+      </tr>
+      <tr>
+        <td colspan="4">
+          <p>
+            This element allows the full capabilities of the HTML <a href="https://html.com/tags/style">style</a> to be applied to the title of a questionnaire,
+            or to the label or text of a questionnaire item or to the label of an option.  This might mean changing the font or color, changing font style such 
+            as bold, italics, smallcaps, etc.  Conformant systems are allowed to ignore this extension unless the 
+            <a href="#rendering-styleSensitive">rendering-styleSensitive</a> flag is set to true.
+          </p>
+        </td>
+      </tr>
+      <tr>
+        <td>
+          <a name="rendering-xhtml"> </a>
+          <a href="{{site.data.fhir.path}}extension-rendering-xhtml.html">rendering-xhtml</a>
+        </td>
+        <td>Core</td>
+        <td>Questionnaire.title, item.label, item.text, <a href="#valueset-label">valueset-label</a>, Valueset.compose.include.concept.display, 
+          Valueset.compose.include.concept.designation.value (and expansion equivalents), CodeSystem.concept.designation.value</td>
+        <td>string</td>
+      </tr>
+      <tr>
+        <td colspan="4">
+          <p>
+            This element provides an alternate representation of the string value of the extended element that makes use of a subset XHTML.  (Specifically,
+            the XHTML subset <a href="{{site.data.fhir.path}}narrative.html">allowed by</a> the core specification.  This extension allows applying
+            different styles to different portions of the text (via &lt;span/&gt;, &lt;b/&gt; and similar elements).  It also allows embedding structure 
+            elements such as bullets or even tables in item.text elements.  XHTML must be base64-encoded due to constraints on the values of extensions.
+            For title and label, the XHTML should be a inline elements, while text can also include block-level elements (paragraph, ul/ol, etc.).
+            Conformant systems are allowed to ignore this extension unless the <a href="#rendering-styleSensitive">rendering-styleSensitive</a> flag is set 
+            to true.
+          </p>
+        </td>
+      </tr>
+      <tr>
+        <td>
+          <a name="displayCategory"> </a>
+          <a href="{{site.data.fhir.path}}extension-questionnaire-displaycategory.html">displayCategory</a>
+        </td>
+        <td>Questionnaire</td>
+        <td>item (where type='display')</td>
+        <td>code</td>
+      </tr>
+      <tr>
+        <td colspan="4">
+          <p>
+            For items with a type of 'display', this indicates what kind of display item it is so that systems can apply differential formatting based on the
+            purpose of the display element.  In the absence of a declared <a href="#itemControl">itemControl</a> this could influence the mechanism used to
+            render the display text (e.g. help-button or separate page for help text).  Regardless of the presence of itemControl, it can also influence the
+            formatting of the text.  For example, instructions might appear in a different font than security rules or with a different background or different
+            surrounding box.  The specific means of display are left open to the form filler, however systems that support this
+            extension SHALL visually distinguish display items with different categories.
+          </p>
+        </td>
+      </tr>
+      <tr>
+        <td>
+          <a name="hidden"> </a>
+          <a href="{{site.data.fhir.path}}extension-questionnaire-hidden.html">hidden</a>
+        </td>
+        <td>Questionnaire</td>
+        <td>item</td>
+        <td>boolean</td>
+      </tr>
+      <tr>
+        <td colspan="4">
+          <p>
+            This allows flagging items that should not be displayed at all.  In theory it can be used for any item, but in general it only makes sense for
+            questions and groups.  It allows for answers to be captured behind the scenes using the <a href="behavior.html">behavior</a> and/or 
+            <a href="populate.html">population</a> mechanisms.  For example, hidden scores, hidden source data, hidden data needed for
+            <a href="extraction.html">extraction</a>.  If an item is hidden, than all items below it will be hidden as well.  Hidden items are automatically
+            treated as <a href="#readOnly">readOnly</a> - users can't edit what they can't see or navigate to.
+          </p>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+  <a name="control"> </a>
+  <h4>Control Appearance</h4>
+  <p>
+    The following extensions influence what controls are used to capture question answers - or how those controls are displayed.
+  </p>
+  <table class="grid">
+    <thead>
+      <tr>
+        <td>Code</td>
+        <td>Source</td>
+        <td>Location</td>
+        <td>Data Type</td>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>
+          <a name="itemControl"> </a>
+          <a href="{{site.data.fhir.path}}extension-questionnaire-itemcontrol.html">itemControl</a>
+        </td>
+        <td>Questionnaire</td>
+        <td>item</td>
+        <td>CodeableConcept</td>
+      </tr>
+      <tr>
+        <td colspan="4">
+          <p>
+            This allows the selection of a specific control type for the answer for a particular group, question or display item.  The 
+            <a href="{{site.data.fhir.path}}valueset-questionnaire-item-control.html">set of avilable codes</a> has specific sub-sets for group, display and 
+            question items.  Those for group provide control over how the child items within the group are organized or where the group appears within the 
+            overall questionnaire (e.g. as a header or footer).  The 'text' items provide guidance about how the display item should be rendered, including
+            relative position with respect to the question and answer and by what mechanism the display text should be rendered (fly-over, help-button,
+            overlay on control or simple in-line text).  Finally, the 'question' items allow the choice of control for selecting an answer.  For choice,
+            open-choice, and Reference items, it allows autocomplete, dro-down, check-box, radio-button and lookup controls.  For numerics, dates and times,
+            slider and spinner controls are also options, as well as the more traditional text-box.
+          </p>
+          <p>
+            When groups are rendered as tables, the <a href="#width">width</a> and <a href="#choiceColumn">choiceColumn</a> extensions can help
+            control the formatting of the table.
+          </p>
+        </td>
+      </tr>
+      <tr>
+        <td>
+          <a name="choiceOrientation"> </a>
+          <a href="{{site.data.fhir.path}}extension-questionnaire-choiceorientation.html">choiceOrientation</a>
+        </td>
+        <td>Questionnaire</td>
+        <td>choice, openChoice, other items with choiceOption or choiceValueset</td>
+        <td>code</td>
+      </tr>
+      <tr>
+        <td colspan="4">
+          <p>
+            Normally, it's up to the render to determine whether to display choices horizontally or vertically or to define multiple columns of choice options.
+            This extension allows forcing the choices to be rendered horizontally or vertically.
+            <!-- Todo - should we instead/as well allow an indication of the number of columns or rows before wrapping? -->
+          </p>
+        </td>
+      </tr>
+      <tr>
+        <td>
+          <a name="sliderStepValue"> </a>
+          <a href="{{site.data.fhir.path}}extension-questionnaire-sliderstepvalue.html">sliderStepValue</a>
+        </td>
+        <td>Questionnaire</td>
+        <td>integer</td>
+        <td>integer</td>
+      </tr>
+      <tr>
+        <td colspan="4">
+          <p>
+            For questions with a type of 'integer' and a <a href="#itemControl">itemControl</a> of 'slider', this allows indicating the
+            incremement with which the slider will move between the <a href="behavior.html#minValue">minValue</a> and the
+            <a href="behavior.html#maxValue">maxValue</a>.  For example, incrementing by 2, by 5, by 10, etc.  Only values at the
+            specified interval increments can be selected as answers.
+          </p>
+        </td>
+      </tr>
+      <tr>
+        <td>
+          <a name="width"> </a>
+          <a href="extension-sdc-questionnaire-width.html">width</a>
+        </td>
+        <td>SDC</td>
+        <td>question</td>
+        <td>Quantity</td>
+      </tr>
+      <tr>
+        <td colspan="4">
+          <p>
+            This is used for question items that are the child of a group item with an <a href="#itemControl">itemControl</a> whose value
+            is 'htable' or 'gtable' - i.e. where each question within the group occupies a column.  This extension identifies what the
+            permitted width is for the column that contains the question.  It can either be specified as a percentage of the overall table
+            width (quantity.code = '%' and system='http://unitsofmeasure.org') or pixels (quantity.code and system are omitted).  See
+            <a href="#choiceColumn">choiceColumn</a> for guidance on setting column widths for choice-based columns.
+          </p>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+  <a name="additional"> </a>
+  <h4>Additional Display Content</h4>
+  <p>
+    The following extensions cause additional information to be displayed as part of the form
+  </p>
+  <table class="grid">
+    <thead>
+      <tr>
+        <td>Code</td>
+        <td>Source</td>
+        <td>Location</td>
+        <td>Data Type</td>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>
+          <a name="supportLink"> </a>
+          <a href="{{site.data.fhir.path}}extension-questionnaire-supportlink.html">supportLink</a>
+        </td>
+        <td>Questionnaire</td>
+        <td>item</td>
+        <td>uri</td>
+      </tr>
+      <tr>
+        <td colspan="4">
+          <p>
+            This allows associating a link to a question, group or display item.  When this extension is present, an icon indicating that a link is available
+            should appear immediately following the text of the item.  Clicking on the link will allow the user to navigate to additional descriptive detail,
+            generally on a separate page/tab.  This extension allows the use of links without injecting the need to support full HTML via the
+            <a href="#rendering-xhtml">rendering-xhtml</a> extension (which would also allow hyperlinks, though they could appear at any point within the text 
+            and would provid control over the text or image used to launch the link).
+          </p>
+        </td>
+      </tr>
+      <tr>
+        <td>
+          <a name="choiceColumn"> </a>
+          <a href="extension-sdc-questionnaire-choiceColumn.html">choiceColumn</a>
+        </td>
+        <td>SDC</td>
+        <td>choice, openChoice and Reference</td>
+        <td>complex</td>
+      </tr>
+      <tr>
+        <td colspan="4">
+          <p>
+            This extension is used when users are selecting from a list of possible choices and there's a desire to control what information is displayed in
+            the list of possible candidates.  It has two modes of operation:
+          </p>
+          <p>
+            With choice and open-choice, it allows selection of display names and/or code system properties that should appear.  For example, if a 
+            'Medication' code system includes properties for form, preferred route and strength, that information could be displayed alongside the 
+            'display name' for the item.  Alternatively, a questionnaire might present the display names for the concept in English, Spanish and French.  The
+            path is set to 'display' for the code's standard display name.  It's set to the property.code for a property value.  It's set to the language code
+            for designations in a particular language (only works if there's only one designation for the language).  It's set to the designation use code for
+            a particular designation (only works if there's only one designation for that use).
+          </p>
+          <p>
+            With a Reference it allows selection of particular fields from the resource - for example the first name, last name and phone number of a provider.
+            The path is the FHIRPath to navigate to the element from the resource root.  For example <code>name.first().given.first()</code> for the first
+            name of a Patient or Practitioner.  
+          </p>
+          <p>
+            Regardless of the item.type, multiple repetitions of the extension can be specified to indicate multiple columns.  The columns are displayed in
+            the same order as the extensions appear on the Questionnaire.item.  For each column, the extension
+            indicates the label to be displayed at the top of the column and the width of the column (following the same guidelines as for
+            <a href="#width">width</a>).  It's also possible to indicate which column(s) should be used to construct the Coding.display or Reference.display
+            value.  For choice and open-choice which map to Coding, only one extension repetition can have 'forDisplay' set to 'true'.  That column must either
+            have a path of 'display' or must specify the language or use of a code designation (i.e. not a code property).  For Reference items, if multiple
+            columns are marked with 'forDisplay', the display value used will be a space-separated concatenation of all columns so-marked.
+          </p>
+          <p>
+            NOTE: If no 'forDisplay' columns are marked, or no columns are listed for a Reference questionnaire item, it's up to the form filler to decide
+            what to display and what, if anything, to capture in the display element.
+          </p>
+        </td>
+      </tr>
+      <tr>
+        <td>
+          <a name="optionPrefix"> </a>
+          <a href="{{site.data.fhir.path}}extension-questionnaire-optionprefix.html">optionPrefix</a>
+        </td>
+        <td>Questionnaire</td>
+        <td>item.optionChoice</td>
+        <td>string</td>
+      </tr>
+      <tr>
+        <td colspan="4">
+          <p>
+            This allows declaring a prefix to be displayed in front of an option (e.g. "(a)", or "1.").  It can be defined for options listed directly in the 
+            question, but also for entries in value sets referenced by a question.  (Note that these prefixes can also be supplemented with the
+            <a href="#rendering-style">rendering-style</a> and <a href="#rendering-xhtml">rendering-xhtml</a> extensions.
+          </p>
+        </td>
+      </tr>
+      <tr>
+        <td>
+          <a name="valueset-label"> </a>
+          <a href="{{site.data.fhir.path}}extension-valueset-label.html">valueset-label</a>
+        </td>
+        <td>Core</td>
+        <td>ValueSet.compose.include.concept, ValueSet.expansion.contains</td>
+        <td>string</td>
+      </tr>
+      <tr>
+        <td colspan="4">
+          <p>
+            This serves the same purpose as <a href="#optionPrefix">optionPrefix</a>, but allows the definition of the prefix to occur in a valueset referenced
+            by optionValueSet instead of listing the options directly using optionChoice.
+          </p>
+        </td>
+      </tr>
+      <tr>
+        <td>
+          <a name="entryFormat"> </a>
+          <a href="{{site.data.fhir.path}}extension-entryformat.html">entryFormat</a>
+        </td>
+        <td>Core</td>
+        <td>question</td>
+        <td>string</td>
+      </tr>
+      <tr>
+        <td colspan="4">
+          <p>
+            This provides a string that helps to guide entry of formatted text and often appears directly "behind" the control to be filled.  For example,
+            "nnn-nnn-nnnn" for a North American phone number, "YYYY-MM-DD" for a date, "nnnn nnnn nnnn nnnn" for certain types of credit card numbers, etc.
+          </p>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+  <a name="other"> </a>
+  <h4>Other</h4>
+  <p>
+    The following extensions provide general control over rendering of the form at large
+  </p>
+  <table class="grid">
+    <thead>
+      <tr>
+        <td>Code</td>
+        <td>Source</td>
+        <td>Location</td>
+        <td>Data Type</td>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>
+          <a name="required"> </a>
+          <a href="{{site.data.fhir.path}}questionnaire-definitions.html#Questionnaire.item.required">required</a>
+        </td>
+        <td>Questionnaire</td>
+        <td>group, question</td>
+        <td>boolean</td>
+      </tr>
+      <tr>
+        <td colspan="4">
+          <p>
+            Both groups and questions can be marked as 'required'  For groups, that at least one question within a given repetition of the group must have
+            an answer.  For questions, it means the question must have at least one answer.  Typically items that are 'required' will have a visual cue
+            indicating this.  It could be managed by changing the background of the answer control, bolding the question text, or some other mechanism.
+          </p>
+          <p>
+            Also see guidance for this element on the <a href="behavior.html#required">behavior</a> page.
+          </p>
+        </td>
+      </tr>
+      <tr>
+        <td>
+          <a name="repeats"> </a>
+          <a href="{{site.data.fhir.path}}questionnaire-definitions.html#Questionnaire.item.repeats">repeats</a>
+        </td>
+        <td>Questionnaire</td>
+        <td>group, question</td>
+        <td>boolean</td>
+      </tr>
+      <tr>
+        <td colspan="4">
+          <p>
+            Both groups and questions can be marked as repeating.  For groups, that means all content within the group can be repeated multiple times.
+            The <a href="#itemControl">itemControl</a> extension can give specific guidance about this, for example treating each repetition as a row in a
+            table.  Without guidance, it's up to the Form Filler to decide how to handle allowing the creation of additional repetitions (or their removel)
+            and how to handle labling the questions within - whether they should be repeated on each repetition or just listed once for the first occurrence.
+          </p>
+          <p>
+            For questions that are marked as repeating, the results will be captured as multiple answers for one question.  In many cases, the question text
+            will only need to appear once and the user can fill in as many answers as they like.  However, for question items that contain nested questions,
+            it may be necessary to repeat the question text for each repetition to ensure that it still appears on the user's screen.
+          </p>
+          <p>
+            Also see guidance for this element on the <a href="behavior.html#repeats">behavior</a> page.
+          </p>
+        </td>
+      </tr>
+      <tr>
+        <td>
+          <a name="readOnly"> </a>
+          <a href="{{site.data.fhir.path}}questionnaire-definitions.html#Questionnaire.item.readOnly">readOnly</a>
+        </td>
+        <td>Questionnaire</td>
+        <td>question</td>
+        <td>boolean</td>
+      </tr>
+      <tr>
+        <td colspan="4">
+          <p>
+            If an element is read-only, it means the user cannot adjust the value which <i>can</i> mean a change to the control used to render the form.
+            Technically there's no need to display a text box, drop-down or other controls if the value cannot be changed.  However, it's generally still 
+            desirable to use the same controls so that it's clear that the question answer is still an "answer" and so that read-only information doesn't
+            stand out significantly from other answers.  However, there should still be a visual indicator that the element cannot be edited.  This might
+            include changing the background color, changing the font for the question text or some similar visual cue.
+          </p>
+          <p>
+            Also see guidance for this element on the <a href="behavior.html#readOnly">behavior</a> page.
+          </p>
+        </td>
+      </tr>
+      <tr>
+        <td>
+          <a name="rendering-styleSensitive"> </a>
+          <a href="{{site.data.fhir.path}}extension-rendering-stylesensitive.html">rendering-styleSensitive</a>
+        </td>
+        <td>Core</td>
+        <td>root</td>
+        <td>boolean</td>
+      </tr>
+      <tr>
+        <td colspan="4">
+          <p>
+            If set to true, this indicates that the 'style' information conveyed by the <a href="#rendering-style">rendering-style</a> and/or
+            <a href="#rendering-xhtml">rendering-xhtml</a> are considered critical to the accurate rendering of the questionnaire (and appropriate capture of
+            information using the questionnaire).  As a result, only systems that are able to render all such extensions appropriately are considered 'safe'
+            to render the Questionnare.  All other SDC systems SHALL raise an error.
+          </p>
+        </td>
+      </tr>
+      <tr>
+        <td>
+          <a name="optionalDisplay"> </a>
+          <a href="extension-sdc-questionnaire-optionalDisplay.html">optionalDisplay</a>
+        </td>
+        <td>SDC</td>
+        <td>item</td>
+        <td>boolean</td>
+      </tr>
+      <tr>
+        <td colspan="4">
+          <p>
+            This extension is used when a Questionnaire is defined as a 'baseline' for derived Questionnaires - i.e. when organizations have the ability to
+            adapt the Questionnaire to their particular workflow by excluding certain questions.  This extension can be used to flag questions, groups and
+            display items that are allowed to be removed from derived questionnaires.  As such it affects rendering indirectly by adjusting the content
+            displayed in the design phase.
+          </p>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+  <a name="considerations"> </a>
   <h3>Additional rendering considerations</h3>
   <ul>
     <li>Questionnaires will be rendered by a variety of tools on a variety of devices.  Not all tools will necessarily support all extensions - or even
-      all core elements.  Authors should recognize this and only depend on extensions if they're confident that all systems using the Questionnaire will
-      support the needed extensions.  Note that this doesn't mean that extensions can't be used, only that the Questionnaire should be safe to use if
-      extensions that the author isn't certain will be supported are not supported.</li>
+      all core elements.  Authors should recognize this and only depend on rendering extensions if they're confident that all systems using the Questionnaire
+      will support the needed extensions.  Note that this doesn't mean that extensions can't be used, only that the Questionnaire should be safe to use if
+      extensions that the author isn't certain will be supported are not supported.  For example, avoid referring to 'the red text' if you're not certain
+      the text will be rendered as red (and that those who are color-impaired will have an alternative mechanism of recognizing the text as 'red').</li>
     <li>Tools that use HTML to render forms should consider disabling browser-based auto-completion unless such behavior is is desired</li>
   </ul>
+  <a name="example"> </a>
+  <h3>Example</h3>
+  <p>
+    This implementation guide includes an <a href="questionnaire-sdc-profile-example-render.html">example questionnaire</a> with a corresponding
+    <a href="questionnaire-sdc-profile-example-render.pdf">companion PDF</a> that show how the extensions above are intended to be used and identifies how such
+    controls might appear in a rendered questionnaire.
+  </p>
 </div>
