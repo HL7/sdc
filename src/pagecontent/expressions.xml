@@ -12,7 +12,7 @@
   </p>
   <ul>
     <li>
-      <code>description</code> provides a human-readable explanation of what the expression is actually doing.  This is development documentation.  While
+      <code>description</code> provides a human-readable explanation of what the expression is doing.  This is development documentation.  While
       not required, it's strongly encouraged unless the expression is so simple there won't be any question as to its intent and function.</li>
     <li>
       <code>name</code> allows the result of the expression to be referenced within other expressions.  Whether this is necessary depends on the context
@@ -28,7 +28,7 @@
     <li>
       <code>reference</code> points to the expression if it's not inline.  For SDC purposes, reference must refer to content from a library imported
       using the <a href="#cqf-library">cqf-library</a> extension.  For CQL, if the expression contains the name of the CQL content, the reference URL
-      can simply be the canonical URL of the libaray.  If the expression is blank for CQL or if conveying FHIRPath or a query, the specific reference URL 
+      can simply be the canonical URL of the library.  If the expression is blank for CQL or if conveying FHIRPath or a query, the specific reference URL 
       must look like this:<br/>
       <code>[canonical URL of library]#[id element of the 'content' repetition whose Attachment.data holds the expression]</code>
       E.g. <code>http://somewhere.org/fhir/Library/12345#a2</code>
@@ -52,7 +52,7 @@
       <b>Location</b>: Indicates whether the extension can appear directly on the Questionnaire (root) on any item (item) or only on items that have at 
       type allowing a question answer (question)</li>
     <li>
-      <b>Content</b>: Indicates whether the expression.language is restricted to be "text/cql" (cql), "text/fhirpath" (FHIRpath), or "application/x-fhir-query" (query) or is unrestricted (any)</li>
+      <b>Content</b>: Indicates whether the expression.language is restricted to be "text/cql" (cql), "text/fhirpath" (FHIRPath), or "application/x-fhir-query" (query) or is unrestricted (any)</li>
     <li>
       <b>Use Cases</b>: Indicates which of the SDC use-cases make use of the extension: <a href="behavior.html">Form Behavior</a> (behavior),
       <a href="populate.html">Questionnaire Population</a> (population), and/or <a href="extraction.html">Data Extraction</a> (extraction).
@@ -85,13 +85,13 @@
       <tr>
         <td colspan="5">
           <p>
-            This expression sets a variable that is available for use in expressions within the same item and and any descendant items.  It has two main uses:
+            This expression sets a variable that is available for use in expressions within the same item and any descendant items.  It has two main uses:
           </p>
           <ul>
             <li>It allows a complex calculation to be done once and used in multiple other places.  (E.g. Determining the score for one group within the 
               questionnaire response that will then be used in calculations on subsequent groups.)</li>
             <li>It allows a calculation to be done closer to the root of the questionnaire response or at the root of the questionnaire response where there
-              is access to more of or all of the answers from the questionnaire response.  The calculated value might then be used as the answer to a descendant 
+              is access to more of or all the answers from the questionnaire response.  The calculated value might then be used as the answer to a descendant 
               question.  (Expressions can't access answers that aren't descendants of the current node.)</li>
           </ul>
           <p>
@@ -108,7 +108,7 @@
         </td>
         <td>SDC</td>
         <td>question</td>
-        <td>fhirPath or CQL</td>
+        <td>FHIRPath or CQL</td>
         <td>all</td>
       </tr>
       <tr>
@@ -128,8 +128,8 @@
           <p>
             Examples of use for Form Behavior might include defaulting one date or provider in a form to one entered earlier in the form, defaulting a 
             selected location based on patient address, etc.  For population, this is the primary mechanism of populating fields.  Information passed in
-            launchContext or queried from the health record is used to determine the initial value for the field.  The response author then has the
-            opportunity to review and potentially adjust the values.  Finally, for extraction, this can be used to fill in 'hidden' elements that are needed 
+            launchContext or queried from the health record is used to determine the initial value for the field.  The response author then can
+            review and potentially adjust the values.  Finally, for extraction, this can be used to fill in 'hidden' elements that are needed 
             for extraction but are not actually seen or edited by the user (for example, FHIR resource ids when updating existing records).
           </p>
           <p>
@@ -146,13 +146,13 @@
         </td>
         <td>SDC</td>
         <td>question</td>
-        <td>fhirPath or CQL</td>
+        <td>FHIRPath or CQL</td>
         <td>population</td>
       </tr>
       <tr>
         <td colspan="5">
           <p>
-            This expression is used to support data entry.  It is only invoked when the user is actually entering/editing the answer for the question 
+            This expression is used to support data entry.  It is only invoked when the user is entering/editing the answer for the question 
             linked to the candidateExpression.  It is used when a <a href="populate.html">population</a> process can't determine the specific
             value to fill in to a form, but it can identify a list of candidates to choose from.  For example, forms might ask for relevant co-morbidities,
             other practitioners to inform, etc.  The specific answers require human decision-making, but this expression can provide a list of initial
@@ -182,7 +182,7 @@
         </td>
         <td>SDC</td>
         <td>question</td>
-        <td>fhirPath or CQL</td>
+        <td>FHIRPath or CQL</td>
         <td>population and extraction</td>
       </tr>
       <tr>
@@ -191,11 +191,11 @@
             This is similar to <a href="#candidateExpression">candidateExpression</a>, in that it is also only used when the user is editing the answer for 
             the question associated with the candidateExpression.  However, instead of giving candidate answers that can simply be "selected", this option 
             instead presents potentially relevant information.  For example, a question might be "Has the patient been admitted for this or a related condition 
-            in the past year?".  To help guide the answers, the contextExpression could retrieve a list of admission reasons for that patient for enounters in 
+            in the past year?".  To help guide the answers, the contextExpression could retrieve a list of admission reasons for that patient for encounters in 
             the past year.  The user completing the questionnaire could then use that information to guide whether they choose to answer 'yes' or 'no.
           </p>
           <p>
-            Also like candidateExpressions, contextExpressions should rarely, if ever, declare a name element.
+            Also, like candidateExpressions, contextExpressions should rarely, if ever, declare a name element.
           </p>
           <!-- Todo - how do we handle multiple columns?  How do we label what data is coming back? -->
         </td>
@@ -207,7 +207,7 @@
         </td>
         <td>SDC</td>
         <td>question</td>
-        <td>fhirPath or CQL</td>
+        <td>FHIRPath or CQL</td>
         <td>behavior</td>
       </tr>
       <tr>
@@ -247,7 +247,7 @@
         </td>
         <td>SDC</td>
         <td>question</td>
-        <td>fhirPath or CQL</td>
+        <td>FHIRPath or CQL</td>
         <td>behavior</td>
       </tr>
       <tr>
@@ -288,7 +288,7 @@
           <p>
             If a query results in multiple repetitions for a single for the root Questionnaire or for an item where 'repeat' is false, it is an error and no
             population or extraction can occur.  If the query results in no elements when extracting, then the extracted data is treated as a create.  If data
-            is returned then the extracted data should replaced what is returned, either as an update or a delete + create.
+            is returned then the extracted data should replace what is returned, either as an update or a delete + create.
           </p>
           <p>
             Expression.name SHALL be populated when this extension is being used for <a href="populate.html#path-pop">FHIR-path based population</a>.
@@ -327,12 +327,12 @@
         <td colspan="5">
           <p>
             Library allows queries, CQL and FHIRPath expressions to be maintained independently from the Questionnaires that use them.  This means that
-            the "programatic" content of the Questionnaire can be updated and adjusted without revising the Questionnaire, which may be appropriate in
+            the "programmatic" content of the Questionnaire can be updated and adjusted without revising the Questionnaire, which may be appropriate in
             certain form management environments.  It also means that the population and extraction mechanisms can be adjusted as data representations
             evolve or be adjusted to reflect the needs of additional data repositories.
           </p>
           <p>
-            This extension identifies libraries that the questionnaire relies on for some or all of its expressions.  (The mechanism by which expressions
+            This extension identifies libraries that the questionnaire relies on for some or all its expressions.  (The mechanism by which expressions
             point to library content is discussed <a href="#expression">above</a>.)
           </p>
         </td>
@@ -379,8 +379,9 @@
   </p>
   <p>
     In addition to the base query syntax, SDC allows the injection of FHIRPath into the query expressions.  This is to allow the queries to take advantage
-    of context when they are invoked.  The FHIRPaths are denoted by surrounding them with double curly-braces (i.e. <code>{{ fhirpath goes here }}</code>) in
-    the same way expressions are denoted in the <a href="https://shopify.github.io/liquid">Liquid</a> templating language.
+    of context when they are invoked.  The FHIRPaths are denoted by surrounding them with double curly-braces (i.e. 
+    <code>{% raw %}{{ fhirpath goes here }}{% endraw %}</code>) in the same way expressions are denoted in the 
+    <a href="https://shopify.github.io/liquid">Liquid</a> templating language.
   </p>
   <p>
     For example:
@@ -396,13 +397,13 @@
     Expressions will often have dependencies on other expressions.  For example, a <a href="#calculatedExpression">calculatedExpression</a> might depend
     on <a href="#variable">variables</a> that in turn depend on the answers to other questions which might themselves have 
     <a href="#initialExpression">initialExpressions</a> which might rely on <a href="#itemContext">itemContext</a> queries that in turn have embedded
-    FHIRPaths that reference elements defined in <a href="#launchContext">launchContext</a>.  If care isn't taken, it's actually possible to construct a
-    questionnaire where the value of an answer depends indirectly on itself, or where filling out an answer dispables the question being answered or other
+    FHIRPaths that reference elements defined in <a href="#launchContext">launchContext</a>.  If care isn't taken, it's possible to construct a
+    questionnaire where the value of an answer depends indirectly on itself, or where filling out an answer disables the question being answered or other
     inappropriate behavior.  Questionnaire rendering systems should check for and gracefully handle such situations.  (I.e. Raise appropriate error messages
     rather than crashing or locking in an endless loop.)
   </p>
   <p>
-    When evaluating expressions the typical order of calculation will be in the order the expressions appear in the Questionnaire.  I.e. Those at the root
+    When evaluating expressions, the typical order of calculation will be in the order the expressions appear in the Questionnaire.  I.e. Those at the root
     are evaluated first, then items are evaluated in order, evaluating on a depth-first basis.  Children of the first item in a group are evaluated 
     before the second item in the group.
   </p>
@@ -427,7 +428,7 @@
       element.  It is in scope for all expressions defined in the Questionnaire.</li>
     <li>
       All expressions that specify a 'name' can be accessed by other expressions appearing on the same item or any descendant item as though that
-      name were part of context.  The same is true for the 'name' element in the <a href="#launchContext">launchContext</a>.  For example, a variable
+      name was part of context.  The same is true for the 'name' element in the <a href="#launchContext">launchContext</a>.  For example, a variable
       with the name 'score' could be accessed in FHIRPath or CQL using <code>%score</code>.  (Note: It is an error if a questionnaire is designed such
       that there is more than one element in the same scope with a colliding context name.)</li>
   </ul>
@@ -441,7 +442,7 @@
   <a name="missinginfo"> </a>
   <h3>Missing information</h3>
   <p>
-    Sometimes information needed for an expression won't be available.  Perhaps the system isn't capable of passing in encounter information - or maybe the
+    Sometimes information needed for an expression won't be available.  Perhaps the system can't pass encounter information - or maybe the
     form is being filled in outside the context of an encounter at all.  Perhaps a query results in an error because of a server issue or perhaps the user
     or system filling in the questionnaire doesn't have permission to access the relevant data.  Systems should fail gracefully in such situations.
     Populated or calculated elements can be left empty.  Extracted elements can be omitted.  If control logic such as enableWhen is impacted, either display

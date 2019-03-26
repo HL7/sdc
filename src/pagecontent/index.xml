@@ -1,7 +1,7 @@
 <div xmlns="http://www.w3.org/1999/xhtml" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://hl7.org/fhir ../../src-generated/schemas/fhir-single.xsd">
   <!--ReleaseHeader-->
   <p style="background-color: yellow; border: 1px solid maroon; padding: 5px;">
-    This is the {{site.data.info.ballotstatus}} version of the {{site.data.fhir.igName}} Implementation Guide,  based on <a href="{{site.data.fhir.path}}">FHIR Version {{site.data.fhir.version}}</a>.  
+    This is the {{site.data.info.ballotstatus}} version of the {{site.data.fhir.ig.title}} Implementation Guide,  based on <a href="{{site.data.fhir.path}}">FHIR Version {{site.data.fhir.version}}</a>.  
     See the <a href="{{site.data.fhir.canonical}}/history.html">Directory of published versions</a> for other versions and for a change history.<br/>
     This specification was developed by <a href="{{site.data.fhir.ig.contact[0].telecom[0]}}">{{site.data.fhir.ig.publisher}}</a>
   </p>
@@ -36,7 +36,7 @@
     This implementation guide follows the FHIR pattern of being published as a web-based specification.  This
     allows easy navigation between the SDC-specific portion of the implementation guide and the resources,
     data types, value sets and other specification components leveraged from the FHIR core specification.  This
-    approach also allows implementers to easily navigate to the information needed to perform a particular task.
+    approach also allows implementers to easily navigate to the information needed to perform a task.
   </p>
 	<p>
     A <a href="toc.html">Table of Contents</a> page is provided that lists all of the pages defined as part of this implementation guide.  (Do be aware 
@@ -100,7 +100,7 @@
 	</p>
 	<ul>
     <li>
-      <a href="{{site.data.fhir.path}}questionnaire-extensions.html">questionnaire-extensions</a> defines a number of less common properties for 
+      <a href="{{site.data.fhir.path}}questionnaire-extensions.html">questionnaire-extensions</a> defines several less common properties for 
       questionnaire, group and question, several of which are mandated for this profile.</li>
     <li>
       <a href="{{site.data.fhir.path}}element-extensions.html">element-extensions</a> defines extensions describing constraints on the values for 

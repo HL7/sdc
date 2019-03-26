@@ -16,7 +16,7 @@
 	<a name="capabilitystatement"> </a>
 	<h4>Capability Statements</h4>
 	<p>
-    FHIR Capability statements define the expectations for particular system "roles" within an SDC environment.  To be considered SDC-conformant, a system 
+    FHIR Capability statements define the expectations for system "roles" within an SDC environment.  To be considered SDC-conformant, a system 
     must adhere to the requirements defined by at least one of these statements.  Some systems might choose to comply with more than one.
   </p>
 	<ul>
@@ -97,7 +97,7 @@
     stop and resume editing at a later point.  
   </p>
 	<p>
-    The Form Filler (possibly with help from the Form Manager) is responsible for verifying that a completed form is actually
+    The Form Filler (possibly with help from the Form Manager) is responsible for verifying that a completed form is 
     complete and valid against the corresponding Questionnaire.  Once valid, the form filler submits the form to one or more target repositories 
     (<a href="sdc-form-receiver.html">Form Receiver</a> allows the completed form to be subsequently retrieved,
     <a href="sdc-form-archiver.html">Form Archiver</a> does not) and/or stores the completed form itself.  (Note - Form Receivers may perform validation on forms
