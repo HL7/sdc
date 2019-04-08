@@ -47,16 +47,14 @@
         <div id="hl7-status">
           <b>{{site.data.fhir.ig.title}}</b> {{site.data.fhir.ig.version}} - {{status}} 
         </div>
-    
         <div id="hl7-nav">
-          <a id="hl7-logo" no-external="true" href="http://www.hl7.org">
-          <img height="50" alt="visit the hl7 website" width="42" src="{{site.data.info.assets}}assets/images/hl7-logo.png"/>
-        </a>
-      </div>
-      <div id="hl7-search"><a id="hl7-search-lnk" no-external="true" href="http://hl7.org/fhir/search.cfm"><img alt="Search FHIR" src="{{site.data.info.assets}}assets/images/search.png"/></a></div>
-      </div>
-      <div class="container">  <!-- container -->
-      </div>
+          <a id="fhir-logo" no-external="true" href="http://hl7.org/fhir">
+            <img alt="visit the fhir website" src="{{site.data.info.assets}}assets/images/fhir-logo-www.png"/>
+          </a>
+          <a id="hl7-logo" no-external="true" href="http://www.hl7.org"><img height="50" alt="visit the hl7 website" width="42" src="{{site.data.info.assets}}assets/images/hl7-logo.png"/></a>
+        </div>
+        <div id="hl7-search"><a id="hl7-search-lnk" no-external="true" href="http://hl7.org/fhir/search.cfm"><img alt="Search FHIR" src="{{site.data.info.assets}}assets/images/search.png"/></a></div>
+      </div> <!-- /container -->
     </div>  <!-- /segment-header -->
     
     <div id="segment-navbar" class="segment">  <!-- segment-navbar -->
@@ -65,6 +63,7 @@
         <!-- HEADER CONTENT -->
     
         <nav class="navbar navbar-inverse">
+          <!--status-bar-->
           <div class="container">
             <button data-target=".navbar-inverse-collapse" class="navbar-toggle" data-toggle="collapse" type="button">
               <span class="icon-bar"> </span>

@@ -32,7 +32,7 @@
       <xsl:apply-templates mode="STU3" select="@*|node()"/>
     </xsl:copy>
   </xsl:template>
-  <xsl:template mode="STU3" match="f:title"/>
+  <xsl:template mode="STU3" match="f:title|f:ImplementationGuide/f:packageId"/>
   <xsl:template mode="STU3" match="f:url/@value">
     <xsl:attribute name="value">
       <xsl:value-of select="concat(substring-before(., 'ImplementationGuide'), 'STU3/ImplementationGuide/', ancestor::f:ImplementationGuide/f:id/@value)"/>
@@ -53,7 +53,7 @@
     </xsl:if>
   </xsl:template>
   <xsl:template mode="STU3" match="f:dependsOn">
-    <xsl:if test="not(f:extension[@url='http://hl7.org/fhir/StructureDefinition/tools-alternateVersion' and not(f:valueCode/@value=$version)])">
+    <xsl:if test="f:extension[@url='http://hl7.org/fhir/StructureDefinition/tools-alternateVersion' and f:valueCode/@value=$version]">
       <dependency xmlns="http://hl7.org/fhir">
         <xsl:apply-templates mode="STU3" select="@*|f:extension"/>
         <type value="reference"/>
@@ -73,14 +73,14 @@
       </xsl:if>
     </xsl:if>
   </xsl:template>
-  <xsl:template mode="STU3" match="f:package">
+  <xsl:template mode="STU3" match="f:grouping">
     <xsl:variable name="relevant">
-      <xsl:for-each select="parent::*/f:resource[not(f:extension[@url='http://hl7.org/fhir/StructureDefinition/implementationguide-spreadsheet-profile' and f:valueBoolean/@value=true()]) and f:extension[@url='http://hl7.org/fhir/StructureDefinition/tools-alternateVersion']/f:valueCode/@value=$version and f:package/@value=current()/@id]">content</xsl:for-each>
+      <xsl:for-each select="parent::*/f:resource[not(f:extension[@url='http://hl7.org/fhir/StructureDefinition/implementationguide-spreadsheet-profile' and f:valueBoolean/@value=true()]) and f:extension[@url='http://hl7.org/fhir/StructureDefinition/tools-alternateVersion']/f:valueCode/@value=$version and f:groupingId/@value=current()/@id]">content</xsl:for-each>
     </xsl:variable>
     <xsl:if test="not($relevant='')">
-      <xsl:copy>
+      <package xmlns="http://hl7.org/fhir">
         <xsl:apply-templates select="@*|node()"/>
-        <xsl:for-each select="parent::*/f:resource[not(f:extension[@url='http://hl7.org/fhir/StructureDefinition/implementationguide-spreadsheet-profile' and f:valueBoolean/@value=true()]) and f:extension[@url='http://hl7.org/fhir/StructureDefinition/tools-alternateVersion']/f:valueCode/@value=$version and f:package/@value=current()/@id]">
+        <xsl:for-each select="parent::*/f:resource[not(f:extension[@url='http://hl7.org/fhir/StructureDefinition/implementationguide-spreadsheet-profile' and f:valueBoolean/@value=true()]) and f:extension[@url='http://hl7.org/fhir/StructureDefinition/tools-alternateVersion']/f:valueCode/@value=$version and f:groupingId/@value=current()/@id]">
           <xsl:copy>
             <xsl:apply-templates mode="STU3" select="@*|f:extension"/>
             <xsl:if test="f:exampleBoolean/@value='true' or f:exampleCanonical">
@@ -94,7 +94,7 @@
             </xsl:for-each>
           </xsl:copy>
         </xsl:for-each>
-      </xsl:copy>
+      </package>
     </xsl:if>
   </xsl:template>
   <xsl:template match="f:page">

@@ -75,6 +75,7 @@
   "excludejson":"${excludejson}",
   "excludettl":"${excludettl}",
   "assets":"",
+  "child":"${additionalVersion}/",
   "headingOffset":""
 }</echo>
     <xslt in="${dir.src}/${guidename}.xml" out="${dir.includes}/artifacts.xml" style="${dir.xslt}/createArtifactSummary.xslt"/>
@@ -121,6 +122,7 @@
   "excludejson":"${excludejson}",
   "excludettl":"${excludettl}",
   "assets":"../",
+  "child":"",
   "headingOffset":"${childHeadingOffset}."
 }</echo>
     <xslt in="${dir.src}/${guidename}.xml" out="${dir.altincludes}/artifacts.xml" style="${dir.xslt}/createArtifactSummary.xslt">
