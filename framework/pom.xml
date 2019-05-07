@@ -1,0 +1,131 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+
+    <groupId>test</groupId>
+    <artifactId>igrunner</artifactId>
+    <version>1.0-SNAPSHOT</version>
+
+    <repositories>
+        <repository>
+            <id>oss-snapshot</id>
+            <url>https://oss.sonatype.org/content/repositories/snapshots/</url>
+            <snapshots>
+                <enabled>true</enabled>
+            </snapshots>
+        </repository>
+    </repositories>
+
+    <dependencies>
+        <dependency>
+            <groupId>org.hl7.fhir.publisher</groupId>
+            <artifactId>org.hl7.fhir.publisher.cli</artifactId>
+            <version>[0.0.1-SNAPSHOT,)</version>
+        </dependency>
+    </dependencies>
+
+    <properties>
+        <dir.srcgenned>${basedir}/../src-generated</dir.srcgenned>
+        <dir.framework>${basedir}</dir.framework>
+        <dir.xslt>${dir.framework}/xslt</dir.xslt>
+        <dir.src>${basedir}/../src</dir.src>
+        <additionalVersion>STU3</additionalVersion>
+        <additionalVNumber>3.0.1</additionalVNumber>
+
+        <!--
+        <property name="updatePublisher" value="Y"/>
+        <property name="noTx" value="N"/>
+        <property name="jar.publisher" value="http://build.fhir.org/org.hl7.fhir.igpublisher.jar"/>
+        <property name="dir.pages" value="${dir.srcgenned}/pages"/>
+        <property name="dir.includes" value="${dir.pages}/_includes"/>
+        <property name="dir.data" value="${dir.pages}/_data"/>
+        <property name="dir.resources" value="${dir.srcgenned}/resources"/>
+        <property name="dir.schemas" value="${dir.srcgenned}/schemas"/>
+        <property name="dir.framework.assets" value="${dir.framework}/assets"/>
+        <loadproperties srcfile="${dir.src}/properties.txt"/>
+        <property name="excludexml" value="No"/>
+        <property name="excludejson" value="No"/>
+        <property name="excludettl" value="No"/>
+        -->
+        <txParm/>
+    </properties>
+
+    <build>
+        <defaultGoal>install</defaultGoal>
+        <plugins>
+            <plugin>
+                <groupId>org.codehaus.mojo</groupId>
+                <artifactId>properties-maven-plugin</artifactId>
+                <version>1.0.0</version>
+                <executions>
+                    <execution>
+                        <phase>initialize</phase>
+                        <goals>
+                            <goal>read-project-properties</goal>
+                        </goals>
+                        <configuration>
+                            <files>
+                                <file>${basedir}/../src/properties.txt</file>
+                            </files>
+                        </configuration>
+                    </execution>
+                </executions>
+            </plugin>
+            <plugin>
+                <artifactId>maven-antrun-plugin</artifactId>
+                <version>1.8</version>
+                <configuration>
+                    <target>
+                        <xslt in="${dir.src}/${guidename}.xml" out="${dir.altincludes}/artifacts.xml" style="${dir.xslt}/createArtifactSummary.xslt">
+                            <param name="version" expression="${additionalVersion}"/>
+                        </xslt>
+                        <xslt in="${dir.src}/${guidename}.xml" out="${dir.resources}${additionalVersion}/${guidename}.xml" style="${dir.xslt}/fixIg.xslt">
+                            <param name="version" expression="${additionalVersion}"/>
+                            <param name="altVNumber" expression="${additionalVNumber}"/>
+                        </xslt>
+                        <xslt in="${dir.src}/${guidename}.xml" out="${dir.srcgenned}/${guidename}${additionalVersion}.json" style="${dir.xslt}/igToConfig.xslt">
+                            <param name="spec" expression="${otherfhirspec}"/>
+                            <param name="version" expression="${additionalVNumber}"/>
+                            <param name="fhirVersion" expression="${additionalVNumber}"/>
+                            <param name="additional" expression="${additionalVersion}"/>
+                            <param name="license" expression="${license}"/>
+                            <param name="excludexml" expression="${excludexml}"/>
+                            <param name="excludejson" expression="${excludejson}"/>
+                            <param name="excludettl" expression="${excludettl}"/>
+                        </xslt>
+                    </target>
+                </configuration>
+                <executions>
+                    <execution>
+                        <phase>package</phase>
+                        <goals>
+                            <goal>run</goal>
+                        </goals>
+                    </execution>
+                </executions>
+            </plugin>
+            <plugin>
+                <groupId>org.codehaus.mojo</groupId>
+                <artifactId>exec-maven-plugin</artifactId>
+                <version>1.6.0</version>
+                <configuration>
+                    <mainClass>org.hl7.fhir.igtools.publisher.Publisher</mainClass>
+                    <commandlineArgs>
+                        -ig ${dir.srcgenned}/${guidename}.json ${txParm}
+                    </commandlineArgs>
+                </configuration>
+                <executions>
+                    <execution>
+                        <phase>package</phase>
+                        <goals>
+                            <goal>java</goal>
+                        </goals>
+                    </execution>
+                </executions>
+            </plugin>
+        </plugins>
+    </build>
+
+</project>
