@@ -115,7 +115,7 @@
         <td colspan="5">
           <p>
             This expression serves the same purpose as the initial.value on Questionnaire.item, except that rather than specifying a fixed value, the value is
-            calculatable.  The value is set on initial creation of the QuestionnaireResponse or upon the question first becoming enabled.  If
+            calculable.  The value is set on initial creation of the QuestionnaireResponse or upon the question first becoming enabled.  If
             used for a readOnly and/or hidden element, the expression essentially calculates a 'fixed value' for the element.  If used for an editable element,
             this extension sets the initial value for the element.  However, the value may subsequently be overridden by the user authoring the response.
           </p>
@@ -222,7 +222,7 @@
           <p>
             Managing the updating of calculatedExpressions can be tricky as they can have many dependencies.  Implementing an event-based listener approach
             may prove more efficient than simply recalculating all expressions every time any value in the questionnaire changes anywhere.  Also, refer to
-            the section below on <a href="#dependencies">dependencies</a> which explains how to handle order of evaluation and other concerns.
+            the section below on <a href="#dependencies">dependencies</a> that explains how to handle order of evaluation and other concerns.
           </p>
           <p>
             In most cases, 'calculated' answers should be marked as 'readOnly', however in some cases it may be legitimate to override a calculated element,
@@ -386,9 +386,9 @@
   <p>
     For example:
   </p>
-  <pre><code>Observation?code=http://loinc.org|65972-2&amp;date=gt{{today()-7 days}}&amp;subject={{%patient.id}}</code></pre>
+  <pre><code>Observation?code=http://loinc.org|65972-2&amp;date=gt{% raw %}{{today()-7 days}}{% endraw %}&amp;subject={% raw %}{{%patient.id}}{% endraw %}</code></pre>
   <p>
-    would return all Observations with the specified LOINC code made in the last week for the specified patient (the %patient variable would likely have been
+    would return all Observations with the specified LOINC code made in the last week for the specified patient (the %subject variable would likely have been
     set using <a href="#launchContext">launchContext</a>.)
   </p>
   <a name="dependencies"> </a>

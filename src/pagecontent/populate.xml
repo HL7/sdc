@@ -27,7 +27,7 @@
       a yes/no/unknown answer choice is not a data element that will exist in the clinical system.  However, it is possible to provide the clinician with a 
       list of AdverseEvent, Observation and Condition instances that might be relevant they can scan in choosing how to answer the question.</li>
     <li>
-      <b>No population</b> There is no way to query information relevant to the answer - the user will have to fill out that portion of the form unassisted.</li>
+      <b>No population:</b> There is no way to query information relevant to the answer - the user will have to fill out that portion of the form unassisted.</li>
   </ul>
   <a name="caveats"> </a>
   <h3>Caveats and considerations with form population</h3>
@@ -240,7 +240,7 @@
       Observations or the <code>Observation.component.code</code> values</li>
     <li>
       To signal that the item.code is actually intended for use in population (as opposed to just providing metadata about the Questionnaire item, the 
-      <a href="extension-sdc-questionnaire-observationLinkPeriod.html">questionnaire-observationLinkPeriod</a> extension must also be included.  This extension 
+      <a href="extension-sdc-questionnaire-observationLinkPeriod.html">questionnaire-observationLinkPeriod</a> extension must also be included).  This extension 
       indicates the period of time over which to search for matching observations.  If there are no observations within that window, no population will occur. 
       For observations where how recent they are doesn't matter (e.g. blood type), simply set the duration to a long period of time - e.g. 200 years.</li>
     <li>

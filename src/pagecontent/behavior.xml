@@ -20,7 +20,7 @@
       <b>Code:</b> This is the name of the core element or the unique label for the extension.  The extension label appears at the end of the URL of the 
       'source' (below).  In this implementation guide, extensions are generally just referred to by their code.</li>
     <li>
-      <b>Source:</b> This will either 'N/A', 'Core', 'Questionnaire' or 'SDC'.  'N/A' indicates that the element is part of the core spec, not an extension.
+      <b>Source:</b> This will either be 'N/A', 'Core', 'Questionnaire' or 'SDC'.  'N/A' indicates that the element is part of the core spec, not an extension.
       'Core' indicates that the extension is defined in the core specification and is not
       specific to the Questionnaire resource.  The base URL for 'core' extensions is <code>http://hl7.org/fhir/StructureDefinition/</code>.  Questionnaire
       indicates an extension defined in the core specification that is specific to Questionnaires.  The base URL for 'Questionnaire' extensions is 
@@ -491,7 +491,7 @@
           <p>
             This extension asserts that resources selected as the answer to the question must be valid against the specified profile.  It is tighter than
             the <a href="#referenceResource">referenceResource</a> extension (and thus there's no need to specify a referenceResource if referenceProfile 
-            is defined.  If multiple referenceResources are listed, then the selected resource must be valid against at least one of the profiles.  The Form
+            is defined).  If multiple referenceResources are listed, then the selected resource must be valid against at least one of the profiles.  The Form
             Filler can choose to use the profiles as filter criteria in a search, but not all systems will necessarily support search by profile or will
             support the listed profile(s).  Thus, a fallback to evaluating candidates against the profile(s) and filtering the list to exclude those that 
             are not should also be supported.  More sophisticated querying is supported by the <a href="#referenceFilter">referenceFilter</a> extension.
@@ -800,7 +800,7 @@
           <p>
             This serves the same purpose as <a href="#enableWhen">enableWhen</a> (and is mutually exclusive with it).  It controls whether an item should be
             'enabled' or not, but can handle more sophisticated circumstances than that extension.  (If enableWhen can meet the need, it should be used
-            instead as it will be more broadly supported.)  Specifically, enableWhen allows more complex logic such as a mixture of 'and' and 'or' relationships
+            instead as it will be more broadly supported.)  Specifically, enableWhenExpression allows more complex logic such as a mixture of 'and' and 'or' relationships
             amongst conditions (e.g. "Enable if Q1=5 and either Q2 or Q3 are true").  It also allows for logic to be based on calculations across questions
             (possibly leveraging <a href="#variable">variable</a>) or even based on values passed in by <a href="#launchContext">launchContext</a> or
             queried from outside the questionnaire (see <a href="expressions.html">Using Expressions</a>.

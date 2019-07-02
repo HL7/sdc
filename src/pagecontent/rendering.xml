@@ -24,7 +24,7 @@
       <b>Code:</b> This is the name of the core element or the unique label for the extension.  The extension label appears at the end of the URL of the 
       'source' (below).  In this implementation guide, extensions are generally just referred to by their code.</li>
     <li>
-      <b>Source:</b> This will either 'N/A', 'Core', 'Questionnaire' or 'SDC'.  'N/A' indicates that the element is part of the core spec, not an extension.
+      <b>Source:</b> This will either be 'N/A', 'Core', 'Questionnaire' or 'SDC'.  'N/A' indicates that the element is part of the core spec, not an extension.
       'Core' indicates that the extension is defined in the core specification and is not
       specific to the Questionnaire resource.  The base URL for 'core' extensions is <code>http://hl7.org/fhir/StructureDefinition/</code>.  Questionnaire
       indicates an extension defined in the core specification that is specific to Questionnaires.  The base URL for 'Questionnaire' extensions is 
@@ -90,7 +90,7 @@
         <td colspan="4">
           <p>
             This element provides an alternate representation of the string value of the extended element that makes use of a subset XHTML.  (Specifically,
-            the XHTML subset <a href="{{site.data.fhir.path}}narrative.html">allowed by</a> the core specification.  This extension allows applying
+            the XHTML subset <a href="{{site.data.fhir.path}}narrative.html">allowed by</a> the core specification.)  This extension allows applying
             different styles to different portions of the text (via &lt;span/&gt;, &lt;b/&gt; and similar elements).  It also allows embedding structure 
             elements such as bullets or even tables in item.text elements.  XHTML must be base64-encoded due to constraints on the values of extensions.
             For title and label, the XHTML should be an inline element, while text can also include block-level elements (paragraph, ul/ol, etc.).

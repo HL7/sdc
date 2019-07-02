@@ -43,6 +43,7 @@
     easy navigation back to the main SDC page.
   </p>
 	<p>This implementation guide is organized into two sets of sections: SDC Background and the SDC Specification</p>
+	<a name="background"> </a>
 	<h4>SDC Background</h4>
 	<p>
     These sections provide information relevant to all SDC implementers, regardless of which SDC capabilities they're interested in using.
@@ -60,6 +61,7 @@
 			<a href="expressions.html">Using Expressions</a> describes the use of FHIRPath and CQL within Questionnaires and defines additional contexts and
 			rules for using these technologies in FHIR Questionnaires.  (These are technologies used to support several of the SDC capabilities.)</li>
 	</ol>
+	<a name="specification"> </a>
 	<h4>SDC Specification</h4>
 	<p>
     These sections define the different use-cases supported by SDC, specify the profile(s) needed to meet the use-cases.
@@ -97,7 +99,7 @@
       questionnaire, group and question, several of which are mandated for this profile.</li>
     <li>
       <a href="{{site.data.fhir.path}}element-extensions.html">element-extensions</a> defines extensions describing constraints on the values for 
-      data elements (e.g. field length, min and max values, etc.)  There are used here to constrain the allowed values for questions.</li>
+      data elements (e.g. field length, min and max values, etc.).  These are used here to constrain the allowed values for questions.</li>
     <li>
       <a href="{{site.data.fhir.path}}general-extensions.html">general-extensions</a> provides an extension for strings allowing the conveying of
       translations, which may be relevant in some environments</li>

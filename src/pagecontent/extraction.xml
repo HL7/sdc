@@ -28,7 +28,7 @@
       elements may need to be inferred, codes may need to be transformed and other transformations may be necessary to ensure that converted data meets 
       expectations for use, such as aligning with country-specific implementation guides.  In some cases, alignment may not be possible.</li>
     <li>
-      Once a QuestionnaireResponse has been converted, it might not be necessary to retain the QuestionnaireResponse any longer as all data access and 
+      Once a QuestionnaireResponse has been converted, it might not be necessary to retain the QuestionnaireResponse any longer, as all data access and 
       subsequent maintenance will occur through the 'traditional' resources.  However, in many environments the QuestionnaireResponse will be retained anyhow 
       to keep a record of the original source-of-truth and for traceability reasons.</li>
     <li>
@@ -116,7 +116,7 @@
       value but with multiple <code>Observation.component</code> elements.  Child question items can then assert the <code>item.code</code> of the "member-of" 
       Observations or the <code>Observation.component.code</code> values</li>
     <li>To signal that the item.code is intended for use in extraction (as opposed to just providing metadata about the Questionnaire item, the 
-      <a href="extension-sdc-questionnaire-observationLinkPeriod.html">questionnaire-observationLinkPeriod</a> extension must also be included.  This extension 
+      <a href="extension-sdc-questionnaire-observationLinkPeriod.html">questionnaire-observationLinkPeriod</a> extension must also be included).  This extension 
       indicates the period of time over which to search for matching observations.</li>
     <li>Multiple <code>item.code</code> elements might be present.  If so, each are considered one of the Observation.code Codings in the resulting 
       extracted Observation.</li>
@@ -193,7 +193,7 @@
             <li>the answer was populated from an existing Observation;</li>
             <li>the system rendering the QuestionnaireResponse can retain context and knows the 'id' of Observation to update;</li>
             <li>the author of the original Observation is the same as the current author of the QuestionnaireResponse</li>
-            <li>the answer has <b>not</b>changed from the populated value; and</li>
+            <li>the answer has <b>not</b> changed from the populated value; and</li>
             <li>the context of the questionnaire and the use of it is one where updates are appropriate - as opposed to asserting a new Observation with a new
               performer and date</li>
           </ul>
@@ -373,6 +373,5 @@
     <li>
       The ability of StructureMaps to reference other StructureMaps allows for the possibility of re-use if certain sections of multiple questionnaires are 
       consistent</li>
-    <li></li>
   </ul>
 </div>
