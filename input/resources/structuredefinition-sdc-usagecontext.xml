@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<StructureDefinition xmlns="http://hl7.org/fhir" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://hl7.org/fhir ../../src-generated/schemas/fhir-single.xsd">
+  <id value="sdc-usagecontext"/>
+  <url value="http://hl7.org/fhir/uv/sdc/StructureDefinition/sdc-usagecontext"/>
+  <name value="SDCUsageContext"/>
+  <title value="SDC Usage Context"/>
+  <status value="draft"/>
+  <date value="2019-03-15T20:02:49+10:00"/>
+  <description value="Constraints on the codes and values of UsageContext to help ensure consistent usage in SDC Questionnaires"/>
+  <fhirVersion value="4.0.0"/>
+  <kind value="complex-type"/>
+  <abstract value="false"/>
+  <type value="UsageContext"/>
+  <baseDefinition value="http://hl7.org/fhir/StructureDefinition/UsageContext"/>
+  <derivation value="constraint"/>
+  <differential>
+    <element id="UsageContext">
+      <path value="UsageContext"/>
+      <constraint>
+        <key value="sdc-uc-1"/>
+        <severity value="error"/>
+        <human value="If code is gender, focus, user, venue or species, value must be CodeableConcept.  If code is age, value must be Range.  If code is workflow, task or program, value must be CodeableConcept or Reference"/>
+        <expression value="code.system!='http://terminology.hl7.org/CodeSystem/usage-context-type' or (((code.code='gender' or code.code='focus' or code.code='user' or code.code='venue' or code.code='species') implies value.exists() and value is CodeableConcept) and (code.code='age' implies value.exists() and value is Range) ((code.code='workflow' or code.code='task' or code.code='program') implies (value.exists() and (value is CodeableConcept or value is Reference))))"/>
+        <xpath value="not(f:code/:system='http://terminology.hl7.org/CodeSystem/usage-context-type') or ((not(f:code/f:code=('gender', 'focus', 'user', 'venue', 'species')) or exists(f:valueCodeableConcept) and (not(f:code/f:code='age') or exists(f:valueRange) and (not(f:code/f:code=('workflow', 'task', 'program')) or exists(f:valueCodeableConcept)or exists(f:valueReference))"/>
+      </constraint>
+      <mustSupport value="true"/>
+    </element>
+    <element id="UsageContext.code">
+      <path value="UsageContext.code"/>
+      <mustSupport value="true"/>
+    </element>
+    <element id="UsageContext.value[x]">
+      <path value="UsageContext.value[x]"/>
+      <mustSupport value="true"/>
+    </element>
+    <element id="UsageContext.valueCodeableConcept">
+      <path value="UsageContext.valueCodeableConcept"/>
+      <mustSupport value="true"/>
+    </element>
+    <element id="UsageContext.valueCodeableConcept.coding">
+      <path value="UsageContext.valueCodeableConcept.coding"/>
+      <mustSupport value="true"/>
+    </element>
+    <element id="UsageContext.valueCodeableConcept.coding.system">
+      <path value="UsageContext.valueCodeableConcept.coding.system"/>
+      <mustSupport value="true"/>
+    </element>
+    <element id="UsageContext.valueCodeableConcept.coding.code">
+      <path value="UsageContext.valueCodeableConcept.coding.code"/>
+      <mustSupport value="true"/>
+    </element>
+    <element id="UsageContext.valueRange">
+      <path value="UsageContext.valueRange"/>
+      <mustSupport value="true"/>
+    </element>
+    <element id="UsageContext.valueRange.low">
+      <path value="UsageContext.valueRange.low"/>
+      <mustSupport value="true"/>
+    </element>
+    <element id="UsageContext.valueRange.high">
+      <path value="UsageContext.valueRange.high"/>
+      <mustSupport value="true"/>
+    </element>
+  </differential>
+</StructureDefinition>
