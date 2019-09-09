@@ -1,10 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
+<!-- edited with XMLSpy v2014 rel. 2 sp1 (x64) (http://www.altova.com) by Lloyd McKenzie (private) -->
 <ImplementationGuide xmlns="http://hl7.org/fhir" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://hl7.org/fhir ../input-cache/schemas-r5/fhir-single.xsd">
-	<id value="hl7.fhir.uv.sdc"/>
-	<!--      <extension url="http://hl7.org/fhir/StructureDefinition/igpublisher-spreadsheet">
+  <id value="hl7.fhir.uv.sdc"/>
+  <!--      <extension url="http://hl7.org/fhir/StructureDefinition/igpublisher-spreadsheet">
     <valueUri value="structuredefinition-sdc-profile-spreadsheet.xml"/>
   </extension>-->
-	<!--  <extension url="http://hl7.org/fhir/StructureDefinition/igpublisher-spreadsheet">
+  <!--  <extension url="http://hl7.org/fhir/StructureDefinition/igpublisher-spreadsheet">
     <valueUri value="codesystem-sdc-profile-spreadsheet.xml"/>
   </extension>
   <extension url="http://hl7.org/fhir/StructureDefinition/igpublisher-spreadsheet">
@@ -16,29 +17,29 @@
   <extension url="http://hl7.org/fhir/StructureDefinition/igpublisher-spreadsheet">
     <valueUri value="valueset-sdc-profile-spreadsheet.xml"/>
   </extension>-->
-	<url value="http://hl7.org/fhir/uv/sdc/ImplementationGuide/hl7.fhir.uv.sdc"/>
-	<name value="StructuredDataCapture"/>
-	<title value="Structured Data Capture"/>
-	<status value="draft"/>
-	<experimental value="false"/>
-	<publisher value="HL7 International - FHIR Infrastructure Work Group"/>
-	<contact>
-		<telecom>
-			<system value="other"/>
-			<value value="http://hl7.org/Special/committees/fiwg"/>
-		</telecom>
-	</contact>
-	<description value="The SDC specification provides an infrastructure to standardize the capture and expanded use of patient-level data collected within an EHR.&lt;br/&gt;This includes two components:&lt;br/&gt;* Support more sophisticated questionnaire/form use-cases such as those needed for research, oncology, pathology and other clinical domains.&lt;br/&gt;*Support pre-population and auto-population of EHR data into forms/questionnaires for uses outside direct clinical care (patient safety, adverse event reporting, public health reporting, etc.)."/>
-	<jurisdiction>
-		<coding>
-			<system value="http://unstats.un.org/unsd/methods/m49/m49.htm"/>
-			<code value="001"/>
-		</coding>
-	</jurisdiction>
-	<packageId value="hl7.fhir.uv.sdc"/>
-	<fhirVersion value="4.0.0"/>
-	<definition>
-		<!--    <grouping id="conformance">
+  <url value="http://hl7.org/fhir/uv/sdc/ImplementationGuide/hl7.fhir.uv.sdc"/>
+  <name value="StructuredDataCapture"/>
+  <title value="Structured Data Capture"/>
+  <status value="draft"/>
+  <experimental value="false"/>
+  <publisher value="HL7 International - FHIR Infrastructure Work Group"/>
+  <contact>
+    <telecom>
+      <system value="other"/>
+      <value value="http://hl7.org/Special/committees/fiwg"/>
+    </telecom>
+  </contact>
+  <description value="The SDC specification provides an infrastructure to standardize the capture and expanded use of patient-level data collected within an EHR.&lt;br/&gt;This includes two components:&lt;br/&gt;* Support more sophisticated questionnaire/form use-cases such as those needed for research, oncology, pathology and other clinical domains.&lt;br/&gt;*Support pre-population and auto-population of EHR data into forms/questionnaires for uses outside direct clinical care (patient safety, adverse event reporting, public health reporting, etc.)."/>
+  <jurisdiction>
+    <coding>
+      <system value="http://unstats.un.org/unsd/methods/m49/m49.htm"/>
+      <code value="001"/>
+    </coding>
+  </jurisdiction>
+  <packageId value="hl7.fhir.uv.sdc"/>
+  <fhirVersion value="4.0.0"/>
+  <definition>
+    <!--    <grouping id="conformance">
       <name value="Capability Statements"/>
       <description value="Capabilities of systems claiming to be conformant to the SDC implementation guide"/>
     </grouping>
@@ -73,7 +74,6 @@
       <name value="SDC Form Designer"/>
       <description value="SDC Form authoring system"/>
       <exampleBoolean value="true"/>
-      <groupingId value="conformance"/>
     </resource>
     <resource>
       <reference>
@@ -82,7 +82,6 @@
       <name value="SDC Form Response Manager"/>
       <description value="SDC Form response management system"/>
       <exampleBoolean value="true"/>
-      <groupingId value="conformance"/>
     </resource>
     <resource>
       <reference>
@@ -91,7 +90,6 @@
       <name value="SDC Form Filler"/>
       <description value="SDC System for completing forms"/>
       <exampleBoolean value="true"/>
-      <groupingId value="conformance"/>
     </resource>
     <resource>
       <reference>
@@ -100,7 +98,6 @@
       <name value="SDC Form Manager"/>
       <description value="SDC Repository for forms"/>
       <exampleBoolean value="true"/>
-      <groupingId value="conformance"/>
     </resource>
     <resource>
       <reference>
@@ -109,7 +106,6 @@
       <name value="SDC Form Receiver"/>
       <description value="SDC Repository for completed forms"/>
       <exampleBoolean value="true"/>
-      <groupingId value="conformance"/>
     </resource>
     <resource>
       <reference>
@@ -118,7 +114,6 @@
       <name value="SDC Form Archiver"/>
       <description value="SDC System for archiving and retrieving the completed forms"/>
       <exampleBoolean value="true"/>
-      <groupingId value="conformance"/>
     </resource>
     <resource>
       <reference>
@@ -127,7 +122,6 @@
       <name value="SDC Usage Context"/>
       <description value="Constraints on the codes and values of UsageContext to help ensure consistent usage in SDC Questionnaires"/>
       <exampleBoolean value="false"/>
-      <groupingId value="profiles"/>
     </resource>
     <resource>
       <reference>
@@ -136,7 +130,6 @@
       <name value="SDC Questionnaire"/>
       <description value="Sets expectations for SDC-conformant systems around how to create questionnaires"/>
       <exampleBoolean value="false"/>
-      <groupingId value="profiles"/>
     </resource>
     <resource>
       <reference>
@@ -145,7 +138,6 @@
       <name value="Search Questionnaire"/>
       <description value="Defines properties that must be supported for systems that support searching for and returning Questionnaires"/>
       <exampleBoolean value="false"/>
-      <groupingId value="profiles"/>
     </resource>
     <resource>
       <reference>
@@ -154,7 +146,6 @@
       <name value="Advanced Rendering Questionnaire"/>
       <description value="Defines additional capabilities for controlling the rendering of the questionnaire."/>
       <exampleBoolean value="false"/>
-      <groupingId value="profiles"/>
     </resource>
     <resource>
       <reference>
@@ -163,7 +154,6 @@
       <name value="Advanced Behavior Questionnaire"/>
       <description value="Defines additional capabilities for controlling data entry and calculating values within the questionnaire."/>
       <exampleBoolean value="false"/>
-      <groupingId value="profiles"/>
     </resource>
     <resource>
       <reference>
@@ -172,7 +162,6 @@
       <name value="Populatable Questionnaire"/>
       <description value="Defines elements that support auto-population and pre-population of questionnaires"/>
       <exampleBoolean value="false"/>
-      <groupingId value="profiles"/>
     </resource>
     <resource>
       <reference>
@@ -181,7 +170,6 @@
       <name value="Extractable Questionnaire"/>
       <description value="Defines elements that allow conversion of a QuestionnaireResponse to a FHIR resource or Bundle of FHIR resources"/>
       <exampleBoolean value="false"/>
-      <groupingId value="profiles"/>
     </resource>
     <resource>
       <reference>
@@ -190,7 +178,6 @@
       <name value="Adaptive Questionnaire"/>
       <description value="Defines the metadata that should be present to embedding a adaptive Questionnaire as part of a QuestionnaireResponse"/>
       <exampleBoolean value="false"/>
-      <groupingId value="profiles"/>
     </resource>
     <resource>
       <reference>
@@ -199,7 +186,6 @@
       <name value="Adaptive Questionnaire - search"/>
       <description value="Defines the metadata that should be present to support searching for adaptive questionnaires."/>
       <exampleBoolean value="false"/>
-      <groupingId value="profiles"/>
     </resource>
     <resource>
       <reference>
@@ -208,7 +194,6 @@
       <name value="SDC Questionnaire Response"/>
       <description value="Sets expectations for SDC-conformant systems around how to create responses to questionnaires."/>
       <exampleBoolean value="false"/>
-      <groupingId value="profiles"/>
     </resource>
     <resource>
       <reference>
@@ -217,7 +202,6 @@
       <name value="Adaptive Questionnaire Response"/>
       <description value="Represents a response to a questionnaire that is dynamically built as each question is answered."/>
       <exampleBoolean value="false"/>
-      <groupingId value="profiles"/>
     </resource>
     <resource>
       <reference>
@@ -226,7 +210,6 @@
       <name value="SDC Value Set"/>
       <description value="Sets expectations for SDC-conformant systems around the definition of value sets for use with questionnaires."/>
       <exampleBoolean value="false"/>
-      <groupingId value="profiles"/>
     </resource>
     <resource>
       <reference>
@@ -235,7 +218,6 @@
       <name value="SDC Code System"/>
       <description value="Sets expectations for SDC-conformant systems around the definition of code systems to provide values for choices within questionnaires."/>
       <exampleBoolean value="false"/>
-      <groupingId value="profiles"/>
     </resource>
     <resource>
       <reference>
@@ -244,7 +226,6 @@
       <name value="Next question operation input parameters"/>
       <description value="Profile used to validate the parameters that are the input of the 'next question' adaptive questionnaire operation"/>
       <exampleBoolean value="false"/>
-      <groupingId value="profiles"/>
     </resource>
     <resource>
       <reference>
@@ -253,7 +234,6 @@
       <name value="Questionnnaire extract operation input parameters"/>
       <description value="Profile used to validate the parameters that are the input of the 'extract' questionnaire operation"/>
       <exampleBoolean value="false"/>
-      <groupingId value="profiles"/>
     </resource>
     <resource>
       <reference>
@@ -262,7 +242,6 @@
       <name value="Next question operation output parameters"/>
       <description value="Profile used to validate the parameters that are the output of the 'next question' adaptive questionnaire operation"/>
       <exampleBoolean value="false"/>
-      <groupingId value="profiles"/>
     </resource>
     <resource>
       <reference>
@@ -271,9 +250,8 @@
       <name value="Process response operation intput parameters"/>
       <description value="Profile used to validate the parameters that are the input of the 'process response' questionnaire operation"/>
       <exampleBoolean value="false"/>
-      <groupingId value="profiles"/>
     </resource>
-		<!--    <resource>
+    <!--    <resource>
       <extension url="http://hl7.org/fhir/StructureDefinition/implementationguide-spreadsheet-profile">
         <valueBoolean value="true"/>
       </extension>
@@ -292,7 +270,6 @@
       <name value="Entry mode"/>
       <description value="An indication of how the user should be prompted for answers when completing a QuestionnaireResponse"/>
       <exampleBoolean value="false"/>
-      <groupingId value="extensions"/>
     </resource>
     <resource>
       <reference>
@@ -301,7 +278,6 @@
       <name value="Endpoint"/>
       <description value="The base URL for the server to which questionnaire response associated with this questionnaire should be submitted"/>
       <exampleBoolean value="false"/>
-      <groupingId value="extensions"/>
     </resource>
     <resource>
       <reference>
@@ -310,7 +286,6 @@
       <name value="Optional Display?"/>
       <description value="If set to true, it means that the system displaying the form (or the individual encoding the form for data capture) can choose to omit the item from display to the user."/>
       <exampleBoolean value="false"/>
-      <groupingId value="extensions"/>
     </resource>
     <resource>
       <reference>
@@ -319,7 +294,6 @@
       <name value="Source queries for population mapping"/>
       <description value="A Batch Bundle containing a set of queries that should be executed to provide source data for a StructureMap to create a populated QuestionnaireResponse"/>
       <exampleBoolean value="false"/>
-      <groupingId value="extensions"/>
     </resource>
     <resource>
       <reference>
@@ -328,7 +302,6 @@
       <name value="Initial Expression"/>
       <description value="Initial value for a question answer as determined by an evaluated expression"/>
       <exampleBoolean value="false"/>
-      <groupingId value="extensions"/>
     </resource>
     <resource>
       <reference>
@@ -337,7 +310,6 @@
       <name value="Candidate Answers Expression"/>
       <description value="A FHIRPath expression or FHIR Query that resolves to a list of candidate answers for the question item or that establishes context for a group item"/>
       <exampleBoolean value="false"/>
-      <groupingId value="extensions"/>
     </resource>
     <resource>
       <reference>
@@ -346,7 +318,6 @@
       <name value="Answer Context Expression"/>
       <description value="A FHIR Query that resolves to one or more resources that can be displayed to the user to help provide context for answering a question"/>
       <exampleBoolean value="false"/>
-      <groupingId value="extensions"/>
     </resource>
     <resource>
       <reference>
@@ -355,7 +326,6 @@
       <name value="Calculated Expression"/>
       <description value="Calculated value for a question answer as determined by an evaluated expression"/>
       <exampleBoolean value="false"/>
-      <groupingId value="extensions"/>
     </resource>
     <resource>
       <reference>
@@ -364,7 +334,6 @@
       <name value="Choice column"/>
       <description value="Provides guidelines for rendering multi-column choices"/>
       <exampleBoolean value="false"/>
-      <groupingId value="extensions"/>
     </resource>
     <resource>
       <reference>
@@ -373,7 +342,6 @@
       <name value="Width of column"/>
       <description value="When used with an item control that causes the question to appear as a column in a table, indicates the width to give to the column for this question."/>
       <exampleBoolean value="false"/>
-      <groupingId value="extensions"/>
     </resource>
     <resource>
       <reference>
@@ -382,7 +350,6 @@
       <name value="Context resources"/>
       <description value="Resources that provide context for form processing logic (pre-population, flow-control, drop-down selection, etc.) when creating/displaying/editing a QuestionnaireResponse"/>
       <exampleBoolean value="false"/>
-      <groupingId value="extensions"/>
     </resource>
     <resource>
       <reference>
@@ -391,7 +358,6 @@
       <name value="Enable when?"/>
       <description value="An expression that returns a boolean value for whether to enable the item"/>
       <exampleBoolean value="false"/>
-      <groupingId value="extensions"/>
     </resource>
     <resource>
       <reference>
@@ -400,7 +366,6 @@
       <name value="Is subject?"/>
       <description value="If present and true, indicates that the item establishes a different subject for the group in a response"/>
       <exampleBoolean value="false"/>
-      <groupingId value="extensions"/>
     </resource>
     <resource>
       <reference>
@@ -409,7 +374,6 @@
       <name value="Item context"/>
       <description value="Specifies a query that identifies the resource (or set of resources for a repeating item) that should be used to populate this Questionnaire.item on initial population or to be extracted from this item once the QuestionnaireResponse is complete"/>
       <exampleBoolean value="false"/>
-      <groupingId value="extensions"/>
     </resource>
     <resource>
       <reference>
@@ -418,7 +382,6 @@
       <name value="Lookup questionnaire"/>
       <description value="For items of type reference, the reference can be populated either by picking an existing entity or by creating a new one. In the latter case, this Questionnaire allows specifying the Questionnaire to use in creating the target instance. This can be direct (if the Reference is to a Questionnaire) or indirect via mapping if the Reference is to some other sort of resource."/>
       <exampleBoolean value="false"/>
-      <groupingId value="extensions"/>
     </resource>
     <resource>
       <reference>
@@ -427,7 +390,6 @@
       <name value="Obervation link period"/>
       <description value="Indicates the time-period (from 'now') to search for observations that match the Questionnaire.item.code and Questionnaire.subject when pre-populating the QuestionnaireResponse."/>
       <exampleBoolean value="false"/>
-      <groupingId value="extensions"/>
     </resource>
     <resource>
       <reference>
@@ -436,7 +398,6 @@
       <name value="Source structure map"/>
       <description value="StructureMaps that have this QuestionnaireResponses for this Questionnaire as 'target' - i.e. that can be used to create QuestionnaireResponses that are valid against this Questionnaire."/>
       <exampleBoolean value="false"/>
-      <groupingId value="extensions"/>
     </resource>
     <resource>
       <reference>
@@ -445,7 +406,6 @@
       <name value="Target structure map"/>
       <description value="StructureMaps that have QuestionnaireResponses of this Questionnaire as 'source'- i.e. that can be used to create other artifacts from QuestionnaireResponses that are valid against this Questionnaire."/>
       <exampleBoolean value="false"/>
-      <groupingId value="extensions"/>
     </resource>
     <resource>
       <reference>
@@ -454,9 +414,8 @@
       <name value="Is subject (response)?"/>
       <description value="If present and true, indicates that the item indicates a different subject for this group"/>
       <exampleBoolean value="false"/>
-      <groupingId value="extensions"/>
     </resource>
-		<!--    <resource>
+    <!--    <resource>
       <extension url="http://hl7.org/fhir/StructureDefinition/implementationguide-spreadsheet-profile">
         <valueBoolean value="true"/>
       </extension>
@@ -475,7 +434,6 @@
       <name value="Questionnaire Context Species"/>
       <description value="Species for defining the context of Questionnaires"/>
       <exampleBoolean value="false"/>
-      <groupingId value="terminology"/>
     </resource>
     <resource>
       <reference>
@@ -484,7 +442,6 @@
       <name value="Questionnaire Launch Context"/>
       <description value="Defines standard context of Questionnaires at launch time"/>
       <exampleBoolean value="false"/>
-      <groupingId value="terminology"/>
     </resource>
     <resource>
       <reference>
@@ -493,7 +450,6 @@
       <name value="Questionnaire Launch Context"/>
       <description value="Defines standard context of Questionnaires at launch time"/>
       <exampleBoolean value="false"/>
-      <groupingId value="terminology"/>
     </resource>
     <resource>
       <reference>
@@ -502,7 +458,6 @@
       <name value="Questionnaire Entry Mode"/>
       <description value="Defines mechanisms of capturing data in a QuestionnaireResponse"/>
       <exampleBoolean value="false"/>
-      <groupingId value="terminology"/>
     </resource>
     <resource>
       <reference>
@@ -511,7 +466,6 @@
       <name value="Questionnaire Entry Mode"/>
       <description value="Defines mechanisms of capturing data in a QuestionnaireResponse"/>
       <exampleBoolean value="false"/>
-      <groupingId value="terminology"/>
     </resource>
     <resource>
       <reference>
@@ -520,7 +474,6 @@
       <name value="Adaptive questionnaire next question"/>
       <description value="Returns the next question or set of questions for an adaptive questionnaire"/>
       <exampleBoolean value="true"/>
-      <groupingId value="operations"/>
     </resource>
     <resource>
       <reference>
@@ -529,7 +482,6 @@
       <name value="Populate Questionnaire"/>
       <description value="Generates a QuestionnaireResponse from a Questionnaire, possibly with data partially populated"/>
       <exampleBoolean value="true"/>
-      <groupingId value="operations"/>
     </resource>
     <resource>
       <reference>
@@ -538,7 +490,6 @@
       <name value="Populate HTML Questionnaire"/>
       <description value="Generates an HTML representation of the Questionnaire as a form, possibly partially populated with data"/>
       <exampleBoolean value="true"/>
-      <groupingId value="operations"/>
     </resource>
     <resource>
       <reference>
@@ -547,7 +498,6 @@
       <name value="Populate Questionnaire Link"/>
       <description value="Generates a link to an HTML page that can be used to complete the Questionnaire, possibly partially populated with data"/>
       <exampleBoolean value="true"/>
-      <groupingId value="operations"/>
     </resource>
     <resource>
       <reference>
@@ -556,7 +506,6 @@
       <name value="Questionnaire process response"/>
       <description value="Allows submission of a QuestionnaireRespone for 'processing' by the target server"/>
       <exampleBoolean value="true"/>
-      <groupingId value="operations"/>
     </resource>
     <resource>
       <reference>
@@ -565,7 +514,6 @@
       <name value="Questionnaire response extract to resource(s)"/>
       <description value="Converts a QuestionnaireResponse to a clinical or administrative resource or a Transaction Bundle of them"/>
       <exampleBoolean value="true"/>
-      <groupingId value="operations"/>
     </resource>
     <resource>
       <reference>
@@ -574,7 +522,6 @@
       <name value="Questionnaire Item definition"/>
       <description value="Allows searching by 'definition' element within a Questionnaire's items"/>
       <exampleBoolean value="true"/>
-      <groupingId value="search"/>
     </resource>
     <resource>
       <reference>
@@ -583,7 +530,6 @@
       <name value="SDC-Advanced Rendering"/>
       <description value="Example showing most of the advanced rendering capabilities of SDC"/>
       <exampleCanonical value="http://hl7.org/fhir/uv/sdc/StructureDefinition/sdc-questionnaire-render"/>
-      <groupingId value="examples"/>
     </resource>
     <resource>
       <reference>
@@ -592,7 +538,6 @@
       <name value="SDC - Combination"/>
       <description value="Set of several examples - medication, AHRQ and NCI forms"/>
       <exampleCanonical value="http://hl7.org/fhir/uv/sdc/StructureDefinition/sdc-questionnaire"/>
-      <groupingId value="examples"/>
     </resource>
     <resource>
       <reference>
@@ -601,7 +546,6 @@
       <name value="SDC-Pathology"/>
       <description value="Cancer pathology questionnaire with flow-control extensions"/>
       <exampleCanonical value="http://hl7.org/fhir/uv/sdc/StructureDefinition/sdc-questionnaire"/>
-      <groupingId value="examples"/>
     </resource>
     <resource>
       <reference>
@@ -610,7 +554,6 @@
       <name value="SDC-LOINC AHRQ"/>
       <description value="LOINC perspective on the AHRQ form found in the SDC - Combination set of questionnaires"/>
       <exampleCanonical value="http://hl7.org/fhir/uv/sdc/StructureDefinition/sdc-questionnaire"/>
-      <groupingId value="examples"/>
     </resource>
     <resource>
       <reference>
@@ -619,7 +562,6 @@
       <name value="SDC-LOINC USSG Family History"/>
       <description value="LOINC US Surgeon General family history including data elements and value sets."/>
       <exampleCanonical value="http://hl7.org/fhir/uv/sdc/StructureDefinition/sdc-questionnaire-populate"/>
-      <groupingId value="examples"/>
     </resource>
     <resource>
       <reference>
@@ -628,7 +570,6 @@
       <name value="SDC - Response to Diagnosis NCI Standard Template"/>
       <description value="Responses to the questionnaire found in the SDC - Combination list of questionnaires"/>
       <exampleCanonical value="http://hl7.org/fhir/uv/sdc/StructureDefinition/sdc-questionnaireresponse"/>
-      <groupingId value="examples"/>
     </resource>
     <resource>
       <reference>
@@ -637,7 +578,6 @@
       <name value="SDC-LOINC USSG Family History Response"/>
       <description value="Example response to the SDC-LOINC USSG Family History questionnaire"/>
       <exampleCanonical value="http://hl7.org/fhir/uv/sdc/StructureDefinition/sdc-questionnaireresponse"/>
-      <groupingId value="examples"/>
     </resource>
     <resource>
       <reference>
@@ -646,9 +586,8 @@
       <name value="SDC-ValueSet AHRQ_Medication_Q1"/>
       <description value="The answer list for question 1 on the AHRQ &#39;Medication or Other Substance&#39; form"/>
       <exampleCanonical value="http://hl7.org/fhir/uv/sdc/StructureDefinition/sdc-valueset"/>
-      <groupingId value="examples"/>
     </resource>
-		<!--    <resource>
+    <!--    <resource>
       <reference>
         <reference value="StructureDefinition/structuredefinition-sdc-profile-example"/>
       </reference>
@@ -657,80 +596,80 @@
       <exampleCanonical value="http://hl7.org/fhir/uv/sdc/StructureDefinition/sdc-dataelement"/>
       <groupingId value="examples"/>
     </resource>-->
-		<page>
-			<nameUrl value="toc.html"/>
-			<title value="Table of Contents"/>
-			<generation value="html"/>
-			<page>
-				<nameUrl value="index.html"/>
-				<title value="SDC Home Page"/>
-				<generation value="html"/>
-			</page>
-			<page>
-				<nameUrl value="intro.html"/>
-				<title value="Introduction"/>
-				<generation value="html"/>
-			</page>
-			<page>
-				<nameUrl value="security.html"/>
-				<title value="Security Details"/>
-				<generation value="html"/>
-			</page>
-			<page>
-				<nameUrl value="workflow.html"/>
-				<title value="Basic SDC workflow"/>
-				<generation value="html"/>
-			</page>
-			<page>
-				<nameUrl value="expressions.html"/>
-				<title value="Using Expressions"/>
-				<generation value="html"/>
-			</page>
-			<page>
-				<nameUrl value="search.html"/>
-				<title value="Finding a Questionnaire"/>
-				<generation value="html"/>
-			</page>
-			<page>
-				<nameUrl value="rendering.html"/>
-				<title value="Advanced form rendering"/>
-				<generation value="html"/>
-			</page>
-			<page>
-				<nameUrl value="behavior.html"/>
-				<title value="Advanced form behavior and calculation"/>
-				<generation value="html"/>
-			</page>
-			<page>
-				<nameUrl value="adaptive.html"/>
-				<title value="Adaptive forms"/>
-				<generation value="html"/>
-			</page>
-			<page>
-				<nameUrl value="populate.html"/>
-				<title value="Form population"/>
-				<generation value="html"/>
-			</page>
-			<page>
-				<nameUrl value="extraction.html"/>
-				<title value="Form data extraction"/>
-				<generation value="html"/>
-			</page>
-			<page>
-				<nameUrl value="artifacts.html"/>
-				<title value="Artifact List"/>
-				<generation value="html"/>
-			</page>
-			<page>
-				<nameUrl value="downloads.html"/>
-				<title value="Useful Downloads"/>
-				<generation value="html"/>
-			</page>
-			<page>
-				<nameUrl value="changes.html"/>
-				<title value="IG Change History"/>
-				<generation value="html"/>
-			</page>
-		</page>
-	</definition>
+    <page>
+      <nameUrl value="toc.html"/>
+      <title value="Table of Contents"/>
+      <generation value="html"/>
+      <page>
+        <nameUrl value="index.html"/>
+        <title value="SDC Home Page"/>
+        <generation value="html"/>
+      </page>
+      <page>
+        <nameUrl value="intro.html"/>
+        <title value="Introduction"/>
+        <generation value="html"/>
+      </page>
+      <page>
+        <nameUrl value="security.html"/>
+        <title value="Security Details"/>
+        <generation value="html"/>
+      </page>
+      <page>
+        <nameUrl value="workflow.html"/>
+        <title value="Basic SDC workflow"/>
+        <generation value="html"/>
+      </page>
+      <page>
+        <nameUrl value="expressions.html"/>
+        <title value="Using Expressions"/>
+        <generation value="html"/>
+      </page>
+      <page>
+        <nameUrl value="search.html"/>
+        <title value="Finding a Questionnaire"/>
+        <generation value="html"/>
+      </page>
+      <page>
+        <nameUrl value="rendering.html"/>
+        <title value="Advanced form rendering"/>
+        <generation value="html"/>
+      </page>
+      <page>
+        <nameUrl value="behavior.html"/>
+        <title value="Advanced form behavior and calculation"/>
+        <generation value="html"/>
+      </page>
+      <page>
+        <nameUrl value="adaptive.html"/>
+        <title value="Adaptive forms"/>
+        <generation value="html"/>
+      </page>
+      <page>
+        <nameUrl value="populate.html"/>
+        <title value="Form population"/>
+        <generation value="html"/>
+      </page>
+      <page>
+        <nameUrl value="extraction.html"/>
+        <title value="Form data extraction"/>
+        <generation value="html"/>
+      </page>
+      <page>
+        <nameUrl value="artifacts.html"/>
+        <title value="Artifact List"/>
+        <generation value="html"/>
+      </page>
+      <page>
+        <nameUrl value="downloads.html"/>
+        <title value="Useful Downloads"/>
+        <generation value="html"/>
+      </page>
+      <page>
+        <nameUrl value="changes.html"/>
+        <title value="IG Change History"/>
+        <generation value="html"/>
+      </page>
+    </page>
+  </definition>
 </ImplementationGuide>
