@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<ImplementationGuide xmlns="http://hl7.org/fhir" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://hl7.org/fhir ../src-generated/schemas/fhir-single.xsd">
-  <id value="hl7.fhir.uv.sdc"/>
-  <extension url="http://hl7.org/fhir/StructureDefinition/igpublisher-spreadsheet">
-    <valueUri value="codesystem-sdc-profile-spreadsheet.xml"/>
-  </extension>
-  <!--      <extension url="http://hl7.org/fhir/StructureDefinition/igpublisher-spreadsheet">
+<ImplementationGuide xmlns="http://hl7.org/fhir" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://hl7.org/fhir ../input-cache/schemas-r5/fhir-single.xsd">
+	<id value="hl7.fhir.uv.sdc"/>
+	<!--      <extension url="http://hl7.org/fhir/StructureDefinition/igpublisher-spreadsheet">
     <valueUri value="structuredefinition-sdc-profile-spreadsheet.xml"/>
   </extension>-->
+	<!--  <extension url="http://hl7.org/fhir/StructureDefinition/igpublisher-spreadsheet">
+    <valueUri value="codesystem-sdc-profile-spreadsheet.xml"/>
+  </extension>
   <extension url="http://hl7.org/fhir/StructureDefinition/igpublisher-spreadsheet">
     <valueUri value="questionnaire-sdc-profile-spreadsheet.xml"/>
   </extension>
@@ -15,30 +15,30 @@
   </extension>
   <extension url="http://hl7.org/fhir/StructureDefinition/igpublisher-spreadsheet">
     <valueUri value="valueset-sdc-profile-spreadsheet.xml"/>
-  </extension>
-  <url value="http://hl7.org/fhir/uv/sdc/ImplementationGuide/hl7.fhir.uv.sdc"/>
-  <name value="StructuredDataCapture"/>
-  <title value="Structured Data Capture"/>
-  <status value="draft"/>
-  <experimental value="false"/>
-  <publisher value="HL7 International - FHIR Infrastructure Work Group"/>
-  <contact>
-    <telecom>
-      <system value="other"/>
-      <value value="http://hl7.org/Special/committees/fiwg"/>
-    </telecom>
-  </contact>
-  <description value="The SDC specification provides an infrastructure to standardize the capture and expanded use of patient-level data collected within an EHR.&lt;br/&gt;This includes two components:&lt;br/&gt;* Support more sophisticated questionnaire/form use-cases such as those needed for research, oncology, pathology and other clinical domains.&lt;br/&gt;*Support pre-population and auto-population of EHR data into forms/questionnaires for uses outside direct clinical care (patient safety, adverse event reporting, public health reporting, etc.)."/>
-  <jurisdiction>
-    <coding>
-      <system value="http://unstats.un.org/unsd/methods/m49/m49.htm"/>
-      <code value="001"/>
-    </coding>
-  </jurisdiction>
-  <packageId value="hl7.fhir.uv.sdc"/>
-  <fhirVersion value="4.0.0"/>
-  <definition>
-    <grouping id="conformance">
+  </extension>-->
+	<url value="http://hl7.org/fhir/uv/sdc/ImplementationGuide/hl7.fhir.uv.sdc"/>
+	<name value="StructuredDataCapture"/>
+	<title value="Structured Data Capture"/>
+	<status value="draft"/>
+	<experimental value="false"/>
+	<publisher value="HL7 International - FHIR Infrastructure Work Group"/>
+	<contact>
+		<telecom>
+			<system value="other"/>
+			<value value="http://hl7.org/Special/committees/fiwg"/>
+		</telecom>
+	</contact>
+	<description value="The SDC specification provides an infrastructure to standardize the capture and expanded use of patient-level data collected within an EHR.&lt;br/&gt;This includes two components:&lt;br/&gt;* Support more sophisticated questionnaire/form use-cases such as those needed for research, oncology, pathology and other clinical domains.&lt;br/&gt;*Support pre-population and auto-population of EHR data into forms/questionnaires for uses outside direct clinical care (patient safety, adverse event reporting, public health reporting, etc.)."/>
+	<jurisdiction>
+		<coding>
+			<system value="http://unstats.un.org/unsd/methods/m49/m49.htm"/>
+			<code value="001"/>
+		</coding>
+	</jurisdiction>
+	<packageId value="hl7.fhir.uv.sdc"/>
+	<fhirVersion value="4.0.0"/>
+	<definition>
+		<!--    <grouping id="conformance">
       <name value="Capability Statements"/>
       <description value="Capabilities of systems claiming to be conformant to the SDC implementation guide"/>
     </grouping>
@@ -65,7 +65,7 @@
     <grouping id="examples">
       <name value="Example(s)"/>
       <description value="Example(s) showing the use of the SDC profiles"/>
-    </grouping>
+    </grouping>-->
     <resource>
       <reference>
         <reference value="CapabilityStatement/sdc-form-designer"/>
@@ -130,9 +130,6 @@
       <groupingId value="profiles"/>
     </resource>
     <resource>
-<!--      <extension url="http://hl7.org/fhir/StructureDefinition/implementationguide-spreadsheet-profile">
-        <valueBoolean value="true"/>
-      </extension>-->
       <reference>
         <reference value="StructureDefinition/sdc-questionnaire"/>
       </reference>
@@ -142,9 +139,6 @@
       <groupingId value="profiles"/>
     </resource>
     <resource>
-<!--      <extension url="http://hl7.org/fhir/StructureDefinition/implementationguide-spreadsheet-profile">
-        <valueBoolean value="true"/>
-      </extension>-->
       <reference>
         <reference value="StructureDefinition/sdc-questionnaire-search"/>
       </reference>
@@ -154,9 +148,6 @@
       <groupingId value="profiles"/>
     </resource>
     <resource>
-<!--      <extension url="http://hl7.org/fhir/StructureDefinition/implementationguide-spreadsheet-profile">
-        <valueBoolean value="true"/>
-      </extension>-->
       <reference>
         <reference value="StructureDefinition/sdc-questionnaire-render"/>
       </reference>
@@ -166,9 +157,6 @@
       <groupingId value="profiles"/>
     </resource>
     <resource>
-<!--      <extension url="http://hl7.org/fhir/StructureDefinition/implementationguide-spreadsheet-profile">
-        <valueBoolean value="true"/>
-      </extension>-->
       <reference>
         <reference value="StructureDefinition/sdc-questionnaire-behave"/>
       </reference>
@@ -178,9 +166,6 @@
       <groupingId value="profiles"/>
     </resource>
     <resource>
-<!--      <extension url="http://hl7.org/fhir/StructureDefinition/implementationguide-spreadsheet-profile">
-        <valueBoolean value="true"/>
-      </extension>-->
       <reference>
         <reference value="StructureDefinition/sdc-questionnaire-populate"/>
       </reference>
@@ -190,9 +175,6 @@
       <groupingId value="profiles"/>
     </resource>
     <resource>
-<!--      <extension url="http://hl7.org/fhir/StructureDefinition/implementationguide-spreadsheet-profile">
-        <valueBoolean value="true"/>
-      </extension>-->
       <reference>
         <reference value="StructureDefinition/sdc-questionnaire-extract"/>
       </reference>
@@ -202,9 +184,6 @@
       <groupingId value="profiles"/>
     </resource>
     <resource>
-<!--      <extension url="http://hl7.org/fhir/StructureDefinition/implementationguide-spreadsheet-profile">
-        <valueBoolean value="true"/>
-      </extension>-->
       <reference>
         <reference value="StructureDefinition/sdc-questionnaire-adapt"/>
       </reference>
@@ -214,9 +193,6 @@
       <groupingId value="profiles"/>
     </resource>
     <resource>
-<!--      <extension url="http://hl7.org/fhir/StructureDefinition/implementationguide-spreadsheet-profile">
-        <valueBoolean value="true"/>
-      </extension>-->
       <reference>
         <reference value="StructureDefinition/sdc-questionnaire-adapt-srch"/>
       </reference>
@@ -226,9 +202,6 @@
       <groupingId value="profiles"/>
     </resource>
     <resource>
-<!--      <extension url="http://hl7.org/fhir/StructureDefinition/implementationguide-spreadsheet-profile">
-        <valueBoolean value="true"/>
-      </extension>-->
       <reference>
         <reference value="StructureDefinition/sdc-questionnaireresponse"/>
       </reference>
@@ -238,9 +211,6 @@
       <groupingId value="profiles"/>
     </resource>
     <resource>
-<!--      <extension url="http://hl7.org/fhir/StructureDefinition/implementationguide-spreadsheet-profile">
-        <valueBoolean value="true"/>
-      </extension>-->
       <reference>
         <reference value="StructureDefinition/sdc-questionnaireresponse-adapt"/>
       </reference>
@@ -250,9 +220,6 @@
       <groupingId value="profiles"/>
     </resource>
     <resource>
-<!--      <extension url="http://hl7.org/fhir/StructureDefinition/implementationguide-spreadsheet-profile">
-        <valueBoolean value="true"/>
-      </extension>-->
       <reference>
         <reference value="StructureDefinition/sdc-valueset"/>
       </reference>
@@ -262,9 +229,6 @@
       <groupingId value="profiles"/>
     </resource>
     <resource>
-<!--      <extension url="http://hl7.org/fhir/StructureDefinition/implementationguide-spreadsheet-profile">
-        <valueBoolean value="true"/>
-      </extension>-->
       <reference>
         <reference value="StructureDefinition/sdc-codesystem"/>
       </reference>
@@ -309,7 +273,7 @@
       <exampleBoolean value="false"/>
       <groupingId value="profiles"/>
     </resource>
-    <!--    <resource>
+		<!--    <resource>
       <extension url="http://hl7.org/fhir/StructureDefinition/implementationguide-spreadsheet-profile">
         <valueBoolean value="true"/>
       </extension>
@@ -492,7 +456,7 @@
       <exampleBoolean value="false"/>
       <groupingId value="extensions"/>
     </resource>
-    <!--    <resource>
+		<!--    <resource>
       <extension url="http://hl7.org/fhir/StructureDefinition/implementationguide-spreadsheet-profile">
         <valueBoolean value="true"/>
       </extension>
@@ -684,7 +648,7 @@
       <exampleCanonical value="http://hl7.org/fhir/uv/sdc/StructureDefinition/sdc-valueset"/>
       <groupingId value="examples"/>
     </resource>
-    <!--    <resource>
+		<!--    <resource>
       <reference>
         <reference value="StructureDefinition/structuredefinition-sdc-profile-example"/>
       </reference>
@@ -693,80 +657,80 @@
       <exampleCanonical value="http://hl7.org/fhir/uv/sdc/StructureDefinition/sdc-dataelement"/>
       <groupingId value="examples"/>
     </resource>-->
-    <page>
-      <nameUrl value="toc.html"/>
-      <title value="Table of Contents"/>
-      <generation value="html"/>
-      <page>
-        <nameUrl value="index.html"/>
-        <title value="SDC Home Page"/>
-        <generation value="html"/>
-      </page>
-      <page>
-        <nameUrl value="intro.html"/>
-        <title value="Introduction"/>
-        <generation value="html"/>
-      </page>
-      <page>
-        <nameUrl value="security.html"/>
-        <title value="Security Details"/>
-        <generation value="html"/>
-      </page>
-      <page>
-        <nameUrl value="workflow.html"/>
-        <title value="Basic SDC workflow"/>
-        <generation value="html"/>
-      </page>
-      <page>
-        <nameUrl value="expressions.html"/>
-        <title value="Using Expressions"/>
-        <generation value="html"/>
-      </page>
-      <page>
-        <nameUrl value="search.html"/>
-        <title value="Finding a Questionnaire"/>
-        <generation value="html"/>
-      </page>
-      <page>
-        <nameUrl value="rendering.html"/>
-        <title value="Advanced form rendering"/>
-        <generation value="html"/>
-      </page>
-      <page>
-        <nameUrl value="behavior.html"/>
-        <title value="Advanced form behavior and calculation"/>
-        <generation value="html"/>
-      </page>
-      <page>
-        <nameUrl value="adaptive.html"/>
-        <title value="Adaptive forms"/>
-        <generation value="html"/>
-      </page>
-      <page>
-        <nameUrl value="populate.html"/>
-        <title value="Form population"/>
-        <generation value="html"/>
-      </page>
-      <page>
-        <nameUrl value="extraction.html"/>
-        <title value="Form data extraction"/>
-        <generation value="html"/>
-      </page>
-      <page>
-        <nameUrl value="artifacts.html"/>
-        <title value="Artifact List"/>
-        <generation value="html"/>
-      </page>
-      <page>
-        <nameUrl value="downloads.html"/>
-        <title value="Useful Downloads"/>
-        <generation value="html"/>
-      </page>
-      <page>
-        <nameUrl value="changes.html"/>
-        <title value="IG Change History"/>
-        <generation value="html"/>
-      </page>
-    </page>
-  </definition>
+		<page>
+			<nameUrl value="toc.html"/>
+			<title value="Table of Contents"/>
+			<generation value="html"/>
+			<page>
+				<nameUrl value="index.html"/>
+				<title value="SDC Home Page"/>
+				<generation value="html"/>
+			</page>
+			<page>
+				<nameUrl value="intro.html"/>
+				<title value="Introduction"/>
+				<generation value="html"/>
+			</page>
+			<page>
+				<nameUrl value="security.html"/>
+				<title value="Security Details"/>
+				<generation value="html"/>
+			</page>
+			<page>
+				<nameUrl value="workflow.html"/>
+				<title value="Basic SDC workflow"/>
+				<generation value="html"/>
+			</page>
+			<page>
+				<nameUrl value="expressions.html"/>
+				<title value="Using Expressions"/>
+				<generation value="html"/>
+			</page>
+			<page>
+				<nameUrl value="search.html"/>
+				<title value="Finding a Questionnaire"/>
+				<generation value="html"/>
+			</page>
+			<page>
+				<nameUrl value="rendering.html"/>
+				<title value="Advanced form rendering"/>
+				<generation value="html"/>
+			</page>
+			<page>
+				<nameUrl value="behavior.html"/>
+				<title value="Advanced form behavior and calculation"/>
+				<generation value="html"/>
+			</page>
+			<page>
+				<nameUrl value="adaptive.html"/>
+				<title value="Adaptive forms"/>
+				<generation value="html"/>
+			</page>
+			<page>
+				<nameUrl value="populate.html"/>
+				<title value="Form population"/>
+				<generation value="html"/>
+			</page>
+			<page>
+				<nameUrl value="extraction.html"/>
+				<title value="Form data extraction"/>
+				<generation value="html"/>
+			</page>
+			<page>
+				<nameUrl value="artifacts.html"/>
+				<title value="Artifact List"/>
+				<generation value="html"/>
+			</page>
+			<page>
+				<nameUrl value="downloads.html"/>
+				<title value="Useful Downloads"/>
+				<generation value="html"/>
+			</page>
+			<page>
+				<nameUrl value="changes.html"/>
+				<title value="IG Change History"/>
+				<generation value="html"/>
+			</page>
+		</page>
+	</definition>
 </ImplementationGuide>
