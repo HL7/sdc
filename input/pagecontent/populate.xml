@@ -50,8 +50,9 @@
       here as well.
     </li>
     <li>
-      Any queries performed to populate the form will need to be subject to appropriate access controls.  Users should not be able to see information populated
-      into a form that they would not be able to see when navigating the source system directly.  In some cases, this means that an answer in a form might not
+      Any queries performed to populate the form will need to be subject to appropriate access controls.  Users SHALL NOT be able to see information populated
+      into a form that they would not be able to see when navigating the source system directly (I.e. it is a mandatory requirement that the population process
+      not populate information in the form if the user completing the questionnaire would not have permission to see that data if they queried it directly).  In some cases, this means that an answer in a form might not
       be populated even though the data exists - because the user doesn't have authority to see that data.
     </li>
     <li>
