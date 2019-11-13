@@ -497,7 +497,7 @@
           <p>
             This extension asserts that resources selected as the answer to the question must be valid against the specified profile.  It is tighter than
             the <a href="#referenceResource">referenceResource</a> extension (and thus there's no need to specify a referenceResource if referenceProfile
-            is defined).  If multiple referenceResources are listed, then the selected resource must be valid against at least one of the profiles.  The Form
+            is defined).  If multiple referenceProfiles are listed, then the selected resource must be valid against at least one of the profiles.  The Form
             Filler can choose to use the profiles as filter criteria in a search, but not all systems will necessarily support search by profile or will
             support the listed profile(s).  Thus, a fallback to evaluating candidates against the profile(s) and filtering the list to exclude those that
             are not should also be supported.  More sophisticated querying is supported by the <a href="#referenceFilter">referenceFilter</a> extension.
