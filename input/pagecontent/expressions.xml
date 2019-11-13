@@ -231,7 +231,8 @@
             answers in the questionnaire response change.  When loading a previously persisted QuestionnaireResponse, the determination of whether a user
             has edited the calculated field can be determined by whether the calculated value differs from invoking the calculation on the current values
             in the questionnaire.  (As a side-effect, this means that calculated values based on 'context' information such as an age calculated based on
-            'now' will be treated as user-edited when subsequently opening the QuestionnaireResponse and will not update to reflect the new current date.)
+            'now' will be treated as user-edited when subsequently opening the QuestionnaireResponse and will not update to reflect the new current date.
+            Client systems MAY provide the user with the ability to reset calculated fields to the calculated value).
           </p>
           <p>
             Like initialExpression, it's possible for the value of a calculatedExpression to be referenced by name within other sibling expressions or by
