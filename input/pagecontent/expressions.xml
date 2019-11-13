@@ -400,11 +400,11 @@
     <a href="#initialExpression">initialExpressions</a> which might rely on <a href="#itemContext">itemContext</a> queries that in turn have embedded
     FHIRPaths that reference elements defined in <a href="#launchContext">launchContext</a>.  If care isn't taken, it's possible to construct a
     questionnaire where the value of an answer depends indirectly on itself, or where filling out an answer disables the question being answered or other
-    inappropriate behavior.  Questionnaire rendering systems should check for and gracefully handle such situations.  (I.e. Raise appropriate error messages
-    rather than crashing or locking in an endless loop.)
+    inappropriate behavior.  Questionnaire rendering systems should check for these situations and gracefully handle them by raising appropriate error messages
+    rather than crashing or locking in an endless loop.
   </p>
   <p>
-    When evaluating expressions, the typical order of calculation will be in the order the expressions appear in the Questionnaire.  I.e. Those at the root
+    When evaluating expressions, the typical order of calculation will be in the order the expressions appear in the Questionnaire. Those at the root
     are evaluated first, then items are evaluated in order, evaluating on a depth-first basis.  Children of the first item in a group are evaluated
     before the second item in the group.
   </p>
@@ -422,7 +422,7 @@
     <li>
       The <code>%context</code> variable will be set to the QuestionnaireResponse if the expression extension is defined on the Questionnaire root.
       Otherwise, it will be set to the QuestionnaireResponse.item for items whose linkId match the linkId of the Questionnaire.item the expression
-      extension was defined in.  I.e. While the extensions and expressions are defined in the Questionnaire, they are <i>evaluated</i> in the context of
+      extension was defined in. While the extensions and expressions are defined in the Questionnaire, they are <i>evaluated</i> in the context of
       the corresponding item(s) in the QuestionnaireResponse.</li>
     <li>
       A new <code>%questionnaire</code> is defined for that corresponds to the Questionnaire resource resolved to by the QuestionnaireResponse.questionnaire
