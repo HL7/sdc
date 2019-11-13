@@ -288,8 +288,8 @@
           </p>
           <p>
             If a query results in multiple repetitions for a single for the root Questionnaire or for an item where 'repeat' is false, it is an error and no
-            population or extraction can occur.  If the query results in no elements when extracting, then the extracted data is treated as a create.  If data
-            is returned then the extracted data should replace what is returned, either as an update or a delete + create.
+            population or extraction can occur. When peforming an extraction the query is executed. If a record is found the data in the QuestionnaireResponse
+            will be used to update that record.If the query returns no results the data in the QuestionnaireResponse will be used to create a new record.
           </p>
           <p>
             Expression.name SHALL be populated when this extension is being used for <a href="populate.html#path-pop">FHIR-path based population</a>.
