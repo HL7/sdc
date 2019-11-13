@@ -422,10 +422,10 @@
     <li>
       The <code>%context</code> variable will be set to the QuestionnaireResponse if the expression extension is defined on the Questionnaire root.
       Otherwise, it will be set to the QuestionnaireResponse.item for items whose linkId match the linkId of the Questionnaire.item the expression
-      extension was defined in. While the extensions and expressions are defined in the Questionnaire, they are <i>evaluated</i> in the context of
-      the corresponding item(s) in the QuestionnaireResponse.</li>
+      extension was defined in (i.e. while the extensions and expressions are defined in the Questionnaire, they are <i>evaluated</i> in the context of
+      the corresponding item(s) in the QuestionnaireResponse).</li>
     <li>
-      A new <code>%questionnaire</code> is defined for that corresponds to the Questionnaire resource resolved to by the QuestionnaireResponse.questionnaire
+      A new <code>%questionnaire</code> variable is defined for that corresponds to the Questionnaire resource resolved to by the QuestionnaireResponse.questionnaire
       element.  It is in scope for all expressions defined in the Questionnaire.</li>
     <li>
       All expressions that specify a 'name' can be accessed by other expressions appearing on the same item or any descendant item as though that
