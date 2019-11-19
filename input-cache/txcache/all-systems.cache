@@ -2842,3 +2842,949 @@ v: {
   "error" : "The code \"xpath\" is not valid in the system urn:ietf:bcp:13; The code provided (urn:ietf:bcp:13#xpath) is not  valid in the value set Mime Types"
 }
 -------------------------------------------------------------------------------------
+{"code" : {
+  "code" : "Several days"
+}, "valueSet" :null, "lang":"null"}####
+v: {
+  "display" : "",
+  "severity" : "error",
+  "error" : "The code system \"\" is not known for the code \"Several days\"; The code provided (#Several days) is not  valid in the value set All codes known to the system"
+}
+-------------------------------------------------------------------------------------
+{"code" : {
+  "code" : "Not at all"
+}, "valueSet" :null, "lang":"null"}####
+v: {
+  "display" : "",
+  "severity" : "error",
+  "error" : "The code system \"\" is not known for the code \"Not at all\"; The code provided (#Not at all) is not  valid in the value set All codes known to the system"
+}
+-------------------------------------------------------------------------------------
+{"code" : {
+  "code" : "More than half the days"
+}, "valueSet" :null, "lang":"null"}####
+v: {
+  "display" : "",
+  "severity" : "error",
+  "error" : "The code system \"\" is not known for the code \"More than half the days\"; The code provided (#More than half the days) is not  valid in the value set All codes known to the system"
+}
+-------------------------------------------------------------------------------------
+{"code" : {
+  "code" : "Nearly every day"
+}, "valueSet" :null, "lang":"null"}####
+v: {
+  "display" : "",
+  "severity" : "error",
+  "error" : "The code system \"\" is not known for the code \"Nearly every day\"; The code provided (#Nearly every day) is not  valid in the value set All codes known to the system"
+}
+-------------------------------------------------------------------------------------
+{"code" : {
+  "code" : "Several days",
+  "display" : "Several days"
+}, "valueSet" :{
+  "resourceType" : "ValueSet",
+  "compose" : {
+    "include" : [{
+      "system" : "http://www.placeholder.fhir/ValueSet/VSPHQ9",
+      "concept" : [{
+        "extension" : [{
+          "url" : "http://hl7.org/fhir/StructureDefinition/questionnaire-optionPrefix",
+          "valueString" : "0"
+        },
+        {
+          "url" : "http://hl7.org/fhir/StructureDefinition/ordinalValue",
+          "valueDecimal" : 0
+        }],
+        "code" : "Not-at-all",
+        "display" : "Not at all"
+      },
+      {
+        "extension" : [{
+          "url" : "http://hl7.org/fhir/StructureDefinition/questionnaire-optionPrefix",
+          "valueString" : "1"
+        },
+        {
+          "url" : "http://hl7.org/fhir/StructureDefinition/ordinalValue",
+          "valueDecimal" : 1
+        }],
+        "code" : "Several-days",
+        "display" : "Several days"
+      },
+      {
+        "extension" : [{
+          "url" : "http://hl7.org/fhir/StructureDefinition/questionnaire-optionPrefix",
+          "valueString" : "2"
+        },
+        {
+          "url" : "http://hl7.org/fhir/StructureDefinition/ordinalValue",
+          "valueDecimal" : 2
+        }],
+        "code" : "More than half the days",
+        "display" : "More than half the days"
+      },
+      {
+        "extension" : [{
+          "url" : "http://hl7.org/fhir/StructureDefinition/questionnaire-optionPrefix",
+          "valueString" : "3"
+        },
+        {
+          "url" : "http://hl7.org/fhir/StructureDefinition/ordinalValue",
+          "valueDecimal" : 3
+        }],
+        "code" : "Nearly every day",
+        "display" : "Nearly every day"
+      }]
+    }]
+  }
+}, "lang":"null"}####
+v: {
+  "display" : "",
+  "severity" : "error",
+  "error" : "Unknown code system http://www.placeholder.fhir/ValueSet/VSPHQ9"
+}
+-------------------------------------------------------------------------------------
+{"code" : {
+  "code" : "Not at all",
+  "display" : "Not at all"
+}, "valueSet" :{
+  "resourceType" : "ValueSet",
+  "compose" : {
+    "include" : [{
+      "system" : "http://www.placeholder.fhir/ValueSet/VSPHQ9",
+      "concept" : [{
+        "extension" : [{
+          "url" : "http://hl7.org/fhir/StructureDefinition/questionnaire-optionPrefix",
+          "valueString" : "0"
+        },
+        {
+          "url" : "http://hl7.org/fhir/StructureDefinition/ordinalValue",
+          "valueDecimal" : 0
+        }],
+        "code" : "Not-at-all",
+        "display" : "Not at all"
+      },
+      {
+        "extension" : [{
+          "url" : "http://hl7.org/fhir/StructureDefinition/questionnaire-optionPrefix",
+          "valueString" : "1"
+        },
+        {
+          "url" : "http://hl7.org/fhir/StructureDefinition/ordinalValue",
+          "valueDecimal" : 1
+        }],
+        "code" : "Several-days",
+        "display" : "Several days"
+      },
+      {
+        "extension" : [{
+          "url" : "http://hl7.org/fhir/StructureDefinition/questionnaire-optionPrefix",
+          "valueString" : "2"
+        },
+        {
+          "url" : "http://hl7.org/fhir/StructureDefinition/ordinalValue",
+          "valueDecimal" : 2
+        }],
+        "code" : "More than half the days",
+        "display" : "More than half the days"
+      },
+      {
+        "extension" : [{
+          "url" : "http://hl7.org/fhir/StructureDefinition/questionnaire-optionPrefix",
+          "valueString" : "3"
+        },
+        {
+          "url" : "http://hl7.org/fhir/StructureDefinition/ordinalValue",
+          "valueDecimal" : 3
+        }],
+        "code" : "Nearly every day",
+        "display" : "Nearly every day"
+      }]
+    }]
+  }
+}, "lang":"null"}####
+v: {
+  "display" : "",
+  "severity" : "error",
+  "error" : "Unknown code system http://www.placeholder.fhir/ValueSet/VSPHQ9"
+}
+-------------------------------------------------------------------------------------
+{"code" : {
+  "code" : "More than half the days",
+  "display" : "More than half the days"
+}, "valueSet" :{
+  "resourceType" : "ValueSet",
+  "compose" : {
+    "include" : [{
+      "system" : "http://www.placeholder.fhir/ValueSet/VSPHQ9",
+      "concept" : [{
+        "extension" : [{
+          "url" : "http://hl7.org/fhir/StructureDefinition/questionnaire-optionPrefix",
+          "valueString" : "0"
+        },
+        {
+          "url" : "http://hl7.org/fhir/StructureDefinition/ordinalValue",
+          "valueDecimal" : 0
+        }],
+        "code" : "Not-at-all",
+        "display" : "Not at all"
+      },
+      {
+        "extension" : [{
+          "url" : "http://hl7.org/fhir/StructureDefinition/questionnaire-optionPrefix",
+          "valueString" : "1"
+        },
+        {
+          "url" : "http://hl7.org/fhir/StructureDefinition/ordinalValue",
+          "valueDecimal" : 1
+        }],
+        "code" : "Several-days",
+        "display" : "Several days"
+      },
+      {
+        "extension" : [{
+          "url" : "http://hl7.org/fhir/StructureDefinition/questionnaire-optionPrefix",
+          "valueString" : "2"
+        },
+        {
+          "url" : "http://hl7.org/fhir/StructureDefinition/ordinalValue",
+          "valueDecimal" : 2
+        }],
+        "code" : "More than half the days",
+        "display" : "More than half the days"
+      },
+      {
+        "extension" : [{
+          "url" : "http://hl7.org/fhir/StructureDefinition/questionnaire-optionPrefix",
+          "valueString" : "3"
+        },
+        {
+          "url" : "http://hl7.org/fhir/StructureDefinition/ordinalValue",
+          "valueDecimal" : 3
+        }],
+        "code" : "Nearly every day",
+        "display" : "Nearly every day"
+      }]
+    }]
+  }
+}, "lang":"null"}####
+v: {
+  "display" : "",
+  "severity" : "error",
+  "error" : "Unknown code system http://www.placeholder.fhir/ValueSet/VSPHQ9"
+}
+-------------------------------------------------------------------------------------
+{"code" : {
+  "code" : "Nearly every day",
+  "display" : "Nearly every day"
+}, "valueSet" :{
+  "resourceType" : "ValueSet",
+  "compose" : {
+    "include" : [{
+      "system" : "http://www.placeholder.fhir/ValueSet/VSPHQ9",
+      "concept" : [{
+        "extension" : [{
+          "url" : "http://hl7.org/fhir/StructureDefinition/questionnaire-optionPrefix",
+          "valueString" : "0"
+        },
+        {
+          "url" : "http://hl7.org/fhir/StructureDefinition/ordinalValue",
+          "valueDecimal" : 0
+        }],
+        "code" : "Not-at-all",
+        "display" : "Not at all"
+      },
+      {
+        "extension" : [{
+          "url" : "http://hl7.org/fhir/StructureDefinition/questionnaire-optionPrefix",
+          "valueString" : "1"
+        },
+        {
+          "url" : "http://hl7.org/fhir/StructureDefinition/ordinalValue",
+          "valueDecimal" : 1
+        }],
+        "code" : "Several-days",
+        "display" : "Several days"
+      },
+      {
+        "extension" : [{
+          "url" : "http://hl7.org/fhir/StructureDefinition/questionnaire-optionPrefix",
+          "valueString" : "2"
+        },
+        {
+          "url" : "http://hl7.org/fhir/StructureDefinition/ordinalValue",
+          "valueDecimal" : 2
+        }],
+        "code" : "More than half the days",
+        "display" : "More than half the days"
+      },
+      {
+        "extension" : [{
+          "url" : "http://hl7.org/fhir/StructureDefinition/questionnaire-optionPrefix",
+          "valueString" : "3"
+        },
+        {
+          "url" : "http://hl7.org/fhir/StructureDefinition/ordinalValue",
+          "valueDecimal" : 3
+        }],
+        "code" : "Nearly every day",
+        "display" : "Nearly every day"
+      }]
+    }]
+  }
+}, "lang":"null"}####
+v: {
+  "display" : "",
+  "severity" : "error",
+  "error" : "Unknown code system http://www.placeholder.fhir/ValueSet/VSPHQ9"
+}
+-------------------------------------------------------------------------------------
+{"code" : {
+  "code" : "Several-days",
+  "display" : "Several days"
+}, "valueSet" :{
+  "resourceType" : "ValueSet",
+  "compose" : {
+    "include" : [{
+      "system" : "http://hl7.org/fhir/uv/sdc/ValueSet/VSPHQ9",
+      "concept" : [{
+        "extension" : [{
+          "url" : "http://hl7.org/fhir/StructureDefinition/questionnaire-optionPrefix",
+          "valueString" : "0"
+        },
+        {
+          "url" : "http://hl7.org/fhir/StructureDefinition/ordinalValue",
+          "valueDecimal" : 0
+        }],
+        "code" : "Not-at-all",
+        "display" : "Not at all"
+      },
+      {
+        "extension" : [{
+          "url" : "http://hl7.org/fhir/StructureDefinition/questionnaire-optionPrefix",
+          "valueString" : "1"
+        },
+        {
+          "url" : "http://hl7.org/fhir/StructureDefinition/ordinalValue",
+          "valueDecimal" : 1
+        }],
+        "code" : "Several-days",
+        "display" : "Several days"
+      },
+      {
+        "extension" : [{
+          "url" : "http://hl7.org/fhir/StructureDefinition/questionnaire-optionPrefix",
+          "valueString" : "2"
+        },
+        {
+          "url" : "http://hl7.org/fhir/StructureDefinition/ordinalValue",
+          "valueDecimal" : 2
+        }],
+        "code" : "More than half the days",
+        "display" : "More than half the days"
+      },
+      {
+        "extension" : [{
+          "url" : "http://hl7.org/fhir/StructureDefinition/questionnaire-optionPrefix",
+          "valueString" : "3"
+        },
+        {
+          "url" : "http://hl7.org/fhir/StructureDefinition/ordinalValue",
+          "valueDecimal" : 3
+        }],
+        "code" : "Nearly every day",
+        "display" : "Nearly every day"
+      }]
+    }]
+  }
+}, "lang":"null"}####
+v: {
+  "display" : "",
+  "severity" : "error",
+  "error" : "Unknown code system http://hl7.org/fhir/uv/sdc/ValueSet/VSPHQ9"
+}
+-------------------------------------------------------------------------------------
+{"code" : {
+  "code" : "Not-at-all",
+  "display" : "Not at all"
+}, "valueSet" :{
+  "resourceType" : "ValueSet",
+  "compose" : {
+    "include" : [{
+      "system" : "http://hl7.org/fhir/uv/sdc/ValueSet/VSPHQ9",
+      "concept" : [{
+        "extension" : [{
+          "url" : "http://hl7.org/fhir/StructureDefinition/questionnaire-optionPrefix",
+          "valueString" : "0"
+        },
+        {
+          "url" : "http://hl7.org/fhir/StructureDefinition/ordinalValue",
+          "valueDecimal" : 0
+        }],
+        "code" : "Not-at-all",
+        "display" : "Not at all"
+      },
+      {
+        "extension" : [{
+          "url" : "http://hl7.org/fhir/StructureDefinition/questionnaire-optionPrefix",
+          "valueString" : "1"
+        },
+        {
+          "url" : "http://hl7.org/fhir/StructureDefinition/ordinalValue",
+          "valueDecimal" : 1
+        }],
+        "code" : "Several-days",
+        "display" : "Several days"
+      },
+      {
+        "extension" : [{
+          "url" : "http://hl7.org/fhir/StructureDefinition/questionnaire-optionPrefix",
+          "valueString" : "2"
+        },
+        {
+          "url" : "http://hl7.org/fhir/StructureDefinition/ordinalValue",
+          "valueDecimal" : 2
+        }],
+        "code" : "More than half the days",
+        "display" : "More than half the days"
+      },
+      {
+        "extension" : [{
+          "url" : "http://hl7.org/fhir/StructureDefinition/questionnaire-optionPrefix",
+          "valueString" : "3"
+        },
+        {
+          "url" : "http://hl7.org/fhir/StructureDefinition/ordinalValue",
+          "valueDecimal" : 3
+        }],
+        "code" : "Nearly every day",
+        "display" : "Nearly every day"
+      }]
+    }]
+  }
+}, "lang":"null"}####
+v: {
+  "display" : "",
+  "severity" : "error",
+  "error" : "Unknown code system http://hl7.org/fhir/uv/sdc/ValueSet/VSPHQ9"
+}
+-------------------------------------------------------------------------------------
+{"code" : {
+  "code" : "More than half the days",
+  "display" : "More than half the days"
+}, "valueSet" :{
+  "resourceType" : "ValueSet",
+  "compose" : {
+    "include" : [{
+      "system" : "http://hl7.org/fhir/uv/sdc/ValueSet/VSPHQ9",
+      "concept" : [{
+        "extension" : [{
+          "url" : "http://hl7.org/fhir/StructureDefinition/questionnaire-optionPrefix",
+          "valueString" : "0"
+        },
+        {
+          "url" : "http://hl7.org/fhir/StructureDefinition/ordinalValue",
+          "valueDecimal" : 0
+        }],
+        "code" : "Not-at-all",
+        "display" : "Not at all"
+      },
+      {
+        "extension" : [{
+          "url" : "http://hl7.org/fhir/StructureDefinition/questionnaire-optionPrefix",
+          "valueString" : "1"
+        },
+        {
+          "url" : "http://hl7.org/fhir/StructureDefinition/ordinalValue",
+          "valueDecimal" : 1
+        }],
+        "code" : "Several-days",
+        "display" : "Several days"
+      },
+      {
+        "extension" : [{
+          "url" : "http://hl7.org/fhir/StructureDefinition/questionnaire-optionPrefix",
+          "valueString" : "2"
+        },
+        {
+          "url" : "http://hl7.org/fhir/StructureDefinition/ordinalValue",
+          "valueDecimal" : 2
+        }],
+        "code" : "More than half the days",
+        "display" : "More than half the days"
+      },
+      {
+        "extension" : [{
+          "url" : "http://hl7.org/fhir/StructureDefinition/questionnaire-optionPrefix",
+          "valueString" : "3"
+        },
+        {
+          "url" : "http://hl7.org/fhir/StructureDefinition/ordinalValue",
+          "valueDecimal" : 3
+        }],
+        "code" : "Nearly every day",
+        "display" : "Nearly every day"
+      }]
+    }]
+  }
+}, "lang":"null"}####
+v: {
+  "display" : "",
+  "severity" : "error",
+  "error" : "Unknown code system http://hl7.org/fhir/uv/sdc/ValueSet/VSPHQ9"
+}
+-------------------------------------------------------------------------------------
+{"code" : {
+  "code" : "Nearly every day",
+  "display" : "Nearly every day"
+}, "valueSet" :{
+  "resourceType" : "ValueSet",
+  "compose" : {
+    "include" : [{
+      "system" : "http://hl7.org/fhir/uv/sdc/ValueSet/VSPHQ9",
+      "concept" : [{
+        "extension" : [{
+          "url" : "http://hl7.org/fhir/StructureDefinition/questionnaire-optionPrefix",
+          "valueString" : "0"
+        },
+        {
+          "url" : "http://hl7.org/fhir/StructureDefinition/ordinalValue",
+          "valueDecimal" : 0
+        }],
+        "code" : "Not-at-all",
+        "display" : "Not at all"
+      },
+      {
+        "extension" : [{
+          "url" : "http://hl7.org/fhir/StructureDefinition/questionnaire-optionPrefix",
+          "valueString" : "1"
+        },
+        {
+          "url" : "http://hl7.org/fhir/StructureDefinition/ordinalValue",
+          "valueDecimal" : 1
+        }],
+        "code" : "Several-days",
+        "display" : "Several days"
+      },
+      {
+        "extension" : [{
+          "url" : "http://hl7.org/fhir/StructureDefinition/questionnaire-optionPrefix",
+          "valueString" : "2"
+        },
+        {
+          "url" : "http://hl7.org/fhir/StructureDefinition/ordinalValue",
+          "valueDecimal" : 2
+        }],
+        "code" : "More than half the days",
+        "display" : "More than half the days"
+      },
+      {
+        "extension" : [{
+          "url" : "http://hl7.org/fhir/StructureDefinition/questionnaire-optionPrefix",
+          "valueString" : "3"
+        },
+        {
+          "url" : "http://hl7.org/fhir/StructureDefinition/ordinalValue",
+          "valueDecimal" : 3
+        }],
+        "code" : "Nearly every day",
+        "display" : "Nearly every day"
+      }]
+    }]
+  }
+}, "lang":"null"}####
+v: {
+  "display" : "",
+  "severity" : "error",
+  "error" : "Unknown code system http://hl7.org/fhir/uv/sdc/ValueSet/VSPHQ9"
+}
+-------------------------------------------------------------------------------------
+{"code" : {
+  "code" : "Not-at-all",
+  "display" : "Not at all"
+}, "valueSet" :{
+  "resourceType" : "ValueSet",
+  "compose" : {
+    "include" : [{
+      "system" : "http://hl7.org/fhir/uv/sdc/CodeSystem/VSPHQ9",
+      "concept" : [{
+        "extension" : [{
+          "url" : "http://hl7.org/fhir/StructureDefinition/questionnaire-optionPrefix",
+          "valueString" : "0"
+        },
+        {
+          "url" : "http://hl7.org/fhir/StructureDefinition/ordinalValue",
+          "valueDecimal" : 0
+        }],
+        "code" : "Not-at-all",
+        "display" : "Not at all"
+      },
+      {
+        "extension" : [{
+          "url" : "http://hl7.org/fhir/StructureDefinition/questionnaire-optionPrefix",
+          "valueString" : "1"
+        },
+        {
+          "url" : "http://hl7.org/fhir/StructureDefinition/ordinalValue",
+          "valueDecimal" : 1
+        }],
+        "code" : "Several-days",
+        "display" : "Several days"
+      },
+      {
+        "extension" : [{
+          "url" : "http://hl7.org/fhir/StructureDefinition/questionnaire-optionPrefix",
+          "valueString" : "2"
+        },
+        {
+          "url" : "http://hl7.org/fhir/StructureDefinition/ordinalValue",
+          "valueDecimal" : 2
+        }],
+        "code" : "More than half the days",
+        "display" : "More than half the days"
+      },
+      {
+        "extension" : [{
+          "url" : "http://hl7.org/fhir/StructureDefinition/questionnaire-optionPrefix",
+          "valueString" : "3"
+        },
+        {
+          "url" : "http://hl7.org/fhir/StructureDefinition/ordinalValue",
+          "valueDecimal" : 3
+        }],
+        "code" : "Nearly every day",
+        "display" : "Nearly every day"
+      }]
+    }]
+  }
+}, "lang":"null"}####
+v: {
+  "display" : "",
+  "severity" : "error",
+  "error" : "Unknown code system http://hl7.org/fhir/uv/sdc/CodeSystem/VSPHQ9"
+}
+-------------------------------------------------------------------------------------
+{"code" : {
+  "code" : "More than half the days",
+  "display" : "More than half the days"
+}, "valueSet" :{
+  "resourceType" : "ValueSet",
+  "compose" : {
+    "include" : [{
+      "system" : "http://hl7.org/fhir/uv/sdc/CodeSystem/VSPHQ9",
+      "concept" : [{
+        "extension" : [{
+          "url" : "http://hl7.org/fhir/StructureDefinition/questionnaire-optionPrefix",
+          "valueString" : "0"
+        },
+        {
+          "url" : "http://hl7.org/fhir/StructureDefinition/ordinalValue",
+          "valueDecimal" : 0
+        }],
+        "code" : "Not-at-all",
+        "display" : "Not at all"
+      },
+      {
+        "extension" : [{
+          "url" : "http://hl7.org/fhir/StructureDefinition/questionnaire-optionPrefix",
+          "valueString" : "1"
+        },
+        {
+          "url" : "http://hl7.org/fhir/StructureDefinition/ordinalValue",
+          "valueDecimal" : 1
+        }],
+        "code" : "Several-days",
+        "display" : "Several days"
+      },
+      {
+        "extension" : [{
+          "url" : "http://hl7.org/fhir/StructureDefinition/questionnaire-optionPrefix",
+          "valueString" : "2"
+        },
+        {
+          "url" : "http://hl7.org/fhir/StructureDefinition/ordinalValue",
+          "valueDecimal" : 2
+        }],
+        "code" : "More than half the days",
+        "display" : "More than half the days"
+      },
+      {
+        "extension" : [{
+          "url" : "http://hl7.org/fhir/StructureDefinition/questionnaire-optionPrefix",
+          "valueString" : "3"
+        },
+        {
+          "url" : "http://hl7.org/fhir/StructureDefinition/ordinalValue",
+          "valueDecimal" : 3
+        }],
+        "code" : "Nearly every day",
+        "display" : "Nearly every day"
+      }]
+    }]
+  }
+}, "lang":"null"}####
+v: {
+  "display" : "",
+  "severity" : "error",
+  "error" : "Unknown code system http://hl7.org/fhir/uv/sdc/CodeSystem/VSPHQ9"
+}
+-------------------------------------------------------------------------------------
+{"code" : {
+  "code" : "Nearly every day",
+  "display" : "Nearly every day"
+}, "valueSet" :{
+  "resourceType" : "ValueSet",
+  "compose" : {
+    "include" : [{
+      "system" : "http://hl7.org/fhir/uv/sdc/CodeSystem/VSPHQ9",
+      "concept" : [{
+        "extension" : [{
+          "url" : "http://hl7.org/fhir/StructureDefinition/questionnaire-optionPrefix",
+          "valueString" : "0"
+        },
+        {
+          "url" : "http://hl7.org/fhir/StructureDefinition/ordinalValue",
+          "valueDecimal" : 0
+        }],
+        "code" : "Not-at-all",
+        "display" : "Not at all"
+      },
+      {
+        "extension" : [{
+          "url" : "http://hl7.org/fhir/StructureDefinition/questionnaire-optionPrefix",
+          "valueString" : "1"
+        },
+        {
+          "url" : "http://hl7.org/fhir/StructureDefinition/ordinalValue",
+          "valueDecimal" : 1
+        }],
+        "code" : "Several-days",
+        "display" : "Several days"
+      },
+      {
+        "extension" : [{
+          "url" : "http://hl7.org/fhir/StructureDefinition/questionnaire-optionPrefix",
+          "valueString" : "2"
+        },
+        {
+          "url" : "http://hl7.org/fhir/StructureDefinition/ordinalValue",
+          "valueDecimal" : 2
+        }],
+        "code" : "More than half the days",
+        "display" : "More than half the days"
+      },
+      {
+        "extension" : [{
+          "url" : "http://hl7.org/fhir/StructureDefinition/questionnaire-optionPrefix",
+          "valueString" : "3"
+        },
+        {
+          "url" : "http://hl7.org/fhir/StructureDefinition/ordinalValue",
+          "valueDecimal" : 3
+        }],
+        "code" : "Nearly every day",
+        "display" : "Nearly every day"
+      }]
+    }]
+  }
+}, "lang":"null"}####
+v: {
+  "display" : "",
+  "severity" : "error",
+  "error" : "Unknown code system http://hl7.org/fhir/uv/sdc/CodeSystem/VSPHQ9"
+}
+-------------------------------------------------------------------------------------
+{"code" : {
+  "code" : "Not-at-all",
+  "display" : "Not at all"
+}, "valueSet" :{
+  "resourceType" : "ValueSet",
+  "compose" : {
+    "include" : [{
+      "system" : "http://hl7.org/fhir/uv/sdc/CodeSystem/CSPHQ9",
+      "concept" : [{
+        "extension" : [{
+          "url" : "http://hl7.org/fhir/StructureDefinition/questionnaire-optionPrefix",
+          "valueString" : "0"
+        },
+        {
+          "url" : "http://hl7.org/fhir/StructureDefinition/ordinalValue",
+          "valueDecimal" : 0
+        }],
+        "code" : "Not-at-all",
+        "display" : "Not at all"
+      },
+      {
+        "extension" : [{
+          "url" : "http://hl7.org/fhir/StructureDefinition/questionnaire-optionPrefix",
+          "valueString" : "1"
+        },
+        {
+          "url" : "http://hl7.org/fhir/StructureDefinition/ordinalValue",
+          "valueDecimal" : 1
+        }],
+        "code" : "Several-days",
+        "display" : "Several days"
+      },
+      {
+        "extension" : [{
+          "url" : "http://hl7.org/fhir/StructureDefinition/questionnaire-optionPrefix",
+          "valueString" : "2"
+        },
+        {
+          "url" : "http://hl7.org/fhir/StructureDefinition/ordinalValue",
+          "valueDecimal" : 2
+        }],
+        "code" : "More than half the days",
+        "display" : "More than half the days"
+      },
+      {
+        "extension" : [{
+          "url" : "http://hl7.org/fhir/StructureDefinition/questionnaire-optionPrefix",
+          "valueString" : "3"
+        },
+        {
+          "url" : "http://hl7.org/fhir/StructureDefinition/ordinalValue",
+          "valueDecimal" : 3
+        }],
+        "code" : "Nearly every day",
+        "display" : "Nearly every day"
+      }]
+    }]
+  }
+}, "lang":"null"}####
+v: {
+  "display" : "",
+  "severity" : "error",
+  "error" : "Unknown code system http://hl7.org/fhir/uv/sdc/CodeSystem/CSPHQ9"
+}
+-------------------------------------------------------------------------------------
+{"code" : {
+  "code" : "More than half the days",
+  "display" : "More than half the days"
+}, "valueSet" :{
+  "resourceType" : "ValueSet",
+  "compose" : {
+    "include" : [{
+      "system" : "http://hl7.org/fhir/uv/sdc/CodeSystem/CSPHQ9",
+      "concept" : [{
+        "extension" : [{
+          "url" : "http://hl7.org/fhir/StructureDefinition/questionnaire-optionPrefix",
+          "valueString" : "0"
+        },
+        {
+          "url" : "http://hl7.org/fhir/StructureDefinition/ordinalValue",
+          "valueDecimal" : 0
+        }],
+        "code" : "Not-at-all",
+        "display" : "Not at all"
+      },
+      {
+        "extension" : [{
+          "url" : "http://hl7.org/fhir/StructureDefinition/questionnaire-optionPrefix",
+          "valueString" : "1"
+        },
+        {
+          "url" : "http://hl7.org/fhir/StructureDefinition/ordinalValue",
+          "valueDecimal" : 1
+        }],
+        "code" : "Several-days",
+        "display" : "Several days"
+      },
+      {
+        "extension" : [{
+          "url" : "http://hl7.org/fhir/StructureDefinition/questionnaire-optionPrefix",
+          "valueString" : "2"
+        },
+        {
+          "url" : "http://hl7.org/fhir/StructureDefinition/ordinalValue",
+          "valueDecimal" : 2
+        }],
+        "code" : "More than half the days",
+        "display" : "More than half the days"
+      },
+      {
+        "extension" : [{
+          "url" : "http://hl7.org/fhir/StructureDefinition/questionnaire-optionPrefix",
+          "valueString" : "3"
+        },
+        {
+          "url" : "http://hl7.org/fhir/StructureDefinition/ordinalValue",
+          "valueDecimal" : 3
+        }],
+        "code" : "Nearly every day",
+        "display" : "Nearly every day"
+      }]
+    }]
+  }
+}, "lang":"null"}####
+v: {
+  "display" : "",
+  "severity" : "error",
+  "error" : "Unknown code system http://hl7.org/fhir/uv/sdc/CodeSystem/CSPHQ9"
+}
+-------------------------------------------------------------------------------------
+{"code" : {
+  "code" : "Nearly every day",
+  "display" : "Nearly every day"
+}, "valueSet" :{
+  "resourceType" : "ValueSet",
+  "compose" : {
+    "include" : [{
+      "system" : "http://hl7.org/fhir/uv/sdc/CodeSystem/CSPHQ9",
+      "concept" : [{
+        "extension" : [{
+          "url" : "http://hl7.org/fhir/StructureDefinition/questionnaire-optionPrefix",
+          "valueString" : "0"
+        },
+        {
+          "url" : "http://hl7.org/fhir/StructureDefinition/ordinalValue",
+          "valueDecimal" : 0
+        }],
+        "code" : "Not-at-all",
+        "display" : "Not at all"
+      },
+      {
+        "extension" : [{
+          "url" : "http://hl7.org/fhir/StructureDefinition/questionnaire-optionPrefix",
+          "valueString" : "1"
+        },
+        {
+          "url" : "http://hl7.org/fhir/StructureDefinition/ordinalValue",
+          "valueDecimal" : 1
+        }],
+        "code" : "Several-days",
+        "display" : "Several days"
+      },
+      {
+        "extension" : [{
+          "url" : "http://hl7.org/fhir/StructureDefinition/questionnaire-optionPrefix",
+          "valueString" : "2"
+        },
+        {
+          "url" : "http://hl7.org/fhir/StructureDefinition/ordinalValue",
+          "valueDecimal" : 2
+        }],
+        "code" : "More than half the days",
+        "display" : "More than half the days"
+      },
+      {
+        "extension" : [{
+          "url" : "http://hl7.org/fhir/StructureDefinition/questionnaire-optionPrefix",
+          "valueString" : "3"
+        },
+        {
+          "url" : "http://hl7.org/fhir/StructureDefinition/ordinalValue",
+          "valueDecimal" : 3
+        }],
+        "code" : "Nearly every day",
+        "display" : "Nearly every day"
+      }]
+    }]
+  }
+}, "lang":"null"}####
+v: {
+  "display" : "",
+  "severity" : "error",
+  "error" : "Unknown code system http://hl7.org/fhir/uv/sdc/CodeSystem/CSPHQ9"
+}
+-------------------------------------------------------------------------------------

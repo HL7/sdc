@@ -536,7 +536,7 @@
       <reference>
         <reference value="Bundle/questionnaire-sdc-profile-example"/>
       </reference>
-      <name value="SDC - Combination"/>
+      <name value="SDC-Combination"/>
       <description value="Set of several examples - medication, AHRQ and NCI forms"/>
       <exampleCanonical value="http://hl7.org/fhir/uv/sdc/StructureDefinition/sdc-questionnaire"/>
     </resource>
@@ -558,6 +558,14 @@
     </resource>
     <resource>
       <reference>
+        <reference value="Questionnaire/questionnaire-sdc-profile-example-PHQ9"/>
+      </reference>
+      <name value="SDC-PHQ9"/>
+      <description value="Patient Health Questionnaire (9 Item) including contained value sets and calculatedExpression"/>
+      <exampleCanonical value="http://hl7.org/fhir/uv/sdc/StructureDefinition/sdc-questionnaire"/>
+    </resource>
+    <resource>
+      <reference>
         <reference value="Bundle/questionnaire-sdc-profile-example-ussg-fht"/>
       </reference>
       <name value="SDC-LOINC USSG Family History"/>
@@ -568,8 +576,16 @@
       <reference>
         <reference value="QuestionnaireResponse/questionnaireresponse-sdc-profile-example"/>
       </reference>
-      <name value="SDC - Response to Diagnosis NCI Standard Template"/>
-      <description value="Responses to the questionnaire found in the SDC - Combination list of questionnaires"/>
+      <name value="SDC-Response to Diagnosis NCI Standard Template"/>
+      <description value="Example responses to the questionnaire found in the SDC - Combination list of questionnaires"/>
+      <exampleCanonical value="http://hl7.org/fhir/uv/sdc/StructureDefinition/sdc-questionnaireresponse"/>
+    </resource>
+    <resource>
+      <reference>
+        <reference value="QuestionnaireResponse/questionnaireresponse-sdc-profile-example-PHQ9"/>
+      </reference>
+      <name value="SDC-PHQ9 Response "/>
+      <description value="Example response to the SDC-PHQ9 questionnaire"/>
       <exampleCanonical value="http://hl7.org/fhir/uv/sdc/StructureDefinition/sdc-questionnaireresponse"/>
     </resource>
     <resource>
@@ -579,6 +595,14 @@
       <name value="SDC-LOINC USSG Family History Response"/>
       <description value="Example response to the SDC-LOINC USSG Family History questionnaire"/>
       <exampleCanonical value="http://hl7.org/fhir/uv/sdc/StructureDefinition/sdc-questionnaireresponse"/>
+    </resource>
+    <resource>
+      <reference>
+        <reference value="CodeSystem/CSPHQ9"/>
+      </reference>
+      <name value="SDC-CodeSystem PHQ9"/>
+      <description value="Test"/>
+      <exampleCanonical value="http://hl7.org/fhir/uv/sdc/StructureDefinition/sdc-codesystem"/>
     </resource>
     <resource>
       <reference>
