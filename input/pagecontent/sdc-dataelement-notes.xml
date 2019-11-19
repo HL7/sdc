@@ -1,14 +1,14 @@
 <div xmlns="http://www.w3.org/1999/xhtml" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://hl7.org/fhir ../../src-generated/schemas/fhir-single.xsd">
-	<a name="language"> </a>
+	<a name="language"></a>
 	<h3>Language and translations</h3>
 	<p>
   In some environments, it may be necessary for a questionnaire to support multiple languages.  The rendering tool would select the appropriate
   language based on a configuration setting, or perhaps would display all available languages and the user would read the one they are familiar with.
-  Systems MAY choose to provide support for identifying language and translations.  If they do, they SHALL do so using the generic 
+  Systems MAY choose to provide support for identifying language and translations.  If they do, they SHALL do so using the generic
   translation extension FHIR defines: <a href="{{site.data.fhir.path}}extension-translation.html">http://hl7.org/fhir/StructureDefinition/translation</a>
 	</p>
 	<p>
-  These extensions can be used on absolutely any string element on <a href="{{site.data.fhir.path}}questionnaire.html">Questionnaire</a>, 
+  These extensions can be used on absolutely any string element on <a href="{{site.data.fhir.path}}questionnaire.html">Questionnaire</a>,
   <a href="{{site.data.fhir.path}}valueset.html">ValueSet</a> or any other resource.  The base string should be the primary language of the questionnaire.  It is what will be rendered by systems that do
   not support the translation extension or by systems whose language preference is other than one of the languages provided.
   </p>
