@@ -64,7 +64,7 @@
 				<td>Used to define data elements using FHIR logical models that can be referenced in questionnaires and can be used to auto-populate form data</td>
 			</tr>-->
 			<tr>
-				<td rowspan="7">
+				<td rowspan="8">
 					<a href="{{site.data.fhir.path}}questionnaire.html">Questionnaire</a>
 				</td>
 				<td>
@@ -74,15 +74,21 @@
 			</tr>
 			<tr>
 				<td>
+					<a href="sdc-questionnaire-search.html">Search Questionnaire Profile</a>
+				</td>
+				<td>Defines properties that must be supported for systems that support searching for and returning Questionnaires</td>
+			</tr>
+			<tr>
+				<td>
 					<a href="sdc-questionnaire-render.html">Advanced Rendering Questionnaire Profile</a>
 				</td>
-				<td>Defines additional capabilities for controlling the rendering of the questionnaire.</td>
+				<td>Defines additional capabilities for controlling the rendering of the questionnaire</td>
 			</tr>
 			<tr>
 				<td>
 					<a href="sdc-questionnaire-behave.html">Advanced Behavior Questionnaire Profile</a>
 				</td>
-				<td>Defines additional capabilities for controlling data entry and calculating values within the questionnaire.</td>
+				<td>Defines additional capabilities for controlling data entry and calculating values within the questionnaire</td>
 			</tr>
 			<tr>
 				<td>
@@ -106,7 +112,7 @@
 				<td>
 					<a href="sdc-questionnaire-adapt-srch.html">Adaptive Questionnaire - search Profile</a>
 				</td>
-				<td>Defines the metadata that should be present to support searching for adaptive questionnaires.</td>
+				<td>Defines the metadata that should be present to support searching for adaptive questionnaires</td>
 			</tr>
 			<tr>
 				<td rowspan="2">
@@ -121,7 +127,7 @@
 				<td>
 					<a href="sdc-questionnaireresponse-adapt.html">Adaptive Questionnaire Response Profile</a>
 				</td>
-				<td>Represents a response to a questionnaire that is dynamically built as each question is answered.</td>
+				<td>Represents a response to a questionnaire that is dynamically built as each question is answered</td>
 			</tr>
 			<tr>
 				<td>
@@ -140,6 +146,15 @@
 					<a href="sdc-codesystem.html">SDC Code System Profile</a>
 				</td>
 				<td>Used to define allowed values for data elements and for questions in questionnaires</td>
+			</tr>
+			<tr>
+				<td>
+					<a href="{{site.data.fhir.path}}metadatatypes.html#UsageContext">UsageContext</a>
+				</td>
+				<td>
+					<a href="sdc-usagecontext.html">SDC Usage Context Profile</a>
+				</td>
+				<td>Constraints on the codes and values of UsageContext to help ensure consistent usage in SDC Questionnaires</td>
 			</tr>
 		</tbody>
 	</table>
