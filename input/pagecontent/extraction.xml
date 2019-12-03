@@ -1,72 +1,72 @@
 <div xmlns="http://www.w3.org/1999/xhtml" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://hl7.org/fhir ../../src-generated/schemas/fhir-single.xsd">
   <p>
-    Questionnaires are excellent tools for data capture.  They allow tight control over what data is gathered and ensure information is gathered consistently 
-    across multiple users.  However, data gathered using different questionnaires - or even different versions of the same questionnaire - is often not 
-    comparable.  It is also not very searchable or easily integrated with discrete data sources.  Because of this, the general recommendation in FHIR is to 
+    Questionnaires are excellent tools for data capture.  They allow tight control over what data is gathered and ensure information is gathered consistently
+    across multiple users.  However, data gathered using different questionnaires - or even different versions of the same questionnaire - is often not
+    comparable.  It is also not very searchable or easily integrated with discrete data sources.  Because of this, the general recommendation in FHIR is to
     use questionnaires for raw data capture but then to convert the resulting QuestionnaireResponse instances into other FHIR resources - Observations, 
-    MedicationStatements, FamilyMemberHistories, etc.  This allows the data gathered to then be easily combined with other data into FHIR documents and 
+    MedicationStatements, FamilyMemberHistories, etc.  This allows the data gathered to then be easily combined with other data into FHIR documents and
     messages and exposed over FHIR REST interfaces.
   </p>
   <p>
-    Such conversion can be done with custom code written on a Questionnaire by Questionnaire basis.  However, it makes the process much easier if it's possible 
-    to write generic software that can convert any arbitrary QuestionnaireResponse into appropriate FHIR resources leveraging metadata embedded in the 
+    Such conversion can be done with custom code written on a Questionnaire by Questionnaire basis.  However, it makes the process much easier if it's possible
+    to write generic software that can convert any arbitrary QuestionnaireResponse into appropriate FHIR resources leveraging metadata embedded in the
     Questionnaire.  This portion of the SDC guide defines mechanisms for doing so.
   </p>
   <a name="caveats"> </a>
   <h3>Caveats and considerations with form population</h3>
   <ul>
     <li>
-      Extraction is a step that only makes sense to occur once a QuestionnaireResponse is completed.  Prior to that, the information to create valid resource 
+      Extraction is a step that only makes sense to occur once a QuestionnaireResponse is completed.  Prior to that, the information to create valid resource
       instances may not be available and conversion logic is likely to fail.  The types of data produced will vary by Questionnaire.</li>
     <li>
-      Some questionnaires might result in a single resource.  Others will produce a Bundle of resources.  In some cases, the result might be a transaction 
+      Some questionnaires might result in a single resource.  Others will produce a Bundle of resources.  In some cases, the result might be a transaction
       intended to create some resources and update others.</li>
     <li>
-      If the Questionnaire is being designed with conversion to a resource in mind, conversion will be a straight-forward process because the questions 
-      will align well with how FHIR stores data - and the questions can even be tuned to align with particular profiles around the use of terminology, which 
-      elements are mandatory, etc.  However, if converting data from questionnaires designed without FHIR in mind, mapping may be more challenging.  Required 
-      elements may need to be inferred, codes may need to be transformed and other transformations may be necessary to ensure that converted data meets 
+      If the Questionnaire is being designed with conversion to a resource in mind, conversion will be a straight-forward process because the questions
+      will align well with how FHIR stores data - and the questions can even be tuned to align with particular profiles around the use of terminology, which
+      elements are mandatory, etc.  However, if converting data from questionnaires designed without FHIR in mind, mapping may be more challenging.  Required
+      elements may need to be inferred, codes may need to be transformed and other transformations may be necessary to ensure that converted data meets
       expectations for use, such as aligning with country-specific implementation guides.  In some cases, alignment may not be possible.</li>
     <li>
-      Once a QuestionnaireResponse has been converted, it might not be necessary to retain the QuestionnaireResponse any longer, as all data access and 
-      subsequent maintenance will occur through the 'traditional' resources.  However, in many environments the QuestionnaireResponse will be retained anyhow 
+      Once a QuestionnaireResponse has been converted, it might not be necessary to retain the QuestionnaireResponse any longer, as all data access and
+      subsequent maintenance will occur through the 'traditional' resources.  However, in many environments the QuestionnaireResponse will be retained anyhow
       to keep a record of the original source-of-truth and for traceability reasons.</li>
     <li>
-      When resources have been generated from a QuestionnaireResponse, the <a href="{{site.data.fhir.path}}provenance.html">Provenance</a> instance associated 
-      with the creation of the resource instance(s) can and should include an <code>entity</code> reference of type 'source' that points back to the original 
-      QuestionnaireResponse.  If Observations are generated, they can also have an explicit <code>derivedFrom</code> link pointing back to the 
+      When resources have been generated from a QuestionnaireResponse, the <a href="{{site.data.fhir.path}}provenance.html">Provenance</a> instance associated
+      with the creation of the resource instance(s) can and SHOULD include an <code>entity</code> reference of type 'source' that points back to the original
+      QuestionnaireResponse.  If Observations are generated, they can also have an explicit <code>derivedFrom</code> link pointing back to the
       QuestionnaireResponse</li>
     <li>
-      In theory, it's possible to use Questionnaire as a user-facing interface to allow maintenance of one or more resources.  The source data can be used to 
-      <a href="populate.html">populate</a> the QuestionnaireResponse and once the response is 'submitted', the data can then be extracted and used to update 
-      the existing resources.  For this to work, the <code>id</code> of the resource must be retained through the round-trip process to allow for the update. 
-      This can be supported by storing the id as a <a href="{{site.data.fhir.path}}extension-questionnaire-hidden.html">hidden</a> question not shown to the 
+      In theory, it's possible to use Questionnaire as a user-facing interface to allow maintenance of one or more resources.  The source data can be used to
+      <a href="populate.html">populate</a> the QuestionnaireResponse and once the response is 'submitted', the data can then be extracted and used to update
+      the existing resources.  For this to work, the <code>id</code> of the resource must be retained through the round-trip process to allow for the update.
+      This can be supported by storing the id as a <a href="{{site.data.fhir.path}}extension-questionnaire-hidden.html">hidden</a> question not shown to the
       user.</li>
     <li>
-      Sometimes the author interested in making a Questionnaire "extractable" doesn't have authority to make changes to the "official" Questionnaire.  In other 
-      cases, there might be one official Questionnaire, but a need to create extracted resources that comply with different sets of profiles - and thus a need 
-      for different metadata in the Questionnaire to support the extraction process.  In this case, rather than basing the extraction on the original 
-      Questionnaire, it can be based on a derived Questionnaire - one that has a <code>Questionnaire.derivedFrom</code> relationship to the same canonical URL 
-      the QuestionnaireResponse refers to.  The derived Questionnaire would contain the same content as the base Questionnaire, but would have additional 
+      Sometimes the author interested in making a Questionnaire "extractable" doesn't have authority to make changes to the "official" Questionnaire.  In other
+      cases, there might be one official Questionnaire, but a need to create extracted resources that comply with different sets of profiles - and thus a need
+      for different metadata in the Questionnaire to support the extraction process.  In this case, rather than basing the extraction on the original
+      Questionnaire, it can be based on a derived Questionnaire - one that has a <code>Questionnaire.derivedFrom</code> relationship to the same canonical URL
+      the QuestionnaireResponse refers to.  The derived Questionnaire would contain the same content as the base Questionnaire, but would have additional
       extensions inserted to support data extraction.</li>
     <li>
       When capturing quantities, it's common for questionnaires to prompt for the numeric value and to note the 'fixed' unit as part of the question.  For
       example, "Please specify the patient's weight in kilograms".  When extracting the value for representation in a resource, a unit will be added.
-      The <a href="{{site.data.fhir.path}}extension-questionnaire-unit.html">questionnaire-unit</a> extension can be included on the question to support
+      The <a href="{{site.data.fhir.path}}extension-questionnaire-unit.html">questionnaire-unit</a> extension SHOULD be included on the question to support
       the extraction process.</li>
   </ul>
   <a name="service"> </a>
   <h3>Extraction service</h3>
   <p>
-    Like <a href="populate.html">Questionnaire population</a>, extracting data from a QuestionnaireResponse is a complex process involving querying existing 
-    FHIR data and using more advanced technologies such as FHIRPath and StructureMap.  It's therefore a function that systems may also wish to offload to a 
-    separate system.  The <a href="QuestionnaireResponse-extract.html">QuestionnaireResponse extract</a> has been created for this purpose.  It takes in a 
-    completed QuestionnaireResponse and returns either an individual FHIR resource or a Bundle of resources, depending on the type of Questionnaire.  The 
-    operation doesn't post the created resources to a server.  It's up to the client system to determine what action(s) to take with the created 
+    Like <a href="populate.html">Questionnaire population</a>, extracting data from a QuestionnaireResponse is a complex process involving querying existing
+    FHIR data and using more advanced technologies such as FHIRPath and StructureMap.  It's therefore a function that systems may also wish to offload to a
+    separate system.  The <a href="QuestionnaireResponse-extract.html">QuestionnaireResponse extract</a> has been created for this purpose.  It takes in a
+    completed QuestionnaireResponse and returns either an individual FHIR resource or a Bundle of resources, depending on the type of Questionnaire.  The
+    operation doesn't post the created resources to a server.  It's up to the client system to determine what action(s) to take with the created
     content.
   </p>
   <p>
-    NOTE: It's the responsibility of the client system to ensure that any generated resources are valid against necessary profiles, etc. before using content 
+    NOTE: It's the responsibility of the client system to ensure that any generated resources are valid against necessary profiles, etc. before using content
     produced by this operation.
   </p>
   <a name="design"> </a>
@@ -90,8 +90,8 @@
   </p>
   <p>
     The <a href="sdc-questionnaire-extract.html">sdc-questionnaire-extract</a> profile includes the data elements and extensions relevant for supporting all
-    these mechanisms.  None of the additional resource elements or extensions are marked as "mustSupport" because there is no expectation that systems will 
-    support all (or any of) the different extraction mechanisms.  Instead, each system should choose which approach(es) it wishes to use and support the 
+    these mechanisms.  None of the additional resource elements or extensions are marked as "mustSupport" because there is no expectation that systems will
+    support all (or any of) the different extraction mechanisms.  Instead, each system should choose which approach(es) it wishes to use and support the
     elements described in that section of the implementation guide.
   </p>
   <p>
@@ -102,100 +102,97 @@
   <h4>Observation-based extraction</h4>
   <p>
     This is the simplest of the extraction mechanisms.  It leverages the same data elements as are used for the <a href="populate.html#obs-pop">
-    Observation-based population</a> mechanism.  It takes advantage of the fact that most questions in the healthcare space typically 
-    correspond to the <code>value</code> element of an Observation.  It also takes advantage of the <code>Questionnaire.item.code</code> element that 
+    Observation-based population</a> mechanism.  It takes advantage of the fact that most questions in the healthcare space typically
+    correspond to the <code>value</code> element of an Observation.  It also takes advantage of the <code>Questionnaire.item.code</code> element that
     identifies what a concept each question or group corresponds to.
   </p>
   <p>
     To use this method:
   </p>
   <ol>
-    <li>Include the <code>item.code</code> element on each question to be extracted.  Typically, this will be a LOINC code, but in some 
+    <li>Include the <code>item.code</code> element on each question to be extracted.  Typically, this will be a LOINC code, but in some
       jurisdictions/environments, SNOMED CT or other codes may be relevant</li>
-    <li>Groups can also have an <code>item.code</code> present - this might represent the code of the a panel or the Observation.code of an Observation with no 
-      value but with multiple <code>Observation.component</code> elements.  Child question items can then assert the <code>item.code</code> of the "member-of" 
+    <li>Groups can also have an <code>item.code</code> present - this might represent the code of the a panel or the Observation.code of an Observation with no
+      value but with multiple <code>Observation.component</code> elements.  Child question items can then assert the <code>item.code</code> of the "member-of"
       Observations or the <code>Observation.component.code</code> values</li>
-    <li>To signal that the item.code is intended for use in extraction (as opposed to just providing metadata about the Questionnaire item, the 
-      <a href="extension-sdc-questionnaire-observationLinkPeriod.html">questionnaire-observationLinkPeriod</a> extension must also be included).  This extension 
+    <li>To signal that the item.code is intended for use in extraction (as opposed to just providing metadata about the Questionnaire item, the
+      <a href="extension-sdc-questionnaire-observationLinkPeriod.html">questionnaire-observationLinkPeriod</a> extension must also be included).  This extension
       indicates the period of time over which to search for matching observations.</li>
-    <li>Multiple <code>item.code</code> elements might be present.  If so, each are considered one of the Observation.code Codings in the resulting 
+    <li>Multiple <code>item.code</code> elements might be present.  If so, each are considered one of the Observation.code Codings in the resulting
       extracted Observation.</li>
   </ol>
   <p>
     For example:
   </p>
   <pre>
-    <code><![CDATA[<item>
-      <extension url="http://hl7.org/fhir/StructureDefinition/questionnaire-observationLinkPeriod">
-        <valueDuration>
-          <value value="3"/>
-          <system value="http://unitsofmeasure.org"/>
-          <code value="mo"/>
-        </valueDuration>
-      </extension>
-      <linkId value="code-pop-demo"/>
-      <code>
-        <system value="http://loinc.org"/>
-        <code value="29463-7"/>
-        <display value="Body weight"/>
-      </code>
-      <code>
-        <system value="http://loinc.org"/>
-        <code value="3141-9"/>
-        <display value="Body weight Measured"/>
-      </code>
-      <code>
-        <system value="http://loinc.org"/>
-        <code value="8341-0"/>
-        <display value="Dry body weight Measured"/>
-      </code>
-      <text value="What is your current weight?"/>
-      <type value="quantity"/>
-      <answerOption>
-        <valueCoding>
-          <system value="http://unitsofmeasure.org"/>
-          <code value="kg"/>
-        </valueCoding>
-      </answerOption>
-      <answerOption>
-        <valueCoding>
-          <system value="http://unitsofmeasure.org"/>
-          <code value="[lb_av]"/>
-        </valueCoding>
-      </answerOption>
-    </item>]]></code>
+    <code>
+	  &lt;item&gt;
+		&lt;extension url="http://hl7.org/fhir/StructureDefinition/questionnaire-observationLinkPeriod"&gt;
+		  &lt;valueDuration&gt;
+			&lt;value value="3"/&gt;
+			&lt;system value="http://unitsofmeasure.org"/&gt;
+			&lt;code value="mo"/&gt;
+		  &lt;/valueDuration&gt;
+		&lt;/extension&gt;
+		&lt;linkId value="code-pop-demo"/&gt;
+		&lt;code&gt;
+		  &lt;system value="http://loinc.org"/&gt;
+		  &lt;code value="29463-7"/&gt;
+		  &lt;display value="Body weight"/&gt;
+		&lt;/code&gt;
+		&lt;code&gt;
+		  &lt;system value="http://loinc.org"/&gt;
+		  &lt;code value="3141-9"/&gt;
+		  &lt;display value="Body weight Measured"/&gt;
+		&lt;/code&gt;
+		&lt;code&gt;
+		  &lt;system value="http://loinc.org"/&gt;
+		  &lt;code value="8341-0"/&gt;
+		  &lt;display value="Dry body weight Measured"/&gt;
+		&lt;/code&gt;
+		&lt;text value="What is your current weight?"/&gt;
+		&lt;type value="quantity"/&gt;
+		&lt;answerOption&gt;
+		  &lt;valueCoding&gt;
+			&lt;system value="http://unitsofmeasure.org"/&gt;
+			&lt;code value="kg"/&gt;
+		  &lt;/valueCoding&gt;
+		&lt;/answerOption&gt;
+		&lt;answerOption&gt;
+		  &lt;valueCoding&gt;
+			&lt;system value="http://unitsofmeasure.org"/&gt;
+			&lt;code value="[lb_av]"/&gt;
+		  &lt;/valueCoding&gt;
+		&lt;/answerOption&gt;
+	  &lt;/item&gt;
+	</code>
   </pre>
   <p>
-    When performing the extraction process, the system will create a batch that will contain creates or updates of Observation instances.  It will go through 
-    the QuestionnaireResponse and identify all answers for which the corresponding Questionnaire item has a 
-    <a href="extension-sdc-questionnaire-observationLinkPeriod.html">questionnaire-observationLinkPeriod</a> extension.  For each of those it will then 
+    When performing the extraction process, the system will create a batch that will contain creates or updates of Observation instances.  It will go through
+    the QuestionnaireResponse and identify all answers for which the corresponding Questionnaire item has a
+    <a href="extension-sdc-questionnaire-observationLinkPeriod.html">questionnaire-observationLinkPeriod</a> extension.  For each of those it will then
     determine whether to create a new observation, update an existing observation or do nothing.  Guidelines for making this decision are as follows:
   </p>
   <table class="grid">
     <tbody>
       <tr>
+		<th>Take no action if:</th>
+        <td>
+          <ul>
+            <li>the answer was populated from an existing Observation;</li>
+            <li>the system rendering the QuestionnaireResponse can retain context and knows the 'id' of Observation to update;</li>
+            <li>the author of the original Observation is the same as the current author of the QuestionnaireResponse;</li>
+            <li>the context of the questionnaire and the use of it is one where updates are appropriate - as opposed to asserting a new Observation with a new
+              performer and date; and</li>
+			<li>the answer has <b>not</b> changed from the populated value;</li>
+          </ul>
+        </td>
+	  </tr>
+      <tr>
         <th>Update if:</th>
         <td>
           <ul>
-            <li>the answer was populated from an existing Observation;</li>
-            <li>the system rendering the QuestionnaireResponse can retain context and knows the 'id' of Observation to update;</li>
-            <li>the author of the original Observation is the same as the current author of the QuestionnaireResponse</li>
-            <li>the answer has changed from the populated value; and</li>
-            <li>the context of the questionnaire and the use of it is one where updates are appropriate - as opposed to asserting a new Observation with a new 
-              performer and date</li>
-          </ul>
-        </td>
-      </tr>
-      <tr>
-        <th>Take no action if:</th>
-        <td>
-          <ul>
-            <li>the answer was populated from an existing Observation;</li>
-            <li>the system rendering the QuestionnaireResponse can retain context and knows the 'id' of Observation to update;</li>
-            <li>the author of the original Observation is the same as the current author of the QuestionnaireResponse</li>
-            <li>the answer has <b>not</b> changed from the populated value; and</li>
-            <li>the context of the questionnaire and the use of it is one where updates are appropriate - as opposed to asserting a new Observation with a new
-              performer and date</li>
+            <li>all of the conditions above apply with the exception that the value <b>has</b> changed.</li>
           </ul>
         </td>
       </tr>
@@ -206,8 +203,8 @@
     </tbody>
   </table>
   <p>
-    If updating, simply adjust the original Observation to have the new value and change the status to "amended", then PUT it to the source system.  If 
-    creating, data elements should be populated as follows:
+    If updating, simply adjust the original Observation to have the new value and change the status to "amended", then PUT it to the source system.  If
+    creating, data elements SHALL be populated as follows:
   </p>
   <ul>
     <li>
@@ -215,7 +212,7 @@
     <li>
       <code>Observation.status</code> - set to 'final'</li>
     <li>
-      <code>Observation.category</code> - if this can be inferred from any of the <code>Questionnaire.item.code</code> values or from known context of the 
+      <code>Observation.category</code> - if this can be inferred from any of the <code>Questionnaire.item.code</code> values or from known context of the
       Questionnaire itself, then fill it in, otherwise omit.</li>
     <li>
       <code>Observation.code</code> - add all the <code>Questionnaire.item.code</code> values as <code>Observation.code.coding</code> instances</li>
@@ -223,10 +220,10 @@
       <code>Observation.subject</code> - set to <code>QuestionnaireResponse.subject</code>
     </li>
     <li>
-      <code>Observation.encounter</code> - set to <code>QuestionnaireResponse.context</code> (if an Encounter)</li>
+      <code>Observation.encounter</code> - set to <code>QuestionnaireResponse.encounter</code> (if an Encounter)</li>
     <li>
       <code>Observation.effectiveDateTime</code> - set to <code>QuestionnaireResponse.authored</code>.<br/>
-      <br/>Note, this is an inference.  It is important that the question text implies that the value is 'current' not 'historical' for this to be safe - 
+      <br/>Note, this is an inference.  It is important that the question text implies that the value is 'current' not 'historical' for this to be safe -
       otherwise don't include the 'observationLinkPeriod' extension that marks the question as appropriate for population and extraction.</li>
     <li>
       <code>Observation.issued</code> - set to <code>QuestionnaireResponse.authored</code>
@@ -244,59 +241,59 @@
       QuestionnaireResponse.item.code</code> (and for interpretation the answer value too), they can be populated, otherwise omit</li>
   </ul>
   <p>
-    If the Questionnaire.item that is linked to an Observation contains child items that are also linked to Observations, then things get more complex as a 
-    determination will need to be made on whether to link the parent to child as <code>Observation.component</code> or as <code>Observation.hasMember</code>. 
-    In the ideal situation, the system will recognize the Observation.item.code and know which approach is correct for that type of Observation.  If not, then 
+    If the Questionnaire.item that is linked to an Observation contains child items that are also linked to Observations, then things get more complex as a
+    determination will need to be made on whether to link the parent to child as <code>Observation.component</code> or as <code>Observation.hasMember</code>.
+    In the ideal situation, the system will recognize the Observation.item.code and know which approach is correct for that type of Observation.  If not, then
     the system <i>could</i> query for other records of the child type and see if they appear as components anywhere.  If unsure, systems should use "hasMember".
   <!-- TODO: Should we have an extension that covers this? -->
   </p>
   <p>
-    Considerations when using this approach:
+    Considerations and rules when using this approach:
   </p>
   <ul>
     <li>
-      If a questionnaire item has the <a href="{{site.data.fhir.path}}extension-questionnaire-unit.html">questionnaire-unit</a> extension, the 
-      Observation.value should be a valueQuantity rather than integer or decimal and the units should be taken from the extension value.</li>
+      If a questionnaire item has the <a href="{{site.data.fhir.path}}extension-questionnaire-unit.html">questionnaire-unit</a> extension, the
+      Observation.value SHOULD be a valueQuantity rather than integer or decimal and the units should be taken from the extension value.</li>
     <li>
-      If a question is skipped (no answer) or cleared, no Observation should be created.  Existing Observations SHALL NOT be deleted</li>
+      If a question is skipped (no answer) or cleared, no Observation should be created.  Existing Observations SHALL NOT be deleted.</li>
     <li>
-      If a question has multiple answers, each answer will be a separate Observation instance</li>
+      If a question has multiple answers, each answer SHALL be a separate Observation instance.</li>
     <li>
-      There is no mechanism to support items that are mapped to Observation codes which then have nested items without codes - e.g. to capture the text 
-      description for an "other - please specify" code - one of the other extraction mechanisms will need to be used</li>
+      There is no mechanism to support items that are mapped to Observation codes which then have nested items without codes - e.g. to capture the text
+      description for an "other - please specify" code - one of the other extraction mechanisms will need to be used.</li>
     <li>
-      Implementers are free to try combining this mechanism with the <a href="#definition-extract">Definition-based</a> approach.  If they do, they should take 
+      Implementers are free to try combining this mechanism with the <a href="#definition-extract">Definition-based</a> approach.  If they do, they should take
       care that a given item (and its children) are only handled by one approach or the other - not both.</li>
     <li>
-      This approach does not allow for observations where <code>Observation.focus</code> is relevant or for capturing <code>Observation.dataAbsentReason</code>
+      This approach does not allow for observations where <code>Observation.focus</code> is relevant or for capturing <code>Observation.dataAbsentReason.</code>
     </li>
-    <li>Where an Observation is known to directly correlate to another resource element value (e.g. LOINC 21112-8 corresponds to 
-      <code>Patient.birthDate</code>), systems MAY take advantage of this knowledge to update the value of resources other than Observations, however such use 
+    <li>Where an Observation is known to directly correlate to another resource element value (e.g. LOINC 21112-8 corresponds to
+      <code>Patient.birthDate</code>), systems MAY take advantage of this knowledge to update the value of resources other than Observations, however such use
       is discouraged - using one of the other extraction techniques is likely better and safer.</li>
     <li>Obviously, this mechanism only works for questionnaire items that correspond to Observation values.</li>
   </ul>
   <a name="definition-extract"> </a>
   <h4>Definition-based extraction</h4>
   <p>
-    This approach to extraction is more generic.  It supports extracting data into any type of FHIR resource rather than being limited to only Observation.  
-    It also supports more Observation data elements than can be gathered using the Observation element - for example, explicit effective time ranges, 
+    This approach to extraction is more generic.  It supports extracting data into any type of FHIR resource rather than being limited to only Observation.
+    It also supports more Observation data elements than can be gathered using the Observation element - for example, explicit effective time ranges,
     interpretations, comments, etc.
   </p>
   <p>
     To use this method:
   </p>
   <ol>
-    <li>Include the <a href="extension-sdc-questionnaire-itemContext.html">questionnaire-itemContext</a> extension either on the Questionnaire root or on 
+    <li>Include the <a href="extension-sdc-questionnaire-itemContext.html">questionnaire-itemContext</a> extension either on the Questionnaire root or on
       'group' items within the Questionnaire to identify the resource that will serve as the context for any extraction.</li>
-    <li>On descendant items of that element, fill in the <code>Questionnaire.definition</code> to point to the resource or profile element that Questionnaire 
-      item corresponds to.  (Profiles may be relevant for data that is sliced or has fixed values for some properties.).  The definition SHALL have the full 
+    <li>On descendant items of that element, fill in the <code>Questionnaire.item.definition</code> to point to the resource or profile element that Questionnaire
+      item corresponds to.  (Profiles may be relevant for data that is sliced or has fixed values for some properties.).  The definition SHALL have the full
       canonical URL of the resource (or profile) followed by '#' followed by the snapshot.path of the element the Questionnaire item corresponds to.</li>
     <li>If necessary, define <a href="{{site.data.fhir.path}}extension-questionnaire-hidden.html">questionnaire-hidden</a> items that have <code>
-      Questionnaire.initialValue[x]</code> or that use the 
-      <a href="extension-sdc-questionnaire-initialExpression.html">questionnaire-initialExpression</a> extension to define their content to use to populate 
-      resource elements that the user will not be filling in.  (The initialExpressions might in turn depend on 
-      <a href="{{site.data.fhir.path}}extension-variable.html">variable</a> and 
-      <a href="extension-sdc-questionnaire-launchContext.html">questionnaire-launchContext</a> extensions, used as described in the 
+      Questionnaire.item.initialValue[x]</code> or that use the
+      <a href="extension-sdc-questionnaire-initialExpression.html">questionnaire-initialExpression</a> extension to define their content to use to populate
+      resource elements that the user will not be filling in.  (The initialExpressions might in turn depend on
+      <a href="{{site.data.fhir.path}}extension-variable.html">variable</a> and
+      <a href="extension-sdc-questionnaire-launchContext.html">questionnaire-launchContext</a> extensions, used as described in the
       <a href="populate.html#path-pop">Path-based population</a>
       section.</li>
   </ol>
@@ -304,15 +301,15 @@
     To perform the extraction process, first determine whether the context resource should be updated or created:
   </p>
   <ul>
-    <li>If the context resource existed and was used in the population of the resource and data has changed, the resource will typically be updated.  (Note 
+    <li>If the context resource existed and was used in the population of the resource and data has changed, the resource will typically be updated.  (Note
       that this means the system must capture the resource ids as hidden items in the Questionnaire so they're available for update.)</li>
     <li>In other cases, the record will be created</li>
   </ul>
   <p>
-    If updating, the answer values from the questionnaire (including hidden, calculated answers) will be propagated to the context resource.  If creating, then 
-    for each occurrence of each item asserting a questionnaire-itemContext, a resource of the context type will be defined.  It will be populated with answers 
-    to questions (hidden or not) that have a definition that matches the resource type of the context.  As well, if the definitions refer to a profile, any 
-    child elements of the profile that have fixed values or patterns declared will also be included in the instance with values matching the fixed or pattern 
+    If updating, the answer values from the questionnaire (including hidden, calculated answers) will be propagated to the context resource.  If creating, then
+    for each occurrence of each item asserting a questionnaire-itemContext, a resource of the context type will be defined.  It will be populated with answers
+    to questions (hidden or not) that have a definition that matches the resource type of the context.  As well, if the definitions refer to a profile, any
+    child elements of the profile that have fixed values or patterns declared will also be included in the instance with values matching the fixed or pattern
     values.
   </p>
   <!--  <p>
@@ -323,55 +320,55 @@
   </p>
   <ul>
     <li>
-      FHIR queries found in the questionnaire-expressionContext variables may contain embedded FHIRPath expressions (surrounded by double curly-braces).  
+      FHIR queries found in the <a href="extension-sdc-questionnaire-initialExpression.html">questionnaire-initialExpression</a>, <a href="extension-sdc-questionnaire-calculatedExpression.html">questionnaire-calculatedExpression</a> and variable extensions may contain embedded FHIRPath expressions (surrounded by double curly-braces).
       Systems SHALL evaluate and substitute the results of such queries before executing them</li>
     <li>
-      If the result of evaluating the FHIRPath expressions is an invalid query, that is an error.  Systems SHOULD log it and continue with extraction as if 
+      If the result of evaluating the FHIRPath expressions is an invalid query, that is an error.  Systems SHOULD log it and continue with extraction as if
       the query had returned no data.</li>
     <li>
-      When crafting queries, be sure to filter all relevant elements.  For example, ensuring status excludes entered-in-error elements, practitioners are 
+      When crafting queries, be sure to filter all relevant elements.  For example, ensuring status excludes entered-in-error elements, practitioners are
       active, etc.</li>
     <li>
-      In some cases, the context of an element will switch.  For example, an item might have a definition of 
+      In some cases, the context of an element will switch.  For example, an item might have a definition of
       "http://hl7.org/fhir/MedicationStatement#MedicationStatement.medicationReference" and
-      a questionnaire-itemContext extension that shifts the context to "Medication".  Subsequent children would then have definitions based on the 
+      a questionnaire-itemContext extension that shifts the context to "Medication".  Subsequent children would then have definitions based on the
       "http://hl7.org/fhir/Medication" resource.</li>
     <li>
       Note that only one context can be in play at the same time.  When a new context is declared, it takes the place of the old context.</li>
     <li>
-      The items in the Questionnaire might not have the same order as those in the resource.  When serializing into XML, the official order must still be 
+      The items in the Questionnaire might not have the same order as those in the resource.  When serializing into XML, the official order must still be
       respected.</li>
   </ul>
   <!-- Todo - can multiple profiles for the same resource be in play? -->
   <a name="map-extract"> </a>
   <h4>StructureMap-based extraction</h4>
   <p>
-    The <a href="{{site.data.fhir.path}}structuremap.html">StructureMap</a> approach is the most sophisticated approach of the three - and the most powerful. 
-    It allows significant transformation of data, including code translations when generating output resources.  It also allows the conversion process 
-    between data and Questionnaire to be maintained independently and to draw on shared sources across Questionnaires.  This can be an advantage in 
-    certain environments where the content of the questionnaire may need tight control, but the data environment can be more dynamic.  This comes at the cost 
+    The <a href="{{site.data.fhir.path}}structuremap.html">StructureMap</a> approach is the most sophisticated approach of the three - and the most powerful.
+    It allows significant transformation of data, including code translations when generating output resources.  It also allows the conversion process
+    between data and Questionnaire to be maintained independently and to draw on shared sources across Questionnaires.  This can be an advantage in
+    certain environments where the content of the questionnaire may need tight control, but the data environment can be more dynamic.  This comes at the cost
     of requiring expertise in the <a href="{{site.data.fhir.path}}mapping-language.html">FHIR mapping language</a>, which is not (yet?) a common skill.
   </p>
   <p>
     To use this method:
   </p>
   <ol>
-    <li>Include the <a href="extension-sdc-questionnaire-targetStructureMap.html">questionnaire-targetStructureMap</a> extension.  This SHALL define a 
-      transform between the QuestionnaireResponse and either a single resource or a transaction Bundle containing the set of resources extracted from the 
+    <li>Include the <a href="extension-sdc-questionnaire-targetStructureMap.html">questionnaire-targetStructureMap</a> extension.  This SHALL define a
+      transform between the QuestionnaireResponse and either a single resource or a transaction Bundle containing the set of resources extracted from the
       QuestionnaireResponse.</li>
   </ol>
   <p>
-    To extract data from the completed QuestionnaireResponse, simply invoke execute the StructureMap on it.  <!--A sample Questionnaire and associated StructureMap that shows this approach can be found <a href="todo">here</a>.-->
+    To extract data from the completed QuestionnaireResponse, simply invoke the StructureMap on it.  <!--A sample Questionnaire and associated StructureMap that shows this approach can be found <a href="todo">here</a>.-->
   </p>
   <p>
     Considerations when using this approach:
   </p>
   <ul>
-    <li>This mode has the drawback that if the StructureMap execution fails, there will generally not be any data extracted from the Questionnaire. With the 
-      other approaches, if one Observation or context fails, the others might still work.  As a result, the StructureMap must be designed to be very robust in 
+    <li>This mode has the drawback that if the StructureMap execution fails, there will generally not be any data extracted from the Questionnaire. With the
+      other approaches, if one Observation or context fails, the others might still work.  As a result, the StructureMap must be designed to be very robust in
       the face of missing or potentially 'bad' data.</li>
     <li>
-      The ability of StructureMaps to reference other StructureMaps allows for the possibility of re-use if certain sections of multiple questionnaires are 
-      consistent</li>
+      The ability of StructureMaps to reference other StructureMaps allows for the possibility of re-use if certain sections of multiple questionnaires are
+      consistent.</li>
   </ul>
 </div>
