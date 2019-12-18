@@ -253,7 +253,8 @@
     For example:
   </p>
   <pre>
-    <code><![CDATA[<item>
+    <textarea rows="40" cols="100" style="resize: none;background-color: rgba(0, 0, 0, 0); border-color: rgba(0, 0, 0, 0)">
+    <item>
       <extension url="http://hl7.org/fhir/StructureDefinition/questionnaire-observationLinkPeriod">
         <valueDuration>
           <value value="3"/>
@@ -291,7 +292,8 @@
           <code value="[lb_av]"/>
         </valueCoding>
       </answerOption>
-    </item>]]></code>
+    </item>
+    </textarea>
   </pre>
   <p>
     When performing the population operation, the system would look for questions that have the <code>questionnaire-observationLinkPeriod</code> extension
@@ -511,7 +513,8 @@
     For example:
   </p>
   <pre>
-    <code><![CDATA[<Questionnaire>
+    <textarea rows="38" cols="130" style="resize: none;background-color: rgba(0, 0, 0, 0); border-color: rgba(0, 0, 0, 0)">
+    <Questionnaire>
       ...
       <extension url="http://hl7.org/fhir/StructureDefinition/questionnaire-launchContext">
         <extension url="name">
@@ -546,7 +549,8 @@
         </valueReference>
       </extension>
       ...
-    </Questionnaire>]]></code>
+    </Questionnaire>
+    </textarea>
   </pre>
   <p>
     To populate the QuestionnaireResponse, evaluate the FHIRPaths in the sourceQueries batch, execute the sourceQueries batch and then execute the StructureMap
