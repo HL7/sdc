@@ -455,7 +455,7 @@
       needed.</li>
     <li>
       If an answer is dependent on other answers within the form, the calculation of the answer should be performed using a variable extension on the nearest
-      common ancestor in which all relevant questions or variables are descendants.  The question will then have an initialValue extension that references that
+      common ancestor in which all relevant questions or variables are descendants.  The question will then have an initialExpression extension that references that
       calculated value.  The reason for this is that FHIRPath only has access to the current context node and its descendants, not siblings or ancestors.</li>
     <li>
       It's possible that not all queries will resolve successfully - or that some context variables might not be populated.  In this situation, the system
