@@ -341,7 +341,7 @@
       The same data elements used to populate a QuestionnaireResponse from Observations can also be used to generate/update Observations from a completed
       Questionnaire.  See the <a href="extraction.html#obs-extract">Extraction</a> page of this implementation guide for more information.</li>
     <li>
-      This mechanism can be used in parallel with the <a href="#path-pop">FHIRPath</a> mechanism described below - i.e. some elements might be populated from
+      This Observation-based population mechanism can be used in parallel with the <a href="#path-pop">FHIRPath</a> mechanism described below - i.e. some elements might be populated from
       Observation.value elements based on the <code>item.code</code> while other questions in the same form might be populated based on queries and FHIRPaths
       specified in the form.</li>
     <li>
