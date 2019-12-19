@@ -171,7 +171,7 @@
     </li>
     <li>Support passing at least* the <a href="{{site.data.fhir.path}}patient.html">Patient</a> resource using the <code>content</code> parameter</li>
     <li>Populate the returned <a href="{{site.data.fhir.path}}questionnaireresponse.html">QuestionnaireResponse</a> instance or rendered form for all questions
-      that have SDC extensions defining population expectations if appropriate data exists in the underlying data repository and/or in the content passed into the populate operation</li>
+      that have SDC extensions defining population expectations if appropriate data exists in the underlying data repository and/or in the content passed into the populate operation.</li>
   </ul>
   <p>
     Similarly, client systems claiming to support the <code>populate</code>, <code>populatehtml</code> and/or <code>populatelink</code> operations
@@ -225,7 +225,7 @@
   <a name="obs-pop"> </a>
   <h4>Observation-based Population</h4>
   <p>
-    This is the simplest of the population mechanisms.  It takes advantage of the fact that most questions in the healthcare space typically correspond to the
+    This is the simplest of the population mechanisms.  It takes advantage of the fact that most question answers in the healthcare space typically correspond to the
     <code>value</code> element of an Observation.  It also takes advantage of the <code>Questionnaire.item.code</code> element that identifies what a concept
     each question or group corresponds to.
   </p>
