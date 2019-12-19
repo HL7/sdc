@@ -562,8 +562,8 @@
   </p>
   <ul>
     <li>
-      This approach will only work for pre-population using the <a href="#mode">Full Population</a> mode.  It cannot support continuous population or "Choice
-      Selection" or "Answer Context" modes.</li>
+      This approach will only work for pre-population using the <a href="#mode">Full Population</a> mode.  It cannot support continuous population using
+	  calculatedExpression nor "choice selection" and "answer context" using the candidateExpression and contextExpression extensions.</li>
     <li>
       This mode has the drawback that if the StructureMap execution fails, there will generally not be any QuestionnaireResponse as output.  As a result, the
       StructureMap must be designed to be very robust in the face of missing or potentially 'bad' data.</li>
