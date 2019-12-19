@@ -86,8 +86,9 @@
     <li>
       The 'enableWhen' elements in Questionnaire mean that some elements may not be relevant in all situations.  When pre-populating a questionnaire, it makes
       sense to "fill in" as much data as possible, even if it may not always be needed.  However, such data should not be shown to the user until the given
-      item is "enabled".  And once the questionnaire is completed, data for any non-enabled elements SHALL be removed. If an answer disables a portion of the
-      QuestionnaireResponse containing significant user-entered data, the entry system SHOULD warn users that that information will be removed on submission.
+      item is "enabled".  And once the questionnaire is completed, data for any non-enabled elements SHALL not be displayed to the user completing the form.
+      If an answer disables a portion of the QuestionnaireResponse containing significant user-entered data, the entry system SHOULD warn users that
+      that information will be removed on submission.
     </li>
     <li>
       Sometimes the author interested in making a Questionnaire "populatable" doesn't have authority to make changes to the "official" Questionnaire.  In other
