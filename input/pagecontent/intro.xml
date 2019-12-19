@@ -190,21 +190,22 @@
 	</ul>
 
 
-  <a name="fhirpath"> </a>
-	<h3>Understanding FHIRPath</h3>
+  <a name="expressions"> </a>
+	<h3>Understanding Expressions</h3>
   <p>
     In addition to the base FHIR specification, some of the more advanced capabilities defined in this implementation guide - specifically around
-    <a href="behavior.html">behavior</a>, <a href="populate.html">population</a> and <a href="extraction.html">extraction</a> rely on
-    the FHIRPath language.  This is a path expression language that is independent of syntax.  I.e. FHIRPaths written against a questionnaire will
-    work the same regardless of whether the instance is expressed in XML, JSON, Turtle or some other syntax.
+    <a href="behavior.html">behavior</a>, <a href="populate.html">population</a> and <a href="extraction.html">extraction</a> rely on the use of
+    expressions. SDC only uses three languages to support expressions: FHIR queries, FHIRPath, and Clinical Quality Language (CQL). Additional implementation
+    guidance on the use of expressions can be found on the <a href="expressions.html">Using Expressions </a> page.
   </p>
   <p>
-    Implementers using any of these advanced questionnaire capabilities will need to be familiar with the <a href="http://hl7.org/fhirpath">FHIRPath Specification</a>.
-  </p>
-
-  <a name="contexts"> </a>
-  <h4>Questionnaire context</h4>
-  <p>
+    Given the widespread implementation of FHIRPath, implementers using any of these advanced questionnaire capabilities will need to be familiar with the <a href="http://hl7.org/fhirpath">FHIRPath Specification</a>.
     To support using FHIRPath with questionnaires, this implementation guide defines a set of additional <a href="expressions.html#contexts">FHIRPath contexts</a>.
+  </p>
+  <p>
+    Implementers who require the additional capabilities of CQL (i.e. defining internal variables, iterating loops, etc.) should also familiarize themselves with the <a href="http://cql.hl7.org">CQL Specification</a>.
+  </p>
+  <p>
+  Implementors should note the guidance on FHIR query enhancements that can be found on the <a href="expressions.html#fhirquery">x-fhir-query-enhancements</a> section.
   </p>
 </div>
