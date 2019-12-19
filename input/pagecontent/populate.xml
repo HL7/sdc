@@ -390,7 +390,7 @@
       reference to the resource.  Note, this extension SHALL NOT appear on groups.</li>
     <li>
       For <a href="#mode">Choice Selection</a>, use the <a href="extension-sdc-questionnaire-candidateExpression.html">sdc-questionnaire-candidateExpression</a>
-      to make available a list of possible answers for the user to choose from.  As with initialExpression, this should always be a FHIRPath that resolves to
+      to make available a list of possible answers for the user to choose from.  As with initialExpression, this should always be a FHIRPath or CQL expression that resolves to
       an item of the appropriate type unless the element has a type of Reference, in which case the expression can be a FHIR query - and any selected item will
       be populated with a reference to that resource</li>
     <li>
