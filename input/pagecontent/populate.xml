@@ -171,8 +171,7 @@
     </li>
     <li>Support passing at least* the <a href="{{site.data.fhir.path}}patient.html">Patient</a> resource using the <code>content</code> parameter</li>
     <li>Populate the returned <a href="{{site.data.fhir.path}}questionnaireresponse.html">QuestionnaireResponse</a> instance or rendered form for all questions
-      referencing data element logical model <a href="{{site.data.fhir.path}}structuredefinition.html">StructureDefinition</a> that are mapped to C-CDA
-      content</li>
+      that have SDC extensions defining population expectations if appropriate data exists in the underlying data repository and/or in the content passed into the populate operation</li>
   </ul>
   <p>
     Similarly, client systems claiming to support the <code>populate</code>, <code>populatehtml</code> and/or <code>populatelink</code> operations
