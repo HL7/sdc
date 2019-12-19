@@ -203,7 +203,7 @@
       <a href="#obs-pop">Observation-based</a>
     </li>
     <li>
-      <a href="#path-pop">FHIRPath-based</a>
+      <a href="#exp-pop">Expression-based</a>
     </li>
     <li>
       <a href="#map-pop">StructureMap-based</a>
@@ -341,7 +341,7 @@
       The same data elements used to populate a QuestionnaireResponse from Observations can also be used to generate/update Observations from a completed
       Questionnaire.  See the <a href="extraction.html#obs-extract">Extraction</a> page of this implementation guide for more information.</li>
     <li>
-      This Observation-based population mechanism can be used in parallel with the <a href="#path-pop">FHIRPath</a> mechanism described below - i.e. some elements might be populated from
+      This Observation-based population mechanism can be used in parallel with the <a href="#exp-pop">FHIRPath</a> mechanism described below - i.e. some elements might be populated from
       Observation.value elements based on the <code>item.code</code> while other questions in the same form might be populated based on queries and FHIRPaths
       specified in the form.</li>
     <li>
@@ -354,14 +354,14 @@
     <li>
       Obviously, this mechanism only works for questionnaire items that correspond to Observation values.</li>
   </ul>
-  <a name="path-pop"> </a>
-  <h4>FHIRPath-based Population</h4>
+  <a name="exp-pop"> </a>
+  <h4>Expression-based Population</h4>
   <p>
     This approach to population is more generic.  It supports retrieving data from any queryable FHIR resources available on the source system.  Those queries
     can be based on the context in which the QuestionnaireResponse is being generated and/or on the results of other queries.  Furthermore, it permits
-    <a href="http://hl7.org/fhirpath">FHIRPath</a> operations to be done on the resulting data such as calculations, conditional determinations, etc.  As such,
-    it is significantly more powerful than the <a href="#obs-pop">Observation-based</a> method.  However, it also requires skill in using both FHIR queries and
-    FHIRPath, so it requires more technical expertise than the Observation-based approach.
+    <a href="http://hl7.org/fhirpath">FHIRPath</a> and <a href="http://cql.hl7.org">CQL</a> operations to be done on the resulting data such as calculations, conditional determinations, etc.
+    As such, it is significantly more powerful than the <a href="#obs-pop">Observation-based</a> method.  However, it also requires skill in using FHIR queries,
+    FHIRPath, and/or CQL so it requires more technical expertise than the Observation-based approach.
   </p>
   <p>
     To use this method:
