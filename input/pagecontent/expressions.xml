@@ -196,6 +196,8 @@
             instead presents potentially relevant information.  For example, a question might be "Has the patient been admitted for this or a related condition
             in the past year?".  To help guide the answers, the contextExpression could retrieve a list of admission reasons for that patient for encounters in
             the past year.  The user completing the questionnaire could then use that information to guide whether they choose to answer 'yes' or 'no.
+            contextExpression is not intended for read-only questions. The user must answer a question - but the user may want to look at context information
+            to help guide the answer.
           </p>
           <p>
             Also, like candidateExpressions, contextExpressions should rarely, if ever, declare a name element.
