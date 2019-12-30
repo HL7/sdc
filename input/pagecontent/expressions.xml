@@ -116,9 +116,10 @@
         <td colspan="5">
           <p>
             This expression serves the same purpose as the initial.value on Questionnaire.item, except that rather than specifying a fixed value, the value is
-            calculable.  The value is set on initial creation of the QuestionnaireResponse or upon the question first becoming enabled.  If
-            used for a readOnly and/or hidden element, the expression essentially calculates a 'fixed value' for the element.  If used for an editable element,
-            this extension sets the initial value for the element.  However, the value may subsequently be overridden by the user authoring the response.
+            calculable.  The calculated value does not necessarily override an initial value - and in fact would typically not be used with an initial value at all.
+            The value is set on initial creation of the QuestionnaireResponse or upon the question first becoming enabled.  If used for a readOnly and/or hidden element,
+            the expression essentially calculates a 'fixed value' for the element.  If used for an editable element, this extension sets the initial value for the element.
+            However, the value may subsequently be overridden by the user authoring the response.
           </p>
           <p>
             In theory, this expression can rely on the values of the answers to child questions or on <a href="#variable">variables</a> calculated from the
