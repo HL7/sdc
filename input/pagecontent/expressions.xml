@@ -27,11 +27,10 @@
     </li>
     <li>
       <code>reference</code> points to the expression if it's not inline.  For SDC purposes, reference must refer to content from a library imported
-      using the <a href="#cqf-library">cqf-library</a> extension.  For CQL, if the expression contains the name of the CQL content, the reference URL
-      can simply be the canonical URL of the library.  If the expression is blank for CQL or if conveying FHIRPath or a query, the specific reference URL
-      must look like this:<br/>
-      <code>[canonical URL of library]#[id element of the 'content' repetition whose Attachment.data holds the expression]</code>
-      E.g. <code>http://somewhere.org/fhir/Library/12345#a2</code>
+      using the <a href="#cqf-library">cqf-library</a> extension.  An expression can be referenced using the Library.name element as a qualifier.
+      The Library.name element does not have to be used as a qualifier if there is only one library specified AND if the reference is to something
+      defined in that library. This convention applies to CQL, FHIRPath and FHIR queries with the only difference being that CQL will use the CQL expression name
+      while FHIRPath and queries will use the id element on the Library.content element.
     </li>
   </ul>
   <a name="exp-extensions"> </a>
