@@ -30,7 +30,9 @@
       using the <a href="#cqf-library">cqf-library</a> extension.  An expression can be referenced using the Library.name element as a qualifier.
       The Library.name element does not have to be used as a qualifier if there is only one library specified AND if the reference is to something
       defined in that library. This convention applies to CQL, FHIRPath and FHIR queries with the only difference being that CQL will use the CQL expression name
-      while FHIRPath and queries will use the id element on the Library.content element.
+      while FHIRPath and queries will use the id element on the Library.content element. When referencing CQL, #[expression name] should be used
+      (rather than using #[id]) because there can only be one CQL 'content' repitition in the library but there is a need to differentiate between
+      the multiple expressions that could be defined within a single CQL library instance. The expression name needs to be appropriately escaped.
     </li>
   </ul>
   <a name="exp-extensions"> </a>
