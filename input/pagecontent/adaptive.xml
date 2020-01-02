@@ -54,81 +54,88 @@
       <br/>
       <b>Request Body</b>
       <br/>
-      <pre><code>{ // start body
+      <pre>
+      <code>{ <i>// start body</i>
         "resourceType": "QuestionnaireResponse",
         "meta": {
           "profile": [
             "http://hl7.org/fhir/uv/sdc/StructureDefinition/sdc-questionnaireresponse-adapt"
           ]
-         },// meta
+        },<i>// end of meta</i>
 
-        // contained Questionnaire
-        "contained": [{
-          "resourceType": "Questionnaire",
-          "id": "q",
-          "meta": {
-            "profile": [
-              "http://hl7.org/fhir/uv/sdc/StructureDefinition/sdc-questionnaire-adapt"
-            ]
-          },
-	        "identifier": {
-	          // identifier system and value for "Physical Function 2.0" questionnaire
-	        }
+        <i>// contained Questionnaire</i>
+        "contained": [
+          {
+            "resourceType": "Questionnaire",
+            "id": "q",
+            "meta": {
+              "profile": [
+                "http://hl7.org/fhir/uv/sdc/StructureDefinition/sdc-questionnaire-adapt"
+              ]
+            },
+            "identifier": {
+             <i>// identifier system and value for "Physical Function 2.0" questionnaire</i>
+            },
 
-          <b>//no items since initiating the adaptive questionnaire</b>
-          ...
-        }], // Contained Questionnaire
+            <b>//no items since initiating the adaptive questionnaire</b>
+            ...
+          }
+        ], <i>// end of contained Questionnaire</i>
 
-        //reference to contained questionnaire
+        <i>// reference to contained Questionnaire</i>
         "questionnaire": "#q",
         "status": "in-progress",
         ...
-        <b>//no items since is just getting started</b>
-      }// end body</code>
-      </pre>
+        <b>//no items since it is just getting started</b>
+      } <i>// end body</i></code></pre>
       <br/>
     </li>
     <li>
       <b>Step 3:</b>The Assessment Center responds to the start request with a Questionnaire and the first item for administration.<br/>
       <b>Response Body</b>
       <br/>
-      <pre><code>{ // start response body
+      <pre>
+      <code>{ <i>// start response body</i>
         "resourceType": "QuestionnaireResponse",
         "meta": {
           "profile": [
             "http://hl7.org/fhir/uv/sdc/StructureDefinition/sdc-questionnaireresponse-adapt"
           ]
-        },// meta
+        }, <i>// end of meta</i>
 
-        // contained Questionnaire
-        "contained": [{
-          "resourceType": "Questionnaire",
-          "id": "q",
-          "meta": {
-            "profile": [
-              "http://hl7.org/fhir/uv/sdc/StructureDefinition/sdc-questionnaire-adapt"
+        <i>// contained Questionnaire</i>
+        "contained": [
+          {
+            "resourceType": "Questionnaire",
+            "id": "q",
+            "meta": {
+              "profile": [
+                "http://hl7.org/fhir/uv/sdc/StructureDefinition/sdc-questionnaire-adapt"
+              ]
+            },
+            "identifier": {
+             <i>// identifier system and value for "Physical Function 2.0" questionnaire</i>
+            },
+
+            <b>// First Item being sent back</b>
+            "item": [
+              {
+                "linkId": "1.1", <i>// unique id of the question within the questionnaire</i>
+                "code" : [
+                  {
+                    "system": "http://loinc.org",
+                    "code": "12345-6"
+                  }
+                ],
+                "text": "Are you able to walk for 30 minutes ?",
+                "type": "choice",
+                "required": true,
+                "answerValueSet": "http://loinc.org/LA1234"
+              } <i>// end of item</i>
             ]
-          },
-	        "identifier": {
-	          // identifier system and value for "Physical Function 2.0" questionnaire
-	        }
-
-          <b>//First Item being sent back</b>
-          "item": [
-            {
-              "linkId": "1.1", // unique id of the question within the questionnaire
-              "code" : {
-                "system": "http://loinc.org",
-                "code": "12345-6"
-              },
-              "text": "Are you able to walk for 30 minutes ?",
-              "type": "choice",
-              "required": true,
-              "answerValueSet": "http://loinc.org/LA1234"
-            } // item
-          ]
-        }] // Contained Questionnaire
-      } // end response body</code></pre>
+          }
+        ] <i>// end of contained Questionnaire</i>
+      } <i>// end response body</i></code></pre>
       <br/>
     </li>
     <li>
@@ -145,134 +152,151 @@
       <br/>
       <b>Request Body</b>
       <br/>
-      <pre><code>{ // start body
+      <pre>
+      <code>{ <i>// start body</i>
         "resourceType": "QuestionnaireResponse",
         "meta": {
-			    "profile": [
-			      "http://hl7.org/fhir/uv/sdc/StructureDefinition/sdc-questionnaireresponse-adapt"
-			    ]
-        },// meta
-
-        // contained Questionnaire
-        "contained": [{
-          "resourceType": "Questionnaire",
-          "id": "q",
-          "meta": {
             "profile": [
-              "http://hl7.org/fhir/uv/sdc/StructureDefinition/sdc-questionnaire-adapt"
+              "http://hl7.org/fhir/uv/sdc/StructureDefinition/sdc-questionnaireresponse-adapt"
             ]
-          },
-	        "identifier": {
-	          // identifier system and value for "Physical Function 2.0" questionnaire
-	        },
+        }, <i>// end of meta</i>
 
-          <b>// List items here that have been already administered.</b>
-          "item": [
-            {
-              "linkId": "1.1", // unique id of the question within the questionnaire
-              "code" : {
-                "system": "http://loinc.org",
-                "code": "12345-6",
-                }
+        <i>// contained Questionnaire</i>
+        "contained": [
+          {
+            "resourceType": "Questionnaire",
+            "id": "q",
+            "meta": {
+              "profile": [
+                "http://hl7.org/fhir/uv/sdc/StructureDefinition/sdc-questionnaire-adapt"
+              ]
+            },
+            "identifier": {
+             <i>// identifier system and value for "Physical Function 2.0" questionnaire</i>
+            },
+
+            <b>// List items here that have been already administered.</b>
+            "item": [
+              {
+                "linkId": "1.1", <i>// unique id of the question within the questionnaire</i>
+                "code" : [
+                  {
+                    "system": "http://loinc.org",
+                    "code": "12345-6",
+                  }
+                ],
                 "text": "Are you able to walk for 30 minutes ?",
                 "type": "choice",
                 "required": true,
                 "answerValueSet": "http://loinc.org/LA1234"
-           } // item
-        }], // Contained Questionnaire
+              } <i>// end of item</i>
+            ]
+          }
+        ], <i>// end of Contained Questionnaire</i>
 
-        //references the contained Questionnaire
-        "questionnaire": "#q"
+        <i>// references the contained Questionnaire</i>
+        "questionnaire": "#q",
 
         "status": "in-progress",
         ...
         "item": [
-          <b>//First Item being sent back with answer to be used to determine completeness or next question.</b>
+          <b>// First Item being sent back with answer to be used to determine completeness or next question.</b>
           {
-            "linkId": "1.1", // unique id of the question within the questionnaire
+            "linkId": "1.1", <i>// unique id of the question within the questionnaire</i>
             "text": "Are you able to walk for 30 minutes ?",
-            "answer": [{
-              "valueCoding": {
-                "system": "http://loinc.org",
-                "code": "LA1234"
+            "answer": [
+              {
+                "valueCoding": {
+                  "system": "http://loinc.org",
+                  "code": "LA1234"
+                }
               }
-            }]
-          } // item
+            ]
+          } <i>// end of item</i>
         ]
-      }// end body</code></pre>
+      } <i>// end body</i></code></pre>
       <br/>
       <b>Response Body</b>
       <br/>
-      <pre><code>{ // start body
+      <pre>
+      <code>{ <i>// start body</i>
         "resourceType": "QuestionnaireResponse",
         "meta": {
           "profile": [
             "http://hl7.org/fhir/uv/sdc/StructureDefinition/sdc-questionnaireresponse-adapt"
           ],
-         },// meta
+        },<i>// end of meta</i>
 
-        // contained Questionnaire
-        "contained": [{
-          "resourceType": "Questionnaire",
-          "id": "Id of the Questionnaire Instance on which operation is being invoked",
-          "meta": {
-            "profile": [
-              "http://hl7.org/fhir/uv/sdc/StructureDefinition/sdc-questionnaire-adapt"
-            ]
-          },
-          "identifier": {
-            // identifier system and value for "Physical Function 2.0" questionnaire
-          },
+        <i>// contained Questionnaire</i>
+        "contained": [
+          {
+            "resourceType": "Questionnaire",
+            "id": "Id of the Questionnaire Instance on which operation is being invoked",
+            "meta": {
+              "profile": [
+                "http://hl7.org/fhir/uv/sdc/StructureDefinition/sdc-questionnaire-adapt"
+              ]
+            },
+            "identifier": {
+              <i>// identifier system and value for "Physical Function 2.0" questionnaire</i>
+            },
 
-          "item": [
-            // Item already administered.
-            {
-              "linkId": "1.1", // unique id of the question within the questionnaire
-              "code" : {
-                "system": "http://loinc.org",
-                "code": "12345-6",
-              }
-              "text": "Are you able to walk for 30 minutes ?",
-              "type": "choice",
-              "required": true,
-              "answerValueSet": "http://loinc.org/LA1234"
-            }, // item
+            "item": [
+            <b>// Item already administered</b>
+              {
+                "linkId": "1.1", <i>// unique id of the question within the questionnaire</i>
+                "code" : [
+                  {
+                    "system": "http://loinc.org",
+                    "code": "12345-6",
+                  }
+                ],
+                "text": "Are you able to walk for 30 minutes ?",
+                "type": "choice",
+                "required": true,
+                "answerValueSet": "http://loinc.org/LA1234"
+              }, <i>// end of Item already administered</i>
 
-            <b>// New Item</b>
-            {
-              "linkId": "1.2", // unique id of the question within the questionnaire
-              "code" : {
-                "system": "http://loinc.org",
-                "code": "23456-7",
-              },
-              "text": "Are you able to lift a chair to move it from one room to another ?",
-              "type": "choice",
-              "required": true,
-              "answerValueSet": "http://loinc.org/LA1234"
-            } // item
-          ]
-        }], // Contained Questionnaire
+              <b>// New Item</b>
+              {
+                "linkId": "1.2", <i>// unique id of the question within the questionnaire</i>
+                "code" : [
+                  {
+                    "system": "http://loinc.org",
+                    "code": "23456-7",
+                  }
+                ],
+                "text": "Are you able to lift a chair to move it from one room to another ?",
+                "type": "choice",
+                "required": true,
+                "answerValueSet": "http://loinc.org/LA1234"
+              } <i>// end of New Item</i>
+            ] <i>// end of items</i>
+          }
+        ], <i>// end of contained Questionnaire</i>
 
-        //references the contained Questionnaire
-        "questionnaire": "#q"
+        <i>// References the contained Questionnaire</i>
+        "questionnaire": "#q",
 
         "status": "in-progress",
         ...
 
         "item": [
-          <b>//First Item that was sent back with answer when requesting next question.</b>
+          <b>// First Item that was sent back with answer when requesting next question.</b>
           {
-            "linkId": "1.1", // unique id of the question within the questionnaire
+            "linkId": "1.1", <i>// unique id of the question within the questionnaire</i>
             "text": "Are you able to walk for 30 minutes ?",
-            "answer": [{
-              "valueCoding": {
-                "system": "http://loinc.org",
-                "code": "LA1234"
+            "answer": [
+              {
+                "valueCoding": {
+                  "system": "http://loinc.org",
+                  "code": "LA1234"
+                }
               }
-            }]
-          } // item
-        ]
-      }// end body</code></pre>
+            ]
+          }
+        ] <i>// end of item</i>
+      } // end body</code></pre>
       <br/>
     </li>
     <li>
@@ -289,136 +313,151 @@
       <br/>
       <b>Response Body with Completed Status indicating completion of Administration</b>
       <br/>
-      <pre><code>{ // start body
+      <pre>
+      <code>{ <i>// start body</i>
         "resourceType": "QuestionnaireResponse",
         "meta": {
           "profile": [
             "http://hl7.org/fhir/uv/sdc/StructureDefinition/sdc-questionnaireresponse-adapt"
           ],
-        },// meta
+        },<i>// end of meta,</i>
 
-		    // contained Questionnaire
-        "contained": [{
-          "resourceType": "Questionnaire",
-          "id": "Id of the Questionnaire Instance on which operation is being invoked",
-          "meta": {
-            "profile": [
-              "http://hl7.org/fhir/uv/sdc/StructureDefinition/sdc-questionnaire-adapt"
+        <i>// contained Questionnaire</i>
+        "contained": [
+          {
+            "resourceType": "Questionnaire",
+            "id": "Id of the Questionnaire Instance on which operation is being invoked",
+            "meta": {
+              "profile": [
+                "http://hl7.org/fhir/uv/sdc/StructureDefinition/sdc-questionnaire-adapt"
+              ]
+            },
+            "identifier": {
+              <i>// identifier system and value for "Physical Function 2.0" questionnaire</i>
+            },
+
+            "item": [
+            <b>// Items already administered</b>
+              {
+                "linkId": "1.1", <i>// unique id of the question within the questionnaire</i>
+                "code" : [
+                  {
+                    "system": "http://loinc.org",
+                    "code": "12345-6",
+                  }
+                ],
+                "text": "Are you able to walk for 30 minutes ?",
+                "type": "choice",
+                "required": true,
+                "answerValueSet": "http://loinc.org/LA1234"
+              }, <i>// end of item</i>
+              {
+                "linkId": "1.2", <i>// unique id of the question within the questionnaire</i>
+                "code" : [
+                  {
+                    "system": "http://loinc.org",
+                    "code": "23456-7",
+                  },
+                ],
+                "text": "Are you able to lift a chair to move it from one room to another ?",
+                "type": "choice",
+                "required": true,
+                "answerValueSet": "http://loinc.org/LA1234"
+              }, <i>// end of item</i>
+
+              ...
+
+              <b>// Since the questionnaire is completed, there will be 2 new items with the overall score and confidence.</b>
+              {
+              <b>// Mark the item as hidden (if the score should be hidden from the user)</b>
+                "extension": [
+                  {
+                    "url": "http://hl7.org/fhir/StructureDefinition/questionnaire-hidden",
+                    "valueBoolean": true
+                  }
+                ],
+                "linkId": "1.9", // unique id of the question within the questionnaire
+                "text": "Overall Score",
+                "type": "decimal",
+                "required": true,
+                "readOnly": true
+              }, <i>// end of item</i>
+              {
+              <b>// Mark the item as hidden (if the confidence should be hidden from the user)</b>
+                "extension": [
+                  {
+                    "url": "http://hl7.org/fhir/StructureDefinition/questionnaire-hidden",
+                    "valueBoolean": true
+                  }
+                ],
+                "linkId": "1.10", <i>// unique id of the question within the questionnaire</i>
+                "text": "Score Confidence",
+                "type": "decimal",
+                "required": true,
+                "readOnly": true
+              } <i>// end of item</i>
             ]
-          },
-          "identifier": {
-            // identifier system and value for "Physical Function 2.0" questionnaire
-          },
+          }
+        ], <i>// end of contained Questionnaire</i>
 
-          "item": [
-            // Items already administered.
-            {
-              "linkId": "1.1", // unique id of the question within the questionnaire
-              "code" : {
-                "system": "http://loinc.org",
-                "code": "12345-6",
-              }
-              "text": "Are you able to walk for 30 minutes ?",
-              "type": "choice",
-              "required": true,
-              "answerValueSet": "http://loinc.org/LA1234"
-            }, // item
-            {
-              "linkId": "1.2", // unique id of the question within the questionnaire
-              "code" : {
-                "system": "http://loinc.org",
-                "code": "23456-7",
-              },
-              "text": "Are you able to lift a chair to move it from one room to another ?",
-              "type": "choice",
-              "required": true,
-              "answerValueSet": "http://loinc.org/LA1234"
-            }, // item
+        <i>// references the contained Questionnaire</i>
+        "questionnaire": "#q",
 
-            ...
-
-            <b>// Since the questionnaire is completed, there will be 2 new items with the overall score and confidence.</b>
-            {
-              // Mark the item as hidden (if the score should be hidden from the user)
-              "extension": [
-                {
-                  "url": "http://hl7.org/fhir/StructureDefinition/questionnaire-hidden",
-                  "valueBoolean": true
-                }
-              ],
-              "linkId": "1.9", // unique id of the question within the questionnaire
-              "text": "Overall Score",
-              "type": "decimal",
-              "required": true,
-              "readOnly": true
-            }, // item
-            {
-              // Mark the item as hidden (if the confidence should be hidden from the user)
-              "extension": [
-                {
-                  "url": "http://hl7.org/fhir/StructureDefinition/questionnaire-hidden",
-                  "valueBoolean": true
-                }
-              ],
-              "linkId": "1.10", // unique id of the question within the questionnaire
-              "text": "Score Confidence",
-              "type": "decimal",
-              "required": true,
-              "readOnly": true
-            } // item
-          ]
-        }], // Contained Questionnaire
-
-        //references the contained Questionnaire
-        "questionnaire": "#q"
-
-        <b>//Completed Status</b>
+        <b>// completed Status</b>
         "status": "completed",
         ...
 
         "item": [
-          <b>//First Item that was previously sent back</b>
+          <b>// First Item that was previously sent back</b>
           {
-            "linkId": "1.1", // unique id of the question within the questionnaire
+            "linkId": "1.1", <i>// unique id of the question within the questionnaire</i>
             "text": "Are you able to walk for 30 minutes ?",
-            "answer": [{
-              "valueCoding": {
-                "system": "http://loinc.org",
-                "code": "LA1234"
+            "answer": [
+              {
+                "valueCoding": {
+                  "system": "http://loinc.org",
+                  "code": "LA1234"
+                }
               }
-            }]
-          }, // item
+            ]
+          }, <i>// end of item</i>
           {
-            "linkId": "1.2", // unique id of the question within the questionnaire
+            "linkId": "1.2", <i>// unique id of the question within the questionnaire</i>
             "text": "Are you able to lift a chair to move it from one room to another ?",
             "type": "choice",
-            "answer": [{
-              "valueCoding": {
-                "system": "http://loinc.org",
-                "code": "LA3534"
+            "answer": [
+              {
+                "valueCoding": {
+                  "system": "http://loinc.org",
+                  "code": "LA3534"
+                }
               }
-            }]
-          }, // item
+            ]
+          }, <i>// end of item</i>
 
           ...
 
           <b>// Since the questionnaire is completed, there will be 2 new items with the overall score and confidence.</b>
           {
-            "linkId": "1.9", // unique id of the question within the questionnaire
+            "linkId": "1.9", <i>// unique id of the question within the questionnaire</i>
             "text": "Overall Score",
-            "answer": [{
-               "valueDecimal": "123.45"
-            }]
+            "answer": [
+              {
+                "valueDecimal": "123.45"
+              }
+            ]
           },
           {
-            "linkId": "1.10", // unique id of the question within the questionnaire
+            "linkId": "1.10", <i>// unique id of the question within the questionnaire</i>
             "text": "Score Confidence",
-            "answer": [{
-               "valueDecimal": "0.95"
-            }]
+            "answer": [
+              {
+                "valueDecimal": "0.95"
+              }
+            ]
           }
-        ]
-      }// end body</code></pre>
+        ] <i>// end of items</i>
+      } <i>// end body</i></code></pre>
       <br/>
     </li>
   </ul>
