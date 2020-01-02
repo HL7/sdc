@@ -3,7 +3,7 @@
     Questionnaires are excellent tools for data capture.  They allow tight control over what data is gathered and ensure information is gathered consistently
     across multiple users.  However, data gathered using different questionnaires - or even different versions of the same questionnaire - is often not
     comparable.  It is also not very searchable or easily integrated with discrete data sources.  Because of this, the general recommendation in FHIR is to
-    use questionnaires for raw data capture but then to convert the resulting QuestionnaireResponse instances into other FHIR resources - Observations, 
+    use questionnaires for raw data capture but then to convert the resulting QuestionnaireResponse instances into other FHIR resources - Observations,
     MedicationStatements, FamilyMemberHistories, etc.  This allows the data gathered to then be easily combined with other data into FHIR documents and
     messages and exposed over FHIR REST interfaces.
   </p>
@@ -116,7 +116,7 @@
       value but with multiple <code>Observation.component</code> elements.  Child question items can then assert the <code>item.code</code> of the "member-of"
       Observations or the <code>Observation.component.code</code> values</li>
     <li>To signal that the item.code is intended for use in extraction (as opposed to just providing metadata about the Questionnaire item, the
-      <a href="extension-sdc-questionnaire-observationLinkPeriod.html">questionnaire-observationLinkPeriod</a> extension must also be included).  This extension
+      <a href="StructureDefinition-sdc-questionnaire-observationLinkPeriod.html">questionnaire-observationLinkPeriod</a> extension must also be included).  This extension
       indicates the period of time over which to search for matching observations.</li>
     <li>Multiple <code>item.code</code> elements might be present.  If so, each are considered one of the Observation.code Codings in the resulting
       extracted Observation.</li>
@@ -170,7 +170,7 @@
   <p>
     When performing the extraction process, the system will create a batch that will contain creates or updates of Observation instances.  It will go through
     the QuestionnaireResponse and identify all answers for which the corresponding Questionnaire item has a
-    <a href="extension-sdc-questionnaire-observationLinkPeriod.html">questionnaire-observationLinkPeriod</a> extension.  For each of those it will then
+    <a href="StructureDefinition-sdc-questionnaire-observationLinkPeriod.html">questionnaire-observationLinkPeriod</a> extension.  For each of those it will then
     determine whether to create a new observation, update an existing observation or do nothing.  Guidelines for making this decision are as follows:
   </p>
   <table class="grid">
@@ -283,17 +283,17 @@
     To use this method:
   </p>
   <ol>
-    <li>Include the <a href="extension-sdc-questionnaire-itemContext.html">questionnaire-itemContext</a> extension either on the Questionnaire root or on
+    <li>Include the <a href="StructureDefinition-sdc-questionnaire-itemContext.html">questionnaire-itemContext</a> extension either on the Questionnaire root or on
       'group' items within the Questionnaire to identify the resource that will serve as the context for any extraction.</li>
     <li>On descendant items of that element, fill in the <code>Questionnaire.item.definition</code> to point to the resource or profile element that Questionnaire
       item corresponds to.  (Profiles may be relevant for data that is sliced or has fixed values for some properties.).  The definition SHALL have the full
       canonical URL of the resource (or profile) followed by '#' followed by the snapshot.path of the element the Questionnaire item corresponds to.</li>
     <li>If necessary, define <a href="{{site.data.fhir.path}}extension-questionnaire-hidden.html">questionnaire-hidden</a> items that have <code>
       Questionnaire.item.initialValue[x]</code> or that use the
-      <a href="extension-sdc-questionnaire-initialExpression.html">questionnaire-initialExpression</a> extension to define their content to use to populate
+      <a href="StructureDefinition-sdc-questionnaire-initialExpression.html">questionnaire-initialExpression</a> extension to define their content to use to populate
       resource elements that the user will not be filling in.  (The initialExpressions might in turn depend on
       <a href="{{site.data.fhir.path}}extension-variable.html">variable</a> and
-      <a href="extension-sdc-questionnaire-launchContext.html">questionnaire-launchContext</a> extensions, used as described in the
+      <a href="StructureDefinition-sdc-questionnaire-launchContext.html">questionnaire-launchContext</a> extensions, used as described in the
       <a href="populate.html#path-pop">Path-based population</a>
       section.</li>
   </ol>
@@ -320,7 +320,7 @@
   </p>
   <ul>
     <li>
-      FHIR queries found in the <a href="extension-sdc-questionnaire-initialExpression.html">questionnaire-initialExpression</a>, <a href="extension-sdc-questionnaire-calculatedExpression.html">questionnaire-calculatedExpression</a> and variable extensions may contain embedded FHIRPath expressions (surrounded by double curly-braces).
+      FHIR queries found in the <a href="StructureDefinition-sdc-questionnaire-initialExpression.html">questionnaire-initialExpression</a>, <a href="StructureDefinition-sdc-questionnaire-calculatedExpression.html">questionnaire-calculatedExpression</a> and variable extensions may contain embedded FHIRPath expressions (surrounded by double curly-braces).
       Systems SHALL evaluate and substitute the results of such queries before executing them</li>
     <li>
       If the result of evaluating the FHIRPath expressions is an invalid query, that is an error.  Systems SHOULD log it and continue with extraction as if
@@ -353,7 +353,7 @@
     To use this method:
   </p>
   <ol>
-    <li>Include the <a href="extension-sdc-questionnaire-targetStructureMap.html">questionnaire-targetStructureMap</a> extension.  This SHALL define a
+    <li>Include the <a href="StructureDefinition-sdc-questionnaire-targetStructureMap.html">questionnaire-targetStructureMap</a> extension.  This SHALL define a
       transform between the QuestionnaireResponse and either a single resource or a transaction Bundle containing the set of resources extracted from the
       QuestionnaireResponse.</li>
   </ol>
