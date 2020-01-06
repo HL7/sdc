@@ -109,7 +109,9 @@
               <td>
                 <a title="Allows a user to search for existing completed or partially-completed forms.  Generally used to find partially-completed forms for update." href="#QuestionnaireResponse-search-type">Yes</a>
               </td>
-              <td/>
+              <td>
+                <a title="Allows retrieval of a specific QuestionnaireResponse by id." href="#QuestionnaireResponse-read">Yes</a>
+              </td>
               <td/>
               <td>
                 <a title="Allows review of prior versions of an answer set - allows reversion to previously recorded versions" href="#QuestionnaireResponse-history-instance">Yes</a>
@@ -354,6 +356,15 @@
             </tr>
             <tr>
               <th>
+                <a name="QuestionnaireResponse-read"> </a>
+                <span>read</span>
+              </th>
+              <td>
+                <p>Allows retrieval of a specific QuestionnaireResponse by id.</p>
+              </td>
+            </tr>
+            <tr>
+              <th>
                 <a name="QuestionnaireResponse-create"> </a>
                 <span>create</span>
               </th>
@@ -573,6 +584,13 @@
         <documentation value="Allows a user to search for existing completed or partially-completed forms.  Generally used to find partially-completed forms for update."/>
       </interaction>
       <interaction>
+      <interaction>
+        <extension url="http://hl7.org/fhir/StructureDefinition/capabilitystatement-expectation">
+          <valueCode value="SHALL"/>
+        </extension>
+        <code value="read"/>
+        <documentation value="Allows retrieval of a specific QuestionnaireResponse by id."/>
+      </interaction>
         <extension url="http://hl7.org/fhir/StructureDefinition/capabilitystatement-expectation">
           <valueCode value="SHALL"/>
         </extension>
