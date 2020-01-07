@@ -116,15 +116,22 @@
         <td colspan="5">
           <p>
             This expression serves the same purpose as the initial.value on Questionnaire.item, except that rather than specifying a fixed value, the value is
-            calculable.  The calculated value does not necessarily override an initial value - and in fact would typically not be used with an initial value at all.
-            The value is set on initial creation of the QuestionnaireResponse or upon the question first becoming enabled.  If used for a readOnly and/or hidden element,
-            the expression essentially calculates a 'fixed value' for the element.  If used for an editable element, this extension sets the initial value for the element.
-            However, the value may subsequently be overridden by the user authoring the response.
+            calculable.  The calculated value does not necessarily override an initial value - and in fact would typically not be used in scenarios where an initial value is already present.
+            Like initialValue, initialExpression is evaluated only once. The value is set on initial creation of the QuestionnaireResponse or upon the question first becoming enabled.
+            NOTE: This implementation guide does not prohibit lazy initialization (e.g., delayed calculation of an answer, delayed initialization of a field, etc.),
+            but Questionnaire authors shouldn't assume implementors will use lazy initialization.
+          </p>
+          <p>
+            If used for a readOnly and/or hidden element, initialExpression essentially calculates a 'fixed value' for the element.  If used for an editable element,
+            this extension sets the initial value for the element. In scenarios where both an initalValue and initialExpression are present, answers generated through
+            initialExpression have precedence over initialValue because both generate values before the user has had access to the form (see considerations in <a href="populate.html#expression-based-population">Expression-based Population</a>).
+            However, the same precedence rules do not apply to scenarios where the user edits the response directly or edits other dependent elements that cause the re-evaluation of the response (e.g., calculatedExpression).
+            In these scenarios the value MAY subsequently be overridden by the user authoring or editing the response.
           </p>
           <p>
             In theory, this expression can rely on the values of the answers to child questions or on <a href="#variable">variables</a> calculated from the
-            values of other questions, however such questions would have to initial values.  (See the discussion below on
-            <a href="#dependencies">dependencies</a>.)  Most typically, it will draw on <a href="#launchContext">launchContext</a> and
+            values of other questions, however such questions would have to have initial values (see the discussion below on
+            <a href="#dependencies">dependencies</a>).  Most typically, it will draw on <a href="#launchContext">launchContext</a> and
             <a href="#itemContext">itemContext</a> to populate questionnaire elements based on information available from outside the QuestionnaireResponse.
           </p>
           <p>
@@ -132,7 +139,7 @@
             selected location based on patient address, etc.  For population, this is the primary mechanism of populating fields.  Information passed in
             launchContext or queried from the health record is used to determine the initial value for the field.  The response author then can
             review and potentially adjust the values.  Finally, for extraction, this can be used to fill in 'hidden' elements that are needed
-            for extraction but are not actually seen or edited by the user (for example, FHIR resource ids when updating existing records).
+            for extraction but are not actually seen or edited by the user (e.g., FHIR resource ids when updating existing records).
           </p>
           <p>
             It's possible for the value of an initialExpression to be referenced by name within other sibling expressions or by expressions on descendant
