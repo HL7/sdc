@@ -325,7 +325,7 @@
     <li>
       Systems need to allow for the possibility that an Observation might not have a value (e.g. if dataAbsentReason is present).</li>
     <li>
-      Systems SHALL filter to only look at Observations with a status of 'completed'.</li>
+      Systems SHALL filter to only look at Observations with a status of 'final', 'amended', or 'corrected'.</li>
     <li>
       Systems SHALL check for the presence of the Observation.focus element and exclude elements where the focus is not the patient (e.g. we don't want the
       heart rate of a fetus if trying to populate the heart rate of the mother.)</li>
