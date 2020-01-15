@@ -325,7 +325,7 @@
     <li>
       Systems need to allow for the possibility that an Observation might not have a value (e.g. if dataAbsentReason is present).</li>
     <li>
-      Systems SHALL filter to only look at Observations with a status of 'completed'.</li>
+      Systems SHALL filter to only look at Observations with a status of 'final', 'amended', or 'corrected'.</li>
     <li>
       Systems SHALL check for the presence of the Observation.focus element and exclude elements where the focus is not the patient (e.g. we don't want the
       heart rate of a fetus if trying to populate the heart rate of the mother.)</li>
@@ -417,11 +417,11 @@
     <li>
       If the candidateExpression or contentExpression resolve to an empty set, do not display them.</li>
     <li>
-      Unlike initialExpressions, candidateExpresions can appear on groups as well as questions.  If they appear on a group item, then a separate group instance is
-      created for each repetition the user selects from the candidates.  The variable named in the candidateExpression extension is set to the value of the
-      candidate for use in continuous population of descendant items.  For example, a candidateExpression might resolve to a list of Conditions.  After the
-      user picks the relevant conditions, a separate group would be created for each and child items for the condition code, severity, onset date, etc. could
-      automatically be populated using an initialExpression based on the variable name from the candidateExpression.</li>
+      Unlike initialExpressions, candidateExpresions can appear on groups as well as questions.  If they appear on a group item and the group item is allowed
+      to repeat, then a separate group instance is created for each repetition the user selects from the candidates.  The variable named in the candidateExpression
+      extension is set to the value of the candidate for use in continuous population of descendant items.  For example, a candidateExpression might resolve
+      to a list of Conditions.  After the user picks the relevant conditions, a separate group would be created for each and child items for the condition code,
+      severity, onset date, etc. could automatically be populated using an initialExpression based on the variable name from the candidateExpression.</li>
     <li>
       When an initialExpression, candidateExpression or contextExpression will return a resource, backbone element or complex data type, the
       <a href="StructureDefinition-sdc-questionnaire-choiceColumn.html">questionnaire-choiceColumn</a> extension can be used to control which data elements should be
