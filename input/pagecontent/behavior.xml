@@ -4,8 +4,8 @@
     specified are what the types of the questions are, whether a group or the answers to a question repeats, and whether a group or a question must be
     answered.  However, for more sophisticated forms, there may be a need to set default answers, to enforce rules around the allowed answers (such as length,
     size, types of references), and/or to make the behavior of the questionnaire dynamic based on previous answers.  The FHIR specification provides core
-    elements that allow some of these things, and common extensions for others.  This implementation guide supplements with even more extensions.  It also
-    defines the <a href="sdc-questionnaire-behave.html">sdc-questionnaire-behave</a> profile to highlight what extensions are available and where they are
+    elements that allow some of these things, and common extensions for others.  This implementation guide supplements the core FHIR specification with additional extensions.
+    It also defines the <a href="sdc-questionnaire-behave.html">sdc-questionnaire-behave</a> profile to highlight what extensions are available and where they are
     intended to be used.  It also identifies specific 'must support' extensions that systems that claim to support SDC rendering SHALL be capable of authoring
     and/or rendering, as befits the CapabilityStatement(s) they claim conformance to.
   </p>
@@ -329,7 +329,7 @@
           </p>
           <p>
             Note that, depending on <a href="#entryMode">entryMode</a>, users may be able to 'skip' required questions and come back to them later.  However,
-            the status of a QuestionnaireResponse cannot change to 'completed' until all enabled 'required' items are populated.
+            the status of a QuestionnaireResponse SHALL NOT change to 'completed' until all enabled 'required' items are populated.
           </p>
         </td>
       </tr>
@@ -399,7 +399,7 @@
           </p>
           <p>
             Note that, depending on <a href="#entryMode">entryMode</a>, users may be able to 'skip' questions that do not meet the minimum number of
-            repetitions and come back to them later.  However, the status of a QuestionnaireResponse cannot change to 'completed' until all enabled
+            repetitions and come back to them later.  However, the status of a QuestionnaireResponse SHALL NOT change to 'completed' until all enabled
             items have their minOccurs requirement met.
           </p>
         </td>
@@ -497,7 +497,7 @@
           <p>
             This extension asserts that resources selected as the answer to the question must be valid against the specified profile.  It is tighter than
             the <a href="#referenceResource">referenceResource</a> extension (and thus there's no need to specify a referenceResource if referenceProfile
-            is defined).  If multiple referenceResources are listed, then the selected resource must be valid against at least one of the profiles.  The Form
+            is defined).  If multiple referenceProfiles are listed, then the selected resource must be valid against at least one of the profiles.  The Form
             Filler can choose to use the profiles as filter criteria in a search, but not all systems will necessarily support search by profile or will
             support the listed profile(s).  Thus, a fallback to evaluating candidates against the profile(s) and filtering the list to exclude those that
             are not should also be supported.  More sophisticated querying is supported by the <a href="#referenceFilter">referenceFilter</a> extension.
@@ -537,7 +537,7 @@
       <tr>
         <td>
           <a name="lookupQuestionnaire"> </a>
-          <a href="extension-sdc-questionnaire-lookupQuestionnaire.html">lookupQuestionnaire</a>
+          <a href="structuredefinition-sdc-questionnaire-lookupQuestionnaire.html">lookupQuestionnaire</a>
         </td>
         <td>Questionnaire</td>
         <td>Reference</td>
@@ -598,7 +598,7 @@
       <tr>
         <td>
           <a name="launchContext"> </a>
-          <a href="extension-sdc-questionnaire-launchContext.html">launchContext</a>
+          <a href="StructureDefinition-sdc-questionnaire-launchContext.html">launchContext</a>
         </td>
         <td>SDC</td>
         <td>root</td>
@@ -635,7 +635,7 @@
       <tr>
         <td>
           <a name="initialExpression"> </a>
-          <a href="extension-sdc-questionnaire-initialExpression.html">initialExpression</a>
+          <a href="StructureDefinition-sdc-questionnaire-initialExpression.html">initialExpression</a>
         </td>
         <td>SDC</td>
         <td>question</td>
@@ -653,7 +653,7 @@
       <tr>
         <td>
           <a name="calculatedExpression"> </a>
-          <a href="extension-sdc-questionnaire-calculatedExpression.html">calculatedExpression</a>
+          <a href="StructureDefinition-sdc-questionnaire-calculatedExpression.html">calculatedExpression</a>
         </td>
         <td>SDC</td>
         <td>question</td>
@@ -710,7 +710,7 @@
       <tr>
         <td>
           <a name="entryMode"> </a>
-          <a href="extension-sdc-questionnaire-entryMode.html">entryMode</a>
+          <a href="StructureDefinition-sdc-questionnaire-entryMode.html">entryMode</a>
         </td>
         <td>SDC</td>
         <td>Questionnaire</td>
@@ -795,7 +795,7 @@
       <tr>
         <td>
           <a name="enableWhenExpression"> </a>
-          <a href="extension-sdc-questionnaire-enableWhenExpression.html">enableWhenExpression</a>
+          <a href="StructureDefinition-sdc-questionnaire-enableWhenExpression.html">enableWhenExpression</a>
         </td>
         <td>N/A</td>
         <td>item</td>
@@ -848,15 +848,16 @@
           <p>
             This allows assertion of constraints across an entire questionnaire or across any item with child items.  For example, it could be used to
             require that either the patient identifier or birth date must be specified, that at least 6 of the questions from question 10 through 20
-            must be answered, or that the sum of questions 1 through 5 must equal exactly 100.  The expression is written in FHIRPath and has access to the
-            <a href="expressions.html#contexts">additional FHIRPath capabilities</a> defined in <a href="expressions.html">Using Expressions</a>.
+            must be answered, or that the sum of questions 1 through 5 must equal exactly 100.  The human field SHOULD be set to inform the user what to do.
+            The expression is written in FHIRPath and has access to the <a href="expressions.html#contexts">additional FHIRPath capabilities</a> defined in
+            <a href="expressions.html">Using Expressions</a>.
           </p>
         </td>
       </tr>
       <tr>
         <td>
           <a name="endpoint"> </a>
-          <a href="extension-sdc-questionnaire-endpoint.html">endpoint</a>
+          <a href="StructureDefinition-sdc-questionnaire-endpoint.html">endpoint</a>
         </td>
         <td>SDC</td>
         <td>root</td>

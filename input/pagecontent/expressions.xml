@@ -1,7 +1,7 @@
 <div xmlns="http://www.w3.org/1999/xhtml" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://hl7.org/fhir ../../src-generated/schemas/fhir-single.xsd">
   <p>
     The <a href="behavior.html">Form Behavior</a>, <a href="populate.html">Questionnaire Population</a> and <a href="extraction.html">Data Extraction</a>
-    all rely on (or have features that rely on) the use of <a href="{{site.data.fhir.path}}metadatatypes.html#Expression">expressions</a>.  
+    all rely on (or have features that rely on) the use of <a href="{{site.data.fhir.path}}metadatatypes.html#Expression">expressions</a>.
     This page provides specific guidelines for use and defines some additional conventions that can be leveraged in queries, FHIRPath and CQL by implementations
     that comply with this implementation guide.
   </p>
@@ -18,8 +18,8 @@
       <code>name</code> allows the result of the expression to be referenced within other expressions.  Whether this is necessary depends on the context
     </li>
     <li>
-      <code>language</code> indicates the type of expression.  SDC only uses three languages FHIR queries <a href="#fhirquery">as described below</a>, 
-      <a href="http://hl7.org/fhirpath">FHIRPath</a> and <a href="http://cql.hl7.org">CQL</a>.  Also see the discussion on 
+      <code>language</code> indicates the type of expression.  SDC only uses three languages: FHIR queries <a href="#fhirquery">as described below</a>,
+      <a href="http://hl7.org/fhirpath">FHIRPath</a> and <a href="http://cql.hl7.org">CQL</a>.  Also see the discussion on
       <a href="#fhirpathvscql">FHIRPath vs. CQL</a>.
     </li>
     <li>
@@ -27,11 +27,12 @@
     </li>
     <li>
       <code>reference</code> points to the expression if it's not inline.  For SDC purposes, reference must refer to content from a library imported
-      using the <a href="#cqf-library">cqf-library</a> extension.  For CQL, if the expression contains the name of the CQL content, the reference URL
-      can simply be the canonical URL of the library.  If the expression is blank for CQL or if conveying FHIRPath or a query, the specific reference URL 
-      must look like this:<br/>
-      <code>[canonical URL of library]#[id element of the 'content' repetition whose Attachment.data holds the expression]</code>
-      E.g. <code>http://somewhere.org/fhir/Library/12345#a2</code>
+      using the <a href="#cqf-library">cqf-library</a> extension.  An expression can be referenced using the Library.name element as a qualifier.
+      The Library.name element does not have to be used as a qualifier if there is only one library specified AND if the reference is to something
+      defined in that library. This convention applies to CQL, FHIRPath and FHIR queries with the only difference being that CQL will use the CQL expression name
+      while FHIRPath and queries will use the id element on the Library.content element. When referencing CQL, #[expression name] should be used
+      (rather than using #[id]) because there can only be one CQL 'content' repitition in the library but there is a need to differentiate between
+      the multiple expressions that could be defined within a single CQL library instance. The expression name needs to be appropriately escaped.
     </li>
   </ul>
   <a name="exp-extensions"> </a>
@@ -45,11 +46,11 @@
     <li>
       <b>Extension</b>: The code for the extension (and a link to the extension definition)</li>
     <li>
-      <b>Source</b>: Indicates where the extension is defined - the FHIR Core specification (core) or this implementation guide (SDC).  Items marked as 
-      'core' will have a canonical URL of <code>http://hl7.org/fhir/StructureDefinition/[code]</code>.  Those from SDC will have 
+      <b>Source</b>: Indicates where the extension is defined - the FHIR Core specification (core) or this implementation guide (SDC).  Items marked as
+      'core' will have a canonical URL of <code>http://hl7.org/fhir/StructureDefinition/[code]</code>.  Those from SDC will have
       <code>http://hl7.org/fhir/uv/sdc/StructureDefinition/sdc-questionnaire-[code]</code></li>
     <li>
-      <b>Location</b>: Indicates whether the extension can appear directly on the Questionnaire (root) on any item (item) or only on items that have at 
+      <b>Location</b>: Indicates whether the extension can appear directly on the Questionnaire (root) on any item (item) or only on items that have at
       type allowing a question answer (question)</li>
     <li>
       <b>Content</b>: Indicates whether the expression.language is restricted to be "text/cql" (cql), "text/fhirpath" (FHIRPath), or "application/x-fhir-query" (query) or is unrestricted (any)</li>
@@ -88,10 +89,10 @@
             This expression sets a variable that is available for use in expressions within the same item and any descendant items.  It has two main uses:
           </p>
           <ul>
-            <li>It allows a complex calculation to be done once and used in multiple other places.  (E.g. Determining the score for one group within the 
+            <li>It allows a complex calculation to be done once and used in multiple other places.  (E.g. Determining the score for one group within the
               questionnaire response that will then be used in calculations on subsequent groups.)</li>
             <li>It allows a calculation to be done closer to the root of the questionnaire response or at the root of the questionnaire response where there
-              is access to more of or all the answers from the questionnaire response.  The calculated value might then be used as the answer to a descendant 
+              is access to more of or all the answers from the questionnaire response.  The calculated value might then be used as the answer to a descendant
               question.  (Expressions can't access answers that aren't descendants of the current node.)</li>
           </ul>
           <p>
@@ -104,7 +105,7 @@
       <tr>
         <td>
           <a name="initialExpression"> </a>
-          <a href="http://hl7.org/fhir/uv/sdc/StructureDefinition/sdc-questionnaire-initialExpression">initialExpression</a>
+          <a href="StructureDefinition-sdc-questionnaire-initialExpression.html">initialExpression</a>
         </td>
         <td>SDC</td>
         <td>question</td>
@@ -115,21 +116,22 @@
         <td colspan="5">
           <p>
             This expression serves the same purpose as the initial.value on Questionnaire.item, except that rather than specifying a fixed value, the value is
-            calculable.  The value is set on initial creation of the QuestionnaireResponse or upon the question first becoming enabled.  If
-            used for a readOnly and/or hidden element, the expression essentially calculates a 'fixed value' for the element.  If used for an editable element,
-            this extension sets the initial value for the element.  However, the value may subsequently be overridden by the user authoring the response.
+            calculable.  The calculated value does not necessarily override an initial value - and in fact would typically not be used with an initial value at all.
+            The value is set on initial creation of the QuestionnaireResponse or upon the question first becoming enabled.  If used for a readOnly and/or hidden element,
+            the expression essentially calculates a 'fixed value' for the element.  If used for an editable element, this extension sets the initial value for the element.
+            However, the value may subsequently be overridden by the user authoring the response.
           </p>
           <p>
-            In theory, this expression can rely on the values of the answers to child questions or on <a href="#variable">variables</a> calculated from the 
-            values of other questions, however such questions would have to initial values.  (See the discussion below on 
-            <a href="#dependencies">dependencies</a>.)  Most typically, it will draw on <a href="#launchContext">launchContext</a> and 
+            In theory, this expression can rely on the values of the answers to child questions or on <a href="#variable">variables</a> calculated from the
+            values of other questions, however such questions would have to initial values.  (See the discussion below on
+            <a href="#dependencies">dependencies</a>.)  Most typically, it will draw on <a href="#launchContext">launchContext</a> and
             <a href="#itemContext">itemContext</a> to populate questionnaire elements based on information available from outside the QuestionnaireResponse.
           </p>
           <p>
-            Examples of use for Form Behavior might include defaulting one date or provider in a form to one entered earlier in the form, defaulting a 
+            Examples of use for Form Behavior might include defaulting one date or provider in a form to one entered earlier in the form, defaulting a
             selected location based on patient address, etc.  For population, this is the primary mechanism of populating fields.  Information passed in
             launchContext or queried from the health record is used to determine the initial value for the field.  The response author then can
-            review and potentially adjust the values.  Finally, for extraction, this can be used to fill in 'hidden' elements that are needed 
+            review and potentially adjust the values.  Finally, for extraction, this can be used to fill in 'hidden' elements that are needed
             for extraction but are not actually seen or edited by the user (for example, FHIR resource ids when updating existing records).
           </p>
           <p>
@@ -142,7 +144,7 @@
       <tr>
         <td>
           <a name="candidateExpression"> </a>
-          <a href="http://hl7.org/fhir/uv/sdc/StructureDefinition/sdc-questionnaire-candidateExpression">candidateExpression</a>
+          <a href="StructureDefinition-sdc-questionnaire-candidateExpression.html">candidateExpression</a>
         </td>
         <td>SDC</td>
         <td>question</td>
@@ -152,12 +154,13 @@
       <tr>
         <td colspan="5">
           <p>
-            This expression is used to support data entry.  It is only invoked when the user is entering/editing the answer for the question 
+            This extension is used to support data entry.  It is only invoked when the user is entering/editing the answer for the question
             linked to the candidateExpression.  It is used when a <a href="populate.html">population</a> process can't determine the specific
-            value to fill in to a form, but it can identify a list of candidates to choose from.  For example, forms might ask for relevant co-morbidities,
-            other practitioners to inform, etc.  The specific answers require human decision-making, but this expression can provide a list of initial
-            candidates based on the patient's recorded health conditions, the patient's care team members or others involved in their care, etc.  Another
-            example might be filtering a list of possible dosage instructions based on the patient's age, gender and the previously selected indication
+            value to fill in to a form (like when an answer depends on answers to other questions that are unknown at the population phase),
+            but it can identify a list of candidates to choose from.  For example, forms might ask for relevant co-morbidities, other practitioners
+            to inform, etc.  The specific answers require human decision-making, but this expression can provide a list of initial candidates based
+            on the patient's recorded health conditions, the patient's care team members or others involved in their care, etc.  Another example
+            might be filtering a list of possible dosage instructions based on the patient's age, gender and the previously selected indication
             but where there are still possibly multiple recommended options.
           </p>
           <p>
@@ -178,7 +181,7 @@
       <tr>
         <td>
           <a name="contextExpression"> </a>
-          <a href="http://hl7.org/fhir/uv/sdc/StructureDefinition/sdc-questionnaire-contextExpression">contextExpression</a>
+          <a href="StructureDefinition-sdc-questionnaire-contextExpression.html">contextExpression</a>
         </td>
         <td>SDC</td>
         <td>question</td>
@@ -188,11 +191,13 @@
       <tr>
         <td colspan="5">
           <p>
-            This is similar to <a href="#candidateExpression">candidateExpression</a>, in that it is also only used when the user is editing the answer for 
-            the question associated with the candidateExpression.  However, instead of giving candidate answers that can simply be "selected", this option 
-            instead presents potentially relevant information.  For example, a question might be "Has the patient been admitted for this or a related condition 
-            in the past year?".  To help guide the answers, the contextExpression could retrieve a list of admission reasons for that patient for encounters in 
+            This is similar to <a href="#candidateExpression">candidateExpression</a>, in that it is also only used when the user is editing the answer for
+            the question associated with the candidateExpression.  However, instead of giving candidate answers that can simply be "selected", this option
+            instead presents potentially relevant information.  For example, a question might be "Has the patient been admitted for this or a related condition
+            in the past year?".  To help guide the answers, the contextExpression could retrieve a list of admission reasons for that patient for encounters in
             the past year.  The user completing the questionnaire could then use that information to guide whether they choose to answer 'yes' or 'no.
+            contextExpression is not intended for read-only questions. The user must answer a question - but the user may want to look at context information
+            to help guide the answer.
           </p>
           <p>
             Also, like candidateExpressions, contextExpressions should rarely, if ever, declare a name element.
@@ -203,7 +208,7 @@
       <tr>
         <td>
           <a name="calculatedExpression"> </a>
-          <a href="http://hl7.org/fhir/uv/sdc/StructureDefinition/sdc-questionnaire-calculatedExpression">calculatedExpression</a>
+          <a href="StructureDefinition-sdc-questionnaire-calculatedExpression.html">calculatedExpression</a>
         </td>
         <td>SDC</td>
         <td>question</td>
@@ -213,10 +218,10 @@
       <tr>
         <td colspan="5">
           <p>
-            This expression allows for dynamic calculation of answers to questions as other questions are answered.  It behaves similarly to 
-            <a href="#initialExpression">initialExpression</a>, but instead of only setting its value when the QuestionnaireResponse is originally created or 
-            when a question is enabled, the value updates continuously as the answers to dependent questions change.  This expression will be most commonly 
-            used for displaying scores, but can be used for any calculated element - patient age (based on current date and birth date), BMI (based on recent 
+            This expression allows for dynamic calculation of answers to questions as other questions are answered.  It behaves similarly to
+            <a href="#initialExpression">initialExpression</a>, but instead of only setting its value when the QuestionnaireResponse is originally created or
+            when a question is enabled, the value updates continuously as the answers to dependent questions change.  This expression will be most commonly
+            used for displaying scores, but can be used for any calculated element - patient age (based on current date and birth date), BMI (based on recent
             weight and height), estimated cost (based on selected items and quantities), etc.
           </p>
           <p>
@@ -226,24 +231,28 @@
           </p>
           <p>
             In most cases, 'calculated' answers should be marked as 'readOnly', however in some cases it may be legitimate to override a calculated element,
-            for example if the calculation can't be made due to non-available information, but the user still knows the calculated value.  For example, it
-            might be possible to enter an age but not a date of birth.  If a user has edited a calculated value, it should no longer be changed when other
-            answers in the questionnaire response change.  When loading a previously persisted QuestionnaireResponse, the determination of whether a user
-            has edited the calculated field can be determined by whether the calculated value differs from invoking the calculation on the current values
-            in the questionnaire.  (As a side-effect, this means that calculated values based on 'context' information such as an age calculated based on
-            'now' will be treated as user-edited when subsequently opening the QuestionnaireResponse and will not update to reflect the new current date.)
+            for example if the calculation can't be made due to non-available information, but the user still knows the calculated value. This statement applies
+            to any context information of any sort. [For example, it might be possible to enter an age but not a date of birth.  If a user has edited a calculated value,
+            it should no longer be changed when other answers in the questionnaire response change.  When loading a previously persisted QuestionnaireResponse,
+            the determination of whether a user has edited the calculated field can be determined by whether the calculated value differs from invoking the
+            calculation on the current values in the questionnaire.  (As a side-effect, this means that calculated values based on 'context' information
+            such as an age calculated based on 'now' will be treated as user-edited when subsequently opening the QuestionnaireResponse and will not update
+            to reflect the new current date. Client systems MAY provide the user with the ability to reset calculated fields to the calculated value).]
           </p>
           <p>
-            Like initialExpression, it's possible for the value of a calculatedExpression to be referenced by name within other sibling expressions or by 
-            expressions on descendant items.  However, this is not likely to be common.  As such, calculatedExpressions only need to declare a name if their 
+            Like initialExpression, it's possible for the value of a calculatedExpression to be referenced by name within other sibling expressions or by
+            expressions on descendant items.  However, this is not likely to be common.  As such, calculatedExpressions only need to declare a name if their
             value will be referenced elsewhere.
+          </p>
+          <p>
+            NOTE: query information can change over time and thus influence the results of calculatedExpression.
           </p>
         </td>
       </tr>
       <tr>
         <td>
           <a name="enableWhenExpression"> </a>
-          <a href="http://hl7.org/fhir/uv/sdc/StructureDefinition/sdc-questionnaire-enableWhenExpression">enableWhenExpression</a>
+          <a href="StructureDefinition-sdc-questionnaire-enableWhenExpression.html">enableWhenExpression</a>
         </td>
         <td>SDC</td>
         <td>question</td>
@@ -271,7 +280,7 @@
       <tr>
         <td>
           <a name="itemContext"> </a>
-          <a href="http://hl7.org/fhir/uv/sdc/StructureDefinition/sdc-questionnaire-itemContext">itemContext</a>
+          <a href="StructureDefinition-sdc-questionnaire-itemContext.html">itemContext</a>
         </td>
         <td>SDC</td>
         <td>any</td>
@@ -287,8 +296,8 @@
           </p>
           <p>
             If a query results in multiple repetitions for a single for the root Questionnaire or for an item where 'repeat' is false, it is an error and no
-            population or extraction can occur.  If the query results in no elements when extracting, then the extracted data is treated as a create.  If data
-            is returned then the extracted data should replace what is returned, either as an update or a delete + create.
+            population or extraction can occur. When peforming an extraction the query is executed. If a record is found the data in the QuestionnaireResponse
+            will be used to update that record.If the query returns no results the data in the QuestionnaireResponse will be used to create a new record.
           </p>
           <p>
             Expression.name SHALL be populated when this extension is being used for <a href="populate.html#path-pop">FHIR-path based population</a>.
@@ -329,7 +338,7 @@
             Library allows queries, CQL and FHIRPath expressions to be maintained independently from the Questionnaires that use them.  This means that
             the "programmatic" content of the Questionnaire can be updated and adjusted without revising the Questionnaire, which may be appropriate in
             certain form management environments.  It also means that the population and extraction mechanisms can be adjusted as data representations
-            evolve or be adjusted to reflect the needs of additional data repositories.
+            evolve or be adjusted to reflect the needs of additional data repositories. Additionally, it allows re-use of expressions across questionnaires.
           </p>
           <p>
             This extension identifies libraries that the questionnaire relies on for some or all its expressions.  (The mechanism by which expressions
@@ -340,7 +349,7 @@
       <tr>
         <td>
           <a name="launchContext"> </a>
-          <a href="http://hl7.org/fhir/uv/sdc/StructureDefinition/sdc-questionnaire-launchContext">launchContext</a>
+          <a href="StructureDefinition-sdc-questionnaire-launchContext.html">launchContext</a>
         </td>
         <td>SDC</td>
         <td>root</td>
@@ -349,10 +358,10 @@
       <tr>
         <td colspan="5">
           <p>
-            The launch context allows information to be passed into the FHIRPath evaluation environment based on the context in which the Questionnaire is
+            The launch context allows information to be passed into the execution environment based on the context in which the Questionnaire is
             being evaluated.  For example, what patient, what encounter, what user, etc. is "in context" at the time the questionnaire response is being
             completed.  Note that this context could potentially change if a questionnaire is edited after it was initially created, which means that if
-            launchContext elements drive <a href="#calculatedExpression">calculatedExpression</a> elements rather than 
+            launchContext elements drive <a href="#calculatedExpression">calculatedExpression</a> elements rather than
             <a href="#initialExpression">initialExpression</a> elements, they'll be updated to reflect the new user.
           </p>
           <p>
@@ -379,8 +388,8 @@
   </p>
   <p>
     In addition to the base query syntax, SDC allows the injection of FHIRPath into the query expressions.  This is to allow the queries to take advantage
-    of context when they are invoked.  The FHIRPaths are denoted by surrounding them with double curly-braces (i.e. 
-    <code>{% raw %}{{ fhirpath goes here }}{% endraw %}</code>) in the same way expressions are denoted in the 
+    of context when they are invoked.  The FHIRPaths are denoted by surrounding them with double curly-braces (i.e.
+    <code>{% raw %}{{ fhirpath goes here }}{% endraw %}</code>) in the same way expressions are denoted in the
     <a href="https://shopify.github.io/liquid">Liquid</a> templating language.
   </p>
   <p>
@@ -395,20 +404,20 @@
   <h4>Dependencies between expressions</h4>
   <p>
     Expressions will often have dependencies on other expressions.  For example, a <a href="#calculatedExpression">calculatedExpression</a> might depend
-    on <a href="#variable">variables</a> that in turn depend on the answers to other questions which might themselves have 
+    on <a href="#variable">variables</a> that in turn depend on the answers to other questions which might themselves have
     <a href="#initialExpression">initialExpressions</a> which might rely on <a href="#itemContext">itemContext</a> queries that in turn have embedded
     FHIRPaths that reference elements defined in <a href="#launchContext">launchContext</a>.  If care isn't taken, it's possible to construct a
     questionnaire where the value of an answer depends indirectly on itself, or where filling out an answer disables the question being answered or other
-    inappropriate behavior.  Questionnaire rendering systems should check for and gracefully handle such situations.  (I.e. Raise appropriate error messages
-    rather than crashing or locking in an endless loop.)
+    inappropriate behavior.  Questionnaire rendering systems should check for these situations and gracefully handle them by raising appropriate error messages
+    rather than crashing or locking in an endless loop.
   </p>
   <p>
-    When evaluating expressions, the typical order of calculation will be in the order the expressions appear in the Questionnaire.  I.e. Those at the root
-    are evaluated first, then items are evaluated in order, evaluating on a depth-first basis.  Children of the first item in a group are evaluated 
+    When evaluating expressions, the typical order of calculation will be in the order the expressions appear in the Questionnaire. Those at the root
+    are evaluated first, then items are evaluated in order, evaluating on a depth-first basis.  Children of the first item in a group are evaluated
     before the second item in the group.
   </p>
   <p>
-    However, in some cases, updates to later elements may trigger an update to earlier elements, which then cascade through again.  Systems should allow 
+    However, in some cases, updates to later elements may trigger an update to earlier elements, which then cascade through again.  Systems should allow
     for this and allow for iterative updating of expressions until values reach a stable state - or until an unstable looping condition is detected.
   </p>
   <a name="contexts"> </a>
@@ -419,12 +428,12 @@
   </p>
   <ul>
     <li>
-      The <code>%context</code> variable will be set to the QuestionnaireResponse if the expression extension is defined on the Questionnaire root.  
-      Otherwise, it will be set to the QuestionnaireResponse.item for items whose linkId match the linkId of the Questionnaire.item the expression 
-      extension was defined in.  I.e. While the extensions and expressions are defined in the Questionnaire, they are <i>evaluated</i> in the context of 
-      the corresponding item(s) in the QuestionnaireResponse.</li>  
+      The <code>%context</code> variable will be set to the QuestionnaireResponse if the expression extension is defined on the Questionnaire root.
+      Otherwise, it will be set to the QuestionnaireResponse.item for items whose linkId match the linkId of the Questionnaire.item the expression
+      extension was defined in (i.e. while the extensions and expressions are defined in the Questionnaire, they are <i>evaluated</i> in the context of
+      the corresponding item(s) in the QuestionnaireResponse).</li>
     <li>
-      A new <code>%questionnaire</code> is defined for that corresponds to the Questionnaire resource resolved to by the QuestionnaireResponse.questionnaire
+      A new <code>%questionnaire</code> variable is defined for that corresponds to the Questionnaire resource resolved to by the QuestionnaireResponse.questionnaire
       element.  It is in scope for all expressions defined in the Questionnaire.</li>
     <li>
       All expressions that specify a 'name' can be accessed by other expressions appearing on the same item or any descendant item as though that

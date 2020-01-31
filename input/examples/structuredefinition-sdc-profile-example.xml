@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<StructureDefinition xmlns="http://hl7.org/fhir" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://hl7.org/fhir ../../src-generated/schemas/fhir-single.xsd">
+<StructureDefinition xmlns="http://hl7.org/fhir" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://hl7.org/fhir ../../input-cache/schemas/R4/fhir-single.xsd">
   <id value="structuredefinition-sdc-profile-example"/>
   <url value="http://hl7.org/fhir/uv/sdc/StructureDefinition/structuredefinition-sdc-profile-example"/>
   <identifier>
@@ -17,6 +17,7 @@
       <value value="http://hl7.org"/>
     </telecom>
   </contact>
+  <fhirVersion value="4.0.1"/>
   <mapping>
     <identity value="c-cda"/>
     <uri value="http://hl7.org/C-CDA-not-a-real-url"/>
@@ -26,10 +27,18 @@
   <abstract value="false"/>
   <type value="dataelement-sdc-profile-example"/>
   <baseDefinition value="http://hl7.org/fhir/StructureDefinition/Element"/>
+  <derivation value="specialization"/>
   <differential>
-    <element id="dataelement-sdc-profile-example">
-      <path value="dataelement-sdc-profile-example"/>
+    <element>
+      <path value="dataelement-sdc-profile-example.gender"/>
       <definition value="The gender (i.e., the behavioral, cultural, or psychological traits typically associated with one sex) of a living subject as defined for administrative purposes."/>
+      <min value="0"/>
+      <max value="1"/>
+      <base>
+        <path value="dataelement-sdc-profile-example.gender"/>
+        <min value="0"/>
+        <max value="1"/>
+      </base>
       <type>
         <code value="CodeableConcept"/>
       </type>

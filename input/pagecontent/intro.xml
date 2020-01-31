@@ -1,10 +1,10 @@
 <div xmlns="http://www.w3.org/1999/xhtml" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://hl7.org/fhir ../../src-generated/schemas/fhir-single.xsd">
-	<a name="fhir"> </a>
+	<a name="fhir"></a>
 	<h3>Understanding FHIR</h3>
 	<p>
     This implementation guide is based on the HL7 <a href="{{site.data.fhir.path}}index.html">FHIR</a> standard.  It uses terminology, notations and design principles that are
-    specific to FHIR.  Before reading this implementation guide, it's important to be familiar with some of the basic principles of FHIR as well 
-    as general guidance on how to read FHIR specifications.  Readers who are unfamiliar with FHIR are encouraged to read (or at least skim) the following 
+    specific to FHIR.  Before reading this implementation guide, it's important to be familiar with some of the basic principles of FHIR as well
+    as general guidance on how to read FHIR specifications.  Readers who are unfamiliar with FHIR are encouraged to read (or at least skim) the following
     prior to reading the rest of this implementation guide.
   </p>
 	<ul>
@@ -64,7 +64,7 @@
 				<td>Used to define data elements using FHIR logical models that can be referenced in questionnaires and can be used to auto-populate form data</td>
 			</tr>-->
 			<tr>
-				<td rowspan="7">
+				<td rowspan="8">
 					<a href="{{site.data.fhir.path}}questionnaire.html">Questionnaire</a>
 				</td>
 				<td>
@@ -74,15 +74,21 @@
 			</tr>
 			<tr>
 				<td>
+					<a href="sdc-questionnaire-search.html">Search Questionnaire Profile</a>
+				</td>
+				<td>Defines properties that must be supported for systems that support searching for and returning Questionnaires</td>
+			</tr>
+			<tr>
+				<td>
 					<a href="sdc-questionnaire-render.html">Advanced Rendering Questionnaire Profile</a>
 				</td>
-				<td>Defines additional capabilities for controlling the rendering of the questionnaire.</td>
+				<td>Defines additional capabilities for controlling the rendering of the questionnaire</td>
 			</tr>
 			<tr>
 				<td>
 					<a href="sdc-questionnaire-behave.html">Advanced Behavior Questionnaire Profile</a>
 				</td>
-				<td>Defines additional capabilities for controlling data entry and calculating values within the questionnaire.</td>
+				<td>Defines additional capabilities for controlling data entry and calculating values within the questionnaire</td>
 			</tr>
 			<tr>
 				<td>
@@ -106,7 +112,7 @@
 				<td>
 					<a href="sdc-questionnaire-adapt-srch.html">Adaptive Questionnaire - search Profile</a>
 				</td>
-				<td>Defines the metadata that should be present to support searching for adaptive questionnaires.</td>
+				<td>Defines the metadata that should be present to support searching for adaptive questionnaires</td>
 			</tr>
 			<tr>
 				<td rowspan="2">
@@ -121,7 +127,7 @@
 				<td>
 					<a href="sdc-questionnaireresponse-adapt.html">Adaptive Questionnaire Response Profile</a>
 				</td>
-				<td>Represents a response to a questionnaire that is dynamically built as each question is answered.</td>
+				<td>Represents a response to a questionnaire that is dynamically built as each question is answered</td>
 			</tr>
 			<tr>
 				<td>
@@ -141,13 +147,22 @@
 				</td>
 				<td>Used to define allowed values for data elements and for questions in questionnaires</td>
 			</tr>
+			<tr>
+				<td>
+					<a href="{{site.data.fhir.path}}metadatatypes.html#UsageContext">UsageContext</a>
+				</td>
+				<td>
+					<a href="sdc-usagecontext.html">SDC Usage Context Profile</a>
+				</td>
+				<td>Constraints on the codes and values of UsageContext to help ensure consistent usage in SDC Questionnaires</td>
+			</tr>
 		</tbody>
 	</table>
 	<p>
-    Additional resources such as <a href="{{site.data.fhir.path}}patient.html">Patient</a>, <a href="{{site.data.fhir.path}}practitioner.html">Practitioner</a>, 
-    <a href="{{site.data.fhir.path}}binary.html">Binary</a>, <a href="{{site.data.fhir.path}}conceptmap.html">ConceptMap</a>, <a href="{{site.data.fhir.path}}structuremap.html">StructureMap</a>, 
-    <a href="{{site.data.fhir.path}}provenance.html">Provenance</a>, <a href="{{site.data.fhir.path}}auditevent.html">AuditEvent</a> and others are also 
-    likely to be used in SDC solutions, though no SDC-specific profiles have been created for them.    
+    Additional resources such as <a href="{{site.data.fhir.path}}patient.html">Patient</a>, <a href="{{site.data.fhir.path}}practitioner.html">Practitioner</a>,
+    <a href="{{site.data.fhir.path}}binary.html">Binary</a>, <a href="{{site.data.fhir.path}}conceptmap.html">ConceptMap</a>, <a href="{{site.data.fhir.path}}structuremap.html">StructureMap</a>,
+    <a href="{{site.data.fhir.path}}provenance.html">Provenance</a>, <a href="{{site.data.fhir.path}}auditevent.html">AuditEvent</a> and others are also
+    likely to be used in SDC solutions, though no SDC-specific profiles have been created for them.
     <!-- Todo: decide how explicit the list of relevant sections needs to be -->
 	</p>
 
@@ -155,8 +170,8 @@
 	<h4>Terminology Operations</h4>
 	<p>
     In addition to the QuestionnaireResponse <a href="populate.html">population operations</a>, <a href="QuestionnaireResponse-extract.html">extract operation</a>, <a href="Questionnaire-next-question.html">next-question operation</a> and <a href="Questionnaire-process-response.html">process response operation</a>, it will be useful for Form Filler and Form Manager systems to support some of FHIR's
-    <a href="{{site.data.fhir.path}}terminology-service.html">terminology service</a> capabilities - specifically the 
-    <a href="{{site.data.fhir.path}}operation-valueset-expand.html">Valueset Expand</a> and 
+    <a href="{{site.data.fhir.path}}terminology-service.html">terminology service</a> capabilities - specifically the
+    <a href="{{site.data.fhir.path}}operation-valueset-expand.html">Valueset Expand</a> and
     <a href="{{site.data.fhir.path}}operation-valueset-validate-code.html">Validate code</a>
     operations.
   </p>
@@ -164,32 +179,33 @@
   <a name="conformance"> </a>
   <h4>Conformance and Must Support</h4>
 	<p>
-    FHIR defines the notion of <a href="{{site.data.fhir.path}}conformance-rules.html#mustSupport">Must Support</a> to help establish conformance expectations for systems.  The specific meaning of 
+    FHIR defines the notion of <a href="{{site.data.fhir.path}}conformance-rules.html#mustSupport">Must Support</a> to help establish conformance expectations for systems.  The specific meaning of
     "must support" is left to be defined in individual implementation guides.  For the purposes of <i>this</i> implementation guide, "must support" shall be interpreted as follows:
   </p>
 	<ul>
 		<li>Conformant systems SHALL be capable of sending and receiving the data element</li>
 		<li>When a system persists a resource instance, all "must support" elements SHALL be persisted and retrieved with other elements</li>
-		<li>Where an element affects the display or validation of a Questionnaire and a system performs either or both of those operations, the behavior established by the value 
+		<li>Where an element affects the display or validation of a Questionnaire and a system performs either or both of those operations, the behavior established by the value
       of the element SHALL be performed</li>
 	</ul>
 
 
-  <a name="fhirpath"> </a>
-	<h3>Understanding FHIRPath</h3>
+  <a name="expressions"> </a>
+	<h3>Understanding Expressions</h3>
   <p>
     In addition to the base FHIR specification, some of the more advanced capabilities defined in this implementation guide - specifically around
-    <a href="behavior.html">behavior</a>, <a href="populate.html">population</a> and <a href="extraction.html">extraction</a> rely on
-    the FHIRPath language.  This is a path expression language that is independent of syntax.  I.e. FHIRPaths written against a questionnaire will
-    work the same regardless of whether the instance is expressed in XML, JSON, Turtle or some other syntax.
+    <a href="behavior.html">behavior</a>, <a href="populate.html">population</a> and <a href="extraction.html">extraction</a> rely on the use of
+    expressions. SDC only uses three languages to support expressions: FHIR queries, FHIRPath, and Clinical Quality Language (CQL). Additional implementation
+    guidance on the use of expressions can be found on the <a href="expressions.html">Using Expressions </a> page.
   </p>
   <p>
-    Implementers using any of these advanced questionnaire capabilities will need to be familiar with the <a href="http://hl7.org/fhirpath">FHIRPath Specification</a>.
-  </p>
-
-  <a name="contexts"> </a>
-  <h4>Questionnaire context</h4>
-  <p>
+    Given the widespread implementation of FHIRPath, implementers using any of these advanced questionnaire capabilities will need to be familiar with the <a href="http://hl7.org/fhirpath">FHIRPath Specification</a>.
     To support using FHIRPath with questionnaires, this implementation guide defines a set of additional <a href="expressions.html#contexts">FHIRPath contexts</a>.
+  </p>
+  <p>
+    Implementers who require the additional capabilities of CQL (i.e. defining internal variables, iterating loops, etc.) should also familiarize themselves with the <a href="http://cql.hl7.org">CQL Specification</a>.
+  </p>
+  <p>
+  Implementors should note the guidance on FHIR query enhancements that can be found on the <a href="expressions.html#fhirquery">x-fhir-query-enhancements</a> section.
   </p>
 </div>

@@ -2,7 +2,7 @@
 {"code" : {
   "system" : "urn:iso:std:iso:3166",
   "code" : "US"
-}, "valueSet" :null, "lang":"null"}####
+}, "valueSet" :null, "lang":"null", "useServer":"true", "useClient":"true", "guessSystem":"false", "valueSetMode":"ALL_CHECKS"}####
 v: {
   "display" : "United States of America",
   "severity" : null,
@@ -10,10 +10,25 @@ v: {
 }
 -------------------------------------------------------------------------------------
 {"code" : {
-  "coding" : [{
-    "system" : "urn:iso:std:iso:3166",
-    "code" : "US"
-  }]
+  "system" : "urn:iso:std:iso:3166",
+  "code" : "US"
+}, "valueSet" :{
+  "resourceType" : "ValueSet",
+  "compose" : {
+    "include" : [{
+      "system" : "urn:iso:std:iso:3166"
+    }]
+  }
+}, "lang":"null", "useServer":"true", "useClient":"false", "guessSystem":"false", "valueSetMode":"ALL_CHECKS"}####
+v: {
+  "display" : "United States of America",
+  "severity" : null,
+  "error" : ""
+}
+-------------------------------------------------------------------------------------
+{"code" : {
+  "system" : "urn:iso:std:iso:3166",
+  "code" : "US"
 }, "valueSet" :{
   "resourceType" : "ValueSet",
   "compose" : {
@@ -32,10 +47,10 @@ v: {
       }]
     }]
   }
-}, "lang":"null"}####
+}, "lang":"null", "useServer":"true", "useClient":"true", "guessSystem":"false", "valueSetMode":"NO_MEMBERSHIP_CHECK"}####
 v: {
-  "display" : "",
-  "severity" : "error",
-  "error" : "Unknown code system urn:iso:std:iso:3166:-2"
+  "display" : "United States of America",
+  "severity" : null,
+  "error" : ""
 }
 -------------------------------------------------------------------------------------

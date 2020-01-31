@@ -26,7 +26,7 @@
   <publisher value="HL7 International - FHIR Infrastructure Work Group"/>
   <contact>
     <telecom>
-      <system value="other"/>
+      <system value="url"/>
       <value value="http://hl7.org/Special/committees/fiwg"/>
     </telecom>
   </contact>
@@ -432,7 +432,7 @@
       <reference>
         <reference value="ValueSet/species"/>
       </reference>
-      <name value="Questionnaire Context Species"/>
+      <name value="Questionnaire Context Species ValueSet"/>
       <description value="Species for defining the context of Questionnaires"/>
       <exampleBoolean value="false"/>
     </resource>
@@ -440,7 +440,7 @@
       <reference>
         <reference value="ValueSet/launchContext"/>
       </reference>
-      <name value="Questionnaire Launch Context"/>
+      <name value="Questionnaire Launch Context ValueSet"/>
       <description value="Defines standard context of Questionnaires at launch time"/>
       <exampleBoolean value="false"/>
     </resource>
@@ -448,7 +448,7 @@
       <reference>
         <reference value="CodeSystem/launchContext"/>
       </reference>
-      <name value="Questionnaire Launch Context"/>
+      <name value="Questionnaire Launch Context CodeSystem"/>
       <description value="Defines standard context of Questionnaires at launch time"/>
       <exampleBoolean value="false"/>
     </resource>
@@ -456,7 +456,7 @@
       <reference>
         <reference value="ValueSet/entryMode"/>
       </reference>
-      <name value="Questionnaire Entry Mode"/>
+      <name value="Questionnaire Entry Mode ValueSet"/>
       <description value="Defines mechanisms of capturing data in a QuestionnaireResponse"/>
       <exampleBoolean value="false"/>
     </resource>
@@ -464,7 +464,7 @@
       <reference>
         <reference value="CodeSystem/entryMode"/>
       </reference>
-      <name value="Questionnaire Entry Mode"/>
+      <name value="Questionnaire Entry Mode CodeSystem"/>
       <description value="Defines mechanisms of capturing data in a QuestionnaireResponse"/>
       <exampleBoolean value="false"/>
     </resource>
@@ -536,7 +536,7 @@
       <reference>
         <reference value="Bundle/questionnaire-sdc-profile-example"/>
       </reference>
-      <name value="SDC - Combination"/>
+      <name value="SDC-Combination"/>
       <description value="Set of several examples - medication, AHRQ and NCI forms"/>
       <exampleCanonical value="http://hl7.org/fhir/uv/sdc/StructureDefinition/sdc-questionnaire"/>
     </resource>
@@ -558,6 +558,14 @@
     </resource>
     <resource>
       <reference>
+        <reference value="Questionnaire/questionnaire-sdc-profile-example-PHQ9"/>
+      </reference>
+      <name value="SDC-PHQ9"/>
+      <description value="Patient Health Questionnaire (9 Item) including contained value sets and calculatedExpression"/>
+      <exampleCanonical value="http://hl7.org/fhir/uv/sdc/StructureDefinition/sdc-questionnaire"/>
+    </resource>
+    <resource>
+      <reference>
         <reference value="Bundle/questionnaire-sdc-profile-example-ussg-fht"/>
       </reference>
       <name value="SDC-LOINC USSG Family History"/>
@@ -568,8 +576,16 @@
       <reference>
         <reference value="QuestionnaireResponse/questionnaireresponse-sdc-profile-example"/>
       </reference>
-      <name value="SDC - Response to Diagnosis NCI Standard Template"/>
-      <description value="Responses to the questionnaire found in the SDC - Combination list of questionnaires"/>
+      <name value="SDC-Response to Diagnosis NCI Standard Template"/>
+      <description value="Example responses to the questionnaire found in the SDC - Combination list of questionnaires"/>
+      <exampleCanonical value="http://hl7.org/fhir/uv/sdc/StructureDefinition/sdc-questionnaireresponse"/>
+    </resource>
+    <resource>
+      <reference>
+        <reference value="QuestionnaireResponse/questionnaireresponse-sdc-profile-example-PHQ9"/>
+      </reference>
+      <name value="SDC-PHQ9 Response"/>
+      <description value="Example response to the SDC-PHQ9 questionnaire"/>
       <exampleCanonical value="http://hl7.org/fhir/uv/sdc/StructureDefinition/sdc-questionnaireresponse"/>
     </resource>
     <resource>
@@ -579,6 +595,14 @@
       <name value="SDC-LOINC USSG Family History Response"/>
       <description value="Example response to the SDC-LOINC USSG Family History questionnaire"/>
       <exampleCanonical value="http://hl7.org/fhir/uv/sdc/StructureDefinition/sdc-questionnaireresponse"/>
+    </resource>
+    <resource>
+      <reference>
+        <reference value="CodeSystem/CSPHQ9"/>
+      </reference>
+      <name value="SDC-CodeSystem PHQ9"/>
+      <description value="The answer list for questions 1 through 9 on the Patient Health Questionnaire (9 item) form"/>
+      <exampleCanonical value="http://hl7.org/fhir/uv/sdc/StructureDefinition/sdc-codesystem"/>
     </resource>
     <resource>
       <reference>
@@ -672,5 +696,17 @@
         <generation value="html"/>
       </page>
     </page>
+    <parameter>
+      <code value="copyrightyear"/>
+      <value value="2019+"/>
+    </parameter>
+    <parameter>
+      <code value="releaselabel"/>
+      <value value="CI Build"/>
+    </parameter>
+    <parameter>
+      <code value="find-other-resources"/>
+      <value value="true"/>
+    </parameter>
   </definition>
 </ImplementationGuide>
