@@ -1,0 +1,580 @@
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+	<head>
+		<meta content="text/html;charset=utf-8" http-equiv="Content-Type"/>
+		<title>Advanced Form Behavior Demonstration</title>
+		<style>
+.question {
+	border: solid black 1px;
+  padding-top: 10px;
+  padding-right: 1px;
+  padding-bottom: 10px;
+  padding-left: 5px;
+  width: 500px;
+  }
+.example {
+  padding-top: 10px;
+  padding-bottom: 10px;
+  }
+.xml {
+  font-size: 10px; 
+  }
+  
+.tabs {
+  position: relative;   
+  min-height: 210px; /* This part sucks */
+  clear: both;
+  margin: 35px 0 25px;
+  background: white;
+}
+.tab {
+  float: left;
+   
+}
+.tab label {
+  background: #eee; 
+  padding: 10px; 
+  border: 1px solid #ccc; 
+  margin-left: -1px; 
+  position: relative;
+  left: 1px; 
+  top: -29px;
+  -webkit-transition: background-color .17s linear;
+}
+.tab [type=radio] {
+  display: none;   
+}
+.content {
+  position: absolute;
+  top: -1px;
+  left: 0;
+  background: white;
+  right: 0;
+  bottom: 0;
+  padding: 20px;
+  border: 1px solid #ccc; 
+  -webkit-transition: opacity .6s linear;
+  opacity: 0;
+}
+[type=radio]:checked ~ label {
+  background: white;
+  border-bottom: 1px solid white;
+  z-index: 2;
+}
+[type=radio]:checked ~ label ~ .content {
+  z-index: 1;
+  opacity: 1;
+}
+  
+		</style>
+	</head>
+	<body>
+		<div id="questionnaire-title">
+			<h1>Advanced Form Behavior Demonstration</h1>
+		</div>
+		<div id="linkitem-1.0" class="group">		
+			<div id="questionnaire-group-title">
+				<h2>Value Constraint Examples</h2>
+			</div>
+			
+			
+Example 1.1 Restrict an answer to only have 50 characters (using 'maxLength')<br/><br/>			
+<div class="tabs">
+    
+   <div class="tab">
+       <input type="radio" id="tab-1" name="tab-group-1" checked>
+       <label for="tab-1">Sample Question</label>
+       
+       <div class="content">
+           <p>First Name <input id="linkitem-1.1-input" type="text" maxlength="50" size="50"/></p>
+       </div> 
+   </div>
+    
+   <div class="tab">
+       <input type="radio" id="tab-2" name="tab-group-1">
+       <label for="tab-2">XML</label>
+       
+       <div class="content">
+<textarea rows="8" cols="100" style="border:none" class="xml">
+<item>
+	<linkId value="1.1.b" />
+	<text value="First Name" />
+	<type value="string" />
+	<!-- restricts maximum length allowed for answer -->
+	<maxLength value="50" />
+</item>
+</textarea>
+       </div> 
+   </div>
+    
+    <div class="tab">
+       <input type="radio" id="tab-3" name="tab-group-1">
+       <label for="tab-3">JSON</label>
+     
+       <div class="content">
+<textarea rows="10" cols="100" style="border:none" class="xml">       
+"item": [
+  {
+    "linkId": 1.1.b,
+    "type": "string",
+    "text": "First Name",
+    "maxLength": 50    
+  }
+]        
+</textarea>  
+       </div> 
+   </div>
+    
+</div>
+
+Example 1.2 Restrict an answer to have at least 2 characters (using 'minLength')<br/><br/>
+<div class="tabs">
+    
+   <div class="tab">
+       <input type="radio" id="tab-4" name="tab-group-2" checked>
+       <label for="tab-4">Sample Question</label>
+       
+       <div class="content">
+           <p>Last Name <input id="linkitem-1.2-input" type="text" minlength="2"/></p>
+       </div> 
+   </div>
+    
+   <div class="tab">
+       <input type="radio" id="tab-5" name="tab-group-2">
+       <label for="tab-5">XML</label>
+       
+       <div class="content">
+<textarea rows="15" cols="100" style="border:none" class="xml">
+<item>
+	<!-- restricts minimum length allowed for answer -->
+	<extension url="http://hl7.org/fhir/StructureDefinition/minLength">
+		<valueInteger value="2" />
+	</extension>
+	<linkId value="1.2.b" />
+	<text value="Last Name" />
+	<type value="string" />
+</item>
+</textarea>
+       </div> 
+   </div>
+    
+    <div class="tab">
+       <input type="radio" id="tab-6" name="tab-group-2">
+       <label for="tab-6">JSON</label>
+     
+       <div class="content">
+<textarea rows="15" cols="100" style="border:none" class="xml">       
+"item": [
+  {
+	"extension": [
+            {
+              "url": "http://hl7.org/fhir/StructureDefinition/minLength",
+              "valueInteger": 2
+            }
+          ]
+	"linkId": 1.2.b,
+    "type": "string",
+    "text": "Last Name",
+  }
+]        
+</textarea>  
+       </div> 
+   </div>
+    
+</div>
+	
+			<div id="linkitem-1.1" class="example">
+					Example 1.1 Restrict an answer to only have 50 characters (using 'maxLength')<br/><br/>
+					<div class="question">First Name <input id="linkitem-1.1-input" type="text" maxlength="50" size="50"/></div>
+				<button onclick="myFunction()">Show questionnaire item</button>
+
+<div id="myDIV" style="display: none">
+<textarea rows="20" cols="100" style="border:solid 1px;background-color:powderblue">
+<item>
+	<linkId value="1.1.b" />
+	<text value="First Name" />
+	<type value="string" />
+	<!-- restricts maximum length allowed for answer -->
+	<maxLength value="50" />
+</item>
+</textarea>
+</div>					
+			</div>		
+			<div id="linkitem-1.2" class="example">
+					Example 1.2 Restrict an answer to have at least 2 characters (using 'minLength')<br/><br/>
+					<div class="question">Last Name <input id="linkitem-1.2-input" type="text" minlength="2"/></div>
+<button onclick="myFunction2()">Show questionnaire item</button>
+
+<div id="myDIV2" style="display: none">
+<textarea rows="10" cols="100" style="border:solid 1px;background-color:powderblue">
+<item>
+	<!-- restricts minimum length allowed for answer -->
+	<extension url="http://hl7.org/fhir/StructureDefinition/minLength">
+		<valueInteger value="2" />
+	</extension>
+	<linkId value="1.2.b" />
+	<text value="Last Name" />
+	<type value="string" />
+</item>
+</textarea>
+</div>
+			</div>
+			<div id="linkitem-1.3" class="example">
+					Example 1.3 Restrict an answer to range from 1 to 100, up to 2 decimal places (using 'minValue', 'maxValue' and 'maxDecimalPlaces')<br/><br/>
+					<div class="question">Weight in kg <input id="linkitem-1.3-input" type="text"/></div>
+<button onclick="myFunction3()">Show questionnaire item</button>					
+<div id="myDIV3" style="display: none">
+<textarea rows="20" cols="100" style="border:solid 1px;background-color:powderblue">
+<item>
+	<!-- item/minValue - minimum value allowed for answer -->
+	<extension url="http://hl7.org/fhir/StructureDefinition/minValue">
+		<valueDecimal value="1" />
+	</extension>
+	<!-- item/maxValue - maximum value allowed for answer -->
+	<extension url="http://hl7.org/fhir/StructureDefinition/maxValue">
+		<valueDecimal value="100" />
+	</extension>
+	<!-- item/maxDecimalPlaces - maximum number of decimal places allowed for answer-->
+	<extension url="http://hl7.org/fhir/StructureDefinition/maxDecimalPlaces">
+		<valueInteger value="2" />
+	</extension>
+	<linkId value="1.3.b" />
+	<text value="Weight in kg" />
+	<type value="decimal" />
+</item>
+</textarea>
+</div>
+			</div>
+			<div id="linkitem-1.4" class="example">
+					Example 1.4 Only allow an answer in this format: A1A 1A1 (using 'regex') <br/><br/>
+					<div class="question">Postal Code (A1A 1A1)<input id="linkitem-1.4-input" type="text"/></div>
+<button onclick="myFunction4()">Show questionnaire item</button>					
+<div id="myDIV4" style="display: none">
+<textarea rows="10" cols="100" style="border:solid 1px;background-color:powderblue">
+<item>
+	<!-- item/regex - regular expression that defines the syntax for the data element to be considered valid -->
+	<extension url="http://hl7.org/fhir/StructureDefinition/regex">
+		<valueString value="ANA NAN" />
+	</extension>
+	<linkId value="1.4.b" />
+	<text value="Postal Code (A1A 1A1)" />
+	<type value="string" />
+</item>
+</textarea>
+</div>
+			</div>
+			<div id="linkitem-1.4" class="example">
+				  	Example 1.5 Only allow a JPG or PDF attachment, up to 1Mb (using 'mimeType' and 'maxSize')<br/><br/>
+	  			    <div class="question">Attach Proof of Citizenship <input type="file" id="linkitem-1.4-input" name="filename"><input type="submit"></div>
+<button onclick="myFunction5()">Show questionnaire item</button>				    
+<div id="myDIV5" style="display: none">
+<textarea rows="20" cols="100" style="border:solid 1px;background-color:powderblue">
+<item>
+	<!-- item/mimeType - restrict attachments to only allow jpg and pdf types-->
+	<extension url="http://hl7.org/fhir/StructureDefinition/mimeType">
+		<valueCode value="image/jpeg" /> 
+	</extension>
+	<extension url="http://hl7.org/fhir/StructureDefinition/mimeType">
+		<valueCode value="application/pdf" /> 
+	</extension>
+	<!-- item/maxSize - allowed maximum size of an attachment in bytes-->
+	<extension url="http://hl7.org/fhir/StructureDefinition/maxSize">
+		<valueDecimal value="1" /> 
+	</extension>              
+	<linkId value="1.5.b" />
+	<text value="Attach Proof of Citizenship" />
+	<type value="attachment" />
+</item>
+</textarea>
+</div>
+			</div>			
+		</div>
+		<div id="linkitem-2.0" class="group">		
+			<div id="questionnaire-group-title">
+				<h2>Choice Restriction Examples</h2>
+			</div>	
+			<div id="linkitem-2.1" class="string">
+				<form action="http://hl7.org/fhir/">
+					Example 2.1 Restrict choices from a fixed list (using 'answerOptions')<br/><br/>
+					Province
+					<select id="linkitem-2.1-option" name="province">
+					  <option value="Alberta">Alberta</option>					
+					  <option value="BC">British Columbia</option>
+					  <option value="Manitoba">Manitoba</option>
+					  <option value="NewBrunswick">New Brunswick</option>
+					  <option value="NewfoundlandAndLabrador">Newfoundland and Labrador</option>
+					  <option value="NovaScotia">Nova Scotia</option>  
+					  <option value="Ontario">Ontario</option>  					  
+					  <option value="PrinceEdwardIsland">Prince Edward Island</option>  					  
+					  <option value="Quebec">Quebec</option>
+					  <option value="Saskatchewan">Saskatchewan</option>  					  					  					  
+					</select>
+				</form>
+			</div>				
+			<div id="linkitem-2.2" class="string">
+				<form action="http://hl7.org/fhir/">
+					Example 2.2 Restrict choices from a value set (using 'answerValueSet')<br/><br/>
+					Activity Level
+					<select id="linkitem-2.2-option" name="activity">
+					  <option value="LA10044-8">Often</option>
+					  <option value="LA10066-1">Rarely</option>
+					  <option value="LA10082-8">Sometimes</option>
+					  <option value="LA6270-8">Never</option>
+					  <option value="LA9933-8">Always</option>				  
+					</select>
+				</form>
+			</div>	
+
+			<div id="linkitem-2.3" class="string">
+				<form action="http://hl7.org/fhir/">
+					Example 2.3 Require an answer (using 'required')<br/><br/>
+					Email*<input id="linkitem-2.3-input" type="text"/>
+				</form>
+			</div>
+			<div id="linkitem-2.4" class="string">
+				<form action="http://hl7.org/fhir/">
+					Example 2.4 Pre-populated answer that is for display only, non-editable (using 'readOnly') <br/><br/>
+					Current Date: <input id="linkitem-2.4-input" type="text" value="05/05/2020" disabled></input>
+				</form>
+			</div>										
+			<div id="linkitem-2.5" class="string">
+				<form action="http://hl7.org/fhir/">
+					Example 2.5 Multiple answers allowed, no limit (using 'repeats')<br/><br/>
+					Heart History (check all that applies):<br/>
+					<input type="checkbox" name="heart_history" value="heartAttack"  />Heart attack<br />
+					<input type="checkbox" name="heart_history" value="heartSurgery"  />Heart surgery<br /> 
+					<input type="checkbox" name="heart_history" value="cardiac"  />Cardiac catheterization<br /> 
+					<input type="checkbox" name="heart_history" value="angioplasty"  />Coronary angioplasty (PTCA)<br />
+					<input type="checkbox" name="heart_history" value="pacemaker"  />Cardiac pacemaker<br />
+					<input type="checkbox" name="heart_history" value="other"  />Other (specify): <input id="linkitem-2.5-input" type="text"/>
+				</form>
+			</div>
+			<div id="linkitem-2.6" class="string">
+				<form action="http://hl7.org/fhir/">
+					Example 2.6 Must have at least to 2 answers (using 'minOccurs')<br/><br/>
+					Heart History (check at least 2):<br/>
+					<input type="checkbox" name="heart_history" value="heartAttack"  />Heart attack<br />
+					<input type="checkbox" name="heart_history" value="heartSurgery"  />Heart surgery<br /> 
+					<input type="checkbox" name="heart_history" value="cardiac"  />Cardiac catheterization<br /> 
+					<input type="checkbox" name="heart_history" value="angioplasty"  />Coronary angioplasty (PTCA)<br />
+					<input type="checkbox" name="heart_history" value="pacemaker"  />Cardiac pacemaker<br />
+				</form>
+			</div>
+			<div id="linkitem-2.7" class="string">
+				<form action="http://hl7.org/fhir/">
+					Example 2.7 Can only have up to 3 answers (using 'maxOccurs) <br/><br/>
+					Heart History (check no more than 3):<br/>
+					<input type="checkbox" name="heart_history" value="heartAttack"  />Heart attack<br />
+					<input type="checkbox" name="heart_history" value="heartSurgery"  />Heart surgery<br /> 
+					<input type="checkbox" name="heart_history" value="cardiac"  />Cardiac catheterization<br /> 
+					<input type="checkbox" name="heart_history" value="angioplasty"  />Coronary angioplasty (PTCA)<br />
+					<input type="checkbox" name="heart_history" value="pacemaker"  />Cardiac pacemaker<br />
+				</form>
+			</div>
+			<div id="linkitem-2.8" class="string">
+				<form action="http://hl7.org/fhir/">
+					Example 2.8 Restrict unit choices using unit options (using 'unitOption') <br/><br/>
+					Dosage <input id="linkitem-2.8-input" type="text"/>
+					<select id="linkitem-2.8-option" name="activity">
+					  <option value="Level0">ml</option>
+					  <option value="Level1">liters</option>
+					  <option value="Level2">mg</option>
+					  <option value="Level3">grams</option>
+					  <option value="Level4">kilo</option>  
+					</select>
+				</form>
+			</div>
+			<div id="linkitem-2.9" class="string">
+				<form action="http://hl7.org/fhir/">
+					Example 2.9 Restrict unit choices from a value set (using 'unitValueSet') <br/><br/>
+					Dosage <input id="linkitem-2.9-input" type="text"/> 
+					<select id="linkitem-2.9-option" name="activity">
+					  <option value="Level0">ml</option>
+					  <option value="Level1">liters</option>
+					  <option value="Level2">mg</option>
+					  <option value="Level3">grams</option>
+					  <option value="Level4">kilo</option>  
+					</select>
+				</form>
+			</div>
+			<div id="linkitem-2.10" class="string">
+				<form action="http://hl7.org/fhir/">
+					Example 2.10 Only allow a service animal resource as an answer (using 'referenceResource', 'referenceProfile' and 'lookupQuestionnaire')<br/><br/>
+					Select your preferred service animal:
+					<select id="linkitem-2.10-option" name="activity">
+					  <option value="Level0">Lassie</option>
+					  <option value="Level1">St. Peters</option>
+					  <option value="Level2">Coco</option>
+					</select>
+				</form>
+			</div>													
+		</div>
+		<div id="linkitem-3.0" class="group">		
+			<div id="questionnaire-title">
+				<h2>Calculation Examples</h2>
+			</div>
+			<div id="linkitem-3.1" class="string">
+				<form action="http://hl7.org/fhir/">
+					Example 3.1 An answer with an initial value as determined by an evaluated expression (using 'initialExpression') <br/><br/>
+					Deadline for submission (7 days from now) <input id="linkitem-3.1-input" type="text" value="05/05/2020" disabled></input>					
+				</form>
+			</div>
+			<div id="linkitem-3.2" class="string">
+				<form action="http://hl7.org/fhir/">
+					Example 3.2 An answer with a calculated value as determined by an evaluated expression (using 'calculatedExpression', 'variable', 'launchContext') <br/><br/>
+					Weight (kg) <input id="linkitem-3.2.1-input" type="text"/><br/>
+					Body Height (inches)<input id="linkitem-3.2.2-input" type="text"/><br/>
+					Your Body Mass Index (BMI) is <input id="linkitem-3.2.3-input" type="text" disabled></input>					 
+				</form>
+			</div>
+			<div id="linkitem-3.3" class="string">
+				<form action="http://hl7.org/fhir/">
+					Example 3.3 An answer with a calculated value based on an expression in a referenced library (using 'cqf-calculatedValue' and 'cqf-library') <br/><br/>
+					Estimated Due Date <input id="linkitem-3.3-input" type="text" value="07/07/2020" disabled></input>
+				</form>
+			</div>									
+		</div>
+		<div id="linkitem-4.0" class="group">		
+			<div id="questionnaire-title">
+				<h2>Other Controls</h2>
+			</div>
+			<div id="linkitem-4.1" class="choice">
+				<form action="http://hl7.org/fhir/">
+					Example 4.1 Example of options with initial value (using initial) <br/><br/>
+					Marital Status				
+					<select id="gender" name="genderOptions">
+					  <option value="male selected">Single</option>
+					  <option value="female">Married</option>
+					  <option value="other" selected>Divorced</option>
+					  <option value="unknown">Widowed</option>
+					</select>
+				</form>
+			</div>
+			<div id="linkitem-4.2" class="choice">
+				<form action="http://hl7.org/fhir/">
+					Example 4.2 Example of enabling behaviors (using 'enableWhen', 'enableBehavior', and 'enableExpression') <br/><br/>
+
+					Choose Gender		
+					<select id="linkitem-4.2.1" name="genderOptions">
+					  <option value="male">Male</option>
+					  <option value="female" selected>Female</option>
+					  <option value="other">Other</option>
+					  <option value="unknown">Unknown</option>
+					</select>
+					<br/>
+					Are you pregnant? (enableWhen = gender is Female)<br/>
+					<input type="radio" id="male" name="gender" value="male">
+					<label for="male">Yes</label><br>
+					<input type="radio" id="female" name="gender" value="female">
+					<label for="female">No</label><br>
+					<input type="radio" id="other" name="gender" value="other">
+					<label for="other">Don't know</label><br/>
+					Are you diabetic? (enableWhen = gender is Female)<br/>
+					<input type="radio" id="male" name="gender" value="male">
+					<label for="male">Yes</label><br>
+					<input type="radio" id="female" name="gender" value="female">
+					<label for="female">No</label><br>
+					<input type="radio" id="other" name="gender" value="other">
+					<label for="other">Don't know</label><br/>
+					Have you been diagnosed with Gestational Diabetes? (enableBehavior = only when pregnant and diabetic)<br/>
+					<input type="radio" id="male" name="gender" value="male">
+					<label for="male">Yes</label><br>
+					<input type="radio" id="female" name="gender" value="female">
+					<label for="female">No</label><br>
+					<input type="radio" id="other" name="gender" value="other">
+					<label for="other">Don't know</label><br/><br/>
+					Enter your birthdate (MM/DD/YYYY)
+					<input id="linkitem-2.2-input" type="text"></input><br/> 
+					Have you had mammogram before?(enableWhenExpression = only when gender is female and age > 40)<br/>
+					<input type="radio" id="male" name="gender" value="male">
+					<label for="male">Yes</label><br>
+					<input type="radio" id="female" name="gender" value="female">
+					<label for="female">No</label><br/>
+					<input type="radio" id="other" name="gender" value="other">
+					<label for="other">Don't know</label><br/><br/>
+				</form>				
+			</div>
+			<div id="linkitem-4.3" class="choice">
+				Example 4.3 Example involving ordinal value and contraints (using 'ordinalValue' and 'constraint')<br/><br/>
+				You should answer at least three questions.<br/><br/>
+				Over the last 2 weeks, how often have you been bothered by any of the following problems?<br/><br/>
+				1. Little interest or pleasure in doing things <br/>
+					<input type="radio" id="1.0" name="q1" value="male">Not at all (0)
+					<input type="radio" id="1.1" name="q1" value="female">Several Days (1)
+					<input type="radio" id="1.2" name="q1" value="other">More than half the days (2)
+					<input type="radio" id="1.3" name="q1" value="other">Nearly every day (3)<br/><br/>
+				2. Feeling down, depressed, or hopeless <br/>
+					<input type="radio" id="1.0" name="q1" value="male">Not at all (0)
+					<input type="radio" id="1.1" name="q1" value="female">Several Days (1)
+					<input type="radio" id="1.2" name="q1" value="other">More than half the days (2)
+					<input type="radio" id="1.3" name="q1" value="other">Nearly every day (3)<br/><br/>
+				3. Trouble falling or staying asleep, or sleeping too much <br/>
+					<input type="radio" id="1.0" name="q1" value="male">Not at all (0)
+					<input type="radio" id="1.1" name="q1" value="female">Several Days (1)
+					<input type="radio" id="1.2" name="q1" value="other">More than half the days (2)
+					<input type="radio" id="1.3" name="q1" value="other">Nearly every day (3)<br/><br/>
+				4. Feeling tired or having little energy <br/>
+					<input type="radio" id="1.0" name="q1" value="male">Not at all (0)
+					<input type="radio" id="1.1" name="q1" value="female">Several Days (1)
+					<input type="radio" id="1.2" name="q1" value="other">More than half the days (2)
+					<input type="radio" id="1.3" name="q1" value="other">Nearly every day (3)<br/><br/>					
+				Total Score: 0<br/><br/><br/>
+			</div>
+			<div id="linkitem-4.4" class="attachment">
+				Example 4.4 Example of signature required (using 'signatureRequired' and 'usageMode')<br/><br/>
+				Signature of Patient: [only show signature pad when capturing data]<br/><br/>
+			</div>
+			<div id="linkitem-4.5" class="string">
+				Example 4.5 Questionnaire can have an endpoint URL for the Form Receiver when it is completed (using 'endPoint') <br/><br/>
+			</div>
+			<div id="linkitem-4.6" class="string">
+				Example 4.6 Questionnaire can be setup to have all enabled questions to be visible and accessible to the user (using 'entryMode') <br/><br/>
+			</div>			
+ 		</div>		
+ 	
+ 	<script>	
+	function myFunction() {
+	  var x = document.getElementById("myDIV");
+	  if (x.style.display === "none") {
+		x.style.display = "block";
+	  } else {
+		x.style.display = "none";
+	  }
+	}
+	function myFunction2() {
+	  var x = document.getElementById("myDIV2");
+	  if (x.style.display === "none") {
+		x.style.display = "block";
+	  } else {
+		x.style.display = "none";
+	  }
+	}
+	function myFunction3() {
+	  var x = document.getElementById("myDIV3");
+	  if (x.style.display === "none") {
+		x.style.display = "block";
+	  } else {
+		x.style.display = "none";
+	  }
+	}
+	function myFunction4() {
+	  var x = document.getElementById("myDIV4");
+	  if (x.style.display === "none") {
+		x.style.display = "block";
+	  } else {
+		x.style.display = "none";
+	  }
+	}	
+	function myFunction5() {
+	  var x = document.getElementById("myDIV5");
+	  if (x.style.display === "none") {
+		x.style.display = "block";
+	  } else {
+		x.style.display = "none";
+	  }
+	}	
+	
+	</script>
+<script>
+	</body>
+</html>
+
