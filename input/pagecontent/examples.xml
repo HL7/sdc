@@ -1,0 +1,162 @@
+<div xmlns="http://www.w3.org/1999/xhtml" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://hl7.org/fhir ../../src-generated/schemas/fhir-single.xsd">
+<style>
+.question {
+  border: solid black 1px;
+  padding-top: 10px;
+  padding-right: 1px;
+  padding-bottom: 10px;
+  padding-left: 5px;
+  width: 500px;
+  }
+.example {
+  padding-top: 10px;
+  padding-bottom: 10px;
+  }
+.xml {
+  font-size: 10px; 
+  line-height: normal;
+  }
+  
+.tabs {
+  position: relative;   
+  min-height: 210px; /* This part sucks */
+  clear: both;
+  margin: 35px 0 25px;
+  background: white;
+}
+.tab {
+  float: left;
+   
+}
+.tab label {
+  background: #eee; 
+  padding: 10px; 
+  border: 1px solid #ccc; 
+  margin-left: -1px; 
+  position: relative;
+  left: 1px; 
+  top: -29px;
+  -webkit-transition: background-color .17s linear;
+}
+.tab [type=radio] {
+  display: none;   
+}
+.content-in-tab {
+  position: absolute;
+  top: 12px;
+  left: 0;
+  background: white;
+  right: 0;
+  bottom: 0;
+  padding: 20px;
+  border: 1px solid #ccc; 
+  -webkit-transition: opacity .6s linear;
+  opacity: 0;
+}
+[type=radio]:checked ~ label {
+  background: white;
+  border-bottom: 1px solid white;
+  z-index: 2;
+}
+[type=radio]:checked ~ label ~ .content-in-tab {
+  z-index: 1;
+  opacity: 1;
+}
+textarea{
+    height: 100%;
+    width: 100%;
+   -webkit-box-sizing: border-box; /* Safari/Chrome, other WebKit */
+  -moz-box-sizing: border-box;    /* Firefox, other Gecko */
+  box-sizing: border-box;         /* Opera/IE 8+ */
+}
+</style>
+Example 1. Restrict an answer to only have 50 characters (using 'maxLength')<br/>
+<div class="tabs">
+  <div class="tab">
+    <input type="radio" id="tab-1" name="tab-group-1" checked="true"></input>
+    <label for="tab-1">Sample Question</label>
+    <div class="content-in-tab">
+      <p>Enter your First Name <input id="linkitem-1.1-input" type="text" maxlength="50" size="50"/></p>
+    </div> 
+  </div>
+  <div class="tab">
+    <input type="radio" id="tab-2" name="tab-group-1"></input>
+    <label for="tab-2">JSON</label>
+    <div class="content-in-tab">
+      <textarea style="border:none" class="xml">
+        "item": [
+          {
+            "linkId": "1"
+            "type": "string",
+            "text": "Enter your First Name",
+            "maxLength": 50    
+          }
+        ]
+      </textarea>
+    </div> 
+  </div>
+  <div class="tab">
+    <input type="radio" id="tab-3" name="tab-group-1"></input>
+    <label for="tab-3">XML</label>
+    <div class="content-in-tab">
+      <textarea style="border:none" class="xml">
+        <item>
+          <linkId value="1.1.b" />
+          <text value="First Name" />
+          <type value="string" />
+          <!-- restricts maximum length allowed for answer -->
+          <maxLength value="50" />
+        </item>
+      </textarea>
+    </div> 
+   </div>
+  </div>
+Example 2. Restrict an answer to have at least 2 characters (using 'minLength')<br/>
+<div class="tabs">
+  <div class="tab">
+    <input type="radio" id="tab-4" name="tab-group-2" checked="true"></input>
+    <label for="tab-4">Sample Question</label>
+    <div class="content-in-tab">
+      <p>Enter your Last Name <input id="linkitem-1.2-input" type="text" minlength="2"/></p>
+    </div> 
+  </div>
+  <div class="tab">
+    <input type="radio" id="tab-5" name="tab-group-2"></input>
+    <label for="tab-5">JSON</label>
+    <div class="content-in-tab">
+      <textarea style="border:none" class="xml">
+        "item": [
+          {
+            "extension": [
+              {
+                "url": "http://hl7.org/fhir/StructureDefinition/minLength",
+                "valueInteger": 2
+              }
+            ]
+            "linkId": "2",
+            "type": "string",
+            "text": "Enter your Last Name",
+          }
+        ]
+      </textarea>
+    </div> 
+  </div>
+  <div class="tab">
+    <input type="radio" id="tab-6" name="tab-group-2"></input>
+    <label for="tab-6">XML</label>
+    <div class="content-in-tab">
+      <textarea style="border:none" class="xml">
+        <item>
+            <!-- restricts minimum length allowed for answer -->
+            <extension url="http://hl7.org/fhir/StructureDefinition/minLength">
+                <valueInteger value="2" />
+            </extension>
+            <linkId value="1.2.b" />
+            <text value="Last Name" />
+            <type value="string" />
+        </item>
+      </textarea>
+    </div> 
+   </div>
+  </div>
+</div>
