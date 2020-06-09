@@ -1,13 +1,12 @@
 <div xmlns="http://www.w3.org/1999/xhtml" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://hl7.org/fhir ../../src-generated/schemas/fhir-single.xsd">
   <p>
-    Simple questionnaires only need simple behavior.  The order of the questions is fixed, all of them get displayed and the only controls that need to be
-    specified are what the types of the questions are, whether a group or the answers to a question repeats, and whether a group or a question must be
-    answered.  However, for more sophisticated forms, there may be a need to set default answers, to enforce rules around the allowed answers (such as length,
-    size, types of references), and/or to make the behavior of the questionnaire dynamic based on previous answers.  The FHIR specification provides core
-    elements that allow some of these things, and common extensions for others.  This implementation guide supplements the core FHIR specification with additional extensions.
-    It also defines the <a href="sdc-questionnaire-behave.html">sdc-questionnaire-behave</a> profile to highlight what extensions are available and where they are
-    intended to be used.  It also identifies specific 'must support' extensions that systems that claim to support SDC rendering SHALL be capable of authoring
-    and/or rendering, as befits the CapabilityStatement(s) they claim conformance to.
+    Simple questionnaires only need simple behavior.  All questions get displayed in order.  The only 'behavior' defined in the questionnaire is whether a given 
+	question must be answered and whether multiple answers are permitted or not.  However, for more sophisticated forms, there may be a need to set default answers, 
+	to enforce rules around the allowed answers (such as length, size, types of references), and/or to make the behavior of the questionnaire dynamic based on 
+	previous answers.  The FHIR specification provides core elements that allow some of these things, and common extensions for others.  This implementation guide 
+	supplements the core FHIR specification with additional extensions.  It also defines the <a href="StructureDefinition-sdc-questionnaire-behave.html">sdc-questionnaire-behave</a> 
+	profile to highlight what extensions are available and where they are intended to be used.  It also identifies specific 'must support' extensions that systems 
+	that claim to support SDC rendering SHALL be capable of authoring and/or rendering, as befits the CapabilityStatement(s) they claim conformance to.
   </p>
   <a name="elements"> </a>
   <h3>Element and  Overview</h3>
@@ -132,11 +131,11 @@
       <tr>
         <td colspan="4">
           <p>
-            This extension is used for questions with simple quantitative types.  It does not currently support the Quantity data type.  The extension allows
-            establishing the lower bound for an answer.  For example, ensuring that birth dates are >= 1990-01-01 or an integer is greater than or equal to 0.
-            (Note that the integer and decimal types both allow negative numbers if not constrained.)  This extension can be used together with the
-            <a href="#cqf-calculatedValue">cqf-calculatedValue</a> extension to establish a dynamic limit.  For example, ensuring that a date of birth
-            will result in a maximum age by setting minValue with an expression of 'today() - 18 years'.
+            This extension is used for questions with simple quantitative types.  The extension allows establishing the lower bound for an answer.  
+			For example, ensuring that birth dates are >= 1990-01-01 or an integer is greater than or equal to 0.  (Note that the integer and decimal 
+			types both allow negative numbers if not constrained.)  This extension can be used together with the <a href="#cqf-calculatedValue">cqf-calculatedValue</a> 
+			extension to establish a dynamic limit.  For example, ensuring that a date of birth will result in a maximum age by setting minValue with 
+			an expression of 'today() - 18 years'.
           </p>
           <p>
             The minValue SHALL be less than or equal to the <a href="#maxValue">maxValue</a>, if both are specified. If min and/or max are calculated values,
@@ -158,11 +157,10 @@
       <tr>
         <td colspan="4">
           <p>
-            This extension is used for questions with simple quantitative types.  It does not currently support the Quantity data type.  The extension allows
-            establishing the upper bound for an answer.  For example, ensuring that birth dates are >= 1990-01-01 or an integer is greater than or equal to 0.
-            (Note that the integer and decimal types both allow negative numbers if not constrained.)  This extension can be used together with the
-            <a href="#cqf-calculatedValue">cqf-calculatedValue</a> extension to establish a dynamic limit.  For example, ensuring that a date of birth
-            will result in a minimum age by setting maxValue with an expression of 'today() - 18 years'.
+            This extension is used for questions with simple quantitative types.  The extension allows establishing the upper bound for an answer.  For example, 
+			ensuring that birth dates are >= 1990-01-01 or an integer is greater than or equal to 0.  (Note that the integer and decimal types both allow negative 
+			numbers if not constrained.)  This extension can be used together with the <a href="#cqf-calculatedValue">cqf-calculatedValue</a> extension to establish
+			a dynamic limit.  For example, ensuring that a date of birth will result in a minimum age by setting maxValue with an expression of 'today() - 18 years'.
           </p>
           <p>
             The minValue SHALL be less than or equal to the <a href="#maxValue">maxValue</a>, if both are specified. If min and/or max are calculated values,
@@ -806,10 +804,10 @@
           <p>
             This serves the same purpose as <a href="#enableWhen">enableWhen</a> (and is mutually exclusive with it).  It controls whether an item should be
             'enabled' or not, but can handle more sophisticated circumstances than that extension.  (If enableWhen can meet the need, it should be used
-            instead as it will be more broadly supported.)  Specifically, enableWhenExpression allows more complex logic such as a mixture of 'and' and 'or' relationships
-            amongst conditions (e.g. "Enable if Q1=5 and either Q2 or Q3 are true").  It also allows for logic to be based on calculations across questions
-            (possibly leveraging <a href="#variable">variable</a>) or even based on values passed in by <a href="#launchContext">launchContext</a> or
-            queried from outside the questionnaire (see <a href="expressions.html">Using Expressions</a>.
+            instead as it will be more broadly supported.)  Specifically, enableWhenExpression allows more complex logic such as support for different types of logic operators 
+			(e.g. 'and', 'or', 'not', 'nand', 'nor') among conditions and a mixture of them (e.g. "Enable if Q1=5 and Q2 nand Q3 are true").  It also allows for logic 
+			to be based on calculations across questions (possibly leveraging <a href="#variable">variable</a>) or even based on values passed in by 
+			<a href="#launchContext">launchContext</a> or queried from outside the questionnaire (see <a href="expressions.html">Using Expressions</a>).
           </p>
         </td>
       </tr>
@@ -840,7 +838,7 @@
           <a href="{{site.data.fhir.path}}extension-questionnaire-constraint.html">constraint</a>
         </td>
         <td>Questionnaire</td>
-        <td>item</td>
+        <td>Questionnaire, item</td>
         <td>complex</td>
       </tr>
       <tr>
@@ -913,11 +911,10 @@
       </tr>
     </tbody>
   </table>
-  <a name="example"> </a>
+<!--  <a name="example"> </a>
   <h3>Example</h3>
   <p>
-    This implementation guide includes an <a href="Questionnaire-questionnaire-sdc-profile-example-form-behavior.html">example questionnaire</a> with a corresponding
-    <a href="questionnaire-sdc-profile-example-form-behavior.pdf">companion PDF</a> that show how the elements above are intended to be used and describes
+    This implementation guide includes an <a href="todo.html">example questionnaire</a> that show how the elements above are intended to be used and describes
     the constraints and behavior that would apply for each question and group.
-  </p>
+  </p>-->
 </div>
