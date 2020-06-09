@@ -9,7 +9,7 @@
     For many questionnaires, that's good enough.  However, for some types of forms, there's a need for the author to have greater control.  The core
     specification defines a few core elements and several extensions for this purpose - both questionnaire-specific as well as general-purpose that can
     appear in other places as well.   This implementation guide defines several more.  In addition, this guide defines the
-    <a href="sdc-questionnaire-render.html">sdc-questionnaire-render</a> profile which highlights what extensions are available and where they are intended
+    <a href="StructureDefinition-sdc-questionnaire-render.html">sdc-questionnaire-render</a> profile which highlights what extensions are available and where they are intended
     to be used.  It also identifies specific 'must support' extensions that systems that claim to support SDC rendering SHALL be capable of authoring and/or
     rendering, as befits the CapabilityStatement(s) they claim conformance to.
   </p>
@@ -62,15 +62,15 @@
           <a href="{{site.data.fhir.path}}extension-rendering-style.html">rendering-style</a>
         </td>
         <td>Core</td>
-        <td>Questionnaire.title, item.label, item.text, <a href="#valueset-label">valueset-label</a>, Valueset.compose.include.concept.display,
+        <td>Questionnaire.title, item.prefix, item.text, <a href="#valueset-label">valueset-label</a>, Valueset.compose.include.concept.display,
           Valueset.compose.include.concept.designation.value (and expansion equivalents), CodeSystem.concept.designation.value</td>
         <td>string</td>
       </tr>
       <tr>
         <td colspan="4">
           <p>
-            This element allows the full capabilities of the HTML <a href="https://html.com/tags/style">style</a> to be applied to the title of a questionnaire,
-            or to the label or text of a questionnaire item or to the label of an option.  This might mean changing the font or color, changing font style such
+            This element allows the full capabilities of the HTML style attribute to be applied to the title of a questionnaire, or to the label 
+			or text of a questionnaire item or to the label of an option.  This might mean changing the font or color, changing font style such
             as bold, italics, smallcaps, etc.  Conformant systems are allowed to ignore this extension unless the
             <a href="#rendering-styleSensitive">rendering-styleSensitive</a> flag is set to true.
           </p>
@@ -82,7 +82,7 @@
           <a href="{{site.data.fhir.path}}extension-rendering-xhtml.html">rendering-xhtml</a>
         </td>
         <td>Core</td>
-        <td>Questionnaire.title, item.label, item.text, <a href="#valueset-label">valueset-label</a>, Valueset.compose.include.concept.display,
+        <td>Questionnaire.title, item.prefix, item.text, <a href="#valueset-label">valueset-label</a>, Valueset.compose.include.concept.display,
           Valueset.compose.include.concept.designation.value (and expansion equivalents), CodeSystem.concept.designation.value</td>
         <td>string</td>
       </tr>
@@ -514,7 +514,7 @@
   <a name="example"> </a>
   <h3>Example</h3>
   <p>
-    This implementation guide includes an <a href="Questionnaire-questionnaire-sdc-profile-example-render.html">example questionnaire</a> with a corresponding
+    This implementation guide includes an <a href="Questionnaire-questionnaire-sdc-profile-example-render.html">example questionnaire</a> with a corresponding  
     <a href="questionnaire-sdc-profile-example-render.pdf">companion PDF</a> that show how the extensions above are intended to be used and identifies how such
     controls might appear in a rendered questionnaire.
   </p>
