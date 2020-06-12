@@ -48,6 +48,7 @@
         <td>Source</td>
         <td>Location</td>
         <td>Data Type</td>
+        <td>Example</td>
       </tr>
     </thead>
     <tbody>
@@ -59,9 +60,10 @@
         <td>Core</td>
         <td>question</td>
         <td>integer</td>
+        <td><a href="examples.html#maxLength">example</a></td>
       </tr>
       <tr>
-        <td colspan="4">
+        <td colspan="5">
           <p>
             This core element is typically used with strings, but can theoretically be used for other variable-length simple types (e.g. to limit the maximum
             precision of a 'time' element).  It SHALL NOT be used for complex types such as choice, open-choice, quantity, attachment or reference.  It establishes
@@ -83,9 +85,10 @@
         <td>Core</td>
         <td>question</td>
         <td>integer</td>
+        <td><a href="examples.html#minLength">example</a></td>
       </tr>
       <tr>
-        <td colspan="4">
+        <td colspan="5">
           <p>
             This extension allows setting a minimum length for answers with a simple type.  Like <a href="#maxLength">maxLength</a>, it can only be used on
             simple types, not choice, open-choice, quantity, attachment or reference.  It is typically used on strings to help ensure a minimum amount of detail
@@ -107,9 +110,10 @@
         <td>Core</td>
         <td>question</td>
         <td>string</td>
+        <td><a href="examples.html#regex">example</a></td>
       </tr>
       <tr>
-        <td colspan="4">
+        <td colspan="5">
           <p>
             This allows checking that an extension adheres to a regular expression.  For example, enforcing the ANA NAN syntax of a Canadian
             postal code.  The regular expression SHALL adhere to the same requirements as defined for the FHIRPath
@@ -127,9 +131,10 @@
         <td>Core</td>
         <td>date, dateTime, time, decimal, integer</td>
         <td>as per question type</td>
+        <td><a href="examples.html#minValue-maxValue-maxDecimalPlaces">example</a></td>
       </tr>
       <tr>
-        <td colspan="4">
+        <td colspan="5">
           <p>
             This extension is used for questions with simple quantitative types.  The extension allows establishing the lower bound for an answer.  
 			For example, ensuring that birth dates are >= 1990-01-01 or an integer is greater than or equal to 0.  (Note that the integer and decimal 
@@ -153,9 +158,10 @@
         <td>Core</td>
         <td>date, dateTime, time, decimal, integer</td>
         <td>as per question type</td>
+        <td><a href="examples.html#minValue-maxValue-maxDecimalPlaces">example</a></td>
       </tr>
       <tr>
-        <td colspan="4">
+        <td colspan="5">
           <p>
             This extension is used for questions with simple quantitative types.  The extension allows establishing the upper bound for an answer.  For example, 
 			ensuring that birth dates are >= 1990-01-01 or an integer is greater than or equal to 0.  (Note that the integer and decimal types both allow negative 
@@ -178,9 +184,10 @@
         <td>Core</td>
         <td>decimal</td>
         <td>integer</td>
+        <td><a href="examples.html#minValue-maxValue-maxDecimalPlaces">example</a></td>
       </tr>
       <tr>
-        <td colspan="4">
+        <td colspan="5">
           <p>
             For decimal types, this indicates the maximum precision below the decimal.  For example, limiting a dollar amount to 2 decimal places.
           </p>
@@ -194,9 +201,10 @@
         <td>Core</td>
         <td>attachment</td>
         <td>code</td>
+        <td><a href="examples.html#mimetype-maxsize">example</a></td>
       </tr>
       <tr>
-        <td colspan="4">
+        <td colspan="5">
           <p>
             When capturing attachments, this allows constraining the mime type of the attached data.  Multiple repetitions can be specified to allow more
             than one candidate type.  For example, if the attachment is intended to be an image, repetitions of this extension could constrain attachments
@@ -212,9 +220,10 @@
         <td>Core</td>
         <td>Attachment</td>
         <td>decimal</td>
+        <td><a href="examples.html#mimetype-maxsize">example</a></td>
       </tr>
       <tr>
-        <td colspan="4">
+        <td colspan="5">
           <p>
             This extension is also used for questions with type of 'attachment'.  It allows specifying an upper bound on the size of the attachment in bytes.
             This can help ensure that data embedded in the QuestionnaireResponse is 'manageable' and that a user doesn't accidentally attach a photo, document
@@ -236,6 +245,7 @@
         <td>Source</td>
         <td>Location</td>
         <td>Data Type</td>
+        <td>Example</td>
       </tr>
     </thead>
     <tbody>
@@ -247,9 +257,10 @@
         <td>Core</td>
         <td>question</td>
         <td>integer, date, time, string, Coding, Reference</td>
+        <td><a href="examples.html#answeroptions">example</a></td>
       </tr>
       <tr>
-        <td colspan="4">
+        <td colspan="5">
           <p>
             This allows constraining the allowed value for a question item's answer to an enumerated set.  Each answerOption repetition indicates one of the
             possible allowed values.  The answer to the question, if answered, SHALL match one of the specified repetitions unless the item.type is
@@ -298,9 +309,10 @@
         <td>Core</td>
         <td>question</td>
         <td>integer</td>
+        <td><a href="examples.html#answervalueset">example</a></td>
       </tr>
       <tr>
-        <td colspan="4">
+        <td colspan="5">
           <p>
             See discussion above under <a href="#answerOption">answerOption</a>.
           </p>
@@ -314,9 +326,10 @@
         <td>Questionnaire</td>
         <td>group, question</td>
         <td>boolean</td>
+        <td><a href="examples.html#required">example</a></td>
       </tr>
       <tr>
-        <td colspan="4">
+        <td colspan="5">
           <p>
             For an 'active' (see <a href="#enableWhen">enableWhen</a>) group or question, this indicates whether the element must appear in the corresponding
             QuestionnaireResponse.  If 'true', it means that at least one answer must be provided for the question, or for a group, that at least one question
@@ -339,9 +352,10 @@
         <td>Questionnaire</td>
         <td>group, question</td>
         <td>boolean</td>
+        <td><a href="examples.html#repeats">example</a></td>
       </tr>
       <tr>
-        <td colspan="4">
+        <td colspan="5">
           <p>
             For groups, a 'repeats' value of 'true' means that the QuestionnaireResponse can contain multiple item repetitions that correspond to the same
             linkId.  For questions, it means that the question with the same linkId can have more than one answer.  (I.e. there won't be multiple repetitions
@@ -359,9 +373,10 @@
         <td>Questionnaire</td>
         <td>question</td>
         <td>boolean</td>
+        <td><a href="examples.html#readonly">example</a></td>
       </tr>
       <tr>
-        <td colspan="4">
+        <td colspan="5">
           <p>
             If present indicates that the answer to the question is not allowed to be edited or changed by someone completing the questionnaire.  This
             can be used for information that is either set to a fixed value by the form designer using the <a href="#initial">initial</a> element or
@@ -380,9 +395,10 @@
         <td>Questionnaire</td>
         <td>group, question</td>
         <td>integer</td>
+        <td><a href="examples.html#minoccurs">example</a></td>
       </tr>
       <tr>
-        <td colspan="4">
+        <td colspan="5">
           <p>
             The <a href="#required">required</a> element allows distinguishing items that are optional (minOccurs=0) from those that are required (minOccurs=1).
             However, for elements where <a href="#repeats">repeats</a> is true, it's sometimes necessary to indicate that multiple repetitions are required.
@@ -410,9 +426,10 @@
         <td>Questionnaire</td>
         <td>group, question</td>
         <td>integer</td>
+        <td><a href="examples.html#maxoccurs">example</a></td>
       </tr>
       <tr>
-        <td colspan="4">
+        <td colspan="5">
           <p>
             The <a href="#repeats">repeats</a> element allows indicating that an item is permitted to repeat, but places no limits on the number of times
             the group can appear in the response or the number of answers a question can have.  This extension allows a limit to be imposed.  For example, a
@@ -432,9 +449,10 @@
         <td>Questionnaire</td>
         <td>Quantity</td>
         <td>Coding</td>
+        <td><a href="examples.html#unitoption">example</a></td>
       </tr>
       <tr>
-        <td colspan="4">
+        <td colspan="5">
           <p>
             Just as the <a href="#answerOption">answerOption</a> and <a href="#answerValueSet">answerValueSet</a> elements support identifying the specific
             answers that can be selected, the unitOption and <a href="#unitValueSet">unitValueSet</a> extensions allow defining the choices for the unit of
@@ -454,9 +472,10 @@
         <td>Questionnaire</td>
         <td>Quantity</td>
         <td>Reference(ValueSet)</td>
+        <td><a href="examples.html#unitvalueset">example</a></td>
       </tr>
       <tr>
-        <td colspan="4">
+        <td colspan="5">
           <p>
             See <a href="#unitOption">unitOption</a> for discussion.
           </p>
@@ -470,9 +489,10 @@
         <td>Questionnaire</td>
         <td>Reference</td>
         <td>code</td>
+        <td><a href="examples.html#reference-resource-profile-lookup">example</a></td>
       </tr>
       <tr>
-        <td colspan="4">
+        <td colspan="5">
           <p>
             Questions with a type of 'Reference' have no constraints on what the reference is expected to point to.  This extension allows constraining the
             content to only resources of a specific type.  If multiple extensions are present, it indicates that the resource must come from one of them.
@@ -489,9 +509,10 @@
         <td>Questionnaire</td>
         <td>Reference</td>
         <td>canonical(StructureDefinition)</td>
+        <td><a href="examples.html#reference-resource-profile-lookup">example</a></td>
       </tr>
       <tr>
-        <td colspan="4">
+        <td colspan="5">
           <p>
             This extension asserts that resources selected as the answer to the question must be valid against the specified profile.  It is tighter than
             the <a href="#referenceResource">referenceResource</a> extension (and thus there's no need to specify a referenceResource if referenceProfile
@@ -510,9 +531,10 @@
         <td>Questionnaire</td>
         <td>Reference</td>
         <td>string</td>
+        <td>TODO</td>
       </tr>
       <tr>
-        <td colspan="4">
+        <td colspan="5">
           <p>
             This defines a generic (or occasionally specific) query that can be used to identify the resources that can be returned as answers to the
             question listing the extension.  The query works as per the <a href="expressions.html#fhirquery">x-fhir-query</a> mechanism defined on the
@@ -540,9 +562,10 @@
         <td>Questionnaire</td>
         <td>Reference</td>
         <td>canonical(Questionnaire)</td>
+        <td><a href="examples.html#reference-resource-profile-lookup">example</a></td>
       </tr>
       <tr>
-        <td colspan="4">
+        <td colspan="5">
           <p>
             In some cases, the target resource for the answer to a Reference question might not exist and the user might need to create it.  This can be
             done by displaying a Questionnaire that supports defining the content of the target resource and using the <a href="extraction.html">Data
@@ -573,6 +596,7 @@
         <td>Source</td>
         <td>Location</td>
         <td>Data Type</td>
+        <td>Example</td>
       </tr>
     </thead>
     <tbody>
@@ -584,9 +608,10 @@
         <td>Core</td>
         <td>root</td>
         <td>canonical(Library)</td>
+        <td><a href="examples.html#cqf">example</a></td>
       </tr>
       <tr>
-        <td colspan="4">
+        <td colspan="5">
           <p>
             Described in detail <a href="expressions.html#cqf-library">here</a>.  This extension allows the expressions-based extensions below to leverage
             shared libraries of FHIR queries, CQL and FHIRPath.
@@ -601,9 +626,10 @@
         <td>SDC</td>
         <td>root</td>
         <td>complex</td>
+        <td>TODO</td>
       </tr>
       <tr>
-        <td colspan="4">
+        <td colspan="5">
           <p>
             Described in detail <a href="expressions.html#launchContext">here</a>.  This extension allows the Questionnaire to be passed context information
             that can be used within <a href="#lookupQuestionnaire">lookupQuestionnaires</a>, to determine which items to enable using
@@ -620,9 +646,10 @@
         <td>Core</td>
         <td>root, item</td>
         <td>Expression</td>
+        <td><a href="examples.html#calculatedexpression">example</a></td>
       </tr>
       <tr>
-        <td colspan="4">
+        <td colspan="5">
           <p>
             Described in detail <a href="expressions.html#variable">here</a>.  This extension allows the calculation of information based on descendant
             question answers (and other variables or <a href="#launchContext">launchContext</a> elements) that can then be referenced by extensions on
@@ -638,9 +665,10 @@
         <td>SDC</td>
         <td>question</td>
         <td>Expression</td>
+        <td><a href="examples.html#initialexpression">example</a></td>
       </tr>
       <tr>
-        <td colspan="4">
+        <td colspan="5">
           <p>
             Described in detail <a href="expressions.html#initialExpression">here</a>.  This extension allows the initial value of an element to be set
             based on an expression.  For example, defaulting a date to the current date.  (It can also be used to set an answer based on launch context or
@@ -656,9 +684,10 @@
         <td>SDC</td>
         <td>question</td>
         <td>Expression</td>
+        <td><a href="examples.html#calculatedexpression">example</a></td>
       </tr>
       <tr>
-        <td colspan="4">
+        <td colspan="5">
           <p>
             Described in detail <a href="expressions.html#calculatedExpression">here</a>.  This extension allows answers to questions (generally
             <a href="#readOnly">readOnly</a> or <a href="rendering.html#hidden">hidden</a> ones) to be calculated based on answers to other questions.  For
@@ -676,9 +705,10 @@
           <a href="#minOccurs">minOccurs</a>, <a href="#maxOccurs">maxOccurs</a>, <a href="#minValue">minValue</a>, <a href="#maxValue">maxValue</a>
         </td>
         <td>string</td>
+        <td><a href="examples.html#cqf">example</a></td>
       </tr>
       <tr>
-        <td colspan="4">
+        <td colspan="5">
           <p>
             This extension can make some of the control values of the Questionnaire dynamic.  For the SDC implementation guide, the recommended
             locations for use are <a href="#minOccurs">minOccurs</a>, <a href="#maxOccurs">maxOccurs</a>, <a href="#minValue">minValue</a>, and
@@ -702,6 +732,7 @@
         <td>Source</td>
         <td>Location</td>
         <td>Data Type</td>
+        <td>Example</td>
       </tr>
     </thead>
     <tbody>
@@ -713,9 +744,10 @@
         <td>SDC</td>
         <td>Questionnaire</td>
         <td>code</td>
+        <td><a href="examples.html#entrymode">example</a></td>
       </tr>
       <tr>
-        <td colspan="4">
+        <td colspan="5">
           <p>
             This indicates how the questions in the form should be displayed to the user and what type of navigation control they should have to look at
             (and change) other questions:
@@ -735,9 +767,10 @@
         <td>N/A</td>
         <td>item</td>
         <td>complex</td>
+        <td><a href="examples.html#initial">example</a></td>
       </tr>
       <tr>
-        <td colspan="4">
+        <td colspan="5">
           <p>
             Establishes the default answer for a question.  If the user does not change the value, this is what will appear in the completed
             QuestionnaireResponse
@@ -757,9 +790,10 @@
         <td>N/A</td>
         <td>item</td>
         <td>complex</td>
+        <td><a href="examples.html#enableexamples">example</a></td>
       </tr>
       <tr>
-        <td colspan="4">
+        <td colspan="5">
           <p>
             This controls which questions, groups and even display items should be displayed based on answers to other questions within the response.
             An item is 'enabled' based on whether the referenced questions have one (or more) of the answers as specified by the enableWhen element.  If
@@ -781,9 +815,10 @@
         <td>N/A</td>
         <td>item</td>
         <td>code</td>
+        <td><a href="examples.html#enableexamples">example</a></td>
       </tr>
       <tr>
-        <td colspan="4">
+        <td colspan="5">
           <p>
             This determines the interpretation of multiple <a href="#enableWhen">enableWhen</a> elements.  If set to 'all', then the item will only be enabled
             if all the enableWhen conditions are met.  If set to 'any', the item will be enabled if any of the enableWhen conditions are met.
@@ -798,9 +833,10 @@
         <td>N/A</td>
         <td>item</td>
         <td>code</td>
+        <td><a href="examples.html#enableexamples">example</a></td>
       </tr>
       <tr>
-        <td colspan="4">
+        <td colspan="5">
           <p>
             This serves the same purpose as <a href="#enableWhen">enableWhen</a> (and is mutually exclusive with it).  It controls whether an item should be
             'enabled' or not, but can handle more sophisticated circumstances than that extension.  (If enableWhen can meet the need, it should be used
@@ -819,9 +855,10 @@
         <td>Questionnaire</td>
         <td>item</td>
         <td>code</td>
+        <td><a href="examples.html#signatureRequired-usagemode">example</a></td>
       </tr>
       <tr>
-        <td colspan="4">
+        <td colspan="5">
           <p>
             This extension is similar to <a href="#enableWhen">enableWhen</a> in that it enables or disables elements within the Questionnaire.  However,
             rather than being driven by data within the form or queried or passed from outside, it is instead driven by how the QuestionnaireResponse is
@@ -840,9 +877,10 @@
         <td>Questionnaire</td>
         <td>Questionnaire, item</td>
         <td>complex</td>
+        <td><a href="examples.html#ordinalvalue-constraint">example</a></td>
       </tr>
       <tr>
-        <td colspan="4">
+        <td colspan="5">
           <p>
             This allows assertion of constraints across an entire questionnaire or across any item with child items.  For example, it could be used to
             require that either the patient identifier or birth date must be specified, that at least 6 of the questions from question 10 through 20
@@ -860,9 +898,10 @@
         <td>SDC</td>
         <td>root</td>
         <td>uri</td>
+        <td><a href="examples.html#endpoint">example</a></td>
       </tr>
       <tr>
-        <td colspan="4">
+        <td colspan="5">
           <p>
             This allows a Questionnaire to indicate the URL of the Form Receiver it should be posted to when complete.  (Note that it is up to the Form Filler
             and/or the user to determine whether to post to the indicated endpoint or to store the form elsewhere - or to do both.)
@@ -877,9 +916,10 @@
         <td>Questionnaire</td>
         <td>root, group, question</td>
         <td>CodeableConcept</td>
+        <td><a href="examples.html#signatureRequired-usagemode">example</a></td>
       </tr>
       <tr>
-        <td colspan="4">
+        <td colspan="5">
           <p>
             This allows a form to indicate whether the form must be signed on completion or whether specified questions or answers themselves must be signed.
             Signature can be as simple as providing the user's initials to confirm that they've verified and agree with the answer, or it could mean a
@@ -895,9 +935,10 @@
         <td>Core</td>
         <td>Coding, Questionnaire.item.answerOption, CodeSystem.concept, ValueSet.compose.include.concept</td>
         <td>decimal</td>
+        <td><a href="examples.html#ordinalvalue-constraint">example</a></td>
       </tr>
       <tr>
-        <td colspan="4">
+        <td colspan="5">
           <p>
             This extension allows a choice element (whether in a question-specific <a href="#answerOption">answerOption</a> or in the code system and
             value set pointed to by <a href="#answerValueSet">answerValueSet</a>) to have an associated numeric weighting.  This numeric weighting can

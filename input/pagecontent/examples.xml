@@ -19,7 +19,7 @@
   
 .tabs {
   position: relative;   
-  min-height: 210px; /* This part sucks */
+  min-height: 210px; /* TODO: better way of doing this */
   clear: both;
   margin: 35px 0 25px;
   background: white;
@@ -38,7 +38,7 @@
   top: -29px;
   -webkit-transition: background-color .17s linear;
 }
-.tab [type=radio] {
+.tab input[id^="tab-"]{
   display: none;   
 }
 .content-in-tab {
@@ -70,7 +70,67 @@ textarea{
   box-sizing: border-box;         /* Opera/IE 8+ */
 }
 </style>
-Example 1. Restrict an answer to only have 50 characters (using 'maxLength')<br/>
+<a name="text-appearance">  </a>
+<h3>Text Appearance</h3>
+<a name="rendering-style"></a>
+<h4>Using rendering-style</h4>
+<p>To display a question text in green.</p>
+<div class="tabs">
+  <div class="tab">
+    <input type="radio" id="tab-rendering-style-1" name="tab-rendering-style-group" checked="true"></input>
+    <label for="tab-rendering-style-1">Sample Question</label>
+    <div class="content-in-tab">
+      <p><span style="color:green;">Enter your First Name <input id="linkitem-1.0-input" type="text"/></span></p>
+    </div> 
+  </div>
+  <div class="tab">
+    <input type="radio" id="tab-rendering-style-2" name="tab-rendering-style-group"></input>
+    <label for="tab-rendering-style-2">JSON</label>
+    <div class="content-in-tab">
+      <textarea style="border:none" class="xml">
+        "item": [
+          {
+            "linkId": "1",
+            "type": "string",
+            "text": "Enter your First Name",
+            "_text": {
+              "extension": [
+                {
+                  "url": "http://hl7.org/fhir/StructureDefinition/rendering-style",
+                  "valueString": "color:green;"
+                }
+              ]
+            }
+          }
+        ]
+      </textarea>
+    </div> 
+  </div>
+  <div class="tab">
+    <input type="radio" id="tab-rendering-style-3" name="tab-rendering-style-group"></input>
+    <label for="tab-rendering-style-3">XML</label>
+    <div class="content-in-tab">
+      <textarea style="border:none" class="xml">
+        <item>
+            <linkId value="1" />
+            <text value="Enter your First Name">
+              <extension url="http://hl7.org/fhir/StructureDefinition/rendering-style">
+                  <valueString value="color:green;" />
+              </extension>
+            </text>
+            <type value="string" />
+        </item>
+      </textarea>
+    </div> 
+  </div>
+</div>
+
+<a name="value-constraint">  </a>
+<h3>Value constraints</h3>
+
+<a name="maxLength"></a>
+<h4>Using maxLength</h4>
+<p>To restrict an answer to only have 50 characters.</p>
 <div class="tabs">
   <div class="tab">
     <input type="radio" id="tab-1" name="tab-group-1" checked="true"></input>
@@ -86,10 +146,10 @@ Example 1. Restrict an answer to only have 50 characters (using 'maxLength')<br/
       <textarea style="border:none" class="xml">
         "item": [
           {
-            "linkId": "1"
+            "linkId": "1",
             "type": "string",
             "text": "Enter your First Name",
-            "maxLength": 50    
+            "maxLength": 50
           }
         ]
       </textarea>
@@ -101,7 +161,7 @@ Example 1. Restrict an answer to only have 50 characters (using 'maxLength')<br/
     <div class="content-in-tab">
       <textarea style="border:none" class="xml">
         <item>
-          <linkId value="1.1.b" />
+          <linkId value="1" />
           <text value="First Name" />
           <type value="string" />
           <!-- restricts maximum length allowed for answer -->
@@ -109,9 +169,11 @@ Example 1. Restrict an answer to only have 50 characters (using 'maxLength')<br/
         </item>
       </textarea>
     </div> 
-   </div>
   </div>
-Example 2. Restrict an answer to have at least 2 characters (using 'minLength')<br/>
+</div>
+<a name="minLength"></a>
+<h4>Using minLength</h4>
+<p>To restrict an answer to have at least 2 characters.</p>  
 <div class="tabs">
   <div class="tab">
     <input type="radio" id="tab-4" name="tab-group-2" checked="true"></input>
@@ -132,10 +194,10 @@ Example 2. Restrict an answer to have at least 2 characters (using 'minLength')<
                 "url": "http://hl7.org/fhir/StructureDefinition/minLength",
                 "valueInteger": 2
               }
-            ]
-            "linkId": "2",
+            ],
+            "linkId": "1",
             "type": "string",
-            "text": "Enter your Last Name",
+            "text": "Enter your Last Name"
           }
         ]
       </textarea>
@@ -151,12 +213,2201 @@ Example 2. Restrict an answer to have at least 2 characters (using 'minLength')<
             <extension url="http://hl7.org/fhir/StructureDefinition/minLength">
                 <valueInteger value="2" />
             </extension>
-            <linkId value="1.2.b" />
+            <linkId value="1" />
             <text value="Last Name" />
             <type value="string" />
         </item>
       </textarea>
     </div> 
-   </div>
   </div>
+</div>
+<a name="regex"></a>
+<h4>Using regex</h4>
+<p>To restrict an answer to be in this format: A1A 1A1</p>  
+<div class="tabs">
+  <div class="tab">
+    <input type="radio" id="tab-regex-1" name="tab-regex-group-2" checked="true"></input>
+    <label for="tab-regex-1">Sample Question</label>
+    <div class="content-in-tab">
+      <p>Postal Code (A1A 1A1) <input id="linkitem-1.2-input" type="text"/></p>
+    </div> 
+  </div>
+  <div class="tab">
+    <input type="radio" id="tab-regex-2" name="tab-regex-group-2"></input>
+    <label for="tab-regex-2">JSON</label>
+    <div class="content-in-tab">
+      <textarea style="border:none" class="xml">
+        "item": [
+          {
+            "extension": [
+              {
+                "url": "http://hl7.org/fhir/StructureDefinition/regex",
+                "valueString": "ANA NAN"
+              }
+            ],
+            "linkId": "1",
+            "type": "string",
+            "text": "Postal Code (A1A 1A1)"
+          }
+        ]
+      </textarea>
+    </div> 
+  </div>
+  <div class="tab">
+    <input type="radio" id="tab-regex-3" name="tab-regex-group-2"></input>
+    <label for="tab-regex-3">XML</label>
+    <div class="content-in-tab">
+      <textarea style="border:none" class="xml">
+        <item>
+            <!-- item/regex - regular expression that defines the syntax for the data element to be considered valid -->
+            <extension url="http://hl7.org/fhir/StructureDefinition/regex">
+                <valueString value="ANA NAN" />
+            </extension>
+            <linkId value="1" />
+            <text value="Postal Code (A1A 1A1)" />
+            <type value="string" />
+        </item>
+      </textarea>
+    </div> 
+  </div>
+</div>
+
+<a name="minValue-maxValue-maxDecimalPlaces"></a>
+<h4>Using minValue, maxValue, and maxDecimalPlaces</h4>
+<p>To restrict an answer to range from 1 to 100, up to 2 decimal places</p>  
+<div class="tabs">
+  <div class="tab">
+    <input type="radio" id="tab-range-decPlaces-4" name="tab-range-decPlaces-group-2" checked="true"></input>
+    <label for="tab-range-decPlaces-4">Sample Question</label>
+    <div class="content-in-tab">
+      <p>Enter your weight in kg <input id="linkitem-1.2-input" type="text"/></p>
+    </div> 
+  </div>
+  <div class="tab">
+    <input type="radio" id="tab-range-decPlaces-5" name="tab-range-decPlaces-group-2"></input>
+    <label for="tab-range-decPlaces-5">JSON</label>
+    <div class="content-in-tab">
+      <textarea style="border:none" class="xml">
+        "item": [
+          {
+            "extension": [
+              {
+                "url": "http://hl7.org/fhir/StructureDefinition/minValue",
+                "valueDecimal": 1
+              },
+              {
+                "url": "http://hl7.org/fhir/StructureDefinition/maxValue",
+                "valueDecimal": 100
+              },
+              {
+                "url": "http://hl7.org/fhir/StructureDefinition/maxDecimalPlaces",
+                "valueInteger": 2
+              }
+            ],
+            "linkId": "1",
+            "type": "decimal",
+            "text": "Enter your weight in kg"
+          }
+        ]
+      </textarea>
+    </div> 
+  </div>
+  <div class="tab">
+    <input type="radio" id="tab-range-decPlaces-6" name="tab-range-decPlaces-group-2"></input>
+    <label for="tab-range-decPlaces-6">XML</label>
+    <div class="content-in-tab">
+      <textarea style="border:none" class="xml">
+        <item>
+            <!-- item/minValue - minimum value allowed for answer -->
+            <extension url="http://hl7.org/fhir/StructureDefinition/minValue">
+                <valueDecimal value="1" />
+            </extension>
+            <!-- item/maxValue - maximum value allowed for answer -->
+            <extension url="http://hl7.org/fhir/StructureDefinition/maxValue">
+                <valueDecimal value="100" />
+            </extension>
+            <!-- item/maxDecimalPlaces - maximum number of decimal places allowed for answer-->
+            <extension url="http://hl7.org/fhir/StructureDefinition/maxDecimalPlaces">
+                <valueInteger value="2" />
+            </extension>
+            <linkId value="1" />
+            <text value="Enter your weight in kg" />
+            <type value="decimal" />
+        </item>
+      </textarea>
+    </div> 
+  </div>
+</div>
+
+<a name="mimetype-maxsize"></a>
+<h4>Using mimeType and maxSize</h4>
+<p>To only allow a JPG or PDF attachment, up to 1Mb. </p>  
+<div class="tabs">
+  <div class="tab">
+    <input type="radio" id="tab-mimetype-maxsize-1" name="tab-mimetype-maxsize-group-2" checked="true"></input>
+    <label for="tab-mimetype-maxsize-1">Sample Question</label>
+    <div class="content-in-tab">
+      <p>Attach Proof of Citizenship <input type="file" id="linkitem-1.4-input" name="filename"/></p>
+    </div> 
+  </div>
+  <div class="tab">
+    <input type="radio" id="tab-mimetype-maxsize-2" name="tab-mimetype-maxsize-group-2"></input>
+    <label for="tab-mimetype-maxsize-2">JSON</label>
+    <div class="content-in-tab">
+      <textarea style="border:none" class="xml">
+        "item": [
+          {
+            "extension": [
+              {
+                "url": "http://hl7.org/fhir/StructureDefinition/mimeType",
+                "valueCode": "image/jpeg"
+              },
+              {
+                "url": "http://hl7.org/fhir/StructureDefinition/mimeType",
+                "valueCode": "application/pdf"
+              },
+              {
+                "url": "http://hl7.org/fhir/StructureDefinition/maxSize",
+                "valueDecimal": 1
+              }
+            ],
+            "linkId": "1",
+            "type": "attachment",
+            "text": "Attach Proof of Citizenship"
+          }
+        ]
+      </textarea>
+    </div> 
+  </div>
+  <div class="tab">
+    <input type="radio" id="tab-mimetype-maxsize-3" name="tab-mimetype-maxsize-group-2"></input>
+    <label for="tab-mimetype-maxsize-3">XML</label>
+    <div class="content-in-tab">
+      <textarea style="border:none" class="xml">
+        <item>
+            <!-- item/mimeType - restrict attachments to only allow jpg and pdf types-->
+            <extension url="http://hl7.org/fhir/StructureDefinition/mimeType">
+                <valueCode value="image/jpeg" /> 
+            </extension>
+            <extension url="http://hl7.org/fhir/StructureDefinition/mimeType">
+                <valueCode value="application/pdf" /> 
+            </extension>
+            <!-- item/maxSize - allowed maximum size of an attachment in bytes-->
+            <extension url="http://hl7.org/fhir/StructureDefinition/maxSize">
+                <valueDecimal value="1" /> 
+            </extension>              
+            <linkId value="1.5.b" />
+            <text value="Attach Proof of Citizenship" />
+            <type value="attachment" />
+        </item>
+      </textarea>
+    </div> 
+  </div>
+</div>
+
+<a name="choice-restriction">  </a>
+<h3>Choice Restriction</h3>
+<a name="answeroptions"></a>
+<h4>Using answerOption</h4>
+<p>To restrict choices from a fixed list.</p>
+<div class="tabs">
+  <div class="tab">
+    <input type="radio" id="tab-answeroptions-1" name="tab-answeroptions-group-2" checked="true"></input>
+    <label for="tab-answeroptions-1">Sample Question</label>
+    <div class="content-in-tab">
+      <p>Choose your Province
+          <select id="linkitem-2.1-option" name="province">
+            <option value="Alberta">Alberta</option>
+            <option value="BC">British Columbia</option>
+            <option value="Manitoba">Manitoba</option>
+            <option value="NewBrunswick">New Brunswick</option>
+            <option value="NewfoundlandAndLabrador">Newfoundland and Labrador</option>
+            <option value="NovaScotia">Nova Scotia</option>  
+            <option value="Ontario">Ontario</option>              
+            <option value="PrinceEdwardIsland">Prince Edward Island</option>
+            <option value="Quebec">Quebec</option>
+            <option value="Saskatchewan">Saskatchewan</option>
+          </select></p>
+    </div> 
+  </div>
+  <div class="tab">
+    <input type="radio" id="tab-answeroptions-2" name="tab-answeroptions-group-2"></input>
+    <label for="tab-answeroptions-2">JSON</label>
+    <div class="content-in-tab">
+      <textarea style="border:none" class="xml">
+        "item": [
+          {
+            "linkId": "2.1.b",
+            "text": "Province",
+            "type": "choice",
+            "answerOption": [
+              {
+                "valueCoding": {
+                  "code": "Alberta",
+                  "display": "Alberta"
+                }
+              },
+              {
+                "valueCoding": {
+                  "code": "BritishColumbia",
+                  "display": "British Columbia"
+                }
+              },
+              {
+                "valueCoding": {
+                  "code": "Manitoba",
+                  "display": "Manitoba"
+                }
+              },
+              {
+                "valueCoding": {
+                  "code": "NewBrunswick",
+                  "display": "New Brunswick"
+                }
+              },
+              {
+                "valueCoding": {
+                  "code": "NewfoundlandAndLabrador",
+                  "display": "Newfoundland and Labrador"
+                }
+              },
+              {
+                "valueCoding": {
+                  "code": "NovaScotia",
+                  "display": "Nova Scotia"
+                }
+              },
+              {
+                "valueCoding": {
+                  "code": "Ontario",
+                  "display": "Ontario"
+                }
+              },
+              {
+                "valueCoding": {
+                  "code": "PrinceEdwardIsland",
+                  "display": "Prince Edward Island"
+                }
+              },
+              {
+                "valueCoding": {
+                  "code": "Quebec",
+                  "display": "Quebec"
+                }
+              },
+              {
+                "valueCoding": {
+                  "code": "Saskatchewan",
+                  "display": "Saskatchewan"
+                }
+              }
+            ]
+          }
+        ]
+      </textarea>
+    </div> 
+  </div>
+  <div class="tab">
+    <input type="radio" id="tab-answeroptions-3" name="tab-answeroptions-group-2"></input>
+    <label for="tab-answeroptions-3">XML</label>
+    <div class="content-in-tab">
+      <textarea style="border:none" class="xml">
+        <item>
+            <!-- item/answerOption - possible answers in an enumerated set, example with open-choice type -->
+            <linkId value="2.1.b"/>
+            <text value="Choose your Province"/>
+            <type value="choice"/>
+            <answerOption>
+                <valueCoding>
+                    <code value="Alberta"/>
+                    <display value="Alberta"/>
+                </valueCoding>
+            </answerOption>
+            <answerOption>
+                <valueCoding>
+                    <code value="BritishColumbia"/>
+                    <display value="British Columbia"/>
+                </valueCoding>
+            </answerOption>
+            <answerOption>
+                <valueCoding>
+                    <code value="Manitoba"/>
+                    <display value="Manitoba"/>
+                </valueCoding>
+            </answerOption>            
+            <answerOption>
+                <valueCoding>
+                    <code value="NewBrunswick"/>
+                    <display value="New Brunswick"/>
+                </valueCoding>
+            </answerOption>            
+            <answerOption>
+                <valueCoding>
+                    <code value="NewfoundlandAndLabrador"/>
+                    <display value="Newfoundland and Labrador"/>
+                </valueCoding>
+            </answerOption>
+            <answerOption>
+                <valueCoding>
+                    <code value="NovaScotia"/>
+                    <display value="Nova Scotia"/>
+                </valueCoding>
+            </answerOption>
+            <answerOption>
+                <valueCoding>
+                    <code value="Ontario"/>
+                    <display value="Ontario"/>
+                </valueCoding>
+            </answerOption>
+            <answerOption>
+                <valueCoding>
+                    <code value="PrinceEdwardIsland"/>
+                    <display value="Prince Edward Island"/>
+                </valueCoding>
+            </answerOption>
+            <answerOption>
+                <valueCoding>
+                    <code value="Quebec"/>
+                    <display value="Quebec"/>
+                </valueCoding>
+            </answerOption>
+            <answerOption>
+                <valueCoding>
+                    <code value="Saskatchewan"/>
+                    <display value="Saskatchewan"/>
+                </valueCoding>
+            </answerOption>
+        </item>
+      </textarea>
+    </div> 
+  </div>
+</div>
+
+<a name="answervalueset"></a>
+<h4>Using answerValueSet</h4>
+<p>To restrict choices from a value set.</p>
+<div class="tabs">
+  <div class="tab">
+    <input type="radio" id="tab-answervalueset-1" name="tab-answervalueset-group-2" checked="true"></input>
+    <label for="tab-answervalueset-1">Sample Question</label>
+    <div class="content-in-tab">
+      <p>Activity Level
+          <select id="linkitem-2.2-option" name="activity">
+            <option value="LA10044-8">Often</option>
+            <option value="LA10066-1">Rarely</option>
+            <option value="LA10082-8">Sometimes</option>
+            <option value="LA6270-8">Never</option>
+            <option value="LA9933-8">Always</option>          
+          </select></p>
+    </div> 
+  </div>
+  <div class="tab">
+    <input type="radio" id="tab-answervalueset-2" name="tab-answervalueset-group-2"></input>
+    <label for="tab-answervalueset-2">JSON</label>
+    <div class="content-in-tab">
+      <textarea style="border:none" class="xml">
+        "item": [
+          {
+            "linkId": "2.2.b",
+            "text": "Activity Level",
+            "type": "choice",
+            "answerValueSet": "http://loinc.org/vs/LL4882-8"
+          }
+        ]
+      </textarea>
+    </div> 
+  </div>
+  <div class="tab">
+    <input type="radio" id="tab-answervalueset-3" name="tab-answervalueset-group-2"></input>
+    <label for="tab-answervalueset-3">XML</label>
+    <div class="content-in-tab">
+      <textarea style="border:none" class="xml">
+        <item>
+            <!-- item/answerValueSet - possible answers in an enumerated set, example with choice type, Type: coding-->
+            <linkId value="2.2.b"/>
+            <text value="Activity Level"/>
+            <type value="choice"/>
+            <answerValueSet value="http://loinc.org/vs/LL4882-8"/> 
+        </item>
+      </textarea>
+    </div> 
+  </div>
+</div>
+
+<a name="required"></a>
+<h4>Using required</h4>
+<p>To require an answer.</p>
+<div class="tabs">
+  <div class="tab">
+    <input type="radio" id="tab-required-1" name="tab-required-group-2" checked="true"></input>
+    <label for="tab-required-1">Sample Question</label>
+    <div class="content-in-tab">
+      <p>Email*<input id="linkitem-2.3-input" type="text"/></p>
+    </div> 
+  </div>
+  <div class="tab">
+    <input type="radio" id="tab-required-2" name="tab-required-group-2"></input>
+    <label for="tab-required-2">JSON</label>
+    <div class="content-in-tab">
+      <textarea style="border:none" class="xml">
+        "item": [
+          {
+            "linkId": "2.3.b",
+            "text": "Email*",
+            "type": "string",
+            "required": true
+          }
+        ]
+      </textarea>
+    </div> 
+  </div>
+  <div class="tab">
+    <input type="radio" id="tab-required-3" name="tab-required-group-2"></input>
+    <label for="tab-required-3">XML</label>
+    <div class="content-in-tab">
+      <textarea style="border:none" class="xml">
+        <item>
+            <!-- item/required -->
+            <linkId value="2.3.b"/>
+            <text value="Email*"/>
+            <type value="string"/>
+            <required value="true"/>
+        </item>
+      </textarea>
+    </div> 
+  </div>
+</div>
+
+<a name="readonly"></a>
+<h4>Using readOnly</h4>
+<p>To only display a populated answer and make it non-editable.</p>
+<div class="tabs">
+  <div class="tab">
+    <input type="radio" id="tab-readonly-1" name="tab-readonly-group-2" checked="true"></input>
+    <label for="tab-readonly-1">Sample Question</label>
+    <div class="content-in-tab">
+      <p>Current Date: <input id="linkitem-2.4-input" type="text" value="05/05/2020" disabled="true"></input></p>
+    </div> 
+  </div>
+  <div class="tab">
+    <input type="radio" id="tab-readonly-2" name="tab-readonly-group-2"></input>
+    <label for="tab-readonly-2">JSON</label>
+    <div class="content-in-tab">
+      <textarea style="border:none" class="xml">
+        "item": [
+          {
+            "extension": [
+              {
+                "url": "http://hl7.org/fhir/uv/sdc/StructureDefinition/sdc-questionnaire-initialExpression",
+                "valueExpression": {
+                  "description": "current date",
+                  "language": "text/fhirpath",
+                  "expression": "today()"
+                }
+              }
+            ],
+            "linkId": "2.4.b",
+            "text": "Current Date:",
+            "type": "date",
+            "readOnly": true
+          }
+        ]
+      </textarea>
+    </div> 
+  </div>
+  <div class="tab">
+    <input type="radio" id="tab-readonly-3" name="tab-readonly-group-2"></input>
+    <label for="tab-readonly-3">XML</label>
+    <div class="content-in-tab">
+      <textarea style="border:none" class="xml">
+        <item>
+            <extension url="http://hl7.org/fhir/uv/sdc/StructureDefinition/sdc-questionnaire-initialExpression">
+                <valueExpression>
+                    <description value="current date"/>
+                    <language value="text/fhirpath"/>
+                    <expression value="today()"/> 
+                </valueExpression>
+            </extension>
+            <!-- item/readOnly -->
+            <linkId value="2.4.b"/>
+            <text value="Current Date:"/>
+            <type value="date"/>
+            <readOnly value="true"/>
+        </item>
+      </textarea>
+    </div> 
+  </div>
+</div>
+
+<a name="repeats"></a>
+<h4>Using repeats</h4>
+<p>To allow multiple answers, no limit.</p>
+<div class="tabs">
+  <div class="tab">
+    <input type="radio" id="tab-repeats-1" name="tab-repeats-group-2" checked="true"></input>
+    <label for="tab-repeats-1">Sample Question</label>
+    <div class="content-in-tab">
+      <p>Heart History (check all that applies):<br/>
+         <input type="checkbox" name="heart_history" value="heartAttack"/> Heart attack<br/>
+         <input type="checkbox" name="heart_history" value="heartSurgery"/> Heart surgery<br/> 
+         <input type="checkbox" name="heart_history" value="cardiac"/> Cardiac catheterization<br/> 
+         <input type="checkbox" name="heart_history" value="angioplasty"/> Coronary angioplasty (PTCA)<br/>
+         <input type="checkbox" name="heart_history" value="pacemaker"/> Cardiac pacemaker<br/>
+         <input type="checkbox" name="heart_history" value="other"/> Other (specify): <input id="linkitem-2.5-input" type="text"/>
+      </p>
+    </div> 
+  </div>
+  <div class="tab">
+    <input type="radio" id="tab-repeats-2" name="tab-repeats-group-2"></input>
+    <label for="tab-repeats-2">JSON</label>
+    <div class="content-in-tab">
+      <textarea style="border:none" class="xml">
+        "item": [
+          {
+            "linkId": "2.5.b",
+            "text": "Heart History (check all that applies)",
+            "type": "open-choice",
+            "repeats": true,
+            "answerOption": [
+              {
+                "valueCoding": {
+                  "code": "U1",
+                  "display": "Heart attack"
+                }
+              },
+              {
+                "valueCoding": {
+                  "code": "U2",
+                  "display": "Heart surgery"
+                }
+              },
+              {
+                "valueCoding": {
+                  "code": "U3",
+                  "display": "Cardiac catheterization"
+                }
+              },
+              {
+                "valueCoding": {
+                  "code": "U4",
+                  "display": "Coronary angioplasty (PTCA)"
+                }
+              },
+              {
+                "valueCoding": {
+                  "code": "U5",
+                  "display": "Cardiac pacemaker"
+                }
+              }
+            ]
+          }
+        ]
+      </textarea>
+    </div> 
+  </div>
+  <div class="tab">
+    <input type="radio" id="tab-repeats-3" name="tab-repeats-group-2"></input>
+    <label for="tab-repeats-3">XML</label>
+    <div class="content-in-tab">
+      <textarea style="border:none" class="xml">
+        <item>
+            <!-- item/repeats -->
+            <linkId value="2.5.b"/>
+            <text value="Heart History (check all that applies)"/>
+            <type value="open-choice"/>
+            <repeats value="true"/>
+            <answerOption>
+                <valueCoding>
+                    <code value="U1"/>
+                    <display value="Heart attack"/>
+                </valueCoding>
+            </answerOption>
+            <answerOption>
+                <valueCoding>
+                    <code value="U2"/>
+                    <display value="Heart surgery"/>
+                </valueCoding>
+            </answerOption>
+            <answerOption>
+                <valueCoding>
+                    <code value="U3"/>
+                    <display value="Cardiac catheterization"/>
+                </valueCoding>
+            </answerOption>
+            <answerOption>
+                <valueCoding>
+                    <code value="U4"/>
+                    <display value="Coronary angioplasty (PTCA)"/>
+                </valueCoding>
+            </answerOption>            
+            <answerOption>
+                <valueCoding>
+                    <code value="U5"/>
+                    <display value="Cardiac pacemaker"/>
+                </valueCoding>
+            </answerOption>          
+        </item>
+      </textarea>
+    </div> 
+  </div>
+</div>
+
+<a name="minoccurs"></a>
+<h4>Using minOccurs</h4>
+<p>Must have at least to 2 answers.</p>
+<div class="tabs">
+  <div class="tab">
+    <input type="radio" id="tab-minoccurs-1" name="tab-minoccurs-group-2" checked="true"></input>
+    <label for="tab-minoccurs-1">Sample Question</label>
+    <div class="content-in-tab">
+      <p>Heart History (check at least 2):<br/>
+         <input type="checkbox" name="heart_history" value="heartAttack"/> Heart attack<br/>
+         <input type="checkbox" name="heart_history" value="heartSurgery"/> Heart surgery<br/> 
+         <input type="checkbox" name="heart_history" value="cardiac"/> Cardiac catheterization<br/> 
+         <input type="checkbox" name="heart_history" value="angioplasty"/> Coronary angioplasty (PTCA)<br/>
+         <input type="checkbox" name="heart_history" value="pacemaker"/> Cardiac pacemaker<br/>
+      </p>
+    </div> 
+  </div>
+  <div class="tab">
+    <input type="radio" id="tab-minoccurs-2" name="tab-minoccurs-group-2"></input>
+    <label for="tab-minoccurs-2">JSON</label>
+    <div class="content-in-tab">
+      <textarea style="border:none" class="xml">
+        "item": [
+           {
+            "extension": [
+              {
+                "url": "http://hl7.org/fhir/StructureDefinition/questionnaire-minOccurs",
+                "valueInteger": 2
+              }
+            ],
+            "linkId": "2.6.b",
+            "text": "Heart History (check at least 2):",
+            "type": "choice",
+            "required": true,
+            "repeats": true,
+            "answerOption": [
+              {
+                "valueCoding": {
+                  "code": "U1",
+                  "display": "Heart attack"
+                }
+              },
+              {
+                "valueCoding": {
+                  "code": "U2",
+                  "display": "Heart surgery"
+                }
+              },
+              {
+                "valueCoding": {
+                  "code": "U3",
+                  "display": "Cardiac catheterization"
+                }
+              },
+              {
+                "valueCoding": {
+                  "code": "U4",
+                  "display": "Coronary angioplasty (PTCA)"
+                }
+              },
+              {
+                "valueCoding": {
+                  "code": "U5",
+                  "display": "Cardiac pacemaker"
+                }
+              }
+            ]
+          }
+        ]
+      </textarea>
+    </div> 
+  </div>
+  <div class="tab">
+    <input type="radio" id="tab-minoccurs-3" name="tab-minoccurs-group-2"></input>
+    <label for="tab-minoccurs-3">XML</label>
+    <div class="content-in-tab">
+      <textarea style="border:none" class="xml">
+        <item>
+            <!-- item/minOccurs -->
+            <extension url="http://hl7.org/fhir/StructureDefinition/questionnaire-minOccurs">
+                <valueInteger value="2"/> 
+            </extension>
+            <linkId value="2.6.b"/>
+            <text value="Heart History (check at least 2):"/>
+            <type value="choice"/>
+            <required value="true"/>
+            <repeats value="true"/>
+            <answerOption>
+                <valueCoding>
+                    <code value="U1"/>
+                    <display value="Heart attack"/>
+                </valueCoding>
+            </answerOption>
+            <answerOption>
+                <valueCoding>
+                    <code value="U2"/>
+                    <display value="Heart surgery"/>
+                </valueCoding>
+            </answerOption>
+            <answerOption>
+                <valueCoding>
+                    <code value="U3"/>
+                    <display value="Cardiac catheterization"/>
+                </valueCoding>
+            </answerOption>
+            <answerOption>
+                <valueCoding>
+                    <code value="U4"/>
+                    <display value="Coronary angioplasty (PTCA)"/>
+                </valueCoding>
+            </answerOption>            
+            <answerOption>
+                <valueCoding>
+                    <code value="U5"/>
+                    <display value="Cardiac pacemaker"/>
+                </valueCoding>
+            </answerOption>
+        </item>
+      </textarea>
+    </div> 
+  </div>
+</div>
+
+<a name="maxoccurs"></a>
+<h4>Using maxOccurs</h4>
+<p>Can only have up to 3 answers.</p>
+<div class="tabs">
+  <div class="tab">
+    <input type="radio" id="tab-maxoccurs-1" name="tab-maxoccurs-group-2" checked="true"></input>
+    <label for="tab-maxoccurs-1">Sample Question</label>
+    <div class="content-in-tab">
+      <p>Heart History (check no more than 3):<br/>
+         <input type="checkbox" name="heart_history" value="heartAttack"/> Heart attack<br/>
+         <input type="checkbox" name="heart_history" value="heartSurgery"/> Heart surgery<br/> 
+         <input type="checkbox" name="heart_history" value="cardiac"/> Cardiac catheterization<br/> 
+         <input type="checkbox" name="heart_history" value="angioplasty"/> Coronary angioplasty (PTCA)<br/>
+         <input type="checkbox" name="heart_history" value="pacemaker"/> Cardiac pacemaker<br/>
+      </p>
+    </div> 
+  </div>
+  <div class="tab">
+    <input type="radio" id="tab-maxoccurs-2" name="tab-maxoccurs-group-2"></input>
+    <label for="tab-maxoccurs-2">JSON</label>
+    <div class="content-in-tab">
+      <textarea style="border:none" class="xml">
+        "item": [
+          {
+            "extension": [
+              {
+                "url": "http://hl7.org/fhir/StructureDefinition/questionnaire-maxOccurs",
+                "valueInteger": 3
+              }
+            ],
+            "linkId": "2.7.b",
+            "text": "Heart History (check no more than 3):",
+            "type": "choice",
+            "required": true,
+            "repeats": true,
+            "answerOption": [
+              {
+                "valueCoding": {
+                  "code": "U1",
+                  "display": "Heart attack"
+                }
+              },
+              {
+                "valueCoding": {
+                  "code": "U2",
+                  "display": "Heart surgery"
+                }
+              },
+              {
+                "valueCoding": {
+                  "code": "U3",
+                  "display": "Cardiac catheterization"
+                }
+              },
+              {
+                "valueCoding": {
+                  "code": "U4",
+                  "display": "Coronary angioplasty (PTCA)"
+                }
+              },
+              {
+                "valueCoding": {
+                  "code": "U5",
+                  "display": "Cardiac pacemaker"
+                }
+              }
+            ]
+          }
+        ]
+      </textarea>
+    </div> 
+  </div>
+  <div class="tab">
+    <input type="radio" id="tab-maxoccurs-3" name="tab-maxoccurs-group-2"></input>
+    <label for="tab-maxoccurs-3">XML</label>
+    <div class="content-in-tab">
+      <textarea style="border:none" class="xml">
+        <item>
+            <!-- item/maxOccurs -->
+            <extension url="http://hl7.org/fhir/StructureDefinition/questionnaire-maxOccurs">
+                <valueInteger value="3"/> 
+            </extension>
+            <linkId value="2.7.b"/>
+            <text value="Heart History (check no more than 3):"/>
+            <type value="choice"/>
+            <required value="true"/>
+            <repeats value="true"/>
+            <answerOption>
+                <valueCoding>
+                    <code value="U1"/>
+                    <display value="Heart attack"/>
+                </valueCoding>
+            </answerOption>
+            <answerOption>
+                <valueCoding>
+                    <code value="U2"/>
+                    <display value="Heart surgery"/>
+                </valueCoding>
+            </answerOption>
+            <answerOption>
+                <valueCoding>
+                    <code value="U3"/>
+                    <display value="Cardiac catheterization"/>
+                </valueCoding>
+            </answerOption>
+            <answerOption>
+                <valueCoding>
+                    <code value="U4"/>
+                    <display value="Coronary angioplasty (PTCA)"/>
+                </valueCoding>
+            </answerOption>            
+            <answerOption>
+                <valueCoding>
+                    <code value="U5"/>
+                    <display value="Cardiac pacemaker"/>
+                </valueCoding>
+            </answerOption>
+        </item>
+      </textarea>
+    </div> 
+  </div>
+</div>
+
+<a name="unitoption"></a>
+<h4>Using unitOption</h4>
+<p>Restrict unit choices using unit options.</p>
+<div class="tabs">
+  <div class="tab">
+    <input type="radio" id="tab-unitoption-1" name="tab-unitoption-group-2" checked="true"></input>
+    <label for="tab-unitoption-1">Sample Question</label>
+    <div class="content-in-tab">
+      <p>Dosage <input id="linkitem-2.8-input" type="text"/>
+          <select id="linkitem-2.8-option" name="activity">
+            <option value="Level0">ml</option>
+            <option value="Level1">liters</option>
+            <option value="Level2">mg</option>
+            <option value="Level3">grams</option>
+            <option value="Level4">kilo</option>  
+          </select></p>
+    </div> 
+  </div>
+  <div class="tab">
+    <input type="radio" id="tab-unitoption-2" name="tab-unitoption-group-2"></input>
+    <label for="tab-unitoption-2">JSON</label>
+    <div class="content-in-tab">
+      <textarea style="border:none" class="xml">
+        "item": [
+          {
+            "extension": [
+              {
+                "url": "http://hl7.org/fhir/StructureDefinition/questionnaire-unitOption",
+                "valueCoding": {
+                  "code": "Level0",
+                  "display": "None"
+                }
+              },
+              {
+                "url": "http://hl7.org/fhir/StructureDefinition/questionnaire-unitOption",
+                "valueCoding": {
+                  "code": "Unit0",
+                  "display": "Unit 0"
+                }
+              },
+              {
+                "url": "http://hl7.org/fhir/StructureDefinition/questionnaire-unitOption",
+                "valueCoding": {
+                  "code": "Unit1",
+                  "display": "Unit 1"
+                }
+              },
+              {
+                "url": "http://hl7.org/fhir/StructureDefinition/questionnaire-unitOption",
+                "valueCoding": {
+                  "code": "Unit3",
+                  "display": "Unit 3"
+                }
+              }
+            ],
+            "linkId": "2.8.b",
+            "text": "Dosage",
+            "type": "quantity"
+          }
+        ]
+      </textarea>
+    </div> 
+  </div>
+  <div class="tab">
+    <input type="radio" id="tab-unitoption-3" name="tab-unitoption-group-2"></input>
+    <label for="tab-unitoption-3">XML</label>
+    <div class="content-in-tab">
+      <textarea style="border:none" class="xml">
+        <item>
+            <!-- item/unitOption -->
+            <extension url="http://hl7.org/fhir/StructureDefinition/questionnaire-unitOption">
+                <valueCoding>
+                    <code value="Level0"/>
+                    <display value="None"/>
+                </valueCoding>
+            </extension>
+            <extension url="http://hl7.org/fhir/StructureDefinition/questionnaire-unitOption">
+                <valueCoding>
+                    <code value="Unit0"/>
+                    <display value="Unit 0"/>
+                </valueCoding>
+            </extension>
+            <extension url="http://hl7.org/fhir/StructureDefinition/questionnaire-unitOption">
+                <valueCoding>
+                    <code value="Unit1"/>
+                    <display value="Unit 1"/>
+                </valueCoding>
+            </extension>
+            <extension url="http://hl7.org/fhir/StructureDefinition/questionnaire-unitOption">
+                <valueCoding>
+                    <code value="Unit3"/>
+                    <display value="Unit 3"/>
+                </valueCoding>
+            </extension>            
+            <linkId value="2.8.b"/>
+            <text value="Dosage"/>
+            <type value="quantity"/>
+        </item>
+      </textarea>
+    </div> 
+  </div>
+</div>
+
+<a name="unitvalueset"></a>
+<h4>Using unitValueSet</h4>
+<p>Restrict unit choices from a value set.</p>
+<div class="tabs">
+  <div class="tab">
+    <input type="radio" id="tab-unitvalueset-1" name="tab-unitvalueset-group-2" checked="true"></input>
+    <label for="tab-unitvalueset-1">Sample Question</label>
+    <div class="content-in-tab">
+      <p>Dosage <input id="linkitem-2.9-input" type="text"/> 
+          <select id="linkitem-2.9-option" name="activity">
+            <option value="Level0">ml</option>
+            <option value="Level1">liters</option>
+            <option value="Level2">mg</option>
+            <option value="Level3">grams</option>
+            <option value="Level4">kilo</option>  
+          </select></p>
+    </div> 
+  </div>
+  <div class="tab">
+    <input type="radio" id="tab-unitvalueset-2" name="tab-unitvalueset-group-2"></input>
+    <label for="tab-unitvalueset-2">JSON</label>
+    <div class="content-in-tab">
+      <textarea style="border:none" class="xml">
+        "item": [
+          {
+            "extension": [
+              {
+                "extension": [
+                  {
+                    "url": "http://hl7.org/fhir/StructureDefinition/valueset-system",
+                    "valueCanonical": "http://loinc.org/vs/LL715-4"
+                  }
+                ],
+                "url": "http://hl7.org/fhir/StructureDefinition/questionnaire-unitValueSet"
+              }
+            ],
+            "linkId": "2.9.b",
+            "text": "Dosage",
+            "type": "quantity"
+          }
+        ]
+      </textarea>
+    </div> 
+  </div>
+  <div class="tab">
+    <input type="radio" id="tab-unitvalueset-3" name="tab-unitvalueset-group-2"></input>
+    <label for="tab-unitvalueset-3">XML</label>
+    <div class="content-in-tab">
+      <textarea style="border:none" class="xml">
+        <item>
+            <!-- item/unitValueSet -->
+            <extension url="http://hl7.org/fhir/StructureDefinition/questionnaire-unitValueSet">
+                <extension url="http://hl7.org/fhir/StructureDefinition/valueset-system">
+                    <valueCanonical value="http://loinc.org/vs/LL715-4"/>
+                </extension>
+            </extension>
+            <linkId value="2.9.b"/>
+            <text value="Dosage"/>
+            <type value="quantity"/>
+        </item>
+      </textarea>
+    </div> 
+  </div>
+</div>
+
+<a name="reference-resource-profile-lookup"></a>
+<h4>Using referenceResource, referenceProfile and lookupQuestionnaire</h4>
+<p>Only allow a service animal resource as an answer.</p>
+<div class="tabs">
+  <div class="tab">
+    <input type="radio" id="tab-reference-resource-profile-lookup-1" name="tab-reference-resource-profile-lookup-group-2" checked="true"></input>
+    <label for="tab-reference-resource-profile-lookup-1">Sample Question</label>
+    <div class="content-in-tab">
+      <p>Select your preferred service animal:
+          <select id="linkitem-2.10-option" name="activity">
+            <option value="Level0">Lassie</option>
+            <option value="Level1">St. Peters</option>
+            <option value="Level2">Coco</option>
+          </select></p>
+    </div> 
+  </div>
+  <div class="tab">
+    <input type="radio" id="tab-reference-resource-profile-lookup-2" name="tab-reference-resource-profile-lookup-group-2"></input>
+    <label for="tab-reference-resource-profile-lookup-2">JSON</label>
+    <div class="content-in-tab">
+      <textarea style="border:none" class="xml">
+        "item": [
+          {
+            "extension": [
+              {
+                "url": "http://hl7.org/fhir/StructureDefinition/questionnaire-referenceResource",
+                "valueCode": "Practitioner"
+              },
+              {
+                "url": "http://hl7.org/fhir/StructureDefinition/questionnaire-referenceProfile",
+                "valueCanonical": "http://hl7.org/fhir/StructureDefinition/practitioner-animalSpecies"
+              },
+
+              {
+                "url": "http://hl7.org/fhir/uv/sdc/StructureDefinition/sdc-questionnaire-lookupQuestionnaire",
+                "valueUri": "http://mysite.com/Questionnaire/1234"
+              }
+            ],
+            "linkId": "2.10.b",
+            "text": "Select your preferred service animal:",
+            "type": "reference"
+          }
+        ]
+      </textarea>
+    </div> 
+  </div>
+  <div class="tab">
+    <input type="radio" id="tab-reference-resource-profile-lookup-3" name="tab-reference-resource-profile-lookup-group-2"></input>
+    <label for="tab-reference-resource-profile-lookup-3">XML</label>
+    <div class="content-in-tab">
+      <textarea style="border:none" class="xml">
+        <item>
+            <!-- item/questionnaire-referenceResource -->
+            <extension url="http://hl7.org/fhir/StructureDefinition/questionnaire-referenceResource">
+                <valueCode value="Practitioner"/>
+            </extension>
+            <!-- item/questionnaire-referenceProfile -->
+            <extension url="http://hl7.org/fhir/StructureDefinition/questionnaire-referenceProfile">
+                <valueCanonical value="http://hl7.org/fhir/StructureDefinition/practitioner-animalSpecies"/> 
+            </extension>
+            <!-- item/sdc-questionnaire-lookupQuestionnaire -->
+            <extension url="http://hl7.org/fhir/uv/sdc/StructureDefinition/sdc-questionnaire-lookupQuestionnaire">
+                <valueUri value="http://mysite.com/Questionnaire/1234"/>
+            </extension>            
+            <linkId value="2.10.b"/>
+            <text value="Select your preferred service animal:"/>
+            <type value="reference"/>
+        </item>
+      </textarea>
+    </div> 
+  </div>
+</div>
+
+<a name="calculation">  </a>
+<h3>Calculation</h3>
+<a name="initialexpression"></a>
+<h4>Using initialExpression</h4>
+<p>Example with an initial expression.</p>
+<div class="tabs">
+  <div class="tab">
+    <input type="radio" id="tab-initialexpression-1" name="tab-initialexpression-group-2" checked="true"></input>
+    <label for="tab-initialexpression-1">Sample Question</label>
+    <div class="content-in-tab">
+      <p>Deadline for submission (7 days from now) <input id="linkitem-3.1-input" type="text" value="05/05/2020" disabled="true"/></p>
+    </div> 
+  </div>
+  <div class="tab">
+    <input type="radio" id="tab-initialexpression-2" name="tab-initialexpression-group-2"></input>
+    <label for="tab-initialexpression-2">JSON</label>
+    <div class="content-in-tab">
+      <textarea style="border:none" class="xml">
+        "item": [
+          {
+            "extension": [
+              {
+                "url": "http://hl7.org/fhir/uv/sdc/StructureDefinition/sdc-questionnaire-initialExpression",
+                "valueExpression": {
+                  "description": "deadline for submission",
+                  "language": "text/fhirpath",
+                  "expression": "today() + 7 days"
+                }
+              }
+            ],
+            "linkId": "3.1.b",
+            "text": "Deadline for submission (7 days from now)",
+            "type": "date",
+            "readOnly": true
+          }
+        ]
+      </textarea>
+    </div> 
+  </div>
+  <div class="tab">
+    <input type="radio" id="tab-initialexpression-3" name="tab-initialexpression-group-2"></input>
+    <label for="tab-initialexpression-3">XML</label>
+    <div class="content-in-tab">
+      <textarea style="border:none" class="xml">
+      <item>
+          <!-- item/sdc-questionnaire-initialExpression - initial value for a question answer as determined by an evaluated expression.-->
+          <extension url="http://hl7.org/fhir/uv/sdc/StructureDefinition/sdc-questionnaire-initialExpression">
+              <valueExpression>
+                  <description value="deadline for submission"/>
+                  <language value="text/fhirpath"/>
+                  <expression value="today() + 7 days"/> 
+              </valueExpression>
+          </extension>
+          <linkId value="3.1.b"/>
+          <text value="Deadline for submission (7 days from now)"/>
+          <type value="date"/>
+          <readOnly value="true"/>
+      </item>
+      </textarea>
+    </div> 
+  </div>
+</div>
+
+<a name="calculatedexpression"></a>
+<h4>Using calculatedExpression and variable</h4>
+<p>Example with a calculated expression.</p>
+<div class="tabs">
+  <div class="tab">
+    <input type="radio" id="tab-calculatedexpression-1" name="tab-calculatedexpression-group-2" checked="true"></input>
+    <label for="tab-calculatedexpression-1">Sample Question</label>
+    <div class="content-in-tab">
+      <p>Weight (kg) <input id="linkitem-3.2.1-input" type="text"/><br/>
+          Body Height (inches)<input id="linkitem-3.2.2-input" type="text"/><br/>
+          Your Body Mass Index (BMI) is <input id="linkitem-3.2.3-input" type="text" disabled="true"></input>    </p>
+    </div> 
+  </div>
+  <div class="tab">
+    <input type="radio" id="tab-calculatedexpression-2" name="tab-calculatedexpression-group-2"></input>
+    <label for="tab-calculatedexpression-2">JSON</label>
+    <div class="content-in-tab">
+      <textarea style="border:none" class="xml">
+        {
+          "resourceType": "Questionnaire",
+          "extension": [
+            {
+              "url": "http://hl7.org/fhir/StructureDefinition/variable",
+              "valueExpression": {
+                "name": "weight",
+                "language": "text/fhirpath",
+                "expression": "%resource.repeat(item).where(linkId='3.2.b').item.answer.valueDecimal"
+              }
+            },
+            {
+              "url": "http://hl7.org/fhir/StructureDefinition/variable",
+              "valueExpression": {
+                "name": "height",
+                "language": "text/fhirpath",
+                "expression": "%resource.repeat(item).where(linkId='3.2.c').item.answer.valueDecimal*0.0254"
+              }
+            }
+          ],
+          "item": [
+            {
+              "extension": [
+                {
+                  "url": "http://hl7.org/fhir/StructureDefinition/questionnaire-unit",
+                  "valueCoding": {
+                    "system": "http://unitsofmeasure.org",
+                    "code": "kg"
+                  }
+                }
+              ],
+              "linkId": "3.2.b",
+              "text": "Weight (kg)",
+              "type": "decimal"
+            },
+            {
+              "extension": [
+                {
+                  "url": "http://hl7.org/fhir/StructureDefinition/questionnaire-unit",
+                  "valueCoding": {
+                    "system": "http://unitsofmeasure.org",
+                    "code": "[in_i]"
+                  }
+                }
+              ],
+              "linkId": "3.2.c",
+              "text": "Body Height (inches)",
+              "type": "decimal"
+            },
+            {
+              "extension": [
+                {
+                  "url": "http://hl7.org/fhir/uv/sdc/StructureDefinition/sdc-questionnaire-calculatedExpression",
+                  "valueExpression": {
+                    "description": "BMI Calculation",
+                    "language": "text/fhirpath",
+                    "expression": "(%weight/(%height.power(2))).round(1)"
+                  }
+                }
+              ],
+              "linkId": "3.2.d",
+              "text": "Your Body Mass Index (BMI) is ",
+              "type": "decimal",
+              "readOnly": true
+            }
+          ]
+        }
+      </textarea>
+    </div> 
+  </div>
+  <div class="tab">
+    <input type="radio" id="tab-calculatedexpression-3" name="tab-calculatedexpression-group-2"></input>
+    <label for="tab-calculatedexpression-3">XML</label>
+    <div class="content-in-tab">
+      <textarea style="border:none" class="xml">
+        <Questionnaire>
+          <extension
+            url="http://hl7.org/fhir/StructureDefinition/variable">
+            <valueExpression>
+              <name value="weight" />
+              <language value="text/fhirpath" />
+              <expression
+                value="%resource.repeat(item).where(linkId='3.2.b').item.answer.valueDecimal" />
+            </valueExpression>
+          </extension>
+          <extension
+            url="http://hl7.org/fhir/StructureDefinition/variable">
+            <valueExpression>
+              <name value="height" />
+              <language value="text/fhirpath" />
+              <expression
+                value="%resource.repeat(item).where(linkId='3.2.c').item.answer.valueDecimal*0.0254" />
+            </valueExpression>
+          </extension>
+          <item>
+            <extension
+              url="http://hl7.org/fhir/StructureDefinition/questionnaire-unit">
+              <valueCoding>
+                <system value="http://unitsofmeasure.org" />
+                <code value="kg" />
+              </valueCoding>
+            </extension>
+            <linkId value="3.2.b" />
+            <text value="Weight (kg)" />
+            <type value="decimal" />
+          </item>
+          <item>
+            <extension
+              url="http://hl7.org/fhir/StructureDefinition/questionnaire-unit">
+              <valueCoding>
+                <system value="http://unitsofmeasure.org" />
+                <code value="[in_i]" />
+              </valueCoding>
+            </extension>
+            <linkId value="3.2.c" />
+            <text value="Body Height (inches)" />
+            <type value="decimal" />
+          </item>
+          <item>
+            <!-- item/sdc-questionnaire-calculatedExpression - Calculated value 
+              for a question answer as determined by an evaluated expression.. -->
+            <extension
+              url="http://hl7.org/fhir/uv/sdc/StructureDefinition/sdc-questionnaire-calculatedExpression">
+              <valueExpression>
+                <description value="BMI Calculation" />
+                <language value="text/fhirpath" />
+                <expression
+                  value="(%weight/(%height.power(2))).round(1)" />
+              </valueExpression>
+            </extension>
+            <linkId value="3.2.d" />
+            <text value="Your Body Mass Index (BMI) is " />
+            <type value="decimal" />
+            <readOnly value="true" />
+          </item>
+        </Questionnaire>
+      </textarea>
+    </div> 
+  </div>
+</div>
+
+<a name="cqf"></a>
+<h4>Using cqf-calculatedValue and cqf-library</h4>
+<p>Example with a CQF calculated value.</p>
+<div class="tabs">
+  <div class="tab">
+    <input type="radio" id="tab-cqf-1" name="tab-cqf-group-2" checked="true"></input>
+    <label for="tab-cqf-1">Sample Question</label>
+    <div class="content-in-tab">
+      <p>Estimated Due Date <input id="linkitem-3.3-input" type="text" value="07/07/2020" disabled="false"/></p>
+    </div> 
+  </div>
+  <div class="tab">
+    <input type="radio" id="tab-cqf-2" name="tab-cqf-group-2"></input>
+    <label for="tab-cqf-2">JSON</label>
+    <div class="content-in-tab">
+      <textarea style="border:none" class="xml">
+        "item": [
+          {
+            "extension": [
+              {
+                "url": "http://hl7.org/fhir/StructureDefinition/cqf-calculatedValue",
+                "valueString": "estimated_due_date"
+              }
+            ],
+            "linkId": "3.3.b",
+            "text": "Estimated Due Date",
+            "type": "date",
+            "readOnly": true
+          }
+        ]
+      </textarea>
+    </div> 
+  </div>
+  <div class="tab">
+    <input type="radio" id="tab-cqf-3" name="tab-cqf-group-2"></input>
+    <label for="tab-cqf-3">XML</label>
+    <div class="content-in-tab">
+      <textarea style="border:none" class="xml">
+        <item>
+            <!-- item/cqf-calculatedValue - The name of an expression in a referenced library that determines a calculated value.-->
+            <!-- TODO: add a format for dates -->
+            <extension url="http://hl7.org/fhir/StructureDefinition/cqf-calculatedValue" >
+                <valueString value="estimated_due_date"/>
+            </extension>
+            <linkId value="3.3.b"/> 
+            <text value="Estimated Due Date"/>
+            <type value="date"/>
+            <readOnly value="true"/>
+        </item>
+      </textarea>
+    </div> 
+  </div>
+</div>
+
+<a name="othercontrols">  </a>
+<h3>Other Controls</h3>
+<a name="initial"></a>
+<h4>Using initial</h4>
+<p>Example of options with initial value.</p>
+<div class="tabs">
+  <div class="tab">
+    <input type="radio" id="tab-initial-1" name="tab-initial-group-2" checked="true"></input>
+    <label for="tab-initial-1">Sample Question</label>
+    <div class="content-in-tab">
+      <p>Marital Status
+          <select id="gender" name="genderOptions">
+            <option value="male selected">Single</option>
+            <option value="female">Married</option>
+            <option value="other" selected="true">Divorced</option>
+            <option value="unknown">Widowed</option>
+          </select></p>
+    </div> 
+  </div>
+  <div class="tab">
+    <input type="radio" id="tab-initial-2" name="tab-initial-group-2"></input>
+    <label for="tab-initial-2">JSON</label>
+    <div class="content-in-tab">
+      <textarea style="border:none" class="xml">
+        "item": [
+          {
+            "linkId": "4.1.b",
+            "text": "Marital Status",
+            "type": "choice",
+            "answerValueSet": "http://hl7.org/fhir/ValueSet/marital-status",
+            "initial": [
+              {
+                "valueCoding": {
+                  "system": "http://hl7.org/fhir/ValueSet/marital-status",
+                  "code": "D",
+                  "display": "Divorced"
+                }
+              }
+            ]
+          }
+        ]
+      </textarea>
+    </div> 
+  </div>
+  <div class="tab">
+    <input type="radio" id="tab-initial-3" name="tab-initial-group-2"></input>
+    <label for="tab-initial-3">XML</label>
+    <div class="content-in-tab">
+      <textarea style="border:none" class="xml">
+        <item>
+            <linkId value="4.1.b"/>
+            <text value="Marital Status"/>
+            <type value="choice"/>
+            <answerValueSet value="http://hl7.org/fhir/ValueSet/marital-status"/>
+            <!-- item/initial - default value-->
+            <initial>
+                <valueCoding>
+                    <system value="http://hl7.org/fhir/ValueSet/marital-status"/>
+                    <code value="D"/>
+                    <display value="Divorced"/>
+                </valueCoding>
+            </initial>
+        </item>
+      </textarea>
+    </div> 
+  </div>
+</div>
+
+<a name="enableexamples"></a>
+<h4>Using enableWhen, enableBehavior, and enableWhenExpression</h4>
+<p>Example of enabling behaviors.</p>
+<div class="tabs" style="height:350px">
+  <div class="tab">
+    <input type="radio" id="tab-enableexamples-1" name="tab-enableexamples-group-2" checked="true"></input>
+    <label for="tab-enableexamples-1">Sample Question</label>
+    <div class="content-in-tab">
+      <p>Choose Gender    
+          <select id="linkitem-4.2.1" name="genderOptions">
+            <option value="male">Male</option>
+            <option value="female">Female</option>
+            <option value="other">Other</option>
+            <option value="unknown">Unknown</option>
+          </select><br/><br/>
+          Are you pregnant? (enableWhen gender = Female)<br/>
+          <input type="radio" id="yes" name="yesnodontknow" value="Y"> Yes  </input>
+          <input type="radio" id="no" name="yesnodontknow" value="N"> No  </input>
+          <input type="radio" id="no" name="yesnodontknow" value="asked-unknown"> Don't know  </input><br/><br/>
+          Are you diabetic? (enableWhen gender = Female)<br/>
+          <input type="radio" id="yes" name="yesnodontknow" value="Y"> Yes  </input>
+          <input type="radio" id="no" name="yesnodontknow" value="N"> No  </input>
+          <input type="radio" id="no" name="yesnodontknow" value="asked-unknown"> Don't know  </input><br/><br/>
+          Have you been diagnosed with Gestational Diabetes? (enableBehavior = only when pregnant and diabetic)<br/>
+          <input type="radio" id="yes" name="yesnodontknow" value="Y"> Yes  </input>
+          <input type="radio" id="no" name="yesnodontknow" value="N"> No  </input>
+          <input type="radio" id="no" name="yesnodontknow" value="asked-unknown"> Don't know  </input><br/><br/>
+          Enter your birthdate (MM/DD/YYYY)<br/>
+          <input id="linkitem-2.2-input" type="text"></input><br/><br/>
+          Have you had mammogram before?(enableWhenExpression = only when gender is female and age > 40)<br/>
+          <input type="radio" id="yes" name="yesnodontknow" value="Y"> Yes  </input>
+          <input type="radio" id="no" name="yesnodontknow" value="N"> No  </input>
+          <input type="radio" id="no" name="yesnodontknow" value="asked-unknown"> Don't know  </input><br/>
+      </p>
+    </div> 
+  </div>
+  <div class="tab">
+    <input type="radio" id="tab-enableexamples-2" name="tab-enableexamples-group-2"></input>
+    <label for="tab-enableexamples-2">JSON</label>
+    <div class="content-in-tab">
+      <textarea style="border:none" class="xml">
+        "item": [
+          {
+            "linkId": "4.2.b",
+            "type": "group",
+            "item": [
+              {
+                "linkId": "4.2.b.1",
+                "text": "Choose Gender",
+                "type": "choice",
+                "answerValueSet": "http://hl7.org/fhir/ValueSet/administrative-gender"
+              },
+              {
+                "linkId": "4.2.b.2",
+                "text": "Are you pregnant? (enableWhen = gender is Female)",
+                "type": "choice",
+                "enableWhen": [
+                  {
+                    "question": "4.2.b.1",
+                    "operator": "=",
+                    "answerCoding": {
+                      "system": "http://hl7.org/fhir/administrative-gender",
+                      "code": "female"
+                    }
+                  }
+                ],
+                "answerValueSet": "http://hl7.org/fhir/ValueSet/yesnodontknow"
+              },
+              {
+                "linkId": "4.2.b.3",
+                "text": "Are you diabetic? (enableWhen = gender is Female)",
+                "type": "choice",
+                "enableWhen": [
+                  {
+                    "question": "4.2.b.1",
+                    "operator": "=",
+                    "answerCoding": {
+                      "system": "http://hl7.org/fhir/administrative-gender",
+                      "code": "female"
+                    }
+                  }
+                ],
+                "answerValueSet": "http://hl7.org/fhir/ValueSet/yesnodontknow"
+              },
+              {
+                "linkId": "4.2.b.4",
+                "text": "Have you been diagnosed with Gestational Diabetes? (enableBehavior = only when pregnant and diabetic)",
+                "type": "choice",
+                "enableWhen": [
+                  {
+                    "question": "4.2.b.2",
+                    "operator": "=",
+                    "answerCoding": {
+                      "system": "http://terminology.hl7.org/CodeSystem/v2-0136",
+                      "code": "Y"
+                    }
+                  },
+                  {
+                    "question": "4.2.b.3",
+                    "operator": "=",
+                    "answerCoding": {
+                      "system": "http://terminology.hl7.org/CodeSystem/v2-0136",
+                      "code": "Y"
+                    }
+                  }
+                ],
+                "enableBehavior": "all",
+                "answerValueSet": "http://hl7.org/fhir/ValueSet/yesnodontknow"
+              },
+              {
+                "extension": [
+                  {
+                    "url": "http://hl7.org/fhir/StructureDefinition/entryFormat",
+                    "valueString": "MM/DD/YYYY"
+                  }
+                ],
+                "linkId": "4.2.b.5",
+                "text": "Enter your birthdate (MM/DD/YYYY)",
+                "type": "date",
+                "answerValueSet": "http://hl7.org/fhir/ValueSet/administrative-gender"
+              },
+              {
+                "extension": [
+                  {
+                    "url": "http://hl7.org/fhir/uv/sdc/StructureDefinition/sdc-questionnaire-enableWhenExpression",
+                    "valueExpression": {
+                      "description": "if last 2 questions were answered",
+                      "language": "text/fhirpath",
+                      "expression": "%resource.repeats(item).where(linkId='4.2.b.1').answer.valueCoding.code ='female' and today().toString().substring(0, 4).toInteger() - %resource.repeats(item).where(linkId='4.2.b.5').answer.toString().substring(0, 4).toInteger() >= 40"
+                    }
+                  }
+                ],
+                "linkId": "4.2.b.6",
+                "text": "Have you had mammogram before?(enableWhenExpression = only when gender is female and age > 40)",
+                "type": "choice",
+                "answerValueSet": "http://hl7.org/fhir/ValueSet/yesnodontknow"
+              }
+            ]
+          }
+        ]
+      </textarea>
+    </div> 
+  </div>
+  <div class="tab">
+    <input type="radio" id="tab-enableexamples-3" name="tab-enableexamples-group-2"></input>
+    <label for="tab-enableexamples-3">XML</label>
+    <div class="content-in-tab">
+      <textarea style="border:none" class="xml">
+        <item>
+          <linkId value="4.2.b"/>
+          <type value="group"/>
+          <item>
+              <linkId value="4.2.b.1"/>
+              <text value="Choose Gender"/>
+              <type value="choice"/>
+              <answerValueSet value="http://hl7.org/fhir/ValueSet/administrative-gender"/>
+          </item>            
+          <item>
+              <linkId value="4.2.b.2"/>
+              <text value="Are you pregnant? (enableWhen = gender is Female)"/>
+              <type value="choice"/>
+              <!-- item/enableWhen - A constraint indicating that this item should only be enabled (displayed/allow answers to be captured) when the specified condition is true.-->
+              <enableWhen>
+                  <question value="4.2.b.1"/>
+                  <operator value="="/>
+                  <answerCoding>
+                      <system value="http://hl7.org/fhir/administrative-gender"/>
+                      <code value="female"/>
+                  </answerCoding>
+              </enableWhen>
+              <answerValueSet value="http://hl7.org/fhir/ValueSet/yesnodontknow"/>
+          </item>
+          <item>
+              <linkId value="4.2.b.3"/>
+              <text value="Are you diabetic? (enableWhen = gender is Female)"/>
+              <type value="choice"/>
+              <!-- item/enableWhen - A constraint indicating that this item should only be enabled (displayed/allow answers to be captured) when the specified condition is true.-->
+              <enableWhen>
+                  <question value="4.2.b.1"/>
+                  <operator value="="/>
+                  <answerCoding>
+                      <system value="http://hl7.org/fhir/administrative-gender"/>
+                      <code value="female"/>
+                  </answerCoding>
+              </enableWhen>
+              <answerValueSet value="http://hl7.org/fhir/ValueSet/yesnodontknow"/>
+          </item>
+          <item>
+              <linkId value="4.2.b.4"/>
+              <text value="Have you been diagnosed with Gestational Diabetes? (enableBehavior = only when pregnant and diabetic)"/>
+              <type value="choice"/>
+              <!-- item/enableBehavior - Controls how multiple enableWhen values are interpreted - whether all or any must be true.-->
+              <enableWhen>
+                  <question value="4.2.b.2"/>
+                  <operator value="="/>
+                  <answerCoding>
+                      <system value="http://terminology.hl7.org/CodeSystem/v2-0136"/>
+                      <code value="Y"/>
+                  </answerCoding>
+              </enableWhen>
+              <enableWhen>
+                  <question value="4.2.b.3"/>
+                  <operator value="="/>
+                  <answerCoding>
+                      <system value="http://terminology.hl7.org/CodeSystem/v2-0136"/>
+                      <code value="Y"/>
+                  </answerCoding>
+              </enableWhen>
+              <!-- item/enableBehavior - Controls how multiple enableWhen values are interpreted - whether all or any must be true.-->
+              <enableBehavior value="all"/>
+              <answerValueSet value="http://hl7.org/fhir/ValueSet/yesnodontknow"/>
+          </item>
+          <item>
+              <extension url="http://hl7.org/fhir/StructureDefinition/entryFormat">
+                  <valueString value="MM/DD/YYYY"/>
+              </extension>            
+              <linkId value="4.2.b.5"/>
+              <text value="Enter your birthdate (MM/DD/YYYY)"/>
+              <type value="date"/>
+              <answerValueSet value="http://hl7.org/fhir/ValueSet/administrative-gender"/>
+          </item>
+          <item>
+              <!-- item/enableWhenExpression - An expression that returns a boolean value for whether to enable the item.-->
+              <extension url="http://hl7.org/fhir/uv/sdc/StructureDefinition/sdc-questionnaire-enableWhenExpression">
+                  <valueExpression>
+                      <description value="if last 2 questions were answered"/>
+                      <language value="text/fhirpath"/>
+                      <!-- To calculate age: subtract the birthdate's year from this year-->
+                      <expression value="%resource.repeats(item).where(linkId='4.2.b.1').answer.valueCoding.code ='female' and today().toString().substring(0, 4).toInteger() - %resource.repeats(item).where(linkId='4.2.b.5').answer.toString().substring(0, 4).toInteger() >= 40"/>
+                  </valueExpression>
+              </extension>  
+              <linkId value="4.2.b.6"/>
+              <text value="Have you had mammogram before?(enableWhenExpression = only when gender is female and age > 40)"/>
+              <type value="choice"/>
+              <answerValueSet value="http://hl7.org/fhir/ValueSet/yesnodontknow"/>
+          </item>
+        </item>
+      </textarea>
+    </div> 
+  </div>
+</div>
+
+<a name="ordinalvalue-constraint"></a>
+<h4>Using ordinalValue and constraint</h4>
+<p>Example involving ordinal value and contraints.</p>
+<div class="tabs" style="height:400px">
+  <div class="tab">
+    <input type="radio" id="tab-ordinalvalue-constraint-1" name="tab-ordinalvalue-constraint-group-2" checked="true"></input>
+    <label for="tab-ordinalvalue-constraint-1">Sample Question</label>
+    <div class="content-in-tab">
+      <p>
+        You should answer at least three questions.<br/><br/>
+        Over the last 2 weeks, how often have you been bothered by any of the following problems?<br/><br/>
+        1. Little interest or pleasure in doing things <br/>
+          <input type="radio" id="LA6568-5" name="LL358-3" value="0"> Not at all (0)</input>
+          <input type="radio" id="LA6569-3" name="LL358-3" value="1"> Several Days (1)</input>
+          <input type="radio" id="LA6570-1" name="LL358-3" value="2"> More than half the days (2)</input>
+          <input type="radio" id="LA6571-9" name="LL358-3" value="3"> Nearly every day (3)</input><br/><br/>
+        2. Feeling down, depressed, or hopeless <br/>
+          <input type="radio" id="LA6568-5" name="LL358-3" value="0"> Not at all (0)</input>
+          <input type="radio" id="LA6569-3" name="LL358-3" value="1"> Several Days (1)</input>
+          <input type="radio" id="LA6570-1" name="LL358-3" value="2"> More than half the days (2)</input>
+          <input type="radio" id="LA6571-9" name="LL358-3" value="3"> Nearly every day (3)</input><br/><br/>
+        3. Trouble falling or staying asleep, or sleeping too much <br/>
+          <input type="radio" id="LA6568-5" name="LL358-3" value="0"> Not at all (0)</input>
+          <input type="radio" id="LA6569-3" name="LL358-3" value="1"> Several Days (1)</input>
+          <input type="radio" id="LA6570-1" name="LL358-3" value="2"> More than half the days (2)</input>
+          <input type="radio" id="LA6571-9" name="LL358-3" value="3"> Nearly every day (3)</input><br/><br/>
+        4. Feeling tired or having little energy <br/>
+          <input type="radio" id="LA6568-5" name="LL358-3" value="0"> Not at all (0)</input>
+          <input type="radio" id="LA6569-3" name="LL358-3" value="1"> Several Days (1)</input>
+          <input type="radio" id="LA6570-1" name="LL358-3" value="2"> More than half the days (2)</input>
+          <input type="radio" id="LA6571-9" name="LL358-3" value="3"> Nearly every day (3)</input><br/><br/>
+        Total Score: 0
+      </p>
+    </div> 
+  </div>
+  <div class="tab">
+    <input type="radio" id="tab-ordinalvalue-constraint-2" name="tab-ordinalvalue-constraint-group-2"></input>
+    <label for="tab-ordinalvalue-constraint-2">JSON</label>
+    <div class="content-in-tab">
+      <textarea style="border:none" class="xml">
+        {
+          "resourceType": "Questionnaire",
+          "contained": [
+            {
+              "compose": {
+                "include": [
+                  {
+                    "concept": [
+                      {
+                        "code": "LA6568-5",
+                        "display": "Not at all",
+                        "extension": [
+                          {
+                            "url": "http://hl7.org/fhir/StructureDefinition/ordinalValue",
+                            "valueDecimal": 0
+                          }
+                        ]
+                      },
+                      {
+                        "code": "LA6569-3",
+                        "display": "Several days",
+                        "extension": [
+                          {
+                            "url": "http://hl7.org/fhir/StructureDefinition/ordinalValue",
+                            "valueDecimal": 1
+                          }
+                        ]
+                      },
+                      {
+                        "code": "Several days",
+                        "display": "More than half the days",
+                        "extension": [
+                          {
+                            "url": "http://hl7.org/fhir/StructureDefinition/ordinalValue",
+                            "valueDecimal": 2
+                          }
+                        ]
+                      },
+                      {
+                        "code": "LA6571-9",
+                        "display": "Nearly every day",
+                        "extension": [
+                          {
+                            "url": "http://hl7.org/fhir/StructureDefinition/ordinalValue",
+                            "valueDecimal": 3
+                          }
+                        ]
+                      }
+                    ],
+                    "system": "http://loinc.org"
+                  }
+                ]
+              },
+              "copyright": "This content from LOINC® is copyright © 1995 Regenstrief Institute, Inc. and the LOINC Committee, and available at no cost under the license at http://loinc.org/terms-of-use",
+              "description": "The answer list for timing of harm assessment",
+              "id": "LL358-3",
+              "resourceType": "ValueSet",
+              "status": "active",
+              "title": "Timing of harm assessment [AHRQ]"
+            }
+          ],
+          "item": [
+            {
+              "extension": [
+                {
+                  "extension": [
+                    {
+                      "url": "key",
+                      "valueId": "contraint-1"
+                    },
+                    {
+                      "url": "requirements",
+                      "valueString": "At least three questions must be answered to have a meaningful total."
+                    },
+                    {
+                      "url": "severity",
+                      "valueCode": "warning"
+                    },
+                    {
+                      "url": "expression",
+                      "valueString": "%resource.repeat(item).where(linkId='4.3.b').item.where(answer.hasValue()).count() >= 3"
+                    },
+                    {
+                      "url": "human",
+                      "valueString": "You should answer at least three questions."
+                    }
+                  ],
+                  "url": "http://hl7.org/fhir/StructureDefinition/questionnaire-constraint"
+                }
+              ],
+              "item": [
+                {
+                  "answerValueSet": "#LL358-3",
+                  "linkId": "4.3.b.1",
+                  "text": "1. Little interest or pleasure in doing things ",
+                  "type": "choice"
+                },
+                {
+                  "answerValueSet": "#LL358-3",
+                  "linkId": "4.3.b.2",
+                  "text": "2. Feeling down, depressed, or hopeless ",
+                  "type": "choice"
+                },
+                {
+                  "answerValueSet": "#LL358-3",
+                  "linkId": "4.3.b.3",
+                  "text": "3. Trouble falling or staying asleep, or sleeping too much ",
+                  "type": "choice"
+                },
+                {
+                  "answerValueSet": "#LL358-3",
+                  "linkId": "4.3.b.4",
+                  "text": "4. Feeling tired or having little energy ",
+                  "type": "choice"
+                },
+                {
+                  "extension": [
+                    {
+                      "url": "http://hl7.org/fhir/uv/sdc/StructureDefinition/sdc-questionnaire-calculatedExpression",
+                      "valueExpression": {
+                        "description": "Total score",
+                        "expression": "%resource.repeat(item).where(linkId='4.3.b').item.answer.ordinalValue().aggregate($this + $total, 0)",
+                        "language": "text/fhirpath"
+                      }
+                    }
+                  ],
+                  "linkId": "4.3.b.5",
+                  "text": "Total Score:",
+                  "type": "integer"
+                }
+              ],
+              "linkId": "4.3.b",
+              "text": "Over the last 2 weeks, how often have you been bothered by any of the following problems?",
+              "type": "group"
+            }
+          ]
+        }
+      </textarea>
+    </div> 
+  </div>
+  <div class="tab">
+    <input type="radio" id="tab-ordinalvalue-constraint-3" name="tab-ordinalvalue-constraint-group-2"></input>
+    <label for="tab-ordinalvalue-constraint-3">XML</label>
+    <div class="content-in-tab">
+      <textarea style="border:none" class="xml">
+        <Questionnaire>
+          <contained>
+              <ValueSet>
+                  <id value="LL358-3"/>
+                  <title value="Timing of harm assessment [AHRQ]"/>
+                  <status value="active"/>
+                  <description value="The answer list for timing of harm assessment"/>
+                  <copyright value="This content from LOINC® is copyright © 1995 Regenstrief Institute, Inc. and the LOINC Committee, and available at no cost under the license at http://loinc.org/terms-of-use"/>
+                  <compose>
+                      <include>
+                          <system value="http://loinc.org"/>
+                          <concept>
+                              <extension url="http://hl7.org/fhir/StructureDefinition/ordinalValue">
+                                  <valueDecimal value="0"/>
+                              </extension>
+                              <code value="LA6568-5"/>
+                              <display value="Not at all"/>
+                          </concept>
+                          <concept>
+                              <extension url="http://hl7.org/fhir/StructureDefinition/ordinalValue">
+                                  <valueDecimal value="1"/>
+                              </extension>
+                              <code value="LA6569-3"/>
+                              <display value="Several days"/>
+                          </concept>
+                          <concept>
+                              <extension url="http://hl7.org/fhir/StructureDefinition/ordinalValue">
+                                  <valueDecimal value="2"/>
+                              </extension>
+                              <code value="Several days"/>
+                              <display value="More than half the days"/>
+                          </concept>
+                          <concept>
+                              <extension url="http://hl7.org/fhir/StructureDefinition/ordinalValue">
+                                  <valueDecimal value="3"/>
+                              </extension>
+                              <code value="LA6571-9"/>
+                              <display value="Nearly every day"/>
+                          </concept>
+                      </include>
+                  </compose>
+              </ValueSet>
+          </contained>
+          <item>
+            <!-- item/constraint - An invariant that must be satisfied before responses to the questionnaire can be considered "complete". -->
+            <extension url="http://hl7.org/fhir/StructureDefinition/questionnaire-constraint">
+                <extension url="key">
+                    <valueId value="contraint-1"/>
+                </extension>
+                <extension url="requirements">
+                    <valueString value="At least three questions must be answered to have a meaningful total."/> 
+                </extension>
+                <extension url="severity">
+                    <valueCode value="warning"/>
+                </extension>
+                <extension url="expression">
+                    <valueString value="%resource.repeat(item).where(linkId='4.3.b').item.where(answer.hasValue()).count() >= 3"/>
+                </extension>
+                <extension url="human">
+                    <valueString value="You should answer at least three questions."/>
+                </extension>
+            </extension>        
+            <linkId value="4.3.b"/>
+            <text value="Over the last 2 weeks, how often have you been bothered by any of the following problems?" />
+            <type value="group"/>
+            <item>
+                <linkId value="4.3.b.1"/>
+                <text value="1. Little interest or pleasure in doing things "/>
+                <type value="choice"/>
+                <answerValueSet value="#LL358-3"/><!-- use contained ValueSet -->
+            </item>
+            <item>
+                <linkId value="4.3.b.2"/>
+                <text value="2. Feeling down, depressed, or hopeless "/>
+                <type value="choice"/>
+                <answerValueSet value="#LL358-3"/><!-- use contained ValueSet -->
+            </item>
+            <item>
+                <linkId value="4.3.b.3"/>
+                <text value="3. Trouble falling or staying asleep, or sleeping too much "/>
+                <type value="choice"/>
+                <answerValueSet value="#LL358-3"/><!-- use contained ValueSet -->
+            </item>
+            <item>
+                <linkId value="4.3.b.4"/>
+                <text value="4. Feeling tired or having little energy "/>
+                <type value="choice"/>
+                <answerValueSet value="#LL358-3"/><!-- use contained ValueSet -->
+            </item>        
+            <item>
+                <extension url="http://hl7.org/fhir/uv/sdc/StructureDefinition/sdc-questionnaire-calculatedExpression">
+                    <valueExpression>
+                        <description value="Total score"/>
+                        <language value="text/fhirpath"/>
+                        <expression value="%resource.repeat(item).where(linkId='4.3.b').item.answer.ordinalValue().aggregate($this + $total, 0)"/> 
+                    </valueExpression>
+                </extension>            
+                <linkId value="4.3.b.5"/>
+                <text value="Total Score:"/>
+                <type value="integer"/>
+            </item>
+          </item>
+        </Questionnaire>
+      </textarea>
+    </div> 
+  </div>
+</div>
+
+<a name="signatureRequired-usagemode"></a>
+<h4>Using signatureRequired and usageMode</h4>
+<p>Example of signature required.</p>
+<div class="tabs">
+  <div class="tab">
+    <input type="radio" id="tab-signatureRequired-usagemode-1" name="tab-signatureRequired-usagemode-group-2" checked="true"></input>
+    <label for="tab-signatureRequired-usagemode-1">Sample Question</label>
+    <div class="content-in-tab">
+      <p>Signature of Patient: [only show signature pad when capturing data]</p>
+    </div> 
+  </div>
+  <div class="tab">
+    <input type="radio" id="tab-signatureRequired-usagemode-2" name="tab-signatureRequired-usagemode-group-2"></input>
+    <label for="tab-signatureRequired-usagemode-2">JSON</label>
+    <div class="content-in-tab">
+      <textarea style="border:none" class="xml">
+        "item": [
+          {
+            "extension": [
+              {
+                "url": "http://hl7.org/fhir/StructureDefinition/questionnaire-signatureRequired",
+                "valueCodeableConcept": {
+                  "coding": [
+                    {
+                      "system": "urn:iso-astm:E1762-95:2013",
+                      "code": "1.2.840.10065.1.12.1.8",
+                      "display": "Signature Witness Signature"
+                    }
+                  ],
+                  "text": "the signature of a witness to any other signature."
+                }
+              },
+              {
+                "url": "http://hl7.org/fhir/StructureDefinition/questionnaire-usageMode",
+                "valueCode": "capture"
+              }
+            ],
+            "linkId": "4.4.b",
+            "text": "Signature of Patient",
+            "type": "attachment",
+            "required": true
+          }
+        ]
+      </textarea>
+    </div> 
+  </div>
+  <div class="tab">
+    <input type="radio" id="tab-signatureRequired-usagemode-3" name="tab-signatureRequired-usagemode-group-2"></input>
+    <label for="tab-signatureRequired-usagemode-3">XML</label>
+    <div class="content-in-tab">
+      <textarea style="border:none" class="xml">
+        TODO: xml
+      </textarea>
+    </div> 
+  </div>
+</div>
+
+<a name="endpoint"></a>
+<h4>Using endpoint</h4>
+<p>To set an endpoint URL for the Form Receiver when the Questionnaire is completed.</p>
+<div class="tabs">
+  <div class="tab">
+    <input type="radio" id="tab-endpoint-1" name="tab-endpoint-group-2" checked="true"></input>
+    <label for="tab-endpoint-1">Sample Question</label>
+    <div class="content-in-tab">
+      <p>[Not applicable to a question - this extension is part of a base Questionnaire's metadata]</p>
+    </div>
+  </div>
+  <div class="tab">
+    <input type="radio" id="tab-endpoint-2" name="tab-endpoint-group-2"></input>
+    <label for="tab-endpoint-2">JSON</label>
+    <div class="content-in-tab">
+      <textarea style="border:none" class="xml">
+        {
+          "resourceType": "Questionnaire",
+          ...
+          "extension": [
+            {
+              "url": "http://hl7.org/fhir/uv/sdc/StructureDefinition/sdc-questionnaire-endpoint",
+              "valueUri": "http://mysite.app/QuestionnaireResponse/create"
+            }
+          ]
+          ...  
+        }
+      </textarea>
+    </div> 
+  </div>
+  <div class="tab">
+    <input type="radio" id="tab-endpoint-3" name="tab-endpoint-group-2"></input>
+    <label for="tab-endpoint-3">XML</label>
+    <div class="content-in-tab">
+      <textarea style="border:none" class="xml">
+        <Questionnaire>
+          ...
+          <extension url="http://hl7.org/fhir/uv/sdc/StructureDefinition/sdc-questionnaire-endpoint">
+              <valueUri value="http://mysite.app/QuestionnaireResponse/create"/>
+          </extension>
+          ...
+        </Questionnaire>
+      </textarea>
+    </div> 
+  </div>
+</div>
+
+<a name="entrymode"></a>
+<h4>Using entryMode</h4>
+<p>To display questions one at a time.</p>
+<div class="tabs">
+  <div class="tab">
+    <input type="radio" id="tab-entrymode-1" name="tab-entrymode-group-2" checked="true"></input>
+    <label for="tab-entrymode-1">Sample Question</label>
+    <div class="content-in-tab">
+      <p>[Not applicable to a question - this extension is part of a base Questionnaire's metadata]</p>
+    </div> 
+  </div>
+  <div class="tab">
+    <input type="radio" id="tab-entrymode-2" name="tab-entrymode-group-2"></input>
+    <label for="tab-entrymode-2">JSON</label>
+    <div class="content-in-tab">
+      <textarea style="border:none" class="xml">
+        {
+          "resourceType": "Questionnaire",
+          ...
+          "extension": [
+            {
+              "url": "http://hl7.org/fhir/uv/sdc/StructureDefinition/sdc-questionnaire-entryMode",
+              "valueCode": "sequential"
+            }
+          ]
+          ...  
+        }
+      </textarea>
+    </div> 
+  </div>
+  <div class="tab">
+    <input type="radio" id="tab-entrymode-3" name="tab-entrymode-group-2"></input>
+    <label for="tab-entrymode-3">XML</label>
+    <div class="content-in-tab">
+      <textarea style="border:none" class="xml">
+        <Questionnaire>
+          ...
+          <extension url="http://hl7.org/fhir/uv/sdc/StructureDefinition/sdc-questionnaire-entryMode">
+            <valueCode value="sequential"/>
+          </extension>
+          ...
+        </Questionnaire>
+      </textarea>
+    </div> 
+  </div>
+</div>
+<!-- template 
+<a name="changeme"></a>
+<h4>Using changeme</h4>
+<p>To restrict choices from a value set.</p>
+<div class="tabs">
+  <div class="tab">
+    <input type="radio" id="tab-changeme-1" name="tab-changeme-group-2" checked="true"></input>
+    <label for="tab-changeme-1">Sample Question</label>
+    <div class="content-in-tab">
+      <p>Activity Level
+          <select id="linkitem-2.2-option" name="activity">
+            <option value="LA10044-8">Often</option>
+            <option value="LA10066-1">Rarely</option>
+            <option value="LA10082-8">Sometimes</option>
+            <option value="LA6270-8">Never</option>
+            <option value="LA9933-8">Always</option>          
+          </select></p>
+    </div> 
+  </div>
+  <div class="tab">
+    <input type="radio" id="tab-changeme-2" name="tab-changeme-group-2"></input>
+    <label for="tab-changeme-2">JSON</label>
+    <div class="content-in-tab">
+      <textarea style="border:none" class="xml">
+        "item": [
+          TODO: json
+        ]
+     </textarea>
+    </div> 
+  </div>
+  <div class="tab">
+    <input type="radio" id="tab-changeme-3" name="tab-changeme-group-2"></input>
+    <label for="tab-changeme-3">XML</label>
+    <div class="content-in-tab">
+      <textarea style="border:none" class="xml">
+        TODO: xml
+      </textarea>
+    </div> 
+  </div>
+</div>
+-->
+
 </div>
