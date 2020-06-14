@@ -53,6 +53,7 @@
         <td>Source</td>
         <td>Location</td>
         <td>Data Type</td>
+        <td>Example</td>
       </tr>
     </thead>
     <tbody>
@@ -65,9 +66,10 @@
         <td>Questionnaire.title, item.prefix, item.text, <a href="#valueset-label">valueset-label</a>, Valueset.compose.include.concept.display,
           Valueset.compose.include.concept.designation.value (and expansion equivalents), CodeSystem.concept.designation.value</td>
         <td>string</td>
+        <td><a href="examples.html#rendering-style">example</a></td>
       </tr>
       <tr>
-        <td colspan="4">
+        <td colspan="5">
           <p>
             This element allows the full capabilities of the HTML style attribute to be applied to the title of a questionnaire, or to the label 
 			or text of a questionnaire item or to the label of an option.  This might mean changing the font or color, changing font style such
@@ -85,9 +87,10 @@
         <td>Questionnaire.title, item.prefix, item.text, <a href="#valueset-label">valueset-label</a>, Valueset.compose.include.concept.display,
           Valueset.compose.include.concept.designation.value (and expansion equivalents), CodeSystem.concept.designation.value</td>
         <td>string</td>
+        <td><a href="examples.html#rendering-xhtml">example</a></td>
       </tr>
       <tr>
-        <td colspan="4">
+        <td colspan="5">
           <p>
             This element provides an alternate representation of the string value of the extended element that makes use of a subset XHTML.  (Specifically,
             the XHTML subset <a href="{{site.data.fhir.path}}narrative.html">allowed by</a> the core specification.)  This extension allows applying
@@ -107,9 +110,10 @@
         <td>Questionnaire</td>
         <td>item (where type='display')</td>
         <td>code</td>
+        <td><a href="examples.html#displayCategory">example</a></td>
       </tr>
       <tr>
-        <td colspan="4">
+        <td colspan="5">
           <p>
             For items with a type of 'display', this indicates what kind of display item it is so that systems can apply differential formatting based on the
             purpose of the display element.  In the absence of a declared <a href="#itemControl">itemControl</a> this could influence the mechanism used to
@@ -128,9 +132,10 @@
         <td>Questionnaire</td>
         <td>item</td>
         <td>boolean</td>
+        <td><a href="examples.html#hidden">example</a></td>
       </tr>
       <tr>
-        <td colspan="4">
+        <td colspan="5">
           <p>
             This allows flagging items that should not be displayed at all.  In theory it can be used for any item, but in general it only makes sense for
             questions and groups.  It allows for answers to be captured behind the scenes using the <a href="behavior.html">behavior</a> and/or
@@ -154,6 +159,7 @@
         <td>Source</td>
         <td>Location</td>
         <td>Data Type</td>
+        <td>Example</td>
       </tr>
     </thead>
     <tbody>
@@ -165,9 +171,10 @@
         <td>Questionnaire</td>
         <td>item</td>
         <td>CodeableConcept</td>
+        <td><a href="examples.html#itemControl">example</a></td>
       </tr>
       <tr>
-        <td colspan="4">
+        <td colspan="5">
           <p>
             This allows the selection of a specific control type for the answer for a group, question or display item.  The
             <a href="{{site.data.fhir.path}}valueset-questionnaire-item-control.html">set of available codes</a> has specific sub-sets for group, display and
@@ -192,9 +199,10 @@
         <td>Questionnaire</td>
         <td>choice, open-choice, other items with choiceOption or choiceValueset</td>
         <td>code</td>
+        <td><a href="examples.html#choiceOrientation">example</a></td>
       </tr>
       <tr>
-        <td colspan="4">
+        <td colspan="5">
           <p>
             Normally, it's up to the render to determine whether to display choices horizontally or vertically or to define multiple columns of choice options.
             This extension allows forcing the choices to be rendered horizontally or vertically.
@@ -210,9 +218,10 @@
         <td>Questionnaire</td>
         <td>integer</td>
         <td>integer</td>
+        <td><a href="examples.html#sliderStepValue">example</a></td>
       </tr>
       <tr>
-        <td colspan="4">
+        <td colspan="5">
           <p>
             For questions with a type of 'integer' and a <a href="#itemControl">itemControl</a> of 'slider', this allows indicating the
             increment with which the slider will move between the <a href="behavior.html#minValue">minValue</a> and the
@@ -229,9 +238,10 @@
         <td>SDC</td>
         <td>question</td>
         <td>Quantity</td>
+        <td><a href="examples.html#width">example</a></td>
       </tr>
       <tr>
-        <td colspan="4">
+        <td colspan="5">
           <p>
             This is used for question items that are the child of a group item with an <a href="#itemControl">itemControl</a> whose value
             is 'htable' or 'gtable' - i.e. where each question within the group occupies a column.  This extension identifies what the
@@ -255,6 +265,7 @@
         <td>Source</td>
         <td>Location</td>
         <td>Data Type</td>
+        <td>Example</td>
       </tr>
     </thead>
     <tbody>
@@ -266,9 +277,10 @@
         <td>Questionnaire</td>
         <td>item</td>
         <td>uri</td>
+        <td><a href="examples.html#supportLink">example</a></td>
       </tr>
       <tr>
-        <td colspan="4">
+        <td colspan="5">
           <p>
             This allows associating a link to a question, group or display item.  When this extension is present, an icon indicating that a link is available
             should appear immediately following the text of the item.  Clicking on the link will allow the user to navigate to additional descriptive detail,
@@ -286,9 +298,10 @@
         <td>SDC</td>
         <td>choice, open-choice and Reference</td>
         <td>complex</td>
+        <td><a href="examples.html#choiceColumn">example</a></td>
       </tr>
       <tr>
-        <td colspan="4">
+        <td colspan="5">
           <p>
             This extension is used when users are selecting from a list of possible choices and there's a desire to control what information is displayed in
             the list of possible candidates.  It has two modes of operation:
@@ -329,9 +342,10 @@
         <td>Questionnaire</td>
         <td>item.optionChoice</td>
         <td>string</td>
+        <td><a href="examples.html#optionPrefix">example</a></td>
       </tr>
       <tr>
-        <td colspan="4">
+        <td colspan="5">
           <p>
             This allows declaring a prefix to be displayed in front of an option (e.g. "(a)", or "1.").  It can be defined for options listed directly in the
             question, but also for entries in value sets referenced by a question.  (Note that these prefixes can also be supplemented with the
@@ -347,9 +361,10 @@
         <td>Core</td>
         <td>ValueSet.compose.include.concept, ValueSet.expansion.contains</td>
         <td>string</td>
+        <td><a href="examples.html#valueset-label">example</a></td>
       </tr>
       <tr>
-        <td colspan="4">
+        <td colspan="5">
           <p>
             This serves the same purpose as <a href="#optionPrefix">optionPrefix</a>, but allows the definition of the prefix to occur in a valueset referenced
             by optionValueSet instead of listing the options directly using optionChoice.
@@ -364,9 +379,10 @@
         <td>Core</td>
         <td>question</td>
         <td>string</td>
+        <td><a href="examples.html#entryFormat">example</a></td>
       </tr>
       <tr>
-        <td colspan="4">
+        <td colspan="5">
           <p>
             This provides a string that helps to guide entry of formatted text and often appears directly "behind" the control to be filled.  For example,
             "nnn-nnn-nnnn" for a North American phone number, "YYYY-MM-DD" for a date, "nnnn nnnn nnnn nnnn" for certain types of credit card numbers, etc.
@@ -387,6 +403,7 @@
         <td>Source</td>
         <td>Location</td>
         <td>Data Type</td>
+        <td>Example</td>
       </tr>
     </thead>
     <tbody>
@@ -398,9 +415,10 @@
         <td>Questionnaire</td>
         <td>group, question</td>
         <td>boolean</td>
+        <td><a href="examples.html#required">example</a></td>
       </tr>
       <tr>
-        <td colspan="4">
+        <td colspan="5">
           <p>
             Both groups and questions can be marked as 'required'  For groups, that at least one question within a given repetition of the group must have
             an answer.  For questions, it means the question must have at least one answer.  Typically, items that are 'required' will have a visual cue
@@ -419,9 +437,10 @@
         <td>Questionnaire</td>
         <td>group, question</td>
         <td>boolean</td>
+        <td><a href="examples.html#repeats">example</a></td>
       </tr>
       <tr>
-        <td colspan="4">
+        <td colspan="5">
           <p>
             Both groups and questions can be marked as repeating.  For groups, that means all content within the group can be repeated multiple times.
             The <a href="#itemControl">itemControl</a> extension can give specific guidance about this, for example treating each repetition as a row in a
@@ -446,9 +465,10 @@
         <td>Questionnaire</td>
         <td>question</td>
         <td>boolean</td>
+        <td><a href="examples.html#readonly">example</a></td>
       </tr>
       <tr>
-        <td colspan="4">
+        <td colspan="5">
           <p>
             If an element is read-only, it means the user cannot adjust the value which <i>can</i> mean a change to the control used to render the form.
             Technically there's no need to display a text box, drop-down or other controls if the value cannot be changed.  However, it's generally still
@@ -469,9 +489,10 @@
         <td>Core</td>
         <td>root</td>
         <td>boolean</td>
+        <td><a href="examples.html#rendering-styleSensitive">example</a></td>
       </tr>
       <tr>
-        <td colspan="4">
+        <td colspan="5">
           <p>
             If set to true, this indicates that the 'style' information conveyed by the <a href="#rendering-style">rendering-style</a> and/or
             <a href="#rendering-xhtml">rendering-xhtml</a> are considered critical to the accurate rendering of the questionnaire (and appropriate capture of
@@ -488,9 +509,10 @@
         <td>SDC</td>
         <td>item</td>
         <td>boolean</td>
+        <td><a href="examples.html#optionalDisplay">example</a></td>
       </tr>
       <tr>
-        <td colspan="4">
+        <td colspan="5">
           <p>
             This extension is used when a Questionnaire is defined as a 'baseline' for derived Questionnaires - i.e. when organizations can
             adapt the Questionnaire to their specific workflow by excluding certain questions.  This extension can be used to flag questions, groups and
