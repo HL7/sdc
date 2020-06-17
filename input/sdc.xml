@@ -612,6 +612,14 @@
       <description value="The answer list for question 1 on the AHRQ &#39;Medication or Other Substance&#39; form"/>
       <exampleCanonical value="http://hl7.org/fhir/uv/sdc/StructureDefinition/sdc-valueset"/>
     </resource>
+    <resource>
+      <reference>
+        <reference value="Questionnaire/questionnaire-sdc-profile-example-form-behavior"/>
+      </reference>
+      <name value="SDC-Advanced Form Behavior"/>
+      <description value="Example demonstrating most of the advanced form behavior capabilities of SDC. Each example here is itemized in the Examples page."/>
+      <exampleCanonical value="http://hl7.org/fhir/uv/sdc/StructureDefinition/sdc-questionnaire-behave"/>
+    </resource>
     <!--    <resource>
       <reference>
         <reference value="StructureDefinition/structuredefinition-sdc-profile-example"/>
@@ -686,6 +694,11 @@
         <generation value="html"/>
       </page>
       <page>
+        <nameUrl value="examples.html"/>
+        <title value="Examples"/>
+        <generation value="html"/>
+      </page>
+      <page>
         <nameUrl value="downloads.html"/>
         <title value="Useful Downloads"/>
         <generation value="html"/>
@@ -695,11 +708,6 @@
         <title value="IG Change History"/>
         <generation value="html"/>
       </page>
-      <page>
-        <nameUrl value="examples.html"/>
-        <title value="Examples"/>
-        <generation value="html"/>
-      </page>      
     </page>
     <parameter>
       <code value="copyrightyear"/>
