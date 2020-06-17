@@ -78,6 +78,45 @@ textarea{
   cursor: pointer;
   background-color: #008CBA;
 }
+
+/* The Modal (background) */
+.modal {
+  display: none; /* Hidden by default */
+  position: fixed; /* Stay in place */
+  /*z-index: 1;*/  /*Sit on top */
+  padding-top: 100px; /* Location of the box */
+  left: 0;
+  top: 0;
+  width: 100%; /* Full width */
+  height: 100%; /* Full height */
+  overflow: auto; /* Enable scroll if needed */
+  background-color: rgb(0,0,0); /* Fallback color */
+  background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+}
+
+/* Modal Content */
+.modal-content {
+  background-color: #fefefe;
+  margin: auto;
+  padding: 20px;
+  border: 1px solid #888;
+  width: 80%;
+}
+
+/* The Close Button */
+.close {
+  color: #aaaaaa;
+  float: right;
+  font-size: 28px;
+  font-weight: bold;
+}
+
+.close:hover,
+.close:focus {
+  color: #000;
+  text-decoration: none;
+  cursor: pointer;
+}
 </style>
 <p>Below are some examples that demonstrate how the elements and extensions in this implementation guide are intended to be used in a Questionnaire.<br/><br/><br/><br/><br/></p>
 <a name="text-appearance">  </a>
@@ -1065,7 +1104,6 @@ textarea{
     <div class="content-in-tab">
       <textarea style="border:none" class="xml">
         <item>
-          <!-- item/sdc-questionnaire-choiceColumn - first column to display -->
           <extension url="http://hl7.org/fhir/uv/sdc/StructureDefinition/sdc-questionnaire-choiceColumn">
             <extension url="path">
               <valueString value="code"/>
@@ -1084,7 +1122,6 @@ textarea{
               <valueBoolean value="false"/>
             </extension>
           </extension>
-          <!-- item/sdc-questionnaire-choiceColumn - second column to display -->
           <extension url="http://hl7.org/fhir/uv/sdc/StructureDefinition/sdc-questionnaire-choiceColumn">
             <extension url="path">
               <valueString value="display"/>
@@ -1099,15 +1136,14 @@ textarea{
                 <code value="%"/>
               </valueQuantity>
             </extension>
-            <extension url="forDisplay"> <!-- Only one extension repetition can have 'forDisplay' set to 'true' for choice or open-choice items -->
+            <extension url="forDisplay">
               <valueBoolean value="true"/>
             </extension>
           </extension>
-          <!--  -->
           <linkId value="5.1"/>
           <text value="Select Platelet:"/>
           <type value="choice"/>
-          <answerValueSet value="http://loinc.org/vs/LL715-4"/> <!-- An example value set with 'code' and 'display' properties -->
+          <answerValueSet value="http://loinc.org/vs/LL715-4"/>
         </item>
       </textarea>
     </div> 
@@ -1538,17 +1574,6 @@ textarea{
           {
             "extension": [
               {
-                "url": "http://hl7.org/fhir/StructureDefinition/entryFormat",
-                "valueString": "mm-dd-yyyy"
-              }
-            ],
-            "linkId": "1.6",
-            "text": "Birth Date",
-            "type": "date"
-          },
-          {
-            "extension": [
-              {
                 "url": "http://hl7.org/fhir/StructureDefinition/rendering-styleSensitive",
                 "valueBoolean": true
               }
@@ -1687,7 +1712,6 @@ textarea{
           <linkId value="1" />
           <text value="First Name" />
           <type value="string" />
-          <!-- restricts maximum length allowed for answer -->
           <maxLength value="50" />
         </item>
       </textarea>
@@ -1732,7 +1756,6 @@ textarea{
     <div class="content-in-tab">
       <textarea style="border:none" class="xml">
         <item>
-            <!-- restricts minimum length allowed for answer -->
             <extension url="http://hl7.org/fhir/StructureDefinition/minLength">
                 <valueInteger value="2" />
             </extension>
@@ -1782,7 +1805,6 @@ textarea{
     <div class="content-in-tab">
       <textarea style="border:none" class="xml">
         <item>
-            <!-- item/regex - regular expression that defines the syntax for the data element to be considered valid -->
             <extension url="http://hl7.org/fhir/StructureDefinition/regex">
                 <valueString value="ANA NAN" />
             </extension>
@@ -1841,15 +1863,12 @@ textarea{
     <div class="content-in-tab">
       <textarea style="border:none" class="xml">
         <item>
-            <!-- item/minValue - minimum value allowed for answer -->
             <extension url="http://hl7.org/fhir/StructureDefinition/minValue">
                 <valueDecimal value="1" />
             </extension>
-            <!-- item/maxValue - maximum value allowed for answer -->
             <extension url="http://hl7.org/fhir/StructureDefinition/maxValue">
                 <valueDecimal value="100" />
             </extension>
-            <!-- item/maxDecimalPlaces - maximum number of decimal places allowed for answer-->
             <extension url="http://hl7.org/fhir/StructureDefinition/maxDecimalPlaces">
                 <valueInteger value="2" />
             </extension>
@@ -1908,14 +1927,12 @@ textarea{
     <div class="content-in-tab">
       <textarea style="border:none" class="xml">
         <item>
-            <!-- item/mimeType - restrict attachments to only allow jpg and pdf types-->
             <extension url="http://hl7.org/fhir/StructureDefinition/mimeType">
                 <valueCode value="image/jpeg" /> 
             </extension>
             <extension url="http://hl7.org/fhir/StructureDefinition/mimeType">
                 <valueCode value="application/pdf" /> 
             </extension>
-            <!-- item/maxSize - allowed maximum size of an attachment in bytes-->
             <extension url="http://hl7.org/fhir/StructureDefinition/maxSize">
                 <valueDecimal value="1" /> 
             </extension>              
@@ -2036,7 +2053,6 @@ textarea{
     <div class="content-in-tab">
       <textarea style="border:none" class="xml">
         <item>
-            <!-- item/answerOption - possible answers in an enumerated set, example with open-choice type -->
             <linkId value="2.1.b"/>
             <text value="Choose your Province"/>
             <type value="choice"/>
@@ -2146,7 +2162,6 @@ textarea{
     <div class="content-in-tab">
       <textarea style="border:none" class="xml">
         <item>
-            <!-- item/answerValueSet - possible answers in an enumerated set, example with choice type, Type: coding-->
             <linkId value="2.2.b"/>
             <text value="Activity Level"/>
             <type value="choice"/>
@@ -2190,7 +2205,6 @@ textarea{
     <div class="content-in-tab">
       <textarea style="border:none" class="xml">
         <item>
-            <!-- item/required -->
             <linkId value="2.3.b"/>
             <text value="Email*"/>
             <type value="string"/>
@@ -2251,7 +2265,6 @@ textarea{
                     <expression value="today()"/> 
                 </valueExpression>
             </extension>
-            <!-- item/readOnly -->
             <linkId value="2.4.b"/>
             <text value="Current Date:"/>
             <type value="date"/>
@@ -2334,7 +2347,6 @@ textarea{
     <div class="content-in-tab">
       <textarea style="border:none" class="xml">
         <item>
-            <!-- item/repeats -->
             <linkId value="2.5.b"/>
             <text value="Heart History (check all that applies)"/>
             <type value="open-choice"/>
@@ -2453,7 +2465,6 @@ textarea{
     <div class="content-in-tab">
       <textarea style="border:none" class="xml">
         <item>
-            <!-- item/minOccurs -->
             <extension url="http://hl7.org/fhir/StructureDefinition/questionnaire-minOccurs">
                 <valueInteger value="2"/> 
             </extension>
@@ -2576,7 +2587,6 @@ textarea{
     <div class="content-in-tab">
       <textarea style="border:none" class="xml">
         <item>
-            <!-- item/maxOccurs -->
             <extension url="http://hl7.org/fhir/StructureDefinition/questionnaire-maxOccurs">
                 <valueInteger value="3"/> 
             </extension>
@@ -2690,7 +2700,6 @@ textarea{
     <div class="content-in-tab">
       <textarea style="border:none" class="xml">
         <item>
-            <!-- item/unitOption -->
             <extension url="http://hl7.org/fhir/StructureDefinition/questionnaire-unitOption">
                 <valueCoding>
                     <code value="Level0"/>
@@ -2774,7 +2783,6 @@ textarea{
     <div class="content-in-tab">
       <textarea style="border:none" class="xml">
         <item>
-            <!-- item/unitValueSet -->
             <extension url="http://hl7.org/fhir/StructureDefinition/questionnaire-unitValueSet">
                 <extension url="http://hl7.org/fhir/StructureDefinition/valueset-system">
                     <valueCanonical value="http://loinc.org/vs/LL715-4"/>
@@ -2841,18 +2849,15 @@ textarea{
     <div class="content-in-tab">
       <textarea style="border:none" class="xml">
         <item>
-            <!-- item/questionnaire-referenceResource -->
             <extension url="http://hl7.org/fhir/StructureDefinition/questionnaire-referenceResource">
                 <valueCode value="Practitioner"/>
             </extension>
-            <!-- item/questionnaire-referenceProfile -->
             <extension url="http://hl7.org/fhir/StructureDefinition/questionnaire-referenceProfile">
                 <valueCanonical value="http://hl7.org/fhir/StructureDefinition/practitioner-animalSpecies"/> 
             </extension>
-            <!-- item/sdc-questionnaire-lookupQuestionnaire -->
             <extension url="http://hl7.org/fhir/uv/sdc/StructureDefinition/sdc-questionnaire-lookupQuestionnaire">
                 <valueUri value="http://mysite.com/Questionnaire/1234"/>
-            </extension>            
+            </extension>
             <linkId value="2.10.b"/>
             <text value="Select your preferred service animal:"/>
             <type value="reference"/>
@@ -2907,7 +2912,6 @@ textarea{
     <div class="content-in-tab">
       <textarea style="border:none" class="xml">
       <item>
-          <!-- item/sdc-questionnaire-initialExpression - initial value for a question answer as determined by an evaluated expression.-->
           <extension url="http://hl7.org/fhir/uv/sdc/StructureDefinition/sdc-questionnaire-initialExpression">
               <valueExpression>
                   <description value="deadline for submission"/>
@@ -3062,8 +3066,6 @@ textarea{
             <type value="decimal" />
           </item>
           <item>
-            <!-- item/sdc-questionnaire-calculatedExpression - Calculated value 
-              for a question answer as determined by an evaluated expression.. -->
             <extension
               url="http://hl7.org/fhir/uv/sdc/StructureDefinition/sdc-questionnaire-calculatedExpression">
               <valueExpression>
@@ -3191,7 +3193,6 @@ textarea{
             <text value="Marital Status"/>
             <type value="choice"/>
             <answerValueSet value="http://hl7.org/fhir/ValueSet/marital-status"/>
-            <!-- item/initial - default value-->
             <initial>
                 <valueCoding>
                     <system value="http://hl7.org/fhir/ValueSet/marital-status"/>
@@ -3366,7 +3367,6 @@ textarea{
               <linkId value="4.2.b.2"/>
               <text value="Are you pregnant? (enableWhen = gender is Female)"/>
               <type value="choice"/>
-              <!-- item/enableWhen - A constraint indicating that this item should only be enabled (displayed/allow answers to be captured) when the specified condition is true.-->
               <enableWhen>
                   <question value="4.2.b.1"/>
                   <operator value="="/>
@@ -3381,7 +3381,6 @@ textarea{
               <linkId value="4.2.b.3"/>
               <text value="Are you diabetic? (enableWhen = gender is Female)"/>
               <type value="choice"/>
-              <!-- item/enableWhen - A constraint indicating that this item should only be enabled (displayed/allow answers to be captured) when the specified condition is true.-->
               <enableWhen>
                   <question value="4.2.b.1"/>
                   <operator value="="/>
@@ -3396,7 +3395,6 @@ textarea{
               <linkId value="4.2.b.4"/>
               <text value="Have you been diagnosed with Gestational Diabetes? (enableBehavior = only when pregnant and diabetic)"/>
               <type value="choice"/>
-              <!-- item/enableBehavior - Controls how multiple enableWhen values are interpreted - whether all or any must be true.-->
               <enableWhen>
                   <question value="4.2.b.2"/>
                   <operator value="="/>
@@ -3413,7 +3411,6 @@ textarea{
                       <code value="Y"/>
                   </answerCoding>
               </enableWhen>
-              <!-- item/enableBehavior - Controls how multiple enableWhen values are interpreted - whether all or any must be true.-->
               <enableBehavior value="all"/>
               <answerValueSet value="http://hl7.org/fhir/ValueSet/yesnodontknow"/>
           </item>
@@ -3427,12 +3424,10 @@ textarea{
               <answerValueSet value="http://hl7.org/fhir/ValueSet/administrative-gender"/>
           </item>
           <item>
-              <!-- item/enableWhenExpression - An expression that returns a boolean value for whether to enable the item.-->
               <extension url="http://hl7.org/fhir/uv/sdc/StructureDefinition/sdc-questionnaire-enableWhenExpression">
                   <valueExpression>
                       <description value="if last 2 questions were answered"/>
                       <language value="text/fhirpath"/>
-                      <!-- To calculate age: subtract the birthdate's year from this year-->
                       <expression value="%resource.repeats(item).where(linkId='4.2.b.1').answer.valueCoding.code ='female' and today().toString().substring(0, 4).toInteger() - %resource.repeats(item).where(linkId='4.2.b.5').answer.toString().substring(0, 4).toInteger() >= 40"/>
                   </valueExpression>
               </extension>  
@@ -3676,7 +3671,6 @@ textarea{
               </ValueSet>
           </contained>
           <item>
-            <!-- item/constraint - An invariant that must be satisfied before responses to the questionnaire can be considered "complete". -->
             <extension url="http://hl7.org/fhir/StructureDefinition/questionnaire-constraint">
                 <extension url="key">
                     <valueId value="contraint-1"/>
@@ -3701,25 +3695,25 @@ textarea{
                 <linkId value="4.3.b.1"/>
                 <text value="1. Little interest or pleasure in doing things "/>
                 <type value="choice"/>
-                <answerValueSet value="#LL358-3"/><!-- use contained ValueSet -->
+                <answerValueSet value="#LL358-3"/>
             </item>
             <item>
                 <linkId value="4.3.b.2"/>
                 <text value="2. Feeling down, depressed, or hopeless "/>
                 <type value="choice"/>
-                <answerValueSet value="#LL358-3"/><!-- use contained ValueSet -->
+                <answerValueSet value="#LL358-3"/>
             </item>
             <item>
                 <linkId value="4.3.b.3"/>
                 <text value="3. Trouble falling or staying asleep, or sleeping too much "/>
                 <type value="choice"/>
-                <answerValueSet value="#LL358-3"/><!-- use contained ValueSet -->
+                <answerValueSet value="#LL358-3"/>
             </item>
             <item>
                 <linkId value="4.3.b.4"/>
                 <text value="4. Feeling tired or having little energy "/>
                 <type value="choice"/>
-                <answerValueSet value="#LL358-3"/><!-- use contained ValueSet -->
+                <answerValueSet value="#LL358-3"/>
             </item>        
             <item>
                 <extension url="http://hl7.org/fhir/uv/sdc/StructureDefinition/sdc-questionnaire-calculatedExpression">
@@ -3908,6 +3902,115 @@ textarea{
     </div> 
   </div>
 </div>
+
+<a name="candidateExpression"></a>
+<h4>Using candidateExpression</h4>
+<p>To provide a list of candidate answers for the question item.</p>
+<div class="tabs">
+  <div class="tab">
+    <input type="radio" id="tab-candidateExpression-1" name="tab-candidateExpression-group-2" checked="true"></input>
+    <label for="tab-candidateExpression-1">Sample Question</label>
+    <div class="content-in-tab">
+      <p>
+       All the practitioners below can speak your language. Please choose your preferred practitioner:<br/>
+         <table width="300" border="1" cellpadding="5" style="text-align: left">
+            <tr>
+               <th width="10%" align="center"></th> 
+               <th width="35%">
+                  <strong>Last Name</strong>
+               </th> 
+               <th width="35%">First Name</th> 
+               <th width="20%">Gender</th>                
+            </tr>
+            <tr> 
+               <td align="center"><input type="radio" name="practitioner-grp" ></input></td>
+               <td>Smith</td> 
+               <td>John</td> 
+               <td>Male</td> 
+            </tr>
+            <tr> 
+               <td align="center"><input type="radio" name="practitioner-grp" ></input></td>
+               <td>Moseley</td> 
+               <td>Henry</td> 
+               <td>Male</td> 
+            </tr>
+            <tr> 
+               <td align="center"><input type="radio" name="practitioner-grp" ></input></td>
+               <td>Upton</td> 
+               <td>Isaac</td> 
+               <td>Male</td> 
+            </tr>
+            <tr> 
+               <td align="center"><input type="radio" name="practitioner-grp" ></input></td>
+               <td>Williams</td> 
+               <td>Amy</td> 
+               <td>Female</td> 
+            </tr>
+         </table>
+      </p>
+    </div> 
+  </div>
+  <div class="tab">
+    <input type="radio" id="tab-candidateExpression-2" name="tab-candidateExpression-group-2"></input>
+    <label for="tab-candidateExpression-2">JSON</label>
+    <div class="content-in-tab">
+      <textarea style="border:none" class="xml">
+        "item": [
+          TODO: json
+        ]
+     </textarea>
+    </div> 
+  </div>
+  <div class="tab">
+    <input type="radio" id="tab-candidateExpression-3" name="tab-candidateExpression-group-2"></input>
+    <label for="tab-candidateExpression-3">XML</label>
+    <div class="content-in-tab">
+      <textarea style="border:none" class="xml">
+        TODO: xml
+      </textarea>
+    </div> 
+  </div>
+</div>
+
+<a name="contextExpression"></a>
+<h4>Using contextExpression</h4>
+<p>To indicate the resources to make available for display to the user to aid in answering the question.</p>
+<div class="tabs">
+  <div class="tab">
+    <input type="radio" id="tab-contextExpression-1" name="tab-contextExpression-group-2" checked="true"></input>
+    <label for="tab-contextExpression-1">Sample Question</label>
+    <div class="content-in-tab">
+      <p>
+        <i>Instruction: Click on "..." button to view all the visits of this patient in the past year.</i><br/><br/>
+        Has the patient discussed this issue on any visits in the past year? <button id="myBtn">...</button><br/>
+        <input id="linkitem-1.7-f" type="radio" name="Gender" value="F"/> Yes&#xA0;<br/>
+        <input id="linkitem-1.7-m" type="radio" name="Gender" value="M"/> No&#xA0;<br/>
+        <input id="linkitem-1.7-o" type="radio" name="Gender" value="O"/> Don't know&#xA0;
+      </p>
+    </div> 
+  </div>
+  <div class="tab">
+    <input type="radio" id="tab-contextExpression-2" name="tab-contextExpression-group-2"></input>
+    <label for="tab-contextExpression-2">JSON</label>
+    <div class="content-in-tab">
+      <textarea style="border:none" class="xml">
+        "item": [
+          TODO: json
+        ]
+     </textarea>
+    </div> 
+  </div>
+  <div class="tab">
+    <input type="radio" id="tab-contextExpression-3" name="tab-contextExpression-group-2"></input>
+    <label for="tab-contextExpression-3">XML</label>
+    <div class="content-in-tab">
+      <textarea style="border:none" class="xml">
+        TODO: xml
+      </textarea>
+    </div> 
+  </div>
+</div>
+
 <!-- template
 <a name="changeme"></a>
 <h4>Using changeme</h4>
@@ -3943,4 +4046,52 @@ textarea{
 </div>
 -->
 
+  <!-- The Modal -->
+  <div id="myModal" class="modal">
+
+    <!-- Modal content -->
+    <div class="modal-content">
+    <span class="close">x</span>
+    <table width="100%" border="1" cellpadding="5" style="text-align: left">
+      <tr>
+        <th width="25%"><strong>Date</strong></th> 
+        <th width="50%">Visit Reason - Details</th> 
+      </tr>
+      <tr> 
+        <td>2020-05-01T16:22:45-04:00</td> <!--TODO: add a formatter -->
+        <td>Acute bronchitis (disorder) - Encounter for check up (procedure)</td> 
+      </tr>
+      <tr> 
+        <td>Apr 1, 2020</td> <!--TODO: add a formatter -->
+        <td>Hyperlipidemia - Follow-up encounter</td> 
+      </tr>
+      <tr> 
+        <td>Feb 15, 2020</td> <!--TODO: add a formatter -->
+        <td>Overlapping malignant neoplasm of colon - Follow-up encounter</td> 
+      </tr>
+      <tr> 
+        <td>Feb 1, 2020</td> <!--TODO: add a formatter -->
+        <td>Overlapping malignant neoplasm of colon - Encounter for problem</td> 
+      </tr>   
+    </table>
+    </div>
+
+  </div>
+
+  <script>
+  var modal = document.getElementById("myModal");
+  var btn = document.getElementById("myBtn");
+  var span = document.getElementsByClassName("close")[0];
+  btn.onclick = function() {
+    modal.style.display = "block";
+  }
+  span.onclick = function() {
+    modal.style.display = "none";
+  }
+  window.onclick = function(event) {
+    if (event.target == modal) {
+    modal.style.display = "none";
+    }
+  }
+  </script>
 </div>
