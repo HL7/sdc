@@ -620,6 +620,30 @@
       <description value="Example demonstrating most of the advanced form behavior capabilities of SDC. Each example here is itemized in the Examples page."/>
       <exampleCanonical value="http://hl7.org/fhir/uv/sdc/StructureDefinition/sdc-questionnaire-behave"/>
     </resource>
+    <resource>
+      <reference>
+        <reference value="Questionnaire/questionnaire-sdc-profile-example-framingham-hchd-lhc"/>
+      </reference>
+      <name value="SDC-Hard Coronary Heart Disease"/>
+      <description value="A made-up form for calculating the 10-year-risk of Hard Coronary Heart Disease. It shows how variables and calculatedExpression can be used to compute for the risk probability."/>
+      <exampleCanonical value="http://hl7.org/fhir/uv/sdc/StructureDefinition/sdc-questionnaire"/>
+    </resource>
+    <resource>
+      <reference>
+        <reference value="Questionnaire/questionnaire-sdc-profile-example-hunger-vital-signs"/>
+      </reference>
+      <name value="SDC-Hunger Vital Sign"/>
+      <description value="A hunger vital signs form (showing calculatedExpression selecting a value from a list)."/>
+      <exampleCanonical value="http://hl7.org/fhir/uv/sdc/StructureDefinition/sdc-questionnaire"/>
+    </resource>
+    <resource>
+      <reference>
+        <reference value="Questionnaire/questionnaire-sdc-profile-example-weight-height-tracking-panel"/>
+      </reference>
+      <name value="SDC-Weight and Height Tracking Panel"/>
+      <description value="A weight and height panel (from LOINC) with a FHIRPath rule for calculating the BMI."/>
+      <exampleCanonical value="http://hl7.org/fhir/uv/sdc/StructureDefinition/sdc-questionnaire"/>
+    </resource>
     <!--    <resource>
       <reference>
         <reference value="StructureDefinition/structuredefinition-sdc-profile-example"/>
