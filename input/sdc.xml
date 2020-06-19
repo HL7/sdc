@@ -474,7 +474,7 @@
       </reference>
       <name value="Adaptive questionnaire next question"/>
       <description value="Returns the next question or set of questions for an adaptive questionnaire"/>
-      <exampleBoolean value="true"/>
+      <exampleBoolean value="false"/>
     </resource>
     <resource>
       <reference>
@@ -482,7 +482,7 @@
       </reference>
       <name value="Populate Questionnaire"/>
       <description value="Generates a QuestionnaireResponse from a Questionnaire, possibly with data partially populated"/>
-      <exampleBoolean value="true"/>
+      <exampleBoolean value="false"/>
     </resource>
     <resource>
       <reference>
@@ -490,7 +490,7 @@
       </reference>
       <name value="Populate HTML Questionnaire"/>
       <description value="Generates an HTML representation of the Questionnaire as a form, possibly partially populated with data"/>
-      <exampleBoolean value="true"/>
+      <exampleBoolean value="false"/>
     </resource>
     <resource>
       <reference>
@@ -498,7 +498,7 @@
       </reference>
       <name value="Populate Questionnaire Link"/>
       <description value="Generates a link to an HTML page that can be used to complete the Questionnaire, possibly partially populated with data"/>
-      <exampleBoolean value="true"/>
+      <exampleBoolean value="false"/>
     </resource>
     <resource>
       <reference>
@@ -506,7 +506,7 @@
       </reference>
       <name value="Questionnaire process response"/>
       <description value="Allows submission of a QuestionnaireRespone for 'processing' by the target server"/>
-      <exampleBoolean value="true"/>
+      <exampleBoolean value="false"/>
     </resource>
     <resource>
       <reference>
@@ -514,7 +514,7 @@
       </reference>
       <name value="Questionnaire response extract to resource(s)"/>
       <description value="Converts a QuestionnaireResponse to a clinical or administrative resource or a Transaction Bundle of them"/>
-      <exampleBoolean value="true"/>
+      <exampleBoolean value="false"/>
     </resource>
     <resource>
       <reference>
@@ -522,7 +522,7 @@
       </reference>
       <name value="Questionnaire Item definition"/>
       <description value="Allows searching by 'definition' element within a Questionnaire's items"/>
-      <exampleBoolean value="true"/>
+      <exampleBoolean value="false"/>
     </resource>
     <resource>
       <reference>
@@ -612,6 +612,38 @@
       <description value="The answer list for question 1 on the AHRQ &#39;Medication or Other Substance&#39; form"/>
       <exampleCanonical value="http://hl7.org/fhir/uv/sdc/StructureDefinition/sdc-valueset"/>
     </resource>
+    <resource>
+      <reference>
+        <reference value="Questionnaire/questionnaire-sdc-profile-example-form-behavior"/>
+      </reference>
+      <name value="SDC-Advanced Form Behavior"/>
+      <description value="Example demonstrating most of the advanced form behavior capabilities of SDC. Each example here is itemized in the Examples page."/>
+      <exampleCanonical value="http://hl7.org/fhir/uv/sdc/StructureDefinition/sdc-questionnaire-behave"/>
+    </resource>
+    <resource>
+      <reference>
+        <reference value="Questionnaire/questionnaire-sdc-profile-example-framingham-hchd-lhc"/>
+      </reference>
+      <name value="SDC-Hard Coronary Heart Disease"/>
+      <description value="A made-up form for calculating the 10-year-risk of Hard Coronary Heart Disease. It shows how variables and calculatedExpression can be used to compute for the risk probability."/>
+      <exampleCanonical value="http://hl7.org/fhir/uv/sdc/StructureDefinition/sdc-questionnaire"/>
+    </resource>
+    <resource>
+      <reference>
+        <reference value="Questionnaire/questionnaire-sdc-profile-example-hunger-vital-signs"/>
+      </reference>
+      <name value="SDC-Hunger Vital Sign"/>
+      <description value="A hunger vital signs form (showing calculatedExpression selecting a value from a list)."/>
+      <exampleCanonical value="http://hl7.org/fhir/uv/sdc/StructureDefinition/sdc-questionnaire"/>
+    </resource>
+    <resource>
+      <reference>
+        <reference value="Questionnaire/questionnaire-sdc-profile-example-weight-height-tracking-panel"/>
+      </reference>
+      <name value="SDC-Weight and Height Tracking Panel"/>
+      <description value="A weight and height panel (from LOINC) with a FHIRPath rule for calculating the BMI."/>
+      <exampleCanonical value="http://hl7.org/fhir/uv/sdc/StructureDefinition/sdc-questionnaire"/>
+    </resource>
     <!--    <resource>
       <reference>
         <reference value="StructureDefinition/structuredefinition-sdc-profile-example"/>
@@ -686,6 +718,11 @@
         <generation value="html"/>
       </page>
       <page>
+        <nameUrl value="examples.html"/>
+        <title value="Examples"/>
+        <generation value="html"/>
+      </page>
+      <page>
         <nameUrl value="downloads.html"/>
         <title value="Useful Downloads"/>
         <generation value="html"/>
@@ -695,11 +732,6 @@
         <title value="IG Change History"/>
         <generation value="html"/>
       </page>
-      <page>
-        <nameUrl value="examples.html"/>
-        <title value="Examples"/>
-        <generation value="html"/>
-      </page>      
     </page>
     <parameter>
       <code value="copyrightyear"/>

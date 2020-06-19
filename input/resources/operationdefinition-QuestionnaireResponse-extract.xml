@@ -8,10 +8,10 @@
   <kind value="operation"/>
   <date value="2018-08-30"/>
   <publisher value="HL7 International - FHIR Infrastructure"/>
-  <description value="The Extract operation takes a completed QuestionnaireRespponse and converts it to a FHIR resource or Bundle of resources by using metadata embedded in the Questionnaire the QuestionnaireResponse is based on.  The extracted resources might include Observations, MedicationStatements and other standard FHIR resources which can then be shared and manipulated."/>
+  <description value="The Extract operation takes a completed QuestionnaireResponse and converts it to a FHIR resource or Bundle of resources by using metadata embedded in the Questionnaire the QuestionnaireResponse is based on.  The extracted resources might include Observations, MedicationStatements and other standard FHIR resources which can then be shared and manipulated."/>
   <code value="extract"/>
   <comment value="The QuestionnaireResponse must identify a QuestionnaireResponse instance containing appropriate metadata to allow extraction.  (Refer to the [Data Extraction](extraction.html) page for more details."/>
-  <resource value="Questionnaire"/>
+  <resource value="QuestionnaireResponse"/>
   <system value="false"/>
   <type value="true"/>
   <instance value="true"/>
