@@ -68,6 +68,7 @@ textarea{
    -webkit-box-sizing: border-box; /* Safari/Chrome, other WebKit */
   -moz-box-sizing: border-box;    /* Firefox, other Gecko */
   box-sizing: border-box;         /* Opera/IE 8+ */
+  resize: none;
 }
 .button {
   border: none;
@@ -324,7 +325,7 @@ textarea{
           {
             "linkId": "1.1",
             "text": "Event ID",
-            "type": "string",
+            "type": "string"
           }
         ]
      </textarea>
@@ -391,7 +392,7 @@ textarea{
             ],
             "linkId": "1.0",
             "text": "If you have any other medical problems or serious injuries, please describe them here:",
-            "type": "string"
+            "type": "text"
           }
         ]
      </textarea>
@@ -415,7 +416,7 @@ textarea{
           </extension>
           <linkId value="1.0"/>
           <text value="If you have any other medical problems or serious injuries, please describe them here:"/>
-          <type value="string"/>
+          <type value="text"/>
         </item>
       </textarea>
     </div> 
@@ -670,7 +671,8 @@ textarea{
     <input type="radio" id="tab-width-1" name="tab-width-group-2" checked="true"></input>
     <label for="tab-width-1">Sample Question</label>
     <div class="content-in-tab">
-      <p><table border="1">
+      <p>Medical History
+      <table border="1">
           <col width="65%"/>
           <col width="35%"/>
           <tr>
@@ -938,6 +940,19 @@ textarea{
               {
                 "url": "http://hl7.org/fhir/StructureDefinition/questionnaire-supportLink",
                 "valueUri": "http://hl7.org/fhir/StructureDefinition/questionnaire-supportLink"
+              },
+              {
+                "url": "http://hl7.org/fhir/StructureDefinition/questionnaire-itemControl",
+                "valueCodeableConcept": {
+                  "coding": [
+                    {
+                      "system": "http://hl7.org/fhir/questionnaire-item-control",
+                      "code": "radio-button",
+                      "display": "Radio Button"
+                    }
+                  ],
+                  "text": "Radio Button"
+                }
               }
             ],
             "linkId": "1.0",
@@ -971,6 +986,16 @@ textarea{
           <extension url="http://hl7.org/fhir/StructureDefinition/questionnaire-supportLink">
             <valueUri value="http://hl7.org/fhir/StructureDefinition/questionnaire-supportLink"/>
           </extension>
+          <extension url="http://hl7.org/fhir/StructureDefinition/questionnaire-itemControl">
+            <valueCodeableConcept>
+              <coding>
+                <system value="http://hl7.org/fhir/questionnaire-item-control"/>
+                <code value="radio-button"/>
+                <display value="Radio Button"/>
+              </coding>
+              <text value="A control where choices are listed with a button beside them. The button can be toggled to select or de-select a given choice. Selecting one item deselects all others."/>
+            </valueCodeableConcept>
+          </extension>
           <linkId value="1.0"/>
           <text value="Have you traveled outside the country within the last 14 days?"/>
           <type value="choice"/>
@@ -1002,9 +1027,9 @@ textarea{
     <div class="content-in-tab">
       <p>
       Select Platelet:<br/>
-        <select name="choiceColumnWithCodes" id="choiceColumnWithCodes" size="10">
+        <select name="choiceColumnWithCodes" id="choiceColumnWithCodes">
           <option value="header">CODE&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;DESCRIPTION</option>
-          <option value="LA11165-0">LA11165-0&#xA0;&#xA0;&#xA0;&#xA0;Platelet anisocytosis</option>
+          <option value="LA11165-0" selected="true">LA11165-0&#xA0;&#xA0;&#xA0;&#xA0;Platelet anisocytosis</option>
             <option value="LA11166-8">LA11166-8&#xA0;&#xA0;&#xA0;&#xA0;Platelet satellitism</option>
             <option value="LA11167-6">LA11167-6&#xA0;&#xA0;&#xA0;&#xA0;Platelet large fragments</option>
             <option value="LA11167-6">LA11167-6&#xA0;&#xA0;&#xA0;&#xA0;Platelet large fragments</option>
@@ -1396,7 +1421,7 @@ textarea{
                 ]
               }
             }
-          ]
+          ],
           "item": [
             {
               "extension": [
@@ -1978,7 +2003,7 @@ textarea{
         "item": [
           {
             "linkId": "2.1.b",
-            "text": "Province",
+            "text": "Choose your Province",
             "type": "choice",
             "answerOption": [
               {
@@ -2641,11 +2666,10 @@ textarea{
     <div class="content-in-tab">
       <p>Dosage <input id="linkitem-2.8-input" type="text"/>
           <select id="linkitem-2.8-option" name="activity">
-            <option value="Level0">ml</option>
-            <option value="Level1">liters</option>
-            <option value="Level2">mg</option>
-            <option value="Level3">grams</option>
-            <option value="Level4">kilo</option>  
+            <option value="ml">ml</option>
+            <option value="liters">liters</option>
+            <option value="mg">mg</option>
+            <option value="grams">grams</option>
           </select></p>
     </div> 
   </div>
@@ -2660,29 +2684,29 @@ textarea{
               {
                 "url": "http://hl7.org/fhir/StructureDefinition/questionnaire-unitOption",
                 "valueCoding": {
-                  "code": "Level0",
-                  "display": "None"
+                  "code": "ml",
+                  "display": "ml"
                 }
               },
               {
                 "url": "http://hl7.org/fhir/StructureDefinition/questionnaire-unitOption",
                 "valueCoding": {
-                  "code": "Unit0",
-                  "display": "Unit 0"
+                  "code": "liters",
+                  "display": "liters"
                 }
               },
               {
                 "url": "http://hl7.org/fhir/StructureDefinition/questionnaire-unitOption",
                 "valueCoding": {
-                  "code": "Unit1",
-                  "display": "Unit 1"
+                  "code": "mg",
+                  "display": "mg"
                 }
               },
               {
                 "url": "http://hl7.org/fhir/StructureDefinition/questionnaire-unitOption",
                 "valueCoding": {
-                  "code": "Unit3",
-                  "display": "Unit 3"
+                  "code": "grams",
+                  "display": "grams"
                 }
               }
             ],
@@ -2702,28 +2726,28 @@ textarea{
         <item>
             <extension url="http://hl7.org/fhir/StructureDefinition/questionnaire-unitOption">
                 <valueCoding>
-                    <code value="Level0"/>
-                    <display value="None"/>
+                    <code value="ml"/>
+                    <display value="ml"/>
                 </valueCoding>
             </extension>
             <extension url="http://hl7.org/fhir/StructureDefinition/questionnaire-unitOption">
                 <valueCoding>
-                    <code value="Unit0"/>
-                    <display value="Unit 0"/>
+                    <code value="liters"/>
+                    <display value="liters"/>
                 </valueCoding>
             </extension>
             <extension url="http://hl7.org/fhir/StructureDefinition/questionnaire-unitOption">
                 <valueCoding>
-                    <code value="Unit1"/>
-                    <display value="Unit 1"/>
+                    <code value="mg"/>
+                    <display value="mg"/>
                 </valueCoding>
             </extension>
             <extension url="http://hl7.org/fhir/StructureDefinition/questionnaire-unitOption">
                 <valueCoding>
-                    <code value="Unit3"/>
-                    <display value="Unit 3"/>
+                    <code value="grams"/>
+                    <display value="grams"/>
                 </valueCoding>
-            </extension>            
+            </extension>
             <linkId value="2.8.b"/>
             <text value="Dosage"/>
             <type value="quantity"/>
@@ -2741,13 +2765,14 @@ textarea{
     <input type="radio" id="tab-unitvalueset-1" name="tab-unitvalueset-group-2" checked="true"></input>
     <label for="tab-unitvalueset-1">Sample Question</label>
     <div class="content-in-tab">
-      <p>Dosage <input id="linkitem-2.9-input" type="text"/> 
-          <select id="linkitem-2.9-option" name="activity">
-            <option value="Level0">ml</option>
-            <option value="Level1">liters</option>
-            <option value="Level2">mg</option>
-            <option value="Level3">grams</option>
-            <option value="Level4">kilo</option>  
+      <p>Specify age: <input id="linkitem-2.9-input" type="text"/> 
+          <select id="linkitem-2.9-option" name="units">
+            <option value="minutes">minutes</option>
+            <option value="hours">hours</option>
+            <option value="days">days</option>
+            <option value="weeks">weeks</option>
+            <option value="months">months</option>
+            <option value="years">years</option>
           </select></p>
     </div> 
   </div>
@@ -2760,17 +2785,12 @@ textarea{
           {
             "extension": [
               {
-                "extension": [
-                  {
-                    "url": "http://hl7.org/fhir/StructureDefinition/valueset-system",
-                    "valueCanonical": "http://loinc.org/vs/LL715-4"
-                  }
-                ],
-                "url": "http://hl7.org/fhir/StructureDefinition/questionnaire-unitValueSet"
+                "url": "http://hl7.org/fhir/StructureDefinition/questionnaire-unitValueSet",
+                "valueCanonical": "http://hl7.org/fhir/ValueSet/age-units"
               }
             ],
             "linkId": "2.9.b",
-            "text": "Dosage",
+            "text": "Specify age:",
             "type": "quantity"
           }
         ]
@@ -2784,18 +2804,17 @@ textarea{
       <textarea style="border:none" class="xml">
         <item>
             <extension url="http://hl7.org/fhir/StructureDefinition/questionnaire-unitValueSet">
-                <extension url="http://hl7.org/fhir/StructureDefinition/valueset-system">
-                    <valueCanonical value="http://loinc.org/vs/LL715-4"/>
-                </extension>
+              <valueCanonical value="http://hl7.org/fhir/ValueSet/age-units"/>
             </extension>
             <linkId value="2.9.b"/>
-            <text value="Dosage"/>
+            <text value="Specify age:"/>
             <type value="quantity"/>
         </item>
       </textarea>
     </div> 
   </div>
 </div>
+<!-- TODO: fix unit samples -->
 
 <a name="reference-resource-profile-lookup"></a>
 <h4>Using referenceResource, referenceProfile and lookupQuestionnaire</h4>
@@ -2866,6 +2885,7 @@ textarea{
     </div> 
   </div>
 </div>
+<!-- TODO: validate -->
 
 <a name="calculation">  </a>
 <h3>Calculation</h3>
@@ -3264,6 +3284,12 @@ textarea{
     <label for="tab-cqf-2">JSON</label>
     <div class="content-in-tab">
       <textarea style="border:none" class="xml">
+        "extension": [
+          {
+            "url": "http://hl7.org/fhir/StructureDefinition/cqf-library",
+            "valueString": "Library/MotherInfantMeasure"
+          }
+        ],
         "item": [
           {
             "extension": [
@@ -3286,6 +3312,9 @@ textarea{
     <label for="tab-cqf-3">XML</label>
     <div class="content-in-tab">
       <textarea style="border:none" class="xml">
+        <extension url="http://hl7.org/fhir/StructureDefinition/cqf-library">
+          <valueCanonical value="Library/MotherInfantMeasure"/>
+        </extension>      
         <item>
             <extension url="http://hl7.org/fhir/StructureDefinition/cqf-calculatedValue" >
                 <valueString value="estimated_due_date"/>
@@ -3603,6 +3632,7 @@ textarea{
     </div> 
   </div>
 </div>
+<!-- TODO: try to make UI more dynamic -->
 
 <a name="ordinalvalue-constraint"></a>
 <h4>Using ordinalValue and constraint</h4>
@@ -3736,24 +3766,100 @@ textarea{
               ],
               "item": [
                 {
+                  "extension": [
+                    {
+                      "url": "http://hl7.org/fhir/StructureDefinition/questionnaire-choiceOrientation",
+                      "valueCode": "horizontal"
+                    },
+                    {
+                      "url": "http://hl7.org/fhir/StructureDefinition/questionnaire-itemControl",
+                      "valueCodeableConcept": {
+                        "coding": [
+                          {
+                            "system": "http://hl7.org/fhir/questionnaire-item-control",
+                            "code": "radio-button",
+                            "display": "Radio Button"
+                          }
+                        ],
+                        "text": "A control where choices are listed with a button beside them. The button can be toggled to select or de-select a given choice. Selecting one item deselects all others."
+                      }
+                    }
+                  ],
                   "answerValueSet": "#LL358-3",
                   "linkId": "4.3.b.1",
                   "text": "1. Little interest or pleasure in doing things ",
                   "type": "choice"
                 },
                 {
+                  "extension": [
+                    {
+                      "url": "http://hl7.org/fhir/StructureDefinition/questionnaire-choiceOrientation",
+                      "valueCode": "horizontal"
+                    },
+                    {
+                      "url": "http://hl7.org/fhir/StructureDefinition/questionnaire-itemControl",
+                      "valueCodeableConcept": {
+                        "coding": [
+                          {
+                            "system": "http://hl7.org/fhir/questionnaire-item-control",
+                            "code": "radio-button",
+                            "display": "Radio Button"
+                          }
+                        ],
+                        "text": "A control where choices are listed with a button beside them. The button can be toggled to select or de-select a given choice. Selecting one item deselects all others."
+                      }
+                    }
+                  ],
                   "answerValueSet": "#LL358-3",
                   "linkId": "4.3.b.2",
                   "text": "2. Feeling down, depressed, or hopeless ",
                   "type": "choice"
                 },
                 {
+                  "extension": [
+                    {
+                      "url": "http://hl7.org/fhir/StructureDefinition/questionnaire-choiceOrientation",
+                      "valueCode": "horizontal"
+                    },
+                    {
+                      "url": "http://hl7.org/fhir/StructureDefinition/questionnaire-itemControl",
+                      "valueCodeableConcept": {
+                        "coding": [
+                          {
+                            "system": "http://hl7.org/fhir/questionnaire-item-control",
+                            "code": "radio-button",
+                            "display": "Radio Button"
+                          }
+                        ],
+                        "text": "A control where choices are listed with a button beside them. The button can be toggled to select or de-select a given choice. Selecting one item deselects all others."
+                      }
+                    }
+                  ],
                   "answerValueSet": "#LL358-3",
                   "linkId": "4.3.b.3",
                   "text": "3. Trouble falling or staying asleep, or sleeping too much ",
                   "type": "choice"
                 },
                 {
+                  "extension": [
+                    {
+                      "url": "http://hl7.org/fhir/StructureDefinition/questionnaire-choiceOrientation",
+                      "valueCode": "horizontal"
+                    },
+                    {
+                      "url": "http://hl7.org/fhir/StructureDefinition/questionnaire-itemControl",
+                      "valueCodeableConcept": {
+                        "coding": [
+                          {
+                            "system": "http://hl7.org/fhir/questionnaire-item-control",
+                            "code": "radio-button",
+                            "display": "Radio Button"
+                          }
+                        ],
+                        "text": "A control where choices are listed with a button beside them. The button can be toggled to select or de-select a given choice. Selecting one item deselects all others."
+                      }
+                    }
+                  ],
                   "answerValueSet": "#LL358-3",
                   "linkId": "4.3.b.4",
                   "text": "4. Feeling tired or having little energy ",
@@ -3854,28 +3960,80 @@ textarea{
             <text value="Over the last 2 weeks, how often have you been bothered by any of the following problems?" />
             <type value="group"/>
             <item>
-                <linkId value="4.3.b.1"/>
-                <text value="1. Little interest or pleasure in doing things "/>
-                <type value="choice"/>
-                <answerValueSet value="#LL358-3"/>
+              <extension url="http://hl7.org/fhir/StructureDefinition/questionnaire-choiceOrientation">
+                <valueCode value="horizontal"/>
+              </extension>
+              <extension url="http://hl7.org/fhir/StructureDefinition/questionnaire-itemControl">
+                <valueCodeableConcept>
+                  <coding>
+                    <system value="http://hl7.org/fhir/questionnaire-item-control"/>
+                    <code value="radio-button"/>
+                    <display value="Radio Button"/>
+                  </coding>
+                  <text value="A control where choices are listed with a button beside them. The button can be toggled to select or de-select a given choice. Selecting one item deselects all others."/>
+                </valueCodeableConcept>
+              </extension>
+              <linkId value="4.3.b.1"/>
+              <text value="1. Little interest or pleasure in doing things "/>
+              <type value="choice"/>
+              <answerValueSet value="#LL358-3"/>
             </item>
             <item>
-                <linkId value="4.3.b.2"/>
-                <text value="2. Feeling down, depressed, or hopeless "/>
-                <type value="choice"/>
-                <answerValueSet value="#LL358-3"/>
+              <extension url="http://hl7.org/fhir/StructureDefinition/questionnaire-choiceOrientation">
+                <valueCode value="horizontal"/>
+              </extension>
+              <extension url="http://hl7.org/fhir/StructureDefinition/questionnaire-itemControl">
+                <valueCodeableConcept>
+                  <coding>
+                    <system value="http://hl7.org/fhir/questionnaire-item-control"/>
+                    <code value="radio-button"/>
+                    <display value="Radio Button"/>
+                  </coding>
+                  <text value="A control where choices are listed with a button beside them. The button can be toggled to select or de-select a given choice. Selecting one item deselects all others."/>
+                </valueCodeableConcept>
+              </extension>
+              <linkId value="4.3.b.2"/>
+              <text value="2. Feeling down, depressed, or hopeless "/>
+              <type value="choice"/>
+              <answerValueSet value="#LL358-3"/>
             </item>
             <item>
-                <linkId value="4.3.b.3"/>
-                <text value="3. Trouble falling or staying asleep, or sleeping too much "/>
-                <type value="choice"/>
-                <answerValueSet value="#LL358-3"/>
+              <extension url="http://hl7.org/fhir/StructureDefinition/questionnaire-choiceOrientation">
+                <valueCode value="horizontal"/>
+              </extension>
+              <extension url="http://hl7.org/fhir/StructureDefinition/questionnaire-itemControl">
+                <valueCodeableConcept>
+                  <coding>
+                    <system value="http://hl7.org/fhir/questionnaire-item-control"/>
+                    <code value="radio-button"/>
+                    <display value="Radio Button"/>
+                  </coding>
+                  <text value="A control where choices are listed with a button beside them. The button can be toggled to select or de-select a given choice. Selecting one item deselects all others."/>
+                </valueCodeableConcept>
+              </extension>
+              <linkId value="4.3.b.3"/>
+              <text value="3. Trouble falling or staying asleep, or sleeping too much "/>
+              <type value="choice"/>
+              <answerValueSet value="#LL358-3"/>
             </item>
             <item>
-                <linkId value="4.3.b.4"/>
-                <text value="4. Feeling tired or having little energy "/>
-                <type value="choice"/>
-                <answerValueSet value="#LL358-3"/>
+              <extension url="http://hl7.org/fhir/StructureDefinition/questionnaire-choiceOrientation">
+                <valueCode value="horizontal"/>
+              </extension>
+              <extension url="http://hl7.org/fhir/StructureDefinition/questionnaire-itemControl">
+                <valueCodeableConcept>
+                  <coding>
+                    <system value="http://hl7.org/fhir/questionnaire-item-control"/>
+                    <code value="radio-button"/>
+                    <display value="Radio Button"/>
+                  </coding>
+                  <text value="A control where choices are listed with a button beside them. The button can be toggled to select or de-select a given choice. Selecting one item deselects all others."/>
+                </valueCodeableConcept>
+              </extension>
+              <linkId value="4.3.b.4"/>
+              <text value="4. Feeling tired or having little energy "/>
+              <type value="choice"/>
+              <answerValueSet value="#LL358-3"/>
             </item>        
             <item>
                 <extension url="http://hl7.org/fhir/uv/sdc/StructureDefinition/sdc-questionnaire-calculatedExpression">
@@ -4119,7 +4277,8 @@ textarea{
       <textarea style="border:none" class="xml">
       "item": [
         {
-            {
+          "extension": [
+            {        
               "url": "http://hl7.org/fhir/uv/sdc/StructureDefinition/sdc-questionnaire-candidateExpression",
               "valueExpression": {
                 "description": "active practitioners that speak at least one of the patient's language",
@@ -4208,6 +4367,7 @@ textarea{
           "type": "reference",
           "repeats": true
         }
+      ]
      </textarea>
     </div> 
   </div>
