@@ -529,17 +529,10 @@
         <reference value="Questionnaire/questionnaire-sdc-profile-example-render"/>
       </reference>
       <name value="SDC-Advanced Rendering"/>
-      <description value="Demo questionnaire showing most of the advanced rendering capabilities of SDC"/>
+      <description value="Example showing most of the advanced rendering capabilities of SDC"/>
       <exampleCanonical value="http://hl7.org/fhir/uv/sdc/StructureDefinition/sdc-questionnaire-render"/>
     </resource>
     <resource>
-      <reference>
-        <reference value="Questionnaire/questionnaire-sdc-profile-example-form-behavior"/>
-      </reference>
-      <name value="SDC-Advanced Form Behavior"/>
-      <description value="Demo questionnaire showing most of the advanced form behavior capabilities of SDC. Each example here is itemized in the Examples page."/>
-      <exampleCanonical value="http://hl7.org/fhir/uv/sdc/StructureDefinition/sdc-questionnaire-behave"/>
-    </resource>    <resource>
       <reference>
         <reference value="Bundle/questionnaire-sdc-profile-example"/>
       </reference>
@@ -549,11 +542,19 @@
     </resource>
     <resource>
       <reference>
-        <reference value="QuestionnaireResponse/questionnaireresponse-sdc-profile-example"/>
+        <reference value="Questionnaire/questionnaire-sdc-profile-example-cap"/>
       </reference>
-      <name value="SDC-Response to Diagnosis NCI Standard Template"/>
-      <description value="Example responses to the questionnaire found in the SDC - Combination list of questionnaires"/>
-      <exampleCanonical value="http://hl7.org/fhir/uv/sdc/StructureDefinition/sdc-questionnaireresponse"/>
+      <name value="SDC-Pathology"/>
+      <description value="Cancer pathology questionnaire with flow-control extensions"/>
+      <exampleCanonical value="http://hl7.org/fhir/uv/sdc/StructureDefinition/sdc-questionnaire"/>
+    </resource>
+    <resource>
+      <reference>
+        <reference value="Questionnaire/questionnaire-sdc-profile-example-loinc"/>
+      </reference>
+      <name value="SDC-LOINC AHRQ"/>
+      <description value="LOINC perspective on the AHRQ form found in the SDC - Combination set of questionnaires"/>
+      <exampleCanonical value="http://hl7.org/fhir/uv/sdc/StructureDefinition/sdc-questionnaire"/>
     </resource>
     <resource>
       <reference>
@@ -565,10 +566,34 @@
     </resource>
     <resource>
       <reference>
+        <reference value="Bundle/questionnaire-sdc-profile-example-ussg-fht"/>
+      </reference>
+      <name value="SDC-LOINC USSG Family History"/>
+      <description value="LOINC US Surgeon General family history including data elements and value sets."/>
+      <exampleCanonical value="http://hl7.org/fhir/uv/sdc/StructureDefinition/sdc-questionnaire-populate"/>
+    </resource>
+    <resource>
+      <reference>
+        <reference value="QuestionnaireResponse/questionnaireresponse-sdc-profile-example"/>
+      </reference>
+      <name value="SDC-Response to Diagnosis NCI Standard Template"/>
+      <description value="Example responses to the questionnaire found in the SDC - Combination list of questionnaires"/>
+      <exampleCanonical value="http://hl7.org/fhir/uv/sdc/StructureDefinition/sdc-questionnaireresponse"/>
+    </resource>
+    <resource>
+      <reference>
         <reference value="QuestionnaireResponse/questionnaireresponse-sdc-profile-example-PHQ9"/>
       </reference>
-      <name value="SDC-Response to PHQ9"/>
+      <name value="SDC-PHQ9 Response"/>
       <description value="Example response to the SDC-PHQ9 questionnaire"/>
+      <exampleCanonical value="http://hl7.org/fhir/uv/sdc/StructureDefinition/sdc-questionnaireresponse"/>
+    </resource>
+    <resource>
+      <reference>
+        <reference value="QuestionnaireResponse/questionnaireresponse-sdc-example-ussg-fht-answers"/>
+      </reference>
+      <name value="SDC-LOINC USSG Family History Response"/>
+      <description value="Example response to the SDC-LOINC USSG Family History questionnaire"/>
       <exampleCanonical value="http://hl7.org/fhir/uv/sdc/StructureDefinition/sdc-questionnaireresponse"/>
     </resource>
     <resource>
@@ -581,22 +606,6 @@
     </resource>
     <resource>
       <reference>
-        <reference value="Questionnaire/questionnaire-sdc-profile-example-loinc"/>
-      </reference>
-      <name value="SDC-LOINC AHRQ"/>
-      <description value="LOINC perspective on the AHRQ form found in the SDC - Combination set of questionnaires"/>
-      <exampleCanonical value="http://hl7.org/fhir/uv/sdc/StructureDefinition/sdc-questionnaire"/>
-    </resource>
-    <resource>
-      <reference>
-        <reference value="QuestionnaireResponse/questionnaireresponse-sdc-profile-example-loinc"/>
-      </reference>
-      <name value="SDC-Response to LOINC AHRQ"/>
-      <description value="Example response to te LOINC AHRQ questionnaire."/>
-      <exampleCanonical value="http://hl7.org/fhir/uv/sdc/StructureDefinition/sdc-questionnaireresponse"/>
-    </resource>
-    <resource>
-      <reference>
         <reference value="ValueSet/sdc-profile-example"/>
       </reference>
       <name value="SDC-ValueSet AHRQ_Medication_Q1"/>
@@ -605,27 +614,11 @@
     </resource>
     <resource>
       <reference>
-        <reference value="Bundle/questionnaire-sdc-profile-example-ussg-fht"/>
+        <reference value="Questionnaire/questionnaire-sdc-profile-example-form-behavior"/>
       </reference>
-      <name value="SDC-LOINC USSG Family History"/>
-      <description value="LOINC US Surgeon General family history including data elements and value sets."/>
-      <exampleCanonical value="http://hl7.org/fhir/uv/sdc/StructureDefinition/sdc-questionnaire-populate"/>
-    </resource>
-    <resource>
-      <reference>
-        <reference value="QuestionnaireResponse/questionnaireresponse-sdc-example-ussg-fht-answers"/>
-      </reference>
-      <name value="SDC-Response to LOINC USSG Family History"/>
-      <description value="Example response to the SDC-LOINC USSG Family History questionnaire"/>
-      <exampleCanonical value="http://hl7.org/fhir/uv/sdc/StructureDefinition/sdc-questionnaireresponse"/>
-    </resource>
-    <resource>
-      <reference>
-        <reference value="Questionnaire/questionnaire-sdc-profile-example-cap"/>
-      </reference>
-      <name value="SDC-Pathology"/>
-      <description value="Cancer pathology questionnaire with flow-control extensions"/>
-      <exampleCanonical value="http://hl7.org/fhir/uv/sdc/StructureDefinition/sdc-questionnaire"/>
+      <name value="SDC-Advanced Form Behavior"/>
+      <description value="Example demonstrating most of the advanced form behavior capabilities of SDC. Each example here is itemized in the Examples page."/>
+      <exampleCanonical value="http://hl7.org/fhir/uv/sdc/StructureDefinition/sdc-questionnaire-behave"/>
     </resource>
     <resource>
       <reference>
@@ -650,78 +643,6 @@
       <name value="SDC-Weight and Height Tracking Panel"/>
       <description value="A weight and height panel (from LOINC) with a FHIRPath rule for calculating the BMI."/>
       <exampleCanonical value="http://hl7.org/fhir/uv/sdc/StructureDefinition/sdc-questionnaire"/>
-    </resource>
-    <resource>
-      <reference>
-        <reference value="Questionnaire/questionnaire-sdc-test-all-data-types"/>
-      </reference>
-      <name value="SDC Test Form - All Data Types"/>
-      <description value="A test form that has one of each data type included, useful in checking compatibility against."/>
-      <exampleCanonical value="http://hl7.org/fhir/uv/sdc/StructureDefinition/sdc-questionnaire"/>
-    </resource>
-    <resource>
-      <reference>
-        <reference value="Questionnaire/questionnaire-sdc-test-enableWhen"/>
-      </reference>
-      <name value="SDC Test Form - Enable When"/>
-      <description value="A test form that has a variety of enable when scenarios for testing."/>
-      <exampleCanonical value="http://hl7.org/fhir/uv/sdc/StructureDefinition/sdc-questionnaire-behave"/>
-    </resource>
-    <resource>
-      <reference>
-        <reference value="Questionnaire/questionnaire-sdc-test-fhirpath-prepop-candexpr"/>
-      </reference>
-      <name value="SDC Test Form - Candidate Expression"/>
-      <description value="A test form with a FHIRPath based prepopulation example that includes a candidate expression."/>
-      <exampleCanonical value="http://hl7.org/fhir/uv/sdc/StructureDefinition/sdc-questionnaire-populate"/>
-    </resource>
-    <resource>
-      <reference>
-        <reference value="Questionnaire/questionnaire-sdc-test-fhirpath-prepop-initialexpression"/>
-      </reference>
-      <name value="SDC Test Form - Initial Expression"/>
-      <description value="A test form with a FHIRPath based prepopulation simple example."/>
-      <exampleCanonical value="http://hl7.org/fhir/uv/sdc/StructureDefinition/sdc-questionnaire-populate"/>
-    </resource>
-    <resource>
-      <reference>
-        <reference value="Questionnaire/questionnaire-sdc-test-fhirpath-prepop-source-query"/>
-      </reference>
-      <name value="SDC Test Form - Source Query"/>
-      <description value="A test form with a FhirPath based prepopulation example that leverages a source query to extract data outside the launch context."/>
-      <exampleCanonical value="http://hl7.org/fhir/uv/sdc/StructureDefinition/sdc-questionnaire-populate"/>
-    </resource>
-    <resource>
-      <reference>
-        <reference value="Questionnaire/questionnaire-sdc-test-initialvalue"/>
-      </reference>
-      <name value="SDC Test Form - Initial Value"/>
-      <description value="A test form with that uses initial values."/>
-      <exampleCanonical value="http://hl7.org/fhir/uv/sdc/StructureDefinition/sdc-questionnaire-populate"/>
-    </resource>
-    <resource>
-      <reference>
-        <reference value="Questionnaire/questionnaire-sdc-test-initialvalue-multiple"/>
-      </reference>
-      <name value="SDC Test Form - Multiple Initial Value"/>
-      <description value="A test form with a question that has multiple initial values."/>
-      <exampleCanonical value="http://hl7.org/fhir/uv/sdc/StructureDefinition/sdc-questionnaire-populate"/>
-    </resource>
-    <resource>
-      <reference>
-        <reference value="Questionnaire/questionnaire-sdc-test-nested-groups"/>
-      </reference>
-      <name value="SDC Test Form - Repeats"/>
-      <description value="A test form with repeatable nested groups."/>
-      <exampleCanonical value="http://hl7.org/fhir/uv/sdc/StructureDefinition/sdc-questionnaire-behave"/>
-    </resource>
-    <resource>
-      <reference>
-        <reference value="Questionnaire/questionnaire-sdc-test-required-radios"/>
-      </reference>
-      <name value="SDC Test Form - Required"/>
-      <description value="A test form with required fields."/>
-      <exampleCanonical value="http://hl7.org/fhir/uv/sdc/StructureDefinition/sdc-questionnaire-behave"/>
     </resource>
     <!--    <resource>
       <reference>
