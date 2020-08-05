@@ -68,6 +68,7 @@ textarea{
    -webkit-box-sizing: border-box; /* Safari/Chrome, other WebKit */
   -moz-box-sizing: border-box;    /* Firefox, other Gecko */
   box-sizing: border-box;         /* Opera/IE 8+ */
+  resize: none;
 }
 .button {
   border: none;
@@ -118,7 +119,9 @@ textarea{
   cursor: pointer;
 }
 </style>
-<p>Below are some examples that demonstrate how the elements and extensions in this implementation guide are intended to be used in a Questionnaire.<br/><br/><br/><br/><br/></p>
+<p>Below are some examples that demonstrate how the elements and extensions in this implementation guide are intended to be used in a Questionnaire.
+   <span style="color:red;">Note:</span> The rendering of the questions in the "Sample Question" tab are not functional (i.e. no validations after entry, perform actual computations, etc). They only provide a visual presentation of the questions and do not mimic
+   how they will work in an actual questionnaire.<br/><br/><br/><br/><br/></p>
 <a name="text-appearance">  </a>
 <h3>Text Appearance</h3>
 <a name="rendering-style"></a>
@@ -324,7 +327,7 @@ textarea{
           {
             "linkId": "1.1",
             "text": "Event ID",
-            "type": "string",
+            "type": "string"
           }
         ]
      </textarea>
@@ -391,7 +394,7 @@ textarea{
             ],
             "linkId": "1.0",
             "text": "If you have any other medical problems or serious injuries, please describe them here:",
-            "type": "string"
+            "type": "text"
           }
         ]
      </textarea>
@@ -415,7 +418,7 @@ textarea{
           </extension>
           <linkId value="1.0"/>
           <text value="If you have any other medical problems or serious injuries, please describe them here:"/>
-          <type value="string"/>
+          <type value="text"/>
         </item>
       </textarea>
     </div> 
@@ -670,7 +673,8 @@ textarea{
     <input type="radio" id="tab-width-1" name="tab-width-group-2" checked="true"></input>
     <label for="tab-width-1">Sample Question</label>
     <div class="content-in-tab">
-      <p><table border="1">
+      <p>Medical History
+      <table border="1">
           <col width="65%"/>
           <col width="35%"/>
           <tr>
@@ -938,6 +942,19 @@ textarea{
               {
                 "url": "http://hl7.org/fhir/StructureDefinition/questionnaire-supportLink",
                 "valueUri": "http://hl7.org/fhir/StructureDefinition/questionnaire-supportLink"
+              },
+              {
+                "url": "http://hl7.org/fhir/StructureDefinition/questionnaire-itemControl",
+                "valueCodeableConcept": {
+                  "coding": [
+                    {
+                      "system": "http://hl7.org/fhir/questionnaire-item-control",
+                      "code": "radio-button",
+                      "display": "Radio Button"
+                    }
+                  ],
+                  "text": "Radio Button"
+                }
               }
             ],
             "linkId": "1.0",
@@ -971,6 +988,16 @@ textarea{
           <extension url="http://hl7.org/fhir/StructureDefinition/questionnaire-supportLink">
             <valueUri value="http://hl7.org/fhir/StructureDefinition/questionnaire-supportLink"/>
           </extension>
+          <extension url="http://hl7.org/fhir/StructureDefinition/questionnaire-itemControl">
+            <valueCodeableConcept>
+              <coding>
+                <system value="http://hl7.org/fhir/questionnaire-item-control"/>
+                <code value="radio-button"/>
+                <display value="Radio Button"/>
+              </coding>
+              <text value="A control where choices are listed with a button beside them. The button can be toggled to select or de-select a given choice. Selecting one item deselects all others."/>
+            </valueCodeableConcept>
+          </extension>
           <linkId value="1.0"/>
           <text value="Have you traveled outside the country within the last 14 days?"/>
           <type value="choice"/>
@@ -1002,9 +1029,9 @@ textarea{
     <div class="content-in-tab">
       <p>
       Select Platelet:<br/>
-        <select name="choiceColumnWithCodes" id="choiceColumnWithCodes" size="10">
+        <select name="choiceColumnWithCodes" id="choiceColumnWithCodes">
           <option value="header">CODE&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;DESCRIPTION</option>
-          <option value="LA11165-0">LA11165-0&#xA0;&#xA0;&#xA0;&#xA0;Platelet anisocytosis</option>
+          <option value="LA11165-0" selected="true">LA11165-0&#xA0;&#xA0;&#xA0;&#xA0;Platelet anisocytosis</option>
             <option value="LA11166-8">LA11166-8&#xA0;&#xA0;&#xA0;&#xA0;Platelet satellitism</option>
             <option value="LA11167-6">LA11167-6&#xA0;&#xA0;&#xA0;&#xA0;Platelet large fragments</option>
             <option value="LA11167-6">LA11167-6&#xA0;&#xA0;&#xA0;&#xA0;Platelet large fragments</option>
@@ -1396,7 +1423,7 @@ textarea{
                 ]
               }
             }
-          ]
+          ],
           "item": [
             {
               "extension": [
@@ -1978,7 +2005,7 @@ textarea{
         "item": [
           {
             "linkId": "2.1.b",
-            "text": "Province",
+            "text": "Choose your Province",
             "type": "choice",
             "answerOption": [
               {
@@ -2073,13 +2100,13 @@ textarea{
                     <code value="Manitoba"/>
                     <display value="Manitoba"/>
                 </valueCoding>
-            </answerOption>            
+            </answerOption>
             <answerOption>
                 <valueCoding>
                     <code value="NewBrunswick"/>
                     <display value="New Brunswick"/>
                 </valueCoding>
-            </answerOption>            
+            </answerOption>
             <answerOption>
                 <valueCoding>
                     <code value="NewfoundlandAndLabrador"/>
@@ -2641,11 +2668,10 @@ textarea{
     <div class="content-in-tab">
       <p>Dosage <input id="linkitem-2.8-input" type="text"/>
           <select id="linkitem-2.8-option" name="activity">
-            <option value="Level0">ml</option>
-            <option value="Level1">liters</option>
-            <option value="Level2">mg</option>
-            <option value="Level3">grams</option>
-            <option value="Level4">kilo</option>  
+            <option value="ml">ml</option>
+            <option value="liters">liters</option>
+            <option value="mg">mg</option>
+            <option value="grams">grams</option>
           </select></p>
     </div> 
   </div>
@@ -2660,29 +2686,29 @@ textarea{
               {
                 "url": "http://hl7.org/fhir/StructureDefinition/questionnaire-unitOption",
                 "valueCoding": {
-                  "code": "Level0",
-                  "display": "None"
+                  "code": "ml",
+                  "display": "ml"
                 }
               },
               {
                 "url": "http://hl7.org/fhir/StructureDefinition/questionnaire-unitOption",
                 "valueCoding": {
-                  "code": "Unit0",
-                  "display": "Unit 0"
+                  "code": "liters",
+                  "display": "liters"
                 }
               },
               {
                 "url": "http://hl7.org/fhir/StructureDefinition/questionnaire-unitOption",
                 "valueCoding": {
-                  "code": "Unit1",
-                  "display": "Unit 1"
+                  "code": "mg",
+                  "display": "mg"
                 }
               },
               {
                 "url": "http://hl7.org/fhir/StructureDefinition/questionnaire-unitOption",
                 "valueCoding": {
-                  "code": "Unit3",
-                  "display": "Unit 3"
+                  "code": "grams",
+                  "display": "grams"
                 }
               }
             ],
@@ -2702,28 +2728,28 @@ textarea{
         <item>
             <extension url="http://hl7.org/fhir/StructureDefinition/questionnaire-unitOption">
                 <valueCoding>
-                    <code value="Level0"/>
-                    <display value="None"/>
+                    <code value="ml"/>
+                    <display value="ml"/>
                 </valueCoding>
             </extension>
             <extension url="http://hl7.org/fhir/StructureDefinition/questionnaire-unitOption">
                 <valueCoding>
-                    <code value="Unit0"/>
-                    <display value="Unit 0"/>
+                    <code value="liters"/>
+                    <display value="liters"/>
                 </valueCoding>
             </extension>
             <extension url="http://hl7.org/fhir/StructureDefinition/questionnaire-unitOption">
                 <valueCoding>
-                    <code value="Unit1"/>
-                    <display value="Unit 1"/>
+                    <code value="mg"/>
+                    <display value="mg"/>
                 </valueCoding>
             </extension>
             <extension url="http://hl7.org/fhir/StructureDefinition/questionnaire-unitOption">
                 <valueCoding>
-                    <code value="Unit3"/>
-                    <display value="Unit 3"/>
+                    <code value="grams"/>
+                    <display value="grams"/>
                 </valueCoding>
-            </extension>            
+            </extension>
             <linkId value="2.8.b"/>
             <text value="Dosage"/>
             <type value="quantity"/>
@@ -2741,13 +2767,14 @@ textarea{
     <input type="radio" id="tab-unitvalueset-1" name="tab-unitvalueset-group-2" checked="true"></input>
     <label for="tab-unitvalueset-1">Sample Question</label>
     <div class="content-in-tab">
-      <p>Dosage <input id="linkitem-2.9-input" type="text"/> 
-          <select id="linkitem-2.9-option" name="activity">
-            <option value="Level0">ml</option>
-            <option value="Level1">liters</option>
-            <option value="Level2">mg</option>
-            <option value="Level3">grams</option>
-            <option value="Level4">kilo</option>  
+      <p>Specify age: <input id="linkitem-2.9-input" type="text"/> 
+          <select id="linkitem-2.9-option" name="units">
+            <option value="minutes">minutes</option>
+            <option value="hours">hours</option>
+            <option value="days">days</option>
+            <option value="weeks">weeks</option>
+            <option value="months">months</option>
+            <option value="years">years</option>
           </select></p>
     </div> 
   </div>
@@ -2760,17 +2787,12 @@ textarea{
           {
             "extension": [
               {
-                "extension": [
-                  {
-                    "url": "http://hl7.org/fhir/StructureDefinition/valueset-system",
-                    "valueCanonical": "http://loinc.org/vs/LL715-4"
-                  }
-                ],
-                "url": "http://hl7.org/fhir/StructureDefinition/questionnaire-unitValueSet"
+                "url": "http://hl7.org/fhir/StructureDefinition/questionnaire-unitValueSet",
+                "valueCanonical": "http://hl7.org/fhir/ValueSet/age-units"
               }
             ],
             "linkId": "2.9.b",
-            "text": "Dosage",
+            "text": "Specify age:",
             "type": "quantity"
           }
         ]
@@ -2784,18 +2806,17 @@ textarea{
       <textarea style="border:none" class="xml">
         <item>
             <extension url="http://hl7.org/fhir/StructureDefinition/questionnaire-unitValueSet">
-                <extension url="http://hl7.org/fhir/StructureDefinition/valueset-system">
-                    <valueCanonical value="http://loinc.org/vs/LL715-4"/>
-                </extension>
+              <valueCanonical value="http://hl7.org/fhir/ValueSet/age-units"/>
             </extension>
             <linkId value="2.9.b"/>
-            <text value="Dosage"/>
+            <text value="Specify age:"/>
             <type value="quantity"/>
         </item>
       </textarea>
     </div> 
   </div>
 </div>
+<!-- TODO: fix unit samples -->
 
 <a name="reference-resource-profile-lookup"></a>
 <h4>Using referenceResource, referenceProfile and lookupQuestionnaire</h4>
@@ -2866,6 +2887,7 @@ textarea{
     </div> 
   </div>
 </div>
+<!-- TODO: validate -->
 
 <a name="calculation">  </a>
 <h3>Calculation</h3>
@@ -2929,9 +2951,173 @@ textarea{
   </div>
 </div>
 
+<a name="launchContext"></a>
+<h4>Using launchContext</h4>
+<p>To set resources that provide context for form processing logic.</p>
+<div class="tabs">
+  <div class="tab">
+    <input type="radio" id="tab-launchcontext-1" name="tab-launchcontext-group-2" checked="true"></input>
+    <label for="tab-launchcontext-1">Sample Question</label>
+    <div class="content-in-tab">
+      <p><b>Last Name:</b> Hamilton<br/>
+         <b>First Name:</b> William<br/>
+         <b>Gender:</b> male</p>
+    </div> 
+  </div>
+  <div class="tab">
+    <input type="radio" id="tab-launchcontext-2" name="tab-launchcontext-group-2"></input>
+    <label for="tab-launchcontext-2">JSON</label>
+    <div class="content-in-tab">
+      <textarea style="border:none" class="xml">
+        "extension": [
+          {
+            "extension": [
+              {
+                "url": "name",
+                "valueId": "LaunchPatient"
+              },
+              {
+                "url": "type",
+                "valueCode": "Patient"
+              },
+              {
+                "url": "description",
+                "valueString": "The patient that is to be used to pre-populate the form"
+              }
+            ],
+            "url": "http://hl7.org/fhir/uv/sdc/StructureDefinition/sdc-questionnaire-launchContext"
+          }
+        ],
+        "item": [
+          {
+            "_linkId": {
+              "id": "1.0"
+            },
+            "type": "group",
+            "item": [
+              {
+                "extension": [
+                  {
+                    "url": "http://hl7.org/fhir/uv/sdc/StructureDefinition/sdc-questionnaire-initialExpression",
+                    "valueExpression": {
+                      "description": "patient's last name",
+                      "language": "text/fhirpath",
+                      "expression": "%LaunchPatient.name.where(use='official').given.first()"
+                    }
+                  }
+                ],
+                "linkId": "1.1",
+                "text": "Last Name:",
+                "type": "string",
+                "readOnly": true
+              },
+              {
+                "extension": [
+                  {
+                    "url": "http://hl7.org/fhir/uv/sdc/StructureDefinition/sdc-questionnaire-initialExpression",
+                    "valueExpression": {
+                      "description": "patient's first name",
+                      "language": "text/fhirpath",
+                      "expression": "%LaunchPatient.name.where(use='official').family()"
+                    }
+                  }
+                ],
+                "linkId": "1.1",
+                "text": "First Name:",
+                "type": "string",
+                "readOnly": true
+              },
+              {
+                "extension": [
+                  {
+                    "url": "http://hl7.org/fhir/uv/sdc/StructureDefinition/sdc-questionnaire-initialExpression",
+                    "valueExpression": {
+                      "description": "patient's gender",
+                      "language": "text/fhirpath",
+                      "expression": "%LaunchPatient.gender"
+                    }
+                  }
+                ],
+                "linkId": "1.1",
+                "text": "Gender:",
+                "type": "string",
+                "readOnly": true
+              }
+            ]
+          }
+        ]
+     </textarea>
+    </div> 
+  </div>
+  <div class="tab">
+    <input type="radio" id="tab-launchcontext-3" name="tab-launchcontext-group-2"></input>
+    <label for="tab-launchcontext-3">XML</label>
+    <div class="content-in-tab">
+      <textarea style="border:none" class="xml">
+        <extension url="http://hl7.org/fhir/uv/sdc/StructureDefinition/sdc-questionnaire-launchContext">
+          <extension url="name">
+            <valueId value="LaunchPatient"/>
+          </extension>
+          <extension url="type">
+            <valueCode value="Patient"/>
+          </extension>
+          <extension url="description">
+            <valueString value="The patient that is to be used to pre-populate the form"/>
+          </extension>
+        </extension>
+        <item>
+          <linkId id="1.0"/>
+          <type value="group"/>
+          <item>
+            <extension url="http://hl7.org/fhir/uv/sdc/StructureDefinition/sdc-questionnaire-initialExpression">
+               <valueExpression>
+                  <description value="patient's last name"/>
+                  <language value="text/fhirpath"/>
+                  <expression value="%LaunchPatient.name.where(use='official').given.first()"/> 
+               </valueExpression>
+            </extension>
+            <linkId value="1.1"/>
+            <text value="Last Name:"/>
+            <type value="string"/>
+            <readOnly value="true"/>
+          </item>
+          <item>
+            <extension url="http://hl7.org/fhir/uv/sdc/StructureDefinition/sdc-questionnaire-initialExpression">
+               <valueExpression>
+                  <description value="patient's first name"/>
+                  <language value="text/fhirpath"/>
+                  <expression value="%LaunchPatient.name.where(use='official').family()"/> 
+               </valueExpression>
+            </extension>
+            <linkId value="1.2"/>
+            <text value="First Name:"/>
+            <type value="string"/>
+            <readOnly value="true"/>
+          </item>
+          <item>
+            <extension url="http://hl7.org/fhir/uv/sdc/StructureDefinition/sdc-questionnaire-initialExpression">
+               <valueExpression>
+                  <description value="patient's gender"/>
+                  <language value="text/fhirpath"/>
+                  <expression value="%LaunchPatient.gender"/> 
+               </valueExpression>
+            </extension>
+            <linkId value="1.3"/>
+            <text value="Gender:"/>
+            <type value="string"/>
+            <readOnly value="true"/>
+          </item>
+        </item>
+      </textarea>
+    </div> 
+  </div>
+</div>
+
 <a name="calculatedexpression"></a>
 <h4>Using calculatedExpression and variable</h4>
-<p>Example with a calculated expression.</p>
+<p>Example with a calculated expression.<br/>
+   Note: The questions below are not functional. The BMI will not calculated and displayed after input.
+</p>
 <div class="tabs">
   <div class="tab">
     <input type="radio" id="tab-calculatedexpression-1" name="tab-calculatedexpression-group-2" checked="true"></input>
@@ -2939,7 +3125,7 @@ textarea{
     <div class="content-in-tab">
       <p>Weight (kg) <input id="linkitem-3.2.1-input" type="text"/><br/>
           Body Height (inches)<input id="linkitem-3.2.2-input" type="text"/><br/>
-          Your Body Mass Index (BMI) is <input id="linkitem-3.2.3-input" type="text" disabled="true"></input>    </p>
+          Your Body Mass Index (BMI) is <input id="linkitem-3.2.3-input" type="text" disabled="true"></input></p>
     </div> 
   </div>
   <div class="tab">
@@ -3102,6 +3288,12 @@ textarea{
     <label for="tab-cqf-2">JSON</label>
     <div class="content-in-tab">
       <textarea style="border:none" class="xml">
+        "extension": [
+          {
+            "url": "http://hl7.org/fhir/StructureDefinition/cqf-library",
+            "valueString": "Library/MotherInfantMeasure"
+          }
+        ],
         "item": [
           {
             "extension": [
@@ -3124,6 +3316,9 @@ textarea{
     <label for="tab-cqf-3">XML</label>
     <div class="content-in-tab">
       <textarea style="border:none" class="xml">
+        <extension url="http://hl7.org/fhir/StructureDefinition/cqf-library">
+          <valueCanonical value="Library/MotherInfantMeasure"/>
+        </extension>      
         <item>
             <extension url="http://hl7.org/fhir/StructureDefinition/cqf-calculatedValue" >
                 <valueString value="estimated_due_date"/>
@@ -3208,7 +3403,9 @@ textarea{
 
 <a name="enableexamples"></a>
 <h4>Using enableWhen, enableBehavior, and enableWhenExpression</h4>
-<p>Example of enabling behaviors.</p>
+<p>Example of enabling behaviors.<br/>
+   Note: The questions below are not functional. Display does not show actual enabling behaviors.
+</p>
 <div class="tabs" style="height:350px">
   <div class="tab">
     <input type="radio" id="tab-enableexamples-1" name="tab-enableexamples-group-2" checked="true"></input>
@@ -3441,10 +3638,13 @@ textarea{
     </div> 
   </div>
 </div>
+<!-- TODO: try to make UI more dynamic -->
 
 <a name="ordinalvalue-constraint"></a>
 <h4>Using ordinalValue and constraint</h4>
-<p>Example involving ordinal value and contraints.</p>
+<p>Example involving ordinal value and contraints.<br/>
+   Note: The questions below are not functional. The total score will not be calculated and displayed after input.
+</p>
 <div class="tabs" style="height:400px">
   <div class="tab">
     <input type="radio" id="tab-ordinalvalue-constraint-1" name="tab-ordinalvalue-constraint-group-2" checked="true"></input>
@@ -3574,24 +3774,100 @@ textarea{
               ],
               "item": [
                 {
+                  "extension": [
+                    {
+                      "url": "http://hl7.org/fhir/StructureDefinition/questionnaire-choiceOrientation",
+                      "valueCode": "horizontal"
+                    },
+                    {
+                      "url": "http://hl7.org/fhir/StructureDefinition/questionnaire-itemControl",
+                      "valueCodeableConcept": {
+                        "coding": [
+                          {
+                            "system": "http://hl7.org/fhir/questionnaire-item-control",
+                            "code": "radio-button",
+                            "display": "Radio Button"
+                          }
+                        ],
+                        "text": "A control where choices are listed with a button beside them. The button can be toggled to select or de-select a given choice. Selecting one item deselects all others."
+                      }
+                    }
+                  ],
                   "answerValueSet": "#LL358-3",
                   "linkId": "4.3.b.1",
                   "text": "1. Little interest or pleasure in doing things ",
                   "type": "choice"
                 },
                 {
+                  "extension": [
+                    {
+                      "url": "http://hl7.org/fhir/StructureDefinition/questionnaire-choiceOrientation",
+                      "valueCode": "horizontal"
+                    },
+                    {
+                      "url": "http://hl7.org/fhir/StructureDefinition/questionnaire-itemControl",
+                      "valueCodeableConcept": {
+                        "coding": [
+                          {
+                            "system": "http://hl7.org/fhir/questionnaire-item-control",
+                            "code": "radio-button",
+                            "display": "Radio Button"
+                          }
+                        ],
+                        "text": "A control where choices are listed with a button beside them. The button can be toggled to select or de-select a given choice. Selecting one item deselects all others."
+                      }
+                    }
+                  ],
                   "answerValueSet": "#LL358-3",
                   "linkId": "4.3.b.2",
                   "text": "2. Feeling down, depressed, or hopeless ",
                   "type": "choice"
                 },
                 {
+                  "extension": [
+                    {
+                      "url": "http://hl7.org/fhir/StructureDefinition/questionnaire-choiceOrientation",
+                      "valueCode": "horizontal"
+                    },
+                    {
+                      "url": "http://hl7.org/fhir/StructureDefinition/questionnaire-itemControl",
+                      "valueCodeableConcept": {
+                        "coding": [
+                          {
+                            "system": "http://hl7.org/fhir/questionnaire-item-control",
+                            "code": "radio-button",
+                            "display": "Radio Button"
+                          }
+                        ],
+                        "text": "A control where choices are listed with a button beside them. The button can be toggled to select or de-select a given choice. Selecting one item deselects all others."
+                      }
+                    }
+                  ],
                   "answerValueSet": "#LL358-3",
                   "linkId": "4.3.b.3",
                   "text": "3. Trouble falling or staying asleep, or sleeping too much ",
                   "type": "choice"
                 },
                 {
+                  "extension": [
+                    {
+                      "url": "http://hl7.org/fhir/StructureDefinition/questionnaire-choiceOrientation",
+                      "valueCode": "horizontal"
+                    },
+                    {
+                      "url": "http://hl7.org/fhir/StructureDefinition/questionnaire-itemControl",
+                      "valueCodeableConcept": {
+                        "coding": [
+                          {
+                            "system": "http://hl7.org/fhir/questionnaire-item-control",
+                            "code": "radio-button",
+                            "display": "Radio Button"
+                          }
+                        ],
+                        "text": "A control where choices are listed with a button beside them. The button can be toggled to select or de-select a given choice. Selecting one item deselects all others."
+                      }
+                    }
+                  ],
                   "answerValueSet": "#LL358-3",
                   "linkId": "4.3.b.4",
                   "text": "4. Feeling tired or having little energy ",
@@ -3692,28 +3968,80 @@ textarea{
             <text value="Over the last 2 weeks, how often have you been bothered by any of the following problems?" />
             <type value="group"/>
             <item>
-                <linkId value="4.3.b.1"/>
-                <text value="1. Little interest or pleasure in doing things "/>
-                <type value="choice"/>
-                <answerValueSet value="#LL358-3"/>
+              <extension url="http://hl7.org/fhir/StructureDefinition/questionnaire-choiceOrientation">
+                <valueCode value="horizontal"/>
+              </extension>
+              <extension url="http://hl7.org/fhir/StructureDefinition/questionnaire-itemControl">
+                <valueCodeableConcept>
+                  <coding>
+                    <system value="http://hl7.org/fhir/questionnaire-item-control"/>
+                    <code value="radio-button"/>
+                    <display value="Radio Button"/>
+                  </coding>
+                  <text value="A control where choices are listed with a button beside them. The button can be toggled to select or de-select a given choice. Selecting one item deselects all others."/>
+                </valueCodeableConcept>
+              </extension>
+              <linkId value="4.3.b.1"/>
+              <text value="1. Little interest or pleasure in doing things "/>
+              <type value="choice"/>
+              <answerValueSet value="#LL358-3"/>
             </item>
             <item>
-                <linkId value="4.3.b.2"/>
-                <text value="2. Feeling down, depressed, or hopeless "/>
-                <type value="choice"/>
-                <answerValueSet value="#LL358-3"/>
+              <extension url="http://hl7.org/fhir/StructureDefinition/questionnaire-choiceOrientation">
+                <valueCode value="horizontal"/>
+              </extension>
+              <extension url="http://hl7.org/fhir/StructureDefinition/questionnaire-itemControl">
+                <valueCodeableConcept>
+                  <coding>
+                    <system value="http://hl7.org/fhir/questionnaire-item-control"/>
+                    <code value="radio-button"/>
+                    <display value="Radio Button"/>
+                  </coding>
+                  <text value="A control where choices are listed with a button beside them. The button can be toggled to select or de-select a given choice. Selecting one item deselects all others."/>
+                </valueCodeableConcept>
+              </extension>
+              <linkId value="4.3.b.2"/>
+              <text value="2. Feeling down, depressed, or hopeless "/>
+              <type value="choice"/>
+              <answerValueSet value="#LL358-3"/>
             </item>
             <item>
-                <linkId value="4.3.b.3"/>
-                <text value="3. Trouble falling or staying asleep, or sleeping too much "/>
-                <type value="choice"/>
-                <answerValueSet value="#LL358-3"/>
+              <extension url="http://hl7.org/fhir/StructureDefinition/questionnaire-choiceOrientation">
+                <valueCode value="horizontal"/>
+              </extension>
+              <extension url="http://hl7.org/fhir/StructureDefinition/questionnaire-itemControl">
+                <valueCodeableConcept>
+                  <coding>
+                    <system value="http://hl7.org/fhir/questionnaire-item-control"/>
+                    <code value="radio-button"/>
+                    <display value="Radio Button"/>
+                  </coding>
+                  <text value="A control where choices are listed with a button beside them. The button can be toggled to select or de-select a given choice. Selecting one item deselects all others."/>
+                </valueCodeableConcept>
+              </extension>
+              <linkId value="4.3.b.3"/>
+              <text value="3. Trouble falling or staying asleep, or sleeping too much "/>
+              <type value="choice"/>
+              <answerValueSet value="#LL358-3"/>
             </item>
             <item>
-                <linkId value="4.3.b.4"/>
-                <text value="4. Feeling tired or having little energy "/>
-                <type value="choice"/>
-                <answerValueSet value="#LL358-3"/>
+              <extension url="http://hl7.org/fhir/StructureDefinition/questionnaire-choiceOrientation">
+                <valueCode value="horizontal"/>
+              </extension>
+              <extension url="http://hl7.org/fhir/StructureDefinition/questionnaire-itemControl">
+                <valueCodeableConcept>
+                  <coding>
+                    <system value="http://hl7.org/fhir/questionnaire-item-control"/>
+                    <code value="radio-button"/>
+                    <display value="Radio Button"/>
+                  </coding>
+                  <text value="A control where choices are listed with a button beside them. The button can be toggled to select or de-select a given choice. Selecting one item deselects all others."/>
+                </valueCodeableConcept>
+              </extension>
+              <linkId value="4.3.b.4"/>
+              <text value="4. Feeling tired or having little energy "/>
+              <type value="choice"/>
+              <answerValueSet value="#LL358-3"/>
             </item>        
             <item>
                 <extension url="http://hl7.org/fhir/uv/sdc/StructureDefinition/sdc-questionnaire-calculatedExpression">
@@ -3912,7 +4240,7 @@ textarea{
     <label for="tab-candidateExpression-1">Sample Question</label>
     <div class="content-in-tab">
       <p>
-       All the practitioners below can speak your language. Please choose your preferred practitioner:<br/>
+       All the practitioners below can speak your language. Choose all preferred practioners:<br/>
          <table width="300" border="1" cellpadding="5" style="text-align: left">
             <tr>
                <th width="10%" align="center"></th> 
@@ -3920,28 +4248,28 @@ textarea{
                   <strong>Last Name</strong>
                </th> 
                <th width="35%">First Name</th> 
-               <th width="20%">Gender</th>                
+               <th width="20%">Gender</th>
             </tr>
-            <tr> 
-               <td align="center"><input type="radio" name="practitioner-grp" ></input></td>
+            <tr>
+               <td align="center"><input id="practitioner-grp" type="checkbox" name="practitioner-grp" value="practitioner1"/></td>
                <td>Smith</td> 
                <td>John</td> 
                <td>Male</td> 
             </tr>
             <tr> 
-               <td align="center"><input type="radio" name="practitioner-grp" ></input></td>
+               <td align="center"><input id="practitioner-grp" type="checkbox" name="practitioner-grp" value="practitioner2"/></td>
                <td>Moseley</td> 
                <td>Henry</td> 
                <td>Male</td> 
             </tr>
             <tr> 
-               <td align="center"><input type="radio" name="practitioner-grp" ></input></td>
+               <td align="center"><input id="practitioner-grp" type="checkbox" name="practitioner-grp" value="practitioner3"/></td>
                <td>Upton</td> 
                <td>Isaac</td> 
                <td>Male</td> 
             </tr>
             <tr> 
-               <td align="center"><input type="radio" name="practitioner-grp" ></input></td>
+               <td align="center"><input id="practitioner-grp" type="checkbox" name="practitioner-grp" value="practitioner4"/></td>
                <td>Williams</td> 
                <td>Amy</td> 
                <td>Female</td> 
@@ -3955,9 +4283,99 @@ textarea{
     <label for="tab-candidateExpression-2">JSON</label>
     <div class="content-in-tab">
       <textarea style="border:none" class="xml">
-        "item": [
-          TODO: json
-        ]
+      "item": [
+        {
+          "extension": [
+            {        
+              "url": "http://hl7.org/fhir/uv/sdc/StructureDefinition/sdc-questionnaire-candidateExpression",
+              "valueExpression": {
+                "description": "active practitioners that speak at least one of the patient's language",
+                "language": "application/x-fhir-query",
+                "expression": "Practitioner?communication={{%LaunchPatient.communication.language}}&amp;active=true"
+              }
+            },
+            {
+              "extension": [
+                {
+                  "url": "path",
+                  "valueString": "name.first().family"
+                },
+                {
+                  "url": "label",
+                  "valueString": "LAST NAME"
+                },
+                {
+                  "url": "width",
+                  "valueQuantity": {
+                    "value": 40,
+                    "system": "http://unitsofmeasure.org",
+                    "code": "%"
+                  }
+                },
+                {
+                  "url": "forDisplay",
+                  "valueBoolean": true
+                }
+              ],
+              "url": "http://hl7.org/fhir/uv/sdc/StructureDefinition/sdc-questionnaire-choiceColumn"
+            },
+            {
+              "extension": [
+                {
+                  "url": "path",
+                  "valueString": "name.first().given.first()"
+                },
+                {
+                  "url": "label",
+                  "valueString": "FIRST NAME"
+                },
+                {
+                  "url": "width",
+                  "valueQuantity": {
+                    "value": 40,
+                    "system": "http://unitsofmeasure.org",
+                    "code": "%"
+                  }
+                },
+                {
+                  "url": "forDisplay",
+                  "valueBoolean": true
+                }
+              ],
+              "url": "http://hl7.org/fhir/uv/sdc/StructureDefinition/sdc-questionnaire-choiceColumn"
+            },
+            {
+              "extension": [
+                {
+                  "url": "path",
+                  "valueString": "gender"
+                },
+                {
+                  "url": "label",
+                  "valueString": "GENDER"
+                },
+                {
+                  "url": "width",
+                  "valueQuantity": {
+                    "value": 20,
+                    "system": "http://unitsofmeasure.org",
+                    "code": "%"
+                  }
+                },
+                {
+                  "url": "forDisplay",
+                  "valueBoolean": false
+                }
+              ],
+              "url": "http://hl7.org/fhir/uv/sdc/StructureDefinition/sdc-questionnaire-choiceColumn"
+            }
+          ],
+          "linkId": "6.1",
+          "text": "All the practitioners below can speak the patient's language. Choose all preferred practioners:",
+          "type": "reference",
+          "repeats": true
+        }
+      ]
      </textarea>
     </div> 
   </div>
@@ -3966,11 +4384,78 @@ textarea{
     <label for="tab-candidateExpression-3">XML</label>
     <div class="content-in-tab">
       <textarea style="border:none" class="xml">
-        TODO: xml
+        <item>
+          <extension url="http://hl7.org/fhir/uv/sdc/StructureDefinition/sdc-questionnaire-candidateExpression">
+            <valueExpression>
+              <description value="active practitioners that speak at least one of the patient's language"/>
+              <language value="application/x-fhir-query"/>
+              <expression value="Practitioner?communication={{%LaunchPatient.communication.language}}&amp;active=true"/>
+            </valueExpression>
+          </extension>
+          <extension url="http://hl7.org/fhir/uv/sdc/StructureDefinition/sdc-questionnaire-choiceColumn">
+            <extension url="path">
+            <valueString value="name.first().family"/>
+            </extension>
+            <extension url="label">
+              <valueString value="LAST NAME"/>
+            </extension>
+            <extension url="width">
+              <valueQuantity>
+                <value value="40"/>
+                <system value="http://unitsofmeasure.org"/>
+                <code value="%"/>
+              </valueQuantity>
+            </extension>
+            <extension url="forDisplay">
+              <valueBoolean value="true"/>
+            </extension>
+          </extension>
+          <extension url="http://hl7.org/fhir/uv/sdc/StructureDefinition/sdc-questionnaire-choiceColumn">
+            <extension url="path">
+              <valueString value="name.first().given.first()"/>
+            </extension>
+            <extension url="label">
+              <valueString value="FIRST NAME"/>
+            </extension>
+            <extension url="width">
+              <valueQuantity>
+                <value value="40"/>
+                <system value="http://unitsofmeasure.org"/>
+                <code value="%"/>
+              </valueQuantity>
+            </extension>
+            <extension url="forDisplay">
+              <valueBoolean value="true"/>
+            </extension>
+          </extension>
+          <extension url="http://hl7.org/fhir/uv/sdc/StructureDefinition/sdc-questionnaire-choiceColumn">
+            <extension url="path">
+              <valueString value="gender"/>
+            </extension>
+            <extension url="label">
+              <valueString value="GENDER"/>
+            </extension>
+            <extension url="width">
+              <valueQuantity>
+                <value value="20"/>
+                <system value="http://unitsofmeasure.org"/>
+                <code value="%"/>
+              </valueQuantity>
+            </extension>
+            <extension url="forDisplay">
+              <valueBoolean value="false"/>
+            </extension>
+          </extension>
+          <linkId value="6.1"/>
+          <text value="All the practitioners below can speak the patient's language. Choose all preferred practioners:"/>
+          <type value="reference"/>
+          <repeats value="true"/>
+        </item>
       </textarea>
     </div> 
   </div>
 </div>
+<!-- TODO: specify the control to use -->
 
 <a name="contextExpression"></a>
 <h4>Using contextExpression</h4>
@@ -3981,8 +4466,8 @@ textarea{
     <label for="tab-contextExpression-1">Sample Question</label>
     <div class="content-in-tab">
       <p>
-        <i>Instruction: Click on "..." button to view all the visits of this patient in the past year.</i><br/><br/>
-        Has the patient discussed this issue on any visits in the past year? <button id="myBtn">...</button><br/>
+        <i>Instruction: Click on "Review Previous Visits" button to view all the visits of this patient in the past year.</i><br/><br/>
+        Has the patient discussed this issue on any visits in the past year? <button id="myBtn">Review Previous Visits</button><br/>
         <input id="linkitem-1.7-f" type="radio" name="Gender" value="F"/> Yes&#xA0;<br/>
         <input id="linkitem-1.7-m" type="radio" name="Gender" value="M"/> No&#xA0;<br/>
         <input id="linkitem-1.7-o" type="radio" name="Gender" value="O"/> Don't know&#xA0;
@@ -3994,9 +4479,139 @@ textarea{
     <label for="tab-contextExpression-2">JSON</label>
     <div class="content-in-tab">
       <textarea style="border:none" class="xml">
+      {
+        "resourceType": "Questionnaire",
+        "extension": [
+          {
+            "extension": [
+              {
+                "url": "name",
+                "valueId": "LaunchPatient"
+              },
+              {
+                "url": "type",
+                "valueCode": "Patient"
+              },
+              {
+                "url": "description",
+                "valueString": "The patient that is to be used to pre-populate the form"
+              }
+            ],
+            "url": "http://hl7.org/fhir/uv/sdc/StructureDefinition/sdc-questionnaire-launchContext"
+          }
+        ],
         "item": [
-          TODO: json
+          {
+            "_linkId": {
+              "id": "1.0"
+            },
+            "type": "group",
+            "item": [
+              {
+                "extension": [
+                  {
+                    "url": "http://hl7.org/fhir/StructureDefinition/questionnaire-displayCategory",
+                    "valueCodeableConcept": {
+                      "coding": [
+                        {
+                          "system": "http://hl7.org/fhir/questionnaire-display-category",
+                          "code": "instructions",
+                          "display": "Instructions"
+                        }
+                      ],
+                      "text": "The text provides guidance on how to populate or use a portion of the questionnaire"
+                    }
+                  }
+                ],
+                "linkId": "1.1",
+                "text": "Instruction: Click on \"Previous Visits\" button to view all the visits of this patient in the past year.",
+                "type": "display"
+              },
+              {
+                "extension": [
+                  {
+                    "url": "http://hl7.org/fhir/uv/sdc/StructureDefinition/sdc-questionnaire-contextExpression",
+                    "valueExpression": {
+                      "description": "list all Encounters with patient in the past year, in order by date - newest to oldest",
+                      "language": "application/x-fhir-query",
+                      "expression": "Encounter?patient={{%LaunchPatient.id}}&amp;date=ge{{today()-1 year}}&amp;_sort=-date"
+                    }
+                  },
+                  {
+                    "extension": [
+                      {
+                        "url": "path",
+                        "valueString": "period.start"
+                      },
+                      {
+                        "url": "label",
+                        "valueString": "Date"
+                      },
+                      {
+                        "url": "width",
+                        "valueQuantity": {
+                          "value": 40,
+                          "system": "http://unitsofmeasure.org",
+                          "code": "%"
+                        }
+                      },
+                      {
+                        "url": "forDisplay",
+                        "valueBoolean": true
+                      }
+                    ],
+                    "url": "http://hl7.org/fhir/uv/sdc/StructureDefinition/sdc-questionnaire-choiceColumn"
+                  },
+                  {
+                    "extension": [
+                      {
+                        "url": "path",
+                        "valueString": "reason.coding.display + ' - ' + type.text"
+                      },
+                      {
+                        "url": "label",
+                        "valueString": "Visit Reason/Description"
+                      },
+                      {
+                        "url": "width",
+                        "valueQuantity": {
+                          "value": 60,
+                          "system": "http://unitsofmeasure.org",
+                          "code": "%"
+                        }
+                      },
+                      {
+                        "url": "forDisplay",
+                        "valueBoolean": false
+                      }
+                    ],
+                    "url": "http://hl7.org/fhir/uv/sdc/StructureDefinition/sdc-questionnaire-choiceColumn"
+                  },
+                  {
+                    "url": "http://hl7.org/fhir/StructureDefinition/questionnaire-itemControl",
+                    "valueCodeableConcept": {
+                      "coding": [
+                        {
+                          "system": "http://hl7.org/fhir/questionnaire-item-control",
+                          "code": "radio-button",
+                          "display": "Radio Button"
+                        }
+                      ],
+                      "text": "A control where choices are listed with a button beside them. The button can be toggled to select or de-select a given choice. Selecting one item deselects all others."
+                    }
+                  }
+                ],
+                "_linkId": {
+                  "id": "1.2"
+                },
+                "text": "Has the patient discussed this issue on any visits in the past year?",
+                "type": "choice",
+                "answerValueSet": "http://hl7.org/fhir/ValueSet/yesnodontknow"
+              }
+            ]
+          }
         ]
+      }
      </textarea>
     </div> 
   </div>
@@ -4005,7 +4620,460 @@ textarea{
     <label for="tab-contextExpression-3">XML</label>
     <div class="content-in-tab">
       <textarea style="border:none" class="xml">
-        TODO: xml
+        <Questionnaire>
+          <id value="questionnaire-context-expression-example"/>
+          <extension url="http://hl7.org/fhir/uv/sdc/StructureDefinition/sdc-questionnaire-launchContext">
+            <extension url="name">
+              <valueId value="LaunchPatient"/>
+            </extension>
+            <extension url="type">
+              <valueCode value="Patient"/>
+            </extension>
+            <extension url="description">
+              <valueString value="The patient that is to be used to pre-populate the form"/>
+            </extension>
+          </extension> 
+          <status value="draft"/>
+          <item>
+            <linkId id="1.0"/>
+            <type value="group"/>
+            <item>
+              <extension url="http://hl7.org/fhir/StructureDefinition/questionnaire-displayCategory">
+                <valueCodeableConcept>
+                  <coding>
+                    <system value="http://hl7.org/fhir/questionnaire-display-category" />
+                    <code value="instructions" />
+                    <display value="Instructions" />
+                  </coding>
+                  <text value="The text provides guidance on how to populate or use a portion of the questionnaire" />
+                </valueCodeableConcept>
+              </extension>
+              <linkId value="1.1"/>
+              <text value="Instruction: Click on &quot;Previous Visits&quot; button to view all the visits of this patient in the past year."/>
+              <type value="display"/>
+            </item>
+            <item>
+              <extension url="http://hl7.org/fhir/uv/sdc/StructureDefinition/sdc-questionnaire-contextExpression">
+                <valueExpression>
+                  <description value="list all Encounters with patient in the past year, in order by date - newest to oldest"/>
+                  <language value="application/x-fhir-query"/>
+                  <expression value="Encounter?patient={{%LaunchPatient.id}}&amp;date=ge{{today()-1 year}}&amp;_sort=-date&amp;_include=Encounter:practitioner"/>
+                </valueExpression>
+              </extension>
+              <extension url="http://hl7.org/fhir/uv/sdc/StructureDefinition/sdc-questionnaire-choiceColumn">
+                <extension url="path">
+                <valueString value="period.start"/>
+                </extension>
+                <extension url="label">
+                  <valueString value="Date"/>
+                </extension>
+                <extension url="width">
+                  <valueQuantity>
+                    <value value="40"/>
+                    <system value="http://unitsofmeasure.org"/>
+                    <code value="%"/>
+                  </valueQuantity>
+                </extension>
+                <extension url="forDisplay">
+                  <valueBoolean value="true"/>
+                </extension>
+              </extension>
+              <extension url="http://hl7.org/fhir/uv/sdc/StructureDefinition/sdc-questionnaire-choiceColumn">
+                <extension url="path">
+                  <valueString value="reason.coding.display + ' - ' + type.text"/>
+                </extension>
+                <extension url="label">
+                  <valueString value="Visit Reason/Description"/>
+                </extension>
+                <extension url="width">
+                  <valueQuantity>
+                    <value value="60"/>
+                    <system value="http://unitsofmeasure.org"/>
+                    <code value="%"/>
+                  </valueQuantity>
+                </extension>
+                <extension url="forDisplay">
+                  <valueBoolean value="false"/>
+                </extension>
+              </extension>
+              <extension url="http://hl7.org/fhir/StructureDefinition/questionnaire-itemControl">
+                <valueCodeableConcept>
+                  <coding>
+                    <system value="http://hl7.org/fhir/questionnaire-item-control"/>
+                    <code value="radio-button"/>
+                    <display value="Radio Button"/>
+                  </coding>
+                  <text value="A control where choices are listed with a button beside them. The button can be toggled to select or de-select a given choice. Selecting one item deselects all others."/>
+                </valueCodeableConcept>
+              </extension>
+              <linkId id="1.2"/>
+              <text value="Has the patient discussed this issue on any visits in the past year?"/>
+              <type value="choice"/>
+              <answerValueSet value="http://hl7.org/fhir/ValueSet/yesnodontknow"/>
+            </item>
+          </item>
+        </Questionnaire>
+      </textarea>
+    </div> 
+  </div>
+</div>
+<!--  TODO: how to specify text for the button or link? -->
+<!--  TODO: where to put this extension for displaying list as an htable? -->
+<!--  TODO: how to format dateTime: 2016-06-18T16:22:45-04:00  -->
+
+<a name="itemContext"></a>
+<h4>Using itemContext</h4>
+<p>To specify the resources to populate a questionnaire.</p>
+<div class="tabs">
+  <div class="tab">
+    <input type="radio" id="tab-itemContext-1" name="tab-itemContext-group-2" checked="true"></input>
+    <label for="tab-itemContext-1">Sample Question</label>
+    <div class="content-in-tab">
+      <p>Home Address<br/>
+        Address: <input id="linkitem-1.1-input" type="text" size="50" value="1900 Broadway Avenue"/><br/>
+        City: <input id="linkitem-1.2-input" type="text" size="25" value="Vancouver"/><br/>
+        Province: 
+          <select id="linkitem-1.3-option" name="province">
+            <option value="Alberta">Alberta</option>
+            <option value="BC">British Columbia</option>
+            <option value="Manitoba">Manitoba</option>
+            <option value="NewBrunswick">New Brunswick</option>
+            <option value="NewfoundlandAndLabrador">Newfoundland and Labrador</option>
+            <option value="NovaScotia">Nova Scotia</option>  
+            <option value="Ontario">Ontario</option>
+            <option value="PrinceEdwardIsland">Prince Edward Island</option>
+            <option value="Quebec">Quebec</option>
+            <option value="Saskatchewan">Saskatchewan</option>
+          </select><br/>
+        Postal Code: <input id="linkitem-1.4-input" type="text" size="10" value="V5N 2E7"/>
+      </p>
+    </div> 
+  </div>
+  <div class="tab">
+    <input type="radio" id="tab-itemContext-2" name="tab-itemContext-group-2"></input>
+    <label for="tab-itemContext-2">JSON</label>
+    <div class="content-in-tab">
+      <textarea style="border:none" class="xml">
+        {
+          "resourceType": "Questionnaire",
+          "extension": [
+            {
+              "extension": [
+                {
+                  "url": "name",
+                  "valueId": "LaunchPatient"
+                },
+                {
+                  "url": "type",
+                  "valueCode": "Patient"
+                },
+                {
+                  "url": "description",
+                  "valueString": "The patient that is to be used to pre-populate the form"
+                }
+              ],
+              "url": "http://hl7.org/fhir/uv/sdc/StructureDefinition/sdc-questionnaire-launchContext"
+            }
+          ],
+          "item": [
+            {
+              "extension": [
+                {
+                  "url": "http://hl7.org/fhir/uv/sdc/StructureDefinition/sdc-questionnaire-itemContext",
+                  "valueExpression": {
+                    "description": "Home address of the patient",
+                    "language": "text/fhirpath",
+                    "expression": "%LaunchPatient.address.where(use='home')[0]"
+                  }
+                }
+              ],
+              "_linkId": {
+                "id": "2.0"
+              },
+              "type": "group",
+              "item": [
+                {
+                  "linkId": "1.1",
+                  "text": "Home Address",
+                  "type": "display"
+                },
+                {
+                  "extension": [
+                    {
+                      "url": "http://hl7.org/fhir/uv/sdc/StructureDefinition/sdc-questionnaire-initialExpression",
+                      "valueExpression": {
+                        "description": "Address Line 1",
+                        "language": "text/fhirpath",
+                        "expression": "line[0]"
+                      }
+                    }
+                  ],
+                  "_linkId": {
+                    "id": "1.2"
+                  },
+                  "text": "Address",
+                  "type": "string"
+                },
+                {
+                  "extension": [
+                    {
+                      "url": "http://hl7.org/fhir/uv/sdc/StructureDefinition/sdc-questionnaire-initialExpression",
+                      "valueExpression": {
+                        "description": "City",
+                        "language": "text/fhirpath",
+                        "expression": "city"
+                      }
+                    }
+                  ],
+                  "_linkId": {
+                    "id": "1.3"
+                  },
+                  "text": "City",
+                  "type": "string"
+                },
+                {
+                  "extension": [
+                    {
+                      "url": "http://hl7.org/fhir/uv/sdc/StructureDefinition/sdc-questionnaire-initialExpression",
+                      "valueExpression": {
+                        "description": "State",
+                        "language": "text/fhirpath",
+                        "expression": "state"
+                      }
+                    }
+                  ],
+                  "_linkId": {
+                    "id": "1.4"
+                  },
+                  "text": "Province",
+                  "type": "choice",
+                  "answerOption": [
+                    {
+                      "valueCoding": {
+                        "code": "Alberta",
+                        "display": "Alberta"
+                      }
+                    },
+                    {
+                      "valueCoding": {
+                        "code": "BritishColumbia",
+                        "display": "British Columbia"
+                      }
+                    },
+                    {
+                      "valueCoding": {
+                        "code": "Manitoba",
+                        "display": "Manitoba"
+                      }
+                    },
+                    {
+                      "valueCoding": {
+                        "code": "NewBrunswick",
+                        "display": "New Brunswick"
+                      }
+                    },
+                    {
+                      "valueCoding": {
+                        "code": "NewfoundlandAndLabrador",
+                        "display": "Newfoundland and Labrador"
+                      }
+                    },
+                    {
+                      "valueCoding": {
+                        "code": "NovaScotia",
+                        "display": "Nova Scotia"
+                      }
+                    },
+                    {
+                      "valueCoding": {
+                        "code": "Ontario",
+                        "display": "Ontario"
+                      }
+                    },
+                    {
+                      "valueCoding": {
+                        "code": "PrinceEdwardIsland",
+                        "display": "Prince Edward Island"
+                      }
+                    },
+                    {
+                      "valueCoding": {
+                        "code": "Quebec",
+                        "display": "Quebec"
+                      }
+                    },
+                    {
+                      "valueCoding": {
+                        "code": "Saskatchewan",
+                        "display": "Saskatchewan"
+                      }
+                    }
+                  ]
+                },
+                {
+                  "extension": [
+                    {
+                      "url": "http://hl7.org/fhir/uv/sdc/StructureDefinition/sdc-questionnaire-initialExpression",
+                      "valueExpression": {
+                        "description": "Postal Code",
+                        "language": "text/fhirpath",
+                        "expression": "postalCode"
+                      }
+                    }
+                  ],
+                  "_linkId": {
+                    "id": "1.5"
+                  },
+                  "text": "Postal Code",
+                  "type": "string"
+                }
+              ]
+            }
+          ]
+        }
+     </textarea>
+    </div> 
+  </div>
+  <div class="tab">
+    <input type="radio" id="tab-itemContext-3" name="tab-itemContext-group-2"></input>
+    <label for="tab-itemContext-3">XML</label>
+    <div class="content-in-tab">
+      <textarea style="border:none" class="xml">
+        <extension url="http://hl7.org/fhir/uv/sdc/StructureDefinition/sdc-questionnaire-launchContext">
+          <extension url="name">
+            <valueId value="LaunchPatient"/>
+          </extension>
+          <extension url="type">
+            <valueCode value="Patient"/>
+          </extension>
+          <extension url="description">
+            <valueString value="The patient that is to be used to pre-populate the form"/>
+          </extension>
+        </extension>
+        <item>
+          <extension url="http://hl7.org/fhir/uv/sdc/StructureDefinition/sdc-questionnaire-itemContext">
+            <valueExpression>
+              <description value="Home address of the patient"/>
+                <language value="text/fhirpath"/>
+                <expression value="%LaunchPatient.address.where(use='home')[0]"/>
+            </valueExpression>
+          </extension>
+          <linkId id="2.0"/>
+          <type value="group"/>
+          <item>
+            <linkId value="1.1"/>
+            <text value="Home Address"/>
+            <type value="display"/>
+          </item>
+          <item>
+            <extension url="http://hl7.org/fhir/uv/sdc/StructureDefinition/sdc-questionnaire-initialExpression">
+                <valueExpression>
+                    <description value="Address Line 1"/>
+                    <language value="text/fhirpath"/>
+                    <expression value="line[0]"/> 
+                </valueExpression>
+            </extension>
+            <linkId id="1.2"/>
+            <text value="Address"/>
+            <type value="string"/>
+          </item>
+          <item>
+            <extension url="http://hl7.org/fhir/uv/sdc/StructureDefinition/sdc-questionnaire-initialExpression">
+                <valueExpression>
+                    <description value="City"/>
+                    <language value="text/fhirpath"/>
+                    <expression value="city"/> 
+                </valueExpression>
+            </extension>
+            <linkId id="1.3"/>
+            <text value="City"/>
+            <type value="string"/>
+          </item>
+          <item>
+            <extension url="http://hl7.org/fhir/uv/sdc/StructureDefinition/sdc-questionnaire-initialExpression">
+                <valueExpression>
+                    <description value="State"/>
+                    <language value="text/fhirpath"/>
+                    <expression value="state"/> 
+                </valueExpression>
+            </extension>
+            <linkId id="1.4"/>
+            <text value="Province"/>
+            <type value="choice"/>
+            <answerOption>
+                <valueCoding>
+                    <code value="Alberta"/>
+                    <display value="Alberta"/>
+                </valueCoding>
+            </answerOption>
+            <answerOption>
+                <valueCoding>
+                    <code value="BritishColumbia"/>
+                    <display value="British Columbia"/>
+                </valueCoding>
+            </answerOption>
+            <answerOption>
+                <valueCoding>
+                    <code value="Manitoba"/>
+                    <display value="Manitoba"/>
+                </valueCoding>
+            </answerOption>
+            <answerOption>
+                <valueCoding>
+                    <code value="NewBrunswick"/>
+                    <display value="New Brunswick"/>
+                </valueCoding>
+            </answerOption>
+            <answerOption>
+                <valueCoding>
+                    <code value="NewfoundlandAndLabrador"/>
+                    <display value="Newfoundland and Labrador"/>
+                </valueCoding>
+            </answerOption>
+            <answerOption>
+                <valueCoding>
+                    <code value="NovaScotia"/>
+                    <display value="Nova Scotia"/>
+                </valueCoding>
+            </answerOption>
+            <answerOption>
+                <valueCoding>
+                    <code value="Ontario"/>
+                    <display value="Ontario"/>
+                </valueCoding>
+            </answerOption>
+            <answerOption>
+                <valueCoding>
+                    <code value="PrinceEdwardIsland"/>
+                    <display value="Prince Edward Island"/>
+                </valueCoding>
+            </answerOption>
+            <answerOption>
+                <valueCoding>
+                    <code value="Quebec"/>
+                    <display value="Quebec"/>
+                </valueCoding>
+            </answerOption>
+            <answerOption>
+                <valueCoding>
+                    <code value="Saskatchewan"/>
+                    <display value="Saskatchewan"/>
+                </valueCoding>
+            </answerOption>
+          </item>
+          <item>
+            <extension url="http://hl7.org/fhir/uv/sdc/StructureDefinition/sdc-questionnaire-initialExpression">
+                <valueExpression>
+                    <description value="Postal Code"/>
+                    <language value="text/fhirpath"/>
+                    <expression value="postalCode"/> 
+                </valueExpression>
+            </extension>
+            <linkId id="1.5"/>
+            <text value="Postal Code"/>
+            <type value="string"/>
+          </item>
+        </item>
       </textarea>
     </div> 
   </div>
@@ -4054,11 +5122,11 @@ textarea{
     <span class="close">x</span>
     <table width="100%" border="1" cellpadding="5" style="text-align: left">
       <tr>
-        <th width="25%"><strong>Date</strong></th> 
-        <th width="50%">Visit Reason - Details</th> 
+        <th width="40%"><strong>Date</strong></th> 
+        <th width="60%">Visit Reason - Details</th> 
       </tr>
       <tr> 
-        <td>2020-05-01T16:22:45-04:00</td> <!--TODO: add a formatter -->
+        <td>May 1, 2020</td> <!--TODO: add a formatter -->
         <td>Acute bronchitis (disorder) - Encounter for check up (procedure)</td> 
       </tr>
       <tr> 

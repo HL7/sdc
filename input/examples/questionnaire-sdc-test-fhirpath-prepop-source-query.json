@@ -1,0 +1,199 @@
+﻿{
+  "resourceType": "Questionnaire",
+  "id": "questionnaire-sdc-test-fhirpath-prepop-source-query",
+  "contained": [
+    {
+      "resourceType": "Bundle",
+      "id": "PrePopQuery",
+      "type": "batch",
+      "entry": [
+        {
+          "fullUrl": "urn:uuid:88f151c0-a954-468a-88bd-5ae15c08e059",
+          "request": {
+            "method": "GET",
+            "url": "Condition?patient={{%LaunchPatient.id}}&active=true"
+          }
+        },
+        {
+          "fullUrl": "urn:uuid:88f151c0-a954-468a-88bd-5ae15c08e060",
+          "request": {
+            "method": "GET",
+            "url": "MedicationStatement?patient={{%LaunchPatient.id}}&active=true"
+          }
+        }
+      ]
+    }
+  ],
+  "extension": [
+    {
+      "extension": [
+        {
+          "url": "name",
+          "valueId": "LaunchPatient"
+        },
+        {
+          "url": "type",
+          "valueCode": "Patient"
+        },
+        {
+          "url": "description",
+          "valueString": "The patient that is to be used to pre-populate the form"
+        }
+      ],
+      "url": "http://hl7.org/fhir/uv/sdc/StructureDefinition/sdc-questionnaire-launchContext"
+    },
+    {
+      "url": "http://hl7.org/fhir/uv/sdc/StructureDefinition/sdc-questionnaire-sourceQueries",
+      "valueReference": {
+        "reference": "#PrePopQuery"
+      }
+    }
+  ],
+  "name": "FhirPathPrepopSourceQuery",
+  "title": "Questionnaire Pre-Population",
+  "status": "active",
+  "subjectType": [
+    "Patient"
+  ],
+  "description": "FhirPath based prepopulation example that leverages a source query to extract data outside the launch context",
+  "item": [
+    {
+      "linkId": "grp",
+      "type": "group",
+      "item": [
+        {
+          "linkId": "part-details",
+          "text": "Participant details",
+          "type": "group",
+          "repeats": false,
+          "item": [
+            {
+              "linkId": "participant-id",
+              "text": "Participant ID number",
+              "type": "string"
+            },
+            {
+              "extension": [
+                {
+                  "url": "http://hl7.org/fhir/uv/sdc/StructureDefinition/sdc-questionnaire-initialExpression",
+                  "valueExpression": {
+                    "language": "text/fhirpath",
+                    "expression": "%LaunchPatient.name.first().family.first()"
+                  }
+                }
+              ],
+              "linkId": "family-name",
+              "text": "Family name",
+              "type": "string"
+            },
+            {
+              "extension": [
+                {
+                  "url": "http://hl7.org/fhir/uv/sdc/StructureDefinition/sdc-questionnaire-initialExpression",
+                  "valueExpression": {
+                    "language": "text/fhirpath",
+                    "expression": "%LaunchPatient.name.first().given.first()"
+                  }
+                }
+              ],
+              "linkId": "given-names",
+              "text": "Given name(s)",
+              "type": "string"
+            },
+            {
+              "extension": [
+                {
+                  "url": "http://hl7.org/fhir/uv/sdc/StructureDefinition/sdc-questionnaire-initialExpression",
+                  "valueExpression": {
+                    "language": "text/fhirpath",
+                    "expression": "%LaunchPatient.birthDate"
+                  }
+                }
+              ],
+              "linkId": "dob",
+              "text": "Date of birth",
+              "type": "date"
+            },
+            {
+              "extension": [
+                {
+                  "url": "http://hl7.org/fhir/uv/sdc/StructureDefinition/sdc-questionnaire-initialExpression",
+                  "valueExpression": {
+                    "language": "text/fhirpath",
+                    "expression": "%PrePopQuery.entry.first().resource.total"
+                  }
+                }
+              ],
+              "linkId": "condition-count",
+              "text": "Number of active Conditions",
+              "type": "integer"
+            }
+          ]
+        },
+        {
+          "extension": [
+            {
+              "url": "http://hl7.org/fhir/uv/sdc/StructureDefinition/sdc-questionnaire-initialExpression",
+              "valueExpression": {
+                "description": "The set of MedicationRequests from the search context",
+                "name": "mrItem",
+                "language": "text/fhirpath",
+                "expression": "PrePopQuery.entry.skip(1).first().resource"
+              }
+            }
+          ],
+          "linkId": "meds",
+          "text": "Medications",
+          "type": "group",
+          "repeats": true,
+          "item": [
+            {
+              "extension": [
+                {
+                  "url": "http://hl7.org/fhir/uv/sdc/StructureDefinition/sdc-questionnaire-initialExpression",
+                  "valueExpression": {
+                    "language": "text/fhirpath",
+                    "expression": "%mrItem.medication.select(text | display)"
+                  }
+                }
+              ],
+              "linkId": "med-name",
+              "text": "Name",
+              "type": "string"
+            },
+            {
+              "extension": [
+                {
+                  "url": "http://hl7.org/fhir/uv/sdc/StructureDefinition/sdc-questionnaire-initialExpression",
+                  "valueExpression": {
+                    "language": "text/fhirpath",
+                    "expression": "%mrItem.status.toString()"
+                  }
+                }
+              ],
+              "linkId": "med-status",
+              "text": "Status",
+              "type": "string"
+            },
+            {
+              "extension": [
+                {
+                  "url": "http://hl7.org/fhir/uv/sdc/StructureDefinition/sdc-questionnaire-initialExpression",
+                  "valueExpression": {
+                    "language": "text/fhirpath",
+                    "expression": "%mrItem.category.coding.where(system='http://terminology.hl7.org/CodeSystem/medicationrequest-category')"
+                  }
+                }
+              ],
+              "linkId": "med-category",
+              "text": "Standard Category",
+              "type": "choice",
+              "answerValueSet" : "http://hl7.org/fhir/ValueSet/medicationrequest-category",
+              "repeats": true
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
