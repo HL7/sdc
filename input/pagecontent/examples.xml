@@ -118,6 +118,26 @@ textarea{
   text-decoration: none;
   cursor: pointer;
 }
+
+/* Used by collapsible example */
+.panel-heading.collapsed .fa-chevron-down,
+.panel-heading .fa-chevron-right {
+  display: none;
+}
+
+.panel-heading.collapsed .fa-chevron-right,
+.panel-heading .fa-chevron-down {
+  display: inline-block;
+}
+
+i.fa {
+  cursor: pointer;
+  margin-right: 5px;
+}
+
+.collapsed ~ .panel-body {
+  padding: 0;
+}
 </style>
 <p>Below are some examples that demonstrate how the elements and extensions in this implementation guide are intended to be used in a Questionnaire.
    <span style="color:red;">Note:</span> The rendering of the questions in the "Sample Question" tab are not functional (i.e. no validations after entry, perform actual computations, etc). They only provide a visual presentation of the questions and do not mimic
@@ -914,6 +934,256 @@ textarea{
   </div>
 </div>
 
+<a name="collapsible"></a>
+<h4>Using collapsible</h4>
+<p>To display child items in collapsible form</p>
+<div class="tabs">
+  <div class="tab">
+    <input type="radio" id="tab-collapsible-1" name="tab-collapsible-group-2" checked="true"></input>
+    <label for="tab-collapsible-1">Sample Question</label>
+    <div class="content-in-tab">
+      <div class="panel panel-info">
+        <div class="panel-heading collapsed" data-toggle="collapse" data-target="#bar">
+        Family Member Health History<i class="fa-chevron-down"><img src="examples/arrow-up.png" alt="Up" height="20"/></i>
+          <i class="fa-chevron-right"><img src="examples/arrow-down.png" alt="Down" height="20"/></i>
+        </div>
+        <div class="panel-body">
+          <div class="collapse" id="bar">
+          <p> Relationship to patient
+              <select id="linkitem-2.1-option" name="province">
+                  <option value="Father">Father</option>
+                  <option value="Mother">Mother</option>
+                  <option value="Daughter">Daughter</option>
+                  <option value="Brother">Brother</option>
+                </select><br/>
+            Name <input id="linkitem-1.0-input" type="text"/> <br/>
+          Gender
+              <input id="linkitem-1.0-f" type="radio" name="Gender" value="F" checked="checked"/> Female  
+              <input id="linkitem-1.0-m" type="radio" name="Gender" value="M"/> Male  
+              <input id="linkitem-1.0-o" type="radio" name="Gender" value="O"/> Other  
+              <input id="linkitem-1.0-u" type="radio" name="Gender" value="U"/> Unknown</p>
+          </div>
+        </div>
+      </div>
+    </div> 
+  </div>
+  <div class="tab">
+    <input type="radio" id="tab-collapsible-2" name="tab-collapsible-group-2"></input>
+    <label for="tab-collapsible-2">JSON</label>
+    <div class="content-in-tab">
+      <textarea style="border:none" class="xml">
+        "item": [
+          {
+            "extension": [
+              {
+                "url": "http://hl7.org/fhir/uv/sdc/StructureDefinition/sdc-questionnaire-collapsible",
+                "valueCode": "default-closed"
+              }
+            ],
+            "linkId": "1.0",
+            "type": "group",
+            "item": [
+              {
+                "extension": [
+                  {
+                    "url": "http://hl7.org/fhir/StructureDefinition/questionnaire-itemControl",
+                    "valueCodeableConcept": {
+                      "coding": [
+                        {
+                          "system": "http://hl7.org/fhir/questionnaire-item-control",
+                          "code": "drop-down",
+                          "display": "Drop-down"
+                        }
+                      ]
+                    }
+                  }
+                ],
+                "linkId": "1.1",
+                "text": "Relationship to patient",
+                "type": "choice",
+                "answerOption": [
+                  {
+                    "valueCoding": {
+                      "code": "F",
+                      "display": "Father"
+                    }
+                  },
+                  {
+                    "valueCoding": {
+                      "code": "M",
+                      "display": "Mother"
+                    }
+                  },
+                  {
+                    "valueCoding": {
+                      "code": "D",
+                      "display": "Daughter"
+                    }
+                  },
+                  {
+                    "valueCoding": {
+                      "code": "B",
+                      "display": "Brother"
+                    }
+                  }
+                ]
+              },
+              {
+                "linkId": "1.2",
+                "text": "Name",
+                "type": "string"
+              },
+              {
+                "extension": [
+                  {
+                    "url": "http://hl7.org/fhir/StructureDefinition/questionnaire-itemControl",
+                    "valueCodeableConcept": {
+                      "coding": [
+                        {
+                          "system": "http://hl7.org/fhir/questionnaire-item-control",
+                          "code": "radio-button",
+                          "display": "Radio Button"
+                        }
+                      ]
+                    }
+                  }
+                ],
+                "linkId": "1.3",
+                "text": "Gender",
+                "type": "choice",
+                "answerOption": [
+                  {
+                    "valueCoding": {
+                      "code": "F",
+                      "display": "Female"
+                    },
+                    "initialSelected": true
+                  },
+                  {
+                    "valueCoding": {
+                      "code": "M",
+                      "display": "Male"
+                    }
+                  },
+                  {
+                    "valueCoding": {
+                      "code": "O",
+                      "display": "Other"
+                    }
+                  },
+                  {
+                    "valueCoding": {
+                      "code": "U",
+                      "display": "Unknown"
+                    }
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+     </textarea>
+    </div> 
+  </div>
+  <div class="tab">
+    <input type="radio" id="tab-collapsible-3" name="tab-collapsible-group-2"></input>
+    <label for="tab-collapsible-3">XML</label>
+    <div class="content-in-tab">
+      <textarea style="border:none" class="xml">
+        <item>
+          <extension url="http://hl7.org/fhir/uv/sdc/StructureDefinition/sdc-questionnaire-collapsible">
+            <valueCode value="default-closed"/>
+          </extension>
+          <linkId value="1.0"/>
+          <type value="group"/>
+          <item>
+            <extension url="http://hl7.org/fhir/StructureDefinition/questionnaire-itemControl">
+              <valueCodeableConcept>
+                <coding>
+                  <system value="http://hl7.org/fhir/questionnaire-item-control"/>
+                  <code value="drop-down"/>
+                  <display value="Drop-down"/>
+                </coding>
+              </valueCodeableConcept>
+            </extension>
+            <linkId value="1.1"/>
+            <text value="Relationship to patient"/>
+            <type value="choice"/>
+            <answerOption>
+              <valueCoding>
+                <code value="F"/>
+                <display value="Father"/>
+              </valueCoding>
+            </answerOption>
+            <answerOption>
+              <valueCoding>
+                <code value="M"/>
+                <display value="Mother"/>
+              </valueCoding>
+            </answerOption>
+            <answerOption>
+              <valueCoding>
+                <code value="D"/>
+                <display value="Daughter"/>
+              </valueCoding>
+            </answerOption>
+            <answerOption>
+              <valueCoding>
+                <code value="B"/>
+                <display value="Brother"/>
+              </valueCoding>
+            </answerOption>
+          </item>
+          <item>
+            <linkId value="1.2"/>
+            <text value="Name"/>
+            <type value="string"/>
+          </item>
+          <item>
+            <extension url="http://hl7.org/fhir/StructureDefinition/questionnaire-itemControl">
+              <valueCodeableConcept>
+                <coding>
+                  <system value="http://hl7.org/fhir/questionnaire-item-control"/>
+                  <code value="radio-button"/>
+                  <display value="Radio Button"/>
+                </coding>
+              </valueCodeableConcept>
+            </extension>
+            <linkId value="1.3"/>
+            <text value="Gender"/>
+            <type value="choice"/>
+            <answerOption>
+              <valueCoding>
+                <code value="F"/>
+                <display value="Female"/>
+              </valueCoding>
+              <initialSelected value="true"/>
+            </answerOption>
+            <answerOption>
+              <valueCoding>
+                <code value="M"/>
+                <display value="Male"/>
+              </valueCoding>
+            </answerOption>
+            <answerOption>
+              <valueCoding>
+                <code value="O"/>
+                <display value="Other"/>
+              </valueCoding>
+            </answerOption>
+            <answerOption>
+              <valueCoding>
+                <code value="U"/>
+                <display value="Unknown"/>
+              </valueCoding>
+            </answerOption>
+          </item>
+        </item>
+      </textarea>
+    </div> 
+  </div>
+</div>
+
 <a name="additional">  </a>
 <h3>Additional Display Content</h3>
 
@@ -1131,6 +1401,15 @@ textarea{
     <div class="content-in-tab">
       <textarea style="border:none" class="xml">
         <item>
+          <extension url="http://hl7.org/fhir/StructureDefinition/questionnaire-itemControl">
+            <valueCodeableConcept>
+              <coding>
+                <system value="http://hl7.org/fhir/questionnaire-item-control"/>
+                <code value="drop-down"/>
+                <display value="Drop-down"/>
+              </coding>
+            </valueCodeableConcept>
+          </extension>
           <extension url="http://hl7.org/fhir/uv/sdc/StructureDefinition/sdc-questionnaire-choiceColumn">
             <extension url="path">
               <valueString value="code"/>

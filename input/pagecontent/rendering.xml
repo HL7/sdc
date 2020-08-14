@@ -251,6 +251,25 @@
           </p>
         </td>
       </tr>
+      <tr>
+        <td>
+          <a name="collapsible"> </a>
+          <a href="StructureDefinition-sdc-questionnaire-collapsible.html">collapsible</a>
+        </td>
+        <td>SDC</td>
+        <td>group, question</td>
+        <td>code</td>
+        <td><a href="examples.html#collapsible">example</a></td>
+      </tr>
+      <tr>
+        <td colspan="5">
+          <p>
+            This allows the child items of a group or question item to be displayed in a collapsible form (toggle between showing and hiding
+            the child items). This is very useful for authors dealing with particularly long questionnaires.  The author might choose to 
+            present certain sections collapsed which will provide the user brief overviews before digging into nested items.
+          </p>
+        </td>
+      </tr>
     </tbody>
   </table>
   <a name="additional"> </a>
@@ -420,7 +439,7 @@
       <tr>
         <td colspan="5">
           <p>
-            Both groups and questions can be marked as 'required'  For groups, that at least one question within a given repetition of the group must have
+            Both groups and questions can be marked as 'required'.  For groups, that at least one question within a given repetition of the group must have
             an answer.  For questions, it means the question must have at least one answer.  Typically, items that are 'required' will have a visual cue
             indicating this.  It could be managed by changing the background of the answer control, bolding the question text, or some other mechanism.
           </p>

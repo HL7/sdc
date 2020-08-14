@@ -432,6 +432,14 @@
       <description value="Indicates if a questionnaire is adaptive: either set to true or set the base URL of the server that can perform the nextQuestion operation of the questionnaire"/>
       <exampleBoolean value="false"/>
     </resource>
+    <resource>
+      <reference>
+        <reference value="StructureDefinition/sdc-questionnaire-collapsible"/>
+      </reference>
+      <name value="Collapsable"/>
+      <description value="Indicates that the child items of an item are displayed in collapsible form (either collapsed or expanded)"/>
+      <exampleBoolean value="false"/>
+    </resource>
     <!--    <resource>
       <extension url="http://hl7.org/fhir/StructureDefinition/implementationguide-spreadsheet-profile">
         <valueBoolean value="true"/>
@@ -482,6 +490,22 @@
       </reference>
       <name value="Questionnaire Entry Mode CodeSystem"/>
       <description value="Defines mechanisms of capturing data in a QuestionnaireResponse"/>
+      <exampleBoolean value="false"/>
+    </resource>
+    <resource>
+      <reference>
+        <reference value="ValueSet/collapsible"/>
+      </reference>
+      <name value="Questionnaire Collapsable ValueSet"/>
+      <description value="Defines mechanisms of displaying child items in collapsible form"/>
+      <exampleBoolean value="false"/>
+    </resource>
+    <resource>
+      <reference>
+        <reference value="CodeSystem/collapsible"/>
+      </reference>
+      <name value="Questionnaire Collapsable CodeSystem"/>
+      <description value="Defines mechanisms of displaying child items in collapsible form"/>
       <exampleBoolean value="false"/>
     </resource>
     <resource>
