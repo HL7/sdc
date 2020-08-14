@@ -424,6 +424,14 @@
       <description value="Indicates the types of resources that can record answers to a Questionnaire"/>
       <exampleBoolean value="false"/>
     </resource>
+    <resource>
+      <reference>
+        <reference value="StructureDefinition/sdc-questionnaire-questionnaireAdaptive"/>
+      </reference>
+      <name value="Questionnaire Adaptive"/>
+      <description value="Indicates if a questionnaire is adaptive: either set to true or set the base URL of the server that can perform the nextQuestion operation of the questionnaire"/>
+      <exampleBoolean value="false"/>
+    </resource>
     <!--    <resource>
       <extension url="http://hl7.org/fhir/StructureDefinition/implementationguide-spreadsheet-profile">
         <valueBoolean value="true"/>
