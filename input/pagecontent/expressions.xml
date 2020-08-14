@@ -31,7 +31,7 @@
       The Library.name element does not have to be used as a qualifier if there is only one library specified AND if the reference is to something
       defined in that library. This convention applies to CQL, FHIRPath and FHIR queries with the only difference being that CQL will use the CQL expression name
       while FHIRPath and queries will use the id element on the Library.content element. When referencing CQL, #[expression name] should be used
-      (rather than using #[id]) because there can only be one CQL 'content' repitition in the library but there is a need to differentiate between
+      (rather than using #[id]) because there can only be one CQL 'content' repetition in the library but there is a need to differentiate between
       the multiple expressions that could be defined within a single CQL library instance. The expression name needs to be appropriately escaped.
     </li>
   </ul>
@@ -50,10 +50,10 @@
       'core' will have a canonical URL of <code>http://hl7.org/fhir/StructureDefinition/[code]</code>.  Those from SDC will have
       <code>http://hl7.org/fhir/uv/sdc/StructureDefinition/sdc-questionnaire-[code]</code></li>
     <li>
-      <b>Location</b>: Indicates whether the extension can appear directly on the Questionnaire (root) on any item (item) or only on items that have at
+      <b>Location</b>: Indicates whether the extension can appear directly on the Questionnaire (root) on any item (item) or only on items that have a
       type allowing a question answer (question)</li>
     <li>
-      <b>Content</b>: Indicates whether the expression.language is restricted to be "text/cql" (cql), "text/fhirpath" (FHIRPath), or "application/x-fhir-query" (query) or is unrestricted (any)</li>
+      <b>Content</b>: Indicates whether the expression.language is restricted to be "text/cql" (CQL), "text/fhirpath" (FHIRPath), or "application/x-fhir-query" (query) or is unrestricted (any)</li>
     <li>
       <b>Use Cases</b>: Indicates which of the SDC use-cases make use of the extension: <a href="behavior.html">Form Behavior</a> (behavior),
       <a href="populate.html">Questionnaire Population</a> (population), and/or <a href="extraction.html">Data Extraction</a> (extraction).
@@ -123,7 +123,7 @@
           </p>
           <p>
             If used for a readOnly and/or hidden element, initialExpression essentially calculates a 'fixed value' for the element.  If used for an editable element,
-            this extension sets the initial value for the element. In scenarios where both an initalValue and initialExpression are present, answers generated through
+            this extension sets the initial value for the element. In scenarios where both an initialValue and initialExpression are present, answers generated through
             initialExpression have precedence over initialValue because both generate values before the user has had access to the form (see considerations in <a href="populate.html#expression-based-population">Expression-based Population</a>).
             However, the same precedence rules do not apply to scenarios where the user edits the response directly or edits other dependent elements that cause the re-evaluation of the response (e.g., calculatedExpression).
             In these scenarios the value MAY subsequently be overridden by the user authoring or editing the response.
@@ -173,7 +173,7 @@
           <p>
             While this expression could be based on other answers within the questionnaire, most typically it will be based on information found within
             the health record.  The expression must evaluate to a collection of elements with the same type as the question answer.  For choice and
-            Reference questions, optionColumns <!--Todo - make this a link--> can be used to manage display.
+            Reference questions, <a href="StructureDefinition-sdc-questionnaire-choiceColumn.html">choiceColumn</a> can be used to manage display.
           </p>
           <p>
             NOTE: the set of candidate expressions is intended to be a starter set, not exhaustive.  The user should be free to enter or look-up additional
@@ -202,8 +202,8 @@
             the question associated with the candidateExpression.  However, instead of giving candidate answers that can simply be "selected", this option
             instead presents potentially relevant information.  For example, a question might be "Has the patient been admitted for this or a related condition
             in the past year?".  To help guide the answers, the contextExpression could retrieve a list of admission reasons for that patient for encounters in
-            the past year.  The user completing the questionnaire could then use that information to guide whether they choose to answer 'yes' or 'no.
-            contextExpression is not intended for read-only questions. The user must answer a question - but the user may want to look at context information
+            the past year.  The user completing the questionnaire could then use that information to guide whether they choose to answer 'yes' or 'no'.
+            ContextExpression is not intended for read-only questions. The user must answer a question - but the user may want to look at context information
             to help guide the answer.
           </p>
           <p>
@@ -303,11 +303,11 @@
           </p>
           <p>
             If a query results in multiple repetitions for a single for the root Questionnaire or for an item where 'repeat' is false, it is an error and no
-            population or extraction can occur. When peforming an extraction the query is executed. If a record is found the data in the QuestionnaireResponse
-            will be used to update that record.If the query returns no results the data in the QuestionnaireResponse will be used to create a new record.
+            population or extraction can occur.  When performing an extraction and the query is executed, if a record is found, the data in the QuestionnaireResponse
+            will be used to update that record.  If the query returns no results, the data in the QuestionnaireResponse will be used to create a new record.
           </p>
           <p>
-            Expression.name SHALL be populated when this extension is being used for <a href="populate.html#path-pop">FHIR-path based population</a>.
+            Expression.name SHALL be populated when this extension is being used for <a href="populate.html#exp-pop">expression-based population</a>.
             It doesn't necessarily need to be present for <a href="extraction.html#definition-extract">definition-based extraction</a>, as that relies on
             item.definition rather than other expressions.  However, including it in general is a good idea.
           </p>
