@@ -370,10 +370,18 @@
     </resource>
     <resource>
       <reference>
-        <reference value="StructureDefinition/sdc-questionnaire-itemContext"/>
+        <reference value="StructureDefinition/sdc-questionnaire-itemPopulationContext"/>
       </reference>
-      <name value="Item context"/>
-      <description value="Specifies a query that identifies the resource (or set of resources for a repeating item) that should be used to populate this Questionnaire.item on initial population or to be extracted from this item once the QuestionnaireResponse is complete"/>
+      <name value="Item population context"/>
+      <description value="Specifies a query that identifies the resource (or set of resources for a repeating item) that should be used to populate this Questionnaire or Questionnaire.item on initial population."/>
+      <exampleBoolean value="false"/>
+    </resource>
+    <resource>
+      <reference>
+        <reference value="StructureDefinition/sdc-questionnaire-itemExtractionContext"/>
+      </reference>
+      <name value="Item extraction context"/>
+      <description value="Specifies a query that identifies the resource (or set of resources for a repeating item)  to be extracted from this item once the QuestionnaireResponse is complete."/>
       <exampleBoolean value="false"/>
     </resource>
     <resource>

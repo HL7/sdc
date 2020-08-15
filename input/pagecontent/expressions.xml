@@ -109,7 +109,7 @@
         </td>
         <td>SDC</td>
         <td>question</td>
-        <td>FHIRPath or CQL</td>
+        <td>any</td>
         <td>all</td>
       </tr>
       <tr>
@@ -131,7 +131,7 @@
             In theory, this expression can rely on the values of the answers to child questions or on <a href="#variable">variables</a> calculated from the
             values of other questions, however such questions would have to have initial values (see the discussion below on
             <a href="#dependencies">dependencies</a>).  Most typically, it will draw on <a href="#launchContext">launchContext</a> and
-            <a href="#itemContext">itemContext</a> to populate questionnaire elements based on information available from outside the QuestionnaireResponse.
+            <a href="#itemPopulationContext">itemPopulationContext</a> to populate questionnaire elements based on information available from outside the QuestionnaireResponse.
           </p>
           <p>
             Examples of use for Form Behavior might include defaulting one date or provider in a form to one entered earlier in the form, defaulting a
@@ -154,7 +154,7 @@
         </td>
         <td>SDC</td>
         <td>question</td>
-        <td>FHIRPath or CQL</td>
+        <td>any</td>
         <td>population</td>
       </tr>
       <tr>
@@ -191,7 +191,7 @@
         </td>
         <td>SDC</td>
         <td>question</td>
-        <td>FHIRPath or CQL</td>
+        <td>any</td>
         <td>population and extraction</td>
       </tr>
       <tr>
@@ -218,7 +218,7 @@
         </td>
         <td>SDC</td>
         <td>question</td>
-        <td>FHIRPath or CQL</td>
+        <td>any</td>
         <td>behavior</td>
       </tr>
       <tr>
@@ -285,29 +285,54 @@
       </tr>
       <tr>
         <td>
-          <a name="itemContext"> </a>
-          <a href="StructureDefinition-sdc-questionnaire-itemContext.html">itemContext</a>
+          <a name="itemPopulationContext"> </a>
+          <a href="StructureDefinition-sdc-questionnaire-itemPopulationContext.html">itemPopulationContext</a>
         </td>
         <td>SDC</td>
         <td>any</td>
-        <td>query</td>
-        <td>population, extraction</td>
+        <td>any</td>
+        <td>population</td>
       </tr>
       <tr>
         <td colspan="5">
           <p>
             This expression identifies the resource(s) that correspond either to an overall questionnaire, a group within the questionnaire or, occasionally,
             a single question.  The results of executing the specified query are used to indicate the resources used to populate the item when performing
-            population and identifies the data to replace when performing an extraction - and also indicates the relevant resource type.
+            population and also indicate the relevant resource type.
           </p>
           <p>
             If a query results in multiple repetitions for a single for the root Questionnaire or for an item where 'repeat' is false, it is an error and no
-            population or extraction can occur.  When performing an extraction and the query is executed, if a record is found, the data in the QuestionnaireResponse
-            will be used to update that record.  If the query returns no results, the data in the QuestionnaireResponse will be used to create a new record.
+            population can occur.
           </p>
           <p>
             Expression.name SHALL be populated when this extension is being used for <a href="populate.html#exp-pop">expression-based population</a>.
-            It doesn't necessarily need to be present for <a href="extraction.html#definition-extract">definition-based extraction</a>, as that relies on
+          </p>
+        </td>
+      </tr>
+      <tr>
+        <td>
+          <a name="itemExtractionContext"> </a>
+          <a href="StructureDefinition-sdc-questionnaire-itemExtractionContext.html">itemExtractionContext</a>
+        </td>
+        <td>SDC</td>
+        <td>any</td>
+        <td>any</td>
+        <td>extraction</td>
+      </tr>
+      <tr>
+        <td colspan="5">
+          <p>
+            This expression identifies the resource(s) that correspond either to an overall questionnaire, a group within the questionnaire or, occasionally,
+            a single question.  The results of executing the specified query are used to indicate the resources used to identify the data to replace when 
+            performing an extraction and also indicate the relevant resource type.
+          </p>
+          <p>
+            If a query results in multiple repetitions for a single for the root Questionnaire or for an item where 'repeat' is false, it is an error and no
+            extraction can occur.  When performing an extraction and the query is executed, if a record is found, the data in the QuestionnaireResponse
+            will be used to update that record.  If the query returns no results, the data in the QuestionnaireResponse will be used to create a new record.
+          </p>
+          <p>
+            Expression.name does not necessarily need to be present for <a href="extraction.html#definition-extract">definition-based extraction</a>, as that relies on
             item.definition rather than other expressions.  However, including it in general is a good idea.
           </p>
         </td>
@@ -372,8 +397,8 @@
           </p>
           <p>
             Launch context information is passed to the QuestionnaireResponse evaluation process by the launching application.  It will pass whatever contexts
-            it is aware of.  SDC systems SHOULD support all four of the contexts defined in this specification, but are free to support others.  The selected
-            contexts mirror those used by the <a href="http://hl7.org/fhir/smart-app-launch/">SMART on FHIR</a> specification.
+            it is aware of.  SDC systems SHOULD support all four of the contexts defined in this specification (e.g. Patient, Encounter, Location, User), but 
+			are free to support others.  The selected contexts mirror those used by the <a href="http://hl7.org/fhir/smart-app-launch/">SMART on FHIR</a> specification.
           </p>
           <p>
             The resource corresponding to each context will be made available at the indicated launch context name as if the value had been set in a
@@ -388,10 +413,21 @@
   <p>
     The Expression type indicates that one of the allowed languages is <code>application/x-fhir-query</code>.  This is defined as a FHIR
     <a href="{{site.data.fhir.path}}search.html">search</a> string.  Normally this will not include the base URL and is intended to be invoked against the
-    system that is completing the QuestionnaireResponse (or whatever FHIR repository the <a href="sdc-form-filler.html">Form Filler</a> is configured to use).
+    system that is completing the QuestionnaireResponse (or whatever FHIR repository the <a href="CapabilityStatement-sdc-form-filler.html">Form Filler</a> is configured to use).
     However, in some cases, a full URL might be specified, for example if the author of the questionnaire wants values to always be retrieved from a
-    specific source.
+    specific source.  The SDC provides the following rules for the <code>application/x-fhir-query</code> language:
   </p>
+  <ul>
+    <li>
+	  If the expression resolves to a complex element of type Coding, Identifier, or Reference, the element content will be substituted using the standard token format.</li>
+	<li>
+	  If the expression resolves to a complex element of type CodeableConcept, the processing will behave as though the expression had an additional node specifying ".coding" 
+	  (i.e. the substitution will execute on the collection of codings resolved to within the CodeableConcept).</li>
+	<li>
+	  If the expression resolves to an element of type Quantity, it will be converted to a search type of 'quantity'.</li>
+	<li>
+	  If the expression resolves to a collection of more than one value, the substitution will be a list of comma-separated values (i.e. behaving as 'or').</li>
+  </ul>	  
   <p>
     In addition to the base query syntax, SDC allows the injection of FHIRPath into the query expressions.  This is to allow the queries to take advantage
     of context when they are invoked.  The FHIRPaths are denoted by surrounding them with double curly-braces (i.e.
@@ -411,7 +447,7 @@
   <p>
     Expressions will often have dependencies on other expressions.  For example, a <a href="#calculatedExpression">calculatedExpression</a> might depend
     on <a href="#variable">variables</a> that in turn depend on the answers to other questions which might themselves have
-    <a href="#initialExpression">initialExpressions</a> which might rely on <a href="#itemContext">itemContext</a> queries that in turn have embedded
+    <a href="#initialExpression">initialExpressions</a> which might rely on <a href="#itemPopulationContext">itemPopulationContext</a> queries that in turn have embedded
     FHIRPaths that reference elements defined in <a href="#launchContext">launchContext</a>.  If care isn't taken, it's possible to construct a
     questionnaire where the value of an answer depends indirectly on itself, or where filling out an answer disables the question being answered or other
     inappropriate behavior.  Questionnaire rendering systems should check for these situations and gracefully handle them by raising appropriate error messages

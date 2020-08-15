@@ -285,9 +285,9 @@
     To use this method:
   </p>
   <ol>
-    <li>Include the <a href="StructureDefinition-sdc-questionnaire-itemContext.html">questionnaire-itemContext</a> extension either on the Questionnaire root or on
-      'group' items within the Questionnaire to identify the resource that will serve as the context for any extraction.  The itemContext is used to set the context 
-	  for the item.definition paths. If the itemContext is empty, then the Questionnaire is being used to create a resource. If the itemContext has a resource 
+    <li>Include the <a href="StructureDefinition-sdc-questionnaire-itemExtractionContext.html">questionnaire-itemExtractionContext</a> extension either on the Questionnaire root or on
+      'group' items within the Questionnaire to identify the resource that will serve as the context for any extraction.  The itemExtractionContext is used to set the context 
+	  for the item.definition paths. If the itemExtractionContext is empty, then the Questionnaire is being used to create a resource. If the itemExtractionContext has a resource 
 	  (or set of resources), then the Questionnaire is being used to update the resource(s).</li>
     <li>On descendant items of that element, fill in the <code>Questionnaire.item.definition</code> to point to the resource or profile element that Questionnaire
       item corresponds to.  (Profiles may be relevant for data that is sliced or has fixed values for some properties.).  The definition SHALL have the full
@@ -311,7 +311,7 @@
   </ul>
   <p>
     If updating, the answer values from the questionnaire (including hidden, calculated answers) will be propagated to the context resource.  If creating, then
-    for each occurrence of each item asserting a <a href="StructureDefinition-sdc-questionnaire-itemContext.html">questionnaire-itemContext</a>, a resource of 
+    for each occurrence of each item asserting a <a href="StructureDefinition-sdc-questionnaire-itemExtractionContext.html">questionnaire-itemExtractionContext</a>, a resource of 
 	the context type will be defined.  It will be populated with answers to questions (hidden or not) that have a definition that matches the resource type of 
 	the context.  As well, if the definitions refer to a profile, any child elements of the profile that have fixed values or patterns declared will also be 
 	included in the instance with values matching the fixed or pattern values.
@@ -335,10 +335,13 @@
     <li>
       In some cases, the context of an element will switch.  For example, an item might have a definition of
       "http://hl7.org/fhir/MedicationStatement#MedicationStatement.medicationReference" and
-      a <a href="StructureDefinition-sdc-questionnaire-itemContext.html">questionnaire-itemContext</a> extension that shifts the context to "Medication".  
+      a <a href="StructureDefinition-sdc-questionnaire-itemExtractionContext.html">questionnaire-itemExtractionContext</a> extension that shifts the context to "Medication".  
 	  Subsequent children would then have definitions based on the "http://hl7.org/fhir/Medication" resource.</li>
     <li>
       Note that only one context can be in play at the same time.  When a new context is declared, it takes the place of the old context.</li>
+    <li>
+      If the same context are used for both <a href="StructureDefinition-sdc-questionnaire-itemPopulationContext.html">questionnaire-itemPopulationContext</a> and
+      <a href="StructureDefinition-sdc-questionnaire-itemExtractionContext.html">questionnaire-itemExtractionContext</a>, then the value will be repeated for both extensions.</li>
     <li>
       The items in the Questionnaire might not have the same order as those in the resource.  When serializing into XML, the official order must still be
       respected.</li>

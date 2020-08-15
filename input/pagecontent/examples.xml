@@ -5344,13 +5344,13 @@ i.fa {
 <!--  TODO: where to put this extension for displaying list as an htable? -->
 <!--  TODO: how to format dateTime: 2016-06-18T16:22:45-04:00  -->
 
-<a name="itemContext"></a>
-<h4>Using itemContext</h4>
+<a name="itemPopulationContext"></a>
+<h4>Using itemPopulationContext</h4>
 <p>To specify the resources to populate a questionnaire.</p>
 <div class="tabs">
   <div class="tab">
-    <input type="radio" id="tab-itemContext-1" name="tab-itemContext-group-2" checked="true"></input>
-    <label for="tab-itemContext-1">Sample Question</label>
+    <input type="radio" id="tab-itemPopulationContext-1" name="tab-itemPopulationContext-group-2" checked="true"></input>
+    <label for="tab-itemPopulationContext-1">Sample Question</label>
     <div class="content-in-tab">
       <p>Home Address<br/>
         Address: <input id="linkitem-1.1-input" type="text" size="50" value="1900 Broadway Avenue"/><br/>
@@ -5373,8 +5373,8 @@ i.fa {
     </div> 
   </div>
   <div class="tab">
-    <input type="radio" id="tab-itemContext-2" name="tab-itemContext-group-2"></input>
-    <label for="tab-itemContext-2">JSON</label>
+    <input type="radio" id="tab-itemPopulationContext-2" name="tab-itemPopulationContext-group-2"></input>
+    <label for="tab-itemPopulationContext-2">JSON</label>
     <div class="content-in-tab">
       <textarea style="border:none" class="xml">
         {
@@ -5402,7 +5402,7 @@ i.fa {
             {
               "extension": [
                 {
-                  "url": "http://hl7.org/fhir/uv/sdc/StructureDefinition/sdc-questionnaire-itemContext",
+                  "url": "http://hl7.org/fhir/uv/sdc/StructureDefinition/sdc-questionnaire-itemPopulationContext",
                   "valueExpression": {
                     "description": "Home address of the patient",
                     "language": "text/fhirpath",
@@ -5558,8 +5558,8 @@ i.fa {
     </div> 
   </div>
   <div class="tab">
-    <input type="radio" id="tab-itemContext-3" name="tab-itemContext-group-2"></input>
-    <label for="tab-itemContext-3">XML</label>
+    <input type="radio" id="tab-itemPopulationContext-3" name="tab-itemPopulationContext-group-2"></input>
+    <label for="tab-itemPopulationContext-3">XML</label>
     <div class="content-in-tab">
       <textarea style="border:none" class="xml">
         <extension url="http://hl7.org/fhir/uv/sdc/StructureDefinition/sdc-questionnaire-launchContext">
@@ -5574,7 +5574,7 @@ i.fa {
           </extension>
         </extension>
         <item>
-          <extension url="http://hl7.org/fhir/uv/sdc/StructureDefinition/sdc-questionnaire-itemContext">
+          <extension url="http://hl7.org/fhir/uv/sdc/StructureDefinition/sdc-questionnaire-itemPopulationContext">
             <valueExpression>
               <description value="Home address of the patient"/>
                 <language value="text/fhirpath"/>

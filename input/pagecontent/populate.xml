@@ -377,12 +377,12 @@
       context variables set in the previous step, and/or other variable extensions.  (NOTE: questionnaire-launchContext elements are evaluated first, then all
       Questionnaire-level variables, in order of appearance in the Questionnaire.)</li>
     <li>
-      If appropriate, use the <a href="StructureDefinition-sdc-questionnaire-itemContext.html">questionnaire-itemContext</a> on group items to establish the context for
+      If appropriate, use the <a href="StructureDefinition-sdc-questionnaire-itemPopulationContext.html">questionnaire-itemPopulationContext</a> on group items to establish the context for
       a group.  When populating the questionnaire, this will do two things: it will create a group repetition for each row returned from the query; and it will
       set the specified variable name to that resource repetition for use in processing items within the group.</li>
     <li>
       Use the <a href="{{site.data.fhir.path}}extension-variable.html">variable</a> extension on items as well to perform intermediary calculations or
-      additional queries that are based on itemContext values.</li>
+      additional queries that are based on itemPopulationContext values.</li>
     <li>
       For <a href="#mode">Full Population</a>, use the <a href="StructureDefinition-sdc-questionnaire-initialExpression.html">questionnaire-initialExpression</a> to
       cause the initial answer for the question to be set to the specified expression.  This should always be a FHIRPath that resolves to an item of the
@@ -441,9 +441,12 @@
       When defining queries in expressions, be sure to filter all relevant elements.  For example, ensuring status excludes entered-in-error elements, practitioners are
       active, etc.</li>
     <li>
-      Take care to ensure that variable names as set by questionnaire-launchContext, variable and questionnaire-itemContext remain unique within the hierarchy
+      Take care to ensure that variable names as set by questionnaire-launchContext, variable and questionnaire-itemPopulationContext remain unique within the hierarchy
       of the questionnaire.  It's technically ok to have sibling items define the same variable name - they won't collide.  However, if doing so, make sure
       it's being used for the same purpose to avoid confusion.</li>
+    <li>
+      If the same context are used for both <a href="StructureDefinition-sdc-questionnaire-itemPopulationContext.html">questionnaire-itemPopulationContext</a> and
+      <a href="StructureDefinition-sdc-questionnaire-itemExtractionContext.html">questionnaire-itemExtractionContext</a>, then the value will be repeated for both extensions.</li>
     <li>
       If the initialExpression evaluates to a collection size that exceeds the maximum cardinality requirements of the item, the system may either choose not
       to populate the item at all, or instead may treat the initialExpression as if it were a candidateExpression and give the user a chance to choose from
