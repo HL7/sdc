@@ -116,17 +116,16 @@
         <td colspan="5">
           <p>
             This expression serves the same purpose as the initial.value on Questionnaire.item, except that rather than specifying a fixed value, the value is
-            calculable.  The calculated value does not necessarily override an initial value - and in fact would typically not be used in scenarios where an initial value is already present.
-            Like initialValue, initialExpression is evaluated only once. The value is set on initial creation of the QuestionnaireResponse or upon the question first becoming enabled.
+            calculable. Like initial.value, initialExpression is evaluated only once. The value is set on initial creation of the QuestionnaireResponse or upon the question first becoming enabled.
             NOTE: This implementation guide does not prohibit lazy initialization (e.g., delayed calculation of an answer, delayed initialization of a field, etc.),
             but Questionnaire authors shouldn't assume implementors will use lazy initialization.
           </p>
           <p>
             If used for a readOnly and/or hidden element, initialExpression essentially calculates a 'fixed value' for the element.  If used for an editable element,
-            this extension sets the initial value for the element. In scenarios where both an initialValue and initialExpression are present, answers generated through
-            initialExpression have precedence over initialValue because both generate values before the user has had access to the form (see considerations in <a href="populate.html#expression-based-population">Expression-based Population</a>).
-            However, the same precedence rules do not apply to scenarios where the user edits the response directly or edits other dependent elements that cause the re-evaluation of the response (e.g., calculatedExpression).
-            In these scenarios the value MAY subsequently be overridden by the user authoring or editing the response.
+            this extension sets the initial value for the element. Since both initial.value and initialExpression generate values before the user has access to the form,
+            it is not allowed to have both present on a Questionnaire.item. In scenarios where the user edits the response directly or edits other dependent elements that cause 
+            the re-evaluation of the response (e.g., calculatedExpression),the value MAY subsequently be overridden by the user authoring or editing the response 
+            (see considerations in <a href="populate.html#expression-based-population">Expression-based Population</a>).
           </p>
           <p>
             In theory, this expression can rely on the values of the answers to child questions or on <a href="#variable">variables</a> calculated from the

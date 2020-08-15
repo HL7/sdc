@@ -293,7 +293,7 @@
       item corresponds to.  (Profiles may be relevant for data that is sliced or has fixed values for some properties.).  The definition SHALL have the full
       canonical URL of the resource (or profile) followed by '#' followed by the snapshot.path of the element the Questionnaire item corresponds to.</li>
     <li>If necessary, define <a href="{{site.data.fhir.path}}extension-questionnaire-hidden.html">questionnaire-hidden</a> items that have <code>
-      Questionnaire.item.initialValue[x]</code> or that use the
+      Questionnaire.item.initial.value[x]</code> or that use the
       <a href="StructureDefinition-sdc-questionnaire-initialExpression.html">questionnaire-initialExpression</a> extension to define their content to use to populate
       resource elements that the user will not be filling in.  (The initialExpressions might in turn depend on
       <a href="{{site.data.fhir.path}}extension-variable.html">variable</a> and
