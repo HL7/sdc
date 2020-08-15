@@ -2253,7 +2253,7 @@ i.fa {
 
 <a name="choice-restriction">  </a>
 <h3>Choice Restriction</h3>
-<a name="answeroptions"></a>
+<a name="answeroption"></a>
 <h4>Using answerOption</h4>
 <p>To restrict choices from a fixed list.</p>
 <div class="tabs">
@@ -3119,6 +3119,162 @@ i.fa {
                     <display value="Cardiac pacemaker"/>
                 </valueCoding>
             </answerOption>
+        </item>
+      </textarea>
+    </div> 
+  </div>
+</div>
+
+<a name="optionExclusive"></a>
+<h4>Using optionExclusive</h4>
+<p>To restrict other answers from being selected when an exclusive answer (like "None of the above") has been selected.</p>
+<div class="tabs">
+  <div class="tab">
+    <input type="radio" id="tab-optionExclusive-1" name="tab-optionExclusive-group-2" checked="true"></input>
+    <label for="tab-optionExclusive-1">Sample Question</label>
+    <div class="content-in-tab">
+      <p>What treatments do you now have for heart disease? (select all that applies)<br/>
+      <input id="optionExclusive_options" type="checkbox" name="treatments" value="noTreatment"/> No treatment<br/>
+      <input id="optionExclusive_options" type="checkbox" name="treatments" value="aspirin"/> Aspirin<br/>
+      <input id="optionExclusive_options" type="checkbox" name="treatments" value="otherMeds"/> Other medicines, tablets, or pills<br/>
+      <input id="optionExclusive_options" type="checkbox" name="treatments" value="diet"/> Diet<br/>
+      <input id="optionExclusive_options" type="checkbox" name="treatments" value="exercise"/> Exercise<br/>
+      <input id="optionExclusive_options" type="checkbox" name="treatments" value="none"/> None of the above<br/>
+      </p>
+    </div> 
+  </div>
+  <div class="tab">
+    <input type="radio" id="tab-optionExclusive-2" name="tab-optionExclusive-group-2"></input>
+    <label for="tab-optionExclusive-2">JSON</label>
+    <div class="content-in-tab">
+      <textarea style="border:none" class="xml">
+        "item": [
+          {
+            "extension": [
+              {
+                "url": "http://hl7.org/fhir/StructureDefinition/questionnaire-itemControl",
+                "valueCodeableConcept": {
+                  "coding": [
+                    {
+                      "system": "http://hl7.org/fhir/questionnaire-item-control",
+                      "code": "check-box",
+                      "display": "Check-box"
+                    }
+                  ]
+                }
+              }
+            ],
+            "linkId": "1.0",
+            "text": "What treatments do you now have for heart disease? (select all that applies)",
+            "type": "choice",
+            "repeats": true,
+            "answerOption": [
+              {
+                "valueCoding": {
+                  "code": "noTreatment",
+                  "display": "NoTreatment"
+                }
+              },
+              {
+                "valueCoding": {
+                  "code": "aspirin",
+                  "display": "Aspirin"
+                }
+              },
+              {
+                "valueCoding": {
+                  "code": "otherMeds",
+                  "display": "Other medicines, tablets, or pills"
+                }
+              },
+              {
+                "valueCoding": {
+                  "code": "diet",
+                  "display": "Diet"
+                }
+              },
+              {
+                "valueCoding": {
+                  "code": "exercise",
+                  "display": "Exercise"
+                }
+              },
+              {
+                "extension": [
+                  {
+                    "url": "http://hl7.org/fhir/StructureDefinition/questionnaire-optionExclusive",
+                    "valueBoolean": true
+                  }
+                ],
+                "valueCoding": {
+                  "code": "none",
+                  "display": "None of the above"
+                }
+              }
+            ]
+          }
+        ]
+     </textarea>
+    </div> 
+  </div>
+  <div class="tab">
+    <input type="radio" id="tab-optionExclusive-3" name="tab-optionExclusive-group-2"></input>
+    <label for="tab-optionExclusive-3">XML</label>
+    <div class="content-in-tab">
+      <textarea style="border:none" class="xml">
+        <item>
+          <extension url="http://hl7.org/fhir/StructureDefinition/questionnaire-itemControl">
+            <valueCodeableConcept>
+              <coding>
+                <system value="http://hl7.org/fhir/questionnaire-item-control"/>
+                <code value="check-box"/>
+                <display value="Check-box"/>
+              </coding>
+            </valueCodeableConcept>
+          </extension>
+          <linkId value="1.0"/>
+          <text value="What treatments do you now have for heart disease? (select all that applies)"/>
+          <type value="choice"/>
+          <repeats value="true"/>
+          <answerOption>
+            <valueCoding>
+              <code value="noTreatment"/>
+              <display value="NoTreatment"/>
+            </valueCoding>
+          </answerOption>
+          <answerOption>
+            <valueCoding>
+              <code value="aspirin"/>
+              <display value="Aspirin"/>
+            </valueCoding>
+          </answerOption>
+          <answerOption>
+            <valueCoding>
+              <code value="otherMeds"/>
+              <display value="Other medicines, tablets, or pills"/>
+            </valueCoding>
+          </answerOption>
+          <answerOption>
+            <valueCoding>
+              <code value="diet"/>
+              <display value="Diet"/>
+            </valueCoding>
+          </answerOption>
+          <answerOption>
+            <valueCoding>
+              <code value="exercise"/>
+              <display value="Exercise"/>
+            </valueCoding>
+          </answerOption>
+          <answerOption>
+            <extension url="http://hl7.org/fhir/StructureDefinition/questionnaire-optionExclusive">
+              <valueBoolean value="true"/>
+            </extension>
+            <valueCoding>
+              <code value="none"/>
+              <display value="None of the above"/>
+            </valueCoding>
+          </answerOption>
         </item>
       </textarea>
     </div> 

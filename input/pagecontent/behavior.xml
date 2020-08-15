@@ -257,7 +257,7 @@
         <td>Core</td>
         <td>question</td>
         <td>integer, date, time, string, Coding, Reference</td>
-        <td><a href="examples.html#answeroptions">example</a></td>
+        <td><a href="examples.html#answeroption">example</a></td>
       </tr>
       <tr>
         <td colspan="5">
@@ -438,6 +438,29 @@
           </p>
           <p>
             This element SHALL only be set for an item where <a href="#repeats">repeats</a> are true.
+          </p>
+        </td>
+      </tr>
+      <tr>
+        <td>
+          <a name="optionExclusive"> </a>
+          <a href="{{site.data.fhir.path}}extension-questionnaire-optionexclusive.html">optionExclusive</a>
+        </td>
+        <td>Questionnaire</td>
+        <td>Questionnaire.item.answerOption</td>
+        <td>boolean</td>
+        <td><a href="examples.html#optionExclusive">example</a></td>
+      </tr>
+      <tr>
+        <td colspan="5">
+          <p>
+            For questions with multiple <a href="#answerOption">answerOption</a> elements that are allowed to have multiple answers (repeats=true), 
+            if this extension is true for a specific answerOption, it indicates that once the user selects this answerOption, no other answers may be selected.
+            This extension is ideal for a multi-select question that has an option that is not compatible with all the others.  Examples of these exclusive options
+            are "None of the above", "All of the above", "Don't know", or "Not applicable".
+          </p>
+          <p>
+            This element is only relevant for an item where <a href="#repeats">repeats</a> are true.
           </p>
         </td>
       </tr>
