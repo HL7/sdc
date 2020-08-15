@@ -13,7 +13,7 @@
   <a name="model"> </a>
   <h3>Adaptive Questionnaire Administration Abstract Model and Actors</h3>
   <p>
-    The section explains the process of administering an Adaptive Questionnaire and the actors (systems) involved.  Fig 1 below shows the abstract model of
+    The section explains the process of administering an Adaptive Questionnaire and the actors (systems) involved.  Figure 1 below shows the abstract model of
     the administration process.
   </p>
   <a name="fig1"> </a>
@@ -37,14 +37,15 @@
   <h3>Data Flow Description for Adaptive Questionnaires Administration</h3>
   <p>
     As shown in Figure 1 above, the Patient Facing Administration App (EHR, Care Delivery System, Independent App or SMART on FHIR App) acts as the client
-    and initiates the administration process.<br/>
-    In the first step, the available adaptive questionnaires are loaded into the Assessment Center.
-
+    and initiates the administration process.<br/><br/>
     The following section describes the steps that take place when completing an adaptive Questionnaire and also provides examples of the content sent to and received back from the 'next-question' operation.
   </p>
   <ul>
     <li>
-      <b>Step 2:</b>The administration is initiated with a specific Adaptive Questionnaire.<br/>
+      <b>Step 1:</b> The available adaptive questionnaires are loaded into the Assessment Center.<br/>
+    </li>  
+    <li>
+      <b>Step 2:</b> The administration is initiated with a specific Adaptive Questionnaire.<br/>
       <br/>
       <b>
         <i>Request</i>
@@ -91,7 +92,7 @@
       <br/>
     </li>
     <li>
-      <b>Step 3:</b>The Assessment Center responds to the start request with a Questionnaire and the first item for administration.<br/>
+      <b>Step 3:</b> The Assessment Center responds to the start request with a Questionnaire and the first item for administration.<br/>
       <b>Response Body</b>
       <br/>
       <pre>
@@ -139,9 +140,9 @@
       <br/>
     </li>
     <li>
-      <b>Step 4:</b>The Patient Facing Administration App will then display the question to the user and collect the response.</li>
+      <b>Step 4:</b> The Patient Facing Administration App will then display the question to the user and collect the response.</li>
     <li>
-      <b>Step 5:</b>The Patient Facing Administration App will then send the answer to the Assessment Center and ask for the next question.
+      <b>Step 5:</b> The Patient Facing Administration App will then send the answer to the Assessment Center and ask for the next question.
       The Assessment Center will use the answer to determine the next question based on the algorithm and respond back with the next question until the assessment is done.<br/>
       <br/>
       <b>
@@ -303,7 +304,7 @@
       <b>Step 4 is repeated as long as new questions are received and the status is "in-progress"</b>
     </li>
     <li>
-      <b>Step 6:</b>If the Assessment Center determines that the assessment is done, it will respond with the final results which will contain all
+      <b>Step 6:</b> If the Assessment Center determines that the assessment is done, it will respond with the final results which will contain all
         the questions that were answered, along with the answers, the individual scores and the overall score.<br/>
       <b>
         <i>Request</i>
