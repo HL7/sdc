@@ -9,7 +9,7 @@
   <Author>Grahame</Author>
   <LastAuthor>Microsoft Office User</LastAuthor>
   <Created>2012-03-19T11:12:07Z</Created>
-  <LastSaved>2020-08-18T05:36:28Z</LastSaved>
+  <LastSaved>2020-08-18T05:44:30Z</LastSaved>
   <Version>16.00</Version>
  </DocumentProperties>
  <OfficeDocumentSettings xmlns="urn:schemas-microsoft-com:office:office">
@@ -21,8 +21,6 @@
   <WindowTopX>32767</WindowTopX>
   <WindowTopY>1120</WindowTopY>
   <TabRatio>814</TabRatio>
-  <ActiveSheet>2</ActiveSheet>
-  <FirstVisibleSheet>1</FirstVisibleSheet>
   <ProtectStructure>False</ProtectStructure>
   <ProtectWindows>False</ProtectWindows>
  </ExcelWorkbook>
@@ -706,12 +704,7 @@
     <PageMargins x:Bottom="0.75" x:Left="0.7" x:Right="0.7" x:Top="0.75"/>
    </PageSetup>
    <Unsynced/>
-   <Panes>
-    <Pane>
-     <Number>3</Number>
-     <ActiveRow>23</ActiveRow>
-    </Pane>
-   </Panes>
+   <Selected/>
    <ProtectObjects>False</ProtectObjects>
    <ProtectScenarios>False</ProtectScenarios>
   </WorksheetOptions>
@@ -2016,7 +2009,6 @@
     <HorizontalResolution>600</HorizontalResolution>
     <VerticalResolution>600</VerticalResolution>
    </Print>
-   <Selected/>
    <FreezePanes/>
    <FrozenNoSplit/>
    <SplitHorizontal>1</SplitHorizontal>
@@ -7990,7 +7982,7 @@
     </Pane>
     <Pane>
      <Number>0</Number>
-     <ActiveCol>4</ActiveCol>
+     <ActiveRow>15</ActiveRow>
     </Pane>
    </Panes>
    <ProtectObjects>False</ProtectObjects>
@@ -12735,19 +12727,13 @@
       ss:Name="_FilterDatabase"/></Cell>
    </Row>
    <Row ss:AutoFitHeight="0">
-    <Cell ss:StyleID="s114"><Data ss:Type="Number">14</Data><NamedCell
-      ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s98"><Data ss:Type="String">Test Contraints</Data><NamedCell
-      ss:Name="_FilterDatabase"/></Cell>
+    <Cell ss:StyleID="s114"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s98"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s121"><Data ss:Type="String">Questionnaire.item</Data><NamedCell
-      ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s98"><Data ss:Type="String">Group items must have nested items, display items cannot have nested items</Data><NamedCell
-      ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s98"><Data ss:Type="String">(type='group' implies item.empty().not()) and (type.trace('type')='display' implies item.trace('item').empty())</Data><NamedCell
-      ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s122"><Data ss:Type="String">not((f:type/@value='group' and not(f:item)) or (f:type/@value='display' and f:item))</Data><NamedCell
-      ss:Name="_FilterDatabase"/></Cell>
+    <Cell ss:StyleID="s98"><NamedCell ss:Name="_FilterDatabase"/></Cell>
+    <Cell ss:StyleID="s121"><NamedCell ss:Name="_FilterDatabase"/></Cell>
+    <Cell ss:StyleID="s98"><NamedCell ss:Name="_FilterDatabase"/></Cell>
+    <Cell ss:StyleID="s98"><NamedCell ss:Name="_FilterDatabase"/></Cell>
+    <Cell ss:StyleID="s122"><NamedCell ss:Name="_FilterDatabase"/></Cell>
    </Row>
    <Row ss:AutoFitHeight="0">
     <Cell ss:StyleID="s117"/>
@@ -13214,7 +13200,7 @@
     </Pane>
     <Pane>
      <Number>0</Number>
-     <ActiveCol>3</ActiveCol>
+     <ActiveCol>0</ActiveCol>
     </Pane>
    </Panes>
    <ProtectObjects>False</ProtectObjects>
@@ -14292,14 +14278,13 @@
         x:Family="Swiss" html:Size="8" html:Color="#000000">XPath 2 expression.  See wiki or make Lloyd do it :&gt;</Font>       </ss:Data></Comment></Cell>
    </Row>
    <Row ss:AutoFitHeight="0">
-    <Cell ss:StyleID="s114"><Data ss:Type="String">sdc-ext-1</Data></Cell>
-    <Cell ss:StyleID="s98"><Data ss:Type="String">Test Contraints2</Data></Cell>
+    <Cell ss:StyleID="s114"/>
     <Cell ss:StyleID="s98"/>
-    <Cell ss:StyleID="s120" ss:HRef="http://hl7.org/fhir/uv/sdc/StructureDefinition/sdc-questionnaire-initialExpression"><Data
-      ss:Type="String">http://hl7.org/fhir/uv/sdc/StructureDefinition/sdc-questionnaire-initialExpression</Data></Cell>
-    <Cell ss:StyleID="s98"><Data ss:Type="String">Group items must have nested items, display items cannot have nested items</Data></Cell>
-    <Cell ss:StyleID="s98"><Data ss:Type="String">(type='group' implies item.empty().not()) and (type.trace('type')='display' implies item.trace('item').empty())</Data></Cell>
-    <Cell ss:StyleID="s122"><Data ss:Type="String">not((f:type/@value='group' and not(f:item)) or (f:type/@value='display' and f:item))</Data></Cell>
+    <Cell ss:StyleID="s98"/>
+    <Cell ss:StyleID="s120"/>
+    <Cell ss:StyleID="s98"/>
+    <Cell ss:StyleID="s98"/>
+    <Cell ss:StyleID="s122"/>
    </Row>
    <Row ss:AutoFitHeight="0">
     <Cell ss:StyleID="s117"/>
@@ -14736,8 +14721,8 @@
    <Panes>
     <Pane>
      <Number>3</Number>
-     <ActiveRow>37</ActiveRow>
-     <ActiveCol>5</ActiveCol>
+     <ActiveRow>1</ActiveRow>
+     <RangeSelection>R2C1:R2C7</RangeSelection>
     </Pane>
    </Panes>
    <ProtectObjects>False</ProtectObjects>
