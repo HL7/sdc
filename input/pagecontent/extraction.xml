@@ -114,7 +114,7 @@
       jurisdictions/environments, SNOMED CT or other codes may be relevant</li>
     <li>Groups can also have an <code>item.code</code> present - this might represent the code of the a panel or the Observation.code of an Observation with no
       value but with multiple <code>Observation.component</code> elements.  Child question items can then assert the <code>item.code</code> of the "member-of"
-      Observations or the <code>Observation.component.code</code> values</li>
+      Observations or the <code>Observation.component.code</code> values.</li>
     <li>To signal that the item.code is intended for use in extraction (as opposed to just providing metadata about the Questionnaire item), the
       <a href="StructureDefinition-sdc-questionnaire-observationLinkPeriod.html">questionnaire-observationLinkPeriod</a> extension must also be included.  This extension
       indicates the period of time over which to search for matching observations.  Note if the Observation-based approach is used for both extraction and population, 
@@ -307,7 +307,7 @@
   <ul>
     <li>If the context resource existed and was used in the population of the resource and data has changed, the resource will typically be updated.  (Note
       that this means the system must capture the resource ids as hidden items in the Questionnaire so they're available for update.)</li>
-    <li>In other cases, the record will be created</li>
+    <li>In other cases, the record will be created.</li>
   </ul>
   <p>
     If updating, the answer values from the questionnaire (including hidden, calculated answers) will be propagated to the context resource.  If creating, then

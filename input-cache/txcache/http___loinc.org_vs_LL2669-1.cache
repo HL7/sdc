@@ -1,9 +1,5 @@
 -------------------------------------------------------------------------------------
-{"code" : {
-  "system" : "http://loinc.org/vs/LL2669-1",
-  "code" : "LA20296-2",
-  "display" : "Administering"
-}, "valueSet" :{
+{"hierarchical" : true, "valueSet" :{
   "resourceType" : "ValueSet",
   "compose" : {
     "include" : [{
@@ -50,10 +46,8 @@
       }]
     }]
   }
-}, "lang":"null", "useServer":"true", "useClient":"true", "guessSystem":"false", "valueSetMode":"ALL_CHECKS"}####
-v: {
-  "display" : "",
-  "severity" : "error",
-  "error" : "CodeSystem uri 'http://loinc.org/vs/LL2669-1' is unknown"
+}}####
+e: {
+  "error" : "Error from server: Unable to provide support for code system http://loinc.org/vs/LL2669-1"
 }
 -------------------------------------------------------------------------------------

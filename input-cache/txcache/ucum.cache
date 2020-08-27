@@ -1,13 +1,73 @@
 -------------------------------------------------------------------------------------
 {"code" : {
   "system" : "http://unitsofmeasure.org",
+  "code" : "kg"
+}, "valueSet" :null, "lang":"null", "useServer":"true", "useClient":"true", "guessSystem":"false", "valueSetMode":"ALL_CHECKS"}####
+v: {
+  "display" : "kg",
+  "severity" : null,
+  "error" : ""
+}
+-------------------------------------------------------------------------------------
+{"code" : {
+  "system" : "http://unitsofmeasure.org",
+  "code" : "[in_i]"
+}, "valueSet" :null, "lang":"null", "useServer":"true", "useClient":"true", "guessSystem":"false", "valueSetMode":"ALL_CHECKS"}####
+v: {
+  "display" : "[in_i]",
+  "severity" : null,
+  "error" : ""
+}
+-------------------------------------------------------------------------------------
+{"code" : {
+  "system" : "http://unitsofmeasure.org",
+  "code" : "kg/m2"
+}, "valueSet" :null, "lang":"null", "useServer":"true", "useClient":"true", "guessSystem":"false", "valueSetMode":"ALL_CHECKS"}####
+v: {
+  "display" : "kg/m2",
+  "severity" : null,
+  "error" : ""
+}
+-------------------------------------------------------------------------------------
+{"code" : {
+  "system" : "http://unitsofmeasure.org",
+  "code" : "%"
+}, "valueSet" :null, "lang":"null", "useServer":"true", "useClient":"true", "guessSystem":"false", "valueSetMode":"ALL_CHECKS"}####
+v: {
+  "display" : "%",
+  "severity" : null,
+  "error" : ""
+}
+-------------------------------------------------------------------------------------
+{"code" : {
+  "system" : "http://unitsofmeasure.org",
+  "code" : "[in_i]"
+}, "valueSet" :null, "lang":"en-US", "useServer":"true", "useClient":"true", "guessSystem":"false", "valueSetMode":"ALL_CHECKS"}####
+v: {
+  "display" : "[in_i]",
+  "severity" : null,
+  "error" : ""
+}
+-------------------------------------------------------------------------------------
+{"code" : {
+  "system" : "http://unitsofmeasure.org",
+  "code" : "[lb_av]"
+}, "valueSet" :null, "lang":"en-US", "useServer":"true", "useClient":"true", "guessSystem":"false", "valueSetMode":"ALL_CHECKS"}####
+v: {
+  "display" : "[lb_av]",
+  "severity" : null,
+  "error" : ""
+}
+-------------------------------------------------------------------------------------
+{"code" : {
+  "system" : "http://unitsofmeasure.org",
   "code" : "[in_i]",
   "display" : "inches"
 }, "valueSet" :null, "lang":"null", "useServer":"true", "useClient":"true", "guessSystem":"false", "valueSetMode":"ALL_CHECKS"}####
 v: {
   "display" : "[in_i]",
   "severity" : "warning",
-  "error" : "The display \"inches\" is not a valid display for the code {http://unitsofmeasure.org}[in_i] - should be one of [[in_i]]"
+  "error" : "The display \"inches\" is not a valid display for the code {http://unitsofmeasure.org}[in_i] - should be one of [[in_i]] (from http://tx.fhir.org/r4)"
 }
 -------------------------------------------------------------------------------------
 {"code" : {
@@ -18,7 +78,7 @@ v: {
 v: {
   "display" : "[lb_av]",
   "severity" : "warning",
-  "error" : "The display \"pounds\" is not a valid display for the code {http://unitsofmeasure.org}[lb_av] - should be one of [[lb_av]]"
+  "error" : "The display \"pounds\" is not a valid display for the code {http://unitsofmeasure.org}[lb_av] - should be one of [[lb_av]] (from http://tx.fhir.org/r4)"
 }
 -------------------------------------------------------------------------------------
 {"code" : {
@@ -44,7 +104,7 @@ v: {
 v: {
   "display" : "inch (international)",
   "severity" : "warning",
-  "error" : "The display \"inches\" is not a valid display for the code {http://unitsofmeasure.org}[in_i] - should be one of [\"inch (international)\"]"
+  "error" : "The display \"inches\" is not a valid display for the code {http://unitsofmeasure.org}[in_i] - should be one of [\"inch (international)\"] (from http://tx.fhir.org/r4)"
 }
 -------------------------------------------------------------------------------------
 {"code" : {
@@ -68,8 +128,8 @@ v: {
   }
 }, "lang":"null", "useServer":"true", "useClient":"true", "guessSystem":"false", "valueSetMode":"ALL_CHECKS"}####
 v: {
-  "display" : "pound (US and British)",
-  "severity" : "warning",
-  "error" : "The display \"pounds\" is not a valid display for the code {http://unitsofmeasure.org}[lb_av] - should be one of [\"pound (US and British)\"]"
+  "display" : "",
+  "severity" : "error",
+  "error" : "Unknown ValueSet url: null|null (from http://tx.fhir.org/r4)"
 }
 -------------------------------------------------------------------------------------
