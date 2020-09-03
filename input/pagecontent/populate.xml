@@ -385,8 +385,8 @@
       additional queries that are based on itemPopulationContext values.</li>
     <li>
       For <a href="#mode">Full Population</a>, use the <a href="StructureDefinition-sdc-questionnaire-initialExpression.html">questionnaire-initialExpression</a> to
-      cause the initial answer for the question to be set to the specified expression.  This should always be a FHIRPath that resolves to an item of the
-      appropriate type unless the element has a type of Reference, in which case the expression can be a FHIR query - and the item will be populated with a
+      cause the initial answer for the question to be set to the specified expression.  This should always be a FHIRPath or CQL expression that resolves to an item of the
+      appropriate type unless the element has a type of Reference, in which case the expression can ALSO be a FHIR query - and the item will be populated with a
       reference to the resource.  Note, this extension SHALL NOT appear on groups.</li>
     <li>
       For <a href="#mode">Choice Selection</a>, use the <a href="StructureDefinition-sdc-questionnaire-candidateExpression.html">sdc-questionnaire-candidateExpression</a>
@@ -406,8 +406,7 @@
   </p>
   <ul>
     <li>
-      FHIR queries found in any of the variables may contain embedded FHIRPath expressions (surrounded by double curly-braces).  Systems SHALL evaluate and
-      substitute the results of such queries before executing them.</li>
+      FHIR queries found in any of the variables may contain embedded FHIRPath expressions (surrounded by double curly-braces).</li>
     <li>
       If the result of evaluating the FHIRPath expressions is an invalid query, that is an error.  Systems SHOULD log it and continue with population as if the
       query had returned no data.</li>

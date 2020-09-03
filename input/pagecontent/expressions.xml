@@ -430,7 +430,7 @@
   </ul>	  
   <p>
     In addition to the base query syntax, SDC allows the injection of FHIRPath into the query expressions.  This is to allow the queries to take advantage
-    of context when they are invoked.  The FHIRPaths are denoted by surrounding them with double curly-braces (i.e.
+    of context when they are invoked.  Systems SHALL evaluate and substitute the results of such queries before executing them.  The FHIRPaths are denoted by surrounding them with double curly-braces (i.e.
     <code>{% raw %}{{ fhirpath goes here }}{% endraw %}</code>) in the same way expressions are denoted in the
     <a href="https://shopify.github.io/liquid">Liquid</a> templating language.
   </p>
