@@ -130,8 +130,8 @@
           <p>
             In theory, this expression can rely on the values of the answers to child questions or on <a href="#variable">variables</a> calculated from the
             values of other questions, however such questions would have to have initial values (see the discussion below on
-            <a href="#dependencies">dependencies</a>).  Most typically, it will draw on <a href="#launchContext">launchContext</a> and
-            <a href="#itemPopulationContext">itemPopulationContext</a> to populate questionnaire elements based on information available from outside the QuestionnaireResponse.
+            <a href="#dependencies">dependencies</a>).  Most typically, it will draw on <a href="#launchContext">launchContext</a> extension and
+            <a href="#itemPopulationContext">itemPopulationContext</a> extension to populate questionnaire elements based on information available from outside the QuestionnaireResponse.
           </p>
           <p>
             Examples of use for Form Behavior might include defaulting one date or provider in a form to one entered earlier in the form, defaulting a
@@ -197,7 +197,7 @@
       <tr>
         <td colspan="5">
           <p>
-            This is similar to <a href="#candidateExpression">candidateExpression</a>, in that it is also only used when the user is editing the answer for
+            This is similar to <a href="#candidateExpression">candidateExpression</a> extension, in that it is also only used when the user is editing the answer for
             the question associated with the candidateExpression.  However, instead of giving candidate answers that can simply be "selected", this option
             instead presents potentially relevant information.  For example, a question might be "Has the patient been admitted for this or a related condition
             in the past year?".  To help guide the answers, the contextExpression could retrieve a list of admission reasons for that patient for encounters in
@@ -225,7 +225,7 @@
         <td colspan="5">
           <p>
             This expression allows for dynamic calculation of answers to questions as other questions are answered.  It behaves similarly to
-            <a href="#initialExpression">initialExpression</a>, but instead of only setting its value when the QuestionnaireResponse is originally created or
+            <a href="#initialExpression">initialExpression</a> extension, but instead of only setting its value when the QuestionnaireResponse is originally created or
             when a question is enabled, the value updates continuously as the answers to dependent questions change.  This expression will be most commonly
             used for displaying scores, but can be used for any calculated element - patient age (based on current date and birth date), BMI (based on recent
             weight and height), estimated cost (based on selected items and quantities), etc.
@@ -273,7 +273,7 @@
             or disable questions based on data passed in as context or retrieved from queries.
           </p>
           <p>
-            Like <a href="#calculatedExpression">calculatedExpression</a>, enableWhenExpression needs to be evaluated each time any of the answers it
+            Like <a href="#calculatedExpression">calculatedExpression</a> extension, enableWhenExpression needs to be evaluated each time any of the answers it
             depends on changes.  The same event monitoring approach may be appropriate (and even shared).  And the <a href="#dependencies">dependencies</a>
             section will be relevant here as well.
           </p>
@@ -440,7 +440,7 @@
   <pre><code>Observation?code=http://loinc.org|65972-2&amp;date=gt{% raw %}{{today()-7 days}}{% endraw %}&amp;subject={% raw %}{{%subject.id}}{% endraw %}</code></pre>
   <p>
     would return all Observations with the specified LOINC code made in the last week for the specified patient (the %subject variable would likely have been
-    set using <a href="#launchContext">launchContext</a>.)
+    set using <a href="#launchContext">launchContext</a> extension.)
   </p>
   <a name="dependencies"> </a>
   <h4>Dependencies between expressions</h4>
@@ -479,7 +479,7 @@
       element.  It is in scope for all expressions defined in the Questionnaire.</li>
     <li>
       All expressions that specify a 'name' can be accessed by other expressions appearing on the same item or any descendant item as though that
-      name was part of context.  The same is true for the 'name' element in the <a href="#launchContext">launchContext</a>.  For example, a variable
+      name was part of context.  The same is true for the 'name' element in the <a href="#launchContext">launchContext</a> extension.  For example, a variable
       with the name 'score' could be accessed in FHIRPath or CQL using <code>%score</code>.  (Note: It is an error if a questionnaire is designed such
       that there is more than one element in the same scope with a colliding context name.)</li>
   </ul>
