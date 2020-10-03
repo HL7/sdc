@@ -166,10 +166,26 @@
     </resource>
     <resource>
       <reference>
-        <reference value="StructureDefinition/sdc-questionnaire-extract"/>
+        <reference value="StructureDefinition/sdc-questionnaire-extr-obsn"/>
       </reference>
-      <name value="Extractable Questionnaire"/>
-      <description value="Defines elements that allow conversion of a QuestionnaireResponse to a FHIR resource or Bundle of FHIR resources"/>
+      <name value="Extractable Questionnaire - Observation"/>
+      <description value="Defines elements that allow conversion of a QuestionnaireResponse to an Observation resource or Bundle of Observation resources using the Observation-based extraction mechanism"/>
+      <exampleBoolean value="false"/>
+    </resource>
+    <resource>
+      <reference>
+        <reference value="StructureDefinition/sdc-questionnaire-extr-defn"/>
+      </reference>
+      <name value="Extractable Questionnaire - Definition"/>
+      <description value="Defines elements that allow conversion of a QuestionnaireResponse to a FHIR resource or Bundle of FHIR resources using the Definition-based extraction mechanism"/>
+      <exampleBoolean value="false"/>
+    </resource>
+    <resource>
+      <reference>
+        <reference value="StructureDefinition/sdc-questionnaire-extr-smap"/>
+      </reference>
+      <name value="Extractable Questionnaire - StructureMap"/>
+      <description value="Defines elements that allow conversion of a QuestionnaireResponse to a FHIR resource or Bundle of FHIR resources using the StructureMap-based extraction mechanism"/>
       <exampleBoolean value="false"/>
     </resource>
     <resource>

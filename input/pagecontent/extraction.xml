@@ -60,7 +60,7 @@
   <p>
     Like <a href="populate.html">Questionnaire population</a>, extracting data from a QuestionnaireResponse is a complex process involving querying existing
     FHIR data and using more advanced technologies such as FHIRPath and StructureMap.  It's therefore a function that systems may also wish to offload to a
-    separate system.  The <a href="QuestionnaireResponse-extract.html">QuestionnaireResponse extract</a> has been created for this purpose.  It takes in a
+    separate system.  The <a href="OperationDefinition-QuestionnaireResponse-extract.html">QuestionnaireResponse extract</a> has been created for this purpose.  It takes in a
     completed QuestionnaireResponse and returns either an individual FHIR resource or a Bundle of resources, depending on the type of Questionnaire.  The
     operation doesn't post the created resources to a server.  It's up to the client system to determine what action(s) to take with the created
     content.
@@ -89,10 +89,10 @@
     Systems are free to experiment with other extraction mechanisms but cannot expect support for those from other SDC-conformant systems.
   </p>
   <p>
-    The <a href="StructureDefinition-sdc-questionnaire-extract.html">sdc-questionnaire-extract</a> profile includes the data elements and extensions relevant for supporting all
-    these mechanisms.  None of the additional resource elements or extensions are marked as "mustSupport" because there is no expectation that systems will
-    support all (or any of) the different extraction mechanisms.  Instead, each system should choose which approach(es) it wishes to use and support the
-    elements described in that section of the implementation guide.
+    Each mechanism has its own profile that includes the additional resource elements or extensions relevant for supporting a particular mechanism: <a href="StructureDefinition-sdc-questionnaire-extr-obsn.html">SDC Questionnaire Extract - Observation</a>, 
+    <a href="StructureDefinition-sdc-questionnaire-extr-defn.html">SDC Questionnaire Extract - Definition</a>, <a href="StructureDefinition-sdc-questionnaire-extr-smap.html">SDC Questionnaire Extract - Structure Map</a> profiles. Each profile identifies 
+    specific 'must support' elements and extensions that systems that claim to support a specific SDC extraction mechanism SHALL be capable of extracting data, as befits the CapabilityStatement(s) 
+    they claim conformance to. Each system should choose which approach(es) it wishes to use and support based on the elements specified in that profile.
   </p>
   <p>
     Some of these mechanisms make use of FHIR-based queries, FHIRPath and/or CQL as well as extensions that include expressions in one of these languages.
@@ -104,14 +104,15 @@
     This is the simplest of the extraction mechanisms.  It leverages the same data elements as are used for the <a href="populate.html#obs-pop">
     Observation-based population</a> mechanism.  It takes advantage of the fact that most questions in the healthcare space typically
     correspond to the <code>value</code> element of an Observation.  It also takes advantage of the <code>Questionnaire.item.code</code> element that
-    identifies what a concept each question or group corresponds to.
+    identifies what a concept each question or group corresponds to.  The <a href="StructureDefinition-sdc-questionnaire-extr-obsn.html">SDC Questionnaire Extract - Observation</a> profile 
+    has been created to support this mechanism. 
   </p>
   <p>
     To use this method:
   </p>
   <ol>
     <li>Include the <code>item.code</code> element on each question to be extracted.  Typically, this will be a LOINC code, but in some
-      jurisdictions/environments, SNOMED CT or other codes may be relevant</li>
+      jurisdictions/environments, SNOMED CT or other codes may be relevant.</li>
     <li>Groups can also have an <code>item.code</code> present - this might represent the code of the a panel or the Observation.code of an Observation with no
       value but with multiple <code>Observation.component</code> elements.  Child question items can then assert the <code>item.code</code> of the "member-of"
       Observations or the <code>Observation.component.code</code> values.</li>
@@ -279,7 +280,7 @@
   <p>
     This approach to extraction is more generic.  It supports extracting data into any type of FHIR resource rather than being limited to only Observation.
     It also supports more Observation data elements than can be gathered using the Observation element - for example, explicit effective time ranges,
-    interpretations, comments, etc.
+    interpretations, comments, etc.  The <a href="StructureDefinition-sdc-questionnaire-extr-defn.html">SDC Questionnaire Extract - Definition</a> profile has been created to support this mechanism.
   </p>
   <p>
     To use this method:
@@ -354,7 +355,8 @@
     It allows significant transformation of data, including code translations when generating output resources.  It also allows the conversion process
     between data and Questionnaire to be maintained independently and to draw on shared sources across Questionnaires.  This can be an advantage in
     certain environments where the content of the questionnaire may need tight control, but the data environment can be more dynamic.  This comes at the cost
-    of requiring expertise in the <a href="{{site.data.fhir.path}}mapping-language.html">FHIR mapping language</a>, which is not (yet?) a common skill.
+    of requiring expertise in the <a href="{{site.data.fhir.path}}mapping-language.html">FHIR mapping language</a>, which is not (yet?) a common skill. 
+    The <a href="StructureDefinition-sdc-questionnaire-extr-smap.html">SDC Questionnaire Extract - StructureMap</a> profile has been created to support this mechanism.
   </p>
   <p>
     To use this method:
