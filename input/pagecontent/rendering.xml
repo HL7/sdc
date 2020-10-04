@@ -141,7 +141,7 @@
             questions and groups.  It allows for answers to be captured behind the scenes using the <a href="behavior.html">behavior</a> and/or
             <a href="populate.html">population</a> mechanisms.  For example, hidden scores, hidden source data, hidden data needed for
             <a href="extraction.html">extraction</a>.  If an item is hidden, then all items below it will be hidden as well.  Hidden items are automatically
-            treated as <a href="#readOnly">readOnly</a> - users can't edit what they can't see or navigate to.
+            treated as <a href="#readOnly">readOnly</a> - users cannot edit what they cannot see or navigate to.
           </p>
         </td>
       </tr>
@@ -491,7 +491,7 @@
           <p>
             If an element is read-only, it means the user cannot adjust the value which <i>can</i> mean a change to the control used to render the form.
             Technically there's no need to display a text box, drop-down or other controls if the value cannot be changed.  However, it's generally still
-            desirable to use the same controls so that it's clear that the question answer is still an "answer" and so that read-only information doesn't
+            desirable to use the same controls so that it's clear that the question answer is still an "answer" and so that read-only information does not
             stand out significantly from other answers.  However, there should still be a visual indicator that the element cannot be edited.  This might
             include changing the background color, changing the font for the question text or some similar visual cue.
           </p>
@@ -547,8 +547,8 @@
   <ul>
     <li>Questionnaires will be rendered by a variety of tools on a variety of devices.  Not all tools will necessarily support all extensions - or even
       all core elements.  Authors should recognize this and only depend on rendering extensions if they're confident that all systems using the Questionnaire
-      will support the needed extensions.  Note that this doesn't mean that extensions can't be used, only that the Questionnaire should be safe to use if
-      extensions that the author isn't certain will be supported are not supported.  For example, avoid referring to 'the red text' if you're not certain
+      will support the needed extensions.  Note that this does not mean that extensions cannnot be used, only that the Questionnaire should be safe to use if
+      extensions that the author is not certain will be supported are not supported.  For example, avoid referring to 'the red text' if you're not certain
       the text will be rendered as red (and that those who are color-impaired will have an alternative mechanism of recognizing the text as 'red').</li>
     <li>Tools that use HTML to render forms should consider disabling browser-based auto-completion unless such behavior is desired</li>
   </ul>

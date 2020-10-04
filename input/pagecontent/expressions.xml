@@ -13,7 +13,7 @@
   <ul>
     <li>
       <code>description</code> provides a human-readable explanation of what the expression is doing.  This is development documentation.  While
-      not required, it's strongly encouraged unless the expression is so simple there won't be any question as to its intent and function.</li>
+      not required, it's strongly encouraged unless the expression is so simple there will not be any question as to its intent and function.</li>
     <li>
       <code>name</code> allows the result of the expression to be referenced within other expressions.  Whether this is necessary depends on the context
     </li>
@@ -39,7 +39,7 @@
   <h3>Expression Extensions</h3>
   <p>
     Expressions are introduced into Questionnaires using extensions - none of the 'core' data elements of Questionnaire make use of extensions because they're
-    considered an 'advanced' capability that aren't currently supported by a large portion of the systems that make use of the Questionnaire resource.  The
+    considered an 'advanced' capability that are not currently supported by a large portion of the systems that make use of the Questionnaire resource.  The
     extensions that make use of expressions are shown in the table below.  Columns are interpreted as follows:
   </p>
   <ul>
@@ -57,7 +57,7 @@
     <li>
       <b>Use Cases</b>: Indicates which of the SDC use-cases make use of the extension: <a href="behavior.html">Form Behavior</a> (behavior),
       <a href="populate.html">Questionnaire Population</a> (population), and/or <a href="extraction.html">Data Extraction</a> (extraction).
-      Other SDC use-cases don't generally have a need for the expression elements.</li>
+      Other SDC use-cases do not generally have a need for the expression elements.</li>
   </ul>
   <p>
     Beneath each extension row is an explanation of the purpose of the extension and guidance on its use.
@@ -93,7 +93,7 @@
               questionnaire response that will then be used in calculations on subsequent groups.)</li>
             <li>It allows a calculation to be done closer to the root of the questionnaire response or at the root of the questionnaire response where there
               is access to more of or all the answers from the questionnaire response.  The calculated value might then be used as the answer to a descendant
-              question.  (Expressions can't access answers that aren't descendants of the current node.)</li>
+              question.  (Expressions cannot access answers that are not descendants of the current node.)</li>
           </ul>
           <p>
             The content type of a variable can be pretty much anything.  It can be a collection or an individual item.  It can be a simple element, a complex
@@ -118,7 +118,7 @@
             This expression serves the same purpose as the initial.value on Questionnaire.item, except that rather than specifying a fixed value, the value is
             calculable. Like initial.value, initialExpression is evaluated only once. The value is set on initial creation of the QuestionnaireResponse or upon the question first becoming enabled.
             NOTE: This implementation guide does not prohibit lazy initialization (e.g., delayed calculation of an answer, delayed initialization of a field, etc.),
-            but Questionnaire authors shouldn't assume implementors will use lazy initialization.
+            but Questionnaire authors should not assume implementors will use lazy initialization.
           </p>
           <p>
             If used for a readOnly and/or hidden element, initialExpression essentially calculates a 'fixed value' for the element.  If used for an editable element,
@@ -161,7 +161,7 @@
         <td colspan="5">
           <p>
             This extension is used to support data entry.  It is only invoked when the user is entering/editing the answer for the question
-            linked to the candidateExpression.  It is used when a <a href="populate.html">population</a> process can't determine the specific
+            linked to the candidateExpression.  It is used when a <a href="populate.html">population</a> process cannot determine the specific
             value to fill in to a form (like when an answer depends on answers to other questions that are unknown at the population phase),
             but it can identify a list of candidates to choose from.  For example, forms might ask for relevant co-morbidities, other practitioners
             to inform, etc.  The specific answers require human decision-making, but this expression can provide a list of initial candidates based
@@ -237,7 +237,7 @@
           </p>
           <p>
             In most cases, 'calculated' answers should be marked as 'readOnly', however in some cases it may be legitimate to override a calculated element,
-            for example if the calculation can't be made due to non-available information, but the user still knows the calculated value. This statement applies
+            for example if the calculation cannot be made due to non-available information, but the user still knows the calculated value. This statement applies
             to any context information of any sort. [For example, it might be possible to enter an age but not a date of birth.  If a user has edited a calculated value,
             it should no longer be changed when other answers in the questionnaire response change.  When loading a previously persisted QuestionnaireResponse,
             the determination of whether a user has edited the calculated field can be determined by whether the calculated value differs from invoking the
@@ -448,7 +448,7 @@
     Expressions will often have dependencies on other expressions.  For example, a <a href="#calculatedExpression">calculatedExpression</a> might depend
     on <a href="#variable">variables</a> that in turn depend on the answers to other questions which might themselves have
     <a href="#initialExpression">initialExpressions</a> which might rely on <a href="#itemPopulationContext">itemPopulationContext</a> queries that in turn have embedded
-    FHIRPaths that reference elements defined in <a href="#launchContext">launchContext</a>.  If care isn't taken, it's possible to construct a
+    FHIRPaths that reference elements defined in <a href="#launchContext">launchContext</a>.  If care is not taken, it's possible to construct a
     questionnaire where the value of an answer depends indirectly on itself, or where filling out an answer disables the question being answered or other
     inappropriate behavior.  Questionnaire rendering systems should check for these situations and gracefully handle them by raising appropriate error messages
     rather than crashing or locking in an endless loop.
@@ -493,10 +493,10 @@
   <a name="missinginfo"> </a>
   <h3>Missing information</h3>
   <p>
-    Sometimes information needed for an expression won't be available.  Perhaps the system can't pass encounter information - or maybe the
+    Sometimes information needed for an expression will not be available.  Perhaps the system can't pass encounter information - or maybe the
     form is being filled in outside the context of an encounter at all.  Perhaps a query results in an error because of a server issue or perhaps the user
-    or system filling in the questionnaire doesn't have permission to access the relevant data.  Systems should fail gracefully in such situations.
+    or system filling in the questionnaire does not have permission to access the relevant data.  Systems should fail gracefully in such situations.
     Populated or calculated elements can be left empty.  Extracted elements can be omitted.  If control logic such as enableWhen is impacted, either display
-    a helpful error message or permit entry of potentially relevant information if it can't be determined whether the data should be allowed or not.
+    a helpful error message or permit entry of potentially relevant information if it cannot be determined whether the data should be allowed or not.
   </p>
 </div>

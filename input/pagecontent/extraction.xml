@@ -43,7 +43,7 @@
       This can be supported by storing the id as a <a href="{{site.data.fhir.path}}extension-questionnaire-hidden.html">hidden</a> question not shown to the
       user.  Note that this is only relevant for the definition-based and StructureMap-based approaches. It is not relevant for the Observation-based approach.</li>
     <li>
-      Sometimes the author interested in making a Questionnaire "extractable" doesn't have authority to make changes to the "official" Questionnaire.  In other
+      Sometimes the author interested in making a Questionnaire "extractable" does not have authority to make changes to the "official" Questionnaire.  In other
       cases, there might be one official Questionnaire, but a need to create extracted resources that comply with different sets of profiles - and thus a need
       for different metadata in the Questionnaire to support the extraction process.  In this case, rather than basing the extraction on the original
       Questionnaire, it can be based on a derived Questionnaire - one that has a <code>Questionnaire.derivedFrom</code> relationship to the same canonical URL
@@ -62,7 +62,7 @@
     FHIR data and using more advanced technologies such as FHIRPath and StructureMap.  It's therefore a function that systems may also wish to offload to a
     separate system.  The <a href="OperationDefinition-QuestionnaireResponse-extract.html">QuestionnaireResponse extract</a> has been created for this purpose.  It takes in a
     completed QuestionnaireResponse and returns either an individual FHIR resource or a Bundle of resources, depending on the type of Questionnaire.  The
-    operation doesn't post the created resources to a server.  It's up to the client system to determine what action(s) to take with the created
+    operation does not post the created resources to a server.  It's up to the client system to determine what action(s) to take with the created
     content.
   </p>
   <p>
@@ -226,7 +226,7 @@
     <li>
       <code>Observation.effectiveDateTime</code> - set to <code>QuestionnaireResponse.authored</code>.<br/>
       <br/>Note, this is an inference.  It is important that the question text implies that the value is 'current' not 'historical' for this to be safe -
-      otherwise don't include the <a href="StructureDefinition-sdc-questionnaire-observationLinkPeriod.html">questionnaire-observationLinkPeriod</a> extension 
+      otherwise do not include the <a href="StructureDefinition-sdc-questionnaire-observationLinkPeriod.html">questionnaire-observationLinkPeriod</a> extension 
 	  that marks the question as appropriate for population and extraction.</li>
     <li>
       <code>Observation.issued</code> - set to <code>QuestionnaireResponse.authored</code>

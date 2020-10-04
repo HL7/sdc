@@ -43,7 +43,7 @@
       profiles.
     </li>
     <li>
-      Even if data exists and is exposed in accordance with agreed profiles, that doesn't necessarily mean that the source system will have the necessary query
+      Even if data exists and is exposed in accordance with agreed profiles, that does not necessarily mean that the source system will have the necessary query
       capabilities to find and appropriately filter the data.  While some degree of filtering is possible using FHIRPath or CQL, loading thousands or tens of
       thousands of records for local filtering by the client is likely to pose a challenge from the perspective of performance, memory usage, access control logging, etc.
       National and other implementation guides that set minimum expectations on search for capabilities on clinical and administrative systems can be helpful
@@ -53,7 +53,7 @@
       Any queries performed to populate the form will need to be subject to appropriate access controls.  Users SHALL NOT be able to see information populated
       into a form that they would not be able to see when navigating the source system directly (I.e. it is a mandatory requirement that the population process
       not populate information in the form if the user completing the questionnaire would not have permission to see that data if they queried it directly).  In some cases, this means that an answer in a form might not
-      be populated even though the data exists - because the user doesn't have authority to see that data.
+      be populated even though the data exists - because the user does not have authority to see that data.
     </li>
     <li>
       <p>
@@ -91,7 +91,7 @@
       that information will be removed on submission.
     </li>
     <li>
-      Sometimes the author interested in making a Questionnaire "populatable" doesn't have authority to make changes to the "official" Questionnaire.  In other
+      Sometimes the author interested in making a Questionnaire "populatable" does not have authority to make changes to the "official" Questionnaire.  In other
       cases, there might be one official Questionnaire, but a need to populate it from resources that comply with different sets of profiles (e.g. that comply
       with requirements from different countries) - and thus a need  for different metadata in the Questionnaire to support the population process.  In this
       case, rather than invoking the population on the original Questionnaire, it can be done on a derived Questionnaire - one that has a
@@ -244,7 +244,7 @@
       To signal that the item.code is actually intended for use in population (as opposed to just providing metadata about the Questionnaire item, the
       <a href="StructureDefinition-sdc-questionnaire-observationLinkPeriod.html">questionnaire-observationLinkPeriod</a> extension must also be included).  This extension
       indicates the period of time over which to search for matching observations.  If there are no observations within that window, no population will occur.
-      For observations where how recent they are doesn't matter (e.g. blood type), simply set the duration to a long period of time - e.g. 200 years.</li>
+      For observations where how recent they are does not matter (e.g. blood type), simply set the duration to a long period of time - e.g. 200 years.</li>
     <li>
       Multiple <code>item.code</code> elements might be present.  If so, each are considered an acceptable Observation.code for the desired population
       value.</li>
@@ -317,7 +317,7 @@
   <ul>
     <li>
       If the units of measure are constrained for the Questionnaire item, the system can choose to convert the data (if the units are coded and the
-      conversion factor is known), grab the most recent Observation within the window where conversion isn't necessary, or choose not to populate.</li>
+      conversion factor is known), grab the most recent Observation within the window where conversion is not necessary, or choose not to populate.</li>
     <li>
       Question items being populated from Observations of type <code>Quantity</code> SHOULD also have a type of Quantity.  However, they MAY have a type of
       <code>integer</code> or <code>decimal</code> provided that the <a href="{{site.data.fhir.path}}extension-questionnaire-unit.html">questionnaire-unit</a>
@@ -327,7 +327,7 @@
     <li>
       Systems SHALL filter to only look at Observations with a status of 'final', 'amended', or 'corrected'.</li>
     <li>
-      Systems SHALL check for the presence of the Observation.focus element and exclude elements where the focus is not the patient (e.g. we don't want the
+      Systems SHALL check for the presence of the Observation.focus element and exclude elements where the focus is not the patient (e.g. we do not want the
       heart rate of a fetus if trying to populate the heart rate of the mother.)</li>
     <li>
       If a parent item (group or question) already has established the context of a specific Observation, when populating child items, matching observations
@@ -441,7 +441,7 @@
       active, etc.</li>
     <li>
       Take care to ensure that variable names as set by questionnaire-launchContext, variable and questionnaire-itemPopulationContext remain unique within the hierarchy
-      of the questionnaire.  It's technically ok to have sibling items define the same variable name - they won't collide.  However, if doing so, make sure
+      of the questionnaire.  It's technically ok to have sibling items define the same variable name - they will not collide.  However, if doing so, make sure
       it's being used for the same purpose to avoid confusion.</li>
     <li>
       If the same context are used for both <a href="StructureDefinition-sdc-questionnaire-itemPopulationContext.html">questionnaire-itemPopulationContext</a> and

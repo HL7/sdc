@@ -144,7 +144,7 @@
           </p>
           <p>
             The minValue SHALL be less than or equal to the <a href="#maxValue">maxValue</a>, if both are specified. If min and/or max are calculated values,
-            care should be taken to ensure that they can't ever conflict.  I.e. It should never be possible for calculated max to be less than calculated min.
+            care should be taken to ensure that they cannot ever conflict.  I.e. It should never be possible for calculated max to be less than calculated min.
             If this does occur, systems SHALL prohibit a value from being specified for the element for so long as the conflict exists.  If the question is required,
             this may mean that it is not possible to mark the QuestionnaireResponse as "completed".
           </p>
@@ -170,7 +170,7 @@
           </p>
           <p>
             The minValue SHALL be less than or equal to the <a href="#maxValue">maxValue</a>, if both are specified. If min and/or max are calculated values,
-            care should be taken to ensure that they can't ever conflict.  I.e. It should never be possible for calculated max to be less than calculated min.
+            care should be taken to ensure that they cannot ever conflict.  I.e. It should never be possible for calculated max to be less than calculated min.
             If this does occur, systems SHALL prohibit a value from being specified for the element for so long as the conflict exists.  If the question is required,
             this may mean that it is not possible to mark the QuestionnaireResponse as "completed".
           </p>
@@ -226,7 +226,7 @@
         <td colspan="5">
           <p>
             This extension is also used for questions with type of 'attachment'.  It allows specifying an upper bound on the size of the attachment in bytes.
-            This can help ensure that data embedded in the QuestionnaireResponse is 'manageable' and that a user doesn't accidentally attach a photo, document
+            This can help ensure that data embedded in the QuestionnaireResponse is 'manageable' and that a user does not accidentally attach a photo, document
             or something else that's unreasonably large (10s of megabytes or more).
           </p>
         </td>
@@ -272,7 +272,7 @@
             the value set expansion's 'code' elements.)  However, it allows for the set of allowed codes to be maintained as an expression such as "all
             medications from SNOMED CT", automatically adjusting as the set of matching codes changes based on the evolution of the code system.  As such,
             answerValueSet is appropriate when the set of codes is large or potentially dynamic and enumerating all the possible choices within the
-            Questionnaire doesn't make sense.  To have tighter control of the set of answers allowed for the question, consider making the reference to the
+            Questionnaire does not make sense.  To have tighter control of the set of answers allowed for the question, consider making the reference to the
             ValueSet <a href="{{site.data.fhir.path}}references.html#canonical">version-specific</a>.  To really lock down the set of codes, the value
             set should itself tie itself to specific versions of the underlying code systems and/or specify a
             <a href="{{site.data.fhir.path}}valueset-definitions.html#ValueSet.compose.lockedDate">lockedDate</a>.
@@ -358,7 +358,7 @@
         <td colspan="5">
           <p>
             For groups, a 'repeats' value of 'true' means that the QuestionnaireResponse can contain multiple item repetitions that correspond to the same
-            linkId.  For questions, it means that the question with the same linkId can have more than one answer.  (I.e. there won't be multiple repetitions
+            linkId.  For questions, it means that the question with the same linkId can have more than one answer.  (I.e. there will not be multiple repetitions
             of the question item in the QuestionnaireResponse, but instead the one corresponding question item can have multiple answers.  Display items should
             never be marked as 'repeats' and if they are, it has no meaning.  This element can also impact <a href="rendering.html#repeats">rendering</a>.
             To constrain the minimum number of elements permitted for a repeating element, see the <a href="#minOccurs">minOccurs</a> extension.
@@ -676,7 +676,7 @@
           <p>
             Described in detail <a href="expressions.html#variable">here</a>.  This extension allows the calculation of information based on descendant
             question answers (and other variables or <a href="#launchContext">launchContext</a> elements) that can then be referenced by extensions on
-            other items that don't have the same scope - and thus don't have access to the same question answers.
+            other items that do not have the same scope - and thus don't have access to the same question answers.
           </p>
         </td>
       </tr>
@@ -745,7 +745,7 @@
   <a name="Other"> </a>
   <h4>Other Control</h4>
   <p>
-    These are additional elements and extensions relevant to controlling the completion of the QuestionnaireResponse that don't fit into the previous
+    These are additional elements and extensions relevant to controlling the completion of the QuestionnaireResponse that do not fit into the previous
     categories.
   </p>
   <table class="grid">
@@ -799,7 +799,7 @@
             QuestionnaireResponse
           </p>
           <p>
-            Note that 'initial' doesn't have to specify all properties.  For example, it can be used to select a default unit of measure for a quantity,
+            Note that 'initial' does not have to specify all properties.  For example, it can be used to select a default unit of measure for a quantity,
             or potentially (depending on user interface), a default media type for an attachment.  To do this, simply specify the property being defaulted
             (e.g. Quantity.code and Quantity.system) while omitting the remainder.
           </p>
