@@ -104,7 +104,7 @@
   <a name="service"> </a>
   <h3>Pre-population service</h3>
   <p>
-    Populating a QuestionnaireResponse is a complex task.  The system must be able to query resources, use FHIRPath to extract and potentially calculate
+    Populating a QuestionnaireResponse is a complex task.  The system must be able to query resources, use FHIRPath or CQL to extract and potentially calculate
     relevant data elements, manage conditionality rules around enableWhen as part of the population process, etc.  As a result, some client systems might
     prefer to offload the responsibility for handling pre-population of a form to a separate system.  The FHIR specification defines a set of services that can
     be used to provide a variable degree of offloading - from just handling the population aspect through to handling the rendering of the form and interactive
@@ -341,8 +341,8 @@
       The same data elements used to populate a QuestionnaireResponse from Observations can also be used to generate/update Observations from a completed
       Questionnaire.  See the <a href="extraction.html#obs-extract">Extraction</a> page of this implementation guide for more information.</li>
     <li>
-      This Observation-based population mechanism can be used in parallel with the <a href="#exp-pop">FHIRPath</a> mechanism described below - i.e. some elements might be populated from
-      Observation.value elements based on the <code>item.code</code> while other questions in the same form might be populated based on queries and FHIRPaths
+      This Observation-based population mechanism can be used in parallel with the <a href="#exp-pop">Expression-based</a> mechanism described below - i.e. some elements might be populated from
+      Observation.value elements based on the <code>item.code</code> while other questions in the same form might be populated based on queries, FHIRPaths and/or CQL 
       specified in the form.</li>
     <li>
       This mechanism only supports <a href="#mode">Full Population</a>.  It does not work for other modes.</li>
@@ -371,7 +371,7 @@
       Include the <a href="StructureDefinition-sdc-questionnaire-launchContext.html">questionnaire-launchContext</a> extension to identify any contextual information
       that needs to be passed into the population process.  Typical contexts would be the Patient or Encounter resources in whose context the questionnaire is
       being completed, but other elements are also possible (e.g. an AdverseEvent if performing an adverse event report).  These 'context' elements will be
-      available as FHIRPath variables for use in subsequent steps.</li>
+      available as expression variables for use in subsequent steps.</li>
     <li>
       Use the <a href="{{site.data.fhir.path}}extension-variable.html">variable</a> extension to query for any additional data required, possibly based on
       context variables set in the previous step, and/or other variable extensions.  (NOTE: questionnaire-launchContext elements are evaluated first, then all
@@ -488,7 +488,7 @@
   <p>
     The <a href="{{site.data.fhir.path}}structuremap.html">StructureMap</a> approach is the most sophisticated approach of the three - and the most powerful.
     It allows iteration of groups based on repeating elements within resources, supports concept translation using structure maps and provides access to
-    transformation capabilities not available with the FHIRPath approach.  It also allows the conversion process between data and Questionnaire to be
+    transformation capabilities not available with the Expression-based approach.  It also allows the conversion process between data and Questionnaire to be
     maintained independently and to draw on shared sources across Questionnaires.  This can be an advantage in certain environments where the content of the
     questionnaire may need tight control, but the data environment can be more dynamic.  This comes at the cost of requiring expertise in the
     <a href="{{site.data.fhir.path}}mapping-language.html">FHIR mapping language</a>, which is not (yet?) a common skill.
@@ -498,10 +498,10 @@
   </p>
   <ol>
     <li>
-      As done for the FHIRPath approach, include the <a href="StructureDefinition-sdc-questionnaire-launchContext.html">questionnaire-launchContext</a> extension to
+      As done for the Expression-based approach, include the <a href="StructureDefinition-sdc-questionnaire-launchContext.html">questionnaire-launchContext</a> extension to
       identify any contextual information that needs to be passed into the population process.  Typical contexts would be the Patient or Encounter resources in
       whose context the questionnaire is being completed, but other elements are also possible (e.g. an AdverseEvent if performing an adverse event report).
-      These 'context' elements will be available as FHIRPath variables for use in subsequent steps.</li>
+      These 'context' elements will be available as expression variables for use in subsequent steps.</li>
     <li>
       Include the <a href="StructureDefinition-sdc-questionnaire-sourceQueries.html">sdc-questionnaire-sourceQueries</a> extension which SHALL point to a
       <a href="{{site.data.fhir.path}}http.html#transaction">Batch</a> consisting of one or more queries to execute.  Prior to executing, FHIRPaths embedded in
