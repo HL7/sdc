@@ -169,7 +169,59 @@
 			a dynamic limit.  For example, ensuring that a date of birth will result in a minimum age by setting maxValue with an expression of 'today() - 18 years'.
           </p>
           <p>
-            The minValue SHALL be less than or equal to the <a href="#maxValue">maxValue</a>, if both are specified. If min and/or max are calculated values,
+            The <a href="#minValue">minValue</a> SHALL be less than or equal to the maxValue, if both are specified. If min and/or max are calculated values,
+            care should be taken to ensure that they cannot ever conflict.  I.e. It should never be possible for calculated max to be less than calculated min.
+            If this does occur, systems SHALL prohibit a value from being specified for the element for so long as the conflict exists.  If the question is required,
+            this may mean that it is not possible to mark the QuestionnaireResponse as "completed".
+          </p>
+        </td>
+      </tr>
+      <tr>
+        <td>
+          <a name="minQuantity"> </a>
+          <a href="StructureDefinition-sdc-questionnaire-minQuantity.html">minQuantity</a>
+        </td>
+        <td>SDC</td>
+        <td>Quantity</td>
+        <td>Quantity</td>
+        <td><a href="examples.html#min-maxQuantity">example</a></td>
+      </tr>
+      <tr>
+        <td colspan="5">
+          <p>
+            Same as <a href="#minValue">minValue</a> but for Quantity data types, it allows establishing the lower bound for an answer.  Unlike straightforward comparisons 
+            with simple quantitative types, when performing the min and/or max checks for Quantity types, the answer.valueQuantity needs to be converted to the same units
+            as the min/maxQuantity unit prior to comparison.  This extension must only be used if the set of permitted units is constrained to UCUM codes.
+          </p>
+          <p>
+            The <a href="#minQuantity">minQuantity</a> SHALL be less than or equal to the maxQuantity, if both are specified.  This extension can be used together with 
+            the <a href="#cqf-calculatedValue">cqf-calculatedValue</a> extension to establish a dynamic limit.  If min and/or max are calculated values,
+            care should be taken to ensure that they cannot ever conflict.  I.e. It should never be possible for calculated max to be less than calculated min.
+            If this does occur, systems SHALL prohibit a value from being specified for the element for so long as the conflict exists.  If the question is required,
+            this may mean that it is not possible to mark the QuestionnaireResponse as "completed".
+          </p>
+        </td>
+      </tr>
+      <tr>
+        <td>
+          <a name="maxQuantity"> </a>
+          <a href="StructureDefinition-sdc-questionnaire-maxQuantity.html">maxQuantity</a>
+        </td>
+        <td>SDC</td>
+        <td>Quantity</td>
+        <td>Quantity</td>
+        <td><a href="examples.html#min-maxQuantity">example</a></td>
+      </tr>
+      <tr>
+        <td colspan="5">
+          <p>
+            Same as <a href="#maxValue">maxValue</a> but for Quantity data types, it allows establishing the upper bound for an answer.  Unlike straightforward comparisons 
+            with simple quantitative types, when performing the min and/or max checks for Quantity types, the answer.valueQuantity needs to be converted to the same units
+            as the min/maxQuantity unit prior to comparison.  This extension must only be used if the set of permitted units is constrained to UCUM codes.
+          </p>
+          <p>
+            The minQuantity SHALL be less than or equal to the <a href="#maxQuantity">maxQuantity</a>, if both are specified.  This extension can be used together with 
+            the <a href="#cqf-calculatedValue">cqf-calculatedValue</a> extension to establish a dynamic limit.  If min and/or max are calculated values,
             care should be taken to ensure that they cannot ever conflict.  I.e. It should never be possible for calculated max to be less than calculated min.
             If this does occur, systems SHALL prohibit a value from being specified for the element for so long as the conflict exists.  If the question is required,
             this may mean that it is not possible to mark the QuestionnaireResponse as "completed".

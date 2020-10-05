@@ -2187,6 +2187,91 @@ i.fa {
   </div>
 </div>
 
+<a name="min-maxQuantity"></a>
+<h4>Using minQuantity and maxQuantity</h4>
+<p>To restrict the answer to range from 10 to 100 kilograms.</p>
+<div class="tabs">
+  <div class="tab">
+    <input type="radio" id="tab-range-min-max-4" name="tab-range-min-max-group-2" checked="true"></input>
+    <label for="tab-range-min-max-4">Sample Question</label>
+    <div class="content-in-tab">
+      <p>Body Weight <input id="linkitem-2.8-input" type="text"/>
+          <select id="linkitem-2.8-option" name="activity">
+            <option value="kg">kg</option>
+            <option value="lb_av">lb_av</option>
+            <option value="g">g</option>
+          </select></p>
+    </div> 
+  </div>
+  <div class="tab">
+    <input type="radio" id="tab-range-min-max-5" name="tab-range-min-max-group-2"></input>
+    <label for="tab-range-min-max-5">JSON</label>
+    <div class="content-in-tab">
+      <textarea style="border:none" class="xml">
+        "item": [
+          {
+            "extension": [
+              {
+                "url": "http://hl7.org/fhir/StructureDefinition/questionnaire-unitValueSet",
+                "valueCanonical": "http://hl7.org/fhir/ValueSet/ucum-bodyweight"
+              },
+              {
+                "url": "http://hl7.org/fhir/uv/sdc/StructureDefinition/sdc-questionnaire-minQuantity",
+                "valueQuantity": {
+                  "value": 10,
+                  "system": "http://unitsofmeasure.org",
+                  "code": "kg"
+                }
+              },
+              {
+                "url": "http://hl7.org/fhir/uv/sdc/StructureDefinition/sdc-questionnaire-maxQuantity",
+                "valueQuantity": {
+                  "value": 100,
+                  "system": "http://unitsofmeasure.org",
+                  "code": "kg"
+                }
+              }
+            ],
+            "linkId": "2.8.b",
+            "text": "Body Weight",
+            "type": "quantity"
+          }
+        ]
+      </textarea>
+    </div> 
+  </div>
+  <div class="tab">
+    <input type="radio" id="tab-range-min-max-6" name="tab-range-min-max-group-2"></input>
+    <label for="tab-range-min-max-6">XML</label>
+    <div class="content-in-tab">
+      <textarea style="border:none" class="xml">
+        <item>
+          <extension url="http://hl7.org/fhir/StructureDefinition/questionnaire-unitValueSet">
+            <valueCanonical value="http://hl7.org/fhir/ValueSet/ucum-bodyweight"/>
+          </extension>
+          <extension url="http://hl7.org/fhir/uv/sdc/StructureDefinition/sdc-questionnaire-minQuantity">
+            <valueQuantity> 
+              <value value="10"/> 
+              <system value="http://unitsofmeasure.org"/> 
+              <code value="kg"/> 
+            </valueQuantity> 
+          </extension>
+          <extension url="http://hl7.org/fhir/uv/sdc/StructureDefinition/sdc-questionnaire-maxQuantity">
+            <valueQuantity> 
+              <value value="100"/> 
+              <system value="http://unitsofmeasure.org"/> 
+              <code value="kg"/> 
+            </valueQuantity> 
+          </extension>
+          <linkId value="2.8.b"/>
+          <text value="Body Weight"/>
+          <type value="quantity"/>
+        </item>
+      </textarea>
+    </div> 
+  </div>
+</div>
+
 <a name="mimetype-maxsize"></a>
 <h4>Using mimeType and maxSize</h4>
 <p>To only allow a JPG or PDF attachment, up to 1Mb. </p>  

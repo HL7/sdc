@@ -464,6 +464,22 @@
       <description value="Indicates that the child items of an item are displayed in collapsible form (either collapsed or expanded)"/>
       <exampleBoolean value="false"/>
     </resource>
+    <resource>
+      <reference>
+        <reference value="StructureDefinition/sdc-questionnaire-minQuantity"/>
+      </reference>
+      <name value="Min Quantity"/>
+      <description value="The inclusive lower bound on the range of allowed values for a 'quantity' type question"/>
+      <exampleBoolean value="false"/>
+    </resource>
+    <resource>
+      <reference>
+        <reference value="StructureDefinition/sdc-questionnaire-maxQuantity"/>
+      </reference>
+      <name value="Max Quantity"/>
+      <description value="The inclusive upper bound on the range of allowed values for  a 'quantity' type question"/>
+      <exampleBoolean value="false"/>
+    </resource>
     <!--    <resource>
       <extension url="http://hl7.org/fhir/StructureDefinition/implementationguide-spreadsheet-profile">
         <valueBoolean value="true"/>
