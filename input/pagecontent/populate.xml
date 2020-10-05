@@ -104,7 +104,7 @@
   <a name="service"> </a>
   <h3>Pre-population service</h3>
   <p>
-    Populating a QuestionnaireResponse is a complex task.  The system must be able to query resources, use FHIRPath or CQL to extract and potentially calculate
+    Populating a QuestionnaireResponse is a complex task.  The system must be able to query resources, use FHIRPath or CQL to populate and potentially calculate
     relevant data elements, manage conditionality rules around enableWhen as part of the population process, etc.  As a result, some client systems might
     prefer to offload the responsibility for handling pre-population of a form to a separate system.  The FHIR specification defines a set of services that can
     be used to provide a variable degree of offloading - from just handling the population aspect through to handling the rendering of the form and interactive
@@ -338,7 +338,7 @@
       systems MAY take advantage of this knowledge to populate the answer of a question by retrieving data from resource elements other than <code>
       Observation.value</code> and <code>Observation.component.value</code>.</li>
     <li>
-      The same data elements used to populate a QuestionnaireResponse from Observations can also be used to generate/update Observations from a completed
+      Most of the data elements used to populate a QuestionnaireResponse from Observations can also be used to generate/update Observations from a completed
       Questionnaire.  See the <a href="extraction.html#obs-extract">Extraction</a> page of this implementation guide for more information.</li>
     <li>
       This Observation-based population mechanism can be used in parallel with the <a href="#exp-pop">Expression-based</a> mechanism described below - i.e. some elements might be populated from

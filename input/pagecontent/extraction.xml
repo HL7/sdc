@@ -117,9 +117,9 @@
       value but with multiple <code>Observation.component</code> elements.  Child question items can then assert the <code>item.code</code> of the "member-of"
       Observations or the <code>Observation.component.code</code> values.</li>
     <li>To signal that the item.code is intended for use in extraction (as opposed to just providing metadata about the Questionnaire item), the
-      <a href="StructureDefinition-sdc-questionnaire-observationLinkPeriod.html">questionnaire-observationLinkPeriod</a> extension must also be included.  This extension
-      indicates the period of time over which to search for matching observations.  Note if the Observation-based approach is used for both extraction and population, 
-	  the <a href="StructureDefinition-sdc-questionnaire-observationLinkPeriod.html">questionnaire-observationLinkPeriod</a> applies to both.</li>
+      <a href="StructureDefinition-sdc-questionnaire-observationExtract.html">questionnaire-observationExtract</a> extension must also be included (and set to true).  
+      This extension can be specified either at the root Questionnaire or on an individual question or group item (not a display item) that indicates that the 
+      observation-based approach should be used to extract either that particular item (based on the code present) or all items in the questionnaire (if they have a code present).</li>
     <li>Multiple <code>item.code</code> elements might be present.  If so, each are considered one of the Observation.code Codings in the resulting
       extracted Observation.</li>
   </ol>
@@ -129,12 +129,8 @@
   <pre>
     <code>
 	  &lt;item&gt;
-		&lt;extension url="http://hl7.org/fhir/uv/sdc/StructureDefinition/sdc-questionnaire-observationLinkPeriod"&gt;
-		  &lt;valueDuration&gt;
-			&lt;value value="3"/&gt;
-			&lt;system value="http://unitsofmeasure.org"/&gt;
-			&lt;code value="mo"/&gt;
-		  &lt;/valueDuration&gt;
+		&lt;extension url="http://hl7.org/fhir/uv/sdc/StructureDefinition/sdc-questionnaire-observationExtract"&gt;
+		  &lt;valueBoolean value="true" /&gt;
 		&lt;/extension&gt;
 		&lt;linkId value="code-pop-demo"/&gt;
 		&lt;code&gt;
@@ -171,8 +167,8 @@
   </pre>
   <p>
     When performing the extraction process, the system will create a batch that will contain creates or updates of Observation instances.  It will go through
-    the QuestionnaireResponse and identify all answers for which the corresponding Questionnaire item has a
-    <a href="StructureDefinition-sdc-questionnaire-observationLinkPeriod.html">questionnaire-observationLinkPeriod</a> extension.  For each of those it will then
+    the QuestionnaireResponse and identify all answers marked for extraction (if the corresponding Questionnaire item or the root Questionnaire has a
+    <a href="StructureDefinition-sdc-questionnaire-observationExtract.html">questionnaire-observationExtract</a> extension).  For each of those it will then
     determine whether to create a new observation, update an existing observation or do nothing.  Guidelines for making this decision are as follows:
   </p>
   <table class="grid">
@@ -226,8 +222,8 @@
     <li>
       <code>Observation.effectiveDateTime</code> - set to <code>QuestionnaireResponse.authored</code>.<br/>
       <br/>Note, this is an inference.  It is important that the question text implies that the value is 'current' not 'historical' for this to be safe -
-      otherwise do not include the <a href="StructureDefinition-sdc-questionnaire-observationLinkPeriod.html">questionnaire-observationLinkPeriod</a> extension 
-	  that marks the question as appropriate for population and extraction.</li>
+      otherwise do not include the <a href="StructureDefinition-sdc-questionnaire-observationExtract.html">questionnaire-observationExtract</a> extension 
+	  that marks the question as appropriate for extraction.</li>
     <li>
       <code>Observation.issued</code> - set to <code>QuestionnaireResponse.authored</code>
     </li>
