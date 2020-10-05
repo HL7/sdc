@@ -268,9 +268,11 @@
       <tr>
         <td colspan="5">
           <p>
-            This expression does the same thing as the Questionnaire.item.enableWhen structure, but allows for more complex logic.  It's possible to
-            calculate a score based on the answer to several questions and then enable other questions based on the score.  It's also possible to enable
-            or disable questions based on data passed in as context or retrieved from queries.
+            This expression does the same thing as the Questionnaire.item.enableWhen structure (and is mutually exclusive with it), but allows for more complex logic.
+            (If enableWhen can meet the need, it should be used instead as it will be more broadly supported.) Specifically, enableWhenExpression allows more complex logic 
+            such as support for different types of logic operators (e.g. 'and', 'or', 'not', 'nand', 'nor') among conditions and a mixture of them (e.g. "Enable if Q1=5 and Q2 nand Q3 are true").
+            It also allows for logic to be based on calculations across questions (possibly leveraging <a href="#variable">variable</a>) or even based on values passed in by 
+            <a href="#launchContext">launchContext</a> or queried from outside the questionnaire.
           </p>
           <p>
             Like <a href="#calculatedExpression">calculatedExpression</a> extension, enableWhenExpression needs to be evaluated each time any of the answers it

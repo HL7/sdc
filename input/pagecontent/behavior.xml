@@ -913,12 +913,9 @@
       <tr>
         <td colspan="5">
           <p>
-            This serves the same purpose as <a href="#enableWhen">enableWhen</a> (and is mutually exclusive with it).  It controls whether an item should be
-            'enabled' or not, but can handle more sophisticated circumstances than that extension.  (If enableWhen can meet the need, it should be used
-            instead as it will be more broadly supported.)  Specifically, enableWhenExpression allows more complex logic such as support for different types of logic operators 
-			(e.g. 'and', 'or', 'not', 'nand', 'nor') among conditions and a mixture of them (e.g. "Enable if Q1=5 and Q2 nand Q3 are true").  It also allows for logic 
-			to be based on calculations across questions (possibly leveraging <a href="#variable">variable</a>) or even based on values passed in by 
-			<a href="#launchContext">launchContext</a> or queried from outside the questionnaire (see <a href="expressions.html">Using Expressions</a>).
+            Described in detail <a href="expressions.html#enableWhenExpression">here</a>. This serves the same purpose as <a href="#enableWhen">enableWhen</a>, it controls whether an item should be
+            'enabled' or not, but can handle more sophisticated circumstances than that extension.  For example, it is possible to calculate a score based on the answer to several questions 
+            and then enable other questions based on the score.  It's also possible to enable or disable questions based on data passed in as context or retrieved from queries.
           </p>
         </td>
       </tr>
