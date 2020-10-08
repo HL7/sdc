@@ -179,8 +179,30 @@
             values.  Systems should allow multiple selections in situations where the question is marked as 'repeating' and multiple answers are therefore
             valid, but should only allow one answer for non-repeating questions.
           </p>
-          <p>
+          <p> 
             CandidateExpressions should rarely, if ever, declare a name element.
+          </p>
+        </td>
+      </tr>
+      <tr>
+        <td>
+          <a name="answerExpression"> </a>
+          <a href="StructureDefinition-sdc-questionnaire-answerExpression.html">answerExpression</a>
+        </td>
+        <td>SDC</td>
+        <td>question</td>
+        <td>any</td>
+        <td>population</td>
+      </tr>
+      <tr>
+        <td colspan="5">
+          <p>
+            Just like answerOption and answerValueSet, this is the third mechanism for capturing the allowed set of answers.
+            (This extension is mutually exclusive with the other two mechanisms.)  This expression must evaluate to a collection 
+            of elements with the same type as the item.type or, if the type was Reference, to resources allowed as the referenced type.
+            It can be bound to a <a href="StructureDefinition-sdc-questionnaire-choiceConstraint.html">choiceConstraint</a> 
+            extension to indicate whether the answer is restricted to the allowed choices, could be another answer of a matching type, 
+            or could be a plain string.
           </p>
         </td>
       </tr>

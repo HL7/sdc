@@ -325,7 +325,16 @@
         <reference value="StructureDefinition/sdc-questionnaire-candidateExpression"/>
       </reference>
       <name value="Candidate Answers Expression"/>
-      <description value="A FHIRPath or CQL Expression, or FHIR Query that resolves to a list of candidate answers for the question item or that establishes context for a group item"/>
+      <description value="A FHIRPath or CQL Expression, or FHIR Query that resolves to a list of candidate answers (usually based on other answers in the questionnaire
+      or based on information within the health record) for the question item or that establishes context for a group item"/>
+      <exampleBoolean value="false"/>
+    </resource>
+    <resource>
+      <reference>
+        <reference value="StructureDefinition/sdc-questionnaire-answerExpression"/>
+      </reference>
+      <name value="Answer Expression"/>
+      <description value="An expression (FHIRPath, CQL or FHIR Query) that resolves to a list of permitted answers for a question item."/>
       <exampleBoolean value="false"/>
     </resource>
     <resource>
@@ -486,6 +495,14 @@
       </reference>
       <name value="Max Quantity"/>
       <description value="The inclusive upper bound on the range of allowed values for  a 'quantity' type question"/>
+      <exampleBoolean value="false"/>
+    </resource>
+    <resource>
+      <reference>
+        <reference value="StructureDefinition/sdc-questionnaire-choiceConstraint"/>
+      </reference>
+      <name value="Choice Constraint"/>
+      <description value="Controls what the user is allowed to enter as an answer aside from the answer options provided"/>
       <exampleBoolean value="false"/>
     </resource>
     <!--    <resource>

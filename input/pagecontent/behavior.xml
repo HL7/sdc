@@ -311,7 +311,7 @@
         <td>integer, date, time, string, Coding, Reference</td>
         <td><a href="examples.html#answeroption">example</a></td>
       </tr>
-      <tr>
+     <tr>
         <td colspan="5">
           <p>
             This allows constraining the allowed value for a question item's answer to an enumerated set.  Each answerOption repetition indicates one of the
@@ -319,10 +319,11 @@
             open-choice. The type of the answerOption must match the type of the question. (Coding is used for both choice and open-choice.)
           </p>
           <p>
-            There are two mechanisms to enumerate the permitted answers for a question: this element and the <a href="#answerValueSet">answerValueSet</a>
-            element.  answerValueSet only supports defining values for 'string' and Coding elements.  (For 'string', the allowed values are those found in
-            the value set expansion's 'code' elements.)  However, it allows for the set of allowed codes to be maintained as an expression such as "all
-            medications from SNOMED CT", automatically adjusting as the set of matching codes changes based on the evolution of the code system.  As such,
+            There are three mechanisms to enumerate the permitted answers for a question: this element, the <a href="#answerValueSet">answerValueSet</a>
+            element, and the <a href="#answerExpression">answerExpression</a> extension.  answerValueSet only supports defining values for 'string' and 
+            Coding elements.  (For 'string', the allowed values are those found in the value set expansion's 'code' elements.)  However, it allows for the 
+            set of allowed codes to be maintained as an expression such as "all medications from SNOMED CT", automatically adjusting as the set of matching codes 
+            changes based on the evolution of the code system.  As such,
             answerValueSet is appropriate when the set of codes is large or potentially dynamic and enumerating all the possible choices within the
             Questionnaire does not make sense.  To have tighter control of the set of answers allowed for the question, consider making the reference to the
             ValueSet <a href="{{site.data.fhir.path}}references.html#canonical">version-specific</a>.  To really lock down the set of codes, the value
@@ -332,24 +333,30 @@
           <p>
             <code>answerValueSet</code> also allows for the possibility of sharing a set of answers across multiple questions within a single Questionnaire.
             Sharing the set of allowed answers simplifies maintenance and ensures consistency across questions.  This can be important when representing
-            choices as columns or rows in a table (see <a href="rendering.html#itemControl">itemControl</a>.  If appropriate, the ValueSet can be nested
+            choices as columns or rows in a table (see <a href="rendering.html#itemControl">itemControl</a>).  If appropriate, the ValueSet can be nested
             inside the Questionnaire as a <a href="{{site.data.fhir.path}}references.html#contained">contained</a> resource.  This should only be done if
             the ValueSet is intrinsically tied to the Questionnaire and should only ever be edited in the context of the Questionnaire.  Such ValueSets will
             not be available for use elsewhere.
           </p>
           <p>
-            <code>answerOption</code> works well when there is a small (2 - 20ish) number of choices.  It's the only option if the question type is integer,
+            <code>answerOption</code> works well when there is a small (2 - 20ish) number of choices and if the question type is integer,
             date, time or reference.  The set of options is maintained independently for each question.
           </p>
           <p>
-            <code>answerOption</code> and <code>answerValueSet</code> are mutually exclusive.  They SHALL NOT appear together on the same question.  If
+            The third mechanism for capturing the allowed set of answers is by using the <code>answerExpression</code> extension.  This extension allows
+            specifying a FHIR Query, FHIRPath, or CQL expression that resolves to a list of permitted answers for a question item.  The expression must 
+            evaluate to a collection of elements with the same type as the item.type or, if the type was Reference, to resources allowed as the referenced type.
+            For more details on answerExpression, click <a href="expressions.html#answerExpression">here</a>.
+          </p>
+          <p>
+            These three mechanisms are mutually exclusive.  Only one SHOULD appear on the same question.  If
             <code>answerOption</code> appears, there SHOULD be more than one repetition of it.  A question with a single answerOption will be treated as
             having a single fixed value.
           </p>
           <p>
-            If the set of choices is restricted using either <code>answerOption</code> or <code>answerValueSet</code>, the use of any other
-            <a href="#value-constraint">Value Constraint</a> elements is redundant and confusing.  Therefore, questions that have either 'answerOption' or
-            'answerValueSet' SHALL NOT make use of any of the other Value Constraint extensions.
+            If the set of choices is restricted using any of these three mechanisms, the use of any other <a href="#value-constraint">Value Constraint</a> elements is 
+            redundant and confusing.  Therefore, questions that have  'answerOption', 'answerValueSet' or 'answerExpression' extension SHALL NOT make use of any of the 
+            other Value Constraint extensions.
           </p>
         </td>
       </tr>
@@ -367,6 +374,23 @@
         <td colspan="5">
           <p>
             See discussion above under <a href="#answerOption">answerOption</a>.
+          </p>
+        </td>
+      </tr>
+      <tr>
+        <td>
+          <a name="answerExpression"> </a>
+          <a href="structuredefinition-sdc-questionnaire-answerExpression.html">answerExpression</a>
+        </td>
+        <td>SDC</td>
+        <td>question</td>
+        <td>expression</td>
+        <td><a href="examples.html#answervalueset">example</a></td>
+      </tr>
+      <tr>
+        <td colspan="5">
+          <p>
+            See discussion above under <a href="#answerOption">answerOption</a>. This extension is described in detail <a href="expressions.html#answerExpression">here</a>.  
           </p>
         </td>
       </tr>
