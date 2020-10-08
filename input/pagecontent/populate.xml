@@ -484,6 +484,16 @@
     <li>
       If the units of measure are constrained for the Questionnaire item, the system can choose to convert the data (if the units are coded and the conversion
       factor is known) or choose not to populate.</li>
+    <li>
+      It is possible that answerExpression and initialExpression can both exist.  InitialExpression runs on launch and answerExpression should run whenever the 
+      user interface needs to render the question, the user interacts with the question or during validation.</li>
+    <li>
+      An answerExpresssion and calculatedExpression can both exist and are re-calculated when the source for their expressions change.  
+      If the calculatedExpression is not valid according to the results of the current answerExpression, the QuestionnaireResponse will fail 
+      validation and be unable to be marked as 'completed' until corrected.</li>
+    <li>
+      The result of initialExpression, calculatedExpression and answerExpression must all align with the 'type' of the item they appear 
+      on - e.g. can't have an expression that returns a string if the type is Choice/Coding.</li>
   </ul>
   <a name="map-pop"> </a>
   <h4>StructureMap-based Population</h4>
