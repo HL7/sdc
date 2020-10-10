@@ -27,6 +27,15 @@
     <min value="0"/>
     <max value="1"/>
     <documentation value="A logical questionnaire identifier (i.e. `Questionnaire.identifier`). The server must know the questionnaire or be able to retrieve it from other known repositories."/>
+    <type value="Identifier"/>
+    <searchType value="token"/>
+  </parameter>
+  <parameter>
+    <name value="canonical"/>
+    <use value="in"/>
+    <min value="0"/>
+    <max value="1"/>
+    <documentation value="The canonical identifier for the questionnaire (optionally version-specific)."/>
     <type value="uri"/>
   </parameter>
   <parameter>
