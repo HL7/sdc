@@ -53,6 +53,7 @@
     <max value="1"/>
     <documentation value="The [Questionnaire](http://hl7.org/fhir/R4/questionnaire.html) is provided as a resource reference. Servers may choose not to accept questionnaires in this fashion or may fail if they cannot resolve or access the referenced questionnaire."/>
     <type value="Reference"/>
+    <searchType value="token"/>
     <targetProfile value="http://hl7.org/fhir/StructureDefinition/Questionnaire"/>
   </parameter>
   <parameter>
@@ -62,6 +63,7 @@
     <max value="*"/>
     <documentation value="Resources containing information to be used to help populate the generated HTML form.  These may be FHIR resources or may be binaries containing FHIR documents, CDA documents or other source materials.  Servers might not support all possible source materials and may ignore materials they do not recognize.  (They MAY provide warnings if ignoring submitted resources.)"/>
     <type value="Reference"/>
+    <searchType value="token"/>
   </parameter>
   <parameter>
     <name value="local"/>
