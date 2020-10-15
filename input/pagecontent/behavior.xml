@@ -596,7 +596,7 @@
             Questions with a type of 'Reference' have no constraints on what the reference is expected to point to.  This extension allows constraining the
             content to only resources of a specific type.  If multiple extensions are present, it indicates that the resource must come from one of them.
             Further constraining can be done with the <a href="#referenceProfile">referenceProfile</a> and/or
-            <a href="#referenceFilter">referenceFilter</a> extensions.
+            <a href="#candidateExpression">candidateExpression</a> extensions.
           </p>
         </td>
       </tr>
@@ -618,38 +618,26 @@
             is defined).  If multiple referenceProfiles are listed, then the selected resource must be valid against at least one of the profiles.  The Form
             Filler can choose to use the profiles as filter criteria in a search, but not all systems will necessarily support search by profile or will
             support the listed profile(s).  Thus, a fallback to evaluating candidates against the profile(s) and filtering the list to exclude those that
-            are not should also be supported.  More sophisticated querying is supported by the <a href="#referenceFilter">referenceFilter</a> extension.
+            are not should also be supported.  More sophisticated querying is supported by the <a href="#candidateExpression">candidateExpression</a> extension.
           </p>
         </td>
       </tr>
       <tr>
         <td>
-          <a name="referenceFilter"> </a>
-          <a href="{{site.data.fhir.path}}extension-questionnaire-referencefilter.html">referenceFilter</a>
+          <a name="candidateExpression"> </a>
+          <a href="StructureDefinition-sdc-questionnaire-candidateExpression.html">candidateExpression</a>
         </td>
-        <td>Questionnaire</td>
-        <td>Reference</td>
-        <td>string</td>
-        <td></td>
+        <td>SDC</td>
+        <td>question</td>
+        <td>expression</td>
+        <td><a href="examples.html#candidateExpression">example</a></td>
       </tr>
       <tr>
         <td colspan="5">
           <p>
-            This defines a generic (or occasionally specific) query that can be used to identify the resources that can be returned as answers to the
-            question listing the extension.  The query works as per the <a href="expressions.html#fhirquery">x-fhir-query</a> mechanism defined on the
-            <a href="expressions.html">Using Expressions</a> page.  As such, it can take advantage of <a href="#launchContext">launchContext</a>,
-            <a href="#variable">variables</a> and <a href="#calculatedExpression">calculatedExpressions</a> to act as part of the query search parameters
-            (for example, limiting responses to those matching a specific patient, those falling within a time range based on the current data, etc.
-          </p>
-          <p>
-            If a full URL is specified as the base for the query, then the query will be against the specified server.  Otherwise it will be against the
-            server managed by the Form Filler or against another server (or set of servers) chosen by the Form Filler.  This extension can be supplemented
-            by the <a href="#referenceProfile">referenceProfile</a> extension to further narrow candidate resources returned by the filter.
-          </p>
-          <p>
-            As a side note, when editing a QuestionnaireResponse, it's possible that the currently selected answer for a question will no longer meet the
-            filter criteria and/or target profile(s).  In some cases, it might even have been deleted.  The previously selected answer should remain as
-            a valid selection in the choice even if the item has changed at least until the QuestionnaireResponse is stored/saved again.
+            Described in detail <a href="expressions.html#candidateExpression">here</a>.  A FHIRPath or CQL Expression, or FHIR Query that resolves to a 
+            list of candidate answers (usually based on other answers in the questionnaire or based on information within the health record) for the question 
+            item or that establishes context for a group item.
           </p>
         </td>
       </tr>
