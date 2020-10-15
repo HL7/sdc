@@ -213,10 +213,10 @@
     Systems are free to experiment with other population mechanisms but cannot expect support for those from other SDC-conformant systems.
   </p>
   <p>
-    The <a href="StructureDefinition-sdc-questionnaire-populate.html">sdc-questionnaire-populate</a> profile includes the data elements and extensions relevant for supporting all
-    these mechanisms.  None of the additional resource elements or extensions are marked as "mustSupport" because there is no expectation that systems will
-    support all (or any of) the different population mechanisms.  Instead, each system should choose which approach(es) it wishes to use and support the
-    elements described in that section of the implementation guide.
+    Each mechanism has its own profile that includes the additional resource elements or extensions relevant for supporting a particular mechanism: <a href="StructureDefinition-sdc-questionnaire-pop-obsn.html">SDC Questionnaire Populate - Observation</a>, 
+    <a href="StructureDefinition-sdc-questionnaire-pop-exp.html">SDC Questionnaire Populate - Expression</a>, and <a href="StructureDefinition-sdc-questionnaire-pop-smap.html">SDC Questionnaire Populate - Structure Map</a> profiles. Each profile identifies 
+    specific 'must support' elements and extensions that systems that claim to support a specific SDC population mechanism SHALL be capable of populating data, as befits the CapabilityStatement(s) 
+    they claim conformance to. Each system should choose which approach(es) it wishes to use and support based on the elements specified in that profile.
   </p>
   <p>
     Some of these mechanisms make use of FHIR-based queries, FHIRPath and/or CQL as well as extensions that include expressions in one of these languages.

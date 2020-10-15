@@ -158,10 +158,26 @@
     </resource>
     <resource>
       <reference>
-        <reference value="StructureDefinition/sdc-questionnaire-populate"/>
+        <reference value="StructureDefinition/sdc-questionnaire-pop-obsn"/>
       </reference>
-      <name value="Populatable Questionnaire"/>
-      <description value="Defines elements that support auto-population and pre-population of questionnaires"/>
+      <name value="Populatable Questionnaire - Observation"/>
+      <description value="Defines elements that support auto-population and pre-population of questionnaires using the Observation-based population mechanism."/>
+      <exampleBoolean value="false"/>
+    </resource>
+    <resource>
+      <reference>
+        <reference value="StructureDefinition/sdc-questionnaire-pop-exp"/>
+      </reference>
+      <name value="Populatable Questionnaire - Expression"/>
+      <description value="Defines elements that support auto-population and pre-population of questionnaires using the Expression-based population mechanism."/>
+      <exampleBoolean value="false"/>
+    </resource>
+    <resource>
+      <reference>
+        <reference value="StructureDefinition/sdc-questionnaire-pop-smap"/>
+      </reference>
+      <name value="Populatable Questionnaire - StructureMap"/>
+      <description value="Defines elements that support auto-population and pre-population of questionnaires using the StructureMap-based population mechanism."/>
       <exampleBoolean value="false"/>
     </resource>
     <resource>
@@ -714,7 +730,7 @@
       </reference>
       <name value="SDC-LOINC USSG Family History"/>
       <description value="LOINC US Surgeon General family history including data elements and value sets."/>
-      <exampleCanonical value="http://hl7.org/fhir/uv/sdc/StructureDefinition/sdc-questionnaire-populate"/>
+      <exampleCanonical value="http://hl7.org/fhir/uv/sdc/StructureDefinition/sdc-questionnaire-pop-obsn"/>
     </resource>
     <resource>
       <reference>
@@ -778,7 +794,7 @@
       </reference>
       <name value="SDC Test Form - Candidate Expression"/>
       <description value="A test form with a FHIRPath based prepopulation example that includes a candidate expression."/>
-      <exampleCanonical value="http://hl7.org/fhir/uv/sdc/StructureDefinition/sdc-questionnaire-populate"/>
+      <exampleCanonical value="http://hl7.org/fhir/uv/sdc/StructureDefinition/sdc-questionnaire-pop-exp"/>
     </resource>
     <resource>
       <reference>
@@ -786,7 +802,7 @@
       </reference>
       <name value="SDC Test Form - Initial Expression"/>
       <description value="A test form with a FHIRPath based prepopulation simple example."/>
-      <exampleCanonical value="http://hl7.org/fhir/uv/sdc/StructureDefinition/sdc-questionnaire-populate"/>
+      <exampleCanonical value="http://hl7.org/fhir/uv/sdc/StructureDefinition/sdc-questionnaire-pop-exp"/>
     </resource>
     <resource>
       <reference>
@@ -794,7 +810,7 @@
       </reference>
       <name value="SDC Test Form - Source Query"/>
       <description value="A test form with a FhirPath based prepopulation example that leverages a source query to extract data outside the launch context."/>
-      <exampleCanonical value="http://hl7.org/fhir/uv/sdc/StructureDefinition/sdc-questionnaire-populate"/>
+      <exampleCanonical value="http://hl7.org/fhir/uv/sdc/StructureDefinition/sdc-questionnaire-pop-smap"/>
     </resource>
     <resource>
       <reference>
@@ -802,7 +818,7 @@
       </reference>
       <name value="SDC Test Form - Initial Value"/>
       <description value="A test form with that uses initial values."/>
-      <exampleCanonical value="http://hl7.org/fhir/uv/sdc/StructureDefinition/sdc-questionnaire-populate"/>
+      <exampleCanonical value="http://hl7.org/fhir/uv/sdc/StructureDefinition/sdc-questionnaire-pop-exp"/>
     </resource>
     <resource>
       <reference>
@@ -810,7 +826,7 @@
       </reference>
       <name value="SDC Test Form - Multiple Initial Value"/>
       <description value="A test form with a question that has multiple initial values."/>
-      <exampleCanonical value="http://hl7.org/fhir/uv/sdc/StructureDefinition/sdc-questionnaire-populate"/>
+      <exampleCanonical value="http://hl7.org/fhir/uv/sdc/StructureDefinition/sdc-questionnaire-pop-exp"/>
     </resource>
     <resource>
       <reference>

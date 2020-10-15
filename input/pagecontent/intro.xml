@@ -64,7 +64,7 @@
 				<td>Used to define data elements using FHIR logical models that can be referenced in questionnaires and can be used to auto-populate form data</td>
 			</tr>-->
 			<tr>
-				<td rowspan="8">
+				<td rowspan="12">
 					<a href="{{site.data.fhir.path}}questionnaire.html">Questionnaire</a>
 				</td>
 				<td>
@@ -92,10 +92,23 @@
 			</tr>
 			<tr>
 				<td>
-					<a href="StructureDefinition-sdc-questionnaire-populate.html">Populatable Questionnaire Profile</a>
+					<a href="StructureDefinition-sdc-questionnaire-pop-obsn.html">Populatable Questionnaire - Observation Profile</a>
 				</td>
-				<td>Defines elements that support auto-population and pre-population of questionnaires</td>
+				<td>Defines elements that support auto-population and pre-population of questionnaires using the Observation-based population mechanism</td>
 			</tr>
+      <tr>
+        <td>
+          <a href="StructureDefinition-sdc-questionnaire-pop-exp.html">Populatable Questionnaire - Expression Profile</a>
+        </td>
+        <td>Defines elements that support auto-population and pre-population of questionnaires using the Expression-based population mechanism</td>
+      </tr>
+      <tr>
+        <td>
+          <a href="StructureDefinition-sdc-questionnaire-pop-smap.html">Populatable Questionnaire - StructureMap Profile</a>
+        </td>
+        <td>Defines elements that support auto-population and pre-population of questionnaires using the Structure-based population mechanism</td>
+      </tr>
+
 			<tr>
 				<td>
 					<a href="StructureDefinition-sdc-questionnaire-extr-obsn.html">Extractable Questionnaire - Observation Profile</a>
