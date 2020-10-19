@@ -520,6 +520,8 @@
       A new <code>%questionnaire</code> variable is defined for that corresponds to the Questionnaire resource resolved to by the QuestionnaireResponse.questionnaire
       element.  It is in scope for all expressions defined in the Questionnaire.</li>
     <li>
+      The <code>%qitem</code> variable is defined as a shortcut to get to the Questionnaire.item that corresponds to the context QuestionnaireResponse.item.</li>
+    <li>
       All expressions that specify a 'name' can be accessed by other expressions appearing on the same item or any descendant item as though that
       name was part of context.  The same is true for the 'name' element in the <a href="#launchContext">launchContext</a> extension.  For example, a variable
       with the name 'score' could be accessed in FHIRPath or CQL using <code>%score</code>.  (Note: It is an error if a questionnaire is designed such
