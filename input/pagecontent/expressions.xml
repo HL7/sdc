@@ -44,18 +44,18 @@
   </p>
   <ul>
     <li>
-      <b>Extension</b>: The code for the extension (and a link to the extension definition)</li>
+      <b>Extension:</b> The code for the extension (and a link to the extension definition)</li>
     <li>
-      <b>Source</b>: Indicates where the extension is defined - the FHIR Core specification (core) or this implementation guide (SDC).  Items marked as
+      <b>Source:</b> Indicates where the extension is defined - the FHIR Core specification (core) or this implementation guide (SDC).  Items marked as
       'core' will have a canonical URL of <code>http://hl7.org/fhir/StructureDefinition/[code]</code>.  Those from SDC will have
       <code>http://hl7.org/fhir/uv/sdc/StructureDefinition/sdc-questionnaire-[code]</code></li>
     <li>
-      <b>Location</b>: Indicates whether the extension can appear directly on the Questionnaire (root) on any item (item) or only on items that have a
+      <b>Location:</b> Indicates whether the extension can appear directly on the Questionnaire (root) on any item (item) or only on items that have a
       type allowing a question answer (question)</li>
     <li>
-      <b>Content</b>: Indicates whether the expression.language is restricted to be "text/cql" (CQL), "text/fhirpath" (FHIRPath), or "application/x-fhir-query" (query) or is unrestricted (any)</li>
+      <b>Content:</b> Indicates whether the expression.language is restricted to be "text/cql" (CQL), "text/fhirpath" (FHIRPath), or "application/x-fhir-query" (query) or is unrestricted (any)</li>
     <li>
-      <b>Use Cases</b>: Indicates which of the SDC use-cases make use of the extension: <a href="behavior.html">Form Behavior</a> (behavior),
+      <b>Use Cases:</b> Indicates which of the SDC use-cases make use of the extension: <a href="behavior.html">Form Behavior</a> (behavior),
       <a href="populate.html">Questionnaire Population</a> (population), and/or <a href="extraction.html">Data Extraction</a> (extraction).
       Other SDC use-cases do not generally have a need for the expression elements.</li>
   </ul>
@@ -339,11 +339,11 @@
         <td colspan="5">
           <p>
             This expression identifies the resource(s) that correspond either to an overall questionnaire, a group within the questionnaire or, occasionally,
-            a single question.  The results of executing the specified query are used to indicate the resources used to populate the item when performing
+            a single question.  The results of executing the specified expression are used to indicate the resources used to populate the item when performing
             population and also indicate the relevant resource type.
           </p>
           <p>
-            If a query results in multiple repetitions for a single for the root Questionnaire or for an item where 'repeat' is false, it is an error and no
+            If an expression results in multiple repetitions for a single for the root Questionnaire or for an item where 'repeat' is false, it is an error and no
             population can occur.
           </p>
           <p>
@@ -365,13 +365,13 @@
         <td colspan="5">
           <p>
             This expression identifies the resource(s) that correspond either to an overall questionnaire, a group within the questionnaire or, occasionally,
-            a single question.  The results of executing the specified query are used to indicate the resources used to identify the data to replace when 
+            a single question.  The results of executing the specified expression are used to indicate the resources used to identify the data to replace when 
             performing an extraction and also indicate the relevant resource type.
           </p>
           <p>
-            If a query results in multiple repetitions for a single for the root Questionnaire or for an item where 'repeat' is false, it is an error and no
-            extraction can occur.  When performing an extraction and the query is executed, if a record is found, the data in the QuestionnaireResponse
-            will be used to update that record.  If the query returns no results, the data in the QuestionnaireResponse will be used to create a new record.
+            If an expression results in multiple repetitions for a single for the root Questionnaire or for an item where 'repeat' is false, it is an error and no
+            extraction can occur.  When performing an extraction and the expression is executed, if a record is found, the data in the QuestionnaireResponse
+            will be used to update that record.  If the expression returns no results, the data in the QuestionnaireResponse will be used to create a new record.
           </p>
           <p>
             Expression.name does not necessarily need to be present for <a href="extraction.html#definition-extract">definition-based extraction</a>, as that relies on
