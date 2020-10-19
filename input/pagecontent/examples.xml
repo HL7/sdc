@@ -3981,14 +3981,16 @@ i.fa {
 </div>
 
 <a name="cqf"></a>
-<h4>Using cqf-calculatedValue and cqf-library</h4>
-<p>Example with a CQF calculated value.</p>
+<h4>Using cqf-calculatedValue, cqf-library and cqf-expression</h4>
+<p>Example question with a cqf-calculatedValue for minimum and maximum weight allowed and a question using a cqf-expression to determine if a question is required based on Patient data.</p>
 <div class="tabs">
   <div class="tab">
     <input type="radio" id="tab-cqf-1" name="tab-cqf-group-2" checked="true"></input>
     <label for="tab-cqf-1">Sample Question</label>
     <div class="content-in-tab">
-      <p>Estimated Due Date <input id="linkitem-3.3-input" type="text" value="07/07/2020" disabled="false"/></p>
+      <p>Enter weight in kg <input id="linkitem-3.3.a-input" type="text"/><br/><br/>
+         Enter email address <input id="linkitem-3.3.b-input" type="text"/>
+      </p>
     </div> 
   </div>
   <div class="tab">
@@ -3999,21 +4001,75 @@ i.fa {
         "extension": [
           {
             "url": "http://hl7.org/fhir/StructureDefinition/cqf-library",
-            "valueString": "Library/MotherInfantMeasure"
+            "valueString": "Library/MeasurementLimits"
+          },
+          {
+            "extension": [
+              {
+                "url": "name",
+                "valueId": "LaunchPatient"
+              },
+              {
+                "url": "type",
+                "valueCode": "Patient"
+              },
+              {
+                "url": "description",
+                "valueString": "The patient that is to be used to pre-populate the form"
+              }
+            ],
+            "url": "http://hl7.org/fhir/uv/sdc/StructureDefinition/sdc-questionnaire-launchContext"
           }
         ],
         "item": [
           {
-            "extension": [
+            "extension" : [
               {
-                "url": "http://hl7.org/fhir/StructureDefinition/cqf-calculatedValue",
-                "valueString": "estimated_due_date"
+                "url" : "http://hl7.org/fhir/StructureDefinition/minValue",
+                "valueDecimal" : 1,
+                "_valueDecimal" : {
+                  "extension" : [
+                    {
+                      "url" : "http://hl7.org/fhir/StructureDefinition/cqf-calculatedValue",
+                      "valueString" : "min_weight"
+                    }
+                  ]
+                }
+              },
+              {
+                "url" : "http://hl7.org/fhir/StructureDefinition/maxValue",
+                "valueDecimal" : 100,
+                "_valueDecimal" : {
+                  "extension" : [
+                    {
+                      "url" : "http://hl7.org/fhir/StructureDefinition/cqf-calculatedValue",
+                      "valueString" : "max_weight"
+                    }
+                  ]
+                }
               }
             ],
-            "linkId": "3.3.b",
-            "text": "Estimated Due Date",
-            "type": "date",
-            "readOnly": true
+            "linkId" : "3.3.a",
+            "text" : "Enter weight in kg",
+            "type" : "decimal"
+          },
+          {
+            "linkId" : "3.3.b",
+            "text" : "Enter email address",
+            "type" : "string",
+            "required" : false,
+            "_required" : {
+              "extension" : [
+                {
+                  "url" : "http://hl7.org/fhir/StructureDefinition/cqf-expression",
+                  "valueExpression" : {
+                    "description" : "current date",
+                    "language" : "text/fhirpath",
+                    "expression" : "LaunchPatient.active"
+                  }
+                }
+              ]
+            }
           }
         ]
       </textarea>
@@ -4025,16 +4081,51 @@ i.fa {
     <div class="content-in-tab">
       <textarea style="border:none" class="xml">
         <extension url="http://hl7.org/fhir/StructureDefinition/cqf-library">
-          <valueCanonical value="Library/MotherInfantMeasure"/>
-        </extension>      
+          <valueCanonical value="Library/MeasurementLimits"/>
+        </extension>
+        <extension url="http://hl7.org/fhir/uv/sdc/StructureDefinition/sdc-questionnaire-launchContext">
+          <extension url="name">
+            <valueId value="LaunchPatient"/>
+          </extension>
+          <extension url="type">
+            <valueCode value="Patient"/>
+          </extension>
+          <extension url="description">
+            <valueString value="The patient that is to be used to pre-populate the form"/>
+          </extension>
+        </extension>
         <item>
-            <extension url="http://hl7.org/fhir/StructureDefinition/cqf-calculatedValue" >
-                <valueString value="estimated_due_date"/>
+          <extension url="http://hl7.org/fhir/StructureDefinition/minValue">
+            <valueDecimal value="1">
+              <extension url="http://hl7.org/fhir/StructureDefinition/cqf-calculatedValue" >
+                <valueString value="min_weight"/>
+              </extension>
+            </valueDecimal>
+          </extension>
+          <extension url="http://hl7.org/fhir/StructureDefinition/maxValue">
+            <valueDecimal value="100">
+              <extension url="http://hl7.org/fhir/StructureDefinition/cqf-calculatedValue" >
+                <valueString value="max_weight"/>
+              </extension>
+            </valueDecimal>
+          </extension>
+          <linkId value="3.3.a"/> 
+          <text value="Enter weight in kg"/>
+          <type value="decimal"/>
+        </item>
+        <item>
+          <linkId value="3.3.b"/> 
+          <text value="Enter email address"/>
+          <type value="string"/>
+          <required value="false">
+            <extension url="http://hl7.org/fhir/StructureDefinition/cqf-expression" >
+              <valueExpression>
+                <description value="current date"/>
+                <language value="text/fhirpath"/>
+                <expression value="LaunchPatient.active"/> 
+              </valueExpression>
             </extension>
-            <linkId value="3.3.b"/> 
-            <text value="Estimated Due Date"/>
-            <type value="date"/>
-            <readOnly value="true"/>
+          </required>
         </item>
       </textarea>
     </div> 
