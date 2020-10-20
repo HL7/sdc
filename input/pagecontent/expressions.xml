@@ -70,6 +70,7 @@
         <th>Location</th>
         <th>Content</th>
         <th>Use Cases</th>
+        <th>Example</th>
       </tr>
     </thead>
     <tbody>
@@ -82,9 +83,10 @@
         <td>root or item</td>
         <td>any</td>
         <td>all</td>
+        <td><a href="examples.html#calculatedexpression">example</a></td>
       </tr>
       <tr>
-        <td colspan="5">
+        <td colspan="6">
           <p>
             This expression sets a variable that is available for use in expressions within the same item and any descendant items.  It has two main uses:
           </p>
@@ -111,9 +113,10 @@
         <td>question</td>
         <td>any</td>
         <td>all</td>
+        <td><a href="examples.html#initialexpression">example</a></td>
       </tr>
       <tr>
-        <td colspan="5">
+        <td colspan="6">
           <p>
             This expression serves the same purpose as the initial.value on Questionnaire.item, except that rather than specifying a fixed value, the value is
             calculable. Like initial.value, initialExpression is evaluated only once. The value is set on initial creation of the QuestionnaireResponse or upon the question first becoming enabled.
@@ -156,9 +159,10 @@
         <td>question</td>
         <td>any</td>
         <td>population</td>
+        <td><a href="examples.html#candidateExpression">example</a></td>
       </tr>
       <tr>
-        <td colspan="5">
+        <td colspan="6">
           <p>
             This extension is used to support data entry.  It is only invoked when the user is entering/editing the answer for the question
             linked to the candidateExpression.  It is used when a <a href="populate.html">population</a> process cannot determine the specific
@@ -193,9 +197,10 @@
         <td>question</td>
         <td>any</td>
         <td>population</td>
+        <td><a href="examples.html">TODO</a></td>
       </tr>
       <tr>
-        <td colspan="5">
+        <td colspan="6">
           <p>
             Just like answerOption and answerValueSet, this is the third mechanism for capturing the allowed set of answers.
             (This extension is mutually exclusive with the other two mechanisms.)  This expression must evaluate to a collection 
@@ -233,9 +238,10 @@
         <td>question</td>
         <td>any</td>
         <td>population and extraction</td>
+        <td><a href="examples.html#contextExpression">example</a></td>
       </tr>
       <tr>
-        <td colspan="5">
+        <td colspan="6">
           <p>
             This is similar to <a href="#candidateExpression">candidateExpression</a> extension, in that it is also only used when the user is editing the answer for
             the question associated with the candidateExpression.  However, instead of giving candidate answers that can simply be "selected", this option
@@ -260,9 +266,10 @@
         <td>question</td>
         <td>any</td>
         <td>behavior</td>
+        <td><a href="examples.html#calculatedexpression">example</a></td>
       </tr>
       <tr>
-        <td colspan="5">
+        <td colspan="6">
           <p>
             This expression allows for dynamic calculation of answers to questions as other questions are answered.  It behaves similarly to
             <a href="#initialExpression">initialExpression</a> extension, but instead of only setting its value when the QuestionnaireResponse is originally created or
@@ -304,9 +311,10 @@
         <td>question</td>
         <td>FHIRPath or CQL</td>
         <td>behavior</td>
+        <td><a href="examples.html#enableexamples">example</a></td>
       </tr>
       <tr>
-        <td colspan="5">
+        <td colspan="6">
           <p>
             This expression does the same thing as the Questionnaire.item.enableWhen structure (and is mutually exclusive with it), but allows for more complex logic.
             (If enableWhen can meet the need, it should be used instead as it will be more broadly supported.) Specifically, enableWhenExpression allows more complex logic 
@@ -334,9 +342,10 @@
         <td>any</td>
         <td>any</td>
         <td>population</td>
+        <td><a href="examples.html#itemPopulationContext">example</a></td>
       </tr>
       <tr>
-        <td colspan="5">
+        <td colspan="6">
           <p>
             This expression identifies the resource(s) that correspond either to an overall questionnaire, a group within the questionnaire or, occasionally,
             a single question.  The results of executing the specified expression are used to indicate the resources used to populate the item when performing
@@ -360,9 +369,10 @@
         <td>any</td>
         <td>any</td>
         <td>extraction</td>
+        <td><a href="examples.html">TODO</a></td>
       </tr>
       <tr>
-        <td colspan="5">
+        <td colspan="6">
           <p>
             This expression identifies the resource(s) that correspond either to an overall questionnaire, a group within the questionnaire or, occasionally,
             a single question.  The results of executing the specified expression are used to indicate the resources used to identify the data to replace when 
@@ -393,6 +403,7 @@
         <th>Source</th>
         <th>Location</th>
         <th>Use Cases</th>
+        <th>Example</th>
       </tr>
     </thead>
     <tbody>
@@ -404,6 +415,7 @@
         <td>core</td>
         <td>root</td>
         <td>all</td>
+        <td><a href="examples.html#cqf">example</a></td>
       </tr>
       <tr>
         <td colspan="5">
@@ -427,6 +439,7 @@
         <td>SDC</td>
         <td>root</td>
         <td>all</td>
+        <td><a href="examples.html#launchContext">example</a></td>
       </tr>
       <tr>
         <td colspan="5">
