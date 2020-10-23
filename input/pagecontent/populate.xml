@@ -465,7 +465,7 @@
       performing the population SHOULD make best efforts and populate whatever elements it can that are not dependent on other answers within the form.</li>
     <li>
       It's possible that the same data might be queried multiple times within different contexts when filling out the form.  Systems are free to notice this
-      and use the data already in memory rather than re-querying the data.</li>
+      and use the data already in memory rather than re-querying the data.  Form designers can be proactive and use variables to minimize this too.</li>
     <li>
       The expressions used to populate some elements might be dependent on the answers to other questions, not just on context elements or queried data.  In
       this case, pre-populating systems will only be able to populate the answer if the questions depended on are able to be pre-populated.  For
