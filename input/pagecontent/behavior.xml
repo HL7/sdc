@@ -989,10 +989,10 @@
       <tr>
         <td colspan="5">
           <p>
-            This allows assertion of constraints across an entire questionnaire or across any item with child items.  For example, it could be used to
-            require that either the patient identifier or birth date must be specified, that at least 6 of the questions from question 10 through 20
-            must be answered, or that the sum of questions 1 through 5 must equal exactly 100.  The human field SHOULD be set to inform the user what to do.
-            The expression is written in FHIRPath and has access to the <a href="expressions.html#contexts">additional FHIRPath capabilities</a> defined in
+            This allows assertion of constraints across an entire questionnaire or across any item with child items.  All 'error' constraints SHALL evaluate to 'true' 
+            before setting a QuestionnaireResponse to complete.  For example, it could be used to require that either the patient identifier or birth date must be 
+            specified, that at least 6 of the questions from question 10 through 20 must be answered, or that the sum of questions 1 through 5 must equal exactly 100.  
+            The human field SHOULD be set to inform the user what to do.  The expression is written in FHIRPath and has access to the <a href="expressions.html#contexts">additional FHIRPath capabilities</a> defined in
             <a href="expressions.html">Using Expressions</a>.
           </p>
         </td>
