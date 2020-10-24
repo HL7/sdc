@@ -380,12 +380,12 @@
       <tr>
         <td>
           <a name="answerExpression"> </a>
-          <a href="structuredefinition-sdc-questionnaire-answerExpression.html">answerExpression</a>
+          <a href="StructureDefinition-sdc-questionnaire-answerExpression.html">answerExpression</a>
         </td>
         <td>SDC</td>
         <td>question</td>
         <td>expression</td>
-        <td><a href="examples.html#answervalueset">example</a></td>
+        <td>TODO</td>
       </tr>
       <tr>
         <td colspan="5">
@@ -883,7 +883,9 @@
         <td colspan="5">
           <p>
             Establishes the default answer for a question.  If the user does not change the value, this is what will appear in the completed
-            QuestionnaireResponse
+            QuestionnaireResponse.  For choice and open-choice questions, initial.value SHALL be one (or more) of the enumerated answer options provided 
+            by <a href="#answerOption">answerOption</a>, <a href="#answerValueSet">answerValueSet</a>, or <a href="#answerExpression">answerExpression</a>
+            extension.
           </p>
           <p>
             Note that 'initial' does not have to specify all properties.  For example, it can be used to select a default unit of measure for a quantity,
