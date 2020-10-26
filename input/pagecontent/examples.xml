@@ -3534,11 +3534,11 @@ i.fa {
     <input type="radio" id="tab-reference-resource-profile-lookup-1" name="tab-reference-resource-profile-lookup-group-2" checked="true"></input>
     <label for="tab-reference-resource-profile-lookup-1">Sample Question</label>
     <div class="content-in-tab">
-      <p>Select your preferred service animal:
-          <select id="linkitem-2.10-option" name="activity">
-            <option value="Level0">Lassie</option>
-            <option value="Level1">St. Peters</option>
-            <option value="Level2">Coco</option>
+      <p>Select your preferred practitioner:
+          <select id="linkitem-2.10-option" name="practitioner">
+            <option value="Level0">Hamilton, Bill</option>
+            <option value="Level1">Saunders, Theresa</option>
+            <option value="Level2">Smith, Paul</option>
           </select></p>
     </div> 
   </div>
@@ -3556,16 +3556,36 @@ i.fa {
               },
               {
                 "url": "http://hl7.org/fhir/StructureDefinition/questionnaire-referenceProfile",
-                "valueCanonical": "http://hl7.org/fhir/StructureDefinition/practitioner-animalSpecies"
+                "valueCanonical": "http://hl7.org/fhir/us/core/StructureDefinition/us-core-practitioner"
               },
-
               {
                 "url": "http://hl7.org/fhir/uv/sdc/StructureDefinition/sdc-questionnaire-lookupQuestionnaire",
                 "valueUri": "http://mysite.com/Questionnaire/1234"
+              },
+              {
+                "url": "http://hl7.org/fhir/uv/sdc/StructureDefinition/sdc-questionnaire-answerExpression",
+                "valueExpression": {
+                  "description": "all active practitioners",
+                  "language": "application/x-fhir-query",
+                  "expression": "Practitioner?active=true&amp;_sort=family,given"
+                }
+              },
+              {
+                "extension": [
+                  {
+                    "url": "path",
+                    "valueString": "name.where(use='official').family + ', ' + name.where(use='usual').given.first()"
+                  },
+                  {
+                    "url": "forDisplay",
+                    "valueBoolean": true
+                  }
+                ],
+                "url": "http://hl7.org/fhir/uv/sdc/StructureDefinition/sdc-questionnaire-choiceColumn"
               }
             ],
             "linkId": "2.10.b",
-            "text": "Select your preferred service animal:",
+            "text": "Select your preferred practitioner:",
             "type": "reference"
           }
         ]
@@ -3582,13 +3602,28 @@ i.fa {
                 <valueCode value="Practitioner"/>
             </extension>
             <extension url="http://hl7.org/fhir/StructureDefinition/questionnaire-referenceProfile">
-                <valueCanonical value="http://hl7.org/fhir/StructureDefinition/practitioner-animalSpecies"/> 
+                <valueCanonical value="http://hl7.org/fhir/us/core/StructureDefinition/us-core-practitioner"/> 
             </extension>
             <extension url="http://hl7.org/fhir/uv/sdc/StructureDefinition/sdc-questionnaire-lookupQuestionnaire">
                 <valueUri value="http://mysite.com/Questionnaire/1234"/>
             </extension>
-            <linkId value="2.10.b"/>
-            <text value="Select your preferred service animal:"/>
+            <extension url="http://hl7.org/fhir/uv/sdc/StructureDefinition/sdc-questionnaire-answerExpression">
+              <valueExpression>
+                <description value="all active practitioners"/>
+                <language value="application/x-fhir-query"/>
+                <expression value="Practitioner?active=true&amp;_sort=family,given"/>
+              </valueExpression>
+            </extension>
+            <extension url="http://hl7.org/fhir/uv/sdc/StructureDefinition/sdc-questionnaire-choiceColumn">
+              <extension url="path">
+              <valueString value="name.where(use='official').family + ', ' + name.where(use='usual').given.first()"/>
+              </extension>
+              <extension url="forDisplay">
+                <valueBoolean value="true"/>
+              </extension>
+            </extension>
+              <linkId value="2.10.b"/>
+            <text value="Select your preferred practitioner:"/>
             <type value="reference"/>
         </item>
       </textarea>
