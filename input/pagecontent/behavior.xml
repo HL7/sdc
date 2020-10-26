@@ -27,9 +27,9 @@
       is <code>http://hl7.org/fhir/uv/sdc/StructureDefinition/sdc-questionnaire-</code>
     </li>
     <li>
-      <b>Location:</b> This indicates where the element or extension can appear.  Possible values are 'root' (for those that appear directly on the
-      <code>Questionnaire</code> element), 'item' (for those that can appear on any type of item) or 'question' for those that can only appear on question
-      items.  In some cases, additional restrictions/guidance will be provided</li>
+      <b>Location:</b> This indicates where the element or extension can appear.  Possible values are 'Questionnaire' (for those that appear directly on the
+      <code>Questionnaire</code> element), 'item' (for those that can appear on any type of item), 'question' (for those that can only appear on question
+      items), or 'group' (for those that can appear on group items).  In some cases, additional restrictions/guidance will be provided.</li>
     <li>
       <b>Data Type:</b> Indicates what content the element or extension can have.</li>
   </ul>
@@ -129,7 +129,7 @@
           <a href="{{site.data.fhir.path}}extension-minvalue.html">minValue</a>
         </td>
         <td>Core</td>
-        <td>date, dateTime, time, decimal, integer</td>
+        <td>question (where type='date', 'dateTime', 'time', 'decimal', 'integer')</td>
         <td>as per question type</td>
         <td><a href="examples.html#minValue-maxValue-maxDecimalPlaces">example</a></td>
       </tr>
@@ -156,7 +156,7 @@
           <a href="{{site.data.fhir.path}}extension-maxvalue.html">maxValue</a>
         </td>
         <td>Core</td>
-        <td>date, dateTime, time, decimal, integer</td>
+        <td>question (where type='date', 'dateTime', 'time', 'decimal', 'integer')</td>
         <td>as per question type</td>
         <td><a href="examples.html#minValue-maxValue-maxDecimalPlaces">example</a></td>
       </tr>
@@ -182,7 +182,7 @@
           <a href="StructureDefinition-sdc-questionnaire-minQuantity.html">minQuantity</a>
         </td>
         <td>SDC</td>
-        <td>Quantity</td>
+        <td>question (where type='quantity')</td>
         <td>Quantity</td>
         <td><a href="examples.html#min-maxQuantity">example</a></td>
       </tr>
@@ -208,7 +208,7 @@
           <a href="StructureDefinition-sdc-questionnaire-maxQuantity.html">maxQuantity</a>
         </td>
         <td>SDC</td>
-        <td>Quantity</td>
+        <td>question (where type='quantity')</td>
         <td>Quantity</td>
         <td><a href="examples.html#min-maxQuantity">example</a></td>
       </tr>
@@ -234,7 +234,7 @@
           <a href="{{site.data.fhir.path}}extension-maxdecimalplaces.html">maxDecimalPlaces</a>
         </td>
         <td>Core</td>
-        <td>decimal</td>
+        <td>question (where type='decimal')</td>
         <td>integer</td>
         <td><a href="examples.html#minValue-maxValue-maxDecimalPlaces">example</a></td>
       </tr>
@@ -251,7 +251,7 @@
           <a href="{{site.data.fhir.path}}extension-mimetype.html">mimeType</a>
         </td>
         <td>Core</td>
-        <td>attachment</td>
+        <td>question (where type='attachment')</td>
         <td>code</td>
         <td><a href="examples.html#mimetype-maxsize">example</a></td>
       </tr>
@@ -270,7 +270,7 @@
           <a href="{{site.data.fhir.path}}extension-maxsize.html">maxSize</a>
         </td>
         <td>Core</td>
-        <td>Attachment</td>
+        <td>question (where type='attachment')</td>
         <td>decimal</td>
         <td><a href="examples.html#mimetype-maxsize">example</a></td>
       </tr>
@@ -546,7 +546,7 @@
           <a href="{{site.data.fhir.path}}extension-questionnaire-unitoption.html">unitOption</a>
         </td>
         <td>Questionnaire</td>
-        <td>Quantity</td>
+        <td>question (where type='quantity')</td>
         <td>Coding</td>
         <td><a href="examples.html#unitoption">example</a></td>
       </tr>
@@ -569,7 +569,7 @@
           <a href="{{site.data.fhir.path}}extension-questionnaire-unitvalueset.html">unitValueSet</a>
         </td>
         <td>Questionnaire</td>
-        <td>Quantity</td>
+        <td>question (where type='quantity')</td>
         <td>Reference(ValueSet)</td>
         <td><a href="examples.html#unitvalueset">example</a></td>
       </tr>
@@ -586,7 +586,7 @@
           <a href="{{site.data.fhir.path}}extension-questionnaire-referenceresource.html">questionnaire-referenceResource</a>
         </td>
         <td>Questionnaire</td>
-        <td>Reference</td>
+        <td>question (where type='reference')</td>
         <td>code</td>
         <td><a href="examples.html#reference-resource-profile-lookup">example</a></td>
       </tr>
@@ -606,7 +606,7 @@
           <a href="{{site.data.fhir.path}}extension-questionnaire-referenceprofile.html">referenceProfile</a>
         </td>
         <td>Questionnaire</td>
-        <td>Reference</td>
+        <td>question (where type='reference')</td>
         <td>canonical(StructureDefinition)</td>
         <td><a href="examples.html#reference-resource-profile-lookup">example</a></td>
       </tr>
@@ -647,7 +647,7 @@
           <a href="structuredefinition-sdc-questionnaire-lookupQuestionnaire.html">lookupQuestionnaire</a>
         </td>
         <td>Questionnaire</td>
-        <td>Reference</td>
+        <td>question (where type='reference')</td>
         <td>canonical(Questionnaire)</td>
         <td><a href="examples.html#reference-resource-profile-lookup">example</a></td>
       </tr>
@@ -693,7 +693,7 @@
           <a href="{{site.data.fhir.path}}extension-cqf-library.html">cqf-library</a>
         </td>
         <td>Core</td>
-        <td>root</td>
+        <td>Questionnaire</td>
         <td>canonical(Library)</td>
         <td><a href="examples.html#cqf">example</a></td>
       </tr>
@@ -711,7 +711,7 @@
           <a href="StructureDefinition-sdc-questionnaire-launchContext.html">launchContext</a>
         </td>
         <td>SDC</td>
-        <td>root</td>
+        <td>Questionnaire</td>
         <td>complex</td>
         <td><a href="examples.html#launchContext">example</a></td>
       </tr>
@@ -731,7 +731,7 @@
           <a href="{{site.data.fhir.path}}extension-variable.html">variable</a>
         </td>
         <td>Core</td>
-        <td>root, item</td>
+        <td>Questionnaire, item</td>
         <td>Expression</td>
         <td><a href="examples.html#calculatedexpression">example</a></td>
       </tr>
@@ -1005,7 +1005,7 @@
           <a href="StructureDefinition-sdc-questionnaire-endpoint.html">endpoint</a>
         </td>
         <td>SDC</td>
-        <td>root</td>
+        <td>Questionnaire</td>
         <td>uri</td>
         <td><a href="examples.html#endpoint">example</a></td>
       </tr>
@@ -1023,7 +1023,7 @@
           <a href="{{site.data.fhir.path}}extension-questionnaire-signaturerequired.html">signatureRequired</a>
         </td>
         <td>Questionnaire</td>
-        <td>root, group, question</td>
+        <td>Questionnaire, group, question</td>
         <td>CodeableConcept</td>
         <td><a href="examples.html#signatureRequired-usagemode">example</a></td>
       </tr>

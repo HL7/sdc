@@ -50,8 +50,9 @@
       'core' will have a canonical URL of <code>http://hl7.org/fhir/StructureDefinition/[code]</code>.  Those from SDC will have
       <code>http://hl7.org/fhir/uv/sdc/StructureDefinition/sdc-questionnaire-[code]</code></li>
     <li>
-      <b>Location:</b> Indicates whether the extension can appear directly on the Questionnaire (root) on any item (item) or only on items that have a
-      type allowing a question answer (question)</li>
+      <b>Location:</b> This indicates where the element or extension can appear.  Possible values are 'Questionnaire' (for those that appear directly on the
+      <code>Questionnaire</code> element), 'item' (for those that can appear on any type of item), 'question' (for those that can only appear on question
+      items), or 'group' (for those that can appear on group items).  In some cases, additional restrictions/guidance will be provided.</li>
     <li>
       <b>Content:</b> Indicates whether the expression.language is restricted to be "text/cql" (CQL), "text/fhirpath" (FHIRPath), or "application/x-fhir-query" (query) or is unrestricted (any)</li>
     <li>
@@ -80,7 +81,7 @@
           <a href="{{site.data.fhir.path}}extension-variable.html">variable</a>
         </td>
         <td>Core</td>
-        <td>root or item</td>
+        <td>Questionnaire, item</td>
         <td>any</td>
         <td>all</td>
         <td><a href="examples.html#calculatedexpression">example</a></td>
@@ -413,7 +414,7 @@
           <a href="{{site.data.fhir.path}}extension-cqf-library.html">library</a>
         </td>
         <td>core</td>
-        <td>root</td>
+        <td>Questionnaire</td>
         <td>all</td>
         <td><a href="examples.html#cqf">example</a></td>
       </tr>
@@ -437,7 +438,7 @@
           <a href="StructureDefinition-sdc-questionnaire-launchContext.html">launchContext</a>
         </td>
         <td>SDC</td>
-        <td>root</td>
+        <td>Questionnaire</td>
         <td>all</td>
         <td><a href="examples.html#launchContext">example</a></td>
       </tr>

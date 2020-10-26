@@ -32,9 +32,9 @@
       is <code>http://hl7.org/fhir/uv/sdc/StructureDefinition/sdc-questionnaire-</code>
     </li>
     <li>
-      <b>Location:</b> This indicates where the element or extension can appear.  Possible values are 'root' (for those that appear directly on the
-      <code>Questionnaire</code> element), 'item' (for those that can appear on any type of item) or 'question' for those that can only appear on question
-      items.  In some cases, additional restrictions/guidance will be provided</li>
+      <b>Location:</b> This indicates where the element or extension can appear.  Possible values are 'Questionnaire' (for those that appear directly on the
+      <code>Questionnaire</code> element), 'item' (for those that can appear on any type of item), 'question' (for those that can only appear on question
+      items), or 'group' (for those that can appear on group items).  In some cases, additional restrictions/guidance will be provided.</li>
     <li>
       <b>Data Type:</b> Indicates what content the element or extension can have.</li>
   </ul>
@@ -201,7 +201,7 @@
           <a href="{{site.data.fhir.path}}extension-questionnaire-choiceorientation.html">choiceOrientation</a>
         </td>
         <td>Questionnaire</td>
-        <td>choice, open-choice, other items with choiceOption or choiceValueset</td>
+        <td>question (where type='choice','open-choice'), other items with choice options</td>
         <td>code</td>
         <td><a href="examples.html#choiceOrientation">example</a></td>
       </tr>
@@ -220,7 +220,7 @@
           <a href="{{site.data.fhir.path}}extension-questionnaire-sliderstepvalue.html">sliderStepValue</a>
         </td>
         <td>Questionnaire</td>
-        <td>integer</td>
+        <td>question (where type='integer')</td>
         <td>integer</td>
         <td><a href="examples.html#sliderStepValue">example</a></td>
       </tr>
@@ -319,7 +319,7 @@
           <a href="StructureDefinition-sdc-questionnaire-choiceColumn.html">choiceColumn</a>
         </td>
         <td>SDC</td>
-        <td>choice, open-choice and Reference</td>
+        <td>question (where type='choice', 'open-choice' and 'reference')</td>
         <td>complex</td>
         <td><a href="examples.html#choiceColumn">example</a></td>
       </tr>
@@ -363,7 +363,7 @@
           <a href="{{site.data.fhir.path}}extension-questionnaire-optionprefix.html">optionPrefix</a>
         </td>
         <td>Questionnaire</td>
-        <td>item.optionChoice</td>
+        <td>Questionnaire.item.answerOption</td>
         <td>string</td>
         <td><a href="examples.html#optionPrefix">example</a></td>
       </tr>
@@ -390,7 +390,7 @@
         <td colspan="5">
           <p>
             This serves the same purpose as <a href="#optionPrefix">optionPrefix</a>, but allows the definition of the prefix to occur in a valueset referenced
-            by optionValueSet instead of listing the options directly using optionChoice.
+            by answerValueSet instead of listing the options directly using answerOption.
           </p>
         </td>
       </tr>
@@ -510,7 +510,7 @@
           <a href="{{site.data.fhir.path}}extension-rendering-stylesensitive.html">rendering-styleSensitive</a>
         </td>
         <td>Core</td>
-        <td>root</td>
+        <td>Questionnaire</td>
         <td>boolean</td>
         <td><a href="examples.html#rendering-styleSensitive">example</a></td>
       </tr>
