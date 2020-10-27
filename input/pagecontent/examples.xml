@@ -3527,8 +3527,8 @@ i.fa {
 <!-- TODO: fix unit samples -->
 
 <a name="reference-resource-profile-lookup"></a>
-<h4>Using referenceResource, referenceProfile and lookupQuestionnaire</h4>
-<p>Only allow a service animal resource as an answer.</p>
+<h4>Using answerExpression, referenceResource, referenceProfile and lookupQuestionnaire</h4>
+<p>Restrict an answer to a specific resource or profile.</p>
 <div class="tabs">
   <div class="tab">
     <input type="radio" id="tab-reference-resource-profile-lookup-1" name="tab-reference-resource-profile-lookup-group-2" checked="true"></input>
@@ -3574,7 +3574,7 @@ i.fa {
                 "extension": [
                   {
                     "url": "path",
-                    "valueString": "name.where(use='official').family + ', ' + name.where(use='usual').given.first()"
+                    "valueString": "name.where(use='official').family + ', ' + name.where(use='official').given.first()"
                   },
                   {
                     "url": "forDisplay",
@@ -3616,7 +3616,7 @@ i.fa {
             </extension>
             <extension url="http://hl7.org/fhir/uv/sdc/StructureDefinition/sdc-questionnaire-choiceColumn">
               <extension url="path">
-              <valueString value="name.where(use='official').family + ', ' + name.where(use='usual').given.first()"/>
+              <valueString value="name.where(use='official').family + ', ' + name.where(use='official').given.first()"/>
               </extension>
               <extension url="forDisplay">
                 <valueBoolean value="true"/>
@@ -3733,9 +3733,7 @@ i.fa {
         ],
         "item": [
           {
-            "_linkId": {
-              "id": "1.0"
-            },
+            "linkId": "1.0";
             "type": "group",
             "item": [
               {
@@ -3809,7 +3807,7 @@ i.fa {
           </extension>
         </extension>
         <item>
-          <linkId id="1.0"/>
+          <linkId value="1.0"/>
           <type value="group"/>
           <item>
             <extension url="http://hl7.org/fhir/uv/sdc/StructureDefinition/sdc-questionnaire-initialExpression">
@@ -5336,9 +5334,7 @@ i.fa {
         ],
         "item": [
           {
-            "_linkId": {
-              "id": "1.0"
-            },
+            linkId": "1.0",
             "type": "group",
             "item": [
               {
@@ -5435,9 +5431,7 @@ i.fa {
                     }
                   }
                 ],
-                "_linkId": {
-                  "id": "1.2"
-                },
+                "linkId": "1.2",
                 "text": "Has the patient discussed this issue on any visits in the past year?",
                 "type": "choice",
                 "answerValueSet": "http://hl7.org/fhir/ValueSet/yesnodontknow"
@@ -5469,7 +5463,7 @@ i.fa {
           </extension> 
           <status value="draft"/>
           <item>
-            <linkId id="1.0"/>
+            <linkId value="1.0"/>
             <type value="group"/>
             <item>
               <extension url="http://hl7.org/fhir/StructureDefinition/questionnaire-displayCategory">
@@ -5540,7 +5534,7 @@ i.fa {
                   <text value="A control where choices are listed with a button beside them. The button can be toggled to select or de-select a given choice. Selecting one item deselects all others."/>
                 </valueCodeableConcept>
               </extension>
-              <linkId id="1.2"/>
+              <linkId value="1.2"/>
               <text value="Has the patient discussed this issue on any visits in the past year?"/>
               <type value="choice"/>
               <answerValueSet value="http://hl7.org/fhir/ValueSet/yesnodontknow"/>
@@ -5556,8 +5550,8 @@ i.fa {
 <!--  TODO: how to format dateTime: 2016-06-18T16:22:45-04:00  -->
 
 <a name="itemPopulationContext"></a>
-<h4>Using itemPopulationContext</h4>
-<p>To specify the resources to populate a questionnaire.</p>
+<h4>Using itemPopulationContext and itemExtractionContext</h4>
+<p>To specify the resources to populate and extract a questionnaire.</p>
 <div class="tabs">
   <div class="tab">
     <input type="radio" id="tab-itemPopulationContext-1" name="tab-itemPopulationContext-group-2" checked="true"></input>
@@ -5619,11 +5613,17 @@ i.fa {
                     "language": "text/fhirpath",
                     "expression": "%LaunchPatient.address.where(use='home')[0]"
                   }
+                },
+                {
+                  "url": "http://hl7.org/fhir/uv/sdc/StructureDefinition/sdc-questionnaire-itemExtractionContext",
+                  "valueExpression": {
+                    "description": "Home address of the patient",
+                    "language": "text/fhirpath",
+                    "expression": "%LaunchPatient.address.where(use='home')[0]"
+                  }
                 }
               ],
-              "_linkId": {
-                "id": "2.0"
-              },
+              "linkId": "2.0",
               "type": "group",
               "item": [
                 {
@@ -5642,9 +5642,8 @@ i.fa {
                       }
                     }
                   ],
-                  "_linkId": {
-                    "id": "1.2"
-                  },
+                  "linkId": "1.2",
+                  "definition" : "http://hl7.org/fhir/Patient#Patient.address.line",
                   "text": "Address",
                   "type": "string"
                 },
@@ -5659,9 +5658,8 @@ i.fa {
                       }
                     }
                   ],
-                  "_linkId": {
-                    "id": "1.3"
-                  },
+                  "linkId": "1.3",
+                  "definition" : "http://hl7.org/fhir/Patient#Patient.address.city",
                   "text": "City",
                   "type": "string"
                 },
@@ -5676,9 +5674,8 @@ i.fa {
                       }
                     }
                   ],
-                  "_linkId": {
-                    "id": "1.4"
-                  },
+                  "linkId": "1.4",
+                  "definition" : "http://hl7.org/fhir/Patient#Patient.address.state",
                   "text": "Province",
                   "type": "choice",
                   "answerOption": [
@@ -5755,9 +5752,8 @@ i.fa {
                       }
                     }
                   ],
-                  "_linkId": {
-                    "id": "1.5"
-                  },
+                  "linkId": "1.5",
+                  "definition" : "http://hl7.org/fhir/Patient#Patient.address.postalCode",
                   "text": "Postal Code",
                   "type": "string"
                 }
@@ -5792,7 +5788,14 @@ i.fa {
                 <expression value="%LaunchPatient.address.where(use='home')[0]"/>
             </valueExpression>
           </extension>
-          <linkId id="2.0"/>
+          <extension url="http://hl7.org/fhir/uv/sdc/StructureDefinition/sdc-questionnaire-itemExtractionContext">
+            <valueExpression>
+              <description value="Home address of the patient"/>
+                <language value="text/fhirpath"/>
+                <expression value="%LaunchPatient.address.where(use='home')[0]"/>
+            </valueExpression>
+          </extension>
+          <linkId value="2.0"/>
           <type value="group"/>
           <item>
             <linkId value="1.1"/>
@@ -5807,7 +5810,8 @@ i.fa {
                     <expression value="line[0]"/> 
                 </valueExpression>
             </extension>
-            <linkId id="1.2"/>
+            <linkId value="1.2"/>
+            <definition value="http://hl7.org/fhir/Patient#Patient.address.line"/>
             <text value="Address"/>
             <type value="string"/>
           </item>
@@ -5819,7 +5823,8 @@ i.fa {
                     <expression value="city"/> 
                 </valueExpression>
             </extension>
-            <linkId id="1.3"/>
+            <linkId value="1.3"/>
+            <definition value="http://hl7.org/fhir/Patient#Patient.address.city"/>
             <text value="City"/>
             <type value="string"/>
           </item>
@@ -5831,7 +5836,8 @@ i.fa {
                     <expression value="state"/> 
                 </valueExpression>
             </extension>
-            <linkId id="1.4"/>
+            <linkId value="1.4"/>
+            <definition value="http://hl7.org/fhir/Patient#Patient.address.state"/>
             <text value="Province"/>
             <type value="choice"/>
             <answerOption>
@@ -5903,7 +5909,8 @@ i.fa {
                     <expression value="postalCode"/> 
                 </valueExpression>
             </extension>
-            <linkId id="1.5"/>
+            <linkId value="1.5"/>
+            <definition value="http://hl7.org/fhir/Patient#Patient.address.postalCode"/>
             <text value="Postal Code"/>
             <type value="string"/>
           </item>

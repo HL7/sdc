@@ -385,7 +385,7 @@
         <td>SDC</td>
         <td>question</td>
         <td>expression</td>
-        <td>TODO</td>
+        <td><a href="examples.html#reference-resource-profile-lookup">example</a></td>
       </tr>
       <tr>
         <td colspan="5">
@@ -596,7 +596,7 @@
             Questions with a type of 'Reference' have no constraints on what the reference is expected to point to.  This extension allows constraining the
             content to only resources of a specific type.  If multiple extensions are present, it indicates that the resource must come from one of them.
             Further constraining can be done with the <a href="#referenceProfile">referenceProfile</a> and/or
-            <a href="#candidateExpression">candidateExpression</a> extensions.
+            <a href="#candidateExpression">candidateExpression</a> or <a href="#answerExpression">answerExpression</a> extensions.
           </p>
         </td>
       </tr>
@@ -618,7 +618,8 @@
             is defined).  If multiple referenceProfiles are listed, then the selected resource must be valid against at least one of the profiles.  The Form
             Filler can choose to use the profiles as filter criteria in a search, but not all systems will necessarily support search by profile or will
             support the listed profile(s).  Thus, a fallback to evaluating candidates against the profile(s) and filtering the list to exclude those that
-            are not should also be supported.  More sophisticated querying is supported by the <a href="#candidateExpression">candidateExpression</a> extension.
+            are not should also be supported.  More sophisticated querying is supported by the <a href="#candidateExpression">candidateExpression</a> or
+            or <a href="#answerExpression">answerExpression</a> extensions.
           </p>
         </td>
       </tr>
