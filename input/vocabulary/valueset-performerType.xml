@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ValueSet xmlns="http://hl7.org/fhir" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://hl7.org/fhir ../../src-generated/schemas/fhir-single.xsd">
+  <id value="performerType"/>
+  <url value="http://hl7.org/fhir/uv/sdc/ValueSet/performerType"/>
+  <name value="QuestionnairePerformerType"/>
+  <title value="Questionnaire Performer Type"/>
+  <status value="draft"/>
+  <description value="List of resource types that can record answers to a Questionnaire."/>
+  <compose>
+    <include>
+      <system value="http://hl7.org/fhir/resource-types"/>
+      <concept>
+        <code value="Patient"/>
+        <display value="Patient"/>
+      </concept>
+      <concept>
+        <code value="Practitioner"/>
+        <display value="Practitioner"/>
+      </concept>
+      <concept>
+        <code value="RelatedPerson"/>
+        <display value="RelatedPerson"/>
+      </concept>
+    </include>
+  </compose>
+</ValueSet>

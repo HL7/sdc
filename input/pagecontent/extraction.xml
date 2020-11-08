@@ -43,7 +43,7 @@
       This can be supported by storing the id as a <a href="{{site.data.fhir.path}}extension-questionnaire-hidden.html">hidden</a> question not shown to the
       user.  Note that this is only relevant for the definition-based and StructureMap-based approaches. It is not relevant for the Observation-based approach.</li>
     <li>
-      Sometimes the author interested in making a Questionnaire "extractable" doesn't have authority to make changes to the "official" Questionnaire.  In other
+      Sometimes the author interested in making a Questionnaire "extractable" does not have authority to make changes to the "official" Questionnaire.  In other
       cases, there might be one official Questionnaire, but a need to create extracted resources that comply with different sets of profiles - and thus a need
       for different metadata in the Questionnaire to support the extraction process.  In this case, rather than basing the extraction on the original
       Questionnaire, it can be based on a derived Questionnaire - one that has a <code>Questionnaire.derivedFrom</code> relationship to the same canonical URL
@@ -60,9 +60,9 @@
   <p>
     Like <a href="populate.html">Questionnaire population</a>, extracting data from a QuestionnaireResponse is a complex process involving querying existing
     FHIR data and using more advanced technologies such as FHIRPath and StructureMap.  It's therefore a function that systems may also wish to offload to a
-    separate system.  The <a href="QuestionnaireResponse-extract.html">QuestionnaireResponse extract</a> has been created for this purpose.  It takes in a
+    separate system.  The <a href="OperationDefinition-QuestionnaireResponse-extract.html">QuestionnaireResponse extract</a> has been created for this purpose.  It takes in a
     completed QuestionnaireResponse and returns either an individual FHIR resource or a Bundle of resources, depending on the type of Questionnaire.  The
-    operation doesn't post the created resources to a server.  It's up to the client system to determine what action(s) to take with the created
+    operation does not post the created resources to a server.  It's up to the client system to determine what action(s) to take with the created
     content.
   </p>
   <p>
@@ -79,7 +79,7 @@
       <a href="#obs-extract">Observation-based</a>
     </li>
     <li>
-      <a href="#definition-extract">definition-based</a>
+      <a href="#definition-extract">Definition-based</a>
     </li>
     <li>
       <a href="#map-extract">StructureMap-based</a>
@@ -89,10 +89,10 @@
     Systems are free to experiment with other extraction mechanisms but cannot expect support for those from other SDC-conformant systems.
   </p>
   <p>
-    The <a href="StructureDefinition-sdc-questionnaire-extract.html">sdc-questionnaire-extract</a> profile includes the data elements and extensions relevant for supporting all
-    these mechanisms.  None of the additional resource elements or extensions are marked as "mustSupport" because there is no expectation that systems will
-    support all (or any of) the different extraction mechanisms.  Instead, each system should choose which approach(es) it wishes to use and support the
-    elements described in that section of the implementation guide.
+    Each mechanism has its own profile that includes the additional resource elements or extensions relevant for supporting a particular mechanism: <a href="StructureDefinition-sdc-questionnaire-extr-obsn.html">SDC Questionnaire Extract - Observation</a>, 
+    <a href="StructureDefinition-sdc-questionnaire-extr-defn.html">SDC Questionnaire Extract - Definition</a>, and <a href="StructureDefinition-sdc-questionnaire-extr-smap.html">SDC Questionnaire Extract - Structure Map</a> profiles. Each profile identifies 
+    specific 'must support' elements and extensions that systems that claim to support a specific SDC extraction mechanism SHALL be capable of extracting data, as befits the CapabilityStatement(s) 
+    they claim conformance to. Each system should choose which approach(es) it wishes to use and support based on the elements specified in that profile.
   </p>
   <p>
     Some of these mechanisms make use of FHIR-based queries, FHIRPath and/or CQL as well as extensions that include expressions in one of these languages.
@@ -104,21 +104,22 @@
     This is the simplest of the extraction mechanisms.  It leverages the same data elements as are used for the <a href="populate.html#obs-pop">
     Observation-based population</a> mechanism.  It takes advantage of the fact that most questions in the healthcare space typically
     correspond to the <code>value</code> element of an Observation.  It also takes advantage of the <code>Questionnaire.item.code</code> element that
-    identifies what a concept each question or group corresponds to.
+    identifies what a concept each question or group corresponds to.  The <a href="StructureDefinition-sdc-questionnaire-extr-obsn.html">SDC Questionnaire Extract - Observation</a> profile 
+    has been created to support this mechanism. 
   </p>
   <p>
     To use this method:
   </p>
   <ol>
     <li>Include the <code>item.code</code> element on each question to be extracted.  Typically, this will be a LOINC code, but in some
-      jurisdictions/environments, SNOMED CT or other codes may be relevant</li>
+      jurisdictions/environments, SNOMED CT or other codes may be relevant.</li>
     <li>Groups can also have an <code>item.code</code> present - this might represent the code of the a panel or the Observation.code of an Observation with no
       value but with multiple <code>Observation.component</code> elements.  Child question items can then assert the <code>item.code</code> of the "member-of"
-      Observations or the <code>Observation.component.code</code> values</li>
+      Observations or the <code>Observation.component.code</code> values.</li>
     <li>To signal that the item.code is intended for use in extraction (as opposed to just providing metadata about the Questionnaire item), the
-      <a href="StructureDefinition-sdc-questionnaire-observationLinkPeriod.html">questionnaire-observationLinkPeriod</a> extension must also be included.  This extension
-      indicates the period of time over which to search for matching observations.  Note if the Observation-based approach is used for both extraction and population, 
-	  the <a href="StructureDefinition-sdc-questionnaire-observationLinkPeriod.html">questionnaire-observationLinkPeriod</a> applies to both.</li>
+      <a href="StructureDefinition-sdc-questionnaire-observationExtract.html">questionnaire-observationExtract</a> extension must also be included (and set to true).  
+      This extension can be specified either at the root Questionnaire or on an individual question or group item (not a display item) that indicates that the 
+      observation-based approach should be used to extract either that particular item (based on the code present) or all items in the questionnaire (if they have a code present).</li>
     <li>Multiple <code>item.code</code> elements might be present.  If so, each are considered one of the Observation.code Codings in the resulting
       extracted Observation.</li>
   </ol>
@@ -128,12 +129,8 @@
   <pre>
     <code>
 	  &lt;item&gt;
-		&lt;extension url="http://hl7.org/fhir/uv/sdc/StructureDefinition/sdc-questionnaire-observationLinkPeriod"&gt;
-		  &lt;valueDuration&gt;
-			&lt;value value="3"/&gt;
-			&lt;system value="http://unitsofmeasure.org"/&gt;
-			&lt;code value="mo"/&gt;
-		  &lt;/valueDuration&gt;
+		&lt;extension url="http://hl7.org/fhir/uv/sdc/StructureDefinition/sdc-questionnaire-observationExtract"&gt;
+		  &lt;valueBoolean value="true" /&gt;
 		&lt;/extension&gt;
 		&lt;linkId value="code-pop-demo"/&gt;
 		&lt;code&gt;
@@ -170,8 +167,8 @@
   </pre>
   <p>
     When performing the extraction process, the system will create a batch that will contain creates or updates of Observation instances.  It will go through
-    the QuestionnaireResponse and identify all answers for which the corresponding Questionnaire item has a
-    <a href="StructureDefinition-sdc-questionnaire-observationLinkPeriod.html">questionnaire-observationLinkPeriod</a> extension.  For each of those it will then
+    the QuestionnaireResponse and identify all answers marked for extraction (if the corresponding Questionnaire item or the root Questionnaire has a
+    <a href="StructureDefinition-sdc-questionnaire-observationExtract.html">questionnaire-observationExtract</a> extension).  For each of those it will then
     determine whether to create a new observation, update an existing observation or do nothing.  Guidelines for making this decision are as follows:
   </p>
   <table class="grid">
@@ -204,8 +201,8 @@
     </tbody>
   </table>
   <p>
-    If updating, simply adjust the original Observation to have the new value and change the status to "amended", then PUT it to the source system.  If
-    creating, data elements SHALL be populated as follows:
+    If updating, the original Observation SHALL be adjusted to have the new value or component.value and the status changed to "amended", then PUT to 
+    the source system.  If creating, data elements SHOULD be populated as follows:
   </p>
   <ul>
     <li>
@@ -225,8 +222,8 @@
     <li>
       <code>Observation.effectiveDateTime</code> - set to <code>QuestionnaireResponse.authored</code>.<br/>
       <br/>Note, this is an inference.  It is important that the question text implies that the value is 'current' not 'historical' for this to be safe -
-      otherwise don't include the <a href="StructureDefinition-sdc-questionnaire-observationLinkPeriod.html">questionnaire-observationLinkPeriod</a> extension 
-	  that marks the question as appropriate for population and extraction.</li>
+      otherwise do not include the <a href="StructureDefinition-sdc-questionnaire-observationExtract.html">questionnaire-observationExtract</a> extension 
+	  that marks the question as appropriate for extraction.</li>
     <li>
       <code>Observation.issued</code> - set to <code>QuestionnaireResponse.authored</code>
     </li>
@@ -279,26 +276,26 @@
   <p>
     This approach to extraction is more generic.  It supports extracting data into any type of FHIR resource rather than being limited to only Observation.
     It also supports more Observation data elements than can be gathered using the Observation element - for example, explicit effective time ranges,
-    interpretations, comments, etc.
+    interpretations, comments, etc.  The <a href="StructureDefinition-sdc-questionnaire-extr-defn.html">SDC Questionnaire Extract - Definition</a> profile has been created to support this mechanism.
   </p>
   <p>
     To use this method:
   </p>
   <ol>
-    <li>Include the <a href="StructureDefinition-sdc-questionnaire-itemContext.html">questionnaire-itemContext</a> extension either on the Questionnaire root or on
-      'group' items within the Questionnaire to identify the resource that will serve as the context for any extraction.  The itemContext is used to set the context 
-	  for the item.definition paths. If the itemContext is empty, then the Questionnaire is being used to create a resource. If the itemContext has a resource 
+    <li>Include the <a href="StructureDefinition-sdc-questionnaire-itemExtractionContext.html">questionnaire-itemExtractionContext</a> extension either on the Questionnaire root or on
+      'group' items within the Questionnaire to identify the resource that will serve as the context for any extraction.  The itemExtractionContext is used to set the context 
+	  for the item.definition paths. If the itemExtractionContext is empty, then the Questionnaire is being used to create a resource. If the itemExtractionContext has a resource 
 	  (or set of resources), then the Questionnaire is being used to update the resource(s).</li>
     <li>On descendant items of that element, fill in the <code>Questionnaire.item.definition</code> to point to the resource or profile element that Questionnaire
       item corresponds to.  (Profiles may be relevant for data that is sliced or has fixed values for some properties.).  The definition SHALL have the full
       canonical URL of the resource (or profile) followed by '#' followed by the snapshot.path of the element the Questionnaire item corresponds to.</li>
     <li>If necessary, define <a href="{{site.data.fhir.path}}extension-questionnaire-hidden.html">questionnaire-hidden</a> items that have <code>
-      Questionnaire.item.initialValue[x]</code> or that use the
+      Questionnaire.item.initial.value[x]</code> or that use the
       <a href="StructureDefinition-sdc-questionnaire-initialExpression.html">questionnaire-initialExpression</a> extension to define their content to use to populate
       resource elements that the user will not be filling in.  (The initialExpressions might in turn depend on
       <a href="{{site.data.fhir.path}}extension-variable.html">variable</a> and
       <a href="StructureDefinition-sdc-questionnaire-launchContext.html">questionnaire-launchContext</a> extensions, used as described in the
-      <a href="populate.html#path-pop">Path-based population</a>
+      <a href="populate.html#exp-pop">Expression-based population</a>
       section.</li>
   </ol>
   <p>
@@ -307,11 +304,11 @@
   <ul>
     <li>If the context resource existed and was used in the population of the resource and data has changed, the resource will typically be updated.  (Note
       that this means the system must capture the resource ids as hidden items in the Questionnaire so they're available for update.)</li>
-    <li>In other cases, the record will be created</li>
+    <li>In other cases, the record will be created.</li>
   </ul>
   <p>
     If updating, the answer values from the questionnaire (including hidden, calculated answers) will be propagated to the context resource.  If creating, then
-    for each occurrence of each item asserting a <a href="StructureDefinition-sdc-questionnaire-itemContext.html">questionnaire-itemContext</a>, a resource of 
+    for each occurrence of each item asserting a <a href="StructureDefinition-sdc-questionnaire-itemExtractionContext.html">questionnaire-itemExtractionContext</a>, a resource of 
 	the context type will be defined.  It will be populated with answers to questions (hidden or not) that have a definition that matches the resource type of 
 	the context.  As well, if the definitions refer to a profile, any child elements of the profile that have fixed values or patterns declared will also be 
 	included in the instance with values matching the fixed or pattern values.
@@ -320,7 +317,7 @@
     An example of a questionnaire using this approach can be found <a href="todo">here</a>.
   </p>-->
   <p>
-    Considerations when using this approach:
+    Considerations and rules when using this approach:
   </p>
   <ul>
     <li>
@@ -335,10 +332,13 @@
     <li>
       In some cases, the context of an element will switch.  For example, an item might have a definition of
       "http://hl7.org/fhir/MedicationStatement#MedicationStatement.medicationReference" and
-      a <a href="StructureDefinition-sdc-questionnaire-itemContext.html">questionnaire-itemContext</a> extension that shifts the context to "Medication".  
+      a <a href="StructureDefinition-sdc-questionnaire-itemExtractionContext.html">questionnaire-itemExtractionContext</a> extension that shifts the context to "Medication".  
 	  Subsequent children would then have definitions based on the "http://hl7.org/fhir/Medication" resource.</li>
     <li>
       Note that only one context can be in play at the same time.  When a new context is declared, it takes the place of the old context.</li>
+    <li>
+      If the same context are used for both <a href="StructureDefinition-sdc-questionnaire-itemPopulationContext.html">questionnaire-itemPopulationContext</a> and
+      <a href="StructureDefinition-sdc-questionnaire-itemExtractionContext.html">questionnaire-itemExtractionContext</a>, then the value will be repeated for both extensions.</li>
     <li>
       The items in the Questionnaire might not have the same order as those in the resource.  When serializing into XML, the official order must still be
       respected.</li>
@@ -351,7 +351,8 @@
     It allows significant transformation of data, including code translations when generating output resources.  It also allows the conversion process
     between data and Questionnaire to be maintained independently and to draw on shared sources across Questionnaires.  This can be an advantage in
     certain environments where the content of the questionnaire may need tight control, but the data environment can be more dynamic.  This comes at the cost
-    of requiring expertise in the <a href="{{site.data.fhir.path}}mapping-language.html">FHIR mapping language</a>, which is not (yet?) a common skill.
+    of requiring expertise in the <a href="{{site.data.fhir.path}}mapping-language.html">FHIR mapping language</a>, which is not (yet?) a common skill. 
+    The <a href="StructureDefinition-sdc-questionnaire-extr-smap.html">SDC Questionnaire Extract - StructureMap</a> profile has been created to support this mechanism.
   </p>
   <p>
     To use this method:

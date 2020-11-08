@@ -27,9 +27,9 @@
       is <code>http://hl7.org/fhir/uv/sdc/StructureDefinition/sdc-questionnaire-</code>
     </li>
     <li>
-      <b>Location:</b> This indicates where the element or extension can appear.  Possible values are 'root' (for those that appear directly on the
-      <code>Questionnaire</code> element), 'item' (for those that can appear on any type of item) or 'question' for those that can only appear on question
-      items.  In some cases, additional restrictions/guidance will be provided</li>
+      <b>Location:</b> This indicates where the element or extension can appear.  Possible values are 'Questionnaire' (for those that appear directly on the
+      <code>Questionnaire</code> element), 'item' (for those that can appear on any type of item), 'question' (for those that can only appear on question
+      items), or 'group' (for those that can appear on group items).  In some cases, additional restrictions/guidance will be provided.</li>
     <li>
       <b>Data Type:</b> Indicates what content the element or extension can have.</li>
   </ul>
@@ -129,7 +129,7 @@
           <a href="{{site.data.fhir.path}}extension-minvalue.html">minValue</a>
         </td>
         <td>Core</td>
-        <td>date, dateTime, time, decimal, integer</td>
+        <td>question (where type='date', 'dateTime', 'time', 'decimal', 'integer')</td>
         <td>as per question type</td>
         <td><a href="examples.html#minValue-maxValue-maxDecimalPlaces">example</a></td>
       </tr>
@@ -144,7 +144,7 @@
           </p>
           <p>
             The minValue SHALL be less than or equal to the <a href="#maxValue">maxValue</a>, if both are specified. If min and/or max are calculated values,
-            care should be taken to ensure that they can't ever conflict.  I.e. It should never be possible for calculated max to be less than calculated min.
+            care should be taken to ensure that they cannot ever conflict.  I.e. It should never be possible for calculated max to be less than calculated min.
             If this does occur, systems SHALL prohibit a value from being specified for the element for so long as the conflict exists.  If the question is required,
             this may mean that it is not possible to mark the QuestionnaireResponse as "completed".
           </p>
@@ -156,7 +156,7 @@
           <a href="{{site.data.fhir.path}}extension-maxvalue.html">maxValue</a>
         </td>
         <td>Core</td>
-        <td>date, dateTime, time, decimal, integer</td>
+        <td>question (where type='date', 'dateTime', 'time', 'decimal', 'integer')</td>
         <td>as per question type</td>
         <td><a href="examples.html#minValue-maxValue-maxDecimalPlaces">example</a></td>
       </tr>
@@ -169,8 +169,60 @@
 			a dynamic limit.  For example, ensuring that a date of birth will result in a minimum age by setting maxValue with an expression of 'today() - 18 years'.
           </p>
           <p>
-            The minValue SHALL be less than or equal to the <a href="#maxValue">maxValue</a>, if both are specified. If min and/or max are calculated values,
-            care should be taken to ensure that they can't ever conflict.  I.e. It should never be possible for calculated max to be less than calculated min.
+            The <a href="#minValue">minValue</a> SHALL be less than or equal to the maxValue, if both are specified. If min and/or max are calculated values,
+            care should be taken to ensure that they cannot ever conflict.  I.e. It should never be possible for calculated max to be less than calculated min.
+            If this does occur, systems SHALL prohibit a value from being specified for the element for so long as the conflict exists.  If the question is required,
+            this may mean that it is not possible to mark the QuestionnaireResponse as "completed".
+          </p>
+        </td>
+      </tr>
+      <tr>
+        <td>
+          <a name="minQuantity"> </a>
+          <a href="StructureDefinition-sdc-questionnaire-minQuantity.html">minQuantity</a>
+        </td>
+        <td>SDC</td>
+        <td>question (where type='quantity')</td>
+        <td>Quantity</td>
+        <td><a href="examples.html#min-maxQuantity">example</a></td>
+      </tr>
+      <tr>
+        <td colspan="5">
+          <p>
+            Same as <a href="#minValue">minValue</a> but for Quantity data types, it allows establishing the lower bound for an answer.  Unlike straightforward comparisons 
+            with simple quantitative types, when performing the min and/or max checks for Quantity types, the answer.valueQuantity needs to be converted to the same units
+            as the min/maxQuantity unit prior to comparison.  This extension must only be used if the set of permitted units is constrained to UCUM codes.
+          </p>
+          <p>
+            The <a href="#minQuantity">minQuantity</a> SHALL be less than or equal to the maxQuantity, if both are specified.  This extension can be used together with 
+            the <a href="#cqf-calculatedValue">cqf-calculatedValue</a> extension to establish a dynamic limit.  If min and/or max are calculated values,
+            care should be taken to ensure that they cannot ever conflict.  I.e. It should never be possible for calculated max to be less than calculated min.
+            If this does occur, systems SHALL prohibit a value from being specified for the element for so long as the conflict exists.  If the question is required,
+            this may mean that it is not possible to mark the QuestionnaireResponse as "completed".
+          </p>
+        </td>
+      </tr>
+      <tr>
+        <td>
+          <a name="maxQuantity"> </a>
+          <a href="StructureDefinition-sdc-questionnaire-maxQuantity.html">maxQuantity</a>
+        </td>
+        <td>SDC</td>
+        <td>question (where type='quantity')</td>
+        <td>Quantity</td>
+        <td><a href="examples.html#min-maxQuantity">example</a></td>
+      </tr>
+      <tr>
+        <td colspan="5">
+          <p>
+            Same as <a href="#maxValue">maxValue</a> but for Quantity data types, it allows establishing the upper bound for an answer.  Unlike straightforward comparisons 
+            with simple quantitative types, when performing the min and/or max checks for Quantity types, the answer.valueQuantity needs to be converted to the same units
+            as the min/maxQuantity unit prior to comparison.  This extension must only be used if the set of permitted units is constrained to UCUM codes.
+          </p>
+          <p>
+            The minQuantity SHALL be less than or equal to the <a href="#maxQuantity">maxQuantity</a>, if both are specified.  This extension can be used together with 
+            the <a href="#cqf-calculatedValue">cqf-calculatedValue</a> extension to establish a dynamic limit.  If min and/or max are calculated values,
+            care should be taken to ensure that they cannot ever conflict.  I.e. It should never be possible for calculated max to be less than calculated min.
             If this does occur, systems SHALL prohibit a value from being specified for the element for so long as the conflict exists.  If the question is required,
             this may mean that it is not possible to mark the QuestionnaireResponse as "completed".
           </p>
@@ -182,7 +234,7 @@
           <a href="{{site.data.fhir.path}}extension-maxdecimalplaces.html">maxDecimalPlaces</a>
         </td>
         <td>Core</td>
-        <td>decimal</td>
+        <td>question (where type='decimal')</td>
         <td>integer</td>
         <td><a href="examples.html#minValue-maxValue-maxDecimalPlaces">example</a></td>
       </tr>
@@ -199,7 +251,7 @@
           <a href="{{site.data.fhir.path}}extension-mimetype.html">mimeType</a>
         </td>
         <td>Core</td>
-        <td>attachment</td>
+        <td>question (where type='attachment')</td>
         <td>code</td>
         <td><a href="examples.html#mimetype-maxsize">example</a></td>
       </tr>
@@ -218,7 +270,7 @@
           <a href="{{site.data.fhir.path}}extension-maxsize.html">maxSize</a>
         </td>
         <td>Core</td>
-        <td>Attachment</td>
+        <td>question (where type='attachment')</td>
         <td>decimal</td>
         <td><a href="examples.html#mimetype-maxsize">example</a></td>
       </tr>
@@ -226,7 +278,7 @@
         <td colspan="5">
           <p>
             This extension is also used for questions with type of 'attachment'.  It allows specifying an upper bound on the size of the attachment in bytes.
-            This can help ensure that data embedded in the QuestionnaireResponse is 'manageable' and that a user doesn't accidentally attach a photo, document
+            This can help ensure that data embedded in the QuestionnaireResponse is 'manageable' and that a user does not accidentally attach a photo, document
             or something else that's unreasonably large (10s of megabytes or more).
           </p>
         </td>
@@ -257,9 +309,9 @@
         <td>Core</td>
         <td>question</td>
         <td>integer, date, time, string, Coding, Reference</td>
-        <td><a href="examples.html#answeroptions">example</a></td>
+        <td><a href="examples.html#answeroption">example</a></td>
       </tr>
-      <tr>
+     <tr>
         <td colspan="5">
           <p>
             This allows constraining the allowed value for a question item's answer to an enumerated set.  Each answerOption repetition indicates one of the
@@ -267,12 +319,13 @@
             open-choice. The type of the answerOption must match the type of the question. (Coding is used for both choice and open-choice.)
           </p>
           <p>
-            There are two mechanisms to enumerate the permitted answers for a question: this element and the <a href="#answerValueSet">answerValueSet</a>
-            element.  answerValueSet only supports defining values for 'string' and Coding elements.  (For 'string', the allowed values are those found in
-            the value set expansion's 'code' elements.)  However, it allows for the set of allowed codes to be maintained as an expression such as "all
-            medications from SNOMED CT", automatically adjusting as the set of matching codes changes based on the evolution of the code system.  As such,
+            There are three mechanisms to enumerate the permitted answers for a question: this element, the <a href="#answerValueSet">answerValueSet</a>
+            element, and the <a href="#answerExpression">answerExpression</a> extension.  answerValueSet only supports defining values for 'string' and 
+            Coding elements.  (For 'string', the allowed values are those found in the value set expansion's 'code' elements.)  However, it allows for the 
+            set of allowed codes to be maintained as an expression such as "all medications from SNOMED CT", automatically adjusting as the set of matching codes 
+            changes based on the evolution of the code system.  As such,
             answerValueSet is appropriate when the set of codes is large or potentially dynamic and enumerating all the possible choices within the
-            Questionnaire doesn't make sense.  To have tighter control of the set of answers allowed for the question, consider making the reference to the
+            Questionnaire does not make sense.  To have tighter control of the set of answers allowed for the question, consider making the reference to the
             ValueSet <a href="{{site.data.fhir.path}}references.html#canonical">version-specific</a>.  To really lock down the set of codes, the value
             set should itself tie itself to specific versions of the underlying code systems and/or specify a
             <a href="{{site.data.fhir.path}}valueset-definitions.html#ValueSet.compose.lockedDate">lockedDate</a>.
@@ -280,24 +333,30 @@
           <p>
             <code>answerValueSet</code> also allows for the possibility of sharing a set of answers across multiple questions within a single Questionnaire.
             Sharing the set of allowed answers simplifies maintenance and ensures consistency across questions.  This can be important when representing
-            choices as columns or rows in a table (see <a href="rendering.html#itemControl">itemControl</a>.  If appropriate, the ValueSet can be nested
+            choices as columns or rows in a table (see <a href="rendering.html#itemControl">itemControl</a>).  If appropriate, the ValueSet can be nested
             inside the Questionnaire as a <a href="{{site.data.fhir.path}}references.html#contained">contained</a> resource.  This should only be done if
             the ValueSet is intrinsically tied to the Questionnaire and should only ever be edited in the context of the Questionnaire.  Such ValueSets will
             not be available for use elsewhere.
           </p>
           <p>
-            <code>answerOption</code> works well when there is a small (2 - 20ish) number of choices.  It's the only option if the question type is integer,
+            <code>answerOption</code> works well when there is a small (2 - 20ish) number of choices and if the question type is integer,
             date, time or reference.  The set of options is maintained independently for each question.
           </p>
           <p>
-            <code>answerOption</code> and <code>answerValueSet</code> are mutually exclusive.  They SHALL NOT appear together on the same question.  If
+            The third mechanism for capturing the allowed set of answers is by using the <code>answerExpression</code> extension.  This extension allows
+            specifying a FHIR Query, FHIRPath, or CQL expression that resolves to a list of permitted answers for a question item.  The expression must 
+            evaluate to a collection of elements with the same type as the item.type or, if the type was Reference, to resources allowed as the referenced type.
+            For more details on answerExpression, click <a href="expressions.html#answerExpression">here</a>.
+          </p>
+          <p>
+            These three mechanisms are mutually exclusive.  Only one SHOULD appear on the same question.  If
             <code>answerOption</code> appears, there SHOULD be more than one repetition of it.  A question with a single answerOption will be treated as
             having a single fixed value.
           </p>
           <p>
-            If the set of choices is restricted using either <code>answerOption</code> or <code>answerValueSet</code>, the use of any other
-            <a href="#value-constraint">Value Constraint</a> elements is redundant and confusing.  Therefore, questions that have either 'answerOption' or
-            'answerValueSet' SHALL NOT make use of any of the other Value Constraint extensions.
+            If the set of choices is restricted using any of these three mechanisms, the use of any other <a href="#value-constraint">Value Constraint</a> elements is 
+            redundant and confusing.  Therefore, questions that have  'answerOption', 'answerValueSet' or 'answerExpression' extension SHALL NOT make use of any of the 
+            other Value Constraint extensions.
           </p>
         </td>
       </tr>
@@ -315,6 +374,23 @@
         <td colspan="5">
           <p>
             See discussion above under <a href="#answerOption">answerOption</a>.
+          </p>
+        </td>
+      </tr>
+      <tr>
+        <td>
+          <a name="answerExpression"> </a>
+          <a href="StructureDefinition-sdc-questionnaire-answerExpression.html">answerExpression</a>
+        </td>
+        <td>SDC</td>
+        <td>question</td>
+        <td>expression</td>
+        <td><a href="examples.html#reference-resource-profile-lookup">example</a></td>
+      </tr>
+      <tr>
+        <td colspan="5">
+          <p>
+            See discussion above under <a href="#answerOption">answerOption</a>. This extension is described in detail <a href="expressions.html#answerExpression">here</a>.  
           </p>
         </td>
       </tr>
@@ -358,7 +434,7 @@
         <td colspan="5">
           <p>
             For groups, a 'repeats' value of 'true' means that the QuestionnaireResponse can contain multiple item repetitions that correspond to the same
-            linkId.  For questions, it means that the question with the same linkId can have more than one answer.  (I.e. there won't be multiple repetitions
+            linkId.  For questions, it means that the question with the same linkId can have more than one answer.  (I.e. there will not be multiple repetitions
             of the question item in the QuestionnaireResponse, but instead the one corresponding question item can have multiple answers.  Display items should
             never be marked as 'repeats' and if they are, it has no meaning.  This element can also impact <a href="rendering.html#repeats">rendering</a>.
             To constrain the minimum number of elements permitted for a repeating element, see the <a href="#minOccurs">minOccurs</a> extension.
@@ -403,8 +479,8 @@
             The <a href="#required">required</a> element allows distinguishing items that are optional (minOccurs=0) from those that are required (minOccurs=1).
             However, for elements where <a href="#repeats">repeats</a> is true, it's sometimes necessary to indicate that multiple repetitions are required.
             For example, a question might ask the user to "select your top 3 choices" and want to enforce that at least 3 choices had been chosen.  The
-            minOccurs extension allows such rules to be enforced.  Using the <a href="#cqf-calculatedValue">cqf-calculatedValue</a> extension, the minimum
-            number of repetitions can also be made dynamic.  For example, one question might ask "How many brothers and sisters did you have?" while a
+            minOccurs extension allows such rules to be enforced.  Using the <a href="#cqf-calculatedValue">cqf-calculatedValue</a> extension or the <a href="#cqf-expression">cqf-expression</a> extension, 
+            the minimum number of repetitions can also be made dynamic.  For example, one question might ask "How many brothers and sisters did you have?" while a
             subsequent repeating group captures information about each sibling.  The Questionnaire could enforce that the number of group repetitions matched the
             number of siblings indicated by setting minOccurs and <a href="#maxOccurs">maxOccurs</a>.
           </p>
@@ -433,11 +509,34 @@
           <p>
             The <a href="#repeats">repeats</a> element allows indicating that an item is permitted to repeat, but places no limits on the number of times
             the group can appear in the response or the number of answers a question can have.  This extension allows a limit to be imposed.  For example, a
-            question might indicate "choose no more than 3".  Using the <a href="#cqf-calculatedValue">cqf-calculatedValue</a> extension, the maximum
-            number of repetitions can also be made dynamic as described in <a href="#maxOccurs">maxOccurs</a>.
+            question might indicate "choose no more than 3".  Using the <a href="#cqf-calculatedValue">cqf-calculatedValue</a> extension or the <a href="#cqf-expression">cqf-expression</a> extension, the maximum
+            number of repetitions can also be made dynamic as described in <a href="#minOccurs">minOccurs</a>.
           </p>
           <p>
             This element SHALL only be set for an item where <a href="#repeats">repeats</a> are true.
+          </p>
+        </td>
+      </tr>
+      <tr>
+        <td>
+          <a name="optionExclusive"> </a>
+          <a href="{{site.data.fhir.path}}extension-questionnaire-optionexclusive.html">optionExclusive</a>
+        </td>
+        <td>Questionnaire</td>
+        <td>Questionnaire.item.answerOption</td>
+        <td>boolean</td>
+        <td><a href="examples.html#optionExclusive">example</a></td>
+      </tr>
+      <tr>
+        <td colspan="5">
+          <p>
+            For questions with multiple <a href="#answerOption">answerOption</a> elements that are allowed to have multiple answers (repeats=true), 
+            if this extension is true for a specific answerOption, it indicates that once the user selects this answerOption, no other answers may be selected.
+            This extension is ideal for a multi-select question that has an option that is not compatible with all the others.  Examples of these exclusive options
+            are "None of the above", "All of the above", "Don't know", or "Not applicable".
+          </p>
+          <p>
+            This element is only relevant for an item where <a href="#repeats">repeats</a> are true.
           </p>
         </td>
       </tr>
@@ -447,7 +546,7 @@
           <a href="{{site.data.fhir.path}}extension-questionnaire-unitoption.html">unitOption</a>
         </td>
         <td>Questionnaire</td>
-        <td>Quantity</td>
+        <td>question (where type='quantity')</td>
         <td>Coding</td>
         <td><a href="examples.html#unitoption">example</a></td>
       </tr>
@@ -460,7 +559,7 @@
             the same for enforcing units as they are for enforcing answer choices and the extensions for units work the same way as those core elements.
           </p>
           <p>
-            To set a default from among the candidate units, it's possible to use the <a href="#initial">initial</a> element
+            To set a default from among the candidate units, it's possible to use the <a href="#initial">initial</a> element.
           </p>
         </td>
       </tr>
@@ -470,7 +569,7 @@
           <a href="{{site.data.fhir.path}}extension-questionnaire-unitvalueset.html">unitValueSet</a>
         </td>
         <td>Questionnaire</td>
-        <td>Quantity</td>
+        <td>question (where type='quantity')</td>
         <td>Reference(ValueSet)</td>
         <td><a href="examples.html#unitvalueset">example</a></td>
       </tr>
@@ -484,10 +583,10 @@
       <tr>
         <td>
           <a name="referenceResource"> </a>
-          <a href="{{site.data.fhir.path}}extension-questionnaire-referenceresource.html">questionnaire-referenceResource</a>
+          <a href="{{site.data.fhir.path}}extension-questionnaire-referenceresource.html">referenceResource</a>
         </td>
         <td>Questionnaire</td>
-        <td>Reference</td>
+        <td>question (where type='reference')</td>
         <td>code</td>
         <td><a href="examples.html#reference-resource-profile-lookup">example</a></td>
       </tr>
@@ -497,7 +596,7 @@
             Questions with a type of 'Reference' have no constraints on what the reference is expected to point to.  This extension allows constraining the
             content to only resources of a specific type.  If multiple extensions are present, it indicates that the resource must come from one of them.
             Further constraining can be done with the <a href="#referenceProfile">referenceProfile</a> and/or
-            <a href="#referenceFilter">referenceFilter</a> extensions.
+            <a href="#candidateExpression">candidateExpression</a> or <a href="#answerExpression">answerExpression</a> extensions.
           </p>
         </td>
       </tr>
@@ -507,7 +606,7 @@
           <a href="{{site.data.fhir.path}}extension-questionnaire-referenceprofile.html">referenceProfile</a>
         </td>
         <td>Questionnaire</td>
-        <td>Reference</td>
+        <td>question (where type='reference')</td>
         <td>canonical(StructureDefinition)</td>
         <td><a href="examples.html#reference-resource-profile-lookup">example</a></td>
       </tr>
@@ -519,48 +618,37 @@
             is defined).  If multiple referenceProfiles are listed, then the selected resource must be valid against at least one of the profiles.  The Form
             Filler can choose to use the profiles as filter criteria in a search, but not all systems will necessarily support search by profile or will
             support the listed profile(s).  Thus, a fallback to evaluating candidates against the profile(s) and filtering the list to exclude those that
-            are not should also be supported.  More sophisticated querying is supported by the <a href="#referenceFilter">referenceFilter</a> extension.
+            are not should also be supported.  More sophisticated querying is supported by the <a href="#candidateExpression">candidateExpression</a> or
+            or <a href="#answerExpression">answerExpression</a> extensions.
           </p>
         </td>
       </tr>
       <tr>
         <td>
-          <a name="referenceFilter"> </a>
-          <a href="{{site.data.fhir.path}}extension-questionnaire-referencefilter.html">referenceFilter</a>
+          <a name="candidateExpression"> </a>
+          <a href="StructureDefinition-sdc-questionnaire-candidateExpression.html">candidateExpression</a>
         </td>
-        <td>Questionnaire</td>
-        <td>Reference</td>
-        <td>string</td>
-        <td></td>
+        <td>SDC</td>
+        <td>question</td>
+        <td>expression</td>
+        <td><a href="examples.html#candidateExpression">example</a></td>
       </tr>
       <tr>
         <td colspan="5">
           <p>
-            This defines a generic (or occasionally specific) query that can be used to identify the resources that can be returned as answers to the
-            question listing the extension.  The query works as per the <a href="expressions.html#fhirquery">x-fhir-query</a> mechanism defined on the
-            <a href="expressions.html">Using Expressions</a> page.  As such, it can take advantage of <a href="#launchContext">launchContext</a>,
-            <a href="#variable">variables</a> and <a href="#calculatedExpression">calculatedExpressions</a> to act as part of the query search parameters
-            (for example, limiting responses to those matching a specific patient, those falling within a time range based on the current data, etc.
-          </p>
-          <p>
-            If a full URL is specified as the base for the query, then the query will be against the specified server.  Otherwise it will be against the
-            server managed by the Form Filler or against another server (or set of servers) chosen by the Form Filler.  This extension can be supplemented
-            by the <a href="#referenceProfile">referenceProfile</a> extension to further narrow candidate resources returned by the filter.
-          </p>
-          <p>
-            As a side note, when editing a QuestionnaireResponse, it's possible that the currently selected answer for a question will no longer meet the
-            filter criteria and/or target profile(s).  In some cases, it might even have been deleted.  The previously selected answer should remain as
-            a valid selection in the choice even if the item has changed at least until the QuestionnaireResponse is stored/saved again.
+            Described in detail <a href="expressions.html#candidateExpression">here</a>.  A FHIRPath or CQL Expression, or FHIR Query that resolves to a 
+            list of candidate answers (usually based on other answers in the questionnaire or based on information within the health record) for the question 
+            item or that establishes context for a group item.
           </p>
         </td>
       </tr>
       <tr>
         <td>
           <a name="lookupQuestionnaire"> </a>
-          <a href="structuredefinition-sdc-questionnaire-lookupQuestionnaire.html">lookupQuestionnaire</a>
+          <a href="StructureDefinition-sdc-questionnaire-lookupQuestionnaire.html">lookupQuestionnaire</a>
         </td>
         <td>Questionnaire</td>
-        <td>Reference</td>
+        <td>question (where type='reference')</td>
         <td>canonical(Questionnaire)</td>
         <td><a href="examples.html#reference-resource-profile-lookup">example</a></td>
       </tr>
@@ -606,7 +694,7 @@
           <a href="{{site.data.fhir.path}}extension-cqf-library.html">cqf-library</a>
         </td>
         <td>Core</td>
-        <td>root</td>
+        <td>Questionnaire</td>
         <td>canonical(Library)</td>
         <td><a href="examples.html#cqf">example</a></td>
       </tr>
@@ -624,7 +712,7 @@
           <a href="StructureDefinition-sdc-questionnaire-launchContext.html">launchContext</a>
         </td>
         <td>SDC</td>
-        <td>root</td>
+        <td>Questionnaire</td>
         <td>complex</td>
         <td><a href="examples.html#launchContext">example</a></td>
       </tr>
@@ -644,7 +732,7 @@
           <a href="{{site.data.fhir.path}}extension-variable.html">variable</a>
         </td>
         <td>Core</td>
-        <td>root, item</td>
+        <td>Questionnaire, item</td>
         <td>Expression</td>
         <td><a href="examples.html#calculatedexpression">example</a></td>
       </tr>
@@ -653,7 +741,7 @@
           <p>
             Described in detail <a href="expressions.html#variable">here</a>.  This extension allows the calculation of information based on descendant
             question answers (and other variables or <a href="#launchContext">launchContext</a> elements) that can then be referenced by extensions on
-            other items that don't have the same scope - and thus don't have access to the same question answers.
+            other items that do not have the same scope - and thus don't have access to the same question answers.
           </p>
         </td>
       </tr>
@@ -717,12 +805,35 @@
           </p>
         </td>
       </tr>
+      <tr>
+        <td>
+          <a name="cqf-expression"> </a>
+          <a href="{{site.data.fhir.path}}extension-cqf-expression.html">cqf-expression</a>
+        </td>
+        <td>Core</td>
+        <td>
+          <a href="#minOccurs">minOccurs</a>, <a href="#maxOccurs">maxOccurs</a>, <a href="#required">required</a>, <a href="#repeats">repeats</a>, <a href="#readOnly">readOnly</a>
+          , <a href="#answerValueSet">answerValueSet</a>
+        </td>
+        <td>Expression</td>
+        <td><a href="examples.html#cqf">example</a></td>
+      </tr>
+      <tr>
+        <td colspan="5">
+          <p>
+            Same as <a href="#cqf-calculatedValue">cqf-calculatedValue</a>, this extension can make some of the control values of the Questionnaire dynamic.  It allows
+            an expression to provide the value for the element on which it appears.  For the SDC implementation guide, the recommended
+            locations for use are <a href="#minOccurs">minOccurs</a>, <a href="#maxOccurs">maxOccurs</a>, <a href="#required">required</a>, <a href="#repeats">repeats</a>, 
+            <a href="#readOnly">readOnly</a>, <a href="#answerValueSet">answerValueSet</a>.  However, in principle, they can be used for other elements as well.  
+          </p>
+        </td>
+      </tr>
     </tbody>
   </table>
   <a name="Other"> </a>
   <h4>Other Control</h4>
   <p>
-    These are additional elements and extensions relevant to controlling the completion of the QuestionnaireResponse that don't fit into the previous
+    These are additional elements and extensions relevant to controlling the completion of the QuestionnaireResponse that do not fit into the previous
     categories.
   </p>
   <table class="grid">
@@ -773,10 +884,12 @@
         <td colspan="5">
           <p>
             Establishes the default answer for a question.  If the user does not change the value, this is what will appear in the completed
-            QuestionnaireResponse
+            QuestionnaireResponse.  For choice and open-choice questions, initial.value SHALL be one (or more) of the enumerated answer options provided 
+            by <a href="#answerOption">answerOption</a>, <a href="#answerValueSet">answerValueSet</a>, or <a href="#answerExpression">answerExpression</a>
+            extension.
           </p>
           <p>
-            Note that 'initial' doesn't have to specify all properties.  For example, it can be used to select a default unit of measure for a quantity,
+            Note that 'initial' does not have to specify all properties.  For example, it can be used to select a default unit of measure for a quantity,
             or potentially (depending on user interface), a default media type for an attachment.  To do this, simply specify the property being defaulted
             (e.g. Quantity.code and Quantity.system) while omitting the remainder.
           </p>
@@ -830,7 +943,7 @@
           <a name="enableWhenExpression"> </a>
           <a href="StructureDefinition-sdc-questionnaire-enableWhenExpression.html">enableWhenExpression</a>
         </td>
-        <td>N/A</td>
+        <td>SDC</td>
         <td>item</td>
         <td>code</td>
         <td><a href="examples.html#enableexamples">example</a></td>
@@ -838,12 +951,9 @@
       <tr>
         <td colspan="5">
           <p>
-            This serves the same purpose as <a href="#enableWhen">enableWhen</a> (and is mutually exclusive with it).  It controls whether an item should be
-            'enabled' or not, but can handle more sophisticated circumstances than that extension.  (If enableWhen can meet the need, it should be used
-            instead as it will be more broadly supported.)  Specifically, enableWhenExpression allows more complex logic such as support for different types of logic operators 
-			(e.g. 'and', 'or', 'not', 'nand', 'nor') among conditions and a mixture of them (e.g. "Enable if Q1=5 and Q2 nand Q3 are true").  It also allows for logic 
-			to be based on calculations across questions (possibly leveraging <a href="#variable">variable</a>) or even based on values passed in by 
-			<a href="#launchContext">launchContext</a> or queried from outside the questionnaire (see <a href="expressions.html">Using Expressions</a>).
+            Described in detail <a href="expressions.html#enableWhenExpression">here</a>. This serves the same purpose as <a href="#enableWhen">enableWhen</a>, it controls whether an item should be
+            'enabled' or not, but can handle more sophisticated circumstances than that extension.  For example, it is possible to calculate a score based on the answer to several questions 
+            and then enable other questions based on the score.  It's also possible to enable or disable questions based on data passed in as context or retrieved from queries.
           </p>
         </td>
       </tr>
@@ -882,10 +992,10 @@
       <tr>
         <td colspan="5">
           <p>
-            This allows assertion of constraints across an entire questionnaire or across any item with child items.  For example, it could be used to
-            require that either the patient identifier or birth date must be specified, that at least 6 of the questions from question 10 through 20
-            must be answered, or that the sum of questions 1 through 5 must equal exactly 100.  The human field SHOULD be set to inform the user what to do.
-            The expression is written in FHIRPath and has access to the <a href="expressions.html#contexts">additional FHIRPath capabilities</a> defined in
+            This allows assertion of constraints across an entire questionnaire or across any item with child items.  All 'error' constraints SHALL evaluate to 'true' 
+            before setting a QuestionnaireResponse to complete.  For example, it could be used to require that either the patient identifier or birth date must be 
+            specified, that at least 6 of the questions from question 10 through 20 must be answered, or that the sum of questions 1 through 5 must equal exactly 100.  
+            The human field SHOULD be set to inform the user what to do.  The expression is written in FHIRPath and has access to the <a href="expressions.html#contexts">additional FHIRPath capabilities</a> defined in
             <a href="expressions.html">Using Expressions</a>.
           </p>
         </td>
@@ -896,7 +1006,7 @@
           <a href="StructureDefinition-sdc-questionnaire-endpoint.html">endpoint</a>
         </td>
         <td>SDC</td>
-        <td>root</td>
+        <td>Questionnaire</td>
         <td>uri</td>
         <td><a href="examples.html#endpoint">example</a></td>
       </tr>
@@ -914,16 +1024,17 @@
           <a href="{{site.data.fhir.path}}extension-questionnaire-signaturerequired.html">signatureRequired</a>
         </td>
         <td>Questionnaire</td>
-        <td>root, group, question</td>
+        <td>Questionnaire, group, question</td>
         <td>CodeableConcept</td>
         <td><a href="examples.html#signatureRequired-usagemode">example</a></td>
       </tr>
       <tr>
         <td colspan="5">
           <p>
-            This allows a form to indicate whether the form must be signed on completion or whether specified questions or answers themselves must be signed.
-            Signature can be as simple as providing the user's initials to confirm that they've verified and agree with the answer, or it could mean a
-            full digital signature.  This extension will tend to be used on Questionnaires that result in legal documents.
+            This allows a form to indicate whether the form must be signed on completion or whether specified questions or answers themselves must be
+            signed.  If a signature is required, elements present in the QuestionnaireResponse must have signatures before marking the QuestionnaireResponse
+            as complete.  Signature can be as simple as providing the user's initials to confirm that they've verified and agree with the answer, or it could
+            mean a full digital signature.  This extension will tend to be used on Questionnaires that result in legal documents.
           </p>
         </td>
       </tr>

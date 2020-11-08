@@ -32,9 +32,9 @@
       is <code>http://hl7.org/fhir/uv/sdc/StructureDefinition/sdc-questionnaire-</code>
     </li>
     <li>
-      <b>Location:</b> This indicates where the element or extension can appear.  Possible values are 'root' (for those that appear directly on the
-      <code>Questionnaire</code> element), 'item' (for those that can appear on any type of item) or 'question' for those that can only appear on question
-      items.  In some cases, additional restrictions/guidance will be provided</li>
+      <b>Location:</b> This indicates where the element or extension can appear.  Possible values are 'Questionnaire' (for those that appear directly on the
+      <code>Questionnaire</code> element), 'item' (for those that can appear on any type of item), 'question' (for those that can only appear on question
+      items), or 'group' (for those that can appear on group items).  In some cases, additional restrictions/guidance will be provided.</li>
     <li>
       <b>Data Type:</b> Indicates what content the element or extension can have.</li>
   </ul>
@@ -63,7 +63,7 @@
           <a href="{{site.data.fhir.path}}extension-rendering-style.html">rendering-style</a>
         </td>
         <td>Core</td>
-        <td>Questionnaire.title, item.prefix, item.text, <a href="#valueset-label">valueset-label</a>, Valueset.compose.include.concept.display,
+        <td>Questionnaire.title, item.prefix, item.text, item.answerOption.valueString, item.answerOption.valueCoding.display, <a href="#valueset-label">valueset-label</a>, Valueset.compose.include.concept.display,
           Valueset.compose.include.concept.designation.value (and expansion equivalents), CodeSystem.concept.designation.value</td>
         <td>string</td>
         <td><a href="examples.html#rendering-style">example</a></td>
@@ -84,7 +84,7 @@
           <a href="{{site.data.fhir.path}}extension-rendering-xhtml.html">rendering-xhtml</a>
         </td>
         <td>Core</td>
-        <td>Questionnaire.title, item.prefix, item.text, <a href="#valueset-label">valueset-label</a>, Valueset.compose.include.concept.display,
+        <td>Questionnaire.title, item.prefix, item.text, item.answerOption.valueString, item.answerOption.valueCoding.display, <a href="#valueset-label">valueset-label</a>, Valueset.compose.include.concept.display,
           Valueset.compose.include.concept.designation.value (and expansion equivalents), CodeSystem.concept.designation.value</td>
         <td>string</td>
         <td><a href="examples.html#rendering-xhtml">example</a></td>
@@ -141,7 +141,11 @@
             questions and groups.  It allows for answers to be captured behind the scenes using the <a href="behavior.html">behavior</a> and/or
             <a href="populate.html">population</a> mechanisms.  For example, hidden scores, hidden source data, hidden data needed for
             <a href="extraction.html">extraction</a>.  If an item is hidden, then all items below it will be hidden as well.  Hidden items are automatically
-            treated as <a href="#readOnly">readOnly</a> - users can't edit what they can't see or navigate to.
+            treated as <a href="#readOnly">readOnly</a> - users cannot edit what they cannot see or navigate to.
+          </p>
+          <p>
+            NOTE: Hiding data from the enterer is not a solution to data privacy/security concerns as any questionnaire answer must be presumed to be potentially 
+            available to any consumer of the questionnaire in some manner.
           </p>
         </td>
       </tr>
@@ -197,7 +201,7 @@
           <a href="{{site.data.fhir.path}}extension-questionnaire-choiceorientation.html">choiceOrientation</a>
         </td>
         <td>Questionnaire</td>
-        <td>choice, open-choice, other items with choiceOption or choiceValueset</td>
+        <td>question (where type='choice','open-choice'), other items with choice options</td>
         <td>code</td>
         <td><a href="examples.html#choiceOrientation">example</a></td>
       </tr>
@@ -216,7 +220,7 @@
           <a href="{{site.data.fhir.path}}extension-questionnaire-sliderstepvalue.html">sliderStepValue</a>
         </td>
         <td>Questionnaire</td>
-        <td>integer</td>
+        <td>question (where type='integer')</td>
         <td>integer</td>
         <td><a href="examples.html#sliderStepValue">example</a></td>
       </tr>
@@ -248,6 +252,25 @@
             permitted width is for the column that contains the question.  It can either be specified as a percentage of the overall table
             width (quantity.code = '%' and system='http://unitsofmeasure.org') or pixels (quantity.code and system are omitted).  See
             <a href="#choiceColumn">choiceColumn</a> for guidance on setting column widths for choice-based columns.
+          </p>
+        </td>
+      </tr>
+      <tr>
+        <td>
+          <a name="collapsible"> </a>
+          <a href="StructureDefinition-sdc-questionnaire-collapsible.html">collapsible</a>
+        </td>
+        <td>SDC</td>
+        <td>group, question</td>
+        <td>code</td>
+        <td><a href="examples.html#collapsible">example</a></td>
+      </tr>
+      <tr>
+        <td colspan="5">
+          <p>
+            This allows the child items of a group or question item to be displayed in a collapsible form (toggle between showing and hiding
+            the child items). This is very useful for authors dealing with particularly long questionnaires.  The author might choose to 
+            present certain sections collapsed which will provide the user brief overviews before digging into nested items.
           </p>
         </td>
       </tr>
@@ -296,7 +319,7 @@
           <a href="StructureDefinition-sdc-questionnaire-choiceColumn.html">choiceColumn</a>
         </td>
         <td>SDC</td>
-        <td>choice, open-choice and Reference</td>
+        <td>question (where type='choice', 'open-choice' and 'reference')</td>
         <td>complex</td>
         <td><a href="examples.html#choiceColumn">example</a></td>
       </tr>
@@ -340,7 +363,7 @@
           <a href="{{site.data.fhir.path}}extension-questionnaire-optionprefix.html">optionPrefix</a>
         </td>
         <td>Questionnaire</td>
-        <td>item.optionChoice</td>
+        <td>Questionnaire.item.answerOption</td>
         <td>string</td>
         <td><a href="examples.html#optionPrefix">example</a></td>
       </tr>
@@ -367,7 +390,7 @@
         <td colspan="5">
           <p>
             This serves the same purpose as <a href="#optionPrefix">optionPrefix</a>, but allows the definition of the prefix to occur in a valueset referenced
-            by optionValueSet instead of listing the options directly using optionChoice.
+            by answerValueSet instead of listing the options directly using answerOption.
           </p>
         </td>
       </tr>
@@ -420,7 +443,7 @@
       <tr>
         <td colspan="5">
           <p>
-            Both groups and questions can be marked as 'required'  For groups, that at least one question within a given repetition of the group must have
+            Both groups and questions can be marked as 'required'.  For groups, that at least one question within a given repetition of the group must have
             an answer.  For questions, it means the question must have at least one answer.  Typically, items that are 'required' will have a visual cue
             indicating this.  It could be managed by changing the background of the answer control, bolding the question text, or some other mechanism.
           </p>
@@ -472,7 +495,7 @@
           <p>
             If an element is read-only, it means the user cannot adjust the value which <i>can</i> mean a change to the control used to render the form.
             Technically there's no need to display a text box, drop-down or other controls if the value cannot be changed.  However, it's generally still
-            desirable to use the same controls so that it's clear that the question answer is still an "answer" and so that read-only information doesn't
+            desirable to use the same controls so that it's clear that the question answer is still an "answer" and so that read-only information does not
             stand out significantly from other answers.  However, there should still be a visual indicator that the element cannot be edited.  This might
             include changing the background color, changing the font for the question text or some similar visual cue.
           </p>
@@ -487,7 +510,7 @@
           <a href="{{site.data.fhir.path}}extension-rendering-stylesensitive.html">rendering-styleSensitive</a>
         </td>
         <td>Core</td>
-        <td>root</td>
+        <td>Questionnaire</td>
         <td>boolean</td>
         <td><a href="examples.html#rendering-styleSensitive">example</a></td>
       </tr>
@@ -528,8 +551,8 @@
   <ul>
     <li>Questionnaires will be rendered by a variety of tools on a variety of devices.  Not all tools will necessarily support all extensions - or even
       all core elements.  Authors should recognize this and only depend on rendering extensions if they're confident that all systems using the Questionnaire
-      will support the needed extensions.  Note that this doesn't mean that extensions can't be used, only that the Questionnaire should be safe to use if
-      extensions that the author isn't certain will be supported are not supported.  For example, avoid referring to 'the red text' if you're not certain
+      will support the needed extensions.  Note that this does not mean that extensions cannnot be used, only that the Questionnaire should be safe to use if
+      extensions that the author is not certain will be supported are not supported.  For example, avoid referring to 'the red text' if you're not certain
       the text will be rendered as red (and that those who are color-impaired will have an alternative mechanism of recognizing the text as 'red').</li>
     <li>Tools that use HTML to render forms should consider disabling browser-based auto-completion unless such behavior is desired</li>
   </ul>

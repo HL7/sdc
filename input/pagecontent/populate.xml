@@ -40,10 +40,10 @@
       population to work with such data, the Questionnaire will have to be designed presuming the use of particular profiles and conventions - for example,
       national implementation guides such as <a href="http://hl7.org/fhir/us/core">US Core</a> or <a href="http://fhir.hl7.org.au/fhir">Australian Base</a>.
       The more sophisticated a Questionnaire's population rules, the more dependent it will be on systems exposing their data in accordance with specified
-      profiles.
+      profiles.  Note: The mechanisms to do this in a more automated way are under consideration for the next release.
     </li>
     <li>
-      Even if data exists and is exposed in accordance with agreed profiles, that doesn't necessarily mean that the source system will have the necessary query
+      Even if data exists and is exposed in accordance with agreed profiles, that does not necessarily mean that the source system will have the necessary query
       capabilities to find and appropriately filter the data.  While some degree of filtering is possible using FHIRPath or CQL, loading thousands or tens of
       thousands of records for local filtering by the client is likely to pose a challenge from the perspective of performance, memory usage, access control logging, etc.
       National and other implementation guides that set minimum expectations on search for capabilities on clinical and administrative systems can be helpful
@@ -53,7 +53,7 @@
       Any queries performed to populate the form will need to be subject to appropriate access controls.  Users SHALL NOT be able to see information populated
       into a form that they would not be able to see when navigating the source system directly (I.e. it is a mandatory requirement that the population process
       not populate information in the form if the user completing the questionnaire would not have permission to see that data if they queried it directly).  In some cases, this means that an answer in a form might not
-      be populated even though the data exists - because the user doesn't have authority to see that data.
+      be populated even though the data exists - because the user does not have authority to see that data.
     </li>
     <li>
       <p>
@@ -91,7 +91,7 @@
       that information will be removed on submission.
     </li>
     <li>
-      Sometimes the author interested in making a Questionnaire "populatable" doesn't have authority to make changes to the "official" Questionnaire.  In other
+      Sometimes the author interested in making a Questionnaire "populatable" does not have authority to make changes to the "official" Questionnaire.  In other
       cases, there might be one official Questionnaire, but a need to populate it from resources that comply with different sets of profiles (e.g. that comply
       with requirements from different countries) - and thus a need  for different metadata in the Questionnaire to support the population process.  In this
       case, rather than invoking the population on the original Questionnaire, it can be done on a derived Questionnaire - one that has a
@@ -104,7 +104,7 @@
   <a name="service"> </a>
   <h3>Pre-population service</h3>
   <p>
-    Populating a QuestionnaireResponse is a complex task.  The system must be able to query resources, use FHIRPath to extract and potentially calculate
+    Populating a QuestionnaireResponse is a complex task.  The system must be able to query resources, use FHIRPath or CQL to populate and potentially calculate
     relevant data elements, manage conditionality rules around enableWhen as part of the population process, etc.  As a result, some client systems might
     prefer to offload the responsibility for handling pre-population of a form to a separate system.  The FHIR specification defines a set of services that can
     be used to provide a variable degree of offloading - from just handling the population aspect through to handling the rendering of the form and interactive
@@ -213,10 +213,10 @@
     Systems are free to experiment with other population mechanisms but cannot expect support for those from other SDC-conformant systems.
   </p>
   <p>
-    The <a href="StructureDefinition-sdc-questionnaire-populate.html">sdc-questionnaire-populate</a> profile includes the data elements and extensions relevant for supporting all
-    these mechanisms.  None of the additional resource elements or extensions are marked as "mustSupport" because there is no expectation that systems will
-    support all (or any of) the different population mechanisms.  Instead, each system should choose which approach(es) it wishes to use and support the
-    elements described in that section of the implementation guide.
+    Each mechanism has its own profile that includes the additional resource elements or extensions relevant for supporting a particular mechanism: <a href="StructureDefinition-sdc-questionnaire-pop-obsn.html">SDC Questionnaire Populate - Observation</a>, 
+    <a href="StructureDefinition-sdc-questionnaire-pop-exp.html">SDC Questionnaire Populate - Expression</a>, and <a href="StructureDefinition-sdc-questionnaire-pop-smap.html">SDC Questionnaire Populate - Structure Map</a> profiles. Each profile identifies 
+    specific 'must support' elements and extensions that systems that claim to support a specific SDC population mechanism SHALL be capable of populating data, as befits the CapabilityStatement(s) 
+    they claim conformance to. Each system should choose which approach(es) it wishes to use and support based on the elements specified in that profile.
   </p>
   <p>
     Some of these mechanisms make use of FHIR-based queries, FHIRPath and/or CQL as well as extensions that include expressions in one of these languages.
@@ -244,7 +244,7 @@
       To signal that the item.code is actually intended for use in population (as opposed to just providing metadata about the Questionnaire item, the
       <a href="StructureDefinition-sdc-questionnaire-observationLinkPeriod.html">questionnaire-observationLinkPeriod</a> extension must also be included).  This extension
       indicates the period of time over which to search for matching observations.  If there are no observations within that window, no population will occur.
-      For observations where how recent they are doesn't matter (e.g. blood type), simply set the duration to a long period of time - e.g. 200 years.</li>
+      For observations where how recent they are does not matter (e.g. blood type), simply set the duration to a long period of time - e.g. 200 years.</li>
     <li>
       Multiple <code>item.code</code> elements might be present.  If so, each are considered an acceptable Observation.code for the desired population
       value.</li>
@@ -317,7 +317,7 @@
   <ul>
     <li>
       If the units of measure are constrained for the Questionnaire item, the system can choose to convert the data (if the units are coded and the
-      conversion factor is known), grab the most recent Observation within the window where conversion isn't necessary, or choose not to populate.</li>
+      conversion factor is known), grab the most recent Observation within the window where conversion is not necessary, or choose not to populate.</li>
     <li>
       Question items being populated from Observations of type <code>Quantity</code> SHOULD also have a type of Quantity.  However, they MAY have a type of
       <code>integer</code> or <code>decimal</code> provided that the <a href="{{site.data.fhir.path}}extension-questionnaire-unit.html">questionnaire-unit</a>
@@ -327,7 +327,7 @@
     <li>
       Systems SHALL filter to only look at Observations with a status of 'final', 'amended', or 'corrected'.</li>
     <li>
-      Systems SHALL check for the presence of the Observation.focus element and exclude elements where the focus is not the patient (e.g. we don't want the
+      Systems SHALL check for the presence of the Observation.focus element and exclude elements where the focus is not the patient (e.g. we do not want the
       heart rate of a fetus if trying to populate the heart rate of the mother.)</li>
     <li>
       If a parent item (group or question) already has established the context of a specific Observation, when populating child items, matching observations
@@ -338,11 +338,11 @@
       systems MAY take advantage of this knowledge to populate the answer of a question by retrieving data from resource elements other than <code>
       Observation.value</code> and <code>Observation.component.value</code>.</li>
     <li>
-      The same data elements used to populate a QuestionnaireResponse from Observations can also be used to generate/update Observations from a completed
+      Most of the data elements used to populate a QuestionnaireResponse from Observations can also be used to generate/update Observations from a completed
       Questionnaire.  See the <a href="extraction.html#obs-extract">Extraction</a> page of this implementation guide for more information.</li>
     <li>
-      This Observation-based population mechanism can be used in parallel with the <a href="#exp-pop">FHIRPath</a> mechanism described below - i.e. some elements might be populated from
-      Observation.value elements based on the <code>item.code</code> while other questions in the same form might be populated based on queries and FHIRPaths
+      This Observation-based population mechanism can be used in parallel with the <a href="#exp-pop">Expression-based</a> mechanism described below - i.e. some elements might be populated from
+      Observation.value elements based on the <code>item.code</code> while other questions in the same form might be populated based on queries, FHIRPaths and/or CQL 
       specified in the form.</li>
     <li>
       This mechanism only supports <a href="#mode">Full Population</a>.  It does not work for other modes.</li>
@@ -371,23 +371,25 @@
       Include the <a href="StructureDefinition-sdc-questionnaire-launchContext.html">questionnaire-launchContext</a> extension to identify any contextual information
       that needs to be passed into the population process.  Typical contexts would be the Patient or Encounter resources in whose context the questionnaire is
       being completed, but other elements are also possible (e.g. an AdverseEvent if performing an adverse event report).  These 'context' elements will be
-      available as FHIRPath variables for use in subsequent steps.</li>
+      available as expression variables for use in subsequent steps.</li>
     <li>
       Use the <a href="{{site.data.fhir.path}}extension-variable.html">variable</a> extension to query for any additional data required, possibly based on
       context variables set in the previous step, and/or other variable extensions.  (NOTE: questionnaire-launchContext elements are evaluated first, then all
       Questionnaire-level variables, in order of appearance in the Questionnaire.)</li>
     <li>
-      If appropriate, use the <a href="StructureDefinition-sdc-questionnaire-itemContext.html">questionnaire-itemContext</a> on group items to establish the context for
+      If appropriate, use the <a href="StructureDefinition-sdc-questionnaire-itemPopulationContext.html">questionnaire-itemPopulationContext</a> on group items to establish the context for
       a group.  When populating the questionnaire, this will do two things: it will create a group repetition for each row returned from the query; and it will
       set the specified variable name to that resource repetition for use in processing items within the group.</li>
     <li>
       Use the <a href="{{site.data.fhir.path}}extension-variable.html">variable</a> extension on items as well to perform intermediary calculations or
-      additional queries that are based on itemContext values.</li>
+      additional queries that are based on itemPopulationContext values.</li>
     <li>
       For <a href="#mode">Full Population</a>, use the <a href="StructureDefinition-sdc-questionnaire-initialExpression.html">questionnaire-initialExpression</a> to
-      cause the initial answer for the question to be set to the specified expression.  This should always be a FHIRPath that resolves to an item of the
-      appropriate type unless the element has a type of Reference, in which case the expression can be a FHIR query - and the item will be populated with a
-      reference to the resource.  Note, this extension SHALL NOT appear on groups.</li>
+      cause the initial answer for the question to be set to the specified expression.  This should always be a FHIRPath or CQL expression that resolves to an item of the
+      appropriate type unless the element has a type of Reference, in which case the expression can ALSO be a FHIR query - and the item will be populated with a
+      reference to the resource.  Another exception is for an element of type Attachment, the query can return a Binary or DocumentReference, 
+      with the former populating the Attachment.content and the latter populating content and/or url, depending on what is present in the DocumentReference.
+      Note, this extension SHALL NOT appear on groups.</li>
     <li>
       For <a href="#mode">Choice Selection</a>, use the <a href="StructureDefinition-sdc-questionnaire-candidateExpression.html">sdc-questionnaire-candidateExpression</a>
       to make available a list of possible answers for the user to choose from.  As with initialExpression, this should always be a FHIRPath or CQL expression that resolves to
@@ -402,22 +404,20 @@
     An example of a questionnaire using this approach can be found <a href="todo">here</a>.
   </p>-->
   <p>
-    Considerations when using this approach:
+    Considerations and rules when using this approach:
   </p>
   <ul>
     <li>
-      FHIR queries found in any of the variables may contain embedded FHIRPath expressions (surrounded by double curly-braces).  Systems SHALL evaluate and
-      substitute the results of such queries before executing them.</li>
+      FHIR queries found in any of the variables may contain embedded FHIRPath expressions (surrounded by double curly-braces).</li>
     <li>
       If the result of evaluating the FHIRPath expressions is an invalid query, that is an error.  Systems SHOULD log it and continue with population as if the
       query had returned no data.</li>
     <li>
-      If an item has both an initialExpression and an initialValue, the initialExpression SHALL take precedence over the initialValue.  If the
-      initialExpression resolves to an empty set, then the question SHALL be populated with the initialValue instead.</li>
+      An item is not allowed have both initial.value and initialExpression present since both generate values before the user has access to the form.</li>
     <li>
       If the candidateExpression or contentExpression resolve to an empty set, do not display them.</li>
     <li>
-      Unlike initialExpressions, candidateExpresions can appear on groups as well as questions.  If they appear on a group item and the group item is allowed
+      Unlike initialExpressions, candidateExpressions can appear on groups as well as questions.  If they appear on a group item and the group item is allowed
       to repeat, then a separate group instance is created for each repetition the user selects from the candidates.  The variable named in the candidateExpression
       extension is set to the value of the candidate for use in continuous population of descendant items.  For example, a candidateExpression might resolve
       to a list of Conditions.  After the user picks the relevant conditions, a separate group would be created for each and child items for the condition code,
@@ -430,7 +430,7 @@
       When an item has an associated candidateExpression or contextExpression, consider whether there should be a preceding 'display' item that provides
       instructions on how to filter from the available candidates or how to make use of the available context in answering the question.</li>
     <li>
-      Multiple expression extensions can be present at once.  If so, precedence is as follows: initialExpression is used if it resolves; if not then candidateExpression
+      Multiple expression extensions can be present at once.  If so, precedence is as follows: initial.value or initialExpression is used if it resolves; if not then candidateExpression
       expression is used.  A link to contentExpression can be present with either of the modes as it may help the user in verifying the content.</li>
     <li>
       It is an error if the type of an initialExpression or candidateExpression disagrees with the type of the item, with the following exceptions: a Resource
@@ -442,9 +442,12 @@
       When defining queries in expressions, be sure to filter all relevant elements.  For example, ensuring status excludes entered-in-error elements, practitioners are
       active, etc.</li>
     <li>
-      Take care to ensure that variable names as set by questionnaire-launchContext, variable and questionnaire-itemContext remain unique within the hierarchy
-      of the questionnaire.  It's technically ok to have sibling items define the same variable name - they won't collide.  However, if doing so, make sure
+      Take care to ensure that variable names as set by questionnaire-launchContext, variable and questionnaire-itemPopulationContext remain unique within the hierarchy
+      of the questionnaire.  It's technically ok to have sibling items define the same variable name - they will not collide.  However, if doing so, make sure
       it's being used for the same purpose to avoid confusion.</li>
+    <li>
+      If the same context are used for both <a href="StructureDefinition-sdc-questionnaire-itemPopulationContext.html">questionnaire-itemPopulationContext</a> and
+      <a href="StructureDefinition-sdc-questionnaire-itemExtractionContext.html">questionnaire-itemExtractionContext</a>, then the value will be repeated for both extensions.</li>
     <li>
       If the initialExpression evaluates to a collection size that exceeds the maximum cardinality requirements of the item, the system may either choose not
       to populate the item at all, or instead may treat the initialExpression as if it were a candidateExpression and give the user a chance to choose from
@@ -462,7 +465,7 @@
       performing the population SHOULD make best efforts and populate whatever elements it can that are not dependent on other answers within the form.</li>
     <li>
       It's possible that the same data might be queried multiple times within different contexts when filling out the form.  Systems are free to notice this
-      and use the data already in memory rather than re-querying the data.</li>
+      and use the data already in memory rather than re-querying the data.  Form designers can be proactive and use variables to minimize this too.</li>
     <li>
       The expressions used to populate some elements might be dependent on the answers to other questions, not just on context elements or queried data.  In
       this case, pre-populating systems will only be able to populate the answer if the questions depended on are able to be pre-populated.  For
@@ -481,13 +484,23 @@
     <li>
       If the units of measure are constrained for the Questionnaire item, the system can choose to convert the data (if the units are coded and the conversion
       factor is known) or choose not to populate.</li>
+    <li>
+      It is possible that answerExpression and initialExpression can both exist.  InitialExpression runs on launch and answerExpression should run whenever the 
+      user interface needs to render the question, the user interacts with the question or during validation.</li>
+    <li>
+      An answerExpresssion and calculatedExpression can both exist and are re-calculated when the source for their expressions change.  
+      If the calculatedExpression is not valid according to the results of the current answerExpression, the QuestionnaireResponse will fail 
+      validation and be unable to be marked as 'completed' until corrected.</li>
+    <li>
+      The result of initialExpression, calculatedExpression and answerExpression must all align with the 'type' of the item they appear 
+      on - e.g. can't have an expression that returns a string if the type is Choice/Coding.</li>
   </ul>
   <a name="map-pop"> </a>
   <h4>StructureMap-based Population</h4>
   <p>
     The <a href="{{site.data.fhir.path}}structuremap.html">StructureMap</a> approach is the most sophisticated approach of the three - and the most powerful.
     It allows iteration of groups based on repeating elements within resources, supports concept translation using structure maps and provides access to
-    transformation capabilities not available with the FHIRPath approach.  It also allows the conversion process between data and Questionnaire to be
+    transformation capabilities not available with the Expression-based approach.  It also allows the conversion process between data and Questionnaire to be
     maintained independently and to draw on shared sources across Questionnaires.  This can be an advantage in certain environments where the content of the
     questionnaire may need tight control, but the data environment can be more dynamic.  This comes at the cost of requiring expertise in the
     <a href="{{site.data.fhir.path}}mapping-language.html">FHIR mapping language</a>, which is not (yet?) a common skill.
@@ -497,10 +510,10 @@
   </p>
   <ol>
     <li>
-      As done for the FHIRPath approach, include the <a href="StructureDefinition-sdc-questionnaire-launchContext.html">questionnaire-launchContext</a> extension to
+      As done for the Expression-based approach, include the <a href="StructureDefinition-sdc-questionnaire-launchContext.html">questionnaire-launchContext</a> extension to
       identify any contextual information that needs to be passed into the population process.  Typical contexts would be the Patient or Encounter resources in
       whose context the questionnaire is being completed, but other elements are also possible (e.g. an AdverseEvent if performing an adverse event report).
-      These 'context' elements will be available as FHIRPath variables for use in subsequent steps.</li>
+      These 'context' elements will be available as expression variables for use in subsequent steps.</li>
     <li>
       Include the <a href="StructureDefinition-sdc-questionnaire-sourceQueries.html">sdc-questionnaire-sourceQueries</a> extension which SHALL point to a
       <a href="{{site.data.fhir.path}}http.html#transaction">Batch</a> consisting of one or more queries to execute.  Prior to executing, FHIRPaths embedded in

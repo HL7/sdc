@@ -158,18 +158,50 @@
     </resource>
     <resource>
       <reference>
-        <reference value="StructureDefinition/sdc-questionnaire-populate"/>
+        <reference value="StructureDefinition/sdc-questionnaire-pop-obsn"/>
       </reference>
-      <name value="Populatable Questionnaire"/>
-      <description value="Defines elements that support auto-population and pre-population of questionnaires"/>
+      <name value="Populatable Questionnaire - Observation"/>
+      <description value="Defines elements that support auto-population and pre-population of questionnaires using the Observation-based population mechanism."/>
       <exampleBoolean value="false"/>
     </resource>
     <resource>
       <reference>
-        <reference value="StructureDefinition/sdc-questionnaire-extract"/>
+        <reference value="StructureDefinition/sdc-questionnaire-pop-exp"/>
       </reference>
-      <name value="Extractable Questionnaire"/>
-      <description value="Defines elements that allow conversion of a QuestionnaireResponse to a FHIR resource or Bundle of FHIR resources"/>
+      <name value="Populatable Questionnaire - Expression"/>
+      <description value="Defines elements that support auto-population and pre-population of questionnaires using the Expression-based population mechanism."/>
+      <exampleBoolean value="false"/>
+    </resource>
+    <resource>
+      <reference>
+        <reference value="StructureDefinition/sdc-questionnaire-pop-smap"/>
+      </reference>
+      <name value="Populatable Questionnaire - StructureMap"/>
+      <description value="Defines elements that support auto-population and pre-population of questionnaires using the StructureMap-based population mechanism."/>
+      <exampleBoolean value="false"/>
+    </resource>
+    <resource>
+      <reference>
+        <reference value="StructureDefinition/sdc-questionnaire-extr-obsn"/>
+      </reference>
+      <name value="Extractable Questionnaire - Observation"/>
+      <description value="Defines elements that allow conversion of a QuestionnaireResponse to an Observation resource or Bundle of Observation resources using the Observation-based extraction mechanism"/>
+      <exampleBoolean value="false"/>
+    </resource>
+    <resource>
+      <reference>
+        <reference value="StructureDefinition/sdc-questionnaire-extr-defn"/>
+      </reference>
+      <name value="Extractable Questionnaire - Definition"/>
+      <description value="Defines elements that allow conversion of a QuestionnaireResponse to a FHIR resource or Bundle of FHIR resources using the Definition-based extraction mechanism"/>
+      <exampleBoolean value="false"/>
+    </resource>
+    <resource>
+      <reference>
+        <reference value="StructureDefinition/sdc-questionnaire-extr-smap"/>
+      </reference>
+      <name value="Extractable Questionnaire - StructureMap"/>
+      <description value="Defines elements that allow conversion of a QuestionnaireResponse to a FHIR resource or Bundle of FHIR resources using the StructureMap-based extraction mechanism"/>
       <exampleBoolean value="false"/>
     </resource>
     <resource>
@@ -218,6 +250,14 @@
       </reference>
       <name value="SDC Code System"/>
       <description value="Sets expectations for SDC-conformant systems around the definition of code systems to provide values for choices within questionnaires."/>
+      <exampleBoolean value="false"/>
+    </resource>
+    <resource>
+      <reference>
+        <reference value="StructureDefinition/sdc-library"/>
+      </reference>
+      <name value="SDC Library"/>
+      <description value="Sets expectations for SDC-conformant systems around the definition of libraries to provide logical expressions within questionnaires."/>
       <exampleBoolean value="false"/>
     </resource>
     <resource>
@@ -309,7 +349,16 @@
         <reference value="StructureDefinition/sdc-questionnaire-candidateExpression"/>
       </reference>
       <name value="Candidate Answers Expression"/>
-      <description value="A FHIRPath expression or FHIR Query that resolves to a list of candidate answers for the question item or that establishes context for a group item"/>
+      <description value="A FHIRPath or CQL Expression, or FHIR Query that resolves to a list of candidate answers (usually based on other answers in the questionnaire
+      or based on information within the health record) for the question item or that establishes context for a group item"/>
+      <exampleBoolean value="false"/>
+    </resource>
+    <resource>
+      <reference>
+        <reference value="StructureDefinition/sdc-questionnaire-answerExpression"/>
+      </reference>
+      <name value="Answer Expression"/>
+      <description value="An expression (FHIRPath, CQL or FHIR Query) that resolves to a list of permitted answers for a question item."/>
       <exampleBoolean value="false"/>
     </resource>
     <resource>
@@ -370,10 +419,18 @@
     </resource>
     <resource>
       <reference>
-        <reference value="StructureDefinition/sdc-questionnaire-itemContext"/>
+        <reference value="StructureDefinition/sdc-questionnaire-itemPopulationContext"/>
       </reference>
-      <name value="Item context"/>
-      <description value="Specifies a query that identifies the resource (or set of resources for a repeating item) that should be used to populate this Questionnaire.item on initial population or to be extracted from this item once the QuestionnaireResponse is complete"/>
+      <name value="Item population context"/>
+      <description value="Specifies a query that identifies the resource (or set of resources for a repeating item) that should be used to populate this Questionnaire or Questionnaire.item on initial population."/>
+      <exampleBoolean value="false"/>
+    </resource>
+    <resource>
+      <reference>
+        <reference value="StructureDefinition/sdc-questionnaire-itemExtractionContext"/>
+      </reference>
+      <name value="Item extraction context"/>
+      <description value="Specifies a query that identifies the resource (or set of resources for a repeating item)  to be extracted from this item once the QuestionnaireResponse is complete."/>
       <exampleBoolean value="false"/>
     </resource>
     <resource>
@@ -390,6 +447,14 @@
       </reference>
       <name value="Observation link period"/>
       <description value="Indicates the time-period (from 'now') to search for observations that match the Questionnaire.item.code and Questionnaire.subject when pre-populating the QuestionnaireResponse."/>
+      <exampleBoolean value="false"/>
+    </resource>
+    <resource>
+      <reference>
+        <reference value="StructureDefinition/sdc-questionnaire-observationExtract"/>
+      </reference>
+      <name value="Observation extract?"/>
+      <description value="If true, indicates that the observation-based approach should be used to extract either the particular item (if extension is defined on an individual question or group based on the code present) or all items in the questionnaire (if defined at the questionnaire root and if they have a code present)"/>
       <exampleBoolean value="false"/>
     </resource>
     <resource>
@@ -414,6 +479,54 @@
       </reference>
       <name value="Is subject (response)?"/>
       <description value="If present and true, indicates that the item indicates a different subject for this group"/>
+      <exampleBoolean value="false"/>
+    </resource>
+    <resource>
+      <reference>
+        <reference value="StructureDefinition/sdc-questionnaire-performerType"/>
+      </reference>
+      <name value="Performer type"/>
+      <description value="Indicates the types of resources that can record answers to a Questionnaire"/>
+      <exampleBoolean value="false"/>
+    </resource>
+    <resource>
+      <reference>
+        <reference value="StructureDefinition/sdc-questionnaire-questionnaireAdaptive"/>
+      </reference>
+      <name value="Questionnaire Adaptive"/>
+      <description value="Indicates if a questionnaire is adaptive: either set to true or set the base URL of the server that can perform the nextQuestion operation of the questionnaire"/>
+      <exampleBoolean value="false"/>
+    </resource>
+    <resource>
+      <reference>
+        <reference value="StructureDefinition/sdc-questionnaire-collapsible"/>
+      </reference>
+      <name value="Collapsible"/>
+      <description value="Indicates that the child items of an item are displayed in collapsible form (either collapsed or expanded)"/>
+      <exampleBoolean value="false"/>
+    </resource>
+    <resource>
+      <reference>
+        <reference value="StructureDefinition/sdc-questionnaire-minQuantity"/>
+      </reference>
+      <name value="Min Quantity"/>
+      <description value="The inclusive lower bound on the range of allowed values for a 'quantity' type question"/>
+      <exampleBoolean value="false"/>
+    </resource>
+    <resource>
+      <reference>
+        <reference value="StructureDefinition/sdc-questionnaire-maxQuantity"/>
+      </reference>
+      <name value="Max Quantity"/>
+      <description value="The inclusive upper bound on the range of allowed values for  a 'quantity' type question"/>
+      <exampleBoolean value="false"/>
+    </resource>
+    <resource>
+      <reference>
+        <reference value="StructureDefinition/sdc-questionnaire-choiceConstraint"/>
+      </reference>
+      <name value="Choice Constraint"/>
+      <description value="Controls what the user is allowed to enter as an answer aside from the answer options provided"/>
       <exampleBoolean value="false"/>
     </resource>
     <!--    <resource>
@@ -466,6 +579,22 @@
       </reference>
       <name value="Questionnaire Entry Mode CodeSystem"/>
       <description value="Defines mechanisms of capturing data in a QuestionnaireResponse"/>
+      <exampleBoolean value="false"/>
+    </resource>
+    <resource>
+      <reference>
+        <reference value="ValueSet/collapsible"/>
+      </reference>
+      <name value="Questionnaire Collapsible ValueSet"/>
+      <description value="Defines mechanisms of displaying child items in collapsible form"/>
+      <exampleBoolean value="false"/>
+    </resource>
+    <resource>
+      <reference>
+        <reference value="CodeSystem/collapsible"/>
+      </reference>
+      <name value="Questionnaire Collapsible CodeSystem"/>
+      <description value="Defines mechanisms of displaying child items in collapsible form"/>
       <exampleBoolean value="false"/>
     </resource>
     <resource>
@@ -609,7 +738,7 @@
       </reference>
       <name value="SDC-LOINC USSG Family History"/>
       <description value="LOINC US Surgeon General family history including data elements and value sets."/>
-      <exampleCanonical value="http://hl7.org/fhir/uv/sdc/StructureDefinition/sdc-questionnaire-populate"/>
+      <exampleCanonical value="http://hl7.org/fhir/uv/sdc/StructureDefinition/sdc-questionnaire-pop-obsn"/>
     </resource>
     <resource>
       <reference>
@@ -673,7 +802,7 @@
       </reference>
       <name value="SDC Test Form - Candidate Expression"/>
       <description value="A test form with a FHIRPath based prepopulation example that includes a candidate expression."/>
-      <exampleCanonical value="http://hl7.org/fhir/uv/sdc/StructureDefinition/sdc-questionnaire-populate"/>
+      <exampleCanonical value="http://hl7.org/fhir/uv/sdc/StructureDefinition/sdc-questionnaire-pop-exp"/>
     </resource>
     <resource>
       <reference>
@@ -681,7 +810,7 @@
       </reference>
       <name value="SDC Test Form - Initial Expression"/>
       <description value="A test form with a FHIRPath based prepopulation simple example."/>
-      <exampleCanonical value="http://hl7.org/fhir/uv/sdc/StructureDefinition/sdc-questionnaire-populate"/>
+      <exampleCanonical value="http://hl7.org/fhir/uv/sdc/StructureDefinition/sdc-questionnaire-pop-exp"/>
     </resource>
     <resource>
       <reference>
@@ -689,7 +818,7 @@
       </reference>
       <name value="SDC Test Form - Source Query"/>
       <description value="A test form with a FhirPath based prepopulation example that leverages a source query to extract data outside the launch context."/>
-      <exampleCanonical value="http://hl7.org/fhir/uv/sdc/StructureDefinition/sdc-questionnaire-populate"/>
+      <exampleCanonical value="http://hl7.org/fhir/uv/sdc/StructureDefinition/sdc-questionnaire-pop-smap"/>
     </resource>
     <resource>
       <reference>
@@ -697,7 +826,7 @@
       </reference>
       <name value="SDC Test Form - Initial Value"/>
       <description value="A test form with that uses initial values."/>
-      <exampleCanonical value="http://hl7.org/fhir/uv/sdc/StructureDefinition/sdc-questionnaire-populate"/>
+      <exampleCanonical value="http://hl7.org/fhir/uv/sdc/StructureDefinition/sdc-questionnaire-pop-exp"/>
     </resource>
     <resource>
       <reference>
@@ -705,7 +834,7 @@
       </reference>
       <name value="SDC Test Form - Multiple Initial Value"/>
       <description value="A test form with a question that has multiple initial values."/>
-      <exampleCanonical value="http://hl7.org/fhir/uv/sdc/StructureDefinition/sdc-questionnaire-populate"/>
+      <exampleCanonical value="http://hl7.org/fhir/uv/sdc/StructureDefinition/sdc-questionnaire-pop-exp"/>
     </resource>
     <resource>
       <reference>
