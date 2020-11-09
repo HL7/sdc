@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CodeSystem xmlns="http://hl7.org/fhir" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://hl7.org/fhir ../../src-generated/schemas/fhir-single.xsd">
+  <id value="temp"/>
+  <url value="http://hl7.org/fhir/uv/sdc/CodeSystem/temp"/>
+  <name value="TemporaryCodes"/>
+  <title value="Temporty SDC Codes"/>
+  <status value="draft"/>
+  <description value="Defines codes defined within the SDC implementation guide that are expected to migrate elsewhere in future releases"/>
+  <content value="complete"/>
+  <concept>
+    <code value="instantiate"/>
+    <display value="The Task is asking the owner to create an instance of the specified 'definition' resource that is the focus of the Task.  E.g. Create a response for a Questionnaire, a Request instance for an ActivityDefinition, a CarePlan for a PlanDefinition, etc."/>
+  </concept>
+  <concept>
+    <code value="response-endpoint"/>
+    <display value="Identifies the base URL for FHIR servers to which the Questionnaire resulting from the Task should be POSTed"/>
+  </concept>
+</CodeSystem>
