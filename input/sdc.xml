@@ -529,6 +529,14 @@
       <description value="Controls what the user is allowed to enter as an answer aside from the answer options provided"/>
       <exampleBoolean value="false"/>
     </resource>
+    <resource>
+      <reference>
+        <reference value="StructureDefinition/sdc-questionnaire-preferredTerminologyServer"/>
+      </reference>
+      <name value="Preferred Terminology Server"/>
+      <description value="Indicates the terminology server(s) that are known to be capable of returning and potentially expanding the value set(s) associated with the whole questionnaire or a particular group or question within the questionnaire (depending on where the extension appears)."/>
+      <exampleBoolean value="false"/>
+    </resource>
     <!--    <resource>
       <extension url="http://hl7.org/fhir/StructureDefinition/implementationguide-spreadsheet-profile">
         <valueBoolean value="true"/>
