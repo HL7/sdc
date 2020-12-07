@@ -9,17 +9,17 @@
   <Author>Grahame</Author>
   <LastAuthor>Microsoft Office User</LastAuthor>
   <Created>2012-03-19T11:12:07Z</Created>
-  <LastSaved>2020-10-25T16:23:39Z</LastSaved>
+  <LastSaved>2020-12-07T22:21:20Z</LastSaved>
   <Version>16.00</Version>
  </DocumentProperties>
  <OfficeDocumentSettings xmlns="urn:schemas-microsoft-com:office:office">
   <AllowPNG/>
  </OfficeDocumentSettings>
  <ExcelWorkbook xmlns="urn:schemas-microsoft-com:office:excel">
-  <WindowHeight>16540</WindowHeight>
-  <WindowWidth>27640</WindowWidth>
+  <WindowHeight>15440</WindowHeight>
+  <WindowWidth>25220</WindowWidth>
   <WindowTopX>32767</WindowTopX>
-  <WindowTopY>1720</WindowTopY>
+  <WindowTopY>3180</WindowTopY>
   <TabRatio>814</TabRatio>
   <ActiveSheet>21</ActiveSheet>
   <FirstVisibleSheet>17</FirstVisibleSheet>
@@ -17778,7 +17778,7 @@
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:Index="18"><Data ss:Type="String">Preferred terminology server</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s101"><Data ss:Type="String">Indicates the terminology server(s) that are known to be capable of returning and potentially expanding the value set(s) associated with the whole questionnaire or a particular group or question within the questionnaire (depending on where the extension appears)</Data><NamedCell
+    <Cell ss:StyleID="s101"><Data ss:Type="String">Indicates the terminology server(s) that are known to be capable of returning and potentially expanding the value set(s) associated with the whole questionnaire or a particular group or question within the questionnaire (depending on where the extension appears).  If a full URL is not provided AND the requested query is a terminology operation (e.g. $lookup or $expand) the client SHOULD execute the operation against the preferredTerminologyServer rather than the local repository.</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s102"><Data ss:Type="String">Not all terminology servers will necessarily have access to the codes.  If a questionnaire points to value sets, the rendering engine needs to know where to get a current expansion.</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
@@ -18755,9 +18755,9 @@
    <FreezePanes/>
    <FrozenNoSplit/>
    <SplitHorizontal>1</SplitHorizontal>
-   <TopRowBottomPane>3</TopRowBottomPane>
+   <TopRowBottomPane>2</TopRowBottomPane>
    <SplitVertical>1</SplitVertical>
-   <LeftColumnRightPane>16</LeftColumnRightPane>
+   <LeftColumnRightPane>15</LeftColumnRightPane>
    <ActivePane>0</ActivePane>
    <Panes>
     <Pane>
@@ -18773,7 +18773,8 @@
     </Pane>
     <Pane>
      <Number>0</Number>
-     <ActiveCol>18</ActiveCol>
+     <ActiveRow>3</ActiveRow>
+     <ActiveCol>19</ActiveCol>
     </Pane>
    </Panes>
    <ProtectObjects>False</ProtectObjects>
