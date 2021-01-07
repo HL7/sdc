@@ -472,19 +472,7 @@
     <a href="{{site.data.fhir.path}}search.html">search</a> string.  Normally this will not include the base URL and is intended to be invoked against the
     system that is completing the QuestionnaireResponse (or whatever FHIR repository the <a href="CapabilityStatement-sdc-form-filler.html">Form Filler</a> is configured to use).
     However, in some cases, a full URL might be specified, for example if the author of the questionnaire wants values to always be retrieved from a
-    specific source.  The SDC provides the following rules for the <code>application/x-fhir-query</code> language:
-  </p>
-  <ul>
-    <li>
-	  If the expression resolves to a complex element of type Coding, Identifier, or Reference, the element content will be substituted using the standard token format.</li>
-	<li>
-	  If the expression resolves to a complex element of type CodeableConcept, the processing will behave as though the expression had an additional node specifying ".coding" 
-	  (i.e. the substitution will execute on the collection of codings resolved to within the CodeableConcept).</li>
-	<li>
-	  If the expression resolves to an element of type Quantity, it will be converted to a search type of 'quantity'.</li>
-	<li>
-	  If the expression resolves to a collection of more than one value, the substitution will be a list of comma-separated values (i.e. behaving as 'or').</li>
-  </ul>	  
+    specific source.  </p>
   <p>
     In addition to the base query syntax, SDC allows the injection of FHIRPath into the query expressions.  This is to allow the queries to take advantage
     of context when they are invoked.  Systems SHALL evaluate and substitute the results of such queries before executing them.  The FHIRPaths are denoted by surrounding them with double curly-braces (i.e.
@@ -499,8 +487,21 @@
     would return all Observations with the specified LOINC code made in the last week for the specified patient (the %subject variable would likely have been
     set using <a href="#launchContext">launchContext</a> extension.)
   </p>
+  <p>The SDC IG provides the following rules for the <code>application/x-fhir-query</code> language:
+  </p>
+  <ul>
+    <li>
+    If the expression resolves to a complex element of type Coding, Identifier, or Reference, the element content will be substituted using the standard token format.</li>
+  <li>
+    If the expression resolves to a complex element of type CodeableConcept, the processing will behave as though the expression had an additional node specifying ".coding" 
+    (i.e. the substitution will execute on the collection of codings resolved to within the CodeableConcept).</li>
+  <li>
+    If the expression resolves to an element of type Quantity, it will be converted to a search type of 'quantity'.</li>
+  <li>
+    If the expression resolves to a collection of more than one value, the substitution will be a list of comma-separated values (i.e. behaving as 'or').</li>
+  </ul>   
   <a name="dependencies"> </a>
-  <h4>Dependencies between expressions</h4>
+  <h3>Dependencies between expressions</h3>
   <p>
     Expressions will often have dependencies on other expressions.  For example, a <a href="#calculatedExpression">calculatedExpression</a> might depend
     on <a href="#variable">variables</a> that in turn depend on the answers to other questions which might themselves have
