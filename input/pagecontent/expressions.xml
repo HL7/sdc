@@ -128,7 +128,7 @@
             If used for a readOnly and/or hidden element, initialExpression essentially calculates a 'fixed value' for the element.  If used for an editable element,
             this extension sets the initial value for the element. Since both initial.value and initialExpression generate values before the user has access to the form,
             it is not allowed to have both present on a Questionnaire.item. In scenarios where the user edits the response directly or edits other dependent elements that cause 
-            the re-evaluation of the response (e.g., calculatedExpression),the value MAY subsequently be overridden by the user authoring or editing the response 
+            the re-evaluation of the response (e.g., calculatedExpression), the value MAY subsequently be overridden by the user authoring or editing the response 
             (see considerations in <a href="populate.html#expression-based-population">Expression-based Population</a>).
           </p>
           <p>
@@ -145,7 +145,7 @@
             for extraction but are not actually seen or edited by the user (e.g., FHIR resource ids when updating existing records).
           </p>
           <p>
-            It's possible for the value of an initialExpression to be referenced by name within other sibling expressions or by expressions on descendant
+            It is possible for the value of an initialExpression to be referenced by name within other sibling expressions or by expressions on descendant
             items.  However, this is not likely to be common.  As such, initialExpressions only need to declare a name if their value will be referenced
             elsewhere.
           </p>
