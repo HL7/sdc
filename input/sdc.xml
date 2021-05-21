@@ -537,6 +537,14 @@
       <description value="Indicates the terminology server(s) that are known to be capable of returning and potentially expanding the value set(s) associated with the whole questionnaire or a particular group or question within the questionnaire (depending on where the extension appears)."/>
       <exampleBoolean value="false"/>
     </resource>
+    <resource>
+      <reference>
+        <reference value="StructureDefinition/sdc-questionnaire-shortText"/>
+      </reference>
+      <name value="Short Text"/>
+      <description value="Provides a short text for an item. This element is useful for items that require a shorter text when rendered (e.g. when item is displayed on a mobile phone)."/>
+      <exampleBoolean value="false"/>
+    </resource>
     <!--    <resource>
       <extension url="http://hl7.org/fhir/StructureDefinition/implementationguide-spreadsheet-profile">
         <valueBoolean value="true"/>
