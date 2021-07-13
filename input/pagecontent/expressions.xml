@@ -100,8 +100,11 @@
           </ul>
           <p>
             The content type of a variable can be pretty much anything.  It can be a collection or an individual item.  It can be a simple element, a complex
-            type, a resource or even a Bundle of resources.  The variable can be <a href="#contexts">referenced by its name</a>.  Variable expressions
-            SHALL specify a name.
+            type, a resource or even a Bundle of resources.
+          </p>
+          <p>
+			      The variable can be <a href="#contexts">referenced by its name</a>.  Variable expressions SHALL specify a name.  It is not allowed to define variable
+			      names that are already <a href="{{site.data.fhir.path}}fhirpath.html#vars">reserved by the base specification</a> or by other variables in the questionnaire.
           </p>
         </td>
       </tr>
@@ -459,7 +462,8 @@
           </p>
           <p>
             The resource corresponding to each context will be made available at the indicated launch context name as if the value had been set in a
-            <a href="#variable">variable</a>.
+            <a href="#variable">variable</a>.  It is not allowed to define names that are already <a href="{{site.data.fhir.path}}fhirpath.html#vars">reserved by the base specification</a> 
+            or by other variables in the questionnaire.
           </p>
         </td>
       </tr>
