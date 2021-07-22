@@ -51,10 +51,30 @@ v: {
 -------------------------------------------------------------------------------------
 {"code" : {
   "system" : "http://unitsofmeasure.org",
+  "code" : "cm"
+}, "valueSet" :null, "lang":"en-US", "useServer":"true", "useClient":"true", "guessSystem":"false", "valueSetMode":"ALL_CHECKS"}####
+v: {
+  "display" : "cm",
+  "severity" : null,
+  "error" : ""
+}
+-------------------------------------------------------------------------------------
+{"code" : {
+  "system" : "http://unitsofmeasure.org",
   "code" : "[lb_av]"
 }, "valueSet" :null, "lang":"en-US", "useServer":"true", "useClient":"true", "guessSystem":"false", "valueSetMode":"ALL_CHECKS"}####
 v: {
   "display" : "[lb_av]",
+  "severity" : null,
+  "error" : ""
+}
+-------------------------------------------------------------------------------------
+{"code" : {
+  "system" : "http://unitsofmeasure.org",
+  "code" : "km"
+}, "valueSet" :null, "lang":"en-US", "useServer":"true", "useClient":"true", "guessSystem":"false", "valueSetMode":"ALL_CHECKS"}####
+v: {
+  "display" : "km",
   "severity" : null,
   "error" : ""
 }
@@ -80,9 +100,9 @@ v: {
   }
 }, "lang":"null", "useServer":"true", "useClient":"true", "guessSystem":"false", "valueSetMode":"ALL_CHECKS"}####
 v: {
-  "display" : "inch (international)",
+  "display" : "[in_i]",
   "severity" : "warning",
-  "error" : "The display \"inches\" is not a valid display for the code {http://unitsofmeasure.org}[in_i] - should be one of [\"inch (international)\"] (from http://tx.fhir.org/r4)"
+  "error" : "The display \"inches\" is not a valid display for the code {http://unitsofmeasure.org}[in_i] - should be one of [[in_i]] (from http://tx.fhir.org/r4)"
 }
 -------------------------------------------------------------------------------------
 {"code" : {
@@ -108,106 +128,6 @@ v: {
 v: {
   "display" : "",
   "severity" : "error",
-  "error" : "Unable to resolve value set (from http://tx.fhir.org/r4)"
-}
--------------------------------------------------------------------------------------
-{"hierarchical" : false, "valueSet" :{
-  "resourceType" : "ValueSet",
-  "compose" : {
-    "include" : [{
-      "system" : "http://unitsofmeasure.org",
-      "concept" : [{
-        "code" : "[in_i]",
-        "display" : "inches"
-      },
-      {
-        "code" : "cm",
-        "display" : "centimeters"
-      }]
-    }]
-  }
-}}####
-e: {
-  "valueSet" : {
-  "resourceType" : "ValueSet",
-  "status" : "active",
-  "expansion" : {
-    "identifier" : "urn:uuid:818b023c-6467-4f08-b85e-5df1dda058b8",
-    "timestamp" : "2020-11-08T23:28:58.417Z",
-    "parameter" : [{
-      "name" : "limitedExpansion",
-      "valueBoolean" : true
-    },
-    {
-      "name" : "excludeNested",
-      "valueBoolean" : true
-    },
-    {
-      "name" : "version",
-      "valueString" : "http://unitsofmeasure.org|2.0.1"
-    }],
-    "contains" : [{
-      "system" : "http://unitsofmeasure.org",
-      "code" : "[in_i]",
-      "display" : "inches"
-    },
-    {
-      "system" : "http://unitsofmeasure.org",
-      "code" : "cm",
-      "display" : "centimeters"
-    }]
-  }
-},
-  "error" : ""
-}
--------------------------------------------------------------------------------------
-{"hierarchical" : false, "valueSet" :{
-  "resourceType" : "ValueSet",
-  "compose" : {
-    "include" : [{
-      "system" : "http://unitsofmeasure.org",
-      "concept" : [{
-        "code" : "[lb_av]",
-        "display" : "pounds"
-      },
-      {
-        "code" : "km",
-        "display" : "kilograms"
-      }]
-    }]
-  }
-}}####
-e: {
-  "valueSet" : {
-  "resourceType" : "ValueSet",
-  "status" : "active",
-  "expansion" : {
-    "identifier" : "urn:uuid:24e9e871-1776-400f-8c8b-7ad8bf0a6bec",
-    "timestamp" : "2020-11-08T23:28:58.839Z",
-    "parameter" : [{
-      "name" : "limitedExpansion",
-      "valueBoolean" : true
-    },
-    {
-      "name" : "excludeNested",
-      "valueBoolean" : true
-    },
-    {
-      "name" : "version",
-      "valueString" : "http://unitsofmeasure.org|2.0.1"
-    }],
-    "contains" : [{
-      "system" : "http://unitsofmeasure.org",
-      "code" : "[lb_av]",
-      "display" : "pounds"
-    },
-    {
-      "system" : "http://unitsofmeasure.org",
-      "code" : "km",
-      "display" : "kilograms"
-    }]
-  }
-},
-  "error" : ""
+  "error" : "Unable to resolve value set \"null\" (from http://tx.fhir.org/r4)"
 }
 -------------------------------------------------------------------------------------

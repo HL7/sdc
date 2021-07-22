@@ -51,10 +51,130 @@ v: {
 -------------------------------------------------------------------------------------
 {"code" : {
   "system" : "http://loinc.org",
+  "code" : "LA20335-8"
+}, "valueSet" :null, "lang":"en-US", "useServer":"true", "useClient":"true", "guessSystem":"false", "valueSetMode":"ALL_CHECKS"}####
+v: {
+  "display" : "Biological products",
+  "severity" : null,
+  "error" : ""
+}
+-------------------------------------------------------------------------------------
+{"code" : {
+  "system" : "http://loinc.org",
+  "code" : "LA20336-6"
+}, "valueSet" :null, "lang":"en-US", "useServer":"true", "useClient":"true", "guessSystem":"false", "valueSetMode":"ALL_CHECKS"}####
+v: {
+  "display" : "Nutritional products",
+  "severity" : null,
+  "error" : ""
+}
+-------------------------------------------------------------------------------------
+{"code" : {
+  "system" : "http://loinc.org",
+  "code" : "LA20337-4"
+}, "valueSet" :null, "lang":"en-US", "useServer":"true", "useClient":"true", "guessSystem":"false", "valueSetMode":"ALL_CHECKS"}####
+v: {
+  "display" : "Expressed human breast milk",
+  "severity" : null,
+  "error" : ""
+}
+-------------------------------------------------------------------------------------
+{"code" : {
+  "system" : "http://loinc.org",
+  "code" : "LA20338-2"
+}, "valueSet" :null, "lang":"en-US", "useServer":"true", "useClient":"true", "guessSystem":"false", "valueSetMode":"ALL_CHECKS"}####
+v: {
+  "display" : "Medical gases (e.g., oxygen, nitrogen, nitrous oxide)",
+  "severity" : null,
+  "error" : ""
+}
+-------------------------------------------------------------------------------------
+{"code" : {
+  "system" : "http://loinc.org",
+  "code" : "LA20339-0"
+}, "valueSet" :null, "lang":"en-US", "useServer":"true", "useClient":"true", "guessSystem":"false", "valueSetMode":"ALL_CHECKS"}####
+v: {
+  "display" : "Contrast media",
+  "severity" : null,
+  "error" : ""
+}
+-------------------------------------------------------------------------------------
+{"code" : {
+  "system" : "http://loinc.org",
+  "code" : "LA20340-8"
+}, "valueSet" :null, "lang":"en-US", "useServer":"true", "useClient":"true", "guessSystem":"false", "valueSetMode":"ALL_CHECKS"}####
+v: {
+  "display" : "Radiopharmaceuticals",
+  "severity" : null,
+  "error" : ""
+}
+-------------------------------------------------------------------------------------
+{"code" : {
+  "system" : "http://loinc.org",
+  "code" : "LA20341-6"
+}, "valueSet" :null, "lang":"en-US", "useServer":"true", "useClient":"true", "guessSystem":"false", "valueSetMode":"ALL_CHECKS"}####
+v: {
+  "display" : "Patient food (not suspected in drug-food interactions)",
+  "severity" : null,
+  "error" : ""
+}
+-------------------------------------------------------------------------------------
+{"code" : {
+  "system" : "http://loinc.org",
+  "code" : "LA20342-4"
+}, "valueSet" :null, "lang":"en-US", "useServer":"true", "useClient":"true", "guessSystem":"false", "valueSetMode":"ALL_CHECKS"}####
+v: {
+  "display" : "Drug-drug, drug-food, or adverse drug reaction as a result of a prescription and/or administration of a drug and/or food prior to admission",
+  "severity" : null,
+  "error" : ""
+}
+-------------------------------------------------------------------------------------
+{"code" : {
+  "system" : "http://loinc.org",
+  "code" : "LA20343-2"
+}, "valueSet" :null, "lang":"en-US", "useServer":"true", "useClient":"true", "guessSystem":"false", "valueSetMode":"ALL_CHECKS"}####
+v: {
+  "display" : "Other substance: PLEASE SPECIFY",
+  "severity" : null,
+  "error" : ""
+}
+-------------------------------------------------------------------------------------
+{"code" : {
+  "system" : "http://loinc.org",
   "code" : "LA6568-5"
 }, "valueSet" :null, "lang":"en-US", "useServer":"true", "useClient":"true", "guessSystem":"false", "valueSetMode":"ALL_CHECKS"}####
 v: {
   "display" : "Not at all",
+  "severity" : null,
+  "error" : ""
+}
+-------------------------------------------------------------------------------------
+{"code" : {
+  "system" : "http://loinc.org",
+  "code" : "LA6569-3"
+}, "valueSet" :null, "lang":"en-US", "useServer":"true", "useClient":"true", "guessSystem":"false", "valueSetMode":"ALL_CHECKS"}####
+v: {
+  "display" : "Several days",
+  "severity" : null,
+  "error" : ""
+}
+-------------------------------------------------------------------------------------
+{"code" : {
+  "system" : "http://loinc.org",
+  "code" : "Several days"
+}, "valueSet" :null, "lang":"en-US", "useServer":"true", "useClient":"true", "guessSystem":"false", "valueSetMode":"ALL_CHECKS"}####
+v: {
+  "display" : "",
+  "severity" : "error",
+  "error" : "The code \"Several days\" is not valid in the system http://loinc.org; The code provided (http://loinc.org#Several days) is not valid in the value set 'All codes known to the system' (from http://tx.fhir.org/r4)"
+}
+-------------------------------------------------------------------------------------
+{"code" : {
+  "system" : "http://loinc.org",
+  "code" : "LA6571-9"
+}, "valueSet" :null, "lang":"en-US", "useServer":"true", "useClient":"true", "guessSystem":"false", "valueSetMode":"ALL_CHECKS"}####
+v: {
+  "display" : "Nearly every day",
   "severity" : null,
   "error" : ""
 }
@@ -67,7 +187,7 @@ v: {
 v: {
   "display" : "Sex",
   "severity" : "warning",
-  "error" : "The display \"Gender\" is not a valid display for the code {http://loinc.org}46098-0 - should be one of [Sex,Sex] (from http://tx.fhir.org/r4)"
+  "error" : "The display \"Gender\" is not a valid display for the code {http://loinc.org}46098-0 - should be one of [Sex, Sex, 分类型应答, 分类型结果, 名义性, 名称型, 名词型, 名词性, 标称性, 没有自然次序的名义型或分类型应答 医疗服务对象, 客户, 病人, 病患, 病号, 超系统 - 病人 型 性, 性别特征, 性行为, 性交, 性活动 时刻, 随机, 随意, 瞬间 行政, 管理, 施行, 执行, 经营 行政管理（行政、管理、施行、执行、经营）.患者（病人、病患、病号、伤病员） 行政管理（行政、管理、施行、执行、经营）.患者（病人、病患、病号、伤病员）.人口统计学信息（人口统计学、人口统计、人口统计数据、人口统计学数据、人口统计特征、人口统计学特征、个人基本信息、人员基本信息、个人基本资料、个人基本数据）, , Juhuslik, Aleatorio instante momento Nominal, Amministrativo Dati demografici del paziente Paziente Punto nel tempo (episodio), Seks Tür, Номинальный, Именной Точка во времени, Момент] (from http://tx.fhir.org/r4)"
 }
 -------------------------------------------------------------------------------------
 {"code" : {
@@ -89,7 +209,7 @@ v: {
 v: {
   "display" : "Cholesterol [Mass/volume] in Serum or Plasma",
   "severity" : "warning",
-  "error" : "The display \"Cholesterol [Mass/Vol]\" is not a valid display for the code {http://loinc.org}2093-3 - should be one of [\"Cholesterol [Mass/volume] in Serum or Plasma\",\"Cholest SerPl-mCnc\"] (from http://tx.fhir.org/r4)"
+  "error" : "The display \"Cholesterol [Mass/Vol]\" is not a valid display for the code {http://loinc.org}2093-3 - should be one of [Cholesterol [Mass/volume] in Serum or Plasma, Cholest SerPl-mCnc, 化学, 化学检验项目, 化学检验项目类, 化学类, 化学试验, 非刺激耐受型化学检验项目, 非刺激耐受型化学检验项目类, 非刺激耐受型化学试验, 非刺激耐受型化学试验类 可用数量表示的, 定量性, 数值型, 数量型, 连续数值型标尺 总胆固醇, 胆固醇总计, 胆甾醇, 脂类, 脂质 时刻, 随机, 随意, 瞬间 水平, 浓度, 质量浓度(单位体积) 血清或血浆, , Juhuslik Kvantitatiivne Plasma Seerum Seerum või plasma, Cholest, Chol, Choles, Lipid, Cholesterol total, Cholesterols, Mass concentration, Level, Point in time, Random, SerPl, SerPlas, SerP, Serum, SR, Plasma, Pl, Plsm, Quantitative, QNT, Quant, Quan, Chemistry, Aleatorio Concentración en masa Cuantitativo instante momento Plasma, Chimica Concentrazione di Massa Plasma Punto nel tempo (episodio) Siero Siero o Plasma, Количественный Массовая концентрация Плазма Сыворотка Сыворотка или Плазма Точка во времени, Момент Холестерин, Cholesterin] (from http://tx.fhir.org/r4)"
 }
 -------------------------------------------------------------------------------------
 {"code" : {
@@ -100,7 +220,7 @@ v: {
 v: {
   "display" : "Cholesterol in HDL [Mass/volume] in Serum or Plasma",
   "severity" : "warning",
-  "error" : "The display \"Cholesterol in HDL [Mass/Vol]\" is not a valid display for the code {http://loinc.org}2085-9 - should be one of [\"Cholesterol in HDL [Mass/volume] in Serum or Plasma\",\"HDLc SerPl-mCnc\"] (from http://tx.fhir.org/r4)"
+  "error" : "The display \"Cholesterol in HDL [Mass/Vol]\" is not a valid display for the code {http://loinc.org}2085-9 - should be one of [Cholesterol in HDL [Mass/volume] in Serum or Plasma, HDLc SerPl-mCnc, HDL 之中的胆固醇, HDL 胆固醇, HDLc, HDL-C, TCHHDL, 胆固醇.HDL, 胆固醇.高密度脂蛋白, 胆固醇.高密度脂蛋白之中的, 高密度脂蛋白之中的胆固醇, 高密度脂蛋白胆固醇 化学, 化学检验项目, 化学检验项目类, 化学类, 化学试验, 非刺激耐受型化学检验项目, 非刺激耐受型化学检验项目类, 非刺激耐受型化学试验, 非刺激耐受型化学试验类 可用数量表示的, 定量性, 数值型, 数量型, 连续数值型标尺 总胆固醇, 胆固醇总计, 胆甾醇, 脂类, 脂质 时刻, 随机, 随意, 瞬间 水平, 浓度, 质量浓度(单位体积) 血清或血浆, , HDL-Kolesterool Juhuslik Kvantitatiivne Plasma Seerum Seerum või plasma, High density lipoprotein cholesterols, Chol, Choles, Cholest, Lipid, Cholesterol total, Cholesterols, Mass concentration, Level, Point in time, Random, SerPl, SerPlas, SerP, Serum, SR, Plasma, Pl, Plsm, Quantitative, QNT, Quant, Quan, Chemistry, Aleatorio Concentración en masa Cuantitativo instante momento Plasma, Chimica Colesterolo in HDL Concentrazione di Massa Plasma Punto nel tempo (episodio) Siero Siero o Plasma, HDL, Количественный Массовая концентрация Плазма Сыворотка Сыворотка или Плазма Точка во времени, Момент Холестерин, HDL-Cholesterin] (from http://tx.fhir.org/r4)"
 }
 -------------------------------------------------------------------------------------
 {"code" : {
@@ -109,6 +229,46 @@ v: {
 }, "valueSet" :null, "lang":"en-US", "useServer":"true", "useClient":"true", "guessSystem":"false", "valueSetMode":"ALL_CHECKS"}####
 v: {
   "display" : "Dietary supplements (other than vitamins or minerals)",
+  "severity" : null,
+  "error" : ""
+}
+-------------------------------------------------------------------------------------
+{"code" : {
+  "system" : "http://loinc.org",
+  "code" : "LA16117-6"
+}, "valueSet" :null, "lang":"en-US", "useServer":"true", "useClient":"true", "guessSystem":"false", "valueSetMode":"ALL_CHECKS"}####
+v: {
+  "display" : "Vitamins or minerals",
+  "severity" : null,
+  "error" : ""
+}
+-------------------------------------------------------------------------------------
+{"code" : {
+  "system" : "http://loinc.org",
+  "code" : "LA20320-0"
+}, "valueSet" :null, "lang":"en-US", "useServer":"true", "useClient":"true", "guessSystem":"false", "valueSetMode":"ALL_CHECKS"}####
+v: {
+  "display" : "Enteral nutritional products, including infant formula",
+  "severity" : null,
+  "error" : ""
+}
+-------------------------------------------------------------------------------------
+{"code" : {
+  "system" : "http://loinc.org",
+  "code" : "LA20321-8"
+}, "valueSet" :null, "lang":"en-US", "useServer":"true", "useClient":"true", "guessSystem":"false", "valueSetMode":"ALL_CHECKS"}####
+v: {
+  "display" : "Parenteral nutritional products",
+  "severity" : null,
+  "error" : ""
+}
+-------------------------------------------------------------------------------------
+{"code" : {
+  "system" : "http://loinc.org",
+  "code" : "LA20318-4"
+}, "valueSet" :null, "lang":"en-US", "useServer":"true", "useClient":"true", "guessSystem":"false", "valueSetMode":"ALL_CHECKS"}####
+v: {
+  "display" : "Other: PLEASE SPECIFY",
   "severity" : null,
   "error" : ""
 }
@@ -125,6 +285,36 @@ v: {
 -------------------------------------------------------------------------------------
 {"code" : {
   "system" : "http://loinc.org",
+  "code" : "LA20314-3"
+}, "valueSet" :null, "lang":"en-US", "useServer":"true", "useClient":"true", "guessSystem":"false", "valueSetMode":"ALL_CHECKS"}####
+v: {
+  "display" : "Unsafe condition",
+  "severity" : null,
+  "error" : ""
+}
+-------------------------------------------------------------------------------------
+{"code" : {
+  "system" : "http://loinc.org",
+  "code" : "LA20315-0"
+}, "valueSet" :null, "lang":"en-US", "useServer":"true", "useClient":"true", "guessSystem":"false", "valueSetMode":"ALL_CHECKS"}####
+v: {
+  "display" : "Adverse reaction in patient to the administered substance without any apparent incorrect action",
+  "severity" : null,
+  "error" : ""
+}
+-------------------------------------------------------------------------------------
+{"code" : {
+  "system" : "http://loinc.org",
+  "code" : "LA4489-6"
+}, "valueSet" :null, "lang":"en-US", "useServer":"true", "useClient":"true", "guessSystem":"false", "valueSetMode":"ALL_CHECKS"}####
+v: {
+  "display" : "Unknown",
+  "severity" : null,
+  "error" : ""
+}
+-------------------------------------------------------------------------------------
+{"code" : {
+  "system" : "http://loinc.org",
   "code" : "LA20276-4"
 }, "valueSet" :null, "lang":"en-US", "useServer":"true", "useClient":"true", "guessSystem":"false", "valueSetMode":"ALL_CHECKS"}####
 v: {
@@ -135,10 +325,270 @@ v: {
 -------------------------------------------------------------------------------------
 {"code" : {
   "system" : "http://loinc.org",
+  "code" : "LA20302-8"
+}, "valueSet" :null, "lang":"en-US", "useServer":"true", "useClient":"true", "guessSystem":"false", "valueSetMode":"ALL_CHECKS"}####
+v: {
+  "display" : "Incorrect medication/substance",
+  "severity" : null,
+  "error" : ""
+}
+-------------------------------------------------------------------------------------
+{"code" : {
+  "system" : "http://loinc.org",
+  "code" : "LA20303-6"
+}, "valueSet" :null, "lang":"en-US", "useServer":"true", "useClient":"true", "guessSystem":"false", "valueSetMode":"ALL_CHECKS"}####
+v: {
+  "display" : "Incorrect dose(s)",
+  "severity" : null,
+  "error" : ""
+}
+-------------------------------------------------------------------------------------
+{"code" : {
+  "system" : "http://loinc.org",
+  "code" : "LA20304-4"
+}, "valueSet" :null, "lang":"en-US", "useServer":"true", "useClient":"true", "guessSystem":"false", "valueSetMode":"ALL_CHECKS"}####
+v: {
+  "display" : "Incorrect route of administration",
+  "severity" : null,
+  "error" : ""
+}
+-------------------------------------------------------------------------------------
+{"code" : {
+  "system" : "http://loinc.org",
+  "code" : "LA20305-1"
+}, "valueSet" :null, "lang":"en-US", "useServer":"true", "useClient":"true", "guessSystem":"false", "valueSetMode":"ALL_CHECKS"}####
+v: {
+  "display" : "Incorrect timing",
+  "severity" : null,
+  "error" : ""
+}
+-------------------------------------------------------------------------------------
+{"code" : {
+  "system" : "http://loinc.org",
+  "code" : "LA20306-9"
+}, "valueSet" :null, "lang":"en-US", "useServer":"true", "useClient":"true", "guessSystem":"false", "valueSetMode":"ALL_CHECKS"}####
+v: {
+  "display" : "Incorrect rate",
+  "severity" : null,
+  "error" : ""
+}
+-------------------------------------------------------------------------------------
+{"code" : {
+  "system" : "http://loinc.org",
+  "code" : "LA20307-7"
+}, "valueSet" :null, "lang":"en-US", "useServer":"true", "useClient":"true", "guessSystem":"false", "valueSetMode":"ALL_CHECKS"}####
+v: {
+  "display" : "Incorrect duration of administration or course of therapy",
+  "severity" : null,
+  "error" : ""
+}
+-------------------------------------------------------------------------------------
+{"code" : {
+  "system" : "http://loinc.org",
+  "code" : "LA20308-5"
+}, "valueSet" :null, "lang":"en-US", "useServer":"true", "useClient":"true", "guessSystem":"false", "valueSetMode":"ALL_CHECKS"}####
+v: {
+  "display" : "Incorrect dosage form (e.g., sustained release instead of immediate release)",
+  "severity" : null,
+  "error" : ""
+}
+-------------------------------------------------------------------------------------
+{"code" : {
+  "system" : "http://loinc.org",
+  "code" : "LA20309-3"
+}, "valueSet" :null, "lang":"en-US", "useServer":"true", "useClient":"true", "guessSystem":"false", "valueSetMode":"ALL_CHECKS"}####
+v: {
+  "display" : "Incorrect strength or concentration",
+  "severity" : null,
+  "error" : ""
+}
+-------------------------------------------------------------------------------------
+{"code" : {
+  "system" : "http://loinc.org",
+  "code" : "LA20310-1"
+}, "valueSet" :null, "lang":"en-US", "useServer":"true", "useClient":"true", "guessSystem":"false", "valueSetMode":"ALL_CHECKS"}####
+v: {
+  "display" : "Incorrect preparation, including inappropriate cutting of tablets, error in compounding, mixing, etc.",
+  "severity" : null,
+  "error" : ""
+}
+-------------------------------------------------------------------------------------
+{"code" : {
+  "system" : "http://loinc.org",
+  "code" : "LA20311-9"
+}, "valueSet" :null, "lang":"en-US", "useServer":"true", "useClient":"true", "guessSystem":"false", "valueSetMode":"ALL_CHECKS"}####
+v: {
+  "display" : "Expired or deteriorated medication/substance",
+  "severity" : null,
+  "error" : ""
+}
+-------------------------------------------------------------------------------------
+{"code" : {
+  "system" : "http://loinc.org",
+  "code" : "LA20312-7"
+}, "valueSet" :null, "lang":"en-US", "useServer":"true", "useClient":"true", "guessSystem":"false", "valueSetMode":"ALL_CHECKS"}####
+v: {
+  "display" : "Medication/substance that is known to be an allergen to the patient",
+  "severity" : null,
+  "error" : ""
+}
+-------------------------------------------------------------------------------------
+{"code" : {
+  "system" : "http://loinc.org",
+  "code" : "LA20345-7"
+}, "valueSet" :null, "lang":"en-US", "useServer":"true", "useClient":"true", "guessSystem":"false", "valueSetMode":"ALL_CHECKS"}####
+v: {
+  "display" : "Medication/substance that is known to be contraindicated for the patient",
+  "severity" : null,
+  "error" : ""
+}
+-------------------------------------------------------------------------------------
+{"code" : {
+  "system" : "http://loinc.org",
+  "code" : "LA20313-5"
+}, "valueSet" :null, "lang":"en-US", "useServer":"true", "useClient":"true", "guessSystem":"false", "valueSetMode":"ALL_CHECKS"}####
+v: {
+  "display" : "Incorrect patient/family action (e.g., self-administration error)",
+  "severity" : null,
+  "error" : ""
+}
+-------------------------------------------------------------------------------------
+{"code" : {
+  "system" : "http://loinc.org",
   "code" : "LA20272-3"
 }, "valueSet" :null, "lang":"en-US", "useServer":"true", "useClient":"true", "guessSystem":"false", "valueSetMode":"ALL_CHECKS"}####
 v: {
   "display" : "Cutaneous, topical application, including ointment, spray, patch",
+  "severity" : null,
+  "error" : ""
+}
+-------------------------------------------------------------------------------------
+{"code" : {
+  "system" : "http://loinc.org",
+  "code" : "LA9451-1"
+}, "valueSet" :null, "lang":"en-US", "useServer":"true", "useClient":"true", "guessSystem":"false", "valueSetMode":"ALL_CHECKS"}####
+v: {
+  "display" : "Subcutaneous",
+  "severity" : null,
+  "error" : ""
+}
+-------------------------------------------------------------------------------------
+{"code" : {
+  "system" : "http://loinc.org",
+  "code" : "LA9444-6"
+}, "valueSet" :null, "lang":"en-US", "useServer":"true", "useClient":"true", "guessSystem":"false", "valueSetMode":"ALL_CHECKS"}####
+v: {
+  "display" : "Ophthalmic",
+  "severity" : null,
+  "error" : ""
+}
+-------------------------------------------------------------------------------------
+{"code" : {
+  "system" : "http://loinc.org",
+  "code" : "LA20324-2"
+}, "valueSet" :null, "lang":"en-US", "useServer":"true", "useClient":"true", "guessSystem":"false", "valueSetMode":"ALL_CHECKS"}####
+v: {
+  "display" : "Oral, including sublingual or buccal",
+  "severity" : null,
+  "error" : ""
+}
+-------------------------------------------------------------------------------------
+{"code" : {
+  "system" : "http://loinc.org",
+  "code" : "LA9445-"
+}, "valueSet" :null, "lang":"en-US", "useServer":"true", "useClient":"true", "guessSystem":"false", "valueSetMode":"ALL_CHECKS"}####
+v: {
+  "display" : "",
+  "severity" : "error",
+  "error" : "The code \"LA9445-\" is not valid in the system http://loinc.org; The code provided (http://loinc.org#LA9445-) is not valid in the value set 'All codes known to the system' (from http://tx.fhir.org/r4)"
+}
+-------------------------------------------------------------------------------------
+{"code" : {
+  "system" : "http://loinc.org",
+  "code" : "LA9263-0"
+}, "valueSet" :null, "lang":"en-US", "useServer":"true", "useClient":"true", "guessSystem":"false", "valueSetMode":"ALL_CHECKS"}####
+v: {
+  "display" : "Nasal",
+  "severity" : null,
+  "error" : ""
+}
+-------------------------------------------------------------------------------------
+{"code" : {
+  "system" : "http://loinc.org",
+  "code" : "LA9427-1"
+}, "valueSet" :null, "lang":"en-US", "useServer":"true", "useClient":"true", "guessSystem":"false", "valueSetMode":"ALL_CHECKS"}####
+v: {
+  "display" : "Inhalation",
+  "severity" : null,
+  "error" : ""
+}
+-------------------------------------------------------------------------------------
+{"code" : {
+  "system" : "http://loinc.org",
+  "code" : "LA9437-0"
+}, "valueSet" :null, "lang":"en-US", "useServer":"true", "useClient":"true", "guessSystem":"false", "valueSetMode":"ALL_CHECKS"}####
+v: {
+  "display" : "Intravenous",
+  "severity" : null,
+  "error" : ""
+}
+-------------------------------------------------------------------------------------
+{"code" : {
+  "system" : "http://loinc.org",
+  "code" : "LA9429-7"
+}, "valueSet" :null, "lang":"en-US", "useServer":"true", "useClient":"true", "guessSystem":"false", "valueSetMode":"ALL_CHECKS"}####
+v: {
+  "display" : "Intramuscular",
+  "severity" : null,
+  "error" : ""
+}
+-------------------------------------------------------------------------------------
+{"code" : {
+  "system" : "http://loinc.org",
+  "code" : "LA9435-4"
+}, "valueSet" :null, "lang":"en-US", "useServer":"true", "useClient":"true", "guessSystem":"false", "valueSetMode":"ALL_CHECKS"}####
+v: {
+  "display" : "Intrathecal",
+  "severity" : null,
+  "error" : ""
+}
+-------------------------------------------------------------------------------------
+{"code" : {
+  "system" : "http://loinc.org",
+  "code" : "LA9418-0"
+}, "valueSet" :null, "lang":"en-US", "useServer":"true", "useClient":"true", "guessSystem":"false", "valueSetMode":"ALL_CHECKS"}####
+v: {
+  "display" : "Epidural",
+  "severity" : null,
+  "error" : ""
+}
+-------------------------------------------------------------------------------------
+{"code" : {
+  "system" : "http://loinc.org",
+  "code" : "LA20332-5"
+}, "valueSet" :null, "lang":"en-US", "useServer":"true", "useClient":"true", "guessSystem":"false", "valueSetMode":"ALL_CHECKS"}####
+v: {
+  "display" : "Gastric",
+  "severity" : null,
+  "error" : ""
+}
+-------------------------------------------------------------------------------------
+{"code" : {
+  "system" : "http://loinc.org",
+  "code" : "LA9369-5"
+}, "valueSet" :null, "lang":"en-US", "useServer":"true", "useClient":"true", "guessSystem":"false", "valueSetMode":"ALL_CHECKS"}####
+v: {
+  "display" : "Rectal",
+  "severity" : null,
+  "error" : ""
+}
+-------------------------------------------------------------------------------------
+{"code" : {
+  "system" : "http://loinc.org",
+  "code" : "LA9459-4"
+}, "valueSet" :null, "lang":"en-US", "useServer":"true", "useClient":"true", "guessSystem":"false", "valueSetMode":"ALL_CHECKS"}####
+v: {
+  "display" : "Vaginal",
   "severity" : null,
   "error" : ""
 }
@@ -160,6 +610,26 @@ v: {
 }, "valueSet" :null, "lang":"en-US", "useServer":"true", "useClient":"true", "guessSystem":"false", "valueSetMode":"ALL_CHECKS"}####
 v: {
   "display" : "Within 24 hours",
+  "severity" : null,
+  "error" : ""
+}
+-------------------------------------------------------------------------------------
+{"code" : {
+  "system" : "http://loinc.org",
+  "code" : "LA20753-2"
+}, "valueSet" :null, "lang":"en-US", "useServer":"true", "useClient":"true", "guessSystem":"false", "valueSetMode":"ALL_CHECKS"}####
+v: {
+  "display" : "After 24 hours but before 3 days",
+  "severity" : null,
+  "error" : ""
+}
+-------------------------------------------------------------------------------------
+{"code" : {
+  "system" : "http://loinc.org",
+  "code" : "LA20754-0"
+}, "valueSet" :null, "lang":"en-US", "useServer":"true", "useClient":"true", "guessSystem":"false", "valueSetMode":"ALL_CHECKS"}####
+v: {
+  "display" : "Three days or later",
   "severity" : null,
   "error" : ""
 }
@@ -391,10 +861,11 @@ v: {
 e: {
   "valueSet" : {
   "resourceType" : "ValueSet",
+  "language" : "en",
   "status" : "active",
   "expansion" : {
-    "identifier" : "urn:uuid:d48879d3-874a-474e-9935-563ea6245147",
-    "timestamp" : "2020-11-08T23:26:27.418Z",
+    "identifier" : "urn:uuid:0806df79-f525-48b2-b201-199256b948b4",
+    "timestamp" : "2021-07-22T16:12:02.406Z",
     "parameter" : [{
       "name" : "limitedExpansion",
       "valueBoolean" : true
@@ -405,7 +876,7 @@ e: {
     },
     {
       "name" : "version",
-      "valueString" : "http://loinc.org|2.68"
+      "valueString" : "http://loinc.org|2.69"
     }],
     "contains" : [{
       "system" : "http://loinc.org",
@@ -445,12 +916,12 @@ e: {
     {
       "system" : "http://loinc.org",
       "code" : "LA20341-6",
-      "display" : "Patient food (not suspected in drug-food interactions"
+      "display" : "Patient food (not suspected in drug-food interactions)"
     },
     {
       "system" : "http://loinc.org",
       "code" : "LA20342-4",
-      "display" : "Drug-drug, drug-food, or adverse drug reaction as a result of a prescription and/or administration                  of a drug and/or food frior to admission"
+      "display" : "Drug-drug, drug-food, or adverse drug reaction as a result of a prescription and/or administration of a drug and/or food prior to admission"
     },
     {
       "system" : "http://loinc.org",
@@ -536,10 +1007,11 @@ v: {
 e: {
   "valueSet" : {
   "resourceType" : "ValueSet",
+  "language" : "en",
   "status" : "active",
   "expansion" : {
-    "identifier" : "urn:uuid:84dc085a-ee8e-4d9f-8d81-edcc9f3e5cde",
-    "timestamp" : "2020-11-08T23:28:37.996Z",
+    "identifier" : "urn:uuid:6d671ab5-ed04-446a-a0a3-57601da132a7",
+    "timestamp" : "2021-07-22T16:12:30.813Z",
     "parameter" : [{
       "name" : "limitedExpansion",
       "valueBoolean" : true
@@ -550,7 +1022,7 @@ e: {
     },
     {
       "name" : "version",
-      "valueString" : "http://loinc.org|2.68"
+      "valueString" : "http://loinc.org|2.69"
     }],
     "contains" : [{
       "system" : "http://loinc.org",
@@ -615,17 +1087,18 @@ e: {
 e: {
   "valueSet" : {
   "resourceType" : "ValueSet",
+  "language" : "en",
   "status" : "active",
   "expansion" : {
-    "identifier" : "urn:uuid:18bf794a-bdb8-4e88-b0f3-279e373e3ae3",
-    "timestamp" : "2020-11-08T23:28:39.027Z",
+    "identifier" : "urn:uuid:9f934dac-4251-4f52-b61d-96922712c143",
+    "timestamp" : "2021-07-22T16:12:31.594Z",
     "parameter" : [{
       "name" : "limitedExpansion",
       "valueBoolean" : true
     },
     {
       "name" : "version",
-      "valueString" : "http://loinc.org|2.68"
+      "valueString" : "http://loinc.org|2.69"
     }],
     "contains" : [{
       "system" : "http://loinc.org",
@@ -641,1172 +1114,6 @@ e: {
       "system" : "http://loinc.org",
       "code" : "LA6571-9",
       "display" : "Nearly every day"
-    }]
-  }
-},
-  "error" : ""
-}
--------------------------------------------------------------------------------------
-{"hierarchical" : false, "valueSet" :{
-  "resourceType" : "ValueSet",
-  "compose" : {
-    "include" : [{
-      "system" : "http://loinc.org",
-      "concept" : [{
-        "code" : "LA20276-4",
-        "display" : "Incorrect patient"
-      },
-      {
-        "code" : "LA20302-8",
-        "display" : "Incorrect medication/substance"
-      },
-      {
-        "code" : "LA20303-6",
-        "display" : "Incorrect dose(s)"
-      },
-      {
-        "code" : "LA20304-4",
-        "display" : "Incorrect route of administration"
-      },
-      {
-        "code" : "LA20305-1",
-        "display" : "Incorrect timing"
-      },
-      {
-        "code" : "LA20306-9",
-        "display" : "Incorrect rate"
-      },
-      {
-        "code" : "LA20307-7",
-        "display" : "Incorrect duration of administration or course of therapy"
-      },
-      {
-        "code" : "LA20308-5",
-        "display" : "Incorrect dosage form (e.g., sustained release instead of immediate release)"
-      },
-      {
-        "code" : "LA20309-3",
-        "display" : "Incorrect strength or concentration"
-      },
-      {
-        "code" : "LA20310-1",
-        "display" : "Incorrect preparation, including inappropriate cutting of tablets, error in compounding,                  mixing, etc."
-      },
-      {
-        "code" : "LA20311-9",
-        "display" : "Expired or deteriorated medication/substance"
-      },
-      {
-        "code" : "LA20312-7",
-        "display" : "Medication/substance that is known to be an allergen to the patient"
-      },
-      {
-        "code" : "LA20345-7",
-        "display" : "Medication/substance that is known to be contraindicated for the patient"
-      },
-      {
-        "code" : "LA20313-5",
-        "display" : "Incorrect patient/family action (e.g., self-administration error)"
-      },
-      {
-        "code" : "LA20318-4",
-        "display" : "Other"
-      }]
-    }]
-  }
-}}####
-e: {
-  "valueSet" : {
-  "resourceType" : "ValueSet",
-  "status" : "active",
-  "expansion" : {
-    "identifier" : "urn:uuid:ab3ac42e-2df1-4093-a30b-11463bd67a38",
-    "timestamp" : "2020-11-08T23:28:42.292Z",
-    "parameter" : [{
-      "name" : "limitedExpansion",
-      "valueBoolean" : true
-    },
-    {
-      "name" : "excludeNested",
-      "valueBoolean" : true
-    },
-    {
-      "name" : "version",
-      "valueString" : "http://loinc.org|2.68"
-    }],
-    "contains" : [{
-      "system" : "http://loinc.org",
-      "code" : "LA20276-4",
-      "display" : "Incorrect patient"
-    },
-    {
-      "system" : "http://loinc.org",
-      "code" : "LA20302-8",
-      "display" : "Incorrect medication/substance"
-    },
-    {
-      "system" : "http://loinc.org",
-      "code" : "LA20303-6",
-      "display" : "Incorrect dose(s)"
-    },
-    {
-      "system" : "http://loinc.org",
-      "code" : "LA20304-4",
-      "display" : "Incorrect route of administration"
-    },
-    {
-      "system" : "http://loinc.org",
-      "code" : "LA20305-1",
-      "display" : "Incorrect timing"
-    },
-    {
-      "system" : "http://loinc.org",
-      "code" : "LA20306-9",
-      "display" : "Incorrect rate"
-    },
-    {
-      "system" : "http://loinc.org",
-      "code" : "LA20307-7",
-      "display" : "Incorrect duration of administration or course of therapy"
-    },
-    {
-      "system" : "http://loinc.org",
-      "code" : "LA20308-5",
-      "display" : "Incorrect dosage form (e.g., sustained release instead of immediate release)"
-    },
-    {
-      "system" : "http://loinc.org",
-      "code" : "LA20309-3",
-      "display" : "Incorrect strength or concentration"
-    },
-    {
-      "system" : "http://loinc.org",
-      "code" : "LA20310-1",
-      "display" : "Incorrect preparation, including inappropriate cutting of tablets, error in compounding,                  mixing, etc."
-    },
-    {
-      "system" : "http://loinc.org",
-      "code" : "LA20311-9",
-      "display" : "Expired or deteriorated medication/substance"
-    },
-    {
-      "system" : "http://loinc.org",
-      "code" : "LA20312-7",
-      "display" : "Medication/substance that is known to be an allergen to the patient"
-    },
-    {
-      "system" : "http://loinc.org",
-      "code" : "LA20345-7",
-      "display" : "Medication/substance that is known to be contraindicated for the patient"
-    },
-    {
-      "system" : "http://loinc.org",
-      "code" : "LA20313-5",
-      "display" : "Incorrect patient/family action (e.g., self-administration error)"
-    },
-    {
-      "system" : "http://loinc.org",
-      "code" : "LA20318-4",
-      "display" : "Other"
-    }]
-  }
-},
-  "error" : ""
-}
--------------------------------------------------------------------------------------
-{"hierarchical" : true, "valueSet" :{
-  "resourceType" : "ValueSet",
-  "compose" : {
-    "include" : [{
-      "system" : "http://loinc.org",
-      "concept" : [{
-        "extension" : [{
-          "url" : "http://hl7.org/fhir/StructureDefinition/valueset-conceptOrder",
-          "valueInteger" : 1
-        },
-        {
-          "url" : "http://hl7.org/fhir/StructureDefinition/valueset-label",
-          "valueString" : "a."
-        }],
-        "code" : "LA20271-5",
-        "display" : "Medications"
-      },
-      {
-        "extension" : [{
-          "url" : "http://hl7.org/fhir/StructureDefinition/valueset-conceptOrder",
-          "valueInteger" : 2
-        },
-        {
-          "url" : "http://hl7.org/fhir/StructureDefinition/valueset-label",
-          "valueString" : "b."
-        }],
-        "code" : "LA20335-8",
-        "display" : "Biological products"
-      },
-      {
-        "extension" : [{
-          "url" : "http://hl7.org/fhir/StructureDefinition/valueset-conceptOrder",
-          "valueInteger" : 3
-        },
-        {
-          "url" : "http://hl7.org/fhir/StructureDefinition/valueset-label",
-          "valueString" : "c."
-        }],
-        "code" : "LA20336-6",
-        "display" : "Nutritional products"
-      },
-      {
-        "extension" : [{
-          "url" : "http://hl7.org/fhir/StructureDefinition/valueset-conceptOrder",
-          "valueInteger" : 4
-        },
-        {
-          "url" : "http://hl7.org/fhir/StructureDefinition/valueset-label",
-          "valueString" : "d."
-        }],
-        "code" : "LA20337-4",
-        "display" : "Expressed human breast milk"
-      },
-      {
-        "extension" : [{
-          "url" : "http://hl7.org/fhir/StructureDefinition/valueset-conceptOrder",
-          "valueInteger" : 5
-        },
-        {
-          "url" : "http://hl7.org/fhir/StructureDefinition/valueset-label",
-          "valueString" : "e."
-        }],
-        "code" : "LA20338-2",
-        "display" : "Medical gases (e.g., oxygen, nitrogen, nitrous oxide)"
-      },
-      {
-        "extension" : [{
-          "url" : "http://hl7.org/fhir/StructureDefinition/valueset-conceptOrder",
-          "valueInteger" : 6
-        },
-        {
-          "url" : "http://hl7.org/fhir/StructureDefinition/valueset-label",
-          "valueString" : "f."
-        }],
-        "code" : "LA20339-0",
-        "display" : "Contrast media"
-      },
-      {
-        "extension" : [{
-          "url" : "http://hl7.org/fhir/StructureDefinition/valueset-conceptOrder",
-          "valueInteger" : 7
-        },
-        {
-          "url" : "http://hl7.org/fhir/StructureDefinition/valueset-label",
-          "valueString" : "g."
-        }],
-        "code" : "LA20340-8",
-        "display" : "Radiopharmaceuticals"
-      },
-      {
-        "extension" : [{
-          "url" : "http://hl7.org/fhir/StructureDefinition/valueset-conceptOrder",
-          "valueInteger" : 8
-        },
-        {
-          "url" : "http://hl7.org/fhir/StructureDefinition/valueset-label",
-          "valueString" : "h."
-        }],
-        "code" : "LA20341-6",
-        "display" : "Patient food (not suspected in drug-food interactions)"
-      },
-      {
-        "extension" : [{
-          "url" : "http://hl7.org/fhir/StructureDefinition/valueset-conceptOrder",
-          "valueInteger" : 9
-        },
-        {
-          "url" : "http://hl7.org/fhir/StructureDefinition/valueset-label",
-          "valueString" : "i."
-        }],
-        "code" : "LA20342-4",
-        "display" : "Drug-drug, drug-food, or adverse drug reaction as a result of a prescription and/or administration of a drug and/or food prior to admission"
-      },
-      {
-        "extension" : [{
-          "url" : "http://hl7.org/fhir/StructureDefinition/valueset-conceptOrder",
-          "valueInteger" : 10
-        },
-        {
-          "url" : "http://hl7.org/fhir/StructureDefinition/valueset-label",
-          "valueString" : "j."
-        }],
-        "code" : "LA20343-2",
-        "display" : "Other"
-      }]
-    }]
-  }
-}}####
-e: {
-  "valueSet" : {
-  "resourceType" : "ValueSet",
-  "status" : "active",
-  "expansion" : {
-    "identifier" : "urn:uuid:40fb3391-37b7-4039-97c9-2de80785ffd2",
-    "timestamp" : "2020-11-08T23:28:45.074Z",
-    "parameter" : [{
-      "name" : "limitedExpansion",
-      "valueBoolean" : true
-    },
-    {
-      "name" : "version",
-      "valueString" : "http://loinc.org|2.68"
-    }],
-    "contains" : [{
-      "system" : "http://loinc.org",
-      "code" : "LA20271-5",
-      "display" : "Medications"
-    },
-    {
-      "system" : "http://loinc.org",
-      "code" : "LA20335-8",
-      "display" : "Biological products"
-    },
-    {
-      "system" : "http://loinc.org",
-      "code" : "LA20336-6",
-      "display" : "Nutritional products"
-    },
-    {
-      "system" : "http://loinc.org",
-      "code" : "LA20337-4",
-      "display" : "Expressed human breast milk"
-    },
-    {
-      "system" : "http://loinc.org",
-      "code" : "LA20338-2",
-      "display" : "Medical gases (e.g., oxygen, nitrogen, nitrous oxide)"
-    },
-    {
-      "system" : "http://loinc.org",
-      "code" : "LA20339-0",
-      "display" : "Contrast media"
-    },
-    {
-      "system" : "http://loinc.org",
-      "code" : "LA20340-8",
-      "display" : "Radiopharmaceuticals"
-    },
-    {
-      "system" : "http://loinc.org",
-      "code" : "LA20341-6",
-      "display" : "Patient food (not suspected in drug-food interactions)"
-    },
-    {
-      "system" : "http://loinc.org",
-      "code" : "LA20342-4",
-      "display" : "Drug-drug, drug-food, or adverse drug reaction as a result of a prescription and/or administration of a drug and/or food prior to admission"
-    },
-    {
-      "system" : "http://loinc.org",
-      "code" : "LA20343-2",
-      "display" : "Other"
-    }]
-  }
-},
-  "error" : ""
-}
--------------------------------------------------------------------------------------
-{"hierarchical" : true, "valueSet" :{
-  "resourceType" : "ValueSet",
-  "compose" : {
-    "include" : [{
-      "system" : "http://loinc.org",
-      "concept" : [{
-        "extension" : [{
-          "url" : "http://hl7.org/fhir/StructureDefinition/valueset-conceptOrder",
-          "valueInteger" : 1
-        },
-        {
-          "url" : "http://hl7.org/fhir/StructureDefinition/valueset-label",
-          "valueString" : "a."
-        }],
-        "code" : "LA20273-1",
-        "display" : "Dietary supplements (other than vitamins or minerals)"
-      },
-      {
-        "extension" : [{
-          "url" : "http://hl7.org/fhir/StructureDefinition/valueset-conceptOrder",
-          "valueInteger" : 2
-        },
-        {
-          "url" : "http://hl7.org/fhir/StructureDefinition/valueset-label",
-          "valueString" : "b."
-        }],
-        "code" : "LA16117-6",
-        "display" : "Vitamins or minerals"
-      },
-      {
-        "extension" : [{
-          "url" : "http://hl7.org/fhir/StructureDefinition/valueset-conceptOrder",
-          "valueInteger" : 3
-        },
-        {
-          "url" : "http://hl7.org/fhir/StructureDefinition/valueset-label",
-          "valueString" : "c."
-        }],
-        "code" : "LA20320-0",
-        "display" : "Enteral nutritional products, including infant formula"
-      },
-      {
-        "extension" : [{
-          "url" : "http://hl7.org/fhir/StructureDefinition/valueset-conceptOrder",
-          "valueInteger" : 4
-        },
-        {
-          "url" : "http://hl7.org/fhir/StructureDefinition/valueset-label",
-          "valueString" : "d."
-        }],
-        "code" : "LA20321-8",
-        "display" : "Parenteral nutritional products"
-      },
-      {
-        "extension" : [{
-          "url" : "http://hl7.org/fhir/StructureDefinition/valueset-conceptOrder",
-          "valueInteger" : 5
-        },
-        {
-          "url" : "http://hl7.org/fhir/StructureDefinition/valueset-label",
-          "valueString" : "e."
-        }],
-        "code" : "LA20318-4",
-        "display" : "Other"
-      }]
-    }]
-  }
-}}####
-e: {
-  "valueSet" : {
-  "resourceType" : "ValueSet",
-  "status" : "active",
-  "expansion" : {
-    "identifier" : "urn:uuid:e5bafcc3-c3dd-4b2d-8141-0cafb5610383",
-    "timestamp" : "2020-11-08T23:28:47.402Z",
-    "parameter" : [{
-      "name" : "limitedExpansion",
-      "valueBoolean" : true
-    },
-    {
-      "name" : "version",
-      "valueString" : "http://loinc.org|2.68"
-    }],
-    "contains" : [{
-      "system" : "http://loinc.org",
-      "code" : "LA20273-1",
-      "display" : "Dietary supplements (other than vitamins or minerals)"
-    },
-    {
-      "system" : "http://loinc.org",
-      "code" : "LA16117-6",
-      "display" : "Vitamins or minerals"
-    },
-    {
-      "system" : "http://loinc.org",
-      "code" : "LA20320-0",
-      "display" : "Enteral nutritional products, including infant formula"
-    },
-    {
-      "system" : "http://loinc.org",
-      "code" : "LA20321-8",
-      "display" : "Parenteral nutritional products"
-    },
-    {
-      "system" : "http://loinc.org",
-      "code" : "LA20318-4",
-      "display" : "Other"
-    }]
-  }
-},
-  "error" : ""
-}
--------------------------------------------------------------------------------------
-{"hierarchical" : true, "valueSet" :{
-  "resourceType" : "ValueSet",
-  "compose" : {
-    "include" : [{
-      "system" : "http://loinc.org",
-      "concept" : [{
-        "code" : "LA20275-6",
-        "display" : "Incorrect action (process failure or error) (e.g., such as administering overdose or incorrect medication)",
-        "_display" : {
-          "extension" : [{
-            "url" : "http://hl7.org/fhir/StructureDefinition/rendering-xhtml",
-            "valueString" : "Incorrect action (process failure or error) <i>(e.g., such as administering overdose or incorrect medication)</i>"
-          }]
-        }
-      },
-      {
-        "code" : "LA20314-3",
-        "display" : "Unsafe condition",
-        "_display" : {
-          "extension" : [{
-            "url" : "http://hl7.org/fhir/StructureDefinition/rendering-style",
-            "valueString" : "color:green"
-          }]
-        }
-      },
-      {
-        "code" : "LA20315-0",
-        "display" : "Adverse reaction in patient to the administered substance without any apparent incorrect                  action"
-      },
-      {
-        "code" : "LA4489-6",
-        "display" : "Unknown"
-      }]
-    }]
-  }
-}}####
-e: {
-  "valueSet" : {
-  "resourceType" : "ValueSet",
-  "status" : "active",
-  "expansion" : {
-    "identifier" : "urn:uuid:51599098-a542-478f-9a9e-44367092cfc3",
-    "timestamp" : "2020-11-08T23:28:48.480Z",
-    "parameter" : [{
-      "name" : "limitedExpansion",
-      "valueBoolean" : true
-    },
-    {
-      "name" : "version",
-      "valueString" : "http://loinc.org|2.68"
-    }],
-    "contains" : [{
-      "system" : "http://loinc.org",
-      "code" : "LA20275-6",
-      "display" : "Incorrect action (process failure or error) (e.g., such as administering overdose or incorrect medication)"
-    },
-    {
-      "system" : "http://loinc.org",
-      "code" : "LA20314-3",
-      "display" : "Unsafe condition"
-    },
-    {
-      "system" : "http://loinc.org",
-      "code" : "LA20315-0",
-      "display" : "Adverse reaction in patient to the administered substance without any apparent incorrect                  action"
-    },
-    {
-      "system" : "http://loinc.org",
-      "code" : "LA4489-6",
-      "display" : "Unknown"
-    }]
-  }
-},
-  "error" : ""
-}
--------------------------------------------------------------------------------------
-{"hierarchical" : true, "valueSet" :{
-  "resourceType" : "ValueSet",
-  "compose" : {
-    "include" : [{
-      "system" : "http://loinc.org",
-      "concept" : [{
-        "code" : "LA20276-4",
-        "display" : "Incorrect patient"
-      },
-      {
-        "code" : "LA20302-8",
-        "display" : "Incorrect medication/substance"
-      },
-      {
-        "code" : "LA20303-6",
-        "display" : "Incorrect dose(s)"
-      },
-      {
-        "code" : "LA20304-4",
-        "display" : "Incorrect route of administration"
-      },
-      {
-        "code" : "LA20305-1",
-        "display" : "Incorrect timing"
-      },
-      {
-        "code" : "LA20306-9",
-        "display" : "Incorrect rate"
-      },
-      {
-        "code" : "LA20307-7",
-        "display" : "Incorrect duration of administration or course of therapy"
-      },
-      {
-        "code" : "LA20308-5",
-        "display" : "Incorrect dosage form (e.g., sustained release instead of immediate release)"
-      },
-      {
-        "code" : "LA20309-3",
-        "display" : "Incorrect strength or concentration"
-      },
-      {
-        "code" : "LA20310-1",
-        "display" : "Incorrect preparation, including inappropriate cutting of tablets, error in compounding,                  mixing, etc."
-      },
-      {
-        "code" : "LA20311-9",
-        "display" : "Expired or deteriorated medication/substance"
-      },
-      {
-        "code" : "LA20312-7",
-        "display" : "Medication/substance that is known to be an allergen to the patient"
-      },
-      {
-        "code" : "LA20345-7",
-        "display" : "Medication/substance that is known to be contraindicated for the patient"
-      },
-      {
-        "code" : "LA20313-5",
-        "display" : "Incorrect patient/family action (e.g., self-administration error)"
-      },
-      {
-        "code" : "LA20318-4",
-        "display" : "Other"
-      }]
-    }]
-  }
-}}####
-e: {
-  "valueSet" : {
-  "resourceType" : "ValueSet",
-  "status" : "active",
-  "expansion" : {
-    "identifier" : "urn:uuid:1a8f6032-6008-4d0d-9864-ecc7a583c80b",
-    "timestamp" : "2020-11-08T23:28:49.261Z",
-    "parameter" : [{
-      "name" : "limitedExpansion",
-      "valueBoolean" : true
-    },
-    {
-      "name" : "version",
-      "valueString" : "http://loinc.org|2.68"
-    }],
-    "contains" : [{
-      "system" : "http://loinc.org",
-      "code" : "LA20276-4",
-      "display" : "Incorrect patient"
-    },
-    {
-      "system" : "http://loinc.org",
-      "code" : "LA20302-8",
-      "display" : "Incorrect medication/substance"
-    },
-    {
-      "system" : "http://loinc.org",
-      "code" : "LA20303-6",
-      "display" : "Incorrect dose(s)"
-    },
-    {
-      "system" : "http://loinc.org",
-      "code" : "LA20304-4",
-      "display" : "Incorrect route of administration"
-    },
-    {
-      "system" : "http://loinc.org",
-      "code" : "LA20305-1",
-      "display" : "Incorrect timing"
-    },
-    {
-      "system" : "http://loinc.org",
-      "code" : "LA20306-9",
-      "display" : "Incorrect rate"
-    },
-    {
-      "system" : "http://loinc.org",
-      "code" : "LA20307-7",
-      "display" : "Incorrect duration of administration or course of therapy"
-    },
-    {
-      "system" : "http://loinc.org",
-      "code" : "LA20308-5",
-      "display" : "Incorrect dosage form (e.g., sustained release instead of immediate release)"
-    },
-    {
-      "system" : "http://loinc.org",
-      "code" : "LA20309-3",
-      "display" : "Incorrect strength or concentration"
-    },
-    {
-      "system" : "http://loinc.org",
-      "code" : "LA20310-1",
-      "display" : "Incorrect preparation, including inappropriate cutting of tablets, error in compounding,                  mixing, etc."
-    },
-    {
-      "system" : "http://loinc.org",
-      "code" : "LA20311-9",
-      "display" : "Expired or deteriorated medication/substance"
-    },
-    {
-      "system" : "http://loinc.org",
-      "code" : "LA20312-7",
-      "display" : "Medication/substance that is known to be an allergen to the patient"
-    },
-    {
-      "system" : "http://loinc.org",
-      "code" : "LA20345-7",
-      "display" : "Medication/substance that is known to be contraindicated for the patient"
-    },
-    {
-      "system" : "http://loinc.org",
-      "code" : "LA20313-5",
-      "display" : "Incorrect patient/family action (e.g., self-administration error)"
-    },
-    {
-      "system" : "http://loinc.org",
-      "code" : "LA20318-4",
-      "display" : "Other"
-    }]
-  }
-},
-  "error" : ""
-}
--------------------------------------------------------------------------------------
-{"hierarchical" : true, "valueSet" :{
-  "resourceType" : "ValueSet",
-  "compose" : {
-    "include" : [{
-      "system" : "http://loinc.org",
-      "concept" : [{
-        "code" : "LA20272-3",
-        "display" : "Cutaneous, topical application, including ointment, spray, patch"
-      },
-      {
-        "code" : "LA9451-1",
-        "display" : "Subcutaneous"
-      },
-      {
-        "code" : "LA9444-6",
-        "display" : "Ophthalmic"
-      },
-      {
-        "code" : "LA20324-2",
-        "display" : "Oral, including sublingual or buccal"
-      },
-      {
-        "code" : "LA9445-",
-        "display" : "Otic"
-      },
-      {
-        "code" : "LA9263-0",
-        "display" : "Nasal"
-      },
-      {
-        "code" : "LA9427-1",
-        "display" : "Inhalation"
-      },
-      {
-        "code" : "LA9437-0",
-        "display" : "Intravenous"
-      },
-      {
-        "code" : "LA9429-7",
-        "display" : "Intramuscular"
-      },
-      {
-        "code" : "LA9435-4",
-        "display" : "Intrathecal"
-      },
-      {
-        "code" : "LA9418-0",
-        "display" : "Epidural"
-      },
-      {
-        "code" : "LA20332-5",
-        "display" : "Gastric"
-      },
-      {
-        "code" : "LA9369-5",
-        "display" : "Rectal"
-      },
-      {
-        "code" : "LA9459-4",
-        "display" : "Vaginal"
-      },
-      {
-        "code" : "LA4489-6",
-        "display" : "Unknown"
-      },
-      {
-        "code" : "LA20318-4",
-        "display" : "Other"
-      }]
-    }]
-  }
-}}####
-e: {
-  "valueSet" : {
-  "resourceType" : "ValueSet",
-  "status" : "active",
-  "expansion" : {
-    "identifier" : "urn:uuid:b801e76b-7e92-44df-a4d9-3ac0a73d8b20",
-    "timestamp" : "2020-11-08T23:28:55.574Z",
-    "parameter" : [{
-      "name" : "limitedExpansion",
-      "valueBoolean" : true
-    },
-    {
-      "name" : "version",
-      "valueString" : "http://loinc.org|2.68"
-    }],
-    "contains" : [{
-      "system" : "http://loinc.org",
-      "code" : "LA20272-3",
-      "display" : "Cutaneous, topical application, including ointment, spray, patch"
-    },
-    {
-      "system" : "http://loinc.org",
-      "code" : "LA9451-1",
-      "display" : "Subcutaneous"
-    },
-    {
-      "system" : "http://loinc.org",
-      "code" : "LA9444-6",
-      "display" : "Ophthalmic"
-    },
-    {
-      "system" : "http://loinc.org",
-      "code" : "LA20324-2",
-      "display" : "Oral, including sublingual or buccal"
-    },
-    {
-      "system" : "http://loinc.org",
-      "code" : "LA9263-0",
-      "display" : "Nasal"
-    },
-    {
-      "system" : "http://loinc.org",
-      "code" : "LA9427-1",
-      "display" : "Inhalation"
-    },
-    {
-      "system" : "http://loinc.org",
-      "code" : "LA9437-0",
-      "display" : "Intravenous"
-    },
-    {
-      "system" : "http://loinc.org",
-      "code" : "LA9429-7",
-      "display" : "Intramuscular"
-    },
-    {
-      "system" : "http://loinc.org",
-      "code" : "LA9435-4",
-      "display" : "Intrathecal"
-    },
-    {
-      "system" : "http://loinc.org",
-      "code" : "LA9418-0",
-      "display" : "Epidural"
-    },
-    {
-      "system" : "http://loinc.org",
-      "code" : "LA20332-5",
-      "display" : "Gastric"
-    },
-    {
-      "system" : "http://loinc.org",
-      "code" : "LA9369-5",
-      "display" : "Rectal"
-    },
-    {
-      "system" : "http://loinc.org",
-      "code" : "LA9459-4",
-      "display" : "Vaginal"
-    },
-    {
-      "system" : "http://loinc.org",
-      "code" : "LA4489-6",
-      "display" : "Unknown"
-    },
-    {
-      "system" : "http://loinc.org",
-      "code" : "LA20318-4",
-      "display" : "Other"
-    }]
-  }
-},
-  "error" : ""
-}
--------------------------------------------------------------------------------------
-{"hierarchical" : false, "valueSet" :{
-  "resourceType" : "ValueSet",
-  "compose" : {
-    "include" : [{
-      "system" : "http://loinc.org",
-      "concept" : [{
-        "extension" : [{
-          "url" : "http://hl7.org/fhir/StructureDefinition/valueset-label",
-          "valueString" : "A."
-        }],
-        "code" : "LA20752-4",
-        "display" : "Within 24 hours"
-      },
-      {
-        "extension" : [{
-          "url" : "http://hl7.org/fhir/StructureDefinition/valueset-label",
-          "valueString" : "B."
-        }],
-        "code" : "LA20753-2",
-        "display" : "After 24 hours but before 3 days"
-      },
-      {
-        "extension" : [{
-          "url" : "http://hl7.org/fhir/StructureDefinition/valueset-label",
-          "valueString" : "C."
-        }],
-        "code" : "LA20754-0",
-        "display" : "Three days or later"
-      },
-      {
-        "extension" : [{
-          "url" : "http://hl7.org/fhir/StructureDefinition/valueset-label",
-          "valueString" : "D."
-        }],
-        "code" : "LA4489-6",
-        "display" : "Unknown"
-      }]
-    }]
-  }
-}}####
-e: {
-  "valueSet" : {
-  "resourceType" : "ValueSet",
-  "status" : "active",
-  "expansion" : {
-    "identifier" : "urn:uuid:203ca313-8575-437b-8441-99c825f7f453",
-    "timestamp" : "2020-11-08T23:28:56.105Z",
-    "parameter" : [{
-      "name" : "limitedExpansion",
-      "valueBoolean" : true
-    },
-    {
-      "name" : "excludeNested",
-      "valueBoolean" : true
-    },
-    {
-      "name" : "version",
-      "valueString" : "http://loinc.org|2.68"
-    }],
-    "contains" : [{
-      "system" : "http://loinc.org",
-      "code" : "LA20752-4",
-      "display" : "Within 24 hours"
-    },
-    {
-      "system" : "http://loinc.org",
-      "code" : "LA20753-2",
-      "display" : "After 24 hours but before 3 days"
-    },
-    {
-      "system" : "http://loinc.org",
-      "code" : "LA20754-0",
-      "display" : "Three days or later"
-    },
-    {
-      "system" : "http://loinc.org",
-      "code" : "LA4489-6",
-      "display" : "Unknown"
-    }]
-  }
-},
-  "error" : ""
-}
--------------------------------------------------------------------------------------
-{"hierarchical" : true, "valueSet" :{
-  "resourceType" : "ValueSet",
-  "compose" : {
-    "include" : [{
-      "system" : "http://loinc.org",
-      "concept" : [{
-        "extension" : [{
-          "url" : "http://hl7.org/fhir/StructureDefinition/valueset-label",
-          "valueString" : "A."
-        }],
-        "code" : "LA20752-4",
-        "display" : "Within 24 hours"
-      },
-      {
-        "extension" : [{
-          "url" : "http://hl7.org/fhir/StructureDefinition/valueset-label",
-          "valueString" : "B."
-        }],
-        "code" : "LA20753-2",
-        "display" : "After 24 hours but before 3 days"
-      },
-      {
-        "extension" : [{
-          "url" : "http://hl7.org/fhir/StructureDefinition/valueset-label",
-          "valueString" : "C."
-        }],
-        "code" : "LA20754-0",
-        "display" : "Three days or later"
-      },
-      {
-        "extension" : [{
-          "url" : "http://hl7.org/fhir/StructureDefinition/valueset-label",
-          "valueString" : "D."
-        }],
-        "code" : "LA4489-6",
-        "display" : "Unknown"
-      }]
-    }]
-  }
-}}####
-e: {
-  "valueSet" : {
-  "resourceType" : "ValueSet",
-  "status" : "active",
-  "expansion" : {
-    "identifier" : "urn:uuid:c5bc6c75-d74d-4fe9-af98-d9bb6646db8e",
-    "timestamp" : "2020-11-08T23:28:57.558Z",
-    "parameter" : [{
-      "name" : "limitedExpansion",
-      "valueBoolean" : true
-    },
-    {
-      "name" : "version",
-      "valueString" : "http://loinc.org|2.68"
-    }],
-    "contains" : [{
-      "system" : "http://loinc.org",
-      "code" : "LA20752-4",
-      "display" : "Within 24 hours"
-    },
-    {
-      "system" : "http://loinc.org",
-      "code" : "LA20753-2",
-      "display" : "After 24 hours but before 3 days"
-    },
-    {
-      "system" : "http://loinc.org",
-      "code" : "LA20754-0",
-      "display" : "Three days or later"
-    },
-    {
-      "system" : "http://loinc.org",
-      "code" : "LA4489-6",
-      "display" : "Unknown"
-    }]
-  }
-},
-  "error" : ""
-}
--------------------------------------------------------------------------------------
-{"hierarchical" : true, "valueSet" :{
-  "resourceType" : "ValueSet",
-  "compose" : {
-    "include" : [{
-      "system" : "http://loinc.org",
-      "concept" : [{
-        "code" : "LA20271-5",
-        "display" : "Medications"
-      },
-      {
-        "code" : "LA20335-8",
-        "display" : "Biological products"
-      },
-      {
-        "code" : "LA20336-6",
-        "display" : "Nutritional products"
-      },
-      {
-        "code" : "LA20337-4",
-        "display" : "Expressed human breast milk"
-      },
-      {
-        "code" : "LA20338-2",
-        "display" : "Medical gases (e.g., oxygen, nitrogen, nitrous oxide)"
-      },
-      {
-        "code" : "LA20339-0",
-        "display" : "Contrast media"
-      },
-      {
-        "code" : "LA20340-8",
-        "display" : "Radiopharmaceuticals"
-      },
-      {
-        "code" : "LA20341-6",
-        "display" : "Patient food (not suspected in drug-food interactions"
-      },
-      {
-        "code" : "LA20342-4",
-        "display" : "Drug-drug, drug-food, or adverse drug reaction as a result of a prescription and/or administration                  of a drug and/or food frior to admission"
-      },
-      {
-        "code" : "LA20343-2",
-        "display" : "Other substance: PLEASE SPECIFY"
-      }]
-    }]
-  }
-}}####
-e: {
-  "valueSet" : {
-  "resourceType" : "ValueSet",
-  "status" : "active",
-  "expansion" : {
-    "identifier" : "urn:uuid:47ae3449-f6bb-4a3e-9958-4b821397fda1",
-    "timestamp" : "2020-11-08T23:29:12.933Z",
-    "parameter" : [{
-      "name" : "limitedExpansion",
-      "valueBoolean" : true
-    },
-    {
-      "name" : "version",
-      "valueString" : "http://loinc.org|2.68"
-    }],
-    "contains" : [{
-      "system" : "http://loinc.org",
-      "code" : "LA20271-5",
-      "display" : "Medications"
-    },
-    {
-      "system" : "http://loinc.org",
-      "code" : "LA20335-8",
-      "display" : "Biological products"
-    },
-    {
-      "system" : "http://loinc.org",
-      "code" : "LA20336-6",
-      "display" : "Nutritional products"
-    },
-    {
-      "system" : "http://loinc.org",
-      "code" : "LA20337-4",
-      "display" : "Expressed human breast milk"
-    },
-    {
-      "system" : "http://loinc.org",
-      "code" : "LA20338-2",
-      "display" : "Medical gases (e.g., oxygen, nitrogen, nitrous oxide)"
-    },
-    {
-      "system" : "http://loinc.org",
-      "code" : "LA20339-0",
-      "display" : "Contrast media"
-    },
-    {
-      "system" : "http://loinc.org",
-      "code" : "LA20340-8",
-      "display" : "Radiopharmaceuticals"
-    },
-    {
-      "system" : "http://loinc.org",
-      "code" : "LA20341-6",
-      "display" : "Patient food (not suspected in drug-food interactions"
-    },
-    {
-      "system" : "http://loinc.org",
-      "code" : "LA20342-4",
-      "display" : "Drug-drug, drug-food, or adverse drug reaction as a result of a prescription and/or administration                  of a drug and/or food frior to admission"
-    },
-    {
-      "system" : "http://loinc.org",
-      "code" : "LA20343-2",
-      "display" : "Other substance: PLEASE SPECIFY"
     }]
   }
 },
