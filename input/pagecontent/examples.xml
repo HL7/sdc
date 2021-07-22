@@ -1979,6 +1979,56 @@ i.fa {
   </div>
 </div>
 
+<a name="shortText"></a>
+<h4>Using shortText</h4>
+<p>To display a shorter text for an item.</p>
+<div class="tabs">
+  <div class="tab">
+    <input type="radio" id="tab-shortText-1" name="tab-shortText-group-2" checked="true"></input>
+    <label for="tab-shortText-1">Sample Question</label>
+    <div class="content-in-tab">
+      <p>Annual family income <input id="linkitem-1.0-input" type="text"/></p>
+    </div> 
+  </div>
+  <div class="tab">
+    <input type="radio" id="tab-shortText-2" name="tab-shortText-group-2"></input>
+    <label for="tab-shortText-2">JSON</label>
+    <div class="content-in-tab">
+      <textarea style="border:none" class="xml">
+        "item": [
+          {
+            "extension": [
+              {
+                "url": "http://hl7.org/fhir/uv/sdc/StructureDefinition/sdc-questionnaire-shortText",
+                "valueString": "Annual family income"
+              }
+            ],
+            "linkId": "1.2",
+            "text": "During the past year, what was the total combined income for you and the family members you live with? This information will help us determine if you are eligible for any benefits.",
+            "type": "decimal"
+          }
+        ]
+     </textarea>
+    </div> 
+  </div>
+  <div class="tab">
+    <input type="radio" id="tab-shortText-3" name="tab-shortText-group-2"></input>
+    <label for="tab-shortText-3">XML</label>
+    <div class="content-in-tab">
+      <textarea style="border:none" class="xml">
+        <item>
+          <extension url="http://hl7.org/fhir/uv/sdc/StructureDefinition/sdc-questionnaire-shortText">
+            <valueString value="Annual family income"/>
+          </extension>
+          <linkId value="1.2"/>
+          <text value="During the past year, what was the total combined income for you and the family members you live with? This information will help us determine if you are eligible for any benefits."/>
+          <type value="decimal"/>
+        </item>
+      </textarea>
+    </div> 
+  </div>
+</div>
+
 <a name="value-constraint">  </a>
 <h3>Value constraints</h3>
 

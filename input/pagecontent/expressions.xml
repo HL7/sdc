@@ -100,8 +100,11 @@
           </ul>
           <p>
             The content type of a variable can be pretty much anything.  It can be a collection or an individual item.  It can be a simple element, a complex
-            type, a resource or even a Bundle of resources.  The variable can be <a href="#contexts">referenced by its name</a>.  Variable expressions
-            SHALL specify a name.
+            type, a resource or even a Bundle of resources.
+          </p>
+          <p>
+			      The variable can be <a href="#contexts">referenced by its name</a>.  Variable expressions SHALL specify a name.  It is not allowed to define variable
+			      names that are already <a href="{{site.data.fhir.path}}fhirpath.html#vars">reserved by the base specification</a> or by other variables in the questionnaire.
           </p>
         </td>
       </tr>
@@ -128,7 +131,7 @@
             If used for a readOnly and/or hidden element, initialExpression essentially calculates a 'fixed value' for the element.  If used for an editable element,
             this extension sets the initial value for the element. Since both initial.value and initialExpression generate values before the user has access to the form,
             it is not allowed to have both present on a Questionnaire.item. In scenarios where the user edits the response directly or edits other dependent elements that cause 
-            the re-evaluation of the response (e.g., calculatedExpression),the value MAY subsequently be overridden by the user authoring or editing the response 
+            the re-evaluation of the response (e.g., calculatedExpression), the value MAY subsequently be overridden by the user authoring or editing the response 
             (see considerations in <a href="populate.html#expression-based-population">Expression-based Population</a>).
           </p>
           <p>
@@ -145,7 +148,7 @@
             for extraction but are not actually seen or edited by the user (e.g., FHIR resource ids when updating existing records).
           </p>
           <p>
-            It's possible for the value of an initialExpression to be referenced by name within other sibling expressions or by expressions on descendant
+            It is possible for the value of an initialExpression to be referenced by name within other sibling expressions or by expressions on descendant
             items.  However, this is not likely to be common.  As such, initialExpressions only need to declare a name if their value will be referenced
             elsewhere.
           </p>
@@ -317,9 +320,10 @@
       <tr>
         <td colspan="6">
           <p>
-            This expression does the same thing as the Questionnaire.item.enableWhen structure (and is mutually exclusive with it), but allows for more complex logic.
-            (If enableWhen can meet the need, it should be used instead as it will be more broadly supported.) Specifically, enableWhenExpression allows more complex logic 
-            such as support for different types of logic operators (e.g. 'and', 'or', 'not', 'nand', 'nor') among conditions and a mixture of them (e.g. "Enable if Q1=5 and Q2 nand Q3 are true").
+            This expression does the same thing as the Questionnaire.item.enableWhen structure (and is mutually exclusive with it), but allows for more complex logic 
+            like nested bracketed expressions with AND/OR, use of NOT, comparison of values across questions, etc. (If enableWhen can meet the need, it should be used 
+            instead as it will be more broadly supported.) Specifically, enableWhenExpression allows more complex logic such as support for different types of logic 
+            operators (e.g. 'and', 'or', 'not', 'nand', 'nor') among conditions and a mixture of them (e.g. "Enable if Q1=5 and Q2 nand Q3 are true").
             It also allows for logic to be based on calculations across questions (possibly leveraging <a href="#variable">variable</a>) or even based on values passed in by 
             <a href="#launchContext">launchContext</a> or queried from outside the questionnaire.
           </p>
@@ -458,7 +462,8 @@
           </p>
           <p>
             The resource corresponding to each context will be made available at the indicated launch context name as if the value had been set in a
-            <a href="#variable">variable</a>.
+            <a href="#variable">variable</a>.  It is not allowed to define names that are already <a href="{{site.data.fhir.path}}fhirpath.html#vars">reserved by the base specification</a> 
+            or by other variables in the questionnaire.
           </p>
         </td>
       </tr>
@@ -471,19 +476,7 @@
     <a href="{{site.data.fhir.path}}search.html">search</a> string.  Normally this will not include the base URL and is intended to be invoked against the
     system that is completing the QuestionnaireResponse (or whatever FHIR repository the <a href="CapabilityStatement-sdc-form-filler.html">Form Filler</a> is configured to use).
     However, in some cases, a full URL might be specified, for example if the author of the questionnaire wants values to always be retrieved from a
-    specific source.  The SDC provides the following rules for the <code>application/x-fhir-query</code> language:
-  </p>
-  <ul>
-    <li>
-	  If the expression resolves to a complex element of type Coding, Identifier, or Reference, the element content will be substituted using the standard token format.</li>
-	<li>
-	  If the expression resolves to a complex element of type CodeableConcept, the processing will behave as though the expression had an additional node specifying ".coding" 
-	  (i.e. the substitution will execute on the collection of codings resolved to within the CodeableConcept).</li>
-	<li>
-	  If the expression resolves to an element of type Quantity, it will be converted to a search type of 'quantity'.</li>
-	<li>
-	  If the expression resolves to a collection of more than one value, the substitution will be a list of comma-separated values (i.e. behaving as 'or').</li>
-  </ul>	  
+    specific source.  </p>
   <p>
     In addition to the base query syntax, SDC allows the injection of FHIRPath into the query expressions.  This is to allow the queries to take advantage
     of context when they are invoked.  Systems SHALL evaluate and substitute the results of such queries before executing them.  The FHIRPaths are denoted by surrounding them with double curly-braces (i.e.
@@ -498,8 +491,21 @@
     would return all Observations with the specified LOINC code made in the last week for the specified patient (the %subject variable would likely have been
     set using <a href="#launchContext">launchContext</a> extension.)
   </p>
+  <p>The SDC IG provides the following rules for the <code>application/x-fhir-query</code> language:
+  </p>
+  <ul>
+    <li>
+    If the expression resolves to a complex element of type Coding, Identifier, or Reference, the element content will be substituted using the standard token format.</li>
+  <li>
+    If the expression resolves to a complex element of type CodeableConcept, the processing will behave as though the expression had an additional node specifying ".coding" 
+    (i.e. the substitution will execute on the collection of codings resolved to within the CodeableConcept).</li>
+  <li>
+    If the expression resolves to an element of type Quantity, it will be converted to a search type of 'quantity'.</li>
+  <li>
+    If the expression resolves to a collection of more than one value, the substitution will be a list of comma-separated values (i.e. behaving as 'or').</li>
+  </ul>   
   <a name="dependencies"> </a>
-  <h4>Dependencies between expressions</h4>
+  <h3>Dependencies between expressions</h3>
   <p>
     Expressions will often have dependencies on other expressions.  For example, a <a href="#calculatedExpression">calculatedExpression</a> might depend
     on <a href="#variable">variables</a> that in turn depend on the answers to other questions which might themselves have

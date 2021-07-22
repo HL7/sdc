@@ -10,7 +10,7 @@
   <publisher value="HL7 International - FHIR Infrastructure"/>
   <description value="The Extract operation takes a completed QuestionnaireResponse and converts it to a FHIR resource or Bundle of resources by using metadata embedded in the Questionnaire the QuestionnaireResponse is based on.  The extracted resources might include Observations, MedicationStatements and other standard FHIR resources which can then be shared and manipulated."/>
   <code value="extract"/>
-  <comment value="The QuestionnaireResponse must identify a QuestionnaireResponse instance containing appropriate metadata to allow extraction.  (Refer to the [Data Extraction](extraction.html) page for more details."/>
+  <comment value="The QuestionnaireResponse must identify a Questionnaire instance containing appropriate metadata to allow extraction.  (Refer to the [Data Extraction](extraction.html) page for more details.)"/>
   <resource value="QuestionnaireResponse"/>
   <system value="false"/>
   <type value="true"/>
@@ -27,9 +27,17 @@
   <parameter>
     <name value="return"/>
     <use value="out"/>
-    <min value="1"/>
+    <min value="0"/>
     <max value="1"/>
     <documentation value="The resulting FHIR resource produced after extracting data.  This will either be a single resource or a Transaction Bundle that contains multiple resources.  The operations in the Bundle might be creates, updates and/or conditional versions of both depending on the nature of the extraction mappings."/>
     <type value="Resource"/>
   </parameter>
+  <parameter>
+    <name value="issues"/>
+    <use value="out"/>
+    <min value="0"/>
+    <max value="1"/>
+    <documentation value="A list of hints and warnings about problems encountered while extracting the resource(s) from the QuestionnaireResponse. If there was nothing to extract, a 'success' OperationOutcome is returned with a warning and/or information messages. In situations where the input is invalid or the operation otherwise fails to complete successfully, a normal 'erroneous' OperationOutcome would be returned (as happens with all operations) indicating what the issue was."/>
+    <type value="OperationOutcome"/>
+  </parameter>  
 </OperationDefinition>
