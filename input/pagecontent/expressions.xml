@@ -491,6 +491,17 @@
     would return all Observations with the specified LOINC code made in the last week for the specified patient (the %subject variable would likely have been
     set using <a href="#launchContext">launchContext</a> extension.)
   </p>
+  <p>
+    Aside from specifying a FHIR search string, SDC also allows the use of search-type operations (i.e. operations that do not affect state and whose arguments can be expressed 
+    entirely on the URL) to be included in the query expression.
+  </p>
+  <p>
+    For example:
+  </p>
+  <pre><code>Observation/$stats?subject=Patient/123&amp;code=2339-0&amp;system=http://loinc.org&amp;duration=24&amp;statistic=average</code></pre>
+  <p>
+    would return an Observation resource with the average for Glucose [Mass/​volume] in Blood (2339-0) in the last 24 hours for the specified patient.
+  </p>  
   <p>The SDC IG provides the following rules for the <code>application/x-fhir-query</code> language:
   </p>
   <ul>
