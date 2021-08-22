@@ -15,7 +15,9 @@
       <code>description</code> provides a human-readable explanation of what the expression is doing.  This is development documentation.  While
       not required, it's strongly encouraged unless the expression is so simple there will not be any question as to its intent and function.</li>
     <li>
-      <code>name</code> allows the result of the expression to be referenced within other expressions.  Whether this is necessary depends on the context
+      <code>name</code> allows the result of the expression to be referenced within other expressions.  Whether this is necessary depends on the context.
+      All variables defined by expressions will be marked with a '%' prefix when referring to them in other expressions within the Questionnaire.  Collisions
+      between names that are defined more than once within the same scope will be treated as an error.
     </li>
     <li>
       <code>language</code> indicates the type of expression.  SDC only uses three languages: FHIR queries <a href="#fhirquery">as described below</a>,
