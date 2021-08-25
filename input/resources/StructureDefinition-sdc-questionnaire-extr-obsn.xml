@@ -23,17 +23,6 @@
         <map value="Form_Package"/>
       </mapping>
     </element>
-    <element id="Questionnaire.extension:observationExtract">
-      <path value="Questionnaire.extension"/>
-      <sliceName value="observationExtract"/>
-      <min value="0"/>
-      <max value="1"/>
-      <type>
-        <code value="Extension"/>
-        <profile value="http://hl7.org/fhir/uv/sdc/StructureDefinition/sdc-questionnaire-observationExtract"/>
-      </type>
-      <mustSupport value="true"/>
-    </element>
     <element id="Questionnaire.item">
       <path value="Questionnaire.item"/>
       <constraint>
@@ -69,8 +58,17 @@
     </element>
     <element id="Questionnaire.item.code">
       <path value="Questionnaire.item.code"/>
+      <mustSupport value="true"/>
+    </element>
+	<element id="Questionnaire.item.code.extension:observationExtract">
+      <path value="Questionnaire.item.code.extension"/>
+      <sliceName value="observationExtract"/>
       <min value="0"/>
       <max value="1"/>
+      <type>
+        <code value="Extension"/>
+        <profile value="http://hl7.org/fhir/uv/sdc/StructureDefinition/sdc-questionnaire-observationExtract"/>
+      </type>
       <mustSupport value="true"/>
     </element>
   </differential>

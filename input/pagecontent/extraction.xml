@@ -120,8 +120,11 @@
       <a href="StructureDefinition-sdc-questionnaire-observationExtract.html">questionnaire-observationExtract</a> extension must also be included (and set to true).  
       This extension can be specified either at the root Questionnaire or on an individual question or group item (not a display item) that indicates that the 
       observation-based approach should be used to extract either that particular item (based on the code present) or all items in the questionnaire (if they have a code present).</li>
-    <li>Multiple <code>item.code</code> elements might be present.  If so, each are considered one of the Observation.code Codings in the resulting
-      extracted Observation.</li>
+    <li>If the extension appears on specific <code>item.code</code> elements rather than the item as a whole, then only the specified codes should be propagated rather than all.  For example, an item might list codes for "Body weight", "Body weight (clothed)" and "Body weight (unclothed)".  In that case, only the "Body weight" code would be appropriate to include in the extracted content, even though all three might be appropriate for population.  If any item.codes are tagged with 'true', then only the tagged Codings will propagate.  I.e. any sibling item.codes with no extension are considered to have an extension of 'false'.  If no extension appears on any of the item.codes but an extension appears on the item, an ancestor item or the Questionnaire as a whole, then all codes are considered to be roughly equivalent translations and to be appropriate to list as sibling Codings within Observation.code.
+
+      <p>If an item has the extension flag set to 'true', some descendant items may have the extension with a value of 'false'.  If this occurs, then the item tagged with 'false' and its descendants will be excluded from the extraction process.
+      </p>
+	  </li>
   </ol>
   <p>
     For example:
