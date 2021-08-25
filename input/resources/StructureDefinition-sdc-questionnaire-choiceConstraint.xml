@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<StructureDefinition xmlns="http://hl7.org/fhir">
+  <id value="sdc-questionnaire-choiceConstraint"/>
+  <url value="http://hl7.org/fhir/uv/sdc/StructureDefinition/sdc-questionnaire-choiceConstraint"/>
+  <name value="QuestionnaireChoiceConstraint"/>
+  <title value="Choice constraint"/>
+  <status value="draft"/>
+  <description value="Controls what the user is allowed to enter as an answer aside from the answer options provided. NOTE: This extension should be moved to core in R5."/>
+  <fhirVersion value="4.0.1"/>
+  <kind value="complex-type"/>
+  <abstract value="false"/>
+  <context>
+    <type value="element"/>
+    <expression value="Questionnaire.item"/>
+  </context>
+  <context>
+    <type value="element"/>
+    <expression value="Questionnaire.item.item"/>
+  </context>
+  <type value="Extension"/>
+  <baseDefinition value="http://hl7.org/fhir/StructureDefinition/Extension"/>
+  <derivation value="constraint"/>
+    <differential>
+    <element id="Extension">
+      <path value="Extension"/>
+      <short value="optionsOnly | optionOrType | optionOrString"/>
+      <definition value="Controls what the user is allowed to enter as an answer aside from the answer options provided. NOTE: This extension should be moved to core in R5."/>
+      <comment value="This element is useful for questions with &quot;Other&quot; textbox or comment field. It allows users to either provide an alternative answer (if any of the answer options do not apply to them)  or offer additional information about their choice."/>
+      <min value="0"/>
+      <max value="*"/>
+    </element>
+    <element id="Extension.url">
+      <path value="Extension.url"/>
+      <type>
+        <code value="uri"/>
+      </type>
+      <fixedUri value="http://hl7.org/fhir/uv/sdc/StructureDefinition/sdc-questionnaire-choiceConstraint"/>
+    </element>
+    <element id="Extension.value[x]">
+      <path value="Extension.value[x]"/>
+      <type>
+        <code value="code"/>
+      </type>
+      <binding>
+        <strength value="required"/>
+        <description value="Constraints for choices"/>
+        <valueSet value="http://hl7.org/fhir/uv/sdc/ValueSet/choiceConstraint"/>
+      </binding>
+    </element>
+  </differential>
+</StructureDefinition>

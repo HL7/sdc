@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<StructureDefinition xmlns="http://hl7.org/fhir">
+  <id value="sdc-questionnaire-optionalDisplay"/>
+  <url value="http://hl7.org/fhir/uv/sdc/StructureDefinition/sdc-questionnaire-optionalDisplay"/>
+  <version value="2.8.0"/>
+  <name value="OptionalDisplayExtension"/>
+  <title value="Optional Display?"/>
+  <status value="draft"/>
+  <description value="If set to true, it means that the system displaying the form (or the individual encoding the form for data capture) can choose to omit the item from display to the user."/>
+  <purpose value="Some &quot;complex&quot; questionnaires may have questions, sections or groups which are &quot;non-essential&quot; and can be safely skipped without a need for the user to even see them.  This is distinct from questions that do not need to be answered, but which must be shown to the user and the user must consciously choose to skip."/>
+  <fhirVersion value="4.0.1"/>
+  <kind value="complex-type"/>
+  <abstract value="false"/>
+  <context>
+    <type value="element"/>
+    <expression value="Questionnaire.item"/>
+  </context>
+  <context>
+    <type value="element"/>
+    <expression value="Questionnaire.item.item"/>
+  </context>
+  <type value="Extension"/>
+  <baseDefinition value="http://hl7.org/fhir/StructureDefinition/Extension"/>
+  <derivation value="constraint"/>
+   <differential>
+    <element id="Extension">
+      <path value="Extension"/>
+      <short value="Can suppress from display to user"/>
+      <definition value="If set to true, it means that the system displaying the form (or the individual encoding the form for data capture) can choose to omit the item from display to the user."/>
+      <comment value="If a group or question that contains other groups or questions is marked as &quot;optional&quot;, all of its contents are automatically also treated as optional."/>
+      <min value="0"/>
+      <max value="1"/>
+    </element>
+    <element id="Extension.url">
+      <path value="Extension.url"/>
+      <type>
+        <code value="uri"/>
+      </type>
+      <fixedUri value="http://hl7.org/fhir/uv/sdc/StructureDefinition/sdc-questionnaire-optionalDisplay"/>
+    </element>
+    <element id="Extension.value[x]">
+      <path value="Extension.value[x]"/>
+      <type>
+        <code value="boolean"/>
+      </type>
+    </element>
+  </differential>
+</StructureDefinition>

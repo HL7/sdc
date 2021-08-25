@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<StructureDefinition xmlns="http://hl7.org/fhir">
+  <id value="sdc-questionnaire-performerType"/>
+  <url value="http://hl7.org/fhir/uv/sdc/StructureDefinition/sdc-questionnaire-performerType"/>
+  <version value="2.8.0"/>
+  <name value="PerformerTypeExtension"/>
+  <title value="Performer type"/>
+  <status value="draft"/>
+  <description value="Indicates the types of resources that can record answers to a Questionnaire. Open Issue: Should this extension be moved to core?"/>
+  <fhirVersion value="4.0.1"/>
+  <kind value="complex-type"/>
+  <abstract value="false"/>
+  <context>
+    <type value="element"/>
+    <expression value="Questionnaire"/>
+  </context>
+  <type value="Extension"/>
+  <baseDefinition value="http://hl7.org/fhir/StructureDefinition/Extension"/>
+  <derivation value="constraint"/>
+    <differential>
+    <element id="Extension">
+      <path value="Extension"/>
+      <short value="Resource that can record answers to this Questionnaire"/>
+      <definition value="Indicates the types of resources that can record answers to a Questionnaire. Open Issue: Should this extension be moved to core?"/>
+      <min value="0"/>
+      <max value="*"/>
+    </element>
+    <element id="Extension.url">
+      <path value="Extension.url"/>
+      <type>
+        <code value="uri"/>
+      </type>
+      <fixedUri value="http://hl7.org/fhir/uv/sdc/StructureDefinition/sdc-questionnaire-performerType"/>
+    </element>
+    <element id="Extension.value[x]">
+      <path value="Extension.value[x]"/>
+      <type>
+        <code value="code"/>
+      </type>
+      <binding>
+        <strength value="required"/>
+        <description value="Resources that can record answers to a questionnaire."/>
+        <valueSet value="http://hl7.org/fhir/uv/sdc/ValueSet/performerType"/>
+      </binding>
+    </element>
+  </differential>
+</StructureDefinition>

@@ -1,0 +1,659 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<StructureDefinition xmlns="http://hl7.org/fhir">
+  <id value="sdc-questionnaire-behave"/>
+   <url value="http://hl7.org/fhir/uv/sdc/StructureDefinition/sdc-questionnaire-behave"/>
+  <name value="QuestionnaireBehave"/>
+  <title value="Advanced Behavior Questionnaire"/>
+  <status value="draft"/>
+  <description value="Defines additional capabilities for controlling data entry and calculating values within the questionnaire."/>
+  <fhirVersion value="4.0.1"/>
+  <kind value="resource"/>
+  <abstract value="false"/>
+  <type value="Questionnaire"/>
+  <baseDefinition value="http://hl7.org/fhir/uv/sdc/StructureDefinition/sdc-questionnaire"/>
+  <derivation value="constraint"/>
+   <differential>
+    <element id="Questionnaire">
+      <path value="Questionnaire"/>
+      <short value="Advanced Behavior Questionnaire"/>
+      <definition value="Defines additional capabilities for controlling data entry and calculating values within the questionnaire."/>
+      <mustSupport value="false"/>
+      <mapping>
+        <identity value="ihe-sdc"/>
+        <map value="Form_Package"/>
+      </mapping>
+    </element>
+    <element id="Questionnaire.extension:entryMode">
+      <path value="Questionnaire.extension"/>
+      <sliceName value="entryMode"/>
+      <min value="0"/>
+      <max value="*"/>
+      <type>
+        <code value="Extension"/>
+        <profile value="http://hl7.org/fhir/uv/sdc/StructureDefinition/sdc-questionnaire-entryMode"/>
+      </type>
+      <mustSupport value="true"/>
+    </element>
+    <element id="Questionnaire.extension:submissionEndpoint">
+      <path value="Questionnaire.extension"/>
+      <sliceName value="submissionEndpoint"/>
+      <min value="0"/>
+      <max value="*"/>
+      <type>
+        <code value="Extension"/>
+        <profile value="http://hl7.org/fhir/uv/sdc/StructureDefinition/sdc-questionnaire-endpoint"/>
+      </type>
+      <mustSupport value="true"/>
+      <mapping>
+        <identity value="ihe-sdc"/>
+        <map value="administrative_package/submissionRule/destination/endpoint"/>
+      </mapping>
+    </element>
+    <element id="Questionnaire.extension:signatureRequired">
+      <path value="Questionnaire.extension"/>
+      <sliceName value="signatureRequired"/>
+      <min value="0"/>
+      <max value="*"/>
+      <type>
+        <code value="Extension"/>
+        <profile value="http://hl7.org/fhir/StructureDefinition/questionnaire-signatureRequired"/>
+      </type>
+      <mustSupport value="false"/>
+    </element>
+    <element id="Questionnaire.extension:constraint">
+      <path value="Questionnaire.extension"/>
+      <sliceName value="constraint"/>
+      <min value="0"/>
+      <max value="*"/>
+      <type>
+        <code value="Extension"/>
+        <profile value="http://hl7.org/fhir/StructureDefinition/questionnaire-constraint"/>
+      </type>
+      <mustSupport value="false"/>
+    </element>
+    <element id="Questionnaire.extension:library">
+      <path value="Questionnaire.extension"/>
+      <sliceName value="library"/>
+      <definition value="A reference to a library containing cql used in this Questionnaire."/>
+      <min value="0"/>
+      <max value="*"/>
+      <type>
+        <code value="Extension"/>
+        <profile value="http://hl7.org/fhir/StructureDefinition/cqf-library"/>
+      </type>
+      <mustSupport value="false"/>
+    </element>
+    <element id="Questionnaire.extension:launchContext">
+      <path value="Questionnaire.extension"/>
+      <sliceName value="launchContext"/>
+      <type>
+        <code value="Extension"/>
+        <profile value="http://hl7.org/fhir/uv/sdc/StructureDefinition/sdc-questionnaire-launchContext"/>
+      </type>
+      <mustSupport value="false"/>
+    </element>
+    <element id="Questionnaire.extension:variable">
+      <path value="Questionnaire.extension"/>
+      <sliceName value="variable"/>
+      <requirements value="Allows variables to be calculated higher in the context of a QuestionnaireResponse for use with enableWhen-expression."/>
+      <min value="0"/>
+      <max value="*"/>
+      <type>
+        <code value="Extension"/>
+        <profile value="http://hl7.org/fhir/StructureDefinition/variable"/>
+      </type>
+      <mustSupport value="false"/>
+    </element>
+    <element id="Questionnaire.item">
+      <path value="Questionnaire.item"/>
+      <constraint>
+        <key value="sdc-behave-2"/>
+        <severity value="error"/>
+        <human value="An item cannot have both enableWhen and enableWhenExpression"/>
+        <expression value="enableWhen.empty() or extension(&#39;http://hl7.org/fhir/uv/sdc/StructureDefinition/sdc-questionnaire-enableWhenExpression&#39;).empty()"/>
+        <xpath value="not(exists(f:enableWhen) and exists(f:extension[@url=&#39;http://hl7.org/fhir/uv/sdc/StructureDefinition/sdc-questionnaire-enableWhenExpression&#39;]))"/>
+      </constraint>
+      <constraint>
+        <key value="sdc-behave-1"/>
+        <severity value="error"/>
+        <human value="An item cannot have both initial.value and initialExpression"/>
+        <expression value="initial.empty() or extension(&#39;http://hl7.org/fhir/uv/sdc/StructureDefinition/sdc-questionnaire-initialExpression&#39;).empty()"/>
+        <xpath value="not(exists(f:initial) and exists(f:extension[@url=&#39;http://hl7.org/fhir/uv/sdc/StructureDefinition/sdc-questionnaire-initialExpression&#39;]))"/>
+      </constraint>
+      <mustSupport value="false"/>
+    </element>
+    <element id="Questionnaire.item.extension:usageMode">
+      <path value="Questionnaire.item.extension"/>
+      <sliceName value="usageMode"/>
+      <min value="0"/>
+      <max value="1"/>
+      <type>
+        <code value="Extension"/>
+        <profile value="http://hl7.org/fhir/StructureDefinition/questionnaire-usageMode"/>
+      </type>
+      <mustSupport value="true"/>
+    </element>
+    <element id="Questionnaire.item.extension:itemSignatureRequired">
+      <path value="Questionnaire.item.extension"/>
+      <sliceName value="itemSignatureRequired"/>
+      <min value="0"/>
+      <max value="*"/>
+      <type>
+        <code value="Extension"/>
+        <profile value="http://hl7.org/fhir/StructureDefinition/questionnaire-signatureRequired"/>
+      </type>
+      <mustSupport value="false"/>
+    </element>
+    <element id="Questionnaire.item.extension:itemMinOccurs">
+      <path value="Questionnaire.item.extension"/>
+      <sliceName value="itemMinOccurs"/>
+      <min value="0"/>
+      <max value="1"/>
+      <type>
+        <code value="Extension"/>
+        <profile value="http://hl7.org/fhir/StructureDefinition/questionnaire-minOccurs"/>
+      </type>
+      <mustSupport value="true"/>
+      <mapping>
+        <identity value="ihe-sdc"/>
+        <map value="./cardinality/minimum"/>
+      </mapping>
+    </element>
+    <element id="Questionnaire.item.extension:itemMinOccurs.valueInteger">
+      <path value="Questionnaire.item.extension.valueInteger"/>
+      <mustSupport value="false"/>
+    </element>
+    <element id="Questionnaire.item.extension:itemMinOccurs.valueInteger.extension:itemMinOccursCalculated">
+      <path value="Questionnaire.item.extension.valueInteger.extension"/>
+      <sliceName value="itemMinOccursCalculated"/>
+      <min value="0"/>
+      <max value="1"/>
+      <type>
+        <code value="Extension"/>
+        <profile value="http://hl7.org/fhir/StructureDefinition/cqf-calculatedValue"/>
+      </type>
+      <mustSupport value="false"/>
+    </element>
+    <element id="Questionnaire.item.extension:itemMinOccurs.valueInteger.extension:itemMinOccursExpression">
+      <path value="Questionnaire.item.extension.valueInteger.extension"/>
+      <sliceName value="itemMinOccursExpression"/>
+      <min value="0"/>
+      <max value="1"/>
+      <type>
+        <code value="Extension"/>
+        <profile value="http://hl7.org/fhir/StructureDefinition/cqf-expression"/>
+      </type>
+      <mustSupport value="true"/>
+    </element>
+    <element id="Questionnaire.item.extension:itemMaxOccurs">
+      <path value="Questionnaire.item.extension"/>
+      <sliceName value="itemMaxOccurs"/>
+      <min value="0"/>
+      <max value="1"/>
+      <type>
+        <code value="Extension"/>
+        <profile value="http://hl7.org/fhir/StructureDefinition/questionnaire-maxOccurs"/>
+      </type>
+      <mustSupport value="true"/>
+      <mapping>
+        <identity value="ihe-sdc"/>
+        <map value="./cardinality/maximum"/>
+      </mapping>
+    </element>
+    <element id="Questionnaire.item.extension:itemMaxOccurs.valueInteger">
+      <path value="Questionnaire.item.extension.valueInteger"/>
+      <mustSupport value="false"/>
+    </element>
+    <element id="Questionnaire.item.extension:itemMaxOccurs.valueInteger.extension:itemMaxOccursCalculated">
+      <path value="Questionnaire.item.extension.valueInteger.extension"/>
+      <sliceName value="itemMaxOccursCalculated"/>
+      <min value="0"/>
+      <max value="1"/>
+      <type>
+        <code value="Extension"/>
+        <profile value="http://hl7.org/fhir/StructureDefinition/cqf-calculatedValue"/>
+      </type>
+      <mustSupport value="false"/>
+    </element>
+    <element id="Questionnaire.item.extension:itemMaxOccurs.valueInteger.extension:itemMaxOccursExpression">
+      <path value="Questionnaire.item.extension.valueInteger.extension"/>
+      <sliceName value="itemMaxOccursExpression"/>
+      <min value="0"/>
+      <max value="1"/>
+      <type>
+        <code value="Extension"/>
+        <profile value="http://hl7.org/fhir/StructureDefinition/cqf-expression"/>
+      </type>
+      <mustSupport value="true"/>
+    </element>
+    <element id="Questionnaire.item.extension:minLength">
+      <path value="Questionnaire.item.extension"/>
+      <sliceName value="minLength"/>
+      <min value="0"/>
+      <max value="1"/>
+      <type>
+        <code value="Extension"/>
+        <profile value="http://hl7.org/fhir/StructureDefinition/minLength"/>
+      </type>
+      <mustSupport value="true"/>
+      <mapping>
+        <identity value="ihe-sdc"/>
+        <map value="./*_Field/datatype/string/maximum_characters"/>
+      </mapping>
+    </element>
+    <element id="Questionnaire.item.extension:regex">
+      <path value="Questionnaire.item.extension"/>
+      <sliceName value="regex"/>
+      <min value="0"/>
+      <max value="1"/>
+      <type>
+        <code value="Extension"/>
+        <profile value="http://hl7.org/fhir/StructureDefinition/regex"/>
+      </type>
+      <mustSupport value="true"/>
+      <mapping>
+        <identity value="ihe-sdc"/>
+        <map value="./*_Field/datatype/string/reg_ex"/>
+      </mapping>
+    </element>
+    <element id="Questionnaire.item.extension:minValue">
+      <path value="Questionnaire.item.extension"/>
+      <sliceName value="minValue"/>
+      <min value="0"/>
+      <max value="1"/>
+      <type>
+        <code value="Extension"/>
+        <profile value="http://hl7.org/fhir/StructureDefinition/minValue"/>
+      </type>
+      <mustSupport value="true"/>
+      <mapping>
+        <identity value="ihe-sdc"/>
+        <map value="./*_Field/datatype/[integer|decimal]/minimum_value"/>
+      </mapping>
+    </element>
+    <element id="Questionnaire.item.extension:minValue.value[x]">
+      <path value="Questionnaire.item.extension.value[x]"/>
+      <mustSupport value="false"/>
+    </element>
+    <element id="Questionnaire.item.extension:minValue.value[x].extension:minValueCalculated">
+      <path value="Questionnaire.item.extension.value[x].extension"/>
+      <sliceName value="minValueCalculated"/>
+      <min value="0"/>
+      <max value="1"/>
+      <type>
+        <code value="Extension"/>
+        <profile value="http://hl7.org/fhir/StructureDefinition/cqf-calculatedValue"/>
+      </type>
+      <mustSupport value="false"/>
+    </element>
+    <element id="Questionnaire.item.extension:maxValue">
+      <path value="Questionnaire.item.extension"/>
+      <sliceName value="maxValue"/>
+      <min value="0"/>
+      <max value="1"/>
+      <type>
+        <code value="Extension"/>
+        <profile value="http://hl7.org/fhir/StructureDefinition/maxValue"/>
+      </type>
+      <mustSupport value="true"/>
+      <mapping>
+        <identity value="ihe-sdc"/>
+        <map value="./*_Field/datatype/[integer|decimal]/maximum_value"/>
+      </mapping>
+    </element>
+    <element id="Questionnaire.item.extension:maxValue.value[x]">
+      <path value="Questionnaire.item.extension.value[x]"/>
+      <mustSupport value="false"/>
+    </element>
+    <element id="Questionnaire.item.extension:maxValue.value[x].extension:maxValueCalculated">
+      <path value="Questionnaire.item.extension.value[x].extension"/>
+      <sliceName value="maxValueCalculated"/>
+      <min value="0"/>
+      <max value="1"/>
+      <type>
+        <code value="Extension"/>
+        <profile value="http://hl7.org/fhir/StructureDefinition/cqf-calculatedValue"/>
+      </type>
+      <mustSupport value="false"/>
+    </element>
+    <element id="Questionnaire.item.extension:minQuantity">
+      <path value="Questionnaire.item.extension"/>
+      <sliceName value="minQuantity"/>
+      <min value="0"/>
+      <max value="1"/>
+      <type>
+        <code value="Extension"/>
+        <profile value="http://hl7.org/fhir/uv/sdc/StructureDefinition/sdc-questionnaire-minQuantity"/>
+      </type>
+      <mustSupport value="false"/>
+    </element>
+    <element id="Questionnaire.item.extension:minQuantity.value[x]">
+      <path value="Questionnaire.item.extension.value[x]"/>
+      <mustSupport value="false"/>
+    </element>
+    <element id="Questionnaire.item.extension:minQuantity.value[x].extension:minQuantityCalculated">
+      <path value="Questionnaire.item.extension.value[x].extension"/>
+      <sliceName value="minQuantityCalculated"/>
+      <min value="0"/>
+      <max value="1"/>
+      <type>
+        <code value="Extension"/>
+        <profile value="http://hl7.org/fhir/StructureDefinition/cqf-calculatedValue"/>
+      </type>
+      <mustSupport value="false"/>
+    </element>
+    <element id="Questionnaire.item.extension:maxQuantity">
+      <path value="Questionnaire.item.extension"/>
+      <sliceName value="maxQuantity"/>
+      <min value="0"/>
+      <max value="1"/>
+      <type>
+        <code value="Extension"/>
+        <profile value="http://hl7.org/fhir/uv/sdc/StructureDefinition/sdc-questionnaire-maxQuantity"/>
+      </type>
+      <mustSupport value="false"/>
+    </element>
+    <element id="Questionnaire.item.extension:maxQuantity.value[x]">
+      <path value="Questionnaire.item.extension.value[x]"/>
+      <mustSupport value="false"/>
+    </element>
+    <element id="Questionnaire.item.extension:maxQuantity.value[x].extension:maxQuantityCalculated">
+      <path value="Questionnaire.item.extension.value[x].extension"/>
+      <sliceName value="maxQuantityCalculated"/>
+      <min value="0"/>
+      <max value="1"/>
+      <type>
+        <code value="Extension"/>
+        <profile value="http://hl7.org/fhir/StructureDefinition/cqf-calculatedValue"/>
+      </type>
+      <mustSupport value="false"/>
+    </element>
+    <element id="Questionnaire.item.extension:maxDecimalPlaces">
+      <path value="Questionnaire.item.extension"/>
+      <sliceName value="maxDecimalPlaces"/>
+      <min value="0"/>
+      <max value="1"/>
+      <type>
+        <code value="Extension"/>
+        <profile value="http://hl7.org/fhir/StructureDefinition/maxDecimalPlaces"/>
+      </type>
+      <mustSupport value="true"/>
+      <mapping>
+        <identity value="ihe-sdc"/>
+        <map value="./*_Field/datatype/decimal/fractionDigits"/>
+      </mapping>
+    </element>
+    <element id="Questionnaire.item.extension:mimeType">
+      <path value="Questionnaire.item.extension"/>
+      <sliceName value="mimeType"/>
+      <min value="0"/>
+      <max value="*"/>
+      <type>
+        <code value="Extension"/>
+        <profile value="http://hl7.org/fhir/StructureDefinition/mimeType"/>
+      </type>
+      <mustSupport value="true"/>
+    </element>
+    <element id="Questionnaire.item.extension:maxSize">
+      <path value="Questionnaire.item.extension"/>
+      <sliceName value="maxSize"/>
+      <min value="0"/>
+      <max value="1"/>
+      <type>
+        <code value="Extension"/>
+        <profile value="http://hl7.org/fhir/StructureDefinition/maxSize"/>
+      </type>
+      <mustSupport value="false"/>
+    </element>
+    <element id="Questionnaire.item.extension:unitOption">
+      <path value="Questionnaire.item.extension"/>
+      <sliceName value="unitOption"/>
+      <min value="0"/>
+      <max value="*"/>
+      <type>
+        <code value="Extension"/>
+        <profile value="http://hl7.org/fhir/StructureDefinition/questionnaire-unitOption"/>
+      </type>
+      <mustSupport value="true"/>
+    </element>
+    <element id="Questionnaire.item.extension:unitValueSet">
+      <path value="Questionnaire.item.extension"/>
+      <sliceName value="unitValueSet"/>
+      <min value="0"/>
+      <max value="1"/>
+      <type>
+        <code value="Extension"/>
+        <profile value="http://hl7.org/fhir/StructureDefinition/questionnaire-unitValueSet"/>
+      </type>
+      <mustSupport value="true"/>
+    </element>
+    <element id="Questionnaire.item.extension:allowedResource">
+      <path value="Questionnaire.item.extension"/>
+      <sliceName value="allowedResource"/>
+      <min value="0"/>
+      <max value="*"/>
+      <type>
+        <code value="Extension"/>
+        <profile value="http://hl7.org/fhir/StructureDefinition/questionnaire-referenceResource"/>
+      </type>
+      <mustSupport value="true"/>
+      <mapping>
+        <identity value="ihe-sdc"/>
+        <map value="/form_package/mapping_package/mdr_mapping/question_element_data_element_association[question_element_identifier=current()/question_identifier]/data_element_scoped_identifier"/>
+      </mapping>
+    </element>
+    <element id="Questionnaire.item.extension:allowedProfile">
+      <path value="Questionnaire.item.extension"/>
+      <sliceName value="allowedProfile"/>
+      <min value="0"/>
+      <max value="*"/>
+      <type>
+        <code value="Extension"/>
+        <profile value="http://hl7.org/fhir/StructureDefinition/questionnaire-referenceProfile"/>
+      </type>
+      <mustSupport value="false"/>
+    </element>
+    <element id="Questionnaire.item.extension:candidateExpression">
+      <path value="Questionnaire.item.extension"/>
+      <sliceName value="candidateExpression"/>
+      <min value="0"/>
+      <max value="1"/>
+      <type>
+        <code value="Extension"/>
+        <profile value="http://hl7.org/fhir/uv/sdc/StructureDefinition/sdc-questionnaire-candidateExpression"/>
+      </type>
+      <mustSupport value="false"/>
+    </element>
+    <element id="Questionnaire.item.extension:lookupQuestionnaire">
+      <path value="Questionnaire.item.extension"/>
+      <sliceName value="lookupQuestionnaire"/>
+      <min value="0"/>
+      <max value="1"/>
+      <type>
+        <code value="Extension"/>
+        <profile value="http://hl7.org/fhir/uv/sdc/StructureDefinition/sdc-questionnaire-lookupQuestionnaire"/>
+      </type>
+      <mustSupport value="false"/>
+    </element>
+    <element id="Questionnaire.item.extension:itemConstraint">
+      <path value="Questionnaire.item.extension"/>
+      <sliceName value="itemConstraint"/>
+      <min value="0"/>
+      <max value="*"/>
+      <type>
+        <code value="Extension"/>
+        <profile value="http://hl7.org/fhir/StructureDefinition/questionnaire-constraint"/>
+      </type>
+      <mustSupport value="false"/>
+    </element>
+    <element id="Questionnaire.item.extension:initialExpression">
+      <path value="Questionnaire.item.extension"/>
+      <sliceName value="initialExpression"/>
+      <min value="0"/>
+      <max value="1"/>
+      <type>
+        <code value="Extension"/>
+        <profile value="http://hl7.org/fhir/uv/sdc/StructureDefinition/sdc-questionnaire-initialExpression"/>
+      </type>
+      <mustSupport value="false"/>
+    </element>
+    <element id="Questionnaire.item.extension:calculatedExpression">
+      <path value="Questionnaire.item.extension"/>
+      <sliceName value="calculatedExpression"/>
+      <min value="0"/>
+      <max value="1"/>
+      <type>
+        <code value="Extension"/>
+        <profile value="http://hl7.org/fhir/uv/sdc/StructureDefinition/sdc-questionnaire-calculatedExpression"/>
+      </type>
+      <mustSupport value="false"/>
+    </element>
+    <element id="Questionnaire.item.extension:enableWhenExpression">
+      <path value="Questionnaire.item.extension"/>
+      <sliceName value="enableWhenExpression"/>
+      <min value="0"/>
+      <max value="1"/>
+      <type>
+        <code value="Extension"/>
+        <profile value="http://hl7.org/fhir/uv/sdc/StructureDefinition/sdc-questionnaire-enableWhenExpression"/>
+      </type>
+      <mustSupport value="true"/>
+    </element>
+    <element id="Questionnaire.item.enableWhen.question">
+      <path value="Questionnaire.item.enableWhen.question"/>
+      <mustSupport value="true"/>
+      <mapping>
+        <identity value="ihe-sdc"/>
+        <map value="parent::list_item/parent::list_field/parent::question"/>
+      </mapping>
+    </element>
+    <element id="Questionnaire.item.enableWhen.operator">
+      <path value="Questionnaire.item.enableWhen.operator"/>
+      <mustSupport value="true"/>
+    </element>
+    <element id="Questionnaire.item.enableWhen.answer[x]">
+      <path value="Questionnaire.item.enableWhen.answer[x]"/>
+      <mustSupport value="true"/>
+      <mapping>
+        <identity value="ihe-sdc"/>
+        <map value="parent::list_item"/>
+      </mapping>
+    </element>
+    <element id="Questionnaire.item.enableBehavior">
+      <path value="Questionnaire.item.enableBehavior"/>
+      <mustSupport value="true"/>
+    </element>
+    <element id="Questionnaire.item.required">
+      <path value="Questionnaire.item.required"/>
+      <mustSupport value="false"/>
+      <mapping>
+        <identity value="ihe-sdc"/>
+        <map value="./cardinality/minimum!=0"/>
+      </mapping>
+    </element>
+    <element id="Questionnaire.item.required.valueBoolean">
+      <path value="Questionnaire.item.required.valueBoolean"/>
+      <mustSupport value="false"/>
+    </element>
+    <element id="Questionnaire.item.required.valueBoolean.extension:requiredExpression">
+      <path value="Questionnaire.item.required.valueBoolean.extension"/>
+      <sliceName value="requiredExpression"/>
+      <min value="0"/>
+      <max value="1"/>
+      <type>
+        <code value="Extension"/>
+        <profile value="http://hl7.org/fhir/StructureDefinition/cqf-expression"/>
+      </type>
+      <mustSupport value="true"/>
+    </element>
+    <element id="Questionnaire.item.repeats">
+      <path value="Questionnaire.item.repeats"/>
+      <mustSupport value="false"/>
+    </element>
+    <element id="Questionnaire.item.repeats.valueBoolean">
+      <path value="Questionnaire.item.repeats.valueBoolean"/>
+      <mustSupport value="false"/>
+    </element>
+    <element id="Questionnaire.item.repeats.valueBoolean.extension:repeatsExpression">
+      <path value="Questionnaire.item.repeats.valueBoolean.extension"/>
+      <sliceName value="repeatsExpression"/>
+      <min value="0"/>
+      <max value="1"/>
+      <type>
+        <code value="Extension"/>
+        <profile value="http://hl7.org/fhir/StructureDefinition/cqf-expression"/>
+      </type>
+      <mustSupport value="true"/>
+    </element>
+    <element id="Questionnaire.item.readOnly">
+      <path value="Questionnaire.item.readOnly"/>
+      <mustSupport value="false"/>
+    </element>
+    <element id="Questionnaire.item.readOnly.valueBoolean">
+      <path value="Questionnaire.item.readOnly.valueBoolean"/>
+      <mustSupport value="false"/>
+    </element>
+    <element id="Questionnaire.item.readOnly.valueBoolean.extension:readOnlyExpression">
+      <path value="Questionnaire.item.readOnly.valueBoolean.extension"/>
+      <sliceName value="readOnlyExpression"/>
+      <min value="0"/>
+      <max value="1"/>
+      <type>
+        <code value="Extension"/>
+        <profile value="http://hl7.org/fhir/StructureDefinition/cqf-expression"/>
+      </type>
+      <mustSupport value="true"/>
+    </element>
+    <element id="Questionnaire.item.answerValueSet">
+      <path value="Questionnaire.item.answerValueSet"/>
+      <mustSupport value="false"/>
+    </element>
+    <element id="Questionnaire.item.answerValueSet.value[x]">
+      <path value="Questionnaire.item.answerValueSet.value[x]"/>
+      <mustSupport value="false"/>
+    </element>
+    <element id="Questionnaire.item.answerValueSet.value[x].extension:answerValueSetExpression">
+      <path value="Questionnaire.item.answerValueSet.value[x].extension"/>
+      <sliceName value="answerValueSetExpression"/>
+      <min value="0"/>
+      <max value="1"/>
+      <type>
+        <code value="Extension"/>
+        <profile value="http://hl7.org/fhir/StructureDefinition/cqf-expression"/>
+      </type>
+      <mustSupport value="true"/>
+    </element>
+    <element id="Questionnaire.item.answerOption">
+      <path value="Questionnaire.item.answerOption"/>
+      <mustSupport value="false"/>
+    </element>
+    <element id="Questionnaire.item.answerOption.extension:optionExclusive">
+      <path value="Questionnaire.item.answerOption.extension"/>
+      <sliceName value="optionExclusive"/>
+      <min value="0"/>
+      <max value="1"/>
+      <type>
+        <code value="Extension"/>
+        <profile value="http://hl7.org/fhir/StructureDefinition/questionnaire-optionExclusive"/>
+      </type>
+      <mustSupport value="true"/>
+    </element>
+    <element id="Questionnaire.item.answerOption.extension:ordinalValue">
+      <path value="Questionnaire.item.answerOption.extension"/>
+      <sliceName value="ordinalValue"/>
+      <min value="0"/>
+      <max value="1"/>
+      <type>
+        <code value="Extension"/>
+        <profile value="http://hl7.org/fhir/StructureDefinition/ordinalValue"/>
+      </type>
+      <mustSupport value="true"/>
+    </element>
+    <element id="Questionnaire.item.answerOption.value[x]">
+      <path value="Questionnaire.item.answerOption.value[x]"/>
+      <min value="1"/>
+      <max value="1"/>
+      <mustSupport value="true"/>
+    </element>
+  </differential>
+</StructureDefinition>

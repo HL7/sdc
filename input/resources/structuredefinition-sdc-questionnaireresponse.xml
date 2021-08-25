@@ -1,0 +1,199 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<StructureDefinition xmlns="http://hl7.org/fhir" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://hl7.org/fhir ../../src-generated/schemas/fhir-single.xsd">
+  <id value="sdc-questionnaireresponse"/>
+  <url value="http://hl7.org/fhir/uv/sdc/StructureDefinition/sdc-questionnaireresponse"/>
+  <name value="QuestionnaireResponse"/>
+  <title value="SDC Questionnaire Response"/>
+  <status value="draft"/>
+  <description value="Defines how the questionnaire response resource is used to reflect form data within the ONC's Structured Data Capture standard."/>
+  <fhirVersion value="4.0.1"/>
+  <kind value="resource"/>
+  <abstract value="false"/>
+  <type value="QuestionnaireResponse"/>
+  <baseDefinition value="http://hl7.org/fhir/StructureDefinition/QuestionnaireResponse"/>
+  <derivation value="constraint"/>
+   <differential>
+    <element id="QuestionnaireResponse">
+      <path value="QuestionnaireResponse"/>
+      <short value="SDC Questionnaire Response"/>
+      <definition value="Sets expectations for supported capabilities for questionnaire responses for SDC-conformant systems."/>
+      <alias value="Form Data"/>
+      <mustSupport value="false"/>
+    </element>
+    <element id="QuestionnaireResponse.extension:signature">
+      <path value="QuestionnaireResponse.extension"/>
+      <sliceName value="signature"/>
+      <min value="0"/>
+      <max value="*"/>
+      <type>
+        <code value="Extension"/>
+        <profile value="http://hl7.org/fhir/StructureDefinition/questionnaireresponse-signature"/>
+      </type>
+      <mustSupport value="false"/>
+    </element>
+    <element id="QuestionnaireResponse.identifier">
+      <path value="QuestionnaireResponse.identifier"/>
+      <mustSupport value="true"/>
+    </element>
+    <element id="QuestionnaireResponse.basedOn">
+      <path value="QuestionnaireResponse.basedOn"/>
+      <mustSupport value="false"/>
+    </element>
+    <element id="QuestionnaireResponse.partOf">
+      <path value="QuestionnaireResponse.partOf"/>
+      <mustSupport value="false"/>
+    </element>
+    <element id="QuestionnaireResponse.questionnaire">
+      <path value="QuestionnaireResponse.questionnaire"/>
+      <comment value="For SDC, this SHALL be the version-specific URL of the form as hosted on the Form Manager."/>
+      <min value="1"/>
+      <max value="1"/>
+      <type>
+        <code value="canonical"/>
+        <targetProfile value="http://hl7.org/fhir/uv/sdc/StructureDefinition/sdc-questionnaire"/>
+      </type>
+      <mustSupport value="true"/>
+    </element>
+    <element id="QuestionnaireResponse.questionnaire.extension:questionnaireDisplay">
+      <path value="QuestionnaireResponse.questionnaire.extension"/>
+      <sliceName value="questionnaireDisplay"/>
+      <comment value="This SHALL be the title of the Questionnaire at the time the QuestionnaireResponse was originally authored."/>
+      <min value="0"/>
+      <max value="1"/>
+      <type>
+        <code value="Extension"/>
+        <profile value="http://hl7.org/fhir/StructureDefinition/display"/>
+      </type>
+      <mustSupport value="true"/>
+    </element>
+    <element id="QuestionnaireResponse.status">
+      <path value="QuestionnaireResponse.status"/>
+      <mustSupport value="true"/>
+    </element>
+    <element id="QuestionnaireResponse.subject">
+      <path value="QuestionnaireResponse.subject"/>
+      <min value="1"/>
+      <max value="1"/>
+      <type>
+        <code value="Reference"/>
+        <targetProfile value="http://hl7.org/fhir/StructureDefinition/Patient"/>
+      </type>
+      <mustSupport value="true"/>
+    </element>
+    <element id="QuestionnaireResponse.encounter">
+      <path value="QuestionnaireResponse.encounter"/>
+      <mustSupport value="false"/>
+    </element>
+    <element id="QuestionnaireResponse.authored">
+      <path value="QuestionnaireResponse.authored"/>
+      <definition value="Identifies when this version of the answer set was created.  Changes whenever the answers are updated."/>
+      <min value="1"/>
+      <max value="1"/>
+      <mustSupport value="true"/>
+    </element>
+    <element id="QuestionnaireResponse.author">
+      <path value="QuestionnaireResponse.author"/>
+      <mustSupport value="true"/>
+    </element>
+    <element id="QuestionnaireResponse.source">
+      <path value="QuestionnaireResponse.source"/>
+      <mustSupport value="false"/>
+    </element>
+    <element id="QuestionnaireResponse.item">
+      <path value="QuestionnaireResponse.item"/>
+      <mustSupport value="true"/>
+    </element>
+    <element id="QuestionnaireResponse.item.extension:ItemSignature">
+      <path value="QuestionnaireResponse.item.extension"/>
+      <sliceName value="ItemSignature"/>
+      <min value="0"/>
+      <max value="*"/>
+      <type>
+        <code value="Extension"/>
+        <profile value="http://hl7.org/fhir/StructureDefinition/questionnaireresponse-signature"/>
+      </type>
+      <mustSupport value="false"/>
+    </element>
+    <element id="QuestionnaireResponse.item.linkId">
+      <path value="QuestionnaireResponse.item.linkId"/>
+      <min value="1"/>
+      <max value="1"/>
+      <mustSupport value="true"/>
+    </element>
+    <element id="QuestionnaireResponse.item.text">
+      <path value="QuestionnaireResponse.item.text"/>
+      <mustSupport value="true"/>
+    </element>
+    <element id="QuestionnaireResponse.item.answer">
+      <path value="QuestionnaireResponse.item.answer"/>
+      <min value="0"/>
+      <max value="*"/>
+      <mustSupport value="true"/>
+    </element>
+    <element id="QuestionnaireResponse.item.answer.extension:ordinalValue">
+      <path value="QuestionnaireResponse.item.answer.extension"/>
+      <sliceName value="ordinalValue"/>
+      <min value="0"/>
+      <max value="1"/>
+      <type>
+        <code value="Extension"/>
+        <profile value="http://hl7.org/fhir/StructureDefinition/ordinalValue"/>
+      </type>
+      <mustSupport value="false"/>
+    </element>
+    <element id="QuestionnaireResponse.item.answer.value[x]">
+      <path value="QuestionnaireResponse.item.answer.value[x]"/>
+      <min value="0"/>
+      <max value="1"/>
+      <type>
+        <code value="boolean"/>
+      </type>
+      <type>
+        <code value="date"/>
+      </type>
+      <type>
+        <code value="dateTime"/>
+      </type>
+      <type>
+        <code value="time"/>
+      </type>
+      <type>
+        <code value="decimal"/>
+      </type>
+      <type>
+        <code value="integer"/>
+      </type>
+      <type>
+        <code value="string"/>
+      </type>
+      <type>
+        <code value="Coding"/>
+      </type>
+      <type>
+        <code value="uri"/>
+      </type>
+      <type>
+        <code value="Quantity"/>
+      </type>
+      <type>
+        <code value="Attachment"/>
+      </type>
+      <type>
+        <code value="Reference"/>
+      </type>
+      <mustSupport value="true"/>
+    </element>
+    <element id="QuestionnaireResponse.item.answer.item">
+      <path value="QuestionnaireResponse.item.answer.item"/>
+      <min value="0"/>
+      <max value="*"/>
+      <contentReference value="http://hl7.org/fhir/StructureDefinition/QuestionnaireResponse#QuestionnaireResponse.item"/>
+      <mustSupport value="true"/>
+    </element>
+    <element id="QuestionnaireResponse.item.item">
+      <path value="QuestionnaireResponse.item.item"/>
+      <contentReference value="http://hl7.org/fhir/StructureDefinition/QuestionnaireResponse#QuestionnaireResponse.item"/>
+      <mustSupport value="true"/>
+    </element>
+  </differential>
+</StructureDefinition>

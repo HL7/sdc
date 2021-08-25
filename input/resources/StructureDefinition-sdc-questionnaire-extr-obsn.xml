@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<StructureDefinition xmlns="http://hl7.org/fhir">
+  <id value="sdc-questionnaire-extr-obsn"/>
+  <url value="http://hl7.org/fhir/uv/sdc/StructureDefinition/sdc-questionnaire-extr-obsn"/>
+  <name value="QuestionnaireExtractObservation"/>
+  <title value="Extractable Questionnaire - Observation"/>
+  <status value="draft"/>
+  <description value="Defines elements that allow conversion of a QuestionnaireResponse to an Observation resource or Bundle of Observation resources using the Observation-based extraction mechanism"/>
+  <fhirVersion value="4.0.1"/>
+  <kind value="resource"/>
+  <abstract value="false"/>
+  <type value="Questionnaire"/>
+  <baseDefinition value="http://hl7.org/fhir/uv/sdc/StructureDefinition/sdc-questionnaire"/>
+  <derivation value="constraint"/>
+    <differential>
+    <element id="Questionnaire">
+      <path value="Questionnaire"/>
+      <short value="Extractable Questionnaire - Observation"/>
+      <definition value="Defines elements that allow conversion of a QuestionnaireResponse to an Observation resource or Bundle of Observation resources using the Observation-based extraction mechanism."/>
+      <mustSupport value="false"/>
+      <mapping>
+        <identity value="ihe-sdc"/>
+        <map value="Form_Package"/>
+      </mapping>
+    </element>
+    <element id="Questionnaire.extension:observationExtract">
+      <path value="Questionnaire.extension"/>
+      <sliceName value="observationExtract"/>
+      <min value="0"/>
+      <max value="1"/>
+      <type>
+        <code value="Extension"/>
+        <profile value="http://hl7.org/fhir/uv/sdc/StructureDefinition/sdc-questionnaire-observationExtract"/>
+      </type>
+      <mustSupport value="true"/>
+    </element>
+    <element id="Questionnaire.item">
+      <path value="Questionnaire.item"/>
+      <constraint>
+        <key value="sdc-obsn-1"/>
+        <severity value="error"/>
+        <human value="Display items cannot be extracted to Observations."/>
+        <expression value="type!=&#39;display&#39; or extension(&#39;http://hl7.org/fhir/uv/sdc/StructureDefinition/sdc-questionnaire-observationExtract&#39;).empty()"/>
+        <xpath value="not(f:type/@value= &#39;display&#39;  and exists(f:extension[@url=&#39;http://hl7.org/fhir/uv/sdc/StructureDefinition/sdc-questionnaire-observationExtract&#39;]))"/>
+      </constraint>
+      <mustSupport value="false"/>
+    </element>
+    <element id="Questionnaire.item.extension:unit">
+      <path value="Questionnaire.item.extension"/>
+      <sliceName value="unit"/>
+      <min value="0"/>
+      <max value="1"/>
+      <type>
+        <code value="Extension"/>
+        <profile value="http://hl7.org/fhir/StructureDefinition/questionnaire-unit"/>
+      </type>
+      <mustSupport value="true"/>
+    </element>
+    <element id="Questionnaire.item.extension:observationExtract">
+      <path value="Questionnaire.item.extension"/>
+      <sliceName value="observationExtract"/>
+      <min value="0"/>
+      <max value="1"/>
+      <type>
+        <code value="Extension"/>
+        <profile value="http://hl7.org/fhir/uv/sdc/StructureDefinition/sdc-questionnaire-observationExtract"/>
+      </type>
+      <mustSupport value="true"/>
+    </element>
+    <element id="Questionnaire.item.code">
+      <path value="Questionnaire.item.code"/>
+      <min value="0"/>
+      <max value="1"/>
+      <mustSupport value="true"/>
+    </element>
+  </differential>
+</StructureDefinition>

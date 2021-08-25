@@ -1,0 +1,163 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<StructureDefinition xmlns="http://hl7.org/fhir" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://hl7.org/fhir ../../src-generated/schemas/fhir-single.xsd">
+  <id value="sdc-task"/>
+  <url value="http://hl7.org/fhir/uv/sdc/StructureDefinition/sdc-task"/>
+  <name value="TaskQuestionnaire"/>
+  <title value="Task Questionnaire"/>
+  <status value="draft"/>
+  <description value="Defines how Task is used to as for a Questionnaire to be completed"/>
+  <fhirVersion value="4.0.1"/>
+  <kind value="resource"/>
+  <abstract value="false"/>
+  <type value="Task"/>
+  <baseDefinition value="http://hl7.org/fhir/StructureDefinition/Task"/>
+  <derivation value="constraint"/>
+    <differential>
+    <element id="Task">
+      <path value="Task"/>
+      <mustSupport value="false"/>
+    </element>
+    <element id="Task.status">
+      <path value="Task.status"/>
+      <min value="1"/>
+      <max value="1"/>
+      <type>
+        <code value="code"/>
+      </type>
+      <mustSupport value="true"/>
+    </element>
+    <element id="Task.intent">
+      <path value="Task.intent"/>
+      <mustSupport value="true"/>
+    </element>
+    <element id="Task.code">
+      <path value="Task.code"/>
+      <min value="1"/>
+      <max value="1"/>
+      <type>
+        <code value="CodeableConcept"/>
+      </type>
+      <patternCodeableConcept>
+        <coding>
+          <system value="http://hl7.org/fhir/uv/sdc/CodeSystem/temp"/>
+          <code value="complete-questionnaire"/>
+        </coding>
+      </patternCodeableConcept>
+      <mustSupport value="true"/>
+    </element>
+    <element id="Task.focus">
+      <path value="Task.focus"/>
+      <short value="Questionnaire to complete"/>
+      <min value="0"/>
+      <max value="0"/>
+      <mustSupport value="false"/>
+    </element>
+    <element id="Task.for">
+      <path value="Task.for"/>
+      <short value="Record Questionnaire is for"/>
+      <min value="0"/>
+      <max value="1"/>
+      <mustSupport value="true"/>
+    </element>
+    <element id="Task.authoredOn">
+      <path value="Task.authoredOn"/>
+      <min value="1"/>
+      <max value="1"/>
+      <mustSupport value="true"/>
+    </element>
+    <element id="Task.requester">
+      <path value="Task.requester"/>
+      <min value="1"/>
+      <max value="1"/>
+      <mustSupport value="true"/>
+    </element>
+    <element id="Task.owner">
+      <path value="Task.owner"/>
+      <short value="Who should complete questionnaire"/>
+      <min value="0"/>
+      <max value="1"/>
+      <mustSupport value="true"/>
+    </element>
+    <element id="Task.reasonCode">
+      <path value="Task.reasonCode"/>
+      <mustSupport value="true"/>
+    </element>
+    <element id="Task.input">
+      <path value="Task.input"/>
+      <slicing>
+        <discriminator>
+          <type value="pattern"/>
+          <path value="type"/>
+        </discriminator>
+        <rules value="open"/>
+      </slicing>
+      <mustSupport value="true"/>
+    </element>
+    <element id="Task.input:questionnaire">
+      <path value="Task.input"/>
+      <sliceName value="questionnaire"/>
+      <definition value="Indicates the questionnaire to be completed."/>
+      <min value="1"/>
+      <max value="1"/>
+      <mustSupport value="true"/>
+    </element>
+    <element id="Task.input:questionnaire.type">
+      <path value="Task.input.type"/>
+      <min value="1"/>
+      <max value="1"/>
+      <type>
+        <code value="CodeableConcept"/>
+      </type>
+      <patternCodeableConcept>
+        <coding>
+          <system value="http://hl7.org/fhir/uv/sdc/CodeSystem/temp"/>
+          <code value="questionnaire"/>
+        </coding>
+      </patternCodeableConcept>
+      <mustSupport value="true"/>
+    </element>
+    <element id="Task.input:questionnaire.value[x]">
+      <path value="Task.input.value[x]"/>
+      <short value="url"/>
+      <min value="1"/>
+      <max value="1"/>
+      <type>
+        <code value="canonical"/>
+      </type>
+      <mustSupport value="true"/>
+    </element>
+    <element id="Task.input:responseEndpoint">
+      <path value="Task.input"/>
+      <sliceName value="responseEndpoint"/>
+      <definition value="Indicates an endpoint the form should be posted to on completion."/>
+      <min value="0"/>
+      <max value="*"/>
+      <mustSupport value="true"/>
+    </element>
+    <element id="Task.input:responseEndpoint.type">
+      <path value="Task.input.type"/>
+      <min value="1"/>
+      <max value="1"/>
+      <type>
+        <code value="CodeableConcept"/>
+      </type>
+      <patternCodeableConcept>
+        <coding>
+          <system value="http://hl7.org/fhir/uv/sdc/CodeSystem/temp"/>
+          <code value="response-endpoint"/>
+        </coding>
+      </patternCodeableConcept>
+      <mustSupport value="true"/>
+    </element>
+    <element id="Task.input:responseEndpoint.value[x]">
+      <path value="Task.input.value[x]"/>
+      <short value="url"/>
+      <min value="1"/>
+      <max value="1"/>
+      <type>
+        <code value="url"/>
+      </type>
+      <mustSupport value="true"/>
+    </element>
+  </differential>
+</StructureDefinition>

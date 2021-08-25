@@ -1,0 +1,109 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<StructureDefinition xmlns="http://hl7.org/fhir">
+  <id value="sdc-questionnaire-launchContext"/>
+  <url value="http://hl7.org/fhir/uv/sdc/StructureDefinition/sdc-questionnaire-launchContext"/>
+  <name value="LaunchContextExtension"/>
+  <title value="Launch context resources"/>
+  <status value="draft"/>
+  <description value="Resources that provide context for form processing logic (pre-population, flow-control, drop-down selection, etc.) when creating/displaying/editing a QuestionnaireResponse."/>
+  <purpose value="Indicates to systems creating or updating a QuestionnaireResponse what types of information to pass in for internal processing.  May also influence things like SMART on FHIR permission requests."/>
+  <fhirVersion value="4.0.1"/>
+  <kind value="complex-type"/>
+  <abstract value="false"/>
+  <context>
+    <type value="element"/>
+    <expression value="Questionnaire"/>
+  </context>
+  <type value="Extension"/>
+  <baseDefinition value="http://hl7.org/fhir/StructureDefinition/Extension"/>
+  <derivation value="constraint"/>
+   <differential>
+    <element id="Extension">
+      <path value="Extension"/>
+      <short value="Context resources needed for Questionnaire"/>
+      <definition value="Resources that provide context for form processing logic (pre-population, flow-control, drop-down selection, etc.) when creating/displaying/editing a QuestionnaireResponse."/>
+      <comment value="3 of these launch contexts are aligned with the existing SMART on FHIR &quot;launch&quot; contexts."/>
+      <min value="0"/>
+      <max value="*"/>
+    </element>
+    <element id="Extension.extension:name">
+      <path value="Extension.extension"/>
+      <sliceName value="name"/>
+      <short value="Variable name"/>
+      <definition value="The variable name the passed resource will be referenced by within the Questionnaire logic."/>
+      <min value="1"/>
+      <max value="1"/>
+      <type>
+        <code value="Extension"/>
+      </type>
+    </element>
+    <element id="Extension.extension:name.url">
+      <path value="Extension.extension.url"/>
+      <fixedUri value="name"/>
+    </element>
+    <element id="Extension.extension:name.value[x]">
+      <path value="Extension.extension.value[x]"/>
+      <type>
+        <code value="id"/>
+      </type>
+    </element>
+    <element id="Extension.extension:type">
+      <path value="Extension.extension"/>
+      <sliceName value="type"/>
+      <short value="Resource type"/>
+      <definition value="The kind of resource to be provided."/>
+      <min value="1"/>
+      <max value="*"/>
+      <type>
+        <code value="Extension"/>
+      </type>
+    </element>
+    <element id="Extension.extension:type.url">
+      <path value="Extension.extension.url"/>
+      <fixedUri value="type"/>
+    </element>
+    <element id="Extension.extension:type.value[x]">
+      <path value="Extension.extension.value[x]"/>
+      <type>
+        <code value="code"/>
+      </type>
+      <binding>
+        <strength value="required"/>
+        <description value="Launch context codes for use in defining questionnaires context at launch time"/>
+        <valueSet value="http://hl7.org/fhir/uv/sdc/ValueSet/launchContext"/>
+      </binding>
+    </element>
+    <element id="Extension.extension:description">
+      <path value="Extension.extension"/>
+      <sliceName value="description"/>
+      <short value="Explanation of context element"/>
+      <definition value="Guidance on the resource to be provided and what impact providing it will have on questionnaire behavior."/>
+      <min value="0"/>
+      <max value="1"/>
+      <type>
+        <code value="Extension"/>
+      </type>
+    </element>
+    <element id="Extension.extension:description.url">
+      <path value="Extension.extension.url"/>
+      <fixedUri value="description"/>
+    </element>
+    <element id="Extension.extension:description.value[x]">
+      <path value="Extension.extension.value[x]"/>
+      <type>
+        <code value="string"/>
+      </type>
+    </element>
+    <element id="Extension.url">
+      <path value="Extension.url"/>
+      <type>
+        <code value="uri"/>
+      </type>
+      <fixedUri value="http://hl7.org/fhir/uv/sdc/StructureDefinition/sdc-questionnaire-launchContext"/>
+    </element>
+    <element id="Extension.value[x]">
+      <path value="Extension.value[x]"/>
+      <max value="0"/>
+    </element>
+  </differential>
+</StructureDefinition>

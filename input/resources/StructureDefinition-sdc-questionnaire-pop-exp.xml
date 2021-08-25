@@ -1,0 +1,173 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<StructureDefinition xmlns="http://hl7.org/fhir">
+  <id value="sdc-questionnaire-pop-exp"/>
+  <url value="http://hl7.org/fhir/uv/sdc/StructureDefinition/sdc-questionnaire-pop-exp"/>
+  <name value="QuestionnairePopulateExpression"/>
+  <title value="Populatable Questionnaire - Expression"/>
+  <status value="draft"/>
+  <description value="Defines elements that support auto-population and pre-population of questionnaires using the Expression-based population mechanism"/>
+  <fhirVersion value="4.0.1"/>
+  <kind value="resource"/>
+  <abstract value="false"/>
+  <type value="Questionnaire"/>
+  <baseDefinition value="http://hl7.org/fhir/uv/sdc/StructureDefinition/sdc-questionnaire"/>
+  <derivation value="constraint"/>
+   <differential>
+    <element id="Questionnaire">
+      <path value="Questionnaire"/>
+      <short value="Populatable Questionnaire - Expression"/>
+      <definition value="Defines elements that support auto-population and pre-population of questionnaires using the Expression-based population mechanism."/>
+      <mustSupport value="false"/>
+      <mapping>
+        <identity value="ihe-sdc"/>
+        <map value="Form_Package"/>
+      </mapping>
+    </element>
+    <element id="Questionnaire.extension:library">
+      <path value="Questionnaire.extension"/>
+      <sliceName value="library"/>
+      <definition value="A reference to a library containing cql used in this Questionnaire."/>
+      <min value="0"/>
+      <max value="*"/>
+      <type>
+        <code value="Extension"/>
+        <profile value="http://hl7.org/fhir/StructureDefinition/cqf-library"/>
+      </type>
+      <mustSupport value="false"/>
+    </element>
+    <element id="Questionnaire.extension:launchContext">
+      <path value="Questionnaire.extension"/>
+      <sliceName value="launchContext"/>
+      <type>
+        <code value="Extension"/>
+        <profile value="http://hl7.org/fhir/uv/sdc/StructureDefinition/sdc-questionnaire-launchContext"/>
+      </type>
+      <mustSupport value="true"/>
+    </element>
+    <element id="Questionnaire.extension:itemPopulationContext">
+      <path value="Questionnaire.extension"/>
+      <sliceName value="itemPopulationContext"/>
+      <min value="0"/>
+      <max value="1"/>
+      <type>
+        <code value="Extension"/>
+        <profile value="http://hl7.org/fhir/uv/sdc/StructureDefinition/sdc-questionnaire-itemPopulationContext"/>
+      </type>
+      <mustSupport value="true"/>
+    </element>
+    <element id="Questionnaire.extension:variable">
+      <path value="Questionnaire.extension"/>
+      <sliceName value="variable"/>
+      <min value="0"/>
+      <max value="*"/>
+      <type>
+        <code value="Extension"/>
+        <profile value="http://hl7.org/fhir/StructureDefinition/variable"/>
+      </type>
+      <mustSupport value="true"/>
+    </element>
+    <element id="Questionnaire.item">
+      <path value="Questionnaire.item"/>
+      <constraint>
+        <key value="sdc-pop-1"/>
+        <severity value="error"/>
+        <human value="An item cannot have both initial.value and initialExpression"/>
+        <expression value="initial.empty() or extension(&#39;http://hl7.org/fhir/uv/sdc/StructureDefinition/sdc-questionnaire-initialExpression&#39;).empty()"/>
+        <xpath value="not(exists(f:initial) and exists(f:extension[@url=&#39;http://hl7.org/fhir/uv/sdc/StructureDefinition/sdc-questionnaire-initialExpression&#39;]))"/>
+      </constraint>
+      <mustSupport value="false"/>
+    </element>
+    <element id="Questionnaire.item.extension:unit">
+      <path value="Questionnaire.item.extension"/>
+      <sliceName value="unit"/>
+      <min value="0"/>
+      <max value="1"/>
+      <type>
+        <code value="Extension"/>
+        <profile value="http://hl7.org/fhir/StructureDefinition/questionnaire-unit"/>
+      </type>
+      <mustSupport value="true"/>
+    </element>
+    <element id="Questionnaire.item.extension:itemPopulationContext">
+      <path value="Questionnaire.item.extension"/>
+      <sliceName value="itemPopulationContext"/>
+      <min value="0"/>
+      <max value="1"/>
+      <type>
+        <code value="Extension"/>
+        <profile value="http://hl7.org/fhir/uv/sdc/StructureDefinition/sdc-questionnaire-itemPopulationContext"/>
+      </type>
+      <mustSupport value="true"/>
+    </element>
+    <element id="Questionnaire.item.extension:itemVariable">
+      <path value="Questionnaire.item.extension"/>
+      <sliceName value="itemVariable"/>
+      <min value="0"/>
+      <max value="*"/>
+      <type>
+        <code value="Extension"/>
+        <profile value="http://hl7.org/fhir/StructureDefinition/variable"/>
+      </type>
+      <mustSupport value="false"/>
+    </element>
+    <element id="Questionnaire.item.extension:initialExpression">
+      <path value="Questionnaire.item.extension"/>
+      <sliceName value="initialExpression"/>
+      <min value="0"/>
+      <max value="1"/>
+      <type>
+        <code value="Extension"/>
+        <profile value="http://hl7.org/fhir/uv/sdc/StructureDefinition/sdc-questionnaire-initialExpression"/>
+      </type>
+      <mustSupport value="false"/>
+    </element>
+    <element id="Questionnaire.item.extension:candidateExpression">
+      <path value="Questionnaire.item.extension"/>
+      <sliceName value="candidateExpression"/>
+      <min value="0"/>
+      <max value="1"/>
+      <type>
+        <code value="Extension"/>
+        <profile value="http://hl7.org/fhir/uv/sdc/StructureDefinition/sdc-questionnaire-candidateExpression"/>
+      </type>
+      <mustSupport value="false"/>
+    </element>
+    <element id="Questionnaire.item.extension:contextExpression">
+      <path value="Questionnaire.item.extension"/>
+      <sliceName value="contextExpression"/>
+      <min value="0"/>
+      <max value="*"/>
+      <type>
+        <code value="Extension"/>
+        <profile value="http://hl7.org/fhir/uv/sdc/StructureDefinition/sdc-questionnaire-contextExpression"/>
+      </type>
+      <mustSupport value="false"/>
+    </element>
+    <element id="Questionnaire.item.extension:itemHidden">
+      <path value="Questionnaire.item.extension"/>
+      <sliceName value="itemHidden"/>
+      <min value="0"/>
+      <max value="1"/>
+      <type>
+        <code value="Extension"/>
+        <profile value="http://hl7.org/fhir/StructureDefinition/questionnaire-hidden"/>
+      </type>
+      <mustSupport value="false"/>
+      <mapping>
+        <identity value="ihe-sdc"/>
+        <map value="Any element with @initial_state=&quot;hidden&quot; and no rule that unhides the element"/>
+      </mapping>
+    </element>
+    <element id="Questionnaire.item.extension:choiceColumn">
+      <path value="Questionnaire.item.extension"/>
+      <sliceName value="choiceColumn"/>
+      <min value="0"/>
+      <max value="*"/>
+      <type>
+        <code value="Extension"/>
+        <profile value="http://hl7.org/fhir/uv/sdc/StructureDefinition/sdc-questionnaire-choiceColumn"/>
+      </type>
+      <mustSupport value="false"/>
+    </element>
+  </differential>
+</StructureDefinition>

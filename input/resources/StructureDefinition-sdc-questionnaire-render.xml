@@ -1,0 +1,380 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<StructureDefinition xmlns="http://hl7.org/fhir">
+  <id value="sdc-questionnaire-render"/>
+  <url value="http://hl7.org/fhir/uv/sdc/StructureDefinition/sdc-questionnaire-render"/>
+  <name value="QuestionnaireRender"/>
+  <title value="Advanced Rendering Questionnaire"/>
+  <status value="draft"/>
+  <description value="Defines additional capabilities for controlling the rendering of the questionnaire."/>
+  <fhirVersion value="4.0.1"/>
+  <kind value="resource"/>
+  <abstract value="false"/>
+  <type value="Questionnaire"/>
+  <baseDefinition value="http://hl7.org/fhir/uv/sdc/StructureDefinition/sdc-questionnaire"/>
+  <derivation value="constraint"/>
+   <differential>
+    <element id="Questionnaire">
+      <path value="Questionnaire"/>
+      <short value="Advanced Rendering Questionnaire"/>
+      <definition value="Defines additional capabilities for controlling the rendering of the questionnaire."/>
+      <mustSupport value="false"/>
+      <mapping>
+        <identity value="ihe-sdc"/>
+        <map value="Form_Package"/>
+      </mapping>
+    </element>
+    <element id="Questionnaire.extension:styleSensitive">
+      <path value="Questionnaire.extension"/>
+      <sliceName value="styleSensitive"/>
+      <min value="0"/>
+      <max value="1"/>
+      <type>
+        <code value="Extension"/>
+        <profile value="http://hl7.org/fhir/StructureDefinition/rendering-styleSensitive"/>
+      </type>
+      <mustSupport value="true"/>
+      <mapping>
+        <identity value="ihe-sdc"/>
+        <map value="N/A (new requirement)"/>
+      </mapping>
+    </element>
+    <element id="Questionnaire.title">
+      <path value="Questionnaire.title"/>
+      <mustSupport value="false"/>
+    </element>
+    <element id="Questionnaire.title.extension:title-renderingStyle">
+      <path value="Questionnaire.title.extension"/>
+      <sliceName value="title-renderingStyle"/>
+      <min value="0"/>
+      <max value="1"/>
+      <type>
+        <code value="Extension"/>
+        <profile value="http://hl7.org/fhir/StructureDefinition/rendering-style"/>
+      </type>
+      <mustSupport value="false"/>
+      <mapping>
+        <identity value="ihe-sdc"/>
+        <map value="../style"/>
+      </mapping>
+    </element>
+    <element id="Questionnaire.title.extension:title-xhtml">
+      <path value="Questionnaire.title.extension"/>
+      <sliceName value="title-xhtml"/>
+      <min value="0"/>
+      <max value="1"/>
+      <type>
+        <code value="Extension"/>
+        <profile value="http://hl7.org/fhir/StructureDefinition/rendering-xhtml"/>
+      </type>
+      <mustSupport value="false"/>
+      <mapping>
+        <identity value="ihe-sdc"/>
+        <map value="(strings can contain xhtml)"/>
+      </mapping>
+    </element>
+    <element id="Questionnaire.item">
+      <path value="Questionnaire.item"/>
+      <mustSupport value="false"/>
+    </element>
+    <element id="Questionnaire.item.extension:itemOptionalDisplay">
+      <path value="Questionnaire.item.extension"/>
+      <sliceName value="itemOptionalDisplay"/>
+      <min value="0"/>
+      <max value="1"/>
+      <type>
+        <code value="Extension"/>
+        <profile value="http://hl7.org/fhir/uv/sdc/StructureDefinition/sdc-questionnaire-optionalDisplay"/>
+      </type>
+      <mustSupport value="false"/>
+      <mapping>
+        <identity value="ihe-sdc"/>
+        <map value="N/A (new requirement)"/>
+      </mapping>
+    </element>
+    <element id="Questionnaire.item.extension:itemShortText">
+      <path value="Questionnaire.item.extension"/>
+      <sliceName value="itemShortText"/>
+      <min value="0"/>
+      <max value="1"/>
+      <type>
+        <code value="Extension"/>
+        <profile value="http://hl7.org/fhir/uv/sdc/StructureDefinition/sdc-questionnaire-shortText"/>
+      </type>
+      <mustSupport value="false"/>
+      <mapping>
+        <identity value="ihe-sdc"/>
+        <map value="N/A (new requirement)"/>
+      </mapping>
+    </element>
+    <element id="Questionnaire.item.extension:itemHidden">
+      <path value="Questionnaire.item.extension"/>
+      <sliceName value="itemHidden"/>
+      <min value="0"/>
+      <max value="1"/>
+      <type>
+        <code value="Extension"/>
+        <profile value="http://hl7.org/fhir/StructureDefinition/questionnaire-hidden"/>
+      </type>
+      <mustSupport value="true"/>
+      <mapping>
+        <identity value="ihe-sdc"/>
+        <map value="Any element with @initial_state=&quot;hidden&quot; and no rule that unhides the element"/>
+      </mapping>
+    </element>
+    <element id="Questionnaire.item.extension:itemControl">
+      <path value="Questionnaire.item.extension"/>
+      <sliceName value="itemControl"/>
+      <min value="0"/>
+      <max value="1"/>
+      <type>
+        <code value="Extension"/>
+        <profile value="http://hl7.org/fhir/StructureDefinition/questionnaire-itemControl"/>
+      </type>
+      <mustSupport value="true"/>
+    </element>
+    <element id="Questionnaire.item.extension:choiceOrientation">
+      <path value="Questionnaire.item.extension"/>
+      <sliceName value="choiceOrientation"/>
+      <min value="0"/>
+      <max value="1"/>
+      <type>
+        <code value="Extension"/>
+        <profile value="http://hl7.org/fhir/StructureDefinition/questionnaire-choiceOrientation"/>
+      </type>
+      <mustSupport value="false"/>
+    </element>
+    <element id="Questionnaire.item.extension:displayCategory">
+      <path value="Questionnaire.item.extension"/>
+      <sliceName value="displayCategory"/>
+      <min value="0"/>
+      <max value="1"/>
+      <type>
+        <code value="Extension"/>
+        <profile value="http://hl7.org/fhir/StructureDefinition/questionnaire-displayCategory"/>
+      </type>
+      <mustSupport value="true"/>
+      <mapping>
+        <identity value="ihe-sdc"/>
+        <map value="/form_package/mapping_package/mdr_mapping/question_element_data_element_association[question_element_identifier=current()/question_identifier]/data_element_scoped_identifier"/>
+      </mapping>
+    </element>
+    <element id="Questionnaire.item.extension:supportLink">
+      <path value="Questionnaire.item.extension"/>
+      <sliceName value="supportLink"/>
+      <min value="0"/>
+      <max value="*"/>
+      <type>
+        <code value="Extension"/>
+        <profile value="http://hl7.org/fhir/StructureDefinition/questionnaire-supportLink"/>
+      </type>
+      <mustSupport value="false"/>
+    </element>
+    <element id="Questionnaire.item.extension:choiceColumn">
+      <path value="Questionnaire.item.extension"/>
+      <sliceName value="choiceColumn"/>
+      <min value="0"/>
+      <max value="*"/>
+      <type>
+        <code value="Extension"/>
+        <profile value="http://hl7.org/fhir/uv/sdc/StructureDefinition/sdc-questionnaire-choiceColumn"/>
+      </type>
+      <mustSupport value="false"/>
+    </element>
+    <element id="Questionnaire.item.extension:width">
+      <path value="Questionnaire.item.extension"/>
+      <sliceName value="width"/>
+      <min value="0"/>
+      <max value="1"/>
+      <type>
+        <code value="Extension"/>
+        <profile value="http://hl7.org/fhir/uv/sdc/StructureDefinition/sdc-questionnaire-width"/>
+      </type>
+      <mustSupport value="false"/>
+    </element>
+    <element id="Questionnaire.item.extension:sliderStepValue">
+      <path value="Questionnaire.item.extension"/>
+      <sliceName value="sliderStepValue"/>
+      <min value="0"/>
+      <max value="1"/>
+      <type>
+        <code value="Extension"/>
+        <profile value="http://hl7.org/fhir/StructureDefinition/questionnaire-sliderStepValue"/>
+      </type>
+      <mustSupport value="false"/>
+    </element>
+    <element id="Questionnaire.item.extension:entryFormat">
+      <path value="Questionnaire.item.extension"/>
+      <sliceName value="entryFormat"/>
+      <min value="0"/>
+      <max value="1"/>
+      <type>
+        <code value="Extension"/>
+        <profile value="http://hl7.org/fhir/StructureDefinition/entryFormat"/>
+      </type>
+      <mustSupport value="true"/>
+      <mapping>
+        <identity value="ihe-sdc"/>
+        <map value="./*_Field/format | ./*_Field/datatype/string/pattern"/>
+      </mapping>
+    </element>
+    <element id="Questionnaire.item.extension:collapsible">
+      <path value="Questionnaire.item.extension"/>
+      <sliceName value="collapsible"/>
+      <min value="0"/>
+      <max value="1"/>
+      <type>
+        <code value="Extension"/>
+        <profile value="http://hl7.org/fhir/uv/sdc/StructureDefinition/sdc-questionnaire-collapsible"/>
+      </type>
+      <mustSupport value="false"/>
+      <mapping>
+        <identity value="ihe-sdc"/>
+        <map value="./*_Field/format | ./*_Field/datatype/string/pattern"/>
+      </mapping>
+    </element>
+    <element id="Questionnaire.item.prefix">
+      <path value="Questionnaire.item.prefix"/>
+      <mustSupport value="false"/>
+    </element>
+    <element id="Questionnaire.item.prefix.extension:itemLabel-renderingStyle">
+      <path value="Questionnaire.item.prefix.extension"/>
+      <sliceName value="itemLabel-renderingStyle"/>
+      <min value="0"/>
+      <max value="1"/>
+      <type>
+        <code value="Extension"/>
+        <profile value="http://hl7.org/fhir/StructureDefinition/rendering-style"/>
+      </type>
+      <mustSupport value="false"/>
+      <mapping>
+        <identity value="ihe-sdc"/>
+        <map value="../style"/>
+      </mapping>
+    </element>
+    <element id="Questionnaire.item.prefix.extension:itemLabel-xhtml">
+      <path value="Questionnaire.item.prefix.extension"/>
+      <sliceName value="itemLabel-xhtml"/>
+      <min value="0"/>
+      <max value="1"/>
+      <type>
+        <code value="Extension"/>
+        <profile value="http://hl7.org/fhir/StructureDefinition/rendering-xhtml"/>
+      </type>
+      <mustSupport value="false"/>
+      <mapping>
+        <identity value="ihe-sdc"/>
+        <map value="(strings can contain xhtml)"/>
+      </mapping>
+    </element>
+    <element id="Questionnaire.item.text">
+      <path value="Questionnaire.item.text"/>
+      <mustSupport value="false"/>
+    </element>
+    <element id="Questionnaire.item.text.extension:groupText-renderingStyle">
+      <path value="Questionnaire.item.text.extension"/>
+      <sliceName value="groupText-renderingStyle"/>
+      <min value="0"/>
+      <max value="1"/>
+      <type>
+        <code value="Extension"/>
+        <profile value="http://hl7.org/fhir/StructureDefinition/rendering-style"/>
+      </type>
+      <mustSupport value="false"/>
+      <mapping>
+        <identity value="ihe-sdc"/>
+        <map value="../style"/>
+      </mapping>
+    </element>
+    <element id="Questionnaire.item.text.extension:groupText-xhtml">
+      <path value="Questionnaire.item.text.extension"/>
+      <sliceName value="groupText-xhtml"/>
+      <min value="0"/>
+      <max value="1"/>
+      <type>
+        <code value="Extension"/>
+        <profile value="http://hl7.org/fhir/StructureDefinition/rendering-xhtml"/>
+      </type>
+      <mustSupport value="false"/>
+      <mapping>
+        <identity value="ihe-sdc"/>
+        <map value="(strings can contain xhtml)"/>
+      </mapping>
+    </element>
+    <element id="Questionnaire.item.answerOption">
+      <path value="Questionnaire.item.answerOption"/>
+      <mustSupport value="false"/>
+    </element>
+    <element id="Questionnaire.item.answerOption.valueString">
+      <path value="Questionnaire.item.answerOption.valueString"/>
+      <mustSupport value="false"/>
+    </element>
+    <element id="Questionnaire.item.answerOption.valueString.extension:optionString-renderingStyle">
+      <path value="Questionnaire.item.answerOption.valueString.extension"/>
+      <sliceName value="optionString-renderingStyle"/>
+      <min value="0"/>
+      <max value="1"/>
+      <type>
+        <code value="Extension"/>
+        <profile value="http://hl7.org/fhir/StructureDefinition/rendering-style"/>
+      </type>
+      <mustSupport value="false"/>
+      <mapping>
+        <identity value="ihe-sdc"/>
+        <map value="../style"/>
+      </mapping>
+    </element>
+    <element id="Questionnaire.item.answerOption.valueString.extension:optionString-xhtml">
+      <path value="Questionnaire.item.answerOption.valueString.extension"/>
+      <sliceName value="optionString-xhtml"/>
+      <min value="0"/>
+      <max value="1"/>
+      <type>
+        <code value="Extension"/>
+        <profile value="http://hl7.org/fhir/StructureDefinition/rendering-xhtml"/>
+      </type>
+      <mustSupport value="false"/>
+      <mapping>
+        <identity value="ihe-sdc"/>
+        <map value="(strings can contain xhtml)"/>
+      </mapping>
+    </element>
+    <element id="Questionnaire.item.answerOption.valueCoding">
+      <path value="Questionnaire.item.answerOption.valueCoding"/>
+      <mustSupport value="false"/>
+    </element>
+    <element id="Questionnaire.item.answerOption.valueCoding.display">
+      <path value="Questionnaire.item.answerOption.valueCoding.display"/>
+      <mustSupport value="false"/>
+    </element>
+    <element id="Questionnaire.item.answerOption.valueCoding.display.extension:optionDisplay-renderingStyle">
+      <path value="Questionnaire.item.answerOption.valueCoding.display.extension"/>
+      <sliceName value="optionDisplay-renderingStyle"/>
+      <min value="0"/>
+      <max value="1"/>
+      <type>
+        <code value="Extension"/>
+        <profile value="http://hl7.org/fhir/StructureDefinition/rendering-style"/>
+      </type>
+      <mustSupport value="false"/>
+      <mapping>
+        <identity value="ihe-sdc"/>
+        <map value="../style"/>
+      </mapping>
+    </element>
+    <element id="Questionnaire.item.answerOption.valueCoding.display.extension:optionDisplay-xhtml">
+      <path value="Questionnaire.item.answerOption.valueCoding.display.extension"/>
+      <sliceName value="optionDisplay-xhtml"/>
+      <min value="0"/>
+      <max value="1"/>
+      <type>
+        <code value="Extension"/>
+        <profile value="http://hl7.org/fhir/StructureDefinition/rendering-xhtml"/>
+      </type>
+      <mustSupport value="false"/>
+      <mapping>
+        <identity value="ihe-sdc"/>
+        <map value="(strings can contain xhtml)"/>
+      </mapping>
+    </element>
+  </differential>
+</StructureDefinition>
