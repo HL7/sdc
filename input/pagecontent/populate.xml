@@ -371,7 +371,7 @@
       Include the <a href="StructureDefinition-sdc-questionnaire-launchContext.html">questionnaire-launchContext</a> extension to identify any contextual information
       that needs to be passed into the population process.  Typical contexts would be the Patient or Encounter resources in whose context the questionnaire is
       being completed, but other elements are also possible (e.g. an AdverseEvent if performing an adverse event report).  These 'context' elements will be
-      available as expression variables for use in subsequent steps.</li>
+      available as expression variables for use in subsequent steps. </li>
     <li>
       Use the <a href="{{site.data.fhir.path}}extension-variable.html">variable</a> extension to query for any additional data required, possibly based on
       context variables set in the previous step, and/or other variable extensions.  (NOTE: questionnaire-launchContext elements are evaluated first, then all
@@ -416,6 +416,10 @@
       An item is not allowed have both initial.value and initialExpression present since both generate values before the user has access to the form.</li>
     <li>
       If the candidateExpression or contentExpression resolve to an empty set, do not display them.</li>
+	  <li>
+	  Variables made available by launch context may be used by any expression within the Questionnaire, however they are most safely used within initialExpression.  
+	  Because the launch context might vary each time the QuestionnaireResponse is opened or edited, by populating launchContext into the values of (possibly hidden) 
+	  questions via iniitalExpression, the 'original' context in which the QuestionnaireResponse was created can be retained..</li>
     <li>
       Unlike initialExpressions, candidateExpressions can appear on groups as well as questions.  If they appear on a group item and the group item is allowed
       to repeat, then a separate group instance is created for each repetition the user selects from the candidates.  The variable named in the candidateExpression
