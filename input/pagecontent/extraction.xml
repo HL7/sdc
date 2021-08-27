@@ -379,4 +379,20 @@
       The ability of StructureMaps to reference other StructureMaps allows for the possibility of re-use if certain sections of multiple questionnaires are
       consistent.</li>
   </ul>
+  <a name="output-expectations"> </a>
+  <h4>Output expectations</h4>
+    <p>
+    Following are the output expectations of $extract:
+  </p>
+  <ul>
+    <li>
+      Observation-based will always produce a 'transaction' Bundle, even if it's only creating or updating a single Observation.
+    </li>
+    <li>
+      Definition-based will always produce a 'transaction' Bundle that indicates what resources are to be created or updated.  The resources within the transaction can be anything (including Bundle resources such as FHIR documents)
+    </li>
+    <li>
+      StructureMap-based may produce either a 'transaction' Bundle or a single resource instance (though the instance might itself be a different type of Bundle, such as a document or collection).  It is possible for StructureMaps to map to non-FHIR data structures, however there's no "built-in" mechanism to serialize such models, so additional information would need to be passed into the $extract process to guide such serialization.  Support for non-FHIR extracts is outside the scope of this specification.
+    </li>
+  </ul>
 </div>
