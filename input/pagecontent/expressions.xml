@@ -398,6 +398,11 @@
       </tr>
     </tbody>
   </table>
+  <p>
+  Please note that the expressions on calculated, initial and answerExpression are expected to resolve to the same type as the question type, allowing for
+  the [implicit conversions](<a href="http://hl7.org/fhirpath/#conversion">http://hl7.org/fhirpath/#conversion</a>) defined in FHIRPath. The only exception is that an expression that resolves
+  to a Resource can satisfy a question of type 'Reference', in which case the result will be treated as a Reference to the returned resource.
+  </p>
   <a name="otherextension"> </a>
   <h3>Other extensions</h3>
   <p>
@@ -575,5 +580,13 @@
     or system filling in the questionnaire does not have permission to access the relevant data.  Systems should fail gracefully in such situations.
     Populated or calculated elements can be left empty.  Extracted elements can be omitted.  If control logic such as enableWhen is impacted, either display
     a helpful error message or permit entry of potentially relevant information if it cannot be determined whether the data should be allowed or not.
+  </p>
+  <a name="expressionerrors"> </a>
+  <h3>Dealing with expression errors</h3>
+  <p>
+    In some cases, a Questionnaire may contain expressions that result in an error. This could be the result of an invalid expression, unexpected data, or an expression
+	handling engine that does not handle some aspect of the expression provided. In such cases, Form Fillers SHOULD attempt to allow the user to fill out the QuestionnaireResponse
+	in spite of the issue, though they SHOULD also warn the user that there was a problem with the Questionnaire. If expressions are involved in display (e.g. enableWhen)
+	or validation logic, Form Fillers SHOULD prohibit the QuestionnaireResponse status from being set to 'completed' and provide an explanation of the problem to the user.
   </p>
 </div>
