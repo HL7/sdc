@@ -374,8 +374,8 @@
       available as expression variables for use in subsequent steps. </li>
     <li>
       Use the <a href="{{site.data.fhir.path}}extension-variable.html">variable</a> extension to query for any additional data required, possibly based on
-      context variables set in the previous step, and/or other variable extensions.  (NOTE: questionnaire-launchContext elements are evaluated first, then all
-      Questionnaire-level variables, in order of appearance in the Questionnaire.)</li>
+      context variables set in the previous step, and/or other variable extensions.  (NOTE: Elements <b>SHALL</b> be evaluated in the following order: questionnaire-launchContext
+	  elements, then all Questionnaire-level variables in order of appearance in the Questionnaire.)</li>
     <li>
       If appropriate, use the <a href="StructureDefinition-sdc-questionnaire-itemPopulationContext.html">questionnaire-itemPopulationContext</a> on group items to establish the context for
       a group.  When populating the questionnaire, this will do two things: it will create a group repetition for each row returned from the query; and it will
