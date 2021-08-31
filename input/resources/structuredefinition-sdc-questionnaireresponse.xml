@@ -17,9 +17,19 @@
       <path value="QuestionnaireResponse"/>
       <short value="SDC Questionnaire Response"/>
       <definition value="Sets expectations for supported capabilities for questionnaire responses for SDC-conformant systems."/>
+	   <constraint> 
+        <extension url="http://hl7.org/fhir/StructureDefinition/elementdefinition-bestpractice">
+          <valueBoolean value="true"/> 
+        </extension> 
+        <key value="sdcqr-1"/> 
+        <severity value="warning"/> 
+        <human value="Subject SHOULD be present (searching is difficult without subject).  Almost all QuestionnaireResponses should be with respect to some sort of subject."/> 
+		  <expression value="subject.exists()"/> 
+        <xpath value="exists(f:subject)"/> 
+      </constraint>
       <alias value="Form Data"/>
       <mustSupport value="false"/>
-    </element>
+    </element> 
     <element id="QuestionnaireResponse.extension:signature">
       <path value="QuestionnaireResponse.extension"/>
       <sliceName value="signature"/>
