@@ -76,6 +76,17 @@
       <path value="Questionnaire.item"/>
       <mustSupport value="false"/>
     </element>
+	 <element id="Questionnaire.item.extension:itemImage">
+      <path value="Questionnaire.item.extension"/>
+      <sliceName value="itemImage"/>
+      <min value="0"/>
+      <max value="1"/>
+      <type>
+        <code value="Extension"/>
+        <profile value="http://hl7.org/fhir/uv/sdc/StructureDefinition/cpg-itemImage"/>
+      </type>
+      <mustSupport value="false"/>
+    </element>
     <element id="Questionnaire.item.extension:itemOptionalDisplay">
       <path value="Questionnaire.item.extension"/>
       <sliceName value="itemOptionalDisplay"/>
@@ -302,6 +313,17 @@
     </element>
     <element id="Questionnaire.item.answerOption">
       <path value="Questionnaire.item.answerOption"/>
+      <mustSupport value="false"/>
+    </element>
+	<element id="Questionnaire.item.answerOption.extension:responseImage">
+      <path value="Questionnaire.item.answerOption.extension"/>
+      <sliceName value="responseImage"/>
+      <min value="0"/>
+      <max value="1"/>
+      <type>
+        <code value="Extension"/>
+        <profile value="http://hl7.org/fhir/uv/sdc/StructureDefinition/cpg-responseImage"/>
+      </type>
       <mustSupport value="false"/>
     </element>
     <element id="Questionnaire.item.answerOption.valueString">

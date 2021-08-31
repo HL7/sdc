@@ -72,12 +72,6 @@
     </element>
     <element id="QuestionnaireResponse.subject">
       <path value="QuestionnaireResponse.subject"/>
-      <min value="1"/>
-      <max value="1"/>
-      <type>
-        <code value="Reference"/>
-        <targetProfile value="http://hl7.org/fhir/StructureDefinition/Patient"/>
-      </type>
       <mustSupport value="true"/>
     </element>
     <element id="QuestionnaireResponse.encounter">
@@ -102,6 +96,17 @@
     <element id="QuestionnaireResponse.item">
       <path value="QuestionnaireResponse.item"/>
       <mustSupport value="true"/>
+    </element>
+	 <element id="QuestionnaireResponse.item.extension:itemImage">
+      <path value="QuestionnaireResponse.item.extension"/>
+      <sliceName value="itemImage"/>
+      <min value="0"/>
+      <max value="1"/>
+      <type>
+        <code value="Extension"/>
+        <profile value="http://hl7.org/fhir/uv/sdc/StructureDefinition/cpg-itemImage"/>
+      </type>
+      <mustSupport value="false"/>
     </element>
     <element id="QuestionnaireResponse.item.extension:ItemSignature">
       <path value="QuestionnaireResponse.item.extension"/>
@@ -129,6 +134,17 @@
       <min value="0"/>
       <max value="*"/>
       <mustSupport value="true"/>
+    </element>
+	<element id="QuestionnaireResponse.item.answer.extension:responseImage">
+      <path value="QuestionnaireResponse.item.answer.extension"/>
+      <sliceName value="responseImage"/>
+      <min value="0"/>
+      <max value="1"/>
+      <type>
+        <code value="Extension"/>
+        <profile value="http://hl7.org/fhir/uv/sdc/StructureDefinition/cpg-responseImage"/>
+      </type>
+      <mustSupport value="false"/>
     </element>
     <element id="QuestionnaireResponse.item.answer.extension:ordinalValue">
       <path value="QuestionnaireResponse.item.answer.extension"/>
