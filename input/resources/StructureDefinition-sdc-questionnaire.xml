@@ -155,6 +155,28 @@
       </type>
       <mustSupport value="true"/>
     </element>
+	 <element id="Questionnaire.item.extension:UnitOpen">
+      <path value="Questionnaire.item.extension"/>
+      <sliceName value="UnitOpen"/>
+      <min value="0"/>
+      <max value="1"/>
+      <type>
+        <code value="Extension"/>
+        <profile value="http://hl7.org/fhir/uv/sdc/StructureDefinition/sdc-questionnaire-unitOpen"/>
+      </type>
+      <mustSupport value="false"/>
+    </element>
+	<element id="Questionnaire.item.extension:UnitSupplementalSystem">
+      <path value="Questionnaire.item.extension"/>
+      <sliceName value="UnitSupplementalSystem"/>
+      <min value="0"/>
+      <max value="1"/>
+      <type>
+        <code value="Extension"/>
+        <profile value="http://hl7.org/fhir/uv/sdc/StructureDefinition/sdc-questionnaire-unitSupplementalSystem"/>
+      </type>
+      <mustSupport value="false"/>
+    </element>
     <element id="Questionnaire.item.linkId">
       <path value="Questionnaire.item.linkId"/>
       <min value="1"/>

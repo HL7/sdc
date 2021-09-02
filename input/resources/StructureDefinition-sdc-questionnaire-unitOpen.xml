@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<StructureDefinition xmlns="http://hl7.org/fhir">
+  <id value="sdc-questionnaire-unitOpen"/>
+  <url value="http://hl7.org/fhir/uv/sdc/StructureDefinition/sdc-questionnaire-unitOpen"/>
+  <name value="UnitOpen"/>
+  <title value="Units open?"/>
+  <status value="draft"/>
+  <description value="Indicates whether the list of supported units (conveyed in other extensions) are the exhaustive list from which the user must choose or whether they're able to select alternate codes or specify a string."/>
+  <fhirVersion value="4.0.1"/>
+  <kind value="complex-type"/>
+  <abstract value="false"/>
+  <context>
+    <type value="element"/>
+    <expression value="Questionnaire.item"/>
+  </context>
+  <type value="Extension"/>
+  <baseDefinition value="http://hl7.org/fhir/StructureDefinition/Extension"/>
+  <derivation value="constraint"/>
+   <differential>
+    <element id="Extension">
+      <path value="Extension"/>
+      <short value="Used to denote if user can specify alternate codes"/>
+      <definition value="Indicates whether the list of supported units (conveyed in other extensions) are the exhaustive list from which the user must choose or whether they're able to select alternate codes or specify a string."/>
+      <min value="0"/>
+      <max value="1"/>
+    </element>
+    <element id="Extension.url">
+      <path value="Extension.url"/>
+      <type>
+        <code value="uri"/>
+      </type>
+      <fixedUri value="http://hl7.org/fhir/uv/sdc/StructureDefinition/sdc-questionnaire-unitOpen"/>
+    </element>
+    <element id="Extension.value[x]">
+      <path value="Extension.value[x]"/>
+	  <min value="1"/>
+      <max value="1"/>
+      <type>
+        <code value="code"/>
+      </type>
+	   <binding>
+        <strength value="required"/>
+        <description value="The types of constraints possible on a question item that has a list of permitted answers"/>
+        <valueSet value="http://hl7.org/fhir/ValueSet/questionnaire-answer-constraint"/>
+      </binding>
+    </element>
+  </differential>
+</StructureDefinition>
