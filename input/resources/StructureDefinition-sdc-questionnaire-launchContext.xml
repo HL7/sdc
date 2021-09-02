@@ -43,9 +43,16 @@
     </element>
     <element id="Extension.extension:name.value[x]">
       <path value="Extension.extension.value[x]"/>
+	  <min value="1"/>
+      <max value="1"/>
       <type>
-        <code value="id"/>
+        <code value="Coding"/>
       </type>
+	  <binding>
+        <strength value="extensible"/>
+        <description value="Launch context codes for use in defining questionnaires context at launch time (NOTE: the Coding.code will be used for the variable name and that (at present) there is no support for Questionnaires that use multiple launch contexts which share a common code but different code systems.  Also, all launch context codes must meet the requirements to be a valid FHIRPath name.)."/>
+        <valueSet value="http://hl7.org/fhir/uv/sdc/ValueSet/launchContext"/>
+      </binding>
     </element>
     <element id="Extension.extension:type">
       <path value="Extension.extension"/>
@@ -64,13 +71,14 @@
     </element>
     <element id="Extension.extension:type.value[x]">
       <path value="Extension.extension.value[x]"/>
+	  <min value="1"/>
+      <max value="1"/>
       <type>
         <code value="code"/>
       </type>
-      <binding>
+	  <binding>
         <strength value="required"/>
-        <description value="Launch context codes for use in defining questionnaires context at launch time"/>
-        <valueSet value="http://hl7.org/fhir/uv/sdc/ValueSet/launchContext"/>
+        <valueSet value="http://hl7.org/fhir/resource-types"/>
       </binding>
     </element>
     <element id="Extension.extension:description">
@@ -90,6 +98,8 @@
     </element>
     <element id="Extension.extension:description.value[x]">
       <path value="Extension.extension.value[x]"/>
+	  <min value="1"/>
+      <max value="1"/>
       <type>
         <code value="string"/>
       </type>
