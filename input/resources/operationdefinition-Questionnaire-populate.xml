@@ -82,6 +82,14 @@
     <documentation value="If specified and set to `true` (and the server is capable), the server should use what resources and other knowledge it has about the referenced subject when pre-populating answers to questions."/>
     <type value="boolean"/>
   </parameter>
+   <parameter>
+    <name value="launchContext"/>
+    <use value="in"/>
+    <min value="0"/>
+    <max value="1"/>
+    <documentation value="Resources that provide context for form processing logic (pre-population) when creating/displaying/editing a QuestionnaireResponse."/>
+    <type value="Extension"/>
+  </parameter>
   <parameter>
     <name value="questionnaire"/>
     <use value="out"/>
