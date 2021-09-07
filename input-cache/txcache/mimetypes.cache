@@ -29,3 +29,55 @@ v: {
   "error" : ""
 }
 -------------------------------------------------------------------------------------
+{"hierarchical" : true, "valueSet" :{
+  "resourceType" : "ValueSet",
+  "compose" : {
+    "include" : [{
+      "system" : "urn:ietf:bcp:13",
+      "concept" : [{
+        "code" : "application/sparql-results+xml",
+        "display" : "SPARQL"
+      },
+      {
+        "code" : "application/sql",
+        "display" : "SQL"
+      },
+      {
+        "code" : "application/xquery",
+        "display" : "X-Query"
+      }]
+    }]
+  }
+}}####
+e: {
+  "valueSet" : {
+  "resourceType" : "ValueSet",
+  "language" : "en",
+  "status" : "active",
+  "expansion" : {
+    "identifier" : "urn:uuid:910ebc10-f061-4092-875c-8e3ad979520b",
+    "timestamp" : "2021-09-02T16:05:23.948Z",
+    "parameter" : [{
+      "name" : "limitedExpansion",
+      "valueBoolean" : true
+    }],
+    "contains" : [{
+      "system" : "urn:ietf:bcp:13",
+      "code" : "application/sparql-results+xml",
+      "display" : "application/sparql-results+xml"
+    },
+    {
+      "system" : "urn:ietf:bcp:13",
+      "code" : "application/sql",
+      "display" : "application/sql"
+    },
+    {
+      "system" : "urn:ietf:bcp:13",
+      "code" : "application/xquery",
+      "display" : "application/xquery"
+    }]
+  }
+},
+  "error" : ""
+}
+-------------------------------------------------------------------------------------

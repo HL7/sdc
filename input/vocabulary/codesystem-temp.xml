@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<CodeSystem xmlns="http://hl7.org/fhir" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://hl7.org/fhir ../../src-generated/schemas/fhir-single.xsd">
+<CodeSystem xmlns="http://hl7.org/fhir" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://hl7.org/fhir ../../input-cache/schemas/r4/fhir-single.xsd">
   <id value="temp"/>
   <url value="http://hl7.org/fhir/uv/sdc/CodeSystem/temp"/>
   <name value="TemporaryCodes"/>
@@ -14,6 +14,10 @@
   <concept>
     <code value="questionnaire"/>
     <display value="A canonical reference (possibly version-specific) to the Questionnaire to be completed"/>
+  </concept>
+  <concept>
+    <code value="questionnaire-response"/>
+    <display value="A reference to the QuestionnaireResponse resulting from the requested action"/>
   </concept>
   <concept>
     <code value="response-endpoint"/>

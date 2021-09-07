@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ValueSet xmlns="http://hl7.org/fhir" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://hl7.org/fhir ../../input-cache/schemas/r4/fhir-single.xsd">
+  <id value="task-code"/>
+  <url value="http://hl7.org/fhir/uv/sdc/ValueSet/task-code"/>
+  <name value="TaskCode"/>
+  <title value="SDC Task Code"/>
+  <status value="draft"/>
+  <description value="The codes allowed for an SDC Task seeking completion of a Questionnaire"/>
+  <compose>
+    <include>
+      <system value="http://hl7.org/fhir/uv/sdc/CodeSystem/temp"/>
+      <concept>
+        <code value="complete-questionnaire"/>
+      </concept>
+    </include>
+    <include>
+      <system value="http://hl7.org/fhir/CodeSystem/task-code"/>
+      <concept>
+        <code value="fulfill"/>
+      </concept>
+    </include>
+  </compose>
+</ValueSet>

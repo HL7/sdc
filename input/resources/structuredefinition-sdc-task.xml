@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<StructureDefinition xmlns="http://hl7.org/fhir" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://hl7.org/fhir ../../src-generated/schemas/fhir-single.xsd">
+<StructureDefinition xmlns="http://hl7.org/fhir" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://hl7.org/fhir ../../input-cache/schemas/r4/fhir-single.xsd">
   <id value="sdc-task"/>
   <url value="http://hl7.org/fhir/uv/sdc/StructureDefinition/sdc-task"/>
   <name value="TaskQuestionnaire"/>
   <title value="Task Questionnaire"/>
   <status value="draft"/>
-  <description value="Defines how Task is used to as for a Questionnaire to be completed"/>
+  <description value="Defines how Task is used to ask for a Questionnaire to be completed"/>
   <fhirVersion value="4.0.1"/>
   <kind value="resource"/>
   <abstract value="false"/>
@@ -24,6 +24,17 @@
       <type>
         <code value="code"/>
       </type>
+      <constraint>
+        <key value="sdc-t1"/>
+        <severity value="error"/>
+        <human value="Either code is 'fulfill', focus is ServiceRequest and no 'questionnaire' input; or code is 'complete-questionnaire', focus is omitted and 'questionnaire' input is present"/>
+        <expression value="(code.coding.where(code='fulfill' and system='http://hl7.org/fhir/CodeSystem/task-code').exists() and 
+                            (focus.resolve() is ServiceRequest) and 
+                            input.where(type.coding.where(system='http://hl7.org/fhir/uv/sdc/CodeSystem/temp' and code='questionnaire')).exists().not())
+                        or (code.coding.where(code='complete-questionnaire' and system='http://hl7.org/fhir/uv/sdc/CodeSystem/temp').exists() and 
+                            focus.exists().not() and 
+                            input.where(type.coding.where(system='http://hl7.org/fhir/uv/sdc/CodeSystem/temp' and code='questionnaire')).exists())"/>
+      </constraint>
       <mustSupport value="true"/>
     </element>
     <element id="Task.intent">
@@ -37,24 +48,23 @@
       <type>
         <code value="CodeableConcept"/>
       </type>
-      <patternCodeableConcept>
-        <coding>
-          <system value="http://hl7.org/fhir/uv/sdc/CodeSystem/temp"/>
-          <code value="complete-questionnaire"/>
-        </coding>
-      </patternCodeableConcept>
       <mustSupport value="true"/>
+      <binding>
+        <strength value="required"/>
+        <valueSet value="http://hl7.org/fhir/uv/sdc/ValueSet/task-code"/>
+      </binding>
     </element>
     <element id="Task.focus">
       <path value="Task.focus"/>
-      <short value="Questionnaire to complete"/>
-      <min value="0"/>
-      <max value="0"/>
-      <mustSupport value="false"/>
+      <type>
+        <code value="Reference"/>
+        <targetProfile value="http://hl7.org/fhir/uv/sdc/StructureDefinition/sdc-servicerequest"/>
+      </type>
+      <mustSupport value="true"/>    
     </element>
     <element id="Task.for">
       <path value="Task.for"/>
-      <short value="Record Questionnaire is for"/>
+      <short value="Patient or other Questionnaire is for"/>
       <min value="0"/>
       <max value="1"/>
       <mustSupport value="true"/>
@@ -97,7 +107,7 @@
       <path value="Task.input"/>
       <sliceName value="questionnaire"/>
       <definition value="Indicates the questionnaire to be completed."/>
-      <min value="1"/>
+      <min value="0"/>
       <max value="1"/>
       <mustSupport value="true"/>
     </element>
@@ -156,6 +166,51 @@
       <max value="1"/>
       <type>
         <code value="url"/>
+      </type>
+      <mustSupport value="true"/>
+    </element>
+    <element id="Task.output">
+      <path value="Task.output"/>
+      <slicing>
+        <discriminator>
+          <type value="pattern"/>
+          <path value="type"/>
+        </discriminator>
+        <rules value="open"/>
+      </slicing>
+      <mustSupport value="true"/>
+    </element>
+    <element id="Task.output:response">
+      <path value="Task.output"/>
+      <sliceName value="response"/>
+      <definition value="Indicates the questionnaire response resulting from the request."/>
+      <min value="0"/>
+      <max value="1"/>
+      <mustSupport value="true"/>
+    </element>
+    <element id="Task.output:response.type">
+      <path value="Task.output.type"/>
+      <min value="1"/>
+      <max value="1"/>
+      <type>
+        <code value="CodeableConcept"/>
+      </type>
+      <patternCodeableConcept>
+        <coding>
+          <system value="http://hl7.org/fhir/uv/sdc/CodeSystem/temp"/>
+          <code value="questionnaire-response"/>
+        </coding>
+      </patternCodeableConcept>
+      <mustSupport value="true"/>
+    </element>
+    <element id="Task.output:response.value[x]">
+      <path value="Task.output.value[x]"/>
+      <short value="url"/>
+      <min value="1"/>
+      <max value="1"/>
+      <type>
+        <code value="Reference"/>
+        <targetProfile value="http://hl7.org/fhir/StructureDefinition/QuestionnaireResponse"/>
       </type>
       <mustSupport value="true"/>
     </element>

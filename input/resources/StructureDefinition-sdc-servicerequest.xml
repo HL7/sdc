@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<StructureDefinition xmlns="http://hl7.org/fhir" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://hl7.org/fhir ../../input-cache/schemas/r4/fhir-single.xsd">
+  <id value="sdc-servicerequest"/>
+  <url value="http://hl7.org/fhir/uv/sdc/StructureDefinition/sdc-servicerequest"/>
+  <name value="QuestionnaireServiceRequest"/>
+  <title value="Questionnaire Service Request"/>
+  <status value="draft"/>
+  <description value="Defines how ServiceRequest is used to ask for a Questionnaire to be completed"/>
+  <fhirVersion value="4.0.1"/>
+  <kind value="resource"/>
+  <abstract value="false"/>
+  <type value="ServiceRequest"/>
+  <baseDefinition value="http://hl7.org/fhir/StructureDefinition/ServiceRequest"/>
+  <derivation value="constraint"/>
+    <differential>
+    <element id="ServiceRequest">
+      <path value="ServiceRequest"/>
+      <mustSupport value="false"/>
+    </element>
+    <element id="ServiceRequest.extension:questionnaire">
+      <path value="ServiceRequest.extension"/>
+      <sliceName value="questionnaire"/>
+      <min value="1"/>
+      <type>
+        <code value="Extension"/>
+        <profile value="http://hl7.org/fhir/uv/sdc/StructureDefinition/sdc-servicerequest-questionnaire"/>
+      </type>
+      <mustSupport value="false"/>
+    </element>
+    <element id="ServiceRequest.status">
+      <path value="ServiceRequest.status"/>
+      <mustSupport value="true"/>
+    </element>
+    <element id="ServiceRequest.intent">
+      <path value="ServiceRequest.intent"/>
+      <mustSupport value="true"/>
+    </element>
+    <element id="ServiceRequest.doNotPerform">
+      <path value="ServiceRequest.doNotPerform"/>
+      <comment value="If the element is present, the value must be 'false'"/>
+      <fixedBoolean value="false"/>
+    </element>
+    <element id="ServiceRequest.code">
+      <path value="ServiceRequest.code"/>
+      <min value="1"/>
+      <patternCodeableConcept>
+        <coding>
+          <system value="http://hl7.org/fhir/uv/sdc/CodeSystem/temp"/>
+          <code value="complete-questionnaire"/>
+        </coding>
+      </patternCodeableConcept>
+      <mustSupport value="true"/>
+    </element>
+    <element id="ServiceRequest.subject">
+      <path value="ServiceRequest.subject"/>
+      <short value="Patient or other Questionnaire is for"/>
+      <min value="1"/>
+      <max value="1"/>
+      <mustSupport value="true"/>
+    </element>
+    <element id="ServiceRequest.occurrence[x]">
+      <path value="ServiceRequest.occurrence[x]"/>
+      <short value="When (and possibly how often) the Questionnaire needs to be completed"/>
+      <mustSupport value="true"/>
+    </element>
+    <element id="ServiceRequest.requester">
+      <path value="ServiceRequest.requester"/>
+      <min value="1"/>
+      <max value="1"/>
+      <mustSupport value="true"/>
+    </element>
+    <element id="ServiceRequest.performer">
+      <path value="ServiceRequest.performer"/>
+      <short value="Who should complete questionnaire"/>
+      <min value="0"/>
+      <max value="1"/>
+      <mustSupport value="true"/>
+    </element>
+    <element id="ServiceRequest.reasonCode">
+      <path value="ServiceRequest.reasonCode"/>
+      <mustSupport value="true"/>
+    </element>
+  </differential>
+</StructureDefinition>
