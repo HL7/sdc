@@ -61,15 +61,35 @@
 	<h3>Transaction Integrity</h3>
 	<p>
     In some cases, the recipient of a completed <a href="{{site.data.fhir.path}}questionnaireresponse.html">QuestionnaireResponse</a> may require that the response
-    be accompanied by a <a href="{{site.data.fhir.path}}provenance.html">Provenance</a> or, more rarely an <a href="{{site.data.fhir.path}}auditevent.html">AuditEvent</a>
-    as part of a single unit of work.  (Audit is typically managed by the server and client locally or by a shared service that does not store the
-    clinical information.)  This can be accomplished by mechanisms outside the scope of this implementation guide by using
-    FHIR <a href="{{site.data.fhir.path}}messaging.html">messages</a> or FHIR <a href="{{site.data.fhir.path}}documents.html">documents</a>.  However, within the scope of
-    this implementation guide, this is accomplished in pseudo-RESTful fashion using the
-    <a href="{{site.data.fhir.path}}http.html#transaction">Transaction</a>
-    mechanism.  Regardless of means, the Provenance and/or AuditEvent event point to the QuestionnaireResponse by full version-specific URL using the
-    <code>Provenance.entity.reference</code> and <code>AuditEvent.object.reference</code> elements.
+    be accompanied by additional information about the creation of the QuestionnaireResponse such as:
   </p>
+  <ul>
+    <li>What tooling was used to render the form?</li>
+    <li>If someone transcribed the information from paper or another representation, and if so who?</li>
+    <li>If certain answers were populated from existing data, what those other data sources?</li>
+    <li>Whether completion of the form was overseen by anyone, and if so who?</li>
+    <li>etc.</li>
+  </ul>
+  <p>
+    In FHIR, such information is represented using a <a href="{{site.data.fhir.path}}provenance.html">Provenance</a> or, more rarely an 
+    <a href="{{site.data.fhir.path}}auditevent.html">AuditEvent</a>.  (Audit is typically managed by the server and client locally or by a shared service that does not store 
+    the clinical information.)  However, because this information is intrinsically tied to the QuestionnaireResponse instance, it needs to be conveyed alongside that instance 
+    as a single unit of work. This can be accomplished by mechanisms outside the scope of this implementation guide by using
+    FHIR <a href="{{site.data.fhir.path}}messaging.html">messages</a> or FHIR <a href="{{site.data.fhir.path}}documents.html">documents</a>.  However, within the scope of
+    this implementation guide, communicating both records together is accomplished in one of two ways:
+  </p>
+  <ul>
+    <li>
+      The Provenance associated with a resource may be transmitted along with the resource in a POST or a PUT using the <code>X-Provenance</code> as described in the core
+      specification <a href="{{site.data.fhir.path}}provenance.html#header">here</a>.
+    </li>
+    <li>
+      The QuestionnaireResponse and its associated Provenance (or more rarely AuditEvent) may both be sent in a single RESTful 
+      <a href="{{site.data.fhir.path}}http.html#transaction">Transaction</a> Bundle, where there is a either an entry POSTing both records, or one entry PUTting an update
+      of the QuestionnaireResponse and a second POSTing the Provenance/AuditEvent corresponding to the metadata for that update.  In either case, the Provenance or
+      AuditEvent will point to the version-specific identifier of the QuestionnaireResponse, using either <code>Provenance.entity.reference</code> or <code>AuditEvent.object.reference</code>
+    </li>
+  </ul>
 	<a name="consent"> </a>
 	<h4>Consent</h4>
 	<p>
