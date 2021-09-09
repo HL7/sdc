@@ -12,6 +12,9 @@
     to write generic software that can convert any arbitrary QuestionnaireResponse into appropriate FHIR resources leveraging metadata embedded in the
     Questionnaire.  This portion of the SDC guide defines mechanisms for doing so.
   </p>
+	<p>
+	  
+	</p>
   <a name="caveats"> </a>
   <h3>Caveats, considerations and rules with form data extraction</h3>
   <ul>
@@ -31,6 +34,12 @@
       Once a QuestionnaireResponse has been converted, it might not be necessary to retain the QuestionnaireResponse any longer, as all data access and
       subsequent maintenance will occur through the 'traditional' resources.  However, in many environments the QuestionnaireResponse will be retained anyhow
       to keep a record of the original source-of-truth and for traceability reasons.</li>
+    <li>
+      As with population, 'extraction' can happen in one of two ways: The <a href="CapabilityStatement-sdc-form-filler.html">SDC Form Filler</a> can invoke the
+      <a href="OperationDefinition-QuestionnaireResponse-extract.html">$extract</a> operation on a <a href="CapabilityStatement-sdc-form-manager.html">SDC Form Manager</a> 
+      to generate the resource or Bundle containing the information expressed in the QuestionnaireResponse.
+      Alternatively, the <a href="CapabilityStatement-sdc-form-filler.html">SDC Form Filler</a> can perform the extraction process locally without relying
+      on an external process.  Some Form Fillers might rely on the operation approach for certain extraction techniques and perform others internally.</li>
     <li>
       When resources have been generated from a QuestionnaireResponse, the <a href="{{site.data.fhir.path}}provenance.html">Provenance</a> instance associated
       with the creation of the resource instance(s) can and SHOULD include an <code>entity</code> reference of type 'source' that points back to the original

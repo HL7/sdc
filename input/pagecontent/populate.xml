@@ -6,6 +6,23 @@
 	  <a href="CapabilityStatement-sdc-form-manager.html">Form Manager</a> system can query for the relevant information and automatically fill in some of the answers.  FHIR's
 	  REST interface provides a standard way to query this data, regardless of the type of client.
 	</p>
+	<p>
+	  This 'population' process can happen in one of two ways:
+	</p>
+	<ul>
+    <li>
+      The <a href="CapabilityStatement-sdc-form-filler.html">SDC Form Filler</a> can invoke the <a href="OperationDefinition-Questionnaire-populate.html">$populate</a> 
+      operation on a <a href="CapabilityStatement-sdc-form-manager.html">SDC Form Manager</a> to create an initial QuestionnaireResponse before exposing the form
+      to the user.  This approach is known as 'pre-population' and is used by 'simple' Form Fillers that don't have the capacity to execute the logic needed to populate the form themselves.
+      This approach is more limited because the population process can't take into account any user-provided information, nor can it provide guidance to the
+      user.  Either the population process can fill in an answer or it can't.
+    </li>
+    <li>
+      Alternatively, the <a href="CapabilityStatement-sdc-form-filler.html">SDC Form Filler</a> can "interactively" handle the population process internally without invoking
+      an operation.  This is called "continuous population".  In this case, there is no need to try to populate answers for all questions at once and answers to previous questions can be used as part of
+      the logic used to populate subsequent ones.  As well, the population process can provide guidance rather than always providing outright answers.
+    </li>
+  </ul>
   <p>
 	  There are four different modes of "population" possible:
 	</p>
@@ -15,20 +32,26 @@
       <b>Full population:</b> The questionnaire can identify the specific data element (or set of data elements) that should be used to populate the
       form.  No user intervention is required other than to review the content.  E.g. capturing the patient's gender, birth date, most recent weight
       measurement, etc.  In some cases, this might involve performing a calculation based on data retrieved.  For example, determining the patient's BMI by
-      querying the most recent weight and height observations.</li>
+      querying the most recent weight and height observations.  This is the only type of population the <a href="OperationDefinition-Questionnaire-populate.html">$populate</a>
+      operation can perform (and then, only if the logic is based entirely on context or on answers to prior questions that were able to be populated automatically).</li>
     <li>
       <b>Choice selection:</b> The questionnaire can identify the candidate answers, but the user must choose which of those should be included in the form
       response.  For example, a question might say "List any relevant concomitant medical conditions".  The notion of "relevant" will typically require human
       decision-making.  However, the system rendering the questionnaire can easily bring up a list of concomitant medical conditions and allow the user to
-      select which ones are "relevant" and include those in the answer.</li>
+      select which ones are "relevant" and include those in the answer.  Choice selection can only occur during interactive population.</li>
     <li>
       <b>Answer context:</b> The specific answer to the question will not exist as data in the client system, but might be able to be determined by the user
       based on data that is available in the clinical system.  For example, the question "Has the patient ever exhibited a similar reaction in the past?" with
       a yes/no/unknown answer choice is not a data element that will exist in the clinical system.  However, it is possible to provide the clinician with a
-      list of AdverseEvent, Observation and Condition instances that might be relevant they can scan in choosing how to answer the question.</li>
+      list of AdverseEvent, Observation and Condition instances that might be relevant they can scan in choosing how to answer the question.  Providing
+      answer contexts can likewise only done interactively, not with the $populate operation.</li>
     <li>
       <b>No population:</b> There is no way to query information relevant to the answer - the user will have to fill out that portion of the form unassisted.</li>
   </ul>
+  <p>
+    "Choice selection" and "answer context" options will generally only be exposed when the user is interacting with the associated question 
+    (typically when a user clicks on an icon indicating they want to see the context or EHR choices).
+  </p>
   <a name="caveats"> </a>
   <h3>Caveats and considerations with form population</h3>
   <ul>
@@ -76,12 +99,6 @@
         <li>Mapping from profiles not specifically defined for use in the context of a particular questionnaire or set of questionnaires (i.e. with a defined
           context) magnifies the risk of erroneous population.</li>
       </ul>
-    </li>
-    <li>
-      Of the four population <a href="#mode">modes</a>, the 'Full Population' approach can be done either as a single step for all items in the questionnaire
-      prior to presenting the form to the user - "pre-population".  Alternatively, it can be done continuously as the user encounters each item when completing
-      the form - "continuous population".  "Choice selection" and "answer context" options will generally only be exposed when the user is interacting with the
-      associated question (typically when a user clicks on an icon indicating they want to see the context or EHR choices).
     </li>
     <li>
       The 'enableWhen' elements in Questionnaire mean that some elements may not be relevant in all situations.  When pre-populating a questionnaire, it makes
@@ -265,7 +282,7 @@
       <linkId value="code-pop-demo"/>
       <code>
         <system value="http://loinc.org"/>
-        <code value="29463-7"/>
+        <code value="29463-7"/>7
         <display value="Body weight"/>
       </code>
       <code>
