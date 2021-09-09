@@ -564,10 +564,10 @@
     for this and allow for iterative updating of expressions until values reach a stable state - or until an unstable looping condition is detected.
   </p>
   <a name="contexts"> </a>
-  <h3>FHIRPath and Questionnaire</h3>
+  <h3>FHIRPath, CQL and Queries with Questionnaire</h3>
   <p>
     The FHIRPath language defines a set of contexts that get passed into expressions and allows the definition of additional contexts and functions.  The
-    SDC provides the following guidance for evaluating FHIRPath (and CQL and <a href="#fhirquery">FHIR Queries</a>) in the context of a Questionnaire:
+    SDC provides the following guidance for evaluating FHIRPath, and CQL and <a href="#fhirquery">FHIR Queries</a> in the context of a Questionnaire:
   </p>
   <ul>
     <li>
@@ -576,7 +576,7 @@
       extension was defined in (i.e. while the extensions and expressions are defined in the Questionnaire, they are <i>evaluated</i> in the context of
       the corresponding item(s) in the QuestionnaireResponse).</li>
     <li>
-      A new <code>%questionnaire</code> variable is defined for that corresponds to the Questionnaire resource resolved to by the QuestionnaireResponse.questionnaire
+      A new <code>%questionnaire</code> variable is defined that corresponds to the Questionnaire resource resolved to by the QuestionnaireResponse.questionnaire
       element.  It is in scope for all expressions defined in the Questionnaire.</li>
     <li>
       The <code>%qitem</code> variable is defined as a shortcut to get to the Questionnaire.item that corresponds to the context QuestionnaireResponse.item.</li>
