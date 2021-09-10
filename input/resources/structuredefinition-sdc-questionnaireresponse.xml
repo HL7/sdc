@@ -27,6 +27,16 @@
 		  <expression value="subject.exists()"/> 
         <xpath value="exists(f:subject)"/> 
       </constraint>
+	  <constraint> 
+        <extension url="http://hl7.org/fhir/StructureDefinition/elementdefinition-bestpractice">
+          <valueBoolean value="true"/> 
+        </extension> 
+        <key value="sdcqr-2"/> 
+        <severity value="warning"/> 
+        <human value="When repeats=true for a group, it'll be represented with multiple items with the same linkId in the QuestionnaireResponse.  For a question, it'll be represented by a single item with that linkId with multiple answers."/> 
+       <expression value="(QuestionnaireResponse|repeat(answer|item)).select(item.where(answer.value.exists()).linkId.isDistinct()).allTrue()"/> 
+        <xpath value="not(exists(for $item in descendant::f:item[f:answer] return $item/preceding-sibling::f:item[f:linkId/@value=$item/f:linkId/@value]))"/> 
+	  </constraint>
       <alias value="Form Data"/>
       <mustSupport value="false"/>
     </element> 
