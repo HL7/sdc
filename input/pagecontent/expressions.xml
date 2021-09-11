@@ -576,6 +576,8 @@
   </p>
   <ul>
     <li>
+      The <code>%resource</code> variable will be evaluated as the root of the QuestionnaireResponse.</li>
+    <li>
       The <code>%context</code> variable will be set to the QuestionnaireResponse if the expression extension is defined on the Questionnaire root.
       Otherwise, it will be set to the QuestionnaireResponse.item for items whose linkId match the linkId of the Questionnaire.item the expression
       extension was defined in (i.e. while the extensions and expressions are defined in the Questionnaire, they are <i>evaluated</i> in the context of

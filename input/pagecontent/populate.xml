@@ -480,12 +480,14 @@
       amongst the results being returned.</li>
     <li>
       If the initialExpression returns fewer occurrences than the <a href="{{site.data.fhir.path}}extension-questionnaire-minoccurs.html">
-      questionnaire-minOccurs</a> value (if specified), it SHALL populate what occurrences it can.  The user can then add fill in additional repetitions as
+      questionnaire-minOccurs</a> value (if specified), it SHALL populate what occurrences it can.  The user can then add in additional repetitions as
       needed.</li>
     <li>
-      If an answer is dependent on other answers within the form, the calculation of the answer should be performed using a variable extension on the nearest
+      If an answer is dependent on other answers within the form, the calculation of the answer will typically be performed using a variable extension on the nearest
       common ancestor in which all relevant questions or variables are descendants.  The question will then have an initialExpression extension that references that
-      calculated value.  The reason for this is that FHIRPath only has access to the current context node and its descendants, not siblings or ancestors.</li>
+      calculated value.  The reason for this is that FHIRPath only has access to the current context node and its descendants, not siblings or ancestors.  However,
+      if it is known that there can only be <i>one</i> item with a particular linkId, then the value of that answer can be accessed directly by using 
+      <code>%context.descendants().select(item).where(linkId='someLinkId').answer</code></li>
     <li>
       It's possible that not all queries will resolve successfully - or that some context variables might not be populated.  In this situation, the system
       performing the population SHOULD make best efforts and populate whatever elements it can that are not dependent on other answers within the form.</li>
