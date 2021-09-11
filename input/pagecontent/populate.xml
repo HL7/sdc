@@ -116,6 +116,11 @@
       content as the base Questionnaire, but would have additional extensions inserted to support population.  Once the QuestionnaireResponse was
       generated/completed, it would be updated to assert a <code>QuestionnaireResponse.questionnaire</code> of the original Questionnaire's canonical URL
       rather than that of the derived Questionnaire that drove the population process.</li>
+    <li>
+      When performing population, the considerations around <a href="expressions.html#expressionerrors">errors and lack of support</a> for expresssions may come into
+      play.  In addition, similar considerations can also be relevant in terms of what 'population' approach the Questionnaire supports, as opposed to what
+      level of population capability the Form Filler has.  The desired behavior of alerting the user that some elements might not have been populated and that
+      other clients might provide more population support is the same whether the variation is "handles FHIRPath vs. CQL" or "uses Observation-based vs. definition-based".</li>
     <!-- TODO: How do we pass in a token that allows the population system the ability to query the system that owns the data - and how do they even know where that system is? -->
   </ul>
   <a name="service"> </a>

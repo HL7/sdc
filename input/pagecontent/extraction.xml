@@ -63,6 +63,11 @@
       example, "Please specify the patient's weight in kilograms".  When extracting the value for representation in a resource, a unit will be added.
       The <a href="{{site.data.fhir.path}}extension-questionnaire-unit.html">questionnaire-unit</a> extension SHOULD be included on the question to support
       the extraction process.</li>
+    <li>
+      When performing etraction, the considerations around <a href="expressions.html#expressionerrors">errors and lack of support</a> for expresssions may come into
+      play.  In addition, similar considerations can also be relevant in terms of what 'extraction' approach the Questionnaire supports, as opposed to what
+      level of extraction capability the Form Filler has.  The desired behavior of alerting the user that extraction won't be possible is the same whether the issue 
+      is "handles FHIRPath vs. CQL" or "uses Observation-based vs. definition-based".</li>
   </ul>
   <a name="service"> </a>
   <h3>Extraction service</h3>

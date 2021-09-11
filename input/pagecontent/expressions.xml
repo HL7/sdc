@@ -603,11 +603,34 @@
     a helpful error message or permit entry of potentially relevant information if it cannot be determined whether the data should be allowed or not.
   </p>
   <a name="expressionerrors"> </a>
-  <h3>Dealing with expression errors</h3>
+  <h3>Dealing with expression errors and system limitations</h3>
   <p>
     In some cases, a Questionnaire may contain expressions that result in an error. This could be the result of an invalid expression, unexpected data, or an expression
-	handling engine that does not handle some aspect of the expression provided. In such cases, Form Fillers SHOULD attempt to allow the user to fill out the QuestionnaireResponse
-	in spite of the issue, though they SHOULD also warn the user that there was a problem with the Questionnaire. If expressions are involved in display (e.g. enableWhen)
-	or validation logic, Form Fillers SHOULD prohibit the QuestionnaireResponse status from being set to 'completed' and provide an explanation of the problem to the user.
+    handling engine that does not handle some aspect of the expression provided (e.g. FHIRPath library doesn't support certain Questionnaire-specific variables.  In other cases, the
+    system might support some expression languages, but not others.  E.g. The system can handle FHIRPath but not CQL.  In either case, the system needs to determine
+    whether it can safely expose the Questionnaire and what information, if any, about the failure/limitation it should expose.
+  </p>
+  <ul>
+    <li>If the issues interfere with population, the system MAY provide an indication that some elements are not populated because of limitations of the client
+      or problems with the Questionnaire.  Issues with population SHOULD NOT prevent the user from completing the form and marking it 'completed'</li>
+    <li>If the issues interfere with enableWhen or validation, then the system SHOULD indicate to the user up-front that the authoring system cannot properly
+      validate or enforce the Questionnaire rules.  The Form Filler SHOULD NOT mark a QuestionnaireResponse as 'completed' or submit it as complete if it cannot
+      validate all enabled items or determine whether items should be enabled.  It may still be useful for a user to complete the QuestionnaireResponse if
+      there's a possibility of a different client allowing subsequent editing or if the associated Questionnaire logic might be corrected to allow marking
+      the response as 'completed' in the future.  Also, in some cases, a user reading human-readable directions may be able to make the determination that a
+      QuestionnaireResponse is 'completed' even if the software can't make that determination.  (Because the user might do this in error, systems consuming
+      'completed' QuestionnaireResponses might still want to check that the response is 'valid' against the rules of the Questionnaire.)</li>
+    <li>If the issues interfere with extraction, the system MAY provide an indication that the system won't be able to perform extraction once the 
+      response is complete.  Systems SHOULD still allow the form to be filled in and marked as 'completed'.</li>
+  </ul>
+  <p>
+    Obviously, if the issue with population, extraction or validation comes from invoking an external operation rather than handling the process inline, the result
+    will be an <a href="{{site.data.fhir.path}}operationoutcome.html">OperationOutcome</a> indicating failure and why.  The Form Filler will then need to relay
+    that information to the user in whatever it deems to be the most appropriate manner.
+  </p>
+  <p>
+    The other side of this issue is how a Form Filler can search for a Form Manager that will be able to populate or extract for a particular Questionnaire.
+    At present, there is no clean way for systems to expose what expression languages they support, what 'extensiosn' they support within those languages, etc.
+    A proposed R5 CapabilityStatement refactoring might provide such support in the future.  We will evaluate using those new features in a future release.
   </p>
 </div>
