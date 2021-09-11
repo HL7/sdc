@@ -16,8 +16,11 @@
       not required, it's strongly encouraged unless the expression is so simple there will not be any question as to its intent and function.</li>
     <li>
       <code>name</code> allows the result of the expression to be referenced within other expressions.  Whether this is necessary depends on the context.
-      All variables defined by expressions will be marked with a '%' prefix when referring to them in other expressions within the Questionnaire.  Collisions
-      between names that are defined more than once within the same scope will be treated as an error.
+      (e.g. <a href="#contextExpression">contextExpression</a> might need a name when used for population, but not when used for extraction.)  When an
+      an extension with a type of Expression has a name, the result of evaluating that expression becomes available in subsequent expressions (either
+      following extensions within the same element, or extensions appearing on descendant items) as a 'variable'.  These variables are referenced by
+      prepending '%' to the 'name' of the expression.  I.e. the result of an expression named 'patient' would be available for use in subsequent expressions
+      as '%patient'.  Collisions between names that are defined more than once within the same scope will be treated as an error.
     </li>
     <li>
       <code>language</code> indicates the type of expression.  SDC only uses three languages: FHIR queries <a href="#fhirquery">as described below</a>,
