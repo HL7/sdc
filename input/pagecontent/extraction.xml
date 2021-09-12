@@ -305,7 +305,16 @@
 	  (or set of resources), then the Questionnaire is being used to update the resource(s).</li>
     <li>On descendant items of that element, fill in the <code>Questionnaire.item.definition</code> to point to the resource or profile element that Questionnaire
       item corresponds to.  (Profiles may be relevant for data that is sliced or has fixed values for some properties.).  The definition SHALL have the full
-      canonical URL of the resource (or profile) followed by '#' followed by the snapshot.path of the element the Questionnaire item corresponds to.</li>
+      canonical URL of the resource (or profile) followed by '#' followed by the snapshot.element.id of the element the Questionnaire item corresponds to.<br/>
+      NOTE: Rather than specifying the
+      id of an element that actually appears in a snapshot, it is also possible to 'extend' an id to walk further into the data types of the specified element.  For example, 
+      a definition might be <code>http://hl7.org/fhir/Patient#Patient.name.given</code> even though the referenced profile's snapshot only contains <code>Patient.name</code>, not
+      <code>Patient.name.given</code>.  However, for more complex references (e.g. referring to a particular extension or a particular repetition), it will be necessary to define a 
+      distinct profile where slicing ensures that a single element id corresponds to the desired element.  I.e. you would need to use 
+      <code>http://somewhere.org/SomePatient#Patient.name.given:foo</code> where 'foo' was a slice that referred to the first middle name in order to tie to a definition that specific.<br/>
+      If a definition is specified on a Group or a Question with nested questions, then nested items might have definitions that refer to a deeper path along the same id structure.
+      For example, a group element might have a definition of <code>http://hl7.org/fhir/Patient#Patient.name</code> while nested items would have definitions of
+      <code>http://hl7.org/fhir/Patient#Patient.name.given</code> and <code>http://hl7.org/fhir/Patient#Patient.name.family</code>.</li>
     <li>If necessary, define <a href="{{site.data.fhir.path}}extension-questionnaire-hidden.html">questionnaire-hidden</a> items that have <code>
       Questionnaire.item.initial.value[x]</code> or that use the
       <a href="StructureDefinition-sdc-questionnaire-initialExpression.html">questionnaire-initialExpression</a> extension to define their content to use to populate
