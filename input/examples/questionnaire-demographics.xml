@@ -1,0 +1,190 @@
+<Questionnaire xmlns="http://hl7.org/fhir" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://hl7.org/fhir ../../input-cache/schemas/R4/fhir-single.xsd">
+	<!-- NOTE: this is an example questionnaire, so it does not attempt to update all demographics or all elements -->
+	<id value="demographics"/>
+	<extension url="http://hl7.org/fhir/uv/sdc/StructureDefinition/sdc-questionnaire-launchContext">
+    <extension url="name">
+      <valueCoding>
+        <system value="http://hl7.org/fhir/uv/sdc/CodeSystem/launchContext"/>
+        <code value="patient"/>
+      </valueCoding>
+    </extension>
+    <extension url="type">
+      <valueCode value="Patient"/>
+    </extension>
+	</extension>
+	<extension url="http://hl7.org/fhir/uv/sdc/StructureDefinition/sdc-questionnaire-itemExtractionContext">
+    <valueExpression>
+      <language value="application/x-fhir-query"/>
+      <expression value="Patient?_id={{%patient.id}}"/>
+    </valueExpression>
+	</extension>
+	<url value="http://hl7.org/fhir/uv/sdc/Questionnaire/demographics"/>
+	<version value="0.1.0"/>
+	<name value="DemographicExample"/>
+	<title value="Questionnaire - Demographics Example"/>
+	<status value="draft"/>
+	<subjectType value="Patient"/>
+	<description value="A sample questionnaire using context-based population and extraction"/>
+	<item>
+    <extension url="http://hl7.org/fhir/StructureDefinition/questionnaire-hidden">
+      <valueBoolean value="true"/>
+    </extension>
+    <extension url="http://hl7.org/fhir/uv/sdc/StructureDefinition/sdc-questionnaire-initialExpression">
+      <valueExpression>
+        <language value="text/fhirpath"/>
+        <expression value="%patient.id"/>
+      </valueExpression>
+    </extension>
+		<linkId value="patient.id"/>
+		<definition value="Patient.id"/>
+		<text value="(internal use)"/>
+		<type value="string"/>
+		<readOnly value="true"/>
+	</item>
+	<item>
+    <extension url="http://hl7.org/fhir/uv/sdc/StructureDefinition/sdc-questionnaire-initialExpression">
+      <valueExpression>
+        <language value="text/fhirpath"/>
+        <expression value="%patient.birthDate"/>
+      </valueExpression>
+    </extension>
+		<linkId value="patient.birthDate"/>
+		<definition value="Patient.birthDate"/>
+		<text value="Date of birth"/>
+		<type value="date"/>
+		<required value="true"/>
+	</item>
+	<item>
+    <extension url="http://hl7.org/fhir/uv/sdc/StructureDefinition/sdc-questionnaire-itemPopulationContext">
+      <valueExpression>
+        <name value="patientName"/>
+        <language value="text/fhirpath"/>
+        <expression value="%patient.name"/>
+      </valueExpression>
+    </extension>
+		<linkId value="patient.name"/>
+		<definition value="Patient.name"/>
+		<text value="Name(s)"/>
+		<type value="group"/>
+		<repeats value="true"/>
+    <item>
+      <extension url="http://hl7.org/fhir/uv/sdc/StructureDefinition/sdc-questionnaire-initialExpression">
+        <valueExpression>
+          <language value="text/fhirpath"/>
+          <expression value="%patientName.family"/>
+        </valueExpression>
+      </extension>
+      <linkId value="patient.name.family"/>
+      <definition value="Patient.name.family"/>
+      <text value="Family name"/>
+      <type value="string"/>
+      <required value="true"/>
+    </item>
+    <item>
+      <extension url="http://hl7.org/fhir/uv/sdc/StructureDefinition/sdc-questionnaire-initialExpression">
+        <valueExpression>
+          <language value="text/fhirpath"/>
+          <expression value="%patientName.given"/>
+        </valueExpression>
+      </extension>
+      <linkId value="patient.name.given"/>
+      <definition value="Patient.name.given"/>
+      <text value="Given name(s)"/>
+      <type value="string"/>
+      <required value="true"/>
+      <repeats value="true"/>
+    </item>
+	</item>
+	<item>
+    <extension url="http://hl7.org/fhir/uv/sdc/StructureDefinition/sdc-questionnaire-itemPopulationContext">
+      <valueExpression>
+        <name value="relative"/>
+        <language value="application/x-fhir-query"/>
+        <expression value="RelatedPerson?patient={{%patient.id}}"/>
+      </valueExpression>
+    </extension>
+    <extension url="http://hl7.org/fhir/uv/sdc/StructureDefinition/sdc-questionnaire-itemExtractionContext">
+      <valueExpression>
+        <language value="application/x-fhir-query"/>
+        <expression value="RelatedPerson?patient={{%patient.id}}"/>
+      </valueExpression>
+    </extension>
+		<linkId value="relative"/>
+		<text value="Relatives, caregivers and other personal relationships"/>
+		<type value="group"/>
+		<repeats value="true"/>
+    <item>
+      <extension url="http://hl7.org/fhir/StructureDefinition/questionnaire-hidden">
+        <valueBoolean value="true"/>
+      </extension>
+      <extension url="http://hl7.org/fhir/uv/sdc/StructureDefinition/sdc-questionnaire-initialExpression">
+        <valueExpression>
+          <language value="text/fhirpath"/>
+          <expression value="%relative.id"/>
+        </valueExpression>
+      </extension>
+      <linkId value="relative.id"/>
+      <definition value="RelatedPerson.id"/>
+      <text value="(internal use)"/>
+      <type value="string"/>
+      <readOnly value="true"/>
+    </item>
+    <item>
+      <extension url="http://hl7.org/fhir/uv/sdc/StructureDefinition/sdc-questionnaire-initialExpression">
+        <valueExpression>
+          <language value="text/fhirpath"/>
+          <expression value="%relative.relationship"/>
+        </valueExpression>
+      </extension>
+      <linkId value="relative.relationship"/>
+      <definition value="RelatedPerson.relationship"/>
+      <text value="Name(s)"/>
+      <type value="choice"/>
+      <required value="true"/>
+      <repeats value="true"/>
+      <answerValueSet value="http://hl7.org/fhir/ValueSet/relatedperson-relationshiptype"/>
+    </item>
+    <item>
+      <extension url="http://hl7.org/fhir/uv/sdc/StructureDefinition/sdc-questionnaire-itemPopulationContext">
+        <valueExpression>
+          <name value="relativeName"/>
+          <language value="text/fhirpath"/>
+          <expression value="%relative.name"/>
+        </valueExpression>
+      </extension>
+      <linkId value="relative.name"/>
+      <definition value="RelatedPerson.name"/>
+      <text value="Name(s)"/>
+      <type value="group"/>
+      <repeats value="true"/>
+      <item>
+        <extension url="http://hl7.org/fhir/uv/sdc/StructureDefinition/sdc-questionnaire-initialExpression">
+          <valueExpression>
+            <language value="text/fhirpath"/>
+            <expression value="%relativeName.family"/>
+          </valueExpression>
+        </extension>
+        <linkId value="relative.name.family"/>
+        <definition value="RelatedPerson.name.family"/>
+        <text value="Family name"/>
+        <type value="string"/>
+        <required value="true"/>
+      </item>
+      <item>
+        <extension url="http://hl7.org/fhir/uv/sdc/StructureDefinition/sdc-questionnaire-initialExpression">
+          <valueExpression>
+            <language value="text/fhirpath"/>
+            <expression value="%relativeName.given"/>
+          </valueExpression>
+        </extension>
+        <linkId value="relative.name.given"/>
+        <definition value="RelatedPerson.name.given"/>
+        <text value="Given name(s)"/>
+        <type value="string"/>
+        <required value="true"/>
+        <repeats value="true"/>
+      </item>
+    </item>
+  </item>
+	<!-- TODO: Finish out description of quick-check -->
+</Questionnaire>
