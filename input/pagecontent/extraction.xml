@@ -319,8 +319,13 @@
     To perform the extraction process, first determine whether the context resource should be updated or created:
   </p>
   <ul>
-    <li>If the context resource existed and was used in the population of the resource and data has changed, the resource will typically be updated.  (Note
-      that this means the system must capture the resource ids as hidden items in the Questionnaire so they're available for update.)</li>
+    <li>If the element has a <a href="StructureDefinition-sdc-questionnaire-itemExtractionContext.html">questionnaire-itemExtractionContext</a> that corresponds to
+      an existing resource or set of resources, then the intention is that the extracted content will replace those existing resources.  (Typically in this situation,
+      the same expression would have appeared on the same element as a <a href="StructureDefinition-sdc-questionnaire-itemPopulationContext.html">questionnaire-itemPopulationContext</a>
+      expression.  On the other hand if the itemExtractionContext simply refers to a resource type, then the intention is to create new instances.  When updating, the
+      Questionnaire will typically 'populate' hidden questions with the 'id' elements of the relevant respirces for update to ensure that updates are applied to the
+      appropriate instances.  If some repetitions end up not having id elements (e.g. because the user has added additional group repetitions), those additional repetitions
+      will also be handled as creates.</li>
     <li>In other cases, the record will be created.</li>
   </ul>
   <p>
