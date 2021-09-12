@@ -91,20 +91,20 @@
     </li>
   </ul>
 	<a name="consent"> </a>
-	<h4>Consent</h4>
+	<h3>Consent</h3>
 	<p>
     The SDC workflow envisions the sharing of patient-identifiable healthcare information from
     <a href="CapabilityStatement-sdc-form-filler.html">SDC Form Filler</a> systems to <a href="CapabilityStatement-sdc-form-manager.html">SDC Form Manager</a>.
     It also envisions transmitting completed forms from <a href="CapabilityStatement-sdc-form-filler.html">SDC Form Filler</a> to
     <a href="CapabilityStatement-sdc-form-receiver.html">SDC Form Receiver</a> systems.
     Where such exchanges take place across organizational or other custodial boundaries, patient consent may be required.  Furthermore,
-    use of C-CDA data for completing questionnaires for purposes unrelated to the initial population of the C-CDA may also require patient
+    use of data for completing questionnaires for purposes unrelated to the initial gathering data may also require patient
     consent.  It is the responsibility of the client systems to ensure that any necessary consent records exist and are reviewed prior to
     each exchange of patient-identifiable healthcare information.  This verification SHOULD be logged in the same manner as other transactions,
     as discussed above under <a href="#general">General Security Considerations.</a>
 	</p>
 	<a name="workflow"> </a>
-	<h4>Security Workflow</h4>
+	<h3>Security Workflow</h3>
 	<p>
     When communicating RESTfully, <a href="{{site.data.fhir.path}}auditevent.html">AuditEvent</a> and <a href="{{site.data.fhir.path}}provenance.html">Provenance</a> resources are
     typically submitted separately from the resource versions they're manipulating.  This is for a couple of reasons:
@@ -119,4 +119,21 @@
     be done using <a href="{{site.data.fhir.path}}http.html#transaction">transaction</a>.  Provenance information can be retrieved along with a QuestionnaireResponse using
     the _revinclude query parameter.
   </p>
+  <a name="population"> </a>
+  <h3>Population</h3>
+  <p>
+    When populating a form from existing data, there is no expectation for consent in order to pass data to the form or for the form to query information where the user
+    filling out the form would normally have access to such data.  (The population mechanism merely saves the effort of looking it up manually and copying it across.)
+    However, population does raise two important privacy/security considerations:
+  </p>
+  <ul>
+    <li>
+      Form Fillers SHALL always give users a chance to review all answers prior to submission and allow the user to know where the data is being submitted</li>
+    <li>
+      Systems need to be very cautious about submitting forms that contain 'hidden' questions that can be auto-populated because they can allow disclosure of 
+      information without human review. These can be inoccuous (e.g. what version of the software was the data loaded from) but could also be used in an attack 
+      to extract data serrepticiously. Manual review by a technical expert (prior to approval of use of the Questionnaire) of Questionnaire versions that 
+      contain hidden auto-populated questions may be needed. Similarly, manual review of submission destinations might also be appropriate if they are not 
+      already 'trusted' destinations.</li>
+  </ul> 
 </div>
