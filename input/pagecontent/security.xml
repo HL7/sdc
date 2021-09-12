@@ -136,4 +136,22 @@
       contain hidden auto-populated questions may be needed. Similarly, manual review of submission destinations might also be appropriate if they are not 
       already 'trusted' destinations.</li>
   </ul> 
+  <a name="compartments"> </a>
+  <h3>Compartments</h3>
+  <p>
+    QuestionnaireResponses associated with an individual will generally have a <code>subject</code> that will establish the 'compartment' the data belongs to and control
+    who has access to that QuestionnaireResponse and what consents or business rules, if any, apply when evaluating requests for access to that record.  For example,
+    if QuestionnaireResponse.subject is set to a specific patient, then that record will be 'protected' by all of the rules that apply to accessing that particular
+    patient's data.  However, QuestionnaireResponse.subject is optional, and there are some situations where a QuestionnaireResponse will contain information that is 
+    patient or provider-identifiable and even sensitive, but will not yet have a QuestionnaireResponse.subject.  For example, some workflows might involve filling out a 
+    Questionnaire where the Form Filler isn't aware of the subject record to link to.  Alternatively, a QuestionnaireResponse might be used to capture initial
+    registration information before the appropriate Patient or Practitioner instance has even been created.
+  </p>
+  <p>
+    Because of this, systems must be extremely careful around allow access to QuestionnaireResponses with no specified subject.  Some might be completely fine to share
+    and access widely, while others might contain extremely sensitive information.  It might be necessary to make use of 
+    <a href="{{site.data.fhir.path}}resource-definitions.html#Meta.security">security tags</a> or other mechanisms to assert and manage the sensitivity of such records.
+  </p>
+  <p>
+  </p>
 </div>
