@@ -18,6 +18,7 @@
       <short value="SDC Questionnaire Response"/>
       <definition value="Sets expectations for supported capabilities for questionnaire responses for SDC-conformant systems."/>
       <alias value="Form Data"/>
+      <alias value="Form Data"/>
       <constraint>
         <extension url="http://hl7.org/fhir/StructureDefinition/elementdefinition-bestpractice">
           <valueBoolean value="true"/>
@@ -27,6 +28,16 @@
         <human value="Subject SHOULD be present (searching is difficult without subject).  Almost all QuestionnaireResponses should be with respect to some sort of subject."/>
         <expression value="subject.exists()"/>
         <xpath value="exists(f:subject)"/>
+      </constraint>
+      <constraint>
+        <extension url="http://hl7.org/fhir/StructureDefinition/elementdefinition-bestpractice">
+          <valueBoolean value="true"/>
+        </extension>
+        <key value="sdcqr-2"/>
+        <severity value="error"/>
+        <human value="When repeats=true for a group, it'll be represented with multiple items with the same linkId in the QuestionnaireResponse.  For a question, it'll be represented by a single item with that linkId with multiple answers."/>
+        <expression value="(QuestionnaireResponse|repeat(answer|item)).select(item.where(answer.value.exists()).linkId.isDistinct()).allTrue()"/>
+        <xpath value="not(exists(for $item in descendant::f:item[f:answer] return $item/preceding-sibling::f:item[f:linkId/@value=$item/f:linkId/@value]))"/>
       </constraint>
       <mustSupport value="false"/>
     </element>

@@ -5,7 +5,7 @@
   <url value="http://hl7.org/fhir/uv/sdc/StructureDefinition/sdc-questionnaire-enableWhenExpression"/>
   <version value="2.8.0"/>
   <name value="EnableWhenExpressionExtension"/>
-  <title value="Enable when?"/>
+  <title value="Enable when expression"/>
   <status value="draft"/>
   <experimental value="false"/>
   <date value="2014-04-21"/>
@@ -16,7 +16,7 @@
       <value value="http://hl7.org/Special/committees/fiwg"/>
     </telecom>
   </contact>
-  <description value="An expression that returns a boolean value for whether to enable the item."/>
+  <description value="An expression that returns a boolean value for whether to enable the item. If the expression does not resolve to a boolean, it is considered an error in the design of the Questionnaire.  Form renderer behavior is undefined.  Some tools may attempt to force the value to be a boolean (e.g. is it a non-empty collection, non-null, non-zero - if so, then true).  Systems SHOULD present a warning to the user if a non-boolean valued expression result does not trigger an all-out error."/>
   <jurisdiction>
     <coding>
       <system value="http://unstats.un.org/unsd/methods/m49/m49.htm"/>
