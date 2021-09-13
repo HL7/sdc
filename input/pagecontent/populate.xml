@@ -121,6 +121,12 @@
       play.  In addition, similar considerations can also be relevant in terms of what 'population' approach the Questionnaire supports, as opposed to what
       level of population capability the Form Filler has.  The desired behavior of alerting the user that some elements might not have been populated and that
       other clients might provide more population support is the same whether the variation is "handles FHIRPath vs. CQL" or "uses Observation-based vs. definition-based".</li>
+    <li>
+      When information from other sources has been used to help populate a QuestionnaireResponse, there may be a desire to capture what information sources
+      were used, what software was used to perform the population process, etc.  The way to represent this information in FHIR is using the
+      <a href="{{site.data.fhir.path}}provenance.html">Provenance</a> resource.  The various source records used in population would be represented using
+      <code>Provenance.entity.what</code> where the <code>Provenance.entity.role</code> would be 'source'.  Software information would be captured in
+      <code>Provenance.agent</code>.</li>
     <!-- TODO: How do we pass in a token that allows the population system the ability to query the system that owns the data - and how do they even know where that system is? -->
   </ul>
   <a name="service"> </a>

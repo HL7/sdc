@@ -68,6 +68,13 @@
       play.  In addition, similar considerations can also be relevant in terms of what 'extraction' approach the Questionnaire supports, as opposed to what
       level of extraction capability the Form Filler has.  The desired behavior of alerting the user that extraction won't be possible is the same whether the issue 
       is "handles FHIRPath vs. CQL" or "uses Observation-based vs. definition-based".</li>
+    <li>
+      When generating or updating resources based on information in a QuestionnaireResponse, there may be a desire to capture where that information was
+      sourced from, what software was used to perform conversion, etc.  The way to represent this information in FHIR is using the
+      <a href="{{site.data.fhir.path}}provenance.html">Provenance</a> resource.  The QuestionnaireResponse would be referenced using
+      <code>Provenance.entity.what</code> where the <code>Provenance.entity.role</code> would be 'source'.  Software information would be captured in
+      <code>Provenance.agent</code>.  If the produced records are Observations, the resulting Observation(s) can also directly point to the
+      QuestionnaireResponse using <code>Observation.derivedFrom</code>.</li>
   </ul>
   <a name="service"> </a>
   <h3>Extraction service</h3>
