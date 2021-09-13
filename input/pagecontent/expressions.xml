@@ -110,7 +110,7 @@
             type, a resource or even a Bundle of resources.
           </p>
           <p>
-			      The variable can be <a href="#contexts">referenced by its name</a>.  Variable expressions SHALL specify a name.  It is not allowed to define variable
+			      The variable can be <a href="#fhirpath">referenced by its name</a>.  Variable expressions SHALL specify a name.  It is not allowed to define variable
 			      names that are already <a href="{{site.data.fhir.path}}fhirpath.html#vars">reserved by the base specification</a> or by other variables in the questionnaire.
           </p>
         </td>
@@ -568,31 +568,70 @@
     However, in some cases, updates to later elements may trigger an update to earlier elements, which then cascade through again.  Systems should allow
     for this and allow for iterative updating of expressions until values reach a stable state - or until an unstable looping condition is detected.
   </p>
-  <a name="contexts"> </a>
-  <h3>FHIRPath, CQL and Queries with Questionnaire</h3>
+  <a name="fhirpath"> </a>
+  <h3>FHIRPath supplements</h3>
   <p>
-    The FHIRPath language defines a set of contexts that get passed into expressions and allows the definition of additional contexts and functions.  The
-    SDC provides the following guidance for evaluating FHIRPath, and CQL and <a href="#fhirquery">FHIR Queries</a> in the context of a Questionnaire:
+    The FHIRPath language defines a set of contexts that get passed into expressions and also allows the definition of additional contexts and functions.
+    SDC provides the following supplemental guidance for evaluating FHIRPath, and CQL and <a href="#fhirquery">FHIR Queries</a> in the context of a Questionnaire:
   </p>
   <ul>
     <li>
-      The <code>%resource</code> variable will be evaluated as the root of the QuestionnaireResponse.</li>
+      The <code>%resource</code> variable when it appears in expressions on elements in Questionnaire will be evaluated as the root of the QuestionnaireResponse.</li>
     <li>
       The <code>%context</code> variable will be set to the QuestionnaireResponse if the expression extension is defined on the Questionnaire root.
-      Otherwise, it will be set to the QuestionnaireResponse.item for items whose linkId match the linkId of the Questionnaire.item the expression
-      extension was defined in (i.e. while the extensions and expressions are defined in the Questionnaire, they are <i>evaluated</i> in the context of
-      the corresponding item(s) in the QuestionnaireResponse).</li>
-    <li>
-      A new <code>%questionnaire</code> variable is defined that corresponds to the Questionnaire resource resolved to by the QuestionnaireResponse.questionnaire
-      element.  It is in scope for all expressions defined in the Questionnaire.</li>
-    <li>
-      The <code>%qitem</code> variable is defined as a shortcut to get to the Questionnaire.item that corresponds to the context QuestionnaireResponse.item.</li>
+      Otherwise, it will be interpreted as the QuestionnaireResponse.item(s) whose linkId matches the linkId of the Questionnaire.item the expression
+      extension was defined in.  I.e. while the extensions and expressions are defined in the Questionnaire, they are <i>evaluated</i> in the context of
+      the corresponding item(s) in the QuestionnaireResponse.</li>
     <li>
       All expressions that specify a 'name' can be accessed by other expressions appearing on the same item or any descendant item as though that
       name was part of context.  The same is true for the 'name' element in the <a href="#launchContext">launchContext</a> extension.  For example, a variable
       with the name 'score' could be accessed in FHIRPath or CQL using <code>%score</code>.  (Note: It is an error if a questionnaire is designed such
       that there is more than one element in the same scope with a colliding context name.)</li>
   </ul>
+  <p>
+    In addition, a number of extensions have been proposed to the FHIRPath language - some to the base language and some to the FHIR-specific set of extensions
+    to the language.  These extensions have been adopted as 'local' FHIRPath extensions for implementers of this implementation guide.  Systems that accept
+    FHIRPath, CQL or FHIRQuery expressions SHOULD support all of these extensions in their FHIRPath implementations:
+  </p>
+  <ul>
+    <li>
+      A new <code>%questionnaire</code> variable is defined that corresponds to the Questionnaire resource resolved to by the QuestionnaireResponse.questionnaire
+      element.  It is in scope for all expressions defined in the Questionnaire.</li>
+    <li>
+      The <code>%qitem</code> variable is defined as a shortcut to get to the Questionnaire.item that corresponds to the context QuestionnaireResponse.item.  It
+      is only valid for FHIRPath expressions defined within a Questionnaire item.</li>
+  </ul>
+  <p>
+    The following FHIRPath extension functions are also defined:
+  </p>
+  <ul>
+    <li>
+      <code>sum()</code>, <code>min()</code>, <code>max()</code>, <code>count()</code>, and <code>avg()</code>.  These are short-cuts for the equivalent 
+      <code>.aggregate()</code>.  The sum, min and average expressions are already listed 
+      <a href="http://hl7.org/fhirpath/#aggregateaggregator-expression-init-value-value">here</a>.  The equivalents of the remainder are:
+      <ul>
+        <li><b>max:</b> <code>value.aggregate(iif($total.empty(), $this, iif($this &gt; $total, $this, $total)))</code></li>
+        <li><b>count:</b> <code>value.aggregate(1 + $total, 0)</code></li>
+      </ul>
+    </li>
+    <li>
+      <code>answers()</code> returns a list of all answers for items beneath the current node, but excluding the current node, including descendant questions.  This
+      is typically used with an aggregation function.  For example answers().sum() would provide the total of all answers beneath the current node.  The function
+      is equivalent to <code>descendants().where($this is QuestionnaireResponse.item.answer.value)</code>
+    </li>
+    <li>
+      <code>ordinal()</code> returns the ordinal value for code or Coding.  If an <a href="{{site.data.fhir.path}}extension-ordinalvalue.html">ordinalValue</a> extension
+      is defined on the element, it will be returned.  If not, will will be looked up on the bound value set expansion (or for Questionnaires, on the corresponding
+      Questionnaire.answerOption and.  If not found there, will be looked up on the underlying CodeSystem.  If the type is other than code or Coding or no ordinal value
+      is defined for the context element, the result will be an empty set.  If the FHIRPath engine is unable to resolve the corresponding value set, code system or questionnaire
+      options, it SHOULD cause the expression to fail.<br/>
+      This function will typically be used to support scoring of Questionnaires, but it can be used with observations or potentially other elements as well.
+    </li>
+  </ul>
+  <p>
+    The change requests proposing the addition of these concepts to the base FHIRPath specification and to the FHIR-specific supplement can be found
+    <a href="https://jira.hl7.org/browse/FHIR-28173">here</a> and <a href="https://jira.hl7.org/browse/FHIR-33539">here</a>.
+  </p>
   <a name="fhirpathvscql"> </a>
   <h3>FHIRPath vs. CQL</h3>
   <p>
