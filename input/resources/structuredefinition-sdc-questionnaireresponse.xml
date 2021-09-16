@@ -1,4 +1,4 @@
-﻿<?xml version="1.0" encoding="UTF-8"?>
+<?xml version="1.0" encoding="UTF-8"?>
 <StructureDefinition xmlns="http://hl7.org/fhir" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://hl7.org/fhir ../../input-cache/schemas/R4/fhir-single.xsd">
   <id value="sdc-questionnaireresponse"/>
   <url value="http://hl7.org/fhir/uv/sdc/StructureDefinition/sdc-questionnaireresponse"/>
@@ -12,34 +12,35 @@
   <type value="QuestionnaireResponse"/>
   <baseDefinition value="http://hl7.org/fhir/StructureDefinition/QuestionnaireResponse"/>
   <derivation value="constraint"/>
-   <differential>
+  <differential>
     <element id="QuestionnaireResponse">
       <path value="QuestionnaireResponse"/>
       <short value="SDC Questionnaire Response"/>
       <definition value="Sets expectations for supported capabilities for questionnaire responses for SDC-conformant systems."/>
-	   <constraint> 
-        <extension url="http://hl7.org/fhir/StructureDefinition/elementdefinition-bestpractice">
-          <valueBoolean value="true"/> 
-        </extension> 
-        <key value="sdcqr-1"/> 
-        <severity value="warning"/> 
-        <human value="Subject SHOULD be present (searching is difficult without subject).  Almost all QuestionnaireResponses should be with respect to some sort of subject."/> 
-		  <expression value="subject.exists()"/> 
-        <xpath value="exists(f:subject)"/> 
-      </constraint>
-	  <constraint> 
-        <extension url="http://hl7.org/fhir/StructureDefinition/elementdefinition-bestpractice">
-          <valueBoolean value="true"/> 
-        </extension> 
-        <key value="sdcqr-2"/> 
-        <severity value="warning"/> 
-        <human value="When repeats=true for a group, it'll be represented with multiple items with the same linkId in the QuestionnaireResponse.  For a question, it'll be represented by a single item with that linkId with multiple answers."/> 
-       <expression value="(QuestionnaireResponse|repeat(answer|item)).select(item.where(answer.value.exists()).linkId.isDistinct()).allTrue()"/> 
-        <xpath value="not(exists(for $item in descendant::f:item[f:answer] return $item/preceding-sibling::f:item[f:linkId/@value=$item/f:linkId/@value]))"/> 
-	  </constraint>
       <alias value="Form Data"/>
+      <alias value="Form Data"/>
+      <constraint>
+        <extension url="http://hl7.org/fhir/StructureDefinition/elementdefinition-bestpractice">
+          <valueBoolean value="true"/>
+        </extension>
+        <key value="sdcqr-1"/>
+        <severity value="warning"/>
+        <human value="Subject SHOULD be present (searching is difficult without subject).  Almost all QuestionnaireResponses should be with respect to some sort of subject."/>
+        <expression value="subject.exists()"/>
+        <xpath value="exists(f:subject)"/>
+      </constraint>
+      <constraint>
+        <extension url="http://hl7.org/fhir/StructureDefinition/elementdefinition-bestpractice">
+          <valueBoolean value="true"/>
+        </extension>
+        <key value="sdcqr-2"/>
+        <severity value="error"/>
+        <human value="When repeats=true for a group, it'll be represented with multiple items with the same linkId in the QuestionnaireResponse.  For a question, it'll be represented by a single item with that linkId with multiple answers."/>
+        <expression value="(QuestionnaireResponse|repeat(answer|item)).select(item.where(answer.value.exists()).linkId.isDistinct()).allTrue()"/>
+        <xpath value="not(exists(for $item in descendant::f:item[f:answer] return $item/preceding-sibling::f:item[f:linkId/@value=$item/f:linkId/@value]))"/>
+      </constraint>
       <mustSupport value="false"/>
-    </element> 
+    </element>
     <element id="QuestionnaireResponse.extension:signature">
       <path value="QuestionnaireResponse.extension"/>
       <sliceName value="signature"/>
@@ -92,6 +93,7 @@
     </element>
     <element id="QuestionnaireResponse.subject">
       <path value="QuestionnaireResponse.subject"/>
+      <comment value="...  If subject is omitted - because the QuestionnaireResponse is not associated with a specific subject, ensure that QuestionnaireRsponse.identifier is present or the QuestionnaireResponse is referenced somewhere (e.g. Task.output, Composition.section.entry, etc.) to allow tracking and retrieval of the QuestionnaireResponse"/>
       <mustSupport value="true"/>
     </element>
     <element id="QuestionnaireResponse.encounter">
@@ -117,7 +119,7 @@
       <path value="QuestionnaireResponse.item"/>
       <mustSupport value="true"/>
     </element>
-	 <element id="QuestionnaireResponse.item.extension:itemImage">
+    <element id="QuestionnaireResponse.item.extension:itemImage">
       <path value="QuestionnaireResponse.item.extension"/>
       <sliceName value="itemImage"/>
       <min value="0"/>
@@ -155,7 +157,7 @@
       <max value="*"/>
       <mustSupport value="true"/>
     </element>
-	<element id="QuestionnaireResponse.item.answer.extension:responseImage">
+    <element id="QuestionnaireResponse.item.answer.extension:responseImage">
       <path value="QuestionnaireResponse.item.answer.extension"/>
       <sliceName value="responseImage"/>
       <min value="0"/>

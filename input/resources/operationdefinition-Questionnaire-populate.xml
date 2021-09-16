@@ -28,7 +28,6 @@
     <max value="1"/>
     <documentation value="A logical questionnaire identifier (i.e. `Questionnaire.identifier`). The server must know the questionnaire or be able to retrieve it from other known repositories."/>
     <type value="Identifier"/>
-    <searchType value="token"/>
   </parameter>
   <parameter>
     <name value="canonical"/>
@@ -53,7 +52,6 @@
     <max value="1"/>
     <documentation value="The [Questionnaire](http://hl7.org/fhir/R4/questionnaire.html) is provided as a resource reference. Servers may choose not to accept questionnaires in this fashion or may fail if they cannot resolve or access the referenced questionnaire."/>
     <type value="Reference"/>
-    <searchType value="token"/>
     <targetProfile value="http://hl7.org/fhir/StructureDefinition/Questionnaire"/>
   </parameter>
   <parameter>
@@ -63,16 +61,29 @@
     <max value="1"/>
     <documentation value="The resource that is to be the *QuestionnaireResponse.subject*. The [QuestionnaireResponse](http://hl7.org/fhir/R4/questionnaireresponse.html) instance will reference the provided subject.  In addition, if the *local* parameter is set to true, server information about the specified subject will be used to populate the instance."/>
     <type value="Reference"/>
-    <searchType value="token"/>
   </parameter>
   <parameter>
-    <name value="content"/>
+    <name value="context"/>
     <use value="in"/>
     <min value="0"/>
     <max value="*"/>
-    <documentation value="Resources containing information to be used to help populate the [QuestionnaireResponse](http://hl7.org/fhir/R4/questionnaireresponse.html).  These may be FHIR resources or may be binaries containing FHIR documents, CDA documents or other source materials.  Servers might not support all possible source materials and may ignore materials they do not recognize.  (They MAY provide warnings if ignoring submitted resources.)"/>
-    <type value="Reference"/>
-    <searchType value="token"/>
+    <documentation value="Resources containing information to be used to help populate the [QuestionnaireResponse](http://hl7.org/fhir/R4/questionnaireresponse.html).  These will typically be FHIR resources, though alternative population mechanisms might allow consumption of binaries containing FHIR documents, CDA documents or other source materials.  Servers might not support all possible source materials and may ignore materials they do not recognize.  (They MAY provide warnings if ignoring submitted resources.)"/>
+    <part>
+      <name value="name"/>
+      <use value="in"/>
+      <min value="0"/>
+      <max value="*"/>
+      <documentation value="The name of the launchContext or root Questionnaire variable the passed content should be used as for population purposes.  The name SHALL correspond to a launchContext or variable delared at the root of the Questionnaire."/>
+      <type value="string"/>
+    </part>
+    <part>
+      <name value="content"/>
+      <use value="in"/>
+      <min value="0"/>
+      <max value="*"/>
+      <documentation value="The actual resource (or resources) to use as the value of the launchContext or variable."/>
+      <type value="Reference"/>
+    </part>
   </parameter>
   <parameter>
     <name value="local"/>
@@ -91,7 +102,7 @@
     <type value="Extension"/>
   </parameter>
   <parameter>
-    <name value="questionnaire"/>
+    <name value="response"/>
     <use value="out"/>
     <min value="1"/>
     <max value="1"/>

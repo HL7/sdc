@@ -61,30 +61,50 @@
 	<h3>Transaction Integrity</h3>
 	<p>
     In some cases, the recipient of a completed <a href="{{site.data.fhir.path}}questionnaireresponse.html">QuestionnaireResponse</a> may require that the response
-    be accompanied by a <a href="{{site.data.fhir.path}}provenance.html">Provenance</a> or, more rarely an <a href="{{site.data.fhir.path}}auditevent.html">AuditEvent</a>
-    as part of a single unit of work.  (Audit is typically managed by the server and client locally or by a shared service that does not store the
-    clinical information.)  This can be accomplished by mechanisms outside the scope of this implementation guide by using
-    FHIR <a href="{{site.data.fhir.path}}messaging.html">messages</a> or FHIR <a href="{{site.data.fhir.path}}documents.html">documents</a>.  However, within the scope of
-    this implementation guide, this is accomplished in pseudo-RESTful fashion using the
-    <a href="{{site.data.fhir.path}}http.html#transaction">Transaction</a>
-    mechanism.  Regardless of means, the Provenance and/or AuditEvent event point to the QuestionnaireResponse by full version-specific URL using the
-    <code>Provenance.entity.reference</code> and <code>AuditEvent.object.reference</code> elements.
+    be accompanied by additional information about the creation of the QuestionnaireResponse such as:
   </p>
+  <ul>
+    <li>What tooling was used to render the form?</li>
+    <li>If someone transcribed the information from paper or another representation, and if so who?</li>
+    <li>If certain answers were populated from existing data, what those other data sources?</li>
+    <li>Whether completion of the form was overseen by anyone, and if so who?</li>
+    <li>etc.</li>
+  </ul>
+  <p>
+    In FHIR, such information is represented using a <a href="{{site.data.fhir.path}}provenance.html">Provenance</a> or, more rarely an 
+    <a href="{{site.data.fhir.path}}auditevent.html">AuditEvent</a>.  (Audit is typically managed by the server and client locally or by a shared service that does not store 
+    the clinical information.)  However, because this information is intrinsically tied to the QuestionnaireResponse instance, it needs to be conveyed alongside that instance 
+    as a single unit of work. This can be accomplished by mechanisms outside the scope of this implementation guide by using
+    FHIR <a href="{{site.data.fhir.path}}messaging.html">messages</a> or FHIR <a href="{{site.data.fhir.path}}documents.html">documents</a>.  However, within the scope of
+    this implementation guide, communicating both records together is accomplished in one of two ways:
+  </p>
+  <ul>
+    <li>
+      The Provenance associated with a resource may be transmitted along with the resource in a POST or a PUT using the <code>X-Provenance</code> as described in the core
+      specification <a href="{{site.data.fhir.path}}provenance.html#header">here</a>.
+    </li>
+    <li>
+      The QuestionnaireResponse and its associated Provenance (or more rarely AuditEvent) may both be sent in a single RESTful 
+      <a href="{{site.data.fhir.path}}http.html#transaction">Transaction</a> Bundle, where there is a either an entry POSTing both records, or one entry PUTting an update
+      of the QuestionnaireResponse and a second POSTing the Provenance/AuditEvent corresponding to the metadata for that update.  In either case, the Provenance or
+      AuditEvent will point to the version-specific identifier of the QuestionnaireResponse, using either <code>Provenance.entity.reference</code> or <code>AuditEvent.object.reference</code>
+    </li>
+  </ul>
 	<a name="consent"> </a>
-	<h4>Consent</h4>
+	<h3>Consent</h3>
 	<p>
     The SDC workflow envisions the sharing of patient-identifiable healthcare information from
     <a href="CapabilityStatement-sdc-form-filler.html">SDC Form Filler</a> systems to <a href="CapabilityStatement-sdc-form-manager.html">SDC Form Manager</a>.
     It also envisions transmitting completed forms from <a href="CapabilityStatement-sdc-form-filler.html">SDC Form Filler</a> to
     <a href="CapabilityStatement-sdc-form-receiver.html">SDC Form Receiver</a> systems.
     Where such exchanges take place across organizational or other custodial boundaries, patient consent may be required.  Furthermore,
-    use of C-CDA data for completing questionnaires for purposes unrelated to the initial population of the C-CDA may also require patient
+    use of data for completing questionnaires for purposes unrelated to the initial gathering data may also require patient
     consent.  It is the responsibility of the client systems to ensure that any necessary consent records exist and are reviewed prior to
     each exchange of patient-identifiable healthcare information.  This verification SHOULD be logged in the same manner as other transactions,
     as discussed above under <a href="#general">General Security Considerations.</a>
 	</p>
 	<a name="workflow"> </a>
-	<h4>Security Workflow</h4>
+	<h3>Security Workflow</h3>
 	<p>
     When communicating RESTfully, <a href="{{site.data.fhir.path}}auditevent.html">AuditEvent</a> and <a href="{{site.data.fhir.path}}provenance.html">Provenance</a> resources are
     typically submitted separately from the resource versions they're manipulating.  This is for a couple of reasons:
@@ -98,5 +118,40 @@
     In environments where the submission of audit and/or provenance information must be performed as part of a single unit of work, this should
     be done using <a href="{{site.data.fhir.path}}http.html#transaction">transaction</a>.  Provenance information can be retrieved along with a QuestionnaireResponse using
     the _revinclude query parameter.
+  </p>
+  <a name="population"> </a>
+  <h3>Population</h3>
+  <p>
+    When populating a form from existing data, there is no expectation for consent in order to pass data to the form or for the form to query information where the user
+    filling out the form would normally have access to such data.  (The population mechanism merely saves the effort of looking it up manually and copying it across.)
+    However, population does raise two important privacy/security considerations:
+  </p>
+  <ul>
+    <li>
+      Form Fillers SHALL always give users a chance to review all answers prior to submission and allow the user to know where the data is being submitted</li>
+    <li>
+      Systems need to be very cautious about submitting forms that contain 'hidden' questions that can be auto-populated because they can allow disclosure of 
+      information without human review. These can be inoccuous (e.g. what version of the software was the data loaded from) but could also be used in an attack 
+      to extract data serrepticiously. Manual review by a technical expert (prior to approval of use of the Questionnaire) of Questionnaire versions that 
+      contain hidden auto-populated questions may be needed. Similarly, manual review of submission destinations might also be appropriate if they are not 
+      already 'trusted' destinations.</li>
+  </ul> 
+  <a name="compartments"> </a>
+  <h3>Compartments</h3>
+  <p>
+    QuestionnaireResponses associated with an individual will generally have a <code>subject</code> that will establish the 'compartment' the data belongs to and control
+    who has access to that QuestionnaireResponse and what consents or business rules, if any, apply when evaluating requests for access to that record.  For example,
+    if QuestionnaireResponse.subject is set to a specific patient, then that record will be 'protected' by all of the rules that apply to accessing that particular
+    patient's data.  However, QuestionnaireResponse.subject is optional, and there are some situations where a QuestionnaireResponse will contain information that is 
+    patient or provider-identifiable and even sensitive, but will not yet have a QuestionnaireResponse.subject.  For example, some workflows might involve filling out a 
+    Questionnaire where the Form Filler isn't aware of the subject record to link to.  Alternatively, a QuestionnaireResponse might be used to capture initial
+    registration information before the appropriate Patient or Practitioner instance has even been created.
+  </p>
+  <p>
+    Because of this, systems must be extremely careful around allow access to QuestionnaireResponses with no specified subject.  Some might be completely fine to share
+    and access widely, while others might contain extremely sensitive information.  It might be necessary to make use of 
+    <a href="{{site.data.fhir.path}}resource-definitions.html#Meta.security">security tags</a> or other mechanisms to assert and manage the sensitivity of such records.
+  </p>
+  <p>
   </p>
 </div>

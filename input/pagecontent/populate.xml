@@ -6,6 +6,23 @@
 	  <a href="CapabilityStatement-sdc-form-manager.html">Form Manager</a> system can query for the relevant information and automatically fill in some of the answers.  FHIR's
 	  REST interface provides a standard way to query this data, regardless of the type of client.
 	</p>
+	<p>
+	  This 'population' process can happen in one of two ways:
+	</p>
+	<ul>
+    <li>
+      The <a href="CapabilityStatement-sdc-form-filler.html">SDC Form Filler</a> can invoke the <a href="OperationDefinition-Questionnaire-populate.html">$populate</a> 
+      operation on a <a href="CapabilityStatement-sdc-form-manager.html">SDC Form Manager</a> to create an initial QuestionnaireResponse before exposing the form
+      to the user.  This approach is known as 'pre-population' and is used by 'simple' Form Fillers that don't have the capacity to execute the logic needed to populate the form themselves.
+      This approach is more limited because the population process can't take into account any user-provided information, nor can it provide guidance to the
+      user.  Either the population process can fill in an answer or it can't.
+    </li>
+    <li>
+      Alternatively, the <a href="CapabilityStatement-sdc-form-filler.html">SDC Form Filler</a> can "interactively" handle the population process internally without invoking
+      an operation.  This is called "continuous population".  In this case, there is no need to try to populate answers for all questions at once and answers to previous questions can be used as part of
+      the logic used to populate subsequent ones.  As well, the population process can provide guidance rather than always providing outright answers.
+    </li>
+  </ul>
   <p>
 	  There are four different modes of "population" possible:
 	</p>
@@ -15,20 +32,26 @@
       <b>Full population:</b> The questionnaire can identify the specific data element (or set of data elements) that should be used to populate the
       form.  No user intervention is required other than to review the content.  E.g. capturing the patient's gender, birth date, most recent weight
       measurement, etc.  In some cases, this might involve performing a calculation based on data retrieved.  For example, determining the patient's BMI by
-      querying the most recent weight and height observations.</li>
+      querying the most recent weight and height observations.  This is the only type of population the <a href="OperationDefinition-Questionnaire-populate.html">$populate</a>
+      operation can perform (and then, only if the logic is based entirely on context or on answers to prior questions that were able to be populated automatically).</li>
     <li>
       <b>Choice selection:</b> The questionnaire can identify the candidate answers, but the user must choose which of those should be included in the form
       response.  For example, a question might say "List any relevant concomitant medical conditions".  The notion of "relevant" will typically require human
       decision-making.  However, the system rendering the questionnaire can easily bring up a list of concomitant medical conditions and allow the user to
-      select which ones are "relevant" and include those in the answer.</li>
+      select which ones are "relevant" and include those in the answer.  Choice selection can only occur during interactive population.</li>
     <li>
       <b>Answer context:</b> The specific answer to the question will not exist as data in the client system, but might be able to be determined by the user
       based on data that is available in the clinical system.  For example, the question "Has the patient ever exhibited a similar reaction in the past?" with
       a yes/no/unknown answer choice is not a data element that will exist in the clinical system.  However, it is possible to provide the clinician with a
-      list of AdverseEvent, Observation and Condition instances that might be relevant they can scan in choosing how to answer the question.</li>
+      list of AdverseEvent, Observation and Condition instances that might be relevant they can scan in choosing how to answer the question.  Providing
+      answer contexts can likewise only done interactively, not with the $populate operation.</li>
     <li>
       <b>No population:</b> There is no way to query information relevant to the answer - the user will have to fill out that portion of the form unassisted.</li>
   </ul>
+  <p>
+    "Choice selection" and "answer context" options will generally only be exposed when the user is interacting with the associated question 
+    (typically when a user clicks on an icon indicating they want to see the context or EHR choices).
+  </p>
   <a name="caveats"> </a>
   <h3>Caveats and considerations with form population</h3>
   <ul>
@@ -78,12 +101,6 @@
       </ul>
     </li>
     <li>
-      Of the four population <a href="#mode">modes</a>, the 'Full Population' approach can be done either as a single step for all items in the questionnaire
-      prior to presenting the form to the user - "pre-population".  Alternatively, it can be done continuously as the user encounters each item when completing
-      the form - "continuous population".  "Choice selection" and "answer context" options will generally only be exposed when the user is interacting with the
-      associated question (typically when a user clicks on an icon indicating they want to see the context or EHR choices).
-    </li>
-    <li>
       The 'enableWhen' elements in Questionnaire mean that some elements may not be relevant in all situations.  When pre-populating a questionnaire, it makes
       sense to "fill in" as much data as possible, even if it may not always be needed.  However, such data should not be shown to the user until the given
       item is "enabled".  And once the questionnaire is completed, data for any non-enabled elements SHALL not be displayed to the user completing the form.
@@ -99,6 +116,17 @@
       content as the base Questionnaire, but would have additional extensions inserted to support population.  Once the QuestionnaireResponse was
       generated/completed, it would be updated to assert a <code>QuestionnaireResponse.questionnaire</code> of the original Questionnaire's canonical URL
       rather than that of the derived Questionnaire that drove the population process.</li>
+    <li>
+      When performing population, the considerations around <a href="expressions.html#expressionerrors">errors and lack of support</a> for expresssions may come into
+      play.  In addition, similar considerations can also be relevant in terms of what 'population' approach the Questionnaire supports, as opposed to what
+      level of population capability the Form Filler has.  The desired behavior of alerting the user that some elements might not have been populated and that
+      other clients might provide more population support is the same whether the variation is "handles FHIRPath vs. CQL" or "uses Observation-based vs. definition-based".</li>
+    <li>
+      When information from other sources has been used to help populate a QuestionnaireResponse, there may be a desire to capture what information sources
+      were used, what software was used to perform the population process, etc.  The way to represent this information in FHIR is using the
+      <a href="{{site.data.fhir.path}}provenance.html">Provenance</a> resource.  The various source records used in population would be represented using
+      <code>Provenance.entity.what</code> where the <code>Provenance.entity.role</code> would be 'source'.  Software information would be captured in
+      <code>Provenance.agent</code>.</li>
     <!-- TODO: How do we pass in a token that allows the population system the ability to query the system that owns the data - and how do they even know where that system is? -->
   </ul>
   <a name="service"> </a>
@@ -265,7 +293,7 @@
       <linkId value="code-pop-demo"/>
       <code>
         <system value="http://loinc.org"/>
-        <code value="29463-7"/>
+        <code value="29463-7"/>7
         <display value="Body weight"/>
       </code>
       <code>
@@ -379,7 +407,7 @@
     <li>
       If appropriate, use the <a href="StructureDefinition-sdc-questionnaire-itemPopulationContext.html">questionnaire-itemPopulationContext</a> on group items to establish the context for
       a group.  When populating the questionnaire, this will do two things: it will create a group repetition for each row returned from the query; and it will
-      set the specified variable name to that resource repetition for use in processing items within the group.</li>
+      set the specified variable name to that resource repetition for use in processing descendant items of the group.</li>
     <li>
       Use the <a href="{{site.data.fhir.path}}extension-variable.html">variable</a> extension on items as well to perform intermediary calculations or
       additional queries that are based on itemPopulationContext values.</li>
@@ -458,12 +486,14 @@
       amongst the results being returned.</li>
     <li>
       If the initialExpression returns fewer occurrences than the <a href="{{site.data.fhir.path}}extension-questionnaire-minoccurs.html">
-      questionnaire-minOccurs</a> value (if specified), it SHALL populate what occurrences it can.  The user can then add fill in additional repetitions as
+      questionnaire-minOccurs</a> value (if specified), it SHALL populate what occurrences it can.  The user can then add in additional repetitions as
       needed.</li>
     <li>
-      If an answer is dependent on other answers within the form, the calculation of the answer should be performed using a variable extension on the nearest
+      If an answer is dependent on other answers within the form, the calculation of the answer will typically be performed using a variable extension on the nearest
       common ancestor in which all relevant questions or variables are descendants.  The question will then have an initialExpression extension that references that
-      calculated value.  The reason for this is that FHIRPath only has access to the current context node and its descendants, not siblings or ancestors.</li>
+      calculated value.  The reason for this is that FHIRPath only has access to the current context node and its descendants, not siblings or ancestors.  However,
+      if it is known that there can only be <i>one</i> item with a particular linkId, then the value of that answer can be accessed directly by using 
+      <code>%context.descendants().select(item).where(linkId='someLinkId').answer</code></li>
     <li>
       It's possible that not all queries will resolve successfully - or that some context variables might not be populated.  In this situation, the system
       performing the population SHOULD make best efforts and populate whatever elements it can that are not dependent on other answers within the form.</li>

@@ -12,6 +12,9 @@
     to write generic software that can convert any arbitrary QuestionnaireResponse into appropriate FHIR resources leveraging metadata embedded in the
     Questionnaire.  This portion of the SDC guide defines mechanisms for doing so.
   </p>
+	<p>
+	  
+	</p>
   <a name="caveats"> </a>
   <h3>Caveats, considerations and rules with form data extraction</h3>
   <ul>
@@ -31,6 +34,12 @@
       Once a QuestionnaireResponse has been converted, it might not be necessary to retain the QuestionnaireResponse any longer, as all data access and
       subsequent maintenance will occur through the 'traditional' resources.  However, in many environments the QuestionnaireResponse will be retained anyhow
       to keep a record of the original source-of-truth and for traceability reasons.</li>
+    <li>
+      As with population, 'extraction' can happen in one of two ways: The <a href="CapabilityStatement-sdc-form-filler.html">SDC Form Filler</a> can invoke the
+      <a href="OperationDefinition-QuestionnaireResponse-extract.html">$extract</a> operation on a <a href="CapabilityStatement-sdc-form-manager.html">SDC Form Manager</a> 
+      to generate the resource or Bundle containing the information expressed in the QuestionnaireResponse.
+      Alternatively, the <a href="CapabilityStatement-sdc-form-filler.html">SDC Form Filler</a> can perform the extraction process locally without relying
+      on an external process.  Some Form Fillers might rely on the operation approach for certain extraction techniques and perform others internally.</li>
     <li>
       When resources have been generated from a QuestionnaireResponse, the <a href="{{site.data.fhir.path}}provenance.html">Provenance</a> instance associated
       with the creation of the resource instance(s) can and SHOULD include an <code>entity</code> reference of type 'source' that points back to the original
@@ -54,6 +63,18 @@
       example, "Please specify the patient's weight in kilograms".  When extracting the value for representation in a resource, a unit will be added.
       The <a href="{{site.data.fhir.path}}extension-questionnaire-unit.html">questionnaire-unit</a> extension SHOULD be included on the question to support
       the extraction process.</li>
+    <li>
+      When performing etraction, the considerations around <a href="expressions.html#expressionerrors">errors and lack of support</a> for expresssions may come into
+      play.  In addition, similar considerations can also be relevant in terms of what 'extraction' approach the Questionnaire supports, as opposed to what
+      level of extraction capability the Form Filler has.  The desired behavior of alerting the user that extraction won't be possible is the same whether the issue 
+      is "handles FHIRPath vs. CQL" or "uses Observation-based vs. definition-based".</li>
+    <li>
+      When generating or updating resources based on information in a QuestionnaireResponse, there may be a desire to capture where that information was
+      sourced from, what software was used to perform conversion, etc.  The way to represent this information in FHIR is using the
+      <a href="{{site.data.fhir.path}}provenance.html">Provenance</a> resource.  The QuestionnaireResponse would be referenced using
+      <code>Provenance.entity.what</code> where the <code>Provenance.entity.role</code> would be 'source'.  Software information would be captured in
+      <code>Provenance.agent</code>.  If the produced records are Observations, the resulting Observation(s) can also directly point to the
+      QuestionnaireResponse using <code>Observation.derivedFrom</code>.</li>
   </ul>
   <a name="service"> </a>
   <h3>Extraction service</h3>
@@ -294,7 +315,16 @@
 	  (or set of resources), then the Questionnaire is being used to update the resource(s).</li>
     <li>On descendant items of that element, fill in the <code>Questionnaire.item.definition</code> to point to the resource or profile element that Questionnaire
       item corresponds to.  (Profiles may be relevant for data that is sliced or has fixed values for some properties.).  The definition SHALL have the full
-      canonical URL of the resource (or profile) followed by '#' followed by the snapshot.path of the element the Questionnaire item corresponds to.</li>
+      canonical URL of the resource (or profile) followed by '#' followed by the snapshot.element.id of the element the Questionnaire item corresponds to.<br/>
+      NOTE: Rather than specifying the
+      id of an element that actually appears in a snapshot, it is also possible to 'extend' an id to walk further into the data types of the specified element.  For example, 
+      a definition might be <code>http://hl7.org/fhir/Patient#Patient.name.given</code> even though the referenced profile's snapshot only contains <code>Patient.name</code>, not
+      <code>Patient.name.given</code>.  However, for more complex references (e.g. referring to a particular extension or a particular repetition), it will be necessary to define a 
+      distinct profile where slicing ensures that a single element id corresponds to the desired element.  I.e. you would need to use 
+      <code>http://somewhere.org/SomePatient#Patient.name.given:foo</code> where 'foo' was a slice that referred to the first middle name in order to tie to a definition that specific.<br/>
+      If a definition is specified on a Group or a Question with nested questions, then nested items might have definitions that refer to a deeper path along the same id structure.
+      For example, a group element might have a definition of <code>http://hl7.org/fhir/Patient#Patient.name</code> while nested items would have definitions of
+      <code>http://hl7.org/fhir/Patient#Patient.name.given</code> and <code>http://hl7.org/fhir/Patient#Patient.name.family</code>.</li>
     <li>If necessary, define <a href="{{site.data.fhir.path}}extension-questionnaire-hidden.html">questionnaire-hidden</a> items that have <code>
       Questionnaire.item.initial.value[x]</code> or that use the
       <a href="StructureDefinition-sdc-questionnaire-initialExpression.html">questionnaire-initialExpression</a> extension to define their content to use to populate
@@ -308,8 +338,13 @@
     To perform the extraction process, first determine whether the context resource should be updated or created:
   </p>
   <ul>
-    <li>If the context resource existed and was used in the population of the resource and data has changed, the resource will typically be updated.  (Note
-      that this means the system must capture the resource ids as hidden items in the Questionnaire so they're available for update.)</li>
+    <li>If the element has a <a href="StructureDefinition-sdc-questionnaire-itemExtractionContext.html">questionnaire-itemExtractionContext</a> that corresponds to
+      an existing resource or set of resources, then the intention is that the extracted content will replace those existing resources.  (Typically in this situation,
+      the same expression would have appeared on the same element as a <a href="StructureDefinition-sdc-questionnaire-itemPopulationContext.html">questionnaire-itemPopulationContext</a>
+      expression.  On the other hand if the itemExtractionContext simply refers to a resource type, then the intention is to create new instances.  When updating, the
+      Questionnaire will typically 'populate' hidden questions with the 'id' elements of the relevant respirces for update to ensure that updates are applied to the
+      appropriate instances.  If some repetitions end up not having id elements (e.g. because the user has added additional group repetitions), those additional repetitions
+      will also be handled as creates.</li>
     <li>In other cases, the record will be created.</li>
   </ul>
   <p>
