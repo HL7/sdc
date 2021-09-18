@@ -1,5 +1,22 @@
 <div xmlns="http://www.w3.org/1999/xhtml" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://hl7.org/fhir ../../input-cache/schemas/R4/fhir-single.xsd">
-	<a name="language"></a>
+  <a name="derivation"> </a>
+  <h3>Derived Questionnaires</h3>
+  <p>
+    It is possible to construct Questionnaires that are derived from a 'parent' Questionnaire.  The derived Questionnaire is fully compatible with the base Questionnaire, but it
+    may make certain changes:
+  </p>
+  <ul>
+    <li>It might remove certain optional items (see the <a href="StructureDefinition-sdc-questionnaire-optionalDisplay.html">optionalDisplay</a> extension)</li>
+    <li>It might introduce additional extensions that allow the Questionnaire to be populated and/or extracted</li>
+    <li>It might tighten rendering expectations to align with the capabilities of particular rendering tools</li>
+    <li>It might provide translations of the Questionnaire into alternate languages</li>
+  </ul>
+  <p>
+    In all cases, the answers to the derived Questionnaire must be valid as answers against the 'base' Questionnaire.  It is also legal for the QuestionnaireResponse.questionnaire
+    to point to the base Questionnaire rather than the derived Questionnaire.  A Questionnaire indicates that it is derived by pointing to the base Questionnaire using
+    <code>Questionnaire.derivedFrom</code>.  In this scenario, there must be exactly one 'derivedFrom' form specified.
+  </p>
+	<a name="language"> </a>
 	<h3>Language and translations</h3>
 	<p>
     In some environments, it may be necessary for a questionnaire to support multiple languages.  The rendering tool would select the appropriate

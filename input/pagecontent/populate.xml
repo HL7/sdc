@@ -111,11 +111,7 @@
       Sometimes the author interested in making a Questionnaire "populatable" does not have authority to make changes to the "official" Questionnaire.  In other
       cases, there might be one official Questionnaire, but a need to populate it from resources that comply with different sets of profiles (e.g. that comply
       with requirements from different countries) - and thus a need  for different metadata in the Questionnaire to support the population process.  In this
-      case, rather than invoking the population on the original Questionnaire, it can be done on a derived Questionnaire - one that has a
-      <code>Questionnaire.derivedFrom</code> relationship to the canonical URL of the desired Questionnaire.  The derived Questionnaire would contain the same
-      content as the base Questionnaire, but would have additional extensions inserted to support population.  Once the QuestionnaireResponse was
-      generated/completed, it would be updated to assert a <code>QuestionnaireResponse.questionnaire</code> of the original Questionnaire's canonical URL
-      rather than that of the derived Questionnaire that drove the population process.</li>
+      case, rather than invoking the population on the original Questionnaire, it can be done on a <a href="StructureDefinition-sdc-questionnaire#derived">derived Questionnaire</a>.</li>
     <li>
       When performing population, the considerations around <a href="expressions.html#expressionerrors">errors and lack of support</a> for expresssions may come into
       play.  In addition, similar considerations can also be relevant in terms of what 'population' approach the Questionnaire supports, as opposed to what
