@@ -683,7 +683,7 @@
         </extension>
         <name value="version"/>
         <definition value="http://hl7.org/fhir/SearchParameter/Questionnaire-version"/>
-        <type value="string"/>
+        <type value="token"/>
       </searchParam>
       <searchParam>
         <extension url="http://hl7.org/fhir/StructureDefinition/capabilitystatement-expectation">
@@ -888,7 +888,7 @@
         </extension>
         <name value="reference"/>
         <definition value="http://hl7.org/fhir/SearchParameter/ValueSet-reference"/>
-        <type value="string"/>
+        <type value="uri"/>
       </searchParam>
       <searchParam>
         <extension url="http://hl7.org/fhir/StructureDefinition/capabilitystatement-expectation">
@@ -920,7 +920,7 @@
         <valueCode value="MAY"/>
       </extension>
       <name value="populate"/>
-      <definition value="http://hl7.org/fhir/OperationDefinition/Questionnaire-populate"/>
+      <definition value="http://hl7.org/fhir/uv/sdc/OperationDefinition/Questionnaire-populate"/>
       <!--				<display value="Populate Questionnaire returning QuestionnaireResponse to review/edit/submit"/>-->
     </operation>
     <operation>
@@ -928,7 +928,7 @@
         <valueCode value="MAY"/>
       </extension>
       <name value="populate html"/>
-      <definition value="http://hl7.org/fhir/OperationDefinition/Questionnaire-populatehtml"/>
+      <definition value="http://hl7.org/fhir/uv/sdc/OperationDefinition/Questionnaire-populatehtml"/>
       <!--				<display value="Populate Questionnaire returning HTML page to render locally for reviewing/editing/submitting"/>-->
     </operation>
     <operation>
@@ -936,7 +936,7 @@
         <valueCode value="MAY"/>
       </extension>
       <name value="populate link"/>
-      <definition value="http://hl7.org/fhir/OperationDefinition/Questionnaire-populatelink"/>
+      <definition value="http://hl7.org/fhir/uv/sdc/OperationDefinition/Questionnaire-populatelink"/>
       <!--				<display value="Populate questionnaire returning URL to page to review/edit/submit"/>-->
     </operation>
   </rest>

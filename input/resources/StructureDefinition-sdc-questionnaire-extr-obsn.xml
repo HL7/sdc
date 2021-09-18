@@ -32,7 +32,6 @@
         <expression value="type!=&#39;display&#39; or extension(&#39;http://hl7.org/fhir/uv/sdc/StructureDefinition/sdc-questionnaire-observationExtract&#39;).empty()"/>
         <xpath value="not(f:type/@value= &#39;display&#39;  and exists(f:extension[@url=&#39;http://hl7.org/fhir/uv/sdc/StructureDefinition/sdc-questionnaire-observationExtract&#39;]))"/>
       </constraint>
-      <mustSupport value="false"/>
     </element>
     <element id="Questionnaire.item.extension:unit">
       <path value="Questionnaire.item.extension"/>

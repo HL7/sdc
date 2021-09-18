@@ -120,7 +120,6 @@
         <expression value="initial.empty() or extension(&#39;http://hl7.org/fhir/uv/sdc/StructureDefinition/sdc-questionnaire-initialExpression&#39;).empty()"/>
         <xpath value="not(exists(f:initial) and exists(f:extension[@url=&#39;http://hl7.org/fhir/uv/sdc/StructureDefinition/sdc-questionnaire-initialExpression&#39;]))"/>
       </constraint>
-      <mustSupport value="false"/>
     </element>
     <element id="Questionnaire.item.extension:usageMode">
       <path value="Questionnaire.item.extension"/>
@@ -545,18 +544,17 @@
     </element>
     <element id="Questionnaire.item.required">
       <path value="Questionnaire.item.required"/>
-      <mustSupport value="false"/>
       <mapping>
         <identity value="ihe-sdc"/>
         <map value="./cardinality/minimum!=0"/>
       </mapping>
     </element>
     <element id="Questionnaire.item.required.valueBoolean">
-      <path value="Questionnaire.item.required.valueBoolean"/>
+      <path value="Questionnaire.item.required.value"/>
       <mustSupport value="false"/>
     </element>
     <element id="Questionnaire.item.required.valueBoolean.extension:requiredExpression">
-      <path value="Questionnaire.item.required.valueBoolean.extension"/>
+      <path value="Questionnaire.item.required.value.extension"/>
       <sliceName value="requiredExpression"/>
       <min value="0"/>
       <max value="1"/>
@@ -568,14 +566,13 @@
     </element>
     <element id="Questionnaire.item.repeats">
       <path value="Questionnaire.item.repeats"/>
-      <mustSupport value="false"/>
     </element>
     <element id="Questionnaire.item.repeats.valueBoolean">
-      <path value="Questionnaire.item.repeats.valueBoolean"/>
+      <path value="Questionnaire.item.repeats.value"/>
       <mustSupport value="false"/>
     </element>
     <element id="Questionnaire.item.repeats.valueBoolean.extension:repeatsExpression">
-      <path value="Questionnaire.item.repeats.valueBoolean.extension"/>
+      <path value="Questionnaire.item.repeats.value.extension"/>
       <sliceName value="repeatsExpression"/>
       <min value="0"/>
       <max value="1"/>
@@ -587,14 +584,13 @@
     </element>
     <element id="Questionnaire.item.readOnly">
       <path value="Questionnaire.item.readOnly"/>
-      <mustSupport value="false"/>
     </element>
     <element id="Questionnaire.item.readOnly.valueBoolean">
-      <path value="Questionnaire.item.readOnly.valueBoolean"/>
+      <path value="Questionnaire.item.readOnly.value"/>
       <mustSupport value="false"/>
     </element>
     <element id="Questionnaire.item.readOnly.valueBoolean.extension:readOnlyExpression">
-      <path value="Questionnaire.item.readOnly.valueBoolean.extension"/>
+      <path value="Questionnaire.item.readOnly.value.extension"/>
       <sliceName value="readOnlyExpression"/>
       <min value="0"/>
       <max value="1"/>
@@ -606,7 +602,6 @@
     </element>
     <element id="Questionnaire.item.answerValueSet">
       <path value="Questionnaire.item.answerValueSet"/>
-      <mustSupport value="false"/>
     </element>
     <element id="Questionnaire.item.answerValueSet.value[x]">
       <path value="Questionnaire.item.answerValueSet.value[x]"/>
@@ -625,7 +620,6 @@
     </element>
     <element id="Questionnaire.item.answerOption">
       <path value="Questionnaire.item.answerOption"/>
-      <mustSupport value="false"/>
     </element>
     <element id="Questionnaire.item.answerOption.extension:optionExclusive">
       <path value="Questionnaire.item.answerOption.extension"/>
