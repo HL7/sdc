@@ -250,6 +250,11 @@
     Some of these mechanisms make use of FHIR-based queries, FHIRPath and/or CQL as well as extensions that include expressions in one of these languages.
     Implementers should read the <a href="expressions.html">Using Expressions</a> page for background and guidance on these technologies and extensions.
   </p>
+  <p>
+    These three mechanisms aren't necessarily mutually exclusive.  It is possible to us StructureMap-based population to perform an initial set of 'complex' population and then have different elements within the Questionnaire that are set up to
+    perform supplemental observation-based or expression-based population.  Obviously, the same element should only be populated in one way.  Also, combining methods adds complexity and may reduce the number of systems that are capable of
+    appropriately handling the Questionnaire.
+  </p>
   <a name="obs-pop"> </a>
   <h4>Observation-based Population</h4>
   <p>
