@@ -127,6 +127,9 @@
       <a href="{{site.data.fhir.path}}provenance.html">Provenance</a> resource.  The various source records used in population would be represented using
       <code>Provenance.entity.what</code> where the <code>Provenance.entity.role</code> would be 'source'.  Software information would be captured in
       <code>Provenance.agent</code>.</li>
+    <li>
+      When using FHIRPath and CQL, the empty set can be taken to mean 'false'.  However, items of type 'boolean' actually have three states - 'true', 'false' and
+      'not answered'.  An empty set SHALL be treated as 'not answered' rather than being converted to a boolean value of 'false'.</li>
     <!-- TODO: How do we pass in a token that allows the population system the ability to query the system that owns the data - and how do they even know where that system is? -->
   </ul>
   <a name="service"> </a>
