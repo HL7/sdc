@@ -11,8 +11,8 @@
 	</p>
 	<ul>
     <li>
-      The <a href="CapabilityStatement-sdc-form-filler.html">SDC Form Filler</a> can invoke the <a href="OperationDefinition-Questionnaire-populate.html">$populate</a> 
-      operation on a <a href="CapabilityStatement-sdc-form-manager.html">SDC Form Manager</a> to create an initial QuestionnaireResponse before exposing the form
+      The <a href="CapabilityStatement-sdc-form-filler.html">SDC Form Filler</a> can invoke one of the <a href="#populate">$populate</a> 
+      operations on a <a href="CapabilityStatement-sdc-form-manager.html">SDC Form Manager</a> to create an initial QuestionnaireResponse before exposing the form
       to the user.  This approach is known as 'pre-population' and is used by 'simple' Form Fillers that don't have the capacity to execute the logic needed to populate the form themselves.
       This approach is more limited because the population process can't take into account any user-provided information, nor can it provide guidance to the
       user.  Either the population process can fill in an answer or it can't.
@@ -23,6 +23,66 @@
       the logic used to populate subsequent ones.  As well, the population process can provide guidance rather than always providing outright answers.
     </li>
   </ul>
+  <a name="operations"> </a>
+  <h3>Popuation operations</h3>
+  <p>
+    There are 3 distinct $populate operations.  They all perform the same population process, but the response they pass back (and the ramifications
+    for what a <a href="CapabilityStatement-sdc-form-filler.html">Form Filler</a> or other invoking system will need to do after) will be different.
+  </p>
+  <ul>
+    <li><a href="OperationDefinition-Questionnaire-populate.html">$populate</a> will pass back the results of the operation in a 
+      <a href="{{site.data.fhir.path}}questionnaireresponse.html">QuestionnaireResponse</a>, meaning that the continued filling of the form will
+      require a Form Filler to handle the rendering.</li>
+    <li><a href="OperationDefinition-Questionnaire-populate-html.html">$populate-html</a> returns the results back as a
+      <a href="{{site.data.fhir.path}}binary.html">Binary</a> containing an HTML form where populated values are reflected in initial default
+      elements.  Subsequent review and rendering are handled in an HTML rendering environment within the Form Filler.  The results of completing
+      the form are submitted as <code>application/x-www-form-urlencoded</code> or <code>multipart/form-data</code> rather than as a 
+      QuestionnaireResponse.</li>
+    <li><a href="OperationDefinition-Questionnaire-populate-link.html">$populate-link</a> returns a hyperlink to a website that has the
+      form already pre-populated.  Managing the HTML is handled external to the Form Filler.  Like the $populate-html approach, results are
+      returned as web form content rather than QuestionnaireResponse</li>
+  </ul>
+  <p>
+    The latter two modes are intended for form fillers that might not have the capability to support the complexity of the form and offloads the
+    work of figuring out how to render the form in addition to the work of populating it.
+  </p>
+  <p>
+    If using a popuate operation, the operation will typically only be invoked once.  However, there are two circumstances where it might be invoked
+    more than once:  
+  </p>
+  <ol>
+    <li>If the user has saved a QuestionnaireResponse "in progress" and comes back to it later, it is possible they might choose to re-run the
+      populate process, for example to load information they know has been entered or imported into the EHR since the last time the $populate
+      process was run.</li>
+    <li>If the user is creating a net new QuestionnaireResponse by copying a previous QuestionnaireResponse, the user might also want to re-run
+      the population process to take advantage of new data that wasn't available in the original form.</li>
+  </ol>
+  <p>
+    Both of these situations involve starting from an existing QuestionnaireResponse, which means that "re-populating" a form is something that will
+    only be a consideration if using $populate, not $populate-html or $populate-link.
+  </p>
+  <p>
+    If choosing to re-populate a form, there are several considerations to keep in mind:
+  </p>
+  <ul>
+    <li>Re-population SHOULD only be done at user request because it may bring back data that had previously been remove or add additional
+      selections to 'repeat' questions that the user had previously reviewed</li>
+    <li>Users SHOULD be warned about both of these effects (return of previously removed data and addition of additional answers to questions
+      whose answers had previously been reviewed).</li>
+    <li>Re-population SHOULD NOT revert elements that had been changed without user request.  (If a user wants data to be fully reverted, they
+      can always start the form from scratch.)</li>
+    <li>If data is changed or reverted as part of a re-population process, these changes should be highlighted to the user.</li>
+    <li>Re-population can also be run in a mode where the Form Filler runs $populate on a blank form and then displays net new or changed answers
+      alongside the original answers and provides the user with the option of propagating some or all of the answers across from the newly
+      populated form into the 'current' form.</li>
+    <li>This same approach can also be used where the user starts with a newly populated form and then is given the option of propagating answers
+      across from a previously completed QuestionnaireResponse</li>
+    <li>Some sophisticated systems might have algorithms that determine whether reverting or supplementing data is appropriate based on what data
+      is newer, where it came from, or other considerations.  However, there is no standard algorithm for doing this and requirements might vary
+      by Questionnaire and by item.</li>
+  </ul>
+  <a name="modes"> </a>
+  <h3>Population modes</h3>
   <p>
 	  There are four different modes of "population" possible:
 	</p>
