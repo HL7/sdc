@@ -25,6 +25,13 @@
       <comment value="3 of these launch contexts are aligned with the existing SMART on FHIR &quot;launch&quot; contexts."/>
       <min value="0"/>
       <max value="*"/>
+      <constraint>
+        <key value="inv-1"/>
+        <severity value="error"/>
+        <human value="Types must be from the specified value set of resource types based on name: patient: Patient; user: Patient, Practitioner, PractitionerRole, RelatedPerson (could be a subset of these); encounter: Encounter; location: Location; study: ResearchStudy"/>
+        <expression value="(extension('name').where(code='patient' and system='http://hl7.org/fhir/uv/sdc/CodeSystem/launchContext') implies extension('type')='Patient') and (extension('name').where(code='user' and system='http://hl7.org/fhir/uv/sdc/CodeSystem/launchContext') implies extension('type') in ('Patient' | 'Practitioner' | 'PractitionerRole' |'RelatedPerson')) and (extension('name').where(code='encounter' and system='http://hl7.org/fhir/uv/sdc/CodeSystem/launchContext') implies extension('type')='Encounter') and (extension('name').where(code='study' and system='http://hl7.org/fhir/uv/sdc/CodeSystem/launchContext') implies extension('type')='ResearchStudy') and (extension('name').where(code='location' and system='http://hl7.org/fhir/uv/sdc/CodeSystem/launchContext') implies extension('type')='Location')"/>
+        <xpath value="(not(f:extension[@url='name' and f:valueCoding[f:code/@value='patient' and f:system/@value='http://hl7.org/fhir/uv/sdc/CodeSystem/launchContext']]) or f:extension[@url='type' and f:valueCode/@value='Patient']) and (not(f:extension[@url='name' and f:valueCoding[f:code/@value='user' and f:system/@value='http://hl7.org/fhir/uv/sdc/CodeSystem/launchContext']]) or f:extension[@url='type' and f:valueCode/@value=('Patient','Practitioner','PractitionerRole','RelatedPerson')]) and (not(f:extension[@url='name' and f:valueCoding[f:code/@value='encounter' and f:system/@value='http://hl7.org/fhir/uv/sdc/CodeSystem/launchContext']]) or f:extension[@url='type' and f:valueCode/@value='Encounter']) and (not(f:extension[@url='name' and f:valueCoding[f:code/@value='study' and f:system/@value='http://hl7.org/fhir/uv/sdc/CodeSystem/launchContext']]) or f:extension[@url='type' and f:valueCode/@value='ResearchStudy']) and (not(f:extension[@url='name' and f:valueCoding[f:code/@value='location' and f:system/@value='http://hl7.org/fhir/uv/sdc/CodeSystem/launchContext']]) or f:extension[@url='type' and f:valueCode/@value='Location'])"/>
+      </constraint>      
     </element>
     <element id="Extension.extension:name">
       <path value="Extension.extension"/>

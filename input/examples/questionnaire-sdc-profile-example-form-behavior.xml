@@ -67,7 +67,11 @@ elements or extensions defined in the advanced form behavior profile are intende
     <!-- sdc-questionnaire-launchContext - the contextual information required in populating the item below that uses choiceColumns -->
     <extension url="http://hl7.org/fhir/uv/sdc/StructureDefinition/sdc-questionnaire-launchContext">
         <extension url="name">
-            <valueId value="LaunchPatient"/>
+            <valueCoding>
+                <system value="http://hl7.org/fhir/uv/sdc/CodeSystem/launchContext"/>
+                <code value="patient"/>
+                <display value="Patient"/>
+            </valueCoding>
         </extension>
         <extension url="type">
             <valueCode value="Patient"/>

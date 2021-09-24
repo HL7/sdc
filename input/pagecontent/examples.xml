@@ -3767,7 +3767,11 @@ i.fa {
             "extension": [
               {
                 "url": "name",
-                "valueId": "LaunchPatient"
+                "valueCoding": {
+                  "system": "http://hl7.org/fhir/uv/sdc/CodeSystem/launchContext",
+                  "code": "patient",
+                  "display": "Patient"
+                }
               },
               {
                 "url": "type",
@@ -3793,7 +3797,7 @@ i.fa {
                     "valueExpression": {
                       "description": "patient's last name",
                       "language": "text/fhirpath",
-                      "expression": "%LaunchPatient.name.where(use='official').given.first()"
+                      "expression": "%patient.name.where(use='official').given.first()"
                     }
                   }
                 ],
@@ -3809,7 +3813,7 @@ i.fa {
                     "valueExpression": {
                       "description": "patient's first name",
                       "language": "text/fhirpath",
-                      "expression": "%LaunchPatient.name.where(use='official').family()"
+                      "expression": "%patient.name.where(use='official').family()"
                     }
                   }
                 ],
@@ -3825,7 +3829,7 @@ i.fa {
                     "valueExpression": {
                       "description": "patient's gender",
                       "language": "text/fhirpath",
-                      "expression": "%LaunchPatient.gender"
+                      "expression": "%patient.gender"
                     }
                   }
                 ],
@@ -3847,7 +3851,11 @@ i.fa {
       <textarea style="border:none" class="xml">
         <extension url="http://hl7.org/fhir/uv/sdc/StructureDefinition/sdc-questionnaire-launchContext">
           <extension url="name">
-            <valueId value="LaunchPatient"/>
+            <valueCoding>
+              <system value="http://hl7.org/fhir/uv/sdc/CodeSystem/launchContext"/>
+              <code value="patient"/>
+              <display value="Patient"/>
+            </valueCoding>
           </extension>
           <extension url="type">
             <valueCode value="Patient"/>
@@ -3864,7 +3872,7 @@ i.fa {
                <valueExpression>
                   <description value="patient's last name"/>
                   <language value="text/fhirpath"/>
-                  <expression value="%LaunchPatient.name.where(use='official').given.first()"/> 
+                  <expression value="%patient.name.where(use='official').given.first()"/> 
                </valueExpression>
             </extension>
             <linkId value="1.1"/>
@@ -3877,7 +3885,7 @@ i.fa {
                <valueExpression>
                   <description value="patient's first name"/>
                   <language value="text/fhirpath"/>
-                  <expression value="%LaunchPatient.name.where(use='official').family()"/> 
+                  <expression value="%patient.name.where(use='official').family()"/> 
                </valueExpression>
             </extension>
             <linkId value="1.2"/>
@@ -3890,7 +3898,7 @@ i.fa {
                <valueExpression>
                   <description value="patient's gender"/>
                   <language value="text/fhirpath"/>
-                  <expression value="%LaunchPatient.gender"/> 
+                  <expression value="%patient.gender"/> 
                </valueExpression>
             </extension>
             <linkId value="1.3"/>
@@ -4090,7 +4098,11 @@ i.fa {
             "extension": [
               {
                 "url": "name",
-                "valueId": "LaunchPatient"
+                "valueCoding": {
+                  "system": "http://hl7.org/fhir/uv/sdc/CodeSystem/launchContext",
+                  "code": "patient",
+                  "display": "Patient"
+                }
               },
               {
                 "url": "type",
@@ -4148,7 +4160,7 @@ i.fa {
                   "valueExpression" : {
                     "description" : "current date",
                     "language" : "text/fhirpath",
-                    "expression" : "LaunchPatient.active"
+                    "expression" : "%patient.active"
                   }
                 }
               ]
@@ -4168,7 +4180,11 @@ i.fa {
         </extension>
         <extension url="http://hl7.org/fhir/uv/sdc/StructureDefinition/sdc-questionnaire-launchContext">
           <extension url="name">
-            <valueId value="LaunchPatient"/>
+              <valueCoding>
+                <system value="http://hl7.org/fhir/uv/sdc/CodeSystem/launchContext"/>
+                <code value="patient"/>
+                <display value="Patient"/>
+              </valueCoding>
           </extension>
           <extension url="type">
             <valueCode value="Patient"/>
@@ -4205,7 +4221,7 @@ i.fa {
               <valueExpression>
                 <description value="current date"/>
                 <language value="text/fhirpath"/>
-                <expression value="LaunchPatient.active"/> 
+                <expression value="%patient.active"/> 
               </valueExpression>
             </extension>
           </required>
@@ -5173,7 +5189,7 @@ i.fa {
               "valueExpression": {
                 "description": "active practitioners that speak at least one of the patient's language",
                 "language": "application/x-fhir-query",
-                "expression": "Practitioner?communication={{%LaunchPatient.communication.language}}&amp;active=true"
+                "expression": "Practitioner?communication={{%patient.communication.language}}&amp;active=true"
               }
             },
             {
@@ -5271,7 +5287,7 @@ i.fa {
             <valueExpression>
               <description value="active practitioners that speak at least one of the patient's language"/>
               <language value="application/x-fhir-query"/>
-              <expression value="Practitioner?communication={{%LaunchPatient.communication.language}}&amp;active=true"/>
+              <expression value="Practitioner?communication={{%patient.communication.language}}&amp;active=true"/>
             </valueExpression>
           </extension>
           <extension url="http://hl7.org/fhir/uv/sdc/StructureDefinition/sdc-questionnaire-choiceColumn">
@@ -5368,7 +5384,11 @@ i.fa {
             "extension": [
               {
                 "url": "name",
-                "valueId": "LaunchPatient"
+                "valueCoding": {
+                  "system": "http://hl7.org/fhir/uv/sdc/CodeSystem/launchContext",
+                  "code": "patient",
+                  "display": "Patient"
+                }
               },
               {
                 "url": "type",
@@ -5414,7 +5434,7 @@ i.fa {
                     "valueExpression": {
                       "description": "list all Encounters with patient in the past year, in order by date - newest to oldest",
                       "language": "application/x-fhir-query",
-                      "expression": "Encounter?patient={{%LaunchPatient.id}}&amp;date=ge{{today()-1 year}}&amp;_sort=-date"
+                      "expression": "Encounter?patient={{%patient.id}}&amp;date=ge{{today()-1 year}}&amp;_sort=-date"
                     }
                   },
                   {
@@ -5502,7 +5522,11 @@ i.fa {
           <id value="questionnaire-context-expression-example"/>
           <extension url="http://hl7.org/fhir/uv/sdc/StructureDefinition/sdc-questionnaire-launchContext">
             <extension url="name">
-              <valueId value="LaunchPatient"/>
+              <valueCoding>
+                <system value="http://hl7.org/fhir/uv/sdc/CodeSystem/launchContext"/>
+                <code value="patient"/>
+                <display value="Patient"/>
+              </valueCoding>
             </extension>
             <extension url="type">
               <valueCode value="Patient"/>
@@ -5535,7 +5559,7 @@ i.fa {
                 <valueExpression>
                   <description value="list all Encounters with patient in the past year, in order by date - newest to oldest"/>
                   <language value="application/x-fhir-query"/>
-                  <expression value="Encounter?patient={{%LaunchPatient.id}}&amp;date=ge{{today()-1 year}}&amp;_sort=-date&amp;_include=Encounter:practitioner"/>
+                  <expression value="Encounter?patient={{%patient.id}}&amp;date=ge{{today()-1 year}}&amp;_sort=-date&amp;_include=Encounter:practitioner"/>
                 </valueExpression>
               </extension>
               <extension url="http://hl7.org/fhir/uv/sdc/StructureDefinition/sdc-questionnaire-choiceColumn">
@@ -5639,7 +5663,11 @@ i.fa {
               "extension": [
                 {
                   "url": "name",
-                  "valueId": "LaunchPatient"
+                  "valueCoding": {
+                    "system": "http://hl7.org/fhir/uv/sdc/CodeSystem/launchContext",
+                    "code": "patient",
+                    "display": "Patient"
+                  }
                 },
                 {
                   "url": "type",
@@ -5661,7 +5689,7 @@ i.fa {
                   "valueExpression": {
                     "description": "Home address of the patient",
                     "language": "text/fhirpath",
-                    "expression": "%LaunchPatient.address.where(use='home')[0]"
+                    "expression": "%patient.address.where(use='home')[0]"
                   }
                 },
                 {
@@ -5669,7 +5697,7 @@ i.fa {
                   "valueExpression": {
                     "description": "Home address of the patient",
                     "language": "text/fhirpath",
-                    "expression": "%LaunchPatient.address.where(use='home')[0]"
+                    "expression": "%patient.address.where(use='home')[0]"
                   }
                 }
               ],
@@ -5821,7 +5849,11 @@ i.fa {
       <textarea style="border:none" class="xml">
         <extension url="http://hl7.org/fhir/uv/sdc/StructureDefinition/sdc-questionnaire-launchContext">
           <extension url="name">
-            <valueId value="LaunchPatient"/>
+            <valueCoding>
+              <system value="http://hl7.org/fhir/uv/sdc/CodeSystem/launchContext"/>
+              <code value="patient"/>
+              <display value="Patient"/>
+            </valueCoding>
           </extension>
           <extension url="type">
             <valueCode value="Patient"/>
@@ -5835,14 +5867,14 @@ i.fa {
             <valueExpression>
               <description value="Home address of the patient"/>
                 <language value="text/fhirpath"/>
-                <expression value="%LaunchPatient.address.where(use='home')[0]"/>
+                <expression value="%patient.address.where(use='home')[0]"/>
             </valueExpression>
           </extension>
           <extension url="http://hl7.org/fhir/uv/sdc/StructureDefinition/sdc-questionnaire-itemExtractionContext">
             <valueExpression>
               <description value="Home address of the patient"/>
                 <language value="text/fhirpath"/>
-                <expression value="%LaunchPatient.address.where(use='home')[0]"/>
+                <expression value="%patient.address.where(use='home')[0]"/>
             </valueExpression>
           </extension>
           <linkId value="2.0"/>

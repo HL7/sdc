@@ -51,7 +51,11 @@
 	<!-- sdc-questionnaire-launchContext - the contextual information required in populating the item below that uses choiceColumns -->
 	<extension url="http://hl7.org/fhir/uv/sdc/StructureDefinition/sdc-questionnaire-launchContext">
 		<extension url="name">
-			<valueId value="LaunchPatient"/>
+			<valueCoding>
+                <system value="http://hl7.org/fhir/uv/sdc/CodeSystem/launchContext"/>
+                <code value="patient"/>
+                <display value="Patient"/>
+            </valueCoding>
 		</extension>
 		<extension url="type">
 			<valueCode value="Patient"/>
@@ -503,13 +507,13 @@
 					<text value="A control where an item (or multiple items) can be selected from a list that is only displayed when the user is editing the field."/>
 				</valueCodeableConcept>
 			</extension>
-			<!-- NOTE: the expression below filters resources based on a list of CodeableConcepts (%LaunchPatient.communication.language). 
+			<!-- NOTE: the expression below filters resources based on a list of CodeableConcepts (%patient.communication.language). 
 				See ticket: https://jira.hl7.org/browse/FHIR-25391 -->
 			<extension url="http://hl7.org/fhir/uv/sdc/StructureDefinition/sdc-questionnaire-candidateExpression">
 				<valueExpression>
 					<description value="active practitioners that speak at least one of the patient's language"/>
 					<language value="application/x-fhir-query"/>
-					<expression value="Practitioner?communication={{%LaunchPatient.communication.language}}&amp;active=true"/>
+					<expression value="Practitioner?communication={{%patient.communication.language}}&amp;active=true"/>
 				</valueExpression>
 			</extension>
 			<!-- item/sdc-questionnaire-choiceColumn - first column to display: last name -->
