@@ -347,6 +347,40 @@
       </tr>
       <tr>
         <td>
+          <a name="answerOptionToggleExpression"> </a>
+          <a href="StructureDefinition-sdc-questionnaire-answerOptionToggleExpression.html">answerOptionToggleExpression</a>
+        </td>
+        <td>SDC</td>
+        <td>choice, open-choice</td>
+        <td>FHIRPath or CQL</td>
+        <td>behavior</td>
+        <td><a href="examples.html#answerOptionToggleExpression">example</a></td>
+      </tr>
+      <tr>
+        <td colspan="6">
+          <p>
+            This is a complex extension that performs a similar function to enableWhen, except that rather than acting on items, it acts on individual answer options within
+            an item.  The extension <b>does NOT</b> define what options exist.  Instead, it toggles a subset of the possible options (specified in the <code>option</code>
+            component based on the result of evaluating the expression in the <code>expression</code> component.
+          </p>
+          <p>
+            The base set of options available comes from <a href="behavior.html#answerOption">answerOption</a>, <a href="behavior.html#answerValueSet">answerValueSet</a>
+            or <a href="#answerExpression">answerExpression</a>.  If any of the options listed in the <code>option</code> component of this expression is not one of the
+            options available for the item, then that SHOULD be treated as an error in the Questionnaire when validating the Questionnaire.  However, when completing forms
+            it is safe to ignore any non-available options.
+          </p>
+          <p>
+            More than one repetition of this extension is possible.  If an option appears in more than one repetition, then it will be enabled if it appears in ANY of the
+            extensions whose expressions are evaluated as true.  I.e. the expressions that pertain to a given option are treated as 'or'.
+          </p>
+<!-- TODO: Add this in R5
+          <p>
+            If an option is 'disabled', whether it is displayed but non-selectable or removed entirely SHOULD be driven by the value of the <a href="todo">disabledDisplay</a>
+          </p>-->
+        </td>
+      </tr>
+      <tr>
+        <td>
           <a name="itemPopulationContext"> </a>
           <a href="StructureDefinition-sdc-questionnaire-itemPopulationContext.html">itemPopulationContext</a>
         </td>
