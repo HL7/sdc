@@ -150,6 +150,26 @@
       <p>If an item has the extension flag set to 'true', some descendant items may have the extension with a value of 'false'.  If this occurs, then the item tagged with 'false' and its descendants will be excluded from the extraction process.
       </p>
 	  </li>
+	  <li>
+	  Following is the conceptual algorithm for observation-based extraction mechanism:
+	    <ul>
+    <li>
+      Start at the root of the Questionnaire and progress down through the items.
+    </li>
+    <li>
+      For a particular item, if the item itself or any of its codings have observationExtract set to 'true', then that item is to be extracted (if possible) and the presumption is that descendant items will also be extracted.
+    </li>
+    <li>
+      The presumption of "will extract" will change to false only if an item explicitly sets observationExtract = false at the 'item' level.  It is still possible that descendant items might turn extraction back on again.  I.e. the full depth must be traversed to catch all extraction candidates.
+    </li>
+	<li>
+If an item is presumed to be extracted, it will extract if there are item.codes for that item that aren't explicitly marked with observationExtract=false.
+    </li>
+	<li>
+      The observation-extract-category extension only comes into play if a determination has been made that extraction will occur.  The observation-extract-category on an item will override that declared on the base questionnaire or ancestor items.  If there is a desire to add multiple categories, all must be declared on an item.
+    </li>
+  </ul>
+	  </li>
   </ol>
   <p>
     For example:
