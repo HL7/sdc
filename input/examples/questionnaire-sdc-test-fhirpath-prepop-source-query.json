@@ -11,14 +11,14 @@
           "fullUrl": "urn:uuid:88f151c0-a954-468a-88bd-5ae15c08e059",
           "request": {
             "method": "GET",
-            "url": "Condition?patient={{%LaunchPatient.id}}&active=true"
+            "url": "Condition?patient={{%patient.id}}&active=true"
           }
         },
         {
           "fullUrl": "urn:uuid:88f151c0-a954-468a-88bd-5ae15c08e060",
           "request": {
             "method": "GET",
-            "url": "MedicationStatement?patient={{%LaunchPatient.id}}&active=true"
+            "url": "MedicationStatement?patient={{%patient.id}}&active=true"
           }
         }
       ]
@@ -29,7 +29,11 @@
       "extension": [
         {
           "url": "name",
-          "valueId": "LaunchPatient"
+          "valueCoding": {
+            "system": "http://hl7.org/fhir/uv/sdc/CodeSystem/launchContext",
+            "code": "patient",
+            "display": "Patient"
+          }
         },
         {
           "url": "type",
@@ -52,9 +56,7 @@
   "name": "FhirPathPrepopSourceQuery",
   "title": "Questionnaire Pre-Population",
   "status": "active",
-  "subjectType": [
-    "Patient"
-  ],
+  "subjectType": ["Patient"],
   "description": "FhirPath based prepopulation example that leverages a source query to extract data outside the launch context",
   "item": [
     {
@@ -78,7 +80,7 @@
                   "url": "http://hl7.org/fhir/uv/sdc/StructureDefinition/sdc-questionnaire-initialExpression",
                   "valueExpression": {
                     "language": "text/fhirpath",
-                    "expression": "%LaunchPatient.name.first().family.first()"
+                    "expression": "%patient.name.first().family.first()"
                   }
                 }
               ],
@@ -92,7 +94,7 @@
                   "url": "http://hl7.org/fhir/uv/sdc/StructureDefinition/sdc-questionnaire-initialExpression",
                   "valueExpression": {
                     "language": "text/fhirpath",
-                    "expression": "%LaunchPatient.name.first().given.first()"
+                    "expression": "%patient.name.first().given.first()"
                   }
                 }
               ],
@@ -106,7 +108,7 @@
                   "url": "http://hl7.org/fhir/uv/sdc/StructureDefinition/sdc-questionnaire-initialExpression",
                   "valueExpression": {
                     "language": "text/fhirpath",
-                    "expression": "%LaunchPatient.birthDate"
+                    "expression": "%patient.birthDate"
                   }
                 }
               ],
@@ -188,7 +190,7 @@
               "linkId": "med-category",
               "text": "Standard Category",
               "type": "choice",
-              "answerValueSet" : "http://hl7.org/fhir/ValueSet/medicationrequest-category",
+              "answerValueSet": "http://hl7.org/fhir/ValueSet/medicationrequest-category",
               "repeats": true
             }
           ]

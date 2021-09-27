@@ -6,7 +6,11 @@
       "extension": [
         {
           "url": "name",
-          "valueId": "LaunchPatient"
+          "valueCoding": {
+            "system": "http://hl7.org/fhir/uv/sdc/CodeSystem/launchContext",
+            "code": "patient",
+            "display": "Patient"
+          }
         },
         {
           "url": "type",
@@ -37,13 +41,11 @@
       "url": "http://hl7.org/fhir/uv/sdc/StructureDefinition/sdc-questionnaire-launchContext"
     }
   ],
-  "name" : "FhirPathPrepopSimple",
+  "name": "FhirPathPrepopSimple",
   "title": "Questionnaire Pre-Population",
   "status": "active",
-  "subjectType": [
-    "Patient"
-  ],
-  "description" : "FhirPath based prepopulation simple example",
+  "subjectType": ["Patient"],
+  "description": "FhirPath based prepopulation simple example",
   "item": [
     {
       "linkId": "grp",
@@ -66,7 +68,7 @@
                   "url": "http://hl7.org/fhir/uv/sdc/StructureDefinition/sdc-questionnaire-initialExpression",
                   "valueExpression": {
                     "language": "text/fhirpath",
-                    "expression": "%LaunchPatient.identifier.where(system='http://ns.electronichealth.net.au/id/medicare-number').value.first()"
+                    "expression": "%patient.identifier.where(system='http://ns.electronichealth.net.au/id/medicare-number').value.first()"
                   }
                 }
               ],
@@ -81,7 +83,7 @@
                   "url": "http://hl7.org/fhir/uv/sdc/StructureDefinition/sdc-questionnaire-initialExpression",
                   "valueExpression": {
                     "language": "text/fhirpath",
-                    "expression": "%LaunchPatient.identifier.where(system='http://ns.electronichealth.net.au/id/dva').value.first()"
+                    "expression": "%patient.identifier.where(system='http://ns.electronichealth.net.au/id/dva').value.first()"
                   }
                 }
               ],
@@ -95,7 +97,7 @@
                   "url": "http://hl7.org/fhir/uv/sdc/StructureDefinition/sdc-questionnaire-initialExpression",
                   "valueExpression": {
                     "language": "text/fhirpath",
-                    "expression": "%LaunchPatient.name.first().family.first()"
+                    "expression": "%patient.name.first().family.first()"
                   }
                 }
               ],
@@ -109,7 +111,7 @@
                   "url": "http://hl7.org/fhir/uv/sdc/StructureDefinition/sdc-questionnaire-initialExpression",
                   "valueExpression": {
                     "language": "text/fhirpath",
-                    "expression": "%LaunchPatient.name.first().given.first()"
+                    "expression": "%patient.name.first().given.first()"
                   }
                 }
               ],
@@ -123,7 +125,7 @@
                   "url": "http://hl7.org/fhir/uv/sdc/StructureDefinition/sdc-questionnaire-initialExpression",
                   "valueExpression": {
                     "language": "text/fhirpath",
-                    "expression": "%LaunchPatient.birthDate"
+                    "expression": "%patient.birthDate"
                   }
                 }
               ],
@@ -137,7 +139,7 @@
                   "url": "http://hl7.org/fhir/uv/sdc/StructureDefinition/sdc-questionnaire-initialExpression",
                   "valueExpression": {
                     "language": "text/fhirpath",
-                    "expression": "%LaunchPatient.telecom.where(system='phone').select(($this.where(use='mobile') | $this.where(use='home')).first().value)"
+                    "expression": "%patient.telecom.where(system='phone').select(($this.where(use='mobile') | $this.where(use='home')).first().value)"
                   }
                 }
               ],

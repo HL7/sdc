@@ -24,17 +24,6 @@
       <type>
         <code value="code"/>
       </type>
-      <constraint>
-        <key value="sdc-t1"/>
-        <severity value="error"/>
-        <human value="Either code is 'fulfill', focus is ServiceRequest and no 'questionnaire' input; or code is 'complete-questionnaire', focus is omitted and 'questionnaire' input is present"/>
-        <expression value="(code.coding.where(code='fulfill' and system='http://hl7.org/fhir/CodeSystem/task-code').exists() and 
-                            (focus.resolve() is ServiceRequest) and 
-                            input.where(type.coding.where(system='http://hl7.org/fhir/uv/sdc/CodeSystem/temp' and code='questionnaire')).exists().not())
-                        or (code.coding.where(code='complete-questionnaire' and system='http://hl7.org/fhir/uv/sdc/CodeSystem/temp').exists() and 
-                            focus.exists().not() and 
-                            input.where(type.coding.where(system='http://hl7.org/fhir/uv/sdc/CodeSystem/temp' and code='questionnaire')).exists())"/>
-      </constraint>
       <mustSupport value="true"/>
     </element>
     <element id="Task.intent">
@@ -48,6 +37,17 @@
       <type>
         <code value="CodeableConcept"/>
       </type>
+	   <constraint>
+        <key value="sdc-t1"/>
+        <severity value="error"/>
+        <human value="Either code is 'fulfill', focus is ServiceRequest and no 'questionnaire' input; or code is 'complete-questionnaire', focus is omitted and 'questionnaire' input is present"/>
+        <expression value="(code.coding.where(code='fulfill' and system='http://hl7.org/fhir/CodeSystem/task-code').exists() and 
+                            (focus.resolve() is ServiceRequest) and 
+                            input.where(type.coding.where(system='http://hl7.org/fhir/uv/sdc/CodeSystem/temp' and code='questionnaire')).exists().not())
+                        or (code.coding.where(code='complete-questionnaire' and system='http://hl7.org/fhir/uv/sdc/CodeSystem/temp').exists() and 
+                            focus.exists().not() and 
+                            input.where(type.coding.where(system='http://hl7.org/fhir/uv/sdc/CodeSystem/temp' and code='questionnaire')).exists())"/>
+      </constraint>
       <mustSupport value="true"/>
       <binding>
         <strength value="required"/>

@@ -141,15 +141,10 @@ i.fa {
 </style>
   <p>Below are some examples that demonstrate how the elements and extensions in this implementation guide are intended to be used in a Questionnaire.
    <span style="color:red;">Note:</span> The rendering of the questions in the "Sample Question" tab are not functional (i.e. no validations after entry, perform actual computations, etc). They only provide a visual presentation of the questions and do not mimic
-   how they will work in an actual questionnaire.<br/>
-    <br/>
-    <br/>
-    <br/>
-    <br/>
-  </p>
+   how they will work in an actual questionnaire.<br/><br/><br/><br/><br/></p>
   <a name="text-appearance">  </a>
   <h3>Text Appearance</h3>
-  <a name="rendering-style"/>
+<a name="rendering-style"></a>
   <h4>Using rendering-style</h4>
   <p>To display a question text in green.</p>
   <div class="tabs">
@@ -204,7 +199,8 @@ i.fa {
       </div>
     </div>
   </div>
-  <a name="rendering-xhtml"/>
+
+<a name="rendering-xhtml"></a>
   <h4>Using rendering-xhtml</h4>
   <p>To allow different styles to different portion of a question text.</p>
   <div class="tabs">
@@ -212,12 +208,7 @@ i.fa {
       <input type="radio" id="tab-xhtml-1" name="tab-xhtml-group-2" checked="true"/>
       <label for="tab-xhtml-1">Sample Question</label>
       <div class="content-in-tab">
-        <p>
-          <i>Please</i> answer <b>
-            <u>Yes</u>
-          </b> or <b>
-            <u>No</u>
-          </b> to each of the following questions:</p>
+      <p><i>Please</i> answer <b><u>Yes</u></b> or <b><u>No</u></b> to each of the following questions:</p>
       </div>
     </div>
     <div class="tab">
@@ -261,7 +252,8 @@ i.fa {
       </div>
     </div>
   </div>
-  <a name="displayCategory"/>
+
+<a name="displayCategory"></a>
   <h4>Using displayCategory</h4>
   <p>To indicate what kind of display item it is so that systems can apply differential formatting based on the purpose of the display element.</p>
   <div class="tabs">
@@ -326,7 +318,8 @@ i.fa {
       </div>
     </div>
   </div>
-  <a name="hidden"/>
+
+<a name="hidden"></a>
   <h4>Using hidden</h4>
   <p>To hide an item to a user. This example has a question for Form ID that is not displayed.</p>
   <div class="tabs">
@@ -334,8 +327,7 @@ i.fa {
       <input type="radio" id="tab-hidden-1" name="tab-hidden-group-2" checked="true"/>
       <label for="tab-hidden-1">Sample Question</label>
       <div class="content-in-tab">
-        <p>Event ID <input id="eventId-1.0-input" type="text"/>
-        </p>
+      <p>Event ID <input id="eventId-1.0-input" type="text"/></p>
       </div>
     </div>
     <div class="tab">
@@ -386,9 +378,10 @@ i.fa {
       </div>
     </div>
   </div>
+
   <a name="control">  </a>
   <h3>Control Appearance</h3>
-  <a name="itemControl"/>
+<a name="itemControl"></a>
   <h4>Using itemControl</h4>
   <p>To display a text box where a user can type in their answer freely. </p>
   <div class="tabs">
@@ -455,7 +448,8 @@ i.fa {
       </div>
     </div>
   </div>
-  <a name="choiceOrientation"/>
+
+<a name="choiceOrientation"></a>
   <h4>Using choiceOrientation</h4>
   <p>To display choices horizontally.</p>
   <div class="tabs">
@@ -584,7 +578,8 @@ i.fa {
       </div>
     </div>
   </div>
-  <a name="sliderStepValue"/>
+
+<a name="sliderStepValue"></a>
   <h4>Using sliderStepValue</h4>
   <p>To indicate the increment of a slider itemControl. </p>
   <div class="tabs">
@@ -694,7 +689,8 @@ i.fa {
       </div>
     </div>
   </div>
-  <a name="width"/>
+
+<a name="width"></a>
   <h4>Using width</h4>
   <p>To set the width of a column in a table.</p>
   <div class="tabs">
@@ -942,7 +938,8 @@ i.fa {
       </div>
     </div>
   </div>
-  <a name="collapsible"/>
+
+<a name="collapsible"></a>
   <h4>Using collapsible</h4>
   <p>To display child items in collapsible form</p>
   <div class="tabs">
@@ -952,12 +949,8 @@ i.fa {
       <div class="content-in-tab">
         <div class="panel panel-info">
           <div class="panel-heading collapsed" data-toggle="collapse" data-target="#bar">
-        Family Member Health History<i class="fa-chevron-down">
-              <img src="examples/arrow-up.png" alt="Up" height="20"/>
-            </i>
-            <i class="fa-chevron-right">
-              <img src="examples/arrow-down.png" alt="Down" height="20"/>
-            </i>
+        Family Member Health History<i class="fa-chevron-down"><img src="examples/arrow-up.png" alt="Up" height="20"/></i>
+          <i class="fa-chevron-right"><img src="examples/arrow-down.png" alt="Down" height="20"/></i>
           </div>
           <div class="panel-body">
             <div class="collapse" id="bar">
@@ -967,10 +960,8 @@ i.fa {
                   <option value="Mother">Mother</option>
                   <option value="Daughter">Daughter</option>
                   <option value="Brother">Brother</option>
-                </select>
-                <br/>
-            Name <input id="linkitem-1.0-input" type="text"/>
-                <br/>
+                </select><br/>
+            Name <input id="linkitem-1.0-input" type="text"/> <br/>
           Gender
               <input id="linkitem-1.0-f" type="radio" name="Gender" value="F" checked="checked"/> Female  
               <input id="linkitem-1.0-m" type="radio" name="Gender" value="M"/> Male  
@@ -1197,9 +1188,11 @@ i.fa {
       </div>
     </div>
   </div>
+
   <a name="additional">  </a>
   <h3>Additional Display Content</h3>
-  <a name="supportLink"/>
+
+<a name="supportLink"></a>
   <h4>Using supportLink</h4>
   <p>To add a a support link to a question that will provide more information to the user.</p>
   <div class="tabs">
@@ -1207,10 +1200,8 @@ i.fa {
       <input type="radio" id="tab-supportLink-1" name="tab-supportLink-group-2" checked="true"/>
       <label for="tab-supportLink-1">Sample Question</label>
       <div class="content-in-tab">
-        <p>Have you traveled outside the country within the last 14 days? <button class="button" onclick="window.open('{{site.data.fhir.path}}extension-questionnaire-supportlink.html'); return false;">?</button>
-          <br/>
-          <input type="radio" id="yes" name="yesno" value="Y"> Yes  </input>
-          <br/>
+      <p>Have you traveled outside the country within the last 14 days? <button class="button" onclick="window.open('{{site.data.fhir.path}}extension-questionnaire-supportlink.html'); return false;">?</button><br/>
+        <input type="radio" id="yes" name="yesno" value="Y"> Yes  </input><br/>
           <input type="radio" id="no" name="yesno" value="N"> No  </input>
         </p>
       </div>
@@ -1302,7 +1293,8 @@ i.fa {
       </div>
     </div>
   </div>
-  <a name="choiceColumn"/>
+
+<a name="choiceColumn"></a>
   <h4>Using choiceColumn</h4>
   <p>To display choices with multiple columns.</p>
   <div class="tabs" style="height:250px">
@@ -1470,7 +1462,8 @@ i.fa {
   </div>
   <!-- TODO: how to define a new item control?-->
   <!-- TODO: add example with reference -->
-  <a name="optionPrefix"/>
+
+<a name="optionPrefix"></a>
   <h4>Using optionPrefix</h4>
   <p>To add prefixes on answer options.</p>
   <div class="tabs">
@@ -1630,7 +1623,8 @@ i.fa {
       </div>
     </div>
   </div>
-  <a name="valueset-label"/>
+
+<a name="valueset-label"></a>
   <h4>Using valueset-label</h4>
   <p>To add prefixes on a value set.</p>
   <div class="tabs">
@@ -1818,7 +1812,8 @@ i.fa {
       </div>
     </div>
   </div>
-  <a name="entryFormat"/>
+
+<a name="entryFormat"></a>
   <h4>Using entryFormat</h4>
   <p>To add instructions for the user to guide their input.</p>
   <div class="tabs">
@@ -1869,7 +1864,8 @@ i.fa {
       </div>
     </div>
   </div>
-  <a name="rendering-styleSensitive"/>
+
+<a name="rendering-styleSensitive"></a>
   <h4>Using rendering-styleSensitive</h4>
   <p>To indicate that the style extensions on a resource is essential.</p>
   <div class="tabs">
@@ -1877,11 +1873,7 @@ i.fa {
       <input type="radio" id="tab-rendering-styleSensitive-1" name="tab-rendering-styleSensitive-group-2" checked="true"/>
       <label for="tab-rendering-styleSensitive-1">Sample Question</label>
       <div class="content-in-tab">
-        <p>
-          <b>
-            <span style="color:red;">IMPORTANT: </span>
-            <i>Please</i> complete questionnaire.</b>
-        </p>
+      <p><b><span style="color:red;">IMPORTANT: </span><i>Please</i> complete questionnaire.</b></p>
       </div>
     </div>
     <div class="tab">
@@ -1941,7 +1933,8 @@ i.fa {
       </div>
     </div>
   </div>
-  <a name="optionalDisplay"/>
+
+<a name="optionalDisplay"></a>
   <h4>Using optionalDisplay</h4>
   <p>To set an item for optional display.</p>
   <div class="tabs">
@@ -1949,8 +1942,7 @@ i.fa {
       <input type="radio" id="tab-optionalDisplay-1" name="tab-optionalDisplay-group-2" checked="true"/>
       <label for="tab-optionalDisplay-1">Sample Question</label>
       <div class="content-in-tab">
-        <p>Enter your Middle Name <input id="linkitem-1.0-input" type="text"/>
-        </p>
+      <p>Enter your Middle Name <input id="linkitem-1.0-input" type="text"/></p>
       </div>
     </div>
     <div class="tab">
@@ -1991,7 +1983,8 @@ i.fa {
       </div>
     </div>
   </div>
-  <a name="shortText"/>
+
+<a name="shortText"></a>
   <h4>Using shortText</h4>
   <p>To display a shorter text for an item.</p>
   <div class="tabs">
@@ -1999,8 +1992,7 @@ i.fa {
       <input type="radio" id="tab-shortText-1" name="tab-shortText-group-2" checked="true"/>
       <label for="tab-shortText-1">Sample Question</label>
       <div class="content-in-tab">
-        <p>Annual family income <input id="linkitem-1.0-input" type="text"/>
-        </p>
+      <p>Annual family income <input id="linkitem-1.0-input" type="text"/></p>
       </div>
     </div>
     <div class="tab">
@@ -2041,9 +2033,11 @@ i.fa {
       </div>
     </div>
   </div>
+
   <a name="value-constraint">  </a>
   <h3>Value constraints</h3>
-  <a name="maxLength"/>
+
+<a name="maxLength"></a>
   <h4>Using maxLength</h4>
   <p>To restrict an answer to only have 50 characters.</p>
   <div class="tabs">
@@ -2051,8 +2045,7 @@ i.fa {
       <input type="radio" id="tab-1" name="tab-group-1" checked="true"/>
       <label for="tab-1">Sample Question</label>
       <div class="content-in-tab">
-        <p>Enter your First Name <input id="linkitem-1.1-input" type="text" maxlength="50" size="50"/>
-        </p>
+      <p>Enter your First Name <input id="linkitem-1.1-input" type="text" maxlength="50" size="50"/></p>
       </div>
     </div>
     <div class="tab">
@@ -2086,7 +2079,7 @@ i.fa {
       </div>
     </div>
   </div>
-  <a name="minLength"/>
+<a name="minLength"></a>
   <h4>Using minLength</h4>
   <p>To restrict an answer to have at least 2 characters.</p>
   <div class="tabs">
@@ -2094,8 +2087,7 @@ i.fa {
       <input type="radio" id="tab-4" name="tab-group-2" checked="true"/>
       <label for="tab-4">Sample Question</label>
       <div class="content-in-tab">
-        <p>Enter your Last Name <input id="linkitem-1.2-input" type="text" minlength="2"/>
-        </p>
+      <p>Enter your Last Name <input id="linkitem-1.2-input" type="text" minlength="2"/></p>
       </div>
     </div>
     <div class="tab">
@@ -2136,7 +2128,7 @@ i.fa {
       </div>
     </div>
   </div>
-  <a name="regex"/>
+<a name="regex"></a>
   <h4>Using regex</h4>
   <p>To restrict an answer to be in this format: A1A 1A1</p>
   <div class="tabs">
@@ -2144,8 +2136,7 @@ i.fa {
       <input type="radio" id="tab-regex-1" name="tab-regex-group-2" checked="true"/>
       <label for="tab-regex-1">Sample Question</label>
       <div class="content-in-tab">
-        <p>Postal Code (A1A 1A1) <input id="linkitem-1.2-input" type="text"/>
-        </p>
+      <p>Postal Code (A1A 1A1) <input id="linkitem-1.2-input" type="text"/></p>
       </div>
     </div>
     <div class="tab">
@@ -2158,7 +2149,7 @@ i.fa {
             "extension": [
               {
                 "url": "http://hl7.org/fhir/StructureDefinition/regex",
-                "valueString": "ANA NAN"
+                "valueString": "[A-Z][0-9][A-Z] [0-9][A-Z][0-9]"
               }
             ],
             "linkId": "1",
@@ -2176,7 +2167,7 @@ i.fa {
         <textarea style="border:none" class="xml">
           <item>
             <extension url="http://hl7.org/fhir/StructureDefinition/regex">
-              <valueString value="ANA NAN"/>
+                <valueString value="[A-Z][0-9][A-Z] [0-9][A-Z][0-9]" />
             </extension>
             <linkId value="1"/>
             <text value="Postal Code (A1A 1A1)"/>
@@ -2186,7 +2177,8 @@ i.fa {
       </div>
     </div>
   </div>
-  <a name="minValue-maxValue-maxDecimalPlaces"/>
+
+<a name="minValue-maxValue-maxDecimalPlaces"></a>
   <h4>Using minValue, maxValue, and maxDecimalPlaces</h4>
   <p>To restrict an answer to range from 1 to 100, up to 2 decimal places</p>
   <div class="tabs">
@@ -2194,8 +2186,7 @@ i.fa {
       <input type="radio" id="tab-range-decPlaces-4" name="tab-range-decPlaces-group-2" checked="true"/>
       <label for="tab-range-decPlaces-4">Sample Question</label>
       <div class="content-in-tab">
-        <p>Enter your weight in kg <input id="linkitem-1.2-input" type="text"/>
-        </p>
+      <p>Enter your weight in kg <input id="linkitem-1.2-input" type="text"/></p>
       </div>
     </div>
     <div class="tab">
@@ -2250,7 +2241,8 @@ i.fa {
       </div>
     </div>
   </div>
-  <a name="min-maxQuantity"/>
+
+<a name="min-maxQuantity"></a>
   <h4>Using minQuantity and maxQuantity</h4>
   <p>To restrict the answer to range from 10 to 100 kilograms.</p>
   <div class="tabs">
@@ -2335,7 +2327,8 @@ i.fa {
       </div>
     </div>
   </div>
-  <a name="mimetype-maxsize"/>
+
+<a name="mimetype-maxsize"></a>
   <h4>Using mimeType and maxSize</h4>
   <p>To only allow a JPG or PDF attachment, up to 1,048,576 bytes. </p>
   <div class="tabs">
@@ -2343,8 +2336,7 @@ i.fa {
       <input type="radio" id="tab-mimetype-maxsize-1" name="tab-mimetype-maxsize-group-2" checked="true"/>
       <label for="tab-mimetype-maxsize-1">Sample Question</label>
       <div class="content-in-tab">
-        <p>Attach Proof of Citizenship <input type="file" id="linkitem-1.4-input" name="filename"/>
-        </p>
+      <p>Attach Proof of Citizenship <input type="file" id="linkitem-1.4-input" name="filename"/></p>
       </div>
     </div>
     <div class="tab">
@@ -2399,9 +2391,10 @@ i.fa {
       </div>
     </div>
   </div>
+
   <a name="choice-restriction">  </a>
   <h3>Choice Restriction</h3>
-  <a name="answeroption"/>
+<a name="answeroption"></a>
   <h4>Using answerOption</h4>
   <p>To restrict choices from a fixed list.</p>
   <div class="tabs">
@@ -2576,7 +2569,8 @@ i.fa {
       </div>
     </div>
   </div>
-  <a name="answeroption-xhtml"/>
+
+<a name="answeroption-xhtml"></a>
   <h4>Using answerOption and rendering-xhtml</h4>
   <p>To display answer options as images using the rendering-xhtml extension. <br/>Example shows two ways to use &lt;img&gt; tags to display images: (1) with embedded data and (2) using contained Binary resources.</p>
   <div class="tabs">
@@ -2764,7 +2758,8 @@ i.fa {
       </div>
     </div>
   </div>
-  <a name="answervalueset"/>
+
+<a name="answervalueset"></a>
   <h4>Using answerValueSet</h4>
   <p>To restrict choices from a value set.</p>
   <div class="tabs">
@@ -2814,7 +2809,7 @@ i.fa {
       </div>
     </div>
   </div>
-  <a name="answervaluesetexpression"/>
+  <a name="answervaluesetexpression"> </a>
   <h4>Using answerValueSet with expressions</h4>
   <p>To restrict choices to distinct value sets based on context.</p>
   <p>
@@ -3003,7 +2998,7 @@ i.fa {
       </div>
     </div>
   </div>
-  <a name="required"/>
+  <a name="required"> </a>
   <h4>Using required</h4>
   <p>To require an answer.</p>
   <div class="tabs">
@@ -3046,7 +3041,8 @@ i.fa {
       </div>
     </div>
   </div>
-  <a name="readonly"/>
+
+<a name="readonly"></a>
   <h4>Using readOnly</h4>
   <p>To only display a populated answer and make it non-editable.</p>
   <div class="tabs">
@@ -3106,7 +3102,7 @@ i.fa {
       </div>
     </div>
   </div>
-  <a name="repeats"/>
+  <a name="repeats"> </a>
   <h4>Using repeats, open label</h4>
   <p>To allow multiple answers, no limit and to specify label for alternate answer choices.</p>
   <div class="tabs">
@@ -3221,7 +3217,8 @@ i.fa {
       </div>
     </div>
   </div>
-  <a name="minoccurs"/>
+
+<a name="minoccurs"></a>
   <h4>Using minOccurs</h4>
   <p>Must have at least to 2 answers.</p>
   <div class="tabs">
@@ -3342,7 +3339,8 @@ i.fa {
       </div>
     </div>
   </div>
-  <a name="maxoccurs"/>
+
+<a name="maxoccurs"></a>
   <h4>Using maxOccurs</h4>
   <p>Can only have up to 3 answers.</p>
   <div class="tabs">
@@ -3463,7 +3461,8 @@ i.fa {
       </div>
     </div>
   </div>
-  <a name="optionExclusive"/>
+
+<a name="optionExclusive"></a>
   <h4>Using optionExclusive</h4>
   <p>To restrict other answers from being selected when an exclusive answer (like "None of the above") has been selected.</p>
   <div class="tabs">
@@ -3618,7 +3617,8 @@ i.fa {
       </div>
     </div>
   </div>
-  <a name="unitoption"/>
+
+<a name="unitoption"></a>
   <h4>Using unitOption</h4>
   <p>Restrict unit choices using unit options.</p>
   <div class="tabs">
@@ -3719,7 +3719,8 @@ i.fa {
       </div>
     </div>
   </div>
-  <a name="unitvalueset"/>
+
+<a name="unitvalueset"></a>
   <h4>Using unitValueSet</h4>
   <p>Restrict unit choices from a value set.</p>
   <div class="tabs">
@@ -3735,8 +3736,7 @@ i.fa {
             <option value="weeks">weeks</option>
             <option value="months">months</option>
             <option value="years">years</option>
-          </select>
-        </p>
+          </select></p>
       </div>
     </div>
     <div class="tab">
@@ -3778,7 +3778,8 @@ i.fa {
     </div>
   </div>
   <!-- TODO: fix unit samples -->
-  <a name="reference-resource-profile-lookup"/>
+
+<a name="reference-resource-profile-lookup"></a>
   <h4>Using answerExpression, referenceResource, referenceProfile and lookupQuestionnaire</h4>
   <p>Restrict an answer to a specific resource or profile.</p>
   <div class="tabs">
@@ -3884,9 +3885,10 @@ i.fa {
     </div>
   </div>
   <!-- TODO: validate -->
+
   <a name="calculation">  </a>
   <h3>Calculation</h3>
-  <a name="initialexpression"/>
+<a name="initialexpression"></a>
   <h4>Using initialExpression</h4>
   <p>Example with an initial expression.</p>
   <div class="tabs">
@@ -3946,7 +3948,8 @@ i.fa {
       </div>
     </div>
   </div>
-  <a name="launchContext"/>
+
+<a name="launchContext"></a>
   <h4>Using launchContext</h4>
   <p>To set resources that provide context for form processing logic.</p>
   <div class="tabs">
@@ -3970,7 +3973,11 @@ i.fa {
             "extension": [
               {
                 "url": "name",
-                "valueId": "LaunchPatient"
+                "valueCoding": {
+                  "system": "http://hl7.org/fhir/uv/sdc/CodeSystem/launchContext",
+                  "code": "patient",
+                  "display": "Patient"
+                }
               },
               {
                 "url": "type",
@@ -3996,7 +4003,7 @@ i.fa {
                     "valueExpression": {
                       "description": "patient's last name",
                       "language": "text/fhirpath",
-                      "expression": "%LaunchPatient.name.where(use='official').given.first()"
+                      "expression": "%patient.name.where(use='official').given.first()"
                     }
                   }
                 ],
@@ -4012,7 +4019,7 @@ i.fa {
                     "valueExpression": {
                       "description": "patient's first name",
                       "language": "text/fhirpath",
-                      "expression": "%LaunchPatient.name.where(use='official').family()"
+                      "expression": "%patient.name.where(use='official').family()"
                     }
                   }
                 ],
@@ -4028,7 +4035,7 @@ i.fa {
                     "valueExpression": {
                       "description": "patient's gender",
                       "language": "text/fhirpath",
-                      "expression": "%LaunchPatient.gender"
+                      "expression": "%patient.gender"
                     }
                   }
                 ],
@@ -4050,7 +4057,11 @@ i.fa {
         <textarea style="border:none" class="xml">
           <extension url="http://hl7.org/fhir/uv/sdc/StructureDefinition/sdc-questionnaire-launchContext">
             <extension url="name">
-              <valueId value="LaunchPatient"/>
+            <valueCoding>
+              <system value="http://hl7.org/fhir/uv/sdc/CodeSystem/launchContext"/>
+              <code value="patient"/>
+              <display value="Patient"/>
+            </valueCoding>
             </extension>
             <extension url="type">
               <valueCode value="Patient"/>
@@ -4067,7 +4078,7 @@ i.fa {
                 <valueExpression>
                   <description value="patient's last name"/>
                   <language value="text/fhirpath"/>
-                  <expression value="%LaunchPatient.name.where(use='official').given.first()"/>
+                  <expression value="%patient.name.where(use='official').given.first()"/> 
                 </valueExpression>
               </extension>
               <linkId value="1.1"/>
@@ -4080,7 +4091,7 @@ i.fa {
                 <valueExpression>
                   <description value="patient's first name"/>
                   <language value="text/fhirpath"/>
-                  <expression value="%LaunchPatient.name.where(use='official').family()"/>
+                  <expression value="%patient.name.where(use='official').family()"/> 
                 </valueExpression>
               </extension>
               <linkId value="1.2"/>
@@ -4093,7 +4104,7 @@ i.fa {
                 <valueExpression>
                   <description value="patient's gender"/>
                   <language value="text/fhirpath"/>
-                  <expression value="%LaunchPatient.gender"/>
+                  <expression value="%patient.gender"/> 
                 </valueExpression>
               </extension>
               <linkId value="1.3"/>
@@ -4106,7 +4117,8 @@ i.fa {
       </div>
     </div>
   </div>
-  <a name="calculatedexpression"/>
+
+<a name="calculatedexpression"></a>
   <h4>Using calculatedExpression and variable</h4>
   <p>Example with a calculated expression.<br/>
    Note: The questions below are not functional. The BMI will not calculated and displayed after input.
@@ -4116,12 +4128,9 @@ i.fa {
       <input type="radio" id="tab-calculatedexpression-1" name="tab-calculatedexpression-group-2" checked="true"/>
       <label for="tab-calculatedexpression-1">Sample Question</label>
       <div class="content-in-tab">
-        <p>Weight (kg) <input id="linkitem-3.2.1-input" type="text"/>
-          <br/>
-          Body Height (inches)<input id="linkitem-3.2.2-input" type="text"/>
-          <br/>
-          Your Body Mass Index (BMI) is <input id="linkitem-3.2.3-input" type="text" disabled="true"/>
-        </p>
+      <p>Weight (kg) <input id="linkitem-3.2.1-input" type="text"/><br/>
+          Body Height (inches)<input id="linkitem-3.2.2-input" type="text"/><br/>
+          Your Body Mass Index (BMI) is <input id="linkitem-3.2.3-input" type="text" disabled="true"></input></p>
       </div>
     </div>
     <div class="tab">
@@ -4259,7 +4268,8 @@ i.fa {
       </div>
     </div>
   </div>
-  <a name="cqf"/>
+
+<a name="cqf"></a>
   <h4>Using cqf-calculatedValue, cqf-library and cqf-expression</h4>
   <p>Example question with a cqf-calculatedValue for minimum and maximum weight allowed and a question using a cqf-expression to determine if a question is required based on Patient data.</p>
   <div class="tabs">
@@ -4288,7 +4298,11 @@ i.fa {
             "extension": [
               {
                 "url": "name",
-                "valueId": "LaunchPatient"
+                "valueCoding": {
+                  "system": "http://hl7.org/fhir/uv/sdc/CodeSystem/launchContext",
+                  "code": "patient",
+                  "display": "Patient"
+                }
               },
               {
                 "url": "type",
@@ -4346,7 +4360,7 @@ i.fa {
                   "valueExpression" : {
                     "description" : "current date",
                     "language" : "text/fhirpath",
-                    "expression" : "LaunchPatient.active"
+                    "expression" : "%patient.active"
                   }
                 }
               ]
@@ -4366,7 +4380,11 @@ i.fa {
           </extension>
           <extension url="http://hl7.org/fhir/uv/sdc/StructureDefinition/sdc-questionnaire-launchContext">
             <extension url="name">
-              <valueId value="LaunchPatient"/>
+              <valueCoding>
+                <system value="http://hl7.org/fhir/uv/sdc/CodeSystem/launchContext"/>
+                <code value="patient"/>
+                <display value="Patient"/>
+              </valueCoding>
             </extension>
             <extension url="type">
               <valueCode value="Patient"/>
@@ -4403,7 +4421,7 @@ i.fa {
                 <valueExpression>
                   <description value="current date"/>
                   <language value="text/fhirpath"/>
-                  <expression value="LaunchPatient.active"/>
+                <expression value="%patient.active"/> 
                 </valueExpression>
               </extension>
             </required>
@@ -4413,9 +4431,10 @@ i.fa {
     </div>
   </div>
   <!-- TODO: add a format for dates -->
+
   <a name="othercontrols">  </a>
   <h3>Other Controls</h3>
-  <a name="initial"/>
+<a name="initial"></a>
   <h4>Using initial</h4>
   <p>Example of options with initial value.</p>
   <div class="tabs">
@@ -4480,7 +4499,8 @@ i.fa {
       </div>
     </div>
   </div>
-  <a name="enableexamples"/>
+
+<a name="enableexamples"></a>
   <h4>Using enableWhen, enableBehavior, and enableWhenExpression</h4>
   <p>Example of enabling behaviors.<br/>
    Note: The questions below are not functional. Display does not show actual enabling behaviors.
@@ -4729,7 +4749,8 @@ i.fa {
     </div>
   </div>
   <!-- TODO: try to make UI more dynamic -->
-  <a name="ordinalvalue-constraint"/>
+
+<a name="ordinalvalue-constraint"></a>
   <h4>Using ordinalValue and constraint</h4>
   <p>Example involving ordinal value and contraints.<br/>
    Note: The questions below are not functional. The total score will not be calculated and displayed after input.
@@ -4740,10 +4761,8 @@ i.fa {
       <label for="tab-ordinalvalue-constraint-1">Sample Question</label>
       <div class="content-in-tab">
         <p>
-        You should answer at least three questions.<br/>
-          <br/>
-        Over the last 2 weeks, how often have you been bothered by any of the following problems?<br/>
-          <br/>
+        You should answer at least three questions.<br/><br/>
+        Over the last 2 weeks, how often have you been bothered by any of the following problems?<br/><br/>
         1. Little interest or pleasure in doing things <br/>
           <input type="radio" id="LA6568-5" name="LL358-3" value="0"> Not at all (0)</input>
           <input type="radio" id="LA6569-3" name="LL358-3" value="1"> Several Days (1)</input>
@@ -5160,7 +5179,8 @@ i.fa {
       </div>
     </div>
   </div>
-  <a name="signatureRequired-usagemode"/>
+
+<a name="signatureRequired-usagemode"></a>
   <h4>Using signatureRequired and usageMode</h4>
   <p>Example of signature required.</p>
   <div class="tabs">
@@ -5234,7 +5254,8 @@ i.fa {
       </div>
     </div>
   </div>
-  <a name="endpoint"/>
+
+<a name="endpoint"></a>
   <h4>Using endpoint</h4>
   <p>To set an endpoint URL for the Form Receiver when the Questionnaire is completed.</p>
   <div class="tabs">
@@ -5280,7 +5301,8 @@ i.fa {
       </div>
     </div>
   </div>
-  <a name="entrymode"/>
+
+<a name="entrymode"></a>
   <h4>Using entryMode</h4>
   <p>To display questions one at a time.</p>
   <div class="tabs">
@@ -5326,7 +5348,8 @@ i.fa {
       </div>
     </div>
   </div>
-  <a name="candidateExpression"/>
+
+<a name="candidateExpression"></a>
   <h4>Using candidateExpression</h4>
   <p>To provide a list of candidate answers for the question item.</p>
   <div class="tabs">
@@ -5394,7 +5417,7 @@ i.fa {
               "valueExpression": {
                 "description": "active practitioners that speak at least one of the patient's language",
                 "language": "application/x-fhir-query",
-                "expression": "Practitioner?communication={{%LaunchPatient.communication.language}}&amp;active=true"
+                "expression": "Practitioner?communication={{%patient.communication.language}}&amp;active=true"
               }
             },
             {
@@ -5492,7 +5515,7 @@ i.fa {
               <valueExpression>
                 <description value="active practitioners that speak at least one of the patient's language"/>
                 <language value="application/x-fhir-query"/>
-                <expression value="Practitioner?communication={{%LaunchPatient.communication.language}}&amp;active=true"/>
+              <expression value="Practitioner?communication={{%patient.communication.language}}&amp;active=true"/>
               </valueExpression>
             </extension>
             <extension url="http://hl7.org/fhir/uv/sdc/StructureDefinition/sdc-questionnaire-choiceColumn">
@@ -5559,7 +5582,8 @@ i.fa {
     </div>
   </div>
   <!-- TODO: specify the control to use -->
-  <a name="contextExpression"/>
+
+<a name="contextExpression"></a>
   <h4>Using contextExpression</h4>
   <p>To indicate the resources to make available for display to the user to aid in answering the question.</p>
   <div class="tabs">
@@ -5591,7 +5615,11 @@ i.fa {
             "extension": [
               {
                 "url": "name",
-                "valueId": "LaunchPatient"
+                "valueCoding": {
+                  "system": "http://hl7.org/fhir/uv/sdc/CodeSystem/launchContext",
+                  "code": "patient",
+                  "display": "Patient"
+                }
               },
               {
                 "url": "type",
@@ -5637,7 +5665,7 @@ i.fa {
                     "valueExpression": {
                       "description": "list all Encounters with patient in the past year, in order by date - newest to oldest",
                       "language": "application/x-fhir-query",
-                      "expression": "Encounter?patient={{%LaunchPatient.id}}&amp;date=ge{{today()-1 year}}&amp;_sort=-date"
+                      "expression": "Encounter?patient={{%patient.id}}&amp;date=ge{{today()-1 year}}&amp;_sort=-date"
                     }
                   },
                   {
@@ -5725,7 +5753,11 @@ i.fa {
             <id value="questionnaire-context-expression-example"/>
             <extension url="http://hl7.org/fhir/uv/sdc/StructureDefinition/sdc-questionnaire-launchContext">
               <extension url="name">
-                <valueId value="LaunchPatient"/>
+              <valueCoding>
+                <system value="http://hl7.org/fhir/uv/sdc/CodeSystem/launchContext"/>
+                <code value="patient"/>
+                <display value="Patient"/>
+              </valueCoding>
               </extension>
               <extension url="type">
                 <valueCode value="Patient"/>
@@ -5758,7 +5790,7 @@ i.fa {
                   <valueExpression>
                     <description value="list all Encounters with patient in the past year, in order by date - newest to oldest"/>
                     <language value="application/x-fhir-query"/>
-                    <expression value="Encounter?patient={{%LaunchPatient.id}}&amp;date=ge{{today()-1 year}}&amp;_sort=-date&amp;_include=Encounter:practitioner"/>
+                  <expression value="Encounter?patient={{%patient.id}}&amp;date=ge{{today()-1 year}}&amp;_sort=-date&amp;_include=Encounter:practitioner"/>
                   </valueExpression>
                 </extension>
                 <extension url="http://hl7.org/fhir/uv/sdc/StructureDefinition/sdc-questionnaire-choiceColumn">
@@ -5821,7 +5853,8 @@ i.fa {
   <!--  TODO: how to specify text for the button or link? -->
   <!--  TODO: where to put this extension for displaying list as an htable? -->
   <!--  TODO: how to format dateTime: 2016-06-18T16:22:45-04:00  -->
-  <a name="itemPopulationContext"/>
+
+<a name="itemPopulationContext"></a>
   <h4>Using itemPopulationContext and itemExtractionContext</h4>
   <p>To specify the resources to populate and extract a questionnaire.</p>
   <div class="tabs">
@@ -5864,7 +5897,11 @@ i.fa {
               "extension": [
                 {
                   "url": "name",
-                  "valueId": "LaunchPatient"
+                  "valueCoding": {
+                    "system": "http://hl7.org/fhir/uv/sdc/CodeSystem/launchContext",
+                    "code": "patient",
+                    "display": "Patient"
+                  }
                 },
                 {
                   "url": "type",
@@ -5886,7 +5923,7 @@ i.fa {
                   "valueExpression": {
                     "description": "Home address of the patient",
                     "language": "text/fhirpath",
-                    "expression": "%LaunchPatient.address.where(use='home')[0]"
+                    "expression": "%patient.address.where(use='home')[0]"
                   }
                 },
                 {
@@ -5894,7 +5931,7 @@ i.fa {
                   "valueExpression": {
                     "description": "Home address of the patient",
                     "language": "text/fhirpath",
-                    "expression": "%LaunchPatient.address.where(use='home')[0]"
+                    "expression": "%patient.address.where(use='home')[0]"
                   }
                 }
               ],
@@ -6046,7 +6083,11 @@ i.fa {
         <textarea style="border:none" class="xml">
           <extension url="http://hl7.org/fhir/uv/sdc/StructureDefinition/sdc-questionnaire-launchContext">
             <extension url="name">
-              <valueId value="LaunchPatient"/>
+            <valueCoding>
+              <system value="http://hl7.org/fhir/uv/sdc/CodeSystem/launchContext"/>
+              <code value="patient"/>
+              <display value="Patient"/>
+            </valueCoding>
             </extension>
             <extension url="type">
               <valueCode value="Patient"/>
@@ -6060,14 +6101,14 @@ i.fa {
               <valueExpression>
                 <description value="Home address of the patient"/>
                 <language value="text/fhirpath"/>
-                <expression value="%LaunchPatient.address.where(use='home')[0]"/>
+                <expression value="%patient.address.where(use='home')[0]"/>
               </valueExpression>
             </extension>
             <extension url="http://hl7.org/fhir/uv/sdc/StructureDefinition/sdc-questionnaire-itemExtractionContext">
               <valueExpression>
                 <description value="Home address of the patient"/>
                 <language value="text/fhirpath"/>
-                <expression value="%LaunchPatient.address.where(use='home')[0]"/>
+                <expression value="%patient.address.where(use='home')[0]"/>
               </valueExpression>
             </extension>
             <linkId value="2.0"/>
@@ -6194,6 +6235,7 @@ i.fa {
       </div>
     </div>
   </div>
+
   <!-- template
 <a name="changeme"></a>
 <h4>Using changeme</h4>
@@ -6228,8 +6270,10 @@ i.fa {
   </div>
 </div>
 -->
+
   <!-- The Modal -->
   <div id="myModal" class="modal">
+
     <!-- Modal content -->
     <div class="modal-content">
       <span class="close">x</span>
@@ -6262,7 +6306,9 @@ i.fa {
         </tr>
       </table>
     </div>
+
   </div>
+
   <script>
   var modal = document.getElementById("myModal");
   var btn = document.getElementById("myBtn");

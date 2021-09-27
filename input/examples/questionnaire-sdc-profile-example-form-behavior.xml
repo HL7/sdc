@@ -117,7 +117,11 @@ elements or extensions defined in the advanced form behavior profile are intende
   <!-- sdc-questionnaire-launchContext - the contextual information required in populating the item below that uses choiceColumns -->
   <extension url="http://hl7.org/fhir/uv/sdc/StructureDefinition/sdc-questionnaire-launchContext">
     <extension url="name">
-      <valueId value="LaunchPatient"/>
+            <valueCoding>
+                <system value="http://hl7.org/fhir/uv/sdc/CodeSystem/launchContext"/>
+                <code value="patient"/>
+                <display value="Patient"/>
+            </valueCoding>
     </extension>
     <extension url="type">
       <valueCode value="Patient"/>
@@ -203,7 +207,7 @@ elements or extensions defined in the advanced form behavior profile are intende
     <item>
       <!-- item/regex - regular expression that defines the syntax for the data element to be considered valid -->
       <extension url="http://hl7.org/fhir/StructureDefinition/regex">
-        <valueString value="ANA NAN"/>
+                <valueString value="[A-Z][0-9][A-Z] [0-9][A-Z][0-9]" />
       </extension>
       <linkId value="1.4.b"/>
       <text value="Postal Code (A1A 1A1)"/>
@@ -706,7 +710,7 @@ elements or extensions defined in the advanced form behavior profile are intende
       <!-- item/initial - default value-->
       <initial>
         <valueCoding>
-          <system value="http://hl7.org/fhir/ValueSet/marital-status"/>
+	                <system value="http://terminology.hl7.org/CodeSystem/v3-MaritalStatus"/>
           <code value="D"/>
           <display value="Divorced"/>
         </valueCoding>

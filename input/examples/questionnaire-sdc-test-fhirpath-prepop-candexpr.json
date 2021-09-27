@@ -6,7 +6,11 @@
       "extension": [
         {
           "url": "name",
-          "valueId": "LaunchPatient"
+          "valueCoding": {
+            "system": "http://hl7.org/fhir/uv/sdc/CodeSystem/launchContext",
+            "code": "patient",
+            "display": "Patient"
+          }
         },
         {
           "url": "type",
@@ -20,13 +24,11 @@
       "url": "http://hl7.org/fhir/uv/sdc/StructureDefinition/sdc-questionnaire-launchContext"
     }
   ],
-  "name" : "FhirPathPrepopCandExpr",
+  "name": "FhirPathPrepopCandExpr",
   "title": "Questionnaire Pre-Population with a Candidate Expression",
   "status": "active",
-  "subjectType": [
-    "Patient"
-  ],
-  "description" : "FhirPath based prepopulation example that includes a Candidate expression",
+  "subjectType": ["Patient"],
+  "description": "FhirPath based prepopulation example that includes a Candidate expression",
   "item": [
     {
       "linkId": "grp",
@@ -49,7 +51,7 @@
                   "url": "http://hl7.org/fhir/uv/sdc/StructureDefinition/sdc-questionnaire-calculatedExpression",
                   "valueExpression": {
                     "language": "text/fhirpath",
-                    "expression": "%LaunchPatient.name.first().family.first()"
+                    "expression": "%patient.name.first().family.first()"
                   }
                 }
               ],
@@ -63,7 +65,7 @@
                   "url": "http://hl7.org/fhir/uv/sdc/StructureDefinition/sdc-questionnaire-calculatedExpression",
                   "valueExpression": {
                     "language": "text/fhirpath",
-                    "expression": "%LaunchPatient.name.first().given.first()"
+                    "expression": "%patient.name.first().given.first()"
                   }
                 }
               ],
@@ -81,7 +83,7 @@
                 "description": "Set of active Patient contacts",
                 "name": "selectedContact",
                 "language": "application/x-fhir-query",
-                "expression": "RelatedPerson?patient={{%LaunchPatient.id}}&active=true"
+                "expression": "RelatedPerson?patient={{%patient.id}}&active=true"
               }
             }
           ],
