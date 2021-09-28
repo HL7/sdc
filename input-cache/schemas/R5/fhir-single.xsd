@@ -47,7 +47,7 @@
   POSSIBILITY OF SUCH DAMAGE.
   
 
-  Generated on Sun, Sep 12, 2021 17:21+0000 for FHIR v4.6.0 
+  Generated on Thu, Sep 23, 2021 23:20+0000 for FHIR v4.6.0 
 -->
 <xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns="http://hl7.org/fhir" xmlns:xhtml="http://www.w3.org/1999/xhtml" xmlns:xml="http://www.w3.org/XML/1998/namespace" targetNamespace="http://hl7.org/fhir" elementFormDefault="qualified" version="4.6.0">
   <!-- Note: When using this schema with some tools, it may also be necessary to declare xmlns:xml="http://www.w3.org/XML/1998/namespace", however this causes performance issues with other tools and thus is not in the base schemas. -->
@@ -3106,6 +3106,11 @@ The type is the Canonical URL of Resource Definition that is the type this refer
               <xs:documentation xml:lang="en">The type of relationship to the related artifact.</xs:documentation>
             </xs:annotation>
           </xs:element>
+          <xs:element name="classifier" type="CodeableConcept" minOccurs="0" maxOccurs="unbounded">
+            <xs:annotation>
+              <xs:documentation xml:lang="en">Provides additional classifiers of the related artifact.</xs:documentation>
+            </xs:annotation>
+          </xs:element>
           <xs:element name="label" type="string" minOccurs="0" maxOccurs="1">
             <xs:annotation>
               <xs:documentation xml:lang="en">A short label that can be used to reference the citation from elsewhere in the containing artifact, such as a footnote index.</xs:documentation>
@@ -3121,11 +3126,6 @@ The type is the Canonical URL of Resource Definition that is the type this refer
               <xs:documentation xml:lang="en">A bibliographic citation for the related artifact. This text SHOULD be formatted according to an accepted citation format.</xs:documentation>
             </xs:annotation>
           </xs:element>
-          <xs:element name="url" type="url" minOccurs="0" maxOccurs="1">
-            <xs:annotation>
-              <xs:documentation xml:lang="en">A url for the artifact that can be followed to access the actual content.</xs:documentation>
-            </xs:annotation>
-          </xs:element>
           <xs:element name="document" type="Attachment" minOccurs="0" maxOccurs="1">
             <xs:annotation>
               <xs:documentation xml:lang="en">The document being referenced, represented as an attachment. This is exclusive with the resource element.</xs:documentation>
@@ -3133,7 +3133,12 @@ The type is the Canonical URL of Resource Definition that is the type this refer
           </xs:element>
           <xs:element name="resource" type="canonical" minOccurs="0" maxOccurs="1">
             <xs:annotation>
-              <xs:documentation xml:lang="en">The related resource, such as a library, value set, profile, or other knowledge resource.</xs:documentation>
+              <xs:documentation xml:lang="en">The related artifact, such as a library, value set, profile, or other knowledge resource.</xs:documentation>
+            </xs:annotation>
+          </xs:element>
+          <xs:element name="resourceReference" type="Reference" minOccurs="0" maxOccurs="1">
+            <xs:annotation>
+              <xs:documentation xml:lang="en">The related artifact, if the artifact is not a canonical resource, or a resource reference to a canonical resource.</xs:documentation>
             </xs:annotation>
           </xs:element>
         </xs:sequence>
@@ -3180,6 +3185,126 @@ The type is the Canonical URL of Resource Definition that is the type this refer
       <xs:enumeration value="composed-of">
         <xs:annotation>
           <xs:documentation xml:lang="en">Composed Of</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="part-of">
+        <xs:annotation>
+          <xs:documentation xml:lang="en">Part Of</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="amends">
+        <xs:annotation>
+          <xs:documentation xml:lang="en">Amends</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="amended-with">
+        <xs:annotation>
+          <xs:documentation xml:lang="en">Amended With</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="appends">
+        <xs:annotation>
+          <xs:documentation xml:lang="en">Appends</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="appended-with">
+        <xs:annotation>
+          <xs:documentation xml:lang="en">Appended With</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="cites">
+        <xs:annotation>
+          <xs:documentation xml:lang="en">Cites</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="cited-by">
+        <xs:annotation>
+          <xs:documentation xml:lang="en">Cited By</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="comments-on">
+        <xs:annotation>
+          <xs:documentation xml:lang="en">Is Comment On</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="comment-in">
+        <xs:annotation>
+          <xs:documentation xml:lang="en">Has Comment In</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="contains">
+        <xs:annotation>
+          <xs:documentation xml:lang="en">Contains</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="contained-in">
+        <xs:annotation>
+          <xs:documentation xml:lang="en">Contained In</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="corrects">
+        <xs:annotation>
+          <xs:documentation xml:lang="en">Corrects</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="correction-in">
+        <xs:annotation>
+          <xs:documentation xml:lang="en">Correction In</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="replaces">
+        <xs:annotation>
+          <xs:documentation xml:lang="en">Replaces</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="replaced-with">
+        <xs:annotation>
+          <xs:documentation xml:lang="en">Replaced With</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="retracts">
+        <xs:annotation>
+          <xs:documentation xml:lang="en">Retracts</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="retracted-by">
+        <xs:annotation>
+          <xs:documentation xml:lang="en">Retracted By</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="signs">
+        <xs:annotation>
+          <xs:documentation xml:lang="en">Signs</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="similar-to">
+        <xs:annotation>
+          <xs:documentation xml:lang="en">Similar To</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="supports">
+        <xs:annotation>
+          <xs:documentation xml:lang="en">Supports</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="supported-with">
+        <xs:annotation>
+          <xs:documentation xml:lang="en">Supported With</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="transforms">
+        <xs:annotation>
+          <xs:documentation xml:lang="en">Transforms</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="transformed-into">
+        <xs:annotation>
+          <xs:documentation xml:lang="en">Transformed Into</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="transformed-with">
+        <xs:annotation>
+          <xs:documentation xml:lang="en">Transformed With</xs:documentation>
         </xs:annotation>
       </xs:enumeration>
     </xs:restriction>
@@ -3241,7 +3366,7 @@ The type is the Canonical URL of Resource Definition that is the type this refer
             <xs:annotation>
               <xs:documentation xml:lang="en">The shelf life time period can be specified using a numerical value for the period of time and its unit of time measurement The unit of measurement shall be specified in accordance with ISO 11240 and the resulting terminology The symbol and the symbol identifier shall be used.</xs:documentation>
             </xs:annotation>
-           <xs:element name="periodQuantity" type="Quantity"  maxOccurs="1"/>
+           <xs:element name="periodDuration" type="Duration"  maxOccurs="1"/>
            <xs:element name="periodString" type="string"  maxOccurs="1"/>
           </xs:choice>
           <xs:element name="specialPrecautionsForStorage" type="CodeableConcept" minOccurs="0" maxOccurs="unbounded">
@@ -5792,7 +5917,7 @@ A coverage may only be responsible for specific types of charges, and the sequen
               <xs:documentation xml:lang="en">The ingredients of this administrable medicinal product. Sometimes it may be appropriate to specify these via the associated manufactured item(s).</xs:documentation>
            </xs:annotation>
           </xs:element>
-          <xs:element name="device" minOccurs="0" maxOccurs="unbounded" type="Reference">
+          <xs:element name="device" minOccurs="0" maxOccurs="1" type="Reference">
             <xs:annotation>
               <xs:documentation xml:lang="en">A device that is integral to the medicinal product, in effect being considered as an &quot;ingredient&quot; of the medicinal product. This is not intended for devices that are just co-packaged.</xs:documentation>
            </xs:annotation>
@@ -20546,6 +20671,11 @@ UDILabelName | UserFriendlyName | PatientReportedName | ManufactureDeviceName | 
               <xs:documentation xml:lang="en">[Observations](observation.html)  that are part of this diagnostic report.</xs:documentation>
            </xs:annotation>
           </xs:element>
+          <xs:element name="note" minOccurs="0" maxOccurs="unbounded" type="Annotation">
+            <xs:annotation>
+              <xs:documentation xml:lang="en">Comments about the diagnostic report.</xs:documentation>
+           </xs:annotation>
+          </xs:element>
           <xs:element name="imagingStudy" minOccurs="0" maxOccurs="unbounded" type="Reference">
             <xs:annotation>
               <xs:documentation xml:lang="en">One or more links to full details of any imaging performed during the diagnostic investigation. Typically, this is imaging performed by DICOM enabled modalities, but this is not required. A fully enabled PACS viewer can use this information to provide views of the source images.</xs:documentation>
@@ -22976,11 +23106,6 @@ UDILabelName | UserFriendlyName | PatientReportedName | ManufactureDeviceName | 
               <xs:documentation xml:lang="en">When true, members with this characteristic are excluded from the element.</xs:documentation>
            </xs:annotation>
           </xs:element>
-          <xs:element name="timeFromStart" type="EvidenceVariable.TimeFromStart" minOccurs="0" maxOccurs="1">
-            <xs:annotation>
-              <xs:documentation xml:lang="en">Indicates duration, period, or point of observation from the participant's study entry.</xs:documentation>
-           </xs:annotation>
-          </xs:element>
           <xs:element name="timeFromEvent" type="EvidenceVariable.TimeFromEvent" minOccurs="0" maxOccurs="unbounded">
             <xs:annotation>
               <xs:documentation xml:lang="en">Observation time from study specified event.</xs:documentation>
@@ -22989,37 +23114,6 @@ UDILabelName | UserFriendlyName | PatientReportedName | ManufactureDeviceName | 
           <xs:element name="groupMeasure" minOccurs="0" maxOccurs="1" type="GroupMeasure">
             <xs:annotation>
               <xs:documentation xml:lang="en">Value or set of values that define the grouping.</xs:documentation>
-           </xs:annotation>
-          </xs:element>
-        </xs:sequence>
-      </xs:extension>
-    </xs:complexContent>
-  </xs:complexType>
-  <xs:complexType name="EvidenceVariable.TimeFromStart">
-    <xs:annotation>
-      <xs:documentation xml:lang="en">The EvidenceVariable resource describes an element that knowledge (Evidence) is about.</xs:documentation>
-    </xs:annotation>
-    <xs:complexContent>
-      <xs:extension base="BackboneElement">
-        <xs:sequence>
-          <xs:element name="description" minOccurs="0" maxOccurs="1" type="string">
-            <xs:annotation>
-              <xs:documentation xml:lang="en">A short, natural language description.</xs:documentation>
-           </xs:annotation>
-          </xs:element>
-          <xs:element name="quantity" minOccurs="0" maxOccurs="1" type="Quantity">
-            <xs:annotation>
-              <xs:documentation xml:lang="en">Used to express the observation at a defined amount of time after the study start.</xs:documentation>
-           </xs:annotation>
-          </xs:element>
-          <xs:element name="range" minOccurs="0" maxOccurs="1" type="Range">
-            <xs:annotation>
-              <xs:documentation xml:lang="en">Used to express the observation within a period after the study start.</xs:documentation>
-           </xs:annotation>
-          </xs:element>
-          <xs:element name="note" minOccurs="0" maxOccurs="unbounded" type="Annotation">
-            <xs:annotation>
-              <xs:documentation xml:lang="en">A human-readable string to clarify or explain concepts about the resource.</xs:documentation>
            </xs:annotation>
           </xs:element>
         </xs:sequence>
@@ -23040,7 +23134,7 @@ UDILabelName | UserFriendlyName | PatientReportedName | ManufactureDeviceName | 
           </xs:element>
           <xs:element name="event" minOccurs="0" maxOccurs="1" type="CodeableConcept">
             <xs:annotation>
-              <xs:documentation xml:lang="en">The type of event where the observation started.</xs:documentation>
+              <xs:documentation xml:lang="en">The event used as a base point (reference point) in time.</xs:documentation>
            </xs:annotation>
           </xs:element>
           <xs:element name="quantity" minOccurs="0" maxOccurs="1" type="Quantity">
@@ -29261,14 +29355,9 @@ UDILabelName | UserFriendlyName | PatientReportedName | ManufactureDeviceName | 
               <xs:documentation xml:lang="en">The organization that manufactures this ingredient.</xs:documentation>
            </xs:annotation>
           </xs:element>
-          <xs:element name="substance" type="Ingredient.Substance" minOccurs="0" maxOccurs="1">
+          <xs:element name="substance" type="Ingredient.Substance" minOccurs="1" maxOccurs="1">
             <xs:annotation>
               <xs:documentation xml:lang="en">The substance that comprises this ingredient.</xs:documentation>
-           </xs:annotation>
-          </xs:element>
-          <xs:element name="specifiedSubstance" type="Ingredient.SpecifiedSubstance" minOccurs="0" maxOccurs="unbounded">
-            <xs:annotation>
-              <xs:documentation xml:lang="en">A specified substance that comprises this ingredient.</xs:documentation>
            </xs:annotation>
           </xs:element>
         </xs:sequence>
@@ -29383,38 +29472,6 @@ UDILabelName | UserFriendlyName | PatientReportedName | ManufactureDeviceName | 
           <xs:element name="country" minOccurs="0" maxOccurs="unbounded" type="CodeableConcept">
             <xs:annotation>
               <xs:documentation xml:lang="en">The country or countries for which the strength range applies.</xs:documentation>
-           </xs:annotation>
-          </xs:element>
-        </xs:sequence>
-      </xs:extension>
-    </xs:complexContent>
-  </xs:complexType>
-  <xs:complexType name="Ingredient.SpecifiedSubstance">
-    <xs:annotation>
-      <xs:documentation xml:lang="en">An ingredient of a manufactured item or pharmaceutical product.</xs:documentation>
-    </xs:annotation>
-    <xs:complexContent>
-      <xs:extension base="BackboneElement">
-        <xs:sequence>
-          <xs:element name="code" minOccurs="1" maxOccurs="1" type="CodeableReference">
-            <xs:annotation>
-              <xs:documentation xml:lang="en">Substance as a 'specified substance', implying extra substance related characteristics.</xs:documentation>
-           </xs:annotation>
-          </xs:element>
-          <xs:element name="group" minOccurs="1" maxOccurs="1" type="CodeableConcept">
-            <xs:annotation>
-              <xs:documentation xml:lang="en">The group of specified substance, e.g. group 1 to 4, where the group categorises the level of 
-description of the substance according to standardised sets of properties.</xs:documentation>
-           </xs:annotation>
-          </xs:element>
-          <xs:element name="confidentiality" minOccurs="0" maxOccurs="1" type="CodeableConcept">
-            <xs:annotation>
-              <xs:documentation xml:lang="en">Confidentiality level of the specified substance as the ingredient.</xs:documentation>
-           </xs:annotation>
-          </xs:element>
-          <xs:element name="strength" type="Ingredient.Strength" minOccurs="0" maxOccurs="unbounded">
-            <xs:annotation>
-              <xs:documentation xml:lang="en">Quantity of the substance or specified substance present in the manufactured item or pharmaceutical product.</xs:documentation>
            </xs:annotation>
           </xs:element>
         </xs:sequence>
@@ -33337,9 +33394,9 @@ description of the substance according to standardised sets of properties.</xs:d
               <xs:documentation xml:lang="en">A code to indicate if the medication is in active use.</xs:documentation>
            </xs:annotation>
           </xs:element>
-          <xs:element name="sponsor" minOccurs="0" maxOccurs="1" type="Reference">
+          <xs:element name="marketingAuthorizationHolder" minOccurs="0" maxOccurs="1" type="Reference">
             <xs:annotation>
-              <xs:documentation xml:lang="en">Describes the details of the manufacturer of the medication product. This is not intended to represent the distributor of a medication product.  Describes the organization that is responsible for the manufacturing of the item and holds the registration to market the product in a jurisdiction.. This might not be the company that physically manufactures the product.  May be known as Market Authorization Holder.</xs:documentation>
+              <xs:documentation xml:lang="en">Describes the organization that is responsible for the manufacturing of the item and holds the registration to market the product in a jurisdiction. This might not be the company that physically manufactures the product.  May be known as &quot;Sponsor&quot; and is commonly called &quot;Manufacturer&quot;.</xs:documentation>
            </xs:annotation>
           </xs:element>
           <xs:element name="doseForm" minOccurs="0" maxOccurs="1" type="CodeableConcept">
@@ -33347,9 +33404,9 @@ description of the substance according to standardised sets of properties.</xs:d
               <xs:documentation xml:lang="en">Describes the form of the item.  Powder; tablets; capsule.</xs:documentation>
            </xs:annotation>
           </xs:element>
-          <xs:element name="amount" minOccurs="0" maxOccurs="1" type="Ratio">
+          <xs:element name="totalVolume" minOccurs="0" maxOccurs="1" type="Ratio">
             <xs:annotation>
-              <xs:documentation xml:lang="en">Specific amount of the drug in the packaged product.  For example, when specifying a product that has the same strength (For example, Insulin glargine 100 unit per mL solution for injection), this attribute provides additional clarification of the package amount (For example, 3 mL, 10mL, etc.).</xs:documentation>
+              <xs:documentation xml:lang="en">When the specified product code does not infer a package size, this is the specific amount of drug in the product.  For example, when specifying a product that has the same strength (For example, Insulin glargine 100 unit per mL solution for injection), this attribute provides additional clarification of the package amount (For example, 3 mL, 10mL, etc.).</xs:documentation>
            </xs:annotation>
           </xs:element>
           <xs:element name="ingredient" type="Medication.Ingredient" minOccurs="0" maxOccurs="unbounded">
@@ -33722,6 +33779,11 @@ description of the substance according to standardised sets of properties.</xs:d
               <xs:documentation xml:lang="en">Indicates the reason why a dispense was not performed.</xs:documentation>
            </xs:annotation>
           </xs:element>
+          <xs:element name="statusChanged" minOccurs="0" maxOccurs="1" type="dateTime">
+            <xs:annotation>
+              <xs:documentation xml:lang="en">The date (and maybe time) when the status of the dispense record changed.</xs:documentation>
+           </xs:annotation>
+          </xs:element>
           <xs:element name="category" minOccurs="0" maxOccurs="unbounded" type="CodeableConcept">
             <xs:annotation>
               <xs:documentation xml:lang="en">Indicates the type of medication dispense (for example, drug classification like ATC, where meds would be administered, legal category of the medication.).</xs:documentation>
@@ -33775,6 +33837,11 @@ description of the substance according to standardised sets of properties.</xs:d
           <xs:element name="daysSupply" minOccurs="0" maxOccurs="1" type="Quantity">
             <xs:annotation>
               <xs:documentation xml:lang="en">The amount of medication expressed as a timing amount.</xs:documentation>
+           </xs:annotation>
+          </xs:element>
+          <xs:element name="recorded" minOccurs="0" maxOccurs="1" type="dateTime">
+            <xs:annotation>
+              <xs:documentation xml:lang="en">The date (and maybe time) when the dispense activity started if whenPrepared or whenHandedOver is not populated.</xs:documentation>
            </xs:annotation>
           </xs:element>
           <xs:element name="whenPrepared" minOccurs="0" maxOccurs="1" type="dateTime">
@@ -33976,24 +34043,14 @@ description of the substance according to standardised sets of properties.</xs:d
               <xs:documentation xml:lang="en">The creator or owner of the knowledge or information about the medication.</xs:documentation>
            </xs:annotation>
           </xs:element>
-          <xs:element name="sponsor" minOccurs="0" maxOccurs="1" type="Reference">
+          <xs:element name="intendedJurisdiction" minOccurs="0" maxOccurs="unbounded" type="CodeableConcept">
             <xs:annotation>
-              <xs:documentation xml:lang="en">Describes the details of the manufacturer of the medication product. This is not intended to represent the distributor of a medication product.  Describes the organization that is responsible for the manufacturing of the item and holds the registration to market the product in a jurisdiction. This might not be the company that physically manufactures the product.  May be known as Market Authorization Holder.</xs:documentation>
+              <xs:documentation xml:lang="en">Lists the jurisdictions that this medication knowledge was written for.</xs:documentation>
            </xs:annotation>
           </xs:element>
-          <xs:element name="doseForm" minOccurs="0" maxOccurs="1" type="CodeableConcept">
+          <xs:element name="name" minOccurs="0" maxOccurs="unbounded" type="string">
             <xs:annotation>
-              <xs:documentation xml:lang="en">Describes the form of the item.  Powder; tablets; capsule.</xs:documentation>
-           </xs:annotation>
-          </xs:element>
-          <xs:element name="amount" minOccurs="0" maxOccurs="1" type="Quantity">
-            <xs:annotation>
-              <xs:documentation xml:lang="en">Specific amount of the drug in the packaged product.  For example, when specifying a product that has the same strength (For example, Insulin glargine 100 unit per mL solution for injection), this attribute provides additional clarification of the package amount (For example, 3 mL, 10mL, etc.).</xs:documentation>
-           </xs:annotation>
-          </xs:element>
-          <xs:element name="synonym" minOccurs="0" maxOccurs="unbounded" type="string">
-            <xs:annotation>
-              <xs:documentation xml:lang="en">Additional names for a medication, for example, the name(s) given to a medication in different countries.  For example, acetaminophen and paracetamol or salbutamol and albuterol.</xs:documentation>
+              <xs:documentation xml:lang="en">All of the names for a medication, for example, the name(s) given to a medication in different countries.  For example, acetaminophen and paracetamol or salbutamol and albuterol.</xs:documentation>
            </xs:annotation>
           </xs:element>
           <xs:element name="relatedMedicationKnowledge" type="MedicationKnowledge.RelatedMedicationKnowledge" minOccurs="0" maxOccurs="unbounded">
@@ -34006,11 +34063,6 @@ description of the substance according to standardised sets of properties.</xs:d
               <xs:documentation xml:lang="en">Links to associated medications that could be prescribed, dispensed or administered.</xs:documentation>
            </xs:annotation>
           </xs:element>
-          <xs:element name="associatedDefinition" minOccurs="0" maxOccurs="1" type="Reference">
-            <xs:annotation>
-              <xs:documentation xml:lang="en">Associated definitions for this medication.</xs:documentation>
-           </xs:annotation>
-          </xs:element>
           <xs:element name="productType" minOccurs="0" maxOccurs="unbounded" type="CodeableConcept">
             <xs:annotation>
               <xs:documentation xml:lang="en">Category of the medication or product (e.g. branded product, therapeutic moeity, generic product, innovator product, etc.).</xs:documentation>
@@ -34021,24 +34073,9 @@ description of the substance according to standardised sets of properties.</xs:d
               <xs:documentation xml:lang="en">Associated documentation about the medication.</xs:documentation>
            </xs:annotation>
           </xs:element>
-          <xs:element name="ingredient" type="MedicationKnowledge.Ingredient" minOccurs="0" maxOccurs="unbounded">
-            <xs:annotation>
-              <xs:documentation xml:lang="en">Identifies a particular constituent of interest in the product.</xs:documentation>
-           </xs:annotation>
-          </xs:element>
-          <xs:element name="device" minOccurs="0" maxOccurs="unbounded" type="Reference">
-            <xs:annotation>
-              <xs:documentation xml:lang="en">A device associated with the medication (for example, a drug coated catheter or a drug impregnated dressing).</xs:documentation>
-           </xs:annotation>
-          </xs:element>
           <xs:element name="preparationInstruction" minOccurs="0" maxOccurs="1" type="markdown">
             <xs:annotation>
               <xs:documentation xml:lang="en">The instructions for preparing the medication.</xs:documentation>
-           </xs:annotation>
-          </xs:element>
-          <xs:element name="intendedRoute" minOccurs="0" maxOccurs="unbounded" type="CodeableConcept">
-            <xs:annotation>
-              <xs:documentation xml:lang="en">The intended or approved route of administration.</xs:documentation>
            </xs:annotation>
           </xs:element>
           <xs:element name="cost" type="MedicationKnowledge.Cost" minOccurs="0" maxOccurs="unbounded">
@@ -34066,11 +34103,6 @@ description of the substance according to standardised sets of properties.</xs:d
               <xs:documentation xml:lang="en">Information that only applies to packages (not products).</xs:documentation>
            </xs:annotation>
           </xs:element>
-          <xs:element name="drugCharacteristic" type="MedicationKnowledge.DrugCharacteristic" minOccurs="0" maxOccurs="unbounded">
-            <xs:annotation>
-              <xs:documentation xml:lang="en">Specifies descriptive properties of the medicine, such as color, shape, imprints, etc.</xs:documentation>
-           </xs:annotation>
-          </xs:element>
           <xs:element name="clinicalUseIssue" minOccurs="0" maxOccurs="unbounded" type="Reference">
             <xs:annotation>
               <xs:documentation xml:lang="en">Potential clinical issue with or between medication(s) (for example, drug-drug interaction, drug-disease contraindication, drug-allergy interaction, etc.).</xs:documentation>
@@ -34081,9 +34113,9 @@ description of the substance according to standardised sets of properties.</xs:d
               <xs:documentation xml:lang="en">Regulatory information about a medication.</xs:documentation>
            </xs:annotation>
           </xs:element>
-          <xs:element name="kineticCharacteristic" type="MedicationKnowledge.KineticCharacteristic" minOccurs="0" maxOccurs="unbounded">
+          <xs:element name="definitional" type="MedicationKnowledge.Definitional" minOccurs="0" maxOccurs="1">
             <xs:annotation>
-              <xs:documentation xml:lang="en">The time course of drug absorption, distribution, metabolism and excretion of a medication from the body.</xs:documentation>
+              <xs:documentation xml:lang="en">Along with the link to a Medicinal Product Definition resource, this information provides common definitional elements that are needed to understand the specific medication that is being described.</xs:documentation>
            </xs:annotation>
           </xs:element>
         </xs:sequence>
@@ -34128,35 +34160,6 @@ description of the substance according to standardised sets of properties.</xs:d
               <xs:documentation xml:lang="en">Associated documentation about the medication.</xs:documentation>
            </xs:annotation>
           </xs:element>
-        </xs:sequence>
-      </xs:extension>
-    </xs:complexContent>
-  </xs:complexType>
-  <xs:complexType name="MedicationKnowledge.Ingredient">
-    <xs:annotation>
-      <xs:documentation xml:lang="en">Information about a medication that is used to support knowledge.</xs:documentation>
-    </xs:annotation>
-    <xs:complexContent>
-      <xs:extension base="BackboneElement">
-        <xs:sequence>
-          <xs:element name="item" minOccurs="1" maxOccurs="1" type="CodeableReference">
-            <xs:annotation>
-              <xs:documentation xml:lang="en">The actual ingredient - either a substance (simple ingredient) or another medication.</xs:documentation>
-           </xs:annotation>
-          </xs:element>
-          <xs:element name="isActive" minOccurs="0" maxOccurs="1" type="CodeableConcept">
-            <xs:annotation>
-              <xs:documentation xml:lang="en">Indication of whether this ingredient affects the therapeutic action of the drug.</xs:documentation>
-           </xs:annotation>
-          </xs:element>
-          <xs:choice minOccurs="0" maxOccurs="1" >
-            <xs:annotation>
-              <xs:documentation xml:lang="en">Specifies how many (or how much) of the items there are in this Medication.  For example, 250 mg per tablet.  This is expressed as a ratio where the numerator is 250mg and the denominator is 1 tablet but can also be expressed a quantity when the denominator is assumed to be 1 tablet.</xs:documentation>
-            </xs:annotation>
-            <xs:element name="strengthRatio" type="Ratio"/>
-            <xs:element name="strengthCodeableConcept" type="CodeableConcept"/>
-            <xs:element name="strengthQuantity" type="Quantity"/>
-          </xs:choice>
         </xs:sequence>
       </xs:extension>
     </xs:complexContent>
@@ -34324,6 +34327,13 @@ description of the substance according to standardised sets of properties.</xs:d
               <xs:documentation xml:lang="en">The type of category for the medication (for example, therapeutic classification, therapeutic sub-classification).</xs:documentation>
            </xs:annotation>
           </xs:element>
+          <xs:choice minOccurs="0" maxOccurs="1" >
+            <xs:annotation>
+              <xs:documentation xml:lang="en">Either a textual source of the classification or a reference to an online source.</xs:documentation>
+            </xs:annotation>
+            <xs:element name="sourceString" type="string"/>
+            <xs:element name="sourceUri" type="uri"/>
+          </xs:choice>
           <xs:element name="classification" minOccurs="0" maxOccurs="unbounded" type="CodeableConcept">
             <xs:annotation>
               <xs:documentation xml:lang="en">Specific category assigned to the medication (e.g. anti-infective, anti-hypertensive, antibiotic, etc.).</xs:documentation>
@@ -34340,67 +34350,16 @@ description of the substance according to standardised sets of properties.</xs:d
     <xs:complexContent>
       <xs:extension base="BackboneElement">
         <xs:sequence>
-          <xs:element name="identifier" minOccurs="0" maxOccurs="unbounded" type="Identifier">
-            <xs:annotation>
-              <xs:documentation xml:lang="en">The business identifier of the packaged medication.</xs:documentation>
-           </xs:annotation>
-          </xs:element>
           <xs:element name="cost" type="MedicationKnowledge.Cost" minOccurs="0" maxOccurs="unbounded">
             <xs:annotation>
               <xs:documentation xml:lang="en">The cost of the packaged medication.</xs:documentation>
            </xs:annotation>
           </xs:element>
-          <xs:element name="type" minOccurs="0" maxOccurs="1" type="CodeableConcept">
+          <xs:element name="packagedProduct" minOccurs="0" maxOccurs="1" type="Reference">
             <xs:annotation>
-              <xs:documentation xml:lang="en">A code that defines the specific type of packaging that the medication can be found in (e.g. blister sleeve, tube, bottle).</xs:documentation>
+              <xs:documentation xml:lang="en">A reference to a PackagedProductDefinition that provides the details of the product that is in the packaging and is being priced.</xs:documentation>
            </xs:annotation>
           </xs:element>
-          <xs:element name="quantity" minOccurs="0" maxOccurs="1" type="Quantity">
-            <xs:annotation>
-              <xs:documentation xml:lang="en">The number of product units the package would contain if fully loaded.</xs:documentation>
-           </xs:annotation>
-          </xs:element>
-          <xs:element name="device" minOccurs="0" maxOccurs="1" type="Reference">
-            <xs:annotation>
-              <xs:documentation xml:lang="en">The device used to administer the medication (e.g. scoop, applicator, syringe).</xs:documentation>
-           </xs:annotation>
-          </xs:element>
-          <xs:element name="material" minOccurs="0" maxOccurs="1" type="CodeableConcept">
-            <xs:annotation>
-              <xs:documentation xml:lang="en">Material type of the package item.</xs:documentation>
-           </xs:annotation>
-          </xs:element>
-          <xs:element name="packaging" type="MedicationKnowledge.Packaging" minOccurs="0" maxOccurs="unbounded">
-            <xs:annotation>
-              <xs:documentation xml:lang="en">Allows packages within packages (e.g. blister packages within a box or vials of medications within a box).</xs:documentation>
-           </xs:annotation>
-          </xs:element>
-        </xs:sequence>
-      </xs:extension>
-    </xs:complexContent>
-  </xs:complexType>
-  <xs:complexType name="MedicationKnowledge.DrugCharacteristic">
-    <xs:annotation>
-      <xs:documentation xml:lang="en">Information about a medication that is used to support knowledge.</xs:documentation>
-    </xs:annotation>
-    <xs:complexContent>
-      <xs:extension base="BackboneElement">
-        <xs:sequence>
-          <xs:element name="type" minOccurs="0" maxOccurs="1" type="CodeableConcept">
-            <xs:annotation>
-              <xs:documentation xml:lang="en">A code specifying which characteristic of the medicine is being described (for example, colour, shape, imprint).</xs:documentation>
-           </xs:annotation>
-          </xs:element>
-          <xs:choice minOccurs="0" maxOccurs="1" >
-            <xs:annotation>
-              <xs:documentation xml:lang="en">Description of the characteristic.</xs:documentation>
-            </xs:annotation>
-            <xs:element name="valueCodeableConcept" type="CodeableConcept"/>
-            <xs:element name="valueString" type="string"/>
-            <xs:element name="valueQuantity" type="Quantity"/>
-            <xs:element name="valueBase64Binary" type="base64Binary"/>
-            <xs:element name="valueAttachment" type="Attachment"/>
-          </xs:choice>
         </xs:sequence>
       </xs:extension>
     </xs:complexContent>
@@ -34478,7 +34437,72 @@ description of the substance according to standardised sets of properties.</xs:d
       </xs:extension>
     </xs:complexContent>
   </xs:complexType>
-  <xs:complexType name="MedicationKnowledge.KineticCharacteristic">
+  <xs:complexType name="MedicationKnowledge.Definitional">
+    <xs:annotation>
+      <xs:documentation xml:lang="en">Information about a medication that is used to support knowledge.</xs:documentation>
+    </xs:annotation>
+    <xs:complexContent>
+      <xs:extension base="BackboneElement">
+        <xs:sequence>
+          <xs:element name="definition" minOccurs="0" maxOccurs="unbounded" type="Reference">
+            <xs:annotation>
+              <xs:documentation xml:lang="en">Associated definitions for this medication.</xs:documentation>
+           </xs:annotation>
+          </xs:element>
+          <xs:element name="doseForm" minOccurs="0" maxOccurs="1" type="CodeableConcept">
+            <xs:annotation>
+              <xs:documentation xml:lang="en">Describes the form of the item.  Powder; tablets; capsule.</xs:documentation>
+           </xs:annotation>
+          </xs:element>
+          <xs:element name="intendedRoute" minOccurs="0" maxOccurs="unbounded" type="CodeableConcept">
+            <xs:annotation>
+              <xs:documentation xml:lang="en">The intended or approved route of administration.</xs:documentation>
+           </xs:annotation>
+          </xs:element>
+          <xs:element name="ingredient" type="MedicationKnowledge.Ingredient" minOccurs="0" maxOccurs="unbounded">
+            <xs:annotation>
+              <xs:documentation xml:lang="en">Identifies a particular constituent of interest in the product.</xs:documentation>
+           </xs:annotation>
+          </xs:element>
+          <xs:element name="drugCharacteristic" type="MedicationKnowledge.DrugCharacteristic" minOccurs="0" maxOccurs="unbounded">
+            <xs:annotation>
+              <xs:documentation xml:lang="en">Specifies descriptive properties of the medicine, such as color, shape, imprints, etc.</xs:documentation>
+           </xs:annotation>
+          </xs:element>
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:complexType name="MedicationKnowledge.Ingredient">
+    <xs:annotation>
+      <xs:documentation xml:lang="en">Information about a medication that is used to support knowledge.</xs:documentation>
+    </xs:annotation>
+    <xs:complexContent>
+      <xs:extension base="BackboneElement">
+        <xs:sequence>
+          <xs:element name="item" minOccurs="1" maxOccurs="1" type="CodeableReference">
+            <xs:annotation>
+              <xs:documentation xml:lang="en">A reference to the resource that provides information about the ingredient.</xs:documentation>
+           </xs:annotation>
+          </xs:element>
+          <xs:element name="type" minOccurs="0" maxOccurs="1" type="CodeableConcept">
+            <xs:annotation>
+              <xs:documentation xml:lang="en">Indication of whether this ingredient affects the therapeutic action of the drug.</xs:documentation>
+           </xs:annotation>
+          </xs:element>
+          <xs:choice minOccurs="0" maxOccurs="1" >
+            <xs:annotation>
+              <xs:documentation xml:lang="en">Specifies how many (or how much) of the items there are in this Medication.  For example, 250 mg per tablet.  This is expressed as a ratio where the numerator is 250mg and the denominator is 1 tablet but can also be expressed a quantity when the denominator is assumed to be 1 tablet.</xs:documentation>
+            </xs:annotation>
+            <xs:element name="strengthRatio" type="Ratio"/>
+            <xs:element name="strengthCodeableConcept" type="CodeableConcept"/>
+            <xs:element name="strengthQuantity" type="Quantity"/>
+          </xs:choice>
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:complexType name="MedicationKnowledge.DrugCharacteristic">
     <xs:annotation>
       <xs:documentation xml:lang="en">Information about a medication that is used to support knowledge.</xs:documentation>
     </xs:annotation>
@@ -34487,15 +34511,18 @@ description of the substance according to standardised sets of properties.</xs:d
         <xs:sequence>
           <xs:element name="type" minOccurs="0" maxOccurs="1" type="CodeableConcept">
             <xs:annotation>
-              <xs:documentation xml:lang="en">Code specifying the type of kinetics (e.g. area under the curve, half life period, lethal dose 50.).</xs:documentation>
+              <xs:documentation xml:lang="en">A code specifying which characteristic of the medicine is being described (for example, colour, shape, imprint).</xs:documentation>
            </xs:annotation>
           </xs:element>
           <xs:choice minOccurs="0" maxOccurs="1" >
             <xs:annotation>
               <xs:documentation xml:lang="en">Description of the characteristic.</xs:documentation>
             </xs:annotation>
+            <xs:element name="valueCodeableConcept" type="CodeableConcept"/>
+            <xs:element name="valueString" type="string"/>
             <xs:element name="valueQuantity" type="Quantity"/>
-            <xs:element name="valueDuration" type="Duration"/>
+            <xs:element name="valueBase64Binary" type="base64Binary"/>
+            <xs:element name="valueAttachment" type="Attachment"/>
           </xs:choice>
         </xs:sequence>
       </xs:extension>
@@ -34549,6 +34576,31 @@ description of the substance according to standardised sets of properties.</xs:d
               <xs:documentation xml:lang="en">Identifiers associated with this medication request that are defined by business processes and/or used to refer to it when a direct URL reference to the resource itself is not appropriate. They are business identifiers assigned to this resource by the performer or other systems and remain constant as the resource is updated and propagates from server to server.</xs:documentation>
            </xs:annotation>
           </xs:element>
+          <xs:element name="instantiatesCanonical" minOccurs="0" maxOccurs="unbounded" type="canonical">
+            <xs:annotation>
+              <xs:documentation xml:lang="en">The URL pointing to a protocol, guideline, orderset, or other definition that is adhered to in whole or in part by this MedicationRequest.</xs:documentation>
+           </xs:annotation>
+          </xs:element>
+          <xs:element name="instantiatesUri" minOccurs="0" maxOccurs="unbounded" type="uri">
+            <xs:annotation>
+              <xs:documentation xml:lang="en">The URL pointing to an externally maintained protocol, guideline, orderset or other definition that is adhered to in whole or in part by this MedicationRequest.</xs:documentation>
+           </xs:annotation>
+          </xs:element>
+          <xs:element name="basedOn" minOccurs="0" maxOccurs="unbounded" type="Reference">
+            <xs:annotation>
+              <xs:documentation xml:lang="en">A plan or request that is fulfilled in whole or in part by this medication request.</xs:documentation>
+           </xs:annotation>
+          </xs:element>
+          <xs:element name="priorPrescription" minOccurs="0" maxOccurs="1" type="Reference">
+            <xs:annotation>
+              <xs:documentation xml:lang="en">A link to a resource representing an earlier order related order or prescription.</xs:documentation>
+           </xs:annotation>
+          </xs:element>
+          <xs:element name="groupIdentifier" minOccurs="0" maxOccurs="1" type="Identifier">
+            <xs:annotation>
+              <xs:documentation xml:lang="en">A shared identifier common to all requests that were authorized more or less simultaneously by a single author, representing the identifier of the requisition or prescription.</xs:documentation>
+           </xs:annotation>
+          </xs:element>
           <xs:element name="status" minOccurs="1" maxOccurs="1" type="medicationrequestStatus">
             <xs:annotation>
               <xs:documentation xml:lang="en">A code specifying the current state of the order.  Generally, this will be active or completed state.</xs:documentation>
@@ -34557,6 +34609,11 @@ description of the substance according to standardised sets of properties.</xs:d
           <xs:element name="statusReason" minOccurs="0" maxOccurs="1" type="CodeableConcept">
             <xs:annotation>
               <xs:documentation xml:lang="en">Captures the reason for the current state of the MedicationRequest.</xs:documentation>
+           </xs:annotation>
+          </xs:element>
+          <xs:element name="statusChanged" minOccurs="0" maxOccurs="1" type="dateTime">
+            <xs:annotation>
+              <xs:documentation xml:lang="en">The date (and perhaps time) when the status was changed.</xs:documentation>
            </xs:annotation>
           </xs:element>
           <xs:element name="intent" minOccurs="1" maxOccurs="1" type="medicationRequestIntent">
@@ -34579,16 +34636,6 @@ description of the substance according to standardised sets of properties.</xs:d
               <xs:documentation xml:lang="en">If true, indicates that the provider is asking for the patient to either stop taking or to not start taking the specified medication. For example, the patient is taking an existing medication and the provider is changing their medication. They want to create two seperate requests: one to stop using the current medication and another to start the new medication.</xs:documentation>
            </xs:annotation>
           </xs:element>
-          <xs:element name="reported" minOccurs="0" maxOccurs="1" type="boolean">
-            <xs:annotation>
-              <xs:documentation xml:lang="en">Indicates if this record was captured as a secondary 'reported' record rather than as an original primary source-of-truth record.  It may also indicate the source of the report.</xs:documentation>
-           </xs:annotation>
-          </xs:element>
-          <xs:element name="informationSource" minOccurs="0" maxOccurs="1" type="Reference">
-            <xs:annotation>
-              <xs:documentation xml:lang="en">The person or organization who provided the information about this request, if the source is someone other than the requestor.  This is often used when the MedicationRequest is reported by another person.</xs:documentation>
-           </xs:annotation>
-          </xs:element>
           <xs:element name="medication" minOccurs="1" maxOccurs="1" type="CodeableReference">
             <xs:annotation>
               <xs:documentation xml:lang="en">Identifies the medication being requested. This is a link to a resource that represents the medication which may be the details of the medication or simply an attribute carrying a code that identifies the medication from a known list of medications.</xs:documentation>
@@ -34597,6 +34644,11 @@ description of the substance according to standardised sets of properties.</xs:d
           <xs:element name="subject" minOccurs="1" maxOccurs="1" type="Reference">
             <xs:annotation>
               <xs:documentation xml:lang="en">A link to a resource representing the person or set of individuals to whom the medication will be given.</xs:documentation>
+           </xs:annotation>
+          </xs:element>
+          <xs:element name="informationSource" minOccurs="0" maxOccurs="1" type="Reference">
+            <xs:annotation>
+              <xs:documentation xml:lang="en">The person or organization who provided the information about this request, if the source is someone other than the requestor.  This is often used when the MedicationRequest is reported by another person.</xs:documentation>
            </xs:annotation>
           </xs:element>
           <xs:element name="encounter" minOccurs="0" maxOccurs="1" type="Reference">
@@ -34619,14 +34671,19 @@ description of the substance according to standardised sets of properties.</xs:d
               <xs:documentation xml:lang="en">The individual, organization, or device that initiated the request and has responsibility for its activation.</xs:documentation>
            </xs:annotation>
           </xs:element>
-          <xs:element name="performer" minOccurs="0" maxOccurs="1" type="Reference">
+          <xs:element name="reported" minOccurs="0" maxOccurs="1" type="boolean">
             <xs:annotation>
-              <xs:documentation xml:lang="en">The specified desired performer of the medication treatment (e.g. the performer of the medication administration).</xs:documentation>
+              <xs:documentation xml:lang="en">Indicates if this record was captured as a secondary 'reported' record rather than as an original primary source-of-truth record.  It may also indicate the source of the report.</xs:documentation>
            </xs:annotation>
           </xs:element>
           <xs:element name="performerType" minOccurs="0" maxOccurs="1" type="CodeableConcept">
             <xs:annotation>
               <xs:documentation xml:lang="en">Indicates the type of performer of the administration of the medication.</xs:documentation>
+           </xs:annotation>
+          </xs:element>
+          <xs:element name="performer" minOccurs="0" maxOccurs="1" type="Reference">
+            <xs:annotation>
+              <xs:documentation xml:lang="en">The specified desired performer of the medication treatment (e.g. the performer of the medication administration).</xs:documentation>
            </xs:annotation>
           </xs:element>
           <xs:element name="recorder" minOccurs="0" maxOccurs="1" type="Reference">
@@ -34637,26 +34694,6 @@ description of the substance according to standardised sets of properties.</xs:d
           <xs:element name="reason" minOccurs="0" maxOccurs="unbounded" type="CodeableReference">
             <xs:annotation>
               <xs:documentation xml:lang="en">The reason or the indication for ordering or not ordering the medication.</xs:documentation>
-           </xs:annotation>
-          </xs:element>
-          <xs:element name="instantiatesCanonical" minOccurs="0" maxOccurs="unbounded" type="canonical">
-            <xs:annotation>
-              <xs:documentation xml:lang="en">The URL pointing to a protocol, guideline, orderset, or other definition that is adhered to in whole or in part by this MedicationRequest.</xs:documentation>
-           </xs:annotation>
-          </xs:element>
-          <xs:element name="instantiatesUri" minOccurs="0" maxOccurs="unbounded" type="uri">
-            <xs:annotation>
-              <xs:documentation xml:lang="en">The URL pointing to an externally maintained protocol, guideline, orderset or other definition that is adhered to in whole or in part by this MedicationRequest.</xs:documentation>
-           </xs:annotation>
-          </xs:element>
-          <xs:element name="basedOn" minOccurs="0" maxOccurs="unbounded" type="Reference">
-            <xs:annotation>
-              <xs:documentation xml:lang="en">A plan or request that is fulfilled in whole or in part by this medication request.</xs:documentation>
-           </xs:annotation>
-          </xs:element>
-          <xs:element name="groupIdentifier" minOccurs="0" maxOccurs="1" type="Identifier">
-            <xs:annotation>
-              <xs:documentation xml:lang="en">A shared identifier common to all requests that were authorized more or less simultaneously by a single author, representing the identifier of the requisition or prescription.</xs:documentation>
            </xs:annotation>
           </xs:element>
           <xs:element name="courseOfTherapyType" minOccurs="0" maxOccurs="1" type="CodeableConcept">
@@ -34692,11 +34729,6 @@ description of the substance according to standardised sets of properties.</xs:d
           <xs:element name="substitution" type="MedicationRequest.Substitution" minOccurs="0" maxOccurs="1">
             <xs:annotation>
               <xs:documentation xml:lang="en">Indicates whether or not substitution can or should be part of the dispense. In some cases, substitution must happen, in other cases substitution must not happen. This block explains the prescriber's intent. If nothing is specified substitution may be done.</xs:documentation>
-           </xs:annotation>
-          </xs:element>
-          <xs:element name="priorPrescription" minOccurs="0" maxOccurs="1" type="Reference">
-            <xs:annotation>
-              <xs:documentation xml:lang="en">A link to a resource representing an earlier order related order or prescription.</xs:documentation>
            </xs:annotation>
           </xs:element>
           <xs:element name="detectedIssue" minOccurs="0" maxOccurs="unbounded" type="Reference">
@@ -34825,9 +34857,14 @@ description of the substance according to standardised sets of properties.</xs:d
           <xs:documentation xml:lang="en">On Hold</xs:documentation>
         </xs:annotation>
       </xs:enumeration>
-      <xs:enumeration value="cancelled">
+      <xs:enumeration value="ended">
         <xs:annotation>
-          <xs:documentation xml:lang="en">Cancelled</xs:documentation>
+          <xs:documentation xml:lang="en">Ended</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="stopped">
+        <xs:annotation>
+          <xs:documentation xml:lang="en">Stopped</xs:documentation>
         </xs:annotation>
       </xs:enumeration>
       <xs:enumeration value="completed">
@@ -34835,14 +34872,14 @@ description of the substance according to standardised sets of properties.</xs:d
           <xs:documentation xml:lang="en">Completed</xs:documentation>
         </xs:annotation>
       </xs:enumeration>
+      <xs:enumeration value="cancelled">
+        <xs:annotation>
+          <xs:documentation xml:lang="en">Cancelled</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
       <xs:enumeration value="entered-in-error">
         <xs:annotation>
           <xs:documentation xml:lang="en">Entered in Error</xs:documentation>
-        </xs:annotation>
-      </xs:enumeration>
-      <xs:enumeration value="stopped">
-        <xs:annotation>
-          <xs:documentation xml:lang="en">Stopped</xs:documentation>
         </xs:annotation>
       </xs:enumeration>
       <xs:enumeration value="draft">
@@ -35052,9 +35089,9 @@ The MedicationUsage resource was previously called MedicationStatement.</xs:docu
   </xs:complexType>
   <xs:simpleType name="MedicationUsageStatusCodes-list">
     <xs:restriction base="code-primitive">
-      <xs:enumeration value="completed">
+      <xs:enumeration value="recorded">
         <xs:annotation>
-          <xs:documentation xml:lang="en">Completed</xs:documentation>
+          <xs:documentation xml:lang="en">Recorded</xs:documentation>
         </xs:annotation>
       </xs:enumeration>
       <xs:enumeration value="entered-in-error">
@@ -35062,9 +35099,9 @@ The MedicationUsage resource was previously called MedicationStatement.</xs:docu
           <xs:documentation xml:lang="en">Entered in Error</xs:documentation>
         </xs:annotation>
       </xs:enumeration>
-      <xs:enumeration value="unknown">
+      <xs:enumeration value="draft">
         <xs:annotation>
-          <xs:documentation xml:lang="en">Unknown</xs:documentation>
+          <xs:documentation xml:lang="en">Draft</xs:documentation>
         </xs:annotation>
       </xs:enumeration>
     </xs:restriction>
@@ -35361,7 +35398,7 @@ The MedicationUsage resource was previously called MedicationStatement.</xs:docu
         <xs:sequence>
           <xs:element name="type" minOccurs="0" maxOccurs="1" type="CodeableReference">
             <xs:annotation>
-              <xs:documentation xml:lang="en">The type of manufacturing operation e.g. manufacturing itself, re-packaging. This may be a subtype of some other wider scope of authorized operation, referenced by the authorization attribute.</xs:documentation>
+              <xs:documentation xml:lang="en">The type of manufacturing operation e.g. manufacturing itself, re-packaging. For the authorization of this, a RegulatedAuthorization would point to the same plan or activity referenced here.</xs:documentation>
            </xs:annotation>
           </xs:element>
           <xs:element name="effectiveDate" minOccurs="0" maxOccurs="1" type="Period">
@@ -35372,11 +35409,6 @@ The MedicationUsage resource was previously called MedicationStatement.</xs:docu
           <xs:element name="organization" minOccurs="0" maxOccurs="unbounded" type="Reference">
             <xs:annotation>
               <xs:documentation xml:lang="en">The organization or establishment responsible for (or associated with) the particular process or step, examples include the manufacturer, importer, agent.</xs:documentation>
-           </xs:annotation>
-          </xs:element>
-          <xs:element name="authorization" minOccurs="0" maxOccurs="1" type="Reference">
-            <xs:annotation>
-              <xs:documentation xml:lang="en">An authorization for this process, either as a logical reference, holding just an identifier, or a full reference to a resource that captures the details. The authorization may possibly apply to several products or a wider scope of process of which this is a part.</xs:documentation>
            </xs:annotation>
           </xs:element>
           <xs:element name="confidentialityIndicator" minOccurs="0" maxOccurs="1" type="CodeableConcept">
@@ -38859,7 +38891,7 @@ For resource issues, this will be a simple XPath limited to element names, repet
               <xs:documentation xml:lang="en">A high level category e.g. medicinal product, raw material, shipping/transport container, etc.</xs:documentation>
            </xs:annotation>
           </xs:element>
-          <xs:element name="subject" minOccurs="0" maxOccurs="unbounded" type="Reference">
+          <xs:element name="packageFor" minOccurs="0" maxOccurs="unbounded" type="Reference">
             <xs:annotation>
               <xs:documentation xml:lang="en">The product that this is a pack for.</xs:documentation>
            </xs:annotation>
@@ -38884,7 +38916,7 @@ For resource issues, this will be a simple XPath limited to element names, repet
               <xs:documentation xml:lang="en">Textual description. Note that this is not the name of the package or product.</xs:documentation>
            </xs:annotation>
           </xs:element>
-          <xs:element name="legalStatusOfSupply" type="PackagedProductDefinition.LegalStatusOfSupply" minOccurs="0" maxOccurs="1">
+          <xs:element name="legalStatusOfSupply" type="PackagedProductDefinition.LegalStatusOfSupply" minOccurs="0" maxOccurs="unbounded">
             <xs:annotation>
               <xs:documentation xml:lang="en">The legal status of supply of the packaged item as classified by the regulator.</xs:documentation>
            </xs:annotation>
@@ -40231,6 +40263,10 @@ Deceased patients may also be marked as inactive for the same reasons, but may b
             <xs:element name="detailQuantity" type="Quantity"/>
             <xs:element name="detailRange" type="Range"/>
             <xs:element name="detailCodeableConcept" type="CodeableConcept"/>
+            <xs:element name="detailString" type="string"/>
+            <xs:element name="detailBoolean" type="boolean"/>
+            <xs:element name="detailInteger" type="integer"/>
+            <xs:element name="detailRatio" type="Ratio"/>
           </xs:choice>
           <xs:element name="due" minOccurs="0" maxOccurs="1" type="Duration">
             <xs:annotation>
@@ -40300,9 +40336,14 @@ Deceased patients may also be marked as inactive for the same reasons, but may b
     <xs:complexContent>
       <xs:extension base="BackboneElement">
         <xs:sequence>
+          <xs:element name="linkId" minOccurs="0" maxOccurs="1" type="string">
+            <xs:annotation>
+              <xs:documentation xml:lang="en">An identifier that is unique within the PlanDefinition to allow linkage within the realized CarePlan and/or RequestGroup.</xs:documentation>
+           </xs:annotation>
+          </xs:element>
           <xs:element name="prefix" minOccurs="0" maxOccurs="1" type="string">
             <xs:annotation>
-              <xs:documentation xml:lang="en">A user-visible prefix for the action.</xs:documentation>
+              <xs:documentation xml:lang="en">A user-visible prefix for the action. For example a section or item numbering such as 1. or A.</xs:documentation>
            </xs:annotation>
           </xs:element>
           <xs:element name="title" minOccurs="0" maxOccurs="1" type="string">
@@ -40429,7 +40470,7 @@ Deceased patients may also be marked as inactive for the same reasons, but may b
           </xs:element>
           <xs:choice minOccurs="0" maxOccurs="1" >
             <xs:annotation>
-              <xs:documentation xml:lang="en">A reference to an ActivityDefinition that describes the action to be taken in detail, or a PlanDefinition that describes a series of actions to be taken.</xs:documentation>
+              <xs:documentation xml:lang="en">A reference to an ActivityDefinition that describes the action to be taken in detail, a PlanDefinition that describes a series of actions to be taken, a Questionnaire that should be filled out, or an ObservationDefinition that specifies what observation should be captured.</xs:documentation>
             </xs:annotation>
             <xs:element name="definitionCanonical" type="canonical"/>
             <xs:element name="definitionUri" type="uri"/>
@@ -42557,6 +42598,11 @@ Deceased patients may also be marked as inactive for the same reasons, but may b
               <xs:documentation xml:lang="en">Describes the reason for the request group in coded or textual form.</xs:documentation>
            </xs:annotation>
           </xs:element>
+          <xs:element name="goal" minOccurs="0" maxOccurs="unbounded" type="Reference">
+            <xs:annotation>
+              <xs:documentation xml:lang="en">Goals that are intended to be achieved by following the requests in this RequestGroup.</xs:documentation>
+           </xs:annotation>
+          </xs:element>
           <xs:element name="note" minOccurs="0" maxOccurs="unbounded" type="Annotation">
             <xs:annotation>
               <xs:documentation xml:lang="en">Provides a mechanism to communicate additional information about the response.</xs:documentation>
@@ -42578,9 +42624,14 @@ Deceased patients may also be marked as inactive for the same reasons, but may b
     <xs:complexContent>
       <xs:extension base="BackboneElement">
         <xs:sequence>
+          <xs:element name="linkId" minOccurs="0" maxOccurs="1" type="string">
+            <xs:annotation>
+              <xs:documentation xml:lang="en">The linkId of the action from the PlanDefinition that corresponds to this action in the RequestGroup resource.</xs:documentation>
+           </xs:annotation>
+          </xs:element>
           <xs:element name="prefix" minOccurs="0" maxOccurs="1" type="string">
             <xs:annotation>
-              <xs:documentation xml:lang="en">A user-visible prefix for the action.</xs:documentation>
+              <xs:documentation xml:lang="en">A user-visible prefix for the action. For example a section or item numbering such as 1. or A.</xs:documentation>
            </xs:annotation>
           </xs:element>
           <xs:element name="title" minOccurs="0" maxOccurs="1" type="string">
@@ -42611,6 +42662,11 @@ Deceased patients may also be marked as inactive for the same reasons, but may b
           <xs:element name="documentation" minOccurs="0" maxOccurs="unbounded" type="RelatedArtifact">
             <xs:annotation>
               <xs:documentation xml:lang="en">Didactic or other informational resources associated with the action that can be provided to the CDS recipient. Information resources can include inline text commentary and links to web resources.</xs:documentation>
+           </xs:annotation>
+          </xs:element>
+          <xs:element name="goal" minOccurs="0" maxOccurs="unbounded" type="Reference">
+            <xs:annotation>
+              <xs:documentation xml:lang="en">Goals that are intended to be achieved by following the requests in this action.</xs:documentation>
            </xs:annotation>
           </xs:element>
           <xs:element name="condition" type="RequestGroup.Condition" minOccurs="0" maxOccurs="unbounded">
@@ -43422,7 +43478,7 @@ Deceased patients may also be marked as inactive for the same reasons, but may b
           </xs:element>
           <xs:element name="performer" minOccurs="0" maxOccurs="1" type="Reference">
             <xs:annotation>
-              <xs:documentation xml:lang="en">The provider or software application that performed the assessment.</xs:documentation>
+              <xs:documentation xml:lang="en">The provider, patient, related person, or software application that performed the assessment.</xs:documentation>
            </xs:annotation>
           </xs:element>
           <xs:element name="reason" minOccurs="0" maxOccurs="unbounded" type="CodeableReference">
@@ -46496,7 +46552,7 @@ Deceased patients may also be marked as inactive for the same reasons, but may b
     <xs:complexContent>
       <xs:extension base="DomainResource">
         <xs:sequence>
-          <xs:element name="identifier" minOccurs="0" maxOccurs="1" type="Identifier">
+          <xs:element name="identifier" minOccurs="0" maxOccurs="unbounded" type="Identifier">
             <xs:annotation>
               <xs:documentation xml:lang="en">Identifier by which this substance is known.</xs:documentation>
            </xs:annotation>
@@ -46511,14 +46567,9 @@ Deceased patients may also be marked as inactive for the same reasons, but may b
               <xs:documentation xml:lang="en">Status of substance within the catalogue e.g. approved.</xs:documentation>
            </xs:annotation>
           </xs:element>
-          <xs:element name="category" minOccurs="0" maxOccurs="1" type="CodeableConcept">
-            <xs:annotation>
-              <xs:documentation xml:lang="en">High level categorization, e.g. polymer or nucleic acid, or food, chemical, biological.</xs:documentation>
-           </xs:annotation>
-          </xs:element>
           <xs:element name="classification" minOccurs="0" maxOccurs="unbounded" type="CodeableConcept">
             <xs:annotation>
-              <xs:documentation xml:lang="en">A lower level classification than category, such as the general types of polymer (linear or branch chain) or type of impurity (process related or contaminant).</xs:documentation>
+              <xs:documentation xml:lang="en">A high level categorization, e.g. polymer or nucleic acid, or food, chemical, biological, or a lower level such as the general types of polymer (linear or branch chain) or type of impurity (process related or contaminant).</xs:documentation>
            </xs:annotation>
           </xs:element>
           <xs:element name="domain" minOccurs="0" maxOccurs="1" type="CodeableConcept">
@@ -46949,7 +47000,7 @@ Deceased patients may also be marked as inactive for the same reasons, but may b
             <xs:element name="substanceDefinitionReference" type="Reference"/>
             <xs:element name="substanceDefinitionCodeableConcept" type="CodeableConcept"/>
           </xs:choice>
-          <xs:element name="type" minOccurs="0" maxOccurs="1" type="CodeableConcept">
+          <xs:element name="type" minOccurs="1" maxOccurs="1" type="CodeableConcept">
             <xs:annotation>
               <xs:documentation xml:lang="en">For example &quot;salt to parent&quot;, &quot;active moiety&quot;, &quot;starting material&quot;, &quot;polymorph&quot;, &quot;impurity of&quot;.</xs:documentation>
            </xs:annotation>
