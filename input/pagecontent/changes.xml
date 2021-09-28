@@ -2,9 +2,54 @@
 	<p>
     This provides a list of changes to the SDC specification since its initial release
   </p>
-  <a name="2.7.0"> </a>
+  <a name="3.0.0"> </a>
+  <p>
+		<b>2021-10-31 v3.0.0 - SDC Edition 3</b> based on FHIR R4 (STU)
+  </p>
+	<ul>
+		<li>Updated to reflect FHIR version 4.0.1, including new publishing framework and template (with specific template version)
+      <ul>
+				<li>To support this template change, numerous other changes are performed</li>
+			</ul>
+		</li>
+		<li>Converted profiles, extensions, and other structure definitions to XML format</li>
+		<li>Added a 'credits' section and provided differentiation with IHE</li>
+		<li>Replaced sdc-questionnaire-extract with three profiles for each extraction mechanism:
+      <ul>
+        <li><i>sdc-questionnaire-extr-obsn</i> (Observation-based)</li>
+        <li><i>sdc-questionnaire-extr-defn</i> (Definition-based), and</li>
+        <li><i>sdc-questionnaire-extr-smap</i> (StructureMap-based)</li>
+      </ul>
+		</li>
+		<li>Created three profiles for each population mechanism:
+      <ul>
+        <li><i>sdc-questionnaire-pop-obsn</i> (Observation-based)</li>
+        <li><i>sdc-questionnaire-pop-exp</i> (Expression-based), and</li>
+        <li><i>sdc-questionnaire-pop-smap</i> (StructureMap-based)</li>
+      </ul>
+		</li>
+		<li>Other new profiles created are:
+      <ul>
+        <li><i>sdc-task</i> to define how Task is used to ask for a Questionnaire to be completed</li>
+        <li><i>sdc-servicerequest</i> to define how ServiceRequest is used to ask for a Questionnaire to be completed</li>
+        <li><i>sdc-library</i> that defines how a Library is used as a logic computable library within the ONC's Structured Data Capture standard</li>
+      </ul>
+		</li>
+		<li>Clarified approaches for population and extraction mechanisms</li>
+		<li>Created various new extensions, some of them are explained as follows:
+      <ul>
+        <li><i>sdc-questionnaire-performerType</i> to indicate the types of resources that can record answers to a Questionnaire</li>
+        <li>Two extensions for the inclusive upper and lower bound on the range of allowed values for a ‘quantity’ type question</li>
+        <li>An extension to indicate if a questionnaire is adaptive</li>
+		<li>Migrated two image extensions from CPG specification to support visual accompaniment to the question and response</li>
+		<li>Added two extensions to support observation-based extraction</li>
+      </ul>
+		</li>
+		<li>Updated many profiles, clarified the scope and usage of the profiles, and added new examples to the profiles (based on submitted <a href="http://hl7.org/fhir-issues">Change requests</a>)</li>
+		<li>Several updates or enhancements to the documentation text to improve clarity</li>
+	</ul>
 	<p>
-		<b>2018-08-31 v2.7.0 - SDC R3 (STU ballot 1) Ballot Candidate</b> based on FHIR R4 (STU) ballot candidate
+		<b>2019-03-29 v2.7.0 - SDC R3 (STU ballot 1) Ballot Candidate</b> based on FHIR R4 (STU) ballot candidate
   </p>
   <ul>
     <li>Updated to reflect final version of R4, including migration of a number of extensions from core to the SDC specification</li>
