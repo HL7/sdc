@@ -28,7 +28,7 @@
     <use value="in"/>
     <min value="1"/>
     <max value="1"/>
-    <documentation value="The [Adaptive QuestionnaireResponse Profile](sdc-questionnaireresponse-adapt.html) of the QuestionnaireResponse resource with a *contained* Questionnaire.  When invoking the operation for the first time, neither the QuestionnaireResponse nor the contained Questionnaire will have any items, as no questions are yet known.  In subsequent calls, the QuestionnaireResponse will include answers to all required questions asked so far and the contained QuestionnaireResponse will remain the same as provided back from the operation in the preceding response."/>
+    <documentation value="The [Adaptive QuestionnaireResponse Profile](StructureDefinition-sdc-questionnaireresponse-adapt.html) of the QuestionnaireResponse resource with a *contained* Questionnaire.  When invoking the operation for the first time, neither the QuestionnaireResponse nor the contained Questionnaire will have any items, as no questions are yet known.  In subsequent calls, the QuestionnaireResponse will include answers to all required questions asked so far and the contained QuestionnaireResponse will remain the same as provided back from the operation in the preceding response."/>
     <type value="Resource"/>
   </parameter>
   <parameter>
@@ -36,7 +36,7 @@
     <use value="out"/>
     <min value="1"/>
     <max value="1"/>
-    <documentation value="The [Adaptive QuestionnaireResponse Profile](sdc-questionnaireresponse-adapt.html) of the QuestionnaireResponse resource with a *contained* Questionnaire.  The Server updates the QuestionnaireResponse's contained Questionnaire by appending with the next question or questions ittems and any score or instruction items and returns the QuestionnaireResponse (with all answers completed thus far plus any calculated scores) as this parameter.  When the questionnaire is complete, the Server updates the status of the QuestionnaireResponse resource parameter to `complete`."/>
+    <documentation value="The [Adaptive QuestionnaireResponse Profile](StructureDefinition-sdc-questionnaireresponse-adapt.html) of the QuestionnaireResponse resource with a *contained* Questionnaire.  The Server updates the QuestionnaireResponse's contained Questionnaire by appending with the next question or questions ittems and any score or instruction items and returns the QuestionnaireResponse (with all answers completed thus far plus any calculated scores) as this parameter.  When the questionnaire is complete, the Server updates the status of the QuestionnaireResponse resource parameter to `complete`."/>
     <type value="Resource"/>
   </parameter>
 </OperationDefinition>

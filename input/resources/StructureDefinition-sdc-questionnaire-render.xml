@@ -331,12 +331,13 @@
       </type>
       <mustSupport value="false"/>
     </element>
-    <element id="Questionnaire.item.answerOption.valueString">
-      <path value="Questionnaire.item.answerOption.valueString"/>
+    <element id="Questionnaire.item.answerOption.value[x]:valueString">
+	<type value="string"/>
+      <path value="Questionnaire.item.answerOption.value[x]"/>
       <mustSupport value="false"/>
     </element>
-    <element id="Questionnaire.item.answerOption.valueString.extension:optionString-renderingStyle">
-      <path value="Questionnaire.item.answerOption.valueString.extension"/>
+    <element id="Questionnaire.item.answerOption.value[x]:valueString.extension:optionString-renderingStyle">
+      <path value="Questionnaire.item.answerOption.value[x].extension"/>
       <sliceName value="optionString-renderingStyle"/>
       <min value="0"/>
       <max value="1"/>
@@ -350,8 +351,8 @@
         <map value="../style"/>
       </mapping>
     </element>
-    <element id="Questionnaire.item.answerOption.valueString.extension:optionString-xhtml">
-      <path value="Questionnaire.item.answerOption.valueString.extension"/>
+    <element id="Questionnaire.item.answerOption.value[x]:valueString.extension:optionString-xhtml">
+      <path value="Questionnaire.item.answerOption.value[x].extension"/>
       <sliceName value="optionString-xhtml"/>
       <min value="0"/>
       <max value="1"/>
@@ -365,16 +366,17 @@
         <map value="(strings can contain xhtml)"/>
       </mapping>
     </element>
-    <element id="Questionnaire.item.answerOption.valueCoding">
-      <path value="Questionnaire.item.answerOption.valueCoding"/>
+    <element id="Questionnaire.item.answerOption.value[x]:valueCoding">
+	<type value="Coding"/>
+      <path value="Questionnaire.item.answerOption.value[x]"/>
       <mustSupport value="false"/>
     </element>
-    <element id="Questionnaire.item.answerOption.valueCoding.display">
-      <path value="Questionnaire.item.answerOption.valueCoding.display"/>
+    <element id="Questionnaire.item.answerOption.value[x]:valueCoding.display">
+      <path value="Questionnaire.item.answerOption.value[x].display"/>
       <mustSupport value="false"/>
     </element>
-    <element id="Questionnaire.item.answerOption.valueCoding.display.extension:optionDisplay-renderingStyle">
-      <path value="Questionnaire.item.answerOption.valueCoding.display.extension"/>
+    <element id="Questionnaire.item.answerOption.value[x]:valueCoding.display.extension:optionDisplay-renderingStyle">
+      <path value="Questionnaire.item.answerOption.value[x].display.extension"/>
       <sliceName value="optionDisplay-renderingStyle"/>
       <min value="0"/>
       <max value="1"/>
@@ -388,8 +390,8 @@
         <map value="../style"/>
       </mapping>
     </element>
-    <element id="Questionnaire.item.answerOption.valueCoding.display.extension:optionDisplay-xhtml">
-      <path value="Questionnaire.item.answerOption.valueCoding.display.extension"/>
+    <element id="Questionnaire.item.answerOption.value[x]:valueCoding.display.extension:optionDisplay-xhtml">
+      <path value="Questionnaire.item.answerOption.value[x].display.extension"/>
       <sliceName value="optionDisplay-xhtml"/>
       <min value="0"/>
       <max value="1"/>
