@@ -124,30 +124,26 @@
           </p>
         </td>
       </tr>
-
       <tr>
         <td>
-          <a name="openLabel"> </a>
-          <a href="{{site.data.fhir.path}}extension-questionnaire-openLabel.html">openLabel</a>
+          <a name="openLabel"></a>
+          <a href="StructureDefinition-questionnaire-sdc-openLabel.html">openLabel</a>
         </td>
-        <td>Questionnaire</td>
+        <td>SDC</td>
         <td>item (where type='open-choice')</td>
-        <td>code</td>
-        <td><a href="examples.html#displayCategory">example</a></td>
+        <td>string</td>
+        <td>
+          <a href="examples.html#repeats">example</a>
+        </td>
       </tr>
       <tr>
         <td colspan="5">
           <p>
-            For items with a type of 'display', this indicates what kind of display item it is so that systems can apply differential formatting based on the
-            purpose of the display element.  In the absence of a declared <a href="#itemControl">itemControl</a> this could influence the mechanism used to
-            render the display text (e.g. help-button or separate page for help text).  Regardless of the presence of itemControl, it can also influence the
-            formatting of the text.  For example, instructions might appear in a different font than security rules or with a different background or different
-            surrounding box.  The specific means of display are left open to the form filler, however systems that support this
-            extension SHALL visually distinguish display items with different categories.
+            For items with a type of 'open-choice', this extension provides a label text to display beside the free-text and/or unrestricted type values.  
+            E.g. 'Other, please specify', or 'Additional condition', or 'More reason(s)', etc.
           </p>
         </td>
       </tr>
-
       <tr>
         <td>
           <a name="hidden"> </a>
