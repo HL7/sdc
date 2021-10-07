@@ -256,7 +256,7 @@ If an item is presumed to be extracted, it will extract if there are item.codes 
     <li>
       <code>Observation.category</code> - if this can be inferred from any of the <code>Questionnaire.item.code</code> values or from known context of the
       Questionnaire itself, then fill it in.  It can also be asserted using the 
-      <a href="{{site.data.fhir.path}}StructureDefinition-sdc-questionnaire-observation-extract-category.html">observation-extract-category</a> extension.</li>
+      <a href="StructureDefinition-sdc-questionnaire-observation-extract-category.html">observation-extract-category</a> extension.</li>
     <li>
       <code>Observation.code</code> - add all the <code>Questionnaire.item.code</code> values as <code>Observation.code.coding</code> instances</li>
     <li>

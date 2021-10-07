@@ -11,7 +11,7 @@
 	</p>
 	<ul>
     <li>
-      The <a href="CapabilityStatement-sdc-form-filler.html">SDC Form Filler</a> can invoke one of the <a href="#populate">$populate</a> 
+      The <a href="CapabilityStatement-sdc-form-filler.html">SDC Form Filler</a> can invoke one of the <a href="#operations">$populate</a> 
       operations on a <a href="CapabilityStatement-sdc-form-manager.html">SDC Form Manager</a> to create an initial QuestionnaireResponse before exposing the form
       to the user.  This approach is known as 'pre-population' and is used by 'simple' Form Fillers that don't have the capacity to execute the logic needed to populate the form themselves.
       This approach is more limited because the population process can't take into account any user-provided information, nor can it provide guidance to the
@@ -33,12 +33,12 @@
     <li><a href="OperationDefinition-Questionnaire-populate.html">$populate</a> will pass back the results of the operation in a 
       <a href="{{site.data.fhir.path}}questionnaireresponse.html">QuestionnaireResponse</a>, meaning that the continued filling of the form will
       require a Form Filler to handle the rendering.</li>
-    <li><a href="OperationDefinition-Questionnaire-populate-html.html">$populate-html</a> returns the results back as a
+    <li><a href="OperationDefinition-Questionnaire-populatehtml.html">$populate-html</a> returns the results back as a
       <a href="{{site.data.fhir.path}}binary.html">Binary</a> containing an HTML form where populated values are reflected in initial default
       elements.  Subsequent review and rendering are handled in an HTML rendering environment within the Form Filler.  The results of completing
       the form are submitted as <code>application/x-www-form-urlencoded</code> or <code>multipart/form-data</code> rather than as a 
       QuestionnaireResponse.</li>
-    <li><a href="OperationDefinition-Questionnaire-populate-link.html">$populate-link</a> returns a hyperlink to a website that has the
+    <li><a href="OperationDefinition-Questionnaire-populatelink.html">$populate-link</a> returns a hyperlink to a website that has the
       form already pre-populated.  Managing the HTML is handled external to the Form Filler.  Like the $populate-html approach, results are
       returned as web form content rather than QuestionnaireResponse</li>
   </ul>
@@ -171,7 +171,7 @@
       Sometimes the author interested in making a Questionnaire "populatable" does not have authority to make changes to the "official" Questionnaire.  In other
       cases, there might be one official Questionnaire, but a need to populate it from resources that comply with different sets of profiles (e.g. that comply
       with requirements from different countries) - and thus a need  for different metadata in the Questionnaire to support the population process.  In this
-      case, rather than invoking the population on the original Questionnaire, it can be done on a <a href="StructureDefinition-sdc-questionnaire#derived">derived Questionnaire</a>.</li>
+      case, rather than invoking the population on the original Questionnaire, it can be done on a <a href="StructureDefinition-sdc-questionnaire.html">derived Questionnaire</a>.</li>
     <li>
       When performing population, the considerations around <a href="expressions.html#expressionerrors">errors and lack of support</a> for expresssions may come into
       play.  In addition, similar considerations can also be relevant in terms of what 'population' approach the Questionnaire supports, as opposed to what
