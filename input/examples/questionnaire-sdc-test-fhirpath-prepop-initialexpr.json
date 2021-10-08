@@ -27,7 +27,11 @@
       "extension": [
         {
           "url": "name",
-          "valueId": "LaunchPractitioner"
+          "valueCoding": {
+            "system": "http://hl7.org/fhir/uv/sdc/CodeSystem/launchContext",
+            "code": "user",
+            "display": "User"
+          }
         },
         {
           "url": "type",
@@ -169,7 +173,7 @@
                   "url": "http://hl7.org/fhir/uv/sdc/StructureDefinition/sdc-questionnaire-initialExpression",
                   "valueExpression": {
                     "language": "text/fhirpath",
-                    "expression": "%LaunchPractitioner.identifier.where(system='http://ns.electronichealth.net.au/id/hi/prn').first().value"
+                    "expression": "%user.identifier.where(system='http://ns.electronichealth.net.au/id/hi/prn').first().value"
                   }
                 }
               ],
@@ -197,7 +201,7 @@
                   "url": "http://hl7.org/fhir/uv/sdc/StructureDefinition/sdc-questionnaire-initialExpression",
                   "valueExpression": {
                     "language": "text/fhirpath",
-                    "expression": "%LaunchPractitioner.name.first().select(given.first() + ' ' + family.first())"
+                    "expression": "%user.name.first().select(given.first() + ' ' + family.first())"
                   }
                 }
               ],

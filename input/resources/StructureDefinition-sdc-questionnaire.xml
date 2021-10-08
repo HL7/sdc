@@ -99,7 +99,7 @@
       </constraint>
       <constraint>
         <key value="sdc-1"/>
-        <severity value="warning"/>
+        <severity value="error"/>
         <human value="An item cannot have an answerExpression if answerOption or answerValueSet is already present."/>
         <expression value="extension(&#39;http://hl7.org/fhir/uv/sdc/StructureDefinition/sdc-questionnaire-answerExpression&#39;).empty().not() implies (answerOption.empty() and answerValueSet.empty())"/>
         <xpath value="f:extension[@url=&#39;http://hl7.org/fhir/uv/sdc/StructureDefinition/sdc-questionnaire-answerExpression&#39;] and (not(f:answerOption) and not(f:answerValueSet))"/>
