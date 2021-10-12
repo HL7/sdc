@@ -25,6 +25,7 @@
   <b>Tumor Grade</b>          : Moderately Differentiated</pre>
 		</div>
 	</text>
+	<questionnaire value="http://hl7.org/fhir/uv/sdc/Questionnaire/3921052v1.0"/>
 	<status value="completed"/>
 	<authored value="2014-01-21"/>
 	<item>
@@ -34,7 +35,7 @@
 			<linkId value="3921059v1.0"/>
 			<text value="Date of Current Pathologic Diagnosis"/>
 			<answer>
-				<valueDate value="2003-02-18"/>
+				<valueString value="2003-02-18"/>
 			</answer>
 		</item>
 		<item>
@@ -42,14 +43,14 @@
 			<text value="Diagnosis Type"/>
 			<answer>
 				<valueCoding>
-					<system value="http://nci.nih.gov/xml/owl/cadsr/data_element_scoped_identifier#3921060v1.0-cs"/>
-					<code value="1"/>
+					<system value="http://nci.nih.gov/xml/owl/cadsr/form/form_design_identifier/3921052v1.0/question_identifier#3921060v1.0-cs"/>
+					<code value="Primary"/>
 					<display value="Primary Diagnosis"/>
 				</valueCoding>
 			</answer>
 		</item>
 		<item>
-			<linkId value="3921053v1.0"/>
+			<linkId value="3921065v1.0"/>
 			<text value="Primary Site"/>
 			<answer>
 				<valueString value="Left Ovary"/>
@@ -60,12 +61,12 @@
 		<linkId value="3921066v1.0"/>
 		<text value="Conditional Diagnosis Questions"/>
 		<item>
-			<linkId value="3921066v1.0.0"/>
+			<linkId value="3921071v1.0"/>
 			<text value="Diagnosis Time Point"/>
 			<answer>
 				<valueCoding>
-					<system value="http://nci.nih.gov/xml/owl/cadsr/data_element_scoped_identifier#3921066v1.0-cs"/>
-					<code value="3"/>
+					<system value="http://nci.nih.gov/xml/owl/cadsr/form/form_design_identifier/3921052v1.0/question_identifier#3921071v1.0-cs"/>
+					<code value="At Restaging"/>
 					<display value="Restaging"/>
 				</valueCoding>
 			</answer>
@@ -90,8 +91,8 @@
 			<text value="Assessment Method"/>
 			<answer>
 				<valueCoding>
-					<system value="http://nci.nih.gov/xml/owl/cadsr/data_element_scoped_identifier#3921081v1.0-cs"/>
-					<code value="2"/>
+					<system value="http://nci.nih.gov/xml/owl/cadsr/form/form_design_identifier/3921052v1.0/question_identifier#3921081v1.0-cs"/>
+					<code value="Histologic"/>
 					<display value="Histological Procedure"/>
 				</valueCoding>
 			</answer>
@@ -101,8 +102,8 @@
 			<text value="Tumor grade"/>
 			<answer>
 				<valueCoding>
-					<system value="http://nci.nih.gov/xml/owl/cadsr/data_element_scoped_identifier#3921085v1.0-cs"/>
-					<code value="2"/>
+					<system value="http://nci.nih.gov/xml/owl/cadsr/form/form_design_identifier/3921052v1.0/question_identifier#3921085v1.0-cs"/>
+					<code value="G2"/>
 					<display value="Moderately Differentiated"/>
 				</valueCoding>
 			</answer>
