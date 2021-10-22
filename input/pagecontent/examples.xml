@@ -146,7 +146,7 @@ i.fa {
   <h3>Text Appearance</h3>
 <a name="rendering-style"></a>
   <h4>Using rendering-style</h4>
-  <p>To display a question text in green.</p>
+  <p>To display a question text in green. (<a href="Questionnaire-questionnaire-sdc-profile-example-render.html">Example Questionnaire</a>)</p>
   <div class="tabs">
     <div class="tab">
       <input type="radio" id="tab-rendering-style-1" name="tab-rendering-style-group" checked="true"/>
@@ -165,8 +165,7 @@ i.fa {
         <textarea style="border:none" class="xml">
         "item": [
           {
-            "linkId": "1",
-            "type": "string",
+            "linkId": "1.1",
             "text": "Enter your First Name",
             "_text": {
               "extension": [
@@ -175,7 +174,8 @@ i.fa {
                   "valueString": "color:green;"
                 }
               ]
-            }
+            },
+            "type": "string"
           }
         ]
       </textarea>
@@ -187,7 +187,7 @@ i.fa {
       <div class="content-in-tab">
         <textarea style="border:none" class="xml">
           <item>
-            <linkId value="1"/>
+            <linkId value="1.1"/>
             <text value="Enter your First Name">
               <extension url="http://hl7.org/fhir/StructureDefinition/rendering-style">
                 <valueString value="color:green;"/>
@@ -202,7 +202,7 @@ i.fa {
 
 <a name="rendering-xhtml"></a>
   <h4>Using rendering-xhtml</h4>
-  <p>To allow different styles to different portion of a question text.</p>
+  <p>To allow different styles to different portions of a question text. (<a href="Questionnaire-questionnaire-sdc-profile-example-render.html">Example Questionnaire</a>)</p>
   <div class="tabs">
     <div class="tab">
       <input type="radio" id="tab-xhtml-1" name="tab-xhtml-group-2" checked="true"/>
@@ -218,7 +218,7 @@ i.fa {
         <textarea style="border:none" class="xml">
         "item": [
           {
-            "linkId": "1",
+            "linkId": "1.2",
             "text": "Please answer Yes or No to each of the following questions:",
             "_text": {
               "extension": [
@@ -240,7 +240,7 @@ i.fa {
       <div class="content-in-tab">
         <textarea style="border:none" class="xml">
           <item>
-            <linkId value="1"/>
+            <linkId value="1.2"/>
             <text value="Please answer Yes or No to each of the following questions:">
               <extension url="http://hl7.org/fhir/StructureDefinition/rendering-xhtml">
                 <valueString value="&lt;i&gt;Please&lt;/i&gt; answer &lt;b&gt;&lt;u&gt;Yes&lt;/u&gt;&lt;/b&gt; or &lt;b&gt;&lt;u&gt;No&lt;/u&gt;&lt;/b&gt; to each of the following questions:"/>
@@ -255,7 +255,8 @@ i.fa {
 
 <a name="displayCategory"></a>
   <h4>Using displayCategory</h4>
-  <p>To indicate what kind of display item it is so that systems can apply differential formatting based on the purpose of the display element.</p>
+  <p>To indicate what kind of display item it is so that systems can apply differential formatting based on the purpose of the display element. 
+  (<a href="Questionnaire-questionnaire-sdc-profile-example-render.html">Example Questionnaire</a>)</p>
   <div class="tabs">
     <div class="tab">
       <input type="radio" id="tab-displaycategory-1" name="tab-displaycategory-group-2" checked="true"/>
@@ -286,7 +287,7 @@ i.fa {
                 }
               }
             ],
-            "linkId": "1.0",
+            "linkId": "1.3",
             "text": "ALL QUESTIONS CONTAINED IN THIS QUESTIONNAIRE ARE OPTIONAL AND WILL BE KEPT STRICTLY CONFIDENTIAL.",
             "type": "display"
           }
@@ -310,7 +311,7 @@ i.fa {
                 <text value="The text provides guidance on how the information will be handled from a security perspective."/>
               </valueCodeableConcept>
             </extension>
-            <linkId value="1.0"/>
+            <linkId value="1.3"/>
             <text value="ALL QUESTIONS CONTAINED IN THIS QUESTIONNAIRE ARE OPTIONAL AND WILL BE KEPT STRICTLY CONFIDENTIAL."/>
             <type value="display"/>
           </item>
@@ -321,7 +322,7 @@ i.fa {
 
 <a name="hidden"></a>
   <h4>Using hidden</h4>
-  <p>To hide an item to a user. This example has a question for Form ID that is not displayed.</p>
+  <p>To hide an item to a user. This example has a question for Form ID that is not displayed. (<a href="Questionnaire-questionnaire-sdc-profile-example-render.html">Example Questionnaire</a>)</p>
   <div class="tabs">
     <div class="tab">
       <input type="radio" id="tab-hidden-1" name="tab-hidden-group-2" checked="true"/>
@@ -343,12 +344,12 @@ i.fa {
                 "valueBoolean": true
               }
             ],
-            "linkId": "1.0",
+            "linkId": "1.4.1",
             "text": "Form ID",
             "type": "string"
           },
           {
-            "linkId": "1.1",
+            "linkId": "1.4.2",
             "text": "Event ID",
             "type": "string"
           }
@@ -365,12 +366,12 @@ i.fa {
             <extension url="http://hl7.org/fhir/StructureDefinition/questionnaire-hidden">
               <valueBoolean value="true"/>
             </extension>
-            <linkId value="1.0"/>
+            <linkId value="1.4.1"/>
             <text value="Form ID"/>
             <type value="string"/>
           </item>
           <item>
-            <linkId value="1.1"/>
+            <linkId value="1.4.2"/>
             <text value="Event ID"/>
             <type value="string"/>
           </item>
@@ -383,7 +384,7 @@ i.fa {
   <h3>Control Appearance</h3>
 <a name="itemControl"></a>
   <h4>Using itemControl</h4>
-  <p>To display a text box where a user can type in their answer freely. </p>
+  <p>To display a text box where a user can type in their answer freely. (<a href="Questionnaire-questionnaire-sdc-profile-example-render.html">Example Questionnaire</a>)</p>
   <div class="tabs">
     <div class="tab">
       <input type="radio" id="tab-itemcontrol-1" name="tab-itemcontrol-group-2" checked="true"/>
@@ -416,7 +417,7 @@ i.fa {
                 }
               }
             ],
-            "linkId": "1.0",
+            "linkId": "2.1",
             "text": "If you have any other medical problems or serious injuries, please describe them here:",
             "type": "text"
           }
@@ -440,10 +441,10 @@ i.fa {
                 <text value="A control where a user can type in their answer freely."/>
               </valueCodeableConcept>
             </extension>
-            <linkId value="1.0"/>
+            <linkId value="2.1"/>
             <text value="If you have any other medical problems or serious injuries, please describe them here:"/>
             <type value="text"/>
-          </item>
+          </item>          
         </textarea>
       </div>
     </div>
@@ -451,17 +452,17 @@ i.fa {
 
 <a name="choiceOrientation"></a>
   <h4>Using choiceOrientation</h4>
-  <p>To display choices horizontally.</p>
+  <p>To display choices horizontally. (<a href="Questionnaire-questionnaire-sdc-profile-example-render.html">Example Questionnaire</a>)</p>
   <div class="tabs">
     <div class="tab">
       <input type="radio" id="tab-choiceOrientationme-1" name="tab-choiceOrientationme-group-2" checked="true"/>
       <label for="tab-choiceOrientationme-1">Sample Question</label>
       <div class="content-in-tab">
         <p>Gender:
-        <input id="linkitem-1.0-f" type="radio" name="Gender" value="F" checked="checked"/> Female&#xA0;&#xA0;
-        <input id="linkitem-1.0-m" type="radio" name="Gender" value="M"/> Male&#xA0;&#xA0;
-        <input id="linkitem-1.0-o" type="radio" name="Gender" value="O"/> Other&#xA0;&#xA0;
-        <input id="linkitem-1.0-u" type="radio" name="Gender" value="U"/> Unknown&#xA0;
+        <input id="linkitem-1.0-f" type="radio" name="Gender" value="female" checked="checked"/> Female&#xA0;&#xA0;
+        <input id="linkitem-1.0-m" type="radio" name="Gender" value="male"/> Male&#xA0;&#xA0;
+        <input id="linkitem-1.0-o" type="radio" name="Gender" value="other"/> Other&#xA0;&#xA0;
+        <input id="linkitem-1.0-u" type="radio" name="Gender" value="unknown"/> Unknown&#xA0;
       </p>
       </div>
     </div>
@@ -491,36 +492,40 @@ i.fa {
                 }
               }
             ],
-            "linkId": "1.0",
+            "linkId": "2.2",
             "text": "Gender:",
             "type": "choice",
             "answerOption": [
               {
                 "valueCoding": {
-                  "code": "F",
+                  "system": "http://hl7.org/fhir/administrative-gender",
+                  "code": "female",
                   "display": "Female"
                 },
                 "initialSelected": true
               },
               {
                 "valueCoding": {
-                  "code": "M",
+                  "system": "http://hl7.org/fhir/administrative-gender",
+                  "code": "male",
                   "display": "Male"
                 }
               },
               {
                 "valueCoding": {
-                  "code": "O",
+                  "system": "http://hl7.org/fhir/administrative-gender",
+                  "code": "other",
                   "display": "Other"
                 }
               },
               {
                 "valueCoding": {
-                  "code": "U",
+                  "system": "http://hl7.org/fhir/administrative-gender",
+                  "code": "unknown",
                   "display": "Unknown"
                 }
               }
-            ]
+          ]
           }
         ]
      </textarea>
@@ -545,31 +550,35 @@ i.fa {
                 <text value="A control where choices are listed with a button beside them. The button can be toggled to select or de-select a given choice. Selecting one item deselects all others."/>
               </valueCodeableConcept>
             </extension>
-            <linkId value="1.0"/>
+            <linkId value="2.2"/>
             <text value="Gender:"/>
             <type value="choice"/>
             <answerOption>
               <valueCoding>
-                <code value="F"/>
+                <system value="http://hl7.org/fhir/administrative-gender"/>        
+                <code value="female"/>
                 <display value="Female"/>
               </valueCoding>
               <initialSelected value="true"/>
             </answerOption>
             <answerOption>
               <valueCoding>
-                <code value="M"/>
+                <system value="http://hl7.org/fhir/administrative-gender"/>        
+                <code value="male"/>
                 <display value="Male"/>
               </valueCoding>
             </answerOption>
             <answerOption>
               <valueCoding>
-                <code value="O"/>
+                <system value="http://hl7.org/fhir/administrative-gender"/>        
+                <code value="other"/>
                 <display value="Other"/>
               </valueCoding>
             </answerOption>
             <answerOption>
               <valueCoding>
-                <code value="U"/>
+                <system value="http://hl7.org/fhir/administrative-gender"/>        
+                <code value="unknown"/>
                 <display value="Unknown"/>
               </valueCoding>
             </answerOption>
@@ -581,7 +590,7 @@ i.fa {
 
 <a name="sliderStepValue"></a>
   <h4>Using sliderStepValue</h4>
-  <p>To indicate the increment of a slider itemControl. </p>
+  <p>To indicate the increment of a slider itemControl. (<a href="Questionnaire-questionnaire-sdc-profile-example-render.html">Example Questionnaire</a>)</p>
   <div class="tabs">
     <div class="tab">
       <input type="radio" id="tab-sliderStepValue-1" name="tab-sliderStepValue-group-2" checked="true"/>
@@ -640,7 +649,7 @@ i.fa {
                 "valueInteger": 100
               }
             ],
-            "linkId": "3.1",
+            "linkId": "2.3",
             "text": "Rate your doctor:",
             "type": "integer",
             "initial": [
@@ -678,7 +687,7 @@ i.fa {
             <extension url="http://hl7.org/fhir/StructureDefinition/maxValue">
               <valueInteger value="100"/>
             </extension>
-            <linkId value="3.1"/>
+            <linkId value="2.3"/>
             <text value="Rate your doctor:"/>
             <type value="integer"/>
             <initial>
@@ -692,7 +701,7 @@ i.fa {
 
 <a name="width"></a>
   <h4>Using width</h4>
-  <p>To set the width of a column in a table.</p>
+  <p>To set the width of a column in a table. (<a href="Questionnaire-questionnaire-sdc-profile-example-render.html">Example Questionnaire</a>)</p>
   <div class="tabs">
     <div class="tab">
       <input type="radio" id="tab-width-1" name="tab-width-group-2" checked="true"/>
@@ -752,7 +761,7 @@ i.fa {
                 }
               }
             ],
-            "linkId": "2",
+            "linkId": "2.4",
             "text": "Medical History",
             "type": "group",
             "item": [
@@ -780,18 +789,20 @@ i.fa {
                     }
                   }
                 ],
-                "linkId": "2.1",
+                "linkId": "2.4.1",
                 "text": "Diabetes",
                 "type": "choice",
                 "answerOption": [
                   {
                     "valueCoding": {
+                      "system": "http://example.com/CodeSystem/conditions",
                       "code": "diabetes-type1",
                       "display": "Type 1"
                     }
                   },
                   {
                     "valueCoding": {
+                      "system": "http://example.com/CodeSystem/conditions",
                       "code": "diabetes-type2",
                       "display": "Type 2"
                     }
@@ -822,18 +833,20 @@ i.fa {
                     }
                   }
                 ],
-                "linkId": "2.2",
+                "linkId": "2.4.2",
                 "text": "Other Information",
                 "type": "choice",
                 "answerOption": [
                   {
                     "valueCoding": {
+                      "system": "http://example.com/CodeSystem/conditions",
                       "code": "otherinformation-hypertension",
                       "display": "Hypertension"
                     }
                   },
                   {
                     "valueCoding": {
+                      "system": "http://example.com/CodeSystem/conditions",
                       "code": "otherinformation-smoker",
                       "display": "Smoker"
                     }
@@ -862,7 +875,7 @@ i.fa {
                 <text value="Questions within the group are columns in the table with possible answers as rows. Used for 'choice' questions."/>
               </valueCodeableConcept>
             </extension>
-            <linkId value="2"/>
+            <linkId value="2.4"/>
             <text value="Medical History"/>
             <type value="group"/>
             <item>
@@ -883,17 +896,19 @@ i.fa {
                   <code value="%"/>
                 </valueQuantity>
               </extension>
-              <linkId value="2.1"/>
+              <linkId value="2.4.1"/>
               <text value="Diabetes"/>
               <type value="choice"/>
               <answerOption>
                 <valueCoding>
+                  <system value="http://example.com/CodeSystem/conditions"/>
                   <code value="diabetes-type1"/>
                   <display value="Type 1"/>
                 </valueCoding>
               </answerOption>
               <answerOption>
                 <valueCoding>
+                  <system value="http://example.com/CodeSystem/conditions"/>
                   <code value="diabetes-type2"/>
                   <display value="Type 2"/>
                 </valueCoding>
@@ -917,17 +932,19 @@ i.fa {
                   <code value="%"/>
                 </valueQuantity>
               </extension>
-              <linkId value="2.2"/>
+              <linkId value="2.4.2"/>
               <text value="Other Information"/>
               <type value="choice"/>
               <answerOption>
                 <valueCoding>
+                  <system value="http://example.com/CodeSystem/conditions"/>
                   <code value="otherinformation-hypertension"/>
                   <display value="Hypertension"/>
                 </valueCoding>
               </answerOption>
               <answerOption>
                 <valueCoding>
+                  <system value="http://example.com/CodeSystem/conditions"/>
                   <code value="otherinformation-smoker"/>
                   <display value="Smoker"/>
                 </valueCoding>
@@ -941,7 +958,7 @@ i.fa {
 
 <a name="collapsible"></a>
   <h4>Using collapsible</h4>
-  <p>To display child items in collapsible form</p>
+  <p>To display child items in collapsible form. (<a href="Questionnaire-questionnaire-sdc-profile-example-render.html">Example Questionnaire</a>)</p>
   <div class="tabs">
     <div class="tab">
       <input type="radio" id="tab-collapsible-1" name="tab-collapsible-group-2" checked="true"/>
@@ -958,15 +975,14 @@ i.fa {
               <select id="linkitem-2.1-option" name="province">
                   <option value="Father">Father</option>
                   <option value="Mother">Mother</option>
-                  <option value="Daughter">Daughter</option>
-                  <option value="Brother">Brother</option>
+                  <option value="Sibling">Sibling</option>
                 </select><br/>
             Name <input id="linkitem-1.0-input" type="text"/> <br/>
           Gender
-              <input id="linkitem-1.0-f" type="radio" name="Gender" value="F" checked="checked"/> Female  
-              <input id="linkitem-1.0-m" type="radio" name="Gender" value="M"/> Male  
-              <input id="linkitem-1.0-o" type="radio" name="Gender" value="O"/> Other  
-              <input id="linkitem-1.0-u" type="radio" name="Gender" value="U"/> Unknown</p>
+              <input id="linkitem-1.0-f" type="radio" name="Gender" value="female" checked="checked"/> Female  
+              <input id="linkitem-1.0-m" type="radio" name="Gender" value="male"/> Male  
+              <input id="linkitem-1.0-o" type="radio" name="Gender" value="other"/> Other  
+              <input id="linkitem-1.0-u" type="radio" name="Gender" value="unknown"/> Unknown</p>
             </div>
           </div>
         </div>
@@ -985,7 +1001,7 @@ i.fa {
                 "valueCode": "default-closed"
               }
             ],
-            "linkId": "1.0",
+            "linkId": "2.5",
             "type": "group",
             "item": [
               {
@@ -997,44 +1013,41 @@ i.fa {
                         {
                           "system": "http://hl7.org/fhir/questionnaire-item-control",
                           "code": "drop-down",
-                          "display": "Drop-down"
+                          "display": "Drop down"
                         }
                       ]
                     }
                   }
                 ],
-                "linkId": "1.1",
+                "linkId": "2.5.1",
                 "text": "Relationship to patient",
                 "type": "choice",
                 "answerOption": [
                   {
                     "valueCoding": {
-                      "code": "F",
+                      "system": "http://terminology.hl7.org/CodeSystem/v3-RoleCode",
+                      "code": "FTH",
                       "display": "Father"
                     }
                   },
                   {
                     "valueCoding": {
-                      "code": "M",
+                      "system": "http://terminology.hl7.org/CodeSystem/v3-RoleCode",
+                      "code": "MTH",
                       "display": "Mother"
                     }
                   },
                   {
                     "valueCoding": {
-                      "code": "D",
-                      "display": "Daughter"
-                    }
-                  },
-                  {
-                    "valueCoding": {
-                      "code": "B",
-                      "display": "Brother"
+                      "system": "http://terminology.hl7.org/CodeSystem/v3-RoleCode",
+                      "code": "SIB",
+                      "display": "Sibling"
                     }
                   }
                 ]
               },
               {
-                "linkId": "1.2",
+                "linkId": "2.5.2",
                 "text": "Name",
                 "type": "string"
               },
@@ -1053,32 +1066,36 @@ i.fa {
                     }
                   }
                 ],
-                "linkId": "1.3",
+                "linkId": "2.5.3",
                 "text": "Gender",
                 "type": "choice",
                 "answerOption": [
                   {
                     "valueCoding": {
-                      "code": "F",
+                      "system": "http://hl7.org/fhir/administrative-gender",
+                      "code": "female",
                       "display": "Female"
                     },
                     "initialSelected": true
                   },
                   {
                     "valueCoding": {
-                      "code": "M",
+                      "system": "http://hl7.org/fhir/administrative-gender",
+                      "code": "male",
                       "display": "Male"
                     }
                   },
                   {
                     "valueCoding": {
-                      "code": "O",
+                      "system": "http://hl7.org/fhir/administrative-gender",
+                      "code": "other",
                       "display": "Other"
                     }
                   },
                   {
                     "valueCoding": {
-                      "code": "U",
+                      "system": "http://hl7.org/fhir/administrative-gender",
+                      "code": "unknown",
                       "display": "Unknown"
                     }
                   }
@@ -1099,7 +1116,7 @@ i.fa {
             <extension url="http://hl7.org/fhir/uv/sdc/StructureDefinition/sdc-questionnaire-collapsible">
               <valueCode value="default-closed"/>
             </extension>
-            <linkId value="1.0"/>
+            <linkId value="2.5"/>
             <type value="group"/>
             <item>
               <extension url="http://hl7.org/fhir/StructureDefinition/questionnaire-itemControl">
@@ -1107,40 +1124,37 @@ i.fa {
                   <coding>
                     <system value="http://hl7.org/fhir/questionnaire-item-control"/>
                     <code value="drop-down"/>
-                    <display value="Drop-down"/>
+                    <display value="Drop down"/>
                   </coding>
                 </valueCodeableConcept>
               </extension>
-              <linkId value="1.1"/>
+              <linkId value="2.5.1"/>
               <text value="Relationship to patient"/>
               <type value="choice"/>
               <answerOption>
                 <valueCoding>
-                  <code value="F"/>
+                  <system value="http://terminology.hl7.org/CodeSystem/v3-RoleCode"/>
+                  <code value="FTH"/>
                   <display value="Father"/>
                 </valueCoding>
               </answerOption>
               <answerOption>
                 <valueCoding>
-                  <code value="M"/>
+                  <system value="http://terminology.hl7.org/CodeSystem/v3-RoleCode"/>
+                  <code value="MTH"/>
                   <display value="Mother"/>
                 </valueCoding>
               </answerOption>
               <answerOption>
                 <valueCoding>
-                  <code value="D"/>
-                  <display value="Daughter"/>
-                </valueCoding>
-              </answerOption>
-              <answerOption>
-                <valueCoding>
-                  <code value="B"/>
-                  <display value="Brother"/>
+                  <system value="http://terminology.hl7.org/CodeSystem/v3-RoleCode"/>
+                  <code value="SIB"/>
+                  <display value="Sibling"/>
                 </valueCoding>
               </answerOption>
             </item>
             <item>
-              <linkId value="1.2"/>
+              <linkId value="2.5.2"/>
               <text value="Name"/>
               <type value="string"/>
             </item>
@@ -1154,31 +1168,35 @@ i.fa {
                   </coding>
                 </valueCodeableConcept>
               </extension>
-              <linkId value="1.3"/>
+              <linkId value="2.5.3"/>
               <text value="Gender"/>
               <type value="choice"/>
               <answerOption>
                 <valueCoding>
-                  <code value="F"/>
+                  <system value="http://hl7.org/fhir/administrative-gender"/>        
+                  <code value="female"/>
                   <display value="Female"/>
                 </valueCoding>
                 <initialSelected value="true"/>
               </answerOption>
               <answerOption>
                 <valueCoding>
-                  <code value="M"/>
+                  <system value="http://hl7.org/fhir/administrative-gender"/>        
+                  <code value="male"/>
                   <display value="Male"/>
                 </valueCoding>
               </answerOption>
               <answerOption>
                 <valueCoding>
-                  <code value="O"/>
+                  <system value="http://hl7.org/fhir/administrative-gender"/>        
+                  <code value="other"/>
                   <display value="Other"/>
                 </valueCoding>
               </answerOption>
               <answerOption>
                 <valueCoding>
-                  <code value="U"/>
+                  <system value="http://hl7.org/fhir/administrative-gender"/>        
+                  <code value="unknown"/>
                   <display value="Unknown"/>
                 </valueCoding>
               </answerOption>
@@ -1194,7 +1212,7 @@ i.fa {
 
 <a name="supportLink"></a>
   <h4>Using supportLink</h4>
-  <p>To add a a support link to a question that will provide more information to the user.</p>
+  <p>To add a a support link to a question that will provide more information to the user. (<a href="Questionnaire-questionnaire-sdc-profile-example-render.html">Example Questionnaire</a>)</p>
   <div class="tabs">
     <div class="tab">
       <input type="radio" id="tab-supportLink-1" name="tab-supportLink-group-2" checked="true"/>
@@ -1228,22 +1246,24 @@ i.fa {
                       "display": "Radio Button"
                     }
                   ],
-                  "text": "Radio Button"
+                  "text": "A control where choices are listed with a button beside them. The button can be toggled to select or de-select a given choice. Selecting one item deselects all others."
                 }
               }
             ],
-            "linkId": "1.0",
+            "linkId": "3.1",
             "text": "Have you traveled outside the country within the last 14 days?",
             "type": "choice",
             "answerOption": [
               {
                 "valueCoding": {
+                  "system": "http://terminology.hl7.org/CodeSystem/v2-0532",
                   "code": "Y",
                   "display": "Yes"
                 }
               },
               {
                 "valueCoding": {
+                  "system": "http://terminology.hl7.org/CodeSystem/v2-0532",
                   "code": "N",
                   "display": "No"
                 }
@@ -1273,17 +1293,19 @@ i.fa {
                 <text value="A control where choices are listed with a button beside them. The button can be toggled to select or de-select a given choice. Selecting one item deselects all others."/>
               </valueCodeableConcept>
             </extension>
-            <linkId value="1.0"/>
+            <linkId value="3.1"/>
             <text value="Have you traveled outside the country within the last 14 days?"/>
             <type value="choice"/>
             <answerOption>
               <valueCoding>
+                <system value="http://terminology.hl7.org/CodeSystem/v2-0532"/>
                 <code value="Y"/>
                 <display value="Yes"/>
               </valueCoding>
             </answerOption>
             <answerOption>
               <valueCoding>
+                <system value="http://terminology.hl7.org/CodeSystem/v2-0532"/>
                 <code value="N"/>
                 <display value="No"/>
               </valueCoding>
@@ -1296,7 +1318,7 @@ i.fa {
 
 <a name="choiceColumn"></a>
   <h4>Using choiceColumn</h4>
-  <p>To display choices with multiple columns.</p>
+  <p>To display choices with multiple columns. (<a href="Questionnaire-questionnaire-sdc-profile-example-render.html">Example Questionnaire</a>)</p>
   <div class="tabs" style="height:250px">
     <div class="tab">
       <input type="radio" id="tab-choiceColumn-1" name="tab-choiceColumn-group-2" checked="true"/>
@@ -1336,8 +1358,7 @@ i.fa {
                       "code": "drop-down",
                       "display": "Drop down"
                     }
-                  ],
-                  "text": "A control where an item (or multiple items) can be selected from a list that is only displayed when the user is editing the field."
+                  ]
                 }
               },
               {
@@ -1391,7 +1412,7 @@ i.fa {
                 "url": "http://hl7.org/fhir/uv/sdc/StructureDefinition/sdc-questionnaire-choiceColumn"
               }
             ],
-            "linkId": "5.1",
+            "linkId": "3.2",
             "text": "Select Platelet:",
             "type": "choice",
             "answerValueSet": "http://loinc.org/vs/LL715-4"
@@ -1411,7 +1432,7 @@ i.fa {
                 <coding>
                   <system value="http://hl7.org/fhir/questionnaire-item-control"/>
                   <code value="drop-down"/>
-                  <display value="Drop-down"/>
+                  <display value="Drop down"/>
                 </coding>
               </valueCodeableConcept>
             </extension>
@@ -1451,7 +1472,7 @@ i.fa {
                 <valueBoolean value="true"/>
               </extension>
             </extension>
-            <linkId value="5.1"/>
+            <linkId value="3.2"/>
             <text value="Select Platelet:"/>
             <type value="choice"/>
             <answerValueSet value="http://loinc.org/vs/LL715-4"/>
@@ -1465,7 +1486,7 @@ i.fa {
 
 <a name="optionPrefix"></a>
   <h4>Using optionPrefix</h4>
-  <p>To add prefixes on answer options.</p>
+  <p>To add prefixes on answer options. (<a href="Questionnaire-questionnaire-sdc-profile-example-render.html">Example Questionnaire</a>)</p>
   <div class="tabs">
     <div class="tab">
       <input type="radio" id="tab-optionPrefix-1" name="tab-optionPrefix-group-2" checked="true"/>
@@ -1473,10 +1494,10 @@ i.fa {
       <div class="content-in-tab">
         <p>
           <p>Gender:<br/>
-            <input id="linkitem-1.0-f" type="radio" name="Gender" value="F" checked="checked"/> (a) Female&#xA0;&#xA0;<br/>
-            <input id="linkitem-1.0-m" type="radio" name="Gender" value="M"/> (b) Male&#xA0;&#xA0;<br/>
-            <input id="linkitem-1.0-o" type="radio" name="Gender" value="O"/> (c) Other&#xA0;&#xA0;<br/>
-            <input id="linkitem-1.0-u" type="radio" name="Gender" value="U"/> (d) Unknown&#xA0;
+            <input id="linkitem-1.0-f" type="radio" name="Gender" value="female" checked="checked"/> (a) Female&#xA0;&#xA0;<br/>
+            <input id="linkitem-1.0-m" type="radio" name="Gender" value="male"/> (b) Male&#xA0;&#xA0;<br/>
+            <input id="linkitem-1.0-o" type="radio" name="Gender" value="other"/> (c) Other&#xA0;&#xA0;<br/>
+            <input id="linkitem-1.0-u" type="radio" name="Gender" value="unknown"/> (d) Unknown&#xA0;
       </p>
         </p>
       </div>
@@ -1503,7 +1524,7 @@ i.fa {
                 }
               }
             ],
-            "linkId": "1.0",
+            "linkId": "3.3",
             "text": "Gender:",
             "type": "choice",
             "answerOption": [
@@ -1515,7 +1536,8 @@ i.fa {
                   }
                 ],
                 "valueCoding": {
-                  "code": "F",
+                  "system": "http://hl7.org/fhir/administrative-gender",
+                  "code": "female",
                   "display": "Female"
                 },
                 "initialSelected": true
@@ -1528,7 +1550,8 @@ i.fa {
                   }
                 ],
                 "valueCoding": {
-                  "code": "M",
+                  "system": "http://hl7.org/fhir/administrative-gender",
+                  "code": "male",
                   "display": "Male"
                 }
               },
@@ -1540,7 +1563,8 @@ i.fa {
                   }
                 ],
                 "valueCoding": {
-                  "code": "O",
+                  "system": "http://hl7.org/fhir/administrative-gender",
+                  "code": "other",
                   "display": "Other"
                 }
               },
@@ -1552,7 +1576,8 @@ i.fa {
                   }
                 ],
                 "valueCoding": {
-                  "code": "U",
+                  "system": "http://hl7.org/fhir/administrative-gender",
+                  "code": "unknown",
                   "display": "Unknown"
                 }
               }
@@ -1578,7 +1603,7 @@ i.fa {
                 <text value="A control where choices are listed with a button beside them. The button can be toggled to select or de-select a given choice. Selecting one item deselects all others."/>
               </valueCodeableConcept>
             </extension>
-            <linkId value="1.0"/>
+            <linkId value="3.3"/>
             <text value="Gender:"/>
             <type value="choice"/>
             <answerOption>
@@ -1586,7 +1611,8 @@ i.fa {
                 <valueString value="(a)"/>
               </extension>
               <valueCoding>
-                <code value="F"/>
+                <system value="http://hl7.org/fhir/administrative-gender"/>        
+                <code value="female"/>
                 <display value="Female"/>
               </valueCoding>
               <initialSelected value="true"/>
@@ -1596,7 +1622,8 @@ i.fa {
                 <valueString value="(b)"/>
               </extension>
               <valueCoding>
-                <code value="M"/>
+                <system value="http://hl7.org/fhir/administrative-gender"/>        
+                <code value="male"/>
                 <display value="Male"/>
               </valueCoding>
             </answerOption>
@@ -1605,7 +1632,8 @@ i.fa {
                 <valueString value="(c)"/>
               </extension>
               <valueCoding>
-                <code value="O"/>
+                <system value="http://hl7.org/fhir/administrative-gender"/>        
+                <code value="other"/>
                 <display value="Other"/>
               </valueCoding>
             </answerOption>
@@ -1614,7 +1642,8 @@ i.fa {
                 <valueString value="(d)"/>
               </extension>
               <valueCoding>
-                <code value="U"/>
+                <system value="http://hl7.org/fhir/administrative-gender"/>        
+                <code value="unknown"/>
                 <display value="Unknown"/>
               </valueCoding>
             </answerOption>
@@ -1626,7 +1655,7 @@ i.fa {
 
 <a name="valueset-label"></a>
   <h4>Using valueset-label</h4>
-  <p>To add prefixes on a value set.</p>
+  <p>To add prefixes on a value set. (<a href="Questionnaire-questionnaire-sdc-profile-example-render.html">Example Questionnaire</a>)</p>
   <div class="tabs">
     <div class="tab">
       <input type="radio" id="tab-valueset-label-1" name="tab-valueset-label-group-2" checked="true"/>
@@ -1653,6 +1682,7 @@ i.fa {
             {
               "resourceType": "ValueSet",
               "id": "LL2821-8",
+              "name": "TimingOfHarmAssessmentValueSet",
               "title": "Timing of harm assessment [AHRQ]",
               "status": "active",
               "description": "The answer list for timing of harm assessment",
@@ -1729,11 +1759,11 @@ i.fa {
                   }
                 }
               ],
-              "linkId": "4.1",
+              "linkId": "3.4",
               "text": "Enter timing of harm assessment:",
               "type": "choice",
               "answerValueSet": "#LL2821-8"
-            }
+            }            
           ]
         }
       </textarea>
@@ -1746,9 +1776,10 @@ i.fa {
         <textarea style="border:none" class="xml">
           <Questionnaire>
         ...
-        <contained>
+            <contained>
               <ValueSet>
                 <id value="LL2821-8"/>
+                <name value="TimingOfHarmAssessmentValueSet"/>
                 <title value="Timing of harm assessment [AHRQ]"/>
                 <status value="active"/>
                 <description value="The answer list for timing of harm assessment"/>
@@ -1802,7 +1833,7 @@ i.fa {
                   <text value="A control where choices are listed with a button beside them. The button can be toggled to select or de-select a given choice. Selecting one item deselects all others."/>
                 </valueCodeableConcept>
               </extension>
-              <linkId value="4.1"/>
+              <linkId value="3.4"/>
               <text value="Enter timing of harm assessment:"/>
               <type value="choice"/>
               <answerValueSet value="#LL2821-8"/>
@@ -1815,7 +1846,7 @@ i.fa {
 
 <a name="entryFormat"></a>
   <h4>Using entryFormat</h4>
-  <p>To add instructions for the user to guide their input.</p>
+  <p>To add instructions for the user to guide their input. (<a href="Questionnaire-questionnaire-sdc-profile-example-render.html">Example Questionnaire</a>)</p>
   <div class="tabs">
     <div class="tab">
       <input type="radio" id="tab-entryFormat-1" name="tab-entryFormat-group-2" checked="true"/>
@@ -1839,7 +1870,7 @@ i.fa {
                 "valueString": "mm-dd-yyyy"
               }
             ],
-            "linkId": "1.6",
+            "linkId": "3.5",
             "text": "Birth Date",
             "type": "date"
           }
@@ -1856,7 +1887,7 @@ i.fa {
             <extension url="http://hl7.org/fhir/StructureDefinition/entryFormat">
               <valueString value="mm-dd-yyyy"/>
             </extension>
-            <linkId value="1.6"/>
+            <linkId value="3.5"/>
             <text value="Birth Date"/>
             <type value="date"/>
           </item>
@@ -1867,7 +1898,7 @@ i.fa {
 
 <a name="rendering-styleSensitive"></a>
   <h4>Using rendering-styleSensitive</h4>
-  <p>To indicate that the style extensions on a resource is essential.</p>
+  <p>To indicate that the style extensions on a resource is essential. (<a href="Questionnaire-questionnaire-sdc-profile-example-render.html">Example Questionnaire</a>)</p>
   <div class="tabs">
     <div class="tab">
       <input type="radio" id="tab-rendering-styleSensitive-1" name="tab-rendering-styleSensitive-group-2" checked="true"/>
@@ -1889,7 +1920,7 @@ i.fa {
                 "valueBoolean": true
               }
             ],
-            "linkId": "1",
+            "linkId": "3.6",
             "text": "IMPORTANT: Please complete questionnaire.",
             "_text": {
               "extension": [
@@ -1918,7 +1949,7 @@ i.fa {
             <extension url="http://hl7.org/fhir/StructureDefinition/rendering-styleSensitive">
               <valueBoolean value="true"/>
             </extension>
-            <linkId value="1"/>
+            <linkId value="3.6"/>
             <text value="IMPORTANT: Please complete questionnaire.">
               <extension url="http://hl7.org/fhir/StructureDefinition/rendering-style">
                 <valueString value="color:red;"/>
@@ -1936,7 +1967,7 @@ i.fa {
 
 <a name="optionalDisplay"></a>
   <h4>Using optionalDisplay</h4>
-  <p>To set an item for optional display.</p>
+  <p>To set an item for optional display. (<a href="Questionnaire-questionnaire-sdc-profile-example-render.html">Example Questionnaire</a>)</p>
   <div class="tabs">
     <div class="tab">
       <input type="radio" id="tab-optionalDisplay-1" name="tab-optionalDisplay-group-2" checked="true"/>
@@ -1954,13 +1985,13 @@ i.fa {
           {
             "extension": [
               {
-                "url": "http://hl7.org/fhir/uv/sdc/StructureDefinition/sdc-questionnaire-optionalDisplay",
-                "valueBoolean": true
+                "url": "http://hl7.org/fhir/uv/sdc/StructureDefinition/sdc-questionnaire-shortText",
+                "valueString": "Annual family income"
               }
             ],
-            "linkId": "1.2",
-            "text": "Enter your Middle Name",
-            "type": "string"
+            "linkId": "3.8",
+            "text": "During the past year, what was the total combined income for you and the family members you live with? This information will help us determine if you are eligible for any benefits.",
+            "type": "decimal"
           }
         ]
      </textarea>
@@ -1972,12 +2003,12 @@ i.fa {
       <div class="content-in-tab">
         <textarea style="border:none" class="xml">
           <item>
-            <extension url="http://hl7.org/fhir/uv/sdc/StructureDefinition/sdc-questionnaire-optionalDisplay">
-              <valueBoolean value="true"/>
+            <extension url="http://hl7.org/fhir/uv/sdc/StructureDefinition/sdc-questionnaire-shortText">
+              <valueString value="Annual family income"/>
             </extension>
-            <linkId value="1.2"/>
-            <text value="Enter your Middle Name"/>
-            <type value="string"/>
+            <linkId value="3.8"/>
+            <text value="During the past year, what was the total combined income for you and the family members you live with? This information will help us determine if you are eligible for any benefits."/>
+            <type value="decimal"/>
           </item>
         </textarea>
       </div>
@@ -1986,7 +2017,7 @@ i.fa {
 
 <a name="shortText"></a>
   <h4>Using shortText</h4>
-  <p>To display a shorter text for an item.</p>
+  <p>To display a shorter text for an item. (<a href="Questionnaire-questionnaire-sdc-profile-example-render.html">Example Questionnaire</a>)</p>
   <div class="tabs">
     <div class="tab">
       <input type="radio" id="tab-shortText-1" name="tab-shortText-group-2" checked="true"/>
@@ -5600,9 +5631,9 @@ i.fa {
           <br/>
         Has the patient discussed this issue on any visits in the past year? <button id="myBtn">Review Previous Visits</button>
           <br/>
-          <input id="linkitem-1.7-f" type="radio" name="Gender" value="F"/> Yes&#xA0;<br/>
-          <input id="linkitem-1.7-m" type="radio" name="Gender" value="M"/> No&#xA0;<br/>
-          <input id="linkitem-1.7-o" type="radio" name="Gender" value="O"/> Don't know&#xA0;
+          <input id="linkitem-1.7-f" type="radio" name="Gender" value="Yes"/> Yes&#xA0;<br/>
+          <input id="linkitem-1.7-m" type="radio" name="Gender" value="No"/> No&#xA0;<br/>
+          <input id="linkitem-1.7-o" type="radio" name="Gender" value="Don't know"/> Don't know&#xA0;
       </p>
       </div>
     </div>
