@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<StructureDefinition xmlns="http://hl7.org/fhir">
+  <id value="answerValueSetSource"/>
+   <url value="http://hl7.org/fhir/uv/sdc/StructureDefinition/sdc-answerValueSetSource"/>
+  <version value="1.0.0"/>
+  <name value="AnswerValueSetSource"/>
+  <title value="answerValueSetSource"/>
+  <status value="draft"/>
+  <experimental value="false"/>
+  <date value="2019-06-06"/>
+  <description value="The canonical URL for the source value set for the answer options, when those options are provided directly in the questionnaire."/>
+  <purpose value="Need to be able to identify the source value set for the answer options."/>
+  <fhirVersion value="4.0.1"/>
+  <kind value="complex-type"/>
+  <abstract value="false"/>
+  <context>
+    <type value="element"/>
+    <expression value="Questionnaire.item"/>
+  </context>
+  <type value="Extension"/>
+  <baseDefinition value="http://hl7.org/fhir/StructureDefinition/Extension"/>
+  <derivation value="constraint"/>
+  <differential>
+    <element id="Extension">
+      <path value="Extension"/>
+      <short value="Source value set"/>
+      <definition value="The canonical URL for the source value set for the answer options, when those options are provided directly in the questionnaire."/>
+      <min value="0"/>
+      <max value="1"/>
+    </element>
+    <element id="Extension.url">
+      <path value="Extension.url"/>
+      <type>
+        <code value="uri"/>
+      </type>
+      <fixedUri value="http://hl7.org/fhir/uv/sdc/StructureDefinition/sdc-answerValueSetSource"/>
+    </element>
+    <element id="Extension.value[x]">
+      <path value="Extension.value[x]"/>
+      <type>
+        <code value="canonical"/>
+      </type>
+    </element>
+  </differential>
+</StructureDefinition>
