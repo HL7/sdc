@@ -10,7 +10,7 @@
     ]
   },
   "title": "Hard Coronary Heart Disease (10-year risk)",
-  "name": "framingham_HCHD",
+  "name": "FraminghamHCHD",
   "status": "draft",
   "resourceType": "Questionnaire",
   "id": "questionnaire-sdc-profile-example-framingham-hchd-lhc",
@@ -144,7 +144,9 @@
       "type": "decimal",
       "code": [
         {
-          "code": "age"
+          "code": "30525-0",
+          "display": "Age",
+          "system": "http://loinc.org"
         }
       ],
       "required": true,
@@ -174,7 +176,7 @@
       "code": [
         {
           "code": "46098-0",
-          "display": "Gender",
+          "display": "Sex",
           "system": "http://loinc.org"
         }
       ],
@@ -204,13 +206,15 @@
         {
           "valueCoding": {
             "code": "LA2-8",
-            "display": "Male"
+            "display": "Male",
+			"system": "http://loinc.org"
           }
         },
         {
           "valueCoding": {
             "code": "LA3-6",
-            "display": "Female"
+            "display": "Female",
+			"system": "http://loinc.org"
           }
         }
       ]
@@ -243,13 +247,15 @@
         {
           "valueCoding": {
             "code": "Y",
-            "display": "Yes"
+            "display": "Yes",
+			"system": "http://example.org"
           }
         },
         {
           "valueCoding": {
             "code": "N",
-            "display": "No"
+            "display": "No",
+			"system": "http://example.org"
           }
         }
       ]
@@ -284,7 +290,7 @@
       "code": [
         {
           "code": "2093-3",
-          "display": "Cholesterol [Mass/Vol]",
+          "display": "Cholesterol [Mass/volume] in Serum or Plasma",
           "system": "http://loinc.org"
         }
       ],
@@ -309,7 +315,7 @@
       "code": [
         {
           "code": "2085-9",
-          "display": "Cholesterol in HDL [Mass/Vol]",
+          "display": "Cholesterol in HDL [Mass/volume] in Serum or Plasma",
           "system": "http://loinc.org"
         }
       ],
@@ -357,13 +363,15 @@
         {
           "valueCoding": {
             "code": "Y",
-            "display": "Yes"
+            "display": "Yes",
+			"system": "http://example.org"
           }
         },
         {
           "valueCoding": {
             "code": "N",
-            "display": "No"
+            "display": "No",
+			"system": "http://example.org"
           }
         }
       ]

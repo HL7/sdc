@@ -2,6 +2,7 @@
 <Questionnaire xmlns="http://hl7.org/fhir" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://hl7.org/fhir ../../input-cache/schemas/R4/fhir-single.xsd">
 	<id value="questionnaire-sdc-profile-example-cap"/>
 	<url value="http://hl7.org/fhir/uv/sdc/Questionnaire/questionnaire-sdc-profile-example-cap"/>
+	<name value="QuestionnaireSDCProfileExampleCap"/>
 	<title value="(Ask Richard)"/>
 	<status value="active"/>
 	<item>
@@ -16,24 +17,28 @@
 			<required value="true"/>
 			<answerOption>
 				<valueCoding>
+				    <system value="http://example.org/"/>
 					<code value="M1"/>
 					<display value="Margins univolved by tumor"/>
 				</valueCoding>
 			</answerOption>
 			<answerOption>
 				<valueCoding>
+				    <system value="http://example.org/"/>
 					<code value="M2"/>
 					<display value="Margin(s) involved by tumor"/>
 				</valueCoding>
 			</answerOption>
 			<answerOption>
 				<valueCoding>
+				    <system value="http://example.org/"/>
 					<code value="M3"/>
 					<display value="Cannot be determined"/>
 				</valueCoding>
 			</answerOption>
 			<answerOption>
 				<valueCoding>
+				    <system value="http://example.org/"/>
 					<code value="M4"/>
 					<display value="Not applicable"/>
 				</valueCoding>
@@ -45,6 +50,7 @@
 					<question value="1.1"/>
 				  <operator value="="/>
 					<answerCoding>
+					     <system value="http://example.org/"/>
 						<code value="M1"/>
 					</answerCoding>
 				</enableWhen>
@@ -55,12 +61,14 @@
 					<type value="choice"/>
 					<answerOption>
 						<valueCoding>
+						     <system value="http://example.org/"/>
 							<code value="D1"/>
 							<display value="Specify (mm)"/>
 						</valueCoding>
 					</answerOption>
 					<answerOption>
 						<valueCoding>
+						    <system value="http://example.org/"/>
 							<code value="D2"/>
 							<display value="Cannot be assessed (explain)"/>
 						</valueCoding>
@@ -93,12 +101,14 @@
 					<type value="choice"/>
 					<answerOption>
 						<valueCoding>
+						    <system value="http://example.org/"/>
 							<code value="W1"/>
 							<display value="Specify margin"/>
 						</valueCoding>
 					</answerOption>
 					<answerOption>
 						<valueCoding>
+							<system value="http://example.org/"/>
 							<code value="W2"/>
 							<display value="Cannot be determined (explain)"/>
 						</valueCoding>
@@ -124,12 +134,14 @@
 				<required value="true"/>
 				<answerOption>
 					<valueCoding>
+						<system value="http://example.org/"/>
 						<code value="I1"/>
 						<display value="Specify margin(s)"/>
 					</valueCoding>
 				</answerOption>
 				<answerOption>
 					<valueCoding>
+						<system value="http://example.org/"/>
 						<code value="I2"/>
 						<display value="Cannot be determined (explain)"/>
 					</valueCoding>
@@ -172,18 +184,21 @@
 			<type value="choice"/>
 			<answerOption>
 				<valueCoding>
+					 <system value="http://example.org/"/>
 					<code value="E1"/>
 					<display value="Not identified"/>
 				</valueCoding>
 			</answerOption>
 			<answerOption>
 				<valueCoding>
+					 <system value="http://example.org/"/>
 					<code value="E2"/>
 					<display value="Present (specify)"/>
 				</valueCoding>
 			</answerOption>
 			<answerOption>
 				<valueCoding>
+					 <system value="http://example.org/"/>
 					<code value="E3"/>
 					<display value="Indeterminate"/>
 				</valueCoding>
@@ -214,24 +229,28 @@
 			<repeats value="true"/>
 			<answerOption>
 				<valueCoding>
+					 <system value="http://example.org/"/>
 					<code value="U1"/>
 					<display value="Hemorrhagic"/>
 				</valueCoding>
 			</answerOption>
 			<answerOption>
 				<valueCoding>
+					 <system value="http://example.org/"/>
 					<code value="U2"/>
 					<display value="Necrotic"/>
 				</valueCoding>
 			</answerOption>
 			<answerOption>
 				<valueCoding>
+					 <system value="http://example.org/"/>
 					<code value="U3"/>
 					<display value="Invasion"/>
 				</valueCoding>
 			</answerOption>
 			<answerOption>
 				<valueCoding>
+					 <system value="http://example.org/"/>
 					<code value="U4"/>
 					<display value="Other (specify)"/>
 				</valueCoding>
@@ -243,18 +262,21 @@
 				<repeats value="true"/>
 				<answerOption>
 					<valueCoding>
+						 <system value="http://example.org/"/>
 						<code value="V1"/>
 						<display value="Capsule"/>
 					</valueCoding>
 				</answerOption>
 				<answerOption>
 					<valueCoding>
+						 <system value="http://example.org/"/>
 						<code value="V2"/>
 						<display value="Vessels"/>
 					</valueCoding>
 				</answerOption>
 				<answerOption>
 					<valueCoding>
+						 <system value="http://example.org/"/>
 						<code value="V3"/>
 						<display value="Extra-adrenal (specify)"/>
 					</valueCoding>

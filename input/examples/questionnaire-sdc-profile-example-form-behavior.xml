@@ -15,6 +15,7 @@ elements or extensions defined in the advanced form behavior profile are intende
   <contained>
     <ValueSet>
       <id value="LL358-3"/>
+	  <name value="TimingOfHarmAssessmentAHRQ"/>
       <title value="Timing of harm assessment [AHRQ]"/>
       <status value="active"/>
       <description value="The answer list for timing of harm assessment"/>
@@ -40,7 +41,7 @@ elements or extensions defined in the advanced form behavior profile are intende
             <extension url="http://hl7.org/fhir/StructureDefinition/ordinalValue">
               <valueDecimal value="2"/>
             </extension>
-            <code value="Several days"/>
+            <code value="LA6570-1"/>
             <display value="More than half the days"/>
           </concept>
           <concept>
@@ -57,6 +58,7 @@ elements or extensions defined in the advanced form behavior profile are intende
   <contained>
     <ValueSet>
       <id value="vsConditionsAll"/>
+	  <name value="VSConditionsAll"/>
       <status value="draft"/>
       <compose>
         <include>
@@ -84,6 +86,7 @@ elements or extensions defined in the advanced form behavior profile are intende
   <contained>
     <ValueSet>
       <id value="vsConditionsFemale"/>
+	  <name value="VSConditionsFemale"/>
       <status value="draft"/>
       <compose>
         <include>
@@ -145,6 +148,7 @@ elements or extensions defined in the advanced form behavior profile are intende
       <expression value="%resource.repeat(item).where(linkId='3.2.c').item.answer.valueDecimal*0.0254"/>
     </valueExpression>
   </extension>
+  <name value="AdvancedFormBehaviorDemonstration"/>
   <title value="Advanced Form Behavior Demonstration"/>
   <status value="draft"/>
   <item>
@@ -250,60 +254,70 @@ elements or extensions defined in the advanced form behavior profile are intende
       <type value="choice"/>
       <answerOption>
         <valueCoding>
+		<system value="http://example.org"/>
           <code value="Alberta"/>
           <display value="Alberta"/>
         </valueCoding>
       </answerOption>
       <answerOption>
         <valueCoding>
+		<system value="http://example.org"/>
           <code value="BritishColumbia"/>
           <display value="British Columbia"/>
         </valueCoding>
       </answerOption>
       <answerOption>
         <valueCoding>
+		<system value="http://example.org"/>
           <code value="Manitoba"/>
           <display value="Manitoba"/>
         </valueCoding>
       </answerOption>
       <answerOption>
         <valueCoding>
+		<system value="http://example.org"/>
           <code value="NewBrunswick"/>
           <display value="New Brunswick"/>
         </valueCoding>
       </answerOption>
       <answerOption>
         <valueCoding>
+		<system value="http://example.org"/>
           <code value="NewfoundlandAndLabrador"/>
           <display value="Newfoundland and Labrador"/>
         </valueCoding>
       </answerOption>
       <answerOption>
         <valueCoding>
+		<system value="http://example.org"/>
           <code value="NovaScotia"/>
           <display value="Nova Scotia"/>
         </valueCoding>
       </answerOption>
       <answerOption>
         <valueCoding>
+		<system value="http://example.org"/>
           <code value="Ontario"/>
           <display value="Ontario"/>
         </valueCoding>
       </answerOption>
       <answerOption>
         <valueCoding>
+		<system value="http://example.org"/>
           <code value="PrinceEdwardIsland"/>
           <display value="Prince Edward Island"/>
         </valueCoding>
       </answerOption>
       <answerOption>
         <valueCoding>
+		<system value="http://example.org"/>
           <code value="Quebec"/>
           <display value="Quebec"/>
         </valueCoding>
       </answerOption>
       <answerOption>
         <valueCoding>
+		<system value="http://example.org"/>
           <code value="Saskatchewan"/>
           <display value="Saskatchewan"/>
         </valueCoding>
@@ -417,30 +431,35 @@ elements or extensions defined in the advanced form behavior profile are intende
       <repeats value="true"/>
       <answerOption>
         <valueCoding>
+		<system value="http://example.org/hearthistory"/>
           <code value="U1"/>
           <display value="Heart attack"/>
         </valueCoding>
       </answerOption>
       <answerOption>
         <valueCoding>
+		<system value="http://example.org/hearthistory"/>
           <code value="U2"/>
           <display value="Heart surgery"/>
         </valueCoding>
       </answerOption>
       <answerOption>
         <valueCoding>
+		<system value="http://example.org/hearthistory"/>
           <code value="U3"/>
           <display value="Cardiac catheterization"/>
         </valueCoding>
       </answerOption>
       <answerOption>
         <valueCoding>
+		<system value="http://example.org/hearthistory"/>
           <code value="U4"/>
           <display value="Coronary angioplasty (PTCA)"/>
         </valueCoding>
       </answerOption>
       <answerOption>
         <valueCoding>
+		<system value="http://example.org/hearthistory"/>
           <code value="U5"/>
           <display value="Cardiac pacemaker"/>
         </valueCoding>
@@ -463,30 +482,35 @@ elements or extensions defined in the advanced form behavior profile are intende
       <repeats value="true"/>
       <answerOption>
         <valueCoding>
+		<system value="http://example.org/hearthistory"/>
           <code value="U1"/>
           <display value="Heart attack"/>
         </valueCoding>
       </answerOption>
       <answerOption>
         <valueCoding>
+		<system value="http://example.org/hearthistory"/>
           <code value="U2"/>
           <display value="Heart surgery"/>
         </valueCoding>
       </answerOption>
       <answerOption>
         <valueCoding>
+		<system value="http://example.org/hearthistory"/>
           <code value="U3"/>
           <display value="Cardiac catheterization"/>
         </valueCoding>
       </answerOption>
       <answerOption>
         <valueCoding>
+		<system value="http://example.org/hearthistory"/>
           <code value="U4"/>
           <display value="Coronary angioplasty (PTCA)"/>
         </valueCoding>
       </answerOption>
       <answerOption>
         <valueCoding>
+		<system value="http://example.org/hearthistory"/>
           <code value="U5"/>
           <display value="Cardiac pacemaker"/>
         </valueCoding>
@@ -509,30 +533,35 @@ elements or extensions defined in the advanced form behavior profile are intende
       <repeats value="true"/>
       <answerOption>
         <valueCoding>
+		<system value="http://example.org/hearthistory"/>
           <code value="U1"/>
           <display value="Heart attack"/>
         </valueCoding>
       </answerOption>
       <answerOption>
         <valueCoding>
+		<system value="http://example.org/hearthistory"/>
           <code value="U2"/>
           <display value="Heart surgery"/>
         </valueCoding>
       </answerOption>
       <answerOption>
         <valueCoding>
+		<system value="http://example.org/hearthistory"/>
           <code value="U3"/>
           <display value="Cardiac catheterization"/>
         </valueCoding>
       </answerOption>
       <answerOption>
         <valueCoding>
+		<system value="http://example.org/hearthistory"/>
           <code value="U4"/>
           <display value="Coronary angioplasty (PTCA)"/>
         </valueCoding>
       </answerOption>
       <answerOption>
         <valueCoding>
+		<system value="http://example.org/hearthistory"/>
           <code value="U5"/>
           <display value="Cardiac pacemaker"/>
         </valueCoding>
@@ -547,24 +576,28 @@ elements or extensions defined in the advanced form behavior profile are intende
       <!-- item/unitOption -->
       <extension url="http://hl7.org/fhir/StructureDefinition/questionnaire-unitOption">
         <valueCoding>
+		<system value="http://example.org/unitoptions"/>
           <code value="Level0"/>
           <display value="None"/>
         </valueCoding>
       </extension>
       <extension url="http://hl7.org/fhir/StructureDefinition/questionnaire-unitOption">
         <valueCoding>
+		<system value="http://example.org/unitoptions"/>
           <code value="Unit0"/>
           <display value="Unit 0"/>
         </valueCoding>
       </extension>
       <extension url="http://hl7.org/fhir/StructureDefinition/questionnaire-unitOption">
         <valueCoding>
+		<system value="http://example.org/unitoptions"/>
           <code value="Unit1"/>
           <display value="Unit 1"/>
         </valueCoding>
       </extension>
       <extension url="http://hl7.org/fhir/StructureDefinition/questionnaire-unitOption">
         <valueCoding>
+		<system value="http://example.org/unitoptions"/>
           <code value="Unit3"/>
           <display value="Unit 3"/>
         </valueCoding>
@@ -581,9 +614,9 @@ elements or extensions defined in the advanced form behavior profile are intende
     <item>
       <!-- item/unitValueSet -->
       <extension url="http://hl7.org/fhir/StructureDefinition/questionnaire-unitValueSet">
-        <extension url="http://hl7.org/fhir/StructureDefinition/valueset-system">
+        
           <valueCanonical value="http://loinc.org/vs/LL715-4"/>
-        </extension>
+       
       </extension>
       <linkId value="2.9.b"/>
       <text value="Dosage"/>
