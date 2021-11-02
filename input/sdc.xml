@@ -17,6 +17,12 @@
   <extension url="http://hl7.org/fhir/StructureDefinition/igpublisher-spreadsheet">
     <valueUri value="valueset-sdc-profile-spreadsheet.xml"/>
   </extension>-->
+   <extension url="http://hl7.org/fhir/StructureDefinition/structuredefinition-standards-status">
+    <valueCode value="trial-use"/> 
+  </extension> 
+   <extension url="http://hl7.org/fhir/StructureDefinition/structuredefinition-fmm">
+    <valueInteger value="3"/> 
+  </extension> 
 	<url value="http://hl7.org/fhir/uv/sdc/ImplementationGuide/hl7.fhir.uv.sdc"/>
 	<version value="2.8.0"/>
 	<name value="StructuredDataCapture"/>
@@ -921,6 +927,9 @@
 				<nameUrl value="project.html"/>
 				<title value="Project and participants"/>
 				<generation value="html"/>
+				 <extension url="http://hl7.org/fhir/StructureDefinition/structuredefinition-standards-status">
+                 <valueCode value="draft"/> 
+                 </extension> 
 			</page>
 			<page>
 				<nameUrl value="intro.html"/>
@@ -981,6 +990,9 @@
 				<nameUrl value="examples.html"/>
 				<title value="Examples"/>
 				<generation value="html"/>
+				 <extension url="http://hl7.org/fhir/StructureDefinition/structuredefinition-standards-status">
+                 <valueCode value="draft"/> 
+                 </extension> 
 			</page>
 			<page>
 				<nameUrl value="downloads.html"/>

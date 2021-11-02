@@ -2,13 +2,18 @@
 
 <StructureDefinition xmlns="http://hl7.org/fhir">
   <id value="answerValueSetSource"/>
+    <extension url="http://hl7.org/fhir/StructureDefinition/structuredefinition-standards-status">
+    <valueCode value="draft"/> 
+  </extension> 
+   <extension url="http://hl7.org/fhir/StructureDefinition/structuredefinition-fmm">
+    <valueInteger value="0"/> 
+  </extension> 
    <url value="http://hl7.org/fhir/uv/sdc/StructureDefinition/sdc-answerValueSetSource"/>
   <version value="1.0.0"/>
   <name value="AnswerValueSetSource"/>
   <title value="answerValueSetSource"/>
   <status value="draft"/>
   <experimental value="false"/>
-  <date value="2019-06-06"/>
   <description value="The canonical URL for the source value set for the answer options, when those options are provided directly in the questionnaire."/>
   <purpose value="Need to be able to identify the source value set for the answer options."/>
   <fhirVersion value="4.0.1"/>

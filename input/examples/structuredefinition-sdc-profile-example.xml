@@ -1,6 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <StructureDefinition xmlns="http://hl7.org/fhir" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://hl7.org/fhir ../../input-cache/schemas/R4/fhir-single.xsd">
   <id value="structuredefinition-sdc-profile-example"/>
+  <extension url="http://hl7.org/fhir/StructureDefinition/structuredefinition-standards-status">
+    <valueCode value="draft"/> 
+  </extension> 
+   <extension url="http://hl7.org/fhir/StructureDefinition/structuredefinition-fmm">
+    <valueInteger value="0"/> 
+  </extension> 
   <url value="http://hl7.org/fhir/uv/sdc/StructureDefinition/structuredefinition-sdc-profile-example"/>
   <identifier>
     <system value="http://nlm.nih.gov/some_other_text/data_element_identifier"/>
@@ -8,8 +14,6 @@
   </identifier>
   <name value="SDCExample"/>
   <title value="Patient Gender"/>
-  <status value="draft"/>
-  <date value="2015-02-04"/>
   <publisher value="Health Level Seven, International"/>
   <contact>
     <telecom>
