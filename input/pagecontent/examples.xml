@@ -4466,6 +4466,66 @@ i.fa {
   </div>
   <!-- TODO: add a format for dates -->
 
+<a name="text"></a>
+  <h4>Using text and cqf-Expression</h4>
+  <p>Text example with cqf-expression.</p>
+  <div class="tabs">
+    <div class="tab">
+      <input type="radio" id="tab-text-1" name="tab-text-group-2" checked="true"/>
+      <label for="tab-text-1">Sample Display</label>
+      <div class="content-in-tab">
+        <p>Your last immunization was on [Jan 1, 2021].
+        </p>
+      </div>
+    </div>
+    <div class="tab">
+      <input type="radio" id="tab-text-2" name="tab-text-group-2"/>
+      <label for="tab-text-2">JSON</label>
+      <div class="content-in-tab">
+        <textarea style="border:none" class="xml">
+		"item": [
+          {
+            "linkId" : "3.3.b",
+            "text" : "Your immunization is due",
+            "_text" : {
+              "extension" : [
+                {
+                  "url" : "http://hl7.org/fhir/StructureDefinition/cqf-expression",
+                  "valueExpression" : {
+                    "description" : "last immunization date",
+                    "language" : "text/fhirpath",
+                    "expression" : "%Immunization.occurrenceDateTime"
+                  }
+                }
+              ]
+            }
+          }
+		  ]
+      </textarea>
+      </div>
+    </div>
+    <div class="tab">
+      <input type="radio" id="tab-text-3" name="tab-text-group-2"/>
+      <label for="tab-text-3">XML</label>
+      <div class="content-in-tab">
+        <textarea style="border:none" class="xml">
+         <item>
+            <linkId value="3.3.b"/>
+            <text value="Your immunization is due">
+              <extension url="http://hl7.org/fhir/StructureDefinition/cqf-expression">
+                <valueExpression>
+                  <description value="last immunization date"/>
+                  <language value="text/fhirpath"/>
+                <expression value="%Immunization.occurrenceDateTime"/> 
+                </valueExpression>
+              </extension>
+            </text>
+          </item>
+        </textarea>
+      </div>
+    </div>
+  </div>
+
   <a name="othercontrols">  </a>
   <h3>Other Controls</h3>
 <a name="initial"></a>

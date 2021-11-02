@@ -529,6 +529,21 @@
       </type>
       <mustSupport value="true"/>
     </element>
+	 <element id="Questionnaire.item.text">
+      <path value="Questionnaire.item.text"/>
+    </element>
+      <element id="Questionnaire.item.text.extension:requiredExpression">
+      <path value="Questionnaire.item.text.extension"/>
+      <sliceName value="requiredExpression"/>
+      <min value="0"/>
+      <max value="1"/>
+      <type>
+        <code value="Extension"/>
+        <profile value="http://hl7.org/fhir/StructureDefinition/cqf-expression"/>
+      </type>
+      <mustSupport value="true"/>
+	  <comment value="Note: The variation cannot change the meaning of the question. The extension can be used even if text is present; and if the extension is supported, the evaluation will replace the text provided (with 'smarter' text). "/>
+    </element>
     <element id="Questionnaire.item.enableWhen.question">
       <path value="Questionnaire.item.enableWhen.question"/>
       <mustSupport value="true"/>

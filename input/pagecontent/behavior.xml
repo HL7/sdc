@@ -916,7 +916,7 @@
 				<td>Core</td>
 				<td>
 					<a href="#minOccurs">minOccurs</a>, <a href="#maxOccurs">maxOccurs</a>, <a href="#required">required</a>, <a href="#repeats">repeats</a>, <a href="#readOnly">readOnly</a>
-          , <a href="#answerValueSet">answerValueSet</a>
+          , <a href="#answerValueSet">answerValueSet</a>, <a href="#text">text</a>
 				</td>
 				<td>Expression</td>
 				<td>
@@ -929,7 +929,7 @@
             Same as <a href="#cqf-calculatedValue">cqf-calculatedValue</a>, this extension can make some of the control values of the Questionnaire dynamic.  It allows
             an expression to provide the value for the element on which it appears.  For the SDC implementation guide, the recommended
             locations for use are <a href="#minOccurs">minOccurs</a>, <a href="#maxOccurs">maxOccurs</a>, <a href="#required">required</a>, <a href="#repeats">repeats</a>, 
-            <a href="#readOnly">readOnly</a>, <a href="#answerValueSet">answerValueSet</a>.  However, in principle, they can be used for other elements as well.  
+            <a href="#readOnly">readOnly</a>, <a href="#answerValueSet">answerValueSet</a>, <a href="#text">text</a>.  However, in principle, they can be used for other elements as well.  
           </p>
 				</td>
 			</tr>
@@ -1183,6 +1183,25 @@
             <a href="#enableWhenExpression">enableWhenExpression</a>.  For example, the answer 'never' might have an ordinal value of 0, the answer
             occasionally might have a value of 1, the answer of weekly 2 and daily 4.  The answer given would then be incorporated in an overall risk
             or diagnostic score.
+          </p>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<a name="text"> </a>
+					<a href="{{site.data.fhir.path}}questionnaire-definitions.html#Questionnaire.item.text">text</a>
+				</td>
+				<td>Questionnaire</td>
+				<td>group, question</td>
+				<td>string</td>
+				<td>
+					<a href="examples.html#text">example</a>
+				</td>
+			</tr>
+			<tr>
+				<td colspan="5">
+					<p>
+           
           </p>
 				</td>
 			</tr>
