@@ -119,14 +119,14 @@
       <path value="QuestionnaireResponse.item"/>
       <mustSupport value="true"/>
     </element>
-    <element id="QuestionnaireResponse.item.extension:itemImage">
+    <element id="QuestionnaireResponse.item.extension:itemMedia">
       <path value="QuestionnaireResponse.item.extension"/>
-      <sliceName value="itemImage"/>
+      <sliceName value="itemMedia"/>
       <min value="0"/>
       <max value="1"/>
       <type>
         <code value="Extension"/>
-        <profile value="http://hl7.org/fhir/uv/sdc/StructureDefinition/cpg-itemImage"/>
+        <profile value="http://hl7.org/fhir/uv/sdc/StructureDefinition/sdc-questionnaire-itemMedia"/>
       </type>
       <mustSupport value="false"/>
     </element>
@@ -157,14 +157,14 @@
       <max value="*"/>
       <mustSupport value="true"/>
     </element>
-    <element id="QuestionnaireResponse.item.answer.extension:responseImage">
+    <element id="QuestionnaireResponse.item.answer.extension:itemAnswerMedia">
       <path value="QuestionnaireResponse.item.answer.extension"/>
-      <sliceName value="responseImage"/>
+      <sliceName value="itemAnswerMedia"/>
       <min value="0"/>
       <max value="1"/>
       <type>
         <code value="Extension"/>
-        <profile value="http://hl7.org/fhir/uv/sdc/StructureDefinition/cpg-responseImage"/>
+        <profile value="http://hl7.org/fhir/uv/sdc/StructureDefinition/sdc-questionnaire-itemAnswerMedia"/>
       </type>
       <mustSupport value="false"/>
     </element>

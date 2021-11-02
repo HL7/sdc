@@ -15,12 +15,12 @@
 	<title value="Questionnaire - ANC Quick Check"/>
 	<status value="draft"/>
 	<subjectType value="Patient"/>
-	<description value="A sample questionnaire using itemImage and responseImage extensions"/>
+	<description value="A sample questionnaire using itemMedia and itemAnswerMedia extensions"/>
 	<item>
 		<extension url="http://hl7.org/fhir/uv/sdc/StructureDefinition/sdc-answerValueSetSource">
 			<valueCanonical value="http://fhir.org/guides/who/anc-cds/ValueSet/anc-reason-for-visit"/>
 		</extension>
-		<extension url="http://hl7.org/fhir/uv/sdc/StructureDefinition/cpg-itemImage">
+		<extension url="http://hl7.org/fhir/uv/sdc/StructureDefinition/sdc-questionnaire-itemMedia">
 			<valueAttachment>
 				<url value="http://example.org/images/reason-for-visit.png"/>
 			</valueAttachment>
@@ -29,7 +29,7 @@
 		<text value="Why did you come?"/>
 		<type value="choice"/>
 		<answerOption>
-			<extension url="http://hl7.org/fhir/uv/sdc/StructureDefinition/cpg-responseImage">
+			<extension url="http://hl7.org/fhir/uv/sdc/StructureDefinition/sdc-questionnaire-itemAnswerMedia">
 				<valueAttachment>
 					<url value="http://example.org/images/reason-for-visit-routine.png"/>
 				</valueAttachment>
@@ -37,7 +37,7 @@
 			<valueString value="For a scheduled (routine) visit"/>
 		</answerOption>
 		<answerOption>
-			<extension url="http://hl7.org/fhir/uv/sdc/StructureDefinition/cpg-responseImage">
+			<extension url="http://hl7.org/fhir/uv/sdc/StructureDefinition/sdc-questionnaire-itemAnswerMedia">
 				<valueAttachment>
 					<url value="http://example.org/images/reason-for-visit-specific-complaint.png"/>
 				</valueAttachment>
@@ -45,7 +45,7 @@
 			<valueString value="For specific complaints about you or your baby"/>
 		</answerOption>
 		<answerOption>
-			<extension url="http://hl7.org/fhir/uv/sdc/StructureDefinition/cpg-responseImage">
+			<extension url="http://hl7.org/fhir/uv/sdc/StructureDefinition/sdc-questionnaire-itemAnswerMedia">
 				<valueAttachment>
 					<url value="http://example.org/images/reason-for-visit-first.png"/>
 				</valueAttachment>
@@ -53,7 +53,7 @@
 			<valueString value="First visit"/>
 		</answerOption>
 		<answerOption>
-			<extension url="http://hl7.org/fhir/uv/sdc/StructureDefinition/cpg-responseImage">
+			<extension url="http://hl7.org/fhir/uv/sdc/StructureDefinition/sdc-questionnaire-itemAnswerMedia">
 				<valueAttachment>
 					<url value="http://example.org/images/reason-for-visit-follow-up.png"/>
 				</valueAttachment>
@@ -61,7 +61,7 @@
 			<valueString value="Follow-up visit"/>
 		</answerOption>
 		<answerOption>
-			<extension url="http://hl7.org/fhir/uv/sdc/StructureDefinition/cpg-responseImage">
+			<extension url="http://hl7.org/fhir/uv/sdc/StructureDefinition/sdc-questionnaire-itemAnswerMedia">
 				<valueAttachment>
 					<url value="http://example.org/images/reason-for-visit-include-family-member.png"/>
 				</valueAttachment>

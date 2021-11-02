@@ -74,14 +74,14 @@
     <element id="Questionnaire.item">
       <path value="Questionnaire.item"/>
     </element>
-	 <element id="Questionnaire.item.extension:itemImage">
+	 <element id="Questionnaire.item.extension:itemMedia">
       <path value="Questionnaire.item.extension"/>
-      <sliceName value="itemImage"/>
+      <sliceName value="itemMedia"/>
       <min value="0"/>
       <max value="1"/>
       <type>
         <code value="Extension"/>
-        <profile value="http://hl7.org/fhir/uv/sdc/StructureDefinition/cpg-itemImage"/>
+        <profile value="http://hl7.org/fhir/uv/sdc/StructureDefinition/sdc-questionnaire-itemMedia"/>
       </type>
       <mustSupport value="false"/>
     </element>
@@ -320,14 +320,14 @@
     <element id="Questionnaire.item.answerOption">
       <path value="Questionnaire.item.answerOption"/>
     </element>
-	<element id="Questionnaire.item.answerOption.extension:responseImage">
+	<element id="Questionnaire.item.answerOption.extension:itemAnswerMedia">
       <path value="Questionnaire.item.answerOption.extension"/>
-      <sliceName value="responseImage"/>
+      <sliceName value="itemAnswerMedia"/>
       <min value="0"/>
       <max value="1"/>
       <type>
         <code value="Extension"/>
-        <profile value="http://hl7.org/fhir/uv/sdc/StructureDefinition/cpg-responseImage"/>
+        <profile value="http://hl7.org/fhir/uv/sdc/StructureDefinition/sdc-questionnaire-itemAnswerMedia"/>
       </type>
       <mustSupport value="false"/>
     </element>

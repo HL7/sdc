@@ -1,18 +1,18 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <StructureDefinition xmlns="http://hl7.org/fhir">
-  <id value="cpg-itemImage"/>
+  <id value="sdc-questionnaire-itemMedia"/>
     <extension url="http://hl7.org/fhir/StructureDefinition/structuredefinition-standards-status">
     <valueCode value="draft"/> 
   </extension> 
    <extension url="http://hl7.org/fhir/StructureDefinition/structuredefinition-fmm">
     <valueInteger value="0"/> 
   </extension> 
-  <url value="http://hl7.org/fhir/uv/sdc/StructureDefinition/cpg-itemImage"/>
-  <name value="CPGAnswerValueSetSource"/>
-  <title value="itemImage"/>
+  <url value="http://hl7.org/fhir/uv/sdc/StructureDefinition/sdc-questionnaire-itemMedia"/>
+  <name value="ItemMedia"/>
+  <title value="Item Media"/>
   <status value="draft"/>
-  <description value="An image to display as a visual accompaniment to the question being asked (Note: item.text SHALL be present with this image extension, and renderers SHOULD be able to expose this text (e.g. beside the image, as a fly-over, etc.))."/>
+  <description value="Media to render/make available as an accompaniment to the question being asked, for example - an image, video or audio clip.  This does not replace the need for item.text.  The attachment.text SHOULD be present as the alternative/accessibility text for systems unable to expose the media and users unable to consume it.  Media.contentType SHALL be present.  When included in a QuestionnaireResponse it SHALL be the same as the media for the same item in the Questionnaire."/>
   <purpose value="Need to be able to provide a visual representation of the question being asked."/>
   <fhirVersion value="4.0.1"/>
   <kind value="complex-type"/>
@@ -41,7 +41,7 @@
       <type>
         <code value="uri"/>
       </type>
-      <fixedUri value="http://hl7.org/fhir/uv/sdc/StructureDefinition/cpg-itemImage"/>
+      <fixedUri value="http://hl7.org/fhir/uv/sdc/StructureDefinition/sdc-questionnaire-itemMedia"/>
     </element>
     <element id="Extension.value[x]">
       <path value="Extension.value[x]"/>
