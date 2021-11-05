@@ -2684,7 +2684,17 @@ i.fa {
                     "extension": [
                       {
                         "url": "http://hl7.org/fhir/StructureDefinition/rendering-xhtml",
-                        "valueString": "&lt;img src=&#39;#okImage&#39;&gt;"
+                        "valueString": "&lt;img src=&#39;#okImage&#39;&gt;",
+						"_valueString":{
+						                    "extension" : [
+                      {
+                        "url" : "http://hl7.org/fhir/uv/sdc/StructureDefinition/sdc-referencesContained",
+                        "valueReference" : {
+                          "reference" : "#okImage"
+                        }
+                      }
+					  ]
+					  }
                       }
                     ]
                   }
@@ -2695,7 +2705,17 @@ i.fa {
                     "extension": [
                       {
                         "url": "http://hl7.org/fhir/StructureDefinition/rendering-xhtml",
-                        "valueString": "&lt;img src=&#39;#happyImage&#39;&gt;"
+                        "valueString": "&lt;img src=&#39;#happyImage&#39;&gt;",
+						"_valueString":{
+						                    "extension" : [
+                      {
+                        "url" : "http://hl7.org/fhir/uv/sdc/StructureDefinition/sdc-referencesContained",
+                        "valueReference" : {
+                          "reference" : "#happyImage"
+                        }
+                      }
+					  ]
+					  }
                       }
                     ]
                   }
@@ -2772,14 +2792,26 @@ i.fa {
               <answerOption>
                 <valueString value="OK">
                   <extension url="http://hl7.org/fhir/StructureDefinition/rendering-xhtml">
-                    <valueString value="&lt;img src=&#39;#okImage&#39;&gt;"/>
+                    <valueString value="&lt;img src=&#39;#okImage&#39;&gt;">
+					<extension url="http://hl7.org/fhir/uv/sdc/StructureDefinition/sdc-referencesContained">
+                    <valueReference>
+                      <reference value="#okImage"/>
+                       </valueReference>      
+                </extension>
+				</valueString>
                   </extension>
                 </valueString>
               </answerOption>
               <answerOption>
                 <valueString value="Happy">
                   <extension url="http://hl7.org/fhir/StructureDefinition/rendering-xhtml">
-                    <valueString value="&lt;img src=&#39;#happyImage&#39;&gt;"/>
+                    <valueString value="&lt;img src=&#39;#happyImage&#39;&gt;">
+					<extension url="http://hl7.org/fhir/uv/sdc/StructureDefinition/sdc-referencesContained">
+                    <valueReference>
+                      <reference value="#happyImage"/>
+                       </valueReference>      
+                </extension>
+				</valueString>
                   </extension>
                 </valueString>
               </answerOption>
@@ -2877,7 +2909,23 @@ i.fa {
                 "url": "http://hl7.org/fhir/StructureDefinition/cqf-expression",
                 "valueExpression": {
                   "language": "text/fhirpath",
-                  "expression": "iif(%patient.gender='female','#vsConditionsFemale',iif(%patient.gender='male', '#vsCondionsFemale', '#vsConditionsAll'))"
+                  "expression": "iif(%patient.gender='female','#vsConditionsFemale',iif(%patient.gender='male', '#vsConditionsFemale', '#vsConditionsAll'))",
+				   "_expression" : {
+                    "extension" : [
+                      {
+                        "url" : "http://hl7.org/fhir/uv/sdc/StructureDefinition/sdc-referencesContained",
+                        "valueReference" : {
+                          "reference" : "#vsConditionsFemale"
+                        }
+                      },
+                      {
+                        "url" : "http://hl7.org/fhir/uv/sdc/StructureDefinition/sdc-referencesContained",
+                        "valueReference" : {
+                          "reference" : "#vsConditionsAll"
+                        }
+                      }
+                    ]
+                  }
                 }
               }]
             }
@@ -2900,7 +2948,18 @@ i.fa {
               <extension url="http://hl7.org/fhir/StructureDefinition/cqf-expression">
                 <valueExpression>
                   <language value="text/fhirpath"/>
-                  <expression value="iif(%patient.gender='female','#vsConditionsFemale',iif(%patient.gender='male', '#vsCondionsFemale', '#vsConditionsAll'))"/>
+                  <expression value="iif(%patient.gender='female','#vsConditionsFemale',iif(%patient.gender='male', '#vsConditionsFemale', '#vsConditionsAll'))">
+				<extension url="http://hl7.org/fhir/uv/sdc/StructureDefinition/sdc-referencesContained">
+                    <valueReference>
+                      <reference value="#vsConditionsFemale"/>
+                       </valueReference>      
+                </extension>
+				<extension url="http://hl7.org/fhir/uv/sdc/StructureDefinition/sdc-referencesContained">
+                    <valueReference>
+                      <reference value="#vsConditionsAll"/>
+                       </valueReference>      
+                </extension>
+			</expression>
                 </valueExpression>
               </extension>
             </answerValueSet>
