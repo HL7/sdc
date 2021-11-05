@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<StructureDefinition xmlns="http://hl7.org/fhir">
+  <id value="sdc-referencesContained"/>
+  <url value="http://hl7.org/fhir/uv/sdc/StructureDefinition/sdc-referencesContained"/>
+  <name value="ReferencesContained"/>
+  <title value="References contained"/>
+  <status value="draft"/>
+  <description value="This indicates that the element containing this extension has some sort of expression that makes reference to the specified contained resource."/>
+  <purpose value="To satisfy the validator requirement that contained resources must be referenced from somewhere else within the containing resource. "/>
+  <fhirVersion value="4.0.1"/>
+  <kind value="complex-type"/>
+  <abstract value="false"/>
+  <context>
+    <type value="element"/>
+	<expression value="Element"/>
+  </context>
+  <type value="Extension"/>
+  <baseDefinition value="http://hl7.org/fhir/StructureDefinition/Extension"/>
+  <derivation value="constraint"/>
+   <differential>
+    <element id="Extension">
+      <path value="Extension"/>
+      <short value="Reference to the contained resource"/>
+      <definition value="This indicates that the element containing this extension has some sort of expression that makes reference to the specified contained resource."/>
+      <comment value="This extension is used to satisfy the validator requirement that contained resources must be referenced from somewhere else within the containing resource.  It SHALL be placed inside the element that has the expression referencing the contained resource."/>
+      <requirements value="Sometimes a reference to a contained resource might be inside FHIRPath, CQL, XHTML, markdown or some other language that is opaque to the validator.  The validator constraint only checks for explicit Reference and canonical references, not embedded references."/>
+	  <min value="0"/>
+      <max value="1"/>
+    </element>
+    <element id="Extension.url">
+      <path value="Extension.url"/>
+      <type>
+        <code value="uri"/>
+      </type>
+      <fixedUri value="http://hl7.org/fhir/uv/sdc/StructureDefinition/sdc-referencesContained"/>
+    </element>
+    <element id="Extension.value[x]">
+      <path value="Extension.value[x]"/>
+      <type>
+        <code value="Reference"/>
+      </type>
+    </element>
+  </differential>
+</StructureDefinition>
