@@ -8,6 +8,12 @@
 	profile to highlight what extensions are available and where they are intended to be used.  It also identifies specific 'must support' extensions that systems 
 	that claim to support SDC rendering SHALL be capable of authoring and/or rendering, as befits the CapabilityStatement(s) they claim conformance to.
   </p>
+ <p>
+  In advanced questionnaires, "re-use" of common questions can be achieved by two different means - item.definition to define the question text, type, etc.  or defining sub-module questionnaires that can be imported. 
+  In the first case, every single 'item' in the questionnaire must be specified, including all 'display' items, groups, etc.  Re-use is limited to question text, value set, data type and other information that can be
+  determined from the referenced item.  On the other hand, with modular questionnaires, multiple items can be defined along with display text, enableWhen logic and other questionnaire characteristics. 
+  The former approach is best suited for "data-element"- based questionnaires and latter for defining collections of questions.  (While defining separate modules for every single question is possible, it would be quite a bit of overhead).
+  </p>
 	<a name="elements"> </a>
 	<h3>Element and  Overview</h3>
 	<p>
