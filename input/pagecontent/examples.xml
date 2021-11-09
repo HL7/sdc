@@ -2070,7 +2070,7 @@ i.fa {
 
 <a name="maxLength"></a>
   <h4>Using maxLength</h4>
-  <p>To restrict an answer to only have 50 characters.</p>
+  <p>To restrict an answer to only have 50 characters. (<a href="Questionnaire-questionnaire-sdc-profile-example-form-behavior.html">Example Questionnaire</a>)</p>
   <div class="tabs">
     <div class="tab">
       <input type="radio" id="tab-1" name="tab-group-1" checked="true"/>
@@ -2086,7 +2086,7 @@ i.fa {
         <textarea style="border:none" class="xml">
         "item": [
           {
-            "linkId": "1",
+            "linkId": "1.1",
             "type": "string",
             "text": "Enter your First Name",
             "maxLength": 50
@@ -2101,7 +2101,7 @@ i.fa {
       <div class="content-in-tab">
         <textarea style="border:none" class="xml">
           <item>
-            <linkId value="1"/>
+            <linkId value="1.1"/>
             <text value="First Name"/>
             <type value="string"/>
             <maxLength value="50"/>
@@ -2112,7 +2112,7 @@ i.fa {
   </div>
 <a name="minLength"></a>
   <h4>Using minLength</h4>
-  <p>To restrict an answer to have at least 2 characters.</p>
+  <p>To restrict an answer to have at least 2 characters. (<a href="Questionnaire-questionnaire-sdc-profile-example-form-behavior.html">Example Questionnaire</a>)</p>
   <div class="tabs">
     <div class="tab">
       <input type="radio" id="tab-4" name="tab-group-2" checked="true"/>
@@ -2134,7 +2134,7 @@ i.fa {
                 "valueInteger": 2
               }
             ],
-            "linkId": "1",
+            "linkId": "1.2",
             "type": "string",
             "text": "Enter your Last Name"
           }
@@ -2151,7 +2151,7 @@ i.fa {
             <extension url="http://hl7.org/fhir/StructureDefinition/minLength">
               <valueInteger value="2"/>
             </extension>
-            <linkId value="1"/>
+            <linkId value="1.2"/>
             <text value="Last Name"/>
             <type value="string"/>
           </item>
@@ -2161,7 +2161,7 @@ i.fa {
   </div>
 <a name="regex"></a>
   <h4>Using regex</h4>
-  <p>To restrict an answer to be in this format: A1A 1A1</p>
+  <p>To restrict an answer to be in this format: A1A 1A1 (<a href="Questionnaire-questionnaire-sdc-profile-example-form-behavior.html">Example Questionnaire</a>)</p>
   <div class="tabs">
     <div class="tab">
       <input type="radio" id="tab-regex-1" name="tab-regex-group-2" checked="true"/>
@@ -2183,7 +2183,7 @@ i.fa {
                 "valueString": "[A-Z][0-9][A-Z] [0-9][A-Z][0-9]"
               }
             ],
-            "linkId": "1",
+            "linkId": "1.3",
             "type": "string",
             "text": "Postal Code (A1A 1A1)"
           }
@@ -2200,7 +2200,7 @@ i.fa {
             <extension url="http://hl7.org/fhir/StructureDefinition/regex">
                 <valueString value="[A-Z][0-9][A-Z] [0-9][A-Z][0-9]" />
             </extension>
-            <linkId value="1"/>
+            <linkId value="1.3"/>
             <text value="Postal Code (A1A 1A1)"/>
             <type value="string"/>
           </item>
@@ -2211,7 +2211,7 @@ i.fa {
 
 <a name="minValue-maxValue-maxDecimalPlaces"></a>
   <h4>Using minValue, maxValue, and maxDecimalPlaces</h4>
-  <p>To restrict an answer to range from 1 to 100, up to 2 decimal places</p>
+  <p>To restrict an answer to range from 1 to 100, up to 2 decimal places (<a href="Questionnaire-questionnaire-sdc-profile-example-form-behavior.html">Example Questionnaire</a>)</p>
   <div class="tabs">
     <div class="tab">
       <input type="radio" id="tab-range-decPlaces-4" name="tab-range-decPlaces-group-2" checked="true"/>
@@ -2241,7 +2241,7 @@ i.fa {
                 "valueInteger": 2
               }
             ],
-            "linkId": "1",
+            "linkId": "1.4",
             "type": "decimal",
             "text": "Enter your weight in kg"
           }
@@ -2264,7 +2264,7 @@ i.fa {
             <extension url="http://hl7.org/fhir/StructureDefinition/maxDecimalPlaces">
               <valueInteger value="2"/>
             </extension>
-            <linkId value="1"/>
+            <linkId value="1.4"/>
             <text value="Enter your weight in kg"/>
             <type value="decimal"/>
           </item>
@@ -2275,7 +2275,7 @@ i.fa {
 
 <a name="min-maxQuantity"></a>
   <h4>Using minQuantity and maxQuantity</h4>
-  <p>To restrict the answer to range from 10 to 100 kilograms.</p>
+  <p>To restrict the answer to range from 10 to 100 kilograms. (<a href="Questionnaire-questionnaire-sdc-profile-example-form-behavior.html">Example Questionnaire</a>)</p>
   <div class="tabs">
     <div class="tab">
       <input type="radio" id="tab-range-min-max-4" name="tab-range-min-max-group-2" checked="true"/>
@@ -2319,7 +2319,7 @@ i.fa {
                 }
               }
             ],
-            "linkId": "2.8.b",
+            "linkId": "1.5",
             "text": "Body Weight",
             "type": "quantity"
           }
@@ -2350,7 +2350,7 @@ i.fa {
                 <code value="kg"/>
               </valueQuantity>
             </extension>
-            <linkId value="2.8.b"/>
+            <linkId value="1.5"/>
             <text value="Body Weight"/>
             <type value="quantity"/>
           </item>
@@ -2361,7 +2361,7 @@ i.fa {
 
 <a name="mimetype-maxsize"></a>
   <h4>Using mimeType and maxSize</h4>
-  <p>To only allow a JPG or PDF attachment, up to 1,048,576 bytes. </p>
+  <p>To only allow a JPG or PDF attachment, up to 1,048,576 bytes. (<a href="Questionnaire-questionnaire-sdc-profile-example-form-behavior.html">Example Questionnaire</a>)</p>
   <div class="tabs">
     <div class="tab">
       <input type="radio" id="tab-mimetype-maxsize-1" name="tab-mimetype-maxsize-group-2" checked="true"/>
@@ -2388,10 +2388,10 @@ i.fa {
               },
               {
                 "url": "http://hl7.org/fhir/StructureDefinition/maxSize",
-                "valueDecimal": 1,048,576
+                "valueDecimal": 1048576
               }
             ],
-            "linkId": "1",
+            "linkId": "1.6",
             "type": "attachment",
             "text": "Attach Proof of Citizenship"
           }
@@ -2412,9 +2412,9 @@ i.fa {
               <valueCode value="application/pdf"/>
             </extension>
             <extension url="http://hl7.org/fhir/StructureDefinition/maxSize">
-              <valueDecimal value="1,048,576"/>
+              <valueDecimal value="1048576"/>
             </extension>
-            <linkId value="1.5.b"/>
+            <linkId value="1.6"/>
             <text value="Attach Proof of Citizenship"/>
             <type value="attachment"/>
           </item>
