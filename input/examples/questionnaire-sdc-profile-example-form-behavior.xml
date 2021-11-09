@@ -9,6 +9,29 @@ elements or extensions defined in the advanced form behavior profile are intende
     <profile value="http://hl7.org/fhir/uv/sdc/StructureDefinition/sdc-questionnaire-behave"/>
   </meta>
   -->
+
+  <!-- TODO: Temporarily disabled when 2.4 exception is resolved
+  <contained>
+    <ValueSet>
+      <id value="vsConditionsFemale"/>
+      <name value="ConditionsFemale"/>
+      <title value="Female Conditions"/>
+      <status value="active"/>
+      <description value="The answer list for female-related conditions"/>
+    </ValueSet>
+  </contained>
+  <contained>
+    <ValueSet>
+      <id value="vsConditionsAll"/>
+      <url value="http://example.com/ValueSet/conditions-All"/>
+      <name value="ConditionsAll"/>
+      <title value="All Conditions"/>
+      <status value="active"/>
+      <description value="The answer list for all conditions"/>
+    </ValueSet>
+  </contained>
+  -->
+
   <url value="http://build.fhir.org/ig/HL7/sdc/questionnaire-sdc-profile-example-render"/>
   <name value="SDCAdvancedRenderingExample"/>
   <status value="draft"/>
@@ -101,5 +124,150 @@ elements or extensions defined in the advanced form behavior profile are intende
       <text value="Attach Proof of Citizenship"/>
       <type value="attachment"/>
     </item>
+  </item>
+
+  <item>
+    <linkId value="2"/>
+    <text value="Value constraints"/>
+    <type value="group"/>
+
+    <!-- answerOption: Example to restrict choices from a fixed list.-->
+    <item>
+      <linkId value="2.1"/>
+      <text value="(I/We) worried whether (my/our) food would run out before (I/we) got money to buy more."/>
+      <type value="choice"/>
+      <answerOption>
+        <valueCoding>
+          <system value="http://loinc.org"/>
+          <code value="LA28397-0"/>
+          <display value="Often true"/>
+        </valueCoding>
+      </answerOption>
+      <answerOption>
+        <valueCoding>
+          <system value="http://loinc.org"/>
+          <code value="LA6729-3"/>
+          <display value="Sometimes true"/>
+        </valueCoding>
+      </answerOption>
+      <answerOption>
+        <valueCoding>
+          <system value="http://loinc.org"/>
+          <code value="LA28398-8"/>
+          <display value="Never true"/>
+        </valueCoding>
+      </answerOption>
+      <answerOption>
+        <valueCoding>
+          <system value="http://loinc.org"/>
+          <code value="LA15775-2"/>
+          <display value="Don&#39;t know/refused"/>
+        </valueCoding>
+      </answerOption>
+    </item>
+
+    <!-- TODO: 2.2 example: answerOption and rendering-xhtml: Example to display answer options as images using the rendering-xhtml extension.-->
+
+    <!-- answerValueSet: Example to restrict choices from a value set.-->
+    <item>
+      <linkId value="2.3"/>
+      <text value="Activity Level"/>
+      <type value="choice"/>
+      <answerValueSet value="http://loinc.org/vs/LL4882-8"/>
+    </item>
+
+    <!-- answerValueSet with expressions: Example to restrict choices to distinct value sets based on context. -->
+    <!-- TODO: temporary disabled since it causes NPE on QuestionnaireRender when answerValueSet does not have a value 
+    <item>
+      <linkId value="2.4"/>
+      <text value="Applicable health conditions"/>
+      <type value="choice"/>
+      <repeats value="true"/>
+      <answerValueSet>
+        <extension url="http://hl7.org/fhir/StructureDefinition/cqf-expression">
+          <valueExpression>
+            <language value="text/fhirpath"/>
+            <expression value="iif(%patient.gender='female','#vsConditionsFemale',iif(%patient.gender='male', '#vsConditionsFemale', '#vsConditionsAll'))">
+              <extension url="http://hl7.org/fhir/uv/sdc/StructureDefinition/sdc-referencesContained">
+                <valueReference>
+                  <reference value="#vsConditionsFemale"/>
+                </valueReference>
+              </extension>
+              <extension url="http://hl7.org/fhir/uv/sdc/StructureDefinition/sdc-referencesContained">
+                <valueReference>
+                  <reference value="#vsConditionsAll"/>
+                </valueReference>
+              </extension>
+            </expression>
+          </valueExpression>
+        </extension>
+      </answerValueSet>
+    </item>
+    -->
+
+    <!-- answerOptionToggleExpression: Example to restrict control which choices are enabled based on context.-->
+    <item>
+      <extension url="http://hl7.org/fhir/uv/sdc/StructureDefinition/sdc-questionnaire-answerOptionsToggleExpression">
+        <extension url="option">
+          <valueCoding>
+            <system value="http://example.com/CodeSystem/conditions"/>
+            <code value="3"/>
+          </valueCoding>
+        </extension>
+        <extension url="expression">
+          <valueExpression>
+            <language value="text/fhirpath"/>
+            <expression value="%patient.gender!='male'"/>
+          </valueExpression>
+        </extension>
+      </extension>
+      <extension url="http://hl7.org/fhir/uv/sdc/StructureDefinition/sdc-questionnaire-answerOptionsToggleExpression">
+        <extension url="option">
+          <valueCoding>
+            <system value="http://example.com/CodeSystem/conditions"/>
+            <code value="4"/>
+          </valueCoding>
+        </extension>
+        <extension url="expression">
+          <valueExpression>
+            <language value="text/fhirpath"/>
+            <expression value="%patient.gender!='female'"/>
+          </valueExpression>
+        </extension>
+      </extension>
+      <linkId value="2.5"/>
+      <text value="Applicable health conditions"/>
+      <type value="choice"/>
+      <repeats value="true"/>
+      <answerValueSet value="#vsConditionsAll"/>
+    </item>
+
+    <!-- required: Example to equire an answer.-->
+    <item>
+      <linkId value="2.6"/>
+      <text value="Email*"/>
+      <type value="string"/>
+      <required value="true"/>
+    </item>
+
+    <!-- readOnly: Example to only display a populated answer and make it non-editable.-->
+    <item>
+      <extension url="http://hl7.org/fhir/uv/sdc/StructureDefinition/sdc-questionnaire-initialExpression">
+        <valueExpression>
+          <description value="current date"/>
+          <language value="text/fhirpath"/>
+          <expression value="today()"/>
+        </valueExpression>
+      </extension>
+      <linkId value="2.7"/>
+      <text value="Current Date:"/>
+      <type value="date"/>
+      <readOnly value="true"/>
+    </item>
+
+
+    <!-- mimeType and maxSize: Example to only allow a JPG or PDF attachment, up to 1,048,576 bytes.-->
+    <!-- mimeType and maxSize: Example to only allow a JPG or PDF attachment, up to 1,048,576 bytes.-->
+
   </item>
 </Questionnaire>

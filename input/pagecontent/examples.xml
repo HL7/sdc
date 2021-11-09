@@ -2427,24 +2427,17 @@ i.fa {
   <h3>Choice Restriction</h3>
 <a name="answeroption"></a>
   <h4>Using answerOption</h4>
-  <p>To restrict choices from a fixed list.</p>
+  <p>To restrict choices from a fixed list. (<a href="Questionnaire-questionnaire-sdc-profile-example-form-behavior.html">Example Questionnaire</a>)</p>
   <div class="tabs">
     <div class="tab">
       <input type="radio" id="tab-answeroptions-1" name="tab-answeroptions-group-2" checked="true"/>
       <label for="tab-answeroptions-1">Sample Question</label>
       <div class="content-in-tab">
-        <p>Choose your Province
+        <p>(I/We) worried whether (my/our) food would run out before (I/we) got money to buy more.
           <select id="linkitem-2.1-option" name="province">
-            <option value="Alberta">Alberta</option>
-            <option value="BC">British Columbia</option>
-            <option value="Manitoba">Manitoba</option>
-            <option value="NewBrunswick">New Brunswick</option>
-            <option value="NewfoundlandAndLabrador">Newfoundland and Labrador</option>
-            <option value="NovaScotia">Nova Scotia</option>
-            <option value="Ontario">Ontario</option>
-            <option value="PrinceEdwardIsland">Prince Edward Island</option>
-            <option value="Quebec">Quebec</option>
-            <option value="Saskatchewan">Saskatchewan</option>
+            <option value="LA28397-0">Often true</option>
+            <option value="LA6729-3">Sometimes true</option>
+            <option value="LA28398-8">Never true</option>
           </select>
         </p>
       </div>
@@ -2456,68 +2449,36 @@ i.fa {
         <textarea style="border:none" class="xml">
         "item": [
           {
-            "linkId": "2.1.b",
-            "text": "Choose your Province",
-            "type": "choice",
-            "answerOption": [
+            "linkId" : "2.1",
+            "text" : "(I/We) worried whether (my/our) food would run out before (I/we) got money to buy more.",
+            "type" : "choice",
+            "answerOption" : [
               {
-                "valueCoding": {
-                  "code": "Alberta",
-                  "display": "Alberta"
+                "valueCoding" : {
+                  "system" : "http://loinc.org",
+                  "code" : "LA28397-0",
+                  "display" : "Often true"
                 }
               },
               {
-                "valueCoding": {
-                  "code": "BritishColumbia",
-                  "display": "British Columbia"
+                "valueCoding" : {
+                  "system" : "http://loinc.org",
+                  "code" : "LA6729-3",
+                  "display" : "Sometimes true"
                 }
               },
               {
-                "valueCoding": {
-                  "code": "Manitoba",
-                  "display": "Manitoba"
+                "valueCoding" : {
+                  "system" : "http://loinc.org",
+                  "code" : "LA28398-8",
+                  "display" : "Never true"
                 }
               },
               {
-                "valueCoding": {
-                  "code": "NewBrunswick",
-                  "display": "New Brunswick"
-                }
-              },
-              {
-                "valueCoding": {
-                  "code": "NewfoundlandAndLabrador",
-                  "display": "Newfoundland and Labrador"
-                }
-              },
-              {
-                "valueCoding": {
-                  "code": "NovaScotia",
-                  "display": "Nova Scotia"
-                }
-              },
-              {
-                "valueCoding": {
-                  "code": "Ontario",
-                  "display": "Ontario"
-                }
-              },
-              {
-                "valueCoding": {
-                  "code": "PrinceEdwardIsland",
-                  "display": "Prince Edward Island"
-                }
-              },
-              {
-                "valueCoding": {
-                  "code": "Quebec",
-                  "display": "Quebec"
-                }
-              },
-              {
-                "valueCoding": {
-                  "code": "Saskatchewan",
-                  "display": "Saskatchewan"
+                "valueCoding" : {
+                  "system" : "http://loinc.org",
+                  "code" : "LA15775-2",
+                  "display" : "Don't know/refused"
                 }
               }
             ]
@@ -2532,67 +2493,35 @@ i.fa {
       <div class="content-in-tab">
         <textarea style="border:none" class="xml">
           <item>
-            <linkId value="2.1.b"/>
-            <text value="Choose your Province"/>
+            <linkId value="2.1"/>
+            <text value="(I/We) worried whether (my/our) food would run out before (I/we) got money to buy more."/>
             <type value="choice"/>
             <answerOption>
               <valueCoding>
-                <code value="Alberta"/>
-                <display value="Alberta"/>
+                <system value="http://loinc.org"/>
+                <code value="LA28397-0"/>
+                <display value="Often true"/>
               </valueCoding>
             </answerOption>
             <answerOption>
               <valueCoding>
-                <code value="BritishColumbia"/>
-                <display value="British Columbia"/>
+                <system value="http://loinc.org"/>
+                <code value="LA6729-3"/>
+                <display value="Sometimes true"/>
               </valueCoding>
             </answerOption>
             <answerOption>
               <valueCoding>
-                <code value="Manitoba"/>
-                <display value="Manitoba"/>
+                <system value="http://loinc.org"/>
+                <code value="LA28398-8"/>
+                <display value="Never true"/>
               </valueCoding>
             </answerOption>
             <answerOption>
               <valueCoding>
-                <code value="NewBrunswick"/>
-                <display value="New Brunswick"/>
-              </valueCoding>
-            </answerOption>
-            <answerOption>
-              <valueCoding>
-                <code value="NewfoundlandAndLabrador"/>
-                <display value="Newfoundland and Labrador"/>
-              </valueCoding>
-            </answerOption>
-            <answerOption>
-              <valueCoding>
-                <code value="NovaScotia"/>
-                <display value="Nova Scotia"/>
-              </valueCoding>
-            </answerOption>
-            <answerOption>
-              <valueCoding>
-                <code value="Ontario"/>
-                <display value="Ontario"/>
-              </valueCoding>
-            </answerOption>
-            <answerOption>
-              <valueCoding>
-                <code value="PrinceEdwardIsland"/>
-                <display value="Prince Edward Island"/>
-              </valueCoding>
-            </answerOption>
-            <answerOption>
-              <valueCoding>
-                <code value="Quebec"/>
-                <display value="Quebec"/>
-              </valueCoding>
-            </answerOption>
-            <answerOption>
-              <valueCoding>
-                <code value="Saskatchewan"/>
-                <display value="Saskatchewan"/>
+                <system value="http://loinc.org"/>
+                <code value="LA15775-2"/>
+                <display value="Don&#39;t know/refused"/>
               </valueCoding>
             </answerOption>
           </item>
@@ -2603,7 +2532,7 @@ i.fa {
 
 <a name="answeroption-xhtml"></a>
   <h4>Using answerOption and rendering-xhtml</h4>
-  <p>To display answer options as images using the rendering-xhtml extension. <br/>Example shows two ways to use &lt;img&gt; tags to display images: (1) with embedded data and (2) using contained Binary resources.</p>
+  <p>To display answer options as images using the rendering-xhtml extension. <br/>Example shows two ways to use &lt;img&gt; tags to display images: (1) with embedded data and (2) using contained Binary resources. </p>
   <div class="tabs">
     <div class="tab">
       <input type="radio" id="tab-answerOption-img-binary-1" name="tab-answerOption-img-binary-group-2" checked="true"/>
@@ -2664,7 +2593,7 @@ i.fa {
                   "valueCode": "horizontal"
                 }
               ],
-              "linkId": "1.0",
+              "linkId": "2.2",
               "text": "How are you feeling today?",
               "answerOption": [
                 {
@@ -2779,7 +2708,7 @@ i.fa {
               <extension url="http://hl7.org/fhir/StructureDefinition/questionnaire-choiceOrientation">
                 <valueCode value="horizontal"/>
               </extension>
-              <linkId value="1.0"/>
+              <linkId value="2.2"/>
               <text value="How are you feeling today?"/>
               <type value="choice"/>
               <answerOption>
@@ -2824,7 +2753,7 @@ i.fa {
 
 <a name="answervalueset"></a>
   <h4>Using answerValueSet</h4>
-  <p>To restrict choices from a value set.</p>
+  <p>To restrict choices from a value set. (<a href="Questionnaire-questionnaire-sdc-profile-example-form-behavior.html">Example Questionnaire</a>)</p>
   <div class="tabs">
     <div class="tab">
       <input type="radio" id="tab-answervalueset-1" name="tab-answervalueset-group-2" checked="true"/>
@@ -2848,7 +2777,7 @@ i.fa {
         <textarea style="border:none" class="xml">
         "item": [
           {
-            "linkId": "2.2.b",
+            "linkId": "2.3",
             "text": "Activity Level",
             "type": "choice",
             "answerValueSet": "http://loinc.org/vs/LL4882-8"
@@ -2863,7 +2792,7 @@ i.fa {
       <div class="content-in-tab">
         <textarea style="border:none" class="xml">
           <item>
-            <linkId value="2.2.b"/>
+            <linkId value="2.3"/>
             <text value="Activity Level"/>
             <type value="choice"/>
             <answerValueSet value="http://loinc.org/vs/LL4882-8"/>
@@ -2885,7 +2814,7 @@ i.fa {
       <label for="tab-answervaluesetexpression-1">Sample Question</label>
       <div class="content-in-tab">
         <p>Applicable health conditions :
-          <select id="linkitem-2.2.c-option" name="activity">
+          <select id="linkitem-2.4-option" name="activity">
             <option value="1">Hypertension</option>
             <option value="2">Diabetes</option>
             <option value="4">Erectile disfunction</option>
@@ -2900,7 +2829,7 @@ i.fa {
         <textarea style="border:none" class="xml">
         "item": [
           {
-            "linkId": "2.2.c",
+            "linkId": "2.4",
             "text": "Applicable health conditions",
             "type": "choice",
             "repeats": true,
@@ -2940,7 +2869,7 @@ i.fa {
       <div class="content-in-tab">
         <textarea style="border:none" class="xml">
           <item>
-            <linkId value="2.2.c"/>
+            <linkId value="2.4"/>
             <text value="Applicable health conditions"/>
             <type value="choice"/>
             <repeats value="true"/>
@@ -2970,7 +2899,7 @@ i.fa {
   </div>
   <a name="answerOptionToggleExpression"/>
   <h4>Using answerOptionToggleExpression</h4>
-  <p>To restrict control which choices are enabled based on context.</p>
+  <p>To restrict control which choices are enabled based on context. (<a href="Questionnaire-questionnaire-sdc-profile-example-form-behavior.html">Example Questionnaire</a>)</p>
   <p>
     <i>NOTE: This example makes assumptions about the correlation between declared gender and health conditions that are not necessarily safe/clinically appropriate, so treat
       this as a technical example, not as an appropriate mechanism for data capture.</i>
@@ -3034,7 +2963,7 @@ i.fa {
                 "url": "http://hl7.org/fhir/uv/sdc/StructureDefinition/sdc-questionnaire-answerOptionsToggleExpression"
               }
             ],
-            "linkId": "2.2.d",
+            "linkId": "2.5",
             "text": "Applicable health conditions",
             "type": "choice",
             "repeats": true,
@@ -3078,7 +3007,7 @@ i.fa {
                 </valueExpression>
               </extension>
             </extension>
-            <linkId value="2.2.d"/>
+            <linkId value="2.5"/>
             <text value="Applicable health conditions"/>
             <type value="choice"/>
             <repeats value="true"/>
@@ -3090,7 +3019,7 @@ i.fa {
   </div>
   <a name="required"> </a>
   <h4>Using required</h4>
-  <p>To require an answer.</p>
+  <p>To require an answer. (<a href="Questionnaire-questionnaire-sdc-profile-example-form-behavior.html">Example Questionnaire</a>)</p>
   <div class="tabs">
     <div class="tab">
       <input type="radio" id="tab-required-1" name="tab-required-group-2" checked="true"/>
@@ -3107,7 +3036,7 @@ i.fa {
         <textarea style="border:none" class="xml">
         "item": [
           {
-            "linkId": "2.3.b",
+            "linkId": "2.6",
             "text": "Email*",
             "type": "string",
             "required": true
@@ -3122,7 +3051,7 @@ i.fa {
       <div class="content-in-tab">
         <textarea style="border:none" class="xml">
           <item>
-            <linkId value="2.3.b"/>
+            <linkId value="2.6"/>
             <text value="Email*"/>
             <type value="string"/>
             <required value="true"/>
@@ -3134,7 +3063,7 @@ i.fa {
 
 <a name="readonly"></a>
   <h4>Using readOnly</h4>
-  <p>To only display a populated answer and make it non-editable.</p>
+  <p>To only display a populated answer and make it non-editable. (<a href="Questionnaire-questionnaire-sdc-profile-example-form-behavior.html">Example Questionnaire</a>)</p>
   <div class="tabs">
     <div class="tab">
       <input type="radio" id="tab-readonly-1" name="tab-readonly-group-2" checked="true"/>
@@ -3161,7 +3090,7 @@ i.fa {
                 }
               }
             ],
-            "linkId": "2.4.b",
+            "linkId": "2.7",
             "text": "Current Date:",
             "type": "date",
             "readOnly": true
@@ -3183,7 +3112,7 @@ i.fa {
                 <expression value="today()"/>
               </valueExpression>
             </extension>
-            <linkId value="2.4.b"/>
+            <linkId value="2.7"/>
             <text value="Current Date:"/>
             <type value="date"/>
             <readOnly value="true"/>
