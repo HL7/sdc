@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Questionnaire xmlns="http://hl7.org/fhir" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://hl7.org/fhir ../../input-cache/schemas/R4/fhir-single.xsd">
+	<id value="questionnaire-sdc-modular-contact"/>
+	<!-- Even though this is a sub-questionnaire, it's still modular because it relies on element defintions defined elsewhere. -->
+	<extension url="http://hl7.org/fhir/uv/sdc/StructureDefinition/sdc-questionnaire-is-modular">
+    <valueBoolean value="true"/>
+	</extension>
+	<extension url="http://hl7.org/fhir/uv/sdc/StructureDefinition/sdc-questionnaire-assembleContext">
+    <valueString value="linkIdPrefix"/>
+	</extension>
+	<extension url="http://hl7.org/fhir/uv/sdc/StructureDefinition/sdc-questionnaire-assembleContext">
+    <valueString value="person"/>
+	</extension>
+	<extension url="http://hl7.org/fhir/StructureDefinition/variable">
+    <valueExpression>
+      <name value="linkIdPrefix"/>
+      <language value="text/fhirpath"/>
+      <expression value="%linkIdPrefix+'contact.'"/>
+    </valueExpression>
+	</extension>
+	<url value="http://hl7.org/fhir/uv/sdc/Questionnaire/questionnaire-sdc-modular-contact"/>
+	<version value="3.0.0"/>
+	<name value="QuestionnaireSDCModularContact"/>
+	<title value="Example sub-module Questionnaire for contact"/>
+	<status value="draft"/>
+	<experimental value="true"/>
+  <item>
+    <extension url="http://hl7.org/fhir/uv/sdc/StructureDefinition/sdc-questionnaire-subQuestionnaire">
+      <valueCanonical value="http://hl7.org/fhir/uv/sdc/Questionnaire/questionnaire-sdc-modular-name|3.0.0"/>
+    </extension>
+    <linkId value="1"/>
+    <text value="Unable to resolve 'name' sub-questionnaire"/>
+    <type value="display"/>
+    <required value="true"/>
+  </item>
+  <item>
+    <extension url="http://hl7.org/fhir/uv/sdc/StructureDefinition/sdc-questionnaire-initialExpression">
+      <valueExpression>
+        <language value="text/fhirpath"/>
+        <expression value="%person.telecom[use='phone'][0]"/>
+      </valueExpression>
+    </extension>
+    <linkId value="2"/>
+    <definition value="http://example.org/StructureDefinition/non-existent-library#Stuff.phone"/>
+    <text value="Phone number"/>
+    <type value="string"/>
+    <required value="true"/>
+  </item>
+</Questionnaire>

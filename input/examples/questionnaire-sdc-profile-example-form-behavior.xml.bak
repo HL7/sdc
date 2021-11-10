@@ -1,0 +1,1643 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Disclaimer: This questionnaire example is not derived from any medical questionnaire.  It contains unrelated questions and it is only created to show how the 
+elements or extensions defined in the advanced form behavior profile are intended to be used. -->
+<Questionnaire xmlns="http://hl7.org/fhir" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://hl7.org/fhir ../../input-cache/schemas/R4/fhir-single.xsd ">
+  <id value="questionnaire-sdc-profile-example-form-behavior"/>
+  <text>
+    <status value="generated"/>
+    <div xmlns="http://www.w3.org/1999/xhtml">
+      <pre> 
+                Advanced Form Behavior Demonstration
+                View <a href="questionnaire-sdc-profile-example-form-behavior.pdf">companion PDF</a>
+      </pre>
+    </div>
+  </text>
+  <contained>
+    <ValueSet>
+      <id value="LL358-3"/>
+      <title value="Timing of harm assessment [AHRQ]"/>
+      <status value="active"/>
+      <description value="The answer list for timing of harm assessment"/>
+      <copyright value="This content from LOINC® is copyright © 1995 Regenstrief Institute, Inc. and the LOINC Committee, and available at no cost under the license at http://loinc.org/terms-of-use"/>
+      <compose>
+        <include>
+          <system value="http://loinc.org"/>
+          <concept>
+            <extension url="http://hl7.org/fhir/StructureDefinition/ordinalValue">
+              <valueDecimal value="0"/>
+            </extension>
+            <code value="LA6568-5"/>
+            <display value="Not at all"/>
+          </concept>
+          <concept>
+            <extension url="http://hl7.org/fhir/StructureDefinition/ordinalValue">
+              <valueDecimal value="1"/>
+            </extension>
+            <code value="LA6569-3"/>
+            <display value="Several days"/>
+          </concept>
+          <concept>
+            <extension url="http://hl7.org/fhir/StructureDefinition/ordinalValue">
+              <valueDecimal value="2"/>
+            </extension>
+            <code value="Several days"/>
+            <display value="More than half the days"/>
+          </concept>
+          <concept>
+            <extension url="http://hl7.org/fhir/StructureDefinition/ordinalValue">
+              <valueDecimal value="3"/>
+            </extension>
+            <code value="LA6571-9"/>
+            <display value="Nearly every day"/>
+          </concept>
+        </include>
+      </compose>
+    </ValueSet>
+  </contained>
+  <contained>
+    <ValueSet>
+      <id value="vsConditionsAll"/>
+      <status value="draft"/>
+      <compose>
+        <include>
+          <system value="http://example.com/CodeSystem/conditions"/>
+          <concept>
+            <code value="1"/>
+            <display value="Hypertension"/>
+          </concept>
+          <concept>
+            <code value="2"/>
+            <display value="Diabetes"/>
+          </concept>
+          <concept>
+            <code value="3"/>
+            <display value="Pregnancy"/>
+          </concept>
+          <concept>
+            <code value="4"/>
+            <display value="Erectile disfunction"/>
+          </concept>
+        </include>
+      </compose>
+    </ValueSet>
+  </contained>
+  <contained>
+    <ValueSet>
+      <id value="vsConditionsFemale"/>
+      <status value="draft"/>
+      <compose>
+        <include>
+          <system value="http://example.com/CodeSystem/conditions"/>
+          <concept>
+            <code value="1"/>
+            <display value="Hypertension"/>
+          </concept>
+          <concept>
+            <code value="2"/>
+            <display value="Diabetes"/>
+          </concept>
+          <concept>
+            <code value="3"/>
+            <display value="Pregnancy"/>
+          </concept>
+        </include>
+      </compose>
+    </ValueSet>
+  </contained>
+  <extension url="http://hl7.org/fhir/uv/sdc/StructureDefinition/sdc-questionnaire-entryMode">
+    <valueCode value="random"/>
+  </extension>
+  <extension url="http://hl7.org/fhir/uv/sdc/StructureDefinition/sdc-questionnaire-endpoint">
+    <valueUri value="http://mysite.app/QuestionnaireResponse/create"/>
+  </extension>
+  <!-- cqf-library - reference to a Library containing the formal logic used by the artifact. -->
+  <extension url="http://hl7.org/fhir/StructureDefinition/cqf-library">
+    <valueCanonical value="Library/MotherInfantMeasure"/>
+  </extension>
+  <!-- sdc-questionnaire-launchContext - the contextual information required in populating the item below that uses choiceColumns -->
+  <extension url="http://hl7.org/fhir/uv/sdc/StructureDefinition/sdc-questionnaire-launchContext">
+    <extension url="name">
+      <valueId value="LaunchPatient"/>
+    </extension>
+    <extension url="type">
+      <valueCode value="Patient"/>
+    </extension>
+    <extension url="description">
+      <valueString value="The patient that is to be used to pre-populate the form"/>
+    </extension>
+<<<<<<< HEAD
+  </extension>
+  <!-- variable - variable specifying a logic to generate a variable for use in subsequent logic -->
+  <extension url="http://hl7.org/fhir/StructureDefinition/variable">
+    <valueExpression>
+      <name value="weight"/>
+      <language value="text/fhirpath"/>
+      <expression value="%resource.repeat(item).where(linkId='3.2.b').item.answer.valueDecimal"/>
+    </valueExpression>
+  </extension>
+  <extension url="http://hl7.org/fhir/StructureDefinition/variable">
+    <valueExpression>
+      <name value="height"/>
+      <language value="text/fhirpath"/>
+      <expression value="%resource.repeat(item).where(linkId='3.2.c').item.answer.valueDecimal*0.0254"/>
+    </valueExpression>
+  </extension>
+  <title value="Advanced Form Behavior Demonstration"/>
+  <status value="draft"/>
+  <item>
+    <linkId value="1.0"/>
+    <text value="1. Value Constraint Examples"/>
+    <type value="group"/>
+    <item>
+      <linkId value="1.1.a"/>
+      <text value="1.1 Restrict an answer to only have 50 characters (using 'maxLength')"/>
+      <type value="text"/>
+    </item>
+    <item>
+      <!-- item/maxLength - maximum length allowed for answer -->
+      <linkId value="1.1.b"/>
+      <text value="First Name"/>
+      <type value="string"/>
+      <maxLength value="50"/>
+    </item>
+    <item>
+      <linkId value="1.2.a"/>
+      <text value="1.2 Restrict an answer to have at least 2 characters (using 'minLength')"/>
+      <type value="text"/>
+    </item>
+    <item>
+      <!-- item/minLength - minimum length allowed for answer -->
+      <extension url="http://hl7.org/fhir/StructureDefinition/minLength">
+        <valueInteger value="2"/>
+      </extension>
+      <linkId value="1.2.b"/>
+      <text value="Last Name"/>
+      <type value="string"/>
+    </item>
+    <item>
+      <linkId value="1.3.a"/>
+      <text value="1.3 Restrict an answer to range from 1 to 100, up to 2 decimal places (using 'minValue', 'maxValue' and 'maxDecimalPlaces')"/>
+      <type value="text"/>
+    </item>
+    <item>
+      <!-- item/minValue - minimum value allowed for answer -->
+      <extension url="http://hl7.org/fhir/StructureDefinition/minValue">
+        <valueDecimal value="1"/>
+      </extension>
+      <!-- item/maxValue - maximum value allowed for answer -->
+      <extension url="http://hl7.org/fhir/StructureDefinition/maxValue">
+        <valueDecimal value="100"/>
+      </extension>
+      <!-- item/maxDecimalPlaces - maximum number of decimal places allowed for answer-->
+      <extension url="http://hl7.org/fhir/StructureDefinition/maxDecimalPlaces">
+        <valueInteger value="2"/>
+      </extension>
+      <linkId value="1.3.b"/>
+      <text value="Weight in kg"/>
+      <type value="decimal"/>
+    </item>
+    <item>
+      <linkId value="1.4.a"/>
+      <text value="1.4 Only allow an answer in this format: A1A 1A1 (using 'regex')"/>
+      <type value="text"/>
+    </item>
+    <item>
+      <!-- item/regex - regular expression that defines the syntax for the data element to be considered valid -->
+      <extension url="http://hl7.org/fhir/StructureDefinition/regex">
+        <valueString value="ANA NAN"/>
+      </extension>
+      <linkId value="1.4.b"/>
+      <text value="Postal Code (A1A 1A1)"/>
+      <type value="string"/>
+    </item>
+    <item>
+      <linkId value="1.5.a"/>
+      <text value="1.5 Only allow a JPG or PDF attachment, up to 1Mb (using 'mimeType' and 'maxSize')"/>
+      <type value="text"/>
+    </item>
+    <item>
+      <!-- item/mimeType - restrict attachments to only allow jpg and pdf types-->
+      <extension url="http://hl7.org/fhir/StructureDefinition/mimeType">
+        <valueCode value="image/jpeg"/>
+      </extension>
+      <extension url="http://hl7.org/fhir/StructureDefinition/mimeType">
+        <valueCode value="application/pdf"/>
+      </extension>
+      <!-- item/maxSize - allowed maximum size of an attachment in bytes-->
+      <extension url="http://hl7.org/fhir/StructureDefinition/maxSize">
+        <valueDecimal value="1"/>
+      </extension>
+      <linkId value="1.5.b"/>
+      <text value="Attach Proof of Citizenship"/>
+      <type value="attachment"/>
+    </item>
+  </item>
+  <item>
+    <linkId value="2.0"/>
+    <type value="group"/>
+    <item>
+      <linkId value="2.1.a"/>
+      <text value="2.1 Restrict choices from a fixed list (using 'answerOptions')"/>
+      <type value="text"/>
+    </item>
+    <item>
+      <!-- item/answerOption - possible answers in an enumerated set, example with open-choice type -->
+      <linkId value="2.1.b"/>
+      <text value="Province"/>
+      <type value="choice"/>
+      <answerOption>
+        <valueCoding>
+          <code value="Alberta"/>
+          <display value="Alberta"/>
+        </valueCoding>
+      </answerOption>
+      <answerOption>
+        <valueCoding>
+          <code value="BritishColumbia"/>
+          <display value="British Columbia"/>
+        </valueCoding>
+      </answerOption>
+      <answerOption>
+        <valueCoding>
+          <code value="Manitoba"/>
+          <display value="Manitoba"/>
+        </valueCoding>
+      </answerOption>
+      <answerOption>
+        <valueCoding>
+          <code value="NewBrunswick"/>
+          <display value="New Brunswick"/>
+        </valueCoding>
+      </answerOption>
+      <answerOption>
+        <valueCoding>
+          <code value="NewfoundlandAndLabrador"/>
+          <display value="Newfoundland and Labrador"/>
+        </valueCoding>
+      </answerOption>
+      <answerOption>
+        <valueCoding>
+          <code value="NovaScotia"/>
+          <display value="Nova Scotia"/>
+        </valueCoding>
+      </answerOption>
+      <answerOption>
+        <valueCoding>
+          <code value="Ontario"/>
+          <display value="Ontario"/>
+        </valueCoding>
+      </answerOption>
+      <answerOption>
+        <valueCoding>
+          <code value="PrinceEdwardIsland"/>
+          <display value="Prince Edward Island"/>
+        </valueCoding>
+      </answerOption>
+      <answerOption>
+        <valueCoding>
+          <code value="Quebec"/>
+          <display value="Quebec"/>
+        </valueCoding>
+      </answerOption>
+      <answerOption>
+        <valueCoding>
+          <code value="Saskatchewan"/>
+          <display value="Saskatchewan"/>
+        </valueCoding>
+      </answerOption>
+    </item>
+    <item>
+      <linkId value="2.2.a"/>
+      <text value="2.2 Restrict choices from a value set (using 'answerValueSet')"/>
+      <type value="text"/>
+    </item>
+    <item>
+      <!-- item/answerValueSet - possible answers in an enumerated set, example with choice type, Type: coding-->
+      <linkId value="2.2.b"/>
+      <text value="Activity Level"/>
+      <type value="choice"/>
+      <answerValueSet value="http://loinc.org/vs/LL4882-8"/>
+    </item>
+    <item>
+      <linkId value="2.2.c"/>
+      <text value="Applicable health conditions"/>
+      <type value="choice"/>
+      <repeats value="true"/>
+      <answerValueSet>
+        <extension url="http://hl7.org/fhir/StructureDefinition/cqf-expression">
+          <valueExpression>
+            <language value="text/fhirpath"/>
+            <expression value="iif(%patient.gender='female','#vsConditionsFemale',iif(%patient.gender='male', '#vsCondionsFemale', '#vsConditionsAll'))"/>
+          </valueExpression>
+        </extension>
+      </answerValueSet>
+    </item>
+    <item>
+      <extension url="http://hl7.org/fhir/uv/sdc/StructureDefinition/sdc-questionnaire-answerOptionsToggleExpression">
+        <extension url="option">
+          <valueCoding>
+            <system value="http://example.com/CodeSystem/conditions"/>
+            <code value="3"/>
+          </valueCoding>
+=======
+    <!-- sdc-questionnaire-launchContext - the contextual information required in populating the item below that uses choiceColumns -->
+    <extension url="http://hl7.org/fhir/uv/sdc/StructureDefinition/sdc-questionnaire-launchContext">
+        <extension url="name">
+            <valueCoding>
+                <system value="http://hl7.org/fhir/uv/sdc/CodeSystem/launchContext"/>
+                <code value="patient"/>
+                <display value="Patient"/>
+            </valueCoding>
+>>>>>>> 0f80e55d1325e0d55e829f15db3333e5d586edba
+        </extension>
+        <extension url="expression">
+          <valueExpression>
+            <language value="text/fhirpath"/>
+            <expression value="%patient.gender!='male'"/>
+          </valueExpression>
+        </extension>
+      </extension>
+      <extension url="http://hl7.org/fhir/uv/sdc/StructureDefinition/sdc-questionnaire-answerOptionsToggleExpression">
+        <extension url="option">
+          <valueCoding>
+            <system value="http://example.com/CodeSystem/conditions"/>
+            <code value="4"/>
+          </valueCoding>
+        </extension>
+        <extension url="expression">
+          <valueExpression>
+            <language value="text/fhirpath"/>
+            <expression value="%patient.gender!='female'"/>
+          </valueExpression>
+        </extension>
+      </extension>
+      <linkId value="2.2.d"/>
+      <text value="Applicable health conditions"/>
+      <type value="choice"/>
+      <repeats value="true"/>
+      <answerValueSet value="#vsConditionsAll"/>
+    </item>
+    <item>
+      <linkId value="2.3.a"/>
+      <text value="2.3 Require an answer (using 'required')"/>
+      <type value="text"/>
+    </item>
+    <item>
+      <!-- item/required -->
+      <linkId value="2.3.b"/>
+      <text value="Email*"/>
+      <type value="string"/>
+      <required value="true"/>
+    </item>
+    <item>
+      <linkId value="2.4.a"/>
+      <text value="2.4 Example of an answer that is for display only, non-editable (using 'readOnly')"/>
+      <type value="text"/>
+    </item>
+    <item>
+      <extension url="http://hl7.org/fhir/uv/sdc/StructureDefinition/sdc-questionnaire-initialExpression">
+        <valueExpression>
+          <description value="current date"/>
+          <language value="text/fhirpath"/>
+          <expression value="today()"/>
+        </valueExpression>
+      </extension>
+      <!-- item/readOnly -->
+      <linkId value="2.4.b"/>
+      <text value="Current Date:"/>
+      <type value="date"/>
+      <readOnly value="true"/>
+    </item>
+    <item>
+      <linkId value="2.5.a"/>
+      <text value="2.5 Multiple answers allowed, no limit (using 'repeats')"/>
+      <type value="text"/>
+    </item>
+    <item>
+      <extension url="http://hl7.org/fhir/uv/sdc/StructureDefinition/questionnaire-sdc-openLabel">
+        <valueString value="Other event (specify)"/>
+      </extension>
+      <!-- item/repeats -->
+      <linkId value="2.5.b"/>
+      <text value="Heart History (check all that applies)"/>
+      <type value="open-choice"/>
+      <repeats value="true"/>
+      <answerOption>
+        <valueCoding>
+          <code value="U1"/>
+          <display value="Heart attack"/>
+        </valueCoding>
+      </answerOption>
+      <answerOption>
+        <valueCoding>
+          <code value="U2"/>
+          <display value="Heart surgery"/>
+        </valueCoding>
+      </answerOption>
+      <answerOption>
+        <valueCoding>
+          <code value="U3"/>
+          <display value="Cardiac catheterization"/>
+        </valueCoding>
+      </answerOption>
+      <answerOption>
+        <valueCoding>
+          <code value="U4"/>
+          <display value="Coronary angioplasty (PTCA)"/>
+        </valueCoding>
+      </answerOption>
+      <answerOption>
+        <valueCoding>
+          <code value="U5"/>
+          <display value="Cardiac pacemaker"/>
+        </valueCoding>
+      </answerOption>
+    </item>
+    <item>
+      <linkId value="2.6.a"/>
+      <text value="2.6 Must have at least to 2 answers (using 'minOccurs')"/>
+      <type value="text"/>
+    </item>
+    <item>
+      <!-- item/minOccurs -->
+      <extension url="http://hl7.org/fhir/StructureDefinition/questionnaire-minOccurs">
+        <valueInteger value="2"/>
+      </extension>
+      <linkId value="2.6.b"/>
+      <text value="Heart History (check at least 2):"/>
+      <type value="choice"/>
+      <required value="true"/>
+      <repeats value="true"/>
+      <answerOption>
+        <valueCoding>
+          <code value="U1"/>
+          <display value="Heart attack"/>
+        </valueCoding>
+      </answerOption>
+      <answerOption>
+        <valueCoding>
+          <code value="U2"/>
+          <display value="Heart surgery"/>
+        </valueCoding>
+      </answerOption>
+      <answerOption>
+        <valueCoding>
+          <code value="U3"/>
+          <display value="Cardiac catheterization"/>
+        </valueCoding>
+      </answerOption>
+      <answerOption>
+        <valueCoding>
+          <code value="U4"/>
+          <display value="Coronary angioplasty (PTCA)"/>
+        </valueCoding>
+      </answerOption>
+      <answerOption>
+        <valueCoding>
+          <code value="U5"/>
+          <display value="Cardiac pacemaker"/>
+        </valueCoding>
+      </answerOption>
+    </item>
+    <item>
+      <linkId value="2.7.a"/>
+      <text value="2.7 Can only have up to 3 answers (using 'maxOccurs)"/>
+      <type value="text"/>
+    </item>
+    <item>
+      <!-- item/maxOccurs -->
+      <extension url="http://hl7.org/fhir/StructureDefinition/questionnaire-maxOccurs">
+        <valueInteger value="3"/>
+      </extension>
+      <linkId value="2.7.b"/>
+      <text value="Heart History (check no more than 3):"/>
+      <type value="choice"/>
+      <required value="true"/>
+      <repeats value="true"/>
+      <answerOption>
+        <valueCoding>
+          <code value="U1"/>
+          <display value="Heart attack"/>
+        </valueCoding>
+      </answerOption>
+      <answerOption>
+        <valueCoding>
+          <code value="U2"/>
+          <display value="Heart surgery"/>
+        </valueCoding>
+      </answerOption>
+      <answerOption>
+        <valueCoding>
+          <code value="U3"/>
+          <display value="Cardiac catheterization"/>
+        </valueCoding>
+      </answerOption>
+      <answerOption>
+        <valueCoding>
+          <code value="U4"/>
+          <display value="Coronary angioplasty (PTCA)"/>
+        </valueCoding>
+      </answerOption>
+      <answerOption>
+        <valueCoding>
+          <code value="U5"/>
+          <display value="Cardiac pacemaker"/>
+        </valueCoding>
+      </answerOption>
+    </item>
+    <item>
+      <linkId value="2.8.a"/>
+      <text value="2.8 Restrict unit choices using unit options (using 'unitOption')"/>
+      <type value="text"/>
+    </item>
+    <item>
+      <!-- item/unitOption -->
+      <extension url="http://hl7.org/fhir/StructureDefinition/questionnaire-unitOption">
+        <valueCoding>
+          <code value="Level0"/>
+          <display value="None"/>
+        </valueCoding>
+      </extension>
+      <extension url="http://hl7.org/fhir/StructureDefinition/questionnaire-unitOption">
+        <valueCoding>
+          <code value="Unit0"/>
+          <display value="Unit 0"/>
+        </valueCoding>
+      </extension>
+      <extension url="http://hl7.org/fhir/StructureDefinition/questionnaire-unitOption">
+        <valueCoding>
+          <code value="Unit1"/>
+          <display value="Unit 1"/>
+        </valueCoding>
+      </extension>
+      <extension url="http://hl7.org/fhir/StructureDefinition/questionnaire-unitOption">
+        <valueCoding>
+          <code value="Unit3"/>
+          <display value="Unit 3"/>
+        </valueCoding>
+      </extension>
+      <linkId value="2.8.b"/>
+      <text value="Dosage"/>
+      <type value="quantity"/>
+    </item>
+    <item>
+      <linkId value="2.9.a"/>
+      <text value="2.9 Restrict unit choices from a value set (using 'unitValueSet')"/>
+      <type value="text"/>
+    </item>
+    <item>
+      <!-- item/unitValueSet -->
+      <extension url="http://hl7.org/fhir/StructureDefinition/questionnaire-unitValueSet">
+        <extension url="http://hl7.org/fhir/StructureDefinition/valueset-system">
+          <valueCanonical value="http://loinc.org/vs/LL715-4"/>
+        </extension>
+      </extension>
+      <linkId value="2.9.b"/>
+      <text value="Dosage"/>
+      <type value="quantity"/>
+    </item>
+    <item>
+      <linkId value="2.10.a"/>
+      <text value="2.10 Only allow a service animal resource as an answer (using 'referenceResource', 'referenceProfile' and 'lookupQuestionnaire')"/>
+      <type value="text"/>
+    </item>
+    <item>
+      <!-- item/questionnaire-referenceResource -->
+      <extension url="http://hl7.org/fhir/StructureDefinition/questionnaire-referenceResource">
+        <valueCode value="Practitioner"/>
+      </extension>
+      <!-- item/questionnaire-referenceProfile -->
+      <extension url="http://hl7.org/fhir/StructureDefinition/questionnaire-referenceProfile">
+        <valueCanonical value="http://hl7.org/fhir/StructureDefinition/practitioner-animalSpecies"/>
+      </extension>
+      <!-- item/sdc-questionnaire-lookupQuestionnaire -->
+      <extension url="http://hl7.org/fhir/uv/sdc/StructureDefinition/sdc-questionnaire-lookupQuestionnaire">
+        <valueUri value="http://mysite.com/Questionnaire/1234"/>
+      </extension>
+      <linkId value="2.10.b"/>
+      <text value="Select your preferred service animal:"/>
+      <type value="reference"/>
+    </item>
+  </item>
+  <item>
+    <linkId value="3.0"/>
+    <text value="3. Calculation Examples"/>
+    <type value="group"/>
+    <item>
+      <linkId value="3.1.a"/>
+      <text value="3.1 Only allow a service animal resource as an answer (using 'referenceResource', 'referenceProfile' and 'lookupQuestionnaire')"/>
+      <type value="text"/>
+    </item>
+    <item>
+      <!-- item/sdc-questionnaire-initialExpression - initial value for a question answer as determined by an evaluated expression.-->
+      <extension url="http://hl7.org/fhir/uv/sdc/StructureDefinition/sdc-questionnaire-initialExpression">
+        <valueExpression>
+          <description value="deadline for submission"/>
+          <language value="text/fhirpath"/>
+          <expression value="today() + 7 days"/>
+        </valueExpression>
+<<<<<<< HEAD
+      </extension>
+      <linkId value="3.1.b"/>
+      <text value="Deadline for submission (7 days from now)"/>
+      <type value="date"/>
+      <readOnly value="true"/>
+    </item>
+    <item>
+      <linkId value="3.2.a"/>
+      <text value="3.2 Example with a calculated expression (using 'calculatedExpression', 'variable', 'launchContext')"/>
+      <type value="text"/>
+    </item>
+    <item>
+      <extension url="http://hl7.org/fhir/StructureDefinition/questionnaire-unit">
+        <valueCoding>
+          <system value="http://unitsofmeasure.org"/>
+          <code value="kg"/>
+        </valueCoding>
+      </extension>
+      <linkId value="3.2.b"/>
+      <text value="Weight (kg)"/>
+      <type value="decimal"/>
+    </item>
+    <item>
+      <extension url="http://hl7.org/fhir/StructureDefinition/questionnaire-unit">
+        <valueCoding>
+          <system value="http://unitsofmeasure.org"/>
+          <code value="[in_i]"/>
+        </valueCoding>
+      </extension>
+      <linkId value="3.2.c"/>
+      <text value="Body Height (inches)"/>
+      <type value="decimal"/>
+    </item>
+    <item>
+      <!-- item/sdc-questionnaire-calculatedExpression - Calculated value for a question answer as determined by an evaluated expression..-->
+      <extension url="http://hl7.org/fhir/uv/sdc/StructureDefinition/sdc-questionnaire-calculatedExpression">
+        <valueExpression>
+          <description value="BMI Calculation"/>
+          <language value="text/fhirpath"/>
+          <expression value="(%weight/(%height.power(2))).round(1)"/>
+        </valueExpression>
+      </extension>
+      <linkId value="3.2.d"/>
+      <text value="Your Body Mass Index (BMI) is"/>
+      <type value="decimal"/>
+      <readOnly value="true"/>
+    </item>
+    <item>
+      <linkId value="3.3.a"/>
+      <text value="3.3 Example with a CQF calculated value (using 'cqf-calculatedValue' and 'cqf-library')"/>
+      <type value="text"/>
+    </item>
+    <item>
+      <!-- item/cqf-calculatedValue - The name of an expression in a referenced library that determines a calculated value.-->
+      <!-- TODO: add a format for dates -->
+      <extension url="http://hl7.org/fhir/StructureDefinition/cqf-calculatedValue">
+        <valueString value="estimated_due_date"/>
+      </extension>
+      <linkId value="3.3.b"/>
+      <text value="Estimated Due Date"/>
+      <type value="date"/>
+      <readOnly value="true"/>
+    </item>
+  </item>
+  <item>
+    <linkId value="4.0"/>
+    <text value="4. Other Controls"/>
+    <type value="group"/>
+    <item>
+      <linkId value="4.1.a"/>
+      <text value="4.1 Example of options with initial value (using initial)"/>
+      <type value="text"/>
+    </item>
+    <item>
+      <linkId value="4.1.b"/>
+      <text value="Marital Status"/>
+      <type value="choice"/>
+      <answerValueSet value="http://hl7.org/fhir/ValueSet/marital-status"/>
+      <!-- item/initial - default value-->
+      <initial>
+        <valueCoding>
+          <system value="http://hl7.org/fhir/ValueSet/marital-status"/>
+          <code value="D"/>
+          <display value="Divorced"/>
+        </valueCoding>
+      </initial>
+    </item>
+    <item>
+      <linkId value="4.2.a"/>
+      <text value="4.2 Example of enabling behaviors (using 'enableWhen', 'enableBehavior', and 'enableExpression')"/>
+      <type value="text"/>
+    </item>
+    <item>
+      <linkId value="4.2.b"/>
+      <type value="group"/>
+      <item>
+        <linkId value="4.2.b.1"/>
+        <text value="Choose Gender"/>
+        <type value="choice"/>
+        <answerValueSet value="http://hl7.org/fhir/ValueSet/administrative-gender"/>
+      </item>
+      <item>
+        <linkId value="4.2.b.2"/>
+        <text value="Are you pregnant? (enableWhen = gender is Female)"/>
+        <type value="choice"/>
+        <!-- item/enableWhen - A constraint indicating that this item should only be enabled (displayed/allow answers to be captured) when the specified condition is true.-->
+        <enableWhen>
+          <question value="4.2.b.1"/>
+          <operator value="="/>
+          <answerCoding>
+            <system value="http://hl7.org/fhir/administrative-gender"/>
+            <code value="female"/>
+          </answerCoding>
+        </enableWhen>
+        <answerValueSet value="http://hl7.org/fhir/ValueSet/yesnodontknow"/>
+      </item>
+      <item>
+        <linkId value="4.2.b.3"/>
+        <text value="Are you diabetic? (enableWhen = gender is Female)"/>
+        <type value="choice"/>
+        <!-- item/enableWhen - A constraint indicating that this item should only be enabled (displayed/allow answers to be captured) when the specified condition is true.-->
+        <enableWhen>
+          <question value="4.2.b.1"/>
+          <operator value="="/>
+          <answerCoding>
+            <system value="http://hl7.org/fhir/administrative-gender"/>
+            <code value="female"/>
+          </answerCoding>
+        </enableWhen>
+        <answerValueSet value="http://hl7.org/fhir/ValueSet/yesnodontknow"/>
+      </item>
+      <item>
+        <linkId value="4.2.b.4"/>
+        <text value="Have you been diagnosed with Gestational Diabetes? (enableBehavior = only when pregnant and diabetic)"/>
+        <type value="choice"/>
+        <!-- item/enableBehavior - Controls how multiple enableWhen values are interpreted - whether all or any must be true.-->
+        <enableWhen>
+          <question value="4.2.b.2"/>
+          <operator value="="/>
+          <answerCoding>
+            <system value="http://terminology.hl7.org/CodeSystem/v2-0136"/>
+            <code value="Y"/>
+          </answerCoding>
+        </enableWhen>
+        <enableWhen>
+          <question value="4.2.b.3"/>
+          <operator value="="/>
+          <answerCoding>
+            <system value="http://terminology.hl7.org/CodeSystem/v2-0136"/>
+            <code value="Y"/>
+          </answerCoding>
+        </enableWhen>
+        <!-- item/enableBehavior - Controls how multiple enableWhen values are interpreted - whether all or any must be true.-->
+        <enableBehavior value="all"/>
+        <answerValueSet value="http://hl7.org/fhir/ValueSet/yesnodontknow"/>
+      </item>
+      <item>
+        <extension url="http://hl7.org/fhir/StructureDefinition/entryFormat">
+          <valueString value="MM/DD/YYYY"/>
+        </extension>
+        <linkId value="4.2.b.5"/>
+        <text value="Enter your birthdate (MM/DD/YYYY)"/>
+        <type value="date"/>
+        <answerValueSet value="http://hl7.org/fhir/ValueSet/administrative-gender"/>
+      </item>
+      <item>
+        <!-- item/enableWhenExpression - An expression that returns a boolean value for whether to enable the item.-->
+        <extension url="http://hl7.org/fhir/uv/sdc/StructureDefinition/sdc-questionnaire-enableWhenExpression">
+          <valueExpression>
+            <description value="if last 2 questions were answered"/>
+            <language value="text/fhirpath"/>
+            <!-- To calculate age: subtract the birthdate's year from this year-->
+            <expression value="%resource.repeats(item).where(linkId='4.2.b.1').answer.valueCoding.code ='female' and today().toString().substring(0, 4).toInteger() - %resource.repeats(item).where(linkId='4.2.b.5').answer.toString().substring(0, 4).toInteger() >= 40"/>
+          </valueExpression>
+        </extension>
+        <linkId value="4.2.b.6"/>
+        <text value="Have you had mammogram before?(enableWhenExpression = only when gender is female and age > 40)"/>
+        <type value="choice"/>
+        <answerValueSet value="http://hl7.org/fhir/ValueSet/yesnodontknow"/>
+      </item>
+    </item>
+    <item>
+      <linkId value="4.3.a"/>
+      <text value="4.3 Example involving ordinal value and contraints (using 'ordinalValue' and 'constraint')"/>
+      <type value="text"/>
+    </item>
+    <item>
+      <!-- item/constraint - An invariant that must be satisfied before responses to the questionnaire can be considered "complete". -->
+      <extension url="http://hl7.org/fhir/StructureDefinition/questionnaire-constraint">
+        <extension url="key">
+          <valueId value="contraint-1"/>
+        </extension>
+        <extension url="requirements">
+          <valueString value="At least three questions must be answered to have a meaningful total."/>
+        </extension>
+        <extension url="severity">
+          <valueCode value="warning"/>
+        </extension>
+        <extension url="expression">
+          <valueString value="%resource.repeat(item).where(linkId='4.3.b').item.where(answer.hasValue()).count() >= 3"/>
+        </extension>
+        <extension url="human">
+          <valueString value="You should answer at least three questions."/>
+        </extension>
+      </extension>
+      <linkId value="4.3.b"/>
+      <text value="Over the last 2 weeks, how often have you been bothered by any of the following problems?"/>
+      <type value="group"/>
+      <item>
+        <linkId value="4.3.b.1"/>
+        <text value="1. Little interest or pleasure in doing things"/>
+        <type value="choice"/>
+        <answerValueSet value="#LL358-3"/>
+        <!-- use contained ValueSet -->
+      </item>
+      <item>
+        <linkId value="4.3.b.2"/>
+        <text value="2. Feeling down, depressed, or hopeless"/>
+        <type value="choice"/>
+        <answerValueSet value="#LL358-3"/>
+        <!-- use contained ValueSet -->
+      </item>
+      <item>
+        <linkId value="4.3.b.3"/>
+        <text value="3. Trouble falling or staying asleep, or sleeping too much"/>
+        <type value="choice"/>
+        <answerValueSet value="#LL358-3"/>
+        <!-- use contained ValueSet -->
+      </item>
+      <item>
+        <linkId value="4.3.b.4"/>
+        <text value="4. Feeling tired or having little energy"/>
+        <type value="choice"/>
+        <answerValueSet value="#LL358-3"/>
+        <!-- use contained ValueSet -->
+      </item>
+      <item>
+        <extension url="http://hl7.org/fhir/uv/sdc/StructureDefinition/sdc-questionnaire-calculatedExpression">
+          <valueExpression>
+            <description value="Total score"/>
+            <language value="text/fhirpath"/>
+            <expression value="%resource.repeat(item).where(linkId='4.3.b').item.answer.ordinalValue().aggregate($this + $total, 0)"/>
+          </valueExpression>
+        </extension>
+        <linkId value="4.3.b.5"/>
+        <text value="Total Score:"/>
+        <type value="integer"/>
+      </item>
+    </item>
+    <item>
+      <linkId value="4.4.a"/>
+      <text value="4.4 Example of signature required (using 'signatureRequired' and 'usageMode')"/>
+      <type value="text"/>
+    </item>
+    <item>
+      <!-- item/questionnaire-signatureRequired - Is signature needed? -->
+      <extension xmlns="http://hl7.org/fhir" url="http://hl7.org/fhir/StructureDefinition/questionnaire-signatureRequired">
+        <valueCodeableConcept>
+          <coding>
+            <system value="urn:iso-astm:E1762-95:2013"/>
+            <code value="1.2.840.10065.1.12.1.8"/>
+            <display value="Signature Witness Signature"/>
+          </coding>
+          <text value="the signature of a witness to any other signature."/>
+        </valueCodeableConcept>
+      </extension>
+      <!-- item/sdc-questionnaire-usageMode - capture | display | display-non-empty | capture-display | capture-display-non-empty -->
+      <extension xmlns="http://hl7.org/fhir" url="http://hl7.org/fhir/StructureDefinition/questionnaire-usageMode">
+        <valueCode value="capture"/>
+      </extension>
+      <linkId value="4.4.b"/>
+      <text value="Signature of Patient"/>
+      <type value="attachment"/>
+      <required value="true"/>
+    </item>
+    <item>
+      <linkId value="4.5.0"/>
+      <text value="4.5 Questionnaire can have an endpoint URL for the Form Receiver when it is completed (using 'endPoint')"/>
+      <type value="text"/>
+    </item>
+    <item>
+      <linkId value="4.6.0"/>
+      <text value="4.6 Questionnaire can be setup to have all enabled questions to be visible and accessible to the user (using 'entryMode')"/>
+      <type value="text"/>
+    </item>
+  </item>
+=======
+    </extension>
+    <title value="Advanced Form Behavior Demonstration" />
+    <status value="draft"/>
+    <item>
+        <linkId value="1.0"/>
+        <text value="1. Value Constraint Examples" />
+		<type value="group" />
+		<item>
+	    	<linkId value="1.1.a" />
+	    	<text value="1.1 Restrict an answer to only have 50 characters (using 'maxLength')" />
+			<type value="text" />
+		</item>
+		<item>
+            <!-- item/maxLength - maximum length allowed for answer -->
+            <linkId value="1.1.b" />
+            <text value="First Name" />
+            <type value="string" />
+            <maxLength value="50" />
+        </item>
+		<item>
+	    	<linkId value="1.2.a" />
+	    	<text value="1.2 Restrict an answer to have at least 2 characters (using 'minLength')" />
+			<type value="text" />
+		</item>
+        <item>
+            <!-- item/minLength - minimum length allowed for answer -->
+            <extension url="http://hl7.org/fhir/StructureDefinition/minLength">
+                <valueInteger value="2" />
+            </extension>
+            <linkId value="1.2.b" />
+            <text value="Last Name" />
+            <type value="string" />
+        </item>
+		<item>
+	    	<linkId value="1.3.a" />
+	    	<text value="1.3 Restrict an answer to range from 1 to 100, up to 2 decimal places (using 'minValue', 'maxValue' and 'maxDecimalPlaces')" />
+			<type value="text" />
+		</item>        
+        <item>
+            <!-- item/minValue - minimum value allowed for answer -->
+            <extension url="http://hl7.org/fhir/StructureDefinition/minValue">
+                <valueDecimal value="1" />
+            </extension>
+            <!-- item/maxValue - maximum value allowed for answer -->
+            <extension url="http://hl7.org/fhir/StructureDefinition/maxValue">
+                <valueDecimal value="100" />
+            </extension>
+            <!-- item/maxDecimalPlaces - maximum number of decimal places allowed for answer-->
+            <extension url="http://hl7.org/fhir/StructureDefinition/maxDecimalPlaces">
+                <valueInteger value="2" />
+            </extension>
+            <linkId value="1.3.b" />
+            <text value="Weight in kg" />
+            <type value="decimal" />
+        </item>
+		<item>
+	    	<linkId value="1.4.a" />
+	    	<text value="1.4 Only allow an answer in this format: A1A 1A1 (using 'regex') " />
+			<type value="text" />
+		</item>         
+        <item>
+            <!-- item/regex - regular expression that defines the syntax for the data element to be considered valid -->
+            <extension url="http://hl7.org/fhir/StructureDefinition/regex">
+                <valueString value="[A-Z][0-9][A-Z] [0-9][A-Z][0-9]" />
+            </extension>
+            <linkId value="1.4.b" />
+            <text value="Postal Code (A1A 1A1)" />
+            <type value="string" />
+        </item>
+        <item>
+	    	<linkId value="1.5.a" />
+	    	<text value="1.5 Only allow a JPG or PDF attachment, up to 1Mb (using 'mimeType' and 'maxSize')" />
+			<type value="text" />
+		</item> 
+        <item>
+            <!-- item/mimeType - restrict attachments to only allow jpg and pdf types-->
+            <extension url="http://hl7.org/fhir/StructureDefinition/mimeType">
+                <valueCode value="image/jpeg" /> 
+            </extension>
+            <extension url="http://hl7.org/fhir/StructureDefinition/mimeType">
+                <valueCode value="application/pdf" /> 
+            </extension>
+            <!-- item/maxSize - allowed maximum size of an attachment in bytes-->
+            <extension url="http://hl7.org/fhir/StructureDefinition/maxSize">
+                <valueDecimal value="1" /> 
+            </extension>              
+            <linkId value="1.5.b" />
+            <text value="Attach Proof of Citizenship" />
+            <type value="attachment" />
+        </item>
+    </item>
+    <item>
+        <linkId value="2.0"/>
+        <type value="group"/>
+		<item>
+	    	<linkId value="2.1.a" />
+	    	<text value="2.1 Restrict choices from a fixed list (using 'answerOptions')" />
+			<type value="text" />
+		</item>
+        <item>
+            <!-- item/answerOption - possible answers in an enumerated set, example with open-choice type -->
+            <linkId value="2.1.b"/>
+            <text value="Province"/>
+            <type value="choice"/>
+            <answerOption>
+                <valueCoding>
+                    <code value="Alberta"/>
+                    <display value="Alberta"/>
+                </valueCoding>
+            </answerOption>
+            <answerOption>
+                <valueCoding>
+                    <code value="BritishColumbia"/>
+                    <display value="British Columbia"/>
+                </valueCoding>
+            </answerOption>
+            <answerOption>
+                <valueCoding>
+                    <code value="Manitoba"/>
+                    <display value="Manitoba"/>
+                </valueCoding>
+            </answerOption>            
+            <answerOption>
+                <valueCoding>
+                    <code value="NewBrunswick"/>
+                    <display value="New Brunswick"/>
+                </valueCoding>
+            </answerOption>            
+            <answerOption>
+                <valueCoding>
+                    <code value="NewfoundlandAndLabrador"/>
+                    <display value="Newfoundland and Labrador"/>
+                </valueCoding>
+            </answerOption>
+            <answerOption>
+                <valueCoding>
+                    <code value="NovaScotia"/>
+                    <display value="Nova Scotia"/>
+                </valueCoding>
+            </answerOption>
+            <answerOption>
+                <valueCoding>
+                    <code value="Ontario"/>
+                    <display value="Ontario"/>
+                </valueCoding>
+            </answerOption>
+            <answerOption>
+                <valueCoding>
+                    <code value="PrinceEdwardIsland"/>
+                    <display value="Prince Edward Island"/>
+                </valueCoding>
+            </answerOption>
+            <answerOption>
+                <valueCoding>
+                    <code value="Quebec"/>
+                    <display value="Quebec"/>
+                </valueCoding>
+            </answerOption>
+            <answerOption>
+                <valueCoding>
+                    <code value="Saskatchewan"/>
+                    <display value="Saskatchewan"/>
+                </valueCoding>
+            </answerOption>            
+        </item>
+		<item>
+	    	<linkId value="2.2.a" />
+	    	<text value="2.2 Restrict choices from a value set (using 'answerValueSet')" />
+			<type value="text" />
+		</item>
+        <item>
+            <!-- item/answerValueSet - possible answers in an enumerated set, example with choice type, Type: coding-->
+            <linkId value="2.2.b"/>
+            <text value="Activity Level"/>
+            <type value="choice"/>
+            <answerValueSet value="http://loinc.org/vs/LL4882-8"/> 
+        </item>
+		<item>
+	    	<linkId value="2.3.a" />
+	    	<text value="2.3 Require an answer (using 'required')" />
+			<type value="text" />
+		</item>
+        <item>
+            <!-- item/required -->
+            <linkId value="2.3.b"/>
+            <text value="Email*"/>
+            <type value="string"/>
+            <required value="true"/>
+        </item>
+		<item>
+	    	<linkId value="2.4.a" />
+	    	<text value="2.4 Example of an answer that is for display only, non-editable (using 'readOnly')" />
+			<type value="text" />
+		</item>
+        <item>
+            <extension url="http://hl7.org/fhir/uv/sdc/StructureDefinition/sdc-questionnaire-initialExpression">
+                <valueExpression>
+                    <description value="current date"/>
+                    <language value="text/fhirpath"/>
+                    <expression value="today()"/> 
+                </valueExpression>
+            </extension>
+            <!-- item/readOnly -->
+            <linkId value="2.4.b"/>
+            <text value="Current Date:"/>
+            <type value="date"/>
+            <readOnly value="true"/>
+        </item>
+		<item>
+	    	<linkId value="2.5.a" />
+	    	<text value="2.5 Multiple answers allowed, no limit (using 'repeats')" />
+			<type value="text" />
+		</item>
+        <item>
+            <!-- item/repeats -->
+            <linkId value="2.5.b"/>
+            <text value="Heart History (check all that applies)"/>
+            <type value="open-choice"/>
+            <repeats value="true"/>
+            <answerOption>
+                <valueCoding>
+                    <code value="U1"/>
+                    <display value="Heart attack"/>
+                </valueCoding>
+            </answerOption>
+            <answerOption>
+                <valueCoding>
+                    <code value="U2"/>
+                    <display value="Heart surgery"/>
+                </valueCoding>
+            </answerOption>
+            <answerOption>
+                <valueCoding>
+                    <code value="U3"/>
+                    <display value="Cardiac catheterization"/>
+                </valueCoding>
+            </answerOption>
+            <answerOption>
+                <valueCoding>
+                    <code value="U4"/>
+                    <display value="Coronary angioplasty (PTCA)"/>
+                </valueCoding>
+            </answerOption>            
+            <answerOption>
+                <valueCoding>
+                    <code value="U5"/>
+                    <display value="Cardiac pacemaker"/>
+                </valueCoding>
+            </answerOption>          
+        </item>
+		<item>
+	    	<linkId value="2.6.a" />
+	    	<text value="2.6 Must have at least to 2 answers (using 'minOccurs')" />
+			<type value="text" />
+		</item>
+        <item>
+            <!-- item/minOccurs -->
+            <extension url="http://hl7.org/fhir/StructureDefinition/questionnaire-minOccurs">
+                <valueInteger value="2"/> 
+            </extension>
+            <linkId value="2.6.b"/>
+            <text value="Heart History (check at least 2):"/>
+            <type value="choice"/>
+            <required value="true"/>
+            <repeats value="true"/>
+            <answerOption>
+                <valueCoding>
+                    <code value="U1"/>
+                    <display value="Heart attack"/>
+                </valueCoding>
+            </answerOption>
+            <answerOption>
+                <valueCoding>
+                    <code value="U2"/>
+                    <display value="Heart surgery"/>
+                </valueCoding>
+            </answerOption>
+            <answerOption>
+                <valueCoding>
+                    <code value="U3"/>
+                    <display value="Cardiac catheterization"/>
+                </valueCoding>
+            </answerOption>
+            <answerOption>
+                <valueCoding>
+                    <code value="U4"/>
+                    <display value="Coronary angioplasty (PTCA)"/>
+                </valueCoding>
+            </answerOption>            
+            <answerOption>
+                <valueCoding>
+                    <code value="U5"/>
+                    <display value="Cardiac pacemaker"/>
+                </valueCoding>
+            </answerOption>
+        </item>
+		<item>
+	    	<linkId value="2.7.a" />
+	    	<text value="2.7 Can only have up to 3 answers (using 'maxOccurs) " />
+			<type value="text" />
+		</item>
+        <item>
+            <!-- item/maxOccurs -->
+            <extension url="http://hl7.org/fhir/StructureDefinition/questionnaire-maxOccurs">
+                <valueInteger value="3"/> 
+            </extension>
+            <linkId value="2.7.b"/>
+            <text value="Heart History (check no more than 3):"/>
+            <type value="choice"/>
+            <required value="true"/>
+            <repeats value="true"/>
+            <answerOption>
+                <valueCoding>
+                    <code value="U1"/>
+                    <display value="Heart attack"/>
+                </valueCoding>
+            </answerOption>
+            <answerOption>
+                <valueCoding>
+                    <code value="U2"/>
+                    <display value="Heart surgery"/>
+                </valueCoding>
+            </answerOption>
+            <answerOption>
+                <valueCoding>
+                    <code value="U3"/>
+                    <display value="Cardiac catheterization"/>
+                </valueCoding>
+            </answerOption>
+            <answerOption>
+                <valueCoding>
+                    <code value="U4"/>
+                    <display value="Coronary angioplasty (PTCA)"/>
+                </valueCoding>
+            </answerOption>            
+            <answerOption>
+                <valueCoding>
+                    <code value="U5"/>
+                    <display value="Cardiac pacemaker"/>
+                </valueCoding>
+            </answerOption>
+        </item>
+		<item>
+	    	<linkId value="2.8.a" />
+	    	<text value="2.8 Restrict unit choices using unit options (using 'unitOption') " />
+			<type value="text" />
+		</item>
+        <item>
+            <!-- item/unitOption -->
+            <extension url="http://hl7.org/fhir/StructureDefinition/questionnaire-unitOption">
+                <valueCoding>
+                    <code value="Level0"/>
+                    <display value="None"/>
+                </valueCoding>
+            </extension>
+            <extension url="http://hl7.org/fhir/StructureDefinition/questionnaire-unitOption">
+                <valueCoding>
+                    <code value="Unit0"/>
+                    <display value="Unit 0"/>
+                </valueCoding>
+            </extension>
+            <extension url="http://hl7.org/fhir/StructureDefinition/questionnaire-unitOption">
+                <valueCoding>
+                    <code value="Unit1"/>
+                    <display value="Unit 1"/>
+                </valueCoding>
+            </extension>
+            <extension url="http://hl7.org/fhir/StructureDefinition/questionnaire-unitOption">
+                <valueCoding>
+                    <code value="Unit3"/>
+                    <display value="Unit 3"/>
+                </valueCoding>
+            </extension>            
+            <linkId value="2.8.b"/>
+            <text value="Dosage"/>
+            <type value="quantity"/>
+        </item>
+		<item>
+	    	<linkId value="2.9.a" />
+	    	<text value="2.9 Restrict unit choices from a value set (using 'unitValueSet') " />
+			<type value="text" />
+		</item>
+        <item>
+            <!-- item/unitValueSet -->
+            <extension url="http://hl7.org/fhir/StructureDefinition/questionnaire-unitValueSet">
+                <extension url="http://hl7.org/fhir/StructureDefinition/valueset-system">
+                    <valueCanonical value="http://loinc.org/vs/LL715-4"/>
+                </extension>
+            </extension>
+            <linkId value="2.9.b"/>
+            <text value="Dosage"/>
+            <type value="quantity"/>
+        </item>
+		<item>
+	    	<linkId value="2.10.a" />
+	    	<text value="2.10 Only allow a service animal resource as an answer (using 'referenceResource', 'referenceProfile' and 'lookupQuestionnaire')" />
+			<type value="text" />
+		</item>
+        <item>
+            <!-- item/questionnaire-referenceResource -->
+            <extension url="http://hl7.org/fhir/StructureDefinition/questionnaire-referenceResource">
+                <valueCode value="Practitioner"/>
+            </extension>
+            <!-- item/questionnaire-referenceProfile -->
+            <extension url="http://hl7.org/fhir/StructureDefinition/questionnaire-referenceProfile">
+                <valueCanonical value="http://hl7.org/fhir/StructureDefinition/practitioner-animalSpecies"/> 
+            </extension>
+            <!-- item/sdc-questionnaire-lookupQuestionnaire -->
+            <extension url="http://hl7.org/fhir/uv/sdc/StructureDefinition/sdc-questionnaire-lookupQuestionnaire">
+                <valueUri value="http://mysite.com/Questionnaire/1234"/>
+            </extension>            
+            <linkId value="2.10.b"/>
+            <text value="Select your preferred service animal:"/>
+            <type value="reference"/>
+        </item>
+    </item>	
+    <item>
+        <linkId value="3.0"/>
+        <text value="3. Calculation Examples" />
+		<type value="group" />
+		<item>
+	    	<linkId value="3.1.a" />
+	    	<text value="3.1 Only allow a service animal resource as an answer (using 'referenceResource', 'referenceProfile' and 'lookupQuestionnaire')" />
+			<type value="text" />
+		</item>		
+	    <item>
+	        <!-- item/sdc-questionnaire-initialExpression - initial value for a question answer as determined by an evaluated expression.-->
+	        <extension url="http://hl7.org/fhir/uv/sdc/StructureDefinition/sdc-questionnaire-initialExpression">
+	            <valueExpression>
+	                <description value="deadline for submission"/>
+	                <language value="text/fhirpath"/>
+	                <expression value="today() + 7 days"/> 
+	            </valueExpression>
+	        </extension>
+	        <linkId value="3.1.b"/>
+	        <text value="Deadline for submission (7 days from now)"/>
+	        <type value="date"/>
+	        <readOnly value="true"/>
+	    </item>
+		<item>
+	    	<linkId value="3.2.a" />
+	    	<text value="3.2 Example with a calculated expression (using 'calculatedExpression', 'variable', 'launchContext')" />
+			<type value="text" />
+		</item>		
+	    <item>
+	        <extension url="http://hl7.org/fhir/StructureDefinition/questionnaire-unit">
+	            <valueCoding>
+	                <system value="http://unitsofmeasure.org"/>
+	                <code value="kg"/>
+	            </valueCoding>
+	        </extension>
+	        <linkId value="3.2.b"/>
+	        <text value="Weight (kg)"/>
+	        <type value="decimal"/>
+	    </item>
+	    <item>
+	        <extension url="http://hl7.org/fhir/StructureDefinition/questionnaire-unit">
+	            <valueCoding>
+	                <system value="http://unitsofmeasure.org"/>
+	                <code value="[in_i]"/>
+	            </valueCoding>
+	        </extension>
+	        <linkId value="3.2.c"/>
+	        <text value="Body Height (inches)"/>
+	        <type value="decimal"/>
+	    </item>
+	    <item>
+	        <!-- item/sdc-questionnaire-calculatedExpression - Calculated value for a question answer as determined by an evaluated expression..-->
+	        <extension url="http://hl7.org/fhir/uv/sdc/StructureDefinition/sdc-questionnaire-calculatedExpression">
+	            <valueExpression>
+	                <description value="BMI Calculation"/>
+	                <language value="text/fhirpath"/>
+	                <expression value="(%weight/(%height.power(2))).round(1)"/> 
+	            </valueExpression>
+	        </extension>
+	        <linkId value="3.2.d"/>
+	        <text value="Your Body Mass Index (BMI) is "/>
+	        <type value="decimal"/>
+	        <readOnly value="true"/>
+	    </item>
+		<item>
+	    	<linkId value="3.3.a" />
+	    	<text value="3.3 Example with a CQF calculated value (using 'cqf-calculatedValue' and 'cqf-library')" />
+			<type value="text" />
+		</item>		
+	    <item>
+	        <!-- item/cqf-calculatedValue - The name of an expression in a referenced library that determines a calculated value.-->
+	        <!-- TODO: add a format for dates -->
+	        <extension url="http://hl7.org/fhir/StructureDefinition/cqf-calculatedValue" >
+	            <valueString value="estimated_due_date"/>
+	        </extension>
+	        <linkId value="3.3.b"/> 
+	        <text value="Estimated Due Date"/>
+	        <type value="date"/>
+	        <readOnly value="true"/>
+	    </item>		
+	</item>    
+    <item>
+        <linkId value="4.0"/>
+        <text value="4. Other Controls" />
+		<type value="group" />
+		<item>
+	    	<linkId value="4.1.a" />
+	    	<text value="4.1 Example of options with initial value (using initial)" />
+			<type value="text" />
+		</item>			
+	    <item>
+	        <linkId value="4.1.b"/>
+	        <text value="Marital Status"/>
+	        <type value="choice"/>
+	        <answerValueSet value="http://hl7.org/fhir/ValueSet/marital-status"/>
+	        <!-- item/initial - default value-->
+	        <initial>
+	            <valueCoding>
+	                <system value="http://terminology.hl7.org/CodeSystem/v3-MaritalStatus"/>
+	                <code value="D"/>
+	                <display value="Divorced"/>
+	            </valueCoding>
+	        </initial>
+	    </item>
+		<item>
+	    	<linkId value="4.2.a" />
+	    	<text value="4.2 Example of enabling behaviors (using 'enableWhen', 'enableBehavior', and 'enableExpression') " />
+			<type value="text" />
+		</item>			
+	    <item>
+	        <linkId value="4.2.b"/>
+	        <type value="group"/>
+	        <item>
+	            <linkId value="4.2.b.1"/>
+	            <text value="Choose Gender"/>
+	            <type value="choice"/>
+	            <answerValueSet value="http://hl7.org/fhir/ValueSet/administrative-gender"/>
+	        </item>            
+	        <item>
+	            <linkId value="4.2.b.2"/>
+	            <text value="Are you pregnant? (enableWhen = gender is Female)"/>
+	            <type value="choice"/>
+	            <!-- item/enableWhen - A constraint indicating that this item should only be enabled (displayed/allow answers to be captured) when the specified condition is true.-->
+	            <enableWhen>
+	                <question value="4.2.b.1"/>
+	                <operator value="="/>
+	                <answerCoding>
+	                    <system value="http://hl7.org/fhir/administrative-gender"/>
+	                    <code value="female"/>
+	                </answerCoding>
+	            </enableWhen>
+	            <answerValueSet value="http://hl7.org/fhir/ValueSet/yesnodontknow"/>
+	        </item>
+	        <item>
+	            <linkId value="4.2.b.3"/>
+	            <text value="Are you diabetic? (enableWhen = gender is Female)"/>
+	            <type value="choice"/>
+	            <!-- item/enableWhen - A constraint indicating that this item should only be enabled (displayed/allow answers to be captured) when the specified condition is true.-->
+	            <enableWhen>
+	                <question value="4.2.b.1"/>
+	                <operator value="="/>
+	                <answerCoding>
+	                    <system value="http://hl7.org/fhir/administrative-gender"/>
+	                    <code value="female"/>
+	                </answerCoding>
+	            </enableWhen>
+	            <answerValueSet value="http://hl7.org/fhir/ValueSet/yesnodontknow"/>
+	        </item>
+	        <item>
+	            <linkId value="4.2.b.4"/>
+	            <text value="Have you been diagnosed with Gestational Diabetes? (enableBehavior = only when pregnant and diabetic)"/>
+	            <type value="choice"/>
+	            <!-- item/enableBehavior - Controls how multiple enableWhen values are interpreted - whether all or any must be true.-->
+	            <enableWhen>
+	                <question value="4.2.b.2"/>
+	                <operator value="="/>
+	                <answerCoding>
+	                    <system value="http://terminology.hl7.org/CodeSystem/v2-0136"/>
+	                    <code value="Y"/>
+	                </answerCoding>
+	            </enableWhen>
+	            <enableWhen>
+	                <question value="4.2.b.3"/>
+	                <operator value="="/>
+	                <answerCoding>
+	                    <system value="http://terminology.hl7.org/CodeSystem/v2-0136"/>
+	                    <code value="Y"/>
+	                </answerCoding>
+	            </enableWhen>
+	            <!-- item/enableBehavior - Controls how multiple enableWhen values are interpreted - whether all or any must be true.-->
+	            <enableBehavior value="all"/>
+	            <answerValueSet value="http://hl7.org/fhir/ValueSet/yesnodontknow"/>
+	        </item>
+	        <item>
+	            <extension url="http://hl7.org/fhir/StructureDefinition/entryFormat">
+	                <valueString value="MM/DD/YYYY"/>
+	            </extension>            
+	            <linkId value="4.2.b.5"/>
+	            <text value="Enter your birthdate (MM/DD/YYYY)"/>
+	            <type value="date"/>
+	            <answerValueSet value="http://hl7.org/fhir/ValueSet/administrative-gender"/>
+	        </item>
+	        <item>
+	            <!-- item/enableWhenExpression - An expression that returns a boolean value for whether to enable the item.-->
+	            <extension url="http://hl7.org/fhir/uv/sdc/StructureDefinition/sdc-questionnaire-enableWhenExpression">
+	                <valueExpression>
+	                    <description value="if last 2 questions were answered"/>
+	                    <language value="text/fhirpath"/>
+	                    <!-- To calculate age: subtract the birthdate's year from this year-->
+	                    <expression value="%resource.repeats(item).where(linkId='4.2.b.1').answer.valueCoding.code ='female' and today().toString().substring(0, 4).toInteger() - %resource.repeats(item).where(linkId='4.2.b.5').answer.toString().substring(0, 4).toInteger() >= 40"/>
+	                </valueExpression>
+	            </extension>  
+	            <linkId value="4.2.b.6"/>
+	            <text value="Have you had mammogram before?(enableWhenExpression = only when gender is female and age > 40)"/>
+	            <type value="choice"/>
+	            <answerValueSet value="http://hl7.org/fhir/ValueSet/yesnodontknow"/>
+	        </item>         
+	    </item>
+		<item>
+	    	<linkId value="4.3.a" />
+	    	<text value="4.3 Example involving ordinal value and contraints (using 'ordinalValue' and 'constraint')" />
+			<type value="text" />
+		</item>		    
+	    <item>
+	        <!-- item/constraint - An invariant that must be satisfied before responses to the questionnaire can be considered "complete". -->
+	        <extension url="http://hl7.org/fhir/StructureDefinition/questionnaire-constraint">
+	            <extension url="key">
+	                <valueId value="contraint-1"/>
+	            </extension>
+	            <extension url="requirements">
+	                <valueString value="At least three questions must be answered to have a meaningful total."/> 
+	            </extension>
+	            <extension url="severity">
+	                <valueCode value="warning"/>
+	            </extension>
+	            <extension url="expression">
+	                <valueString value="%resource.repeat(item).where(linkId='4.3.b').item.where(answer.hasValue()).count() >= 3"/>
+	            </extension>
+	            <extension url="human">
+	                <valueString value="You should answer at least three questions."/>
+	            </extension>
+	        </extension>        
+	        <linkId value="4.3.b"/>
+	        <text value="Over the last 2 weeks, how often have you been bothered by any of the following problems?" />
+	        <type value="group"/>
+	        <item>
+	            <linkId value="4.3.b.1"/>
+	            <text value="1. Little interest or pleasure in doing things "/>
+	            <type value="choice"/>
+	            <answerValueSet value="#LL358-3"/><!-- use contained ValueSet -->
+	        </item>
+	        <item>
+	            <linkId value="4.3.b.2"/>
+	            <text value="2. Feeling down, depressed, or hopeless "/>
+	            <type value="choice"/>
+	            <answerValueSet value="#LL358-3"/><!-- use contained ValueSet -->
+	        </item>
+	        <item>
+	            <linkId value="4.3.b.3"/>
+	            <text value="3. Trouble falling or staying asleep, or sleeping too much "/>
+	            <type value="choice"/>
+	            <answerValueSet value="#LL358-3"/><!-- use contained ValueSet -->
+	        </item>
+	        <item>
+	            <linkId value="4.3.b.4"/>
+	            <text value="4. Feeling tired or having little energy "/>
+	            <type value="choice"/>
+	            <answerValueSet value="#LL358-3"/><!-- use contained ValueSet -->
+	        </item>        
+	        <item>
+	            <extension url="http://hl7.org/fhir/uv/sdc/StructureDefinition/sdc-questionnaire-calculatedExpression">
+	                <valueExpression>
+	                    <description value="Total score"/>
+	                    <language value="text/fhirpath"/>
+	                    <expression value="%resource.repeat(item).where(linkId='4.3.b').item.answer.ordinalValue().aggregate($this + $total, 0)"/> 
+	                </valueExpression>
+	            </extension>            
+	            <linkId value="4.3.b.5"/>
+	            <text value="Total Score:"/>
+	            <type value="integer"/>
+	        </item>      
+	    </item>
+		<item>
+	    	<linkId value="4.4.a" />
+	    	<text value="4.4 Example of signature required (using 'signatureRequired' and 'usageMode')" />
+			<type value="text" />
+		</item>		    
+	    <item>
+	        <!-- item/questionnaire-signatureRequired - Is signature needed? -->
+	        <extension xmlns="http://hl7.org/fhir" url="http://hl7.org/fhir/StructureDefinition/questionnaire-signatureRequired">
+	            <valueCodeableConcept>
+	                <coding>
+	                    <system value="urn:iso-astm:E1762-95:2013"/>
+	                    <code value="1.2.840.10065.1.12.1.8"/>
+	                    <display value="Signature Witness Signature"/>
+	                </coding>
+	                <text value="the signature of a witness to any other signature."/>
+	            </valueCodeableConcept>
+	        </extension>
+	        <!-- item/sdc-questionnaire-usageMode - capture | display | display-non-empty | capture-display | capture-display-non-empty -->
+	        <extension xmlns="http://hl7.org/fhir" url="http://hl7.org/fhir/StructureDefinition/questionnaire-usageMode">
+	            <valueCode value="capture"/>
+	        </extension>
+	        <linkId value="4.4.b"/>
+	        <text value="Signature of Patient"/>
+	        <type value="attachment"/>
+	        <required value="true"/>
+	    </item>
+		<item>
+	    	<linkId value="4.5.0" />
+	    	<text value="4.5 Questionnaire can have an endpoint URL for the Form Receiver when it is completed (using 'endPoint')" />
+			<type value="text" />
+		</item>	
+		<item>
+	    	<linkId value="4.6.0" />
+	    	<text value="4.6 Questionnaire can be setup to have all enabled questions to be visible and accessible to the user (using 'entryMode') " />
+			<type value="text" />
+		</item>		    
+	</item>    
+>>>>>>> 0f80e55d1325e0d55e829f15db3333e5d586edba
+</Questionnaire>

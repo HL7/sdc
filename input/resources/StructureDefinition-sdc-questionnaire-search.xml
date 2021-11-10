@@ -1,127 +1,143 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<StructureDefinition xmlns="http://hl7.org/fhir">
-  <id value="sdc-questionnaire-search"/>
-  <url value="http://hl7.org/fhir/uv/sdc/StructureDefinition/sdc-questionnaire-search"/>
-  <name value="QuestionnaireSearch"/>
-  <status value="draft"/>
-  <description value="Describes the elements that should be exposed in a response to a search for questionnaires."/>
-  <fhirVersion value="4.0.1"/>
-  <kind value="resource"/>
-  <abstract value="false"/>
-  <type value="Questionnaire"/>
-  <baseDefinition value="http://hl7.org/fhir/uv/sdc/StructureDefinition/sdc-questionnaire"/>
-  <derivation value="constraint"/>
-   <differential>
-    <element id="Questionnaire">
-      <path value="Questionnaire"/>
-      <definition value="Describes the elements that should be exposed in a response to a search for questionnaires."/>
-      <mustSupport value="false"/>
-      <mapping>
-        <identity value="ihe-sdc"/>
-        <map value="Form_Package"/>
-      </mapping>
-    </element>
-    <element id="Questionnaire.identifier">
-      <path value="Questionnaire.identifier"/>
-      <mustSupport value="true"/>
-      <mapping>
-        <identity value="ihe-sdc"/>
-        <map value="./form_design/@form_design_identifier {maps to value; system=&quot;urn:ietf:rfc:3986&quot;}"/>
-      </mapping>
-    </element>
-    <element id="Questionnaire.title">
-      <path value="Questionnaire.title"/>
-      <min value="1"/>
-      <max value="1"/>
-      <mustSupport value="true"/>
-    </element>
-    <element id="Questionnaire.experimental">
-      <path value="Questionnaire.experimental"/>
-      <mustSupport value="true"/>
-    </element>
-    <element id="Questionnaire.date">
-      <path value="Questionnaire.date"/>
-      <definition value="Identifies when this version of the form was created.  Changes whenever the form is updated."/>
-      <min value="1"/>
-      <max value="1"/>
-      <mustSupport value="true"/>
-      <mapping>
-        <identity value="ihe-sdc"/>
-        <map value="./administration_package/registration/creation_date"/>
-      </mapping>
-    </element>
-    <element id="Questionnaire.publisher">
-      <path value="Questionnaire.publisher"/>
-      <mustSupport value="true"/>
-      <mapping>
-        <identity value="ihe-sdc"/>
-        <map value="./administration_package/registration/organization"/>
-      </mapping>
-    </element>
-    <element id="Questionnaire.description">
-      <path value="Questionnaire.description"/>
-      <mustSupport value="true"/>
-    </element>
-    <element id="Questionnaire.useContext">
-      <path value="Questionnaire.useContext"/>
+<StructureDefinition xmlns="http://hl7.org/fhir" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://hl7.org/fhir ../../input-cache/schemas/R4/fhir-single.xsd">
+	<id value="sdc-questionnaire-search"/>
+	<url value="http://hl7.org/fhir/uv/sdc/StructureDefinition/sdc-questionnaire-search"/>
+	<name value="QuestionnaireSearch"/>
+	<status value="draft"/>
+	<description value="Describes the elements that should be exposed in a response to a search for questionnaires."/>
+	<fhirVersion value="4.0.1"/>
+	<kind value="resource"/>
+	<abstract value="false"/>
+	<type value="Questionnaire"/>
+	<baseDefinition value="http://hl7.org/fhir/uv/sdc/StructureDefinition/sdc-questionnaire"/>
+	<derivation value="constraint"/>
+	<differential>
+		<element id="Questionnaire">
+			<path value="Questionnaire"/>
+			<definition value="Describes the elements that should be exposed in a response to a search for questionnaires."/>
+			<mustSupport value="false"/>
+			<mapping>
+				<identity value="ihe-sdc"/>
+				<map value="Form_Package"/>
+			</mapping>
+		</element>
+		<element id="Questionnaire.extension:is-modular">
+      <path value="Questionnaire.extension"/>
+      <sliceName value="is-modular"/>
       <type>
-        <code value="UsageContext"/>
-        <profile value="http://hl7.org/fhir/uv/sdc/StructureDefinition/sdc-usagecontext"/>
+        <code value="Extension"/>
+        <profile value="http://hl7.org/fhir/uv/sdc/StructureDefinition/sdc-questionnaire-is-modular"/>
       </type>
-      <mustSupport value="true"/>
-      <mapping>
-        <identity value="ihe-sdc"/>
-        <map value="./form_design/classifier"/>
-      </mapping>
     </element>
-    <element id="Questionnaire.jurisdiction">
-      <path value="Questionnaire.jurisdiction"/>
-      <comment value="Relevant for systems that support forms from multiple countries/provinces/states."/>
-      <min value="0"/>
-      <max value="1"/>
-      <mustSupport value="false"/>
+		<element id="Questionnaire.extension:assembledFrom">
+      <path value="Questionnaire.extension"/>
+      <sliceName value="assembledFrom"/>
+      <type>
+        <code value="Extension"/>
+        <profile value="http://hl7.org/fhir/uv/sdc/StructureDefinition/sdc-questionnaire-assembledFrom"/>
+      </type>
     </element>
-    <element id="Questionnaire.purpose">
-      <path value="Questionnaire.purpose"/>
-      <mustSupport value="true"/>
-    </element>
-    <element id="Questionnaire.copyright">
-      <path value="Questionnaire.copyright"/>
-      <mustSupport value="true"/>
-    </element>
-    <element id="Questionnaire.approvalDate">
-      <path value="Questionnaire.approvalDate"/>
-      <comment value="Relevant for systems that have strict curation requirements that govern when a form/instrument is permitted for use."/>
-      <mustSupport value="false"/>
-    </element>
-    <element id="Questionnaire.lastReviewDate">
-      <path value="Questionnaire.lastReviewDate"/>
-      <comment value="Relevant for systems that have strict curation requirements that govern when a form/instrument is permitted for use."/>
-      <mustSupport value="false"/>
-    </element>
-    <element id="Questionnaire.effectivePeriod">
-      <path value="Questionnaire.effectivePeriod"/>
-      <comment value="Relevant for systems that have strict curation requirements that govern when a form/instrument is permitted for use."/>
-      <mustSupport value="false"/>
-    </element>
-    <element id="Questionnaire.code">
-      <path value="Questionnaire.code"/>
-      <min value="0"/>
-      <max value="1"/>
-      <mustSupport value="true"/>
-    </element>
-    <element id="Questionnaire.item">
-      <path value="Questionnaire.item"/>
-    </element>
-    <element id="Questionnaire.item.definition">
-      <path value="Questionnaire.item.definition"/>
-      <comment value="Systems that support searching by the &#39;definition&#39; parameter SHALL support returning item.definition."/>
-      <mustSupport value="false"/>
-    </element>
-    <element id="Questionnaire.item.code">
-      <path value="Questionnaire.item.code"/>
-      <comment value="Systems that support searching by the &#39;code&#39; parameter SHALL support returning item.code."/>
-      <mustSupport value="false"/>
-    </element>
-  </differential>
+		<element id="Questionnaire.identifier">
+			<path value="Questionnaire.identifier"/>
+			<mustSupport value="true"/>
+			<mapping>
+				<identity value="ihe-sdc"/>
+				<map value="./form_design/@form_design_identifier {maps to value; system=&quot;urn:ietf:rfc:3986&quot;}"/>
+			</mapping>
+		</element>
+		<element id="Questionnaire.title">
+			<path value="Questionnaire.title"/>
+			<min value="1"/>
+			<max value="1"/>
+			<mustSupport value="true"/>
+		</element>
+		<element id="Questionnaire.experimental">
+			<path value="Questionnaire.experimental"/>
+			<mustSupport value="true"/>
+		</element>
+		<element id="Questionnaire.date">
+			<path value="Questionnaire.date"/>
+			<definition value="Identifies when this version of the form was created.  Changes whenever the form is updated."/>
+			<min value="1"/>
+			<max value="1"/>
+			<mustSupport value="true"/>
+			<mapping>
+				<identity value="ihe-sdc"/>
+				<map value="./administration_package/registration/creation_date"/>
+			</mapping>
+		</element>
+		<element id="Questionnaire.publisher">
+			<path value="Questionnaire.publisher"/>
+			<mustSupport value="true"/>
+			<mapping>
+				<identity value="ihe-sdc"/>
+				<map value="./administration_package/registration/organization"/>
+			</mapping>
+		</element>
+		<element id="Questionnaire.description">
+			<path value="Questionnaire.description"/>
+			<mustSupport value="true"/>
+		</element>
+		<element id="Questionnaire.useContext">
+			<path value="Questionnaire.useContext"/>
+			<type>
+				<code value="UsageContext"/>
+				<profile value="http://hl7.org/fhir/uv/sdc/StructureDefinition/sdc-usagecontext"/>
+			</type>
+			<mustSupport value="true"/>
+			<mapping>
+				<identity value="ihe-sdc"/>
+				<map value="./form_design/classifier"/>
+			</mapping>
+		</element>
+		<element id="Questionnaire.jurisdiction">
+			<path value="Questionnaire.jurisdiction"/>
+			<comment value="Relevant for systems that support forms from multiple countries/provinces/states."/>
+			<min value="0"/>
+			<max value="1"/>
+			<mustSupport value="false"/>
+		</element>
+		<element id="Questionnaire.purpose">
+			<path value="Questionnaire.purpose"/>
+			<mustSupport value="true"/>
+		</element>
+		<element id="Questionnaire.copyright">
+			<path value="Questionnaire.copyright"/>
+			<mustSupport value="true"/>
+		</element>
+		<element id="Questionnaire.approvalDate">
+			<path value="Questionnaire.approvalDate"/>
+			<comment value="Relevant for systems that have strict curation requirements that govern when a form/instrument is permitted for use."/>
+			<mustSupport value="false"/>
+		</element>
+		<element id="Questionnaire.lastReviewDate">
+			<path value="Questionnaire.lastReviewDate"/>
+			<comment value="Relevant for systems that have strict curation requirements that govern when a form/instrument is permitted for use."/>
+			<mustSupport value="false"/>
+		</element>
+		<element id="Questionnaire.effectivePeriod">
+			<path value="Questionnaire.effectivePeriod"/>
+			<comment value="Relevant for systems that have strict curation requirements that govern when a form/instrument is permitted for use."/>
+			<mustSupport value="false"/>
+		</element>
+		<element id="Questionnaire.code">
+			<path value="Questionnaire.code"/>
+			<min value="0"/>
+			<max value="1"/>
+			<mustSupport value="true"/>
+		</element>
+		<element id="Questionnaire.item">
+			<path value="Questionnaire.item"/>
+		</element>
+		<element id="Questionnaire.item.definition">
+			<path value="Questionnaire.item.definition"/>
+			<comment value="Systems that support searching by the &#39;definition&#39; parameter SHALL support returning item.definition."/>
+			<mustSupport value="false"/>
+		</element>
+		<element id="Questionnaire.item.code">
+			<path value="Questionnaire.item.code"/>
+			<comment value="Systems that support searching by the &#39;code&#39; parameter SHALL support returning item.code."/>
+			<mustSupport value="false"/>
+		</element>
+	</differential>
 </StructureDefinition>

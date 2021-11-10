@@ -55,6 +55,17 @@
       </type>
       <mustSupport value="true"/>
     </element>
+    <element id="Questionnaire.extension:is-modular">
+      <path value="Questionnaire.extension"/>
+      <sliceName value="is-modular"/>
+      <min value="0"/>
+      <max value="1"/>
+      <type>
+        <code value="Extension"/>
+        <profile value="http://hl7.org/fhir/uv/sdc/StructureDefinition/sdc-questionnaire-is-modular"/>
+      </type>
+      <mustSupport value="true"/>
+    </element>
     <element id="Questionnaire.url">
       <path value="Questionnaire.url"/>
       <min value="1"/>
@@ -69,7 +80,7 @@
         <map value="Not currently in schema"/>
       </mapping>
     </element>
-	<element id="Questionnaire.title">
+    <element id="Questionnaire.title">
       <path value="Questionnaire.title"/>
       <mustSupport value="true"/>
     </element>
@@ -166,7 +177,7 @@
       </type>
       <mustSupport value="false"/>
     </element>
-	<element id="Questionnaire.item.extension:UnitSupplementalSystem">
+    <element id="Questionnaire.item.extension:UnitSupplementalSystem">
       <path value="Questionnaire.item.extension"/>
       <sliceName value="UnitSupplementalSystem"/>
       <min value="0"/>

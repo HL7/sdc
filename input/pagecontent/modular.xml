@@ -1,0 +1,244 @@
+<div xmlns="http://www.w3.org/1999/xhtml" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://hl7.org/fhir ../../input-cache/schemas/R4/fhir-single.xsd">
+  <a name="background"> </a>
+  <h3>Modular Questionnaire Background</h3>
+  <p>
+    Maintaining questionnaires can take a considerable amount of effort, particularly if they include logic to support <a href="population.html">population</a>
+    or <a href="extraction.html">extraction</a>.  At the same time, it is common for questionnaires to share content - the same questions or even the same
+    sections might appear in multiple forms.  Some organizations, particularly those with a research focus may have extensive libraries of questions intended
+    to help drive re-use and consistency.  This allows those organizations to increase consistency in how data is collected, which in turn increases the
+    comparability of data captured, even when captured using different instruments.  It also increases the quality of the data collected by encouraging the
+    re-use of questions that have been vetted for readability, neutral phrasing and other quality considerations.
+  </p>
+  <p>
+    Achieving re-use with questionnaires is primarily focused on the benefit of authors.  The use of modularization techniques is often transparent to the
+    end users who must complete the questionnaires, unless they find themselves filling out many distinct forms and happen to notice the consistency of
+    language and and sections between those forms.  In other words, questionnaire re-use is part of the authoring and publishing process, but generally
+    not the form filling process.
+  </p>
+  <p>
+    Modular questionnaires should adhere to this <a href="http://hl7.org/fhir/uv/sdc/StructureDefinition/sdc-questionnaire-modular.html">SDC profile</a>.
+  </p>
+  <p>
+    This portion of the SDC specification describes two mechanisms for enabling re-use:
+  </p>
+  <ul>
+    <li><a href="#modular">Modular Questionnaires</a> allow one questionnaire to be composed of sub-questionnaires (which can in turn be composed of further
+      sub-questionnaires, and so on).</li>
+    <li><a href="#element">Data Element-based Questionnaires</a> are crafted by having items make use of the 
+      <a href="{{site.data.fhir.path}}questionnaire-definitions.html#Questionnaire.item.definition">definition element</a>.  The referenced definitions
+      include all of the metadata for the question, group or display item including the text, data type, optionality and other characteristics.  
+      Questionnaires are authored by assembling these minimal items referencing robust definitions.</li>
+  </ul>
+  <a name="workflow"> </a>
+  <h3>Modular workflow</h3>
+  <p>
+    In both mechanisms, there are two phases.  First, the questionnaire is authored in its modular form, maximizing re-use and minimizing authoring
+    effort.  Then, there is then a need to take the re-useably authored form (or collection of forms) and generate a fully 'assembled'
+    form that contains all of the details needed for a <a href="CapabilityStatement-sdc-form-filler.html">Form Filler</a> to properly render and capture
+    answers for the form.  While this assembly process <i>can</i> be undertaken by the Form Filler, it is more typically managed by the
+    <a href="CapabilityStatement-sdc-form-designer.html">form designer</a> as part of the publication process.
+  </p>
+  <p>
+    The following diagram shows the results of the assembly process with a set of questionnaires that combine both approaches:
+    <img src="modular.svg" alt="One parent questionnaire refernging two sub-questionnaires, which each in turn reference elements in a StructureDefinition,
+    followed by the resulting single assembled questionnaire"/>
+  </p>
+  <p>
+    The first questionnaire (Q1) contains two items, each with a sub-module extension pointing to other questionnaires - Q2 and Q3.  Those two 
+    sub-questionnaires in term make use of the 'definition' element to refer to data elements from a single StructureDefinition.  (In practice, the
+    elements could as easily have been pointed to from a variety of StructureDefinitions.)  The assemble operation then produces a new instance of Q1 that
+    combines all of the items referenced from the two sub-modules and brings in the question text and other metadata from the referenced element definitions.
+  </p>
+  <p>
+    The assembly process can be done internally or by invoking the <a href="OperationDefinition-Questionnaire-assemble.html">$assemble</a> operation.
+    Questionnaires might use any combination of defining content traditionally (i.e. all item details defined inline), referencing sub-questionnaires,
+    and/or referencing external data elements.  There is also no theoretical limit to the amount of nesting that can happen with sub-questionnaires, though
+    practically more than 2-3 levels of nesting are very unlikely.
+  </p>
+  <p>
+    It is helpful to know when a Questionnare is going to require assembly or not.  A system can search through for items that declare the 
+    <a href="StructureDefinition-sdc-questionnaire-subQuestionnaire.html">subQuestionnaire</a> extension, though doing so isn't terribly efficient.  However,
+    for <a href="#element">Data Element-based Questionnaires</a>, there is no mechanism to tell with certainty - the 'definition' element may be included in 
+    questions for a variety of reasons and some degree of metadata may be maintained in the 'master' Questionnaire for readability.  Therefore, this specification 
+    defines a <a href="StructureDefinition-sdc-questionnaire-is-modular.html">modular</a> extension that allows flagging that a particular Questionnaire is
+    modular and requires assembly before further processing.  A 
+    <a href="http://hl7.org/fhir/uv/sdc/SearchParameter/questionnaire-is-modular">corresponding SearchParameter</a> has also been defined to allow filter for
+    (or excluding) modular forms when looking for candidate Questionnaires.
+  </p>
+  <p>
+    When working with modular questionnaires, the 'assembly' step should be performed prior to any population steps.
+  </p>
+  
+  <a name="modular"> </a>
+  <h3>Modular Questionnaires</h3>
+  <p>
+    The notion of a modular Questionnaire is that a 'display' item in a parent questionnaire can include an extension pointing to a specific Questionnaire
+    whose items should be embedded in the resulting assembled Questionnaire in place of the 'display' item.  The details of how this works are as follows:
+  </p>
+  <ol>
+    <li>The <a href="StructureDefinition-sdc-questionnaire-subQuestionnaire.html">subQuestionnaire</a> extension will contain the canonical reference to the
+      Questionnaire whose content should be substituted for the display item</li>
+    <li>The canonical reference <b>SHOULD</b> be version-specific to ensure that the author of the parent questionnaire has full control over what content
+      they are importing.  If the subQuestionnaire is not version-specific, then the same version of the parent Questionnaire could include varying
+      items as the subQuestionnaires evolve and this is considered an error.  I.e. if canonical references are not version-specific, the content of the
+      referenced Questionnaires cannot change in a way that results in differences in allowed QuestionnaireResponses.</li>
+    <li>It is possible that the assembly option will be unable to substitute the display item for the referenced Questionnaire or that the system that tries
+      to make use of the modular Questionnaire might not recongize or be able to support assembly of the Questionnaire at all.  For this reason, the 'text'
+      of the display element <b>SHOULD</b> say something that is meaningful in situations where it is not replaced.  For example: "Sub-questionnaire 
+      [some URL] not available.  Unable to display all questions."</li>
+    <li>When the Questionnaire goes through the 'assembly' process, the display item having the subQuestionnaire extension will be removed entirely.
+      I.e. that linkId and the associated text will not appear in the assembled Questionnaire.  Instead, all of the 'root' items of the referenced
+      Questionnaire - including their descendant elements and items will appear in the same position as the replaced 'display' item was.</li>
+    <li>In addition to propagating the items from the referenced Questionnaire, additional items are also propagated as follows:
+      <ul>
+        <li>All <a href="{{site.data.fhir.path}}resource.html#Meta">meta</a> information, including security and other tags declare on the imported
+          Questionnaire are ignored</li>
+        <li>If <a href="{{site.data.fhir.path}}resource-definitions.html#Resource.language">language</a> is declared on the imported Questionnaire, it
+          must match the language on the importing Questionnnaire.</li>
+        <li><a href="{{site.data.fhir.path}}resource-definitions.html#Resource.implicitRules">implicitRules</a> and
+          <a href="{{site.data.fhir.path}}domainresource-definitions.html#DomainResource.modifierExtension">modifierExtension</a> are
+          prohibited and are considered an error if present.</li>
+        <li>Any <a href="{{site.data.fhir.path}}domainresource-definitions.html#DomainDresource.contained">contained</a> resources in the
+          subQuestionnaire are added as contained resources in the parent Questionnaire with the exception that, barring linkIdPrefix requirements
+          (see further below), if a subQuestionnaire is imported more than once, contained resources will only be included once in the assembled Questionnaire.</li>
+        <li>Extensions are propagated differently, depending on the nature of the extension:
+          <ul>
+            <li>propagate to the 'root' of the base Questionnaire:<ul>
+                <li><a href="expressions.html#cqf-library">cqf-library</a> (check for uniqueness by url and only import once)</li>
+                <li><a href="expressions.html#launchContext">launch-context</a> (check for uniqueness by code and only import once)</li>
+              </ul>
+            </li>
+            <li>propagate to the item that contains the 'display' item being substituted.  (If the display item is at the root, then this will also be at the root.):<ul>
+                <li><a href="expressions.html#constraint">questionnaire-constraint</a></li>
+                <li><a href="expressions.html#variable">variable</a> (check for uniqueness by name - duplication is an error)</li>
+                <li><a href="StructureDefinition-sdc-questionnaire-itemPopulationContext.html">itemPopulationContext</a> (it is an error if there are multiple 
+                  itemPopulationContext resulting on the item this propagates to)</li>
+                <li><a href="StructureDefinition-sdc-questionnaire-itemExtractionContext.html">itemExtractionContext</a> (it is an error if there are multiple 
+                  itemExtractionContext resulting on the item this propagates to)</li>
+              </ul>
+            </li>
+            <li>all other extensions are ignored</li>
+          </ul>
+        </li>
+        <li>All metadata elements on the subQuestionnaire are ignored.  If there are copyright limitations on the referenced Questionnaire, it is the
+          responsibility of the referencing Questionnaire to reflect those in its own Questionnaire.copyright element.</li>
+      </ul></li>
+    <li>This process occurs recursively.  I.e. If an imported Questionnaire contains display elements with a subQuestionnaire extension, those display
+      elements are also replaced by the referenced Questionnaire, repeating the process until no further subQuestionnaire extensions are found.</li>
+    <li>It is possible that the same Questionnaire might be substituted more than once as part of this process, however it is in an error if 
+      the module references recurse.  E.g. if Questionnaire A contains an item that references subQuestionnaire B, which in turn has an element that
+      references subQuestionnaire A.</li>
+    <li>It is also an error if the resulting fully-assembled Questionnaire has any duplicate linkIds.</li>
+    <li>In order to avoid duplicate linkIds, a parent Questionnaire <b>MAY</b> declare a special variable with the name <code>linkIdPrefix</code>.  If
+      there is a linkIdPrefix in context at the time a subQuestionnaire is substituted, that linkIdPrefix SHALL be pre-pended to the <code>linkId</code> and 
+      <code>enableWhen.question</code> elements of all items in that Questionnaire.  See the <a href="#example">examples</a> to see how this works in practice.
+      If linkIdPrefix is not used, care should be taken to ensure that linkIds are appropriately coordinated to avoid overlap across all referenced 
+      Questionnaires</li>
+    <li>LinkIdPrefixes are also prepended to the 'id' elements of any <a href="{{site.data.fhir.path}}references.html#contained">contained</a> resources
+      and all references to contained resources (i.e. references or canonicals that start with '#').</li>
+    <li>linkIdPrefixes will need to be referenced in any expressions that are dependent on linkId.  For example, if there is an expression that says
+      "%root.descendants().select(item.where(linkId='1.1'))" would need to change to "%root.descendants().select(item.where(linkId=%linkIdPrefix + '1.1'))"</li>
+    <li>Imported Questionnaires may be defined to be dependent on contextual information passed in from the referencing Questionnaire (including 'linkIdPrefix').
+      To allow validating these subQuestionnaires independent of their inclusion in a parent, all such dependencies must be declared using the
+      <a href="StructureDefinition-sdc-questionnaire-assembleContext.html">assembleContext</a> extension on the root of the 
+      Questionnaire.  As well, if a Questionnaire is referenced by a subQuestionnaire extension, it is an error if the listed variables are not available
+      in the context of the referencing element.</li>
+    <li>The presence of an <code>assembleContext</code> extension on a Questionnaire indicates that it can ONLY be used as a part of a modular Questionnaire.</li>
+    <li>If stored, an assembled Questionnaire <b>SHALL</b> have the same URL as the base Questionnaire but must have a distinct version - typically either a UUID 
+      or "[version]-assembled"</li>
+    <li>An assembled Questionnaire <b>SHALL</b> refer to the original base Questionnaire with a version-specific reference using the 
+      <a href="StructureDefinition-sdc-questionnaire-assembledFrom.html">assembledFrom</a> extension.  Questionnaires can also be searched by this extension using the
+      <a href="SearchParameter-questionnaire-assembledFrom.html"></a>  If a QuestionnaireResponse is based on an
+      assembled Questionnaire, it <b>SHOULD</b> use the URL specified in the assembledFrom extension rather than the URL and version of the assembled
+      Questionnaire itself.</li>
+  </ol>
+    
+    
+
+We will set an expectation in SDC about what changes are permitted for 'active' questionnaires while keeping version unchanged and which changes force a new version.    
+    
+  <p>
+     
+  </p>
+  <a name="element"> </a>
+  <h3>Data Element-based Questionnaires</h3>
+  <p>
+    Data Element-based Questionnaires rely on the fact that Questionnaire 'item' elements largely correspond to the information found in the
+    <a href="{{site.data.fhir.path}}elementdefinition.html">ElementDefinitions</a> that are part of 
+    <a href="{{site.data.fhir.path}}structuredefinition.html">StructureDefinitions</a>.  These might be FHIR resources or data types, FHIR profiles, or logical models
+    that represent any type of data at all.  Full details on the mappings between Questionnaire.item and StructureDefinition.snapshot.element as well as general guidance
+    on how definitions are to be mapped, including mapping to version-specific artifacts, mapping to slices, etc. are found in the FHIR core specification
+    <a href="{{site.data.fhir.path}}questionnaire.html#definition">here</a>.
+  </p>
+  <p>
+    The process for 'assembling' a Questionnaire that leverages Data Element-based mappings is as follows:
+  </p>
+  <ol>
+    <li>
+      For each item in the questionnaire, if an <code>item.definition</code> element is present, try to resolve the referenced
+      element.
+    </li>
+    <li>
+      If the URL refers to an element in a StructureDefinition and the StructureDefinition resolves but the referenced element does not, raise an error.
+    </li>
+    <li>
+      Otherwise, if the referenced element cannot be resolved, raise an warning unless the item has no text element or the item.type is 'choice' or
+      'open-choice' and no answerOptions, answerValueSet or <a href="StructureDefinition-sdc-questionnaire-answerExpression.html">answerExpression</a>
+      is available, in which case raise an error.
+    </li>
+    <li>
+      Go through each property and extension on the element and see if the corresponding property or extension already exists on the Questionnaire.item.
+      (Extensions are matched by URL and then 'value.name' if the extension is an expression.)
+      <ul>
+        <li>If the property or extension is not present (and the property has a mapping to a Questionnaire.item property or the extension is one allowed 
+          to appear on Questionnaire.item), then propagate the property or extension to the Questionnaire.item.</li>
+        <li>If the property or extension already exists, leave it as is, but provide a warning if the content in the element definition differs from that on
+          the Questionnaire.item.  I.e. Elements defined on the Questionnaire item override information found on the referenced definition, but a warning
+          will be raised noting any discrepancies.</li>
+      </ul>
+    </li>
+    <li>
+      If the item.type is 'group' and the group has no child items with a type other than 'display', then child question items of the appropriate type
+      should be generated for each child element of the ElementDefinition pointed to by the <code>item.definition</code>.  This process recurses.
+    </li>
+    <li>
+      Alternatively, if the item.type is 'group' and the group does have child questions, the child questions should be matched against the children of
+      the ElementDefinition (using item.definition) and any ElementDefinition child elements not present as child questions should produce a warning.
+    </li>
+  </ol>
+  <p>
+    If a system wants to create a library of 'questions' that can be drawn on by Questionnaires, this can be accomplished by:
+  </p>
+  <ul>
+    <li>using a single StructureDefinition as a logical model with elements for each item;</li>
+    <li>creating a distinct StructureDefinition for each item; or</li>
+    <li>a combination where there are multiple StructureDefinition 'sub-libraries', each with a collection of elements</li>
+  </ul>
+  <p>
+    The approach taken will depend on whether metadata such as status, publisher, etc. needs to be tracked on a per element basis or can be tracked at a higher
+    level of granularity.  Note that even when creating a separate data model for each item, some items may be 'complex', representing a 'group' with multiple child
+    questions, and thus there will still be multiple elements in the StructureDefinition.
+  </p>
+  <p>
+    The only thing this implementation guide adds to the capabilities described in the base specification is the formal definition of the
+    <a href="OperationDefinition-Questionnaire-assemble.html">$assemble</a> operation, including 
+    <a href="OperationDefinition-Questionnaire-assemble.html#expectations">expectations of behavior</a> for situations when the properties for an item in the
+    base Questionnaire differ from those in the referenced definition.
+  </p>
+
+  <a name="examples"> </a>
+  <h3>Examples</h3>
+  <p>
+    This specification includes a simple set of examples that highlight the functionality of the two different modular questionnaire mechanisms.  They also serve as
+    test cases for systems that might want to check their support for the <a href="OperationDefinition-Questionnaire-assemble.html">$assemble</a> operation (or equivalent
+    internal functionality).  The files are as follows:
+  </p>
+  <ul>
+    <li><a href="Questionnaire-sdc-modular-root.html">modular-root</a> - A simple questionnaire with a couple of items of its own (some using definitions, some defined 
+      inline) as well as references to sub-questionnaires</li>
+    <li><a href="Questionnaire-sdc-modular-name">modular-name</a> - A re-useable questionnaire that can capture a person's name</li>
+    <li><a href="Questionnaire-sdc-modular-contact">modular-contact</a> - A re-useable questionnaire that can capture a person's contacts</li>
+    <li><a href="StructureDefinition-sdc-question-library">question-library</a> - A library of re-useable questionnaire questions</li>
+    <li><a href="Parameters-sdc-modular-root-assembled.html">modular-root-assembled</a> - An assembled version of the <a href="Questionnaire-sdc-modular-root.html">modular-root</a> questionnaire</li>
+  </ul>
+</div>

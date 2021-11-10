@@ -803,6 +803,22 @@
         <definition value="http://hl7.org/fhir/SearchParameter/conformance-url"/>
         <type value="uri"/>
       </searchParam>
+      <searchParam>
+        <extension url="http://hl7.org/fhir/StructureDefinition/capabilitystatement-expectation">
+          <valueCode value="SHOULD"/>
+        </extension>
+        <name value="url"/>
+        <definition value="http://hl7.org/fhir/uv/sdc/SearchParameter/questionnaire-assembledFrom"/>
+        <type value="uri"/>
+      </searchParam>
+      <searchParam>
+        <extension url="http://hl7.org/fhir/StructureDefinition/capabilitystatement-expectation">
+          <valueCode value="SHOULD"/>
+        </extension>
+        <name value="url"/>
+        <definition value="http://hl7.org/fhir/uv/sdc/SearchParameter/questionnaire-is-modular"/>
+        <type value="uri"/>
+      </searchParam>
     </resource>
     <resource>
       <type value="ValueSet"/>
@@ -927,7 +943,7 @@
       <extension url="http://hl7.org/fhir/StructureDefinition/capabilitystatement-expectation">
         <valueCode value="MAY"/>
       </extension>
-      <name value="populate html"/>
+      <name value="populatehtml"/>
       <definition value="http://hl7.org/fhir/uv/sdc/OperationDefinition/Questionnaire-populatehtml"/>
       <!--				<display value="Populate Questionnaire returning HTML page to render locally for reviewing/editing/submitting"/>-->
     </operation>
@@ -935,9 +951,16 @@
       <extension url="http://hl7.org/fhir/StructureDefinition/capabilitystatement-expectation">
         <valueCode value="MAY"/>
       </extension>
-      <name value="populate link"/>
+      <name value="populatelink"/>
       <definition value="http://hl7.org/fhir/uv/sdc/OperationDefinition/Questionnaire-populatelink"/>
       <!--				<display value="Populate questionnaire returning URL to page to review/edit/submit"/>-->
+    </operation>
+    <operation>
+      <extension url="http://hl7.org/fhir/StructureDefinition/capabilitystatement-expectation">
+        <valueCode value="MAY"/>
+      </extension>
+      <name value="assemble"/>
+      <definition value="http://hl7.org/fhir/uv/sdc/OperationDefinition/Questionnaire-assemble"/>
     </operation>
   </rest>
 </CapabilityStatement>
