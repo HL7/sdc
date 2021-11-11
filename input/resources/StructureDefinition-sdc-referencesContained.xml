@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<StructureDefinition xmlns="http://hl7.org/fhir">
+<StructureDefinition xmlns="http://hl7.org/fhir" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://hl7.org/fhir ../../input-cache/schemas/R4/fhir-single.xsd">
   <id value="sdc-referencesContained"/>
   <url value="http://hl7.org/fhir/uv/sdc/StructureDefinition/sdc-referencesContained"/>
   <name value="ReferencesContained"/>
@@ -23,7 +23,6 @@
       <short value="Reference to the contained resource"/>
       <definition value="This indicates that the element containing this extension has some sort of expression that makes reference to the specified contained resource."/>
       <comment value="This extension is used to satisfy the validator requirement that contained resources must be referenced from somewhere else within the containing resource.  It SHALL be placed inside the element that has the expression referencing the contained resource."/>
-      <requirements value="Sometimes a reference to a contained resource might be inside FHIRPath, CQL, XHTML, markdown or some other language that is opaque to the validator.  The validator constraint only checks for explicit Reference and canonical references, not embedded references."/>
 	  <min value="0"/>
       <max value="1"/>
     </element>
