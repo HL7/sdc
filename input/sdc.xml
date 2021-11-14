@@ -926,6 +926,31 @@
       <description value="Shows a ServiceRequest soliciting completion of a questionnaire"/>
       <exampleCanonical value="http://hl7.org/fhir/uv/sdc/StructureDefinition/sdc-servicerequest"/>
     </resource>
+    <resource>
+      <reference>
+        <reference value="Questionnaire/sdc-modular-root"/>
+      </reference>
+      <exampleCanonical value="http://hl7.org/fhir/uv/sdc/StructureDefinition/sdc-questionnaire-modular"/>
+    </resource>
+    <resource>
+      <reference>
+        <reference value="Questionnaire/sdc-modular-contact"/>
+      </reference>
+      <exampleCanonical value="http://hl7.org/fhir/uv/sdc/StructureDefinition/sdc-questionnaire-modular"/>
+    </resource>
+    <resource>
+      <reference>
+        <reference value="Questionnaire/sdc-modular-name"/>
+      </reference>
+      <exampleCanonical value="http://hl7.org/fhir/uv/sdc/StructureDefinition/sdc-questionnaire-modular"/>
+    </resource>
+    <resource>
+      <reference>
+        <reference value="Parameters/sdc-modular-root-assembled"/>
+      </reference>
+      <name value="Example $assemble operation response"/>
+      <description value="Shows the result of performing a $assemble operation on the [modular-root](Questionnaire-sdc-modular-root.html) questionnaire"/>
+    </resource>
     <page>
       <extension url="http://hl7.org/fhir/StructureDefinition/structuredefinition-standards-status">
         <valueCode value="informative"/>

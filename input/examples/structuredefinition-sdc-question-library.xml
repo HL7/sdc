@@ -1,10 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <StructureDefinition xmlns="http://hl7.org/fhir" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://hl7.org/fhir ../../input-cache/schemas/r4/fhir-single.xsd">
   <id value="sdc-question-library"/>
+<!-- can't do this until R4B
   <contained>
     <ValueSet>
       <id value="sex"/>
       <status value="draft"/>
+      <name value="SexValueSet"/>
       <compose>
         <include>
           <system value="http://terminology.hl7.org/CodeSystem/v2-0001"/>
@@ -19,7 +21,7 @@
         </include>
       </compose>
     </ValueSet>
-  </contained>
+  </contained>-->
   <url value="http://hl7.org/fhir/uv/sdc/StructureDefinition/sdc-question-library"/>
   <name value="SDCQuestionLibrary"/>
   <title value="SDC Question Library"/>
@@ -29,8 +31,9 @@
   <fhirVersion value="4.0.1"/>
   <kind value="logical"/>
   <abstract value="true"/>
-  <type value="Questionnaire"/>
-  <baseDefinition value="http://hl7.org/fhir/Base"/>
+  <type value="Demographics"/>
+  <!-- Todo: baseDefinition should be 'Base' -->
+  <baseDefinition value="http://hl7.org/fhir/StructureDefinition/Resource"/>
   <derivation value="specialization"/>
    <differential>
     <element id="Demographics">
@@ -47,10 +50,22 @@
       </extension>
       <path value="Demographics.dob"/>
       <label value="What is this person's date of birth?"/>
+      <definition value="n/a"/>
+      <min value="0"/>
       <max value="1"/>
       <type>
         <code value="date"/>
       </type>
+      <minValueDate value="1900-01-01"/>
+      <maxValueDate>
+        <extension url="http://hl7.org/fhir/StructureDefinition/cqf-expression">
+          <valueExpression>
+            <language value="text/fhirpath"/>
+            <!-- Allow birth date of 'tomorrow' to account for timezone discrepancies -->
+            <expression value="now() as date + 1 day"/>
+          </valueExpression>
+        </extension>
+      </maxValueDate>
     </element>
     <element id="Demographics.sex">
       <extension url="http://hl7.org/fhir/uv/sdc/StructureDefinition/sdc-questionnaire-initialExpression">
@@ -62,26 +77,34 @@
       </extension>
       <path value="Demographics.sex"/>
       <label value="What is this person's gender?"/>
+      <definition value="n/a"/>
+      <min value="0"/>
       <max value="1"/>
       <type>
         <code value="code"/>
       </type>
       <binding>
         <strength value="required"/>
-        <valueSet value="#sex"/>
+        <valueSet value="http://hl7.org/fhir/ValueSet/administrative-gender"/>
+<!--        <valueSet value="#sex"/>-->
       </binding>
     </element>
     <element id="Demographics.address">
       <path value="Demographics.address"/>
       <label value="What is this person's current mailing address?"/>
+      <definition value="n/a"/>
+      <min value="0"/>
       <max value="1"/>
       <type>
-        <code value="Base"/>
+        <!-- TODO: In R5, this should be 'Base' -->
+        <code value="Element"/>
       </type>
     </element>
     <element id="Demographics.address.street">
       <path value="Demographics.address.street"/>
       <label value="Street address"/>
+      <definition value="n/a"/>
+      <min value="0"/>
       <max value="1"/>
       <type>
         <code value="string"/>
@@ -90,6 +113,8 @@
     <element id="Demographics.address.city">
       <path value="Demographics.address.city"/>
       <label value="City/Town"/>
+      <definition value="n/a"/>
+      <min value="0"/>
       <max value="1"/>
       <type>
         <code value="string"/>
@@ -98,6 +123,8 @@
     <element id="Demographics.address.state">
       <path value="Demographics.address.state"/>
       <label value="State"/>
+      <definition value="n/a"/>
+      <min value="0"/>
       <max value="1"/>
       <type>
         <code value="code"/>
@@ -108,25 +135,37 @@
       </binding>
     </element>
     <element id="Demographics.address.postalCode">
+      <extension url="http://hl7.org/fhir/StructureDefinition/entryFormat">
+        <valueString value="9999"/>
+      </extension>
       <path value="Demographics.address.postalCode"/>
       <label value="Postal Code"/>
+      <definition value="n/a"/>
       <min value="1"/>
       <max value="1"/>
       <type>
+        <extension url="http://hl7.org/fhir/StructureDefinition/regex">
+          <valueString value="[\d]{4}"/>
+        </extension>
         <code value="string"/>
       </type>
     </element>
     <element id="Demographics.name">
       <path value="Demographics.name"/>
-      <label value="What id the person's official name?"/>
+      <label value="What is the person's official name?"/>
+      <definition value="n/a"/>
+      <min value="0"/>
       <max value="1"/>
       <type>
-        <code value="Base"/>
+        <!-- TODO: In R5, this should be 'Base' -->
+        <code value="Element"/>
       </type>
     </element>
     <element id="Demographics.name.prefix">
       <path value="Demographics.name.prefix"/>
       <label value="Prefix"/>
+      <definition value="n/a"/>
+      <min value="0"/>
       <max value="1"/>
       <type>
         <code value="string"/>
@@ -135,18 +174,24 @@
     <element id="Demographics.name.first">
       <path value="Demographics.name.first"/>
       <label value="First"/>
+      <definition value="n/a"/>
+      <min value="0"/>
       <max value="1"/>
       <type>
         <code value="string"/>
       </type>
+      <maxLength value="100"/>
     </element>
     <element id="Demographics.name.last">
       <path value="Demographics.name.last"/>
       <label value="Last"/>
+      <definition value="n/a"/>
+      <min value="0"/>
       <max value="1"/>
       <type>
         <code value="string"/>
       </type>
+      <maxLength value="100"/>
     </element>
   </differential>
 </StructureDefinition>

@@ -2,7 +2,7 @@
 <StructureDefinition xmlns="http://hl7.org/fhir" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://hl7.org/fhir ../../input-cache/schemas/R4/fhir-single.xsd">
   <id value="sdc-questionnaire-subQuestionnaire"/>
   <url value="http://hl7.org/fhir/uv/sdc/StructureDefinition/sdc-questionnaire-subQuestionnaire"/>
-  <name value="subQuestionnaireExtension"/>
+  <name value="SubQuestionnaireExtension"/>
   <title value="Sub-questionnaire"/>
   <status value="draft"/>
   <description value="Indicates that the display item on which this extension appears should be replaced with the referenced Questionnaire"/>
@@ -12,6 +12,10 @@
   <context>
     <type value="element"/>
     <expression value="Questionnaire.item"/>
+  </context>
+  <context>
+    <type value="element"/>
+    <expression value="ElementDefinition"/>
   </context>
   <contextInvariant value="type='display'"/>
   <type value="Extension"/>

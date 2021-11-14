@@ -12,7 +12,7 @@
   <type value="Questionnaire"/>
   <baseDefinition value="http://hl7.org/fhir/uv/sdc/StructureDefinition/sdc-questionnaire"/>
   <derivation value="constraint"/>
-   <differential>
+  <differential>
     <element id="Questionnaire">
       <path value="Questionnaire"/>
       <definition value="Indicates expectations for questionnaires that draw their item content (not just codes) from other resources"/>
@@ -40,7 +40,7 @@
       <mustSupport value="true"/>
     </element>
     <element id="Questionnaire.item.extension:subQuestionnaire">
-      <path value="Questionnaire.extension"/>
+      <path value="Questionnaire.item.extension"/>
       <sliceName value="subQuestionnaire"/>
       <type>
         <code value="Extension"/>

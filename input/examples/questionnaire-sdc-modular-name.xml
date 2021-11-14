@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Questionnaire xmlns="http://hl7.org/fhir" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://hl7.org/fhir ../../input-cache/schemas/R4/fhir-single.xsd">
-	<id value="questionnaire-sdc-modular-name"/>
+	<id value="sdc-modular-name"/>
 	<!-- Even though this is a sub-questionnaire, it's still modular because it relies on element defintions defined elsewhere. -->
 	<extension url="http://hl7.org/fhir/uv/sdc/StructureDefinition/sdc-questionnaire-is-modular">
     <valueBoolean value="true"/>
@@ -12,13 +12,18 @@
     <valueString value="person"/>
 	</extension>
 	<extension url="http://hl7.org/fhir/StructureDefinition/questionnaire-constraint">
-    <extension url="description">
+    <extension url="key">
+      <valueString value="qcontact-1"/>
+    </extension>
+    <extension url="severity">
+      <valueCode value="error"/>
+    </extension>
+    <extension url="human">
       <valueString value="Must have either first or last name"/>
     </extension>
     <extension url="expression">
       <valueString value="item.where(linkId=%linkIdPrefix+'1').exists() or item.where(linkId=%linkIdPrefix+'2').exists()"/>
     </extension>
-    <valueString value="person"/>
 	</extension>
   <extension url="http://hl7.org/fhir/StructureDefinition/variable">
     <valueExpression>
@@ -30,13 +35,14 @@
       <expression value="iif(%person.name.where(use='official').exists(),%person.name.where(use='official')[0],%person.name[0])"/>
     </valueExpression>
   </extension>
-	<url value="http://hl7.org/fhir/uv/sdc/Questionnaire/questionnaire-sdc-modular-name"/>
-	<version value="3.0.0"/>
+	<url value="http://hl7.org/fhir/uv/sdc/Questionnaire/sdc-modular-name"/>
 	<name value="QuestionnaireSDCModularName"/>
 	<title value="Example sub-module Questionnaire for name"/>
 	<status value="draft"/>
 	<experimental value="true"/>
+	<description value="Example questionnaire module - Used to represent a patient or other human name as an example of a Questionnaire that can be referenced by other Questionnaires.  It is itself modular in that it relies on external element definitions"/>
   <item>
+    <!-- There's a 'definition' for prefix in the library, but we don't have to use it -->
     <extension url="http://hl7.org/fhir/uv/sdc/StructureDefinition/sdc-questionnaire-initialExpression">
       <valueExpression>
         <language value="text/fhirpath"/>
@@ -44,6 +50,7 @@
       </valueExpression>
     </extension>
     <linkId value="1"/>
+    <text value="Title"/>
     <type value="string"/>
     <required value="true"/>
     <answerOption>

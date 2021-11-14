@@ -2,7 +2,7 @@
   <a name="background"> </a>
   <h3>Modular Questionnaire Background</h3>
   <p>
-    Maintaining questionnaires can take a considerable amount of effort, particularly if they include logic to support <a href="population.html">population</a>
+    Maintaining questionnaires can take a considerable amount of effort, particularly if they include logic to support <a href="populate.html">population</a>
     or <a href="extraction.html">extraction</a>.  At the same time, it is common for questionnaires to share content - the same questions or even the same
     sections might appear in multiple forms.  Some organizations, particularly those with a research focus may have extensive libraries of questions intended
     to help drive re-use and consistency.  This allows those organizations to increase consistency in how data is collected, which in turn increases the
@@ -40,7 +40,7 @@
   </p>
   <p>
     The following diagram shows the results of the assembly process with a set of questionnaires that combine both approaches:
-    <img src="modular.svg" alt="One parent questionnaire refernging two sub-questionnaires, which each in turn reference elements in a StructureDefinition,
+    <img src="modularity.png" alt="One parent questionnaire refernging two sub-questionnaires, which each in turn reference elements in a StructureDefinition,
     followed by the resulting single assembled questionnaire"/>
   </p>
   <p>
@@ -131,7 +131,7 @@
     <li>It is also an error if the resulting fully-assembled Questionnaire has any duplicate linkIds.</li>
     <li>In order to avoid duplicate linkIds, a parent Questionnaire <b>MAY</b> declare a special variable with the name <code>linkIdPrefix</code>.  If
       there is a linkIdPrefix in context at the time a subQuestionnaire is substituted, that linkIdPrefix SHALL be pre-pended to the <code>linkId</code> and 
-      <code>enableWhen.question</code> elements of all items in that Questionnaire.  See the <a href="#example">examples</a> to see how this works in practice.
+      <code>enableWhen.question</code> elements of all items in that Questionnaire.  See the <a href="#examples">examples</a> to see how this works in practice.
       If linkIdPrefix is not used, care should be taken to ensure that linkIds are appropriately coordinated to avoid overlap across all referenced 
       Questionnaires</li>
     <li>LinkIdPrefixes are also prepended to the 'id' elements of any <a href="{{site.data.fhir.path}}references.html#contained">contained</a> resources
@@ -198,8 +198,14 @@ We will set an expectation in SDC about what changes are permitted for 'active' 
       </ul>
     </li>
     <li>
+      If any of the properties include references to contained resources (e.g. a value set referenced by a binding), those resources should also be propagated.  
+      The Form Filler might need to re-assign the contained resource id (and update references) to avoid id collision.  A given contained resource should only 
+      be propagated into the assembled Questionnaire once.
+    </li>
+    <li>
       If the item.type is 'group' and the group has no child items with a type other than 'display', then child question items of the appropriate type
-      should be generated for each child element of the ElementDefinition pointed to by the <code>item.definition</code>.  This process recurses.
+      should be generated for each child element of the ElementDefinition pointed to by the <code>item.definition</code>.  This process recurses.  The linkId
+      of the generated items should be a concatenation of the linkId of the group and the path of the element.
     </li>
     <li>
       Alternatively, if the item.type is 'group' and the group does have child questions, the child questions should be matched against the children of
@@ -222,7 +228,7 @@ We will set an expectation in SDC about what changes are permitted for 'active' 
   <p>
     The only thing this implementation guide adds to the capabilities described in the base specification is the formal definition of the
     <a href="OperationDefinition-Questionnaire-assemble.html">$assemble</a> operation, including 
-    <a href="OperationDefinition-Questionnaire-assemble.html#expectations">expectations of behavior</a> for situations when the properties for an item in the
+    <a href="OperationDefinition-Questionnaire-assemble.html#algorithm">expectations of behavior</a> for situations when the properties for an item in the
     base Questionnaire differ from those in the referenced definition.
   </p>
 
@@ -236,9 +242,9 @@ We will set an expectation in SDC about what changes are permitted for 'active' 
   <ul>
     <li><a href="Questionnaire-sdc-modular-root.html">modular-root</a> - A simple questionnaire with a couple of items of its own (some using definitions, some defined 
       inline) as well as references to sub-questionnaires</li>
-    <li><a href="Questionnaire-sdc-modular-name">modular-name</a> - A re-useable questionnaire that can capture a person's name</li>
-    <li><a href="Questionnaire-sdc-modular-contact">modular-contact</a> - A re-useable questionnaire that can capture a person's contacts</li>
-    <li><a href="StructureDefinition-sdc-question-library">question-library</a> - A library of re-useable questionnaire questions</li>
+    <li><a href="Questionnaire-sdc-modular-name.html">modular-name</a> - A re-useable questionnaire that can capture a person's name</li>
+    <li><a href="Questionnaire-sdc-modular-contact.html">modular-contact</a> - A re-useable questionnaire that can capture a person's contacts</li>
+    <li><a href="StructureDefinition-sdc-question-library.html">question-library</a> - A library of re-useable questionnaire questions</li>
     <li><a href="Parameters-sdc-modular-root-assembled.html">modular-root-assembled</a> - An assembled version of the <a href="Questionnaire-sdc-modular-root.html">modular-root</a> questionnaire</li>
   </ul>
 </div>

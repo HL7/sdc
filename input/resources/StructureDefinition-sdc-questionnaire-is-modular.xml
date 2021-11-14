@@ -2,10 +2,10 @@
 <StructureDefinition xmlns="http://hl7.org/fhir" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://hl7.org/fhir ../../input-cache/schemas/R4/fhir-single.xsd">
 	<id value="sdc-questionnaire-is-modular"/>
 	<url value="http://hl7.org/fhir/uv/sdc/StructureDefinition/sdc-questionnaire-is-modular"/>
-	<name value="modular"/>
+	<name value="IsModular"/>
 	<title value="Is Modular Questionnaire?"/>
 	<status value="draft"/>
-	<description value="If present, indicates that this is a 'modular' questionnaire that requires some degree of assembly (e.g. using the [$assemble]() operation) prior to being presented in a Form Filler.  This might mean filling in item metadata based on information looked up from item.definitions and/or retrieving sub-questionnaires pointed to by [sub-questionnaire](StructureDefinition-sdc-questionnaire-subQuestionnaire.html) extensions."/>
+	<description value="If present, indicates that this is a 'modular' questionnaire that requires some degree of assembly (e.g. using the [$assemble](OperationDefinition-Questionnaire-assemble.html) operation) prior to being presented in a Form Filler.  This might mean filling in item metadata based on information looked up from item.definitions and/or retrieving sub-questionnaires pointed to by [sub-questionnaire](StructureDefinition-sdc-questionnaire-subQuestionnaire.html) extensions."/>
 	<purpose value="Allows Form Fillers to differentiate forms that require pre-processing prior to display."/>
 	<fhirVersion value="4.0.1"/>
 	<kind value="complex-type"/>
