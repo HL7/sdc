@@ -47,9 +47,11 @@
   </p>
   <p>
     The following diagram shows the results of the assembly process with a set of questionnaires that combine both approaches:
-    <img src="modularity.png" alt="One parent questionnaire refernging two sub-questionnaires, which each in turn reference elements in a StructureDefinition,
-    followed by the resulting single assembled questionnaire"/>
   </p>
+  <div>
+    <img src="modularity.png" width="800px" alt="One parent questionnaire refernging two sub-questionnaires, which each in turn reference elements in a StructureDefinition,     
+      followed by the resulting single assembled questionnaire"/>
+  </div>
   <p>
     The first questionnaire (Q1) contains two items, each with a sub-module extension pointing to other questionnaires - Q2 and Q3.  Those two 
     sub-questionnaires in term make use of the 'definition' element to refer to data elements from a single StructureDefinition.  (In practice, the
