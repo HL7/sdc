@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<StructureDefinition xmlns="http://hl7.org/fhir">
+<StructureDefinition xmlns="http://hl7.org/fhir" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://hl7.org/fhir ../../input-cache/schemas/r4/fhir-single.xsd">
   <id value="sdc-questionnaire-render"/>
   <url value="http://hl7.org/fhir/uv/sdc/StructureDefinition/sdc-questionnaire-render"/>
   <name value="QuestionnaireRender"/>
@@ -331,12 +331,15 @@
       </type>
       <mustSupport value="false"/>
     </element>
-    <element id="Questionnaire.item.answerOption.value[x]:valueString">
-	<type value="string"/>
+    <element id="Questionnaire.item.answerOption.valueString">
       <path value="Questionnaire.item.answerOption.value[x]"/>
+	  <sliceName value="valueString"/>
+	  <type>
+        <code value="string"/>
+      </type>
       <mustSupport value="false"/>
     </element>
-    <element id="Questionnaire.item.answerOption.value[x]:valueString.extension:optionString-renderingStyle">
+    <element id="Questionnaire.item.answerOption.valueString.extension:optionString-renderingStyle">
       <path value="Questionnaire.item.answerOption.value[x].extension"/>
       <sliceName value="optionString-renderingStyle"/>
       <min value="0"/>
@@ -351,7 +354,7 @@
         <map value="../style"/>
       </mapping>
     </element>
-    <element id="Questionnaire.item.answerOption.value[x]:valueString.extension:optionString-xhtml">
+    <element id="Questionnaire.item.answerOption.valueString.extension:optionString-xhtml">
       <path value="Questionnaire.item.answerOption.value[x].extension"/>
       <sliceName value="optionString-xhtml"/>
       <min value="0"/>
@@ -366,16 +369,19 @@
         <map value="(strings can contain xhtml)"/>
       </mapping>
     </element>
-    <element id="Questionnaire.item.answerOption.value[x]:valueCoding">
-	<type value="Coding"/>
+    <element id="Questionnaire.item.answerOption.valueCoding">
       <path value="Questionnaire.item.answerOption.value[x]"/>
+	  	  <sliceName value="valueCoding"/>
+	  	   <type>
+        <code value="Coding"/>
+      </type>
       <mustSupport value="false"/>
     </element>
-    <element id="Questionnaire.item.answerOption.value[x]:valueCoding.display">
+    <element id="Questionnaire.item.answerOption.valueCoding.display">
       <path value="Questionnaire.item.answerOption.value[x].display"/>
       <mustSupport value="false"/>
     </element>
-    <element id="Questionnaire.item.answerOption.value[x]:valueCoding.display.extension:optionDisplay-renderingStyle">
+    <element id="Questionnaire.item.answerOption.valueCoding.display.extension:optionDisplay-renderingStyle">
       <path value="Questionnaire.item.answerOption.value[x].display.extension"/>
       <sliceName value="optionDisplay-renderingStyle"/>
       <min value="0"/>
@@ -390,7 +396,7 @@
         <map value="../style"/>
       </mapping>
     </element>
-    <element id="Questionnaire.item.answerOption.value[x]:valueCoding.display.extension:optionDisplay-xhtml">
+    <element id="Questionnaire.item.answerOption.valueCoding.display.extension:optionDisplay-xhtml">
       <path value="Questionnaire.item.answerOption.value[x].display.extension"/>
       <sliceName value="optionDisplay-xhtml"/>
       <min value="0"/>

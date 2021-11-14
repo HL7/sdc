@@ -37,49 +37,49 @@
         <profile value="http://hl7.org/fhir/uv/sdc/StructureDefinition/sdc-questionnaire-assembledFrom"/>
       </type>
     </element>
-		<element id="Questionnaire.identifier">
-			<path value="Questionnaire.identifier"/>
-			<mustSupport value="true"/>
-			<mapping>
-				<identity value="ihe-sdc"/>
-				<map value="./form_design/@form_design_identifier {maps to value; system=&quot;urn:ietf:rfc:3986&quot;}"/>
-			</mapping>
-		</element>
-		<element id="Questionnaire.title">
-			<path value="Questionnaire.title"/>
-			<min value="1"/>
-			<max value="1"/>
-			<mustSupport value="true"/>
-		</element>
-		<element id="Questionnaire.experimental">
-			<path value="Questionnaire.experimental"/>
-			<mustSupport value="true"/>
-		</element>
-		<element id="Questionnaire.date">
-			<path value="Questionnaire.date"/>
-			<definition value="Identifies when this version of the form was created.  Changes whenever the form is updated."/>
-			<min value="1"/>
-			<max value="1"/>
-			<mustSupport value="true"/>
-			<mapping>
-				<identity value="ihe-sdc"/>
-				<map value="./administration_package/registration/creation_date"/>
-			</mapping>
-		</element>
-		<element id="Questionnaire.publisher">
-			<path value="Questionnaire.publisher"/>
-			<mustSupport value="true"/>
-			<mapping>
-				<identity value="ihe-sdc"/>
-				<map value="./administration_package/registration/organization"/>
-			</mapping>
-		</element>
-		<element id="Questionnaire.description">
-			<path value="Questionnaire.description"/>
-			<mustSupport value="true"/>
-		</element>
-		<element id="Questionnaire.useContext">
-			<path value="Questionnaire.useContext"/>
+    <element id="Questionnaire.identifier">
+      <path value="Questionnaire.identifier"/>
+      <mustSupport value="true"/>
+      <mapping>
+        <identity value="ihe-sdc"/>
+        <map value="./form_design/@form_design_identifier {maps to value; system=&quot;urn:ietf:rfc:3986&quot;}"/>
+      </mapping>
+    </element>
+    <element id="Questionnaire.title">
+      <path value="Questionnaire.title"/>
+      <min value="1"/>
+      <max value="1"/>
+      <mustSupport value="true"/>
+    </element>
+    <element id="Questionnaire.experimental">
+      <path value="Questionnaire.experimental"/>
+      <mustSupport value="true"/>
+    </element>
+    <element id="Questionnaire.date">
+      <path value="Questionnaire.date"/>
+      <definition value="Identifies when this version of the form was created.  Changes whenever the form is updated."/>
+      <min value="1"/>
+      <max value="1"/>
+      <mustSupport value="true"/>
+      <mapping>
+        <identity value="ihe-sdc"/>
+        <map value="./administration_package/registration/creation_date"/>
+      </mapping>
+    </element>
+    <element id="Questionnaire.publisher">
+      <path value="Questionnaire.publisher"/>
+      <mustSupport value="true"/>
+      <mapping>
+        <identity value="ihe-sdc"/>
+        <map value="./administration_package/registration/organization"/>
+      </mapping>
+    </element>
+    <element id="Questionnaire.description">
+      <path value="Questionnaire.description"/>
+      <mustSupport value="true"/>
+    </element>
+    <element id="Questionnaire.useContext">
+      <path value="Questionnaire.useContext"/>
 			<type>
 				<code value="UsageContext"/>
 				<profile value="http://hl7.org/fhir/uv/sdc/StructureDefinition/sdc-usagecontext"/>
