@@ -26,7 +26,7 @@
         </table>
       </div>
       <h2>REST server behavior</h2>
-      <p>The primary focus of the repository is the definition of <a href="{{site.data.fhir.path}}Questionnaire.html">Questionnaire</a>s.  However, <a href="{{site.data.fhir.path}}ValueSet.html">ValueSet</a>s and <a href="{{site.data.fhir.path}}CodeSystem.html">CodeSystem</a>s must also be supported to allow definition of coded data elements.  Some data elements will choose to maintain value sets as 'contained' resources, meaning the value set exists only in the context of the data element and cannot be referenced or maintained without also updating the data element.  However, systems should support value set re-use across data elements.  (Version-specific referencing can be used to avoid value sets from changing independent of the referencing <a href="{{site.data.fhir.path}}Questionnaire.html">Questionnaire</a>.)</p>
+      <p>The primary focus of the repository is the definition of <a href="{{site.data.fhir.path}}questionnaire.html">Questionnaire</a>s.  However, <a href="{{site.data.fhir.path}}valueset.html">ValueSet</a>s and <a href="{{site.data.fhir.path}}codesystem.html">CodeSystem</a>s must also be supported to allow definition of coded data elements.  Some data elements will choose to maintain value sets as 'contained' resources, meaning the value set exists only in the context of the data element and cannot be referenced or maintained without also updating the data element.  However, systems should support value set re-use across data elements.  (Version-specific referencing can be used to avoid value sets from changing independent of the referencing <a href="{{site.data.fhir.path}}questionnaire.html">Questionnaire</a>.)</p>
       <p>
         <b>Security:</b>
       </p>
