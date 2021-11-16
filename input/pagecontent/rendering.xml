@@ -591,8 +591,9 @@
           <p>
             If set to true, this indicates that the 'style' information conveyed by the <a href="#rendering-style">rendering-style</a> and/or
             <a href="#rendering-xhtml">rendering-xhtml</a> are considered critical to the accurate rendering of the questionnaire (and appropriate capture of
-            information using the questionnaire).  As a result, only systems that can render all such extensions appropriately are considered 'safe'
-            to render the Questionnaire.  All other SDC systems SHALL raise an error.
+            information using the questionnaire).  For example, there are instructions or other text that refer to specific colors or styles and a user would
+            not be able to safely or appropriately fill out the questionnaire if those colors or styles are not accurately rendered.  As a result, only systems 
+            that can render all such extensions appropriately are considered 'safe' to render the Questionnaire.  All other SDC systems SHALL raise an error.
           </p>
         </td>
       </tr>
