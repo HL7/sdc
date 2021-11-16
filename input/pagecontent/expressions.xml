@@ -685,6 +685,10 @@
     Populated or calculated elements can be left empty.  Extracted elements can be omitted.  If control logic such as enableWhen is impacted, either display
     a helpful error message or permit entry of potentially relevant information if it cannot be determined whether the data should be allowed or not.
   </p>
+  <p>
+    For unanswered items, expressions or %context that refer to QuestionnaireResponse items that don't actually 'exist' (because they don't have an answer)
+    should still resolve as items with no answer rather than 'null'.
+  </p>  
   <a name="expressionerrors"> </a>
   <h3>Dealing with expression errors and system limitations</h3>
   <p>
