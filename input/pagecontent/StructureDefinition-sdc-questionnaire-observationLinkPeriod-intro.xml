@@ -1,5 +1,18 @@
 <div xmlns="http://www.w3.org/1999/xhtml" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://hl7.org/fhir ../../input-cache/schemas/R4/fhir-single.xsd">
   <p>
-    Additional details on the use of this profile can be found on the <a href="populate.html#observation-based-population">Questionnaire Population</a> page.
+    Additional details on the use of this profile can be found on the <a href="populate.html#observation-based-population">Questionnaire Population</a> and
+    <a href="extraction.html#obs-extract">Questionnaire Extraction</a> pages.
+  </p>
+  <p>
+    NOTE: Multiple repetitions of this extension are possible.  All can be used when populating a Questionnaire item.  However, when extracting from a
+    QuestionnaireResponse, if more than one is specified then exactly <b>one</b> repetition must have the
+    <a href="StructureDefinition-sdc-questionnaire-observationExtract.html">questionnaire-observationExtract</a> extension present with a value of 'true'.
+  </p>
+  <p>
+    When there are multiple codes appropriate for extract (e.g. multiple possible observation codes for weight, reflecting measurement techniciques, whether
+    the subject is fully clothed, etc.), the one selected for extraction should most accurately reflect the semantics of the question.  For example, if
+    the question is "Current body weight:", then it would be most appropriate to select a generic code that corresponds to the generic concept of "Body Weight"
+    than it does to one that says "Body Weight - clothed", "Body Weight - measured", or "Body Weight - reported" as there is nothing about the question that
+    indicates that any of those narrower meanings apply.
   </p>
 </div>
