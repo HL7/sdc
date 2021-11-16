@@ -405,6 +405,11 @@
             population can occur.
           </p>
           <p>
+            This expression does not actually populate an element (that's handled by <a href="#initialExpression">initialExpression</a>).  Instead, it
+            establishes a variable that is used to aid in population, often by providing a variable that can be used within the initialExpression that determines
+            what the element should be populated with.
+          </p>
+          <p>
             Expression.name SHALL be populated when this extension is being used for <a href="populate.html#exp-pop">expression-based population</a>.
           </p>
         </td>
