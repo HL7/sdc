@@ -46,11 +46,14 @@
       QuestionnaireResponse.  If Observations are generated, they can also have an explicit <code>derivedFrom</code> link pointing back to the
       QuestionnaireResponse</li>
     <li>
-      In theory, it's possible to use Questionnaire as a user-facing interface to allow maintenance of one or more resources.  The source data can be used to
+      In theory, it is possible to use Questionnaire as a user-facing interface to allow maintenance of one or more resources.  The source data can be used to
       <a href="populate.html">populate</a> the QuestionnaireResponse and once the response is 'submitted', the data can then be extracted and used to update
       the existing resources.  For this to work, the <code>id</code> of the resource must be retained through the round-trip process to allow for the update.
       This can be supported by storing the id as a <a href="{{site.data.fhir.path}}extension-questionnaire-hidden.html">hidden</a> question not shown to the
-      user.  Note that this is only relevant for the definition-based and StructureMap-based approaches. It is not relevant for the Observation-based approach.</li>
+      user.  This question item would have a type of 'string' and, if using the definition-based extraction approach, a definition that corresponded to the 
+      'id' element of the relevant resource type (e.g. <code>http://hl7.org/fhir/AllergyIntolerance#AllergyIntolerance.id</code>).     
+      Note that the inclusion of the id as a hidden question is only relevant for the definition-based and StructureMap-based approaches. It is not needed
+      for the Observation-based approach.</li>
     <li>
       Sometimes the author interested in making a Questionnaire "extractable" does not have authority to make changes to the "official" Questionnaire.  In other
       cases, there might be one official Questionnaire, but a need to create extracted resources that comply with different sets of profiles - and thus a need
