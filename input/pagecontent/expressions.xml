@@ -20,9 +20,12 @@
       an extension with a type of Expression has a name, the result of evaluating that expression becomes available in subsequent expressions (either
       following extensions within the same element, or extensions appearing on descendant items) as a 'variable'.  These variables are referenced by
       prepending '%' to the 'name' of the expression.  I.e. the result of an expression named 'patient' would be available for use in subsequent expressions
-      as '%patient'.  Collisions between names that are defined more than once within the same scope will be treated as an error.  I.e. If there is a
-      <a href="#launchContext">launchContext</a> extension called 'patient' and then on the same item or any item nested beneath it there's
-      also a <a href="#variable">variable</a> extension also named 'patient', that would be an error.
+      as '%patient'.<br/>
+      Collisions between names that are defined more than once within the same containing element will be treated as an error.  I.e. If there is a
+      <a href="#launchContext">launchContext</a> extension called 'patient' and then on the same item there's
+      also a <a href="#variable">variable</a> extension also named 'patient', that would be an error.  However, overriding a name in a descendant
+      element is NOT an error.  For example, if a <a href="#variable">variable</a> with the name 'linkIdPrefix' is defined on an item and then is
+      subsequently re-defined on a variable in a child item, that is ok - and is in fact a common occurrence in <a href="modular.html">modular forms</a>.
     </li>
     <li>
       <code>language</code> indicates the type of expression.  SDC only uses three languages: FHIR queries <a href="#fhirquery">as described below</a>,
@@ -682,6 +685,10 @@
     Populated or calculated elements can be left empty.  Extracted elements can be omitted.  If control logic such as enableWhen is impacted, either display
     a helpful error message or permit entry of potentially relevant information if it cannot be determined whether the data should be allowed or not.
   </p>
+  <p>
+    For unanswered items, expressions or %context that refer to QuestionnaireResponse items that don't actually 'exist' (because they don't have an answer)
+    should still resolve as items with no answer rather than 'null'.
+  </p>  
   <a name="expressionerrors"> </a>
   <h3>Dealing with expression errors and system limitations</h3>
   <p>

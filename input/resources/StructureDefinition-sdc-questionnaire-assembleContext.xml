@@ -1,21 +1,17 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <StructureDefinition xmlns="http://hl7.org/fhir" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://hl7.org/fhir ../../input-cache/schemas/R4/fhir-single.xsd">
-  <id value="sdc-questionnaire-initialExpression"/>
-  <url value="http://hl7.org/fhir/uv/sdc/StructureDefinition/sdc-questionnaire-initialExpression"/>
-  <name value="InitialExpressionExtension"/>
-  <title value="initial.exists().not()"/>
+  <id value="sdc-questionnaire-assembleContext"/>
+  <url value="http://hl7.org/fhir/uv/sdc/StructureDefinition/sdc-questionnaire-assembleContext"/>
+  <name value="AssembleContextExtension"/>
+  <title value="Assemble Context extension"/>
   <status value="draft"/>
-  <description value="Initial value for a question answer as determined by an evaluated expression."/>
+  <description value="Indicates a variable that must be available on any node that is referencing the Questionnaire as a sub-questionnaire"/>
   <fhirVersion value="4.0.1"/>
   <kind value="complex-type"/>
   <abstract value="false"/>
   <context>
     <type value="element"/>
-    <expression value="Questionnaire.item"/>
-  </context>
-  <context>
-    <type value="element"/>
-    <expression value="ElementDefinition"/>
+    <expression value="Questionnaire"/>
   </context>
   <type value="Extension"/>
   <baseDefinition value="http://hl7.org/fhir/StructureDefinition/Extension"/>
@@ -23,23 +19,22 @@
    <differential>
     <element id="Extension">
       <path value="Extension"/>
-      <short value="Expression-determined initial value"/>
-      <definition value="Initial value for a question answer as determined by an evaluated expression."/>
-      <comment value="Initial value is only calculated at the time the QuestionnaireResponse is first generated."/>
+      <short value="Variable name to be available from referencing Questionnaire"/>
+      <definition value="Indicates a variable that must be available on any node that is referencing the Questionnaire as a sub-questionnaire"/>
       <min value="0"/>
-      <max value="1"/>
+      <max value="*"/>
     </element>
     <element id="Extension.url">
       <path value="Extension.url"/>
       <type>
         <code value="uri"/>
       </type>
-      <fixedUri value="http://hl7.org/fhir/uv/sdc/StructureDefinition/sdc-questionnaire-initialExpression"/>
+      <fixedUri value="http://hl7.org/fhir/uv/sdc/StructureDefinition/sdc-questionnaire-assembleContext"/>
     </element>
     <element id="Extension.value[x]">
       <path value="Extension.value[x]"/>
       <type>
-        <code value="Expression"/>
+        <code value="string"/>
       </type>
     </element>
   </differential>

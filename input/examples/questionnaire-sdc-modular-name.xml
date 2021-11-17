@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Questionnaire xmlns="http://hl7.org/fhir" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://hl7.org/fhir ../../input-cache/schemas/R4/fhir-single.xsd">
+	<id value="sdc-modular-name"/>
+	<!-- Even though this is a sub-questionnaire, it's still modular because it relies on element defintions defined elsewhere. -->
+	<extension url="http://hl7.org/fhir/uv/sdc/StructureDefinition/sdc-questionnaire-is-modular">
+    <valueBoolean value="true"/>
+	</extension>
+	<extension url="http://hl7.org/fhir/uv/sdc/StructureDefinition/sdc-questionnaire-assembleContext">
+    <valueString value="linkIdPrefix"/>
+	</extension>
+	<extension url="http://hl7.org/fhir/uv/sdc/StructureDefinition/sdc-questionnaire-assembleContext">
+    <valueString value="person"/>
+	</extension>
+	<extension url="http://hl7.org/fhir/StructureDefinition/questionnaire-constraint">
+    <extension url="key">
+      <valueString value="qcontact-1"/>
+    </extension>
+    <extension url="severity">
+      <valueCode value="error"/>
+    </extension>
+    <extension url="human">
+      <valueString value="Must have either first or last name"/>
+    </extension>
+    <extension url="expression">
+      <valueString value="item.where(linkId=%linkIdPrefix+'1').exists() or item.where(linkId=%linkIdPrefix+'2').exists()"/>
+    </extension>
+	</extension>
+  <extension url="http://hl7.org/fhir/StructureDefinition/variable">
+    <valueExpression>
+      <name value="name"/>
+      <language value="text/fhirpath"/>
+      <!-- Note: This grabs the first official name, or if there are no official names, grabs the first name.  This
+                 is risky because there is no definined order to the names provided - and systems aren't allowed to
+                 require that any order be enforced -->
+      <expression value="iif(%person.name.where(use='official').exists(),%person.name.where(use='official')[0],%person.name[0])"/>
+    </valueExpression>
+  </extension>
+	<url value="http://hl7.org/fhir/uv/sdc/Questionnaire/sdc-modular-name"/>
+	<name value="QuestionnaireSDCModularName"/>
+	<title value="Example sub-module Questionnaire for name"/>
+	<status value="draft"/>
+	<experimental value="true"/>
+	<description value="Example questionnaire module - Used to represent a patient or other human name as an example of a Questionnaire that can be referenced by other Questionnaires.  It is itself modular in that it relies on external element definitions"/>
+  <item>
+    <!-- There's a 'definition' for prefix in the library, but we don't have to use it -->
+    <extension url="http://hl7.org/fhir/uv/sdc/StructureDefinition/sdc-questionnaire-initialExpression">
+      <valueExpression>
+        <language value="text/fhirpath"/>
+        <expression value="%name.prefix.where($this in ('Mr.'|'Miss'|'Mrs'|'Ms.'))[0]"/>
+      </valueExpression>
+    </extension>
+    <linkId value="1"/>
+    <text value="Title"/>
+    <type value="string"/>
+    <required value="true"/>
+    <answerOption>
+      <valueString value="Mr."/>
+    </answerOption>
+    <answerOption>
+      <valueString value="Miss"/>
+    </answerOption>
+    <answerOption>
+      <valueString value="Mrs."/>
+    </answerOption>
+    <answerOption>
+      <valueString value="Ms."/>
+    </answerOption>
+  </item>
+  <item>
+    <extension url="http://hl7.org/fhir/uv/sdc/StructureDefinition/sdc-questionnaire-initialExpression">
+      <valueExpression>
+        <language value="text/fhirpath"/>
+        <expression value="%name.given[0]"/>
+      </valueExpression>
+    </extension>
+    <linkId value="2"/>
+    <definition value="http://hl7.org/fhir/uv/sdc/StructureDefinition/sdc-question-library#Demographics.name.first"/>
+    <type value="string"/>
+    <required value="true"/>
+  </item>
+  <item>
+    <extension url="http://hl7.org/fhir/uv/sdc/StructureDefinition/sdc-questionnaire-initialExpression">
+      <valueExpression>
+        <language value="text/fhirpath"/>
+        <expression value="%name.given[0]"/>
+      </valueExpression>
+    </extension>
+    <linkId value="3"/>
+    <definition value="http://hl7.org/fhir/uv/sdc/StructureDefinition/sdc-question-library#Demographics.name.last"/>
+    <type value="string"/>
+    <required value="true"/>
+  </item>
+</Questionnaire>

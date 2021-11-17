@@ -8,14 +8,6 @@
   <title value="Enable when expression"/>
   <status value="draft"/>
   <experimental value="false"/>
-  <date value="2014-04-21"/>
-  <publisher value="HL7 International - FHIR Infrastructure Work Group"/>
-  <contact>
-    <telecom>
-      <system value="url"/>
-      <value value="http://hl7.org/Special/committees/fiwg"/>
-    </telecom>
-  </contact>
   <description value="An expression that returns a boolean value for whether to enable the item. If the expression does not resolve to a boolean, it is considered an error in the design of the Questionnaire.  Form renderer behavior is undefined.  Some tools may attempt to force the value to be a boolean (e.g. is it a non-empty collection, non-null, non-zero - if so, then true).  Systems SHOULD present a warning to the user if a non-boolean valued expression result does not trigger an all-out error."/>
   <jurisdiction>
     <coding>
@@ -24,16 +16,15 @@
     </coding>
   </jurisdiction>
   <fhirVersion value="4.0.1"/>
-  <mapping>
-    <identity value="rim"/>
-    <uri value="http://hl7.org/v3"/>
-    <name value="RIM Mapping"/>
-  </mapping>
   <kind value="complex-type"/>
   <abstract value="false"/>
   <context>
     <type value="element"/>
     <expression value="Questionnaire.item"/>
+  </context>
+  <context>
+    <type value="element"/>
+    <expression value="ElementDefinition"/>
   </context>
   <type value="Extension"/>
   <baseDefinition value="http://hl7.org/fhir/StructureDefinition/Extension"/>

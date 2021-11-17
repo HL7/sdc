@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ValueSet xmlns="http://hl7.org/fhir" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://hl7.org/fhir ../../input-cache/schemas/r4/fhir-single.xsd">
+  <id value="sdc-question-library-states"/>
+  <url value="http://hl7.org/fhir/uv/sdc/ValueSet/sdc-question-library-states"/>
+  <name value="AustralianStates"/>
+  <title value="Australian States - example value set"/>
+  <status value="draft"/>
+  <experimental value="true"/>
+  <description value="An example value set (using fake codes) used by a modular Questionnaire"/>
+  <compose>
+    <include>
+      <system value="http://example.org/CodeSystem/Australian-States"/>
+      <concept>
+        <code value="ACT"/>
+        <display value="Australian Capital Territory"/>
+      </concept>
+      <concept>
+        <code value="NSW"/>
+        <display value="New South Wales"/>
+      </concept>
+      <concept>
+        <code value="NT"/>
+        <display value="Northern Territory"/>
+      </concept>
+      <concept>
+        <code value="Qld"/>
+        <display value="Queensland"/>
+      </concept>
+      <concept>
+        <code value="SA"/>
+        <display value="South Australia"/>
+      </concept>
+      <concept>
+        <code value="Vic"/>
+        <display value="Victoria"/>
+      </concept>
+      <concept>
+        <code value="Tas"/>
+        <display value="Tasmania"/>
+      </concept>
+      <concept>
+        <code value="WA"/>
+        <display value="Western Australia"/>
+      </concept>
+    </include>
+  </compose>
+</ValueSet>

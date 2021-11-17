@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<SearchParameter xmlns="http://hl7.org/fhir" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://hl7.org/fhir ../../input-cache/schemas/R4/fhir-single.xsd">
+	<id value="questionnaire-assembledFrom"/>
+	<url value="http://hl7.org/fhir/uv/sdc/SearchParameter/questionnaire-assembledFrom"/>
+	<name value="QuestionnaireAssembledFrom"/>
+	<status value="draft"/>
+	<date value="2016-03-31T08:01:25+11:00"/>
+	<publisher value="Health Level Seven"/>
+	<description value="Allows searching by 'assembledFrom' extension on a Questionnaire"/>
+	<code value="assembled-from"/>
+	<base value="Questionnaire"/>
+	<type value="token"/>
+	<expression value="Questionnaire.extension('http://hl7.org/fhir/uv/sdc/StructureDefinition/sdc-questionnaire-assembledFrom')"/>
+	<xpath value="f:Questionnaire/f:extension[@url='http://hl7.org/fhir/uv/sdc/StructureDefinition/sdc-questionnaire-assembledFrom']"/>
+	<xpathUsage value="normal"/>
+</SearchParameter>
