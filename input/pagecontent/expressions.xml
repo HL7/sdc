@@ -248,7 +248,11 @@
             medications that were not listed in the patient's record in addition to the candidates found.
           </p>
           <p> 
-            CandidateExpressions should rarely, if ever, declare a name element.
+            CandidateExpressions may use name in situations where a user will select a candidate for one question which will in turn lead to population
+            of other questions.  For example, if in the above example, a question about concomittement medications might actually have child questions
+            that capture information about the dose, start date or other information.  The query that returned the candidates might be referenced by name
+            in <a href="#initialExpression">initialExpressions</a> for child questions that use the parent answer together with the candidates to grab
+            the additional details about the selected medication to populate the child answers.
           </p>
         </td>
       </tr>
