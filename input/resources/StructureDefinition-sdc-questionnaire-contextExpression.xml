@@ -28,18 +28,56 @@
       <min value="0"/>
       <max value="*"/>
     </element>
+    <element id="Extension.extension:label">
+      <path value="Extension.extension"/>
+      <sliceName value="label"/>
+      <short value="Context label"/>
+      <definition value="The text to display in the form filler user interface that explains what the returned context information means"/>
+      <min value="1"/>
+      <max value="1"/>
+    </element>
+    <element id="Extension.extension:label.url">
+      <path value="Extension.extension.url"/>
+      <type>
+        <code value="uri"/>
+      </type>
+      <fixedUri value="label"/>
+    </element>
+    <element id="Extension.extension:label.value[x]">
+      <path value="Extension.extension.value[x]"/>
+      <min value="1"/>
+      <type>
+        <code value="string"/>
+      </type>
+    </element>
+    <element id="Extension.extension:expression">
+      <path value="Extension.extension"/>
+      <sliceName value="expression"/>
+      <short value="Context expression"/>
+      <definition value="The computable rules that identify the contextual information to display to the user"/>
+      <min value="1"/>
+      <max value="1"/>
+    </element>
+    <element id="Extension.extension:expression.url">
+      <path value="Extension.extension.url"/>
+      <type>
+        <code value="uri"/>
+      </type>
+      <fixedUri value="label"/>
+    </element>
+    <element id="Extension.extension:expression.value[x]">
+      <path value="Extension.extension.value[x]"/>
+      <min value="1"/>
+      <type>
+        <code value="Expression"/>
+      </type>
+    </element>
     <element id="Extension.url">
       <path value="Extension.url"/>
       <type>
         <code value="uri"/>
       </type>
       <fixedUri value="http://hl7.org/fhir/uv/sdc/StructureDefinition/sdc-questionnaire-contextExpression"/>
-    </element>
-    <element id="Extension.value[x]">
-      <path value="Extension.value[x]"/>
-      <type>
-        <code value="Expression"/>
-      </type>
     </element>
   </differential>
 </StructureDefinition>

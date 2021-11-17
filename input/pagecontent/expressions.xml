@@ -16,7 +16,8 @@
       not required, it's strongly encouraged unless the expression is so simple there will not be any question as to its intent and function.</li>
     <li>
       <code>name</code> allows the result of the expression to be referenced within other expressions.  Whether this is necessary depends on the context.
-      (e.g. <a href="#contextExpression">contextExpression</a> might need a name when used for population, but not when used for extraction.)  When an
+      (e.g. <a href="#itemExtractionContext">itemExtractionContext</a> doesn't typically need a name when used for extraction of the element it is on.  
+      However, if the value is leveraged in downstream itemExtractionContexts, then it will need a name.  When an
       an extension with a type of Expression has a name, the result of evaluating that expression becomes available in subsequent expressions (either
       following extensions within the same element, or extensions appearing on descendant items) as a 'variable'.  These variables are referenced by
       prepending '%' to the 'name' of the expression.  I.e. the result of an expression named 'patient' would be available for use in subsequent expressions
@@ -120,6 +121,47 @@
       </tr>
       <tr>
         <td>
+          <a name="answerExpression"> </a>
+          <a href="StructureDefinition-sdc-questionnaire-answerExpression.html">answerExpression</a>
+        </td>
+        <td>SDC</td>
+        <td>question</td>
+        <td>any</td>
+        <td>population</td>
+        <td><a href="examples.html#reference-resource-profile-lookup">example</a></td>
+      </tr>
+      <tr>
+        <td colspan="6">
+          <p>
+            Just like answerOption and answerValueSet, this is the third mechanism for capturing the allowed set of answers.
+            (This extension is mutually exclusive with the other two mechanisms.)  This expression must evaluate to a collection 
+            of elements with the same type as the item.type or, if the type was Reference, to resources allowed as the referenced type.
+            It can be bound to a <a href="StructureDefinition-sdc-questionnaire-choiceConstraint.html">choiceConstraint</a> 
+            extension to indicate whether the answer is restricted to the allowed choices, could be another answer of a matching type, 
+            or could be a plain string.
+          </p>
+          <p>
+            This expression could be based on other answers within the questionnaire.  If the allowed set of answers for a question changes 
+            after an answer has been specified (whether via population or user entry), the prior answer SHOULD be retained in the user 
+            interface until such time as the questionaire is marked as 'complete', even if invalid.  This is to minimize impact on users if they 
+            accidentally toggle elements within the form that govern the answerExpression.  However, in some cases, this will not be possible 
+            depending on the data entry controls.  Systems MAY wipe the answer on the grounds 
+            that a change to the list of possible answers might result in different answers.
+          </p>
+          <p>
+            If an answer becomes invalid based on evaluation of answerExpression, calculated values falling out of range, etc., the form SHALL flag the 
+            answer as invalid and prevent the QuestionnaireResponse from being marked as 'complete'.</p>
+          <p>
+            Note that if the answerExpression relies on content outside the QuestionnaireResponse (e.g. launch context or query results), 
+            the ability to consistently check the validity of the QuestionnaireResponse - particularly for downstream systems - may be difficult.  
+            One potential solution is to populate internal (and potentially hidden questions) with information passed in by context or found through 
+            query such that validation of answers can be based entirely on information stored within the QuestionnaireResponse, though privacy and/or 
+            storage considerations may make this impractical in some cases.
+          </p>
+        </td>
+      </tr>
+      <tr>
+        <td>
           <a name="initialExpression"> </a>
           <a href="StructureDefinition-sdc-questionnaire-initialExpression.html">initialExpression</a>
         </td>
@@ -194,52 +236,19 @@
           </p>
           <p>
             NOTE: the set of candidate expressions is intended to be a starter set, not exhaustive.  The user should be free to enter or look-up additional
-            values.  Systems should allow multiple selections in situations where the question is marked as 'repeating' and multiple answers are therefore
-            valid, but should only allow one answer for non-repeating questions.
+            values.  The overall set of values from which answers are <b>allowed</b> to be selected (typically independent of what happens to be in the
+            patient record) is defined by <a href="#answerExpression">answerExpression</a>.  Systems should allow multiple selections in situations where 
+            the question is marked as 'repeating' and multiple answers are therefore valid, but should only allow one answer for non-repeating questions.
+          </p>
+          <p>
+            As an example, a question might ask "Please identify any concurrent medications that might be related to the reaction".  A candidateExpression
+            could provide a list of all of a patient's known current medications (via <a href="{{site.data.fhir.path}}medicationrequest.html">medicationrequest</a>,
+            <a href="{{site.data.fhir.path}}medicationstatement.html">medicationstatement</a>, etc.  On the other hand, an answerExpression might evaluate
+            to the value set of medications appropriate for the jurisdiction in which the questionnaire is being completed, allowing the user to select
+            medications that were not listed in the patient's record in addition to the candidates found.
           </p>
           <p> 
             CandidateExpressions should rarely, if ever, declare a name element.
-          </p>
-        </td>
-      </tr>
-      <tr>
-        <td>
-          <a name="answerExpression"> </a>
-          <a href="StructureDefinition-sdc-questionnaire-answerExpression.html">answerExpression</a>
-        </td>
-        <td>SDC</td>
-        <td>question</td>
-        <td>any</td>
-        <td>population</td>
-        <td><a href="examples.html#reference-resource-profile-lookup">example</a></td>
-      </tr>
-      <tr>
-        <td colspan="6">
-          <p>
-            Just like answerOption and answerValueSet, this is the third mechanism for capturing the allowed set of answers.
-            (This extension is mutually exclusive with the other two mechanisms.)  This expression must evaluate to a collection 
-            of elements with the same type as the item.type or, if the type was Reference, to resources allowed as the referenced type.
-            It can be bound to a <a href="StructureDefinition-sdc-questionnaire-choiceConstraint.html">choiceConstraint</a> 
-            extension to indicate whether the answer is restricted to the allowed choices, could be another answer of a matching type, 
-            or could be a plain string.
-          </p>
-          <p>
-            This expression could be based on other answers within the questionnaire.  If the allowed set of answers for a question changes 
-            after an answer has been specified (whether via population or user entry), the prior answer SHOULD be retained in the user 
-            interface until such time as the questionaire is marked as 'complete', even if invalid.  This is to minimize impact on users if they 
-            accidentally toggle elements within the form that govern the answerExpression.  However, in some cases, this will not be possible 
-            depending on the data entry controls.  Systems MAY wipe the answer on the grounds 
-            that a change to the list of possible answers might result in different answers.
-          </p>
-          <p>
-            If an answer becomes invalid based on evaluation of answerExpression, calculated values falling out of range, etc., the form SHALL flag the 
-            answer as invalid and prevent the QuestionnaireResponse from being marked as 'complete'.</p>
-          <p>
-            Note that if the answerExpression relies on content outside the QuestionnaireResponse (e.g. launch context or query results), 
-            the ability to consistently check the validity of the QuestionnaireResponse - particularly for downstream systems - may be difficult.  
-            One potential solution is to populate internal (and potentially hidden questions) with information passed in by context or found through 
-            query such that validation of answers can be based entirely on information stored within the QuestionnaireResponse, though privacy and/or 
-            storage considerations may make this impractical in some cases.
           </p>
         </td>
       </tr>
@@ -261,14 +270,17 @@
             the question associated with the candidateExpression.  However, instead of giving candidate answers that can simply be "selected", this option
             instead presents potentially relevant information.  For example, a question might be "Has the patient been admitted for this or a related condition
             in the past year?".  To help guide the answers, the contextExpression could retrieve a list of admission reasons for that patient for encounters in
-            the past year.  The user completing the questionnaire could then use that information to guide whether they choose to answer 'yes' or 'no'.
+            the past year and display that with a label of "Reasons for admissions in the last year".  The user completing the questionnaire could then use that 
+            information to guide whether they choose to answer 'yes' or 'no'.  The extension is complex including both an expression that defines the results to
+            make available as well as a label so the user completing the Questionnaire understands what the data being returned means.
+          </p>
+          <p>
             ContextExpression is not intended for read-only questions. The user must answer a question - but the user may want to look at context information
             to help guide the answer.
           </p>
           <p>
             Also, like candidateExpressions, contextExpressions should rarely, if ever, declare a name element.
           </p>
-          <!-- Todo - how do we handle multiple columns?  How do we label what data is coming back? -->
         </td>
       </tr>
       <tr>
@@ -307,7 +319,7 @@
             to reflect the new current date. Client systems MAY provide the user with the ability to reset calculated fields to the calculated value).]
           </p>
           <p>
-            Like initialExpression, it's possible for the value of a calculatedExpression to be referenced by name within other sibling expressions or by
+            Like initialExpression, it is possible for the value of a calculatedExpression to be referenced by name within other sibling expressions or by
             expressions on descendant items.  However, this is not likely to be common.  As such, calculatedExpressions only need to declare a name if their
             value will be referenced elsewhere.
           </p>
@@ -376,6 +388,9 @@
             More than one repetition of this extension is possible.  If an option appears in more than one repetition, then it will be enabled if it appears in ANY of the
             extensions whose expressions are evaluated as true.  I.e. the expressions that pertain to a given option are treated as 'or'.
           </p>
+          <p>
+            AnswerOptionToggleExpresssions should generally never need a 'name' declared.
+          </p>
 <!-- TODO: Add this in R5
           <p>
             If an option is 'disabled', whether it is displayed but non-selectable or removed entirely SHOULD be driven by the value of the <a href="todo">disabledDisplay</a>
@@ -439,11 +454,11 @@
           </p>
           <p>
             Expression.name does not necessarily need to be present for <a href="extraction.html#definition-extract">definition-based extraction</a>, as that relies on
-            item.definition rather than other expressions.  However, including it in general is a good idea.
+            item.definition rather than other expressions.  However, including it is generally a good idea.
           </p>
         </td>
       </tr>
-	  <tr>
+      <tr>
         <td>
           <a name="constraint"> </a>
           <a href="{{site.data.fhir.path}}extension-questionnaire-constraint.html">constraint</a>
@@ -454,12 +469,13 @@
         <td>all</td>
         <td><a href="examples.html#using-ordinalvalue-and-constraint">example</a></td>
       </tr>
-	  <tr>
+      <tr>
         <td colspan="6">
           <p>
-		  An invariant that must be satisfied before responses to the questionnaire can be considered "complete".
-		  </p>
-		  <p>
+            An invariant that must or should be satisfied before responses to the questionnaire can be considered "complete".  It contains an expression
+            as part of the complex extension, but should never have a 'name'.
+          </p>
+          <p>
             Note: The relative path should follow the same syntax as OperationOutcome.expression.
           </p>
         </td>

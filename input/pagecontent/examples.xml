@@ -5677,7 +5677,7 @@ i.fa {
           <i>Instruction: Click on "Review Previous Visits" button to view all the visits of this patient in the past year.</i>
           <br/>
           <br/>
-        Has the patient discussed this issue on any visits in the past year? <button id="myBtn">Review Previous Visits</button>
+        Has the patient been admitted for this issue on any visits in the past year? <button id="myBtn">Review Previous Visits</button>
           <br/>
           <input id="linkitem-1.7-f" type="radio" name="Gender" value="Yes"/> Yes&#xA0;<br/>
           <input id="linkitem-1.7-m" type="radio" name="Gender" value="No"/> No&#xA0;<br/>
@@ -5743,62 +5743,71 @@ i.fa {
               {
                 "extension": [
                   {
-                    "url": "http://hl7.org/fhir/uv/sdc/StructureDefinition/sdc-questionnaire-contextExpression",
-                    "valueExpression": {
-                      "description": "list all Encounters with patient in the past year, in order by date - newest to oldest",
-                      "language": "application/x-fhir-query",
-                      "expression": "Encounter?patient={{%patient.id}}&amp;date=ge{{today()-1 year}}&amp;_sort=-date"
-                    }
-                  },
-                  {
                     "extension": [
                       {
-                        "url": "path",
-                        "valueString": "period.start"
-                      },
-                      {
                         "url": "label",
-                        "valueString": "Date"
+                        "valueString": "Encounters in past year"
                       },
                       {
-                        "url": "width",
-                        "valueQuantity": {
-                          "value": 40,
-                          "system": "http://unitsofmeasure.org",
-                          "code": "%"
-                        }
+                        "url": "expression",
+                        "valueExpression": {
+                          "description": "list all Encounters with patient in the past year, in order by date - newest to oldest",
+                          "language": "application/x-fhir-query",
+                          "expression": "Encounter?patient={{%patient.id}}&amp;date=ge{{today()-1 year}}&amp;_sort=-date"
+                        },
                       },
                       {
-                        "url": "forDisplay",
-                        "valueBoolean": true
-                      }
+                        "extension": [
+                          {
+                            "url": "path",
+                            "valueString": "period.start"
+                          },
+                          {
+                            "url": "label",
+                            "valueString": "Date"
+                          },
+                          {
+                            "url": "width",
+                            "valueQuantity": {
+                              "value": 40,
+                              "system": "http://unitsofmeasure.org",
+                              "code": "%"
+                            }
+                          },
+                          {
+                            "url": "forDisplay",
+                            "valueBoolean": true
+                          }
+                        ],
+                        "url": "http://hl7.org/fhir/uv/sdc/StructureDefinition/sdc-questionnaire-choiceColumn"
+                      },
+                      {
+                        "extension": [
+                          {
+                            "url": "path",
+                            "valueString": "reason.coding.display + ' - ' + type.text"
+                          },
+                          {
+                            "url": "label",
+                            "valueString": "Visit Reason/Description"
+                          },
+                          {
+                            "url": "width",
+                            "valueQuantity": {
+                              "value": 60,
+                              "system": "http://unitsofmeasure.org",
+                              "code": "%"
+                            }
+                          },
+                          {
+                            "url": "forDisplay",
+                            "valueBoolean": false
+                          }
+                        ],
+                        "url": "http://hl7.org/fhir/uv/sdc/StructureDefinition/sdc-questionnaire-choiceColumn"
+                      },
                     ],
-                    "url": "http://hl7.org/fhir/uv/sdc/StructureDefinition/sdc-questionnaire-choiceColumn"
-                  },
-                  {
-                    "extension": [
-                      {
-                        "url": "path",
-                        "valueString": "reason.coding.display + ' - ' + type.text"
-                      },
-                      {
-                        "url": "label",
-                        "valueString": "Visit Reason/Description"
-                      },
-                      {
-                        "url": "width",
-                        "valueQuantity": {
-                          "value": 60,
-                          "system": "http://unitsofmeasure.org",
-                          "code": "%"
-                        }
-                      },
-                      {
-                        "url": "forDisplay",
-                        "valueBoolean": false
-                      }
-                    ],
-                    "url": "http://hl7.org/fhir/uv/sdc/StructureDefinition/sdc-questionnaire-choiceColumn"
+                    "url": "http://hl7.org/fhir/uv/sdc/StructureDefinition/sdc-questionnaire-contextExpression"
                   },
                   {
                     "url": "http://hl7.org/fhir/StructureDefinition/questionnaire-itemControl",
@@ -5815,7 +5824,7 @@ i.fa {
                   }
                 ],
                 "linkId": "1.2",
-                "text": "Has the patient discussed this issue on any visits in the past year?",
+                "text": "Has the patient been admitted for this issue on any visits in the past year?",
                 "type": "choice",
                 "answerValueSet": "http://hl7.org/fhir/ValueSet/yesnodontknow"
               }
@@ -5869,46 +5878,51 @@ i.fa {
               </item>
               <item>
                 <extension url="http://hl7.org/fhir/uv/sdc/StructureDefinition/sdc-questionnaire-contextExpression">
-                  <valueExpression>
-                    <description value="list all Encounters with patient in the past year, in order by date - newest to oldest"/>
-                    <language value="application/x-fhir-query"/>
-                  <expression value="Encounter?patient={{%patient.id}}&amp;date=ge{{today()-1 year}}&amp;_sort=-date&amp;_include=Encounter:practitioner"/>
-                  </valueExpression>
-                </extension>
-                <extension url="http://hl7.org/fhir/uv/sdc/StructureDefinition/sdc-questionnaire-choiceColumn">
-                  <extension url="path">
-                    <valueString value="period.start"/>
-                  </extension>
                   <extension url="label">
-                    <valueString value="Date"/>
+                    <valueString value="Encounters in past year"/>
                   </extension>
-                  <extension url="width">
-                    <valueQuantity>
-                      <value value="40"/>
-                      <system value="http://unitsofmeasure.org"/>
-                      <code value="%"/>
-                    </valueQuantity>
+                  <extension url="expression">
+                    <valueExpression>
+                      <description value="list all Encounters with patient in the past year, in order by date - newest to oldest"/>
+                      <language value="application/x-fhir-query"/>
+                      <expression value="Encounter?patient={{%patient.id}}&amp;date=ge{{today()-1 year}}&amp;_sort=-date&amp;_include=Encounter:practitioner"/>
+                    </valueExpression>
                   </extension>
-                  <extension url="forDisplay">
-                    <valueBoolean value="true"/>
+                  <extension url="http://hl7.org/fhir/uv/sdc/StructureDefinition/sdc-questionnaire-choiceColumn">
+                    <extension url="path">
+                      <valueString value="period.start"/>
+                    </extension>
+                    <extension url="label">
+                      <valueString value="Date"/>
+                    </extension>
+                    <extension url="width">
+                      <valueQuantity>
+                        <value value="40"/>
+                        <system value="http://unitsofmeasure.org"/>
+                        <code value="%"/>
+                      </valueQuantity>
+                    </extension>
+                    <extension url="forDisplay">
+                      <valueBoolean value="true"/>
+                    </extension>
                   </extension>
-                </extension>
-                <extension url="http://hl7.org/fhir/uv/sdc/StructureDefinition/sdc-questionnaire-choiceColumn">
-                  <extension url="path">
-                    <valueString value="reason.coding.display + ' - ' + type.text"/>
-                  </extension>
-                  <extension url="label">
-                    <valueString value="Visit Reason/Description"/>
-                  </extension>
-                  <extension url="width">
-                    <valueQuantity>
-                      <value value="60"/>
-                      <system value="http://unitsofmeasure.org"/>
-                      <code value="%"/>
-                    </valueQuantity>
-                  </extension>
-                  <extension url="forDisplay">
-                    <valueBoolean value="false"/>
+                  <extension url="http://hl7.org/fhir/uv/sdc/StructureDefinition/sdc-questionnaire-choiceColumn">
+                    <extension url="path">
+                      <valueString value="reason.coding.display + ' - ' + type.text"/>
+                    </extension>
+                    <extension url="label">
+                      <valueString value="Visit Reason/Description"/>
+                    </extension>
+                    <extension url="width">
+                      <valueQuantity>
+                        <value value="60"/>
+                        <system value="http://unitsofmeasure.org"/>
+                        <code value="%"/>
+                      </valueQuantity>
+                    </extension>
+                    <extension url="forDisplay">
+                      <valueBoolean value="false"/>
+                    </extension>
                   </extension>
                 </extension>
                 <extension url="http://hl7.org/fhir/StructureDefinition/questionnaire-itemControl">
@@ -5922,7 +5936,7 @@ i.fa {
                   </valueCodeableConcept>
                 </extension>
                 <linkId value="1.2"/>
-                <text value="Has the patient discussed this issue on any visits in the past year?"/>
+                <text value="Has the patient been admitted for this issue on any visits in the past year?"/>
                 <type value="choice"/>
                 <answerValueSet value="http://hl7.org/fhir/ValueSet/yesnodontknow"/>
               </item>
