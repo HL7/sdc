@@ -1,9 +1,8 @@
 {
   "resourceType": "Questionnaire",
   "id": "questionnaire-sdc-profile-example-weight-height-tracking-panel",
-  "url": "http://hl7.org/fhir/uv/sdc/Questionnaire/questionnaire-sdc-profile-example-weight-height-tracking-panel",
-  "status": "draft",
-  "date": "2018-09-12T18:03:40-04:00",
+  
+
   "meta": {
     "profile": [
       "http://hl7.org/fhir/uv/sdc/StructureDefinition/sdc-questionnaire|2.8"
@@ -15,14 +14,20 @@
       }
     ]
   },
-  "title": "Weight & Height tracking panel",
-  "name": "WeightHeightTrackingPanel",
+  "url": "http://hl7.org/fhir/uv/sdc/Questionnaire/questionnaire-sdc-profile-example-weight-height-tracking-panel",
   "identifier": [
     {
       "system": "http://loinc.org",
       "value": "55418-8"
     }
   ],
+  "version": "2.8.0",
+   "name": "WeightHeightTrackingPanel",
+  "title": "Weight & Height tracking panel",
+   "status": "draft",
+   "experimental":"true",
+  "date": "2018-09-12T18:03:40-04:00", 
+  "purpose": "This Questionnaire example was generated to ensure a non-proprietary, publicly available questionnaire that is available to test the Structured Data Capture profiles",
   "code": [
     {
       "system": "http://loinc.org",
@@ -58,6 +63,10 @@
   {
     "url" : "http://hl7.org/fhir/StructureDefinition/structuredefinition-fmm",
     "valueInteger" : 0
+  },
+  {
+    "url" : "http://hl7.org/fhir/uv/sdc/StructureDefinition/sdc-questionnaire-performerType",
+    "valueCode" : "Practitioner"
   }
   ],
   "item": [
