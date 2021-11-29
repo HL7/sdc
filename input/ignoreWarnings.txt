@@ -38,6 +38,10 @@ WARNING: StructureDefinition.where(url = 'http://hl7.org/fhir/uv/sdc/StructureDe
 # This is an example with no questionnaire, so this is fine
 INFORMATION: QuestionnaireResponse/questionnaireresponse-sdc-profile-example: QuestionnaireResponse: No questionnaire is identified, so no validation can be performed against the base questionnaire
 
+# This is a contained adaptive Questionnaire in QuestionnaireReponse profile, so ignoring this warning
+WARNING: StructureDefinition.where(url = 'http://hl7.org/fhir/uv/sdc/StructureDefinition/sdc-questionnaire-adapt'): The Implementation Guide contains no examples for this profile
+
+
 # These info messages are because SDC examples have few extensions that are validated against the SDC profile, but these extensions are actually defined in the core or other profiles
 INFORMATION: Bundle/questionnaire-sdc-profile-example: Bundle.entry[0].resource.item[0].extension[0]: This element does not match any known slice defined in the profile http://hl7.org/fhir/uv/sdc/StructureDefinition/sdc-questionnaire
 INFORMATION: Bundle/questionnaire-sdc-profile-example: Bundle.entry[0].resource.item[2].extension[0]: This element does not match any known slice defined in the profile http://hl7.org/fhir/uv/sdc/StructureDefinition/sdc-questionnaire
