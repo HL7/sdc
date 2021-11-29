@@ -3123,7 +3123,7 @@ i.fa {
   </div>
   <a name="repeats"> </a>
   <h4>Using repeats, openLabel</h4>
-  <p>To allow multiple answers, no limit and to specify label for alternate answer choices.</p>
+  <p>To allow multiple answers, no limit and to specify label for alternate answer choices. (<a href="Questionnaire-questionnaire-sdc-profile-example-form-behavior.html">Example Questionnaire</a>)</p>
   <div class="tabs">
     <div class="tab">
       <input type="radio" id="tab-repeats-1" name="tab-repeats-group-2" checked="true"/>
@@ -3150,37 +3150,42 @@ i.fa {
               "url": "http://hl7.org/fhir/uv/sdc/StructureDefinition/questionnaire-sdc-openLabel",
               "valueString": "Other event (specify)"
             }]
-            "linkId": "2.5.b",
+            "linkId": "2.8",
             "text": "Heart History (check all that applies)",
             "type": "open-choice",
             "repeats": true,
             "answerOption": [
               {
                 "valueCoding": {
+                  "system": "http://example.com/CodeSystem/procedures",
                   "code": "U1",
                   "display": "Heart attack"
                 }
               },
               {
                 "valueCoding": {
+                  "system": "http://example.com/CodeSystem/procedures",
                   "code": "U2",
                   "display": "Heart surgery"
                 }
               },
               {
                 "valueCoding": {
+                  "system": "http://example.com/CodeSystem/procedures",
                   "code": "U3",
                   "display": "Cardiac catheterization"
                 }
               },
               {
                 "valueCoding": {
+                  "system": "http://example.com/CodeSystem/procedures",
                   "code": "U4",
                   "display": "Coronary angioplasty (PTCA)"
                 }
               },
               {
                 "valueCoding": {
+                  "system": "http://example.com/CodeSystem/procedures",
                   "code": "U5",
                   "display": "Cardiac pacemaker"
                 }
@@ -3199,37 +3204,42 @@ i.fa {
           <item>
             <extension url="http://hl7.org/fhir/uv/sdc/StructureDefinition/questionnaire-sdc-openLabel">
               <valueString value="Other event (specify)"/>
-            </extension>          
-            <linkId value="2.5.b"/>
+            </extension>
+            <linkId value="2.8"/>
             <text value="Heart History (check all that applies)"/>
             <type value="open-choice"/>
             <repeats value="true"/>
             <answerOption>
               <valueCoding>
+                <system value="http://example.com/CodeSystem/procedures"/>
                 <code value="U1"/>
                 <display value="Heart attack"/>
               </valueCoding>
             </answerOption>
             <answerOption>
               <valueCoding>
+                <system value="http://example.com/CodeSystem/procedures"/>
                 <code value="U2"/>
                 <display value="Heart surgery"/>
               </valueCoding>
             </answerOption>
             <answerOption>
               <valueCoding>
+                <system value="http://example.com/CodeSystem/procedures"/>
                 <code value="U3"/>
                 <display value="Cardiac catheterization"/>
               </valueCoding>
             </answerOption>
             <answerOption>
               <valueCoding>
+                <system value="http://example.com/CodeSystem/procedures"/>
                 <code value="U4"/>
                 <display value="Coronary angioplasty (PTCA)"/>
               </valueCoding>
             </answerOption>
             <answerOption>
               <valueCoding>
+                <system value="http://example.com/CodeSystem/procedures"/>
                 <code value="U5"/>
                 <display value="Cardiac pacemaker"/>
               </valueCoding>
@@ -3242,7 +3252,7 @@ i.fa {
 
 <a name="minoccurs"></a>
   <h4>Using minOccurs</h4>
-  <p>Must have at least to 2 answers.</p>
+  <p>Must have at least to 2 answers. (<a href="Questionnaire-questionnaire-sdc-profile-example-form-behavior.html">Example Questionnaire</a>)</p>
   <div class="tabs">
     <div class="tab">
       <input type="radio" id="tab-minoccurs-1" name="tab-minoccurs-group-2" checked="true"/>
@@ -3270,7 +3280,7 @@ i.fa {
                 "valueInteger": 2
               }
             ],
-            "linkId": "2.6.b",
+            "linkId": "2.9",
             "text": "Heart History (check at least 2):",
             "type": "choice",
             "required": true,
@@ -3278,30 +3288,35 @@ i.fa {
             "answerOption": [
               {
                 "valueCoding": {
+                  "system": "http://example.com/CodeSystem/procedures",
                   "code": "U1",
                   "display": "Heart attack"
                 }
               },
               {
                 "valueCoding": {
+                  "system": "http://example.com/CodeSystem/procedures",
                   "code": "U2",
                   "display": "Heart surgery"
                 }
               },
               {
                 "valueCoding": {
+                  "system": "http://example.com/CodeSystem/procedures",
                   "code": "U3",
                   "display": "Cardiac catheterization"
                 }
               },
               {
                 "valueCoding": {
+                  "system": "http://example.com/CodeSystem/procedures",
                   "code": "U4",
                   "display": "Coronary angioplasty (PTCA)"
                 }
               },
               {
                 "valueCoding": {
+                  "system": "http://example.com/CodeSystem/procedures",
                   "code": "U5",
                   "display": "Cardiac pacemaker"
                 }
@@ -3321,37 +3336,42 @@ i.fa {
             <extension url="http://hl7.org/fhir/StructureDefinition/questionnaire-minOccurs">
               <valueInteger value="2"/>
             </extension>
-            <linkId value="2.6.b"/>
+            <linkId value="2.9"/>
             <text value="Heart History (check at least 2):"/>
             <type value="choice"/>
             <required value="true"/>
             <repeats value="true"/>
             <answerOption>
               <valueCoding>
+                <system value="http://example.com/CodeSystem/procedures"/>
                 <code value="U1"/>
                 <display value="Heart attack"/>
               </valueCoding>
             </answerOption>
             <answerOption>
               <valueCoding>
+                <system value="http://example.com/CodeSystem/procedures"/>
                 <code value="U2"/>
                 <display value="Heart surgery"/>
               </valueCoding>
             </answerOption>
             <answerOption>
               <valueCoding>
+                <system value="http://example.com/CodeSystem/procedures"/>
                 <code value="U3"/>
                 <display value="Cardiac catheterization"/>
               </valueCoding>
             </answerOption>
             <answerOption>
               <valueCoding>
+                <system value="http://example.com/CodeSystem/procedures"/>
                 <code value="U4"/>
                 <display value="Coronary angioplasty (PTCA)"/>
               </valueCoding>
             </answerOption>
             <answerOption>
               <valueCoding>
+                <system value="http://example.com/CodeSystem/procedures"/>
                 <code value="U5"/>
                 <display value="Cardiac pacemaker"/>
               </valueCoding>
@@ -3364,7 +3384,7 @@ i.fa {
 
 <a name="maxoccurs"></a>
   <h4>Using maxOccurs</h4>
-  <p>Can only have up to 3 answers.</p>
+  <p>Can only have up to 3 answers. (<a href="Questionnaire-questionnaire-sdc-profile-example-form-behavior.html">Example Questionnaire</a>)</p>
   <div class="tabs">
     <div class="tab">
       <input type="radio" id="tab-maxoccurs-1" name="tab-maxoccurs-group-2" checked="true"/>
@@ -3392,7 +3412,7 @@ i.fa {
                 "valueInteger": 3
               }
             ],
-            "linkId": "2.7.b",
+            "linkId": "2.10",
             "text": "Heart History (check no more than 3):",
             "type": "choice",
             "required": true,
@@ -3400,30 +3420,35 @@ i.fa {
             "answerOption": [
               {
                 "valueCoding": {
+                  "system": "http://example.com/CodeSystem/procedures",
                   "code": "U1",
                   "display": "Heart attack"
                 }
               },
               {
                 "valueCoding": {
+                  "system": "http://example.com/CodeSystem/procedures",
                   "code": "U2",
                   "display": "Heart surgery"
                 }
               },
               {
                 "valueCoding": {
+                  "system": "http://example.com/CodeSystem/procedures",
                   "code": "U3",
                   "display": "Cardiac catheterization"
                 }
               },
               {
                 "valueCoding": {
+                  "system": "http://example.com/CodeSystem/procedures",
                   "code": "U4",
                   "display": "Coronary angioplasty (PTCA)"
                 }
               },
               {
                 "valueCoding": {
+                  "system": "http://example.com/CodeSystem/procedures",
                   "code": "U5",
                   "display": "Cardiac pacemaker"
                 }
@@ -3443,37 +3468,42 @@ i.fa {
             <extension url="http://hl7.org/fhir/StructureDefinition/questionnaire-maxOccurs">
               <valueInteger value="3"/>
             </extension>
-            <linkId value="2.7.b"/>
+            <linkId value="2.10"/>
             <text value="Heart History (check no more than 3):"/>
             <type value="choice"/>
             <required value="true"/>
             <repeats value="true"/>
             <answerOption>
               <valueCoding>
+                <system value="http://example.com/CodeSystem/procedures"/>
                 <code value="U1"/>
                 <display value="Heart attack"/>
               </valueCoding>
             </answerOption>
             <answerOption>
               <valueCoding>
+                <system value="http://example.com/CodeSystem/procedures"/>
                 <code value="U2"/>
                 <display value="Heart surgery"/>
               </valueCoding>
             </answerOption>
             <answerOption>
               <valueCoding>
+                <system value="http://example.com/CodeSystem/procedures"/>
                 <code value="U3"/>
                 <display value="Cardiac catheterization"/>
               </valueCoding>
             </answerOption>
             <answerOption>
               <valueCoding>
+                <system value="http://example.com/CodeSystem/procedures"/>
                 <code value="U4"/>
                 <display value="Coronary angioplasty (PTCA)"/>
               </valueCoding>
             </answerOption>
             <answerOption>
               <valueCoding>
+                <system value="http://example.com/CodeSystem/procedures"/>
                 <code value="U5"/>
                 <display value="Cardiac pacemaker"/>
               </valueCoding>
@@ -3486,7 +3516,7 @@ i.fa {
 
 <a name="optionExclusive"></a>
   <h4>Using optionExclusive</h4>
-  <p>To restrict other answers from being selected when an exclusive answer (like "None of the above") has been selected.</p>
+  <p>To restrict other answers from being selected when an exclusive answer (like "None of the above") has been selected. (<a href="Questionnaire-questionnaire-sdc-profile-example-form-behavior.html">Example Questionnaire</a>)</p>
   <div class="tabs">
     <div class="tab">
       <input type="radio" id="tab-optionExclusive-1" name="tab-optionExclusive-group-2" checked="true"/>
@@ -3523,7 +3553,7 @@ i.fa {
                 }
               }
             ],
-            "linkId": "1.0",
+            "linkId": "2.11",
             "text": "What treatments do you now have for heart disease? (select all that applies)",
             "type": "choice",
             "repeats": true,
@@ -3591,7 +3621,7 @@ i.fa {
                 </coding>
               </valueCodeableConcept>
             </extension>
-            <linkId value="1.0"/>
+            <linkId value="2.11"/>
             <text value="What treatments do you now have for heart disease? (select all that applies)"/>
             <type value="choice"/>
             <repeats value="true"/>
@@ -3642,18 +3672,18 @@ i.fa {
 
 <a name="unitoption"></a>
   <h4>Using unitOption</h4>
-  <p>Restrict unit choices using unit options.</p>
+  <p>Restrict unit choices using unit options. (<a href="Questionnaire-questionnaire-sdc-profile-example-form-behavior.html">Example Questionnaire</a>)</p>
   <div class="tabs">
     <div class="tab">
       <input type="radio" id="tab-unitoption-1" name="tab-unitoption-group-2" checked="true"/>
       <label for="tab-unitoption-1">Sample Question</label>
       <div class="content-in-tab">
-        <p>Dosage <input id="linkitem-2.8-input" type="text"/>
-          <select id="linkitem-2.8-option" name="activity">
+        <p>Dosage <input id="linkitem-2.12-input" type="text"/>
+          <select id="linkitem-2.12-option" name="activity">
+            <option value="grams">g</option>
+            <option value="liters">L</option>
             <option value="ml">ml</option>
-            <option value="liters">liters</option>
             <option value="mg">mg</option>
-            <option value="grams">grams</option>
           </select>
         </p>
       </div>
@@ -3695,7 +3725,7 @@ i.fa {
                 }
               }
             ],
-            "linkId": "2.8.b",
+            "linkId": "2.12",
             "text": "Dosage",
             "type": "quantity"
           }
@@ -3733,7 +3763,7 @@ i.fa {
                 <display value="grams"/>
               </valueCoding>
             </extension>
-            <linkId value="2.8.b"/>
+            <linkId value="2.12"/>
             <text value="Dosage"/>
             <type value="quantity"/>
           </item>
@@ -3744,13 +3774,13 @@ i.fa {
 
 <a name="unitvalueset"></a>
   <h4>Using unitValueSet</h4>
-  <p>Restrict unit choices from a value set.</p>
+  <p>Restrict unit choices from a value set. (<a href="Questionnaire-questionnaire-sdc-profile-example-form-behavior.html">Example Questionnaire</a>)</p>
   <div class="tabs">
     <div class="tab">
       <input type="radio" id="tab-unitvalueset-1" name="tab-unitvalueset-group-2" checked="true"/>
       <label for="tab-unitvalueset-1">Sample Question</label>
       <div class="content-in-tab">
-        <p>Specify age: <input id="linkitem-2.9-input" type="text"/>
+        <p>Specify age: <input id="linkitem-2.13-input" type="text"/>
           <select id="linkitem-2.9-option" name="units">
             <option value="minutes">minutes</option>
             <option value="hours">hours</option>
@@ -3774,7 +3804,7 @@ i.fa {
                 "valueCanonical": "http://hl7.org/fhir/ValueSet/age-units"
               }
             ],
-            "linkId": "2.9.b",
+            "linkId": "2.13",
             "text": "Specify age:",
             "type": "quantity"
           }
@@ -3791,7 +3821,7 @@ i.fa {
             <extension url="http://hl7.org/fhir/StructureDefinition/questionnaire-unitValueSet">
               <valueCanonical value="http://hl7.org/fhir/ValueSet/age-units"/>
             </extension>
-            <linkId value="2.9.b"/>
+            <linkId value="2.13"/>
             <text value="Specify age:"/>
             <type value="quantity"/>
           </item>
