@@ -29,6 +29,12 @@ WARNING: Bundle/questionnaire-sdc-profile-example: Bundle.entry[4].resource.useC
 WARNING: Bundle/questionnaire-sdc-profile-example: Bundle.entry[4].resource.useContext[2].code: The Coding provided is not in the value set http://hl7.org/fhir/ValueSet/usage-context-type (http://hl7.org/fhir/ValueSet/usage-context-type, and a code should come from this value set unless it has no suitable code) (error message = Unable to provide support for code system http://example.org/fhir/CodeSystem/usage-contexts)
 WARNING: Bundle/questionnaire-sdc-profile-example: Bundle.entry[5].resource.useContext.code: The Coding provided is not in the value set http://hl7.org/fhir/ValueSet/usage-context-type (http://hl7.org/fhir/ValueSet/usage-context-type, and a code should come from this value set unless it has no suitable code) (error message = Unable to provide support for code system http://example.org/fhir/CodeSystem/usage-contexts)
 
+# There is an example (Example Questionnaire: SDC-Weight and Height Tracking Panel) that fits for 'SDC Questionnaire Search' profile, so ignoring this warning
+WARNING: StructureDefinition.where(url = 'http://hl7.org/fhir/uv/sdc/StructureDefinition/sdc-questionnaire-search'): The Implementation Guide contains no examples for this profile
+
+# There is an example (Example Questionnaire: Questionnaire - Demographics Example) that fits for 'Extractable Questionnaire - Definition' profile, so ignoring this warning
+WARNING: StructureDefinition.where(url = 'http://hl7.org/fhir/uv/sdc/StructureDefinition/sdc-questionnaire-extr-defn'): The Implementation Guide contains no examples for this profile
+
 # This is an example with no questionnaire, so this is fine
 INFORMATION: QuestionnaireResponse/questionnaireresponse-sdc-profile-example: QuestionnaireResponse: No questionnaire is identified, so no validation can be performed against the base questionnaire
 

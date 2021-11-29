@@ -956,13 +956,21 @@
       <name value="Example $assemble operation response"/>
       <description value="Shows the result of performing a $assemble operation on the [modular-root](Questionnaire-sdc-modular-root.html) questionnaire"/>
     </resource>
-	 <resource>
+       <resource>
       <reference>
-        <reference value="Parameters/parameters-questionnaire-process-response-in-example"/>
-      </reference>
-      <name value="Questionnaire process response in example"/>
-      <description value="Shows the input parameters of the process response questionnaire operation"/>
-      <exampleCanonical value="http://hl7.org/fhir/uv/sdc/StructureDefinition/parameters-questionnaire-process-response-in"/>
+        <reference value="Library/sdc-CHF"/>
+      </reference>           
+      <name value="Congestive Heart Failure Logic"/>
+      <description value="Logic for an example congestive heart failure pathway"/>
+      <exampleCanonical value="http://hl7.org/fhir/uv/sdc/StructureDefinition/sdc-library"/>
+    </resource>
+       <resource>
+      <reference>
+        <reference value="QuestionnaireResponse/adaptive-questionnaireresponse-sdc-example-phq9"/>
+      </reference>           
+      <name value="SDC-Response to Adaptive PHQ9"/>
+      <description value="Example response to the Adaptive SDC-PHQ9 questionnaire"/>
+      <exampleCanonical value="http://hl7.org/fhir/uv/sdc/StructureDefinition/sdc-questionnaireresponse-adapt"/>
     </resource>
     <page>
       <extension url="http://hl7.org/fhir/StructureDefinition/structuredefinition-standards-status">
