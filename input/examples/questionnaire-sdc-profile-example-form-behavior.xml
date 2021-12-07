@@ -32,6 +32,40 @@ elements or extensions defined in the advanced form behavior profile are intende
   </contained>
   -->
 
+  <extension url="http://hl7.org/fhir/StructureDefinition/variable">
+    <valueExpression>
+      <name value="weight"/>
+      <language value="text/fhirpath"/>
+      <expression value="%resource.repeat(item).where(linkId='3.3.1').item.answer.valueDecimal"/>
+    </valueExpression>
+  </extension>
+  <extension url="http://hl7.org/fhir/StructureDefinition/variable">
+    <valueExpression>
+      <name value="height"/>
+      <language value="text/fhirpath"/>
+      <expression value="%resource.repeat(item).where(linkId='3.3.2').item.answer.valueDecimal*0.0254"/>
+    </valueExpression>
+  </extension>
+
+  <extension url="http://hl7.org/fhir/StructureDefinition/cqf-library">
+    <valueCanonical value="http://example.com/Library/MeasurementLimits"/>
+  </extension>
+  <extension url="http://hl7.org/fhir/uv/sdc/StructureDefinition/sdc-questionnaire-launchContext">
+    <extension url="name">
+      <valueCoding>
+        <system value="http://hl7.org/fhir/uv/sdc/CodeSystem/launchContext"/>
+        <code value="patient"/>
+        <display value="Patient"/>
+      </valueCoding>
+    </extension>
+    <extension url="type">
+      <valueCode value="Patient"/>
+    </extension>
+    <extension url="description">
+      <valueString value="The patient that is to be used to pre-populate the form"/>
+    </extension>
+  </extension>
+
   <url value="http://build.fhir.org/ig/HL7/sdc/questionnaire-sdc-profile-example-render"/>
   <name value="SDCAdvancedRenderingExample"/>
   <status value="draft"/>
@@ -512,4 +546,125 @@ elements or extensions defined in the advanced form behavior profile are intende
       <type value="quantity"/>
     </item>
   </item>
+
+  <item>
+    <linkId value="3"/>
+    <text value="Calculation"/>
+    <type value="group"/>
+
+    <!-- initialExpression: Example with an initial expression. -->
+    <item>
+      <extension url="http://hl7.org/fhir/uv/sdc/StructureDefinition/sdc-questionnaire-initialExpression">
+        <valueExpression>
+          <description value="deadline for submission"/>
+          <language value="text/fhirpath"/>
+          <expression value="today() + 7 days"/>
+        </valueExpression>
+      </extension>
+      <linkId value="3.1"/>
+      <text value="Deadline for submission (7 days from now)"/>
+      <type value="date"/>
+      <readOnly value="true"/>
+    </item>
+
+    <!-- calculatedExpression and variable: Example with a calculated expression -->
+    <item>
+      <linkId value="3.3"/>
+      <text value="Calculated Expression"/>
+      <type value="group"/>
+      <item>
+        <extension url="http://hl7.org/fhir/StructureDefinition/questionnaire-unit">
+          <valueCoding>
+            <system value="http://unitsofmeasure.org"/>
+            <code value="kg"/>
+          </valueCoding>
+        </extension>
+        <linkId value="3.3.1"/>
+        <text value="Weight (kg)"/>
+        <type value="decimal"/>
+      </item>
+      <item>
+        <extension url="http://hl7.org/fhir/StructureDefinition/questionnaire-unit">
+          <valueCoding>
+            <system value="http://unitsofmeasure.org"/>
+            <code value="[in_i]"/>
+          </valueCoding>
+        </extension>
+        <linkId value="3.3.2"/>
+        <text value="Body Height (inches)"/>
+        <type value="decimal"/>
+      </item>
+      <item>
+        <extension url="http://hl7.org/fhir/uv/sdc/StructureDefinition/sdc-questionnaire-calculatedExpression">
+          <valueExpression>
+            <description value="BMI Calculation"/>
+            <language value="text/fhirpath"/>
+            <expression value="(%weight/(%height.power(2))).round(1)"/>
+          </valueExpression>
+        </extension>
+        <linkId value="3.3.3"/>
+        <text value="Your Body Mass Index (BMI) is"/>
+        <type value="decimal"/>
+        <readOnly value="true"/>
+      </item>
+    </item>
+
+    <!-- cqf-calculatedValue, cqf-library and cqf-expression: Example question with a cqf-calculatedValue for minimum and maximum weight allowed and a question using a cqf-expression to determine if a question is required based on Patient data.-->
+    <item>
+      <linkId value="3.4"/>
+      <text value="CQF-related Example"/>
+      <type value="group"/>
+
+      <item>
+        <extension url="http://hl7.org/fhir/StructureDefinition/minValue">
+          <valueDecimal value="1">
+            <extension url="http://hl7.org/fhir/StructureDefinition/cqf-calculatedValue">
+              <valueString value="min_weight"/>
+            </extension>
+          </valueDecimal>
+        </extension>
+        <extension url="http://hl7.org/fhir/StructureDefinition/maxValue">
+          <valueDecimal value="100">
+            <extension url="http://hl7.org/fhir/StructureDefinition/cqf-calculatedValue">
+              <valueString value="max_weight"/>
+            </extension>
+          </valueDecimal>
+        </extension>
+        <linkId value="3.4.1"/>
+        <text value="Enter weight in kg"/>
+        <type value="decimal"/>
+      </item>
+      <item>
+        <linkId value="3.4.2"/>
+        <text value="Enter email address"/>
+        <type value="string"/>
+        <required value="false">
+          <extension url="http://hl7.org/fhir/StructureDefinition/cqf-expression">
+            <valueExpression>
+              <description value="current date"/>
+              <language value="text/fhirpath"/>
+              <expression value="%patient.active"/>
+            </valueExpression>
+          </extension>
+        </required>
+      </item>
+    </item>
+
+    <!-- text and cqf-Expression: Text example with cqf-expression  -->
+    <item>
+      <linkId value="3.5"/>
+      <text>
+        <extension url="http://hl7.org/fhir/StructureDefinition/cqf-expression">
+          <valueExpression>
+            <description value="last immunization date"/>
+            <language value="text/fhirpath"/>
+            <expression value="'Your last immunization was on '+ %Immunization.occurrenceDateTime.substring(0,10) + '.'"/> 
+          </valueExpression>
+        </extension>
+      </text>
+      <type value="display"/>
+    </item>    
+
+  </item>
+
 </Questionnaire>

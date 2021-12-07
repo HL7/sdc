@@ -3940,7 +3940,7 @@ i.fa {
   <h3>Calculation</h3>
 <a name="initialexpression"></a>
   <h4>Using initialExpression</h4>
-  <p>Example with an initial expression.</p>
+  <p>Example with an initial expression. (<a href="Questionnaire-questionnaire-sdc-profile-example-form-behavior.html">Example Questionnaire</a>)</p>
   <div class="tabs">
     <div class="tab">
       <input type="radio" id="tab-initialexpression-1" name="tab-initialexpression-group-2" checked="true"/>
@@ -3967,7 +3967,7 @@ i.fa {
                 }
               }
             ],
-            "linkId": "3.1.b",
+            "linkId": "3.1",
             "text": "Deadline for submission (7 days from now)",
             "type": "date",
             "readOnly": true
@@ -3989,7 +3989,7 @@ i.fa {
                 <expression value="today() + 7 days"/>
               </valueExpression>
             </extension>
-            <linkId value="3.1.b"/>
+            <linkId value="3.1"/>
             <text value="Deadline for submission (7 days from now)"/>
             <type value="date"/>
             <readOnly value="true"/>
@@ -4170,7 +4170,7 @@ i.fa {
 
 <a name="calculatedexpression"></a>
   <h4>Using calculatedExpression and variable</h4>
-  <p>Example with a calculated expression.<br/>
+  <p>Example with a calculated expression. (<a href="Questionnaire-questionnaire-sdc-profile-example-form-behavior.html">Example Questionnaire</a>)<br/>
    Note: The questions below are not functional. The BMI will not calculated and displayed after input.
 </p>
   <div class="tabs">
@@ -4196,7 +4196,7 @@ i.fa {
               "valueExpression": {
                 "name": "weight",
                 "language": "text/fhirpath",
-                "expression": "%resource.repeat(item).where(linkId='3.2.b').item.answer.valueDecimal"
+                "expression": "%resource.repeat(item).where(linkId='3.3.1').item.answer.valueDecimal"
               }
             },
             {
@@ -4204,7 +4204,7 @@ i.fa {
               "valueExpression": {
                 "name": "height",
                 "language": "text/fhirpath",
-                "expression": "%resource.repeat(item).where(linkId='3.2.c').item.answer.valueDecimal*0.0254"
+                "expression": "%resource.repeat(item).where(linkId='3.3.2').item.answer.valueDecimal*0.0254"
               }
             }
           ],
@@ -4219,7 +4219,7 @@ i.fa {
                   }
                 }
               ],
-              "linkId": "3.2.b",
+              "linkId": "3.3.1",
               "text": "Weight (kg)",
               "type": "decimal"
             },
@@ -4233,7 +4233,7 @@ i.fa {
                   }
                 }
               ],
-              "linkId": "3.2.c",
+              "linkId": "3.3.2",
               "text": "Body Height (inches)",
               "type": "decimal"
             },
@@ -4248,7 +4248,7 @@ i.fa {
                   }
                 }
               ],
-              "linkId": "3.2.d",
+              "linkId": "3.3.3",
               "text": "Your Body Mass Index (BMI) is ",
               "type": "decimal",
               "readOnly": true
@@ -4268,14 +4268,14 @@ i.fa {
               <valueExpression>
                 <name value="weight"/>
                 <language value="text/fhirpath"/>
-                <expression value="%resource.repeat(item).where(linkId='3.2.b').item.answer.valueDecimal"/>
+                <expression value="%resource.repeat(item).where(linkId='3.3.1').item.answer.valueDecimal"/>
               </valueExpression>
             </extension>
             <extension url="http://hl7.org/fhir/StructureDefinition/variable">
               <valueExpression>
                 <name value="height"/>
                 <language value="text/fhirpath"/>
-                <expression value="%resource.repeat(item).where(linkId='3.2.c').item.answer.valueDecimal*0.0254"/>
+                <expression value="%resource.repeat(item).where(linkId='3.3.2').item.answer.valueDecimal*0.0254"/>
               </valueExpression>
             </extension>
             <item>
@@ -4285,7 +4285,7 @@ i.fa {
                   <code value="kg"/>
                 </valueCoding>
               </extension>
-              <linkId value="3.2.b"/>
+              <linkId value="3.3.1"/>
               <text value="Weight (kg)"/>
               <type value="decimal"/>
             </item>
@@ -4296,7 +4296,7 @@ i.fa {
                   <code value="[in_i]"/>
                 </valueCoding>
               </extension>
-              <linkId value="3.2.c"/>
+              <linkId value="3.3.2"/>
               <text value="Body Height (inches)"/>
               <type value="decimal"/>
             </item>
@@ -4308,8 +4308,8 @@ i.fa {
                   <expression value="(%weight/(%height.power(2))).round(1)"/>
                 </valueExpression>
               </extension>
-              <linkId value="3.2.d"/>
-              <text value="Your Body Mass Index (BMI) is "/>
+              <linkId value="3.3.3"/>
+              <text value="Your Body Mass Index (BMI) is"/>
               <type value="decimal"/>
               <readOnly value="true"/>
             </item>
@@ -4321,7 +4321,7 @@ i.fa {
 
 <a name="cqf"></a>
   <h4>Using cqf-calculatedValue, cqf-library and cqf-expression</h4>
-  <p>Example question with a cqf-calculatedValue for minimum and maximum weight allowed and a question using a cqf-expression to determine if a question is required based on Patient data.</p>
+  <p>Example question with a cqf-calculatedValue for minimum and maximum weight allowed and a question using a cqf-expression to determine if a question is required based on Patient data. (<a href="Questionnaire-questionnaire-sdc-profile-example-form-behavior.html">Example Questionnaire</a>)</p>
   <div class="tabs">
     <div class="tab">
       <input type="radio" id="tab-cqf-1" name="tab-cqf-group-2" checked="true"/>
@@ -4342,7 +4342,7 @@ i.fa {
         "extension": [
           {
             "url": "http://hl7.org/fhir/StructureDefinition/cqf-library",
-            "valueString": "Library/MeasurementLimits"
+            "valueString": "http://example.com/Library/MeasurementLimits"
           },
           {
             "extension": [
@@ -4394,12 +4394,12 @@ i.fa {
                 }
               }
             ],
-            "linkId" : "3.3.a",
+            "linkId" : "3.4.1",
             "text" : "Enter weight in kg",
             "type" : "decimal"
           },
           {
-            "linkId" : "3.3.b",
+            "linkId" : "3.4.2",
             "text" : "Enter email address",
             "type" : "string",
             "required" : false,
@@ -4426,7 +4426,7 @@ i.fa {
       <div class="content-in-tab">
         <textarea style="border:none" class="xml">
           <extension url="http://hl7.org/fhir/StructureDefinition/cqf-library">
-            <valueCanonical value="Library/MeasurementLimits"/>
+            <valueCanonical value="http://example.com/Library/MeasurementLimits"/>
           </extension>
           <extension url="http://hl7.org/fhir/uv/sdc/StructureDefinition/sdc-questionnaire-launchContext">
             <extension url="name">
@@ -4458,12 +4458,12 @@ i.fa {
                 </extension>
               </valueDecimal>
             </extension>
-            <linkId value="3.3.a"/>
+            <linkId value="3.4.1"/>
             <text value="Enter weight in kg"/>
             <type value="decimal"/>
           </item>
           <item>
-            <linkId value="3.3.b"/>
+            <linkId value="3.4.2"/>
             <text value="Enter email address"/>
             <type value="string"/>
             <required value="false">
@@ -4484,13 +4484,13 @@ i.fa {
 
 <a name="text"></a>
   <h4>Using text and cqf-Expression</h4>
-  <p>Text example with cqf-expression.</p>
+  <p>Text example with cqf-expression. (<a href="Questionnaire-questionnaire-sdc-profile-example-form-behavior.html">Example Questionnaire</a>)</p>
   <div class="tabs">
     <div class="tab">
       <input type="radio" id="tab-text-1" name="tab-text-group-2" checked="true"/>
       <label for="tab-text-1">Sample Display</label>
       <div class="content-in-tab">
-        <p>Your last immunization was on [Jan 1, 2021].
+        <p>Your last immunization was on 2021-01-05.
         </p>
       </div>
     </div>
@@ -4499,10 +4499,9 @@ i.fa {
       <label for="tab-text-2">JSON</label>
       <div class="content-in-tab">
         <textarea style="border:none" class="xml">
-		"item": [
+        "item": [
           {
-            "linkId" : "3.3.b",
-            "text" : "Your immunization is due",
+            "linkId" : "3.5",
             "_text" : {
               "extension" : [
                 {
@@ -4510,13 +4509,14 @@ i.fa {
                   "valueExpression" : {
                     "description" : "last immunization date",
                     "language" : "text/fhirpath",
-                    "expression" : "%Immunization.occurrenceDateTime"
+                    "expression" : "'Your last immunization was on '+ %Immunization.occurrenceDateTime.substring(0,10) + '.'"
                   }
                 }
               ]
-            }
+            },
+            "type" : "display"
           }
-		  ]
+        ]
       </textarea>
       </div>
     </div>
@@ -4526,16 +4526,17 @@ i.fa {
       <div class="content-in-tab">
         <textarea style="border:none" class="xml">
          <item>
-            <linkId value="3.3.b"/>
-            <text value="Your immunization is due">
+            <linkId value="3.5"/>
+            <text>
               <extension url="http://hl7.org/fhir/StructureDefinition/cqf-expression">
                 <valueExpression>
                   <description value="last immunization date"/>
                   <language value="text/fhirpath"/>
-                <expression value="%Immunization.occurrenceDateTime"/> 
+                  <expression value="'Your last immunization was on '+ %Immunization.occurrenceDateTime.substring(0,10) + '.'"/> 
                 </valueExpression>
               </extension>
             </text>
+            <type value="display"/>
           </item>
         </textarea>
       </div>
