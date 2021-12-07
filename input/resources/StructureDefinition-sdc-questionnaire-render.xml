@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<StructureDefinition xmlns="http://hl7.org/fhir" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://hl7.org/fhir ../../input-cache/schemas/r4/fhir-single.xsd">
+<StructureDefinition xmlns="http://hl7.org/fhir"
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://hl7.org/fhir ../../input-cache/schemas/r4/fhir-single.xsd">
   <id value="sdc-questionnaire-render"/>
   <url value="http://hl7.org/fhir/uv/sdc/StructureDefinition/sdc-questionnaire-render"/>
   <name value="QuestionnaireRender"/>
@@ -12,7 +13,7 @@
   <type value="Questionnaire"/>
   <baseDefinition value="http://hl7.org/fhir/uv/sdc/StructureDefinition/sdc-questionnaire"/>
   <derivation value="constraint"/>
-   <differential>
+  <differential>
     <element id="Questionnaire">
       <path value="Questionnaire"/>
       <short value="Advanced Rendering Questionnaire"/>
@@ -74,7 +75,7 @@
     <element id="Questionnaire.item">
       <path value="Questionnaire.item"/>
     </element>
-	 <element id="Questionnaire.item.extension:itemMedia">
+    <element id="Questionnaire.item.extension:itemMedia">
       <path value="Questionnaire.item.extension"/>
       <sliceName value="itemMedia"/>
       <min value="0"/>
@@ -320,7 +321,7 @@
     <element id="Questionnaire.item.answerOption">
       <path value="Questionnaire.item.answerOption"/>
     </element>
-	<element id="Questionnaire.item.answerOption.extension:itemAnswerMedia">
+    <element id="Questionnaire.item.answerOption.extension:itemAnswerMedia">
       <path value="Questionnaire.item.answerOption.extension"/>
       <sliceName value="itemAnswerMedia"/>
       <min value="0"/>
@@ -333,8 +334,10 @@
     </element>
     <element id="Questionnaire.item.answerOption.valueString">
       <path value="Questionnaire.item.answerOption.value[x]"/>
-	  <sliceName value="valueString"/>
-	  <type>
+      <sliceName value="valueString"/>
+      <min value="0"/>
+      <max value="1"/>
+      <type>
         <code value="string"/>
       </type>
       <mustSupport value="false"/>
@@ -371,8 +374,10 @@
     </element>
     <element id="Questionnaire.item.answerOption.valueCoding">
       <path value="Questionnaire.item.answerOption.value[x]"/>
-	  	  <sliceName value="valueCoding"/>
-	  	   <type>
+      <sliceName value="valueCoding"/>
+      <min value="0"/>
+      <max value="1"/>
+      <type>
         <code value="Coding"/>
       </type>
       <mustSupport value="false"/>

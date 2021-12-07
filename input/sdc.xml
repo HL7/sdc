@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!-- edited with XMLSpy v2014 rel. 2 sp1 (x64) (http://www.altova.com) by Lloyd McKenzie (private) -->
-<ImplementationGuide xmlns="http://hl7.org/fhir" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://hl7.org/fhir ../input-cache/schemas/R4/fhir-single.xsd">
+<ImplementationGuide xmlns="http://hl7.org/fhir"
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://hl7.org/fhir ../input-cache/schemas/R4/fhir-single.xsd">
   <id value="hl7.fhir.uv.sdc"/>
   <!--      <extension url="http://hl7.org/fhir/StructureDefinition/igpublisher-spreadsheet">
     <valueUri value="structuredefinition-sdc-profile-spreadsheet.xml"/>
@@ -45,7 +46,7 @@
   </jurisdiction>
   <packageId value="hl7.fhir.uv.sdc"/>
   <fhirVersion value="4.0.1"/>
-<!-- <dependsOn>
+  <!-- <dependsOn>
 <uri value="http://hl7.org/fhir/ImplementationGuide/fhir"/>
 <packageId value="hl7.fhir.r4.examples"/>
 <version value="4.0.1"/>
@@ -956,21 +957,29 @@
       <name value="Example $assemble operation response"/>
       <description value="Shows the result of performing a $assemble operation on the [modular-root](Questionnaire-sdc-modular-root.html) questionnaire"/>
     </resource>
-       <resource>
+    <resource>
       <reference>
         <reference value="Library/sdc-CHF"/>
-      </reference>           
+      </reference>
       <name value="Congestive Heart Failure Logic"/>
       <description value="Logic for an example congestive heart failure pathway"/>
       <exampleCanonical value="http://hl7.org/fhir/uv/sdc/StructureDefinition/sdc-library"/>
     </resource>
-       <resource>
+    <resource>
       <reference>
         <reference value="QuestionnaireResponse/adaptive-questionnaireresponse-sdc-example-phq9"/>
-      </reference>           
+      </reference>
       <name value="SDC-Response to Adaptive PHQ9"/>
       <description value="Example response to the Adaptive SDC-PHQ9 questionnaire"/>
       <exampleCanonical value="http://hl7.org/fhir/uv/sdc/StructureDefinition/sdc-questionnaireresponse-adapt"/>
+    </resource>
+    <resource>
+      <reference>
+        <reference value="Questionnaire/questionnaire-sdc-profile-example-image-options"/>
+      </reference>
+      <name value="SDC-Example with Image Options"/>
+      <description value="Example questionnaire that shows how to display answer options as images using the rendering-xhtml extension."/>
+      <exampleCanonical value="http://hl7.org/fhir/uv/sdc/StructureDefinition/sdc-questionnaire-render"/>
     </resource>
     <page>
       <extension url="http://hl7.org/fhir/StructureDefinition/structuredefinition-standards-status">
