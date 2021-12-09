@@ -555,6 +555,37 @@ elements or extensions defined in the advanced form behavior profile are intende
       <text value="Specify age:"/>
       <type value="quantity"/>
     </item>
+
+    <!-- answerExpression, referenceResource, referenceProfile and lookupQuestionnaire: Example to restrict an answer to a specific resource or profile.-->
+    <item>
+      <extension url="http://hl7.org/fhir/StructureDefinition/questionnaire-referenceResource">
+        <valueCode value="Practitioner"/>
+      </extension>
+      <extension url="http://hl7.org/fhir/StructureDefinition/questionnaire-referenceProfile">
+        <valueCanonical value="http://hl7.org/fhir/us/core/StructureDefinition/us-core-practitioner"/>
+      </extension>
+      <extension url="http://hl7.org/fhir/uv/sdc/StructureDefinition/sdc-questionnaire-lookupQuestionnaire">
+        <valueUri value="http://mysite.com/Questionnaire/1234"/>
+      </extension>
+      <extension url="http://hl7.org/fhir/uv/sdc/StructureDefinition/sdc-questionnaire-answerExpression">
+        <valueExpression>
+          <description value="all active practitioners"/>
+          <language value="application/x-fhir-query"/>
+          <expression value="Practitioner?active=true&amp;_sort=family,given"/>
+        </valueExpression>
+      </extension>
+      <extension url="http://hl7.org/fhir/uv/sdc/StructureDefinition/sdc-questionnaire-choiceColumn">
+        <extension url="path">
+          <valueString value="name.where(use='official').family + ', ' + name.where(use='official').given.first()"/>
+        </extension>
+        <extension url="forDisplay">
+          <valueBoolean value="true"/>
+        </extension>
+      </extension>
+      <linkId value="2.14"/>
+      <text value="Select your preferred practitioner:"/>
+      <type value="reference"/>
+    </item>
   </item>
 
   <item>
@@ -575,6 +606,51 @@ elements or extensions defined in the advanced form behavior profile are intende
       <text value="Deadline for submission (7 days from now)"/>
       <type value="date"/>
       <readOnly value="true"/>
+    </item>
+
+    <!-- launchContext: Example to set resources that provide context for form processing logic.-->
+    <item>
+      <linkId value="3.2"/>
+      <type value="group"/>
+      <item>
+        <extension url="http://hl7.org/fhir/uv/sdc/StructureDefinition/sdc-questionnaire-initialExpression">
+          <valueExpression>
+            <description value="patient's last name"/>
+            <language value="text/fhirpath"/>
+            <expression value="%patient.name.where(use='official').given.first()"/>
+          </valueExpression>
+        </extension>
+        <linkId value="3.2.1"/>
+        <text value="Last Name:"/>
+        <type value="string"/>
+        <readOnly value="true"/>
+      </item>
+      <item>
+        <extension url="http://hl7.org/fhir/uv/sdc/StructureDefinition/sdc-questionnaire-initialExpression">
+          <valueExpression>
+            <description value="patient's first name"/>
+            <language value="text/fhirpath"/>
+            <expression value="%patient.name.where(use='official').family()"/>
+          </valueExpression>
+        </extension>
+        <linkId value="3.2.2"/>
+        <text value="First Name:"/>
+        <type value="string"/>
+        <readOnly value="true"/>
+      </item>
+      <item>
+        <extension url="http://hl7.org/fhir/uv/sdc/StructureDefinition/sdc-questionnaire-initialExpression">
+          <valueExpression>
+            <description value="patient's gender"/>
+            <language value="text/fhirpath"/>
+            <expression value="%patient.gender"/>
+          </valueExpression>
+        </extension>
+        <linkId value="3.2.3"/>
+        <text value="Gender:"/>
+        <type value="string"/>
+        <readOnly value="true"/>
+      </item>
     </item>
 
     <!-- calculatedExpression and variable: Example with a calculated expression -->
@@ -803,5 +879,220 @@ elements or extensions defined in the advanced form behavior profile are intende
       <required value="true"/>
     </item>
 
+    <!-- candidateExpression: Example to provide a list of candidate answers for the question item.-->
+    <item>
+      <extension url="http://hl7.org/fhir/uv/sdc/StructureDefinition/sdc-questionnaire-candidateExpression">
+        <valueExpression>
+          <description value="active practitioners that speak at least one of the patient's language"/>
+          <language value="application/x-fhir-query"/>
+          <expression value="Practitioner?communication=&amp;active=true"/>
+        </valueExpression>
+      </extension>
+      <extension url="http://hl7.org/fhir/uv/sdc/StructureDefinition/sdc-questionnaire-choiceColumn">
+        <extension url="path">
+          <valueString value="name.first().family"/>
+        </extension>
+        <extension url="label">
+          <valueString value="LAST NAME"/>
+        </extension>
+        <extension url="width">
+          <valueQuantity>
+            <value value="40"/>
+            <system value="http://unitsofmeasure.org"/>
+            <code value="%"/>
+          </valueQuantity>
+        </extension>
+        <extension url="forDisplay">
+          <valueBoolean value="true"/>
+        </extension>
+      </extension>
+      <extension url="http://hl7.org/fhir/uv/sdc/StructureDefinition/sdc-questionnaire-choiceColumn">
+        <extension url="path">
+          <valueString value="name.first().given.first()"/>
+        </extension>
+        <extension url="label">
+          <valueString value="FIRST NAME"/>
+        </extension>
+        <extension url="width">
+          <valueQuantity>
+            <value value="40"/>
+            <system value="http://unitsofmeasure.org"/>
+            <code value="%"/>
+          </valueQuantity>
+        </extension>
+        <extension url="forDisplay">
+          <valueBoolean value="true"/>
+        </extension>
+      </extension>
+      <extension url="http://hl7.org/fhir/uv/sdc/StructureDefinition/sdc-questionnaire-choiceColumn">
+        <extension url="path">
+          <valueString value="gender"/>
+        </extension>
+        <extension url="label">
+          <valueString value="GENDER"/>
+        </extension>
+        <extension url="width">
+          <valueQuantity>
+            <value value="20"/>
+            <system value="http://unitsofmeasure.org"/>
+            <code value="%"/>
+          </valueQuantity>
+        </extension>
+        <extension url="forDisplay">
+          <valueBoolean value="false"/>
+        </extension>
+      </extension>
+      <linkId value="4.5"/>
+      <text value="All the practitioners below can speak the patient's language. Choose all preferred practioners:"/>
+      <type value="reference"/>
+      <repeats value="true"/>
+    </item>
+
+    <!-- itemPopulationContext and itemExtractionContext: Example to specify the resources to populate and extract a questionnaire.-->
+    <item>
+      <extension url="http://hl7.org/fhir/uv/sdc/StructureDefinition/sdc-questionnaire-itemPopulationContext">
+        <valueExpression>
+          <description value="Home address of the patient"/>
+          <language value="text/fhirpath"/>
+          <expression value="%patient.address.where(use='home')[0]"/>
+        </valueExpression>
+      </extension>
+      <extension url="http://hl7.org/fhir/uv/sdc/StructureDefinition/sdc-questionnaire-itemExtractionContext">
+        <valueExpression>
+          <description value="Home address of the patient"/>
+          <language value="text/fhirpath"/>
+          <expression value="%patient.address.where(use='home')[0]"/>
+        </valueExpression>
+      </extension>
+      <linkId value="4.6"/>
+      <type value="group"/>
+      <item>
+        <linkId value="4.6.1"/>
+        <text value="Home Address"/>
+        <type value="display"/>
+      </item>
+      <item>
+        <extension url="http://hl7.org/fhir/uv/sdc/StructureDefinition/sdc-questionnaire-initialExpression">
+          <valueExpression>
+            <description value="Address Line 1"/>
+            <language value="text/fhirpath"/>
+            <expression value="line[0]"/>
+          </valueExpression>
+        </extension>
+        <linkId value="4.6.2"/>
+        <definition value="http://hl7.org/fhir/StructureDefinition/Patient#Patient.address.line"/>
+        <text value="Address"/>
+        <type value="string"/>
+      </item>
+      <item>
+        <extension url="http://hl7.org/fhir/uv/sdc/StructureDefinition/sdc-questionnaire-initialExpression">
+          <valueExpression>
+            <description value="City"/>
+            <language value="text/fhirpath"/>
+            <expression value="city"/>
+          </valueExpression>
+        </extension>
+        <linkId value="4.6.3"/>
+        <definition value="http://hl7.org/fhir/StructureDefinition/Patient#Patient.address.city"/>
+        <text value="City"/>
+        <type value="string"/>
+      </item>
+      <item>
+        <extension url="http://hl7.org/fhir/uv/sdc/StructureDefinition/sdc-questionnaire-initialExpression">
+          <valueExpression>
+            <description value="State"/>
+            <language value="text/fhirpath"/>
+            <expression value="state"/>
+          </valueExpression>
+        </extension>
+        <linkId value="4.6.4"/>
+        <definition value="http://hl7.org/fhir/StructureDefinition/Patient#Patient.address.state"/>
+        <text value="Province"/>
+        <type value="choice"/>
+        <answerOption>
+          <valueCoding>
+            <system value="http://example.com/CodeSystem/provinces"/>
+            <code value="Alberta"/>
+            <display value="Alberta"/>
+          </valueCoding>
+        </answerOption>
+        <answerOption>
+          <valueCoding>
+            <system value="http://example.com/CodeSystem/provinces"/>
+            <code value="BritishColumbia"/>
+            <display value="British Columbia"/>
+          </valueCoding>
+        </answerOption>
+        <answerOption>
+          <valueCoding>
+            <system value="http://example.com/CodeSystem/provinces"/>
+            <code value="Manitoba"/>
+            <display value="Manitoba"/>
+          </valueCoding>
+        </answerOption>
+        <answerOption>
+          <valueCoding>
+            <system value="http://example.com/CodeSystem/provinces"/>
+            <code value="NewBrunswick"/>
+            <display value="New Brunswick"/>
+          </valueCoding>
+        </answerOption>
+        <answerOption>
+          <valueCoding>
+            <system value="http://example.com/CodeSystem/provinces"/>
+            <code value="NewfoundlandAndLabrador"/>
+            <display value="Newfoundland and Labrador"/>
+          </valueCoding>
+        </answerOption>
+        <answerOption>
+          <valueCoding>
+            <system value="http://example.com/CodeSystem/provinces"/>
+            <code value="NovaScotia"/>
+            <display value="Nova Scotia"/>
+          </valueCoding>
+        </answerOption>
+        <answerOption>
+          <valueCoding>
+            <system value="http://example.com/CodeSystem/provinces"/>
+            <code value="Ontario"/>
+            <display value="Ontario"/>
+          </valueCoding>
+        </answerOption>
+        <answerOption>
+          <valueCoding>
+            <system value="http://example.com/CodeSystem/provinces"/>
+            <code value="PrinceEdwardIsland"/>
+            <display value="Prince Edward Island"/>
+          </valueCoding>
+        </answerOption>
+        <answerOption>
+          <valueCoding>
+            <system value="http://example.com/CodeSystem/provinces"/>
+            <code value="Quebec"/>
+            <display value="Quebec"/>
+          </valueCoding>
+        </answerOption>
+        <answerOption>
+          <valueCoding>
+            <system value="http://example.com/CodeSystem/provinces"/>
+            <code value="Saskatchewan"/>
+            <display value="Saskatchewan"/>
+          </valueCoding>
+        </answerOption>
+      </item>
+      <item>
+        <extension url="http://hl7.org/fhir/uv/sdc/StructureDefinition/sdc-questionnaire-initialExpression">
+          <valueExpression>
+            <description value="Postal Code"/>
+            <language value="text/fhirpath"/>
+            <expression value="postalCode"/>
+          </valueExpression>
+        </extension>
+        <linkId value="4.6.5"/>
+        <definition value="http://hl7.org/fhir/StructureDefinition/Patient#Patient.address.postalCode"/>
+        <text value="Postal Code"/>
+        <type value="string"/>
+      </item>
+    </item>
   </item>
 </Questionnaire>
