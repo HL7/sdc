@@ -4547,7 +4547,7 @@ i.fa {
   <h3>Other Controls</h3>
 <a name="initial"></a>
   <h4>Using initial</h4>
-  <p>Example of options with initial value.</p>
+  <p>Example of options with initial value. (<a href="Questionnaire-questionnaire-sdc-profile-example-form-behavior.html">Example Questionnaire</a>)</p>
   <div class="tabs">
     <div class="tab">
       <input type="radio" id="tab-initial-1" name="tab-initial-group-2" checked="true"/>
@@ -4570,20 +4570,20 @@ i.fa {
         <textarea style="border:none" class="xml">
         "item": [
           {
-            "linkId": "4.1.b",
-            "text": "Marital Status",
-            "type": "choice",
-            "answerValueSet": "http://hl7.org/fhir/ValueSet/marital-status",
-            "initial": [
+            "linkId" : "4.1",
+            "text" : "Marital Status",
+            "type" : "choice",
+            "answerValueSet" : "http://hl7.org/fhir/ValueSet/marital-status",
+            "initial" : [
               {
-                "valueCoding": {
-                  "system": "http://hl7.org/fhir/ValueSet/marital-status",
-                  "code": "D",
-                  "display": "Divorced"
+                "valueCoding" : {
+                  "system" : "http://terminology.hl7.org/CodeSystem/v3-MaritalStatus",
+                  "code" : "D",
+                  "display" : "Divorced"
                 }
               }
             ]
-          }
+          }          
         ]
       </textarea>
       </div>
@@ -4593,19 +4593,19 @@ i.fa {
       <label for="tab-initial-3">XML</label>
       <div class="content-in-tab">
         <textarea style="border:none" class="xml">
-          <item>
-            <linkId value="4.1.b"/>
-            <text value="Marital Status"/>
-            <type value="choice"/>
-            <answerValueSet value="http://hl7.org/fhir/ValueSet/marital-status"/>
-            <initial>
-              <valueCoding>
-                <system value="http://hl7.org/fhir/ValueSet/marital-status"/>
-                <code value="D"/>
-                <display value="Divorced"/>
-              </valueCoding>
-            </initial>
-          </item>
+        <item>
+          <linkId value="4.1"/>
+          <text value="Marital Status"/>
+          <type value="choice"/>
+          <answerValueSet value="http://hl7.org/fhir/ValueSet/marital-status"/>
+          <initial>
+            <valueCoding>
+              <system value="http://terminology.hl7.org/CodeSystem/v3-MaritalStatus"/>
+              <code value="D"/>
+              <display value="Divorced"/>
+            </valueCoding>
+          </initial>
+        </item>
         </textarea>
       </div>
     </div>
@@ -4613,7 +4613,7 @@ i.fa {
 
 <a name="enableexamples"></a>
   <h4>Using enableWhen, enableBehavior, and enableWhenExpression</h4>
-  <p>Example of enabling behaviors.<br/>
+  <p>Example of enabling behaviors. (<a href="Questionnaire-questionnaire-sdc-profile-example-form-behavior.html">Example Questionnaire</a>)<br/>
    Note: The questions below are not functional. Display does not show actual enabling behaviors.
 </p>
   <div class="tabs" style="height:350px">
@@ -4667,99 +4667,99 @@ i.fa {
         <textarea style="border:none" class="xml">
         "item": [
           {
-            "linkId": "4.2.b",
-            "type": "group",
-            "item": [
+            "linkId" : "4.2",
+            "type" : "group",
+            "item" : [
               {
-                "linkId": "4.2.b.1",
-                "text": "Choose Gender",
-                "type": "choice",
-                "answerValueSet": "http://hl7.org/fhir/ValueSet/administrative-gender"
+                "linkId" : "4.2.1",
+                "text" : "Choose Gender",
+                "type" : "choice",
+                "answerValueSet" : "http://hl7.org/fhir/ValueSet/administrative-gender"
               },
               {
-                "linkId": "4.2.b.2",
-                "text": "Are you pregnant? (enableWhen = gender is Female)",
-                "type": "choice",
-                "enableWhen": [
+                "linkId" : "4.2.2",
+                "text" : "Are you pregnant? (enableWhen = gender is Female)",
+                "type" : "choice",
+                "enableWhen" : [
                   {
-                    "question": "4.2.b.1",
-                    "operator": "=",
-                    "answerCoding": {
-                      "system": "http://hl7.org/fhir/administrative-gender",
-                      "code": "female"
+                    "question" : "4.2.1",
+                    "operator" : "=",
+                    "answerCoding" : {
+                      "system" : "http://hl7.org/fhir/administrative-gender",
+                      "code" : "female"
                     }
                   }
                 ],
-                "answerValueSet": "http://hl7.org/fhir/ValueSet/yesnodontknow"
+                "answerValueSet" : "http://hl7.org/fhir/ValueSet/yesnodontknow"
               },
               {
-                "linkId": "4.2.b.3",
-                "text": "Are you diabetic? (enableWhen = gender is Female)",
-                "type": "choice",
-                "enableWhen": [
+                "linkId" : "4.2.3",
+                "text" : "Are you diabetic? (enableWhen = gender is Female)",
+                "type" : "choice",
+                "enableWhen" : [
                   {
-                    "question": "4.2.b.1",
-                    "operator": "=",
-                    "answerCoding": {
-                      "system": "http://hl7.org/fhir/administrative-gender",
-                      "code": "female"
+                    "question" : "4.2.1",
+                    "operator" : "=",
+                    "answerCoding" : {
+                      "system" : "http://hl7.org/fhir/administrative-gender",
+                      "code" : "female"
                     }
                   }
                 ],
-                "answerValueSet": "http://hl7.org/fhir/ValueSet/yesnodontknow"
+                "answerValueSet" : "http://hl7.org/fhir/ValueSet/yesnodontknow"
               },
               {
-                "linkId": "4.2.b.4",
-                "text": "Have you been diagnosed with Gestational Diabetes? (enableBehavior = only when pregnant and diabetic)",
-                "type": "choice",
-                "enableWhen": [
+                "linkId" : "4.2.4",
+                "text" : "Have you been diagnosed with Gestational Diabetes? (enableBehavior = only when pregnant and diabetic)",
+                "type" : "choice",
+                "enableWhen" : [
                   {
-                    "question": "4.2.b.2",
-                    "operator": "=",
-                    "answerCoding": {
-                      "system": "http://terminology.hl7.org/CodeSystem/v2-0136",
-                      "code": "Y"
+                    "question" : "4.2.2",
+                    "operator" : "=",
+                    "answerCoding" : {
+                      "system" : "http://terminology.hl7.org/CodeSystem/v2-0136",
+                      "code" : "Y"
                     }
                   },
                   {
-                    "question": "4.2.b.3",
-                    "operator": "=",
-                    "answerCoding": {
-                      "system": "http://terminology.hl7.org/CodeSystem/v2-0136",
-                      "code": "Y"
+                    "question" : "4.2.3",
+                    "operator" : "=",
+                    "answerCoding" : {
+                      "system" : "http://terminology.hl7.org/CodeSystem/v2-0136",
+                      "code" : "Y"
                     }
                   }
                 ],
-                "enableBehavior": "all",
-                "answerValueSet": "http://hl7.org/fhir/ValueSet/yesnodontknow"
+                "enableBehavior" : "all",
+                "answerValueSet" : "http://hl7.org/fhir/ValueSet/yesnodontknow"
               },
               {
-                "extension": [
+                "extension" : [
                   {
-                    "url": "http://hl7.org/fhir/StructureDefinition/entryFormat",
-                    "valueString": "MM/DD/YYYY"
+                    "url" : "http://hl7.org/fhir/StructureDefinition/entryFormat",
+                    "valueString" : "MM/DD/YYYY"
                   }
                 ],
-                "linkId": "4.2.b.5",
-                "text": "Enter your birthdate (MM/DD/YYYY)",
-                "type": "date",
-                "answerValueSet": "http://hl7.org/fhir/ValueSet/administrative-gender"
+                "linkId" : "4.2.5",
+                "text" : "Enter your birthdate (MM/DD/YYYY)",
+                "type" : "date",
+                "answerValueSet" : "http://hl7.org/fhir/ValueSet/administrative-gender"
               },
               {
-                "extension": [
+                "extension" : [
                   {
-                    "url": "http://hl7.org/fhir/uv/sdc/StructureDefinition/sdc-questionnaire-enableWhenExpression",
-                    "valueExpression": {
-                      "description": "if last 2 questions were answered",
-                      "language": "text/fhirpath",
-                      "expression": "%resource.repeat(item).where(linkId='4.2.b.1').answer.value.code ='female' and today().toString().substring(0, 4).toInteger() - %resource.repeat(item).where(linkId='4.2.b.5').answer.value.toString().substring(0, 4).toInteger() >= 40"
+                    "url" : "http://hl7.org/fhir/uv/sdc/StructureDefinition/sdc-questionnaire-enableWhenExpression",
+                    "valueExpression" : {
+                      "description" : "if last 2 questions were answered",
+                      "language" : "text/fhirpath",
+                      "expression" : "%resource.repeat(item).where(linkId='4.2.b.1').answer.value.code ='female' and today().toString().substring(0, 4).toInteger() - %resource.repeat(item).where(linkId='4.2.b.5').answer.value.toString().substring(0, 4).toInteger() >= 40"
                     }
                   }
                 ],
-                "linkId": "4.2.b.6",
-                "text": "Have you had mammogram before?(enableWhenExpression = only when gender is female and age > 40)",
-                "type": "choice",
-                "answerValueSet": "http://hl7.org/fhir/ValueSet/yesnodontknow"
+                "linkId" : "4.2.6",
+                "text" : "Have you had mammogram before?(enableWhenExpression = only when gender is female and age > 40)",
+                "type" : "choice",
+                "answerValueSet" : "http://hl7.org/fhir/ValueSet/yesnodontknow"
               }
             ]
           }
@@ -4773,20 +4773,20 @@ i.fa {
       <div class="content-in-tab">
         <textarea style="border:none" class="xml">
           <item>
-            <linkId value="4.2.b"/>
+            <linkId value="4.2"/>
             <type value="group"/>
             <item>
-              <linkId value="4.2.b.1"/>
+              <linkId value="4.2.1"/>
               <text value="Choose Gender"/>
               <type value="choice"/>
               <answerValueSet value="http://hl7.org/fhir/ValueSet/administrative-gender"/>
             </item>
             <item>
-              <linkId value="4.2.b.2"/>
+              <linkId value="4.2.2"/>
               <text value="Are you pregnant? (enableWhen = gender is Female)"/>
               <type value="choice"/>
               <enableWhen>
-                <question value="4.2.b.1"/>
+                <question value="4.2.1"/>
                 <operator value="="/>
                 <answerCoding>
                   <system value="http://hl7.org/fhir/administrative-gender"/>
@@ -4796,11 +4796,11 @@ i.fa {
               <answerValueSet value="http://hl7.org/fhir/ValueSet/yesnodontknow"/>
             </item>
             <item>
-              <linkId value="4.2.b.3"/>
+              <linkId value="4.2.3"/>
               <text value="Are you diabetic? (enableWhen = gender is Female)"/>
               <type value="choice"/>
               <enableWhen>
-                <question value="4.2.b.1"/>
+                <question value="4.2.1"/>
                 <operator value="="/>
                 <answerCoding>
                   <system value="http://hl7.org/fhir/administrative-gender"/>
@@ -4810,11 +4810,11 @@ i.fa {
               <answerValueSet value="http://hl7.org/fhir/ValueSet/yesnodontknow"/>
             </item>
             <item>
-              <linkId value="4.2.b.4"/>
+              <linkId value="4.2.4"/>
               <text value="Have you been diagnosed with Gestational Diabetes? (enableBehavior = only when pregnant and diabetic)"/>
               <type value="choice"/>
               <enableWhen>
-                <question value="4.2.b.2"/>
+                <question value="4.2.2"/>
                 <operator value="="/>
                 <answerCoding>
                   <system value="http://terminology.hl7.org/CodeSystem/v2-0136"/>
@@ -4822,7 +4822,7 @@ i.fa {
                 </answerCoding>
               </enableWhen>
               <enableWhen>
-                <question value="4.2.b.3"/>
+                <question value="4.2.3"/>
                 <operator value="="/>
                 <answerCoding>
                   <system value="http://terminology.hl7.org/CodeSystem/v2-0136"/>
@@ -4836,7 +4836,7 @@ i.fa {
               <extension url="http://hl7.org/fhir/StructureDefinition/entryFormat">
                 <valueString value="MM/DD/YYYY"/>
               </extension>
-              <linkId value="4.2.b.5"/>
+              <linkId value="4.2.5"/>
               <text value="Enter your birthdate (MM/DD/YYYY)"/>
               <type value="date"/>
               <answerValueSet value="http://hl7.org/fhir/ValueSet/administrative-gender"/>
@@ -4849,7 +4849,7 @@ i.fa {
                   <expression value="%resource.repeat(item).where(linkId='4.2.b.1').answer.value.code ='female' and today().toString().substring(0, 4).toInteger() - %resource.repeat(item).where(linkId='4.2.b.5').answer.value.toString().substring(0, 4).toInteger() >= 40"/>
                 </valueExpression>
               </extension>
-              <linkId value="4.2.b.6"/>
+              <linkId value="4.2.6"/>
               <text value="Have you had mammogram before?(enableWhenExpression = only when gender is female and age > 40)"/>
               <type value="choice"/>
               <answerValueSet value="http://hl7.org/fhir/ValueSet/yesnodontknow"/>
@@ -4863,7 +4863,7 @@ i.fa {
 
 <a name="ordinalvalue-constraint"></a>
   <h4>Using ordinalValue and constraint</h4>
-  <p>Example involving ordinal value and contraints.<br/>
+  <p>Example involving ordinal value and contraints. (<a href="Questionnaire-questionnaire-sdc-profile-example-ordinal-value.html">Example Questionnaire</a>)<br/>
    Note: The questions below are not functional. The total score will not be calculated and displayed after input.
 </p>
   <div class="tabs" style="height:400px">
@@ -4912,215 +4912,220 @@ i.fa {
       <div class="content-in-tab">
         <textarea style="border:none" class="xml">
         {
-          "resourceType": "Questionnaire",
-          "contained": [
+          "resourceType" : "Questionnaire",
+          "id" : "questionnaire-sdc-profile-example-ordinal-value",
+          "contained" : [
             {
-              "compose": {
-                "include": [
+              "resourceType" : "ValueSet",
+              "id" : "LL358-3",
+              "name" : "TimingOfHarmAssessment",
+              "title" : "Timing of harm assessment [AHRQ]",
+              "status" : "active",
+              "description" : "The answer list for timing of harm assessment",
+              "copyright" : "This content from LOINC® is copyright © 1995 Regenstrief Institute, Inc. and the LOINC Committee, and available at no cost under the license at http://loinc.org/terms-of-use",
+              "compose" : {
+                "include" : [
                   {
-                    "concept": [
+                    "system" : "http://loinc.org",
+                    "concept" : [
                       {
-                        "code": "LA6568-5",
-                        "display": "Not at all",
-                        "extension": [
+                        "extension" : [
                           {
-                            "url": "http://hl7.org/fhir/StructureDefinition/ordinalValue",
-                            "valueDecimal": 0
+                            "url" : "http://hl7.org/fhir/StructureDefinition/ordinalValue",
+                            "valueDecimal" : 0
                           }
-                        ]
+                        ],
+                        "code" : "LA6568-5",
+                        "display" : "Not at all"
                       },
                       {
-                        "code": "LA6569-3",
-                        "display": "Several days",
-                        "extension": [
+                        "extension" : [
                           {
-                            "url": "http://hl7.org/fhir/StructureDefinition/ordinalValue",
-                            "valueDecimal": 1
+                            "url" : "http://hl7.org/fhir/StructureDefinition/ordinalValue",
+                            "valueDecimal" : 1
                           }
-                        ]
+                        ],
+                        "code" : "LA6569-3",
+                        "display" : "Several days"
                       },
                       {
-                        "code": "Several days",
-                        "display": "More than half the days",
-                        "extension": [
+                        "extension" : [
                           {
-                            "url": "http://hl7.org/fhir/StructureDefinition/ordinalValue",
-                            "valueDecimal": 2
+                            "url" : "http://hl7.org/fhir/StructureDefinition/ordinalValue",
+                            "valueDecimal" : 2
                           }
-                        ]
+                        ],
+                        "code" : "LA6570-1",
+                        "display" : "More than half the days"
                       },
                       {
-                        "code": "LA6571-9",
-                        "display": "Nearly every day",
-                        "extension": [
+                        "extension" : [
                           {
-                            "url": "http://hl7.org/fhir/StructureDefinition/ordinalValue",
-                            "valueDecimal": 3
+                            "url" : "http://hl7.org/fhir/StructureDefinition/ordinalValue",
+                            "valueDecimal" : 3
                           }
-                        ]
+                        ],
+                        "code" : "LA6571-9",
+                        "display" : "Nearly every day"
                       }
-                    ],
-                    "system": "http://loinc.org"
+                    ]
                   }
                 ]
-              },
-              "copyright": "This content from LOINC® is copyright © 1995 Regenstrief Institute, Inc. and the LOINC Committee, and available at no cost under the license at http://loinc.org/terms-of-use",
-              "description": "The answer list for timing of harm assessment",
-              "id": "LL358-3",
-              "resourceType": "ValueSet",
-              "status": "active",
-              "title": "Timing of harm assessment [AHRQ]"
+              }
             }
           ],
-          "item": [
+          "url" : "http://hl7.org/fhir/uv/sdc/Questionnaire/questionnaire-sdc-profile-example-ordinal-value",
+          "name" : "SDCExampleUsingOrdinalValue",
+          "status" : "draft",
+          "item" : [
             {
-              "extension": [
+              "extension" : [
                 {
-                  "extension": [
+                  "extension" : [
                     {
-                      "url": "key",
-                      "valueId": "contraint-1"
+                      "url" : "key",
+                      "valueId" : "contraint-1"
                     },
                     {
-                      "url": "requirements",
-                      "valueString": "At least three questions must be answered to have a meaningful total."
+                      "url" : "requirements",
+                      "valueString" : "At least three questions must be answered to have a meaningful total."
                     },
                     {
-                      "url": "severity",
-                      "valueCode": "warning"
+                      "url" : "severity",
+                      "valueCode" : "warning"
                     },
                     {
-                      "url": "expression",
-                      "valueString": "%resource.repeat(item).where(linkId='4.3.b').item.where(answer.hasValue()).count() >= 3"
+                      "url" : "expression",
+                      "valueString" : "%resource.repeat(item).where(linkId='1.0').item.where(answer.hasValue()).count() >= 3"
                     },
                     {
-                      "url": "human",
-                      "valueString": "You should answer at least three questions."
+                      "url" : "human",
+                      "valueString" : "You should answer at least three questions."
                     }
                   ],
-                  "url": "http://hl7.org/fhir/StructureDefinition/questionnaire-constraint"
+                  "url" : "http://hl7.org/fhir/StructureDefinition/questionnaire-constraint"
                 }
               ],
-              "item": [
+              "linkId" : "1.0",
+              "text" : "Over the last 2 weeks, how often have you been bothered by any of the following problems?",
+              "type" : "group",
+              "item" : [
                 {
-                  "extension": [
+                  "extension" : [
                     {
-                      "url": "http://hl7.org/fhir/StructureDefinition/questionnaire-choiceOrientation",
-                      "valueCode": "horizontal"
+                      "url" : "http://hl7.org/fhir/StructureDefinition/questionnaire-choiceOrientation",
+                      "valueCode" : "horizontal"
                     },
                     {
-                      "url": "http://hl7.org/fhir/StructureDefinition/questionnaire-itemControl",
-                      "valueCodeableConcept": {
-                        "coding": [
+                      "url" : "http://hl7.org/fhir/StructureDefinition/questionnaire-itemControl",
+                      "valueCodeableConcept" : {
+                        "coding" : [
                           {
-                            "system": "http://hl7.org/fhir/questionnaire-item-control",
-                            "code": "radio-button",
-                            "display": "Radio Button"
+                            "system" : "http://hl7.org/fhir/questionnaire-item-control",
+                            "code" : "radio-button",
+                            "display" : "Radio Button"
                           }
                         ],
-                        "text": "A control where choices are listed with a button beside them. The button can be toggled to select or de-select a given choice. Selecting one item deselects all others."
+                        "text" : "A control where choices are listed with a button beside them. The button can be toggled to select or de-select a given choice. Selecting one item deselects all others."
                       }
                     }
                   ],
-                  "answerValueSet": "#LL358-3",
-                  "linkId": "4.3.b.1",
-                  "text": "1. Little interest or pleasure in doing things ",
-                  "type": "choice"
+                  "linkId" : "1.1",
+                  "text" : "1. Little interest or pleasure in doing things",
+                  "type" : "choice",
+                  "answerValueSet" : "#LL358-3"
                 },
                 {
-                  "extension": [
+                  "extension" : [
                     {
-                      "url": "http://hl7.org/fhir/StructureDefinition/questionnaire-choiceOrientation",
-                      "valueCode": "horizontal"
+                      "url" : "http://hl7.org/fhir/StructureDefinition/questionnaire-choiceOrientation",
+                      "valueCode" : "horizontal"
                     },
                     {
-                      "url": "http://hl7.org/fhir/StructureDefinition/questionnaire-itemControl",
-                      "valueCodeableConcept": {
-                        "coding": [
+                      "url" : "http://hl7.org/fhir/StructureDefinition/questionnaire-itemControl",
+                      "valueCodeableConcept" : {
+                        "coding" : [
                           {
-                            "system": "http://hl7.org/fhir/questionnaire-item-control",
-                            "code": "radio-button",
-                            "display": "Radio Button"
+                            "system" : "http://hl7.org/fhir/questionnaire-item-control",
+                            "code" : "radio-button",
+                            "display" : "Radio Button"
                           }
                         ],
-                        "text": "A control where choices are listed with a button beside them. The button can be toggled to select or de-select a given choice. Selecting one item deselects all others."
+                        "text" : "A control where choices are listed with a button beside them. The button can be toggled to select or de-select a given choice. Selecting one item deselects all others."
                       }
                     }
                   ],
-                  "answerValueSet": "#LL358-3",
-                  "linkId": "4.3.b.2",
-                  "text": "2. Feeling down, depressed, or hopeless ",
-                  "type": "choice"
+                  "linkId" : "1.2",
+                  "text" : "2. Feeling down, depressed, or hopeless",
+                  "type" : "choice",
+                  "answerValueSet" : "#LL358-3"
                 },
                 {
-                  "extension": [
+                  "extension" : [
                     {
-                      "url": "http://hl7.org/fhir/StructureDefinition/questionnaire-choiceOrientation",
-                      "valueCode": "horizontal"
+                      "url" : "http://hl7.org/fhir/StructureDefinition/questionnaire-choiceOrientation",
+                      "valueCode" : "horizontal"
                     },
                     {
-                      "url": "http://hl7.org/fhir/StructureDefinition/questionnaire-itemControl",
-                      "valueCodeableConcept": {
-                        "coding": [
+                      "url" : "http://hl7.org/fhir/StructureDefinition/questionnaire-itemControl",
+                      "valueCodeableConcept" : {
+                        "coding" : [
                           {
-                            "system": "http://hl7.org/fhir/questionnaire-item-control",
-                            "code": "radio-button",
-                            "display": "Radio Button"
+                            "system" : "http://hl7.org/fhir/questionnaire-item-control",
+                            "code" : "radio-button",
+                            "display" : "Radio Button"
                           }
                         ],
-                        "text": "A control where choices are listed with a button beside them. The button can be toggled to select or de-select a given choice. Selecting one item deselects all others."
+                        "text" : "A control where choices are listed with a button beside them. The button can be toggled to select or de-select a given choice. Selecting one item deselects all others."
                       }
                     }
                   ],
-                  "answerValueSet": "#LL358-3",
-                  "linkId": "4.3.b.3",
-                  "text": "3. Trouble falling or staying asleep, or sleeping too much ",
-                  "type": "choice"
+                  "linkId" : "1.3",
+                  "text" : "3. Trouble falling or staying asleep, or sleeping too much",
+                  "type" : "choice",
+                  "answerValueSet" : "#LL358-3"
                 },
                 {
-                  "extension": [
+                  "extension" : [
                     {
-                      "url": "http://hl7.org/fhir/StructureDefinition/questionnaire-choiceOrientation",
-                      "valueCode": "horizontal"
+                      "url" : "http://hl7.org/fhir/StructureDefinition/questionnaire-choiceOrientation",
+                      "valueCode" : "horizontal"
                     },
                     {
-                      "url": "http://hl7.org/fhir/StructureDefinition/questionnaire-itemControl",
-                      "valueCodeableConcept": {
-                        "coding": [
+                      "url" : "http://hl7.org/fhir/StructureDefinition/questionnaire-itemControl",
+                      "valueCodeableConcept" : {
+                        "coding" : [
                           {
-                            "system": "http://hl7.org/fhir/questionnaire-item-control",
-                            "code": "radio-button",
-                            "display": "Radio Button"
+                            "system" : "http://hl7.org/fhir/questionnaire-item-control",
+                            "code" : "radio-button",
+                            "display" : "Radio Button"
                           }
                         ],
-                        "text": "A control where choices are listed with a button beside them. The button can be toggled to select or de-select a given choice. Selecting one item deselects all others."
+                        "text" : "A control where choices are listed with a button beside them. The button can be toggled to select or de-select a given choice. Selecting one item deselects all others."
                       }
                     }
                   ],
-                  "answerValueSet": "#LL358-3",
-                  "linkId": "4.3.b.4",
-                  "text": "4. Feeling tired or having little energy ",
-                  "type": "choice"
+                  "linkId" : "1.4",
+                  "text" : "4. Feeling tired or having little energy",
+                  "type" : "choice",
+                  "answerValueSet" : "#LL358-3"
                 },
                 {
-                  "extension": [
+                  "extension" : [
                     {
-                      "url": "http://hl7.org/fhir/uv/sdc/StructureDefinition/sdc-questionnaire-calculatedExpression",
-                      "valueExpression": {
-                        "description": "Total score",
-                        "expression": "%resource.repeat(item).where(linkId='4.3.b').item.answer.ordinalValue().aggregate($this + $total, 0)",
-                        "language": "text/fhirpath"
+                      "url" : "http://hl7.org/fhir/uv/sdc/StructureDefinition/sdc-questionnaire-calculatedExpression",
+                      "valueExpression" : {
+                        "description" : "Total score",
+                        "language" : "text/fhirpath",
+                        "expression" : "%resource.repeat(item).where(linkId='1.0').item.answer.ordinalValue().aggregate($this + $total, 0)"
                       }
                     }
                   ],
-                  "linkId": "4.3.b.5",
-                  "text": "Total Score:",
-                  "type": "integer"
+                  "linkId" : "6",
+                  "text" : "Total Score:",
+                  "type" : "integer"
                 }
-              ],
-              "linkId": "4.3.b",
-              "text": "Over the last 2 weeks, how often have you been bothered by any of the following problems?",
-              "type": "group"
+              ]
             }
           ]
         }
@@ -5136,6 +5141,7 @@ i.fa {
             <contained>
               <ValueSet>
                 <id value="LL358-3"/>
+                <name value="TimingOfHarmAssessment"/>
                 <title value="Timing of harm assessment [AHRQ]"/>
                 <status value="active"/>
                 <description value="The answer list for timing of harm assessment"/>
@@ -5161,7 +5167,7 @@ i.fa {
                       <extension url="http://hl7.org/fhir/StructureDefinition/ordinalValue">
                         <valueDecimal value="2"/>
                       </extension>
-                      <code value="Several days"/>
+                      <code value="LA6570-1"/>
                       <display value="More than half the days"/>
                     </concept>
                     <concept>
@@ -5187,13 +5193,13 @@ i.fa {
                   <valueCode value="warning"/>
                 </extension>
                 <extension url="expression">
-                  <valueString value="%resource.repeat(item).where(linkId='4.3.b').item.where(answer.hasValue()).count() >= 3"/>
+                  <valueString value="%resource.repeat(item).where(linkId='1.0').item.where(answer.hasValue()).count()&gt;=3"/>
                 </extension>
                 <extension url="human">
                   <valueString value="You should answer at least three questions."/>
                 </extension>
               </extension>
-              <linkId value="4.3.b"/>
+              <linkId value="1.0"/>
               <text value="Over the last 2 weeks, how often have you been bothered by any of the following problems?"/>
               <type value="group"/>
               <item>
@@ -5210,8 +5216,8 @@ i.fa {
                     <text value="A control where choices are listed with a button beside them. The button can be toggled to select or de-select a given choice. Selecting one item deselects all others."/>
                   </valueCodeableConcept>
                 </extension>
-                <linkId value="4.3.b.1"/>
-                <text value="1. Little interest or pleasure in doing things "/>
+                <linkId value="1.1"/>
+                <text value="1. Little interest or pleasure in doing things"/>
                 <type value="choice"/>
                 <answerValueSet value="#LL358-3"/>
               </item>
@@ -5229,8 +5235,8 @@ i.fa {
                     <text value="A control where choices are listed with a button beside them. The button can be toggled to select or de-select a given choice. Selecting one item deselects all others."/>
                   </valueCodeableConcept>
                 </extension>
-                <linkId value="4.3.b.2"/>
-                <text value="2. Feeling down, depressed, or hopeless "/>
+                <linkId value="1.2"/>
+                <text value="2. Feeling down, depressed, or hopeless"/>
                 <type value="choice"/>
                 <answerValueSet value="#LL358-3"/>
               </item>
@@ -5248,8 +5254,8 @@ i.fa {
                     <text value="A control where choices are listed with a button beside them. The button can be toggled to select or de-select a given choice. Selecting one item deselects all others."/>
                   </valueCodeableConcept>
                 </extension>
-                <linkId value="4.3.b.3"/>
-                <text value="3. Trouble falling or staying asleep, or sleeping too much "/>
+                <linkId value="1.3"/>
+                <text value="3. Trouble falling or staying asleep, or sleeping too much"/>
                 <type value="choice"/>
                 <answerValueSet value="#LL358-3"/>
               </item>
@@ -5267,8 +5273,8 @@ i.fa {
                     <text value="A control where choices are listed with a button beside them. The button can be toggled to select or de-select a given choice. Selecting one item deselects all others."/>
                   </valueCodeableConcept>
                 </extension>
-                <linkId value="4.3.b.4"/>
-                <text value="4. Feeling tired or having little energy "/>
+                <linkId value="1.4"/>
+                <text value="4. Feeling tired or having little energy"/>
                 <type value="choice"/>
                 <answerValueSet value="#LL358-3"/>
               </item>
@@ -5277,10 +5283,10 @@ i.fa {
                   <valueExpression>
                     <description value="Total score"/>
                     <language value="text/fhirpath"/>
-                    <expression value="%resource.repeat(item).where(linkId='4.3.b').item.answer.ordinalValue().aggregate($this + $total, 0)"/>
+                    <expression value="%resource.repeat(item).where(linkId='1.0').item.answer.ordinalValue().aggregate($this + $total, 0)"/>
                   </valueExpression>
                 </extension>
-                <linkId value="4.3.b.5"/>
+                <linkId value="6"/>
                 <text value="Total Score:"/>
                 <type value="integer"/>
               </item>
@@ -5293,7 +5299,7 @@ i.fa {
 
 <a name="signatureRequired-usagemode"></a>
   <h4>Using signatureRequired and usageMode</h4>
-  <p>Example of signature required.</p>
+  <p>Example of a questionnaire requiring a signature. (<a href="Questionnaire-questionnaire-sdc-profile-example-form-behavior.html">Example Questionnaire</a>)</p>
   <div class="tabs">
     <div class="tab">
       <input type="radio" id="tab-signatureRequired-usagemode-1" name="tab-signatureRequired-usagemode-group-2" checked="true"/>
@@ -5328,7 +5334,7 @@ i.fa {
                 "valueCode": "capture"
               }
             ],
-            "linkId": "4.4.b",
+            "linkId": "4.4",
             "text": "Signature of Patient",
             "type": "attachment",
             "required": true
@@ -5356,7 +5362,7 @@ i.fa {
             <extension url="http://hl7.org/fhir/StructureDefinition/questionnaire-usageMode">
               <valueCode value="capture"/>
             </extension>
-            <linkId value="4.4.b"/>
+            <linkId value="4.4"/>
             <text value="Signature of Patient"/>
             <type value="attachment"/>
             <required value="true"/>
@@ -5368,7 +5374,7 @@ i.fa {
 
 <a name="endpoint"></a>
   <h4>Using endpoint</h4>
-  <p>To set an endpoint URL for the Form Receiver when the Questionnaire is completed.</p>
+  <p>To set an endpoint URL for the Form Receiver when the Questionnaire is completed. (<a href="Questionnaire-questionnaire-sdc-profile-example-form-behavior.html">Example Questionnaire</a>)</p>
   <div class="tabs">
     <div class="tab">
       <input type="radio" id="tab-endpoint-1" name="tab-endpoint-group-2" checked="true"/>
@@ -5415,7 +5421,7 @@ i.fa {
 
 <a name="entrymode"></a>
   <h4>Using entryMode</h4>
-  <p>To display questions one at a time.</p>
+  <p>To display questions one at a time. (<a href="Questionnaire-questionnaire-sdc-profile-example-form-behavior.html">Example Questionnaire</a>)</p>
   <div class="tabs">
     <div class="tab">
       <input type="radio" id="tab-entrymode-1" name="tab-entrymode-group-2" checked="true"/>
