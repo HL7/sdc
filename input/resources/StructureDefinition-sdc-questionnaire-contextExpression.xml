@@ -63,7 +63,7 @@
       <type>
         <code value="uri"/>
       </type>
-      <fixedUri value="label"/>
+      <fixedUri value="expression"/>
     </element>
     <element id="Extension.extension:expression.value[x]">
       <path value="Extension.extension.value[x]"/>
@@ -79,5 +79,9 @@
       </type>
       <fixedUri value="http://hl7.org/fhir/uv/sdc/StructureDefinition/sdc-questionnaire-contextExpression"/>
     </element>
+    <element id="Extension.value[x]">
+      <path value="Extension.value[x]"/>
+      <max value="0"/>
+    </element>    
   </differential>
 </StructureDefinition>

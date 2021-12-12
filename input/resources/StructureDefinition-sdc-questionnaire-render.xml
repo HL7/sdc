@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<StructureDefinition xmlns="http://hl7.org/fhir" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://hl7.org/fhir ../../input-cache/schemas/r4/fhir-single.xsd">
+<StructureDefinition xmlns="http://hl7.org/fhir"
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://hl7.org/fhir ../../input-cache/schemas/r4/fhir-single.xsd">
   <id value="sdc-questionnaire-render"/>
   <url value="http://hl7.org/fhir/uv/sdc/StructureDefinition/sdc-questionnaire-render"/>
   <name value="QuestionnaireRender"/>
@@ -346,6 +347,8 @@
     <element id="Questionnaire.item.answerOption.valueString">
       <path value="Questionnaire.item.answerOption.value[x]"/>
       <sliceName value="valueString"/>
+      <min value="0"/>
+      <max value="1"/>
       <type>
         <code value="string"/>
       </type>
@@ -384,6 +387,8 @@
     <element id="Questionnaire.item.answerOption.valueCoding">
       <path value="Questionnaire.item.answerOption.value[x]"/>
       <sliceName value="valueCoding"/>
+      <min value="0"/>
+      <max value="1"/>
       <type>
         <code value="Coding"/>
       </type>

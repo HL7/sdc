@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!-- edited with XMLSpy v2014 rel. 2 sp1 (x64) (http://www.altova.com) by Lloyd McKenzie (private) -->
-<ImplementationGuide xmlns="http://hl7.org/fhir" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://hl7.org/fhir ../input-cache/schemas/R4/fhir-single.xsd">
+<ImplementationGuide xmlns="http://hl7.org/fhir"
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://hl7.org/fhir ../input-cache/schemas/R4/fhir-single.xsd">
   <id value="hl7.fhir.uv.sdc"/>
   <!--      <extension url="http://hl7.org/fhir/StructureDefinition/igpublisher-spreadsheet">
     <valueUri value="structuredefinition-sdc-profile-spreadsheet.xml"/>
@@ -972,6 +973,30 @@
       <description value="Example response to the Adaptive SDC-PHQ9 questionnaire"/>
       <exampleCanonical value="http://hl7.org/fhir/uv/sdc/StructureDefinition/sdc-questionnaireresponse-adapt"/>
     </resource>
+    <resource>
+      <reference>
+        <reference value="Questionnaire/questionnaire-sdc-profile-example-image-options"/>
+      </reference>
+      <name value="SDC-Example with Image Options"/>
+      <description value="Example questionnaire that shows how to display answer options as images using the rendering-xhtml extension."/>
+      <exampleCanonical value="http://hl7.org/fhir/uv/sdc/StructureDefinition/sdc-questionnaire-render"/>
+    </resource>
+    <resource>
+      <reference>
+        <reference value="Questionnaire/questionnaire-sdc-profile-example-ordinal-value"/>
+      </reference>
+      <name value="SDC-Example using ordinalValue and constraint"/>
+      <description value="Example on how to use ordinal value and contraints in a Questionnaire."/>
+      <exampleCanonical value="http://hl7.org/fhir/uv/sdc/StructureDefinition/sdc-questionnaire-behave"/>
+    </resource>    
+    <resource>
+      <reference>
+        <reference value="Questionnaire/questionnaire-sdc-profile-example-context-expression"/>
+      </reference>
+      <name value="SDC-Example using contextExpression"/>
+      <description value="Example to indicate the resources to make available for display to the user to aid in answering the question."/>
+      <exampleCanonical value="http://hl7.org/fhir/uv/sdc/StructureDefinition/sdc-questionnaire-behave"/>
+    </resource>    
     <page>
       <extension url="http://hl7.org/fhir/StructureDefinition/structuredefinition-standards-status">
         <valueCode value="informative"/>
