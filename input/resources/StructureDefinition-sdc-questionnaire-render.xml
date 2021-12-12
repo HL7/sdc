@@ -12,7 +12,7 @@
   <type value="Questionnaire"/>
   <baseDefinition value="http://hl7.org/fhir/uv/sdc/StructureDefinition/sdc-questionnaire"/>
   <derivation value="constraint"/>
-   <differential>
+  <differential>
     <element id="Questionnaire">
       <path value="Questionnaire"/>
       <short value="Advanced Rendering Questionnaire"/>
@@ -74,7 +74,7 @@
     <element id="Questionnaire.item">
       <path value="Questionnaire.item"/>
     </element>
-	 <element id="Questionnaire.item.extension:itemMedia">
+    <element id="Questionnaire.item.extension:itemMedia">
       <path value="Questionnaire.item.extension"/>
       <sliceName value="itemMedia"/>
       <min value="0"/>
@@ -137,7 +137,7 @@
       <max value="1"/>
       <type>
         <code value="Extension"/>
-        <profile value="http://hl7.org/fhir/uv/sdc/StructureDefinition/questionnaire-sdc-openLabel"/>
+        <profile value="http://hl7.org/fhir/uv/sdc/StructureDefinition/sdc-questionnaire-openLabel"/>
       </type>
     </element>
     <element id="Questionnaire.item.extension:itemControl">
@@ -317,10 +317,22 @@
         <map value="(strings can contain xhtml)"/>
       </mapping>
     </element>
+    <element id="Questionnaire.item.text.extension:expression">
+      <path value="Questionnaire.item.text.extension"/>
+      <sliceName value="expression"/>
+      <comment value="Note: The variation cannot change the meaning of the question. The extension can be used even if text is present; and if the extension is supported, the evaluation will replace the text provided (with 'smarter' text). "/>
+      <min value="0"/>
+      <max value="1"/>
+      <type>
+        <code value="Extension"/>
+        <profile value="http://hl7.org/fhir/StructureDefinition/cqf-expression"/>
+      </type>
+      <mustSupport value="true"/>
+    </element>
     <element id="Questionnaire.item.answerOption">
       <path value="Questionnaire.item.answerOption"/>
     </element>
-	<element id="Questionnaire.item.answerOption.extension:itemAnswerMedia">
+    <element id="Questionnaire.item.answerOption.extension:itemAnswerMedia">
       <path value="Questionnaire.item.answerOption.extension"/>
       <sliceName value="itemAnswerMedia"/>
       <min value="0"/>
@@ -333,8 +345,8 @@
     </element>
     <element id="Questionnaire.item.answerOption.valueString">
       <path value="Questionnaire.item.answerOption.value[x]"/>
-	  <sliceName value="valueString"/>
-	  <type>
+      <sliceName value="valueString"/>
+      <type>
         <code value="string"/>
       </type>
       <mustSupport value="false"/>
@@ -371,8 +383,8 @@
     </element>
     <element id="Questionnaire.item.answerOption.valueCoding">
       <path value="Questionnaire.item.answerOption.value[x]"/>
-	  	  <sliceName value="valueCoding"/>
-	  	   <type>
+      <sliceName value="valueCoding"/>
+      <type>
         <code value="Coding"/>
       </type>
       <mustSupport value="false"/>

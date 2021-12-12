@@ -5,7 +5,7 @@
   <name value="LookupQuestionnaireExtension"/>
   <title value="Lookup questionnaire"/>
   <status value="draft"/>
-  <description value="For items of type reference, the reference can be populated either by picking an existing entity or by creating a new one.  In the latter case, this Questionnaire allows specifying the Questionnaire to use in creating the target instance.  This can be direct (if the Reference is to a Questionnaire) or indirect via mapping if the Reference is to some other sort of resource."/>
+  <description value="For items of type reference, the reference can be populated either by picking an existing entity or by creating a new one.  In the latter case, this Questionnaire allows specifying the Questionnaire to use in creating the target instance.  Typically this will result in a QuestionnaireResponse that can be [extracted](extraction.html) to produce the desired resource.  However, if the target resource for the reference is a QuestionnaireResponse, then the QuestionnaireResponse resulting from the Questionnaire can be referenced directly."/>
   <purpose value="Allows creation of references to be Questionnaire-based."/>
   <fhirVersion value="4.0.1"/>
   <kind value="complex-type"/>
@@ -26,13 +26,9 @@
     <element id="Extension">
       <path value="Extension"/>
       <short value="Questionnaire to populate a reference"/>
-      <definition value="For items of type reference, the reference can be populated either by picking an existing entity or by creating a new one.  In the latter case, this Questionnaire allows specifying the Questionnaire to use in creating the target instance.  This can be direct (if the Reference is to a Questionnaire) or indirect via mapping if the Reference is to some other sort of resource."/>
+      <definition value="For items of type reference, the reference can be populated either by picking an existing entity or by creating a new one.  In the latter case, this Questionnaire allows specifying the Questionnaire to use in creating the target instance.  Typically this will result in a QuestionnaireResponse that can be [extracted](extraction.html) to produce the desired resource.  However, if the target resource for the reference is a QuestionnaireResponse, then the QuestionnaireResponse resulting from the Questionnaire can be referenced directly."/>
       <min value="0"/>
       <max value="1"/>
-      <mapping>
-        <identity value="rim"/>
-        <map value="N/A (MIF-level)"/>
-      </mapping>
     </element>
     <element id="Extension.url">
       <path value="Extension.url"/>
@@ -44,7 +40,7 @@
     <element id="Extension.value[x]">
       <path value="Extension.value[x]"/>
       <type>
-        <code value="uri"/>
+        <code value="canonical"/>
       </type>
     </element>
   </differential>

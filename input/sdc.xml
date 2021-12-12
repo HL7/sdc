@@ -24,7 +24,7 @@
     <valueInteger value="3"/>
   </extension>
   <url value="http://hl7.org/fhir/uv/sdc/ImplementationGuide/hl7.fhir.uv.sdc"/>
-  <version value="2.8.0"/>
+  <version value="3.0.0"/>
   <name value="StructuredDataCapture"/>
   <title value="Structured Data Capture"/>
   <status value="draft"/>
@@ -45,11 +45,11 @@
   </jurisdiction>
   <packageId value="hl7.fhir.uv.sdc"/>
   <fhirVersion value="4.0.1"/>
-<!-- <dependsOn>
-<uri value="http://hl7.org/fhir/ImplementationGuide/fhir"/>
-<packageId value="hl7.fhir.r4.examples"/>
-<version value="4.0.1"/>
-</dependsOn> -->
+  <dependsOn id="examples">
+    <uri value="http://hl7.org/fhir/ImplementationGuide/fhir"/>
+    <packageId value="hl7.fhir.r4.examples"/>
+    <version value="4.0.1"/>
+  </dependsOn>
   <definition>
     <!--    <grouping id="conformance">
       <name value="Capability Statements"/>
@@ -956,18 +956,18 @@
       <name value="Example $assemble operation response"/>
       <description value="Shows the result of performing a $assemble operation on the [modular-root](Questionnaire-sdc-modular-root.html) questionnaire"/>
     </resource>
-       <resource>
+    <resource>
       <reference>
         <reference value="Library/sdc-CHF"/>
-      </reference>           
+      </reference>
       <name value="Congestive Heart Failure Logic"/>
       <description value="Logic for an example congestive heart failure pathway"/>
       <exampleCanonical value="http://hl7.org/fhir/uv/sdc/StructureDefinition/sdc-library"/>
     </resource>
-       <resource>
+    <resource>
       <reference>
         <reference value="QuestionnaireResponse/adaptive-questionnaireresponse-sdc-example-phq9"/>
-      </reference>           
+      </reference>
       <name value="SDC-Response to Adaptive PHQ9"/>
       <description value="Example response to the Adaptive SDC-PHQ9 questionnaire"/>
       <exampleCanonical value="http://hl7.org/fhir/uv/sdc/StructureDefinition/sdc-questionnaireresponse-adapt"/>

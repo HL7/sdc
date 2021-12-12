@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <QuestionnaireResponse xmlns="http://hl7.org/fhir" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://hl7.org/fhir ../../input-cache/schemas/R4/fhir-single.xsd">
 	<id value="questionnaireresponse-sdc-profile-example-loinc"/>
-	<questionnaire value="http://hl7.org/fhir/uv/sdc/Questionnaire/questionnaire-sdc-profile-example-loinc|2012-04"/>
+	<questionnaire value="http://hl7.org/fhir/uv/sdc/Questionnaire/questionnaire-sdc-profile-example-loinc|3.0"/>
 	<status value="completed"/>
 	<authored value="2016-03-14"/>
 	<item xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
@@ -42,18 +42,18 @@
 						<code value="LA20271-5"/>
 						<display value="Medications"/>
 					</valueCoding>
+          <item>
+            <linkId value="74080-3/74075-3"/>
+            <text value="What type of medication?"/>
+            <answer>
+              <valueCoding>
+                <system value="http://loinc.org"/>
+                <code value="LA20278-0"/>
+                <display value="Prescription or over-the-counter (including herbal supplements)"/>
+              </valueCoding>
+            </answer>
+          </item>
 				</answer>
-				<item>
-					<linkId value="74080-3/74075-3"/>
-					<text value="What type of medication?"/>
-					<answer>
-						<valueCoding>
-							<system value="http://loinc.org/vs/LL2655-0"/>
-							<code value="LA20278-0"/>
-							<display value="Prescription or over-the-counter (including herbal supplements)"/>
-						</valueCoding>
-					</answer>
-				</item>
 			</item>
 			<item>
 				<linkId value="74080-3/74072-0"/>
@@ -82,7 +82,7 @@
 				<text value="At what stage in the process did the event originate, regardless of the stage at which it was discovered?"/>
 				<answer>
 					<valueCoding>
-						<system value="http://loinc.org/vs/LL2669-1"/>
+						<system value="http://loinc.org"/>
 						<code value="LA20296-2"/>
 						<display value="Administering"/>
 					</valueCoding>
@@ -110,7 +110,7 @@
 				<text value="Was this medication/substance prescribed for this patient?"/>
 				<answer>
 					<valueCoding>
-						<system value="http://loinc.org/vs/LL2828-3"/>
+						<system value="http://loinc.org"/>
 						<code value="LA32-8"/>
 						<display value="No"/>
 					</valueCoding>
@@ -121,7 +121,7 @@
 				<text value="Was this medication/substance given to this patient?"/>
 				<answer>
 					<valueCoding>
-						<system value="http://loinc.org/vs/LL2828-3"/>
+						<system value="http://loinc.org"/>
 						<code value="LA33-6"/>
 						<display value="Yes"/>
 						<!--required-->

@@ -3,7 +3,7 @@
 <Library xmlns="http://hl7.org/fhir" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://hl7.org/fhir ../../input-cache/schemas/R4/fhir-single.xsd">
   <id value="sdc-CHF"/>
   <text>
-    <status value="generated"/><div xmlns="http://www.w3.org/1999/xhtml"><h2>Related Artifacts</h2><table class="grid"><tr><td>depends-on</td><td><code>http://hl7.org/fhir/Library/FHIR-ModelInfo|4.0.1</code></td></tr><tr><td>depends-on</td><td><code>http://hl7.org/fhir/Library/FHIRHelpers|4.0.1</code></td></tr><tr><td>depends-on</td><td><a href="http://terminology.hl7.org/2.0.0/CodeSystem-v3-snomed-CT.html">SNOMED and CT International Edition</a></td></tr><tr><td>depends-on</td><td><a href="http://terminology.hl7.org/2.0.0/CodeSystem-v3-loinc.html">Logical Observation Identifiers, Names and Codes (LOINC)</a></td></tr><tr><td>depends-on</td><td><a href="CodeSystem-chf-codes.html">CHF Codes</a></td></tr><tr><td>depends-on</td><td><a href="http://terminology.hl7.org/2.0.0/CodeSystem-condition-clinical.html">Condition Clinical Status Codes</a></td></tr><tr><td>depends-on</td><td><a href="http://terminology.hl7.org/2.0.0/CodeSystem-condition-ver-status.html">ConditionVerificationStatus</a></td></tr></table><h2>Parameters</h2><table class="grid"><tr><td>Encounter</td><td>in</td><td>0</td><td>1</td><td>Encounter</td></tr><tr><td>Patient</td><td>out</td><td>0</td><td>1</td><td>Patient</td></tr><tr><td>Body Weight</td><td>out</td><td>0</td><td>*</td><td>Observation</td></tr><tr><td>Body Weight Change Assertion</td><td>out</td><td>0</td><td>*</td><td>Observation</td></tr><tr><td>Daily Body Weight</td><td>out</td><td>0</td><td>*</td><td>Any</td></tr><tr><td>Daily Body Weight Change</td><td>out</td><td>0</td><td>*</td><td>Any</td></tr><tr><td>Body Weight Change</td><td>out</td><td>0</td><td>*</td><td>Observation</td></tr><tr><td>Current Body Weight</td><td>out</td><td>0</td><td>1</td><td>Observation</td></tr><tr><td>Previous Body Weight</td><td>out</td><td>0</td><td>1</td><td>Observation</td></tr><tr><td>Current Body Weight Change</td><td>out</td><td>0</td><td>1</td><td>integer</td></tr><tr><td>Urine Output</td><td>out</td><td>0</td><td>*</td><td>Observation</td></tr><tr><td>Current Urine Output</td><td>out</td><td>0</td><td>1</td><td>Observation</td></tr><tr><td>Net Intake/Output</td><td>out</td><td>0</td><td>*</td><td>Observation</td></tr><tr><td>Current Net Intake/Output</td><td>out</td><td>0</td><td>1</td><td>Observation</td></tr><tr><td>Jugular Venous Pressure</td><td>out</td><td>0</td><td>*</td><td>Observation</td></tr><tr><td>Oxygen Saturation</td><td>out</td><td>0</td><td>*</td><td>Observation</td></tr><tr><td>Potassium</td><td>out</td><td>0</td><td>*</td><td>Observation</td></tr><tr><td>Creatinine</td><td>out</td><td>0</td><td>*</td><td>Observation</td></tr><tr><td>eGFR</td><td>out</td><td>0</td><td>*</td><td>Observation</td></tr><tr><td>Eligibility Criteria</td><td>out</td><td>0</td><td>*</td><td>Condition</td></tr></table><h2>Data Requirements</h2><table class="grid"><tr><td colspan="2"><b>Type</b>: <a href="http://hl7.org/fhir/R4/observation.html">Observation</a> (<a href="http://hl7.org/fhir/R4/observation.html">Observation</a>)</td></tr><tr style="background-color: #efefef"><td>Filter</td><td>Value</td></tr><tr><td>code</td><td>One of these codes: <a href="https://loinc.org/">LOINC</a> 29463-7: Body weight</td></tr></table><table class="grid"><tr><td colspan="2"><b>Type</b>: <a href="http://hl7.org/fhir/R4/observation.html">Observation</a> (<a href="http://hl7.org/fhir/R4/observation.html">Observation</a>)</td></tr><tr style="background-color: #efefef"><td>Filter</td><td>Value</td></tr><tr><td>code</td><td>One of these codes: <a href="CodeSystem-chf-codes.html">http://hl7.org/fhir/uv/cpg/CodeSystem/chf-codes</a> body-weight-change: Body weight change</td></tr></table><table class="grid"><tr><td colspan="2"><b>Type</b>: <a href="http://hl7.org/fhir/R4/observation.html">Observation</a> (<a href="http://hl7.org/fhir/R4/observation.html">Observation</a>)</td></tr><tr style="background-color: #efefef"><td>Filter</td><td>Value</td></tr><tr><td>code</td><td>One of these codes: <a href="https://loinc.org/">LOINC</a> 9192-6: Urine output 24 hour</td></tr></table><table class="grid"><tr><td colspan="2"><b>Type</b>: <a href="http://hl7.org/fhir/R4/observation.html">Observation</a> (<a href="http://hl7.org/fhir/R4/observation.html">Observation</a>)</td></tr><tr style="background-color: #efefef"><td>Filter</td><td>Value</td></tr><tr><td>code</td><td>One of these codes: <a href="CodeSystem-chf-codes.html">http://hl7.org/fhir/uv/cpg/CodeSystem/chf-codes</a> net-intake-output: Net intake/output</td></tr></table><table class="grid"><tr><td colspan="2"><b>Type</b>: <a href="http://hl7.org/fhir/R4/observation.html">Observation</a> (<a href="http://hl7.org/fhir/R4/observation.html">Observation</a>)</td></tr><tr style="background-color: #efefef"><td>Filter</td><td>Value</td></tr><tr><td>code</td><td>One of these codes: <a href="CodeSystem-chf-codes.html">http://hl7.org/fhir/uv/cpg/CodeSystem/chf-codes</a> jvp: Jugular venous pressure</td></tr></table><table class="grid"><tr><td colspan="2"><b>Type</b>: <a href="http://hl7.org/fhir/R4/observation.html">Observation</a> (<a href="http://hl7.org/fhir/R4/observation.html">Observation</a>)</td></tr><tr style="background-color: #efefef"><td>Filter</td><td>Value</td></tr><tr><td>code</td><td>One of these codes: <a href="https://loinc.org/">LOINC</a> 2708-6: Oxygen saturation in Arterial blood</td></tr></table><table class="grid"><tr><td colspan="2"><b>Type</b>: <a href="http://hl7.org/fhir/R4/observation.html">Observation</a> (<a href="http://hl7.org/fhir/R4/observation.html">Observation</a>)</td></tr><tr style="background-color: #efefef"><td>Filter</td><td>Value</td></tr><tr><td>code</td><td>One of these codes: <a href="https://loinc.org/">LOINC</a> 86919-8: Potassium goal [Moles/volume] Serum or Plasma</td></tr></table><table class="grid"><tr><td colspan="2"><b>Type</b>: <a href="http://hl7.org/fhir/R4/observation.html">Observation</a> (<a href="http://hl7.org/fhir/R4/observation.html">Observation</a>)</td></tr><tr style="background-color: #efefef"><td>Filter</td><td>Value</td></tr><tr><td>code</td><td>One of these codes: <a href="https://loinc.org/">LOINC</a> 39802-4: Creatinine in dialysis fluid/Creatinine in serum or plasma</td></tr></table><table class="grid"><tr><td colspan="2"><b>Type</b>: <a href="http://hl7.org/fhir/R4/observation.html">Observation</a> (<a href="http://hl7.org/fhir/R4/observation.html">Observation</a>)</td></tr><tr style="background-color: #efefef"><td>Filter</td><td>Value</td></tr><tr><td>code</td><td>One of these codes: <a href="CodeSystem-chf-codes.html">http://hl7.org/fhir/uv/cpg/CodeSystem/chf-codes</a> egfr: eGFR result</td></tr></table><table class="grid"><tr><td colspan="2"><b>Type</b>: <a href="http://hl7.org/fhir/R4/condition.html">Condition</a> (<a href="http://hl7.org/fhir/R4/condition.html">Condition</a>)</td></tr></table><h2>Contents</h2><p><code>text/cql</code></p><pre><code class="language-sql">library CHF version '1.0.0'
+    <status value="generated"/><div xmlns="http://www.w3.org/1999/xhtml"><h2>Related Artifacts</h2><table class="grid"><tr><td>depends-on</td><td><code>http://hl7.org/fhir/Library/FHIR-ModelInfo|4.0.1</code></td></tr><tr><td>depends-on</td><td><code>http://hl7.org/fhir/Library/FHIRHelpers|4.0.1</code></td></tr><tr><td>depends-on</td><td><a href="http://terminology.hl7.org/2.0.0/CodeSystem-v3-snomed-CT.html">SNOMED and CT International Edition</a></td></tr><tr><td>depends-on</td><td><a href="http://terminology.hl7.org/2.0.0/CodeSystem-v3-loinc.html">Logical Observation Identifiers, Names and Codes (LOINC)</a></td></tr><tr><td>depends-on</td><td><a href="CodeSystem-chf-codes.html">CHF Codes</a></td></tr><tr><td>depends-on</td><td><a href="http://terminology.hl7.org/2.0.0/CodeSystem-condition-clinical.html">Condition Clinical Status Codes</a></td></tr><tr><td>depends-on</td><td><a href="http://terminology.hl7.org/2.0.0/CodeSystem-condition-ver-status.html">ConditionVerificationStatus</a></td></tr></table><h2>Parameters</h2><table class="grid"><tr><td>Encounter</td><td>in</td><td>0</td><td>1</td><td>Encounter</td></tr><tr><td>Patient</td><td>out</td><td>0</td><td>1</td><td>Patient</td></tr><tr><td>Body Weight</td><td>out</td><td>0</td><td>*</td><td>Observation</td></tr><tr><td>Body Weight Change Assertion</td><td>out</td><td>0</td><td>*</td><td>Observation</td></tr><tr><td>Daily Body Weight</td><td>out</td><td>0</td><td>*</td><td>Any</td></tr><tr><td>Daily Body Weight Change</td><td>out</td><td>0</td><td>*</td><td>Any</td></tr><tr><td>Body Weight Change</td><td>out</td><td>0</td><td>*</td><td>Observation</td></tr><tr><td>Current Body Weight</td><td>out</td><td>0</td><td>1</td><td>Observation</td></tr><tr><td>Previous Body Weight</td><td>out</td><td>0</td><td>1</td><td>Observation</td></tr><tr><td>Current Body Weight Change</td><td>out</td><td>0</td><td>1</td><td>integer</td></tr><tr><td>Urine Output</td><td>out</td><td>0</td><td>*</td><td>Observation</td></tr><tr><td>Current Urine Output</td><td>out</td><td>0</td><td>1</td><td>Observation</td></tr><tr><td>Net Intake/Output</td><td>out</td><td>0</td><td>*</td><td>Observation</td></tr><tr><td>Current Net Intake/Output</td><td>out</td><td>0</td><td>1</td><td>Observation</td></tr><tr><td>Jugular Venous Pressure</td><td>out</td><td>0</td><td>*</td><td>Observation</td></tr><tr><td>Oxygen Saturation</td><td>out</td><td>0</td><td>*</td><td>Observation</td></tr><tr><td>Potassium</td><td>out</td><td>0</td><td>*</td><td>Observation</td></tr><tr><td>Creatinine</td><td>out</td><td>0</td><td>*</td><td>Observation</td></tr><tr><td>eGFR</td><td>out</td><td>0</td><td>*</td><td>Observation</td></tr><tr><td>Eligibility Criteria</td><td>out</td><td>0</td><td>*</td><td>Condition</td></tr></table><h2>Data Requirements</h2><table class="grid"><tr><td colspan="2"><b>Type</b>: <a href="http://hl7.org/fhir/R4/observation.html">Observation</a> (<a href="http://hl7.org/fhir/R4/observation.html">Observation</a>)</td></tr><tr style="background-color: #efefef"><td>Filter</td><td>Value</td></tr><tr><td>code</td><td>One of these codes: <a href="https://loinc.org/">LOINC</a> 29463-7: Body weight</td></tr></table><table class="grid"><tr><td colspan="2"><b>Type</b>: <a href="http://hl7.org/fhir/R4/observation.html">Observation</a> (<a href="http://hl7.org/fhir/R4/observation.html">Observation</a>)</td></tr><tr style="background-color: #efefef"><td>Filter</td><td>Value</td></tr><tr><td>code</td><td>One of these codes: <a href="CodeSystem-chf-codes.html">http://hl7.org/fhir/uv/sdc/CodeSystem/chf-codes</a> body-weight-change: Body weight change</td></tr></table><table class="grid"><tr><td colspan="2"><b>Type</b>: <a href="http://hl7.org/fhir/R4/observation.html">Observation</a> (<a href="http://hl7.org/fhir/R4/observation.html">Observation</a>)</td></tr><tr style="background-color: #efefef"><td>Filter</td><td>Value</td></tr><tr><td>code</td><td>One of these codes: <a href="https://loinc.org/">LOINC</a> 9192-6: Urine output 24 hour</td></tr></table><table class="grid"><tr><td colspan="2"><b>Type</b>: <a href="http://hl7.org/fhir/R4/observation.html">Observation</a> (<a href="http://hl7.org/fhir/R4/observation.html">Observation</a>)</td></tr><tr style="background-color: #efefef"><td>Filter</td><td>Value</td></tr><tr><td>code</td><td>One of these codes: <a href="CodeSystem-chf-codes.html">http://hl7.org/fhir/uv/sdc/CodeSystem/chf-codes</a> net-intake-output: Net intake/output</td></tr></table><table class="grid"><tr><td colspan="2"><b>Type</b>: <a href="http://hl7.org/fhir/R4/observation.html">Observation</a> (<a href="http://hl7.org/fhir/R4/observation.html">Observation</a>)</td></tr><tr style="background-color: #efefef"><td>Filter</td><td>Value</td></tr><tr><td>code</td><td>One of these codes: <a href="CodeSystem-chf-codes.html">http://hl7.org/fhir/uv/sdc/CodeSystem/chf-codes</a> jvp: Jugular venous pressure</td></tr></table><table class="grid"><tr><td colspan="2"><b>Type</b>: <a href="http://hl7.org/fhir/R4/observation.html">Observation</a> (<a href="http://hl7.org/fhir/R4/observation.html">Observation</a>)</td></tr><tr style="background-color: #efefef"><td>Filter</td><td>Value</td></tr><tr><td>code</td><td>One of these codes: <a href="https://loinc.org/">LOINC</a> 2708-6: Oxygen saturation in Arterial blood</td></tr></table><table class="grid"><tr><td colspan="2"><b>Type</b>: <a href="http://hl7.org/fhir/R4/observation.html">Observation</a> (<a href="http://hl7.org/fhir/R4/observation.html">Observation</a>)</td></tr><tr style="background-color: #efefef"><td>Filter</td><td>Value</td></tr><tr><td>code</td><td>One of these codes: <a href="https://loinc.org/">LOINC</a> 86919-8: Potassium goal [Moles/volume] Serum or Plasma</td></tr></table><table class="grid"><tr><td colspan="2"><b>Type</b>: <a href="http://hl7.org/fhir/R4/observation.html">Observation</a> (<a href="http://hl7.org/fhir/R4/observation.html">Observation</a>)</td></tr><tr style="background-color: #efefef"><td>Filter</td><td>Value</td></tr><tr><td>code</td><td>One of these codes: <a href="https://loinc.org/">LOINC</a> 39802-4: Creatinine in dialysis fluid/Creatinine in serum or plasma</td></tr></table><table class="grid"><tr><td colspan="2"><b>Type</b>: <a href="http://hl7.org/fhir/R4/observation.html">Observation</a> (<a href="http://hl7.org/fhir/R4/observation.html">Observation</a>)</td></tr><tr style="background-color: #efefef"><td>Filter</td><td>Value</td></tr><tr><td>code</td><td>One of these codes: <a href="CodeSystem-chf-codes.html">http://hl7.org/fhir/uv/sdc/CodeSystem/chf-codes</a> egfr: eGFR result</td></tr></table><table class="grid"><tr><td colspan="2"><b>Type</b>: <a href="http://hl7.org/fhir/R4/condition.html">Condition</a> (<a href="http://hl7.org/fhir/R4/condition.html">Condition</a>)</td></tr></table><h2>Contents</h2><p><code>text/cql</code></p><pre><code class="language-sql">library CHF version '1.0.0'
 
 using FHIR version '4.0.1'
 
@@ -11,7 +11,7 @@ include FHIRHelpers version '4.0.1'
 
 codesystem "SNOMED-CT": 'http://snomed.info/sct'
 codesystem "LOINC": 'http://loinc.org'
-codesystem "CHFCodes": 'http://hl7.org/fhir/uv/cpg/CodeSystem/chf-codes'
+codesystem "CHFCodes": 'http://hl7.org/fhir/uv/sdc/CodeSystem/chf-codes'
 codesystem "Condition Clinical Status Code": 'http://terminology.hl7.org/CodeSystem/condition-clinical'
 codesystem "Condition Verification Status Code": 'http://terminology.hl7.org/CodeSystem/condition-ver-status'
 
@@ -64,7 +64,7 @@ define "Body Weight Change":
       code: CodeableConcept {
         coding: {
           Coding {
-            system: uri { value: 'http://hl7.org/fhir/uv/cpg/CodeSystem/chf-codes' },
+            system: uri { value: 'http://hl7.org/fhir/uv/sdc/CodeSystem/chf-codes' },
             code: code { value: 'body-weight-change' }
           }
         }
@@ -190,14 +190,14 @@ define function referenceTo(patient Patient):
       <display value="World"/>
     </coding>
   </jurisdiction>
-  <relatedArtifact>
+<!--  <relatedArtifact>
     <type value="depends-on"/>
     <resource value="http://hl7.org/fhir/Library/FHIR-ModelInfo|4.0.1"/>
   </relatedArtifact>
   <relatedArtifact>
     <type value="depends-on"/>
     <resource value="http://hl7.org/fhir/Library/FHIRHelpers|4.0.1"/>
-  </relatedArtifact>
+  </relatedArtifact>-->
   <relatedArtifact>
     <type value="depends-on"/>
     <resource value="http://snomed.info/sct"/>
@@ -208,7 +208,7 @@ define function referenceTo(patient Patient):
   </relatedArtifact>
   <relatedArtifact>
     <type value="depends-on"/>
-    <resource value="http://hl7.org/fhir/uv/cpg/CodeSystem/chf-codes"/>
+    <resource value="http://hl7.org/fhir/uv/sdc/CodeSystem/chf-codes"/>
   </relatedArtifact>
   <relatedArtifact>
     <type value="depends-on"/>
@@ -375,7 +375,7 @@ define function referenceTo(patient Patient):
     <codeFilter>
       <path value="code"/>
       <code>
-        <system value="http://hl7.org/fhir/uv/cpg/CodeSystem/chf-codes"/>
+        <system value="http://hl7.org/fhir/uv/sdc/CodeSystem/chf-codes"/>
         <code value="body-weight-change"/>
       </code>
     </codeFilter>
@@ -397,7 +397,7 @@ define function referenceTo(patient Patient):
     <codeFilter>
       <path value="code"/>
       <code>
-        <system value="http://hl7.org/fhir/uv/cpg/CodeSystem/chf-codes"/>
+        <system value="http://hl7.org/fhir/uv/sdc/CodeSystem/chf-codes"/>
         <code value="net-intake-output"/>
       </code>
     </codeFilter>
@@ -408,7 +408,7 @@ define function referenceTo(patient Patient):
     <codeFilter>
       <path value="code"/>
       <code>
-        <system value="http://hl7.org/fhir/uv/cpg/CodeSystem/chf-codes"/>
+        <system value="http://hl7.org/fhir/uv/sdc/CodeSystem/chf-codes"/>
         <code value="jvp"/>
       </code>
     </codeFilter>
@@ -454,7 +454,7 @@ define function referenceTo(patient Patient):
     <codeFilter>
       <path value="code"/>
       <code>
-        <system value="http://hl7.org/fhir/uv/cpg/CodeSystem/chf-codes"/>
+        <system value="http://hl7.org/fhir/uv/sdc/CodeSystem/chf-codes"/>
         <code value="egfr"/>
       </code>
     </codeFilter>
