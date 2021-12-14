@@ -171,7 +171,7 @@
     </li>
     <li>
       <a href="{{site.data.fhir.path}}workflow-management.html#optiong">Direct post to the filler system</a> and having the placer system either poll or subscribe to monitor the Task for
-      activity.  This would work best where the fulfiller has a known server endpoint and their might be multiple systems seeking Questionnaires or other tasks to be completed.
+      activity.  This would work best where the fulfiller has a known server endpoint and there might be multiple systems seeking Questionnaires or other tasks to be completed.
     </li>
     <li>
       <a href="{{site.data.fhir.path}}workflow-management.html#optionh">Posting to an intermediary</a> and having both the placer and filler systems either poll or subscribe to 
@@ -182,7 +182,7 @@
     </li>
   </ul>
   <p>
-    In addition to delivery, there are a number of other considerations:
+    In addition to delivery, there are several other considerations:
   </p>
   <ul>
     <li>
@@ -196,10 +196,10 @@
     </li>
     <li>
       If the Questionnaire could be filled out by a variety of people, then the 'task-claiming' portion of the workflow might be relevant where a potential filler might change the status
-      to 'received' and changing the owner prior to decising whether to accept or reject the Task.
+      to 'received' and changing the owner prior to deciding whether to accept or reject the Task.
     </li>
     <li>
-      In most cases, the individiual to whom the Task is assigned has the ability to say 'yes' (status = 'accepted') or 'no' (status = 'refused'), possibly indicating a <code>statusReason</code>
+      In most cases, the individual to whom the Task is assigned has the ability to say 'yes' (status = 'accepted') or 'no' (status = 'refused'), possibly indicating a <code>statusReason</code>
       to indicate why they will not or cannot fill out the Questionnaire.  Workflow should allow for this possibility of rejection and decide whether standardized reason codes should be used.
       SDC does not impose any constraints at this time.
     </li>
@@ -210,7 +210,7 @@
     </li>
     <li>
       <p>
-        Once the QuestionnairResponse is has been created, it needs to be stored somewhere and linked as a <code>Task.output</code>.  Again, SDC has defined an explicit output code - 
+        Once the QuestionnaireResponse has been created, it needs to be stored somewhere and linked as a <code>Task.output</code>.  Again, SDC has defined an explicit output code - 
         <code>questionnaire-response</code> from the <a href="CodeSystem-temp.html">http://hl7.org/fhir/uv/sdc/CodeSystem/temp</a> code system.  This code will also be replaced with an
         'official' code once the business requirements have been better confirmed.
       </p>
@@ -218,16 +218,16 @@
         If the 'responseEndpoint' <code>Task.output</code> is present, the QuestionnareResponse should be POSTed to all of the specified endpoints.  Similarly, if the 
         <a href="StructureDefinition-sdc-questionnaire-endpoint.html">sdc-questionnaire-endpoint</a> extension is present on the Questionnaire, it should be POSTed to those endpoints as
         well.  If any of those endpoints are simple RESTful locations (i.e. ending in QuestionnaireResponse) and the corresponding server supports the <a href="{{site.data.fhir.path}}http.html#read">read</a>
-        operation, then that endpoint can be used as the target of the 'responseEndpoint' reference.  It there are no specified endpoints in either the Task or the Questionnaire, or if
+        operation, then that endpoint can be used as the target of the 'responseEndpoint' reference.  If there are no specified endpoints in either the Task or the Questionnaire, or if
         all of the endpoints specified are write-only or operation endpoints such as <a href="OperationDefinition-Questionnaire-process-response.html">$process-response</a>, then the
-        QuestionnaireResponse will need to be posted elsewhere - typically on the same server as the Task, but it can be elsewhere.  It obvously <b>SHOULD</b> be accessable to the system
+        QuestionnaireResponse will need to be posted elsewhere - typically on the same server as the Task, but it can be elsewhere.  It obviously <b>SHOULD</b> be accessible to the system
         that initiated the Task.
       </p>
     </li>
     <li>
       A QuestionnaireResponse may need to be stored <i>before</i> it has been marked as 'complete' - for example if the user has partially completed the form and then needs to save
       their work to continue later.  This QuestionnaireResponse <b>SHOULD</b> be pointed to as the 'questionnaire-response' <code>Task.output</code>, allowing it to be easily re-loaded on
-      resumption of the Task.  The QuestionnaireResponse.status and the Task.status would not be set to 'completed' until such time as the user had decided the form was 'done' and it
+      resumption of the Task.  The QuestionnaireResponse.status and the Task.status would not be set to 'completed' until the user had decided the form was 'done' and it
       successfully met validation criteria.  Submission to any indicated endpoints would typically not occur until the QuestionnaireResponse was deemed 'completed'.
     </li>
   </ul>

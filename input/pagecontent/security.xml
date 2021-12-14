@@ -85,7 +85,7 @@
     </li>
     <li>
       The QuestionnaireResponse and its associated Provenance (or more rarely AuditEvent) may both be sent in a single RESTful 
-      <a href="{{site.data.fhir.path}}http.html#transaction">Transaction</a> Bundle, where there is a either an entry POSTing both records, or one entry PUTting an update
+      <a href="{{site.data.fhir.path}}http.html#transaction">Transaction</a> Bundle, where there is either an entry POSTing both records, or one entry PUTting an update
       of the QuestionnaireResponse and a second POSTing the Provenance/AuditEvent corresponding to the metadata for that update.  In either case, the Provenance or
       AuditEvent will point to the version-specific identifier of the QuestionnaireResponse, using either <code>Provenance.entity.reference</code> or <code>AuditEvent.object.reference</code>
     </li>
@@ -97,8 +97,7 @@
     <a href="CapabilityStatement-sdc-form-filler.html">SDC Form Filler</a> systems to <a href="CapabilityStatement-sdc-form-manager.html">SDC Form Manager</a>.
     It also envisions transmitting completed forms from <a href="CapabilityStatement-sdc-form-filler.html">SDC Form Filler</a> to
     <a href="CapabilityStatement-sdc-form-receiver.html">SDC Form Receiver</a> systems.
-    Where such exchanges take place across organizational or other custodial boundaries, patient consent may be required.  Furthermore,
-    use of data for completing questionnaires for purposes unrelated to the initial gathering data may also require patient
+    Where such exchanges take place across organizational or other custodial boundaries, patient consent may be required.  Furthermore, the use of data for completing questionnaires for purposes unrelated to the initial gathering data may also require patient
     consent.  It is the responsibility of the client systems to ensure that any necessary consent records exist and are reviewed prior to
     each exchange of patient-identifiable healthcare information.  This verification SHOULD be logged in the same manner as other transactions,
     as discussed above under <a href="#general">General Security Considerations.</a>
@@ -122,7 +121,7 @@
   <a name="population"> </a>
   <h3>Population</h3>
   <p>
-    When populating a form from existing data, there is no expectation for consent in order to pass data to the form or for the form to query information where the user
+    When populating a form from existing data, there is no expectation for consent to pass data to the form or for the form to query information where the user
     filling out the form would normally have access to such data.  (The population mechanism merely saves the effort of looking it up manually and copying it across.)
     However, population does raise two important privacy/security considerations:
   </p>
@@ -131,9 +130,9 @@
       Form Fillers SHALL always give users a chance to review all answers prior to submission and allow the user to know where the data is being submitted</li>
     <li>
       Systems need to be very cautious about submitting forms that contain 'hidden' questions that can be auto-populated because they can allow disclosure of 
-      information without human review. These can be inoccuous (e.g. what version of the software was the data loaded from) but could also be used in an attack 
-      to extract data serrepticiously. Manual review by a technical expert (prior to approval of use of the Questionnaire) of Questionnaire versions that 
-      contain hidden auto-populated questions may be needed. Similarly, manual review of submission destinations might also be appropriate if they are not 
+      information without human review. These can be innoccuous (e.g. what version of the software was the data loaded from) but could also be used in an attack 
+      to extract data surreptitiously. Manual review by a technical expert (prior to approval of use of the Questionnaire) of Questionnaire versions that 
+      contain hidden auto-populated questions may be needed. Similarly, a manual review of submission destinations might also be appropriate if they are not 
       already 'trusted' destinations.</li>
   </ul> 
   <a name="compartments"> </a>
@@ -148,7 +147,7 @@
     registration information before the appropriate Patient or Practitioner instance has even been created.
   </p>
   <p>
-    Because of this, systems must be extremely careful around allow access to QuestionnaireResponses with no specified subject.  Some might be completely fine to share
+    Because of this, systems must be extremely careful around allowing access to QuestionnaireResponses with no specified subject.  Some might be completely fine to share
     and access widely, while others might contain extremely sensitive information.  It might be necessary to make use of 
     <a href="{{site.data.fhir.path}}resource-definitions.html#Meta.security">security tags</a> or other mechanisms to assert and manage the sensitivity of such records.
   </p>
