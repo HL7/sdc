@@ -12,7 +12,7 @@
   <p>
     Achieving re-use with questionnaires is primarily focused on the benefit of authors.  The use of modularization techniques is often transparent to the
     end users who must complete the questionnaires, unless they find themselves filling out many distinct forms and happen to notice the consistency of
-    language and and sections between those forms.  In other words, questionnaire re-use is part of the authoring and publishing process, but generally
+    language and sections between those forms.  In other words, questionnaire re-use is part of the authoring and publishing process, but generally
     not the form filling process.
   </p>
   <p>
@@ -33,7 +33,7 @@
     In the first case, every single 'item' in the questionnaire must be specified, including all 'display' items, groups, etc.  Re-use is limited to question text, 
     value set, data type and other information that can be determined from the referenced definition element.  On the other hand, with modular questionnaires, 
     multiple items can be defined along with display text, enableWhen logic and other questionnaire characteristics. 
-    The first approach is best suited for "data-element"- based questionnaires and latter for defining collections of questions.  (While defining separate modules 
+    The first approach is best suited for "data-element"- based questionnaires and the latter for defining collections of questions.  (While defining separate modules 
     for every single question is possible, it would be quite a bit of overhead).
   </p>
   <a name="workflow"> </a>
@@ -65,7 +65,7 @@
     practically more than 2-3 levels of nesting are very unlikely.
   </p>
   <p>
-    It is helpful to know when a Questionnare is going to require assembly or not.  A system can search through for items that declare the 
+    It is helpful to know when a Questionnaire is going to require assembly or not.  A system can search through for items that declare the 
     <a href="StructureDefinition-sdc-questionnaire-subQuestionnaire.html">subQuestionnaire</a> extension, though doing so isn't terribly efficient.  However,
     for <a href="#element">Data Element-based Questionnaires</a>, there is no mechanism to tell with certainty - the 'definition' element may be included in 
     questions for a variety of reasons and some degree of metadata may be maintained in the 'master' Questionnaire for readability.  Therefore, this specification 
@@ -92,7 +92,7 @@
       items as the subQuestionnaires evolve and this is considered an error.  I.e. if canonical references are not version-specific, the content of the
       referenced Questionnaires cannot change in a way that results in differences in allowed QuestionnaireResponses.</li>
     <li>It is possible that the assembly option will be unable to substitute the display item for the referenced Questionnaire or that the system that tries
-      to make use of the modular Questionnaire might not recongize or be able to support assembly of the Questionnaire at all.  For this reason, the 'text'
+      to make use of the modular Questionnaire might not recognize or be able to support assembly of the Questionnaire at all.  For this reason, the 'text'
       of the display element <b>SHOULD</b> say something that is meaningful in situations where it is not replaced.  For example: "Sub-questionnaire 
       [some URL] not available.  Unable to display all questions."</li>
     <li>When the Questionnaire goes through the 'assembly' process, the display item having the subQuestionnaire extension will be removed entirely.
@@ -100,10 +100,10 @@
       Questionnaire - including their descendant elements and items will appear in the same position as the replaced 'display' item was.</li>
     <li>In addition to propagating the items from the referenced Questionnaire, additional items are also propagated as follows:
       <ul>
-        <li>All <a href="{{site.data.fhir.path}}resource.html#Meta">meta</a> information, including security and other tags declare on the imported
+        <li>All <a href="{{site.data.fhir.path}}resource.html#Meta">meta</a> information, including security and other tags declared on the imported
           Questionnaire are ignored</li>
         <li>If <a href="{{site.data.fhir.path}}resource-definitions.html#Resource.language">language</a> is declared on the imported Questionnaire, it
-          must match the language on the importing Questionnnaire.</li>
+          must match the language on the importing Questionnaire.</li>
         <li><a href="{{site.data.fhir.path}}resource-definitions.html#Resource.implicitRules">implicitRules</a> and
           <a href="{{site.data.fhir.path}}domainresource-definitions.html#DomainResource.modifierExtension">modifierExtension</a> are
           prohibited and are considered an error if present.</li>
@@ -188,10 +188,10 @@ We will set an expectation in SDC about what changes are permitted for 'active' 
       element.
     </li>
     <li>
-      If the URL refers to an element in a StructureDefinition and the StructureDefinition resolves but the referenced element does not, raise an error.
+      If the URL refers to an element in a StructureDefinition and the StructureDefinition resolves but the referenced element does not raise an error.
     </li>
     <li>
-      Otherwise, if the referenced element cannot be resolved, raise an warning unless the item has no text element or the item.type is 'choice' or
+      Otherwise, if the referenced element cannot be resolved, raise a warning unless the item has no text element or the item.type is 'choice' or
       'open-choice' and no answerOptions, answerValueSet or <a href="StructureDefinition-sdc-questionnaire-answerExpression.html">answerExpression</a>
       is available, in which case raise an error.
     </li>
