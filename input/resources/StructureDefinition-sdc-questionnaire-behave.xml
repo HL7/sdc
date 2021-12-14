@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <StructureDefinition xmlns="http://hl7.org/fhir" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://hl7.org/fhir ../../input-cache/schemas/R4/fhir-single.xsd">
   <id value="sdc-questionnaire-behave"/>
-   <url value="http://hl7.org/fhir/uv/sdc/StructureDefinition/sdc-questionnaire-behave"/>
+  <url value="http://hl7.org/fhir/uv/sdc/StructureDefinition/sdc-questionnaire-behave"/>
   <name value="QuestionnaireBehave"/>
   <title value="Advanced Behavior Questionnaire"/>
   <status value="draft"/>
@@ -12,7 +12,7 @@
   <type value="Questionnaire"/>
   <baseDefinition value="http://hl7.org/fhir/uv/sdc/StructureDefinition/sdc-questionnaire"/>
   <derivation value="constraint"/>
-   <differential>
+  <differential>
     <element id="Questionnaire">
       <path value="Questionnaire"/>
       <short value="Advanced Behavior Questionnaire"/>
@@ -529,20 +529,8 @@
       </type>
       <mustSupport value="true"/>
     </element>
-	 <element id="Questionnaire.item.text">
+    <element id="Questionnaire.item.text">
       <path value="Questionnaire.item.text"/>
-    </element>
-      <element id="Questionnaire.item.text.extension:requiredExpression">
-      <path value="Questionnaire.item.text.extension"/>
-      <sliceName value="requiredExpression"/>
-       <comment value="Note: The variation cannot change the meaning of the question. The extension can be used even if text is present; and if the extension is supported, the evaluation will replace the text provided (with 'smarter' text). "/>
-      <min value="0"/>
-      <max value="1"/>
-      <type>
-        <code value="Extension"/>
-        <profile value="http://hl7.org/fhir/StructureDefinition/cqf-expression"/>
-      </type>
-      <mustSupport value="true"/>	 
     </element>
     <element id="Questionnaire.item.enableWhen.question">
       <path value="Questionnaire.item.enableWhen.question"/>

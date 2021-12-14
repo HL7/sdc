@@ -1,26 +1,64 @@
 <div xmlns="http://www.w3.org/1999/xhtml" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://hl7.org/fhir ../../input-cache/schemas/R4/fhir-single.xsd">
   <a name="scope"> </a>
-  <h3>Scope</h3>
+  <h3>Scope and purpose</h3>
 	<p>
-    Questionnaires and forms permeate healthcare.  They are used to capture administrative data, claims data, clinical information, research information,
+    Questionnaires and forms are found everywhere in healthcare.  They are used to capture administrative data, claims data, clinical information, research information,
     for public health reporting - every type of data that is manipulated by healthcare systems.  They provide a user-friendly mechanism for capturing data
     in a consistent way.  In FHIR, forms are represented using the <a href="{{site.data.fhir.path}}questionnaire.html">Questionnaire</a> resource and
     completed forms are represented using the <a href="{{site.data.fhir.path}}questionnaireresponse.html">QuestionnaireResponse</a> resource.  The base FHIR
     specification defines these resources but does not provide much guidance around how they should be used, nor does it set minimal expectations for
-    interoperation.  This implementation guide provides a set of guidance around the use of Questionnaire and QuestionnaireResponse.
-    Specifically, it provides answers to - and conformance expectations around - questions such as:
+    interoperation.  This implementation guide provides a set of guidance around the use of Questionnaire and QuestionnaireResponse that support many
+    additional capabilities that provide benefits to providers, patients and other users.  These capabilities cover 7 major areas:
   </p>
 	<ul>
-    <li>What are the minimum capabilities a system should have to properly support FHIR-based forms?</li>
-    <li>How do I present questions in a table?</li>
-    <li>I want help text to appear in red - how do I do that?</li>
-    <li>What's the mechanism to calculate and display a score for a completed form?</li>
-    <li>I don't want to expose the logic of the questionnaire to other systems, but I still want to support form completion.  How do I do that using FHIR?</li>
-    <li>Some of the data in this form already exists in the patient's record.  How can I save the time (and prevent the transcription errors) associated
-      with re-entering it into a form?</li>
-    <li>Once a form's complete, I want to import the data into other FHIR resources - is there an easy way to do that?</li>
+	  <li><a href="workflow.html">Workflow considerations</a>: This section helps drive improved interoperability across different systems that make
+      use of questionnaires by helping to answer questions like these:
+      <ul>
+        <li>What are the types of systems involved in designing, managing, completing, receiving, and otherwise processing forms?</li>
+        <li>How should these types of systems be expected to interact and what capabilities should they have?</li>
+        <li>How do you ask someone to fill out a form (and keep track of whether they have or not)?</li>
+      </ul>
+	  </li>
+	  <li><a href="search.html">Finding Questionnaires</a>: Typically, the form that needs to be filled out in a particular situation will be known
+      in advance.  However, if you're dealing with an electronic registry of forms, there needs to be standards on how to find the appropriate
+      form to use.  This section defines standard expectations around searching for forms:
+      <ul>
+        <li>What are the types of systems involved in designing, managing, completing, receiving, and otherwise processing forms?</li>
+        <li>How should these types of systems be expected to interact and what capabilities should they have?</li>
+        <li>How do you ask someone to fill out a form (and keep track of whether they have or not)?</li>
+      </ul>
+	  </li>
+	  <li><a href="rendering.html">Rendering considerations</a>: This extends and provides guidance about how to make form content appear to a user
+      in the way a form author intends.  Examples include:
+      <ul>
+        <li>How can questions be organized into a table?</li>
+        <li>How can colors, formatting and graphics be added to a Questionnaire?</li>
+        <li>How can I control the way check-boxes or radio-buttons are organized?</li>
+      </ul>
+    </li>
+    <li><a href="behavior.html">Enhanced behavior</a> gives guidance and defines additional capabilities that affect how a Questionnare will interact
+      with a user - the objective being to only gather relevant information and ensure that 'rules' around the Questionnaire are enforced.  For example:
+      <ul>
+        <li>How can the questions, options or event the text of the questions be changed based on what other answers have already been provided
+          (or based on information the software already knows, such as age or gender of the patient).</li>
+        <li>How can rules be enforced such as minimum and maximum values, required formatting for phone numbers, allowed targets for references, etc.?</li>
+        <li>How can a Questionnaire automatically calculate scores or other values?</li>
+      </ul>
+    </li>
+    <li><a href="populate.html">Automatic population</a> helps to reduce the pain of having to fill in the same information 'yet again' by allowing
+      a form to automatically fill in answers already known to the EHR or other data source.  The user can then just verify that the information is still
+      correct (and revise if necessary) rather than needing to fill out the information all over again (and possibly accidentally omitting or incorrectly
+      entering some of it</li>
+    <li><a href="extraction.html">Data extraction</a> allows data captured in a QuestionnaireResponse to be extracted and used to create or update other
+      FHIR resources - allowing the data to be more easily searched, compared and used by other FHIR systems</li>
+    <li><a href="modular.html">Modular forms</a> simplify the questionnaire maintenance process by allowing questions or sections of a Questionnaire to be 
+      shared across multiple forms.  This also increases the consistency of questions and allows data to be more comparable.</li>
+    <li><a href="adaptive.html">Adaptive forms</a> change form design from one where all questions and logic must be defined up-front and shared, to one
+      where the form filling tool simply calls an API to determine what the next question should be.  This allows for form designs to be hidden and for
+      complex flow control logic to be managed even when the software rendering the questionnaire is very simple.</li>
 	</ul>
 	<p>
+	  Obviously this represents a <b>lot</b> of capability and not all systems will necessarily need to take on all of these features.   
     The implementation guide is structured to allow implementers to pick and choose the capabilities they need and combine them as necessary.
 	</p>
 	<a name="toc"> </a>
@@ -58,9 +96,6 @@
 		<li>
 			<a href="security.html">Security</a> sets base security expectations for systems claiming conformance with this implementation guide.</li>
 		<li>
-			<a href="workflow.html">Workflow</a> describes the expectations for systems managing the creation, discovery and completion of questionnaires.
-			Systems conforming to SDC are expected to conform to one of the CapabilityStatements defined in this section.</li>
-		<li>
 			<a href="expressions.html">Using Expressions</a> describes the use of FHIRPath and CQL within Questionnaires and defines additional contexts and
 			rules for using these technologies in FHIR Questionnaires.  (These are technologies used to support several of the SDC capabilities.)</li>
 	</ol>
@@ -71,6 +106,9 @@
 	</p>
 	<ol>
 		<li>
+			<a href="workflow.html">Workflow</a> describes the expectations for systems managing the creation, discovery and completion of questionnaires.
+			Systems conforming to SDC are expected to conform to one of the CapabilityStatements defined in this section.</li>
+		<li>
 			<a href="search.html">Finding a Questionnaire</a> describes expectations for systems serving as form repositories as well as clients who will need
       to search for forms.</li>
 		<li>
@@ -80,17 +118,17 @@
 			<a href="behavior.html">Form Behavior</a> describes how to design 'active' forms that adjust what information is displayed and/or that
 			perform calculations based on user input</li>
 		<li>
-			<a href="modular.html">Modular Forms</a> describes an architecture to support constructing forms from other sub-forms and/or from libraries of
-			pre-defined questions to ease form development and maintenance</li>
-		<li>
-			<a href="adaptive.html">Adaptive Forms</a> describes an architecture to support completing forms where the questionnaire is not pre-defined and
-			instead is dynamically developed based on the user's answers</li>
-		<li>
 			<a href="populate.html">Questionnaire Population</a> describes how to design questionnaires to support pre-population of answers and how to use
 			services that support pre-populating forms</li>
 		<li>
 			<a href="extraction.html">Data Extraction</a> describes how to design questionnaires to support converting completed forms into a FHIR resource or
 			Bundle of FHIR resources for subsequent analysis</li>
+		<li>
+			<a href="modular.html">Modular Forms</a> describes an architecture to support constructing forms from other sub-forms and/or from libraries of
+			pre-defined questions to ease form development and maintenance</li>
+		<li>
+			<a href="adaptive.html">Adaptive Forms</a> describes an architecture to support completing forms where the questionnaire is not pre-defined and
+			instead is dynamically developed based on the user's answers</li>
 	</ol>
 	<a name="boundaries"> </a>
 	<h3>Boundaries and Relationships</h3>
@@ -117,6 +155,10 @@
        several of which are mandated for this profile. It also makes use of the rendering-extensions which define rendering information for
        display names and labels of codes.</li>
   </ul>
+  <p>
+    It is expected that a variety of IGs will refine various combinations of SDC functionality and publish additional profiles to meet the needs of
+    their specific Questionnaire and QuestionnaireResponse use-cases.
+  </p>
 	<a name="ip"> </a>
 	<h3>Intellectual Property Considerations</h3>
 	<p>

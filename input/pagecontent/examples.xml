@@ -2532,7 +2532,7 @@ i.fa {
 
 <a name="answeroption-xhtml"></a>
   <h4>Using answerOption and rendering-xhtml</h4>
-  <p>To display answer options as images using the rendering-xhtml extension. <br/>Example shows two ways to use &lt;img&gt; tags to display images: (1) with embedded data and (2) using contained Binary resources. </p>
+  <p>To display answer options as images using the rendering-xhtml extension. <br/>Example shows two ways to use &lt;img&gt; tags to display images: (1) with embedded data and (2) using contained Binary resources. (<a href="Questionnaire-questionnaire-sdc-profile-example-image-options.html">Example Questionnaire</a>)</p>
   <div class="tabs">
     <div class="tab">
       <input type="radio" id="tab-answerOption-img-binary-1" name="tab-answerOption-img-binary-group-2" checked="true"/>
@@ -2551,8 +2551,6 @@ i.fa {
       <div class="content-in-tab">
         <textarea style="border:none" class="xml">
         {
-          "resourceType": "Questionnaire",
-          "id": "questionnaire-example-answeroption-img",
           "contained": [
             {
               "resourceType": "Bundle",
@@ -2578,12 +2576,6 @@ i.fa {
               ]
             }
           ],  
-          "status": "draft",
-          "meta": {
-            "profile": [
-              "http://hl7.org/fhir/uv/sdc/StructureDefinition/sdc-questionnaire|2.7"
-            ]
-          },
           "item": [
             {
               "type": "choice",
@@ -2593,12 +2585,15 @@ i.fa {
                   "valueCode": "horizontal"
                 }
               ],
-              "linkId": "2.2",
+              "linkId": "1.0",
               "text": "How are you feeling today?",
               "answerOption": [
                 {
-                  "valueString": "Sad",
-                  "_valueString": {
+                  "valueCoding" : {
+                    "system" : "http://example.org",
+                    "code" : "sad",
+                    "display" : "Sad",
+                    "_display" : {
                     "extension": [
                       {
                         "url": "http://hl7.org/fhir/StructureDefinition/rendering-xhtml",
@@ -2606,14 +2601,18 @@ i.fa {
                       }
                     ]
                   }
+                  }
                 },
                 {
-                  "valueString": "OK",
-                  "_valueString": {
+                  "valueCoding" : {
+                    "system" : "http://example.org",
+                    "code" : "ok",
+                    "display" : "OK",
+                    "_display" : {
                     "extension": [
                       {
                         "url": "http://hl7.org/fhir/StructureDefinition/rendering-xhtml",
-                        "valueString": "&lt;img src=&#39;#okImage&#39;&gt;",
+                          "valueString": "&lt;img src=&#39;#happyImage&#39;&gt;",
 						"_valueString":{
 						                    "extension" : [
                       {
@@ -2627,10 +2626,14 @@ i.fa {
                       }
                     ]
                   }
+                  }
                 },
                 {
-                  "valueString": "Happy",
-                  "_valueString": {
+                  "valueCoding" : {
+                    "system" : "http://example.org",
+                    "code" : "happy",
+                    "display" : "Happy",
+                    "_display" : {
                     "extension": [
                       {
                         "url": "http://hl7.org/fhir/StructureDefinition/rendering-xhtml",
@@ -2649,6 +2652,7 @@ i.fa {
                     ]
                   }
                 }
+                }
               ]
             }
           ]
@@ -2662,7 +2666,6 @@ i.fa {
       <div class="content-in-tab">
         <textarea style="border:none" class="xml">
           <Questionnaire>
-            <id value="questionnaire-example-answeroption-img"/>
             <contained>
               <Bundle>
                 <id value="MoodImages"/>
@@ -2688,7 +2691,7 @@ i.fa {
               </Bundle>
             </contained>
             <url value="http://hl7.org/fhir/uv/sdc/Questionnaire/questionnaire-example-answeroption-img-contained-binary"/>
-            <version value="2.8.0"/>
+            <version value="3.0.0"/>
             <status value="draft"/>
             <date value="2020-07-29T13:56:22-07:00"/>
             <publisher value="HL7 International - FHIR Infrastructure Work Group"/>
@@ -2708,18 +2711,25 @@ i.fa {
               <extension url="http://hl7.org/fhir/StructureDefinition/questionnaire-choiceOrientation">
                 <valueCode value="horizontal"/>
               </extension>
-              <linkId value="2.2"/>
+              <linkId value="1.0"/>
               <text value="How are you feeling today?"/>
               <type value="choice"/>
               <answerOption>
-                <valueString value="Sad">
+                <valueCoding>
+                  <system value="http://example.org"/>
+                  <code value="sad"/>
+                  <display value="Sad">
                   <extension url="http://hl7.org/fhir/StructureDefinition/rendering-xhtml">
                     <valueString value="&lt;img src=&#39;data:image/png;base64,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IC7g9st3TX8+58FVAgYmSkG//e1vmy984QvN//zP/zTf/e53G9bNgViCsgYFgjagqskSt5ql9lk4ENRRwKxw59Fh8pGufOTtOfA5tt566+YRj3hE87d/+7fNgQce6PUMZ7XEHzr0KZIp/nQHQm7vNmdrtx1jzVDXqlTqy0Mh7TjLbl3SzNejirjf/ta3mne+851ppVgkyimlUhaAacY408JvvPHGZoO7bZLWBABQWQ33jrqXVoGmrJOzoYSK631xHAVScQCqeNH8eiZd4SuWLU/Lhr+73/3uzd/93d81Rx99dLNVgG4linTSSsc7aEWXt2Ur7uBbePGinG0f07PVTbNuuW656eZm/eo5hQATTHGmBIKiqPWitwV8wjYMxxktCaBQ2IIF6zQffO97m3//939vfve736X/4zkFliKlQdDiIwp3zypcce3VzYYbbthsueWWzTbbbJP+0U477dQ4OOQsCyAUyOr9Ao/eJJD++c9/ziYXD9UxuO666zLtUrh38SAtPEjjphtuzDAgbTfTRx55ZPPMZz6z2WPPPb3Wo5ujad0g+EUJsPkjZepF6F5IXzOsozFbNOvguvH6G5qNNt44y39bWJt1ww9qEwFSzoLueE/FuS56cpzy//eiFzW///3vs1ZvuummCa7rr78+wcPXoTAgK0A5A9Nee+3V7Lvvvs3hj35Us8UWWySwxEesiHhAAAzAORaJU89cO/DKT7v55pvTUn7uc5/LjsP3vve9BJ20gVrawNWsGLFsrJL38evsXt4Pe9jDmic/+cnNfe5zn2ZeVY54jxVWKW+7faQDI1/llHYNzKali0o0WzTr4CJc1gqICL7AtSyu53ebAMJhqVgw9IH3v7954xvfmJZqgwgrBVePTXPjoCRKoCSWiPN82GGHNfe4xz2azQJQ8qWcUkYmfid/5IGKh3q9AIKPop/97GfNhRdemMePfvSj5pprrmm22GzzRi8WGFlTvAAd8AGaimCohCU7/fTTm92iM1C0NMC0YN07BlkrT7zMdpOIxzUGXIGEVDamNIGaGiad0AlcLf36xRc3L3vZy7LXx8oA463x/G53u1vG0e1XewnWc+/9wz/8Q3O/+92vOejggyWdvtmSiOfZWmp11yip+WlJIkobKHVd50wjkxkBFeB6z/vjKdWzaiLli1jbyy+/vDnnFa9MkClvpaMMDuVTYRbF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&#39;/&gt;"/>
                   </extension>
-                </valueString>
+                  </display>
+                </valueCoding>
               </answerOption>
               <answerOption>
-                <valueString value="OK">
+                <valueCoding>
+                  <system value="http://example.org"/>
+                  <code value="ok"/>
+                  <display value="OK">
                   <extension url="http://hl7.org/fhir/StructureDefinition/rendering-xhtml">
                     <valueString value="&lt;img src=&#39;#okImage&#39;&gt;">
 					<extension url="http://hl7.org/fhir/uv/sdc/StructureDefinition/sdc-referencesContained">
@@ -2729,10 +2739,14 @@ i.fa {
                 </extension>
 				</valueString>
                   </extension>
-                </valueString>
+                  </display>
+                </valueCoding>
               </answerOption>
               <answerOption>
-                <valueString value="Happy">
+                <valueCoding>
+                  <system value="http://example.org"/>
+                  <code value="happy"/>
+                  <display value="Happy">
                   <extension url="http://hl7.org/fhir/StructureDefinition/rendering-xhtml">
                     <valueString value="&lt;img src=&#39;#happyImage&#39;&gt;">
 					<extension url="http://hl7.org/fhir/uv/sdc/StructureDefinition/sdc-referencesContained">
@@ -2742,7 +2756,8 @@ i.fa {
                 </extension>
 				</valueString>
                   </extension>
-                </valueString>
+                  </display>
+                </valueCoding>
               </answerOption>
             </item>
           </Questionnaire>
@@ -3123,7 +3138,7 @@ i.fa {
   </div>
   <a name="repeats"> </a>
   <h4>Using repeats, openLabel</h4>
-  <p>To allow multiple answers, no limit and to specify label for alternate answer choices.</p>
+  <p>To allow multiple answers, no limit and to specify label for alternate answer choices. (<a href="Questionnaire-questionnaire-sdc-profile-example-form-behavior.html">Example Questionnaire</a>)</p>
   <div class="tabs">
     <div class="tab">
       <input type="radio" id="tab-repeats-1" name="tab-repeats-group-2" checked="true"/>
@@ -3150,37 +3165,42 @@ i.fa {
               "url": "http://hl7.org/fhir/uv/sdc/StructureDefinition/questionnaire-sdc-openLabel",
               "valueString": "Other event (specify)"
             }]
-            "linkId": "2.5.b",
+            "linkId": "2.8",
             "text": "Heart History (check all that applies)",
             "type": "open-choice",
             "repeats": true,
             "answerOption": [
               {
                 "valueCoding": {
+                  "system": "http://example.com/CodeSystem/procedures",
                   "code": "U1",
                   "display": "Heart attack"
                 }
               },
               {
                 "valueCoding": {
+                  "system": "http://example.com/CodeSystem/procedures",
                   "code": "U2",
                   "display": "Heart surgery"
                 }
               },
               {
                 "valueCoding": {
+                  "system": "http://example.com/CodeSystem/procedures",
                   "code": "U3",
                   "display": "Cardiac catheterization"
                 }
               },
               {
                 "valueCoding": {
+                  "system": "http://example.com/CodeSystem/procedures",
                   "code": "U4",
                   "display": "Coronary angioplasty (PTCA)"
                 }
               },
               {
                 "valueCoding": {
+                  "system": "http://example.com/CodeSystem/procedures",
                   "code": "U5",
                   "display": "Cardiac pacemaker"
                 }
@@ -3199,37 +3219,42 @@ i.fa {
           <item>
             <extension url="http://hl7.org/fhir/uv/sdc/StructureDefinition/questionnaire-sdc-openLabel">
               <valueString value="Other event (specify)"/>
-            </extension>          
-            <linkId value="2.5.b"/>
+            </extension>
+            <linkId value="2.8"/>
             <text value="Heart History (check all that applies)"/>
             <type value="open-choice"/>
             <repeats value="true"/>
             <answerOption>
               <valueCoding>
+                <system value="http://example.com/CodeSystem/procedures"/>
                 <code value="U1"/>
                 <display value="Heart attack"/>
               </valueCoding>
             </answerOption>
             <answerOption>
               <valueCoding>
+                <system value="http://example.com/CodeSystem/procedures"/>
                 <code value="U2"/>
                 <display value="Heart surgery"/>
               </valueCoding>
             </answerOption>
             <answerOption>
               <valueCoding>
+                <system value="http://example.com/CodeSystem/procedures"/>
                 <code value="U3"/>
                 <display value="Cardiac catheterization"/>
               </valueCoding>
             </answerOption>
             <answerOption>
               <valueCoding>
+                <system value="http://example.com/CodeSystem/procedures"/>
                 <code value="U4"/>
                 <display value="Coronary angioplasty (PTCA)"/>
               </valueCoding>
             </answerOption>
             <answerOption>
               <valueCoding>
+                <system value="http://example.com/CodeSystem/procedures"/>
                 <code value="U5"/>
                 <display value="Cardiac pacemaker"/>
               </valueCoding>
@@ -3242,7 +3267,7 @@ i.fa {
 
 <a name="minoccurs"></a>
   <h4>Using minOccurs</h4>
-  <p>Must have at least to 2 answers.</p>
+  <p>Must have at least to 2 answers. (<a href="Questionnaire-questionnaire-sdc-profile-example-form-behavior.html">Example Questionnaire</a>)</p>
   <div class="tabs">
     <div class="tab">
       <input type="radio" id="tab-minoccurs-1" name="tab-minoccurs-group-2" checked="true"/>
@@ -3270,7 +3295,7 @@ i.fa {
                 "valueInteger": 2
               }
             ],
-            "linkId": "2.6.b",
+            "linkId": "2.9",
             "text": "Heart History (check at least 2):",
             "type": "choice",
             "required": true,
@@ -3278,30 +3303,35 @@ i.fa {
             "answerOption": [
               {
                 "valueCoding": {
+                  "system": "http://example.com/CodeSystem/procedures",
                   "code": "U1",
                   "display": "Heart attack"
                 }
               },
               {
                 "valueCoding": {
+                  "system": "http://example.com/CodeSystem/procedures",
                   "code": "U2",
                   "display": "Heart surgery"
                 }
               },
               {
                 "valueCoding": {
+                  "system": "http://example.com/CodeSystem/procedures",
                   "code": "U3",
                   "display": "Cardiac catheterization"
                 }
               },
               {
                 "valueCoding": {
+                  "system": "http://example.com/CodeSystem/procedures",
                   "code": "U4",
                   "display": "Coronary angioplasty (PTCA)"
                 }
               },
               {
                 "valueCoding": {
+                  "system": "http://example.com/CodeSystem/procedures",
                   "code": "U5",
                   "display": "Cardiac pacemaker"
                 }
@@ -3321,37 +3351,42 @@ i.fa {
             <extension url="http://hl7.org/fhir/StructureDefinition/questionnaire-minOccurs">
               <valueInteger value="2"/>
             </extension>
-            <linkId value="2.6.b"/>
+            <linkId value="2.9"/>
             <text value="Heart History (check at least 2):"/>
             <type value="choice"/>
             <required value="true"/>
             <repeats value="true"/>
             <answerOption>
               <valueCoding>
+                <system value="http://example.com/CodeSystem/procedures"/>
                 <code value="U1"/>
                 <display value="Heart attack"/>
               </valueCoding>
             </answerOption>
             <answerOption>
               <valueCoding>
+                <system value="http://example.com/CodeSystem/procedures"/>
                 <code value="U2"/>
                 <display value="Heart surgery"/>
               </valueCoding>
             </answerOption>
             <answerOption>
               <valueCoding>
+                <system value="http://example.com/CodeSystem/procedures"/>
                 <code value="U3"/>
                 <display value="Cardiac catheterization"/>
               </valueCoding>
             </answerOption>
             <answerOption>
               <valueCoding>
+                <system value="http://example.com/CodeSystem/procedures"/>
                 <code value="U4"/>
                 <display value="Coronary angioplasty (PTCA)"/>
               </valueCoding>
             </answerOption>
             <answerOption>
               <valueCoding>
+                <system value="http://example.com/CodeSystem/procedures"/>
                 <code value="U5"/>
                 <display value="Cardiac pacemaker"/>
               </valueCoding>
@@ -3364,7 +3399,7 @@ i.fa {
 
 <a name="maxoccurs"></a>
   <h4>Using maxOccurs</h4>
-  <p>Can only have up to 3 answers.</p>
+  <p>Can only have up to 3 answers. (<a href="Questionnaire-questionnaire-sdc-profile-example-form-behavior.html">Example Questionnaire</a>)</p>
   <div class="tabs">
     <div class="tab">
       <input type="radio" id="tab-maxoccurs-1" name="tab-maxoccurs-group-2" checked="true"/>
@@ -3392,7 +3427,7 @@ i.fa {
                 "valueInteger": 3
               }
             ],
-            "linkId": "2.7.b",
+            "linkId": "2.10",
             "text": "Heart History (check no more than 3):",
             "type": "choice",
             "required": true,
@@ -3400,30 +3435,35 @@ i.fa {
             "answerOption": [
               {
                 "valueCoding": {
+                  "system": "http://example.com/CodeSystem/procedures",
                   "code": "U1",
                   "display": "Heart attack"
                 }
               },
               {
                 "valueCoding": {
+                  "system": "http://example.com/CodeSystem/procedures",
                   "code": "U2",
                   "display": "Heart surgery"
                 }
               },
               {
                 "valueCoding": {
+                  "system": "http://example.com/CodeSystem/procedures",
                   "code": "U3",
                   "display": "Cardiac catheterization"
                 }
               },
               {
                 "valueCoding": {
+                  "system": "http://example.com/CodeSystem/procedures",
                   "code": "U4",
                   "display": "Coronary angioplasty (PTCA)"
                 }
               },
               {
                 "valueCoding": {
+                  "system": "http://example.com/CodeSystem/procedures",
                   "code": "U5",
                   "display": "Cardiac pacemaker"
                 }
@@ -3443,37 +3483,42 @@ i.fa {
             <extension url="http://hl7.org/fhir/StructureDefinition/questionnaire-maxOccurs">
               <valueInteger value="3"/>
             </extension>
-            <linkId value="2.7.b"/>
+            <linkId value="2.10"/>
             <text value="Heart History (check no more than 3):"/>
             <type value="choice"/>
             <required value="true"/>
             <repeats value="true"/>
             <answerOption>
               <valueCoding>
+                <system value="http://example.com/CodeSystem/procedures"/>
                 <code value="U1"/>
                 <display value="Heart attack"/>
               </valueCoding>
             </answerOption>
             <answerOption>
               <valueCoding>
+                <system value="http://example.com/CodeSystem/procedures"/>
                 <code value="U2"/>
                 <display value="Heart surgery"/>
               </valueCoding>
             </answerOption>
             <answerOption>
               <valueCoding>
+                <system value="http://example.com/CodeSystem/procedures"/>
                 <code value="U3"/>
                 <display value="Cardiac catheterization"/>
               </valueCoding>
             </answerOption>
             <answerOption>
               <valueCoding>
+                <system value="http://example.com/CodeSystem/procedures"/>
                 <code value="U4"/>
                 <display value="Coronary angioplasty (PTCA)"/>
               </valueCoding>
             </answerOption>
             <answerOption>
               <valueCoding>
+                <system value="http://example.com/CodeSystem/procedures"/>
                 <code value="U5"/>
                 <display value="Cardiac pacemaker"/>
               </valueCoding>
@@ -3486,7 +3531,7 @@ i.fa {
 
 <a name="optionExclusive"></a>
   <h4>Using optionExclusive</h4>
-  <p>To restrict other answers from being selected when an exclusive answer (like "None of the above") has been selected.</p>
+  <p>To restrict other answers from being selected when an exclusive answer (like "None of the above") has been selected. (<a href="Questionnaire-questionnaire-sdc-profile-example-form-behavior.html">Example Questionnaire</a>)</p>
   <div class="tabs">
     <div class="tab">
       <input type="radio" id="tab-optionExclusive-1" name="tab-optionExclusive-group-2" checked="true"/>
@@ -3523,7 +3568,7 @@ i.fa {
                 }
               }
             ],
-            "linkId": "1.0",
+            "linkId": "2.11",
             "text": "What treatments do you now have for heart disease? (select all that applies)",
             "type": "choice",
             "repeats": true,
@@ -3591,7 +3636,7 @@ i.fa {
                 </coding>
               </valueCodeableConcept>
             </extension>
-            <linkId value="1.0"/>
+            <linkId value="2.11"/>
             <text value="What treatments do you now have for heart disease? (select all that applies)"/>
             <type value="choice"/>
             <repeats value="true"/>
@@ -3642,18 +3687,18 @@ i.fa {
 
 <a name="unitoption"></a>
   <h4>Using unitOption</h4>
-  <p>Restrict unit choices using unit options.</p>
+  <p>Restrict unit choices using unit options. (<a href="Questionnaire-questionnaire-sdc-profile-example-form-behavior.html">Example Questionnaire</a>)</p>
   <div class="tabs">
     <div class="tab">
       <input type="radio" id="tab-unitoption-1" name="tab-unitoption-group-2" checked="true"/>
       <label for="tab-unitoption-1">Sample Question</label>
       <div class="content-in-tab">
-        <p>Dosage <input id="linkitem-2.8-input" type="text"/>
-          <select id="linkitem-2.8-option" name="activity">
+        <p>Dosage <input id="linkitem-2.12-input" type="text"/>
+          <select id="linkitem-2.12-option" name="activity">
+            <option value="grams">g</option>
+            <option value="liters">L</option>
             <option value="ml">ml</option>
-            <option value="liters">liters</option>
             <option value="mg">mg</option>
-            <option value="grams">grams</option>
           </select>
         </p>
       </div>
@@ -3695,7 +3740,7 @@ i.fa {
                 }
               }
             ],
-            "linkId": "2.8.b",
+            "linkId": "2.12",
             "text": "Dosage",
             "type": "quantity"
           }
@@ -3733,7 +3778,7 @@ i.fa {
                 <display value="grams"/>
               </valueCoding>
             </extension>
-            <linkId value="2.8.b"/>
+            <linkId value="2.12"/>
             <text value="Dosage"/>
             <type value="quantity"/>
           </item>
@@ -3744,13 +3789,13 @@ i.fa {
 
 <a name="unitvalueset"></a>
   <h4>Using unitValueSet</h4>
-  <p>Restrict unit choices from a value set.</p>
+  <p>Restrict unit choices from a value set. (<a href="Questionnaire-questionnaire-sdc-profile-example-form-behavior.html">Example Questionnaire</a>)</p>
   <div class="tabs">
     <div class="tab">
       <input type="radio" id="tab-unitvalueset-1" name="tab-unitvalueset-group-2" checked="true"/>
       <label for="tab-unitvalueset-1">Sample Question</label>
       <div class="content-in-tab">
-        <p>Specify age: <input id="linkitem-2.9-input" type="text"/>
+        <p>Specify age: <input id="linkitem-2.13-input" type="text"/>
           <select id="linkitem-2.9-option" name="units">
             <option value="minutes">minutes</option>
             <option value="hours">hours</option>
@@ -3774,7 +3819,7 @@ i.fa {
                 "valueCanonical": "http://hl7.org/fhir/ValueSet/age-units"
               }
             ],
-            "linkId": "2.9.b",
+            "linkId": "2.13",
             "text": "Specify age:",
             "type": "quantity"
           }
@@ -3791,7 +3836,7 @@ i.fa {
             <extension url="http://hl7.org/fhir/StructureDefinition/questionnaire-unitValueSet">
               <valueCanonical value="http://hl7.org/fhir/ValueSet/age-units"/>
             </extension>
-            <linkId value="2.9.b"/>
+            <linkId value="2.13"/>
             <text value="Specify age:"/>
             <type value="quantity"/>
           </item>
@@ -3860,7 +3905,7 @@ i.fa {
                 "url": "http://hl7.org/fhir/uv/sdc/StructureDefinition/sdc-questionnaire-choiceColumn"
               }
             ],
-            "linkId": "2.10.b",
+            "linkId": "2.14",
             "text": "Select your preferred practitioner:",
             "type": "reference"
           }
@@ -3898,7 +3943,7 @@ i.fa {
                 <valueBoolean value="true"/>
               </extension>
             </extension>
-            <linkId value="2.10.b"/>
+            <linkId value="2.14"/>
             <text value="Select your preferred practitioner:"/>
             <type value="reference"/>
           </item>
@@ -3912,7 +3957,7 @@ i.fa {
   <h3>Calculation</h3>
 <a name="initialexpression"></a>
   <h4>Using initialExpression</h4>
-  <p>Example with an initial expression.</p>
+  <p>Example with an initial expression. (<a href="Questionnaire-questionnaire-sdc-profile-example-form-behavior.html">Example Questionnaire</a>)</p>
   <div class="tabs">
     <div class="tab">
       <input type="radio" id="tab-initialexpression-1" name="tab-initialexpression-group-2" checked="true"/>
@@ -3939,7 +3984,7 @@ i.fa {
                 }
               }
             ],
-            "linkId": "3.1.b",
+            "linkId": "3.1",
             "text": "Deadline for submission (7 days from now)",
             "type": "date",
             "readOnly": true
@@ -3961,7 +4006,7 @@ i.fa {
                 <expression value="today() + 7 days"/>
               </valueExpression>
             </extension>
-            <linkId value="3.1.b"/>
+            <linkId value="3.1"/>
             <text value="Deadline for submission (7 days from now)"/>
             <type value="date"/>
             <readOnly value="true"/>
@@ -3973,7 +4018,7 @@ i.fa {
 
 <a name="launchContext"></a>
   <h4>Using launchContext</h4>
-  <p>To set resources that provide context for form processing logic.</p>
+  <p>To set resources that provide context for form processing logic. (<a href="Questionnaire-questionnaire-sdc-profile-example-form-behavior.html">Example Questionnaire</a>)</p>
   <div class="tabs">
     <div class="tab">
       <input type="radio" id="tab-launchcontext-1" name="tab-launchcontext-group-2" checked="true"/>
@@ -4015,7 +4060,7 @@ i.fa {
         ],
         "item": [
           {
-            "linkId": "1.0";
+            "linkId": "3.2";
             "type": "group",
             "item": [
               {
@@ -4029,7 +4074,7 @@ i.fa {
                     }
                   }
                 ],
-                "linkId": "1.1",
+                "linkId": "3.2.1",
                 "text": "Last Name:",
                 "type": "string",
                 "readOnly": true
@@ -4045,7 +4090,7 @@ i.fa {
                     }
                   }
                 ],
-                "linkId": "1.1",
+                "linkId": "3.2.2",
                 "text": "First Name:",
                 "type": "string",
                 "readOnly": true
@@ -4061,7 +4106,7 @@ i.fa {
                     }
                   }
                 ],
-                "linkId": "1.1",
+                "linkId": "3.2.3",
                 "text": "Gender:",
                 "type": "string",
                 "readOnly": true
@@ -4093,7 +4138,7 @@ i.fa {
             </extension>
           </extension>
           <item>
-            <linkId value="1.0"/>
+            <linkId value="3.2"/>
             <type value="group"/>
             <item>
               <extension url="http://hl7.org/fhir/uv/sdc/StructureDefinition/sdc-questionnaire-initialExpression">
@@ -4103,7 +4148,7 @@ i.fa {
                   <expression value="%patient.name.where(use='official').given.first()"/> 
                 </valueExpression>
               </extension>
-              <linkId value="1.1"/>
+              <linkId value="3.2.1"/>
               <text value="Last Name:"/>
               <type value="string"/>
               <readOnly value="true"/>
@@ -4116,7 +4161,7 @@ i.fa {
                   <expression value="%patient.name.where(use='official').family()"/> 
                 </valueExpression>
               </extension>
-              <linkId value="1.2"/>
+              <linkId value="3.2.2"/>
               <text value="First Name:"/>
               <type value="string"/>
               <readOnly value="true"/>
@@ -4129,7 +4174,7 @@ i.fa {
                   <expression value="%patient.gender"/> 
                 </valueExpression>
               </extension>
-              <linkId value="1.3"/>
+              <linkId value="3.2.3"/>
               <text value="Gender:"/>
               <type value="string"/>
               <readOnly value="true"/>
@@ -4142,7 +4187,7 @@ i.fa {
 
 <a name="calculatedexpression"></a>
   <h4>Using calculatedExpression and variable</h4>
-  <p>Example with a calculated expression.<br/>
+  <p>Example with a calculated expression. (<a href="Questionnaire-questionnaire-sdc-profile-example-form-behavior.html">Example Questionnaire</a>)<br/>
    Note: The questions below are not functional. The BMI will not calculated and displayed after input.
 </p>
   <div class="tabs">
@@ -4168,7 +4213,7 @@ i.fa {
               "valueExpression": {
                 "name": "weight",
                 "language": "text/fhirpath",
-                "expression": "%resource.repeat(item).where(linkId='3.2.b').item.answer.valueDecimal"
+                "expression": "%resource.repeat(item).where(linkId='3.3.1').item.answer.valueDecimal"
               }
             },
             {
@@ -4176,7 +4221,7 @@ i.fa {
               "valueExpression": {
                 "name": "height",
                 "language": "text/fhirpath",
-                "expression": "%resource.repeat(item).where(linkId='3.2.c').item.answer.valueDecimal*0.0254"
+                "expression": "%resource.repeat(item).where(linkId='3.3.2').item.answer.valueDecimal*0.0254"
               }
             }
           ],
@@ -4191,7 +4236,7 @@ i.fa {
                   }
                 }
               ],
-              "linkId": "3.2.b",
+              "linkId": "3.3.1",
               "text": "Weight (kg)",
               "type": "decimal"
             },
@@ -4205,7 +4250,7 @@ i.fa {
                   }
                 }
               ],
-              "linkId": "3.2.c",
+              "linkId": "3.3.2",
               "text": "Body Height (inches)",
               "type": "decimal"
             },
@@ -4220,7 +4265,7 @@ i.fa {
                   }
                 }
               ],
-              "linkId": "3.2.d",
+              "linkId": "3.3.3",
               "text": "Your Body Mass Index (BMI) is ",
               "type": "decimal",
               "readOnly": true
@@ -4240,14 +4285,14 @@ i.fa {
               <valueExpression>
                 <name value="weight"/>
                 <language value="text/fhirpath"/>
-                <expression value="%resource.repeat(item).where(linkId='3.2.b').item.answer.valueDecimal"/>
+                <expression value="%resource.repeat(item).where(linkId='3.3.1').item.answer.valueDecimal"/>
               </valueExpression>
             </extension>
             <extension url="http://hl7.org/fhir/StructureDefinition/variable">
               <valueExpression>
                 <name value="height"/>
                 <language value="text/fhirpath"/>
-                <expression value="%resource.repeat(item).where(linkId='3.2.c').item.answer.valueDecimal*0.0254"/>
+                <expression value="%resource.repeat(item).where(linkId='3.3.2').item.answer.valueDecimal*0.0254"/>
               </valueExpression>
             </extension>
             <item>
@@ -4257,7 +4302,7 @@ i.fa {
                   <code value="kg"/>
                 </valueCoding>
               </extension>
-              <linkId value="3.2.b"/>
+              <linkId value="3.3.1"/>
               <text value="Weight (kg)"/>
               <type value="decimal"/>
             </item>
@@ -4268,7 +4313,7 @@ i.fa {
                   <code value="[in_i]"/>
                 </valueCoding>
               </extension>
-              <linkId value="3.2.c"/>
+              <linkId value="3.3.2"/>
               <text value="Body Height (inches)"/>
               <type value="decimal"/>
             </item>
@@ -4280,7 +4325,7 @@ i.fa {
                   <expression value="(%weight/(%height.power(2))).round(1)"/>
                 </valueExpression>
               </extension>
-              <linkId value="3.2.d"/>
+              <linkId value="3.3.3"/>
               <text value="Your Body Mass Index (BMI) is "/>
               <type value="decimal"/>
               <readOnly value="true"/>
@@ -4293,7 +4338,7 @@ i.fa {
 
 <a name="cqf"></a>
   <h4>Using cqf-calculatedValue, cqf-library and cqf-expression</h4>
-  <p>Example question with a cqf-calculatedValue for minimum and maximum weight allowed and a question using a cqf-expression to determine if a question is required based on Patient data.</p>
+  <p>Example question with a cqf-calculatedValue for minimum and maximum weight allowed and a question using a cqf-expression to determine if a question is required based on Patient data. (<a href="Questionnaire-questionnaire-sdc-profile-example-form-behavior.html">Example Questionnaire</a>)</p>
   <div class="tabs">
     <div class="tab">
       <input type="radio" id="tab-cqf-1" name="tab-cqf-group-2" checked="true"/>
@@ -4314,7 +4359,7 @@ i.fa {
         "extension": [
           {
             "url": "http://hl7.org/fhir/StructureDefinition/cqf-library",
-            "valueString": "Library/MeasurementLimits"
+            "valueString": "http://example.com/Library/MeasurementLimits"
           },
           {
             "extension": [
@@ -4366,12 +4411,12 @@ i.fa {
                 }
               }
             ],
-            "linkId" : "3.3.a",
+            "linkId" : "3.4.1",
             "text" : "Enter weight in kg",
             "type" : "decimal"
           },
           {
-            "linkId" : "3.3.b",
+            "linkId" : "3.4.2",
             "text" : "Enter email address",
             "type" : "string",
             "required" : false,
@@ -4398,7 +4443,7 @@ i.fa {
       <div class="content-in-tab">
         <textarea style="border:none" class="xml">
           <extension url="http://hl7.org/fhir/StructureDefinition/cqf-library">
-            <valueCanonical value="Library/MeasurementLimits"/>
+            <valueCanonical value="http://example.com/Library/MeasurementLimits"/>
           </extension>
           <extension url="http://hl7.org/fhir/uv/sdc/StructureDefinition/sdc-questionnaire-launchContext">
             <extension url="name">
@@ -4430,12 +4475,12 @@ i.fa {
                 </extension>
               </valueDecimal>
             </extension>
-            <linkId value="3.3.a"/>
+            <linkId value="3.4.1"/>
             <text value="Enter weight in kg"/>
             <type value="decimal"/>
           </item>
           <item>
-            <linkId value="3.3.b"/>
+            <linkId value="3.4.2"/>
             <text value="Enter email address"/>
             <type value="string"/>
             <required value="false">
@@ -4456,13 +4501,13 @@ i.fa {
 
 <a name="text"></a>
   <h4>Using text and cqf-Expression</h4>
-  <p>Text example with cqf-expression.</p>
+  <p>Text example with cqf-expression. (<a href="Questionnaire-questionnaire-sdc-profile-example-form-behavior.html">Example Questionnaire</a>)</p>
   <div class="tabs">
     <div class="tab">
       <input type="radio" id="tab-text-1" name="tab-text-group-2" checked="true"/>
       <label for="tab-text-1">Sample Display</label>
       <div class="content-in-tab">
-        <p>Your last immunization was on [Jan 1, 2021].
+        <p>Your last immunization was on 2021-01-05.
         </p>
       </div>
     </div>
@@ -4473,8 +4518,7 @@ i.fa {
         <textarea style="border:none" class="xml">
 		"item": [
           {
-            "linkId" : "3.3.b",
-            "text" : "Your immunization is due",
+            "linkId" : "3.5",
             "_text" : {
               "extension" : [
                 {
@@ -4482,11 +4526,12 @@ i.fa {
                   "valueExpression" : {
                     "description" : "last immunization date",
                     "language" : "text/fhirpath",
-                    "expression" : "%Immunization.occurrenceDateTime"
+                    "expression" : "'Your last immunization was on '+ %Immunization.occurrenceDateTime.substring(0,10) + '.'"
                   }
                 }
               ]
-            }
+            },
+            "type" : "display"
           }
 		  ]
       </textarea>
@@ -4498,16 +4543,17 @@ i.fa {
       <div class="content-in-tab">
         <textarea style="border:none" class="xml">
          <item>
-            <linkId value="3.3.b"/>
-            <text value="Your immunization is due">
+            <linkId value="3.5"/>
+            <text>
               <extension url="http://hl7.org/fhir/StructureDefinition/cqf-expression">
                 <valueExpression>
                   <description value="last immunization date"/>
                   <language value="text/fhirpath"/>
-                <expression value="%Immunization.occurrenceDateTime"/> 
+                  <expression value="'Your last immunization was on '+ %Immunization.occurrenceDateTime.substring(0,10) + '.'"/> 
                 </valueExpression>
               </extension>
             </text>
+            <type value="display"/>
           </item>
         </textarea>
       </div>
@@ -4518,7 +4564,7 @@ i.fa {
   <h3>Other Controls</h3>
 <a name="initial"></a>
   <h4>Using initial</h4>
-  <p>Example of options with initial value.</p>
+  <p>Example of options with initial value. (<a href="Questionnaire-questionnaire-sdc-profile-example-form-behavior.html">Example Questionnaire</a>)</p>
   <div class="tabs">
     <div class="tab">
       <input type="radio" id="tab-initial-1" name="tab-initial-group-2" checked="true"/>
@@ -4541,14 +4587,14 @@ i.fa {
         <textarea style="border:none" class="xml">
         "item": [
           {
-            "linkId": "4.1.b",
+            "linkId" : "4.1",
             "text": "Marital Status",
             "type": "choice",
             "answerValueSet": "http://hl7.org/fhir/ValueSet/marital-status",
             "initial": [
               {
                 "valueCoding": {
-                  "system": "http://hl7.org/fhir/ValueSet/marital-status",
+                  "system" : "http://terminology.hl7.org/CodeSystem/v3-MaritalStatus",
                   "code": "D",
                   "display": "Divorced"
                 }
@@ -4565,13 +4611,13 @@ i.fa {
       <div class="content-in-tab">
         <textarea style="border:none" class="xml">
           <item>
-            <linkId value="4.1.b"/>
+          <linkId value="4.1"/>
             <text value="Marital Status"/>
             <type value="choice"/>
             <answerValueSet value="http://hl7.org/fhir/ValueSet/marital-status"/>
             <initial>
               <valueCoding>
-                <system value="http://hl7.org/fhir/ValueSet/marital-status"/>
+              <system value="http://terminology.hl7.org/CodeSystem/v3-MaritalStatus"/>
                 <code value="D"/>
                 <display value="Divorced"/>
               </valueCoding>
@@ -4584,7 +4630,7 @@ i.fa {
 
 <a name="enableexamples"></a>
   <h4>Using enableWhen, enableBehavior, and enableWhenExpression</h4>
-  <p>Example of enabling behaviors.<br/>
+  <p>Example of enabling behaviors. (<a href="Questionnaire-questionnaire-sdc-profile-example-form-behavior.html">Example Questionnaire</a>)<br/>
    Note: The questions below are not functional. Display does not show actual enabling behaviors.
 </p>
   <div class="tabs" style="height:350px">
@@ -4638,22 +4684,22 @@ i.fa {
         <textarea style="border:none" class="xml">
         "item": [
           {
-            "linkId": "4.2.b",
+            "linkId" : "4.2",
             "type": "group",
             "item": [
               {
-                "linkId": "4.2.b.1",
+                "linkId" : "4.2.1",
                 "text": "Choose Gender",
                 "type": "choice",
                 "answerValueSet": "http://hl7.org/fhir/ValueSet/administrative-gender"
               },
               {
-                "linkId": "4.2.b.2",
+                "linkId" : "4.2.2",
                 "text": "Are you pregnant? (enableWhen = gender is Female)",
                 "type": "choice",
                 "enableWhen": [
                   {
-                    "question": "4.2.b.1",
+                    "question" : "4.2.1",
                     "operator": "=",
                     "answerCoding": {
                       "system": "http://hl7.org/fhir/administrative-gender",
@@ -4664,12 +4710,12 @@ i.fa {
                 "answerValueSet": "http://hl7.org/fhir/ValueSet/yesnodontknow"
               },
               {
-                "linkId": "4.2.b.3",
+                "linkId" : "4.2.3",
                 "text": "Are you diabetic? (enableWhen = gender is Female)",
                 "type": "choice",
                 "enableWhen": [
                   {
-                    "question": "4.2.b.1",
+                    "question" : "4.2.1",
                     "operator": "=",
                     "answerCoding": {
                       "system": "http://hl7.org/fhir/administrative-gender",
@@ -4680,12 +4726,12 @@ i.fa {
                 "answerValueSet": "http://hl7.org/fhir/ValueSet/yesnodontknow"
               },
               {
-                "linkId": "4.2.b.4",
+                "linkId" : "4.2.4",
                 "text": "Have you been diagnosed with Gestational Diabetes? (enableBehavior = only when pregnant and diabetic)",
                 "type": "choice",
                 "enableWhen": [
                   {
-                    "question": "4.2.b.2",
+                    "question" : "4.2.2",
                     "operator": "=",
                     "answerCoding": {
                       "system": "http://terminology.hl7.org/CodeSystem/v2-0136",
@@ -4693,7 +4739,7 @@ i.fa {
                     }
                   },
                   {
-                    "question": "4.2.b.3",
+                    "question" : "4.2.3",
                     "operator": "=",
                     "answerCoding": {
                       "system": "http://terminology.hl7.org/CodeSystem/v2-0136",
@@ -4711,7 +4757,7 @@ i.fa {
                     "valueString": "MM/DD/YYYY"
                   }
                 ],
-                "linkId": "4.2.b.5",
+                "linkId" : "4.2.5",
                 "text": "Enter your birthdate (MM/DD/YYYY)",
                 "type": "date",
                 "answerValueSet": "http://hl7.org/fhir/ValueSet/administrative-gender"
@@ -4727,7 +4773,7 @@ i.fa {
                     }
                   }
                 ],
-                "linkId": "4.2.b.6",
+                "linkId" : "4.2.6",
                 "text": "Have you had mammogram before?(enableWhenExpression = only when gender is female and age > 40)",
                 "type": "choice",
                 "answerValueSet": "http://hl7.org/fhir/ValueSet/yesnodontknow"
@@ -4744,20 +4790,20 @@ i.fa {
       <div class="content-in-tab">
         <textarea style="border:none" class="xml">
           <item>
-            <linkId value="4.2.b"/>
+            <linkId value="4.2"/>
             <type value="group"/>
             <item>
-              <linkId value="4.2.b.1"/>
+              <linkId value="4.2.1"/>
               <text value="Choose Gender"/>
               <type value="choice"/>
               <answerValueSet value="http://hl7.org/fhir/ValueSet/administrative-gender"/>
             </item>
             <item>
-              <linkId value="4.2.b.2"/>
+              <linkId value="4.2.2"/>
               <text value="Are you pregnant? (enableWhen = gender is Female)"/>
               <type value="choice"/>
               <enableWhen>
-                <question value="4.2.b.1"/>
+                <question value="4.2.1"/>
                 <operator value="="/>
                 <answerCoding>
                   <system value="http://hl7.org/fhir/administrative-gender"/>
@@ -4767,11 +4813,11 @@ i.fa {
               <answerValueSet value="http://hl7.org/fhir/ValueSet/yesnodontknow"/>
             </item>
             <item>
-              <linkId value="4.2.b.3"/>
+              <linkId value="4.2.3"/>
               <text value="Are you diabetic? (enableWhen = gender is Female)"/>
               <type value="choice"/>
               <enableWhen>
-                <question value="4.2.b.1"/>
+                <question value="4.2.1"/>
                 <operator value="="/>
                 <answerCoding>
                   <system value="http://hl7.org/fhir/administrative-gender"/>
@@ -4781,11 +4827,11 @@ i.fa {
               <answerValueSet value="http://hl7.org/fhir/ValueSet/yesnodontknow"/>
             </item>
             <item>
-              <linkId value="4.2.b.4"/>
+              <linkId value="4.2.4"/>
               <text value="Have you been diagnosed with Gestational Diabetes? (enableBehavior = only when pregnant and diabetic)"/>
               <type value="choice"/>
               <enableWhen>
-                <question value="4.2.b.2"/>
+                <question value="4.2.2"/>
                 <operator value="="/>
                 <answerCoding>
                   <system value="http://terminology.hl7.org/CodeSystem/v2-0136"/>
@@ -4793,7 +4839,7 @@ i.fa {
                 </answerCoding>
               </enableWhen>
               <enableWhen>
-                <question value="4.2.b.3"/>
+                <question value="4.2.3"/>
                 <operator value="="/>
                 <answerCoding>
                   <system value="http://terminology.hl7.org/CodeSystem/v2-0136"/>
@@ -4807,7 +4853,7 @@ i.fa {
               <extension url="http://hl7.org/fhir/StructureDefinition/entryFormat">
                 <valueString value="MM/DD/YYYY"/>
               </extension>
-              <linkId value="4.2.b.5"/>
+              <linkId value="4.2.5"/>
               <text value="Enter your birthdate (MM/DD/YYYY)"/>
               <type value="date"/>
               <answerValueSet value="http://hl7.org/fhir/ValueSet/administrative-gender"/>
@@ -4820,7 +4866,7 @@ i.fa {
                   <expression value="%resource.repeat(item).where(linkId='4.2.b.1').answer.value.code ='female' and today().toString().substring(0, 4).toInteger() - %resource.repeat(item).where(linkId='4.2.b.5').answer.value.toString().substring(0, 4).toInteger() >= 40"/>
                 </valueExpression>
               </extension>
-              <linkId value="4.2.b.6"/>
+              <linkId value="4.2.6"/>
               <text value="Have you had mammogram before?(enableWhenExpression = only when gender is female and age > 40)"/>
               <type value="choice"/>
               <answerValueSet value="http://hl7.org/fhir/ValueSet/yesnodontknow"/>
@@ -4834,7 +4880,7 @@ i.fa {
 
 <a name="ordinalvalue-constraint"></a>
   <h4>Using ordinalValue and constraint</h4>
-  <p>Example involving ordinal value and contraints.<br/>
+  <p>Example involving ordinal value and contraints. (<a href="Questionnaire-questionnaire-sdc-profile-example-ordinal-value.html">Example Questionnaire</a>)<br/>
    Note: The questions below are not functional. The total score will not be calculated and displayed after input.
 </p>
   <div class="tabs" style="height:400px">
@@ -4884,65 +4930,70 @@ i.fa {
         <textarea style="border:none" class="xml">
         {
           "resourceType": "Questionnaire",
+          "id" : "questionnaire-sdc-profile-example-ordinal-value",
           "contained": [
             {
+              "resourceType" : "ValueSet",
+              "id" : "LL358-3",
+              "name" : "TimingOfHarmAssessment",
+              "title" : "Timing of harm assessment [AHRQ]",
+              "status" : "active",
+              "description" : "The answer list for timing of harm assessment",
+              "copyright" : "This content from LOINC® is copyright © 1995 Regenstrief Institute, Inc. and the LOINC Committee, and available at no cost under the license at http://loinc.org/terms-of-use",
               "compose": {
                 "include": [
                   {
+                    "system" : "http://loinc.org",
                     "concept": [
                       {
-                        "code": "LA6568-5",
-                        "display": "Not at all",
                         "extension": [
                           {
                             "url": "http://hl7.org/fhir/StructureDefinition/ordinalValue",
                             "valueDecimal": 0
                           }
-                        ]
+                        ],
+                        "code" : "LA6568-5",
+                        "display" : "Not at all"
                       },
                       {
-                        "code": "LA6569-3",
-                        "display": "Several days",
                         "extension": [
                           {
                             "url": "http://hl7.org/fhir/StructureDefinition/ordinalValue",
                             "valueDecimal": 1
                           }
-                        ]
+                        ],
+                        "code" : "LA6569-3",
+                        "display" : "Several days"
                       },
                       {
-                        "code": "Several days",
-                        "display": "More than half the days",
                         "extension": [
                           {
                             "url": "http://hl7.org/fhir/StructureDefinition/ordinalValue",
                             "valueDecimal": 2
                           }
-                        ]
+                        ],
+                        "code" : "LA6570-1",
+                        "display" : "More than half the days"
                       },
                       {
-                        "code": "LA6571-9",
-                        "display": "Nearly every day",
                         "extension": [
                           {
                             "url": "http://hl7.org/fhir/StructureDefinition/ordinalValue",
                             "valueDecimal": 3
                           }
+                        ],
+                        "code" : "LA6571-9",
+                        "display" : "Nearly every day"
+                      }
                         ]
                       }
-                    ],
-                    "system": "http://loinc.org"
-                  }
                 ]
-              },
-              "copyright": "This content from LOINC® is copyright © 1995 Regenstrief Institute, Inc. and the LOINC Committee, and available at no cost under the license at http://loinc.org/terms-of-use",
-              "description": "The answer list for timing of harm assessment",
-              "id": "LL358-3",
-              "resourceType": "ValueSet",
-              "status": "active",
-              "title": "Timing of harm assessment [AHRQ]"
+                  }
             }
           ],
+          "url" : "http://hl7.org/fhir/uv/sdc/Questionnaire/questionnaire-sdc-profile-example-ordinal-value",
+          "name" : "SDCExampleUsingOrdinalValue",
+          "status" : "draft",
           "item": [
             {
               "extension": [
@@ -4962,7 +5013,7 @@ i.fa {
                     },
                     {
                       "url": "expression",
-                      "valueString": "%resource.repeat(item).where(linkId='4.3.b').item.where(answer.hasValue()).count() >= 3"
+                      "valueString" : "%resource.repeat(item).where(linkId='1.0').item.where(answer.hasValue()).count() >= 3"
                     },
                     {
                       "url": "human",
@@ -4972,6 +5023,9 @@ i.fa {
                   "url": "http://hl7.org/fhir/StructureDefinition/questionnaire-constraint"
                 }
               ],
+              "linkId" : "1.0",
+              "text" : "Over the last 2 weeks, how often have you been bothered by any of the following problems?",
+              "type" : "group",
               "item": [
                 {
                   "extension": [
@@ -4993,10 +5047,10 @@ i.fa {
                       }
                     }
                   ],
-                  "answerValueSet": "#LL358-3",
-                  "linkId": "4.3.b.1",
+                  "linkId" : "1.1",
                   "text": "1. Little interest or pleasure in doing things ",
-                  "type": "choice"
+                  "type" : "choice",
+                  "answerValueSet" : "#LL358-3"
                 },
                 {
                   "extension": [
@@ -5018,10 +5072,10 @@ i.fa {
                       }
                     }
                   ],
-                  "answerValueSet": "#LL358-3",
-                  "linkId": "4.3.b.2",
+                  "linkId" : "1.2",
                   "text": "2. Feeling down, depressed, or hopeless ",
-                  "type": "choice"
+                  "type" : "choice",
+                  "answerValueSet" : "#LL358-3"
                 },
                 {
                   "extension": [
@@ -5043,10 +5097,10 @@ i.fa {
                       }
                     }
                   ],
-                  "answerValueSet": "#LL358-3",
-                  "linkId": "4.3.b.3",
+                  "linkId" : "1.3",
                   "text": "3. Trouble falling or staying asleep, or sleeping too much ",
-                  "type": "choice"
+                  "type" : "choice",
+                  "answerValueSet" : "#LL358-3"
                 },
                 {
                   "extension": [
@@ -5068,10 +5122,10 @@ i.fa {
                       }
                     }
                   ],
-                  "answerValueSet": "#LL358-3",
-                  "linkId": "4.3.b.4",
+                  "linkId" : "1.4",
                   "text": "4. Feeling tired or having little energy ",
-                  "type": "choice"
+                  "type" : "choice",
+                  "answerValueSet" : "#LL358-3"
                 },
                 {
                   "extension": [
@@ -5079,19 +5133,16 @@ i.fa {
                       "url": "http://hl7.org/fhir/uv/sdc/StructureDefinition/sdc-questionnaire-calculatedExpression",
                       "valueExpression": {
                         "description": "Total score",
-                        "expression": "%resource.repeat(item).where(linkId='4.3.b').item.answer.ordinalValue().aggregate($this + $total, 0)",
-                        "language": "text/fhirpath"
+                        "language" : "text/fhirpath",
+                        "expression" : "%resource.repeat(item).where(linkId='1.0').item.answer.ordinalValue().aggregate($this + $total, 0)"
                       }
                     }
                   ],
-                  "linkId": "4.3.b.5",
+                  "linkId" : "6",
                   "text": "Total Score:",
                   "type": "integer"
                 }
-              ],
-              "linkId": "4.3.b",
-              "text": "Over the last 2 weeks, how often have you been bothered by any of the following problems?",
-              "type": "group"
+              ]
             }
           ]
         }
@@ -5107,6 +5158,7 @@ i.fa {
             <contained>
               <ValueSet>
                 <id value="LL358-3"/>
+                <name value="TimingOfHarmAssessment"/>
                 <title value="Timing of harm assessment [AHRQ]"/>
                 <status value="active"/>
                 <description value="The answer list for timing of harm assessment"/>
@@ -5132,7 +5184,7 @@ i.fa {
                       <extension url="http://hl7.org/fhir/StructureDefinition/ordinalValue">
                         <valueDecimal value="2"/>
                       </extension>
-                      <code value="Several days"/>
+                      <code value="LA6570-1"/>
                       <display value="More than half the days"/>
                     </concept>
                     <concept>
@@ -5158,13 +5210,13 @@ i.fa {
                   <valueCode value="warning"/>
                 </extension>
                 <extension url="expression">
-                  <valueString value="%resource.repeat(item).where(linkId='4.3.b').item.where(answer.hasValue()).count() >= 3"/>
+                  <valueString value="%resource.repeat(item).where(linkId='1.0').item.where(answer.hasValue()).count()&gt;=3"/>
                 </extension>
                 <extension url="human">
                   <valueString value="You should answer at least three questions."/>
                 </extension>
               </extension>
-              <linkId value="4.3.b"/>
+              <linkId value="1.0"/>
               <text value="Over the last 2 weeks, how often have you been bothered by any of the following problems?"/>
               <type value="group"/>
               <item>
@@ -5181,7 +5233,7 @@ i.fa {
                     <text value="A control where choices are listed with a button beside them. The button can be toggled to select or de-select a given choice. Selecting one item deselects all others."/>
                   </valueCodeableConcept>
                 </extension>
-                <linkId value="4.3.b.1"/>
+                <linkId value="1.1"/>
                 <text value="1. Little interest or pleasure in doing things "/>
                 <type value="choice"/>
                 <answerValueSet value="#LL358-3"/>
@@ -5200,7 +5252,7 @@ i.fa {
                     <text value="A control where choices are listed with a button beside them. The button can be toggled to select or de-select a given choice. Selecting one item deselects all others."/>
                   </valueCodeableConcept>
                 </extension>
-                <linkId value="4.3.b.2"/>
+                <linkId value="1.2"/>
                 <text value="2. Feeling down, depressed, or hopeless "/>
                 <type value="choice"/>
                 <answerValueSet value="#LL358-3"/>
@@ -5219,7 +5271,7 @@ i.fa {
                     <text value="A control where choices are listed with a button beside them. The button can be toggled to select or de-select a given choice. Selecting one item deselects all others."/>
                   </valueCodeableConcept>
                 </extension>
-                <linkId value="4.3.b.3"/>
+                <linkId value="1.3"/>
                 <text value="3. Trouble falling or staying asleep, or sleeping too much "/>
                 <type value="choice"/>
                 <answerValueSet value="#LL358-3"/>
@@ -5238,7 +5290,7 @@ i.fa {
                     <text value="A control where choices are listed with a button beside them. The button can be toggled to select or de-select a given choice. Selecting one item deselects all others."/>
                   </valueCodeableConcept>
                 </extension>
-                <linkId value="4.3.b.4"/>
+                <linkId value="1.4"/>
                 <text value="4. Feeling tired or having little energy "/>
                 <type value="choice"/>
                 <answerValueSet value="#LL358-3"/>
@@ -5248,10 +5300,10 @@ i.fa {
                   <valueExpression>
                     <description value="Total score"/>
                     <language value="text/fhirpath"/>
-                    <expression value="%resource.repeat(item).where(linkId='4.3.b').item.answer.ordinalValue().aggregate($this + $total, 0)"/>
+                    <expression value="%resource.repeat(item).where(linkId='1.0').item.answer.ordinalValue().aggregate($this + $total, 0)"/>
                   </valueExpression>
                 </extension>
-                <linkId value="4.3.b.5"/>
+                <linkId value="6"/>
                 <text value="Total Score:"/>
                 <type value="integer"/>
               </item>
@@ -5264,7 +5316,7 @@ i.fa {
 
 <a name="signatureRequired-usagemode"></a>
   <h4>Using signatureRequired and usageMode</h4>
-  <p>Example of signature required.</p>
+  <p>Example of a questionnaire requiring a signature. (<a href="Questionnaire-questionnaire-sdc-profile-example-form-behavior.html">Example Questionnaire</a>)</p>
   <div class="tabs">
     <div class="tab">
       <input type="radio" id="tab-signatureRequired-usagemode-1" name="tab-signatureRequired-usagemode-group-2" checked="true"/>
@@ -5299,7 +5351,7 @@ i.fa {
                 "valueCode": "capture"
               }
             ],
-            "linkId": "4.4.b",
+            "linkId": "4.4",
             "text": "Signature of Patient",
             "type": "attachment",
             "required": true
@@ -5327,7 +5379,7 @@ i.fa {
             <extension url="http://hl7.org/fhir/StructureDefinition/questionnaire-usageMode">
               <valueCode value="capture"/>
             </extension>
-            <linkId value="4.4.b"/>
+            <linkId value="4.4"/>
             <text value="Signature of Patient"/>
             <type value="attachment"/>
             <required value="true"/>
@@ -5339,7 +5391,7 @@ i.fa {
 
 <a name="endpoint"></a>
   <h4>Using endpoint</h4>
-  <p>To set an endpoint URL for the Form Receiver when the Questionnaire is completed.</p>
+  <p>To set an endpoint URL for the Form Receiver when the Questionnaire is completed. (<a href="Questionnaire-questionnaire-sdc-profile-example-form-behavior.html">Example Questionnaire</a>)</p>
   <div class="tabs">
     <div class="tab">
       <input type="radio" id="tab-endpoint-1" name="tab-endpoint-group-2" checked="true"/>
@@ -5386,7 +5438,7 @@ i.fa {
 
 <a name="entrymode"></a>
   <h4>Using entryMode</h4>
-  <p>To display questions one at a time.</p>
+  <p>To display questions one at a time. (<a href="Questionnaire-questionnaire-sdc-profile-example-form-behavior.html">Example Questionnaire</a>)</p>
   <div class="tabs">
     <div class="tab">
       <input type="radio" id="tab-entrymode-1" name="tab-entrymode-group-2" checked="true"/>
@@ -5433,7 +5485,7 @@ i.fa {
 
 <a name="candidateExpression"></a>
   <h4>Using candidateExpression</h4>
-  <p>To provide a list of candidate answers for the question item.</p>
+  <p>To provide a list of candidate answers for the question item. (<a href="Questionnaire-questionnaire-sdc-profile-example-form-behavior.html">Example Questionnaire</a>)</p>
   <div class="tabs">
     <div class="tab">
       <input type="radio" id="tab-candidateExpression-1" name="tab-candidateExpression-group-2" checked="true"/>
@@ -5578,7 +5630,7 @@ i.fa {
               "url": "http://hl7.org/fhir/uv/sdc/StructureDefinition/sdc-questionnaire-choiceColumn"
             }
           ],
-          "linkId": "6.1",
+          "linkId": "4.6",
           "text": "All the practitioners below can speak the patient's language. Choose all preferred practioners:",
           "type": "reference",
           "repeats": true
@@ -5654,7 +5706,7 @@ i.fa {
                 <valueBoolean value="false"/>
               </extension>
             </extension>
-            <linkId value="6.1"/>
+            <linkId value="4.6"/>
             <text value="All the practitioners below can speak the patient's language. Choose all preferred practioners:"/>
             <type value="reference"/>
             <repeats value="true"/>
@@ -5663,18 +5715,17 @@ i.fa {
       </div>
     </div>
   </div>
-  <!-- TODO: specify the control to use -->
 
 <a name="contextExpression"></a>
   <h4>Using contextExpression</h4>
-  <p>To indicate the resources to make available for display to the user to aid in answering the question.</p>
+  <p>To indicate the resources to make available for display to the user to aid in answering the question. (<a href="Questionnaire-questionnaire-sdc-profile-example-context-expression.html">Example Questionnaire</a>)</p>
   <div class="tabs">
     <div class="tab">
       <input type="radio" id="tab-contextExpression-1" name="tab-contextExpression-group-2" checked="true"/>
       <label for="tab-contextExpression-1">Sample Question</label>
       <div class="content-in-tab">
         <p>
-          <i>Instruction: Click on "Review Previous Visits" button to view all the visits of this patient in the past year.</i>
+          Instruction: Click on "Review Previous Visits" button to view all the visits of this patient in the past year.
           <br/>
           <br/>
         Has the patient been admitted for this issue on any visits in the past year? <button id="myBtn">Review Previous Visits</button>
@@ -5692,6 +5743,7 @@ i.fa {
         <textarea style="border:none" class="xml">
       {
         "resourceType": "Questionnaire",
+          "id" : "questionnaire-sdc-profile-example-context-expression",
         "extension": [
           {
             "extension": [
@@ -5715,27 +5767,15 @@ i.fa {
             "url": "http://hl7.org/fhir/uv/sdc/StructureDefinition/sdc-questionnaire-launchContext"
           }
         ],
+          "url" : "http://hl7.org/fhir/uv/sdc/questionnaire-sdc-profile-example-context-expression",
+          "name" : "SDCExampleUsingContextExpression",
+          "status" : "draft",
         "item": [
           {
-            linkId": "1.0",
+              "linkId" : "1.0",
             "type": "group",
             "item": [
               {
-                "extension": [
-                  {
-                    "url": "http://hl7.org/fhir/StructureDefinition/questionnaire-displayCategory",
-                    "valueCodeableConcept": {
-                      "coding": [
-                        {
-                          "system": "http://hl7.org/fhir/questionnaire-display-category",
-                          "code": "instructions",
-                          "display": "Instructions"
-                        }
-                      ],
-                      "text": "The text provides guidance on how to populate or use a portion of the questionnaire"
-                    }
-                  }
-                ],
                 "linkId": "1.1",
                 "text": "Instruction: Click on \"Previous Visits\" button to view all the visits of this patient in the past year.",
                 "type": "display"
@@ -5753,8 +5793,11 @@ i.fa {
                         "valueExpression": {
                           "description": "list all Encounters with patient in the past year, in order by date - newest to oldest",
                           "language": "application/x-fhir-query",
-                          "expression": "Encounter?patient={{%patient.id}}&amp;date=ge{{today()-1 year}}&amp;_sort=-date"
-                        },
+                            "expression" : "Encounter?patient={{%patient.id}}&amp;date=ge{{today()-1 year}}&amp;_sort=-date&amp;_include=Encounter:practitioner"
+                          }
+                        }
+                      ],
+                      "url" : "http://hl7.org/fhir/uv/sdc/StructureDefinition/sdc-questionnaire-contextExpression"
                       },
                       {
                         "extension": [
@@ -5806,8 +5849,18 @@ i.fa {
                         ],
                         "url": "http://hl7.org/fhir/uv/sdc/StructureDefinition/sdc-questionnaire-choiceColumn"
                       },
+                    {
+                      "url" : "http://hl7.org/fhir/StructureDefinition/questionnaire-itemControl",
+                      "valueCodeableConcept" : {
+                        "coding" : [
+                          {
+                            "system" : "http://hl7.org/fhir/questionnaire-item-control",
+                            "code" : "radio-button",
+                            "display" : "Radio Button"
+                          }
                     ],
-                    "url": "http://hl7.org/fhir/uv/sdc/StructureDefinition/sdc-questionnaire-contextExpression"
+                        "text" : "A control where choices are listed with a button beside them. The button can be toggled to select or de-select a given choice. Selecting one item deselects all others."
+                      }
                   },
                   {
                     "url": "http://hl7.org/fhir/StructureDefinition/questionnaire-itemControl",
@@ -5841,7 +5894,7 @@ i.fa {
       <div class="content-in-tab">
         <textarea style="border:none" class="xml">
           <Questionnaire>
-            <id value="questionnaire-context-expression-example"/>
+            <id value="questionnaire-sdc-profile-example-context-expression"/>
             <extension url="http://hl7.org/fhir/uv/sdc/StructureDefinition/sdc-questionnaire-launchContext">
               <extension url="name">
               <valueCoding>
@@ -5857,21 +5910,13 @@ i.fa {
                 <valueString value="The patient that is to be used to pre-populate the form"/>
               </extension>
             </extension>
+            <url value="http://hl7.org/fhir/uv/sdc/questionnaire-sdc-profile-example-context-expression"/>
+            <name value="SDCExampleUsingContextExpression"/>
             <status value="draft"/>
             <item>
               <linkId value="1.0"/>
               <type value="group"/>
               <item>
-                <extension url="http://hl7.org/fhir/StructureDefinition/questionnaire-displayCategory">
-                  <valueCodeableConcept>
-                    <coding>
-                      <system value="http://hl7.org/fhir/questionnaire-display-category"/>
-                      <code value="instructions"/>
-                      <display value="Instructions"/>
-                    </coding>
-                    <text value="The text provides guidance on how to populate or use a portion of the questionnaire"/>
-                  </valueCodeableConcept>
-                </extension>
                 <linkId value="1.1"/>
                 <text value="Instruction: Click on &quot;Previous Visits&quot; button to view all the visits of this patient in the past year."/>
                 <type value="display"/>
@@ -5881,13 +5926,14 @@ i.fa {
                   <extension url="label">
                     <valueString value="Encounters in past year"/>
                   </extension>
-                  <extension url="expression">
+                  <extension url="label">
                     <valueExpression>
                       <description value="list all Encounters with patient in the past year, in order by date - newest to oldest"/>
                       <language value="application/x-fhir-query"/>
                       <expression value="Encounter?patient={{%patient.id}}&amp;date=ge{{today()-1 year}}&amp;_sort=-date&amp;_include=Encounter:practitioner"/>
                     </valueExpression>
                   </extension>
+                </extension>
                   <extension url="http://hl7.org/fhir/uv/sdc/StructureDefinition/sdc-questionnaire-choiceColumn">
                     <extension url="path">
                       <valueString value="period.start"/>
@@ -5924,6 +5970,15 @@ i.fa {
                       <valueBoolean value="false"/>
                     </extension>
                   </extension>
+                <extension url="http://hl7.org/fhir/StructureDefinition/questionnaire-itemControl">
+                  <valueCodeableConcept>
+                    <coding>
+                      <system value="http://hl7.org/fhir/questionnaire-item-control"/>
+                      <code value="radio-button"/>
+                      <display value="Radio Button"/>
+                    </coding>
+                    <text value="A control where choices are listed with a button beside them. The button can be toggled to select or de-select a given choice. Selecting one item deselects all others."/>
+                  </valueCodeableConcept>
                 </extension>
                 <extension url="http://hl7.org/fhir/StructureDefinition/questionnaire-itemControl">
                   <valueCodeableConcept>
@@ -5952,7 +6007,7 @@ i.fa {
 
 <a name="itemPopulationContext"></a>
   <h4>Using itemPopulationContext and itemExtractionContext</h4>
-  <p>To specify the resources to populate and extract a questionnaire.</p>
+  <p>To specify the resources to populate and extract a questionnaire. (<a href="Questionnaire-questionnaire-sdc-profile-example-form-behavior.html">Example Questionnaire</a>)</p>
   <div class="tabs">
     <div class="tab">
       <input type="radio" id="tab-itemPopulationContext-1" name="tab-itemPopulationContext-group-2" checked="true"/>
@@ -6018,154 +6073,164 @@ i.fa {
                   "url": "http://hl7.org/fhir/uv/sdc/StructureDefinition/sdc-questionnaire-itemPopulationContext",
                   "valueExpression": {
                     "description": "Home address of the patient",
-                    "language": "text/fhirpath",
-                    "expression": "%patient.address.where(use='home')[0]"
+                    "expression": "%patient.address.where(use='home')[0]",
+                    "language": "text/fhirpath"
                   }
                 },
                 {
                   "url": "http://hl7.org/fhir/uv/sdc/StructureDefinition/sdc-questionnaire-itemExtractionContext",
                   "valueExpression": {
                     "description": "Home address of the patient",
-                    "language": "text/fhirpath",
-                    "expression": "%patient.address.where(use='home')[0]"
+                    "expression": "%patient.address.where(use='home')[0]",
+                    "language": "text/fhirpath"
                   }
                 }
               ],
-              "linkId": "2.0",
-              "type": "group",
               "item": [
                 {
-                  "linkId": "1.1",
+                  "linkId": "4.6.1",
                   "text": "Home Address",
                   "type": "display"
                 },
                 {
+                  "definition": "http://hl7.org/fhir/StructureDefinition/Patient#Patient.address.line",
                   "extension": [
                     {
                       "url": "http://hl7.org/fhir/uv/sdc/StructureDefinition/sdc-questionnaire-initialExpression",
                       "valueExpression": {
                         "description": "Address Line 1",
-                        "language": "text/fhirpath",
-                        "expression": "line[0]"
+                        "expression": "line[0]",
+                        "language": "text/fhirpath"
                       }
                     }
                   ],
-                  "linkId": "1.2",
-                  "definition" : "http://hl7.org/fhir/Patient#Patient.address.line",
+                  "linkId": "4.6.2",
                   "text": "Address",
                   "type": "string"
                 },
                 {
+                  "definition": "http://hl7.org/fhir/StructureDefinition/Patient#Patient.address.city",
                   "extension": [
                     {
                       "url": "http://hl7.org/fhir/uv/sdc/StructureDefinition/sdc-questionnaire-initialExpression",
                       "valueExpression": {
                         "description": "City",
-                        "language": "text/fhirpath",
-                        "expression": "city"
+                        "expression": "city",
+                        "language": "text/fhirpath"
                       }
                     }
                   ],
-                  "linkId": "1.3",
-                  "definition" : "http://hl7.org/fhir/Patient#Patient.address.city",
+                  "linkId": "4.6.3",
                   "text": "City",
                   "type": "string"
                 },
                 {
-                  "extension": [
-                    {
-                      "url": "http://hl7.org/fhir/uv/sdc/StructureDefinition/sdc-questionnaire-initialExpression",
-                      "valueExpression": {
-                        "description": "State",
-                        "language": "text/fhirpath",
-                        "expression": "state"
-                      }
-                    }
-                  ],
-                  "linkId": "1.4",
-                  "definition" : "http://hl7.org/fhir/Patient#Patient.address.state",
-                  "text": "Province",
-                  "type": "choice",
                   "answerOption": [
                     {
                       "valueCoding": {
                         "code": "Alberta",
-                        "display": "Alberta"
+                        "display": "Alberta",
+                        "system": "http://example.com/CodeSystem/provinces"
                       }
                     },
                     {
                       "valueCoding": {
                         "code": "BritishColumbia",
-                        "display": "British Columbia"
+                        "display": "British Columbia",
+                        "system": "http://example.com/CodeSystem/provinces"
                       }
                     },
                     {
                       "valueCoding": {
                         "code": "Manitoba",
-                        "display": "Manitoba"
+                        "display": "Manitoba",
+                        "system": "http://example.com/CodeSystem/provinces"
                       }
                     },
                     {
                       "valueCoding": {
                         "code": "NewBrunswick",
-                        "display": "New Brunswick"
+                        "display": "New Brunswick",
+                        "system": "http://example.com/CodeSystem/provinces"
                       }
                     },
                     {
                       "valueCoding": {
                         "code": "NewfoundlandAndLabrador",
-                        "display": "Newfoundland and Labrador"
+                        "display": "Newfoundland and Labrador",
+                        "system": "http://example.com/CodeSystem/provinces"
                       }
                     },
                     {
                       "valueCoding": {
                         "code": "NovaScotia",
-                        "display": "Nova Scotia"
+                        "display": "Nova Scotia",
+                        "system": "http://example.com/CodeSystem/provinces"
                       }
                     },
                     {
                       "valueCoding": {
                         "code": "Ontario",
-                        "display": "Ontario"
+                        "display": "Ontario",
+                        "system": "http://example.com/CodeSystem/provinces"
                       }
                     },
                     {
                       "valueCoding": {
                         "code": "PrinceEdwardIsland",
-                        "display": "Prince Edward Island"
+                        "display": "Prince Edward Island",
+                        "system": "http://example.com/CodeSystem/provinces"
                       }
                     },
                     {
                       "valueCoding": {
                         "code": "Quebec",
-                        "display": "Quebec"
+                        "display": "Quebec",
+                        "system": "http://example.com/CodeSystem/provinces"
                       }
                     },
                     {
                       "valueCoding": {
                         "code": "Saskatchewan",
-                        "display": "Saskatchewan"
+                        "display": "Saskatchewan",
+                        "system": "http://example.com/CodeSystem/provinces"
                       }
                     }
-                  ]
+                  ],
+                  "definition": "http://hl7.org/fhir/StructureDefinition/Patient#Patient.address.state",
+                  "extension": [
+                    {
+                      "url": "http://hl7.org/fhir/uv/sdc/StructureDefinition/sdc-questionnaire-initialExpression",
+                      "valueExpression": {
+                        "description": "State",
+                        "expression": "state",
+                        "language": "text/fhirpath"
+                      }
+                    }
+                  ],
+                  "linkId": "4.6.4",
+                  "text": "Province",
+                  "type": "choice"
                 },
                 {
+                  "definition": "http://hl7.org/fhir/StructureDefinition/Patient#Patient.address.postalCode",
                   "extension": [
                     {
                       "url": "http://hl7.org/fhir/uv/sdc/StructureDefinition/sdc-questionnaire-initialExpression",
                       "valueExpression": {
                         "description": "Postal Code",
-                        "language": "text/fhirpath",
-                        "expression": "postalCode"
+                        "expression": "postalCode",
+                        "language": "text/fhirpath"
                       }
                     }
                   ],
-                  "linkId": "1.5",
-                  "definition" : "http://hl7.org/fhir/Patient#Patient.address.postalCode",
+                  "linkId": "4.6.5",
                   "text": "Postal Code",
                   "type": "string"
                 }
-              ]
+              ],
+              "linkId": "4.6",
+              "type": "group"
             }
           ]
         }
@@ -6197,20 +6262,20 @@ i.fa {
               <valueExpression>
                 <description value="Home address of the patient"/>
                 <language value="text/fhirpath"/>
-                <expression value="%patient.address.where(use='home')[0]"/>
+                <expression value="%patient.address.where(use=&#39;home&#39;)[0]"/>
               </valueExpression>
             </extension>
             <extension url="http://hl7.org/fhir/uv/sdc/StructureDefinition/sdc-questionnaire-itemExtractionContext">
               <valueExpression>
                 <description value="Home address of the patient"/>
                 <language value="text/fhirpath"/>
-                <expression value="%patient.address.where(use='home')[0]"/>
+                <expression value="%patient.address.where(use=&#39;home&#39;)[0]"/>
               </valueExpression>
             </extension>
-            <linkId value="2.0"/>
+            <linkId value="4.6"/>
             <type value="group"/>
             <item>
-              <linkId value="1.1"/>
+              <linkId value="4.6.1"/>
               <text value="Home Address"/>
               <type value="display"/>
             </item>
@@ -6222,8 +6287,8 @@ i.fa {
                   <expression value="line[0]"/>
                 </valueExpression>
               </extension>
-              <linkId value="1.2"/>
-              <definition value="http://hl7.org/fhir/Patient#Patient.address.line"/>
+              <linkId value="4.6.2"/>
+              <definition value="http://hl7.org/fhir/StructureDefinition/Patient#Patient.address.line"/>
               <text value="Address"/>
               <type value="string"/>
             </item>
@@ -6235,8 +6300,8 @@ i.fa {
                   <expression value="city"/>
                 </valueExpression>
               </extension>
-              <linkId value="1.3"/>
-              <definition value="http://hl7.org/fhir/Patient#Patient.address.city"/>
+              <linkId value="4.6.3"/>
+              <definition value="http://hl7.org/fhir/StructureDefinition/Patient#Patient.address.city"/>
               <text value="City"/>
               <type value="string"/>
             </item>
@@ -6248,66 +6313,76 @@ i.fa {
                   <expression value="state"/>
                 </valueExpression>
               </extension>
-              <linkId value="1.4"/>
-              <definition value="http://hl7.org/fhir/Patient#Patient.address.state"/>
+              <linkId value="4.6.4"/>
+              <definition value="http://hl7.org/fhir/StructureDefinition/Patient#Patient.address.state"/>
               <text value="Province"/>
               <type value="choice"/>
               <answerOption>
                 <valueCoding>
+                  <system value="http://example.com/CodeSystem/provinces"/>
                   <code value="Alberta"/>
                   <display value="Alberta"/>
                 </valueCoding>
               </answerOption>
               <answerOption>
                 <valueCoding>
+                  <system value="http://example.com/CodeSystem/provinces"/>
                   <code value="BritishColumbia"/>
                   <display value="British Columbia"/>
                 </valueCoding>
               </answerOption>
               <answerOption>
                 <valueCoding>
+                  <system value="http://example.com/CodeSystem/provinces"/>
                   <code value="Manitoba"/>
                   <display value="Manitoba"/>
                 </valueCoding>
               </answerOption>
               <answerOption>
                 <valueCoding>
+                  <system value="http://example.com/CodeSystem/provinces"/>
                   <code value="NewBrunswick"/>
                   <display value="New Brunswick"/>
                 </valueCoding>
               </answerOption>
               <answerOption>
                 <valueCoding>
+                  <system value="http://example.com/CodeSystem/provinces"/>
                   <code value="NewfoundlandAndLabrador"/>
                   <display value="Newfoundland and Labrador"/>
                 </valueCoding>
               </answerOption>
               <answerOption>
                 <valueCoding>
+                  <system value="http://example.com/CodeSystem/provinces"/>
                   <code value="NovaScotia"/>
                   <display value="Nova Scotia"/>
                 </valueCoding>
               </answerOption>
               <answerOption>
                 <valueCoding>
+                  <system value="http://example.com/CodeSystem/provinces"/>
                   <code value="Ontario"/>
                   <display value="Ontario"/>
                 </valueCoding>
               </answerOption>
               <answerOption>
                 <valueCoding>
+                  <system value="http://example.com/CodeSystem/provinces"/>
                   <code value="PrinceEdwardIsland"/>
                   <display value="Prince Edward Island"/>
                 </valueCoding>
               </answerOption>
               <answerOption>
                 <valueCoding>
+                  <system value="http://example.com/CodeSystem/provinces"/>
                   <code value="Quebec"/>
                   <display value="Quebec"/>
                 </valueCoding>
               </answerOption>
               <answerOption>
                 <valueCoding>
+                  <system value="http://example.com/CodeSystem/provinces"/>
                   <code value="Saskatchewan"/>
                   <display value="Saskatchewan"/>
                 </valueCoding>
@@ -6321,8 +6396,8 @@ i.fa {
                   <expression value="postalCode"/>
                 </valueExpression>
               </extension>
-              <linkId value="1.5"/>
-              <definition value="http://hl7.org/fhir/Patient#Patient.address.postalCode"/>
+              <linkId value="4.6.5"/>
+              <definition value="http://hl7.org/fhir/StructureDefinition/Patient#Patient.address.postalCode"/>
               <text value="Postal Code"/>
               <type value="string"/>
             </item>

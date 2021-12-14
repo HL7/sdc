@@ -1,0 +1,83 @@
+-------------------------------------------------------------------------------------
+{"code" : {
+  "system" : "urn:ietf:bcp:13",
+  "code" : "application/sparql-results+xml"
+}, "valueSet" :null, "lang":"en-US", "useServer":"true", "useClient":"true", "guessSystem":"false", "valueSetMode":"ALL_CHECKS", "versionFlexible":"true"}####
+v: {
+  "display" : "application/sparql-results+xml",
+  "code" : "application/sparql-results+xml",
+  "system" : "urn:ietf:bcp:13"
+}
+-------------------------------------------------------------------------------------
+{"code" : {
+  "system" : "urn:ietf:bcp:13",
+  "code" : "application/sql"
+}, "valueSet" :null, "lang":"en-US", "useServer":"true", "useClient":"true", "guessSystem":"false", "valueSetMode":"ALL_CHECKS", "versionFlexible":"true"}####
+v: {
+  "display" : "application/sql",
+  "code" : "application/sql",
+  "system" : "urn:ietf:bcp:13"
+}
+-------------------------------------------------------------------------------------
+{"code" : {
+  "system" : "urn:ietf:bcp:13",
+  "code" : "application/xquery"
+}, "valueSet" :null, "lang":"en-US", "useServer":"true", "useClient":"true", "guessSystem":"false", "valueSetMode":"ALL_CHECKS", "versionFlexible":"true"}####
+v: {
+  "display" : "application/xquery",
+  "code" : "application/xquery",
+  "system" : "urn:ietf:bcp:13"
+}
+-------------------------------------------------------------------------------------
+{"hierarchical" : true, "valueSet" :{
+  "resourceType" : "ValueSet",
+  "compose" : {
+    "include" : [{
+      "system" : "urn:ietf:bcp:13",
+      "concept" : [{
+        "code" : "application/sparql-results+xml",
+        "display" : "SPARQL"
+      },
+      {
+        "code" : "application/sql",
+        "display" : "SQL"
+      },
+      {
+        "code" : "application/xquery",
+        "display" : "X-Query"
+      }]
+    }]
+  }
+}}####
+e: {
+  "valueSet" : {
+  "resourceType" : "ValueSet",
+  "language" : "en",
+  "status" : "active",
+  "expansion" : {
+    "identifier" : "urn:uuid:653ed487-1f62-4d15-8b93-a8994c0d1e53",
+    "timestamp" : "2021-12-12T20:52:09.354Z",
+    "parameter" : [{
+      "name" : "limitedExpansion",
+      "valueBoolean" : true
+    }],
+    "contains" : [{
+      "system" : "urn:ietf:bcp:13",
+      "code" : "application/sparql-results+xml",
+      "display" : "application/sparql-results+xml"
+    },
+    {
+      "system" : "urn:ietf:bcp:13",
+      "code" : "application/sql",
+      "display" : "application/sql"
+    },
+    {
+      "system" : "urn:ietf:bcp:13",
+      "code" : "application/xquery",
+      "display" : "application/xquery"
+    }]
+  }
+},
+  "error" : ""
+}
+-------------------------------------------------------------------------------------
