@@ -73,7 +73,7 @@
           <p>
             This element allows the full capabilities of the HTML style attribute to be applied to the title of a questionnaire, or to the label 
 			or text of a questionnaire item or to the label of an option.  This might mean changing the font or color, changing font style such
-            as bold, italics, smallcaps, etc.  Conformant systems are allowed to ignore this extension unless the
+            as bold, italics, small caps, etc.  Conformant systems are allowed to ignore this extension unless the
             <a href="#rendering-styleSensitive">rendering-styleSensitive</a> flag is set to true.
           </p>
         </td>
@@ -157,7 +157,7 @@
       <tr>
         <td colspan="5">
           <p>
-            This allows flagging items that should not be displayed at all.  In theory it can be used for any item, but in general it only makes sense for
+            This allows flagging items that should not be displayed at all.  In theory, it can be used for any item, but in general, it only makes sense for
             questions and groups.  It allows for answers to be captured behind the scenes using the <a href="behavior.html">behavior</a> and/or
             <a href="populate.html">population</a> mechanisms.  For example, hidden scores, hidden source data, hidden data needed for
             <a href="extraction.html">extraction</a>.  If an item is hidden, then all items below it will be hidden as well.  Hidden items are automatically
@@ -592,7 +592,7 @@
             If set to true, this indicates that the 'style' information conveyed by the <a href="#rendering-style">rendering-style</a> and/or
             <a href="#rendering-xhtml">rendering-xhtml</a> are considered critical to the accurate rendering of the questionnaire (and appropriate capture of
             information using the questionnaire).  For example, there are instructions or other text that refer to specific colors or styles and a user would
-            not be able to safely or appropriately fill out the questionnaire if those colors or styles are not accurately rendered.  As a result, only systems 
+            not be able to fill out the questionnaire safely or appropriately if those colors or styles are not accurately rendered.  As a result, only systems 
             that can render all such extensions appropriately are considered 'safe' to render the Questionnaire.  All other SDC systems SHALL raise an error.
           </p>
         </td>
@@ -624,7 +624,7 @@
   <ul>
     <li>Questionnaires will be rendered by a variety of tools on a variety of devices.  Not all tools will necessarily support all extensions - or even
       all core elements.  Authors should recognize this and only depend on rendering extensions if they're confident that all systems using the Questionnaire
-      will support the needed extensions.  Note that this does not mean that extensions cannnot be used, only that the Questionnaire should be safe to use if
+      will support the needed extensions.  Note that this does not mean that extensions cannot be used, only that the Questionnaire should be safe to use if
       extensions that the author is not certain will be supported are not supported.  For example, avoid referring to 'the red text' if you're not certain
       the text will be rendered as red (and that those who are color-impaired will have an alternative mechanism of recognizing the text as 'red').</li>
     <li>Tools that use HTML to render forms should consider disabling browser-based auto-completion unless such behavior is desired</li>

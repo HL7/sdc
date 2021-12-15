@@ -17,8 +17,7 @@
     <li>
       <code>name</code> allows the result of the expression to be referenced within other expressions.  Whether this is necessary depends on the context.
       (e.g. <a href="#itemExtractionContext">itemExtractionContext</a> doesn't typically need a name when used for extraction of the element it is on.  
-      However, if the value is leveraged in downstream itemExtractionContexts, then it will need a name.  When an
-      an extension with a type of Expression has a name, the result of evaluating that expression becomes available in subsequent expressions (either
+      However, if the value is leveraged in downstream itemExtractionContexts, then it will need a name.  When an extension with a type of Expression has a name, the result of evaluating that expression becomes available in subsequent expressions (either
       following extensions within the same element, or extensions appearing on descendant items) as a 'variable'.  These variables are referenced by
       prepending '%' to the 'name' of the expression.  I.e. the result of an expression named 'patient' would be available for use in subsequent expressions
       as '%patient'.<br/>
@@ -50,7 +49,7 @@
   <h3>Expression Extensions</h3>
   <p>
     Expressions are introduced into Questionnaires using extensions - none of the 'core' data elements of Questionnaire make use of extensions because they're
-    considered an 'advanced' capability that are not currently supported by a large portion of the systems that make use of the Questionnaire resource.  The
+    considered an 'advanced' capability that is not currently supported by a large portion of the systems that make use of the Questionnaire resource.  The
     extensions that make use of expressions are shown in the table below.  Columns are interpreted as follows:
   </p>
   <ul>
@@ -141,9 +140,9 @@
             or could be a plain string.
           </p>
           <p>
-            This expression could be based on other answers within the questionnaire.  If the allowed set of answers for a question changes 
+            This expression could be based on other answers within the questionnaire.  If the allowed set of answers for a question change 
             after an answer has been specified (whether via population or user entry), the prior answer SHOULD be retained in the user 
-            interface until such time as the questionaire is marked as 'complete', even if invalid.  This is to minimize impact on users if they 
+            interface until such time as the questionnaire is marked as 'complete', even if invalid.  This is to minimize the impact on users if they 
             accidentally toggle elements within the form that govern the answerExpression.  However, in some cases, this will not be possible 
             depending on the data entry controls.  Systems MAY wipe the answer on the grounds 
             that a change to the list of possible answers might result in different answers.
@@ -249,7 +248,7 @@
           </p>
           <p> 
             CandidateExpressions may use name in situations where a user will select a candidate for one question which will in turn lead to population
-            of other questions.  For example, if in the above example, a question about concomittement medications might actually have child questions
+            of other questions.  For example, if in the above example, a question about concomitant medications might have child questions
             that capture information about the dose, start date or other information.  The query that returned the candidates might be referenced by name
             in <a href="#initialExpression">initialExpressions</a> for child questions that use the parent answer together with the candidates to grab
             the additional details about the selected medication to populate the child answers.
@@ -303,8 +302,7 @@
           <p>
             This expression allows for dynamic calculation of answers to questions as other questions are answered.  It behaves similarly to
             <a href="#initialExpression">initialExpression</a> extension, but instead of only setting its value when the QuestionnaireResponse is originally created or
-            when a question is enabled, the value updates continuously as the answers to dependent questions change.  This expression will be most commonly
-            used for displaying scores, but can be used for any calculated element - patient age (based on current date and birth date), BMI (based on recent
+            when a question is enabled, the value updates continuously as the answers to dependent questions change.  This expression will be most used for displaying scores, but can be used for any calculated element - patient age (based on current date and birth date), BMI (based on recent
             weight and height), estimated cost (based on selected items and quantities), etc.
           </p>
           <p>
@@ -683,7 +681,7 @@
     </li>
     <li>
       <code>ordinal()</code> returns the ordinal value for code or Coding.  If an <a href="{{site.data.fhir.path}}extension-ordinalvalue.html">ordinalValue</a> extension
-      is defined on the element, it will be returned.  If not, will will be looked up on the bound value set expansion (or for Questionnaires, on the corresponding
+      is defined on the element, it will be returned.  If not, will be looked up on the bound value set expansion (or for Questionnaires, on the corresponding
       Questionnaire.answerOption and.  If not found there, will be looked up on the underlying CodeSystem.  If the type is other than code or Coding or no ordinal value
       is defined for the context element, the result will be an empty set.  If the FHIRPath engine is unable to resolve the corresponding value set, code system or questionnaire
       options, it SHOULD cause the expression to fail.<br/>

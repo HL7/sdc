@@ -1,8 +1,7 @@
 <div xmlns="http://www.w3.org/1999/xhtml" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://hl7.org/fhir ../../input-cache/schemas/R4/fhir-single.xsd">
 	<p>
     Simple questionnaires only need simple behavior.  All questions get displayed in order.  The only 'behavior' defined in the questionnaire is whether a given 
-	question must be answered and whether multiple answers are permitted or not.  However, for more sophisticated forms, there may be a need to set default answers, 
-	to enforce rules around the allowed answers (such as length, size, types of references), and/or to make the behavior of the questionnaire dynamic based on 
+	question must be answered and whether multiple answers are permitted or not.  However, for more sophisticated forms, there may be a need to set default answers, enforce rules around the allowed answers (such as length, size, types of references), and/or to make the behavior of the questionnaire dynamic based on 
 	previous answers.  The FHIR specification provides core elements that allow some of these things, and common extensions for others.  This implementation guide 
 	supplements the core FHIR specification with additional extensions.  It also defines the <a href="StructureDefinition-sdc-questionnaire-behave.html">sdc-questionnaire-behave</a> 
 	profile to highlight what extensions are available and where they are intended to be used.  It also identifies specific 'must support' extensions that systems 
@@ -123,7 +122,7 @@
 					<p>
             This allows checking that an extension adheres to a regular expression.  For example, enforcing the ANA NAN syntax of a Canadian
             postal code.  The regular expression SHALL adhere to the same requirements as defined for the FHIRPath
-            <a href="https://hl7.org/fhirpath/#matchesregex-string-boolean">matches</a> operation.  Also see the
+            <a href="https://hl7.org/fhirpath/#matchesregex-string-boolean">matches</a> operation.  Also, see the
             <a href="rendering.html#entryFormat">entryFormat</a> which might be a good way of displaying the desired format to the user.  (For example,
             'ANA NAN' which can be conveyed using 'entryFormat' is more intuitive for most users than seeing the actual regex (\d[A-Z]\d [A-Z]\d[A-Z]).
           </p>
@@ -705,8 +704,7 @@
             is defined).  If multiple referenceProfiles are listed, then the selected resource must be valid against at least one of the profiles.  The Form
             Filler can choose to use the profiles as filter criteria in a search, but not all systems will necessarily support search by profile or will
             support the listed profile(s).  Thus, a fallback to evaluating candidates against the profile(s) and filtering the list to exclude those that
-            are not should also be supported.  More sophisticated querying is supported by the <a href="#candidateExpression">candidateExpression</a> or
-            or <a href="#answerExpression">answerExpression</a> extensions.
+            are not should also be supported.  More sophisticated querying is supported by the <a href="#candidateExpression">candidateExpression</a> or <a href="#answerExpression">answerExpression</a> extensions.
           </p>
 				</td>
 			</tr>
