@@ -102,13 +102,6 @@
       <min value="1"/>
       <max value="*"/>
       <constraint>
-        <key value="sdc-2"/>
-        <severity value="error"/>
-        <human value="A choiceConstraint is only valid if item has a list of choice options (with an answerValueSet, answerExpression or at least one answerOption listed)."/>
-        <expression value="choiceConstraint.empty() or (answerValueSet.empty().not() or answerOption.empty().not() or extension(&#39;http://hl7.org/fhir/uv/sdc/StructureDefinition/sdc-questionnaire-answerExpression&#39;).empty().not)"/>
-        <xpath value="not(f:choiceConstraint) or ((f:answerValueSet) or (f:answerOption) or (f:extension[@url=&#39;http://hl7.org/fhir/uv/sdc/StructureDefinition/sdc-questionnaire-answerExpression&#39;]))"/>
-      </constraint>
-      <constraint>
         <key value="sdc-1"/>
         <severity value="error"/>
         <human value="An item cannot have an answerExpression if answerOption or answerValueSet is already present."/>
@@ -152,17 +145,6 @@
       <type>
         <code value="Extension"/>
         <profile value="http://hl7.org/fhir/uv/sdc/StructureDefinition/sdc-questionnaire-answerExpression"/>
-      </type>
-      <mustSupport value="true"/>
-    </element>
-    <element id="Questionnaire.item.extension:choiceConstraint">
-      <path value="Questionnaire.item.extension"/>
-      <sliceName value="choiceConstraint"/>
-      <min value="0"/>
-      <max value="1"/>
-      <type>
-        <code value="Extension"/>
-        <profile value="http://hl7.org/fhir/uv/sdc/StructureDefinition/sdc-questionnaire-choiceConstraint"/>
       </type>
       <mustSupport value="true"/>
     </element>
