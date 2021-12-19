@@ -1,0 +1,344 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Questionnaire xmlns="http://hl7.org/fhir" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://hl7.org/fhir ../../input-cache/schemas/R4/fhir-single.xsd">
+  <id value="questionnaire-sdc-profile-example-framingham-hchd-lhc"/>
+  <extension url="http://hl7.org/fhir/StructureDefinition/variable">
+    <valueExpression>
+      <name value="age"/>
+      <language value="text/fhirpath"/>
+      <expression value="item.where(linkId=&#39;/age&#39;).answer.valueDecimal"/>
+    </valueExpression>
+  </extension>
+  <extension url="http://hl7.org/fhir/StructureDefinition/variable">
+    <valueExpression>
+      <name value="gender"/>
+      <language value="text/fhirpath"/>
+      <expression value="item.where(linkId=&#39;/46098-0&#39;).answer.valueCoding.display"/>
+    </valueExpression>
+  </extension>
+  <extension url="http://hl7.org/fhir/StructureDefinition/variable">
+    <valueExpression>
+      <name value="smokesCode"/>
+      <language value="text/fhirpath"/>
+      <expression value="item.where(linkId=&#39;/smokes&#39;).answer.valueCoding.code"/>
+    </valueExpression>
+  </extension>
+  <extension url="http://hl7.org/fhir/StructureDefinition/variable">
+    <valueExpression>
+      <name value="smokes"/>
+      <language value="text/fhirpath"/>
+      <expression value="iif(%smokesCode.exists(), iif(%smokesCode = &#39;Y&#39;, 1, 0), {})"/>
+    </valueExpression>
+  </extension>
+  <extension url="http://hl7.org/fhir/StructureDefinition/variable">
+    <valueExpression>
+      <name value="systolic"/>
+      <language value="text/fhirpath"/>
+      <expression value="item.where(linkId=&#39;/8480-6&#39;).answer.valueDecimal"/>
+    </valueExpression>
+  </extension>
+  <extension url="http://hl7.org/fhir/StructureDefinition/variable">
+    <valueExpression>
+      <name value="tChol"/>
+      <language value="text/fhirpath"/>
+      <expression value="item.where(linkId=&#39;/2093-3&#39;).answer.valueDecimal"/>
+    </valueExpression>
+  </extension>
+  <extension url="http://hl7.org/fhir/StructureDefinition/variable">
+    <valueExpression>
+      <name value="hdl"/>
+      <language value="text/fhirpath"/>
+      <expression value="item.where(linkId=&#39;/2085-9&#39;).answer.valueDecimal"/>
+    </valueExpression>
+  </extension>
+  <extension url="http://hl7.org/fhir/StructureDefinition/variable">
+    <valueExpression>
+      <name value="antihypertCode"/>
+      <language value="text/fhirpath"/>
+      <expression value="item.where(linkId=&#39;/antihypertensive&#39;).answer.valueCoding.code"/>
+    </valueExpression>
+  </extension>
+  <extension url="http://hl7.org/fhir/StructureDefinition/variable">
+    <valueExpression>
+      <name value="antihypert"/>
+      <language value="text/fhirpath"/>
+      <expression value="iif(%antihypertCode.exists(), iif(%systolic &gt;= 120, iif(%antihypertCode = &#39;Y&#39;, 1, 0), 0), {})"/>
+    </valueExpression>
+  </extension>
+  <extension url="http://hl7.org/fhir/StructureDefinition/variable">
+    <valueExpression>
+      <name value="allQuestionsAnswered"/>
+      <language value="text/fhirpath"/>
+      <expression value="%age.exists() and %gender.exists() and %smokes.exists() and %systolic.exists() and %tChol.exists() and %hdl.exists() and %antihypert.exists()"/>
+    </valueExpression>
+  </extension>
+  <extension url="http://hl7.org/fhir/StructureDefinition/variable">
+    <valueExpression>
+      <name value="femaleOver78"/>
+      <language value="text/fhirpath"/>
+      <expression value="iif(%allQuestionsAnswered, iif(%gender = &#39;Female&#39;, iif(%age&gt;78, 1 - (0.98767).power((31.764001 * (%age.ln() - 3.9213204) + 22.465206 * (%tChol.ln() - 5.3628984) - 1.187731 * (%hdl.ln() - 4.0146369) + 2.552905 * (%systolic.ln() - 4.8376494) + 0.420251 * (%antihypert - 0.142802) + 13.07543 * (%smokes - 0.3236202) - 5.060998 * (%age.ln() * %tChol.ln() - 21.0557746) - 2.996945 * (78.ln() * %smokes - 1.2519882)).exp()), {}), {}), {})"/>
+    </valueExpression>
+  </extension>
+  <extension url="http://hl7.org/fhir/StructureDefinition/variable">
+    <valueExpression>
+      <name value="femaleNotOver78"/>
+      <language value="text/fhirpath"/>
+      <expression value="iif(%allQuestionsAnswered, iif(%gender = &#39;Female&#39;, iif(%age&lt;=78, 1 - (0.98767).power((31.764001 * (%age.ln() - 3.9213204) + 22.465206 * (%tChol.ln() - 5.3628984) - 1.187731  * (%hdl.ln() - 4.0146369) + 2.552905  * (%systolic.ln() - 4.8376494) + 0.420251  * (%antihypert - 0.142802) + 13.07543  * (%smokes - 0.3236202) - 5.060998  * (%age.ln() * %tChol.ln() - 21.0557746) - 2.996945  * (%age.ln() * %smokes  - 1.2519882)).exp()), {}), {}), {})"/>
+    </valueExpression>
+  </extension>
+  <extension url="http://hl7.org/fhir/StructureDefinition/variable">
+    <valueExpression>
+      <name value="maleOver70"/>
+      <language value="text/fhirpath"/>
+      <expression value="iif(%allQuestionsAnswered, iif(%gender = &#39;Male&#39;, iif(%age&gt;70, 1 - (0.9402).power((52.00961  * (%age.ln() - 3.8926095) + 20.014077 * (%tChol.ln() - 5.3441475) - 0.905964  * (%hdl.ln() - 3.7731132) + 1.305784  * (%systolic.ln() - 4.8618212) + 0.241549  * (%antihypert - 0.1180474) + 12.096316 * (%smokes - 0.335602) - 4.605038  * (%age.ln() * %tChol.ln() - 20.8111562) - 2.84367   * (70.ln() * %smokes  - 1.2890301) - 2.93323   * (%age.ln() * %age.ln() - 15.2144965)).exp()), {}), {}), {})"/>
+    </valueExpression>
+  </extension>
+  <extension url="http://hl7.org/fhir/StructureDefinition/variable">
+    <valueExpression>
+      <name value="maleNotOver70"/>
+      <language value="text/fhirpath"/>
+      <expression value="iif(%allQuestionsAnswered, iif(%gender = &#39;Male&#39;, iif(%age&lt;=70, 1 - (0.9402).power((52.00961  * (%age.ln() - 3.8926095) + 20.014077 * (%tChol.ln() - 5.3441475) - 0.905964  * (%hdl.ln() - 3.7731132) + 1.305784  * (%systolic.ln() - 4.8618212) + 0.241549  * (%antihypert - 0.1180474) + 12.096316 * (%smokes - 0.335602) - 4.605038  * (%age.ln() * %tChol.ln() - 20.8111562) - 2.84367   * (%age.ln() * %smokes  - 1.2890301) - 2.93323   * (%age.ln() * %age.ln() - 15.2144965)).exp()), {}), {}), {})"/>
+    </valueExpression>
+  </extension>
+  <extension url="http://hl7.org/fhir/StructureDefinition/variable">
+    <valueExpression>
+      <name value="risk"/>
+      <language value="text/fhirpath"/>
+      <expression value="%femaleOver78 | %femaleNotOver78 | %maleOver70 | %maleNotOver70"/>
+    </valueExpression>
+  </extension>
+  <extension url="http://hl7.org/fhir/StructureDefinition/structuredefinition-standards-status">
+    <valueCode value="draft"/>
+  </extension>
+  <extension url="http://hl7.org/fhir/StructureDefinition/structuredefinition-fmm">
+    <valueInteger value="0"/>
+  </extension>
+  <url value="http://hl7.org/fhir/uv/sdc/Questionnaire/questionnaire-sdc-profile-example-framingham-hchd-lhc"/>
+  <name value="FraminghamHCHD"/>
+  <title value="Hard Coronary Heart Disease (10-year risk)"/>
+  <status value="draft"/>
+  <experimental value="true"/>
+  <subjectType value="Patient"/>
+  <description value="A form for calculating the 10-year-risk of Hard Coronary Heart Disease.  The constants used in the formula match those in https://www.framinghamheartstudy.org/fhs-risk-functions/hard-coronary-heart-disease-10-year-risk/, but the actual formulas are not listed there, and so we have not been able to verify them.  However, the output of this form matches the output of a perl program (from which the formulas were taken) which matched the output of a calculator on a website, which regrettably no longer exists.  So, while this form is good enough or a demo, it should not be relied on for real purposes without first verifying its formulas or its output against some other source."/>
+  <item>
+    <linkId value="/age"/>
+    <code>
+      <system value="http://loinc.org"/>
+      <code value="30525-0"/>
+      <display value="Age"/>
+    </code>
+    <text value="Age (in years)"/>
+    <type value="decimal"/>
+    <required value="true"/>
+  </item>
+  <item>
+    <linkId value="/age_requirement_notice"/>
+    <text value="Sorry, but the formulas are only valid for ages in the range 30 to 79."/>
+    <type value="display"/>
+    <enableWhen>
+      <question value="/age"/>
+      <operator value="&lt;"/>
+      <answerDecimal value="30"/>
+    </enableWhen>
+    <enableWhen>
+      <question value="/age"/>
+      <operator value="&gt;"/>
+      <answerDecimal value="79"/>
+    </enableWhen>
+    <enableBehavior value="any"/>
+  </item>
+  <item>
+    <extension url="http://hl7.org/fhir/StructureDefinition/questionnaire-minOccurs">
+      <valueInteger value="1"/>
+    </extension>
+    <extension url="http://hl7.org/fhir/StructureDefinition/questionnaire-itemControl">
+      <valueCodeableConcept>
+        <coding>
+          <system value="http://hl7.org/fhir/questionnaire-item-control"/>
+          <code value="drop-down"/>
+          <display value="Drop down"/>
+        </coding>
+        <text value="Drop down"/>
+      </valueCodeableConcept>
+    </extension>
+    <linkId value="/46098-0"/>
+    <code>
+      <system value="http://loinc.org"/>
+      <code value="46098-0"/>
+      <display value="Sex"/>
+    </code>
+    <text value="Gender"/>
+    <type value="choice"/>
+    <required value="true"/>
+    <answerOption>
+      <valueCoding>
+        <system value="http://loinc.org"/>
+        <code value="LA2-8"/>
+        <display value="Male"/>
+      </valueCoding>
+    </answerOption>
+    <answerOption>
+      <valueCoding>
+        <system value="http://loinc.org"/>
+        <code value="LA3-6"/>
+        <display value="Female"/>
+      </valueCoding>
+    </answerOption>
+  </item>
+  <item>
+    <extension url="http://hl7.org/fhir/StructureDefinition/questionnaire-minOccurs">
+      <valueInteger value="1"/>
+    </extension>
+    <extension url="http://hl7.org/fhir/StructureDefinition/questionnaire-itemControl">
+      <valueCodeableConcept>
+        <coding>
+          <system value="http://hl7.org/fhir/questionnaire-item-control"/>
+          <code value="radio-button"/>
+          <display value="Radio Button"/>
+        </coding>
+        <text value="Radio Button"/>
+      </valueCodeableConcept>
+    </extension>
+    <linkId value="/smokes"/>
+    <text value="Do you smoke?"/>
+    <type value="choice"/>
+    <required value="true"/>
+    <answerOption>
+      <valueCoding>
+        <system value="http://example.org"/>
+        <code value="Y"/>
+        <display value="Yes"/>
+      </valueCoding>
+    </answerOption>
+    <answerOption>
+      <valueCoding>
+        <system value="http://example.org"/>
+        <code value="N"/>
+        <display value="No"/>
+      </valueCoding>
+    </answerOption>
+  </item>
+  <item>
+    <extension url="http://hl7.org/fhir/StructureDefinition/questionnaire-minOccurs">
+      <valueInteger value="1"/>
+    </extension>
+    <extension url="http://hl7.org/fhir/StructureDefinition/questionnaire-unit">
+      <valueCoding>
+        <display value="mm[Hg]"/>
+      </valueCoding>
+    </extension>
+    <linkId value="/8480-6"/>
+    <code>
+      <system value="http://loinc.org"/>
+      <code value="8480-6"/>
+      <display value="Systolic blood pressure"/>
+    </code>
+    <text value="Systolic blood pressure"/>
+    <type value="decimal"/>
+    <required value="true"/>
+  </item>
+  <item>
+    <extension url="http://hl7.org/fhir/StructureDefinition/questionnaire-minOccurs">
+      <valueInteger value="1"/>
+    </extension>
+    <extension url="http://hl7.org/fhir/StructureDefinition/questionnaire-unit">
+      <valueCoding>
+        <display value="mg/dL"/>
+      </valueCoding>
+    </extension>
+    <linkId value="/2093-3"/>
+    <code>
+      <system value="http://loinc.org"/>
+      <code value="2093-3"/>
+      <display value="Cholesterol [Mass/volume] in Serum or Plasma"/>
+    </code>
+    <text value="Cholesterol [Mass/Vol]"/>
+    <type value="decimal"/>
+    <required value="true"/>
+  </item>
+  <item>
+    <extension url="http://hl7.org/fhir/StructureDefinition/questionnaire-minOccurs">
+      <valueInteger value="1"/>
+    </extension>
+    <extension url="http://hl7.org/fhir/StructureDefinition/questionnaire-unit">
+      <valueCoding>
+        <display value="mg/dL"/>
+      </valueCoding>
+    </extension>
+    <linkId value="/2085-9"/>
+    <code>
+      <system value="http://loinc.org"/>
+      <code value="2085-9"/>
+      <display value="Cholesterol in HDL [Mass/volume] in Serum or Plasma"/>
+    </code>
+    <text value="Cholesterol in HDL [Mass/Vol]"/>
+    <type value="decimal"/>
+    <required value="true"/>
+  </item>
+  <item>
+    <extension url="http://hl7.org/fhir/StructureDefinition/questionnaire-minOccurs">
+      <valueInteger value="1"/>
+    </extension>
+    <extension url="http://hl7.org/fhir/StructureDefinition/questionnaire-itemControl">
+      <valueCodeableConcept>
+        <coding>
+          <system value="http://hl7.org/fhir/questionnaire-item-control"/>
+          <code value="radio-button"/>
+          <display value="Radio Button"/>
+        </coding>
+        <text value="Radio Button"/>
+      </valueCodeableConcept>
+    </extension>
+    <linkId value="/antihypertensive"/>
+    <text value="Are you taking medication for high blood pressure?"/>
+    <type value="choice"/>
+    <required value="true"/>
+    <answerOption>
+      <valueCoding>
+        <system value="http://example.org"/>
+        <code value="Y"/>
+        <display value="Yes"/>
+      </valueCoding>
+    </answerOption>
+    <answerOption>
+      <valueCoding>
+        <system value="http://example.org"/>
+        <code value="N"/>
+        <display value="No"/>
+      </valueCoding>
+    </answerOption>
+  </item>
+  <item>
+    <linkId value="/all_answers_required_notice"/>
+    <text value="All answers are required before the risk probability can be computed."/>
+    <type value="display"/>
+  </item>
+  <item>
+    <extension url="http://hl7.org/fhir/uv/sdc/StructureDefinition/sdc-questionnaire-calculatedExpression">
+      <valueExpression>
+        <description value="HCHD risk as decimal"/>
+        <language value="text/fhirpath"/>
+        <expression value="%risk"/>
+      </valueExpression>
+    </extension>
+    <extension url="http://hl7.org/fhir/StructureDefinition/questionnaire-hidden">
+      <valueBoolean value="true"/>
+    </extension>
+    <linkId value="riskDecimal"/>
+    <text value="10-year HCHD Risk Probabilily as a decimal (0 to 1)"/>
+    <type value="decimal"/>
+    <required value="false"/>
+  </item>
+  <item>
+    <extension url="http://hl7.org/fhir/uv/sdc/StructureDefinition/sdc-questionnaire-calculatedExpression">
+      <valueExpression>
+        <description value="HCHD risk as percentage"/>
+        <language value="text/fhirpath"/>
+        <expression value="iif(%risk.exists(), (%risk * 100).round(2).toString() &amp; &#39;%&#39;, {})"/>
+      </valueExpression>
+    </extension>
+    <linkId value="riskPercentage"/>
+    <text value="10-year HCHD Risk Probabilily"/>
+    <type value="string"/>
+    <required value="false"/>
+  </item>
+</Questionnaire>

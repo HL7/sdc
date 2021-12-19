@@ -1,0 +1,267 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<QuestionnaireResponse xmlns="http://hl7.org/fhir" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://hl7.org/fhir ../../input-cache/schemas/R4/fhir-single.xsd">
+  <id value="adaptive-questionnaireresponse-sdc-example-phq9"/>
+  <contained>
+    <Questionnaire>
+      <id value="contained-adaptive-questionnaire-example-phq9"/>
+      <extension url="http://hl7.org/fhir/uv/sdc/StructureDefinition/sdc-questionnaire-questionnaireAdaptive">
+        <valueBoolean value="true"/>
+      </extension>
+      <version value="0.0.1"/>
+      <name value="SDCPHQ9"/>
+      <title value="Patient Health Questionnaire - 9 Item"/>
+      <derivedFrom value="http://hl7.org/fhir/uv/sdc/Questionnaire/questionnaire-sdc-profile-example-PHQ9"/>
+      <status value="draft"/>
+      <experimental value="true"/>
+      <subjectType value="Patient"/>
+      <item>
+        <linkId value="H1/T1"/>
+        <text value="Over the last two weeks, how often have you been bothered by any of the following problems?"/>
+        <type value="group"/>
+        <item>
+          <linkId value="H1/T1/Q1"/>
+          <prefix value="1."/>
+          <text value="Little interest or pleasure in doing things?"/>
+          <type value="choice"/>
+          <required value="true"/>
+          <repeats value="false"/>
+          <answerValueSet value="#VSPHQ9"/>
+        </item>
+        <item>
+          <linkId value="H1/T1/Q2"/>
+          <prefix value="2."/>
+          <text value="Feeling down, depressed, or hopeless?"/>
+          <type value="choice"/>
+          <required value="true"/>
+          <repeats value="false"/>
+          <answerValueSet value="#VSPHQ9"/>
+        </item>
+        <item>
+          <linkId value="H1/T1/Q3"/>
+          <prefix value="3."/>
+          <text value="Trouble falling or staying asleep, or sleeping too much?"/>
+          <type value="choice"/>
+          <required value="true"/>
+          <repeats value="false"/>
+          <answerValueSet value="#VSPHQ9"/>
+        </item>
+        <item>
+          <linkId value="H1/T1/Q4"/>
+          <prefix value="4."/>
+          <text value="Feeling tired or having little energy?"/>
+          <type value="choice"/>
+          <required value="true"/>
+          <repeats value="false"/>
+          <answerValueSet value="#VSPHQ9"/>
+        </item>
+        <item>
+          <linkId value="H1/T1/Q5"/>
+          <prefix value="5."/>
+          <text value="Poor appetite or overeating?"/>
+          <type value="choice"/>
+          <required value="true"/>
+          <repeats value="false"/>
+          <answerValueSet value="#VSPHQ9"/>
+        </item>
+        <item>
+          <linkId value="H1/T1/Q6"/>
+          <prefix value="6."/>
+          <text value="Feeling bad about yourself - or that you are a failure or have let yourself or your family down?"/>
+          <type value="choice"/>
+          <required value="true"/>
+          <repeats value="false"/>
+          <answerValueSet value="#VSPHQ9"/>
+        </item>
+        <item>
+          <linkId value="H1/T1/Q7"/>
+          <prefix value="7."/>
+          <text value="Trouble concentrating on things, such as reading the newspaper or watching television?"/>
+          <type value="choice"/>
+          <required value="true"/>
+          <repeats value="false"/>
+          <answerValueSet value="#VSPHQ9"/>
+        </item>
+        <item>
+          <linkId value="H1/T1/Q8"/>
+          <prefix value="8."/>
+          <text value="Moving or speaking so slowly that other people could gave noticed? Or so fidgety or restless that you have been moving a lot more than usual?"/>
+          <type value="choice"/>
+          <required value="true"/>
+          <repeats value="false"/>
+          <answerValueSet value="#VSPHQ9"/>
+        </item>
+        <item>
+          <linkId value="H1/T1/Q9"/>
+          <prefix value="9."/>
+          <text value="Thoughts that you would be better off dead, or thoughts of hurting yourself in some way?"/>
+          <type value="choice"/>
+          <required value="true"/>
+          <repeats value="false"/>
+          <answerValueSet value="#VSPHQ9"/>
+        </item>
+        <item>
+          <extension url="http://hl7.org/fhir/StructureDefinition/questionnaire-hidden">
+            <valueBoolean value="true"/>
+          </extension>
+          <linkId value="H1/TS"/>
+          <code>
+            <system value="http://loinc.org"/>
+            <code value="44261-6"/>
+            <display value="Patient Health Questionnaire 9 item (PHQ-9) total score [Reported]"/>
+          </code>
+          <text value="Patient health questionnaire 9 item total score"/>
+          <type value="quantity"/>
+          <repeats value="false"/>
+          <readOnly value="true"/>
+        </item>
+      </item>
+    </Questionnaire>
+  </contained>
+  <contained>
+    <ValueSet>
+      <id value="VSPHQ9"/>
+      <url value="http://hl7.org/fhir/uv/sdc/ValueSet/VSPHQ9"/>
+      <name value="VSPHQ9"/>
+      <status value="draft"/>
+      <description value="The answer list for questions addressing the frequency in which patient reports experiencing behaviors that are assessed in the PHQ-9 Questionnaire."/>
+      <immutable value="true"/>
+      <compose>
+        <include>
+          <system value="http://hl7.org/fhir/uv/sdc/CodeSystem/CSPHQ9"/>
+          <concept>
+            <code value="Not-at-all"/>
+            <display value="Not at all"/>
+          </concept>
+          <concept>
+            <code value="Several-days"/>
+            <display value="Several days"/>
+          </concept>
+          <concept>
+            <code value="More than half the days"/>
+            <display value="More than half the days"/>
+          </concept>
+          <concept>
+            <code value="Nearly every day"/>
+            <display value="Nearly every day"/>
+          </concept>
+        </include>
+      </compose>
+    </ValueSet>
+  </contained>
+  <identifier>
+    <value value="adaptive-questionnaireresponse-example-phq9"/>
+  </identifier>
+  <questionnaire value="#contained-adaptive-questionnaire-example-phq9"/>
+  <status value="completed"/>
+  <subject>
+    <reference value="http://hl7.org/fhir/Patient/proband"/>
+  </subject>
+  <authored value="2019-08-21T20:36:57.544Z"/>
+  <author>
+    <reference value="http://hl7.org/fhir/Patient/proband"/>
+  </author>
+  <item>
+    <linkId value="H1/T1"/>
+    <text value="Over the last two weeks, how often have you been bothered by any of the following problems?"/>
+    <item>
+      <linkId value="H1/T1/Q1"/>
+      <text value="Little interest or pleasure in doing things?"/>
+      <answer>
+        <valueCoding>
+          <code value="Not-at-all"/>
+          <display value="Not at all"/>
+        </valueCoding>
+      </answer>
+    </item>
+    <item>
+      <linkId value="H1/T1/Q2"/>
+      <text value="Feeling down, depressed, or hopeless?"/>
+      <answer>
+        <valueCoding>
+          <code value="Not-at-all"/>
+          <display value="Not at all"/>
+        </valueCoding>
+      </answer>
+    </item>
+    <item>
+      <linkId value="H1/T1/Q3"/>
+      <text value="Trouble falling or staying asleep, or sleeping too much?"/>
+      <answer>
+        <valueCoding>
+          <code value="Not-at-all"/>
+          <display value="Not at all"/>
+        </valueCoding>
+      </answer>
+    </item>
+    <item>
+      <linkId value="H1/T1/Q4"/>
+      <text value="Feeling tired or having little energy?"/>
+      <answer>
+        <valueCoding>
+          <code value="Several-days"/>
+          <display value="Several days"/>
+        </valueCoding>
+      </answer>
+    </item>
+    <item>
+      <linkId value="H1/T1/Q5"/>
+      <text value="Poor appetite or overeating?"/>
+      <answer>
+        <valueCoding>
+          <code value="More than half the days"/>
+          <display value="More than half the days"/>
+        </valueCoding>
+      </answer>
+    </item>
+    <item>
+      <linkId value="H1/T1/Q6"/>
+      <text value="Feeling bad about yourself - or that you are a failure or have let yourself or your family down?"/>
+      <answer>
+        <valueCoding>
+          <code value="Several-days"/>
+          <display value="Several days"/>
+        </valueCoding>
+      </answer>
+    </item>
+    <item>
+      <linkId value="H1/T1/Q7"/>
+      <text value="Trouble concentrating on things, such as reading the newspaper or watching television?"/>
+      <answer>
+        <valueCoding>
+          <code value="Nearly every day"/>
+          <display value="Nearly every day"/>
+        </valueCoding>
+      </answer>
+    </item>
+    <item>
+      <linkId value="H1/T1/Q8"/>
+      <text value="Moving or speaking so slowly that other people could gave noticed? Or so fidgety or restless that you have been moving a lot more than usual?"/>
+      <answer>
+        <valueCoding>
+          <code value="More than half the days"/>
+          <display value="More than half the days"/>
+        </valueCoding>
+      </answer>
+    </item>
+    <item>
+      <linkId value="H1/T1/Q9"/>
+      <text value="Thoughts that you would be better off dead, or thoughts of hurting yourself in some way?"/>
+      <answer>
+        <valueCoding>
+          <code value="Several-days"/>
+          <display value="Several days"/>
+        </valueCoding>
+      </answer>
+    </item>
+    <item>
+      <linkId value="H1/TS"/>
+      <text value="Patient health questionnaire 9 item total score"/>
+      <answer>
+        <valueQuantity>
+          <value value="13"/>
+          <unit value="score"/>
+        </valueQuantity>
+      </answer>
+    </item>
+  </item>
+</QuestionnaireResponse>

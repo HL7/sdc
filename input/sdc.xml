@@ -46,11 +46,11 @@
   </jurisdiction>
   <packageId value="hl7.fhir.uv.sdc"/>
   <fhirVersion value="4.0.1"/>
-<!--  <dependsOn id="examples">
+  <dependsOn id="examples">
     <uri value="http://hl7.org/fhir/ImplementationGuide/fhir"/>
     <packageId value="hl7.fhir.r4.examples"/>
     <version value="4.0.1"/>
-  </dependsOn>-->
+  </dependsOn>
   <definition>
     <!--    <grouping id="conformance">
       <name value="Capability Statements"/>
@@ -790,7 +790,7 @@
     </resource>
     <resource>
       <reference>
-        <reference value="Bundle/questionnaire-sdc-profile-example-ussg-fht"/>
+        <reference value="Questionnaire/questionnaire-sdc-profile-example-ussg-fht"/>
       </reference>
       <name value="SDC-LOINC USSG Family History"/>
       <description value="LOINC US Surgeon General family history including data elements and value sets."/>

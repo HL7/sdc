@@ -1,0 +1,169 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Questionnaire xmlns="http://hl7.org/fhir" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://hl7.org/fhir ../../input-cache/schemas/R4/fhir-single.xsd">
+  <id value="questionnaire-sdc-test-fhirpath-prepop-initialexpression"/>
+  <extension url="http://hl7.org/fhir/uv/sdc/StructureDefinition/sdc-questionnaire-launchContext">
+    <extension url="name">
+      <valueCoding>
+        <system value="http://hl7.org/fhir/uv/sdc/CodeSystem/launchContext"/>
+        <code value="patient"/>
+        <display value="Patient"/>
+      </valueCoding>
+    </extension>
+    <extension url="type">
+      <valueCode value="Patient"/>
+    </extension>
+    <extension url="description">
+      <valueString value="The patient that is to be used to pre-populate the form"/>
+    </extension>
+  </extension>
+  <extension url="http://hl7.org/fhir/uv/sdc/StructureDefinition/sdc-questionnaire-launchContext">
+    <extension url="name">
+      <valueCoding>
+        <system value="http://hl7.org/fhir/uv/sdc/CodeSystem/launchContext"/>
+        <code value="user"/>
+        <display value="User"/>
+      </valueCoding>
+    </extension>
+    <extension url="type">
+      <valueCode value="Practitioner"/>
+    </extension>
+    <extension url="description">
+      <valueString value="The practitioner that is to be used to pre-populate the form"/>
+    </extension>
+  </extension>
+  <url value="http://hl7.org/fhir/uv/sdc/Questionnaire/questionnaire-sdc-test-fhirpath-prepop-initialexpression"/>
+  <name value="FhirPathPrepopSimple"/>
+  <title value="Questionnaire Pre-Population"/>
+  <status value="active"/>
+  <experimental value="true"/>
+  <subjectType value="Patient"/>
+  <description value="FhirPath based prepopulation simple example"/>
+  <item>
+    <linkId value="grp"/>
+    <type value="group"/>
+    <item>
+      <linkId value="part-details"/>
+      <text value="Participant details"/>
+      <type value="group"/>
+      <repeats value="false"/>
+      <item>
+        <linkId value="participant-id"/>
+        <text value="Participant ID number"/>
+        <type value="string"/>
+      </item>
+      <item>
+        <extension url="http://hl7.org/fhir/uv/sdc/StructureDefinition/sdc-questionnaire-initialExpression">
+          <valueExpression>
+            <language value="text/fhirpath"/>
+            <expression value="%patient.identifier.where(system=&#39;http://ns.electronichealth.net.au/id/medicare-number&#39;).value.first()"/>
+          </valueExpression>
+        </extension>
+        <linkId value="medicare-number"/>
+        <text value="Medicare number"/>
+        <type value="string"/>
+        <required value="true"/>
+      </item>
+      <item>
+        <extension url="http://hl7.org/fhir/uv/sdc/StructureDefinition/sdc-questionnaire-initialExpression">
+          <valueExpression>
+            <language value="text/fhirpath"/>
+            <expression value="%patient.identifier.where(system=&#39;http://ns.electronichealth.net.au/id/dva&#39;).value.first()"/>
+          </valueExpression>
+        </extension>
+        <linkId value="dva-number"/>
+        <text value="DVA number"/>
+        <type value="string"/>
+      </item>
+      <item>
+        <extension url="http://hl7.org/fhir/uv/sdc/StructureDefinition/sdc-questionnaire-initialExpression">
+          <valueExpression>
+            <language value="text/fhirpath"/>
+            <expression value="%patient.name.first().family.first()"/>
+          </valueExpression>
+        </extension>
+        <linkId value="family-name"/>
+        <text value="Family name"/>
+        <type value="string"/>
+      </item>
+      <item>
+        <extension url="http://hl7.org/fhir/uv/sdc/StructureDefinition/sdc-questionnaire-initialExpression">
+          <valueExpression>
+            <language value="text/fhirpath"/>
+            <expression value="%patient.name.first().given.first()"/>
+          </valueExpression>
+        </extension>
+        <linkId value="given-names"/>
+        <text value="Given name(s)"/>
+        <type value="string"/>
+      </item>
+      <item>
+        <extension url="http://hl7.org/fhir/uv/sdc/StructureDefinition/sdc-questionnaire-initialExpression">
+          <valueExpression>
+            <language value="text/fhirpath"/>
+            <expression value="%patient.birthDate"/>
+          </valueExpression>
+        </extension>
+        <linkId value="dob"/>
+        <text value="Date of birth"/>
+        <type value="date"/>
+      </item>
+      <item>
+        <extension url="http://hl7.org/fhir/uv/sdc/StructureDefinition/sdc-questionnaire-initialExpression">
+          <valueExpression>
+            <language value="text/fhirpath"/>
+            <expression value="%patient.telecom.where(system=&#39;phone&#39;).select(($this.where(use=&#39;mobile&#39;) | $this.where(use=&#39;home&#39;)).first().value)"/>
+          </valueExpression>
+        </extension>
+        <linkId value="contact-number"/>
+        <text value="Contact telephone number"/>
+        <type value="string"/>
+        <item>
+          <linkId value="contact-number-tooltip"/>
+          <text value="(mobile or land line including area code)"/>
+          <type value="text"/>
+        </item>
+      </item>
+    </item>
+    <item>
+      <linkId value="provider-details"/>
+      <text value="Provider details"/>
+      <type value="group"/>
+      <repeats value="false"/>
+      <readOnly value="true"/>
+      <item>
+        <extension url="http://hl7.org/fhir/uv/sdc/StructureDefinition/sdc-questionnaire-initialExpression">
+          <valueExpression>
+            <language value="text/fhirpath"/>
+            <expression value="%user.identifier.where(system=&#39;http://ns.electronichealth.net.au/id/hi/prn&#39;).first().value"/>
+          </valueExpression>
+        </extension>
+        <linkId value="provider-number"/>
+        <text value="Provider number for payment"/>
+        <type value="string"/>
+      </item>
+      <item>
+        <extension url="http://hl7.org/fhir/uv/sdc/StructureDefinition/sdc-questionnaire-initialExpression">
+          <valueExpression>
+            <language value="text/fhirpath"/>
+            <expression value="today()"/>
+          </valueExpression>
+        </extension>
+        <linkId value="date-consult"/>
+        <text value="Date of consultation"/>
+        <type value="date"/>
+      </item>
+      <item>
+        <extension url="http://hl7.org/fhir/uv/sdc/StructureDefinition/sdc-questionnaire-initialExpression">
+          <valueExpression>
+            <language value="text/fhirpath"/>
+            <expression value="%user.name.first().select(given.first() + &#39; &#39; + family.first())"/>
+          </valueExpression>
+        </extension>
+        <linkId value="provider-name"/>
+        <text value="Name"/>
+        <type value="string"/>
+        <readOnly value="true"/>
+      </item>
+    </item>
+  </item>
+</Questionnaire>

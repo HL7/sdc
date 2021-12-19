@@ -1,6 +1,9 @@
 <Questionnaire xmlns="http://hl7.org/fhir" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://hl7.org/fhir ../../input-cache/schemas/R4/fhir-single.xsd">
 	<!-- NOTE: this is an example questionnaire, so it does not attempt to update all demographics or all elements -->
 	<id value="demographics"/>
+	<meta>
+    <profile value="http://hl7.org/fhir/uv/sdc/StructureDefinition/sdc-questionnaire-extr-defn"/>
+	</meta>
 	<extension url="http://hl7.org/fhir/uv/sdc/StructureDefinition/sdc-questionnaire-launchContext">
     <extension url="name">
       <valueCoding>
@@ -19,10 +22,10 @@
     </valueExpression>
 	</extension>
 	<url value="http://hl7.org/fhir/uv/sdc/Questionnaire/demographics"/>
-	<version value="0.1.0"/>
 	<name value="DemographicExample"/>
 	<title value="Questionnaire - Demographics Example"/>
 	<status value="draft"/>
+  <experimental value="true"/>
 	<subjectType value="Patient"/>
 	<description value="A sample questionnaire using context-based population and extraction"/>
 	<item>

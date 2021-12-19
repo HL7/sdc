@@ -1,0 +1,101 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Questionnaire xmlns="http://hl7.org/fhir" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://hl7.org/fhir ../../input-cache/schemas/R4/fhir-single.xsd">
+  <id value="questionnaire-sdc-test-fhirpath-prepop-candexpr"/>
+  <extension url="http://hl7.org/fhir/uv/sdc/StructureDefinition/sdc-questionnaire-launchContext">
+    <extension url="name">
+      <valueCoding>
+        <system value="http://hl7.org/fhir/uv/sdc/CodeSystem/launchContext"/>
+        <code value="patient"/>
+        <display value="Patient"/>
+      </valueCoding>
+    </extension>
+    <extension url="type">
+      <valueCode value="Patient"/>
+    </extension>
+    <extension url="description">
+      <valueString value="The patient that is to be used to pre-populate the form"/>
+    </extension>
+  </extension>
+  <url value="http://hl7.org/fhir/uv/sdc/Questionnaire/questionnaire-sdc-test-fhirpath-prepop-candexpr"/>
+  <name value="FhirPathPrepopCandExpr"/>
+  <title value="Questionnaire Pre-Population with a Candidate Expression"/>
+  <status value="active"/>
+  <experimental value="true"/>
+  <subjectType value="Patient"/>
+  <description value="FhirPath based prepopulation example that includes a Candidate expression"/>
+  <item>
+    <linkId value="grp"/>
+    <type value="group"/>
+    <item>
+      <linkId value="part-details"/>
+      <text value="Participant details"/>
+      <type value="group"/>
+      <repeats value="false"/>
+      <item>
+        <linkId value="participant-id"/>
+        <text value="Participant ID number"/>
+        <type value="string"/>
+      </item>
+      <item>
+        <extension url="http://hl7.org/fhir/uv/sdc/StructureDefinition/sdc-questionnaire-calculatedExpression">
+          <valueExpression>
+            <language value="text/fhirpath"/>
+            <expression value="%patient.name.first().family.first()"/>
+          </valueExpression>
+        </extension>
+        <linkId value="family-name"/>
+        <text value="Family name"/>
+        <type value="string"/>
+      </item>
+      <item>
+        <extension url="http://hl7.org/fhir/uv/sdc/StructureDefinition/sdc-questionnaire-calculatedExpression">
+          <valueExpression>
+            <language value="text/fhirpath"/>
+            <expression value="%patient.name.first().given.first()"/>
+          </valueExpression>
+        </extension>
+        <linkId value="given-names"/>
+        <text value="Given name(s)"/>
+        <type value="string"/>
+      </item>
+    </item>
+    <item>
+      <extension url="http://hl7.org/fhir/uv/sdc/StructureDefinition/sdc-questionnaire-candidateExpression">
+        <valueExpression>
+          <description value="Set of active Patient contacts"/>
+          <name value="selectedContact"/>
+          <language value="application/x-fhir-query"/>
+          <expression value="RelatedPerson?patient={{%patient.id}}&amp;active=true"/>
+        </valueExpression>
+      </extension>
+      <linkId value="contacts"/>
+      <text value="Contacts"/>
+      <type value="group"/>
+      <repeats value="true"/>
+      <item>
+        <extension url="http://hl7.org/fhir/uv/sdc/StructureDefinition/sdc-questionnaire-calculatedExpression">
+          <valueExpression>
+            <language value="text/fhirpath"/>
+            <expression value="%selectedContact.name.first().select(text | given.first() &amp; &#39; &#39; &amp; family)"/>
+          </valueExpression>
+        </extension>
+        <linkId value="cont-name"/>
+        <text value="Contact Name"/>
+        <type value="string"/>
+        <repeats value="true"/>
+      </item>
+      <item>
+        <extension url="http://hl7.org/fhir/uv/sdc/StructureDefinition/sdc-questionnaire-calculatedExpression">
+          <valueExpression>
+            <language value="text/fhirpath"/>
+            <expression value="%selectedContact.telecom.where(system=&#39;phone&#39;).first().value"/>
+          </valueExpression>
+        </extension>
+        <linkId value="cont-number"/>
+        <text value="Contact Number"/>
+        <type value="string"/>
+        <repeats value="true"/>
+      </item>
+    </item>
+  </item>
+</Questionnaire>

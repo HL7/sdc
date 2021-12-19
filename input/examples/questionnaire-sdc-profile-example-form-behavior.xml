@@ -22,7 +22,7 @@ elements or extensions defined in the advanced form behavior profile are intende
   <contained>
     <ValueSet>
       <id value="vsConditionsAll"/>
-      <url value="http://example.com/ValueSet/conditions-All"/>
+      <url value="http://example.org/ValueSet/conditions-All"/>
       <name value="ConditionsAll"/>
       <title value="All Conditions"/>
       <status value="active"/>
@@ -47,7 +47,7 @@ elements or extensions defined in the advanced form behavior profile are intende
   </extension>
 
   <extension url="http://hl7.org/fhir/StructureDefinition/cqf-library">
-    <valueCanonical value="http://example.com/Library/MeasurementLimits"/>
+    <valueCanonical value="http://example.org/Library/MeasurementLimits"/>
   </extension>
   <extension url="http://hl7.org/fhir/uv/sdc/StructureDefinition/sdc-questionnaire-launchContext">
     <extension url="name">
@@ -67,7 +67,7 @@ elements or extensions defined in the advanced form behavior profile are intende
 
   <!-- endpoint: Example o set an endpoint URL for the Form Receiver when the Questionnaire is completed.-->
   <extension url="http://hl7.org/fhir/uv/sdc/StructureDefinition/sdc-questionnaire-endpoint">
-    <valueUri value="http://mysite.app/QuestionnaireResponse/create"/>
+    <valueUri value="http://example.org/QuestionnaireResponse/create"/>
   </extension>
 
   <!-- sequential: Example to display questions one at a time.-->
@@ -241,7 +241,7 @@ elements or extensions defined in the advanced form behavior profile are intende
 			<extension url="http://hl7.org/fhir/uv/sdc/StructureDefinition/sdc-questionnaire-answerOptionsToggleExpression">
 				<extension url="option">
 					<valueCoding>
-						<system value="http://example.com/CodeSystem/conditions"/>
+						<system value="http://example.org/CodeSystem/conditions"/>
 						<code value="3"/>
 					</valueCoding>
 				</extension>
@@ -255,7 +255,7 @@ elements or extensions defined in the advanced form behavior profile are intende
 			<extension url="http://hl7.org/fhir/uv/sdc/StructureDefinition/sdc-questionnaire-answerOptionsToggleExpression">
 				<extension url="option">
 					<valueCoding>
-						<system value="http://example.com/CodeSystem/conditions"/>
+						<system value="http://example.org/CodeSystem/conditions"/>
 						<code value="4"/>
 					</valueCoding>
 				</extension>
@@ -317,35 +317,35 @@ elements or extensions defined in the advanced form behavior profile are intende
 			<repeats value="true"/>
 			<answerOption>
 				<valueCoding>
-					<system value="http://example.com/CodeSystem/procedures"/>
+					<system value="http://example.org/CodeSystem/procedures"/>
 					<code value="U1"/>
 					<display value="Heart attack"/>
 				</valueCoding>
 			</answerOption>
 			<answerOption>
 				<valueCoding>
-					<system value="http://example.com/CodeSystem/procedures"/>
+					<system value="http://example.org/CodeSystem/procedures"/>
 					<code value="U2"/>
 					<display value="Heart surgery"/>
 				</valueCoding>
 			</answerOption>
 			<answerOption>
 				<valueCoding>
-					<system value="http://example.com/CodeSystem/procedures"/>
+					<system value="http://example.org/CodeSystem/procedures"/>
 					<code value="U3"/>
 					<display value="Cardiac catheterization"/>
 				</valueCoding>
 			</answerOption>
 			<answerOption>
 				<valueCoding>
-					<system value="http://example.com/CodeSystem/procedures"/>
+					<system value="http://example.org/CodeSystem/procedures"/>
 					<code value="U4"/>
 					<display value="Coronary angioplasty (PTCA)"/>
 				</valueCoding>
 			</answerOption>
 			<answerOption>
 				<valueCoding>
-					<system value="http://example.com/CodeSystem/procedures"/>
+					<system value="http://example.org/CodeSystem/procedures"/>
 					<code value="U5"/>
 					<display value="Cardiac pacemaker"/>
 				</valueCoding>
@@ -363,35 +363,35 @@ elements or extensions defined in the advanced form behavior profile are intende
 			<repeats value="true"/>
 			<answerOption>
 				<valueCoding>
-					<system value="http://example.com/CodeSystem/procedures"/>
+					<system value="http://example.org/CodeSystem/procedures"/>
 					<code value="U1"/>
 					<display value="Heart attack"/>
 				</valueCoding>
 			</answerOption>
 			<answerOption>
 				<valueCoding>
-					<system value="http://example.com/CodeSystem/procedures"/>
+					<system value="http://example.org/CodeSystem/procedures"/>
 					<code value="U2"/>
 					<display value="Heart surgery"/>
 				</valueCoding>
 			</answerOption>
 			<answerOption>
 				<valueCoding>
-					<system value="http://example.com/CodeSystem/procedures"/>
+					<system value="http://example.org/CodeSystem/procedures"/>
 					<code value="U3"/>
 					<display value="Cardiac catheterization"/>
 				</valueCoding>
 			</answerOption>
 			<answerOption>
 				<valueCoding>
-					<system value="http://example.com/CodeSystem/procedures"/>
+					<system value="http://example.org/CodeSystem/procedures"/>
 					<code value="U4"/>
 					<display value="Coronary angioplasty (PTCA)"/>
 				</valueCoding>
 			</answerOption>
 			<answerOption>
 				<valueCoding>
-					<system value="http://example.com/CodeSystem/procedures"/>
+					<system value="http://example.org/CodeSystem/procedures"/>
 					<code value="U5"/>
 					<display value="Cardiac pacemaker"/>
 				</valueCoding>
@@ -409,35 +409,35 @@ elements or extensions defined in the advanced form behavior profile are intende
 			<repeats value="true"/>
 			<answerOption>
 				<valueCoding>
-					<system value="http://example.com/CodeSystem/procedures"/>
+					<system value="http://example.org/CodeSystem/procedures"/>
 					<code value="U1"/>
 					<display value="Heart attack"/>
 				</valueCoding>
 			</answerOption>
 			<answerOption>
 				<valueCoding>
-					<system value="http://example.com/CodeSystem/procedures"/>
+					<system value="http://example.org/CodeSystem/procedures"/>
 					<code value="U2"/>
 					<display value="Heart surgery"/>
 				</valueCoding>
 			</answerOption>
 			<answerOption>
 				<valueCoding>
-					<system value="http://example.com/CodeSystem/procedures"/>
+					<system value="http://example.org/CodeSystem/procedures"/>
 					<code value="U3"/>
 					<display value="Cardiac catheterization"/>
 				</valueCoding>
 			</answerOption>
 			<answerOption>
 				<valueCoding>
-					<system value="http://example.com/CodeSystem/procedures"/>
+					<system value="http://example.org/CodeSystem/procedures"/>
 					<code value="U4"/>
 					<display value="Coronary angioplasty (PTCA)"/>
 				</valueCoding>
 			</answerOption>
 			<answerOption>
 				<valueCoding>
-					<system value="http://example.com/CodeSystem/procedures"/>
+					<system value="http://example.org/CodeSystem/procedures"/>
 					<code value="U5"/>
 					<display value="Cardiac pacemaker"/>
 				</valueCoding>
@@ -460,35 +460,35 @@ elements or extensions defined in the advanced form behavior profile are intende
 			<repeats value="true"/>
 			<answerOption>
 				<valueCoding>
-					<system value="http://example.com/CodeSystem/treatments"/>
+					<system value="http://example.org/CodeSystem/treatments"/>
 					<code value="noTreatment"/>
 					<display value="NoTreatment"/>
 				</valueCoding>
 			</answerOption>
 			<answerOption>
 				<valueCoding>
-					<system value="http://example.com/CodeSystem/treatments"/>
+					<system value="http://example.org/CodeSystem/treatments"/>
 					<code value="aspirin"/>
 					<display value="Aspirin"/>
 				</valueCoding>
 			</answerOption>
 			<answerOption>
 				<valueCoding>
-					<system value="http://example.com/CodeSystem/treatments"/>
+					<system value="http://example.org/CodeSystem/treatments"/>
 					<code value="otherMeds"/>
 					<display value="Other medicines, tablets, or pills"/>
 				</valueCoding>
 			</answerOption>
 			<answerOption>
 				<valueCoding>
-					<system value="http://example.com/CodeSystem/treatments"/>
+					<system value="http://example.org/CodeSystem/treatments"/>
 					<code value="diet"/>
 					<display value="Diet"/>
 				</valueCoding>
 			</answerOption>
 			<answerOption>
 				<valueCoding>
-					<system value="http://example.com/CodeSystem/treatments"/>
+					<system value="http://example.org/CodeSystem/treatments"/>
 					<code value="exercise"/>
 					<display value="Exercise"/>
 				</valueCoding>
@@ -498,7 +498,7 @@ elements or extensions defined in the advanced form behavior profile are intende
 					<valueBoolean value="true"/>
 				</extension>
 				<valueCoding>
-					<system value="http://example.com/CodeSystem/treatments"/>
+					<system value="http://example.org/CodeSystem/treatments"/>
 					<code value="none"/>
 					<display value="None of the above"/>
 				</valueCoding>
@@ -554,10 +554,10 @@ elements or extensions defined in the advanced form behavior profile are intende
         <valueCode value="Practitioner"/>
       </extension>
       <extension url="http://hl7.org/fhir/StructureDefinition/questionnaire-referenceProfile">
-        <valueCanonical value="http://hl7.org/fhir/us/core/StructureDefinition/us-core-practitioner"/>
+        <valueCanonical value="http://example.org/fhir/StructureDefinition/my-practitioner"/>
       </extension>
       <extension url="http://hl7.org/fhir/uv/sdc/StructureDefinition/sdc-questionnaire-lookupQuestionnaire">
-        <valueUri value="http://mysite.com/Questionnaire/1234"/>
+        <valueCanonical value="http://example.org/Questionnaire/1234"/>
       </extension>
       <extension url="http://hl7.org/fhir/uv/sdc/StructureDefinition/sdc-questionnaire-answerExpression">
         <valueExpression>
@@ -1003,70 +1003,70 @@ elements or extensions defined in the advanced form behavior profile are intende
         <type value="choice"/>
         <answerOption>
           <valueCoding>
-            <system value="http://example.com/CodeSystem/provinces"/>
+            <system value="http://example.org/CodeSystem/provinces"/>
             <code value="Alberta"/>
             <display value="Alberta"/>
           </valueCoding>
         </answerOption>
         <answerOption>
           <valueCoding>
-            <system value="http://example.com/CodeSystem/provinces"/>
+            <system value="http://example.org/CodeSystem/provinces"/>
             <code value="BritishColumbia"/>
             <display value="British Columbia"/>
           </valueCoding>
         </answerOption>
         <answerOption>
           <valueCoding>
-            <system value="http://example.com/CodeSystem/provinces"/>
+            <system value="http://example.org/CodeSystem/provinces"/>
             <code value="Manitoba"/>
             <display value="Manitoba"/>
           </valueCoding>
         </answerOption>
         <answerOption>
           <valueCoding>
-            <system value="http://example.com/CodeSystem/provinces"/>
+            <system value="http://example.org/CodeSystem/provinces"/>
             <code value="NewBrunswick"/>
             <display value="New Brunswick"/>
           </valueCoding>
         </answerOption>
         <answerOption>
           <valueCoding>
-            <system value="http://example.com/CodeSystem/provinces"/>
+            <system value="http://example.org/CodeSystem/provinces"/>
             <code value="NewfoundlandAndLabrador"/>
             <display value="Newfoundland and Labrador"/>
           </valueCoding>
         </answerOption>
         <answerOption>
           <valueCoding>
-            <system value="http://example.com/CodeSystem/provinces"/>
+            <system value="http://example.org/CodeSystem/provinces"/>
             <code value="NovaScotia"/>
             <display value="Nova Scotia"/>
           </valueCoding>
         </answerOption>
         <answerOption>
           <valueCoding>
-            <system value="http://example.com/CodeSystem/provinces"/>
+            <system value="http://example.org/CodeSystem/provinces"/>
             <code value="Ontario"/>
             <display value="Ontario"/>
           </valueCoding>
         </answerOption>
         <answerOption>
           <valueCoding>
-            <system value="http://example.com/CodeSystem/provinces"/>
+            <system value="http://example.org/CodeSystem/provinces"/>
             <code value="PrinceEdwardIsland"/>
             <display value="Prince Edward Island"/>
           </valueCoding>
         </answerOption>
         <answerOption>
           <valueCoding>
-            <system value="http://example.com/CodeSystem/provinces"/>
+            <system value="http://example.org/CodeSystem/provinces"/>
             <code value="Quebec"/>
             <display value="Quebec"/>
           </valueCoding>
         </answerOption>
         <answerOption>
           <valueCoding>
-            <system value="http://example.com/CodeSystem/provinces"/>
+            <system value="http://example.org/CodeSystem/provinces"/>
             <code value="Saskatchewan"/>
             <display value="Saskatchewan"/>
           </valueCoding>
