@@ -8,15 +8,21 @@ Code System URI 'http://example.org/CodeSystem/provinces' is unknown so the code
 Code System URI 'http://example.org/CodeSystem/treatments' is unknown so the code cannot be validated
 Error from server: Unable to provide support for code system http://example.org/CodeSystem/Australian-States
 WARNING: Questionnaire/questionnaire-sdc-profile-example-form-behavior: Questionnaire.contained[1].ofType(ValueSet).compose[0].include[0]: Unknown System specified, so Concepts and Filters can''t be checked
+WARNING: ValueSet/sdc-question-library-states: ValueSet.compose[0].include[0]: Unknown System specified, so Concepts and Filters can''t be checked
 
 # These info messages are because SDC examples have few extensions that are validated against the SDC profile, but these extensions are actually defined in the core or other profiles
 INFORMATION: Bundle/questionnaire-sdc-profile-example: Bundle.entry[0].resource.item[0].extension[0]: This element does not match any known slice defined in the profile http://hl7.org/fhir/uv/sdc/StructureDefinition/sdc-questionnaire
 INFORMATION: Bundle/questionnaire-sdc-profile-example: Bundle.entry[0].resource.item[2].extension[0]: This element does not match any known slice defined in the profile http://hl7.org/fhir/uv/sdc/StructureDefinition/sdc-questionnaire
+INFORMATION: Questionnaire/demographics: Questionnaire.extension[0]: This element does not match any known slice defined in the profile http://hl7.org/fhir/uv/sdc/StructureDefinition/sdc-questionnaire-extr-defn
+INFORMATION: Questionnaire/demographics: Questionnaire.item[2].extension[0]: This element does not match any known slice defined in the profile http://hl7.org/fhir/uv/sdc/StructureDefinition/sdc-questionnaire-extr-defn
+INFORMATION: Questionnaire/demographics: Questionnaire.item[3].extension[0]: This element does not match any known slice defined in the profile http://hl7.org/fhir/uv/sdc/StructureDefinition/sdc-questionnaire-extr-defn
 INFORMATION: Questionnaire/questionnaire-sdc-profile-example-PHQ9: Questionnaire.extension[0]: This element does not match any known slice defined in the profile http://hl7.org/fhir/uv/sdc/StructureDefinition/sdc-questionnaire
 INFORMATION: Questionnaire/questionnaire-sdc-profile-example-PHQ9: Questionnaire.contained[0].ofType(ValueSet).compose.include[0].concept[0].extension[0]: This element does not match any known slice defined in the profile http://hl7.org/fhir/uv/sdc/StructureDefinition/sdc-valueset
 INFORMATION: Questionnaire/questionnaire-sdc-profile-example-PHQ9: Questionnaire.contained[0].ofType(ValueSet).compose.include[0].concept[1].extension[0]: This element does not match any known slice defined in the profile http://hl7.org/fhir/uv/sdc/StructureDefinition/sdc-valueset
 INFORMATION: Questionnaire/questionnaire-sdc-profile-example-PHQ9: Questionnaire.contained[0].ofType(ValueSet).compose.include[0].concept[2].extension[0]: This element does not match any known slice defined in the profile http://hl7.org/fhir/uv/sdc/StructureDefinition/sdc-valueset
 INFORMATION: Questionnaire/questionnaire-sdc-profile-example-PHQ9: Questionnaire.contained[0].ofType(ValueSet).compose.include[0].concept[3].extension[0]: This element does not match any known slice defined in the profile http://hl7.org/fhir/uv/sdc/StructureDefinition/sdc-valueset
+
+
 
 # This is a contained adaptive Questionnaire in QuestionnaireReponse profile, so ignoring this warning
 WARNING: StructureDefinition.where(url = 'http://hl7.org/fhir/uv/sdc/StructureDefinition/sdc-questionnaire-adapt'): The Implementation Guide contains no examples for this profile

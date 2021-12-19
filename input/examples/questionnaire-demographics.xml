@@ -18,7 +18,7 @@
 	<extension url="http://hl7.org/fhir/uv/sdc/StructureDefinition/sdc-questionnaire-itemExtractionContext">
     <valueExpression>
       <language value="application/x-fhir-query"/>
-      <expression value="Patient?_id={{%patient.id}}"/>
+      <expression value="Patient?_id={{%25patient.id}}"/>
     </valueExpression>
 	</extension>
 	<url value="http://hl7.org/fhir/uv/sdc/Questionnaire/demographics"/>
@@ -103,7 +103,7 @@
       <valueExpression>
         <name value="relative"/>
         <language value="application/x-fhir-query"/>
-        <expression value="RelatedPerson?patient={{%patient.id}}"/>
+        <expression value="RelatedPerson?patient={{%25patient.id}}"/>
       </valueExpression>
     </extension>
     <extension url="http://hl7.org/fhir/uv/sdc/StructureDefinition/sdc-questionnaire-itemExtractionContext">
