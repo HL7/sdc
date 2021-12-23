@@ -664,6 +664,54 @@
 			</tr>
 			<tr>
 				<td>
+					<a name="unitOpen"> </a>
+					<a href="StructureDefinition-sdc-questionnaire-unitOpen.html">unitOpen</a>
+				</td>
+				<td>Questionnaire</td>
+				<td>question (where type='quantity')</td>
+				<td>code</td>
+				<td>
+					<a href="examples.html#unitopen">example</a>
+				</td>
+			</tr>
+			<tr>
+				<td colspan="5">
+					<p>
+            Indicates whether the set of options defined by <a href="#unitOption">unitOption</a> or 
+            <a href="#unitValueSet">unitValueSet</a> are complete or extensible.  I.e. is the 'binding'
+            for the unit of measure treated as a 'required' or 'extensible' binding.  If this extension is omitted,
+            then the default presumption is that only the listed units are permitted - equivalent to this extension
+            being present with a code of <code>optionsOnly</code>.  However, the <code>optionsOrType</code> code means
+            that additional alternate codes (from a code system specified by the 
+            <a href="#unitSupplementalSystem">unitSuplementalSystem</a> if present, or the form filler if not) can be 
+            chosen and the <code>optionsOrString</code> means that a free-text unit (populated as Quantity.unit) can 
+            be specified in place of a code.
+          </p>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<a name="unitSupplementalSystem"> </a>
+					<a href="StructureDefinition-sdc-questionnaire-unitSupplementalSystem.html">unitSupplementalSystem</a>
+				</td>
+				<td>Questionnaire</td>
+				<td>question (where type='quantity' and unitOpen='optionsOrType')</td>
+				<td>canonical</td>
+				<td>
+					<a href="examples.html#unitopen">example</a>
+				</td>
+			</tr>
+			<tr>
+				<td colspan="5">
+					<p>
+            Indicates the code system from which units can be drawn above and beyond those specified in the 
+            <a href="#unitOption">unitOption</a> or <a href="#unitValueSet">unitValueSet</a> when a
+            <a href="#unitOpen">unitOpen</a> extension is present with a value of <code>optionsOrType</code>.
+          </p>
+				</td>
+			</tr>
+			<tr>
+				<td>
 					<a name="referenceResource"> </a>
 					<a href="{{site.data.fhir.path}}extension-questionnaire-referenceresource.html">referenceResource</a>
 				</td>

@@ -69,5 +69,16 @@
         <map value="Any element with @initial_state=&quot;hidden&quot; and no rule that unhides the element"/>
       </mapping>
     </element>
+    <element id="Questionnaire.item.extension:isSubject">
+      <path value="Questionnaire.item.extension"/>
+      <sliceName value="isSubject"/>
+      <requirements value="Allows the extraction process to leverage the fact that the subject for this group and descendants is distinct"/>
+      <min value="0"/>
+      <max value="1"/>
+      <type>
+        <code value="Extension"/>
+        <profile value="http://hl7.org/fhir/uv/sdc/StructureDefinition/sdc-questionnaire-isSubject"/>
+      </type>
+    </element>
   </differential>
 </StructureDefinition>

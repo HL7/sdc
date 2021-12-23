@@ -11,7 +11,7 @@
   <type value="Questionnaire"/>
   <baseDefinition value="http://hl7.org/fhir/StructureDefinition/Questionnaire"/>
   <derivation value="constraint"/>
-   <differential>
+  <differential>
     <element id="Questionnaire">
       <path value="Questionnaire"/>
       <definition value="Sets minimum expectations for questionnaire support for SDC-conformant systems, regardless of which SDC capabilities they&#39;re making use of."/>
@@ -99,8 +99,6 @@
     </element>
     <element id="Questionnaire.item">
       <path value="Questionnaire.item"/>
-      <min value="1"/>
-      <max value="*"/>
       <constraint>
         <key value="sdc-1"/>
         <severity value="error"/>
@@ -134,39 +132,6 @@
       <type>
         <code value="Extension"/>
         <profile value="http://hl7.org/fhir/uv/sdc/StructureDefinition/sdc-questionnaire-preferredTerminologyServer"/>
-      </type>
-      <mustSupport value="false"/>
-    </element>
-    <element id="Questionnaire.item.extension:answerExpression">
-      <path value="Questionnaire.item.extension"/>
-      <sliceName value="answerExpression"/>
-      <min value="0"/>
-      <max value="1"/>
-      <type>
-        <code value="Extension"/>
-        <profile value="http://hl7.org/fhir/uv/sdc/StructureDefinition/sdc-questionnaire-answerExpression"/>
-      </type>
-      <mustSupport value="true"/>
-    </element>
-	 <element id="Questionnaire.item.extension:UnitOpen">
-      <path value="Questionnaire.item.extension"/>
-      <sliceName value="UnitOpen"/>
-      <min value="0"/>
-      <max value="1"/>
-      <type>
-        <code value="Extension"/>
-        <profile value="http://hl7.org/fhir/uv/sdc/StructureDefinition/sdc-questionnaire-unitOpen"/>
-      </type>
-      <mustSupport value="false"/>
-    </element>
-    <element id="Questionnaire.item.extension:UnitSupplementalSystem">
-      <path value="Questionnaire.item.extension"/>
-      <sliceName value="UnitSupplementalSystem"/>
-      <min value="0"/>
-      <max value="1"/>
-      <type>
-        <code value="Extension"/>
-        <profile value="http://hl7.org/fhir/uv/sdc/StructureDefinition/sdc-questionnaire-unitSupplementalSystem"/>
       </type>
       <mustSupport value="false"/>
     </element>
@@ -219,7 +184,7 @@
     </element>
     <element id="Questionnaire.item.repeats">
       <path value="Questionnaire.item.repeats"/>
-	  <definition value="An indication, if true, that a QuestionnaireResponse for this item may include multiple answers associated with a single instance of this item (for question-type items) or multiple repetitions of the item (for group-type items)"/>
+      <definition value="An indication, if true, that a QuestionnaireResponse for this item may include multiple answers associated with a single instance of this item (for question-type items) or multiple repetitions of the item (for group-type items)"/>
       <mustSupport value="true"/>
       <mapping>
         <identity value="ihe-sdc"/>

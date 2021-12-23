@@ -6,10 +6,17 @@
       <id value="PrePopQuery"/>
       <type value="batch"/>
       <entry>
+        <fullUrl value="urn:uuid:43c8e58d-099f-425c-a219-564266a518dc"/>
+        <request>
+          <method value="GET"/>
+          <url value="Patient?_id={{%patient.id}}"/>
+        </request>
+      </entry>
+      <entry>
         <fullUrl value="urn:uuid:88f151c0-a954-468a-88bd-5ae15c08e059"/>
         <request>
           <method value="GET"/>
-          <url value="Condition?patient={{$patient.id}}&amp;active=true"/>
+          <url value="Condition?patient={{%patient.id}}&amp;active=true"/>
         </request>
       </entry>
       <entry>

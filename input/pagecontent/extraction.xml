@@ -78,6 +78,13 @@
       <code>Provenance.entity.what</code> where the <code>Provenance.entity.role</code> would be 'source'.  Software information would be captured in
       <code>Provenance.agent</code>.  If the produced records are Observations, the resulting Observation(s) can also directly point to the
       QuestionnaireResponse using <code>Observation.derivedFrom</code>.</li>
+    <li>A single Questionnaire can sometimes include data from multiple subjects.  The extraction process needs to be aware of what the subject
+      for a given section of the Questionnaire is and take that into account when creating resources based on the QuestionnaireResponse.  (E.g. don't 
+      create a heart-rate observation on the mother if that part of the  Questionnaire is capturing information about their child.
+      In SDC, the fact that a particular 'group' in a Questionnaire has
+      a distinct subject is communicated using the <a href="StructureDefinition-sdc-questionnaire-isSubject.html">isSubject</a> extension.  An 
+      <a href="StructureDefinition-sdc-questionnaireresponse-isSubject.html">equivalent extension</a> flags the element within the 
+      QuestionnaireResponse.</li>
   </ul>
   <a name="service"> </a>
   <h3>Extraction service</h3>

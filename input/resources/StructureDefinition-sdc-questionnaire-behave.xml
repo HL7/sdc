@@ -121,6 +121,17 @@
         <xpath value="not(exists(f:initial) and exists(f:extension[@url=&#39;http://hl7.org/fhir/uv/sdc/StructureDefinition/sdc-questionnaire-initialExpression&#39;]))"/>
       </constraint>
     </element>
+    <element id="Questionnaire.item.extension:answerExpression">
+      <path value="Questionnaire.item.extension"/>
+      <sliceName value="answerExpression"/>
+      <min value="0"/>
+      <max value="1"/>
+      <type>
+        <code value="Extension"/>
+        <profile value="http://hl7.org/fhir/uv/sdc/StructureDefinition/sdc-questionnaire-answerExpression"/>
+      </type>
+      <mustSupport value="true"/>
+    </element>
     <element id="Questionnaire.item.extension:usageMode">
       <path value="Questionnaire.item.extension"/>
       <sliceName value="usageMode"/>
@@ -436,6 +447,28 @@
         <profile value="http://hl7.org/fhir/StructureDefinition/questionnaire-unitValueSet"/>
       </type>
       <mustSupport value="true"/>
+    </element>
+    <element id="Questionnaire.item.extension:unitOpen">
+      <path value="Questionnaire.item.extension"/>
+      <sliceName value="unitOpen"/>
+      <min value="0"/>
+      <max value="1"/>
+      <type>
+        <code value="Extension"/>
+        <profile value="http://hl7.org/fhir/uv/sdc/StructureDefinition/sdc-questionnaire-unitOpen"/>
+      </type>
+      <mustSupport value="false"/>
+    </element>
+    <element id="Questionnaire.item.extension:unitSupplementalSystem">
+      <path value="Questionnaire.item.extension"/>
+      <sliceName value="unitSupplementalSystem"/>
+      <min value="0"/>
+      <max value="1"/>
+      <type>
+        <code value="Extension"/>
+        <profile value="http://hl7.org/fhir/uv/sdc/StructureDefinition/sdc-questionnaire-unitSupplementalSystem"/>
+      </type>
+      <mustSupport value="false"/>
     </element>
     <element id="Questionnaire.item.extension:allowedResource">
       <path value="Questionnaire.item.extension"/>

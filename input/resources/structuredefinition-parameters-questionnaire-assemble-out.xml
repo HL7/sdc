@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<StructureDefinition xmlns="http://hl7.org/fhir" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://hl7.org/fhir ../../input-cache/schemas/R4/fhir-single.xsd">
+  <id value="parameters-questionnaire-assemble-out"/>
+  <url value="http://hl7.org/fhir/uv/sdc/StructureDefinition/parameters-questionnaire-assemble-out"/>
+  <name value="ParametersQuestionnaireAssembleOut"/>
+  <title value="Questionnaire assemble output Parameters profile"/>
+  <status value="draft"/>
+  <description value="Profile used to validate the parameters that are the output of the 'assemble' questionnaire operation"/>
+  <fhirVersion value="4.0.1"/>
+  <kind value="resource"/>
+  <abstract value="false"/>
+  <type value="Parameters"/>
+  <baseDefinition value="http://hl7.org/fhir/StructureDefinition/Parameters"/>
+  <derivation value="constraint"/>
+  <differential>
+    <element id="Parameters">
+      <path value="Parameters"/>
+    </element>
+    <element id="Parameters.parameter">
+      <path value="Parameters.parameter"/>
+      <slicing>
+        <discriminator>
+          <type value="value"/>
+          <path value="name"/>
+        </discriminator>
+        <rules value="open"/>
+      </slicing>
+    </element>
+    <element id="Parameters.parameter:return">
+      <path value="Parameters.parameter"/>
+      <sliceName value="return"/>
+      <min value="1"/>
+      <max value="1"/>
+    </element>
+    <element id="Parameters.parameter:return.name">
+      <path value="Parameters.parameter.name"/>
+      <fixedString value="return"/>
+    </element>
+    <element id="Parameters.parameter:return.value[x]">
+      <path value="Parameters.parameter.value[x]"/>
+      <max value="0"/>
+    </element>
+    <element id="Parameters.parameter:return.resource">
+      <path value="Parameters.parameter.resource"/>
+      <type>
+        <code value="Resource"/>
+        <profile value="http://hl7.org/fhir/uv/sdc/StructureDefinition/sdc-questionnaire"/>
+      </type>
+    </element>
+    <element id="Parameters.parameter:return.part">
+      <path value="Parameters.parameter.part"/>
+      <max value="0"/>
+    </element>
+    <element id="Parameters.parameter:outcome">
+      <path value="Parameters.parameter"/>
+      <sliceName value="part"/>
+      <min value="0"/>
+      <max value="1"/>
+    </element>
+    <element id="Parameters.parameter:outcome.name">
+      <path value="Parameters.parameter.name"/>
+      <fixedString value="outcome"/>
+    </element>
+    <element id="Parameters.parameter:outcome.value[x]">
+      <path value="Parameters.parameter.value[x]"/>
+      <max value="0"/>
+    </element>
+    <element id="Parameters.parameter:outcome.resource">
+      <path value="Parameters.parameter.resource"/>
+      <type>
+        <code value="Resource"/>
+        <profile value="http://hl7.org/fhir/StructureDefinition/OperationOutcome"/>
+      </type>
+    </element>
+    <element id="Parameters.parameter:outcome.part">
+      <path value="Parameters.parameter.part"/>
+      <max value="0"/>
+    </element>
+  </differential>
+</StructureDefinition>

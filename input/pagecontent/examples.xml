@@ -3685,9 +3685,11 @@ i.fa {
     </div>
   </div>
 
-<a name="unitoption"></a>
-  <h4>Using unitOption</h4>
-  <p>Restrict unit choices using unit options. (<a href="Questionnaire-questionnaire-sdc-profile-example-form-behavior.html">Example Questionnaire</a>)</p>
+  <a name="unitoption"> </a>
+  <a name="unitopen"> </a>
+  <h4>Using unitOption, unitOpen and unitSupplementalSystem</h4>
+  <p>Restrict unit choices using unit options with control over how strict and other options. 
+    (<a href="Questionnaire-questionnaire-sdc-profile-example-form-behavior.html">Example Questionnaire</a>)</p>
   <div class="tabs">
     <div class="tab">
       <input type="radio" id="tab-unitoption-1" name="tab-unitoption-group-2" checked="true"/>
@@ -3699,6 +3701,9 @@ i.fa {
             <option value="liters">L</option>
             <option value="ml">ml</option>
             <option value="mg">mg</option>
+            <option value="other1">(some other code1)</option>
+            <option value="other2">(some other code2)</option>
+            <option value="other">...</option>
           </select>
         </p>
       </div>
@@ -3738,6 +3743,14 @@ i.fa {
                   "code": "grams",
                   "display": "grams"
                 }
+              },
+              {
+                "url": "http://hl7.org/fhir/StructureDefinition/questionnaire-unitOpen",
+                "valueCode": "optionsOrType"
+              },
+              {
+                "url": "http://hl7.org/fhir/StructureDefinition/questionnaire-unitSupplementalSystem",
+                "valueCanonical": "http://example.org/SomeUnitCodeSystem"
               }
             ],
             "linkId": "2.12",
@@ -3777,6 +3790,12 @@ i.fa {
                 <code value="grams"/>
                 <display value="grams"/>
               </valueCoding>
+            </extension>
+            <extension url="http://hl7.org/fhir/StructureDefinition/questionnaire-unitOpen">
+              <valueCode value="optionsOrType"/>
+            </extension>
+            <extension url="http://hl7.org/fhir/StructureDefinition/questionnaire-unitSupplementalSystem">
+              <valueCanonical value="http://example.org/SomeUnitCodeSystem"/>
             </extension>
             <linkId value="2.12"/>
             <text value="Dosage"/>

@@ -54,6 +54,17 @@
       </type>
       <mustSupport value="true"/>
     </element>
+    <element id="Questionnaire.item.extension:isSubject">
+      <path value="Questionnaire.item.extension"/>
+      <sliceName value="isSubject"/>
+      <requirements value="Allows the population process to leverage the fact that the subject for this group and descendants is distinct"/>
+      <min value="0"/>
+      <max value="1"/>
+      <type>
+        <code value="Extension"/>
+        <profile value="http://hl7.org/fhir/uv/sdc/StructureDefinition/sdc-questionnaire-isSubject"/>
+      </type>
+    </element>
     <element id="Questionnaire.item.code">
       <path value="Questionnaire.item.code"/>
       <mustSupport value="true"/>

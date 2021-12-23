@@ -534,6 +534,12 @@ elements or extensions defined in the advanced form behavior profile are intende
 					<display value="mg"/>
 				</valueCoding>
 			</extension>
+      <extension url="http://hl7.org/fhir/uv/sdc/StructureDefinition/sdc-questionnaire-unitOpen">
+        <valueCode value="optionsOrType"/>
+      </extension>
+      <extension url="http://hl7.org/fhir/uv/sdc/StructureDefinition/sdc-questionnaire-unitSupplementalSystem">
+        <valueCanonical value="http://example.org/SomeUnitCodeSystem"/>
+      </extension>			
 			<linkId value="2.12"/>
 			<text value="Dosage"/>
 			<type value="quantity"/>

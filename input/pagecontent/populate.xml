@@ -80,6 +80,12 @@
     <li>Some sophisticated systems might have algorithms that determine whether reverting or supplementing data is appropriate based on what data
       is newer, where it came from, or other considerations.  However, there is no standard algorithm for doing this and requirements might vary
       by Questionnaire and by item.</li>
+    <li>A single Questionnaire can sometimes include data from multiple subjects.  The population process needs to be aware of what the subject
+      for a given section of the Questionnaire is and take that into account when retrieving data to populate the record.  (E.g. don't populate
+      an answer asking for a mother's bood type with the child's blood type.)  In SDC, the fact that a particular 'group' in a Questionnaire has
+      a distinct subject is communicated using the <a href="StructureDefinition-sdc-questionnaire-isSubject.html">isSubject</a> extension.  An 
+      <a href="StructureDefinition-sdc-questionnaireresponse-isSubject.html">equivalent extension</a> flags the element within the 
+      QuestionnaireResponse.</li>
   </ul>
   <a name="modes"> </a>
   <h3>Population modes</h3>

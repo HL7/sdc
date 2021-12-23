@@ -1,0 +1,150 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<QuestionnaireResponse xmlns="http://hl7.org/fhir" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://hl7.org/fhir ../../input-cache/schemas/R4/fhir-single.xsd">
+  <id value="questionnaireresponse-sdc-profile-example-multi-subject"/>
+  <questionnaire value="http://hl7.org/fhir/uv/sdc/Questionnaire/questionnaire-sdc-profile-example-multi-subject"/>
+  <status value="completed"/>
+  <subject>
+    <reference value="http://example.org/fhir/Patient/12345"/>
+  </subject>
+  <authored value="2021-12-01"/>
+  <item>
+    <linkId value="1"/>
+    <text value="Mother's name"/>
+    <answer>
+      <valueString value="Chioma Abubakar"/>
+    </answer>
+  </item>
+  <item>
+    <linkId value="2"/>
+    <text value="Mother's id"/>
+    <answer>
+      <valueString value="12345"/>
+    </answer>
+  </item>
+  <item>
+    <linkId value="3"/>
+    <text value="Height"/>
+    <answer>
+      <valueQuantity>
+        <value value="141"/>
+        <system value="http://unitsofmeasure.org"/>
+        <code value="cm"/>
+      </valueQuantity>
+    </answer>
+  </item>
+  <item>
+    <linkId value="4"/>
+    <text value="Weight"/>
+    <answer>
+      <valueQuantity>
+        <value value="42.3"/>
+        <system value="http://unitsofmeasure.org"/>
+        <code value="kg"/>
+      </valueQuantity>
+    </answer>
+  </item>
+  <item>
+    <linkId value="5"/>
+    <text value="Children"/>
+    <item>
+      <extension url="http://hl7.org/fhir/uv/sdc/StructureDefinition/sdc-questionnaireresponse-isSubject">
+        <valueBoolean value="true"/>
+      </extension>
+      <linkId value="5.1"/>
+      <text value="Record"/>
+      <answer>
+        <valueReference>
+          <reference value="http://example.org/fhir/Patient/123456"/>
+        </valueReference>
+      </answer>
+    </item>
+    <item>
+      <linkId value="5.2"/>
+      <text value="Name"/>
+      <answer>
+        <valueString value="Bolade"/>
+      </answer>
+    </item>
+    <item>
+      <linkId value="5.3"/>
+      <text value="Birth date"/>
+      <answer>
+        <valueDate value="2020-05-17"/>
+      </answer>
+    </item>
+    <item>
+      <linkId value="5.4"/>
+      <text value="Height"/>
+      <answer>
+        <valueQuantity>
+          <value value="47"/>
+          <system value="http://unitsofmeasure.org"/>
+          <code value="cm"/>
+        </valueQuantity>
+      </answer>
+    </item>
+    <item>
+      <linkId value="5.5"/>
+      <text value="Weight"/>
+      <answer>
+        <valueQuantity>
+          <value value="8.7"/>
+          <system value="http://unitsofmeasure.org"/>
+          <code value="kg"/>
+        </valueQuantity>
+      </answer>
+    </item>
+  </item>
+  <item>
+    <linkId value="5"/>
+    <text value="Children"/>
+    <item>
+      <extension url="http://hl7.org/fhir/uv/sdc/StructureDefinition/sdc-questionnaireresponse-isSubject">
+        <valueBoolean value="true"/>
+      </extension>
+      <linkId value="5.1"/>
+      <text value="Record"/>
+      <answer>
+        <valueReference>
+          <reference value="http://example.org/fhir/Patient/123456"/>
+        </valueReference>
+      </answer>
+    </item>
+    <item>
+      <linkId value="5.2"/>
+      <text value="Name"/>
+      <answer>
+        <valueString value="Obinna"/>
+      </answer>
+    </item>
+    <item>
+      <linkId value="5.3"/>
+      <text value="Birth date"/>
+      <answer>
+        <valueDate value="2015-11-20"/>
+      </answer>
+    </item>
+    <item>
+      <linkId value="5.4"/>
+      <text value="Height"/>
+      <answer>
+        <valueQuantity>
+          <value value="109"/>
+          <system value="http://unitsofmeasure.org"/>
+          <code value="cm"/>
+        </valueQuantity>
+      </answer>
+    </item>
+    <item>
+      <linkId value="5.5"/>
+      <text value="Weight"/>
+      <answer>
+        <valueQuantity>
+          <value value="27.3"/>
+          <system value="http://unitsofmeasure.org"/>
+          <code value="kg"/>
+        </valueQuantity>
+      </answer>
+    </item>
+  </item>
+</QuestionnaireResponse>

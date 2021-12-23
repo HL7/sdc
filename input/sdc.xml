@@ -304,6 +304,12 @@
       <description value="Profile used to validate the parameters that are the input of the 'process response' questionnaire operation"/>
       <exampleBoolean value="false"/>
     </resource>
+    <resource>
+      <reference>
+        <reference value="StructureDefinition/parameters-questionnaire-assemble-out"/>
+      </reference>
+      <exampleBoolean value="false"/>
+    </resource>
     <!--    <resource>
       <extension url="http://hl7.org/fhir/StructureDefinition/implementationguide-spreadsheet-profile">
         <valueBoolean value="true"/>
@@ -702,6 +708,12 @@
     </resource>
     <resource>
       <reference>
+        <reference value="Questionnaire/anc-quick-check"/>
+      </reference>
+      <exampleCanonical value="http://hl7.org/fhir/uv/sdc/StructureDefinition/sdc-questionnaire-render"/>
+    </resource>    
+    <resource>
+      <reference>
         <reference value="Questionnaire/questionnaire-sdc-profile-example-form-behavior"/>
       </reference>
       <name value="SDC-Advanced Form Behavior"/>
@@ -750,11 +762,17 @@
     </resource>
     <resource>
       <reference>
+        <reference value="Questionnaire/questionnaire-sdc-profile-example-PHQ9-search"/>
+      </reference>
+      <exampleCanonical value="http://hl7.org/fhir/uv/sdc/StructureDefinition/sdc-questionnaire-adapt-srch"/>
+    </resource>
+    <resource>
+      <reference>
         <reference value="Questionnaire/questionnaire-sdc-profile-example-cqf-PHQ9"/>
       </reference>
       <name value="SDC-PHQ9 using an SDC Library"/>
       <description value="Patient Health Questionnaire using a cqf-expression defined in an SDC Library"/>
-      <exampleCanonical value="http://hl7.org/fhir/uv/sdc/StructureDefinition/sdc-questionnaire"/>
+      <exampleCanonical value="http://hl7.org/fhir/uv/sdc/StructureDefinition/sdc-questionnaire-extr-obsn"/>
     </resource>
     <resource>
       <reference>
@@ -866,8 +884,15 @@
       </reference>
       <name value="SDC Test Form - Source Query"/>
       <description value="A test form with a FhirPath based prepopulation example that leverages a source query to extract data outside the launch context."/>
-      <exampleCanonical value="http://hl7.org/fhir/uv/sdc/StructureDefinition/sdc-questionnaire-pop-smap"/>
+      <exampleCanonical value="http://hl7.org/fhir/uv/sdc/StructureDefinition/sdc-questionnaire-pop-exp"/>
     </resource>
+    <resource>
+      <reference>
+        <reference value="Questionnaire/SDOHCC-QuestionnaireHungerVitalSign"/>
+      </reference>
+      <exampleCanonical value="http://hl7.org/fhir/uv/sdc/StructureDefinition/sdc-questionnaire-extr-smap"/>
+    </resource>
+
     <resource>
       <reference>
         <reference value="Questionnaire/questionnaire-sdc-test-initialvalue"/>
@@ -899,6 +924,20 @@
       <name value="SDC Test Form - Required"/>
       <description value="A test form with required fields."/>
       <exampleCanonical value="http://hl7.org/fhir/uv/sdc/StructureDefinition/sdc-questionnaire-behave"/>
+    </resource>
+    <resource>
+      <reference>
+        <reference value="Questionnaire/questionnaire-sdc-profile-example-multi-subject"/>
+      </reference>
+      <exampleCanonical value="http://hl7.org/fhir/uv/sdc/StructureDefinition/sdc-questionnaire-extr-obsn"/>
+    </resource>
+    <resource>
+      <reference>
+        <reference value="QuestionnaireResponse/questionnaireresponse-sdc-profile-example-multi-subject"/>
+      </reference>
+      <name value="Multi-subject QuestionnaireResponse example"/>
+      <description value="Example of a QuestionnaireResponse for a multi-subject Questionnaire"/>
+      <exampleCanonical value="http://hl7.org/fhir/uv/sdc/StructureDefinition/sdc-questionnaireresponse"/>
     </resource>
     <resource>
       <reference>
@@ -948,6 +987,7 @@
       </reference>
       <name value="Example $assemble operation response"/>
       <description value="Shows the result of performing a $assemble operation on the [modular-root](Questionnaire-sdc-modular-root.html) questionnaire"/>
+      <exampleCanonical value="http://hl7.org/fhir/uv/sdc/StructureDefinition/parameters-questionnaire-assemble-out"/>
     </resource>
     <resource>
       <reference>
@@ -956,6 +996,12 @@
       <name value="Congestive Heart Failure Logic"/>
       <description value="Logic for an example congestive heart failure pathway"/>
       <exampleCanonical value="http://hl7.org/fhir/uv/sdc/StructureDefinition/sdc-library"/>
+    </resource>
+    <resource>
+      <reference>
+        <reference value="ValueSet/sdc-question-library-states"/>
+      </reference>
+      <exampleCanonical value="http://hl7.org/fhir/uv/sdc/StructureDefinition/sdc-valueset"/>
     </resource>
     <resource>
       <reference>

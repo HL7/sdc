@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <StructureDefinition xmlns="http://hl7.org/fhir" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://hl7.org/fhir ../../input-cache/schemas/R4/fhir-single.xsd">
   <id value="sdc-questionnaire-unitOpen"/>
-    <extension url="http://hl7.org/fhir/StructureDefinition/structuredefinition-standards-status">
-    <valueCode value="draft"/> 
-  </extension> 
-   <extension url="http://hl7.org/fhir/StructureDefinition/structuredefinition-fmm">
-    <valueInteger value="0"/> 
-  </extension> 
+  <extension url="http://hl7.org/fhir/StructureDefinition/structuredefinition-standards-status">
+    <valueCode value="draft"/>
+  </extension>
+  <extension url="http://hl7.org/fhir/StructureDefinition/structuredefinition-fmm">
+    <valueInteger value="0"/>
+  </extension>
   <url value="http://hl7.org/fhir/uv/sdc/StructureDefinition/sdc-questionnaire-unitOpen"/>
   <name value="UnitOpen"/>
   <title value="Units open?"/>
@@ -26,7 +26,7 @@
   <type value="Extension"/>
   <baseDefinition value="http://hl7.org/fhir/StructureDefinition/Extension"/>
   <derivation value="constraint"/>
-   <differential>
+  <differential>
     <element id="Extension">
       <path value="Extension"/>
       <short value="Used to denote if user can specify alternate codes"/>
@@ -43,12 +43,12 @@
     </element>
     <element id="Extension.value[x]">
       <path value="Extension.value[x]"/>
-	  <min value="1"/>
+      <min value="1"/>
       <max value="1"/>
       <type>
         <code value="code"/>
       </type>
-	   <binding>
+      <binding>
         <strength value="required"/>
         <description value="The types of constraints possible on a question item that has a list of permitted answers"/>
         <valueSet value="http://hl7.org/fhir/uv/sdc/ValueSet/questionnaire-answer-constraint"/>
