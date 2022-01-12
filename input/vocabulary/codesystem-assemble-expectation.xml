@@ -1,0 +1,153 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CodeSystem xmlns="http://hl7.org/fhir" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://hl7.org/fhir ../../input-cache/schemas/R4/fhir-single.xsd">
+	<id value="assemble-expectation"/>
+	<url value="http://hl7.org/fhir/uv/sdc/CodeSystem/assemble-expectation"/>
+	<version value="1.0.0"/>
+	<name value="AssembleExpectation"/>
+	<title value="Assemble Expectation Codes"/>
+	<status value="draft"/>
+	<description value="A set of codes that reflect the relevance of the Questionnaire to the $assemble operation - specifically, whether the form needs to be assembled, whether the form can be referenced as a subQuestionnaire and whether the form can be used as the 'root' of a QuestionnaireResponse."/>
+	<caseSensitive value="true"/>
+	<content value="complete"/>
+	<property>
+    <code value="notSelectable"/>
+    <uri value="http://hl7.org/fhir/concept-properties#notSelectable"/>
+    <description value="Indicates that the concept is abstract.  It can be used for searching, but cannot appear in instances"/>
+    <type value="boolean"/>
+  </property>
+	<property>
+    <code value="parent"/>
+    <uri value="http://hl7.org/fhir/concept-properties#parent"/>
+    <description value="Indicates a parent concept that can subsume this concept"/>
+    <type value="code"/>
+  </property>
+	<concept>
+		<code value="assembly"/>
+		<display value="Assembly needed"/>
+		<definition value="An abstract code that subsumes all codes for Questionnaires that require assembly prior to use"/>
+		<property>
+      <code value="notSelectable"/>
+      <valueBoolean value="true"/>
+    </property>
+	</concept>
+	<concept>
+		<code value="independent"/>
+		<display value="No assembly needed"/>
+		<definition value="An abstract code that subsumes all codes for Questionnaires that DO NOT require assembly prior to use"/>
+		<property>
+      <code value="notSelectable"/>
+      <valueBoolean value="true"/>
+    </property>
+	</concept>
+	<concept>
+		<code value="root"/>
+		<display value="Root Questionnaires"/>
+		<definition value="An abstract code that subsumes all codes for Questionnaires that can act as the root for a QuestionnaireResponse"/>
+		<property>
+      <code value="notSelectable"/>
+      <valueBoolean value="true"/>
+    </property>
+	</concept>
+	<concept>
+		<code value="child"/>
+		<display value="Child Questionnaires"/>
+		<definition value="An abstract code that subsumes all codes for Questionnaires that can act as subQuestionnaires"/>
+		<property>
+      <code value="notSelectable"/>
+      <valueBoolean value="true"/>
+    </property>
+	</concept>
+	<concept>
+		<code value="assemble-root-or-child"/>
+		<display value="Assembly-required root or child"/>
+		<definition value="This Questionnaire can be used as the root of an assembly operation or as a child in an assembly process.  In either case, assembly is required before use."/>
+		<property>
+      <code value="notSelectable"/>
+      <valueBoolean value="false"/>
+    </property>
+    <property>
+      <code value="parent"/>
+      <valueCode value="assembly"/>
+    </property>
+    <property>
+      <code value="parent"/>
+      <valueCode value="root"/>
+    </property>
+    <property>
+      <code value="parent"/>
+      <valueCode value="child"/>
+    </property>
+	</concept>
+	<concept>
+		<code value="assemble-root"/>
+		<display value="Assembly-required root"/>
+		<definition value="This Questionnaire can be used as the root of an assembly operation, but requires assembly before use.  It is not intended for use as a child module."/>
+		<property>
+      <code value="notSelectable"/>
+      <valueBoolean value="false"/>
+    </property>
+    <property>
+      <code value="parent"/>
+      <valueCode value="assembly"/>
+    </property>
+    <property>
+      <code value="parent"/>
+      <valueCode value="root"/>
+    </property>
+	</concept>
+	<concept>
+		<code value="assemble-child"/>
+		<display value="Assembly required child"/>
+		<definition value="This Questionnaire is intended to be used as an assembly operation but cannot be used as a root - it must always be a child module"/>
+		<property>
+      <code value="notSelectable"/>
+      <valueBoolean value="false"/>
+    </property>
+    <property>
+      <code value="parent"/>
+      <valueCode value="assembly"/>
+    </property>
+    <property>
+      <code value="parent"/>
+      <valueCode value="child"/>
+    </property>
+	</concept>
+	<concept>
+		<code value="independent-root-or-child"/>
+		<display value="Assembled root-or-child"/>
+		<definition value="This Questionnaire can be used without assembly and be used directly, but is also safe for use as a child module"/>
+		<property>
+      <code value="notSelectable"/>
+      <valueBoolean value="false"/>
+    </property>
+    <property>
+      <code value="parent"/>
+      <valueCode value="independent"/>
+    </property>
+    <property>
+      <code value="parent"/>
+      <valueCode value="root"/>
+    </property>
+    <property>
+      <code value="parent"/>
+      <valueCode value="child"/>
+    </property>
+	</concept>
+	<concept>
+		<code value="independent-child"/>
+		<display value="Assembled child"/>
+		<definition value="This Questionnaire can be used without assembly, is also safe for use as a child module and is only intended for use as a child"/>
+		<property>
+      <code value="notSelectable"/>
+      <valueBoolean value="false"/>
+    </property>
+    <property>
+      <code value="parent"/>
+      <valueCode value="independent"/>
+    </property>
+    <property>
+      <code value="parent"/>
+      <valueCode value="child"/>
+    </property>
+	</concept>
+</CodeSystem>

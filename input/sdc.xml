@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!-- edited with XMLSpy v2014 rel. 2 sp1 (x64) (http://www.altova.com) by Lloyd McKenzie (private) -->
-<ImplementationGuide xmlns="http://hl7.org/fhir"
-  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://hl7.org/fhir ../input-cache/schemas/R4/fhir-single.xsd">
+<ImplementationGuide xmlns="http://hl7.org/fhir" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://hl7.org/fhir ../input-cache/schemas/R4/fhir-single.xsd">
   <id value="hl7.fhir.uv.sdc"/>
   <!--      <extension url="http://hl7.org/fhir/StructureDefinition/igpublisher-spreadsheet">
     <valueUri value="structuredefinition-sdc-profile-spreadsheet.xml"/>
@@ -687,7 +686,7 @@
     </resource>
     <resource>
       <reference>
-        <reference value="SearchParameter/questionnaire-is-modular"/>
+        <reference value="SearchParameter/questionnaire-assemble-expectation"/>
       </reference>
       <name value="Questionnaire Is Modular Search Parameter"/>
     </resource>
@@ -711,7 +710,7 @@
         <reference value="Questionnaire/anc-quick-check"/>
       </reference>
       <exampleCanonical value="http://hl7.org/fhir/uv/sdc/StructureDefinition/sdc-questionnaire-render"/>
-    </resource>    
+    </resource>
     <resource>
       <reference>
         <reference value="Questionnaire/questionnaire-sdc-profile-example-form-behavior"/>
@@ -892,7 +891,6 @@
       </reference>
       <exampleCanonical value="http://hl7.org/fhir/uv/sdc/StructureDefinition/sdc-questionnaire-extr-smap"/>
     </resource>
-
     <resource>
       <reference>
         <reference value="Questionnaire/questionnaire-sdc-test-initialvalue"/>
@@ -1026,7 +1024,7 @@
       <name value="SDC-Example using ordinalValue and constraint"/>
       <description value="Example on how to use ordinal value and contraints in a Questionnaire."/>
       <exampleCanonical value="http://hl7.org/fhir/uv/sdc/StructureDefinition/sdc-questionnaire-behave"/>
-    </resource>    
+    </resource>
     <resource>
       <reference>
         <reference value="Questionnaire/questionnaire-sdc-profile-example-context-expression"/>
@@ -1034,7 +1032,7 @@
       <name value="SDC-Example using contextExpression"/>
       <description value="Example to indicate the resources to make available for display to the user to aid in answering the question."/>
       <exampleCanonical value="http://hl7.org/fhir/uv/sdc/StructureDefinition/sdc-questionnaire-behave"/>
-    </resource>    
+    </resource>
     <page>
       <extension url="http://hl7.org/fhir/StructureDefinition/structuredefinition-standards-status">
         <valueCode value="informative"/>
@@ -1072,13 +1070,13 @@
         <generation value="html"/>
       </page>
       <page>
-        <nameUrl value="workflow.html"/>
-        <title value="Basic SDC workflow"/>
+        <nameUrl value="expressions.html"/>
+        <title value="Using Expressions"/>
         <generation value="html"/>
       </page>
       <page>
-        <nameUrl value="expressions.html"/>
-        <title value="Using Expressions"/>
+        <nameUrl value="workflow.html"/>
+        <title value="Basic SDC workflow"/>
         <generation value="html"/>
       </page>
       <page>
@@ -1088,12 +1086,12 @@
       </page>
       <page>
         <nameUrl value="rendering.html"/>
-        <title value="Advanced form rendering"/>
+        <title value="Advanced Form Rendering"/>
         <generation value="html"/>
       </page>
       <page>
         <nameUrl value="behavior.html"/>
-        <title value="Advanced form behavior and calculation"/>
+        <title value="Form Behavior and Calculation"/>
         <generation value="html"/>
       </page>
       <page>
@@ -1101,22 +1099,22 @@
           <valueCode value="draft"/>
         </extension>
         <nameUrl value="modular.html"/>
-        <title value="Modular forms"/>
+        <title value="Modular Forms"/>
         <generation value="html"/>
       </page>
       <page>
         <nameUrl value="adaptive.html"/>
-        <title value="Adaptive forms"/>
+        <title value="Adaptive Forms"/>
         <generation value="html"/>
       </page>
       <page>
         <nameUrl value="populate.html"/>
-        <title value="Form population"/>
+        <title value="Form Population"/>
         <generation value="html"/>
       </page>
       <page>
         <nameUrl value="extraction.html"/>
-        <title value="Form data extraction"/>
+        <title value="Form Data Extraction"/>
         <generation value="html"/>
       </page>
       <page>
@@ -1151,11 +1149,11 @@
     </page>
     <parameter>
       <code value="copyrightyear"/>
-      <value value="2019+"/>
+      <value value="2022+"/>
     </parameter>
     <parameter>
       <code value="releaselabel"/>
-      <value value="CI Build"/>
+      <value value="STU 3"/>
     </parameter>
     <parameter>
       <code value="find-other-resources"/>

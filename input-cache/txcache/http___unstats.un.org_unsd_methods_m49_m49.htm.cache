@@ -69,3 +69,35 @@ v: {
   "system" : "http://unstats.un.org/unsd/methods/m49/m49.htm"
 }
 -------------------------------------------------------------------------------------
+{"code" : {
+  "system" : "http://unstats.un.org/unsd/methods/m49/m49.htm",
+  "code" : "001"
+}, "valueSet" :null, "lang":"en-US", "useServer":"true", "useClient":"false", "guessSystem":"false", "valueSetMode":"ALL_CHECKS", "versionFlexible":"true"}####
+v: {
+  "display" : "World",
+  "code" : "001",
+  "system" : "http://unstats.un.org/unsd/methods/m49/m49.htm"
+}
+-------------------------------------------------------------------------------------
+{"code" : {
+  "system" : "http://unstats.un.org/unsd/methods/m49/m49.htm",
+  "code" : "001"
+}, "valueSet" :{
+  "resourceType" : "ValueSet",
+  "compose" : {
+    "include" : [{
+      "system" : "http://unstats.un.org/unsd/methods/m49/m49.htm",
+      "filter" : [{
+        "property" : "class",
+        "op" : "=",
+        "value" : "region"
+      }]
+    }]
+  }
+}, "lang":"en-US", "useServer":"true", "useClient":"false", "guessSystem":"false", "valueSetMode":"ALL_CHECKS", "versionFlexible":"true"}####
+v: {
+  "display" : "World",
+  "code" : "001",
+  "system" : "http://unstats.un.org/unsd/methods/m49/m49.htm"
+}
+-------------------------------------------------------------------------------------

@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ValueSet xmlns="http://hl7.org/fhir" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://hl7.org/fhir ../../input-cache/schemas/R4/fhir-single.xsd">
+  <id value="assemble-expectation"/>
+    <extension url="http://hl7.org/fhir/StructureDefinition/structuredefinition-standards-status">
+    <valueCode value="draft"/> 
+  </extension> 
+   <extension url="http://hl7.org/fhir/StructureDefinition/structuredefinition-fmm">
+    <valueInteger value="0"/> 
+  </extension> 
+  <url value="http://hl7.org/fhir/uv/sdc/ValueSet/assemble-expectation"/>
+  <name value="QuestionnaireAssembleExpectation"/>
+  <title value="Questionnaire Assemble Expectation"/>
+  <status value="draft"/>
+  <description value="Defines codes describing how a Questionnaire relates to the 'assemble' process"/>
+  <compose>
+    <include>
+      <system value="http://hl7.org/fhir/uv/sdc/CodeSystem/assemble-expectation"/>  
+    </include>
+  </compose>
+</ValueSet>

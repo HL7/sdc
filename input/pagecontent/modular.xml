@@ -36,10 +36,14 @@
     The first approach is best suited for "data-element"- based questionnaires and the latter for defining collections of questions.  (While defining separate modules 
     for every single question is possible, it would be quite a bit of overhead).
   </p>
+  <p>
+    The two mechanisms are not mutually exclusive.  It is possible to have a form that relies on sub-questionnaires and that also has some elements that rely on
+    externally defined element definitions.
+  </p>
   <a name="workflow"> </a>
   <h3>Modular workflow</h3>
   <p>
-    In both mechanisms, there are two phases.  First, the questionnaire is authored in its modular form, maximizing re-use and minimizing authoring
+    Regardless of mechanism, there are two phases.  First, the questionnaire is authored in its modular form, maximizing re-use and minimizing authoring
     effort.  Then, there is then a need to take the re-useably authored form (or collection of forms) and generate a fully 'assembled'
     form that contains all of the details needed for a <a href="CapabilityStatement-sdc-form-filler.html">Form Filler</a> to properly render and capture
     answers for the form.  While this assembly process <i>can</i> be undertaken by the Form Filler, it is more typically managed by the
@@ -65,19 +69,84 @@
     practically more than 2-3 levels of nesting are very unlikely.
   </p>
   <p>
-    It is helpful to know when a Questionnaire is going to require assembly or not.  A system can search through for items that declare the 
-    <a href="StructureDefinition-sdc-questionnaire-subQuestionnaire.html">subQuestionnaire</a> extension, though doing so isn't terribly efficient.  However,
-    for <a href="#element">Data Element-based Questionnaires</a>, there is no mechanism to tell with certainty - the 'definition' element may be included in 
-    questions for a variety of reasons and some degree of metadata may be maintained in the 'master' Questionnaire for readability.  Therefore, this specification 
-    defines a <a href="StructureDefinition-sdc-questionnaire-is-modular.html">modular</a> extension that allows flagging that a particular Questionnaire is
-    modular and requires assembly before further processing.  A 
-    <a href="http://hl7.org/fhir/uv/sdc/SearchParameter/questionnaire-is-modular">corresponding SearchParameter</a> has also been defined to allow filter for
-    (or excluding) modular forms when looking for candidate Questionnaires.
-  </p>
-  <p>
     When working with modular questionnaires, the 'assembly' step should be performed prior to any population steps.
   </p>
-  
+  <a name="searching"> </a>
+  <h3>Finding and distinguishing modular/assembly-relevant forms</h3>
+  <p>
+    It is helpful to know when a Questionnaire is going to require assembly or not.  It is also helful to know whether a particular questionnaire can be used
+    as a 'root' form for entry, can be used as a sub-module or either.  A system can search through for items that declare the 
+    <a href="StructureDefinition-sdc-questionnaire-subQuestionnaire.html">subQuestionnaire</a> extension, though doing so isn't terribly efficient.  However,
+    for <a href="#element">Data Element-based Questionnaires</a>, there is no mechanism to tell with certainty that assembly is required - the 'definition' element may be included in 
+    questions for a variety of reasons and some degree of metadata may be maintained in the 'master' Questionnaire for readability.  Therefore, this specification 
+    defines a <a href="StructureDefinition-sdc-questionnaire-assemble-expectation.html">assemble-expectation</a> extension that allows flagging whether a particular Questionnaire requires
+    assembly, whether it is safe to use as a subQuestionnaire and/or whether it can be used as a 'root' Questionnaire.
+  </p>
+  <table>
+    <tbody>
+      <tr>
+        <th>code</th>
+        <th>$assemble before use?</th>
+        <th>Can be subQuestionnaire?</th>
+        <th>Can be root questionnaire?</th>
+      </tr>
+      <tr>
+        <td>assemble-root-or-child</td>
+        <td>Yes</td>
+        <td>Yes</td>
+        <td>Yes</td>
+      </tr>
+      <tr>
+        <td>assemble-root</td>
+        <td>Yes</td>
+        <td>No</td>
+        <td>Yes</td>
+      </tr>
+      <tr>
+        <td>assemble-child</td>
+        <td>Yes</td>
+        <td>Yes</td>
+        <td>No</td>
+      </tr>
+      <tr>
+        <td>independent-root-or-child</td>
+        <td>No</td>
+        <td>Yes</td>
+        <td>Yes</td>
+      </tr>
+      <tr>
+        <td>independent-child</td>
+        <td>No</td>
+        <td>Yes</td>
+        <td>No</td>
+      </tr>
+    </tbody>
+  </table>
+  <p>
+    There is no code for a questionnaire that's intended for use as a stand-alone form, doesn't require assembly and isn't intended for use as a child form, because that's
+    the default.
+  </p>
+  <p>
+    In addition to these codes, the code system has a few additional abstract codes that are only available to aid in searching:
+  </p>
+  <ul>
+    <li>
+      <code>assembly</code> encompasses all codes that mean assembly is required and <code>independent</code> encompasses all codes that don't require assembly 
+      (though it won't include Questionnaires where the extension isn't present at all).  E.g. to find all Questionnaires that don't require assembly, you would search 
+      <code>Questionnaire?assemble-expectation:below=independent</code> as well as <code>Questionnaire?assemble-expectation:missing=true</code>.  Alternatively, if 'missing'
+      and 'below' aren't supported, you could simply use <code>Questionnaire?assemble-expectation:not=assemble-root-or-child,assemble-root,assemble-child</code>.
+    </li>
+    <li>
+      <code>root</code> encompasses all codes that mean the form can be the 'root' for data entry.  To find all Questionnaires that can be the root for data capture, you
+      would search <code>Questionnaire?assemble-expectation:below=root</code> as well as <code>Questionnaire?assemble-expectation:missing=true</code>.  Alternatively, if 'missing'
+      and 'below' aren't supported, you could simply use <code>Questionnaire?assemble-expectation:not=assemble-child,independent-child</code>.
+    </li>
+    <li>
+      <code>child</code> encompasses all codes that mean the form can be used as a sub-module.  To find all Questionnaires that can be safely used as sub-modules, you
+      would search <code>Questionnaire?assemble-expectation=assemble-root-or-child,assemble-child,indelpendent-root-or-child,independent-child</code>.
+    </li>
+  </ul>
+
   <a name="modular"> </a>
   <h3>Modular Questionnaires</h3>
   <p>
@@ -101,7 +170,8 @@
     <li>In addition to propagating the items from the referenced Questionnaire, additional items are also propagated as follows:
       <ul>
         <li>All <a href="{{site.data.fhir.path}}resource.html#Meta">meta</a> information, including security and other tags declared on the imported
-          Questionnaire are ignored</li>
+          Questionnaire are ignored.  (If a Questionnaire references a sub-Questionnaire with security restrictions, this needs to be reflected in the
+          referencing Questionnaire as part of its original design</li>
         <li>If <a href="{{site.data.fhir.path}}resource-definitions.html#Resource.language">language</a> is declared on the imported Questionnaire, it
           must match the language on the importing Questionnaire.</li>
         <li><a href="{{site.data.fhir.path}}resource-definitions.html#Resource.implicitRules">implicitRules</a> and
@@ -131,7 +201,11 @@
         </li>
         <li>All metadata elements on the subQuestionnaire are ignored.  If there are copyright limitations on the referenced Questionnaire, it is the
           responsibility of the referencing Questionnaire to reflect those in its own Questionnaire.copyright element.</li>
-      </ul></li>
+        <li>The <a href="StructureDefinition-sdc-questionnaire-assemble-expectation.html">assemble-expectation</a> on the resulting Questionnaire should be adjusted to 
+          change the 'assemble' part of the code to 'independent', with the exception that if the code was 'assemble-root', then the extension should be removed entirely.  
+          E.g. <code>assemble-root-or-child</code> would change to <code>independent-root-or-child</code>.</li>
+      </ul>
+    </li>
     <li>This process occurs recursively.  I.e. If an imported Questionnaire contains display elements with a subQuestionnaire extension, those display
       elements are also replaced by the referenced Questionnaire, repeating the process until no further subQuestionnaire extensions are found.</li>
     <li>It is possible that the same Questionnaire might be substituted more than once as part of this process, however it is in an error if 

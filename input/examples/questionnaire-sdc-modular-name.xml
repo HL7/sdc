@@ -1,9 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Questionnaire xmlns="http://hl7.org/fhir" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://hl7.org/fhir ../../input-cache/schemas/R4/fhir-single.xsd">
 	<id value="sdc-modular-name"/>
-	<!-- Even though this is a sub-questionnaire, it's still modular because it relies on element defintions defined elsewhere. -->
-	<extension url="http://hl7.org/fhir/uv/sdc/StructureDefinition/sdc-questionnaire-is-modular">
-    <valueBoolean value="true"/>
+	<extension url="http://hl7.org/fhir/uv/sdc/StructureDefinition/sdc-questionnaire-assemble-expectation">
+    <valueCode value="assemble-child"/>
 	</extension>
 	<extension url="http://hl7.org/fhir/uv/sdc/StructureDefinition/sdc-questionnaire-assembleContext">
     <valueString value="linkIdPrefix"/>

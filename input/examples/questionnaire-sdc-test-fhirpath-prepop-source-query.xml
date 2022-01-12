@@ -23,7 +23,7 @@
         <fullUrl value="urn:uuid:88f151c0-a954-468a-88bd-5ae15c08e060"/>
         <request>
           <method value="GET"/>
-          <url value="MedicationStatement?patient={{%patient.id}}&amp;active=true"/>
+          <url value="MedicationStatement?patient={{%patient.id}}&amp;active=true&amp;_include=MedicationStatement:medication"/>
         </request>
       </entry>
     </Bundle>
@@ -130,7 +130,7 @@
         <extension url="http://hl7.org/fhir/uv/sdc/StructureDefinition/sdc-questionnaire-initialExpression">
           <valueExpression>
             <language value="text/fhirpath"/>
-            <expression value="%mrItem.medication.select(text | display)"/>
+            <expression value="%mrItem.medication.select(iif(text.exists(), text, coding.display.first()))"/>
           </valueExpression>
         </extension>
         <linkId value="med-name"/>
@@ -152,7 +152,7 @@
         <extension url="http://hl7.org/fhir/uv/sdc/StructureDefinition/sdc-questionnaire-initialExpression">
           <valueExpression>
             <language value="text/fhirpath"/>
-            <expression value="%mrItem.category.coding.where(system=&#39;http://terminology.hl7.org/CodeSystem/medicationrequest-category&#39;)"/>
+            <expression value="%mrItem.category.coding.where(system=&#39;http://terminology.hl7.org/CodeSystem/medicationrequest-category&#39;).code"/>
           </valueExpression>
         </extension>
         <linkId value="med-category"/>
