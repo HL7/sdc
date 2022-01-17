@@ -1,0 +1,51 @@
+map 'http://hl7.org/fhir/uv/sdc/StructureMap/questionnaire-population-transform' = "QuestionnairePopulationTransform"
+
+uses 'http://hl7.org/fhir/StructureDefinition/Bundle' as source
+uses 'http://hl7.org/fhir/StructureDefinition/QuestionnaireResponse' as target
+
+group main(source src : Bundle, target qr : QuestionnaireResponse) {
+  src -> qr.questionnaire = 'http://hl7.org/fhir/uv/sdc/Questionnaire/questionnaire-sdc-test-fhirpath-prepop-source-query' "questionnaire";
+  src -> qr.status = 'in-progress' "status";
+  src -> qr.authored = (now()) "authored";
+  src.entry first as patient -> qr.subject as subject, subject.reference = (patient.resource.entry.fullUrl) "subject";
+  src -> qr.item as grp, grp.linkId = 'grp' then {
+    src -> grp.item as partDetails, partDetails.linkId = 'part-details' then {
+      src.entry first as patient -> partDetails then {
+        patient.resource as patientRes -> partDetails.item as participantId, participantId.linkId = 'participant-id' then {
+          patientRes.entry as patientResEntry -> participantId.answer as participantIdAnswer, participantIdAnswer.value = (patientResEntry.resource.id) "participantIdValue";
+        } "participantId";
+        patient.resource as patientRes -> partDetails.item as familyName, familyName.linkId = 'family-name' then {
+          patientRes.entry as patientResEntry -> familyName.answer as familyNameAnswer, familyNameAnswer.value = (patientResEntry.resource.name.first().family) "familyNameValue";
+        } "familyName";
+        patient.resource as patientRes -> partDetails.item as givenName, givenName.linkId = 'given-names' then {
+          patientRes.entry as patientResEntry -> givenName.answer as givenNameAnswer, givenNameAnswer.value = (patientResEntry.resource.name.first().given.aggregate(iif($total.empty(), $this, $total & " " & $this))) "givenNameValue";
+        } "familyName";
+        patient.resource as patientRes -> partDetails.item as dob, dob.linkId = 'dob' then {
+          patientRes.entry as patientResEntry -> dob.answer as dobAnswer, dobAnswer.value = (patientResEntry.resource.birthDate) "dobValue";
+        } "familyName";
+      } "patientDetails";
+      src.entry as conditions where (resource.link.url.contains("/Condition?")) -> partDetails.item as conditionItem, conditionItem.linkId = 'condition-count' then {
+        conditions -> conditionItem.answer as conditionCountAnswer, conditionCountAnswer.value = (conditions.resource.entry.count()) "conditionCountAnswer";
+      } "condition-count";
+    } "part-details";
+    src.entry as medications where (resource.link.url.contains("/MedicationStatement?")) -> grp then {
+      medications.resource as medRes -> grp then {
+        medRes.entry as med where (resource is MedicationStatement) -> grp.item as medsItem, medsItem.linkId = 'meds' then {
+          med.resource as medResource -> medsItem.item as medsName, medsName.linkId = 'med-name' then {
+            medResource.medication as medMedication -> medsName.answer as medsNameAnswer, medsNameAnswer.value = (medMedication.select(
+              iif(text, text, coding.display.first()))) "medsNameAnswer";
+/* Todo handle medicationReference once resolve is supported
+              iif($this is Reference, iif($this.resolve().text.exists(), $this.resolve().text, $this.resolve().coding.display.first()), iif(text, text, coding.display.first())))) "medsNameAnswer";
+*/
+          } "medsName";
+          med.resource as medResource -> medsItem.item as medsStatus, medsStatus.linkId = 'med-status' then {
+            medResource as medsMedication -> medsStatus.answer as medsStatusAnswer, medsStatusAnswer.value = append(medResource.status,"") "medsStatusAnswer";
+          } "medsStatus";
+          med.resource as medResource where (category.coding.where(system='http://terminology.hl7.org/CodeSystem/medicationrequest-category').exists()) -> medsItem.item as medsCategory, medsCategory.linkId = 'meds-category' then {
+            medResource -> medsCategory.answer as medsCategoryAnswer, medsCategoryAnswer.value = (medResource.category.coding.where(system='http://terminology.hl7.org/CodeSystem/medicationrequest-category').code.aggregate(iif($total.empty(), $this, $total & " " & $this))) "medsCategoryAnswer";
+          } "medsCategory";
+        } "medItem";
+      } "medEntry";
+    } "meds";
+  } "grp";
+}

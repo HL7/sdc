@@ -1,7 +1,7 @@
-<?xml version="1.0" encoding="UTF-8" ?>
+<?xml version="1.0" encoding="UTF-8"?>
 <!-- Disclaimer: This questionnaire example is not derived from any medical questionnaire.  It contains unrelated questions and it is only created to show how the 
 elements or extensions defined in the implementation guide are intended to be used. -->
-<Questionnaire xmlns="http://hl7.org/fhir">
+<Questionnaire xmlns="http://hl7.org/fhir" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://hl7.org/fhir ../../input-cache/schemas/R4/fhir-single.xsd">
   <id value="questionnaire-sdc-profile-example-context-expression"/>
   <!-- TODO: Temporarily disabled meta.profile since validation is failing with nested items.
   Exception in thread "main" org.hl7.fhir.exceptions.DefinitionException: Unable to resolve name reference http://hl7.org/fhir/StructureDefinition/Questionnaire#Questionnaire.item at path Questionnaire.item.item
@@ -27,7 +27,6 @@ elements or extensions defined in the implementation guide are intended to be us
   <url value="http://hl7.org/fhir/uv/sdc/questionnaire-sdc-profile-example-context-expression"/>
   <name value="SDCExampleUsingContextExpression"/>
   <status value="draft"/>
-
   <item>
     <linkId value="1.0"/>
     <type value="group"/>
@@ -37,7 +36,6 @@ elements or extensions defined in the implementation guide are intended to be us
       <type value="display"/>
     </item>
     <item>
-
       <extension url="http://hl7.org/fhir/uv/sdc/StructureDefinition/sdc-questionnaire-contextExpression">
         <extension url="label">
           <valueString value="Encounters in past year"/>
@@ -50,7 +48,6 @@ elements or extensions defined in the implementation guide are intended to be us
           </valueExpression>
         </extension>
       </extension>
-
       <extension url="http://hl7.org/fhir/uv/sdc/StructureDefinition/sdc-questionnaire-choiceColumn">
         <extension url="path">
           <valueString value="period.start"/>
@@ -87,7 +84,6 @@ elements or extensions defined in the implementation guide are intended to be us
           <valueBoolean value="false"/>
         </extension>
       </extension>
-
       <extension url="http://hl7.org/fhir/StructureDefinition/questionnaire-itemControl">
         <valueCodeableConcept>
           <coding>
@@ -98,7 +94,6 @@ elements or extensions defined in the implementation guide are intended to be us
           <text value="A control where choices are listed with a button beside them. The button can be toggled to select or de-select a given choice. Selecting one item deselects all others."/>
         </valueCodeableConcept>
       </extension>
-
       <extension url="http://hl7.org/fhir/StructureDefinition/questionnaire-itemControl">
         <valueCodeableConcept>
           <coding>
@@ -115,5 +110,4 @@ elements or extensions defined in the implementation guide are intended to be us
       <answerValueSet value="http://hl7.org/fhir/ValueSet/yesnodontknow"/>
     </item>
   </item>
-
 </Questionnaire>

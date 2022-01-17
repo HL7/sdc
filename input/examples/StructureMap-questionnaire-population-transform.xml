@@ -1,0 +1,580 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- NOTE: This is largely generated from the questionnaire-population-transform.map file in images-source -->
+<StructureMap xmlns="http://hl7.org/fhir" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://hl7.org/fhir ../../input-cache/schemas/R4/fhir-single.xsd">
+	<id value="questionnaire-population-transform"/>
+	<url value="http://hl7.org/fhir/uv/sdc/StructureMap/questionnaire-population-transform"/>
+	<name value="QuestionnairePopulationTransform"/>
+	<title value="Questionnaire Population Transform"/>
+	<status value="draft"/>
+	<experimental value="true"/>
+	<description value="Sample stricture map showing process for auto-populating a QuestionnaireResponse from a query bundle"/>
+	<structure>
+		<url value="http://hl7.org/fhir/StructureDefinition/Bundle"/>
+		<mode value="source"/>
+	</structure>
+	<structure>
+		<url value="http://hl7.org/fhir/StructureDefinition/QuestionnaireResponse"/>
+		<mode value="target"/>
+	</structure>
+	<group>
+		<name value="main"/>
+		<typeMode value="none"/>
+		<input>
+			<name value="src"/>
+			<type value="Bundle"/>
+			<mode value="source"/>
+		</input>
+		<input>
+			<name value="qr"/>
+			<type value="QuestionnaireResponse"/>
+			<mode value="target"/>
+		</input>
+		<rule>
+			<name value="questionnaire"/>
+			<source>
+				<context value="src"/>
+			</source>
+			<target>
+				<context value="qr"/>
+				<contextType value="variable"/>
+				<element value="questionnaire"/>
+				<transform value="copy"/>
+				<parameter>
+					<valueString value="http://hl7.org/fhir/uv/sdc/Questionnaire/questionnaire-sdc-test-fhirpath-prepop-source-query"/>
+				</parameter>
+			</target>
+		</rule>
+		<rule>
+			<name value="status"/>
+			<source>
+				<context value="src"/>
+			</source>
+			<target>
+				<context value="qr"/>
+				<contextType value="variable"/>
+				<element value="status"/>
+				<transform value="copy"/>
+				<parameter>
+					<valueString value="in-progress"/>
+				</parameter>
+			</target>
+		</rule>
+		<rule>
+			<name value="authored"/>
+			<source>
+				<context value="src"/>
+			</source>
+			<target>
+				<context value="qr"/>
+				<contextType value="variable"/>
+				<element value="authored"/>
+				<transform value="evaluate"/>
+				<parameter>
+					<valueString value="now()"/>
+				</parameter>
+			</target>
+		</rule>
+		<rule>
+			<name value="subject"/>
+			<source>
+				<context value="src"/>
+				<element value="entry"/>
+				<listMode value="first"/>
+				<variable value="patient"/>
+			</source>
+			<target>
+				<context value="qr"/>
+				<contextType value="variable"/>
+				<element value="subject"/>
+				<variable value="subject"/>
+			</target>
+			<target>
+				<context value="subject"/>
+				<contextType value="variable"/>
+				<element value="reference"/>
+				<transform value="evaluate"/>
+				<parameter>
+					<valueString value="patient.resource.entry.fullUrl"/>
+				</parameter>
+			</target>
+		</rule>
+		<rule>
+			<name value="grp"/>
+			<source>
+				<context value="src"/>
+			</source>
+			<target>
+				<context value="qr"/>
+				<contextType value="variable"/>
+				<element value="item"/>
+				<variable value="grp"/>
+			</target>
+			<target>
+				<context value="grp"/>
+				<contextType value="variable"/>
+				<element value="linkId"/>
+				<transform value="copy"/>
+				<parameter>
+					<valueString value="grp"/>
+				</parameter>
+			</target>
+			<rule>
+				<name value="part-details"/>
+				<source>
+					<context value="src"/>
+				</source>
+				<target>
+					<context value="grp"/>
+					<contextType value="variable"/>
+					<element value="item"/>
+					<variable value="partDetails"/>
+				</target>
+				<target>
+					<context value="partDetails"/>
+					<contextType value="variable"/>
+					<element value="linkId"/>
+					<transform value="copy"/>
+					<parameter>
+						<valueString value="part-details"/>
+					</parameter>
+				</target>
+				<rule>
+					<name value="patientDetails"/>
+					<source>
+						<context value="src"/>
+						<element value="entry"/>
+						<listMode value="first"/>
+						<variable value="patient"/>
+					</source>
+					<target>
+						<contextType value="variable"/>
+						<transform value="copy"/>
+						<parameter>
+							<valueId value="partDetails"/>
+						</parameter>
+					</target>
+					<rule>
+						<name value="participantId"/>
+						<source>
+							<context value="patient"/>
+							<element value="resource"/>
+							<variable value="patientRes"/>
+						</source>
+						<target>
+							<context value="partDetails"/>
+							<contextType value="variable"/>
+							<element value="item"/>
+							<variable value="participantId"/>
+						</target>
+						<target>
+							<context value="participantId"/>
+							<contextType value="variable"/>
+							<element value="linkId"/>
+							<transform value="copy"/>
+							<parameter>
+								<valueString value="participant-id"/>
+							</parameter>
+						</target>
+						<rule>
+							<name value="participantIdValue"/>
+							<source>
+								<context value="patientRes"/>
+								<element value="entry"/>
+								<variable value="patientResEntry"/>
+							</source>
+							<target>
+								<context value="participantId"/>
+								<contextType value="variable"/>
+								<element value="answer"/>
+								<variable value="participantIdAnswer"/>
+							</target>
+							<target>
+								<context value="participantIdAnswer"/>
+								<contextType value="variable"/>
+								<element value="value"/>
+								<transform value="evaluate"/>
+								<parameter>
+									<valueString value="patientResEntry.resource.id"/>
+								</parameter>
+							</target>
+						</rule>
+					</rule>
+					<rule>
+						<name value="familyName"/>
+						<source>
+							<context value="patient"/>
+							<element value="resource"/>
+							<variable value="patientRes"/>
+						</source>
+						<target>
+							<context value="partDetails"/>
+							<contextType value="variable"/>
+							<element value="item"/>
+							<variable value="familyName"/>
+						</target>
+						<target>
+							<context value="familyName"/>
+							<contextType value="variable"/>
+							<element value="linkId"/>
+							<transform value="copy"/>
+							<parameter>
+								<valueString value="family-name"/>
+							</parameter>
+						</target>
+						<rule>
+							<name value="familyNameValue"/>
+							<source>
+								<context value="patientRes"/>
+								<element value="entry"/>
+								<variable value="patientResEntry"/>
+							</source>
+							<target>
+								<context value="familyName"/>
+								<contextType value="variable"/>
+								<element value="answer"/>
+								<variable value="familyNameAnswer"/>
+							</target>
+							<target>
+								<context value="familyNameAnswer"/>
+								<contextType value="variable"/>
+								<element value="value"/>
+								<transform value="evaluate"/>
+								<parameter>
+									<valueString value="patientResEntry.resource.name.first().family"/>
+								</parameter>
+							</target>
+						</rule>
+					</rule>
+					<rule>
+						<name value="familyName"/>
+						<source>
+							<context value="patient"/>
+							<element value="resource"/>
+							<variable value="patientRes"/>
+						</source>
+						<target>
+							<context value="partDetails"/>
+							<contextType value="variable"/>
+							<element value="item"/>
+							<variable value="givenName"/>
+						</target>
+						<target>
+							<context value="givenName"/>
+							<contextType value="variable"/>
+							<element value="linkId"/>
+							<transform value="copy"/>
+							<parameter>
+								<valueString value="given-name"/>
+							</parameter>
+						</target>
+						<rule>
+							<name value="givenNameValue"/>
+							<source>
+								<context value="patientRes"/>
+								<element value="entry"/>
+								<variable value="patientResEntry"/>
+							</source>
+							<target>
+								<context value="givenName"/>
+								<contextType value="variable"/>
+								<element value="answer"/>
+								<variable value="givenNameAnswer"/>
+							</target>
+							<target>
+								<context value="givenNameAnswer"/>
+								<contextType value="variable"/>
+								<element value="value"/>
+								<transform value="evaluate"/>
+								<parameter>
+									<valueString value="patientResEntry.resource.name.first().given.aggregate(iif($total.empty(), $this, $total &amp; &#39; &#39; &amp; $this))"/>
+								</parameter>
+							</target>
+						</rule>
+					</rule>
+					<rule>
+						<name value="familyName"/>
+						<source>
+							<context value="patient"/>
+							<element value="resource"/>
+							<variable value="patientRes"/>
+						</source>
+						<target>
+							<context value="partDetails"/>
+							<contextType value="variable"/>
+							<element value="item"/>
+							<variable value="dob"/>
+						</target>
+						<target>
+							<context value="dob"/>
+							<contextType value="variable"/>
+							<element value="linkId"/>
+							<transform value="copy"/>
+							<parameter>
+								<valueString value="dob"/>
+							</parameter>
+						</target>
+						<rule>
+							<name value="dobValue"/>
+							<source>
+								<context value="patientRes"/>
+								<element value="entry"/>
+								<variable value="patientResEntry"/>
+							</source>
+							<target>
+								<context value="dob"/>
+								<contextType value="variable"/>
+								<element value="answer"/>
+								<variable value="dobAnswer"/>
+							</target>
+							<target>
+								<context value="dobAnswer"/>
+								<contextType value="variable"/>
+								<element value="value"/>
+								<transform value="evaluate"/>
+								<parameter>
+									<valueString value="patientResEntry.resource.birthDate"/>
+								</parameter>
+							</target>
+						</rule>
+					</rule>
+				</rule>
+				<rule>
+					<name value="condition-count"/>
+					<source>
+						<context value="src"/>
+						<element value="entry"/>
+						<variable value="conditions"/>
+						<condition value="(resource.link.url.contains(&#39;/Condition?&#39;))"/>
+					</source>
+					<target>
+						<context value="partDetails"/>
+						<contextType value="variable"/>
+						<element value="item"/>
+						<variable value="conditionItem"/>
+					</target>
+					<target>
+						<context value="conditionItem"/>
+						<contextType value="variable"/>
+						<element value="linkId"/>
+						<transform value="copy"/>
+						<parameter>
+							<valueString value="condition-count"/>
+						</parameter>
+					</target>
+					<rule>
+						<name value="conditionCountAnswer"/>
+						<source>
+							<context value="conditions"/>
+						</source>
+						<target>
+							<context value="conditionItem"/>
+							<contextType value="variable"/>
+							<element value="answer"/>
+							<variable value="conditionCountAnswer"/>
+						</target>
+						<target>
+							<context value="conditionCountAnswer"/>
+							<contextType value="variable"/>
+							<element value="value"/>
+							<transform value="evaluate"/>
+							<parameter>
+								<valueString value="conditions.resource.entry.count()"/>
+							</parameter>
+						</target>
+					</rule>
+				</rule>
+			</rule>
+			<rule>
+				<name value="meds"/>
+				<source>
+					<context value="src"/>
+					<element value="entry"/>
+					<variable value="medications"/>
+					<condition value="(resource.link.url.contains(&#39;/MedicationStatement?&#39;))"/>
+				</source>
+				<target>
+					<contextType value="variable"/>
+					<transform value="copy"/>
+					<parameter>
+						<valueId value="grp"/>
+					</parameter>
+				</target>
+				<rule>
+					<name value="medEntry"/>
+					<source>
+						<context value="medications"/>
+						<element value="resource"/>
+						<variable value="medRes"/>
+					</source>
+					<target>
+						<contextType value="variable"/>
+						<transform value="copy"/>
+						<parameter>
+							<valueId value="grp"/>
+						</parameter>
+					</target>
+					<rule>
+						<name value="medItem"/>
+						<source>
+							<context value="medRes"/>
+							<element value="entry"/>
+							<variable value="med"/>
+							<condition value="(resource is MedicationStatement)"/>
+						</source>
+						<target>
+							<context value="grp"/>
+							<contextType value="variable"/>
+							<element value="item"/>
+							<variable value="medsItem"/>
+						</target>
+						<target>
+							<context value="medsItem"/>
+							<contextType value="variable"/>
+							<element value="linkId"/>
+							<transform value="copy"/>
+							<parameter>
+								<valueString value="meds"/>
+							</parameter>
+						</target>
+						<rule>
+							<name value="medsName"/>
+							<source>
+								<context value="med"/>
+								<element value="resource"/>
+								<variable value="medResource"/>
+							</source>
+							<target>
+								<context value="medsItem"/>
+								<contextType value="variable"/>
+								<element value="item"/>
+								<variable value="medsName"/>
+							</target>
+							<target>
+								<context value="medsName"/>
+								<contextType value="variable"/>
+								<element value="linkId"/>
+								<transform value="copy"/>
+								<parameter>
+									<valueString value="meds-name"/>
+								</parameter>
+							</target>
+							<rule>
+								<name value="medsNameAnswer"/>
+								<source>
+									<context value="medResource"/>
+									<element value="medication"/>
+									<variable value="medMedication"/>
+								</source>
+								<target>
+									<context value="medsName"/>
+									<contextType value="variable"/>
+									<element value="answer"/>
+									<variable value="medsNameAnswer"/>
+								</target>
+								<target>
+									<context value="medsNameAnswer"/>
+									<contextType value="variable"/>
+									<element value="value"/>
+									<transform value="evaluate"/>
+									<parameter>
+										<valueString value="medMedication.select(iif(text, text, coding.display.first()))"/>
+									</parameter>
+								</target>
+							</rule>
+						</rule>
+						<rule>
+							<name value="medsStatus"/>
+							<source>
+								<context value="med"/>
+								<element value="resource"/>
+								<variable value="medResource"/>
+							</source>
+							<target>
+								<context value="medsItem"/>
+								<contextType value="variable"/>
+								<element value="item"/>
+								<variable value="medsStatus"/>
+							</target>
+							<target>
+								<context value="medsStatus"/>
+								<contextType value="variable"/>
+								<element value="linkId"/>
+								<transform value="copy"/>
+								<parameter>
+									<valueString value="med-status"/>
+								</parameter>
+							</target>
+							<rule>
+								<name value="medsStatusAnswer"/>
+								<source>
+									<context value="medResource"/>
+									<variable value="medsMedication"/>
+								</source>
+								<target>
+									<context value="medsStatus"/>
+									<contextType value="variable"/>
+									<element value="answer"/>
+									<variable value="medsStatusAnswer"/>
+								</target>
+								<target>
+									<context value="medsStatusAnswer"/>
+									<contextType value="variable"/>
+									<element value="value"/>
+									<transform value="evaluate"/>
+									<parameter>
+										<valueString value="medResource.status"/>
+									</parameter>
+								</target>
+							</rule>
+						</rule>
+						<rule>
+							<name value="medsCategory"/>
+							<source>
+								<context value="med"/>
+								<element value="resource"/>
+								<variable value="medResource"/>
+								<condition value="(category.coding.where(system = &#39;http://terminology.hl7.org/CodeSystem/medicationrequest-category&#39;).exists())"/>
+							</source>
+							<target>
+								<context value="medsItem"/>
+								<contextType value="variable"/>
+								<element value="item"/>
+								<variable value="medsCategory"/>
+							</target>
+							<target>
+								<context value="medsCategory"/>
+								<contextType value="variable"/>
+								<element value="linkId"/>
+								<transform value="copy"/>
+								<parameter>
+									<valueString value="meds-category"/>
+								</parameter>
+							</target>
+							<rule>
+								<name value="medsCategoryAnswer"/>
+								<source>
+									<context value="medResource"/>
+								</source>
+								<target>
+									<context value="medsCategory"/>
+									<contextType value="variable"/>
+									<element value="answer"/>
+									<variable value="medsCategoryAnswer"/>
+								</target>
+								<target>
+									<context value="medsCategoryAnswer"/>
+									<contextType value="variable"/>
+									<element value="value"/>
+									<transform value="evaluate"/>
+									<parameter>
+										<valueString value="medResource.category.coding.where(system = &#39;http://terminology.hl7.org/CodeSystem/medicationrequest-category&#39;).code.aggregate(iif($total.empty(), $this, $total &amp; &#39; &#39; &amp; $this))"/>
+									</parameter>
+								</target>
+							</rule>
+						</rule>
+					</rule>
+				</rule>
+			</rule>
+		</rule>
+	</group>
+</StructureMap>

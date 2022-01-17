@@ -479,7 +479,7 @@
         <reference value="StructureDefinition/sdc-questionnaire-sourceStructureMap"/>
       </reference>
       <name value="Source structure map"/>
-      <description value="StructureMaps that have this QuestionnaireResponses for this Questionnaire as 'target' - i.e. that can be used to create QuestionnaireResponses that are valid against this Questionnaire."/>
+      <description value="StructureMaps that produce QuestionnaireResponses for this Questionnaire as 'target' - i.e. that can be used to create QuestionnaireResponses that are valid against this Questionnaire."/>
       <exampleBoolean value="false"/>
     </resource>
     <resource>
@@ -882,8 +882,32 @@
         <reference value="Questionnaire/questionnaire-sdc-test-fhirpath-prepop-source-query"/>
       </reference>
       <name value="SDC Test Form - Source Query"/>
-      <description value="A test form with a FhirPath based prepopulation example that leverages a source query to extract data outside the launch context."/>
+      <description value="A test form with a FhirPath based prepopulation and StructureMap population that leverages a source query to extract data outside the launch context."/>
       <exampleCanonical value="http://hl7.org/fhir/uv/sdc/StructureDefinition/sdc-questionnaire-pop-exp"/>
+    </resource>
+    <resource>
+      <reference>
+        <reference value="Bundle/map-population-example"/>
+      </reference>
+      <name value="SDC Map population source bundle example"/>
+      <description value="An example of a Batch response containing search results used as an input to a map-based population process"/>
+      <exampleBoolean value="true"/>
+    </resource>
+    <resource>
+      <reference>
+        <reference value="StructureMap/questionnaire-population-transform"/>
+      </reference>
+      <name value="SDC Map population StructureMap example"/>
+      <description value="An example of a StructureMap used to support the population of a QuestionnaireResponse from queried data"/>
+      <exampleBoolean value="true"/>
+    </resource>
+    <resource>
+      <reference>
+        <reference value="QuestionnaireResponse/map-populate-out"/>
+      </reference>
+      <name value="SDC Map population StructureMap example"/>
+      <description value="An example showing the result of a StructureMap-based population operation"/>
+      <exampleCanonical value="http://hl7.org/fhir/uv/sdc/StructureDefinition/sdc-questionnaireresponse"/>
     </resource>
     <resource>
       <reference>

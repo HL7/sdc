@@ -1,6 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Questionnaire xmlns="http://hl7.org/fhir" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://hl7.org/fhir ../../input-cache/schemas/R4/fhir-single.xsd">
   <id value="questionnaire-sdc-test-fhirpath-prepop-source-query"/>
+  <meta>
+    <profile value="http://hl7.org/fhir/uv/sdc/StructureDefinition/sdc-questionnaire-pop-smap"/>
+  </meta>
   <contained>
     <Bundle>
       <id value="PrePopQuery"/>
@@ -9,21 +12,21 @@
         <fullUrl value="urn:uuid:43c8e58d-099f-425c-a219-564266a518dc"/>
         <request>
           <method value="GET"/>
-          <url value="Patient?_id={{%patient.id}}"/>
+          <url value="Patient?_id={{%37patient.id}}"/>
         </request>
       </entry>
       <entry>
         <fullUrl value="urn:uuid:88f151c0-a954-468a-88bd-5ae15c08e059"/>
         <request>
           <method value="GET"/>
-          <url value="Condition?patient={{%patient.id}}&amp;active=true"/>
+          <url value="Condition?patient={{%37patient.id}}&amp;active=true"/>
         </request>
       </entry>
       <entry>
         <fullUrl value="urn:uuid:88f151c0-a954-468a-88bd-5ae15c08e060"/>
         <request>
           <method value="GET"/>
-          <url value="MedicationStatement?patient={{%patient.id}}&amp;active=true&amp;_include=MedicationStatement:medication"/>
+          <url value="MedicationStatement?patient={{%37patient.id}}&amp;active=true&amp;_include=MedicationStatement:medication"/>
         </request>
       </entry>
     </Bundle>
@@ -47,6 +50,9 @@
     <valueReference>
       <reference value="#PrePopQuery"/>
     </valueReference>
+  </extension>
+  <extension url="http://hl7.org/fhir/uv/sdc/StructureDefinition/sdc-questionnaire-sourceStructureMap">
+    <valueCanonical value="http://hl7.org/fhir/uv/sdc/StructureMap/questionnaire-population-transform"/>
   </extension>
   <url value="http://hl7.org/fhir/uv/sdc/Questionnaire/questionnaire-sdc-test-fhirpath-prepop-source-query"/>
   <name value="FhirPathPrepopSourceQuery"/>
