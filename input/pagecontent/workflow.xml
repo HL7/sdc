@@ -142,7 +142,7 @@
     overall authorization that drives the
     need for the form to be completed.  For example, a pre-surgery form or a satisfaction survey might point to a ServiceRequest that had ordered the surgery.  In this case, the relevant 
     <a href="{{site.data.fhir.path}}request.html">Request</a> resource will be referenced by the <code>Task.basedOn</code> element.  In this case, the 'Request' would not dictate the specific
-    Questionnaire, but would instead typically specify a higher level action (appointment, medication, surgery, therapy, etc.).
+    Questionnaire, but would instead typically specify a higher level action (appointment, medication, surgery, therapy, etc.). An example for Task-based solicitation can be found <a href="Task-example.html">here</a>.
   </p>
   <a name="request-based"> </a>
   <h5>Request-based solicitation</h5>
@@ -155,7 +155,7 @@
   </p>
   <p>
     As with the Task-based approach, a ServiceRequest might in turn point to a 'higher-level' Request that is fulfilled, in part, by the ServiceRequest seeking the filling of the form.  This
-    higher-level ServiceRequest might be an order, but could also be a proposal or plan.  For example, a decision support recommendation.
+    higher-level ServiceRequest might be an order, but could also be a proposal or plan.  For example, a decision support recommendation. An example for Request-based solicitation can be found <a href="Task-request-task-example.html">here</a>.
   </p>
   <a name="solicitation-general"> </a>
   <h5>General considerations</h5>

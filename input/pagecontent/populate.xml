@@ -325,7 +325,7 @@
   <p>
     This is the simplest of the population mechanisms.  It takes advantage of the fact that most question answers in the healthcare space typically correspond to the
     <code>value</code> element of an Observation.  It also takes advantage of the <code>Questionnaire.item.code</code> element that identifies what a concept
-    each question or group corresponds to.
+    each question or group corresponds to. An example for <a href="StructureDefinition-sdc-questionnaire-pop-obsn.html">SDC Questionnaire Populate - Observation profile</a> can be found <a href="Questionnaire-questionnaire-sdc-profile-example-ussg-fht.html">here</a>.
   </p>
   <p>
     To use this method:
@@ -459,7 +459,7 @@
     can be based on the context in which the QuestionnaireResponse is being generated and/or on the results of other queries.  Furthermore, it permits
     <a href="http://hl7.org/fhirpath">FHIRPath</a> and <a href="http://cql.hl7.org">CQL</a> operations to be done on the resulting data such as calculations, conditional determinations, etc.
     As such, it is significantly more powerful than the <a href="#obs-pop">Observation-based</a> method.  However, it also requires skill in using FHIR queries,
-    FHIRPath, and/or CQL so it requires more technical expertise than the Observation-based approach.
+    FHIRPath, and/or CQL so it requires more technical expertise than the Observation-based approach. An example for <a href="StructureDefinition-sdc-questionnaire-pop-exp.html">SDC Questionnaire Populate - Expression profile</a> can be found <a href="Questionnaire-demographics.html">here</a>.
   </p>
   <p>
     To use this method:
