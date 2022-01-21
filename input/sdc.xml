@@ -51,7 +51,7 @@
     <version value="4.0.1"/>
   </dependsOn>
   <definition>
-    <!--    <grouping id="conformance">
+        <grouping id="conformance">
       <name value="Capability Statements"/>
       <description value="Capabilities of systems claiming to be conformant to the SDC implementation guide"/>
     </grouping>
@@ -78,7 +78,10 @@
     <grouping id="examples">
       <name value="Example(s)"/>
       <description value="Example(s) showing the use of the SDC profiles"/>
-    </grouping>-->
+    </grouping>
+	<grouping id="value-constraints">
+      <name value="Value constraints"/>
+    </grouping>
     <resource>
       <reference>
         <reference value="CapabilityStatement/sdc-form-designer"/>
@@ -337,6 +340,151 @@
       <description value="The base URL for the server to which questionnaire response associated with this questionnaire should be submitted"/>
       <exampleBoolean value="false"/>
     </resource>
+	 <resource>
+      <reference>
+        <reference value="StructureDefinition/sdc-questionnaire-enableWhenExpression"/>
+      </reference>
+      <name value="Enable when expression"/>
+      <description value="An expression that returns a boolean value for whether to enable the item"/>
+      <exampleBoolean value="false"/>
+    </resource>
+	 <resource>
+      <reference>
+        <reference value="StructureDefinition/sdc-questionnaire-minQuantity"/>
+      </reference>
+      <name value="Min Quantity"/>
+      <description value="The inclusive lower bound on the range of allowed values for a 'quantity' type question"/>
+      <exampleBoolean value="false"/>
+    </resource>
+    <resource>
+      <reference>
+        <reference value="StructureDefinition/sdc-questionnaire-maxQuantity"/>
+      </reference>
+      <name value="Max Quantity"/>
+      <description value="The inclusive upper bound on the range of allowed values for  a 'quantity' type question"/>
+      <exampleBoolean value="false"/>
+    </resource>
+	 <resource>
+      <reference>
+        <reference value="StructureDefinition/sdc-questionnaire-answerExpression"/>
+      </reference>
+      <name value="Answer Expression"/>
+      <description value="An expression (FHIRPath, CQL or FHIR Query) that resolves to a list of permitted answers for a question item."/>
+      <exampleBoolean value="false"/>
+    </resource>
+	 <resource>
+      <reference>
+        <reference value="StructureDefinition/sdc-questionnaire-contextExpression"/>
+      </reference>
+      <name value="Answer Context Expression"/>
+      <description value="A FHIR Query that resolves to one or more resources that can be displayed to the user to help provide context for answering a question"/>
+      <exampleBoolean value="false"/>
+    </resource>
+	 <resource>
+      <reference>
+        <reference value="StructureDefinition/sdc-questionnaire-answerOptionsToggleExpression"/>
+      </reference>
+      <name value="Answer Options Toggle Expression"/>
+      <description value="A complex expression that provides a list of the allowed options that should be enabled or disabled based on the evaluation of a provided expression."/>
+      <exampleBoolean value="false"/>
+    </resource>
+	  <resource>
+      <reference>
+        <reference value="StructureDefinition/sdc-questionnaire-candidateExpression"/>
+      </reference>
+      <name value="Candidate Answers Expression"/>
+      <description value="A FHIRPath or CQL Expression, or FHIR Query that resolves to a list of candidate answers (usually based on other answers in the questionnaire
+      or based on information within the health record) for the question item or that establishes context for a group item"/>
+      <exampleBoolean value="false"/>
+    </resource> 
+	  <resource>
+      <reference>
+        <reference value="StructureDefinition/sdc-questionnaire-lookupQuestionnaire"/>
+      </reference>
+      <name value="Lookup questionnaire"/>
+      <description value="For items of type reference, the reference can be populated either by picking an existing entity or by creating a new one. In the latter case, this Questionnaire allows specifying the Questionnaire to use in creating the target instance. This can be direct (if the Reference is to a Questionnaire) or indirect via mapping if the Reference is to some other sort of resource."/>
+      <exampleBoolean value="false"/>
+    </resource> 
+ <resource>
+      <reference>
+        <reference value="StructureDefinition/sdc-questionnaire-launchContext"/>
+      </reference>
+      <name value="Launch Contexts"/>
+      <description value="Resources that provide context for form processing logic (pre-population, flow-control, drop-down selection, etc.) when creating/displaying/editing a QuestionnaireResponse"/>
+      <exampleBoolean value="false"/>
+    </resource>
+<resource>
+      <reference>
+        <reference value="StructureDefinition/sdc-questionnaire-initialExpression"/>
+      </reference>
+      <name value="Initial Expression"/>
+      <description value="Initial value for a question answer as determined by an evaluated expression"/>
+      <exampleBoolean value="false"/>
+    </resource>	
+<resource>
+      <reference>
+        <reference value="StructureDefinition/sdc-questionnaire-calculatedExpression"/>
+      </reference>
+      <name value="Calculated Expression"/>
+      <description value="Calculated value for a question answer as determined by an evaluated expression"/>
+      <exampleBoolean value="false"/>
+    </resource>
+<resource>
+      <reference>
+        <reference value="StructureDefinition/sdc-questionnaire-openLabel"/>
+      </reference>
+      <name value="Label for 'open' items"/>
+      <description value="The label text to display beside free-text and/or unrestricted type values for an ‘open’ choice element. E.g. ‘Other, please specify’, or ‘Additional condition’, or ‘More reason(s)’, etc."/>
+      <exampleBoolean value="false"/>
+    </resource>
+ <resource>
+      <reference>
+        <reference value="StructureDefinition/sdc-questionnaire-itemMedia"/>
+      </reference>
+      <name value="Item Media"/>
+      <description value="Media to render/make available accompanying the question being asked or group or display item being rendered."/>
+      <exampleBoolean value="false"/>
+    </resource>
+	<resource>
+      <reference>
+        <reference value="StructureDefinition/sdc-questionnaire-itemAnswerMedia"/>
+      </reference>
+      <name value="Item Answer Media"/>
+      <description value="Media to render/make available as an accompaniment to a specific answer option."/>
+      <exampleBoolean value="false"/>
+    </resource>
+  <resource>
+      <reference>
+        <reference value="StructureDefinition/sdc-questionnaire-width"/>
+      </reference>
+      <name value="Width of column"/>
+      <description value="When used with an item control that causes the question to appear as a column in a table, indicates the width to give to the column for this question."/>
+      <exampleBoolean value="false"/>
+    </resource>
+	<resource>
+      <reference>
+        <reference value="StructureDefinition/sdc-questionnaire-collapsible"/>
+      </reference>
+      <name value="Collapsible"/>
+      <description value="Indicates that the child items of an item are displayed in collapsible form (either collapsed or expanded)"/>
+      <exampleBoolean value="false"/>
+    </resource>
+<resource>
+      <reference>
+        <reference value="StructureDefinition/sdc-questionnaire-choiceColumn"/>
+      </reference>
+      <name value="Choice column"/>
+      <description value="Provides guidelines for rendering multi-column choices"/>
+      <exampleBoolean value="false"/>
+    </resource> 
+	 <resource>
+      <reference>
+        <reference value="StructureDefinition/sdc-questionnaire-shortText"/>
+      </reference>
+      <name value="Short Text"/>
+      <description value="Provides a short text for an item. This element is useful for items that require a shorter text when rendered (e.g. when item is displayed on a mobile phone)."/>
+      <exampleBoolean value="false"/>
+    </resource>
     <resource>
       <reference>
         <reference value="StructureDefinition/sdc-questionnaire-optionalDisplay"/>
@@ -345,6 +493,7 @@
       <description value="If set to true, it means that the system displaying the form (or the individual encoding the form for data capture) can choose to omit the item from display to the user."/>
       <exampleBoolean value="false"/>
     </resource>
+	
     <resource>
       <reference>
         <reference value="StructureDefinition/sdc-questionnaire-sourceQueries"/>
@@ -355,83 +504,18 @@
     </resource>
     <resource>
       <reference>
-        <reference value="StructureDefinition/sdc-questionnaire-initialExpression"/>
-      </reference>
-      <name value="Initial Expression"/>
-      <description value="Initial value for a question answer as determined by an evaluated expression"/>
-      <exampleBoolean value="false"/>
-    </resource>
-    <resource>
-      <reference>
-        <reference value="StructureDefinition/sdc-questionnaire-candidateExpression"/>
-      </reference>
-      <name value="Candidate Answers Expression"/>
-      <description value="A FHIRPath or CQL Expression, or FHIR Query that resolves to a list of candidate answers (usually based on other answers in the questionnaire
-      or based on information within the health record) for the question item or that establishes context for a group item"/>
-      <exampleBoolean value="false"/>
-    </resource>
-    <resource>
-      <reference>
-        <reference value="StructureDefinition/sdc-questionnaire-answerExpression"/>
-      </reference>
-      <name value="Answer Expression"/>
-      <description value="An expression (FHIRPath, CQL or FHIR Query) that resolves to a list of permitted answers for a question item."/>
-      <exampleBoolean value="false"/>
-    </resource>
-    <resource>
-      <reference>
-        <reference value="StructureDefinition/sdc-questionnaire-contextExpression"/>
-      </reference>
-      <name value="Answer Context Expression"/>
-      <description value="A FHIR Query that resolves to one or more resources that can be displayed to the user to help provide context for answering a question"/>
-      <exampleBoolean value="false"/>
-    </resource>
-    <resource>
-      <reference>
-        <reference value="StructureDefinition/sdc-questionnaire-calculatedExpression"/>
-      </reference>
-      <name value="Calculated Expression"/>
-      <description value="Calculated value for a question answer as determined by an evaluated expression"/>
-      <exampleBoolean value="false"/>
-    </resource>
-    <resource>
-      <reference>
-        <reference value="StructureDefinition/sdc-questionnaire-choiceColumn"/>
-      </reference>
-      <name value="Choice column"/>
-      <description value="Provides guidelines for rendering multi-column choices"/>
-      <exampleBoolean value="false"/>
-    </resource>
-    <resource>
-      <reference>
-        <reference value="StructureDefinition/sdc-questionnaire-width"/>
-      </reference>
-      <name value="Width of column"/>
-      <description value="When used with an item control that causes the question to appear as a column in a table, indicates the width to give to the column for this question."/>
-      <exampleBoolean value="false"/>
-    </resource>
-    <resource>
-      <reference>
-        <reference value="StructureDefinition/sdc-questionnaire-launchContext"/>
-      </reference>
-      <name value="Launch Contexts"/>
-      <description value="Resources that provide context for form processing logic (pre-population, flow-control, drop-down selection, etc.) when creating/displaying/editing a QuestionnaireResponse"/>
-      <exampleBoolean value="false"/>
-    </resource>
-    <resource>
-      <reference>
-        <reference value="StructureDefinition/sdc-questionnaire-enableWhenExpression"/>
-      </reference>
-      <name value="Enable when expression"/>
-      <description value="An expression that returns a boolean value for whether to enable the item"/>
-      <exampleBoolean value="false"/>
-    </resource>
-    <resource>
-      <reference>
         <reference value="StructureDefinition/sdc-questionnaire-isSubject"/>
       </reference>
       <name value="Is subject?"/>
       <description value="If present and true, indicates that the item establishes a different subject for the group in a response"/>
+      <exampleBoolean value="false"/>
+    </resource>
+	    <resource>
+      <reference>
+        <reference value="StructureDefinition/sdc-questionnaireresponse-isSubject"/>
+      </reference>
+      <name value="Is subject (response)?"/>
+      <description value="If present and true, indicates that the item indicates a different subject for this group"/>
       <exampleBoolean value="false"/>
     </resource>
     <resource>
@@ -449,15 +533,7 @@
       <name value="Item extraction context"/>
       <description value="Specifies a query that identifies the resource (or set of resources for a repeating item)  to be extracted from this item once the QuestionnaireResponse is complete."/>
       <exampleBoolean value="false"/>
-    </resource>
-    <resource>
-      <reference>
-        <reference value="StructureDefinition/sdc-questionnaire-lookupQuestionnaire"/>
-      </reference>
-      <name value="Lookup questionnaire"/>
-      <description value="For items of type reference, the reference can be populated either by picking an existing entity or by creating a new one. In the latter case, this Questionnaire allows specifying the Questionnaire to use in creating the target instance. This can be direct (if the Reference is to a Questionnaire) or indirect via mapping if the Reference is to some other sort of resource."/>
-      <exampleBoolean value="false"/>
-    </resource>
+    </resource>  
     <resource>
       <reference>
         <reference value="StructureDefinition/sdc-questionnaire-observationLinkPeriod"/>
@@ -472,6 +548,14 @@
       </reference>
       <name value="Observation extract?"/>
       <description value="If true, indicates that the observation-based approach should be used to extract either the particular item (if extension is defined on an individual question or group based on the code present) or all items in the questionnaire (if defined at the questionnaire root and if they have a code present)"/>
+      <exampleBoolean value="false"/>
+    </resource>
+	    <resource>
+      <reference>
+        <reference value="StructureDefinition/sdc-questionnaire-observation-extract-category"/>
+      </reference>
+      <name value="Observation Extract Category"/>
+      <description value="Indicates the Observation.category value(s) that should appear on extracted Observations for the entire Questionnaire or for the current item and descendant items."/>
       <exampleBoolean value="false"/>
     </resource>
     <resource>
@@ -492,14 +576,6 @@
     </resource>
     <resource>
       <reference>
-        <reference value="StructureDefinition/sdc-questionnaireresponse-isSubject"/>
-      </reference>
-      <name value="Is subject (response)?"/>
-      <description value="If present and true, indicates that the item indicates a different subject for this group"/>
-      <exampleBoolean value="false"/>
-    </resource>
-    <resource>
-      <reference>
         <reference value="StructureDefinition/sdc-questionnaire-performerType"/>
       </reference>
       <name value="Performer type"/>
@@ -516,44 +592,13 @@
     </resource>
     <resource>
       <reference>
-        <reference value="StructureDefinition/sdc-questionnaire-collapsible"/>
-      </reference>
-      <name value="Collapsible"/>
-      <description value="Indicates that the child items of an item are displayed in collapsible form (either collapsed or expanded)"/>
-      <exampleBoolean value="false"/>
-    </resource>
-    <resource>
-      <reference>
-        <reference value="StructureDefinition/sdc-questionnaire-minQuantity"/>
-      </reference>
-      <name value="Min Quantity"/>
-      <description value="The inclusive lower bound on the range of allowed values for a 'quantity' type question"/>
-      <exampleBoolean value="false"/>
-    </resource>
-    <resource>
-      <reference>
-        <reference value="StructureDefinition/sdc-questionnaire-maxQuantity"/>
-      </reference>
-      <name value="Max Quantity"/>
-      <description value="The inclusive upper bound on the range of allowed values for  a 'quantity' type question"/>
-      <exampleBoolean value="false"/>
-    </resource>
-    <resource>
-      <reference>
         <reference value="StructureDefinition/sdc-questionnaire-preferredTerminologyServer"/>
       </reference>
       <name value="Preferred Terminology Server"/>
       <description value="Indicates the terminology server(s) that are known to be capable of returning and potentially expanding the value set(s) associated with the whole questionnaire or a particular group or question within the questionnaire (depending on where the extension appears)."/>
       <exampleBoolean value="false"/>
     </resource>
-    <resource>
-      <reference>
-        <reference value="StructureDefinition/sdc-questionnaire-shortText"/>
-      </reference>
-      <name value="Short Text"/>
-      <description value="Provides a short text for an item. This element is useful for items that require a shorter text when rendered (e.g. when item is displayed on a mobile phone)."/>
-      <exampleBoolean value="false"/>
-    </resource>
+   
     <!--    <resource>
       <extension url="http://hl7.org/fhir/StructureDefinition/implementationguide-spreadsheet-profile">
         <valueBoolean value="true"/>
@@ -690,36 +735,7 @@
       </reference>
       <name value="Questionnaire Is Modular Search Parameter"/>
     </resource>
-    <resource>
-      <reference>
-        <reference value="Questionnaire/demographics"/>
-      </reference>
-      <exampleCanonical value="http://hl7.org/fhir/uv/sdc/StructureDefinition/sdc-questionnaire-pop-exp"/>
-      <!--			<exampleCanonical value="http://hl7.org/fhir/uv/sdc/StructureDefinition/sdc-questionnaire-extr-defn"/>-->
-    </resource>
-    <resource>
-      <reference>
-        <reference value="Questionnaire/questionnaire-sdc-profile-example-render"/>
-      </reference>
-      <name value="SDC-Advanced Rendering"/>
-      <description value="Demo questionnaire showing most of the advanced rendering capabilities of SDC. Each example here is itemized in the Examples page."/>
-      <exampleCanonical value="http://hl7.org/fhir/uv/sdc/StructureDefinition/sdc-questionnaire-render"/>
-    </resource>
-    <resource>
-      <reference>
-        <reference value="Questionnaire/anc-quick-check"/>
-      </reference>
-      <exampleCanonical value="http://hl7.org/fhir/uv/sdc/StructureDefinition/sdc-questionnaire-render"/>
-    </resource>
-    <resource>
-      <reference>
-        <reference value="Questionnaire/questionnaire-sdc-profile-example-form-behavior"/>
-      </reference>
-      <name value="SDC-Advanced Form Behavior"/>
-      <description value="Demo questionnaire showing most of the advanced form behavior capabilities of SDC. Each example here is itemized in the Examples page."/>
-      <exampleCanonical value="http://hl7.org/fhir/uv/sdc/StructureDefinition/sdc-questionnaire-behave"/>
-    </resource>
-    <resource>
+	 <resource>
       <reference>
         <reference value="Bundle/questionnaire-sdc-profile-example"/>
       </reference>
@@ -727,15 +743,7 @@
       <description value="Set of several examples - medication, AHRQ and NCI forms"/>
       <exampleCanonical value="http://hl7.org/fhir/uv/sdc/StructureDefinition/sdc-questionnaire"/>
     </resource>
-    <resource>
-      <reference>
-        <reference value="QuestionnaireResponse/questionnaireresponse-sdc-profile-example"/>
-      </reference>
-      <name value="SDC-Response to Diagnosis NCI Standard Template"/>
-      <description value="Example responses to the questionnaire found in the SDC - Combination list of questionnaires"/>
-      <exampleCanonical value="http://hl7.org/fhir/uv/sdc/StructureDefinition/sdc-questionnaireresponse"/>
-    </resource>
-    <resource>
+	    <resource>
       <reference>
         <reference value="Questionnaire/questionnaire-sdc-profile-example-PHQ9"/>
       </reference>
@@ -743,37 +751,31 @@
       <description value="Patient Health Questionnaire (9 Item) including contained value sets and calculatedExpression"/>
       <exampleCanonical value="http://hl7.org/fhir/uv/sdc/StructureDefinition/sdc-questionnaire"/>
     </resource>
-    <resource>
+	<resource>
       <reference>
-        <reference value="QuestionnaireResponse/questionnaireresponse-sdc-profile-example-PHQ9"/>
+        <reference value="Questionnaire/questionnaire-sdc-profile-example-cap"/>
       </reference>
-      <name value="SDC-Response to PHQ9"/>
-      <description value="Example response to the SDC-PHQ9 questionnaire"/>
-      <exampleCanonical value="http://hl7.org/fhir/uv/sdc/StructureDefinition/sdc-questionnaireresponse"/>
+      <name value="SDC-Pathology"/>
+      <description value="Cancer pathology questionnaire with flow-control extensions"/>
+      <exampleCanonical value="http://hl7.org/fhir/uv/sdc/StructureDefinition/sdc-questionnaire"/>
     </resource>
-    <resource>
+<resource>
       <reference>
-        <reference value="CodeSystem/CSPHQ9"/>
+        <reference value="Questionnaire/questionnaire-sdc-profile-example-framingham-hchd-lhc"/>
       </reference>
-      <name value="SDC-CodeSystem PHQ9"/>
-      <description value="The answer list for questions 1 through 9 on the Patient Health Questionnaire (9 item) form"/>
-      <exampleCanonical value="http://hl7.org/fhir/uv/sdc/StructureDefinition/sdc-codesystem"/>
+      <name value="SDC-Hard Coronary Heart Disease"/>
+      <description value="A made-up form for calculating the 10-year-risk of Hard Coronary Heart Disease. It shows how variables and calculatedExpression can be used to compute for the risk probability."/>
+      <exampleCanonical value="http://hl7.org/fhir/uv/sdc/StructureDefinition/sdc-questionnaire"/>
     </resource>
-    <resource>
+ <resource>
       <reference>
-        <reference value="Questionnaire/questionnaire-sdc-profile-example-PHQ9-search"/>
+        <reference value="Questionnaire/questionnaire-sdc-profile-example-hunger-vital-signs"/>
       </reference>
-      <exampleCanonical value="http://hl7.org/fhir/uv/sdc/StructureDefinition/sdc-questionnaire-adapt-srch"/>
+      <name value="SDC-Hunger Vital Sign"/>
+      <description value="A hunger vital signs form (showing calculatedExpression selecting a value from a list)."/>
+      <exampleCanonical value="http://hl7.org/fhir/uv/sdc/StructureDefinition/sdc-questionnaire"/>
     </resource>
-    <resource>
-      <reference>
-        <reference value="Questionnaire/questionnaire-sdc-profile-example-cqf-PHQ9"/>
-      </reference>
-      <name value="SDC-PHQ9 using an SDC Library"/>
-      <description value="Patient Health Questionnaire using a cqf-expression defined in an SDC Library"/>
-      <exampleCanonical value="http://hl7.org/fhir/uv/sdc/StructureDefinition/sdc-questionnaire-extr-obsn"/>
-    </resource>
-    <resource>
+	 <resource>
       <reference>
         <reference value="Questionnaire/questionnaire-sdc-profile-example-loinc"/>
       </reference>
@@ -781,23 +783,95 @@
       <description value="LOINC perspective on the AHRQ form found in the SDC - Combination set of questionnaires"/>
       <exampleCanonical value="http://hl7.org/fhir/uv/sdc/StructureDefinition/sdc-questionnaire"/>
     </resource>
-    <resource>
+	<resource>
       <reference>
-        <reference value="QuestionnaireResponse/questionnaireresponse-sdc-profile-example-loinc"/>
+        <reference value="Questionnaire/questionnaire-sdc-profile-example-weight-height-tracking-panel"/>
       </reference>
-      <name value="SDC-Response to LOINC AHRQ"/>
-      <description value="Example response to te LOINC AHRQ questionnaire."/>
-      <exampleCanonical value="http://hl7.org/fhir/uv/sdc/StructureDefinition/sdc-questionnaireresponse"/>
+      <name value="SDC-Weight and Height Tracking Panel"/>
+      <description value="A weight and height panel (from LOINC) with a FHIRPath rule for calculating the BMI."/>
+      <exampleCanonical value="http://hl7.org/fhir/uv/sdc/StructureDefinition/sdc-questionnaire"/>
     </resource>
-    <resource>
+	 <resource>
       <reference>
-        <reference value="ValueSet/sdc-profile-example"/>
+        <reference value="Questionnaire/questionnaire-sdc-test-all-data-types"/>
       </reference>
-      <name value="SDC-ValueSet AHRQ_Medication_Q1"/>
-      <description value="The answer list for question 1 on the AHRQ &#39;Medication or Other Substance&#39; form"/>
-      <exampleCanonical value="http://hl7.org/fhir/uv/sdc/StructureDefinition/sdc-valueset"/>
+      <name value="SDC Test Form - All Data Types"/>
+      <description value="A test form that has one of each data type included, useful in checking compatibility against."/>
+      <exampleCanonical value="http://hl7.org/fhir/uv/sdc/StructureDefinition/sdc-questionnaire"/>
     </resource>
-    <resource>
+	<resource>
+      <reference>
+        <reference value="Questionnaire/questionnaire-sdc-profile-example-render"/>
+      </reference>
+      <name value="SDC-Advanced Rendering"/>
+      <description value="Demo questionnaire showing most of the advanced rendering capabilities of SDC. Each example here is itemized in the Examples page."/>
+      <exampleCanonical value="http://hl7.org/fhir/uv/sdc/StructureDefinition/sdc-questionnaire-render"/>
+    </resource>
+	 <resource>
+      <reference>
+        <reference value="Questionnaire/anc-quick-check"/>
+      </reference>
+	  <name value="Questionnaire - ANC Quick Check"/>
+      <description value="A sample questionnaire using itemMedia and itemAnswerMedia extensions."/>
+      <exampleCanonical value="http://hl7.org/fhir/uv/sdc/StructureDefinition/sdc-questionnaire-render"/>
+    </resource>
+<resource>
+      <reference>
+        <reference value="Questionnaire/questionnaire-sdc-profile-example-image-options"/>
+      </reference>
+      <name value="SDC-Example with Image Options"/>
+      <description value="Example questionnaire that shows how to display answer options as images using the rendering-xhtml extension."/>
+      <exampleCanonical value="http://hl7.org/fhir/uv/sdc/StructureDefinition/sdc-questionnaire-render"/>
+    </resource>
+	 <resource>
+      <reference>
+        <reference value="Questionnaire/questionnaire-sdc-profile-example-form-behavior"/>
+      </reference>
+      <name value="SDC-Advanced Form Behavior"/>
+      <description value="Demo questionnaire showing most of the advanced form behavior capabilities of SDC. Each example here is itemized in the Examples page."/>
+      <exampleCanonical value="http://hl7.org/fhir/uv/sdc/StructureDefinition/sdc-questionnaire-behave"/>
+    </resource>
+	 <resource>
+      <reference>
+        <reference value="Questionnaire/questionnaire-sdc-profile-example-context-expression"/>
+      </reference>
+      <name value="SDC-Example using contextExpression"/>
+      <description value="Example to indicate the resources to make available for display to the user to aid in answering the question."/>
+      <exampleCanonical value="http://hl7.org/fhir/uv/sdc/StructureDefinition/sdc-questionnaire-behave"/>
+    </resource>
+	<resource>
+      <reference>
+        <reference value="Questionnaire/questionnaire-sdc-profile-example-ordinal-value"/>
+      </reference>
+      <name value="SDC-Example using ordinalValue and constraint"/>
+      <description value="Example on how to use ordinal value and contraints in a Questionnaire."/>
+      <exampleCanonical value="http://hl7.org/fhir/uv/sdc/StructureDefinition/sdc-questionnaire-behave"/>
+    </resource>
+ <resource>
+      <reference>
+        <reference value="Questionnaire/questionnaire-sdc-test-enableWhen"/>
+      </reference>
+      <name value="SDC Test Form - Enable When"/>
+      <description value="A test form that has a variety of enable when scenarios for testing."/>
+      <exampleCanonical value="http://hl7.org/fhir/uv/sdc/StructureDefinition/sdc-questionnaire-behave"/>
+    </resource>
+	<resource>
+      <reference>
+        <reference value="Questionnaire/questionnaire-sdc-test-nested-groups"/>
+      </reference>
+      <name value="SDC Test Form - Repeats"/>
+      <description value="A test form with repeatable nested groups."/>
+      <exampleCanonical value="http://hl7.org/fhir/uv/sdc/StructureDefinition/sdc-questionnaire-behave"/>
+    </resource>
+	 <resource>
+      <reference>
+        <reference value="Questionnaire/questionnaire-sdc-test-required-radios"/>
+      </reference>
+      <name value="SDC Test Form - Required"/>
+      <description value="A test form with required fields."/>
+      <exampleCanonical value="http://hl7.org/fhir/uv/sdc/StructureDefinition/sdc-questionnaire-behave"/>
+    </resource>
+<resource>
       <reference>
         <reference value="Questionnaire/questionnaire-sdc-profile-example-ussg-fht"/>
       </reference>
@@ -807,61 +881,12 @@
     </resource>
     <resource>
       <reference>
-        <reference value="QuestionnaireResponse/questionnaireresponse-sdc-example-ussg-fht-answers"/>
+        <reference value="Questionnaire/demographics"/>
       </reference>
-      <name value="SDC-Response to LOINC USSG Family History"/>
-      <description value="Example response to the SDC-LOINC USSG Family History questionnaire"/>
-      <exampleCanonical value="http://hl7.org/fhir/uv/sdc/StructureDefinition/sdc-questionnaireresponse"/>
+      <exampleCanonical value="http://hl7.org/fhir/uv/sdc/StructureDefinition/sdc-questionnaire-pop-exp"/>
+      <!--			<exampleCanonical value="http://hl7.org/fhir/uv/sdc/StructureDefinition/sdc-questionnaire-extr-defn"/>-->
     </resource>
-    <resource>
-      <reference>
-        <reference value="Questionnaire/questionnaire-sdc-profile-example-cap"/>
-      </reference>
-      <name value="SDC-Pathology"/>
-      <description value="Cancer pathology questionnaire with flow-control extensions"/>
-      <exampleCanonical value="http://hl7.org/fhir/uv/sdc/StructureDefinition/sdc-questionnaire"/>
-    </resource>
-    <resource>
-      <reference>
-        <reference value="Questionnaire/questionnaire-sdc-profile-example-framingham-hchd-lhc"/>
-      </reference>
-      <name value="SDC-Hard Coronary Heart Disease"/>
-      <description value="A made-up form for calculating the 10-year-risk of Hard Coronary Heart Disease. It shows how variables and calculatedExpression can be used to compute for the risk probability."/>
-      <exampleCanonical value="http://hl7.org/fhir/uv/sdc/StructureDefinition/sdc-questionnaire"/>
-    </resource>
-    <resource>
-      <reference>
-        <reference value="Questionnaire/questionnaire-sdc-profile-example-hunger-vital-signs"/>
-      </reference>
-      <name value="SDC-Hunger Vital Sign"/>
-      <description value="A hunger vital signs form (showing calculatedExpression selecting a value from a list)."/>
-      <exampleCanonical value="http://hl7.org/fhir/uv/sdc/StructureDefinition/sdc-questionnaire"/>
-    </resource>
-    <resource>
-      <reference>
-        <reference value="Questionnaire/questionnaire-sdc-profile-example-weight-height-tracking-panel"/>
-      </reference>
-      <name value="SDC-Weight and Height Tracking Panel"/>
-      <description value="A weight and height panel (from LOINC) with a FHIRPath rule for calculating the BMI."/>
-      <exampleCanonical value="http://hl7.org/fhir/uv/sdc/StructureDefinition/sdc-questionnaire"/>
-    </resource>
-    <resource>
-      <reference>
-        <reference value="Questionnaire/questionnaire-sdc-test-all-data-types"/>
-      </reference>
-      <name value="SDC Test Form - All Data Types"/>
-      <description value="A test form that has one of each data type included, useful in checking compatibility against."/>
-      <exampleCanonical value="http://hl7.org/fhir/uv/sdc/StructureDefinition/sdc-questionnaire"/>
-    </resource>
-    <resource>
-      <reference>
-        <reference value="Questionnaire/questionnaire-sdc-test-enableWhen"/>
-      </reference>
-      <name value="SDC Test Form - Enable When"/>
-      <description value="A test form that has a variety of enable when scenarios for testing."/>
-      <exampleCanonical value="http://hl7.org/fhir/uv/sdc/StructureDefinition/sdc-questionnaire-behave"/>
-    </resource>
-    <resource>
+ <resource>
       <reference>
         <reference value="Questionnaire/questionnaire-sdc-test-fhirpath-prepop-candexpr"/>
       </reference>
@@ -869,7 +894,7 @@
       <description value="A test form with a FHIRPath based prepopulation example that includes a candidate expression."/>
       <exampleCanonical value="http://hl7.org/fhir/uv/sdc/StructureDefinition/sdc-questionnaire-pop-exp"/>
     </resource>
-    <resource>
+   <resource>
       <reference>
         <reference value="Questionnaire/questionnaire-sdc-test-fhirpath-prepop-initialexpression"/>
       </reference>
@@ -885,45 +910,7 @@
       <description value="A test form with a FhirPath based prepopulation and StructureMap population that leverages a source query to extract data outside the launch context."/>
       <exampleCanonical value="http://hl7.org/fhir/uv/sdc/StructureDefinition/sdc-questionnaire-pop-exp"/>
     </resource>
-    <resource>
-      <reference>
-        <reference value="Bundle/map-population-example"/>
-      </reference>
-      <name value="SDC Map population source bundle example"/>
-      <description value="An example of a Batch response containing search results used as an input to a map-based population process"/>
-      <exampleBoolean value="true"/>
-    </resource>
-    <resource>
-      <reference>
-        <reference value="StructureMap/questionnaire-population-transform"/>
-      </reference>
-      <name value="SDC Map population StructureMap example"/>
-      <description value="An example of a StructureMap used to support the population of a QuestionnaireResponse from queried data"/>
-      <exampleBoolean value="true"/>
-    </resource>
-    <resource>
-      <reference>
-        <reference value="QuestionnaireResponse/map-populate-out"/>
-      </reference>
-      <name value="SDC Map population StructureMap example"/>
-      <description value="An example showing the result of a StructureMap-based population operation"/>
-      <exampleCanonical value="http://hl7.org/fhir/uv/sdc/StructureDefinition/sdc-questionnaireresponse"/>
-    </resource>
-    <resource>
-      <reference>
-        <reference value="Questionnaire/SDOHCC-QuestionnaireHungerVitalSign"/>
-      </reference>
-      <exampleCanonical value="http://hl7.org/fhir/uv/sdc/StructureDefinition/sdc-questionnaire-extr-smap"/>
-    </resource>
-    <resource>
-      <reference>
-        <reference value="Questionnaire/questionnaire-sdc-test-initialvalue"/>
-      </reference>
-      <name value="SDC Test Form - Initial Value"/>
-      <description value="A test form with that uses initial values."/>
-      <exampleCanonical value="http://hl7.org/fhir/uv/sdc/StructureDefinition/sdc-questionnaire-pop-exp"/>
-    </resource>
-    <resource>
+<resource>
       <reference>
         <reference value="Questionnaire/questionnaire-sdc-test-initialvalue-multiple"/>
       </reference>
@@ -931,61 +918,143 @@
       <description value="A test form with a question that has multiple initial values."/>
       <exampleCanonical value="http://hl7.org/fhir/uv/sdc/StructureDefinition/sdc-questionnaire-pop-exp"/>
     </resource>
-    <resource>
+	 <resource>
       <reference>
-        <reference value="Questionnaire/questionnaire-sdc-test-nested-groups"/>
+        <reference value="Questionnaire/questionnaire-sdc-test-initialvalue"/>
       </reference>
-      <name value="SDC Test Form - Repeats"/>
-      <description value="A test form with repeatable nested groups."/>
-      <exampleCanonical value="http://hl7.org/fhir/uv/sdc/StructureDefinition/sdc-questionnaire-behave"/>
+      <name value="SDC Test Form - Initial Value"/>
+      <description value="A test form with that uses initial values."/>
+      <exampleCanonical value="http://hl7.org/fhir/uv/sdc/StructureDefinition/sdc-questionnaire-pop-exp"/>
     </resource>
-    <resource>
+ <resource>
       <reference>
-        <reference value="Questionnaire/questionnaire-sdc-test-required-radios"/>
+        <reference value="Questionnaire/questionnaire-sdc-profile-example-cqf-PHQ9"/>
       </reference>
-      <name value="SDC Test Form - Required"/>
-      <description value="A test form with required fields."/>
-      <exampleCanonical value="http://hl7.org/fhir/uv/sdc/StructureDefinition/sdc-questionnaire-behave"/>
+      <name value="SDC-PHQ9 using an SDC Library"/>
+      <description value="Patient Health Questionnaire using a cqf-expression defined in an SDC Library"/>
+      <exampleCanonical value="http://hl7.org/fhir/uv/sdc/StructureDefinition/sdc-questionnaire-extr-obsn"/>
     </resource>
-    <resource>
+	 <resource>
       <reference>
         <reference value="Questionnaire/questionnaire-sdc-profile-example-multi-subject"/>
       </reference>
       <exampleCanonical value="http://hl7.org/fhir/uv/sdc/StructureDefinition/sdc-questionnaire-extr-obsn"/>
     </resource>
-    <resource>
+	 <resource>
+      <reference>
+        <reference value="Questionnaire/SDOHCC-QuestionnaireHungerVitalSign"/>
+      </reference>
+      <exampleCanonical value="http://hl7.org/fhir/uv/sdc/StructureDefinition/sdc-questionnaire-extr-smap"/>
+    </resource>
+	<resource>
+      <reference>
+        <reference value="Questionnaire/questionnaire-sdc-profile-example-PHQ9-search"/>
+      </reference>
+      <exampleCanonical value="http://hl7.org/fhir/uv/sdc/StructureDefinition/sdc-questionnaire-adapt-srch"/>
+    </resource> 
+	 <resource>
+      <reference>
+        <reference value="QuestionnaireResponse/map-populate-out"/>
+      </reference>
+      <name value="SDC Map population StructureMap example"/>
+      <description value="An example showing the result of a StructureMap-based population operation"/>
+      <exampleCanonical value="http://hl7.org/fhir/uv/sdc/StructureDefinition/sdc-questionnaireresponse"/>
+    </resource> 
+	    <resource>
+      <reference>
+        <reference value="StructureMap/questionnaire-population-transform"/>
+      </reference>
+      <name value="SDC Map population StructureMap example"/>
+      <description value="An example of a StructureMap used to support the population of a QuestionnaireResponse from queried data"/>
+      <exampleBoolean value="true"/>
+    </resource>
+	<resource>
+      <reference>
+        <reference value="QuestionnaireResponse/questionnaireresponse-sdc-example-ussg-fht-answers"/>
+      </reference>
+      <name value="SDC-Response to LOINC USSG Family History"/>
+      <description value="Example response to the SDC-LOINC USSG Family History questionnaire"/>
+      <exampleCanonical value="http://hl7.org/fhir/uv/sdc/StructureDefinition/sdc-questionnaireresponse"/>
+    </resource>   
+	 <resource>
+      <reference>
+        <reference value="QuestionnaireResponse/questionnaireresponse-sdc-profile-example-PHQ9"/>
+      </reference>
+      <name value="SDC-Response to PHQ9"/>
+      <description value="Example response to the SDC-PHQ9 questionnaire"/>
+      <exampleCanonical value="http://hl7.org/fhir/uv/sdc/StructureDefinition/sdc-questionnaireresponse"/>
+    </resource>
+	  <resource>
+      <reference>
+        <reference value="QuestionnaireResponse/questionnaireresponse-sdc-profile-example-loinc"/>
+      </reference>
+      <name value="SDC-Response to LOINC AHRQ"/>
+      <description value="Example response to te LOINC AHRQ questionnaire."/>
+      <exampleCanonical value="http://hl7.org/fhir/uv/sdc/StructureDefinition/sdc-questionnaireresponse"/>
+    </resource>
+   <resource>
       <reference>
         <reference value="QuestionnaireResponse/questionnaireresponse-sdc-profile-example-multi-subject"/>
       </reference>
       <name value="Multi-subject QuestionnaireResponse example"/>
       <description value="Example of a QuestionnaireResponse for a multi-subject Questionnaire"/>
       <exampleCanonical value="http://hl7.org/fhir/uv/sdc/StructureDefinition/sdc-questionnaireresponse"/>
+    </resource>  
+    <resource>
+      <reference>
+        <reference value="QuestionnaireResponse/questionnaireresponse-sdc-profile-example"/>
+      </reference>
+      <name value="SDC-Response to Diagnosis NCI Standard Template"/>
+      <description value="Example responses to the questionnaire found in the SDC - Combination list of questionnaires"/>
+      <exampleCanonical value="http://hl7.org/fhir/uv/sdc/StructureDefinition/sdc-questionnaireresponse"/>
+    </resource>
+ <resource>
+      <reference>
+        <reference value="QuestionnaireResponse/adaptive-questionnaireresponse-sdc-example-phq9"/>
+      </reference>
+      <name value="SDC-Response to Adaptive PHQ9"/>
+      <description value="Example response to the Adaptive SDC-PHQ9 questionnaire"/>
+      <exampleCanonical value="http://hl7.org/fhir/uv/sdc/StructureDefinition/sdc-questionnaireresponse-adapt"/>
+    </resource>
+	 <resource>
+      <reference>
+        <reference value="ValueSet/sdc-profile-example"/>
+      </reference>
+      <name value="SDC-ValueSet AHRQ_Medication_Q1"/>
+      <description value="The answer list for question 1 on the AHRQ &#39;Medication or Other Substance&#39; form"/>
+      <exampleCanonical value="http://hl7.org/fhir/uv/sdc/StructureDefinition/sdc-valueset"/>
+    </resource> 
+ <resource>
+      <reference>
+        <reference value="ValueSet/sdc-question-library-states"/>
+      </reference>
+      <exampleCanonical value="http://hl7.org/fhir/uv/sdc/StructureDefinition/sdc-valueset"/>
     </resource>
     <resource>
       <reference>
-        <reference value="Task/example"/>
+        <reference value="CodeSystem/CSPHQ9"/>
       </reference>
-      <name value="Task-based solicitation example"/>
-      <description value="Shows how completion of a questionnaire can be solicited with Task alone"/>
-      <exampleCanonical value="http://hl7.org/fhir/uv/sdc/StructureDefinition/sdc-task"/>
+      <name value="SDC-CodeSystem PHQ9"/>
+      <description value="The answer list for questions 1 through 9 on the Patient Health Questionnaire (9 item) form"/>
+      <exampleCanonical value="http://hl7.org/fhir/uv/sdc/StructureDefinition/sdc-codesystem"/>
     </resource>
-    <resource>
+      <resource>
       <reference>
-        <reference value="Task/request-task-example"/>
+        <reference value="Library/sdc-CHF"/>
       </reference>
-      <name value="Request-based solicitation example - Task"/>
-      <description value="Shows how completion of a questionnaire can be solicited with Task pointing to a ServiceRequest"/>
-      <exampleCanonical value="http://hl7.org/fhir/uv/sdc/StructureDefinition/sdc-task"/>
+      <name value="Congestive Heart Failure Logic"/>
+      <description value="Logic for an example congestive heart failure pathway"/>
+      <exampleCanonical value="http://hl7.org/fhir/uv/sdc/StructureDefinition/sdc-library"/>
     </resource>
-    <resource>
+	   <resource>
       <reference>
-        <reference value="ServiceRequest/example"/>
+        <reference value="Parameters/sdc-modular-root-assembled"/>
       </reference>
-      <name value="Request-based solicitation example - ServiceRequest"/>
-      <description value="Shows a ServiceRequest soliciting completion of a questionnaire"/>
-      <exampleCanonical value="http://hl7.org/fhir/uv/sdc/StructureDefinition/sdc-servicerequest"/>
+      <name value="Example $assemble operation response"/>
+      <description value="Shows the result of performing a $assemble operation on the [modular-root](Questionnaire-sdc-modular-root.html) questionnaire"/>
+      <exampleCanonical value="http://hl7.org/fhir/uv/sdc/StructureDefinition/parameters-questionnaire-assemble-out"/>
     </resource>
-    <resource>
+  <resource>
       <reference>
         <reference value="Questionnaire/sdc-modular-root"/>
       </reference>
@@ -1003,60 +1072,38 @@
       </reference>
       <exampleCanonical value="http://hl7.org/fhir/uv/sdc/StructureDefinition/sdc-questionnaire-modular"/>
     </resource>
-    <resource>
+      <resource>
       <reference>
-        <reference value="Parameters/sdc-modular-root-assembled"/>
+        <reference value="ServiceRequest/example"/>
       </reference>
-      <name value="Example $assemble operation response"/>
-      <description value="Shows the result of performing a $assemble operation on the [modular-root](Questionnaire-sdc-modular-root.html) questionnaire"/>
-      <exampleCanonical value="http://hl7.org/fhir/uv/sdc/StructureDefinition/parameters-questionnaire-assemble-out"/>
+      <name value="Request-based solicitation example - ServiceRequest"/>
+      <description value="Shows a ServiceRequest soliciting completion of a questionnaire"/>
+      <exampleCanonical value="http://hl7.org/fhir/uv/sdc/StructureDefinition/sdc-servicerequest"/>
+    </resource>
+	 <resource>
+      <reference>
+        <reference value="Task/example"/>
+      </reference>
+      <name value="Task-based solicitation example"/>
+      <description value="Shows how completion of a questionnaire can be solicited with Task alone"/>
+      <exampleCanonical value="http://hl7.org/fhir/uv/sdc/StructureDefinition/sdc-task"/>
     </resource>
     <resource>
       <reference>
-        <reference value="Library/sdc-CHF"/>
+        <reference value="Task/request-task-example"/>
       </reference>
-      <name value="Congestive Heart Failure Logic"/>
-      <description value="Logic for an example congestive heart failure pathway"/>
-      <exampleCanonical value="http://hl7.org/fhir/uv/sdc/StructureDefinition/sdc-library"/>
+      <name value="Request-based solicitation example - Task"/>
+      <description value="Shows how completion of a questionnaire can be solicited with Task pointing to a ServiceRequest"/>
+      <exampleCanonical value="http://hl7.org/fhir/uv/sdc/StructureDefinition/sdc-task"/>
     </resource>
     <resource>
       <reference>
-        <reference value="ValueSet/sdc-question-library-states"/>
+        <reference value="Bundle/map-population-example"/>
       </reference>
-      <exampleCanonical value="http://hl7.org/fhir/uv/sdc/StructureDefinition/sdc-valueset"/>
-    </resource>
-    <resource>
-      <reference>
-        <reference value="QuestionnaireResponse/adaptive-questionnaireresponse-sdc-example-phq9"/>
-      </reference>
-      <name value="SDC-Response to Adaptive PHQ9"/>
-      <description value="Example response to the Adaptive SDC-PHQ9 questionnaire"/>
-      <exampleCanonical value="http://hl7.org/fhir/uv/sdc/StructureDefinition/sdc-questionnaireresponse-adapt"/>
-    </resource>
-    <resource>
-      <reference>
-        <reference value="Questionnaire/questionnaire-sdc-profile-example-image-options"/>
-      </reference>
-      <name value="SDC-Example with Image Options"/>
-      <description value="Example questionnaire that shows how to display answer options as images using the rendering-xhtml extension."/>
-      <exampleCanonical value="http://hl7.org/fhir/uv/sdc/StructureDefinition/sdc-questionnaire-render"/>
-    </resource>
-    <resource>
-      <reference>
-        <reference value="Questionnaire/questionnaire-sdc-profile-example-ordinal-value"/>
-      </reference>
-      <name value="SDC-Example using ordinalValue and constraint"/>
-      <description value="Example on how to use ordinal value and contraints in a Questionnaire."/>
-      <exampleCanonical value="http://hl7.org/fhir/uv/sdc/StructureDefinition/sdc-questionnaire-behave"/>
-    </resource>
-    <resource>
-      <reference>
-        <reference value="Questionnaire/questionnaire-sdc-profile-example-context-expression"/>
-      </reference>
-      <name value="SDC-Example using contextExpression"/>
-      <description value="Example to indicate the resources to make available for display to the user to aid in answering the question."/>
-      <exampleCanonical value="http://hl7.org/fhir/uv/sdc/StructureDefinition/sdc-questionnaire-behave"/>
-    </resource>
+      <name value="SDC Map population source bundle example"/>
+      <description value="An example of a Batch response containing search results used as an input to a map-based population process"/>
+      <exampleBoolean value="true"/>
+    </resource>   
     <page>
       <extension url="http://hl7.org/fhir/StructureDefinition/structuredefinition-standards-status">
         <valueCode value="informative"/>
