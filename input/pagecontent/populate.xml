@@ -403,7 +403,7 @@
     The 'logical' query performed for the above Questionnaire item being populated on August. 31 might look like this:
   </p>
   <code>
-    [base]?Observation?subject=[questionnaire response subject id]&amp;code=http%3A//loinc.org|29463-7,http%3A//loinc.org|3141-9,http%3A//loinc.org|8341-0&amp;status=completed&amp;date=ge2018-06-02&amp;_sort=-date&amp;_count=1
+    [base]?Observation?subject=[questionnaire response subject id]&amp;code=http%3A//loinc.org|29463-7,http%3A//loinc.org|3141-9,http%3A//loinc.org|8341-0&amp;status=final,amended,corrected&amp;date=ge2018-06-02&amp;_sort=-date&amp;_count=1
   </code>
   <p>
     In practice, the server might not support the _sort or _count parameters, so the filtering for "most recent" might need to be done locally - especially if
@@ -581,7 +581,7 @@
       about whether they would like to change to the new calculated answer.  (Note that this may trigger still further updates.  Users should have a mechanism
       to cancel further prompts for updates if they feel bombarded.)</li>
     <li>
-      If a questionnaire is stored in partially completed state and then is re-opened sometime later for editing, it's possible that originally populated
+      If a questionnaire is stored in partially-completed state and then is re-opened sometime later for editing, it's possible that originally populated
       values could be out-of-date.  Systems MAY choose to leave already populated data elements as they are.  Alternatively, systems MAY re-execute queries to
       determine whether the new populated value would differ from the current value and, if so, prompt the user as to whether the question should be updated to
       the 'new' auto-populated value.  Systems SHALL NOT replace already filled in answers without user approval.</li>
