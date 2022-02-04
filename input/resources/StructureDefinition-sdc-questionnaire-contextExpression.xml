@@ -5,7 +5,7 @@
   <name value="ContextExpressionExtension"/>
   <title value="Answer Context Expression"/>
   <status value="draft"/>
-  <description value="A FHIR Query that resolves to one or more resources that can be displayed to the user to help provide context for answering a question. For example, if the question is &quot;Has the patient discussed this issue on any visits in the past year?&quot;, the contextExpression might return the set of patient&#39;s encounters for the prior 12 month period to help jog the practitioner&#39;s memory."/>
+  <description value="A FHIR Query that resolves to one or more resources that can be displayed to the user to help provide context for answering a question. For example, if the question is &quot;Has the patient discussed this issue on any visits in the past year?&quot;, the contextExpression might return the set of patient&#39;s encounters for the prior 12 month period to help jog the practitioner&#39;s memory. If there are multiple repetitions of this extension, then each is providing a distinct set of context.  For example, one repetition might expose 'potentially relevant procedures' while another might expose 'potentially relevant encounters'."/>
   <fhirVersion value="4.0.1"/>
   <kind value="complex-type"/>
   <abstract value="false"/>

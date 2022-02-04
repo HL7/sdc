@@ -5,7 +5,7 @@
   <name value="EndpointExtension"/>
   <title value="Endpoint"/>
   <status value="draft"/>
-  <description value="The base URL for the server to which questionnaire response associated with this questionnaire should be submitted."/>
+  <description value="The base URL for the server(s) to which questionnaire response associated with this questionnaire should be submitted. If multiple repetitions are present, the completed form should be sent to all listed endpoints."/>
   <fhirVersion value="4.0.1"/>
   <kind value="complex-type"/>
   <abstract value="false"/>
@@ -20,7 +20,7 @@
     <element id="Extension">
       <path value="Extension"/>
       <short value="Where to send answers"/>
-      <definition value="The base URL for the server to which questionnaire response associated with this questionnaire should be submitted."/>
+      <definition value="The base URL for the server to which questionnaire response associated with this questionnaire should be submitted. If multiple repetitions are present, the completed form should be sent to all listed endpoints."/>
       <comment value="Indicates that the form has been designed with an expectation that it will be submitted to the specified URI.  If multiple endpoints are specified, expectation is that answers are submitted to all endpoints.&#xA;&#xA;If no end-point is specified, then the form is not exclusively designed to be submitted to a specific site.  If and where the form needs to be submitted or how the form should be internally processed must be inferred from external context or system business rules.&#xA;&#xA;Endpoints may have expectations around authorization, etc.  Some of this may be learned by consulting the CapabilityStatement associated with the endpoint."/>
       <min value="0"/>
       <max value="*"/>

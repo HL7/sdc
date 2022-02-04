@@ -136,7 +136,7 @@
     Observation-based population</a> mechanism.  It takes advantage of the fact that most questions in the healthcare space typically
     correspond to the <code>value</code> element of an Observation.  It also takes advantage of the <code>Questionnaire.item.code</code> element that
     identifies what a concept each question or group corresponds to.  The <a href="StructureDefinition-sdc-questionnaire-extr-obsn.html">SDC Questionnaire Extract - Observation</a> profile 
-    has been created to support this mechanism. 
+    has been created to support this mechanism. An example for this profile can be found <a href="Questionnaire-questionnaire-sdc-profile-example-cqf-PHQ9.html">here</a>.
   </p>
   <p>
     To use this method:
@@ -331,7 +331,7 @@ If an item is presumed to be extracted, it will extract if there are item.codes 
   <p>
     This approach to extraction is more generic.  It supports extracting data into any type of FHIR resource rather than being limited to only Observation.
     It also supports more Observation data elements than can be gathered using the Observation element - for example, explicit effective time ranges,
-    interpretations, comments, etc.  The <a href="StructureDefinition-sdc-questionnaire-extr-defn.html">SDC Questionnaire Extract - Definition</a> profile has been created to support this mechanism.
+    interpretations, comments, etc.  The <a href="StructureDefinition-sdc-questionnaire-extr-defn.html">SDC Questionnaire Extract - Definition</a> profile has been created to support this mechanism. 
   </p>
   <p>
     To use this method:
@@ -421,7 +421,7 @@ If an item is presumed to be extracted, it will extract if there are item.codes 
     between data and Questionnaire to be maintained independently and to draw on shared sources across Questionnaires.  This can be an advantage in
     certain environments where the content of the questionnaire may need tight control, but the data environment can be more dynamic.  This comes at the cost
     of requiring expertise in the <a href="{{site.data.fhir.path}}mapping-language.html">FHIR mapping language</a>, which is not (yet?) a common skill. 
-    The <a href="StructureDefinition-sdc-questionnaire-extr-smap.html">SDC Questionnaire Extract - StructureMap</a> profile has been created to support this mechanism.
+    The <a href="StructureDefinition-sdc-questionnaire-extr-smap.html">SDC Questionnaire Extract - StructureMap</a> profile has been created to support this mechanism. An example for this profile can be found <a href="Questionnaire-SDOHCC-QuestionnaireHungerVitalSign.html">here</a>.
   </p>
   <p>
     To use this method:

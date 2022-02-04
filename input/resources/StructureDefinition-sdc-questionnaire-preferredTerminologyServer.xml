@@ -11,7 +11,7 @@
   <name value="PreferredTerminologyServer"/>
   <title value="Preferred terminology server"/>
   <status value="draft"/>
-  <description value="Indicates the terminology server(s) that are known to be capable of returning and potentially expanding the value set(s) associated with the whole questionnaire or a particular group or question within the questionnaire (depending on where the extension appears).  If a full URL is not provided AND the requested query is a terminology operation (e.g. $lookup or $expand) the client SHOULD execute the operation against the preferredTerminologyServer rather than the local repository."/>
+  <description value="Indicates the terminology server(s) that are known to be capable of returning and potentially expanding the value set(s) associated with the whole questionnaire or a particular group or question within the questionnaire (depending on where the extension appears).  If a full URL is not provided AND the requested query is a terminology operation (e.g. $lookup or $expand) the client SHOULD execute the operation against (one of) the preferredTerminologyServer(s) rather than the local repository."/>
   <purpose value="Not all terminology servers will necessarily have access to the codes.  If a questionnaire points to value sets, the rendering engine needs to know where to get a current expansion."/>
   <fhirVersion value="4.0.1"/>
   <kind value="complex-type"/>
