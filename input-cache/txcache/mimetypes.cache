@@ -81,3 +81,59 @@ e: {
   "error" : ""
 }
 -------------------------------------------------------------------------------------
+{"hierarchical" : false, "valueSet" :{
+  "resourceType" : "ValueSet",
+  "compose" : {
+    "include" : [{
+      "system" : "urn:ietf:bcp:13",
+      "concept" : [{
+        "code" : "application/sparql-results+xml",
+        "display" : "SPARQL"
+      },
+      {
+        "code" : "application/sql",
+        "display" : "SQL"
+      },
+      {
+        "code" : "application/xquery",
+        "display" : "X-Query"
+      }]
+    }]
+  }
+}}####
+e: {
+  "valueSet" : {
+  "resourceType" : "ValueSet",
+  "language" : "en",
+  "status" : "active",
+  "expansion" : {
+    "identifier" : "urn:uuid:0cef93f6-a9f5-45cc-a848-f42fbf0389a9",
+    "timestamp" : "2022-02-16T15:16:31.278Z",
+    "parameter" : [{
+      "name" : "limitedExpansion",
+      "valueBoolean" : true
+    },
+    {
+      "name" : "excludeNested",
+      "valueBoolean" : true
+    }],
+    "contains" : [{
+      "system" : "urn:ietf:bcp:13",
+      "code" : "application/sparql-results+xml",
+      "display" : "SPARQL"
+    },
+    {
+      "system" : "urn:ietf:bcp:13",
+      "code" : "application/sql",
+      "display" : "SQL"
+    },
+    {
+      "system" : "urn:ietf:bcp:13",
+      "code" : "application/xquery",
+      "display" : "X-Query"
+    }]
+  }
+},
+  "error" : ""
+}
+-------------------------------------------------------------------------------------
