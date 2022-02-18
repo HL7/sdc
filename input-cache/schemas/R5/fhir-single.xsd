@@ -47,7 +47,7 @@
   POSSIBILITY OF SUCH DAMAGE.
   
 
-  Generated on Tue, Feb 15, 2022 14:08+0000 for FHIR v4.6.0 
+  Generated on Fri, Feb 18, 2022 02:16+0000 for FHIR v4.6.0 
 -->
 <xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns="http://hl7.org/fhir" xmlns:xhtml="http://www.w3.org/1999/xhtml" xmlns:xml="http://www.w3.org/XML/1998/namespace" targetNamespace="http://hl7.org/fhir" elementFormDefault="qualified" version="4.6.0">
   <!-- Note: When using this schema with some tools, it may also be necessary to declare xmlns:xml="http://www.w3.org/XML/1998/namespace", however this causes performance issues with other tools and thus is not in the base schemas. -->
@@ -27742,13 +27742,11 @@ RegisteredName | UserFriendlyName | PatientReportedName.</xs:documentation>
               <xs:documentation xml:lang="en">Indicates whether this record was captured as an original primary source-of-truth record rather than a secondary 'reported' record. A value &quot;true&quot; means this is a primary record of the immunization.</xs:documentation>
            </xs:annotation>
           </xs:element>
-          <xs:choice minOccurs="0" maxOccurs="1" >
+          <xs:element name="informationSource" minOccurs="0" maxOccurs="1" type="CodeableReference">
             <xs:annotation>
               <xs:documentation xml:lang="en">Typically the source of the data when the report of the immunization event is not based on information from the person who administered the vaccine.</xs:documentation>
-            </xs:annotation>
-            <xs:element name="informationSourceCodeableConcept" type="CodeableConcept"/>
-            <xs:element name="informationSourceReference" type="Reference"/>
-          </xs:choice>
+           </xs:annotation>
+          </xs:element>
           <xs:element name="location" minOccurs="0" maxOccurs="1" type="Reference">
             <xs:annotation>
               <xs:documentation xml:lang="en">The service delivery location where the vaccine administration occurred.</xs:documentation>

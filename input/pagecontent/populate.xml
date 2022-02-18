@@ -498,9 +498,10 @@
       indicate the resources to make available for display to the user to aid in answering the question.  The information SHOULD be made available through user
       action (clicking a button or link to launch a separate window/dialog) rather than being presented by default.</li>
   </ol>
-  <!--  <p>
-    An example of a questionnaire using this approach can be found <a href="todo">here</a>.
-  </p>-->
+  <p>
+    Examples of questionnaires using this approach include <a href="Questionnaire-demographics.html">this</a>, <a href="Questionnaire-questionnaire-sdc-test-fhirpath-prepop-candexpr.html">this</a>,
+    <a href="Questionnaire-questionnaire-sdc-test-fhirpath-prepop-initialexpression.html">this</a> and <a href="Questionnaire-questionnaire-sdc-test-fhirpath-prepop-source-query.html">this</a>.
+  </p>
   <p>
     Considerations and rules when using this approach:
   </p>
@@ -671,8 +672,8 @@
   </pre>
   <p>
     To populate the QuestionnaireResponse, evaluate the FHIRPaths in the sourceQueries batch, execute the sourceQueries batch and then execute the StructureMap
-    on the resulting Bundle.  The result of that will be the pre-populated QuestionnaireResponse.
-    <!--A sample questionnaire that shows this approach can be found <a href="todo">here</a>.-->
+    on the resulting Bundle.  The result of that will be the pre-populated QuestionnaireResponse.  A sample questionnaire that shows this approach can be found 
+    <a href="Questionnaire-questionnaire-sdc-test-fhirpath-prepop-source-query.html">here</a>.
   </p>
   <p>
     Considerations when using this approach:
