@@ -47,7 +47,7 @@
   POSSIBILITY OF SUCH DAMAGE.
   
 
-  Generated on Fri, Feb 18, 2022 02:16+0000 for FHIR v4.6.0 
+  Generated on Mon, Feb 28, 2022 22:25+0000 for FHIR v4.6.0 
 -->
 <xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns="http://hl7.org/fhir" xmlns:xhtml="http://www.w3.org/1999/xhtml" xmlns:xml="http://www.w3.org/XML/1998/namespace" targetNamespace="http://hl7.org/fhir" elementFormDefault="qualified" version="4.6.0">
   <!-- Note: When using this schema with some tools, it may also be necessary to declare xmlns:xml="http://www.w3.org/XML/1998/namespace", however this causes performance issues with other tools and thus is not in the base schemas. -->
@@ -791,6 +791,56 @@
     <xs:complexContent>
        <xs:extension base="Element">
          <xs:attribute name="value" type="EventResourceTypeEnum" use="optional"/>
+       </xs:extension>
+     </xs:complexContent>
+  </xs:complexType>
+  <xs:simpleType name="FHIRPathTypesEnum">
+    <xs:restriction base="code-primitive">
+      <xs:enumeration value="http://hl7.org/fhirpath/System.String">
+        <xs:annotation>
+          <xs:documentation xml:lang="en">String</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="http://hl7.org/fhirpath/System.Boolean">
+        <xs:annotation>
+          <xs:documentation xml:lang="en">Boolean</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="http://hl7.org/fhirpath/System.Date">
+        <xs:annotation>
+          <xs:documentation xml:lang="en">Date</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="http://hl7.org/fhirpath/System.DateTime">
+        <xs:annotation>
+          <xs:documentation xml:lang="en">DateTime</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="http://hl7.org/fhirpath/System.Decimal">
+        <xs:annotation>
+          <xs:documentation xml:lang="en">Decimal</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="http://hl7.org/fhirpath/System.Integer">
+        <xs:annotation>
+          <xs:documentation xml:lang="en">Integer</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="http://hl7.org/fhirpath/System.Time">
+        <xs:annotation>
+          <xs:documentation xml:lang="en">Time</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:complexType name="FHIRPathTypes">
+    <xs:annotation>
+      <xs:documentation xml:lang="en"></xs:documentation>
+      <xs:documentation xml:lang="en">If the element is present, it must have either a @value, an @id, or extensions</xs:documentation>
+    </xs:annotation>
+    <xs:complexContent>
+       <xs:extension base="Element">
+         <xs:attribute name="value" type="FHIRPathTypesEnum" use="optional"/>
        </xs:extension>
      </xs:complexContent>
   </xs:complexType>
@@ -5976,7 +6026,7 @@ The type is the Canonical URL of Resource Definition that is the type this refer
   </xs:complexType>
   <xs:complexType name="CodeableReference">
     <xs:annotation>
-      <xs:documentation xml:lang="en">A reference to a resource (by instance), or instead, a reference to a cencept defined in a terminology or ontology (by class).</xs:documentation>
+      <xs:documentation xml:lang="en">A reference to a resource (by instance), or instead, a reference to a concept defined in a terminology or ontology (by class).</xs:documentation>
       <xs:documentation xml:lang="en">If the element is present, it must have a value for at least one of the defined elements, an @id referenced from the Narrative, or extensions</xs:documentation>
     </xs:annotation>
     <xs:complexContent>
@@ -5984,7 +6034,7 @@ The type is the Canonical URL of Resource Definition that is the type this refer
         <xs:sequence>
           <xs:element name="concept" type="CodeableConcept" minOccurs="0" maxOccurs="1">
             <xs:annotation>
-              <xs:documentation xml:lang="en">A reference to a concept - e.g. the information is identified by it's general classto the degree of precision found in the terminology.</xs:documentation>
+              <xs:documentation xml:lang="en">A reference to a concept - e.g. the information is identified by its general class to the degree of precision found in the terminology.</xs:documentation>
             </xs:annotation>
           </xs:element>
           <xs:element name="reference" type="Reference" minOccurs="0" maxOccurs="1">
@@ -6004,17 +6054,17 @@ The type is the Canonical URL of Resource Definition that is the type this refer
     <xs:complexContent>
       <xs:extension base="DataType">
         <xs:sequence>
-          <xs:element name="type" type="Coding" minOccurs="1" maxOccurs="unbounded">
+          <xs:element name="type" type="Coding" minOccurs="0" maxOccurs="unbounded">
             <xs:annotation>
               <xs:documentation xml:lang="en">An indication of the reason that the entity signed this document. This may be explicitly included as part of the signature information and can be used when determining accountability for various actions concerning the document.</xs:documentation>
             </xs:annotation>
           </xs:element>
-          <xs:element name="when" type="instant" minOccurs="1" maxOccurs="1">
+          <xs:element name="when" type="instant" minOccurs="0" maxOccurs="1">
             <xs:annotation>
               <xs:documentation xml:lang="en">When the digital signature was signed.</xs:documentation>
             </xs:annotation>
           </xs:element>
-          <xs:element name="who" type="Reference" minOccurs="1" maxOccurs="1">
+          <xs:element name="who" type="Reference" minOccurs="0" maxOccurs="1">
             <xs:annotation>
               <xs:documentation xml:lang="en">A reference to an application-usable description of the identity that signed  (e.g. the signature used their private key).</xs:documentation>
             </xs:annotation>
@@ -40540,7 +40590,7 @@ Deceased patients may also be marked as inactive for the same reasons, but may b
           </xs:element>
           <xs:element name="link" type="Patient.Link" minOccurs="0" maxOccurs="unbounded">
             <xs:annotation>
-              <xs:documentation xml:lang="en">Link to another patient or RelatedPErson resource that concerns the same actual patient.</xs:documentation>
+              <xs:documentation xml:lang="en">Link to a Patient or RelatedPerson resource that concerns the same actual individual.</xs:documentation>
            </xs:annotation>
           </xs:element>
         </xs:sequence>
@@ -42744,11 +42794,6 @@ Deceased patients may also be marked as inactive for the same reasons, but may b
   </xs:complexType>
   <xs:simpleType name="ProvenanceEntityRoleEnum">
     <xs:restriction base="code-primitive">
-      <xs:enumeration value="derivation">
-        <xs:annotation>
-          <xs:documentation xml:lang="en">Derivation</xs:documentation>
-        </xs:annotation>
-      </xs:enumeration>
       <xs:enumeration value="revision">
         <xs:annotation>
           <xs:documentation xml:lang="en">Revision</xs:documentation>
@@ -43644,12 +43689,12 @@ Deceased patients may also be marked as inactive for the same reasons, but may b
   </xs:complexType>
   <xs:element name="RelatedPerson" type="RelatedPerson">
     <xs:annotation>
-      <xs:documentation xml:lang="en">Information about a person that is involved in the care for a patient, but who is not the target of healthcare, nor has a formal responsibility in the care process.</xs:documentation>
+      <xs:documentation xml:lang="en">Information about a person that is involved in a patient's health or the care for a patient, but who is not the target of healthcare, nor has a formal responsibility in the care process.</xs:documentation>
     </xs:annotation>
   </xs:element>
   <xs:complexType name="RelatedPerson">
     <xs:annotation>
-      <xs:documentation xml:lang="en">Information about a person that is involved in the care for a patient, but who is not the target of healthcare, nor has a formal responsibility in the care process.</xs:documentation>
+      <xs:documentation xml:lang="en">Information about a person that is involved in a patient's health or the care for a patient, but who is not the target of healthcare, nor has a formal responsibility in the care process.</xs:documentation>
       <xs:documentation xml:lang="en">If the element is present, it must have either a @value, an @id, or extensions</xs:documentation>
     </xs:annotation>
     <xs:complexContent>
@@ -43672,7 +43717,7 @@ Deceased patients may also be marked as inactive for the same reasons, but may b
           </xs:element>
           <xs:element name="relationship" minOccurs="0" maxOccurs="unbounded" type="CodeableConcept">
             <xs:annotation>
-              <xs:documentation xml:lang="en">The nature of the relationship that the related person has with the patient. e.g. The RelatedPerson is the mother of the Patient.</xs:documentation>
+              <xs:documentation xml:lang="en">The nature of the relationship between the related person and the patient.</xs:documentation>
            </xs:annotation>
           </xs:element>
           <xs:element name="name" minOccurs="0" maxOccurs="unbounded" type="HumanName">
@@ -43721,7 +43766,7 @@ Deceased patients may also be marked as inactive for the same reasons, but may b
   </xs:complexType>
   <xs:complexType name="RelatedPerson.Communication">
     <xs:annotation>
-      <xs:documentation xml:lang="en">Information about a person that is involved in the care for a patient, but who is not the target of healthcare, nor has a formal responsibility in the care process.</xs:documentation>
+      <xs:documentation xml:lang="en">Information about a person that is involved in a patient's health or the care for a patient, but who is not the target of healthcare, nor has a formal responsibility in the care process.</xs:documentation>
     </xs:annotation>
     <xs:complexContent>
       <xs:extension base="BackboneElement">
@@ -44524,7 +44569,7 @@ Deceased patients may also be marked as inactive for the same reasons, but may b
     <xs:complexContent>
       <xs:extension base="BackboneElement">
         <xs:sequence>
-          <xs:element name="type" minOccurs="0" maxOccurs="1" type="CodeableConcept">
+          <xs:element name="classifier" minOccurs="0" maxOccurs="1" type="CodeableConcept">
             <xs:annotation>
               <xs:documentation xml:lang="en">Describes the nature of the location being specified.</xs:documentation>
            </xs:annotation>
