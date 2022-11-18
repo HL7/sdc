@@ -18,7 +18,7 @@ group main(source src : Bundle, target qr : QuestionnaireResponse) {
           patientRes.entry as patientResEntry -> familyName.answer as familyNameAnswer, familyNameAnswer.value = (patientResEntry.resource.name.first().family) "familyNameValue";
         } "familyName";
         patient.resource as patientRes -> partDetails.item as givenName, givenName.linkId = 'given-names' then {
-          patientRes.entry as patientResEntry -> givenName.answer as givenNameAnswer, givenNameAnswer.value = (patientResEntry.resource.name.first().given.aggregate(iif($total.empty(), $this, $total & " " & $this))) "givenNameValue";
+          patientRes.entry as patientResEntry -> givenName.answer as givenNameAnswer, givenNameAnswer.value = (patientResEntry.resource.name.first().given.join(', ')) "givenNameValue";
         } "familyName";
         patient.resource as patientRes -> partDetails.item as dob, dob.linkId = 'dob' then {
           patientRes.entry as patientResEntry -> dob.answer as dobAnswer, dobAnswer.value = (patientResEntry.resource.birthDate) "dobValue";
@@ -42,7 +42,7 @@ group main(source src : Bundle, target qr : QuestionnaireResponse) {
             medResource.status as medsMedicationStatus -> medsStatus.answer as medsStatusAnswer, medsStatusAnswer.value = c('http://hl7.org/fhir/CodeSystem/medication-status', medsMedicationStatus) "medsStatusAnswer";
           } "medsStatus";
           med.resource as medResource where (category.coding.where(system='http://terminology.hl7.org/CodeSystem/medicationrequest-category').exists()) -> medsItem.item as medsCategory, medsCategory.linkId = 'meds-category' then {
-            medResource -> medsCategory.answer as medsCategoryAnswer, medsCategoryAnswer.value = (medResource.category.coding.where(system='http://terminology.hl7.org/CodeSystem/medicationrequest-category').code.aggregate(iif($total.empty(), $this, $total & " " & $this))) "medsCategoryAnswer";
+            medResource -> medsCategory.answer as medsCategoryAnswer, medsCategoryAnswer.value = (medResource.category.coding.where(system='http://terminology.hl7.org/CodeSystem/medicationrequest-category').code.join(' ')) "medsCategoryAnswer";
           } "medsCategory";
         } "medItem";
       } "medEntry";
