@@ -1,0 +1,692 @@
+<div xmlns="http://www.w3.org/1999/xhtml" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://hl7.org/fhir ../../input-cache/schemas/R4/fhir-single.xsd">
+  <p>
+	  One of the objectives of the SDC implementation guide is to reduce data entry into forms when the relevant data already exists in discrete form within
+	  the clinical or administrative system completing the form.  This saves the user time and increases accuracy.  If a Questionnaire is created with knowledge
+	  of where the data for different questions within the form is expected to come from, the <a href="CapabilityStatement-sdc-form-filler.html">Form Filler</a> or
+	  <a href="CapabilityStatement-sdc-form-manager.html">Form Manager</a> system can query for the relevant information and automatically fill in some of the answers.  FHIR's
+	  REST interface provides a standard way to query this data, regardless of the type of client.
+	</p>
+	<p>
+	  This 'population' process can happen in one of two ways:
+	</p>
+	<ul>
+    <li>
+      The <a href="CapabilityStatement-sdc-form-filler.html">SDC Form Filler</a> can invoke one of the <a href="#operations">$populate</a> 
+      operations on a <a href="CapabilityStatement-sdc-form-manager.html">SDC Form Manager</a> to create an initial QuestionnaireResponse before exposing the form
+      to the user.  This approach is known as 'pre-population' and is used by 'simple' Form Fillers that don't have the capacity to execute the logic needed to populate the form themselves.
+      This approach is more limited because the population process can't take into account any user-provided information, nor can it provide guidance to the
+      user.  Either the population process can fill in an answer or it can't.
+    </li>
+    <li>
+      Alternatively, the <a href="CapabilityStatement-sdc-form-filler.html">SDC Form Filler</a> can "interactively" handle the population process internally without invoking
+      an operation.  This is called "continuous population".  In this case, there is no need to try to populate answers for all questions at once and answers to previous questions can be used as part of
+      the logic used to populate subsequent ones.  As well, the population process can provide guidance rather than always providing outright answers.
+    </li>
+  </ul>
+  <a name="operations"> </a>
+  <h3>Population operations</h3>
+  <p>
+    There are 3 distinct $populate operations.  They all perform the same population process, but the response they pass back (and the ramifications
+    for what a <a href="CapabilityStatement-sdc-form-filler.html">Form Filler</a> or other invoking system will need to do after) will be different.
+  </p>
+  <ul>
+    <li><a href="OperationDefinition-Questionnaire-populate.html">$populate</a> will pass back the results of the operation in a 
+      <a href="{{site.data.fhir.path}}questionnaireresponse.html">QuestionnaireResponse</a>, meaning that the continued filling of the form will
+      require a Form Filler to handle the rendering.</li>
+    <li><a href="OperationDefinition-Questionnaire-populatehtml.html">$populate-html</a> returns the results back as a
+      <a href="{{site.data.fhir.path}}binary.html">Binary</a> containing an HTML form where populated values are reflected in initial default
+      elements.  Subsequent review and rendering are handled in an HTML rendering environment within the Form Filler.  The results of completing
+      the form are submitted as <code>application/x-www-form-urlencoded</code> or <code>multipart/form-data</code> rather than as a 
+      QuestionnaireResponse.</li>
+    <li><a href="OperationDefinition-Questionnaire-populatelink.html">$populate-link</a> returns a hyperlink to a website that has the
+      form already pre-populated.  Managing the HTML is handled external to the Form Filler.  Like the $populate-html approach, results are
+      returned as web form content rather than QuestionnaireResponse</li>
+  </ul>
+  <p>
+    The latter two modes are intended for form fillers that might not have the capability to support the complexity of the form and offloads the
+    work of figuring out how to render the form in addition to the work of populating it.
+  </p>
+  <p>
+    If using a populate operation, the operation will typically only be invoked once.  However, there are two circumstances where it might be invoked
+    more than once:  
+  </p>
+  <ol>
+    <li>If the user has saved a QuestionnaireResponse "in progress" and comes back to it later, it is possible they might choose to re-run the
+      populate process, for example to load information they know has been entered or imported into the EHR since the last time the $populate
+      process was run.</li>
+    <li>If the user is creating a net new QuestionnaireResponse by copying a previous QuestionnaireResponse, the user might also want to re-run
+      the population process to take advantage of new data that wasn't available in the original form.</li>
+  </ol>
+  <p>
+    Both of these situations involve starting from an existing QuestionnaireResponse, which means that "re-populating" a form is something that will
+    only be a consideration if using $populate, not $populate-html or $populate-link.
+  </p>
+  <p>
+    If choosing to re-populate a form, there are several considerations to keep in mind:
+  </p>
+  <ul>
+    <li>Re-population SHOULD only be done at user request because it may bring back data that had previously been removed or add additional
+      selections to 'repeat' questions that the user had previously reviewed.</li>
+    <li>Users SHOULD be warned about both of these effects (return of previously removed data and addition of additional answers to questions
+      whose answers had previously been reviewed).</li>
+    <li>Re-population SHOULD NOT revert elements that had been changed without user request.  (If a user wants data to be fully reverted, they
+      can always start the form from scratch).</li>
+    <li>If data is changed or reverted as part of a re-population process, these changes should be highlighted to the user.</li>
+    <li>Re-population can also be run in a mode where the Form Filler runs $populate on a blank form and then displays net new or changed answers
+      alongside the original answers and provides the user with the option of propagating some or all of the answers across from the newly
+      populated form into the 'current' form.</li>
+    <li>This same approach can also be used where the user starts with a newly populated form and then is given the option of propagating answers
+      across from a previously completed QuestionnaireResponse.</li>
+    <li>Some sophisticated systems might have algorithms that determine whether reverting or supplementing data is appropriate based on what data
+      is newer, where it came from, or other considerations.  However, there is no standard algorithm for doing this and requirements might vary
+      by Questionnaire and by item.</li>
+    <li>A single Questionnaire can sometimes include data from multiple subjects.  The population process needs to be aware of what the subject
+      for a given section of the Questionnaire is and take that into account when retrieving data to populate the record.  (E.g. don't populate
+      an answer asking for a mother's bood type with the child's blood type.)  In SDC, the fact that a particular 'group' in a Questionnaire has
+      a distinct subject is communicated using the <a href="StructureDefinition-sdc-questionnaire-isSubject.html">isSubject</a> extension.  An 
+      <a href="StructureDefinition-sdc-questionnaireresponse-isSubject.html">equivalent extension</a> flags the element within the 
+      QuestionnaireResponse.</li>
+  </ul>
+  <a name="modes"> </a>
+  <h3>Population modes</h3>
+  <p>
+	  There are four different modes of "population" possible:
+	</p>
+  <a name="mode"> </a>
+  <ul>
+    <li>
+      <b>Full population:</b> The questionnaire can identify the specific data element (or set of data elements) that should be used to populate the
+      form.  No user intervention is required other than to review the content.  E.g. capturing the patient's gender, birth date, most recent weight
+      measurement, etc.  In some cases, this might involve performing a calculation based on data retrieved.  For example, determining the patient's BMI by
+      querying the most recent weight and height observations.  This is the only type of population the <a href="OperationDefinition-Questionnaire-populate.html">$populate</a>
+      operation can perform (and then, only if the logic is based entirely on context or on answers to prior questions that were able to be populated automatically).</li>
+    <li>
+      <b>Choice selection:</b> The questionnaire can identify the candidate answers, but the user must choose which of those should be included in the form
+      response.  For example, a question might say "List any relevant concomitant medical conditions".  The notion of "relevant" will typically require human
+      decision-making.  However, the system rendering the questionnaire can easily bring up a list of concomitant medical conditions and allow the user to
+      select which ones are "relevant" and include those in the answer.  Choice selection can only occur during interactive population.</li>
+    <li>
+      <b>Answer context:</b> The specific answer to the question will not exist as data in the client system, but might be able to be determined by the user
+      based on data that is available in the clinical system.  For example, the question "Has the patient ever exhibited a similar reaction in the past?" with
+      a yes/no/unknown answer choice is not a data element that will exist in the clinical system.  However, it is possible to provide the clinician with a
+      list of AdverseEvent, Observation and Condition instances that might be relevant they can scan in choosing how to answer the question.  Providing
+      answer contexts can likewise only done interactively, not with the $populate operation.</li>
+    <li>
+      <b>No population:</b> There is no way to query information relevant to the answer - the user will have to fill out that portion of the form unassisted.</li>
+  </ul>
+  <p>
+    "Choice selection" and "answer context" options will generally only be exposed when the user is interacting with the associated question 
+    (typically when a user clicks on an icon indicating they want to see the context or EHR choices).
+  </p>
+  <a name="caveats"> </a>
+  <h3>Caveats and considerations with form population</h3>
+  <ul>
+    <li>
+      For form population to work, the designer of the Questionnaire must do a fair bit of work defining the queries and the filters needed to select what
+      elements to use in populating specific questions.  While there are standard expectations for querying demographics like gender, birth date or even most
+      recent weight (due to the <a href="{{site.data.fhir.path}}observation-vitalsigns.html">HL7-mandated vital signs profiles</a>), there is little
+      international guidance on what codes or conventions to use when representing other data such as medications, procedures, lab results, etc.  For form
+      population to work with such data, the Questionnaire will have to be designed presuming the use of particular profiles and conventions - for example,
+      national implementation guides such as <a href="http://hl7.org/fhir/us/core">US Core</a> or <a href="http://fhir.hl7.org.au/fhir">Australian Base</a>.
+      The more sophisticated a Questionnaire's population rules, the more dependent it will be on systems exposing their data in accordance with specified
+      profiles.  Note: The mechanisms to do this in a more automated way are under consideration for the next release.
+    </li>
+    <li>
+      Even if data exists and is exposed in accordance with agreed profiles, that does not necessarily mean that the source system will have the necessary query
+      capabilities to find and appropriately filter the data.  While some degree of filtering is possible using FHIRPath or CQL, loading thousands or tens of
+      thousands of records for local filtering by the client is likely to pose a challenge from the perspective of performance, memory usage, access control logging, etc.
+      National and other implementation guides that set minimum expectations on search for capabilities on clinical and administrative systems can be helpful
+      here as well.
+    </li>
+    <li>
+      Any queries performed to populate the form will need to be subject to appropriate access controls.  Users SHALL NOT be able to see information populated
+      into a form that they would not be able to see when navigating the source system directly (I.e. it is a mandatory requirement that the population process
+      not populate information in the form if the user completing the questionnaire would not have permission to see that data if they queried it directly).  In some cases, this means that an answer in a form might not
+      be populated even though the data exists - because the user does not have authority to see that data.
+    </li>
+    <li>
+      <p>
+        Defining the rules for populating a questionnaire is essentially a mapping process.  The author is mapping between the data element defined by a
+        particular question or group item and a corresponding element in a FHIR resource or profile.
+      </p>
+      <p>
+        Mapping can be dangerous because it can lead to the sharing of incorrect data or, occasionally, the failure to share correct data.  For this reason, it
+        is essential that human users be given the opportunity to review questionnaire responses that have been populated by automated means.
+      </p>
+      <p>
+        Even with this precaution, care should be taken when performing data mappings, including:
+      </p>
+      <ul>
+        <li>Be aware that the risk of incorrect mapping occurring can be significantly higher when mapping complex questionnaires and/or complex data
+          structures and especially high when mapping both.</li>
+        <li>The degree of risk is implementation dependent (type of data, type of questionnaire, type of source, mapping mechanism, type of user, etc.)</li>
+        <li>Both mappings and the implementation of those mappings should be carefully verified and, in some situations, should be subject to certification or
+          external verification</li>
+        <li>Mapping from profiles not specifically defined for use in the context of a particular questionnaire or set of questionnaires (i.e. with a defined
+          context) magnifies the risk of erroneous population.</li>
+      </ul>
+    </li>
+    <li>
+      The 'enableWhen' elements in Questionnaire mean that some elements may not be relevant in all situations.  When pre-populating a questionnaire, it makes
+      sense to "fill in" as much data as possible, even if it may not always be needed.  However, such data should not be shown to the user until the given
+      item is "enabled".  And once the questionnaire is completed, data for any non-enabled elements SHALL not be displayed to the user completing the form.
+      If an answer disables a portion of the QuestionnaireResponse containing significant user-entered data, the entry system SHOULD warn users that
+      that information will be removed on submission.
+    </li>
+    <li>
+      Sometimes the author interested in making a Questionnaire "populatable" does not have authority to make changes to the "official" Questionnaire.  In other
+      cases, there might be one official Questionnaire, but a need to populate it from resources that comply with different sets of profiles (e.g. that comply
+      with requirements from different countries) - and thus a need  for different metadata in the Questionnaire to support the population process.  In this
+      case, rather than invoking the population on the original Questionnaire, it can be done on a <a href="StructureDefinition-sdc-questionnaire.html">derived Questionnaire</a>.</li>
+    <li>
+      When performing population, the considerations around <a href="expressions.html#expressionerrors">errors and lack of support</a> for expressions may come into
+      play.  In addition, similar considerations can also be relevant in terms of what 'population' approach the Questionnaire supports, as opposed to what
+      level of population capability the Form Filler has.  The desired behavior of alerting the user that some elements might not have been populated and that
+      other clients might provide more population support is the same whether the variation is "handles FHIRPath vs. CQL" or "uses Observation-based vs. definition-based".</li>
+    <li>
+      When information from other sources has been used to help populate a QuestionnaireResponse, there may be a desire to capture what information sources
+      were used, what software was used to perform the population process, etc.  The way to represent this information in FHIR is using the
+      <a href="{{site.data.fhir.path}}provenance.html">Provenance</a> resource.  The various source records used in population would be represented using
+      <code>Provenance.entity.what</code> where the <code>Provenance.entity.role</code> would be 'source'.  Software information would be captured in
+      <code>Provenance.agent</code>.</li>
+    <li>
+      When using FHIRPath and CQL, the empty set can be taken to mean 'false'.  However, items of type 'boolean' actually have three states - 'true', 'false' and
+      'not answered'.  An empty set SHALL be treated as 'not answered' rather than being converted to a boolean value of 'false'.</li>
+    <!-- TODO: How do we pass in a token that allows the population system the ability to query the system that owns the data - and how do they even know where that system is? -->
+  </ul>
+  <a name="service"> </a>
+  <h3>Pre-population service</h3>
+  <p>
+    Populating a QuestionnaireResponse is a complex task.  The system must be able to query resources, use FHIRPath or CQL to populate and potentially calculate
+    relevant data elements, manage conditionality rules around enableWhen as part of the population process, etc.  As a result, some client systems might
+    prefer to offload the responsibility for handling pre-population of a form to a separate system.  The FHIR specification defines a set of services that can
+    be used to provide a variable degree of offloading - from just handling the population aspect through to handling the rendering of the form and interactive
+    data capture completely through a separate site.
+	</p>
+  <p>
+    There are three operations:
+  </p>
+  <table class="grid" cellpadding="5">
+    <tbody>
+      <tr>
+        <th>Operation</th>
+        <th>Description</th>
+      </tr>
+      <tr>
+        <td>
+          <a href="OperationDefinition-Questionnaire-populate.html">populate</a>
+        </td>
+        <td>
+          This operation supports generating a <a href="{{site.data.fhir.path}}questionnaireresponse.html">QuestionnaireResponse</a> instance based on a
+          specified <a href="{{site.data.fhir.path}}questionnaire.html">Questionnaire</a>.  If matching data is available for any of the questions and the
+          server supports the pre-population capability, the answers for those questions will be populated in the returned QuestionnaireResponse instance.
+        </td>
+      </tr>
+      <tr>
+        <td>
+          <a href="OperationDefinition-Questionnaire-populate.html">populatehtml</a>
+        </td>
+        <td>
+          This operation produces an HTML web page as a <a href="{{site.data.fhir.path}}binary.html">Binary</a> instance.  The HTML page provides an
+          interactive rendering of the form, using html-based controls to capture user inputs and scripting languages to support form validation and submission
+          to the server that generated the form and/or the recipient(s) designated by the <a href="{{site.data.fhir.path}}questionnaire.html">Questionnaire</a>.
+          If matching data is available for any of the questions and the server supports the pre-population capability, the form will initially render with the
+          answers for those questions filled in.<br/>
+          NOTE: because the Binary will contain active content, client systems must ensure they trust the server performing the <code>populatehtml</code>
+          operation.
+        </td>
+      </tr>
+      <tr>
+        <td>
+          <a href="OperationDefinition-Questionnaire-populatelink.html">populatelink</a>
+        </td>
+        <td>
+          This operation returns a URL leading to a web page with an interactive rendering of the form that allows a user navigating to the link with a browser
+          to complete and submit a response to the questionnaire.  The response will be transmitted to the server generating the link, hosting the form and/or
+          as designated as part of the <a href="{{site.data.fhir.path}}questionnaire.html">Questionnaire</a> itself.  If matching data is available for any of
+          the questions and the server supports the pre-population capability, the form will initially render with the answers for those questions filled in.
+        </td>
+      </tr>
+    </tbody>
+  </table>
+  <p>
+    In addition to these operations, another alternative is to use the <a href="adaptive.html">Adaptive Form</a> mechanism.  It hides the design of the
+    questionnaire entirely and, in principle, allows the service to determine the next question to automatically fill in (or perhaps even suppress asking
+    questions) based on data the service can access about the patient.
+	</p>
+  <p>
+    For SDC purposes, server systems claiming to support CapabilityStatements that require support for the <code>populate</code>, <code>populatehtml</code> or <code>
+    populatelink</code> operations (<a href="CapabilityStatement-sdc-form-manager.html">SDC Form Manager</a>) SHALL, at minimum:
+  </p>
+  <ul>
+    <li>Handle the input parameters <code>identifier</code>, <code>questionnaire</code>, <code>questionnaireRef</code>, <code>subject</code> and
+      <code>content</code>
+    </li>
+    <li>Support passing at least* the <a href="{{site.data.fhir.path}}patient.html">Patient</a> resource using the <code>content</code> parameter</li>
+    <li>Populate the returned <a href="{{site.data.fhir.path}}questionnaireresponse.html">QuestionnaireResponse</a> instance or rendered form for all questions
+      that have SDC extensions defining population expectations if appropriate data exists in the underlying data repository and/or in the content passed into the populate operation.</li>
+  </ul>
+  <p>
+    Similarly, client systems claiming to support the <code>populate</code>, <code>populatehtml</code> and/or <code>populatelink</code> operations
+    (<a href="CapabilityStatement-sdc-form-filler.html">SDC Form Filler</a>) SHALL, at a minimum:
+  </p>
+  <ul>
+    <li>Be capable of invoking the operation(s) on a selected questionnaire both directly (<code>Questionnaire/[identifier]/$populate</code>)
+      as well as indirectly either by <code>identifier</code> or <code>questionnaire</code>
+    </li>
+    <li>Support passing at least* the <a href="{{site.data.fhir.path}}patient.html">Patient</a> resource using the <code>content</code> parameter</li>
+    <li>Be able to accept an incoming partially-populated <a href="{{site.data.fhir.path}}questionnaireresponse.html">QuestionnaireResponse</a> and render it
+      as if they had retrieved a saved partially-completed <a href="{{site.data.fhir.path}}questionnaireresponse.html">QuestionnaireResponse</a>
+    </li>
+    <li>It is the responsibility of the <a href="CapabilityStatement-sdc-form-filler.html">SDC Form Filler</a> to ensure the form is valid after a human has reviewed and edited
+      the form.</li>
+  </ul>
+  <p>
+    * Supporting additional resources relevant to the context of the form is also encouraged.  Past versions of this specification mandated support for passing
+    C-CDA resources as FHIR Binary instances and this is still permitted.  However, this specification no longer provides recommendations for extracting data
+    elements from C-CDA and we have not yet heard of any systems that do this successfully in a production environment.
+  </p>
+  <a name="design"> </a>
+  <h3>Designing Questionnaires to support 'populate'</h3>
+  <p>
+    This specification defines three different mechanisms to embed information in Questionnaires to support population:
+  </p>
+  <ul>
+    <li>
+      <a href="#obs-pop">Observation-based</a>
+    </li>
+    <li>
+      <a href="#exp-pop">Expression-based</a>
+    </li>
+    <li>
+      <a href="#map-pop">StructureMap-based</a>
+    </li>
+  </ul>
+  <p>
+    Systems are free to experiment with other population mechanisms but cannot expect support for those from other SDC-conformant systems.
+  </p>
+  <p>
+    Each mechanism has its own profile that includes the additional resource elements or extensions relevant for supporting a particular mechanism: <a href="StructureDefinition-sdc-questionnaire-pop-obsn.html">SDC Questionnaire Populate - Observation</a>, 
+    <a href="StructureDefinition-sdc-questionnaire-pop-exp.html">SDC Questionnaire Populate - Expression</a>, and <a href="StructureDefinition-sdc-questionnaire-pop-smap.html">SDC Questionnaire Populate - Structure Map</a> profiles. Each profile identifies 
+    specific 'must support' elements and extensions that systems that claim to support a specific SDC population mechanism SHALL be capable of populating data, as befits the CapabilityStatement(s) 
+    they claim conformance to. Each system should choose which approach(es) it wishes to use and support based on the elements specified in that profile.
+  </p>
+  <p>
+    Some of these mechanisms make use of FHIR-based queries, FHIRPath and/or CQL as well as extensions that include expressions in one of these languages.
+    Implementers should read the <a href="expressions.html">Using Expressions</a> page for background and guidance on these technologies and extensions.
+  </p>
+  <p>
+    These three mechanisms aren't necessarily mutually exclusive.  It is possible to use StructureMap-based population to perform an initial set of 'complex' population and then have different elements within the Questionnaire that are set up to
+    perform supplemental observation-based or expression-based population.  Obviously, the same element should only be populated in one way.  Also, combining methods adds complexity and may reduce the number of systems that are capable of
+    appropriately handling the Questionnaire.
+  </p>
+  <a name="obs-pop"> </a>
+  <h4>Observation-based Population</h4>
+  <p>
+    This is the simplest of the population mechanisms.  It takes advantage of the fact that most question answers in the healthcare space typically correspond to the
+    <code>value</code> element of an Observation.  It also takes advantage of the <code>Questionnaire.item.code</code> element that identifies what a concept
+    each question or group corresponds to. An example for <a href="StructureDefinition-sdc-questionnaire-pop-obsn.html">SDC Questionnaire Populate - Observation profile</a> can be found <a href="Questionnaire-questionnaire-sdc-profile-example-ussg-fht.html">here</a>.
+  </p>
+  <p>
+    To use this method:
+  </p>
+  <ol>
+    <li>
+      Include the <code>item.code</code> element on each question to be populated.  Typically, this will be a LOINC code, but in some
+      jurisdictions/environments, SNOMED CT or other codes may be relevant.</li>
+    <li>
+      Groups can also have an <code>item.code</code> present - this might represent the code of a panel or the Observation.code of an Observation with no
+      value but with multiple <code>Observation.component</code> elements.  Child question items can then assert the <code>item.code</code> of the "member-of"
+      Observations or the <code>Observation.component.code</code> values.</li>
+    <li>
+      To signal that the item.code is actually intended for use in population (as opposed to just providing metadata about the Questionnaire item, the
+      <a href="StructureDefinition-sdc-questionnaire-observationLinkPeriod.html">questionnaire-observationLinkPeriod</a> extension must also be included).  This extension
+      indicates the period of time over which to search for matching observations.  If there are no observations within that window, no population will occur.
+      For observations where how recent they are does not matter (e.g. blood type), simply set the duration to a long period of time - e.g. 200 years.</li>
+    <li>
+      Multiple <code>item.code</code> elements might be present.  If so, each is considered an acceptable Observation.code for the desired population
+      value.</li>
+  </ol>
+  <p>
+    For example:
+  </p>
+  <pre>
+    <textarea rows="40" cols="100" style="resize: none;background-color: rgba(0, 0, 0, 0); border-color: rgba(0, 0, 0, 0)">
+    <item>
+      <extension url="http://hl7.org/fhir/StructureDefinition/questionnaire-observationLinkPeriod">
+        <valueDuration>
+          <value value="3"/>
+          <system value="http://unitsofmeasure.org"/>
+          <code value="mo"/>
+        </valueDuration>
+      </extension>
+      <linkId value="code-pop-demo"/>
+      <code>
+        <system value="http://loinc.org"/>
+        <code value="29463-7"/>7
+        <display value="Body weight"/>
+      </code>
+      <code>
+        <system value="http://loinc.org"/>
+        <code value="3141-9"/>
+        <display value="Body weight Measured"/>
+      </code>
+      <code>
+        <system value="http://loinc.org"/>
+        <code value="8341-0"/>
+        <display value="Dry body weight Measured"/>
+      </code>
+      <text value="What is your current weight?"/>
+      <type value="quantity"/>
+      <unitOption>
+        <valueCoding>
+          <system value="http://unitsofmeasure.org"/>
+          <code value="kg"/>
+        </valueCoding>
+      </unitOption>
+      <unitOption>
+        <valueCoding>
+          <system value="http://unitsofmeasure.org"/>
+          <code value="[lb_av]"/>
+        </valueCoding>
+      </unitOption>
+    </item>
+    </textarea>
+  </pre>
+  <p>
+    When performing the population operation, the system would look for questions that have the <code>questionnaire-observationLinkPeriod</code> extension
+    and would then perform a query on the Observation using the context of the QuestionnaireResponse's subject - typically a Patient.  The query would retrieve
+    the most recent observation for that subject whose code matched one of the <code>Questionnaire.item</code>'s codes, that had a value and whose value was of
+    the correct data type.
+  </p>
+  <p>
+    The 'logical' query performed for the above Questionnaire item being populated on August. 31 might look like this:
+  </p>
+  <code>
+    [base]?Observation?subject=[questionnaire response subject id]&amp;code=http%3A//loinc.org|29463-7,http%3A//loinc.org|3141-9,http%3A//loinc.org|8341-0&amp;status=final,amended,corrected&amp;date=ge2018-06-02&amp;_sort=-date&amp;_count=1
+  </code>
+  <p>
+    In practice, the server might not support the _sort or _count parameters, so the filtering for "most recent" might need to be done locally - especially if
+    there's a need to check for matching data type.
+  </p>
+  <p>
+    Considerations and rules when using this approach:
+  </p>
+  <ul>
+    <li>
+      If the units of measure are constrained for the Questionnaire item, the system can choose to convert the data (if the units are coded and the
+      conversion factor is known), grab the most recent Observation within the window where conversion is not necessary, or choose not to populate.</li>
+    <li>
+      Question items being populated from Observations of type <code>Quantity</code> SHOULD also have a type of Quantity.  However, they MAY have a type of
+      <code>integer</code> or <code>decimal</code> provided that the <a href="{{site.data.fhir.path}}extension-questionnaire-unit.html">questionnaire-unit</a>
+      extension is present to allow determination of what unit to match on/convert to.</li>
+    <li>
+      Systems need to allow for the possibility that an Observation might not have a value (e.g. if dataAbsentReason is present).</li>
+    <li>
+      Systems SHALL filter to only look at Observations with a status of 'final', 'amended', or 'corrected'.</li>
+    <li>
+      Systems SHALL check for the presence of the Observation.focus element and exclude elements where the focus is not the patient (e.g. we do not want the
+      heart rate of a fetus if trying to populate the heart rate of the mother.)</li>
+    <li>
+      If a parent item (group or question) already has established the context of a specific Observation, when populating child items, matching observations
+      SHALL be limited to components of the Observation bound to the parent item and other Observations reachable by a <code>hasMember</code> link from that
+      observation.</li>
+    <li>
+      Where an Observation is known to directly correlate to another resource element value (e.g. LOINC 21112-8 corresponds to <code>Patient.birthDate</code>),
+      systems MAY take advantage of this knowledge to populate the answer of a question by retrieving data from resource elements other than <code>
+      Observation.value</code> and <code>Observation.component.value</code>.</li>
+    <li>
+      Most of the data elements used to populate a QuestionnaireResponse from Observations can also be used to generate/update Observations from a completed
+      Questionnaire.  See the <a href="extraction.html#obs-extract">Extraction</a> page of this implementation guide for more information.</li>
+    <li>
+      This Observation-based population mechanism can be used in parallel with the <a href="#exp-pop">Expression-based</a> mechanism described below - i.e. some elements might be populated from
+      Observation.value elements based on the <code>item.code</code> while other questions in the same form might be populated based on queries, FHIRPaths and/or CQL 
+      specified in the form.</li>
+    <li>
+      This mechanism only supports <a href="#mode">Full Population</a>.  It does not work for other modes.</li>
+    <li>
+      This mechanism can only be used for non-repeating items.</li>
+    <li>
+      This mechanism can be used either for a pre-population step - before the user fills in any data, or as a "continuous" population process, where data is
+      only retrieved when a given element becomes "enabled".</li>
+    <li>
+      Obviously, this mechanism only works for questionnaire items that correspond to Observation values.</li>
+  </ul>
+  <a name="exp-pop"> </a>
+  <h4>Expression-based Population</h4>
+  <p>
+    This approach to population is more generic.  It supports retrieving data from any queryable FHIR resources available on the source system.  Those queries
+    can be based on the context in which the QuestionnaireResponse is being generated and/or on the results of other queries.  Furthermore, it permits
+    <a href="http://hl7.org/fhirpath">FHIRPath</a> and <a href="http://cql.hl7.org">CQL</a> operations to be done on the resulting data such as calculations, conditional determinations, etc.
+    As such, it is significantly more powerful than the <a href="#obs-pop">Observation-based</a> method.  However, it also requires skill in using FHIR queries,
+    FHIRPath, and/or CQL so it requires more technical expertise than the Observation-based approach. An example for <a href="StructureDefinition-sdc-questionnaire-pop-exp.html">SDC Questionnaire Populate - Expression profile</a> can be found <a href="Questionnaire-demographics.html">here</a>.
+  </p>
+  <p>
+    To use this method:
+  </p>
+  <ol>
+    <li>
+      Include the <a href="StructureDefinition-sdc-questionnaire-launchContext.html">questionnaire-launchContext</a> extension to identify any contextual information
+      that needs to be passed into the population process.  Typical contexts would be the Patient or Encounter resources in whose context the questionnaire is
+      being completed, but other elements are also possible (e.g. an AdverseEvent if performing an adverse event report).  These 'context' elements will be
+      available as expression variables for use in subsequent steps. </li>
+    <li>
+      Use the <a href="{{site.data.fhir.path}}extension-variable.html">variable</a> extension to query for any additional data required, possibly based on
+      context variables set in the previous step, and/or other variable extensions.  (NOTE: Elements <b>SHALL</b> be evaluated in the following order: questionnaire-launchContext
+	  elements, then all Questionnaire-level variables in order of appearance in the Questionnaire.)</li>
+    <li>
+      If appropriate, use the <a href="StructureDefinition-sdc-questionnaire-itemPopulationContext.html">questionnaire-itemPopulationContext</a> on group items to establish the context for
+      a group.  When populating the questionnaire, this will do two things: it will create a group repetition for each row returned from the query; and it will
+      set the specified variable name to that resource repetition for use in processing descendant items of the group.</li>
+    <li>
+      Use the <a href="{{site.data.fhir.path}}extension-variable.html">variable</a> extension on items as well to perform intermediary calculations or
+      additional queries that are based on itemPopulationContext values.</li>
+    <li>
+      For <a href="#mode">Full Population</a>, use the <a href="StructureDefinition-sdc-questionnaire-initialExpression.html">questionnaire-initialExpression</a> to
+      cause the initial answer for the question to be set to the specified expression.  This should always be a FHIRPath or CQL expression that resolves to an item of the
+      appropriate type unless the element has a type of Reference, in which case the expression can ALSO be a FHIR query - and the item will be populated with a
+      reference to the resource.  Another exception is for an element of type Attachment, the query can return a Binary or DocumentReference, 
+      with the former populating the Attachment.content and the latter populating content and/or url, depending on what is present in the DocumentReference.
+      Note, this extension SHALL NOT appear on groups.</li>
+    <li>
+      For <a href="#mode">Choice Selection</a>, use the <a href="StructureDefinition-sdc-questionnaire-candidateExpression.html">sdc-questionnaire-candidateExpression</a>
+      to make available a list of possible answers for the user to choose from.  As with initialExpression, this should always be a FHIRPath or CQL expression that resolves to
+      an item of the appropriate type unless the element has a type of Reference, in which case the expression can be a FHIR query - and any selected item will
+      be populated with a reference to that resource.</li>
+    <li>
+      For <a href="#mode">Answer Context</a>, use the <a href="StructureDefinition-sdc-questionnaire-contextExpression.html">sdc-questionnaire-contextExpression</a> to
+      indicate the resources to make available for display to the user to aid in answering the question.  The information SHOULD be made available through user
+      action (clicking a button or link to launch a separate window/dialog) rather than being presented by default.</li>
+  </ol>
+  <p>
+    Examples of questionnaires using this approach include <a href="Questionnaire-demographics.html">this</a>, <a href="Questionnaire-questionnaire-sdc-test-fhirpath-prepop-candexpr.html">this</a>,
+    <a href="Questionnaire-questionnaire-sdc-test-fhirpath-prepop-initialexpression.html">this</a> and <a href="Questionnaire-questionnaire-sdc-test-fhirpath-prepop-source-query.html">this</a>.
+  </p>
+  <p>
+    Considerations and rules when using this approach:
+  </p>
+  <ul>
+    <li>
+      FHIR queries found in any of the variables may contain embedded FHIRPath expressions (surrounded by double curly-braces).</li>
+    <li>
+      If the result of evaluating the FHIRPath expressions is an invalid query, that is an error.  Systems SHOULD log it and continue with population as if the
+      query had returned no data.</li>
+    <li>
+      An item is not allowed have both initial.value and initialExpression present since both generate values before the user has access to the form.</li>
+    <li>
+      If the candidateExpression or contextExpression resolve to an empty set, do not display them.</li>
+	  <li>
+	  Variables made available by launch context may be used by any expression within the Questionnaire, however they are most safely used within initialExpression.  
+	  Because the launch context might vary each time the QuestionnaireResponse is opened or edited, by populating launchContext into the values of (possibly hidden) 
+	  questions via iniitalExpression, the 'original' context in which the QuestionnaireResponse was created can be retained..</li>
+    <li>
+      Unlike initialExpressions, candidateExpressions can appear on groups as well as questions.  If they appear on a group item and the group item is allowed
+      to repeat, then a separate group instance is created for each repetition the user selects from the candidates.  The variable named in the candidateExpression
+      extension is set to the value of the candidate for use in continuous population of descendant items.  For example, a candidateExpression might resolve
+      to a list of Conditions.  After the user picks the relevant conditions, a separate group would be created for each and child items for the condition code,
+      severity, onset date, etc. could automatically be populated using an initialExpression based on the variable name from the candidateExpression.</li>
+    <li>
+      When an initialExpression, candidateExpression or contextExpression will return a resource, backbone element or complex data type, the
+      <a href="StructureDefinition-sdc-questionnaire-choiceColumn.html">questionnaire-choiceColumn</a> extension can be used to control which data elements should be
+      exposed to the user (and what labels and widths should be allocated to each element so exposed).</li>
+    <li>
+      When an item has an associated candidateExpression or contextExpression, consider whether there should be a preceding 'display' item that provides
+      instructions on how to filter from the available candidates or how to make use of the available context in answering the question.</li>
+    <li>
+      Multiple expression extensions can be present at once.  If so, precedence is as follows: initial.value or initialExpression is used if it resolves; if not then candidateExpression
+      expression is used.  A link to contextExpression can be present with either of the modes as it may help the user in verifying the content.</li>
+    <li>
+      It is an error if the type of an initialExpression or candidateExpression disagrees with the type of the item, with the following exceptions: a Resource
+      can map to a Reference and a Quantity can map to a <code>integer</code> or <code>decimal</code> provided that the
+      <a href="{{site.data.fhir.path}}extension-questionnaire-unit.html">questionnaire-unit</a> extension is present to allow determination of what unit to
+      match on/convert to.  Systems that encounter non-matching expressions that resolve to an element that does not agree SHOULD log it but still populate
+      other elements as best they can.</li>
+    <li>
+      When defining queries in expressions, be sure to filter all relevant elements.  For example, ensuring status excludes entered-in-error elements, practitioners are
+      active, etc.</li>
+    <li>
+      Take care to ensure that variable names as set by questionnaire-launchContext, variable and questionnaire-itemPopulationContext remain unique within the hierarchy
+      of the questionnaire.  It's technically ok to have sibling items define the same variable name - they will not collide.  However, if doing so, make sure
+      it's being used for the same purpose to avoid confusion.</li>
+    <li>
+      If the same context are used for both <a href="StructureDefinition-sdc-questionnaire-itemPopulationContext.html">questionnaire-itemPopulationContext</a> and
+      <a href="StructureDefinition-sdc-questionnaire-itemExtractionContext.html">questionnaire-itemExtractionContext</a>, then the value will be repeated for both extensions.</li>
+    <li>
+      If the initialExpression evaluates to a collection size that exceeds the maximum cardinality requirements of the item, the system may either choose not
+      to populate the item at all, or instead may treat the initialExpression as if it were a candidateExpression and give the user a chance to choose from
+      amongst the results being returned.</li>
+    <li>
+      If the initialExpression returns fewer occurrences than the <a href="{{site.data.fhir.path}}extension-questionnaire-minoccurs.html">
+      questionnaire-minOccurs</a> value (if specified), it SHALL populate what occurrences it can.  The user can then add in additional repetitions as
+      needed.</li>
+    <li>
+      If an answer is dependent on other answers within the form, the calculation of the answer will typically be performed using a variable extension on the nearest
+      common ancestor in which all relevant questions or variables are descendants.  The question will then have an initialExpression extension that references that
+      calculated value.  The reason for this is that FHIRPath only has access to the current context node and its descendants, not siblings or ancestors.  However,
+      if it is known that there can only be <i>one</i> item with a particular linkId, then the value of that answer can be accessed directly by using 
+      <code>%context.descendants().select(item).where(linkId='someLinkId').answer</code></li>
+    <li>
+      It's possible that not all queries will resolve successfully - or that some context variables might not be populated.  In this situation, the system
+      performing the population SHOULD make best efforts and populate whatever elements it can that are not dependent on other answers within the form.</li>
+    <li>
+      It's possible that the same data might be queried multiple times within different contexts when filling out the form.  Systems are free to notice this
+      and use the data already in memory rather than re-querying the data.  Form designers can be proactive and use variables to minimize this too.</li>
+    <li>
+      The expressions used to populate some elements might be dependent on the answers to other questions, not just on context elements or queried data.  In
+      this case, pre-populating systems will only be able to populate the answer if the questions depended on are able to be pre-populated.  For
+      continuous-populating systems, they can either populate the dependent answer when the depended-on answer is filled in or when the user gets to the
+      dependent answer.</li>
+    <li>
+      In some cases, a user might choose to change the answer to a question that was the source for pre-populating another question.  In this case, the
+      system MAY leave the dependent answer as-is.  Alternatively, it MAY re-evaluate the population logic and, if the new answer would differ, prompt the user
+      about whether they would like to change to the new calculated answer.  (Note that this may trigger still further updates.  Users should have a mechanism
+      to cancel further prompts for updates if they feel bombarded.)</li>
+    <li>
+      If a questionnaire is stored in partially-completed state and then is re-opened sometime later for editing, it's possible that originally populated
+      values could be out-of-date.  Systems MAY choose to leave already populated data elements as they are.  Alternatively, systems MAY re-execute queries to
+      determine whether the new populated value would differ from the current value and, if so, prompt the user as to whether the question should be updated to
+      the 'new' auto-populated value.  Systems SHALL NOT replace already filled in answers without user approval.</li>
+    <li>
+      If the units of measure are constrained for the Questionnaire item, the system can choose to convert the data (if the units are coded and the conversion
+      factor is known) or choose not to populate.</li>
+    <li>
+      It is possible that answerExpression and initialExpression can both exist.  InitialExpression runs on launch and answerExpression should run whenever the 
+      user interface needs to render the question, the user interacts with the question or during validation.</li>
+    <li>
+      An answerExpresssion and calculatedExpression can both exist and are re-calculated when the source for their expressions change.  
+      If the calculatedExpression is not valid according to the results of the current answerExpression, the QuestionnaireResponse will fail 
+      validation and be unable to be marked as 'completed' until corrected.</li>
+    <li>
+      The result of initialExpression, calculatedExpression and answerExpression must all align with the 'type' of the item they appear 
+      on - e.g. can't have an expression that returns a string if the type is Choice/Coding.</li>
+  </ul>
+  <a name="map-pop"> </a>
+  <h4>StructureMap-based Population</h4>
+  <p>
+    The <a href="{{site.data.fhir.path}}structuremap.html">StructureMap</a> approach is the most sophisticated approach of the three - and the most powerful.
+    It allows iteration of groups based on repeating elements within resources, supports concept translation using structure maps and provides access to
+    transformation capabilities not available with the Expression-based approach.  It also allows the conversion process between data and Questionnaire to be
+    maintained independently and to draw on shared sources across Questionnaires.  This can be an advantage in certain environments where the content of the
+    questionnaire may need tight control, but the data environment can be more dynamic.  This comes at the cost of requiring expertise in the
+    <a href="{{site.data.fhir.path}}mapping-language.html">FHIR mapping language</a>, which is not (yet?) a common skill.
+  </p>
+  <p>
+    To use this method:
+  </p>
+  <ol>
+    <li>
+      As done for the Expression-based approach, include the <a href="StructureDefinition-sdc-questionnaire-launchContext.html">questionnaire-launchContext</a> extension to
+      identify any contextual information that needs to be passed into the population process.  Typical contexts would be the Patient or Encounter resources in
+      whose context the questionnaire is being completed, but other elements are also possible (e.g. an AdverseEvent if performing an adverse event report).
+      These 'context' elements will be available as expression variables for use in subsequent steps.</li>
+    <li>
+      Include the <a href="StructureDefinition-sdc-questionnaire-sourceQueries.html">sdc-questionnaire-sourceQueries</a> extension which SHALL point to a
+      <a href="{{site.data.fhir.path}}http.html#transaction">Batch</a> consisting of one or more queries to execute.  Prior to executing, FHIRPaths embedded in
+      the queries (referring to elements from the questionnaire-launchContext variables) SHALL be resolved.</li>
+    <li>
+      Include the <a href="StructureDefinition-sdc-questionnaire-sourceStructureMap.html">questionnaire-sourceStructureMap</a> extension.  This SHALL define a transform
+      between the Bundle of Bundles that will result from executing the sourceQueries Batch and a QuestionnaireResponse that complies with the Questionnaire.</li>
+  </ol>
+  <p>
+    For example:
+  </p>
+  <pre>
+    <textarea rows="38" cols="130" style="resize: none;background-color: rgba(0, 0, 0, 0); border-color: rgba(0, 0, 0, 0)">
+    <Questionnaire>
+      ...
+      <extension url="http://hl7.org/fhir/StructureDefinition/questionnaire-launchContext">
+        <extension url="name">
+          <valueId value="patient"/>
+        </extension>
+        <extension url="type">
+          <valueCode value="Patient"/>
+        </extension>
+        <extension url="description">
+          <valueString value="The patient the questionnaire is being completed for"/>
+        </extension>
+      </extension>
+      <extension url="http://hl7.org/fhir/StructureDefinition/questionnaire-launchContext">
+        <extension url="name">
+          <valueId value="encounter"/>
+        </extension>
+        <extension url="type">
+          <valueCode value="Encounter"/>
+        </extension>
+        <extension url="description">
+          <valueString value="The encounter this discharge questionnaire is being completed for"/>
+        </extension>
+      </extension>
+      <extension url="http://hl7.org/fhir/uv/sdc/StructureDefinition/sdc-questionnaire-sourceQueries">
+        <valueReference>
+          <reference value="Bundle/someQueryBatch"/>
+        </valueReference>
+      </extension>
+      <extension url="http://hl7.org/fhir/StructureDefinition/questionnaire-sourceStructureMap">
+        <valueReference>
+          <reference value="StructureMap/someStructureMap"/>
+        </valueReference>
+      </extension>
+      ...
+    </Questionnaire>
+    </textarea>
+  </pre>
+  <p>
+    To populate the QuestionnaireResponse, evaluate the FHIRPaths in the sourceQueries batch, execute the sourceQueries batch and then execute the StructureMap
+    on the resulting Bundle.  The result of that will be the pre-populated QuestionnaireResponse.  A sample questionnaire that shows this approach can be found 
+    <a href="Questionnaire-questionnaire-sdc-test-fhirpath-prepop-source-query.html">here</a>.
+  </p>
+  <p>
+    Considerations when using this approach:
+  </p>
+  <ul>
+    <li>
+      This approach will only work for pre-population using the <a href="#mode">Full Population</a> mode.  It cannot support continuous population using
+	  calculatedExpression nor "choice selection" and "answer context" using the candidateExpression and contextExpression extensions.</li>
+    <li>
+      This StructureMap-based population has the drawback that if the StructureMap execution fails, there will generally not be any QuestionnaireResponse as output.  As a result, the
+      StructureMap must be designed to be very robust in the face of missing or potentially 'bad' data.</li>
+    <li>
+      The ability of StructureMaps to reference other StructureMaps allows for the possibility of re-use if certain sections of multiple questionnaires are
+      consistent.</li>
+  </ul>
+</div>

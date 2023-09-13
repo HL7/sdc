@@ -1,0 +1,234 @@
+<div xmlns="http://www.w3.org/1999/xhtml" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://hl7.org/fhir ../../input-cache/schemas/r4/fhir-single.xsd">
+	<a name="overview"> </a>
+	<h3>Initiative Overview</h3>
+	<p>
+    The Structured Data Capture (SDC) Initiative identifies and recommends standards for the interoperable representation and
+    transmission of the following:
+  </p>
+	<ul>
+		<li>Standard form designs;</li>
+		<!--<li>Minimum data element attributes for the purpose of using them in form designs;</li>-->
+		<li>Query for form;</li>
+		<li>Return a form;</li>
+		<li>Submit completed form data to an external data repository.</li>
+		<li>Solicit completion of a form</li>
+	</ul>
+
+	<a name="capabilitystatement"> </a>
+	<h4>Capability Statements</h4>
+	<p>
+    FHIR Capability statements define the expectations for system "roles" within an SDC environment.  To be considered SDC-conformant, a system
+    must adhere to the requirements defined by at least one of these statements.  Some systems might choose to comply with more than one.
+  </p>
+	<ul>
+		<li>
+			<a href="CapabilityStatement-sdc-form-designer.html">SDC Form Designer</a> - System responsible for creating and editing form designs</li>
+		<li>
+			<a href="CapabilityStatement-sdc-form-filler.html">SDC Form Filler</a> - System responsible for capturing user form input to produce partially or fully completed forms</li>
+		<li>
+			<a href="CapabilityStatement-sdc-form-manager.html">SDC Form Manager</a> - Repository for form definitions.  May also perform pre-population</li>
+		<li>
+			<a href="CapabilityStatement-sdc-form-response-manager.html">SDC Form Response Manager</a> - Searchable repository for storage and retrieval of completed and partially completed forms.</li>
+		<li>
+			<a href="CapabilityStatement-sdc-form-receiver.html">SDC Form Receiver</a> - Write-only destination to which forms are sent for processing</li>
+		<li>
+			<a href="CapabilityStatement-sdc-form-archiver.html">SDC Form Archiver</a> - Write-only system responsible for archiving completed forms as well as works in progress</li>
+	</ul>
+	<p>
+    In addition to the above, there are three other roles that are not defined by this implementation guide:
+  </p>
+  <ul>
+    <li><b>Clinical or Administrative Data Source</b> - This is an Electronic Health Record (EHR) or similar system that is a repository of data potentially relevant for populating a form that might be
+      queried as part of the form population process.  Responsibilities would be to respond to queries from the <a href="CapabilityStatement-sdc-form-filler.html">SDC Form Filler</a> and/or
+      <a href="CapabilityStatement-sdc-form-manager.html">SDC Form Manager</a> during the form population process</li>
+    <li>
+      <b>Data Element Source</b> - A repository of FHIR <a href="{{site.data.fhir.path}}structuredefinition.html">StructureDefinitions</a> (resources, data types, profiles, and/or logical models) or <a href="{{site.data.fhir.path}}codesystem.html">CodeSystems</a> that can be used to look up item definitions or codes to help in defining questions and groups.</li>
+    <li>
+      <b>Task Manager</b> - A repository of FHIR <a href="{{site.data.fhir.path}}task.html">Tasks</a> that represent requests for a user to perform an action - in this case complete (or finish completing) a form.</li>
+  </ul>
+	<p>
+    The relationship between these roles and a summary of how they can interact is shown in <a href="#fig1">Figure 1</a>.
+  </p>
+	<a name="fig1"> </a>
+	<img style="width:450px" alt="Role operations" src="sdc-form-operations.png" />
+	<p>
+		<b>Figure 1: Role operations</b>
+	</p>
+
+	<a name="workflow"> </a>
+	<h3>Workflows</h3>
+	<p>
+    There are two primary workflows that fall within the scope of the SDC implementation guide - form creation/curation and form filling.  There's a third workflow not strictly within the scope of SDC that is also discussed - form solicitation.
+  </p>
+  <a name="curation"> </a>
+  <h4>Form curation</h4>
+	<a name="fig2"> </a>
+	<img style="width:400px" alt="Diagram showing interaction between Form Designer, Form Manager and Data Element Registry" src="sdc-form-curation.png"/>
+	<p>
+		<b>Figure 2: Form Curation Workflow</b>
+	</p>
+	<p>
+    In form curation, as shown in <a href="#fig2">Figure 2</a>, the Form Designer interacts with both the Form Manager and the Data Element Registry to create, edit and update forms,
+    including identifying and defining associated terminologies and data elements.  This is an iterative process where an initial version is
+    created and then subsequently updated and maintained, eventually changing status to <i>active</i> and later <i>retired</i>.
+  </p>
+	<p/>
+	<p>
+    The more significant (and complex) workflow in SDC is to complete (and potentially submit) a completed questionnaire response.
+  </p>
+  <a name="filling"> </a>
+  <h4>Form filling</h4>
+	<a name="fig3"> </a>
+	<img style="width:1000px" alt="Generic Workflow" src="sdc-generic-workflow.png" />
+	<p>
+		<b>Figure 3: Form Filling Workflow</b>
+	</p>
+	<p>
+		<i>
+			<b>Note</b>: The diagram depicts the optional storage of the completed form by the EHR. This can occur when the EHR stores a copy of
+      the form as they send it to the External Data Repository or by the external data repository returning a copy of the form to
+      the sender who can store an internal version of the form.
+    </i>
+	</p>
+	<p>The driver of this workflow is the
+    <a href="CapabilityStatement-sdc-form-filler.html">Form Filler</a> system.  It retrieves a form (Questionnaire) from the
+    <a href="CapabilityStatement-sdc-form-manager.html">Form Manager</a>.  It may also request that the Form Manager generate an initial QuestionnaireResponse,
+    potentially partially populated with information known by the Form Manager, supplied by the Form Filler or queried from the underlying EHR.  The Form Filler could generate the
+    QuestionnaireResponse itself without the assistance of the Form Manager and in either case could partially fill in the response based on information
+    known by the form filler.
+  </p>
+	<p>
+    When as much of the questionnaire response as possible has been filled in by automated means, the form is displayed to
+    an end-user who reviews and edits the automatically populated content as well as completing those portions of the form that were not populated
+    automatically.  In some cases, the form may be stored locally or using a <a href="CapabilityStatement-sdc-form-response-manager.html">Form Response Manager</a> to allow a user to
+    stop and resume editing at a later point.
+  </p>
+	<p>
+    The Form Filler (possibly with help from the Form Manager) is responsible for verifying that a completed form is
+    complete and valid against the corresponding Questionnaire.  Once valid, the form filler submits the form to one or more target repositories
+    (<a href="CapabilityStatement-sdc-form-receiver.html">Form Receiver</a> allows the completed form to be subsequently retrieved,
+    <a href="CapabilityStatement-sdc-form-archiver.html">Form Archiver</a> does not) and/or stores the completed form itself.  (Note - Form Receivers may perform validation on forms
+    prior to consumption, Form Archivers typically will not.)  The receiver of the completed form might then extract the data into relevant FHIR resources.
+  </p>
+  <a name="solicitation"> </a>
+  <h4>Form solicitation</h4>
+	<a name="fig4"> </a>
+	<img style="width:500px" alt="Form solicitation workflow" src="sdc-form-solicitation.png" />
+	<p>
+		<b>Figure 4: Form Solicitation Workflow</b>
+	</p>
+  <p>
+    In this workflow, a clinical, research or other system that wants a user to complete a form creates a <a href="{{site.data.fhir.path}}task.html">Task</a> instance which behaves 
+    as a "to do" item for the specified 'owner'.
+    There are two different options in terms of the nature of the Task.  The Task could specifically say "Please fill out this Questionnaire" or it could say "please fulfill this
+    <a href="{{site.data.fhir.path}}">ServiceRequest</a> where the ServiceRequest in turn seeks fulfillment of a specific Questionnaire.  The recommendation is to use the Task-only
+    approach unless there's a genuine need for a formal 'order' associated with the request - e.g. to support payment, to encourage compliance, etc.
+  </p>
+  <p>
+    The <a href="StructureDefinition-sdc-task.html">SDC Task</a> profile sets expectations for an instance regardless of which approach is chosen.
+  </p>
+  <a name="task-based"> </a>
+  <h5>Task-based solicitation</h5>
+  <p>
+    In this mode, a Task is initiated that indicates the Questionnaire to be completed by specifying the Questionnaire itself as a <code>Task.input</code>. 
+    (In R5, if Task.focus is expanded to support canonical, this will likely change to use Task.focus instead.)  This implementation guide defines a specific 
+    code to use for the <code>Task.code</code> that defines the expected action on that focus - i.e. to create a completed QuestionnaireResponse instance that is valid against the specified Questionnaire.
+    The <code>questionnaire</code> from the <a href="CodeSystem-temp.html">http://hl7.org/fhir/uv/sdc/CodeSystem/temp</a> code system.  (This code will eventually be replaced with an 'official'
+    code in an externally maintained code system - e.g. LOINC, SNOMED or something in terminology.hl7.org.)  The Task identifies the Questionnaire to be completed  and also provides
+    information such as why the Questionnaire needs to be completed, who is to complete it, who is asking for it, when it needs to be done, etc.
+  </p>
+  <p>
+    While this approach doesn't rely on the existence of an order to specify the Questionnaire to be completed, there might still be an 'order' associated with the Task that provides an 
+    overall authorization that drives the
+    need for the form to be completed.  For example, a pre-surgery form or a satisfaction survey might point to a ServiceRequest that had ordered the surgery.  In this case, the relevant 
+    <a href="{{site.data.fhir.path}}request.html">Request</a> resource will be referenced by the <code>Task.basedOn</code> element.  In this case, the 'Request' would not dictate the specific
+    Questionnaire, but would instead typically specify a higher level action (appointment, medication, surgery, therapy, etc.). An example for Task-based solicitation can be found <a href="Task-example.html">here</a>.
+  </p>
+  <a name="request-based"> </a>
+  <h5>Request-based solicitation</h5>
+  <p>
+    In this situation, the Questionnaire to be filled out is the primary focus of the order and is explicitly identified in the 'Request' - which in this case will always be a
+    <a href="{{site.data.fhir.path}}servicerequest.html">ServiceRequest</a>.  The same <code>code</code> is used as was used on the Task, however with ServiceRequest, the Questionnaire to
+    be completed is specified in an SDC-specific extension.  There can only be one Questionnaire specified.  A Task is then created to seek fulfillment of the order.  It is possible
+    that the order might solicit the Questionnaire to be filled out multiple times.  However, there will be a separate Task for each occurrence.  The reason, expected timing, intended performer, 
+    etc. may be fully specified by the ServiceRequest, might only be specified by the Task, or might be defined at a high-level by the ServiceRequest and then refined by the Task.
+  </p>
+  <p>
+    As with the Task-based approach, a ServiceRequest might in turn point to a 'higher-level' Request that is fulfilled, in part, by the ServiceRequest seeking the filling of the form.  This
+    higher-level ServiceRequest might be an order, but could also be a proposal or plan.  For example, a decision support recommendation. An example for Request-based solicitation can be found <a href="Task-request-task-example.html">here</a>.
+  </p>
+  <a name="solicitation-general"> </a>
+  <h5>General considerations</h5>
+  <p>
+    Regardless of the type of Task used, there are a number of common considerations when using the Task to solicit activity.  The first is how the Task is delivered.  The
+    <a href="{{site.data.fhir.path}}workflow-management.html">Workflow Management</a> section of the core specification provides a number of mechanisms for communicating the
+    Task to the system responsible for acting upon it, including:
+  </p>
+  <ul>
+    <li>
+      <a href="{{site.data.fhir.path}}workflow-management.html#optionf">Posting to the placer system</a> and having the filler system either poll or subscribe to see the data.  This would
+      work best where the client is a light-weight patient app with known locations to check for 'to do' items on.
+    </li>
+    <li>
+      <a href="{{site.data.fhir.path}}workflow-management.html#optiong">Direct post to the filler system</a> and having the placer system either poll or subscribe to monitor the Task for
+      activity.  This would work best where the fulfiller has a known server endpoint and there might be multiple systems seeking Questionnaires or other tasks to be completed.
+    </li>
+    <li>
+      <a href="{{site.data.fhir.path}}workflow-management.html#optionh">Posting to an intermediary</a> and having both the placer and filler systems either poll or subscribe to 
+      monitor for new Tasks and updates to existing ones.  This works well if there's a natural intermediary trusted by both sides and the could be many placing and filling systems.
+    </li>
+    <li>
+      Various other mechanisms including messaging and operations.
+    </li>
+  </ul>
+  <p>
+    In addition to delivery, there are several other considerations:
+  </p>
+  <ul>
+    <li>
+      Is the Questionnaire assigned to a specific individual to complete or is it open-ended?  In most cases, when creating a Task to get a Questionnaire filled out, there will be
+      a specific individual who is supposed to complete the QuestionnaireResponse.  This individual will be identified as the 'owner' of the Task.  However, in some cases, who is to
+      complete the form may be open-ended.  In this latter case, both the <code>owner</code> and <code>performerType</code>, the <code>owner</code> omitted and the <code>performerType</code>
+      specified or the <code>owner</code> specified with a higher-level performer (e.g. an <a href="{{site.data.fhir.path}}organization.html">Organization</a> or a 
+      <a href="{{site.data.fhir.path}}">CareTeam</a>, with the expectation that the actual QuestionnaireResponse will be completed by someone who is a 'member' of the specified group.
+      Even if the Task is assigned to a specific individual (e.g. a Patient), workflow processes might allow for the owner to be changed or the QuestionnaireResponse author to differ
+      from the assigned Task owner.  E.g. A form filled out by a next-of-kin in situations where the patient is unable.
+    </li>
+    <li>
+      If the Questionnaire could be filled out by a variety of people, then the 'task-claiming' portion of the workflow might be relevant where a potential filler might change the status
+      to 'received' and changing the owner prior to deciding whether to accept or reject the Task.
+    </li>
+    <li>
+      In most cases, the individual to whom the Task is assigned has the ability to say 'yes' (status = 'accepted') or 'no' (status = 'refused'), possibly indicating a <code>statusReason</code>
+      to indicate why they will not or cannot fill out the Questionnaire.  Workflow should allow for this possibility of rejection and decide whether standardized reason codes should be used.
+      SDC does not impose any constraints at this time.
+    </li>
+    <li>
+      Even after accepting a Task and agreeing to complete a Questionnaire, it is possible for the action to fail.  The user might start and be unable to complete for a variety of reasons.
+      If the Task has passed the time where gathering the information would be helpful (typically communicated as the <code>Task.executionPeriod.end</code>), the status might be changed to 
+      'failed' by either the placer or filler system.
+    </li>
+    <li>
+      <p>
+        Once the QuestionnaireResponse has been created, it needs to be stored somewhere and linked as a <code>Task.output</code>.  Again, SDC has defined an explicit output code - 
+        <code>questionnaire-response</code> from the <a href="CodeSystem-temp.html">http://hl7.org/fhir/uv/sdc/CodeSystem/temp</a> code system.  This code will also be replaced with an
+        'official' code once the business requirements have been better confirmed.
+      </p>
+      <p>
+        If the 'responseEndpoint' <code>Task.output</code> is present, the QuestionnareResponse should be POSTed to all of the specified endpoints.  Similarly, if the 
+        <a href="StructureDefinition-sdc-questionnaire-endpoint.html">sdc-questionnaire-endpoint</a> extension is present on the Questionnaire, it should be POSTed to those endpoints as
+        well.  If any of those endpoints are simple RESTful locations (i.e. ending in QuestionnaireResponse) and the corresponding server supports the <a href="{{site.data.fhir.path}}http.html#read">read</a>
+        operation, then that endpoint can be used as the target of the 'responseEndpoint' reference.  If there are no specified endpoints in either the Task or the Questionnaire, or if
+        all of the endpoints specified are write-only or operation endpoints such as <a href="OperationDefinition-Questionnaire-process-response.html">$process-response</a>, then the
+        QuestionnaireResponse will need to be posted elsewhere - typically on the same server as the Task, but it can be elsewhere.  It obviously <b>SHOULD</b> be accessible to the system
+        that initiated the Task.
+      </p>
+    </li>
+    <li>
+      A QuestionnaireResponse may need to be stored <i>before</i> it has been marked as 'complete' - for example if the user has partially completed the form and then needs to save
+      their work to continue later.  This QuestionnaireResponse <b>SHOULD</b> be pointed to as the 'questionnaire-response' <code>Task.output</code>, allowing it to be easily re-loaded on
+      resumption of the Task.  The QuestionnaireResponse.status and the Task.status would not be set to 'completed' until the user had decided the form was 'done' and it
+      successfully met validation criteria.  Submission to any indicated endpoints would typically not occur until the QuestionnaireResponse was deemed 'completed'.
+    </li>
+  </ul>
+</div>

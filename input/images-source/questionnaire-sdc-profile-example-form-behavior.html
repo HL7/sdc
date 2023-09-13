@@ -1,0 +1,291 @@
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+	<head>
+		<meta content="text/html;charset=utf-8" http-equiv="Content-Type"/>
+		<title>Advanced Form Behavior Demonstration</title>
+		
+	</head>
+	<body>
+		<div id="questionnaire-title">
+			<h1>Advanced Form Behavior Demonstration</h1>
+		</div>
+		<div id="linkitem-1.0" class="group">		
+			<div id="questionnaire-group-title">
+				<h2>1. Value Constraint Examples</h2>
+			</div>		
+			<div id="linkitem-1.1" class="string">
+				<form action="http://hl7.org/fhir/">
+					1.1 Restrict an answer to only have 50 characters (using 'maxLength')<br/><br/>
+					First Name <input id="linkitem-1.1-input" type="text" maxlength="50" size="50"/>
+				</form>
+			</div>		
+			<div id="linkitem-1.2" class="string">
+				<form action="http://hl7.org/fhir/">
+					1.2 Restrict an answer to have at least 2 characters (using 'minLength')<br/><br/>
+					Last Name <input id="linkitem-1.2-input" type="text" minlength="2"/>
+				</form>
+			</div>
+			<div id="linkitem-1.3" class="string">
+				<form action="http://hl7.org/fhir/">
+					1.3 Restrict an answer to range from 1 to 100, up to 2 decimal places (using 'minValue', 'maxValue' and 'maxDecimalPlaces')<br/><br/>
+					Weight in kg <input id="linkitem-1.3-input" type="text"/>
+				</form>
+			</div>
+			<div id="linkitem-1.4" class="string">
+				<form action="http://hl7.org/fhir/">
+					1.4 Only allow an answer in this format: A1A 1A1 (using 'regex') <br/><br/>
+					Postal Code (A1A 1A1)<input id="linkitem-1.4-input" type="text"/>
+				</form>
+			</div>
+			<div id="linkitem-1.4" class="attachment">
+				<form action="http://hl7.org/fhir/">
+				  	1.5 Only allow a JPG or PDF attachment, up to 1Mb (using 'mimeType' and 'maxSize')<br/><br/>
+	  			    Attach Proof of Citizenship <input type="file" id="linkitem-1.4-input" name="filename">
+				    <input type="submit">
+				</form>				
+			</div>					
+		</div>
+		<div id="linkitem-2.0" class="group">		
+			<div id="questionnaire-group-title">
+				<h2>2. Choice Restriction Examples</h2>
+			</div>	
+			<div id="linkitem-2.1" class="string">
+				<form action="http://hl7.org/fhir/">
+					2.1 Restrict choices from a fixed list (using 'answerOptions')<br/><br/>
+					Province
+					<select id="linkitem-2.1-option" name="province">
+					  <option value="Alberta">Alberta</option>					
+					  <option value="BC">British Columbia</option>
+					  <option value="Manitoba">Manitoba</option>
+					  <option value="NewBrunswick">New Brunswick</option>
+					  <option value="NewfoundlandAndLabrador">Newfoundland and Labrador</option>
+					  <option value="NovaScotia">Nova Scotia</option>  
+					  <option value="Ontario">Ontario</option>  					  
+					  <option value="PrinceEdwardIsland">Prince Edward Island</option>  					  
+					  <option value="Quebec">Quebec</option>
+					  <option value="Saskatchewan">Saskatchewan</option>  					  					  					  
+					</select>
+				</form>
+			</div>				
+			<div id="linkitem-2.2" class="string">
+				<form action="http://hl7.org/fhir/">
+					2.2 Restrict choices from a value set (using 'answerValueSet')<br/><br/>
+					Activity Level
+					<select id="linkitem-2.2-option" name="activity">
+					  <option value="LA10044-8">Often</option>
+					  <option value="LA10066-1">Rarely</option>
+					  <option value="LA10082-8">Sometimes</option>
+					  <option value="LA6270-8">Never</option>
+					  <option value="LA9933-8">Always</option>				  
+					</select>
+				</form>
+			</div>	
+
+			<div id="linkitem-2.3" class="string">
+				<form action="http://hl7.org/fhir/">
+					2.3 Require an answer (using 'required')<br/><br/>
+					Email*<input id="linkitem-2.3-input" type="text"/>
+				</form>
+			</div>
+			<div id="linkitem-2.4" class="string">
+				<form action="http://hl7.org/fhir/">
+					2.4 Example of an answer that is for display only, non-editable (using 'readOnly') <br/><br/>
+					Current Date: <input id="linkitem-2.4-input" type="text" value="05/05/2020" disabled></input>
+				</form>
+			</div>										
+			<div id="linkitem-2.5" class="string">
+				<form action="http://hl7.org/fhir/">
+					2.5 Multiple answers allowed, no limit (using 'repeats')<br/><br/>
+					Heart History (check all that applies):<br/>
+					<input type="checkbox" name="heart_history" value="heartAttack"  />Heart attack<br />
+					<input type="checkbox" name="heart_history" value="heartSurgery"  />Heart surgery<br /> 
+					<input type="checkbox" name="heart_history" value="cardiac"  />Cardiac catheterization<br /> 
+					<input type="checkbox" name="heart_history" value="angioplasty"  />Coronary angioplasty (PTCA)<br />
+					<input type="checkbox" name="heart_history" value="pacemaker"  />Cardiac pacemaker<br />
+					<input type="checkbox" name="heart_history" value="other"  />Other (specify): <input id="linkitem-2.5-input" type="text"/>
+				</form>
+			</div>
+			<div id="linkitem-2.6" class="string">
+				<form action="http://hl7.org/fhir/">
+					2.6 Must have at least to 2 answers (using 'minOccurs')<br/><br/>
+					Heart History (check at least 2):<br/>
+					<input type="checkbox" name="heart_history" value="heartAttack"  />Heart attack<br />
+					<input type="checkbox" name="heart_history" value="heartSurgery"  />Heart surgery<br /> 
+					<input type="checkbox" name="heart_history" value="cardiac"  />Cardiac catheterization<br /> 
+					<input type="checkbox" name="heart_history" value="angioplasty"  />Coronary angioplasty (PTCA)<br />
+					<input type="checkbox" name="heart_history" value="pacemaker"  />Cardiac pacemaker<br />
+				</form>
+			</div>
+			<div id="linkitem-2.7" class="string">
+				<form action="http://hl7.org/fhir/">
+					2.7 Can only have up to 3 answers (using 'maxOccurs) <br/><br/>
+					Heart History (check no more than 3):<br/>
+					<input type="checkbox" name="heart_history" value="heartAttack"  />Heart attack<br />
+					<input type="checkbox" name="heart_history" value="heartSurgery"  />Heart surgery<br /> 
+					<input type="checkbox" name="heart_history" value="cardiac"  />Cardiac catheterization<br /> 
+					<input type="checkbox" name="heart_history" value="angioplasty"  />Coronary angioplasty (PTCA)<br />
+					<input type="checkbox" name="heart_history" value="pacemaker"  />Cardiac pacemaker<br />
+				</form>
+			</div>
+			<div id="linkitem-2.8" class="string">
+				<form action="http://hl7.org/fhir/">
+					2.8 Restrict unit choices using unit options (using 'unitOption') <br/><br/>
+					Dosage <input id="linkitem-2.8-input" type="text"/>
+					<select id="linkitem-2.8-option" name="activity">
+					  <option value="Level0">ml</option>
+					  <option value="Level1">liters</option>
+					  <option value="Level2">mg</option>
+					  <option value="Level3">grams</option>
+					  <option value="Level4">kilo</option>  
+					</select>
+				</form>
+			</div>
+			<div id="linkitem-2.9" class="string">
+				<form action="http://hl7.org/fhir/">
+					2.9 Restrict unit choices from a value set (using 'unitValueSet') <br/><br/>
+					Dosage <input id="linkitem-2.9-input" type="text"/> 
+					<select id="linkitem-2.9-option" name="activity">
+					  <option value="Level0">ml</option>
+					  <option value="Level1">liters</option>
+					  <option value="Level2">mg</option>
+					  <option value="Level3">grams</option>
+					  <option value="Level4">kilo</option>  
+					</select>
+				</form>
+			</div>
+			<div id="linkitem-2.10" class="string">
+				<form action="http://hl7.org/fhir/">
+					2.10 Only allow a service animal resource as an answer (using 'referenceResource', 'referenceProfile' and 'lookupQuestionnaire')<br/><br/>
+					Select your preferred service animal:
+					<select id="linkitem-2.10-option" name="activity">
+					  <option value="Level0">Lassie</option>
+					  <option value="Level1">St. Peters</option>
+					  <option value="Level2">Coco</option>
+					</select>
+				</form>
+			</div>													
+		</div>
+		<div id="linkitem-3.0" class="group">		
+			<div id="questionnaire-title">
+				<h2>3. Calculation Examples</h2>
+			</div>
+			<div id="linkitem-3.1" class="string">
+				<form action="http://hl7.org/fhir/">
+					3.1 Example with an initial expression (using 'initialExpression') <br/><br/>
+					Deadline for submission (7 days from now) <input id="linkitem-3.1-input" type="text" value="05/05/2020" disabled></input>					
+				</form>
+			</div>
+			<div id="linkitem-3.2" class="string">
+				<form action="http://hl7.org/fhir/">
+					3.2 Example with a calculated expression (using 'calculatedExpression', 'variable', 'launchContext') <br/><br/>
+					Weight (kg) <input id="linkitem-3.2.1-input" type="text"/><br/>
+					Body Height (inches)<input id="linkitem-3.2.2-input" type="text"/><br/>
+					Your Body Mass Index (BMI) is <input id="linkitem-3.2.3-input" type="text" disabled></input>					 
+				</form>
+			</div>
+			<div id="linkitem-3.3" class="string">
+				<form action="http://hl7.org/fhir/">
+					3.3 Example with a CQF calculated value (using 'cqf-calculatedValue' and 'cqf-library') <br/><br/>
+					Estimated Due Date <input id="linkitem-3.3-input" type="text" value="07/07/2020" disabled></input>
+				</form>
+			</div>									
+		</div>
+		<div id="linkitem-4.0" class="group">		
+			<div id="questionnaire-title">
+				<h2>4. Other Controls</h2>
+			</div>
+			<div id="linkitem-4.1" class="choice">
+				<form action="http://hl7.org/fhir/">
+					4.1 Example of options with initial value (using initial) <br/><br/>
+					Marital Status				
+					<select id="gender" name="genderOptions">
+					  <option value="male selected">Single</option>
+					  <option value="female">Married</option>
+					  <option value="other" selected>Divorced</option>
+					  <option value="unknown">Widowed</option>
+					</select>
+				</form>
+			</div>
+			<div id="linkitem-4.2" class="choice">
+				<form action="http://hl7.org/fhir/">
+					4.2 Example of enabling behaviors (using 'enableWhen', 'enableBehavior', and 'enableWhenExpression') <br/><br/>
+
+					Choose Gender		
+					<select id="linkitem-4.2.1" name="genderOptions">
+					  <option value="male">Male</option>
+					  <option value="female" selected>Female</option>
+					  <option value="other">Other</option>
+					  <option value="unknown">Unknown</option>
+					</select>
+					<br/>
+					Are you pregnant? (enableWhen = gender is Female)<br/>
+					<input type="radio" id="male" name="gender" value="male">
+					<label for="male">Yes</label><br>
+					<input type="radio" id="female" name="gender" value="female">
+					<label for="female">No</label><br>
+					<input type="radio" id="other" name="gender" value="other">
+					<label for="other">Don't know</label><br/>
+					Are you diabetic? (enableWhen = gender is Female)<br/>
+					<input type="radio" id="male" name="gender" value="male">
+					<label for="male">Yes</label><br>
+					<input type="radio" id="female" name="gender" value="female">
+					<label for="female">No</label><br>
+					<input type="radio" id="other" name="gender" value="other">
+					<label for="other">Don't know</label><br/>
+					Have you been diagnosed with Gestational Diabetes? (enableBehavior = only when pregnant and diabetic)<br/>
+					<input type="radio" id="male" name="gender" value="male">
+					<label for="male">Yes</label><br>
+					<input type="radio" id="female" name="gender" value="female">
+					<label for="female">No</label><br>
+					<input type="radio" id="other" name="gender" value="other">
+					<label for="other">Don't know</label><br/><br/>
+					Enter your birthdate (MM/DD/YYYY)
+					<input id="linkitem-2.2-input" type="text"></input><br/> 
+					Have you had mammogram before?(enableWhenExpression = only when gender is female and age > 40)<br/>
+					<input type="radio" id="male" name="gender" value="male">
+					<label for="male">Yes</label><br>
+					<input type="radio" id="female" name="gender" value="female">
+					<label for="female">No</label><br/>
+					<input type="radio" id="other" name="gender" value="other">
+					<label for="other">Don't know</label><br/><br/>
+				</form>				
+			</div>
+			<div id="linkitem-4.3" class="choice">
+				4.3 Example involving ordinal value and contraints (using 'ordinalValue' and 'constraint')<br/><br/>
+				You should answer at least three questions.<br/><br/>
+				Over the last 2 weeks, how often have you been bothered by any of the following problems?<br/><br/>
+				1. Little interest or pleasure in doing things <br/>
+					<input type="radio" id="1.0" name="q1" value="male">Not at all (0)
+					<input type="radio" id="1.1" name="q1" value="female">Several Days (1)
+					<input type="radio" id="1.2" name="q1" value="other">More than half the days (2)
+					<input type="radio" id="1.3" name="q1" value="other">Nearly every day (3)<br/><br/>
+				2. Feeling down, depressed, or hopeless <br/>
+					<input type="radio" id="1.0" name="q1" value="male">Not at all (0)
+					<input type="radio" id="1.1" name="q1" value="female">Several Days (1)
+					<input type="radio" id="1.2" name="q1" value="other">More than half the days (2)
+					<input type="radio" id="1.3" name="q1" value="other">Nearly every day (3)<br/><br/>
+				3. Trouble falling or staying asleep, or sleeping too much <br/>
+					<input type="radio" id="1.0" name="q1" value="male">Not at all (0)
+					<input type="radio" id="1.1" name="q1" value="female">Several Days (1)
+					<input type="radio" id="1.2" name="q1" value="other">More than half the days (2)
+					<input type="radio" id="1.3" name="q1" value="other">Nearly every day (3)<br/><br/>
+				4. Feeling tired or having little energy <br/>
+					<input type="radio" id="1.0" name="q1" value="male">Not at all (0)
+					<input type="radio" id="1.1" name="q1" value="female">Several Days (1)
+					<input type="radio" id="1.2" name="q1" value="other">More than half the days (2)
+					<input type="radio" id="1.3" name="q1" value="other">Nearly every day (3)<br/><br/>					
+				Total Score: 0<br/><br/><br/>
+			</div>
+			<div id="linkitem-4.4" class="attachment">
+				4.4 Example of signature required (using 'signatureRequired' and 'usageMode')<br/><br/>
+				Signature of Patient: [only show signature pad when capturing data]<br/><br/>
+			</div>
+			<div id="linkitem-4.5" class="string">
+				4.5 Questionnaire can have an endpoint URL for the Form Receiver when it is completed (using 'endPoint') <br/><br/>
+			</div>
+			<div id="linkitem-4.6" class="string">
+				4.6 Questionnaire can be setup to have all enabled questions to be visible and accessible to the user (using 'entryMode') <br/><br/>
+			</div>			
+ 		</div>		
+	</body>
+</html>
+

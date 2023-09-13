@@ -1,0 +1,60 @@
+<div xmlns="http://www.w3.org/1999/xhtml" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://hl7.org/fhir ../../input-cache/schemas/R4/fhir-single.xsd">
+  <a name="algorithm"> </a>
+  <h3>Algorithm</h3>
+  <p>
+    The assembly process for a modular questionnaire proceeds as follows:
+  </p>
+  <ol>
+    <li>
+      Resolve all <a href="StructureDefinition-sdc-questionnaire-subQuestionnaire.html">subQuestionnaire</a> extensions as described in the 
+      <a href="modular.html#modular">Modular Forms</a> page.  If there is an issue resolving any of the subQuestionnaires or applying the reolution
+      process results in any errors, the operation <b>SHOULD</b> fail.
+    </li>
+    <li>
+      Propagate all relevant information from any declared <code>item.definition</code> elements on all resulting items, as described on the
+      <a href="modular.html#element">Modular Forms</a> page.
+    </li>
+    <li>
+      Adjust or remove the <a href="StructureDefinition-sdc-questionnaire-assemble-expectation.html">assemble-expectation</a> extension from the Questionnaire - 
+      because it no longer requires assembly!
+    </li>
+    <li>
+      Add the <a href="SearchParameter-questionnaire-assembledFrom.html">assembledFrom</a> extension, pointing to the canonical URL and version of the 
+      Questionnaire that was assembled.
+    </li>
+    <li>
+      Modify the Questionnaire.version to either be a UUID or append "-assembled".
+    </li>
+    <li>
+      Optionally, check the resulting Questionnaire to ensure that it is valid according to the base Questionnaire and possibly any declared 
+      profiles.  If the resulting Questionnaire is not valid, return a warning.
+    </li>
+  </ol>
+  <p>
+    The result of the operation will be one of three things:
+  </p>
+	<ul>
+		<li>
+      If there are any errors, there will be a 4xx or 5xx error code and, ideally an 
+      <a href="{{site.data.fhir.path}}operationoutcome.html">OperationOutcome</a> as the body of the response.
+    </li>
+    <li>
+      If there are no errors, warnings or information messages that result from the assembly process, the body can just be the bare Questionnaire
+      resource that resulted from the operation.
+    </li>
+    <li>
+      If there are any warnings or information messages, then the body will be a <a href="{{site.data.fhir.path}}parameters.html">Parameters</a>
+      instance with two parameters - 'response' containing the reulting Questionnaire and 'outcome' containing an OperationOutcome with the warning
+      and/or information messages.
+    </li>
+	</ul>
+	<a name="examples"> </a>
+	<h3>Examples</h3>
+	<p>
+    An example of a modular Questionnaire (as a sample input to the operation) can be found <a href="Questionnaire-sdc-modular-root.html">here</a>.
+  </p>
+	<p>
+    An example of the result of invoking a modular Questionnaire (as a sample output from the operation) can be found 
+    <a href="Parameters-sdc-modular-root-assembled.html">here</a>.
+  </p>
+</div>

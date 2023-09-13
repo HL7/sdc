@@ -1,0 +1,137 @@
+id: hl7.fhir.uv.sdc
+canonical: http://hl7.org/fhir/uv/sdc
+version: 3.0.0
+name: StructuredDataCapture
+title: Structured Data Capture
+status: draft
+publisher:
+  name: HL7 International - FHIR Infrastructure Work Group
+contact:
+    telecom:
+      - system: url
+        value: http://hl7.org/Special/committees/fiwg
+description: The SDC specification provides an infrastructure to standardize the capture and expanded use of patient-level data collected within an EHR.
+license: CC0-1.0
+fhirVersion: 4.0.1
+parameters:
+  apply-publisher: true
+  apply-contact: true
+  show-inherited-invariants: false
+copyrightYear: 2022+
+releaseLabel: STU 3
+jurisdiction: http://unstats.un.org/unsd/methods/m49/m49.htm#001 "World"
+extension:
+  - url: http://hl7.org/fhir/StructureDefinition/structuredefinition-standards-status
+    valueCode: "trial-use"
+  - url: http://hl7.org/fhir/StructureDefinition/structuredefinition-fmm
+    valueInteger: "3"
+dependencies:
+  hl7.fhir.r4.examples:
+    id: examples
+    uri: http://hl7.org/fhir/ImplementationGuide/fhir
+    version: 4.0.1
+pages:
+  index.html:
+    title: SDC Home Page
+  project.html:
+    title: Project and participants
+  intro.html:
+    title: Introduction
+  security.html:
+    title: Security Details
+  expressions.html:
+    title: Using Expressions
+  workflow.html:
+    title: Basic SDC workflow
+  search.html:
+    title: Finding a Questionnaire
+  rendering.html:
+    title: Advanced Form Rendering
+  behavior.html:
+    title: Form Behavior and Calculation
+  modular.html:
+    title: Modular Forms
+    extension:
+      - url: http://hl7.org/fhir/StructureDefinition/structuredefinition-standards-status
+        valueCode: "draft"
+  adaptive.html:
+    title: Adaptive Forms
+  populate.html:
+    title: Form Population
+  extraction.html:
+    title: Form Data Extraction
+  artifacts.html:
+    title: Artifact List   
+  examples.html:
+    title: Examples 
+  downloads.html:
+    title: Useful Downloads
+  changes.html:
+    title: IG Change History  
+resources:
+  StructureDefinition/sdc-questionnaire-entryMode:
+    description: An indication of how the user should be prompted for answers when completing a QuestionnaireResponse
+  StructureDefinition/sdc-questionnaire-enableWhenExpression:
+    description: An expression that returns a boolean value for whether to enable the item
+  StructureDefinition/sdc-questionnaire-minQuantity:
+    description: The inclusive lower bound on the range of allowed values for a 'quantity' type question
+  StructureDefinition/sdc-questionnaire-maxQuantity:
+    description: The inclusive upper bound on the range of allowed values for  a 'quantity' type question
+  StructureDefinition/sdc-questionnaire-answerExpression:
+    description: An expression (FHIRPath, CQL or FHIR Query) that resolves to a list of permitted answers for a question item.
+  StructureDefinition/sdc-questionnaire-contextExpression:
+    description: A FHIR Query that resolves to one or more resources that can be displayed to the user to help provide context for answering a question
+  StructureDefinition/sdc-questionnaire-answerOptionsToggleExpression:
+    description: A complex expression that provides a list of the allowed options that should be enabled or disabled based on the evaluation of a provided expression.
+  StructureDefinition/sdc-questionnaire-candidateExpression:
+    description: A FHIRPath or CQL Expression, or FHIR Query that resolves to a list of candidate answers (usually based on other answers in the questionnaire or based on information within the health record) for the question item or that establishes context for a group item
+  StructureDefinition/sdc-questionnaire-lookupQuestionnaire:
+    description: For items of type reference, the reference can be populated either by picking an existing entity or by creating a new one. In the latter case, this Questionnaire allows specifying the Questionnaire to use in creating the target instance. This can be direct (if the Reference is to a Questionnaire) or indirect via mapping if the Reference is to some other sort of resource.
+  StructureDefinition/sdc-questionnaire-launchContext:
+    description: Resources that provide context for form processing logic (pre-population, flow-control, drop-down selection, etc.) when creating/displaying/editing a QuestionnaireResponse
+  StructureDefinition/sdc-questionnaire-initialExpression:
+    description: Initial value for a question answer as determined by an evaluated expression
+  StructureDefinition/sdc-questionnaire-calculatedExpression:
+    description: Calculated value for a question answer as determined by an evaluated expression
+  StructureDefinition/sdc-questionnaire-openLabel:
+    description: The label text to display beside free-text and/or unrestricted type values for an ‘open’ choice element. E.g. ‘Other, please specify’, or ‘Additional condition’, or ‘More reason(s)’, etc.
+  StructureDefinition/sdc-questionnaire-itemMedia:
+    description: Media to render/make available accompanying the question being asked or group or display item being rendered.
+  StructureDefinition/sdc-questionnaire-itemAnswerMedia:
+    description: Media to render/make available as an accompaniment to a specific answer option.
+  StructureDefinition/sdc-questionnaire-width:
+    description: When used with an item control that causes the question to appear as a column in a table, indicates the width to give to the column for this question.
+  StructureDefinition/sdc-questionnaire-collapsible:
+    description: Indicates that the child items of an item are displayed in collapsible form (either collapsed or expanded)
+  StructureDefinition/sdc-questionnaire-choiceColumn:
+    description: Provides guidelines for rendering multi-column choices
+  StructureDefinition/sdc-questionnaire-shortText:
+    description: Provides a short text for an item. This element is useful for items that require a shorter text when rendered (e.g. when item is displayed on a mobile phone).
+  StructureDefinition/sdc-questionnaire-optionalDisplay:
+    description: If set to true, it means that the system displaying the form (or the individual encoding the form for data capture) can choose to omit the item from display to the user.
+  StructureDefinition/sdc-questionnaire-sourceQueries:
+    description: A Batch Bundle containing a set of queries that should be executed to provide source data for a StructureMap to create a populated QuestionnaireResponse
+  StructureDefinition/sdc-questionnaire-isSubject:
+    description: If present and true, indicates that the item establishes a different subject for the group in a response
+  StructureDefinition/sdc-questionnaireresponse-isSubject:
+    description: If present and true, indicates that the item indicates a different subject for this group
+  StructureDefinition/sdc-questionnaire-itemPopulationContext:
+    description: Specifies a query that identifies the resource (or set of resources for a repeating item) that should be used to populate this Questionnaire or Questionnaire.item on initial population.
+  StructureDefinition/sdc-questionnaire-itemExtractionContext:
+    description: Specifies a query that identifies the resource (or set of resources for a repeating item)  to be extracted from this item once the QuestionnaireResponse is complete.
+  StructureDefinition/sdc-questionnaire-observationLinkPeriod:
+    description: Indicates the time-period (from 'now') to search for observations that match the Questionnaire.item.code and Questionnaire.subject when pre-populating the QuestionnaireResponse.
+  StructureDefinition/sdc-questionnaire-observationExtract:
+    description: If true, indicates that the observation-based approach should be used to extract either the particular item (if extension is defined on an individual question or group based on the code present) or all items in the questionnaire (if defined at the questionnaire root and if they have a code present)
+  StructureDefinition/sdc-questionnaire-observation-extract-category:
+    description: Indicates the Observation.category value(s) that should appear on extracted Observations for the entire Questionnaire or for the current item and descendant items.
+  StructureDefinition/sdc-questionnaire-sourceStructureMap:
+    description: StructureMaps that produce QuestionnaireResponses for this Questionnaire as 'target' - i.e. that can be used to create QuestionnaireResponses that are valid against this Questionnaire.
+  StructureDefinition/sdc-questionnaire-targetStructureMap:
+    description: StructureMaps that have QuestionnaireResponses of this Questionnaire as 'source'- i.e. that can be used to create other artifacts from QuestionnaireResponses that are valid against this Questionnaire.
+  StructureDefinition/sdc-questionnaire-performerType:
+    description: Indicates the types of resources that can record answers to a Questionnaire
+  StructureDefinition/sdc-questionnaire-questionnaireAdaptive:
+    description: Indicates if a questionnaire is adaptive - either set to true or set the base URL of the server that can perform the nextQuestion operation of the questionnaire
+  StructureDefinition/sdc-questionnaire-preferredTerminologyServer:
+    description: Indicates the terminology server(s) that are known to be capable of returning and potentially expanding the value set(s) associated with the whole questionnaire or a particular group or question within the questionnaire (depending on where the extension appears).
