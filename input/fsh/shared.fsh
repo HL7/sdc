@@ -182,7 +182,7 @@ RuleSet: addContent(id, name, contentType, definition)
 * content[{id}]
   * contentType 1..1 MS
   * contentType only code
-  * contentType = {contentType} (exactly)
+  * contentType = {contentType}
   * data 1..1
 
 // CapabiltyStatement RS
