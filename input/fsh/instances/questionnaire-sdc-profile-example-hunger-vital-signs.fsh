@@ -2,33 +2,42 @@ Instance: questionnaire-sdc-profile-example-hunger-vital-signs
 InstanceOf: SDCBaseQuestionnaire
 Title: "SDC-Hunger Vital Sign"
 Usage: #example
-* extension[$variable]
+* extension[0]
+  * url = $standard-status
+  * valueCode = #draft
+* extension[+]
+  * url = $fmm
+  * valueInteger = 0
+* extension[+]
+  * url = $variable
   * valueExpression
     * name = "worriedAnsCode"
     * language = #text/fhirpath
     * expression = "%resource.item.where(linkId='/88122-7').answer.value.code"
-* extension[$variable]
+* extension[+]
+  * url = $variable
   * valueExpression
     * name = "ranOutAnsCode"
     * language = #text/fhirpath
     * expression = "%resource.item.where(linkId='/88123-5').answer.value.code"
-* extension[$variable]
+* extension[+]
+  * url = $variable
   * valueExpression
     * name = "riskCodes"
     * language = #text/fhirpath
     * expression = "'LA28397-0'.combine('LA6729-3')"
-* extension[$variable]
+* extension[+]
+  * url = $variable
   * valueExpression
     * name = "riskStatus"
     * language = #text/fhirpath
     * expression = "%riskCodes contains %worriedAnsCode or %riskCodes contains %ranOutAnsCode"
-* extension[$variable]
+* extension[+]
+  * url = $variable
   * valueExpression
     * name = "answeredEitherQ"
     * language = #text/fhirpath
     * expression = "%worriedAnsCode.exists() or %ranOutAnsCode.exists()"
-* extension[$standard-status].valueCode = #draft
-* extension[$fmm].valueInteger = 0
 * url = "http://hl7.org/fhir/uv/sdc/Questionnaire/questionnaire-sdc-profile-example-hunger-vital-signs"
 * name = "QuestionnaireSdcProfileExampleHungerVitalSigns"
 * title = "Hunger Vital Sign [HVS]"
@@ -70,17 +79,20 @@ Usage: #example
     * url = "http://hl7.org/fhir/StructureDefinition/questionnaire-itemControl"
     * valueCodeableConcept = $questionnaire-item-control#drop-down "Drop down"
       * text = "Drop down"
-  * extension[$variable]
+  * extension[+]
+    * url = $variable
     * valueExpression
       * name = "thisItem"
       * language = #text/fhirpath
       * expression = "%questionnaire.item.where(linkId = '/88124-3')"
-  * extension[$variable]
+  * extension[+]
+    * url = $variable
     * valueExpression
       * name = "atRiskCoding"
       * language = #text/fhirpath
       * expression = "%thisItem.answerOption.valueCoding.where(code='LA19952-3')"
-  * extension[$variable]
+  * extension[+]
+    * url = $variable
     * valueExpression
       * name = "noRiskCoding"
       * language = #text/fhirpath
