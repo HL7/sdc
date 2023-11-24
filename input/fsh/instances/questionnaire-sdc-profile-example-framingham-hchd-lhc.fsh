@@ -14,19 +14,19 @@ Usage: #example
   * valueExpression
     * name = "age"
     * language = #text/fhirpath
-    * expression = "item.where(linkId='/age').answer.valueDecimal"
+    * expression = "item.where(linkId='/age').answer.value"
 * extension[+]
   * url = $variable
   * valueExpression
     * name = "gender"
     * language = #text/fhirpath
-    * expression = "item.where(linkId='/46098-0').answer.valueCoding.display"
+    * expression = "item.where(linkId='/46098-0').answer.value.display"
 * extension[+]
   * url = $variable
   * valueExpression
     * name = "smokesCode"
     * language = #text/fhirpath
-    * expression = "item.where(linkId='/smokes').answer.valueCoding.code"
+    * expression = "item.where(linkId='/smokes').answer.value.code"
 * extension[+]
   * url = $variable
   * valueExpression
@@ -38,25 +38,25 @@ Usage: #example
   * valueExpression
     * name = "systolic"
     * language = #text/fhirpath
-    * expression = "item.where(linkId='/8480-6').answer.valueDecimal"
+    * expression = "item.where(linkId='/8480-6').answer.value"
 * extension[+]
   * url = $variable
   * valueExpression
     * name = "tChol"
     * language = #text/fhirpath
-    * expression = "item.where(linkId='/2093-3').answer.valueDecimal"
+    * expression = "item.where(linkId='/2093-3').answer.value"
 * extension[+]
   * url = $variable
   * valueExpression
     * name = "hdl"
     * language = #text/fhirpath
-    * expression = "item.where(linkId='/2085-9').answer.valueDecimal"
+    * expression = "item.where(linkId='/2085-9').answer.value"
 * extension[+]
   * url = $variable
   * valueExpression
     * name = "antihypertCode"
     * language = #text/fhirpath
-    * expression = "item.where(linkId='/antihypertensive').answer.valueCoding.code"
+    * expression = "item.where(linkId='/antihypertensive').answer.value.code"
 * extension[+]
   * url = $variable
   * valueExpression

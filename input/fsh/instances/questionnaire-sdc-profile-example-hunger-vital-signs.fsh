@@ -90,13 +90,13 @@ Usage: #example
     * valueExpression
       * name = "atRiskCoding"
       * language = #text/fhirpath
-      * expression = "%thisItem.answerOption.valueCoding.where(code='LA19952-3')"
+      * expression = "%thisItem.answerOption.value.where(code='LA19952-3')"
   * extension[+]
     * url = $variable
     * valueExpression
       * name = "noRiskCoding"
       * language = #text/fhirpath
-      * expression = "%thisItem.answerOption.valueCoding.where(code='LA19983-8')"
+      * expression = "%thisItem.answerOption.value.where(code='LA19983-8')"
   * extension[+]
     * url = "http://hl7.org/fhir/uv/sdc/StructureDefinition/sdc-questionnaire-calculatedExpression"
     * valueExpression
