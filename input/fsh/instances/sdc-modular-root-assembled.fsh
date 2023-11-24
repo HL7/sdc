@@ -250,7 +250,7 @@ Usage: #example
           * url = "http://hl7.org/fhir/uv/sdc/StructureDefinition/sdc-questionnaire-initialExpression"
           * valueExpression
             * language = #text/fhirpath
-            * expression = "%person.telecom[use='phone'][0]"
+            * expression = "%person.telecom.where(use='phone').first()"
         * linkId = "patientcontact.2"
         * definition = "http://example.org/StructureDefinition/non-existent-library#Stuff.phone"
         * text = "Phone number"
