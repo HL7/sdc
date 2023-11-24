@@ -78,12 +78,12 @@ Usage: #example
       * type = #integer
   * item[+]
     * extension
-      * url = "http://hl7.org/fhir/uv/sdc/StructureDefinition/sdc-questionnaire-initialExpression"
+      * url = "http://hl7.org/fhir/uv/sdc/StructureDefinition/sdc-questionnaire-itemPopulationContext"
       * valueExpression
         * description = "The set of MedicationRequests from the search context"
         * name = "mrItem"
         * language = #text/fhirpath
-        * expression = "PrePopQuery.entry.skip(1).first().resource"
+        * expression = "%PrePopQuery.entry.skip(1).first().resource"
     * linkId = "meds"
     * text = "Medications"
     * type = #group
