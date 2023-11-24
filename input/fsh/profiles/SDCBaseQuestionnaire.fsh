@@ -18,7 +18,7 @@ Description: "Sets minimum expectations for questionnaire support for SDC-confor
 * subjectType MS
   * ^requirements = "A Questionnaire SHOULD specify the subject. However, it is optional to support legacy questionnaires."
 * item MS
-  * obeys que-14 and sdc-1
+  * obeys sdc-1
 // WARNING: The constraint index in the following rule (e.g., constraint[0]) may be incorrect.
 // Please compare with the constraint array in the original definition's snapshot and adjust as necessary.
   * ^constraint.source = "http://hl7.org/fhir/StructureDefinition/Questionnaire"
