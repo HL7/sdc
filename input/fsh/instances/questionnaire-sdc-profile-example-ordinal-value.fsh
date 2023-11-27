@@ -83,7 +83,7 @@ Usage: #example
       * valueExpression
         * description = "Total score"
         * language = #text/fhirpath
-        * expression = "%resource.repeat(item).where(linkId='1.0').item.answer.ordinal().aggregate($this + $total, 0)"
+        * expression = "%resource.repeat(item).where(linkId='1.0').item.answer.value.ordinal().aggregate($this + $total, 0)"
     * linkId = "6"
     * text = "Total Score:"
     * type = #integer
