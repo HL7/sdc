@@ -7,18 +7,18 @@ group main(source src : Bundle, target qr : QuestionnaireResponse) {
   src -> qr.questionnaire = 'http://hl7.org/fhir/uv/sdc/Questionnaire/questionnaire-sdc-test-fhirpath-prepop-source-query' "questionnaire";
   src -> qr.status = 'in-progress' "status";
   src -> qr.authored = (now()) "authored";
-  src.entry first as patient -> qr.subject as subject, subject.reference = (patient.resource.entry.fullUrl) "subject";
+  src.entry first as patient -> qr.subject as subject, subject.reference = (patient.resource.entry.fullUrl.toString()) "subject";
   src -> qr.item as grp, grp.linkId = 'grp' then {
     src -> grp.item as partDetails, partDetails.linkId = 'part-details' then {
       src.entry first as patient -> partDetails then {
         patient.resource as patientRes -> partDetails.item as participantId, participantId.linkId = 'participant-id' then {
-          patientRes.entry as patientResEntry -> participantId.answer as participantIdAnswer, participantIdAnswer.value = (patientResEntry.resource.id) "participantIdValue";
+          patientRes.entry as patientResEntry -> participantId.answer as participantIdAnswer, participantIdAnswer.value = (patientResEntry.resource.id.toString()) "participantIdValue";
         } "participantId";
         patient.resource as patientRes -> partDetails.item as familyName, familyName.linkId = 'family-name' then {
           patientRes.entry as patientResEntry -> familyName.answer as familyNameAnswer, familyNameAnswer.value = (patientResEntry.resource.name.first().family) "familyNameValue";
         } "familyName";
         patient.resource as patientRes -> partDetails.item as givenName, givenName.linkId = 'given-names' then {
-          patientRes.entry as patientResEntry -> givenName.answer as givenNameAnswer, givenNameAnswer.value = (patientResEntry.resource.name.first().given.aggregate(iif($total.empty(), $this, $total & " " & $this))) "givenNameValue";
+          patientRes.entry as patientResEntry -> givenName.answer as givenNameAnswer, givenNameAnswer.value = (patientResEntry.resource.name.first().given.join(', ')) "givenNameValue";
         } "familyName";
         patient.resource as patientRes -> partDetails.item as dob, dob.linkId = 'dob' then {
           patientRes.entry as patientResEntry -> dob.answer as dobAnswer, dobAnswer.value = (patientResEntry.resource.birthDate) "dobValue";
@@ -39,10 +39,10 @@ group main(source src : Bundle, target qr : QuestionnaireResponse) {
 */
           } "medsName";
           med.resource as medResource -> medsItem.item as medsStatus, medsStatus.linkId = 'med-status' then {
-            medResource as medsMedication -> medsStatus.answer as medsStatusAnswer, medsStatusAnswer.value = append(medResource.status,"") "medsStatusAnswer";
+            medResource.status as medsMedicationStatus -> medsStatus.answer as medsStatusAnswer, medsStatusAnswer.value = c('http://hl7.org/fhir/CodeSystem/medication-status', medsMedicationStatus) "medsStatusAnswer";
           } "medsStatus";
           med.resource as medResource where (category.coding.where(system='http://terminology.hl7.org/CodeSystem/medicationrequest-category').exists()) -> medsItem.item as medsCategory, medsCategory.linkId = 'meds-category' then {
-            medResource -> medsCategory.answer as medsCategoryAnswer, medsCategoryAnswer.value = (medResource.category.coding.where(system='http://terminology.hl7.org/CodeSystem/medicationrequest-category').code.aggregate(iif($total.empty(), $this, $total & " " & $this))) "medsCategoryAnswer";
+            medResource -> medsCategory.answer as medsCategoryAnswer, medsCategoryAnswer.value = (medResource.category.coding.where(system='http://terminology.hl7.org/CodeSystem/medicationrequest-category').code.join(' ')) "medsCategoryAnswer";
           } "medsCategory";
         } "medItem";
       } "medEntry";
