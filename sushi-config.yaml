@@ -5,11 +5,12 @@ name: StructuredDataCapture
 title: Structured Data Capture
 status: draft
 publisher:
-  name: HL7 International - FHIR Infrastructure Work Group
+  name: HL7 International / FHIR Infrastructure
+  url: http://www.hl7.org/Special/committees/fiwg
 contact:
     telecom:
       - system: url
-        value: http://hl7.org/Special/committees/fiwg
+        value: http://www.hl7.org/Special/committees/fiwg
 description: The SDC specification provides an infrastructure to standardize the capture and expanded use of patient-level data collected within an EHR.
 license: CC0-1.0
 fhirVersion: 4.0.1
@@ -25,6 +26,8 @@ extension:
     valueCode: "trial-use"
   - url: http://hl7.org/fhir/StructureDefinition/structuredefinition-fmm
     valueInteger: "3"
+  - url: http://hl7.org/fhir/StructureDefinition/structuredefinition-wg
+    valueCode: "fhir"
 dependencies:
   hl7.fhir.r4.examples:
     id: examples

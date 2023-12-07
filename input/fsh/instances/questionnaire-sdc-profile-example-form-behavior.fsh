@@ -8,13 +8,13 @@ Usage: #example
   * valueExpression
     * name = "weight"
     * language = #text/fhirpath
-    * expression = "%resource.repeat(item).where(linkId='3.3.1').item.answer.valueDecimal"
+    * expression = "%resource.repeat(item).where(linkId='3.3.1').item.answer.value"
 * extension[+]
   * url = "http://hl7.org/fhir/StructureDefinition/variable"
   * valueExpression
     * name = "height"
     * language = #text/fhirpath
-    * expression = "%resource.repeat(item).where(linkId='3.3.2').item.answer.valueDecimal*0.0254"
+    * expression = "%resource.repeat(item).where(linkId='3.3.2').item.answer.value*0.0254"
 * extension[+]
   * url = "http://hl7.org/fhir/StructureDefinition/cqf-library"
   * valueCanonical = "http://example.org/Library/MeasurementLimits"
@@ -310,7 +310,7 @@ Usage: #example
       * extension.url = "http://hl7.org/fhir/uv/sdc/StructureDefinition/sdc-questionnaire-initialExpression"
       * extension.valueExpression.description = "patient's first name"
       * extension.valueExpression.language = #text/fhirpath
-      * extension.valueExpression.expression = "%patient.name.where(use='official').family()"
+      * extension.valueExpression.expression = "%patient.name.where(use='official').family"
       * linkId = "3.2.2"
       * text = "First Name:"
       * type = #string
@@ -504,14 +504,15 @@ Usage: #example
   * item[+]
     * extension[0]
       * url = "http://hl7.org/fhir/uv/sdc/StructureDefinition/sdc-questionnaire-itemPopulationContext"
+      * valueExpression.name = "homeAddress"
       * valueExpression.description = "Home address of the patient"
       * valueExpression.language = #text/fhirpath
-      * valueExpression.expression = "%patient.address.where(use='home')[0]"
+      * valueExpression.expression = "%patient.address.where(use='home').first()"
     * extension[+]
       * url = "http://hl7.org/fhir/uv/sdc/StructureDefinition/sdc-questionnaire-itemExtractionContext"
       * valueExpression.description = "Home address of the patient"
       * valueExpression.language = #text/fhirpath
-      * valueExpression.expression = "%patient.address.where(use='home')[0]"
+      * valueExpression.expression = "%patient.address.where(use='home').first()"
     * linkId = "4.6"
     * type = #group
     * item[0]
@@ -523,7 +524,7 @@ Usage: #example
         * url = "http://hl7.org/fhir/uv/sdc/StructureDefinition/sdc-questionnaire-initialExpression"
         * valueExpression.description = "Address Line 1"
         * valueExpression.language = #text/fhirpath
-        * valueExpression.expression = "line[0]"
+        * valueExpression.expression = "%homeAddress.line.first()"
       * linkId = "4.6.2"
       * definition = "http://hl7.org/fhir/StructureDefinition/Patient#Patient.address.line"
       * text = "Address"
@@ -533,7 +534,7 @@ Usage: #example
         * url = "http://hl7.org/fhir/uv/sdc/StructureDefinition/sdc-questionnaire-initialExpression"
         * valueExpression.description = "City"
         * valueExpression.language = #text/fhirpath
-        * valueExpression.expression = "city"
+        * valueExpression.expression = "%homeAddress.city"
       * linkId = "4.6.3"
       * definition = "http://hl7.org/fhir/StructureDefinition/Patient#Patient.address.city"
       * text = "City"
@@ -543,7 +544,7 @@ Usage: #example
         * url = "http://hl7.org/fhir/uv/sdc/StructureDefinition/sdc-questionnaire-initialExpression"
         * valueExpression.description = "State"
         * valueExpression.language = #text/fhirpath
-        * valueExpression.expression = "state"
+        * valueExpression.expression = "%homeAddress.state"
       * linkId = "4.6.4"
       * definition = "http://hl7.org/fhir/StructureDefinition/Patient#Patient.address.state"
       * text = "Province"
@@ -563,12 +564,8 @@ Usage: #example
         * url = "http://hl7.org/fhir/uv/sdc/StructureDefinition/sdc-questionnaire-initialExpression"
         * valueExpression.description = "Postal Code"
         * valueExpression.language = #text/fhirpath
-        * valueExpression.expression = "postalCode"
+        * valueExpression.expression = "%homeAddress.postalCode"
       * linkId = "4.6.5"
       * definition = "http://hl7.org/fhir/StructureDefinition/Patient#Patient.address.postalCode"
       * text = "Postal Code"
       * type = #string
-
-
-
-      

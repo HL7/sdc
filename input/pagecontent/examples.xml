@@ -4105,7 +4105,7 @@ i.fa {
                     "valueExpression": {
                       "description": "patient's first name",
                       "language": "text/fhirpath",
-                      "expression": "%patient.name.where(use='official').family()"
+                      "expression": "%patient.name.where(use='official').family"
                     }
                   }
                 ],
@@ -4177,7 +4177,7 @@ i.fa {
                 <valueExpression>
                   <description value="patient's first name"/>
                   <language value="text/fhirpath"/>
-                  <expression value="%patient.name.where(use='official').family()"/> 
+                  <expression value="%patient.name.where(use='official').family"/> 
                 </valueExpression>
               </extension>
               <linkId value="3.2.2"/>
@@ -4232,7 +4232,7 @@ i.fa {
               "valueExpression": {
                 "name": "weight",
                 "language": "text/fhirpath",
-                "expression": "%resource.repeat(item).where(linkId='3.3.1').item.answer.valueDecimal"
+                "expression": "%resource.repeat(item).where(linkId='3.3.1').item.answer.value"
               }
             },
             {
@@ -4240,7 +4240,7 @@ i.fa {
               "valueExpression": {
                 "name": "height",
                 "language": "text/fhirpath",
-                "expression": "%resource.repeat(item).where(linkId='3.3.2').item.answer.valueDecimal*0.0254"
+                "expression": "%resource.repeat(item).where(linkId='3.3.2').item.answer.value*0.0254"
               }
             }
           ],
@@ -4304,14 +4304,14 @@ i.fa {
               <valueExpression>
                 <name value="weight"/>
                 <language value="text/fhirpath"/>
-                <expression value="%resource.repeat(item).where(linkId='3.3.1').item.answer.valueDecimal"/>
+                <expression value="%resource.repeat(item).where(linkId='3.3.1').item.answer.value"/>
               </valueExpression>
             </extension>
             <extension url="http://hl7.org/fhir/StructureDefinition/variable">
               <valueExpression>
                 <name value="height"/>
                 <language value="text/fhirpath"/>
-                <expression value="%resource.repeat(item).where(linkId='3.3.2').item.answer.valueDecimal*0.0254"/>
+                <expression value="%resource.repeat(item).where(linkId='3.3.2').item.answer.value*0.0254"/>
               </valueExpression>
             </extension>
             <item>
@@ -5153,7 +5153,7 @@ i.fa {
                       "valueExpression": {
                         "description": "Total score",
                         "language" : "text/fhirpath",
-                        "expression" : "%resource.repeat(item).where(linkId='1.0').item.answer.ordinalValue().aggregate($this + $total, 0)"
+                        "expression" : "%resource.repeat(item).where(linkId='1.0').item.answer.ordinal().aggregate($this + $total, 0)"
                       }
                     }
                   ],
@@ -5319,7 +5319,7 @@ i.fa {
                   <valueExpression>
                     <description value="Total score"/>
                     <language value="text/fhirpath"/>
-                    <expression value="%resource.repeat(item).where(linkId='1.0').item.answer.ordinalValue().aggregate($this + $total, 0)"/>
+                    <expression value="%resource.repeat(item).where(linkId='1.0').item.answer.ordinal().aggregate($this + $total, 0)"/>
                   </valueExpression>
                 </extension>
                 <linkId value="6"/>

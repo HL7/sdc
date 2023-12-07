@@ -8,13 +8,13 @@ Usage: #example
   * valueExpression
     * name = "weight"
     * language = #text/fhirpath
-    * expression = "%resource.item.where(linkId='/29463-7').answer.valueDecimal"
+    * expression = "%resource.item.where(linkId='/29463-7').answer.value"
 * extension[+]
   * url = "http://hl7.org/fhir/StructureDefinition/variable"
   * valueExpression
     * name = "height"
     * language = #text/fhirpath
-    * expression = "%resource.item.where(linkId='/8302-2').answer.valueDecimal*0.0254"
+    * expression = "%resource.item.where(linkId='/8302-2').answer.value*0.0254"
 * extension[+]
   * url = "http://hl7.org/fhir/StructureDefinition/structuredefinition-standards-status"
   * valueCode = #draft

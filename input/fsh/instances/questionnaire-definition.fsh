@@ -13,5 +13,6 @@ Usage: #definition
 * code = #definition
 * base = #Questionnaire
 * type = #token
+* expression = "Questionnaire.item.definition"
 * xpath = "f:Questionnaire/f:item/f:definition"
 * xpathUsage = #normal
