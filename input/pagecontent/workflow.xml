@@ -215,7 +215,7 @@
         'official' code once the business requirements have been better confirmed.
       </p>
       <p>
-        If the 'responseEndpoint' <code>Task.output</code> is present, the QuestionnareResponse should be POSTed to all of the specified endpoints.  Similarly, if the 
+        If the 'responseEndpoint' <code>Task.output</code> is present, the QuestionnaireResponse should be POSTed to all of the specified endpoints.  Similarly, if the 
         <a href="StructureDefinition-sdc-questionnaire-endpoint.html">sdc-questionnaire-endpoint</a> extension is present on the Questionnaire, it should be POSTed to those endpoints as
         well.  If any of those endpoints are simple RESTful locations (i.e. ending in QuestionnaireResponse) and the corresponding server supports the <a href="{{site.data.fhir.path}}http.html#read">read</a>
         operation, then that endpoint can be used as the target of the 'responseEndpoint' reference.  If there are no specified endpoints in either the Task or the Questionnaire, or if
