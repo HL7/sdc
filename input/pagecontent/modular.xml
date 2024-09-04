@@ -21,13 +21,12 @@
   <p>
     This portion of the SDC specification describes two mechanisms for enabling re-use:
   </p>
-  <ul>
-    <li><a href="#modular">Modular Questionnaires</a> allow one questionnaire to be composed of sub-questionnaires (which can in turn be composed of further
-      sub-questionnaires, and so on).</li>
+  <ul>    
     <li><a href="#element">Data Element-based Questionnaires</a> are crafted by having items make use of the 
       <a href="{{site.data.fhir.path}}questionnaire-definitions.html#Questionnaire.item.definition">definition element</a>.  The referenced definitions
       include all of the metadata for the question, group or display item including the text, data type, optionality and other characteristics.  
       Questionnaires are authored by assembling these minimal items referencing robust definitions.</li>
+      <li><a href="#modular">Modular Questionnaires</a> allow one questionnaire to be composed of sub-questionnaires (which can in turn be composed of further sub-questionnaires, and so on).</li>
   </ul>
   <p>
     In the first case, every single 'item' in the questionnaire must be specified, including all 'display' items, groups, etc.  Re-use is limited to question text, 
