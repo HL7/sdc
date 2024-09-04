@@ -681,8 +681,7 @@
     </li>
     <li>
       <code>ordinal()</code> returns the ordinal value for code or Coding.  If an <a href="{{site.data.fhir.path}}extension-ordinalvalue.html">ordinalValue</a> extension
-      is defined on the element, it will be returned.  If not, will be looked up on the bound value set expansion (or for Questionnaires, on the corresponding
-      Questionnaire.answerOption and.  If not found there, will be looked up on the underlying CodeSystem.  If the type is other than code or Coding or no ordinal value
+      is defined on the element, it will be returned.  If not, will be looked up on the bound value set expansion (or for Questionnaires, on the corresponding Questionnaire.answerOption).  If not found there, will be looked up on the underlying CodeSystem.  If the type is other than code or Coding or no ordinal value
       is defined for the context element, the result will be an empty set.  If the FHIRPath engine is unable to resolve the corresponding value set, code system or questionnaire
       options, it SHOULD cause the expression to fail.<br/>
       This function will typically be used to support scoring of Questionnaires, but it can be used with observations or potentially other elements as well.
