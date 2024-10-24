@@ -227,17 +227,17 @@
       Questionnaire.  As well, if a Questionnaire is referenced by a subQuestionnaire extension, it is an error if the listed variables are not available
       in the context of the referencing element.</li>
     <li>The presence of an <code>assembleContext</code> extension on a Questionnaire indicates that it can ONLY be used as a part of a modular Questionnaire.</li>
-    <li>If stored, an assembled Questionnaire <b>SHALL</b> have the same URL as the base Questionnaire but must have a distinct version - typically either a UUID 
-      or "[version]-assembled"</li>
-    <li>An assembled Questionnaire <b>SHALL</b> refer to the original base Questionnaire with a version-specific reference using the 
-      <a href="StructureDefinition-sdc-questionnaire-assembledFrom.html">assembledFrom</a> extension.  Questionnaires can also be searched by this extension using the
-      <a href="SearchParameter-questionnaire-assembledFrom.html"></a>  If a QuestionnaireResponse is based on an
-      assembled Questionnaire, it <b>SHOULD</b> use the URL specified in the assembledFrom extension rather than the URL and version of the assembled
-      Questionnaire itself.</li>
+    <li>If stored, an assembled Questionnaire <b>SHALL</b> have the same URL and Version as the base Questionnaire.  Note that this means that it's possible 
+    for a server to have multiple Questionnaire instances that share the same URL and Version.  Clients <b>SHOULD</b> populate 
+    the <a href="{{site.data.fhir.path}}extensions/StructureDefinition-cqf-knowledgeCapability.html">knowledge-capability</a> and <b>SHALL</b> 
+    populate it if they know that both unassembled and assembled versions will be hosted on the same server.  This extension allows differentiating 
+    between assembled (executable) from non-assembled (computable) instances.  In situations where there can be more than one assembled version of 
+    the same questionnaire version hosted on the same server, the assembly process <b>SHALL</b> also populate 
+    <a href="{{site.data.fhir.path}}extensions/StructureDefinition-cqf-packagesource.html">cqf-packagesource</a> (and the package information that can 
+    be gleaned from it) to help differentiate between multiple assembled instances of a Questionnaire.  This will typically only happen where the 
+    Questionnaire component hierarchy isn't all version-specific.</li>
   </ol>
     
-    
-
 We will set an expectation in SDC about what changes are permitted for 'active' questionnaires while keeping version unchanged and which changes force a new version.    
     
   <p>
