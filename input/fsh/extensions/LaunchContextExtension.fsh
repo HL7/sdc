@@ -14,7 +14,8 @@ Description: "Resources that provide context for form processing logic (pre-popu
 * extension contains
     name 1..1 and
     type 1..* and
-    description 0..1
+    description 0..1 and
+    multiplesAllowed 0..1
 * extension[name] only Extension
   * ^short = "Variable name"
   * ^definition = "The variable name the passed resource will be referenced by within the Questionnaire logic."
@@ -33,4 +34,9 @@ Description: "Resources that provide context for form processing logic (pre-popu
   * ^definition = "Guidance on the resource to be provided and what impact providing it will have on questionnaire behavior."
   * value[x] 1..1
   * value[x] only string
+* extension[multiplesAllowed] only Extension
+  * ^short = "Allow multiple resources"
+  * ^definition = "Indicates whether multiple resources are permitted for this context element."
+  * value[x] 0..1
+  * value[x] only boolean
 * url only uri
