@@ -113,6 +113,9 @@
       <a href="#definition-extract">Definition-based</a>
     </li>
     <li>
+      <a href="#template-extract">Template-based</a>
+    </li>
+    <li>
       <a href="#map-extract">StructureMap-based</a>
     </li>
   </ul>
@@ -135,7 +138,8 @@
     This is the simplest of the extraction mechanisms.  It leverages the same data elements as are used for the <a href="populate.html#obs-pop">
     Observation-based population</a> mechanism.  It takes advantage of the fact that most questions in the healthcare space typically
     correspond to the <code>value</code> element of an Observation.  It also takes advantage of the <code>Questionnaire.item.code</code> element that
-    identifies what a concept each question or group corresponds to.  The <a href="StructureDefinition-sdc-questionnaire-extr-obsn.html">SDC Questionnaire Extract - Observation</a> profile 
+    identifies what a concept each question or group corresponds to.<br/>
+    The <a href="StructureDefinition-sdc-questionnaire-extr-obsn.html">SDC Questionnaire Extract - Observation</a> profile 
     has been created to support this mechanism. An example for this profile can be found <a href="Questionnaire-questionnaire-sdc-profile-example-cqf-PHQ9.html">here</a>.
   </p>
   <p>
@@ -326,12 +330,14 @@ If an item is presumed to be extracted, it will extract if there are item.codes 
       is discouraged - using one of the other extraction techniques is likely better and safer.</li>
     <li>Obviously, this mechanism only works for questionnaire items that correspond to Observation values.</li>
   </ul>
+
   <a name="definition-extract"> </a>
   <h4>Definition-based extraction</h4>
   <p>
     This approach to extraction is more generic.  It supports extracting data into any type of FHIR resource rather than being limited to only Observation.
     It also supports more Observation data elements than can be gathered using the Observation element - for example, explicit effective time ranges,
-    interpretations, comments, etc.  The <a href="StructureDefinition-sdc-questionnaire-extr-defn.html">SDC Questionnaire Extract - Definition</a> profile has been created to support this mechanism. 
+    interpretations, comments, etc.<br/>
+    The <a href="StructureDefinition-sdc-questionnaire-extr-defn.html">SDC Questionnaire Extract - Definition</a> profile has been created to support this mechanism. 
   </p>
   <p>
     To use this method:
@@ -412,7 +418,68 @@ If an item is presumed to be extracted, it will extract if there are item.codes 
       The items in the Questionnaire might not have the same order as those in the resource.  When serializing into XML, the official order must still be
       respected.</li>
   </ul>
-  <!-- Todo - can multiple profiles for the same resource be in play? -->
+  <!-- Todo - can multiple profiles for the same resource be in play? Yes -->
+
+  <a name="template-extract"> </a>
+  <h4>Template-based extraction</h4>
+  <p>
+    The template based approach provides an alternative to the definition based approach and the full power of StructureMaps isn't required.
+    It supports the same level of capability, however is unable to leverage any of the information inside a profile where the definition based approach can.<br/>
+    The <a href="StructureDefinition-sdc-questionnaire-extr-template.html">SDC Questionnaire Extract - Template</a> profile has been created to support this mechanism. 
+  </p>
+  <p>
+    To use this method:
+  </p>
+  <ol>
+    <li>
+      Include the <a href="StructureDefinition-sdc-questionnaire-templateExtract.html">sdc-questionnaire-templateExtract</a> extension at the root or the questionnaire,
+      and/or any items in the questionnaire that indicate a resource should be created for each answer in a questionnaire response for that item.<br/>
+      This extension includes a relative reference to the resource template which SHALL be contained within the same Questionnaire resource.
+    </li>
+    <li>
+      Each template resource contained in the questionnaire must be referred to by the <a href="StructureDefinition-sdc-questionnaire-templateExtract.html">sdc-questionnaire-templateExtract</a> extension.
+    </li>
+    <li>
+      During extraction a new resource will be created for each answer in the QuestionnaireResponse for the item that contains the templateExtract extension.
+    </li>
+    <li>
+      The fhirpath context of the extracted resource will be based on the location of the templateReference in the questionnaire.<br/>
+      If the templateReference is on the root of the questionnaire, the fhirpath context will be the QuestionnaireResponse resource.<br/>
+      If the templateReference is on an item, the fhirpath context will be the item in the QuestionnaireResponse associated with that item's linkId.<br/>
+    </li>
+    <li>
+      The extraction engine SHALL scan the templated resource for any <a href="StructureDefinition-sdc-questionnaire-templateExtractContext.html">sdc-questionnaire-templateExtractContext</a> 
+      or <a href="StructureDefinition-sdc-questionnaire-templateExtractValue.html">sdc-questionnaire-templateExtractValue</a> extensions and then:
+      <ul>
+        <li>
+          Evaluate the fhirpath expression defined in the extension.
+        </li>
+        <li>
+          If the expression returns no results, this templated property (context or value) will be removed from the extracted resource, and no further processing of that property will occur.
+        </li>
+        <li>
+          For every result returned by the expression, a new copy of the templated property will be cloned and scanning the child properties will continue.
+        </li>
+        <li>
+          If the context expression is defined as an <b>Expression</b> datatype, and it has a name property, then that variable will be made available to any child property extraction expressions.
+        </li>
+        <li>
+          Any context results will change the context to use for processing any child properties.
+        </li>
+        <li>
+          Any extractValue results will be used to replace the property value in the extracted resource.<br/>
+          Note that for primitive properties in json the `_value` and `value` represent the same FHIR property and must be considered the same property.
+          So ensure that the extract extension is removed from `_value`, the `value` is set (and any other extensions can remain).<br/>
+          This is important as some properties such as reference properties are required to have a valid `value` and not just an extension so they will have a value that is expected to be either removed (when no data) or replaced (when data is present).
+        </li>
+      </ul>
+    </li>
+    <li>
+      Each resource that is extracted will be added into the transaction bundle that is returned by the $extract operation.<br/>
+      If a resource has it's ID populated, then it will be treated as an update to the existing resource (entry.request.method='PUT'), otherwise it will be treated as a create (entry.request.method='POST').
+    </li>
+  </ol>
+
   <a name="map-extract"> </a>
   <h4>StructureMap-based extraction</h4>
   <p>
@@ -420,7 +487,7 @@ If an item is presumed to be extracted, it will extract if there are item.codes 
     It allows significant transformation of data, including code translations when generating output resources.  It also allows the conversion process
     between data and Questionnaire to be maintained independently and to draw on shared sources across Questionnaires.  This can be an advantage in
     certain environments where the content of the questionnaire may need tight control, but the data environment can be more dynamic.  This comes at the cost
-    of requiring expertise in the <a href="{{site.data.fhir.path}}mapping-language.html">FHIR mapping language</a>, which is not (yet?) a common skill. 
+    of requiring expertise in the <a href="{{site.data.fhir.path}}mapping-language.html">FHIR mapping language</a>, which is not (yet?) a common skill.<br/>
     The <a href="StructureDefinition-sdc-questionnaire-extr-smap.html">SDC Questionnaire Extract - StructureMap</a> profile has been created to support this mechanism. An example for this profile can be found <a href="Questionnaire-SDOHCC-QuestionnaireHungerVitalSign.html">here</a>.
   </p>
   <p>
