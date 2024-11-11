@@ -40,8 +40,6 @@ Usage: #definition
 * parameter[+]
   * insert parameter(#local, #in, 0, "1", #boolean,"If specified and set to `true` (and the server is capable\)\, the server should use what resources and other knowledge it has about the referenced subject when pre-populating answers to questions.")
 * parameter[+]
-  * insert parameter(#launchContext, #in, 0, "1", #Extension, "Resources that provide context for form processing logic (pre-population\) when creating/displaying/editing a QuestionnaireResponse.")
-* parameter[+]
   * insert parameter(#response, #out, 1, "1", #QuestionnaireResponse, "The partially (or fully\)-populated set of answers for the specified Questionnaire")
 * parameter[+]
   * insert parameter(#issues, #out, 0, "1", #OperationOutcome, "A list of hints and warnings about problems encountered while populating the questionnaire. These might be show to the user as an advisory note. Note: if the questionnaire cannot be populated at all\, then the operation should fail\, and an OperationOutcome is returned directly with the failure\, rather than using this parameter")
