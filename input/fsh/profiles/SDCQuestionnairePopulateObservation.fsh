@@ -8,6 +8,9 @@ Description: "Defines elements that support auto-population and pre-population o
 * ^status = #draft
 * . ^short = "Populatable Questionnaire - Observation"
 * . ^definition = "Defines elements that support auto-population and pre-population of questionnaires using the Observation-based population mechanism."
+* extension contains
+    ObservationLinkPeriodExtension named observationLinkPeriod 0..1
+* obeys sdc-pop-2 // New invariant on the Questionnaire root level
 * item.
   * extension contains
       ObservationLinkPeriodExtension named observationLinkPeriod 0..1 MS and

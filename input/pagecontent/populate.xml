@@ -342,7 +342,21 @@
       To signal that the item.code is actually intended for use in population (as opposed to just providing metadata about the Questionnaire item, the
       <a href="StructureDefinition-sdc-questionnaire-observationLinkPeriod.html">questionnaire-observationLinkPeriod</a> extension must also be included).  This extension
       indicates the period of time over which to search for matching observations.  If there are no observations within that window, no population will occur.
-      For observations where how recent they are does not matter (e.g. blood type), simply set the duration to a long period of time - e.g. 200 years.</li>
+      For observations where how recent they are does not matter (e.g. blood type), simply set the duration to a long period of time - e.g. 200 years. If a link period is defined at the Questionnaire root, on a group item, or on a question item with descendent questions, the period will apply to all eligible (those having item.code and being of type question) descendent questions unless overridden by a nearer link period declaration.      
+       <p style="margin-top:10px;">
+       <b>Observation Link Period Hierarchical Diagram:</b> This diagram illustrates the structure and flow of 'observationLinkPeriod' extension in a Questionnaire. It shows how the period applies from the Questionnaire root down to group items and question items, with cases of inheritance, overriding, and items without codes.
+      </p>
+         <div style="text-align: center;">
+          <img src="ObservationLinkPeriod.png" width="800px" alt="It shows how the period applies from the Questionnaire root down to group items and question items, with cases of inheritance, overriding, and items without codes"/>
+        </div>
+
+        <b>Diagram Details:</b>
+        <ul>
+         <li>Questionnaire Root: Contains the initial observationLinkPeriod setting.</li>
+         <li>Group Items: Inherit the observationLinkPeriod from the root or override it if a new period is defined.</li>
+         <li>Question Items: Items with <code>item.code</code> inherit the nearest observationLinkPeriod from their ancestors, such as the root or a parent group, which allows them to participate in observation-based auto-population. If an observationLinkPeriod is defined directly on an item with <code>item.code</code>, this specific period overrides any inherited period. Items without <code>item.code</code> do not inherit any observationLinkPeriod and are excluded from the auto-population mechanism. However, if an item with no <code>item.code</code> has descendants that do have <code>item.code</code>, those descendants can still inherit the nearest applicable observationLinkPeriod from higher levels.</li>
+        </ul>
+      </li>
     <li>
       Multiple <code>item.code</code> elements might be present.  If so, each is considered an acceptable Observation.code for the desired population
       value.</li>
