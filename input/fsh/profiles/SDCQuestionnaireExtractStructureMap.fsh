@@ -12,6 +12,4 @@ Description: "Defines elements that allow conversion of a QuestionnaireResponse 
 * item
   * extension contains
       $questionnaire-unit named unit 0..1 MS and
-      $questionnaire-hidden named itemHidden 0..1 and
-      IsSubjectExtension named isSubject 0..1
-  * extension[isSubject] ^requirements = "Allows the extraction process to leverage the fact that the subject for this group and descendants is distinct"
+      $questionnaire-hidden named itemHidden 0..1

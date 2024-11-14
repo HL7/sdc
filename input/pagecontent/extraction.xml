@@ -440,7 +440,9 @@ If an item is presumed to be extracted, it will extract if there are item.codes 
       Each template resource contained in the questionnaire must be referred to by the <a href="StructureDefinition-sdc-questionnaire-templateExtract.html">sdc-questionnaire-templateExtract</a> extension.
     </li>
     <li>
-      During extraction a new resource will be created for each answer in the QuestionnaireResponse for the item that contains the templateExtract extension.
+      During extraction a new resource will be created for each answer in the QuestionnaireResponse for the item that contains the templateExtract extension.<br/>
+      The resource.id of the new resource will be removed (as it currently has the resource id to refer to in the template from the questionnaire definition),
+      to set it's value so the resource can be used with an update, use the `templateExtractValue` extension on the id property.
     </li>
     <li>
       The fhirpath context of the extracted resource will be based on the location of the templateReference in the questionnaire.<br/>

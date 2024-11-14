@@ -9,9 +9,13 @@ Description: "Defines elements that allow conversion of a QuestionnaireResponse 
 * . ^short = "Extractable Questionnaire - Template"
 * . ^definition = "Defines elements that allow conversion of a QuestionnaireResponse to a FHIR resource or Bundle of FHIR resources using the Template-based extraction mechanism."
 * extension contains
-    TemplateExtractExtension named templateExtract 0..* MS
+    TemplateExtractExtension named templateExtract 0..* MS and
+    ExtractBundleEntryDetailsExtension named extractBundleEntryDetails 0..* MS and
+    ExtractAllocateIdExtension named extractAllocateId 0..* MS
 * contained 1..* MS
-* item obeys sdc-defn-1
+* item
   * extension contains
-      TemplateExtractExtension named templateExtract 0..* MS
+      TemplateExtractExtension named templateExtract 0..* MS and
+      ExtractBundleEntryDetailsExtension named extractBundleEntryDetails 0..* MS and
+      ExtractAllocateIdExtension named extractAllocateId 0..* MS
   * definition 0..1 MS
