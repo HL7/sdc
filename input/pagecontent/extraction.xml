@@ -51,7 +51,7 @@
       the existing resources.  For this to work, the <code>id</code> of the resource must be retained through the round-trip process to allow for the update.
       This can be supported by storing the id as a <a href="{{site.data.fhir.path}}extension-questionnaire-hidden.html">hidden</a> question not shown to the
       user.  This question item would have a type of 'string' and, if using the definition-based extraction approach, a definition that corresponded to the 
-      'id' element of the relevant resource type (e.g. <code>http://hl7.org/fhir/AllergyIntolerance#AllergyIntolerance.id</code>).     
+      'id' element of the relevant resource type (e.g. <code>http://hl7.org/fhir/StructureDefinition/AllergyIntolerance#AllergyIntolerance.id</code>).     
       Note that the inclusion of the id as a hidden question is only relevant for the definition-based and StructureMap-based approaches. It is not needed
       for the Observation-based approach.</li>
     <li>
@@ -346,13 +346,13 @@ If an item is presumed to be extracted, it will extract if there are item.codes 
       canonical URL of the resource (or profile) followed by '#' followed by the snapshot.element.id of the element the Questionnaire item corresponds to.<br/>
       NOTE: Rather than specifying the
       id of an element that actually appears in a snapshot, it is also possible to 'extend' an id to walk further into the data types of the specified element.  For example, 
-      a definition might be <code>http://hl7.org/fhir/Patient#Patient.name.given</code> even though the referenced profile's snapshot only contains <code>Patient.name</code>, not
+      a definition might be <code>http://hl7.org/fhir/StructureDefinition/Patient#Patient.name.given</code> even though the referenced profile's snapshot only contains <code>Patient.name</code>, not
       <code>Patient.name.given</code>.  However, for more complex references (e.g. referring to a particular extension or a particular repetition), it will be necessary to define a 
       distinct profile where slicing ensures that a single element id corresponds to the desired element.  I.e. you would need to use 
       <code>http://somewhere.org/SomePatient#Patient.name.given:foo</code> where 'foo' was a slice that referred to the first middle name in order to tie to a definition that specific.<br/>
       If a definition is specified on a Group or a Question with nested questions, then nested items might have definitions that refer to a deeper path along the same id structure.
-      For example, a group element might have a definition of <code>http://hl7.org/fhir/Patient#Patient.name</code> while nested items would have definitions of
-      <code>http://hl7.org/fhir/Patient#Patient.name.given</code> and <code>http://hl7.org/fhir/Patient#Patient.name.family</code>.</li>
+      For example, a group element might have a definition of <code>http://hl7.org/fhir/StructureDefinition/Patient#Patient.name</code> while nested items would have definitions of
+      <code>http://hl7.org/fhir/StructureDefinition/Patient#Patient.name.given</code> and <code>http://hl7.org/fhir/StructureDefinition/Patient#Patient.name.family</code>.</li>
     <li>If necessary, define <a href="{{site.data.fhir.path}}extension-questionnaire-hidden.html">questionnaire-hidden</a> items that have <code>
       Questionnaire.item.initial.value[x]</code> or that use the
       <a href="StructureDefinition-sdc-questionnaire-initialExpression.html">questionnaire-initialExpression</a> extension to define their content to use to populate
@@ -400,7 +400,7 @@ If an item is presumed to be extracted, it will extract if there are item.codes 
       active, etc.</li>
     <li>
       In some cases, the context of an element will switch.  For example, an item might have a definition of
-      "http://hl7.org/fhir/MedicationStatement#MedicationStatement.medicationReference" and
+      "http://hl7.org/fhir/StructureDefinition/MedicationStatement#MedicationStatement.medicationReference" and
       a <a href="StructureDefinition-sdc-questionnaire-itemExtractionContext.html">questionnaire-itemExtractionContext</a> extension that shifts the context to "Medication".  
 	  Subsequent children would then have definitions based on the "http://hl7.org/fhir/Medication" resource.</li>
     <li>
