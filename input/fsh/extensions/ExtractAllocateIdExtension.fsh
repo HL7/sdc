@@ -1,7 +1,7 @@
 Extension: ExtractAllocateIdExtension
 Id: sdc-questionnaire-extractAllocateId
-Title: "Allocate a new ID during extraction"
-Description: "Allocate a new ID for a resource. This will be used as the ID for the resource in the output extraction bundle - in the fullUrl. And the value can be used by name as a variable in any extract expressions"
+Title: "Extract - Allocate new uuid"
+Description: "Allocate a new uuid in a named variable for use in extraction. This is usually used to set the `fullUrl` for a resource in the output extraction bundle, and then referenced in other resources within that transaction bundle (via fhirpath expressions)."
 * ^extension[$standard-status].valueCode = #draft
 * ^extension[$fmm].valueInteger = 0
 * ^status = #draft
@@ -11,8 +11,8 @@ Description: "Allocate a new ID for a resource. This will be used as the ID for 
 * ^context[=].expression = "Questionnaire.item"
 * ^context[+].type = #element
 * ^context[=].expression = "ElementDefinition"
-* . 0..1
-* . ^short = "Indicates the resource type/profile to extract given this context in a response."
-* . ^definition = "Indicates the resource type/profile to extract given this context once the QuestionnaireResponse is complete. This will produce multiple resources if the context is on a repeating group. All `Definition` properties relating to this resource must exactly the profile's canonical URL (of this profile, or the base resource if using the code type)"
+* . ^short = "Variable name for the new uuid."
+* . ^definition = "Allocate a new uuid in a named variable for use in extraction. This is usually used to set the `fullUrl` for a resource in the output extraction bundle, and then referenced in other resources in that bundle (via fhirpath expressions). The format of the uuid will be `urn:uuid:<uuid>`. e.g. urn:uuid:6f6177d2-13ee-4d27-b0e8-3eaf663dd031"
 * url only uri
 * value[x] only string
+* value[x] 1..1
