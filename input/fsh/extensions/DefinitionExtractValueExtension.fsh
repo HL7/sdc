@@ -1,6 +1,6 @@
 Extension: DefinitionExtractValueExtension
 Id: sdc-questionnaire-definitionExtractValue
-Title: "Definition extract value"
+Title: "Extract Definition - Set value"
 Description: "Provide either a fixed value, or an expression to evaluate, to be used as the value for the extracted resource's property based on the `definition` value."
 * ^extension[$standard-status].valueCode = #draft
 * ^extension[$fmm].valueInteger = 0

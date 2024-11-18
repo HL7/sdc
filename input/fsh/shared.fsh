@@ -53,8 +53,7 @@ RuleSet: itemPopulationContext(name, language, expression)
 // Usage: Instance: demographics
 RuleSet: definitionExtract(resourceTypeOrProfile)
 * extension[DefinitionExtractExtension]
-  * valueCanonical = "{resourceTypeOrProfile}"
-
+  * extension[definition].valueCanonical = "{resourceTypeOrProfile}"
 
 // Usage: Instance: example-of-Task
 RuleSet: taskInputCanonical(type, valueCanonical)

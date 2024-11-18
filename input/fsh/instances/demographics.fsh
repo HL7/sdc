@@ -5,7 +5,7 @@ Usage: #example
 * extension[$questionnaire-launchContext]
   * extension[name].valueCoding = $launchContext#patient
   * extension[type].valueCode = #Patient
-* insert definitionExtract(Patient)
+* insert definitionExtract(http://hl7.org/fhir/Patient)
 * url = "http://hl7.org/fhir/uv/sdc/Questionnaire/demographics"
 * name = "DemographicExample"
 * title = "Questionnaire - Demographics Example"
@@ -39,7 +39,7 @@ Usage: #example
   * insert item(relative,http://hl7.org/fhir/Patient#RelatedPerson,[[Relatives, caregivers and other personal relationships]],#group)
   * repeats = true
   * insert itemPopulationContext(relative, #application/x-fhir-query, RelatedPerson?patient={{%patient.id}})
-  * insert definitionExtract(RelatedPerson)
+  * insert definitionExtract(http://hl7.org/fhir/RelatedPerson)
   * item[0]
     * insert hidden()
     * insert initialExpression(%relative.id)

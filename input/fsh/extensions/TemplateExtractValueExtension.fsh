@@ -1,6 +1,6 @@
 Extension: TemplateExtractValueExtension
 Id: sdc-questionnaire-templateExtractValue
-Title: "Template extract value fhirpath expression"
+Title: "Extract Template - Set"
 Description: "Provides an expression to evaluate any value(s) to replace in the given template extraction context. If no result is evaluated, the element in the templated resource will be removed, and futher processing of it's children is not required."
 * ^extension[$standard-status].valueCode = #draft
 * ^extension[$fmm].valueInteger = 0

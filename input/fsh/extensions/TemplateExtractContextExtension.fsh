@@ -1,6 +1,6 @@
 Extension: TemplateExtractContextExtension
 Id: sdc-questionnaire-templateExtractContext
-Title: "Template extract context fhirpath expression"
+Title: "Extract Template - Context"
 Description: "Establishes mapping context for replacing template content based on a fhirpath expression. This will be used by any child properties as the context for any other templateExtractContext or templateExtractValue extensions. If the name property on an expression is included, it will be also available to child extension evaluation. If the expression evaluates to no results, then this element in the templated resource will be removed, and futher processing of it's children is not required."
 * ^extension[$standard-status].valueCode = #draft
 * ^extension[$fmm].valueInteger = 0

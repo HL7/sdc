@@ -1,6 +1,6 @@
 Extension: ObservationExtractExtension
 Id: sdc-questionnaire-observationExtract
-Title: "Observation extract?"
+Title: "Extract Observation"
 Description: "If true, indicates that the observation-based approach should be used to extract either the particular item (if extension is defined on an individual question or group based on the code present) or all items in the questionnaire (if defined at the questionnaire root and if they have a code present)."
 * ^extension[$standard-status].valueCode = #draft
 * ^extension[$fmm].valueInteger = 0
