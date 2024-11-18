@@ -11,7 +11,6 @@ Description: "Defines elements that allow conversion of a QuestionnaireResponse 
 * extension contains
     $cqf-library named library 0..* and
     DefinitionExtractExtension named definitionExtract 0..1 MS and
-    ExtractBundleEntryDetailsExtension named extractBundleEntryDetails 0..* MS and
     DefinitionExtractValueExtension named definitionExtractValue 0..* MS and
     ExtractAllocateIdExtension named extractAllocateId 0..* MS
 * extension[library] ^definition = "A reference to a library containing cql used in this Questionnaire."
@@ -20,7 +19,6 @@ Description: "Defines elements that allow conversion of a QuestionnaireResponse 
   * extension contains
       $questionnaire-unit named unit 0..1 MS and
       DefinitionExtractExtension named definitionExtract 0..* MS and
-      ExtractBundleEntryDetailsExtension named extractBundleEntryDetails 0..* MS and
       DefinitionExtractValueExtension named definitionExtractValue 0..* MS and
       ExtractAllocateIdExtension named extractAllocateId 0..* MS and
       $questionnaire-hidden named itemHidden 0..1
