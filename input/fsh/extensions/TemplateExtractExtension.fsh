@@ -1,6 +1,6 @@
 Extension: TemplateExtractExtension
 Id: sdc-questionnaire-templateExtract
-Title: "Extract Template"
+Title: "Extract Template - Resource"
 Description: "Specifies a reference to a contained resource template (or set of resources for a repeating item) to be extracted from this item once the QuestionnaireResponse is complete. The template will be cloned into the output extraction bundle, and any template values will be replaced with the values from the QuestionnaireResponse.  Optionally the `fullUrl` and other `Bundle.entry.request` properties can be also included."
 * ^extension[$standard-status].valueCode = #draft
 * ^extension[$fmm].valueInteger = 0
