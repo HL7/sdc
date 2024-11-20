@@ -62,7 +62,7 @@
   z-index: 1;
   opacity: 1;
 }
-textarea{
+pre.json,pre.xml{
     height: 100%;
     width: 100%;
    -webkit-box-sizing: border-box; /* Safari/Chrome, other WebKit */
@@ -161,42 +161,12 @@ i.fa {
     <div class="tab">
       <input type="radio" id="tab-rendering-style-2" name="tab-rendering-style-group"/>
       <label for="tab-rendering-style-2">JSON</label>
-      <div class="content-in-tab">
-        <textarea style="border:none" class="xml">
-        "item": [
-          {
-            "linkId": "1.1",
-            "text": "Enter your First Name",
-            "_text": {
-              "extension": [
-                {
-                  "url": "http://hl7.org/fhir/StructureDefinition/rendering-style",
-                  "valueString": "color:green;"
-                }
-              ]
-            },
-            "type": "string"
-          }
-        ]
-      </textarea>
-      </div>
+      <div class="content-in-tab">{% fragment Questionnaire/questionnaire-sdc-profile-example-render JSON BASE:descendants().select(item).where(linkId='1.1') %}</div>
     </div>
     <div class="tab">
       <input type="radio" id="tab-rendering-style-3" name="tab-rendering-style-group"/>
       <label for="tab-rendering-style-3">XML</label>
-      <div class="content-in-tab">
-        <textarea style="border:none" class="xml">
-          <item>
-            <linkId value="1.1"/>
-            <text value="Enter your First Name">
-              <extension url="http://hl7.org/fhir/StructureDefinition/rendering-style">
-                <valueString value="color:green;"/>
-              </extension>
-            </text>
-            <type value="string"/>
-          </item>
-        </textarea>
-      </div>
+      <div class="content-in-tab">{% fragment Questionnaire/questionnaire-sdc-profile-example-render XML BASE:descendants().select(item).where(linkId='1.1') %}</div>
     </div>
   </div>
 
