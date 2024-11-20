@@ -11,15 +11,6 @@ When defined on a repeating item, a new resource will be created for each iterat
 
 Before this extension is processed, any [sdc-questionnaire-allocateId](StructureDefinition-sdc-questionnaire-extractAllocateId.html) extensions will be processed.
 
-The fhirpath expressions used in the $extract processing only have access to: 
-* %resource - the root of the QuestionnaireResponse
-* %context - the current item in the QuestionnaireResponse (or Questionnaire when processing at the root level)
-* %questionnaire - the questionnaire being processed
-* %qitem - the currently processing item in the Questionnaire
-* any variables defined in the [sdc-questionnaire-allocateId](StructureDefinition-sdc-questionnaire-extractAllocateId.html) extension (from parent items ub the questionnaire definition)
-
-If an item has multiple answer (e.g. a string item that is able to repeat, this will only be evaluated once for the item, and all the answers for that specific iteration of an item will be used as the context as a collection). i.e. the context is at the item level, not the answer level.
-
 Additional details on the use of this extension can be found on the [Data Extraction](extraction.html#definition-based-extraction) page.
 
 ### Populating the transaction bundle entry
