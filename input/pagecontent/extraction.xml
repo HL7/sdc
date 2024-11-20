@@ -103,7 +103,7 @@
   <a name="design"> </a>
   <h3>Designing Questionnaires to support data extraction</h3>
   <p>
-    This specification defines three different mechanisms to embed information in Questionnaires to support subsequent resource extraction:
+    This specification defines four different mechanisms to embed information in Questionnaires to support subsequent resource extraction:
   </p>
   <ul>
     <li>
@@ -124,7 +124,9 @@
   </p>
   <p>
     Each mechanism has its own profile that includes the additional resource elements or extensions relevant for supporting a particular mechanism: <a href="StructureDefinition-sdc-questionnaire-extr-obsn.html">SDC Questionnaire Extract - Observation</a>, 
-    <a href="StructureDefinition-sdc-questionnaire-extr-defn.html">SDC Questionnaire Extract - Definition</a>, and <a href="StructureDefinition-sdc-questionnaire-extr-smap.html">SDC Questionnaire Extract - Structure Map</a> profiles. Each profile identifies 
+    <a href="StructureDefinition-sdc-questionnaire-extr-defn.html">SDC Questionnaire Extract - Definition</a>, <a href="StructureDefinition-sdc-questionnaire-extr-template.html">SDC Questionnaire Extract - Template</a>, 
+    and <a href="StructureDefinition-sdc-questionnaire-extr-smap.html">SDC Questionnaire Extract - Structure Map</a> profiles.<br/>
+    Each profile identifies 
     specific 'must support' elements and extensions that systems that claim to support a specific SDC extraction mechanism SHALL be capable of extracting data, as befits the CapabilityStatement(s) 
     they claim conformance to. Each system should choose which approach(es) it wishes to use and support based on the elements specified in that profile.
   </p>
@@ -434,15 +436,24 @@ If an item is presumed to be extracted, it will extract if there are item.codes 
     <li>
       Include the <a href="StructureDefinition-sdc-questionnaire-templateExtract.html">sdc-questionnaire-templateExtract</a> extension at the root or the questionnaire,
       and/or any items in the questionnaire that indicate a resource should be created for each answer in a questionnaire response for that item.<br/>
-      This extension includes a relative reference to the resource template which SHALL be contained within the same Questionnaire resource.
+      This extension includes a relative reference to the resource template which SHALL be contained within the same Questionnaire resource, and will be extracted into a new entry in the output transaction bundle (with other values processed from the complex extension).<br/>
+      Alternately use the <a href="StructureDefinition-sdc-questionnaire-templateExtractBundle.html">sdc-questionnaire-templateExtractBundle</a> extension at the root
+      to use a template bundle. This is the same as the templateExtract extension but leverages a single bundle that has all templated resources in it.
     </li>
     <li>
-      Each template resource contained in the questionnaire must be referred to by the <a href="StructureDefinition-sdc-questionnaire-templateExtract.html">sdc-questionnaire-templateExtract</a> extension.
+      Each template resource contained in the questionnaire must be referred to by the <a href="StructureDefinition-sdc-questionnaire-templateExtract.html">sdc-questionnaire-templateExtract</a> 
+      or <a href="StructureDefinition-sdc-questionnaire-templateExtractBundle.html">sdc-questionnaire-templateExtractBundle</a> extension.
+    </li>
+    <li>
+      The allocateId extension will be allocated before processing any template extractions.
+      If at the root, it will be allocated once, if on an item, it will be allocated for each related item that has the extension 
+      (a new value per item in a collection).
+      They are only available to child items of the item that has the extension (or itself).
     </li>
     <li>
       During extraction a new resource will be created for each answer in the QuestionnaireResponse for the item that contains the templateExtract extension.<br/>
       The resource.id of the new resource will be removed (as it currently has the resource id to refer to in the template from the questionnaire definition),
-      to set it's value so the resource can be used with an update, use the `templateExtractValue` extension on the id property.
+      to set its value so the resource can be used with an update, use the `resourceId` property in the `templateExtractValue` extension.
     </li>
     <li>
       The fhirpath context of the extracted resource will be based on the location of the templateReference in the questionnaire.<br/>
@@ -457,7 +468,9 @@ If an item is presumed to be extracted, it will extract if there are item.codes 
           Evaluate the fhirpath expression defined in the extension.
         </li>
         <li>
-          If the expression returns no results, this templated property (context or value) will be removed from the extracted resource, and no further processing of that property will occur.
+          If the expression returns no results, this templated property (context or value) will be removed from the extracted resource, and no further processing of that property will occur.<br/>
+          If the template property is a on a collection, simply remove the template value from the collection, don't clear the entire collection. There MAY be other
+          templated properties to process in the collection (or static template data).
         </li>
         <li>
           For every result returned by the expression, a new copy of the templated property will be cloned and scanning the child properties will continue.
@@ -477,10 +490,26 @@ If an item is presumed to be extracted, it will extract if there are item.codes 
       </ul>
     </li>
     <li>
+      When using the templateExtract extension (not the templateExtractBundle extension), the extraction engine SHALL create a transaction Bundle containing all the resources that were extracted from the QuestionnaireResponse.
       Each resource that is extracted will be added into the transaction bundle that is returned by the $extract operation.<br/>
+      The fullUrl, resourceID and entry.request properties SHALL be updated with values calculated from the
+      templateExtract complex extension.<br/>
       If a resource has it's ID populated, then it will be treated as an update to the existing resource (entry.request.method='PUT'), otherwise it will be treated as a create (entry.request.method='POST').
     </li>
   </ol>
+
+  <p>
+    If fhirpath expressions produce errors/exceptions or invalid/incompatible value types, the 
+    extraction engine SHALL log the error and continue processing the next property.
+    If there were any fatal or error level issues, the extraction engine SHALL return an OperationOutcome with the issues.<br/>
+    If there are only warning/information issues, they can be returned along with the transaction bundle.
+  </p>
+  <p>
+    Template based extraction using the templateExtractBundle extension is incompatible with modular forms.<br/>
+    If using the templateExtract extension with modular forms, the assembly will merge all the contained resources 
+    from the module into the output Questionnare, and may need to rename the contained reference ids if collisions
+    are to occur.
+  </p>
 
   <a name="map-extract"> </a>
   <h4>StructureMap-based extraction</h4>

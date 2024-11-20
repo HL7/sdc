@@ -15,6 +15,7 @@ Description: "Specifies a reference to a contained resource template (or set of 
 * extension contains
     template 1..1 and
     fullUrl 0..1 and
+    resourceId 0..1 and
     ifNoneMatch 0..1 and
     ifModifiedSince 0..1 and
     ifMatch 0..1 and
@@ -28,6 +29,12 @@ Description: "Specifies a reference to a contained resource template (or set of 
 * extension[fullUrl] 
   * ^short = "A fhirpath expression to evaluate to populate the fullUrl property in the `Bundle.entry` (uri/string result)"
   * ^definition = "A fhirpath expression to evaluate to extract the value into the fullUrl property. If no value is evaluated, then the element is not extracted."
+  * value[x] 1..1
+  * value[x] only string
+    * ^short = "Fhirpath Expression value"
+* extension[resourceId] 
+  * ^short = "A fhirpath expression to evaluate to populate the resourceId property (string result)"
+  * ^definition = "A fhirpath expression to evaluate to extract the value into the ifNoneMatch property. If no value is evaluated, then the element is not extracted."
   * value[x] 1..1
   * value[x] only string
     * ^short = "Fhirpath Expression value"
