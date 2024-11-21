@@ -680,11 +680,11 @@
       is equivalent to <code>descendants().where($this is QuestionnaireResponse.item.answer.value)</code>
     </li>
     <li>
-      <code>ordinal()</code> returns the ordinal value for code or Coding.  If an <a href="{{site.data.fhir.path}}extension-ordinalvalue.html">ordinalValue</a> extension
-      is defined on the element, it will be returned.  If not, will be looked up on the bound value set expansion (or for Questionnaires, on the corresponding
-      Questionnaire.answerOption and.  If not found there, will be looked up on the underlying CodeSystem.  If the type is other than code or Coding or no ordinal value
-      is defined for the context element, the result will be an empty set.  If the FHIRPath engine is unable to resolve the corresponding value set, code system or questionnaire
-      options, it SHOULD cause the expression to fail.<br/>
+      <code>ordinal()</code> returns the item-weight for an element (in SDC, typically a QuestionnaireResponse.item.answer.value[x]). If an <a href="https://hl7.org/fhir/extensions/StructureDefinition-itemWeight.html">itemWeight</a> extension 
+      is defined on the element, it will be returned.  If not and the answer was drawn from an answerOption with a defined item-weight, it will be taken from there. 
+      If not, and there is a bound value set, the weight will be looked up on the bound value set expansion. If not found there, it will be looked up on the underlying
+       CodeSystem. If no itemWeight can be found, the result will be an empty set. If the FHIRPath engine is unable to resolve the corresponding value set, code 
+       system or questionnaire options, it SHOULD cause the expression to fail.<br/>
       This function will typically be used to support scoring of Questionnaires, but it can be used with observations or potentially other elements as well.
     </li>
   </ul>
