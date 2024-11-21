@@ -36,31 +36,31 @@ Usage: #example
     * repeats = true
     * insert initialExpression(%patientName.given)
 * item[+]
-  * insert item(relative,http://hl7.org/fhir/Patient#RelatedPerson,[[Relatives, caregivers and other personal relationships]],#group)
+  * insert item(relative,,[[Relatives, caregivers and other personal relationships]],#group)
   * repeats = true
   * insert itemPopulationContext(relative, #application/x-fhir-query, RelatedPerson?patient={{%patient.id}})
   * insert definitionExtract(http://hl7.org/fhir/RelatedPerson)
   * item[0]
     * insert hidden()
     * insert initialExpression(%relative.id)
-    * insert item(relative.id,http://hl7.org/fhir/Patient#RelatedPerson.id,(internal use\),#string)
+    * insert item(relative.id,http://hl7.org/fhir/RelatedPerson#RelatedPerson.id,(internal use\),#string)
     * readOnly = true
   * item[+]
     * insert initialExpression(%relative.relationship)
-    * insert item(relative.relationship,http://hl7.org/fhir/Patient#RelatedPerson.relationship,Name(s\),#choice)
+    * insert item(relative.relationship,http://hl7.org/fhir/RelatedPerson#RelatedPerson.relationship,Name(s\),#choice)
     * required = true
     * repeats = true
     * answerValueSet = "http://hl7.org/fhir/ValueSet/relatedperson-relationshiptype"
   * item[+]
-    * insert item(relative.name,http://hl7.org/fhir/Patient#RelatedPerson.name,Name(s\),#group)
+    * insert item(relative.name,http://hl7.org/fhir/RelatedPerson#RelatedPerson.name,Name(s\),#group)
     * repeats = true
     * insert itemPopulationContext(relativeName, #text/fhirpath, %relative.name)
     * item[0]
-      * insert item(relative.name.family,http://hl7.org/fhir/Patient#RelatedPerson.name.family,Family name,#string)
+      * insert item(relative.name.family,http://hl7.org/fhir/RelatedPerson#RelatedPerson.name.family,Family name,#string)
       * required = true
       * insert initialExpression(%relativeName.family)
     * item[+]
-      * insert item(relative.name.given,http://hl7.org/fhir/Patient#RelatedPerson.name.given,Given name(s\),#string)
+      * insert item(relative.name.given,http://hl7.org/fhir/RelatedPerson#RelatedPerson.name.given,Given name(s\),#string)
       * required = true
       * repeats = true
       * insert initialExpression(%relativeName.given)
