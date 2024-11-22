@@ -343,6 +343,7 @@ If an item is presumed to be extracted, it will extract if there are item.codes 
   <p>
     This technique is called "definition-based" because it uses StructureDefinitions to identify resource types, and their properties which are then associated with items in the Questionnaire.<br/>
     Each item's <code>definition</code> property SHALL be composed of:
+  </p>
     <ul>
       <li>
         The full canonical URL of the resource or profile.<br/>
@@ -354,6 +355,7 @@ If an item is presumed to be extracted, it will extract if there are item.codes 
         e.g. <code>Patient.name.given</code>
       </li>
     </ul>
+  <p>
     Putting this all together, a definition property looks like this: <code>http://hl7.org/fhir/Patient#Patient.name.given</code>.
   </p>
   <blockquote>
@@ -369,22 +371,33 @@ If an item is presumed to be extracted, it will extract if there are item.codes 
   </p>
   <ol>
     <li>
-      The QuestionnaireResponse will be traversed from it's root through each item iteratively, based on the structure in the Questionnaire.<br/>
-      The first extension processed during this traversal is the <a href="StructureDefinition-sdc-questionnaire-extractAllocateId.html">sdc-questionnaire-extractAllocateId</a> extension(s)
-      and then into the definitionExtract as below. The allocateId extension will be made available to all fhirpath expressions on that node, and any child items.<br/>
-      If this extension is defined on a repeating group, a new value will be allocated for each repetition of the item.<br/>
-      Note this is not a fhirpath expression to be evaluated, it is the name for the variable that will be available to fhirpath expressions.
+      The QuestionnaireResponse will be traversed from its root through each item iteratively, based on the structure in the Questionnaire.
+    </li>
+    <li>
+      If you need to cross-reference resources within the transaction bundle you can use either an existing resource id (if known) or, if you
+      are intending to create the resource within the transaction bundle, you need to set the entry.fulUrl on the item with a new uuid.
+      The <a href="StructureDefinition-sdc-questionnaire-extractAllocateId.html">sdc-questionnaire-extractAllocateId</a> extension is used to allocate the new uuid,
+      and then can be used in the definitionExtract's fullUrl fhirpath expression (further described below).
+      <ul>
+        <li>This is not a fhirpath expression to be evaluated, it is the name for the variable that will be available to fhirpath expressions.</li>
+        <li>The allocateId extension will be made available to all fhirpath expressions on that node, and any child items.</li>
+        <li>Use the variable name in the allocateId to set the entry.fullUrl of the resource you want to reference in the definitionExtract extension's fullUrl property.</li>
+        <li>Use the variable name to set the reference property using the definitionExtractValue extension's expression property.</li>
+        <li>If this allocateId extension is defined on a repeating group, a new value will be allocated for each repetition of the item.</li>
+      </ul>
     </li>
     <li>
       Include the <a href="StructureDefinition-sdc-questionnaire-definitionExtract.html">sdc-questionnaire-definitionExtract</a> extension on either the Questionnaire root or on
       other items within the Questionnaire to mark the point at which a new resource will be extracted (and what resource type/profile if applicable).<br/>
+      This is a complex extension that includes the following properties: definition (resource/profile canonical URL),
+      and optionally fullUrl, ifNoneMatch, ifModifiedSince, ifMatch and ifNoneExist (fhirpath expression expressions to populate the transaction bundle entry containing the extracted resource).
       <ul>
         <li>
-          If the extension is at the root of the Questionnaire, the resource will always be extracted, even if there is no answer items within the QuestionnaireResponse.
+          If the extension is at the root of the Questionnaire, the resource will always be extracted, even if there are no answer items within the fully completed QuestionnaireResponse.
         </li>
         <li>
           If the extension is on a specific item, the resource will only be extracted if there are answers to that item in the QuestionnaireResponse.
-          (for items that repeat, a new instance of the resource will be created for each repetition).
+          (For items that repeat, a new instance of the resource will be created for each repetition).
         </li>
         <li>
           Once the resource is completely extracted, the system SHALL populate the <code>bundle.entry.resource</code> property with the extracted resource,
