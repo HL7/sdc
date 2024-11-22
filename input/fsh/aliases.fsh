@@ -92,3 +92,4 @@ Alias: $endpoint = http://hl7.org/fhir/uv/sdc/StructureDefinition/sdc-questionna
 Alias: $entryMode = http://hl7.org/fhir/uv/sdc/StructureDefinition/sdc-questionnaire-entryMode
 Alias: $minQuantity = http://hl7.org/fhir/uv/sdc/StructureDefinition/sdc-questionnaire-minQuantity
 Alias: $maxQuantity = http://hl7.org/fhir/uv/sdc/StructureDefinition/sdc-questionnaire-maxQuantity
+Alias: $itemWeight = http://hl7.org/fhir/StructureDefinition/itemWeight
