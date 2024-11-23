@@ -677,7 +677,7 @@
     <li>
       <code>answers()</code> returns a list of all answers for items beneath the current node, but excluding the current node, including descendant questions.  This
       is typically used with an aggregation function.  For example answers().sum() would provide the total of all answers beneath the current node.  The function
-      is equivalent to <code>descendants().where($this is QuestionnaireResponse.item.answer.value)</code>
+      is equivalent to <code>repeat(item|answer).answer.value</code>
     </li>
     <li>
       <code>ordinal()</code> returns the item-weight for an element (in SDC, typically a QuestionnaireResponse.item.answer.value[x]). If an <a href="https://hl7.org/fhir/extensions/StructureDefinition-itemWeight.html">itemWeight</a> extension 
