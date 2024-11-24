@@ -20,12 +20,7 @@
       However, if the value is leveraged in downstream itemExtractionContexts, then it will need a name.  When an extension with a type of Expression has a name, the result of evaluating that expression becomes available in subsequent expressions (either
       following extensions within the same element, or extensions appearing on descendant items) as a 'variable'.  These variables are referenced by
       prepending '%' to the 'name' of the expression.  I.e. the result of an expression named 'patient' would be available for use in subsequent expressions
-      as '%patient'.<br/>
-      Collisions between names that are defined more than once within the same containing element will be treated as an error.  I.e. If there is a
-      <a href="#launchContext">launchContext</a> extension called 'patient' and then on the same item there's
-      also a <a href="#variable">variable</a> extension also named 'patient', that would be an error.  However, overriding a name in a descendant
-      element is NOT an error.  For example, if a <a href="#variable">variable</a> with the name 'linkIdPrefix' is defined on an item and then is
-      subsequently re-defined on a variable in a child item, that is ok - and is in fact a common occurrence in <a href="modular.html">modular forms</a>.
+      as '%patient'.
     </li>
     <li>
       <code>language</code> indicates the type of expression.  SDC only uses three languages: FHIR queries <a href="#fhirquery">as described below</a>,
@@ -111,10 +106,6 @@
           <p>
             The content type of a variable can be pretty much anything.  It can be a collection or an individual item.  It can be a simple element, a complex
             type, a resource or even a Bundle of resources.
-          </p>
-          <p>
-			      The variable can be <a href="#fhirpath">referenced by its name</a>.  Variable expressions SHALL specify a name.  It is not allowed to define variable
-			      names that are already <a href="{{site.data.fhir.path}}fhirpath.html#vars">reserved by the base specification</a> or by other variables in the questionnaire.
           </p>
         </td>
       </tr>
@@ -642,11 +633,6 @@
       Otherwise, it will be interpreted as the QuestionnaireResponse.item(s) whose linkId matches the linkId of the Questionnaire.item the expression
       extension was defined in.  I.e. while the extensions and expressions are defined in the Questionnaire, they are <i>evaluated</i> in the context of
       the corresponding item(s) in the QuestionnaireResponse.</li>
-    <li>
-      All expressions that specify a 'name' can be accessed by other expressions appearing on the same item or any descendant item as though that
-      name was part of context.  The same is true for the 'name' element in the <a href="#launchContext">launchContext</a> extension.  For example, a variable
-      with the name 'score' could be accessed in FHIRPath or CQL using <code>%score</code>.  (Note: It is an error if a questionnaire is designed such
-      that there is more than one element in the same scope with a colliding context name.)</li>
   </ul>
   <p>
     In addition, a number of extensions have been proposed to the FHIRPath language - some to the base language and some to the FHIR-specific set of extensions
@@ -691,6 +677,11 @@
   <p>
     The change requests proposing the addition of these concepts to the base FHIRPath specification and to the FHIR-specific supplement can be found
     <a href="https://jira.hl7.org/browse/FHIR-28173">here</a> and <a href="https://jira.hl7.org/browse/FHIR-33539">here</a>.
+  </p>
+  <a name="managingcollidingvariable"> </a>
+  <h3>Managing colliding variable declarations</h3>
+  <p>
+    Variable names SHOULD be unique in a context  (e.g. Questionnaire root or a specific item).  It is an error if the same variable name is assigned a value more than once in a single node.  It is also an error to define a variable name that has the same name as one of the standard FHIRPath names (e.g. %qitem).  If the same variable is assigned on both an element and a descendant element, a warning will be generated, however it is not an error.  The descendant declaration will be treated as overriding the higher-level declaration.
   </p>
   <a name="fhirpathvscql"> </a>
   <h3>FHIRPath vs. CQL</h3>
