@@ -636,4 +636,35 @@
     questionnaire is itemized in the <a href="examples.html">Examples page</a> that shows how the extensions above are intended 
     to be used and identifies how such controls might appear in a rendered questionnaire.
   </p>
+	<a name="language"> </a>
+	<h3>Language and translations</h3>
+	<p>
+    In some environments, it may be necessary for a questionnaire to support multiple languages.  The rendering tool would select the appropriate
+    language based on a configuration setting, or perhaps would display all available languages and the user would read the one they are familiar with.
+    Systems MAY choose to provide support for identifying language and translations.  If they do, they MAY do so using the generic language and
+    translation extensions FHIR defines:
+  </p>
+	<ul>
+		<li>
+			<a href="{{site.data.fhir.ver.extensions}}/StructureDefinition-language.html">language</a> allows the language of a particular (or any other data type)
+       to be identified</li>
+		<li>
+			<a href="{{site.data.fhir.ver.extensions}}/StructureDefinition-translation.html">translation</a> allows additional repetitions in alternate languages to be communicated.
+      (The language for each translation would be communicated using the above <code>language</code> extension)</li>
+	</ul>
+	<p>
+    These extensions can be used on absolutely any string or markdown element on <a href="{{site.data.fhir.path}}questionnaire.html">Questionnaire</a>,
+    <a href="{{site.data.fhir.path}}valueset.html">ValueSet</a>, or any other resource.  The base string should be the primary language of the questionnaire.  It is what will be rendered by systems that do
+    not support the translation extension or by systems whose language preference is other than one of the languages provided.
+  </p>
+  <p>
+    Work is underway to support a publishing process that allows maintenance of a set of language translations in separate 
+    <a href="https://www.gnu.org/software/gettext/manual/html_node/PO-Files.html">.po</a> files.  This will allow for translation strings to be maintained using
+    the same syntax as commonly used by professional translators and then automatically re-incorporated into FHIR resources, either through the insertion of translation
+    instructions, or by substituting the primary language with an alternative language.
+  </p>
+  <p>
+    When work on this process is complete, it will be linked to on the <a href="https://confluence.hl7.org/display/FHIR/How+to+add+translations+to+the+FHIR+Validator+and+IG+publisher">HL7
+    Confluence page</a>.
+  </p>
 </div>
