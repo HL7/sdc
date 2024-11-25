@@ -191,3 +191,45 @@ INFORMATION: StructureDefinition/sdc-questionnaire: StructureDefinition.snapshot
 INFORMATION: StructureDefinition/sdc-questionnaireresponse-adapt: StructureDefinition.snapshot.element[30].binding: The element QuestionnaireResponse.item.answer.value[x] has a binding, and has multiple types ([date, dateTime, boolean, string, Coding, Reference, Quantity, Attachment, time, integer, decimal, uri]). The binding will apply to all the types
 INFORMATION: StructureDefinition/sdc-questionnaireresponse: StructureDefinition.snapshot.element[40].binding: The element QuestionnaireResponse.item.answer.value[x] has a binding, and has multiple types ([date, dateTime, boolean, string, Coding, Reference, Quantity, Attachment, time, integer, decimal, uri]). The binding will apply to all the types
 INFORMATION: StructureDefinition/sdc-usagecontext: StructureDefinition.snapshot.element[4].binding: The element UsageContext.value[x] has a binding, and has multiple types ([Reference, Quantity, Range, CodeableConcept]). The binding will apply to all the types
+
+# Questionnaire examples using the template-based extraction process have contained resources with partially complete content that includes extensions to indicate to the extraction engine how to complete the content - which can then make the extracted resource valid
+ERROR: Questionnaire/extract-complex-template: Questionnaire.contained[2]/*Observation/obsTemplateHeight*/.derivedFrom[0]: Unable to resolve resource with reference 'replaced'
+ERROR: Questionnaire/extract-complex-template: Questionnaire.contained[3]/*Observation/obsTemplateWeight*/.derivedFrom[0]: Unable to resolve resource with reference 'replaced'
+ERROR: Questionnaire/extract-complex-template: Questionnaire.contained[4]/*Observation/obsTemplate*/.derivedFrom[0]: Unable to resolve resource with reference 'replaced'
+ERROR: Questionnaire.text.div: Hyperlink 'replaced' at 'div/p/a' for 'replaced' does not resolve
+WARNING: Questionnaire/extract-complex-template: Questionnaire.contained[1]/*RelatedPerson/rpTemplate*/.patient: A Reference without an actual reference or identifier should have a display
+WARNING: Questionnaire/extract-complex-template: Questionnaire.contained[2]/*Observation/obsTemplateHeight*/.subject: A Reference without an actual reference or identifier should have a display
+WARNING: Questionnaire/extract-complex-template: Questionnaire.contained[2]/*Observation/obsTemplateHeight*/.performer[0]: A Reference without an actual reference or identifier should have a display
+WARNING: Questionnaire/extract-complex-template: Questionnaire.contained[3]/*Observation/obsTemplateWeight*/.subject: A Reference without an actual reference or identifier should have a display
+WARNING: Questionnaire/extract-complex-template: Questionnaire.contained[3]/*Observation/obsTemplateWeight*/.performer[0]: A Reference without an actual reference or identifier should have a display
+WARNING: Questionnaire/extract-complex-template: Questionnaire.contained[4]/*Observation/obsTemplate*/.subject: A Reference without an actual reference or identifier should have a display
+WARNING: Questionnaire/extract-complex-template: Questionnaire.contained[4]/*Observation/obsTemplate*/.performer[0]: A Reference without an actual reference or identifier should have a display
+WARNING: Questionnaire/extract-complex-template2: Questionnaire.contained[0]/*Bundle/bunExtract*/.entry[2].resource.performer[0]: A Reference without an actual reference or identifier should have a display
+WARNING: Questionnaire/extract-complex-template2: Questionnaire.contained[0]/*Bundle/bunExtract*/.entry[3].resource.performer[0]: A Reference without an actual reference or identifier should have a display
+WARNING: Questionnaire/extract-complex-template2: Questionnaire.contained[0]/*Bundle/bunExtract*/.entry[2].resource/*Observation/null*/.performer[0]: A Reference without an actual reference or identifier should have a display
+WARNING: Questionnaire/extract-complex-template2: Questionnaire.contained[0]/*Bundle/bunExtract*/.entry[3].resource/*Observation/null*/.performer[0]: A Reference without an actual reference or identifier should have a display
+WARNING: Questionnaire/extract-complex-template2: Questionnaire.contained[0]/*Bundle/bunExtract*/.entry[4].resource/*Observation/null*/.performer[0]: A Reference without an actual reference or identifier should have a display
+
+ERROR: Questionnaire/extract-complex-template2: Questionnaire.contained[0]/*Bundle/bunExtract*/.entry[2].resource.derivedFrom[0]: Unable to resolve resource with reference 'replaced'
+ERROR: Questionnaire/extract-complex-template2: Questionnaire.contained[0]/*Bundle/bunExtract*/.entry[3].resource.derivedFrom[0]: Unable to resolve resource with reference 'replaced'
+ERROR: Questionnaire/extract-complex-template2: Questionnaire.contained[0]/*Bundle/bunExtract*/.entry[2].resource/*Observation/null*/.derivedFrom[0]: Unable to resolve resource with reference 'replaced'
+ERROR: Questionnaire/extract-complex-template2: Questionnaire.contained[0]/*Bundle/bunExtract*/.entry[3].resource/*Observation/null*/.derivedFrom[0]: Unable to resolve resource with reference 'replaced'
+ERROR: Questionnaire/extract-complex-template2: Questionnaire.contained[0]/*Bundle/bunExtract*/.entry[4].resource/*Observation/null*/.derivedFrom[0]: Unable to resolve resource with reference 'replaced'
+
+# Transaction bundle entries are not required to have a fullUrl, so these are not errors?
+ERROR: Questionnaire/extract-complex-template2: Questionnaire.contained[0].entry[1]: Bundle entry missing fullUrl
+ERROR: Questionnaire/extract-complex-template2: Questionnaire.contained[0].entry[2]: Bundle entry missing fullUrl
+ERROR: Questionnaire/extract-complex-template2: Questionnaire.contained[0].entry[3]: Bundle entry missing fullUrl
+ERROR: Questionnaire/extract-complex-template2: Questionnaire.contained[0].entry[4]: Bundle entry missing fullUrl
+ERROR: Questionnaire/extract-complex-template2: Questionnaire.contained[0]/*Bundle/bunExtract*/.entry[2].resource.derivedFrom[0]: Relative Reference appears inside Bundle whose entry is missing a fullUrl
+ERROR: Questionnaire/extract-complex-template2: Questionnaire.contained[0]/*Bundle/bunExtract*/.entry[3].resource.derivedFrom[0]: Relative Reference appears inside Bundle whose entry is missing a fullUrl
+ERROR: Questionnaire/extract-complex-template2: Questionnaire.contained[0]/*Bundle/bunExtract*/.entry[2].resource/*Observation/null*/.derivedFrom[0]: Relative Reference appears inside Bundle whose entry is missing a fullUrl
+ERROR: Questionnaire/extract-complex-template2: Questionnaire.contained[0]/*Bundle/bunExtract*/.entry[3].resource/*Observation/null*/.derivedFrom[0]: Relative Reference appears inside Bundle whose entry is missing a fullUrl
+ERROR: Questionnaire/extract-complex-template2: Questionnaire.contained[0]/*Bundle/bunExtract*/.entry[4].resource/*Observation/null*/.derivedFrom[0]: Relative Reference appears inside Bundle whose entry is missing a fullUrl
+
+# Example terminology codes
+WARNING: Questionnaire/extract-complex-template: Questionnaire.contained[4]/*Observation/obsTemplate*/.code.coding[0]: A definition for CodeSystem 'http://example.org/sdh/demo/CodeSystem/cc-screening-codes' could not be found, so the code cannot be validated
+WARNING: Questionnaire/extract-complex-template2: Questionnaire.contained[0]/*Bundle/bunExtract*/.entry[4].resource/*Observation/null*/.code.coding[0]: A definition for CodeSystem 'http://example.org/sdh/demo/CodeSystem/cc-screening-codes' could not be found, so the code cannot be validated
+
+# Generated narrative invalid?
+ERROR: Questionnaire/extract-complex-template2: Questionnaire.text.div: Hyperlink scheme 'urn' in 'urn:uuid:6f6177d2-13ee-4d27-b0e8-3eaf663dd031' at 'div/blockquote/p/a' for 'urn:uuid:6f6177d2-13ee-4d27-b0e8-3eaf663dd031' is not a valid hyperlinkable scheme

@@ -1,0 +1,110 @@
+{
+    "resourceType": "Questionnaire",
+    "id": "extract-complex-smap",
+    "extension": [
+        {
+            "url": "http://hl7.org/fhir/uv/sdc/StructureDefinition/sdc-questionnaire-targetStructureMap",
+            "valueCanonical": "http://hl7.org/fhir/uv/sdc/StructureMap/extractComplexSmap"
+        }
+    ],
+    "url": "http://hl7.org/fhir/uv/sdc/Questionnaire/extract-complex-smap",
+    "status": "draft",
+    "experimental": true,
+    "title": "Complex Extract Demonstration - StructureMap",
+    "publisher": "Brian Postlethwaite",
+    "item": [
+        {
+            "linkId": "patient",
+            "text": "Patient Information",
+            "type": "group",
+            "item": [
+                {
+                    "linkId": "name",
+                    "text": "Name",
+                    "type": "group",
+                    "repeats": true,
+                    "item": [
+                        {
+                            "linkId": "given",
+                            "text": "Given Name(s)",
+                            "type": "string",
+                            "repeats": true
+                        },
+                        {
+                            "linkId": "family",
+                            "text": "Family/Surname",
+                            "type": "string"
+                        }
+                    ]
+                },
+                {
+                    "linkId": "gender",
+                    "text": "Gender",
+                    "type": "choice",
+                    "answerValueSet": "http://hl7.org/fhir/ValueSet/administrative-gender"
+                },
+                {
+                    "linkId": "dob",
+                    "text": "Date of Birth",
+                    "type": "date"
+                },
+                {
+                    "linkId": "ihi",
+                    "text": "National Identifier (IHI)",
+                    "type": "string"
+                },
+                {
+                    "linkId": "mobile-phone",
+                    "text": "Mobile Phone number",
+                    "type": "string"
+                }
+            ]
+        },
+        {
+            "linkId": "contacts",
+            "text": "Contacts",
+            "type": "group",
+            "repeats": true,
+            "item": [
+                {
+                    "linkId": "contact-name",
+                    "text": "Name",
+                    "type": "string"
+                },
+                {
+                    "linkId": "relationship",
+                    "text": "Relationship",
+                    "type": "choice",
+                    "answerValueSet": "http://hl7.org/fhir/ValueSet/patient-contactrelationship"
+                },
+                {
+                    "linkId": "phone",
+                    "text": "Phone",
+                    "type": "string"
+                }
+            ]
+        },
+        {
+            "linkId": "obs",
+            "text": "Observations",
+            "type": "group",
+            "item": [
+                {
+                    "linkId": "height",
+                    "text": "What is your current height (m)",
+                    "type": "decimal"
+                },
+                {
+                    "linkId": "weight",
+                    "text": "What is your current weight (kg)",
+                    "type": "decimal"
+                },
+                {
+                    "linkId": "complication",
+                    "text": "Have you had a Sigmoidoscopy Complication (concern with invasive procedure, for example)",
+                    "type": "boolean"
+                }
+            ]
+        }
+    ]
+}
