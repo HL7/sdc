@@ -7,7 +7,7 @@ Title: "IHE SDC"
 Source: SDCCodeSystem
 * -> "Form_Package//list_field"
 * name -> "IHE SDC"
-* extension[styleSensitive] -> "N/A (new requirement)"
+* extension[RenderingCriticalExtension] -> "N/A (new requirement)"
 * concept -> "list_item"
 * concept.code -> "value"
 * concept.display -> "item_prompt"
