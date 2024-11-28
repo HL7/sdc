@@ -6,7 +6,7 @@ Id: ihesdc
 Title: "IHE SDC"
 Source: SDCValueSet
 * -> "Form_Package//list_field"
-* extension[styleSensitive] -> "N/A (new requirement)"
+* extension[RenderingCriticalExtension] -> "N/A (new requirement)"
 * compose.include.concept -> "list_item/value"
 * compose.include.concept.extension[conceptLabel] -> "list_item/item_number/label"
 * compose.include.concept.extension[conceptLabel].valueString.extension[code-renderingStyle] -> "list_item/item_number/style"

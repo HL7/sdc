@@ -338,7 +338,7 @@ If an item is presumed to be extracted, it will extract if there are item.codes 
   </p>
   <ol>
     <li>Include the <a href="StructureDefinition-sdc-questionnaire-itemExtractionContext.html">questionnaire-itemExtractionContext</a> extension either on the Questionnaire root or on
-      'group' items within the Questionnaire to identify the resource that will serve as the context for any extraction.  The itemExtractionContext is used to set the context 
+      any item within the Questionnaire to identify the resource that will serve as the context for any extraction.  The itemExtractionContext is used to set the context 
 	  for the item.definition paths. If the itemExtractionContext is empty, then the Questionnaire is being used to create a resource. If the itemExtractionContext has a resource 
 	  (or set of resources), then the Questionnaire is being used to update the resource(s).</li>
     <li>On descendant items of that element, fill in the <code>Questionnaire.item.definition</code> to point to the resource or profile element that Questionnaire
