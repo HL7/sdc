@@ -7,5 +7,6 @@ Description: "Describes the elements that should be exposed in a response to a s
 * . ^short = "Adaptive Questionnaire - search"
 * . ^definition = "Describes the elements that should be exposed in a response to a search for adaptive questionnaires."
 * extension contains
-    QuestionnaireAdaptiveExtension named questionnaireAdaptive 0..* and
+    QuestionnaireAdaptiveExtension named questionnaireAdaptive 1..* and
     EndpointExtension named submissionEndpoint 0..* MS
+* obeys sdc-adaptive-1
