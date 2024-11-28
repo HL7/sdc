@@ -26,5 +26,4 @@ Description: "Defines elements that support auto-population and pre-population o
       $questionnaire-hidden named itemHidden 0..1 and
       ChoiceColumnExtension named choiceColumn 0..* and
       IsSubjectExtension named isSubject 0..1
-  * extension[contextExpression].extension contains ChoiceColumnExtension named choiceColumn 0..*
   * extension[isSubject] ^requirements = "Allows the population process to leverage the fact that the subject for this group and descendants is distinct"
