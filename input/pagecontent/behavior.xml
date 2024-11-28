@@ -1253,10 +1253,198 @@
 			</tr>
 		</tbody>
 	</table>
-	<!--  <a name="example"> </a>
-  <h3>Example</h3>
-  <p>
-    This implementation guide includes an <a href="todo.html">example questionnaire</a> that show how the elements above are intended to be used and describes
-    the constraints and behavior that would apply for each question and group.
-  </p>-->
+
+
+     <a name="initialValues"> </a>
+	 <h4>Handling Units in Initial Values</h4>
+	 <p>
+     When processing <code>initial.valueQuantity</code> in questionnaires, the behavior of the form depends on various configurations, such as whether a list of allowed units is defined (unitOption/unitValueSet), whether additional units can be entered (unitOpen), and if a unitSupplementalSystem is provided. These configurations impact whether the system can accept or reject initial values and how these values are treated.
+    </p>
+
+     <table border="1" cellspacing="0" cellpadding="5">
+    <thead>
+    <tr>
+      <th>Case</th>
+      <th>Has unit list (<code>unitOption</code>/<code>unitValueSet</code>)</th>
+      <th><code>unitOpen</code></th>
+      <th>unit in <code>initial.valueQuantity</code></th>
+      <th>unit's <code>system</code> and <code>unitSupplementalSystem</code> match</th>
+      <th>Accept Initial Values</th>
+      <th>Treated As</th>
+    </tr>
+  </thead>
+  <tbody>
+    <!-- No unitSupplementalSystem section -->
+    <tr>
+      <td colspan="7"><strong>No <code>unitSupplementalSystem</code></strong></td>
+    </tr>
+    <tr>
+      <td>1.1</td>
+      <td>No</td>
+      <td>(Not present)</td>
+      <td>Off-list</td>
+      <td>-</td>
+      <td>Yes</td>
+      <td>string or Coding</td>
+    </tr>
+    <tr>
+      <td>1.2</td>
+      <td>No</td>
+      <td>optionsOnly</td>
+      <td>Off-list</td>
+      <td>-</td>
+      <td>No</td>
+      <td>-</td>
+    </tr>
+    <tr>
+      <td>1.3</td>
+      <td>No</td>
+      <td>optionsOrType</td>
+      <td>Off-list</td>
+      <td>-</td>
+      <td>Yes</td>
+      <td>type</td>
+    </tr>
+    <tr>
+      <td>1.4a</td>
+      <td>No</td>
+      <td>optionsOrString</td>
+      <td>Off-list (with unit only)</td>
+      <td>-</td>
+      <td>Yes</td>
+      <td>string</td>
+    </tr>
+    <tr>
+      <td>1.4b</td>
+      <td>No</td>
+      <td>optionsOrString</td>
+      <td>Off-list (with code and/or system)</td>
+      <td>-</td>
+      <td>No</td>
+      <td>-</td>
+    </tr>
+    <tr>
+      <td>2.1</td>
+      <td>Yes</td>
+      <td>(Not present)</td>
+      <td>Off-list</td>
+      <td>-</td>
+      <td>No</td>
+      <td>-</td>
+    </tr>
+    <tr>
+      <td>2.2</td>
+      <td>Yes</td>
+      <td>(Not present)</td>
+      <td>On-list</td>
+      <td>-</td>
+      <td>Yes</td>
+      <td>options</td>
+    </tr>
+    <tr>
+      <td>3.1</td>
+      <td>Yes</td>
+      <td>optionsOnly</td>
+      <td>Off-list</td>
+      <td>-</td>
+      <td>No</td>
+      <td>-</td>
+    </tr>
+    <tr>
+      <td>3.2</td>
+      <td>Yes</td>
+      <td>optionsOnly</td>
+      <td>On-list</td>
+      <td>-</td>
+      <td>Yes</td>
+      <td>options</td>
+    </tr>
+    <tr>
+      <td>4.1</td>
+      <td>Yes</td>
+      <td>optionsOrType</td>
+      <td>Off-list</td>
+      <td>-</td>
+      <td>Yes</td>
+      <td>type</td>
+    </tr>
+    <tr>
+      <td>4.2</td>
+      <td>Yes</td>
+      <td>optionsOrType</td>
+      <td>On-list</td>
+      <td>-</td>
+      <td>Yes</td>
+      <td>options</td>
+    </tr>
+    <tr>
+      <td>5.1a</td>
+      <td>Yes</td>
+      <td>optionsOrString</td>
+      <td>Off-list (with unit only)</td>
+      <td>-</td>
+      <td>Yes</td>
+      <td>string</td>
+    </tr>
+    <tr>
+      <td>5.1b</td>
+      <td>Yes</td>
+      <td>optionsOrString</td>
+      <td>Off-list (with code and/or system)</td>
+      <td>-</td>
+      <td>No</td>
+      <td>-</td>
+    </tr>
+    <tr>
+      <td>5.2</td>
+      <td>Yes</td>
+      <td>optionsOrString</td>
+      <td>On-list</td>
+      <td>-</td>
+      <td>Yes</td>
+      <td>options</td>
+    </tr>
+
+    <!-- With unitSupplementalSystem section -->
+    <tr>
+      <td colspan="7"><strong>Has <code>unitSupplementalSystem</code> (which only works when unitOpen='optionsOrType')</strong></td>
+    </tr>
+    <tr>
+      <td>1.3a</td>
+      <td>No</td>
+      <td>optionsOrType</td>
+      <td>Off-list</td>
+      <td>Yes</td>
+      <td>Yes</td>
+      <td>type</td>
+    </tr>
+    <tr>
+      <td>1.3b</td>
+      <td>No</td>
+      <td>optionsOrType</td>
+      <td>Off-list</td>
+      <td>No</td>
+      <td>No</td>
+      <td>-</td>
+    </tr>
+    <tr>
+      <td>4.1a</td>
+      <td>Yes</td>
+      <td>optionsOrType</td>
+      <td>Off-list</td>
+      <td>Yes</td>
+      <td>Yes</td>
+      <td>type</td>
+    </tr>
+    <tr>
+      <td>4.1b</td>
+      <td>Yes</td>
+      <td>optionsOrType</td>
+      <td>Off-list</td>
+      <td>No</td>
+      <td>No</td>
+      <td>-</td>
+    </tr>
+  </tbody>
+</table>
 </div>
