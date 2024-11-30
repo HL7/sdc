@@ -3,7 +3,7 @@ Parent: Questionnaire
 Id: sdc-questionnaire
 Title: "SDC Base Questionnaire"
 Description: "Sets minimum expectations for questionnaire support for SDC-conformant systems, regardless of which SDC capabilities they're making use of."
-* ^status = #draft
+* ^status = #active
 * . ^definition = "Sets minimum expectations for questionnaire support for SDC-conformant systems, regardless of which SDC capabilities they're making use of."
 * extension contains
     $designNote named designNote 0..1 and
@@ -43,3 +43,9 @@ Description: "Sets minimum expectations for questionnaire support for SDC-confor
   * initial 0..* MS
     * value[x] MS
   * item MS
+
+Invariant: sdc-1
+Description: "An item cannot have an answerExpression if answerOption or answerValueSet is already present."
+Severity: #error
+Expression: "extension('http://hl7.org/fhir/uv/sdc/StructureDefinition/sdc-questionnaire-answerExpression').empty().not() implies (answerOption.empty() and answerValueSet.empty())"
+XPath: "f:extension[@url='http://hl7.org/fhir/uv/sdc/StructureDefinition/sdc-questionnaire-answerExpression'] and (not(f:answerOption) and not(f:answerValueSet))"

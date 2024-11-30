@@ -2,12 +2,6 @@ Instance: questionnaire-sdc-profile-example-hunger-vital-signs
 InstanceOf: SDCBaseQuestionnaire
 Title: "SDC-Hunger Vital Sign"
 Usage: #example
-* extension[0]
-  * url = $standard-status
-  * valueCode = #draft
-* extension[+]
-  * url = $fmm
-  * valueInteger = 0
 * extension[+]
   * url = $variable
   * valueExpression

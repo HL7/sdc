@@ -16,12 +16,6 @@ Usage: #example
     * language = #text/fhirpath
     * expression = "%resource.item.where(linkId='/8302-2').answer.value*0.0254"
 * extension[+]
-  * url = "http://hl7.org/fhir/StructureDefinition/structuredefinition-standards-status"
-  * valueCode = #draft
-* extension[+]
-  * url = "http://hl7.org/fhir/StructureDefinition/structuredefinition-fmm"
-  * valueInteger = 0
-* extension[+]
   * url = "http://hl7.org/fhir/uv/sdc/StructureDefinition/sdc-questionnaire-performerType"
   * valueCode = #Practitioner
 * url = "http://hl7.org/fhir/uv/sdc/Questionnaire/questionnaire-sdc-profile-example-weight-height-tracking-panel"

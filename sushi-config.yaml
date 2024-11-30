@@ -15,9 +15,14 @@ description: The SDC specification provides an infrastructure to standardize the
 license: CC0-1.0
 fhirVersion: 4.0.1
 parameters:
+  auto-oid-root: 2.16.840.1.113883.4.642.40.17
   apply-publisher: true
   apply-contact: true
+  globals-in-artifacts: true
   show-inherited-invariants: false
+  shownav: true
+  version-comparison: 
+   - 3.0.0
 copyrightYear: 2022+
 releaseLabel: STU 3
 jurisdiction: http://unstats.un.org/unsd/methods/m49/m49.htm#001 "World"
@@ -35,7 +40,7 @@ dependencies:
     version: 4.0.1
   hl7.fhir.uv.extensions:
     id: ext
-    version: 1.0.0
+    version: 5.2.0-ballot
 pages:
   index.html:
     title: SDC Home Page

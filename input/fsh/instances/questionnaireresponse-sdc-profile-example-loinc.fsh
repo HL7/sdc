@@ -6,6 +6,7 @@ Usage: #example
 * questionnaire = "http://hl7.org/fhir/uv/sdc/Questionnaire/questionnaire-sdc-profile-example-loinc|3.0"
 * status = #completed
 * authored = "2016-03-14"
+* subject = Reference(http://example.org/Patient/123) "Jane Smith"
 * item[0]
   * linkId = "Medication/header"
   * item[0]

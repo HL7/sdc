@@ -2,7 +2,7 @@ Extension: CalculatedExpressionExtension
 Id: sdc-questionnaire-calculatedExpression
 Title: "Calculated Expression"
 Description: "Calculated value for a question answer as determined by an evaluated expression."
-* ^status = #draft
+* ^status = #active
 * ^context[0].type = #element
 * ^context[=].expression = "Questionnaire.item"
 * ^context[+].type = #element

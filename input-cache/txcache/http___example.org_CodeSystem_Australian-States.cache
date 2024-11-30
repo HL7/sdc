@@ -1,0 +1,99 @@
+-------------------------------------------------------------------------------------
+{"hierarchical" : false, "valueSet" :{
+  "resourceType" : "ValueSet",
+  "compose" : {
+    "inactive" : false,
+    "include" : [{
+      "system" : "http://example.org/CodeSystem/Australian-States",
+      "concept" : [{
+        "code" : "ACT",
+        "display" : "Australian Capital Territory"
+      },
+      {
+        "code" : "NSW",
+        "display" : "New South Wales"
+      },
+      {
+        "code" : "NT",
+        "display" : "Northern Territory"
+      },
+      {
+        "code" : "Qld",
+        "display" : "Queensland"
+      },
+      {
+        "code" : "SA",
+        "display" : "South Australia"
+      },
+      {
+        "code" : "Vic",
+        "display" : "Victoria"
+      },
+      {
+        "code" : "Tas",
+        "display" : "Tasmania"
+      },
+      {
+        "code" : "WA",
+        "display" : "Western Australia"
+      }]
+    }]
+  }
+}}####
+e: {
+  "from-server" : true,
+  "error" : "Error from http://tx.fhir.org/r4: Unable to provide support for code system http://example.org/CodeSystem/Australian-States"
+}
+-------------------------------------------------------------------------------------
+{"hierarchical" : true, "valueSet" :{
+  "resourceType" : "ValueSet",
+  "compose" : {
+    "inactive" : true,
+    "include" : [{
+      "system" : "http://example.org/CodeSystem/Australian-States",
+      "concept" : [{
+        "code" : "ACT",
+        "display" : "Australian Capital Territory"
+      },
+      {
+        "code" : "NSW",
+        "display" : "New South Wales"
+      },
+      {
+        "code" : "NT",
+        "display" : "Northern Territory"
+      },
+      {
+        "code" : "Qld",
+        "display" : "Queensland"
+      },
+      {
+        "code" : "SA",
+        "display" : "South Australia"
+      },
+      {
+        "code" : "Vic",
+        "display" : "Victoria"
+      },
+      {
+        "code" : "Tas",
+        "display" : "Tasmania"
+      },
+      {
+        "code" : "WA",
+        "display" : "Western Australia"
+      }]
+    }]
+  }
+}}####
+e: {
+  "from-server" : true,
+  "error" : "Error from http://tx.fhir.org/r4: Unable to provide support for code system http://example.org/CodeSystem/Australian-States"
+}
+-------------------------------------------------------------------------------------
+{"hierarchical" : true, "url": "http://hl7.org/fhir/uv/sdc/ValueSet/sdc-question-library-states", "version": "3.0.0"}####
+e: {
+  "from-server" : true,
+  "error" : "Error from http://tx.fhir.org/r4: Unable to provide support for code system http://example.org/CodeSystem/Australian-States"
+}
+-------------------------------------------------------------------------------------

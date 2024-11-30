@@ -260,6 +260,9 @@ Usage: #example
   * name = "outcome"
   * resource
     * resourceType = "OperationOutcome"
+    * text
+      * status = #empty
+      * div = "<div xmlns=\"http://www.w3.org/1999/xhtml\"><ul><li>Warning: Unable to resolve element definition http://example.org/StructureDefinition/non-existent-library#Stuff.phone when assembling Questionnaire/sdc-modular-contact.  Some constraints and behavior may not be represented</li><li>Unable to resolve element definition http://example.org/StructureDefinition/non-existent-library#Stuff.phone when assembling Questionnaire/sdc-modular-contact.  Some constraints and behavior may not be represented</li></ul></div>"
     * issue[0]
       * severity = #warning
       * code = #informational

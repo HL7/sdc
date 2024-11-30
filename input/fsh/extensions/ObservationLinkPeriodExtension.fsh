@@ -2,7 +2,7 @@ Extension: ObservationLinkPeriodExtension
 Id: sdc-questionnaire-observationLinkPeriod
 Title: "Obervation link period"
 Description: "Indicates the time-period (from 'now') to search for observations that match the Questionnaire.item.code and Questionnaire.subject when pre-populating the QuestionnaireResponse."
-* ^status = #draft
+* ^status = #active
 * ^context[0].type = #element
 * ^context[=].expression = "Questionnaire.item"
 * ^context[+].type = #element

@@ -3,7 +3,7 @@ Parent: SDCBaseQuestionnaire
 Id: sdc-questionnaire-render
 Title: "Advanced Rendering Questionnaire"
 Description: "Defines additional capabilities for controlling the rendering of the questionnaire."
-* ^status = #draft
+* ^status = #active
 * . ^short = "Advanced Rendering Questionnaire"
 * . ^definition = "Defines additional capabilities for controlling the rendering of the questionnaire."
 * extension contains RenderingCriticalExtension named rendering-criticalExtension 0..* MS

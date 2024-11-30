@@ -3,12 +3,6 @@ InstanceOf: SDCBaseQuestionnaire
 Title: "SDC-Hard Coronary Heart Disease"
 Description: "A made-up form for calculating the 10-year-risk of Hard Coronary Heart Disease. It shows how variables and calculatedExpression can be used to compute for the risk probability."
 Usage: #example
-* extension[0]
-  * url = $standard-status
-  * valueCode = #draft
-* extension[+]
-  * url = $fmm
-  * valueInteger = 0
 * extension[+]
   * url = $variable
   * valueExpression

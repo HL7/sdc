@@ -2,7 +2,7 @@ Extension: IsSubjectExtension
 Id: sdc-questionnaire-isSubject
 Title: "Is subject?"
 Description: "If present and true, indicates that the item establishes a different subject for the group in a response."
-* ^status = #draft
+* ^status = #active
 * ^context[0].type = #element
 * ^context[=].expression = "Questionnaire.item"
 * ^context[+].type = #element

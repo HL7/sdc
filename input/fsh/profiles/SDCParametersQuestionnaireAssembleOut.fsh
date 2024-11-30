@@ -3,7 +3,7 @@ Parent: Parameters
 Id: parameters-questionnaire-assemble-out
 Title: "Questionnaire assemble output Parameters profile"
 Description: "Profile used to validate the parameters that are the output of the 'assemble' questionnaire operation"
-* ^status = #draft
+* ^status = #active
 * parameter ^slicing.discriminator.type = #value
 * parameter ^slicing.discriminator.path = "name"
 * parameter ^slicing.rules = #open

@@ -48,7 +48,7 @@ Usage: #example
     * valueCodeableConcept = $questionnaire-item-control#drop-down "Drop down"
       * text = "Drop down"
   * linkId = "/88122-7"
-  * code = $loinc#88122-7 "(I/We) worried whether (my/our) food would run out before (I/we) got money to buy more."
+  * code = $loinc#88122-7 "Within the past 12 months we worried whether our food would run out before we got money to buy more [U.S. FSS]"
   * text = "(I/We) worried whether (my/our) food would run out before (I/we) got money to buy more."
   * type = #choice
   * required = false
@@ -62,7 +62,7 @@ Usage: #example
     * valueCodeableConcept = $questionnaire-item-control#drop-down "Drop down"
       * text = "Drop down"
   * linkId = "/88123-5"
-  * code = $loinc#88123-5 "The food that (I/we) bought just didn't last, and (I/we) didn't have money to get more."
+  * code = $loinc#88123-5 "Within the past 12 months the food we bought just didn't last and we didn't have money to get more [U.S. FSS]"
   * text = "The food that (I/we) bought just didn't last, and (I/we) didn't have money to get more."
   * type = #choice
   * required = false

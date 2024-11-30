@@ -3,7 +3,7 @@ Parent: SDCBaseQuestionnaire
 Id: sdc-questionnaire-modular
 Title: "SDC Modular Questionnaire"
 Description: "Indicates expectations for questionnaires that draw their item content (not just codes) from other resources"
-* ^status = #draft
+* ^status = #active
 * . ^definition = "Indicates expectations for questionnaires that draw their item content (not just codes) from other resources"
 * extension[assemble-expectation] 1..
 * extension[assemble-expectation] only AssembleExpectation

@@ -3,7 +3,7 @@ Parent: SDCBaseQuestionnaire
 Id: sdc-questionnaire-behave
 Title: "Advanced Behavior Questionnaire"
 Description: "Defines additional capabilities for controlling data entry and calculating values within the questionnaire."
-* ^status = #draft
+* ^status = #active
 * . ^short = "Advanced Behavior Questionnaire"
   * ^definition = "Defines additional capabilities for controlling data entry and calculating values within the questionnaire."
 * extension contains
@@ -79,3 +79,21 @@ Description: "Defines additional capabilities for controlling data entry and cal
         $questionnaire-optionExclusive named optionExclusive 0..1 MS and
         $ordinalValue named ordinalValue 0..1 MS
     * value[x] 1..1 MS
+
+Invariant: sdc-behave-1
+Description: "An item cannot have both initial.value and initialExpression"
+Severity: #error
+Expression: "initial.empty() or extension('http://hl7.org/fhir/uv/sdc/StructureDefinition/sdc-questionnaire-initialExpression').empty()"
+XPath: "not(exists(f:initial) and exists(f:extension[@url='http://hl7.org/fhir/uv/sdc/StructureDefinition/sdc-questionnaire-initialExpression']))"
+
+Invariant: sdc-behave-2
+Description: "An item cannot have both enableWhen and enableWhenExpression"
+Severity: #error
+Expression: "enableWhen.empty() or extension('http://hl7.org/fhir/uv/sdc/StructureDefinition/sdc-questionnaire-enableWhenExpression').empty()"
+XPath: "not(exists(f:enableWhen) and exists(f:extension[@url='http://hl7.org/fhir/uv/sdc/StructureDefinition/sdc-questionnaire-enableWhenExpression']))"
+
+Invariant: sdc-behave-3
+Severity: #warning
+Description: "For items of type 'quantity', it is best practice to include either a 'unitOption' or 'unitValueSet' extension to provide a list of valid units."
+Expression: "(type = 'quantity' implies (extension('http://hl7.org/fhir/StructureDefinition/questionnaire-unitOption').exists() or extension('http://hl7.org/fhir/StructureDefinition/questionnaire-unitValueSet').exists())) and (descendants().where(type = 'quantity')).all(extension('http://hl7.org/fhir/StructureDefinition/questionnaire-unitOption').exists() or extension('http://hl7.org/fhir/StructureDefinition/questionnaire-unitValueSet').exists())"
+XPath: "(f:type/@value = 'quantity' implies (count(f:extension[@url='http://hl7.org/fhir/StructureDefinition/questionnaire-unitOption']) > 0 or count(f:extension[@url='http://hl7.org/fhir/StructureDefinition/questionnaire-unitValueSet']) > 0)) and not(.//f:item[f:type/@value = 'quantity' and not(f:extension[@url='http://hl7.org/fhir/StructureDefinition/questionnaire-unitOption'] or f:extension[@url='http://hl7.org/fhir/StructureDefinition/questionnaire-unitValueSet'])])"

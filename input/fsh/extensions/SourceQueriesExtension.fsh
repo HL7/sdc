@@ -2,7 +2,7 @@ Extension: SourceQueriesExtension
 Id: sdc-questionnaire-sourceQueries
 Title: "Source queries for population mapping"
 Description: "A Batch Bundle containing a set of queries that should be executed to provide source data for a StructureMap to create a populated QuestionnaireResponse."
-* ^status = #draft
+* ^status = #active
 * ^context.type = #element
 * ^context.expression = "Questionnaire"
 * . 0..1

@@ -9,7 +9,7 @@ Description: "Data element SDC Profile Example"
 * ^publisher = "Health Level Seven, International"
 * ^contact.telecom.system = #other
 * ^contact.telecom.value = "http://hl7.org"
-* ^type = "DataelementSdcProfileExample"
+* ^type = "http://example.org/DataelementSdcProfileExample"
 * gender 0..1 CodeableConcept "The gender (i.e., the behavioral, cultural, or psychological traits typically associated with one sex) of a living subject as defined for administrative purposes."
 * gender from http://hl7.org/fhir/ValueSet/administrative-gender (required)
   * ^base.path = "dataelement-sdc-profile-example.gender"

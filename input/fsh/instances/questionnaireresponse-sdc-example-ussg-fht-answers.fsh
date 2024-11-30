@@ -58,7 +58,7 @@ Usage: #example
         * item
           * linkId = "1.1.7.1.1"
           * text = "Units"
-          * answer.valueCoding = $unitsofmeasure#[in_i] "inch (international)"
+          * answer.valueCoding = $unitsofmeasure#[in_i] "[in_i]"
     * item[+]
       * linkId = "1.1.8"
       * definition = "http://loinc.org/fhir/DataElement/29463-7"
@@ -68,7 +68,7 @@ Usage: #example
         * item
           * linkId = "1.1.8.1.1"
           * text = "Units"
-          * answer.valueCoding = $unitsofmeasure#[lb_av] "pound (US and British)"
+          * answer.valueCoding = $unitsofmeasure#[lb_av] "[lb_av]"
     * item[+]
       * linkId = "1.1.9"
       * definition = "http://loinc.org/fhir/DataElement/39156-5"

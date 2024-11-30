@@ -203,7 +203,7 @@ Usage: #example
     * answerOption[+].valueCoding = $procedures#U4 "Coronary angioplasty (PTCA)"
     * answerOption[+].valueCoding = $procedures#U5 "Cardiac pacemaker"
     * extension
-      * url = "http://hl7.org/fhir/uv/sdc/StructureDefinition/sdc-questionnaire-minOccurs"
+      * url = "http://hl7.org/fhir/StructureDefinition/questionnaire-minOccurs"
       * valueUnsignedInt = 2
   * item[+]
     * linkId = "2.10"
@@ -217,7 +217,7 @@ Usage: #example
     * answerOption[+].valueCoding = $procedures#U4 "Coronary angioplasty (PTCA)"
     * answerOption[+].valueCoding = $procedures#U5 "Cardiac pacemaker"
     * extension
-      * url = "http://hl7.org/fhir/uv/sdc/StructureDefinition/sdc-questionnaire-maxOccurs"
+      * url = "http://hl7.org/fhir/StructureDefinition/questionnaire-maxOccurs"
       * valueUnsignedInt = 3 
   * item[+]
     * extension

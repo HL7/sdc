@@ -132,9 +132,9 @@ Usage: #inline
     * status = #active
     * medicationCodeableConcept
       * coding[0]
-        * system = "http://foo.org"
+        * system = "http://example.org/medications"
       * coding[+]
-        * system = "http://foo2.org"
+        * system = "http://example.org/medications2"
         * display = "Another med"
     * subject.reference = "http://example.org/fhir/Patient/a0df9da6-3157-4b72-95f1-729853718c09"
     * effectivePeriod.start = "2014"
@@ -191,5 +191,5 @@ Usage: #inline
         * coding = $sct#387584000 "Simvastatin"
       * strength
         * numerator = 40 'mg' "mcg"
-        * denominator = 1 '{tablet}' "tablet"
+        * denominator = 1 '1*'
   * search.mode = #include

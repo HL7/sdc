@@ -2,7 +2,7 @@ Extension: ContextExpressionExtension
 Id: sdc-questionnaire-contextExpression
 Title: "Answer Context Expression"
 Description: "A FHIR Query that resolves to one or more resources that can be displayed to the user to help provide context for answering a question. For example, if the question is \"Has the patient discussed this issue on any visits in the past year?\", the contextExpression might return the set of patient's encounters for the prior 12 month period to help jog the practitioner's memory. If there are multiple repetitions of this extension, then each is providing a distinct set of context.  For example, one repetition might expose 'potentially relevant procedures' while another might expose 'potentially relevant encounters'."
-* ^status = #draft
+* ^status = #active
 * ^context[0].type = #element
 * ^context[=].expression = "Questionnaire.item"
 * ^context[+].type = #element

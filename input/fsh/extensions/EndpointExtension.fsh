@@ -2,7 +2,7 @@ Extension: EndpointExtension
 Id: sdc-questionnaire-endpoint
 Title: "Endpoint"
 Description: "The base URL for the server(s) to which questionnaire response associated with this questionnaire should be submitted. If multiple repetitions are present, the completed form should be sent to all listed endpoints."
-* ^status = #draft
+* ^status = #active
 * ^context.type = #element
 * ^context.expression = "Questionnaire"
 * . 0..*

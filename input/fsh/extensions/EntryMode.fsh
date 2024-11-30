@@ -2,7 +2,7 @@ Extension: EntryMode
 Id: sdc-questionnaire-entryMode
 Title: "Entry mode"
 Description: "Indicates how questions within the questionnaire should be presented to the end-user.  Specifically, differentiates whether the questions should be displayed one-at-a-time with no ability to adjust prior entries; one-at-a-time or continuously expanding where all questions up to the current question can be looked at and edited, or random, where all questions can be seen and the questions can be filled out in any order desired."
-* ^status = #draft
+* ^status = #active
 * ^purpose = "Some instruments need to prevent editing of previous answers once subsequent answers are revealed."
 * ^context.type = #element
 * ^context.expression = "Questionnaire"

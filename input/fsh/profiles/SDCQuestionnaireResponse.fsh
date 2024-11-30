@@ -3,7 +3,7 @@ Parent: QuestionnaireResponse
 Id: sdc-questionnaireresponse
 Title: "SDC Questionnaire Response"
 Description: "Defines how the questionnaire response resource is used to reflect form data within the ONC's Structured Data Capture standard."
-* ^status = #draft
+* ^status = #active
 * . ^short = "SDC Questionnaire Response"
 * . ^definition = "Sets expectations for supported capabilities for questionnaire responses for SDC-conformant systems."
 * . ^alias[0] = "Form Data"
@@ -46,3 +46,15 @@ Description: "Defines how the questionnaire response resource is used to reflect
       * ^contentReference = "http://hl7.org/fhir/StructureDefinition/QuestionnaireResponse#QuestionnaireResponse.item"
   * item MS
     * ^contentReference = "http://hl7.org/fhir/StructureDefinition/QuestionnaireResponse#QuestionnaireResponse.item"
+
+Invariant: sdcqr-1
+Description: "Subject SHOULD be present (searching is difficult without subject).  Almost all QuestionnaireResponses should be with respect to some sort of subject."
+Severity: #warning
+Expression: "subject.exists()"
+XPath: "exists(f:subject)"
+
+Invariant: sdcqr-2
+Description: "When repeats=true for a group, it'll be represented with multiple items with the same linkId in the QuestionnaireResponse.  For a question, it'll be represented by a single item with that linkId with multiple answers."
+Severity: #error
+Expression: "(QuestionnaireResponse|repeat(answer|item)).select(item.where(answer.value.exists()).linkId.isDistinct()).allTrue()"
+XPath: "not(exists(for $item in descendant::f:item[f:answer] return $item/preceding-sibling::f:item[f:linkId/@value=$item/f:linkId/@value]))"

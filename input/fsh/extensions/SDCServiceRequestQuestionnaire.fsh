@@ -2,9 +2,7 @@ Extension: SDCServiceRequestQuestionnaire
 Id: sdc-servicerequest-questionnaire
 Title: "ServiceRequest Questionnaire"
 Description: "Identifies a Questionnaire that is being asked to be completed"
-* ^extension[$standard-status].valueCode = #draft
-* ^extension[$fmm].valueInteger = 0
-* ^status = #draft
+* ^status = #active
 * ^context.type = #element
 * ^context.expression = "ServiceRequest"
 * . 0..*

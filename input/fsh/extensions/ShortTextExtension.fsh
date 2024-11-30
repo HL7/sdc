@@ -2,9 +2,7 @@ Extension: ShortTextExtension
 Id: sdc-questionnaire-shortText
 Title: "Short Text"
 Description: "The short text for the item."
-* ^extension[$standard-status].valueCode = #draft
-* ^extension[$fmm].valueInteger = 0
-* ^status = #draft
+* ^status = #active
 * ^context[0].type = #element
 * ^context[=].expression = "Questionnaire.item"
 * ^context[+].type = #element

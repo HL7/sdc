@@ -3,9 +3,7 @@ Parent: ServiceRequest
 Id: sdc-servicerequest
 Title: "Questionnaire Service Request"
 Description: "Defines how ServiceRequest is used to ask for a Questionnaire to be completed"
-* ^extension[$standard-status].valueCode = #draft
-* ^extension[$fmm].valueInteger = 0
-* ^status = #draft
+* ^status = #active
 * extension contains SDCServiceRequestQuestionnaire named questionnaire 1..*
 * status MS
 * intent MS

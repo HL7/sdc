@@ -2,9 +2,7 @@ Extension: ItemExtractionContextExtension
 Id: sdc-questionnaire-itemExtractionContext
 Title: "Item extraction context"
 Description: "Specifies a query or other expression that identifies the resource (or set of resources for a repeating item) to be extracted from this item once the QuestionnaireResponse is complete."
-* ^extension[$standard-status].valueCode = #draft
-* ^extension[$fmm].valueInteger = 0
-* ^status = #draft
+* ^status = #active
 * ^context[0].type = #element
 * ^context[=].expression = "Questionnaire"
 * ^context[+].type = #element
