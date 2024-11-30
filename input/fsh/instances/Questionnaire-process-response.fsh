@@ -6,7 +6,7 @@ Usage: #definition
 * url = "http://hl7.org/fhir/uv/sdc/OperationDefinition/Questionnaire-process-response"
 * name = "SDCQuestionnaireProcessResponse"
 * title = "Questionnaire Process Response"
-* status = #draft
+* status = #active
 * kind = #operation
 * date = "2017-03-19"
 * publisher = "Health Level Seven"

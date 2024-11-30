@@ -6,7 +6,7 @@ Usage: #definition
 * url = "http://hl7.org/fhir/uv/sdc/OperationDefinition/Questionnaire-populatelink"
 * name = "SDCQuestionnairePopulateLink"
 * title = "Generate a link to a Questionnaire completion webpage"
-* status = #draft
+* status = #active
 * kind = #operation
 * date = "2018-08-19T21:48:56+10:00"
 * publisher = "HL7 International - FHIR Infrastructure Work Group"

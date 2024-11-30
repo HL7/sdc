@@ -6,7 +6,7 @@ Usage: #definition
 * url = "http://hl7.org/fhir/uv/sdc/OperationDefinition/Questionnaire-populatehtml"
 * name = "SDCQuestionnairePopulateHTML"
 * title = "Generate HTML for Questionnaire"
-* status = #draft
+* status = #active
 * kind = #operation
 * date = "2018-08-19T21:48:56+10:00"
 * publisher = "HL7 International - FHIR Infrastructure Work Group"

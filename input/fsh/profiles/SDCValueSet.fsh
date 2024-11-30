@@ -3,7 +3,7 @@ Parent: ValueSet
 Id: sdc-valueset
 Title: "SDC Value Set"
 Description: "Defines how ValueSet is used to reflect code lists found in data element defintions and form definitions to be used within the ONC's Structured Data Capture standard."
-* ^status = #draft
+* ^status = #active
 * ^experimental = false
 * . ^definition = "Sets expectations for SDC-conformant systems around value set support for representing permitted question answers."
 * extension contains RenderingCriticalExtension named rendering-criticalExtension 0..* MS

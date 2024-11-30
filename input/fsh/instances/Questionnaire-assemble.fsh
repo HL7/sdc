@@ -5,7 +5,7 @@ Usage: #definition
 * url = "http://hl7.org/fhir/uv/sdc/OperationDefinition/Questionnaire-assemble"
 * name = "SDCAssemble"
 * title = "Assemble Modular Questionnaire Operation"
-* status = #draft
+* status = #active
 * kind = #operation
 * description = "The $assemble operation takes a modular questionnaire (one that references sub-questionnaires and/or relies on definition elements to contain the content for item definitions) and produces the equivalent fully-inline Questionnaire.  Full details on the process can be found [here](modular.html)."
 * code = #assemble

@@ -7,7 +7,7 @@ Usage: #definition
 * version = "0.0.0"
 * name = "SDCQuestionnaireResponseExtract"
 * title = "Questionnaire response extract to resource(s)"
-* status = #draft
+* status = #active
 * kind = #operation
 * date = "2018-08-30"
 * publisher = "HL7 International - FHIR Infrastructure"

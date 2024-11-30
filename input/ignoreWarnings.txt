@@ -23,7 +23,6 @@ The link 'http://hl7.org/fhir/R4/valueset-diagnostic-requests.html' for "here" c
 # These info messages are because SDC examples have few extensions that are validated against the SDC profile, but these extensions are actually defined in the core or other profiles
 INFORMATION: Bundle/questionnaire-sdc-profile-example: Bundle.entry[0].resource.item[0].extension[0]: This element does not match any known slice defined in the profile http://hl7.org/fhir/uv/sdc/StructureDefinition/sdc-questionnaire
 INFORMATION: Bundle/questionnaire-sdc-profile-example: Bundle.entry[0].resource.item[2].extension[0]: This element does not match any known slice defined in the profile http://hl7.org/fhir/uv/sdc/StructureDefinition/sdc-questionnaire
-
 INFORMATION: Parameters/sdc-modular-root-assembled: Parameters.parameter[0].resource/*Questionnaire/null*/.extension[0]: This element does not match any known slice defined in the profile http://hl7.org/fhir/uv/sdc/StructureDefinition/sdc-questionnaire|3.0.0 (this may not be a problem, but you should check that it's not intended to match a slice)
 INFORMATION: Parameters/sdc-modular-root-assembled: Parameters.parameter[0].resource/*Questionnaire/null*/.extension[1]: This element does not match any known slice defined in the profile http://hl7.org/fhir/uv/sdc/StructureDefinition/sdc-questionnaire|3.0.0 (this may not be a problem, but you should check that it's not intended to match a slice)
 INFORMATION: Parameters/sdc-modular-root-assembled: Parameters.parameter[0].resource/*Questionnaire/null*/.extension[2]: This element does not match any known slice defined in the profile http://hl7.org/fhir/uv/sdc/StructureDefinition/sdc-questionnaire|3.0.0 (this may not be a problem, but you should check that it's not intended to match a slice)
@@ -144,7 +143,7 @@ INFORMATION: Questionnaire/questionnaire-sdc-test-fhirpath-prepop-source-query: 
 INFORMATION: Resource: This resource could usefully have an OID assigned (OIDs are easy to assign - see https://build.fhir.org/ig/FHIR/fhir-tools-ig/CodeSystem-ig-parameters.html#ig-parameters-auto-oid-root)
 
 # The intention here is to provide an example of what a Questionnaire with a contained code system would look like
-INFORMATION: Bundle/questionnaire-sdc-profile-example:%CodeSystems are referred to directly from Coding.system, so it's generally best for them not to be contained resources
+%CodeSystems are referred to directly from Coding.system, so it's generally best for them not to be contained resources
 
 # This is inherited from CQLLibrary
 WARNING: StructureDefinition/sdc-library: StructureDefinition.snapshot.element[17].fixed.ofType(CodeableConcept): For the complex type CodeableConcept, consider using a pattern rather than a fixed value to avoid over-constraining the instance

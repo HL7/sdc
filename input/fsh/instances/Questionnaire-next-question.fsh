@@ -7,7 +7,7 @@ Usage: #definition
 * version = "0.0.0"
 * name = "SDCNextQuestion"
 * title = "Adaptive Questionnaire - Next Question Operation"
-* status = #draft
+* status = #active
 * kind = #operation
 * date = "2018-08-29"
 * publisher = "HL7 International - FHIR Infrastructure Work Group"
