@@ -2,7 +2,7 @@ CodeSystem: LaunchContext
 Id: launchContext
 Title: "Launch Context"
 Description: "The standard context for Questionnaire at launch time"
-* ^status = #draft
+* ^status = #active
 * ^experimental = false
 * ^caseSensitive = true
 * ^content = #complete

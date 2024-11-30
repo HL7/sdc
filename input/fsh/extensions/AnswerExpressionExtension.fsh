@@ -2,9 +2,7 @@ Extension: AnswerExpressionExtension
 Id: sdc-questionnaire-answerExpression
 Title: "Answer Expression"
 Description: "An expression (FHIRPath, CQL or FHIR Query) that resolves to a list of permitted answers for the question item or that establishes context for a group item.  The user may select from among the list to choose answers for the question."
-* ^extension[$standard-status].valueCode = #draft
-* ^extension[$fmm].valueInteger = 0
-* ^status = #draft
+* ^status = #active
 * ^context[0].type = #element
 * ^context[=].expression = "Questionnaire.item"
 * ^context[+].type = #element
