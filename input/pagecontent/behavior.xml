@@ -107,29 +107,6 @@
 			</tr>
 			<tr>
 				<td>
-					<a name="regex"> </a>
-					<a href="{{site.data.fhir.path}}extension-regex.html">regex</a>
-				</td>
-				<td>Core</td>
-				<td>question</td>
-				<td>string</td>
-				<td>
-					<a href="examples.html#regex">example</a>
-				</td>
-			</tr>
-			<tr>
-				<td colspan="5">
-					<p>
-            This allows checking that an extension adheres to a regular expression.  For example, enforcing the ANA NAN syntax of a Canadian
-            postal code.  The regular expression SHALL adhere to the same requirements as defined for the FHIRPath
-            <a href="https://hl7.org/fhirpath/#matchesregex-string-boolean">matches</a> operation.  Also, see the
-            <a href="rendering.html#entryFormat">entryFormat</a> which might be a good way of displaying the desired format to the user.  (For example,
-            'ANA NAN' which can be conveyed using 'entryFormat' is more intuitive for most users than seeing the actual regex (\d[A-Z]\d [A-Z]\d[A-Z]).
-          </p>
-				</td>
-			</tr>
-			<tr>
-				<td>
 					<a name="minValue"> </a>
 					<a href="{{site.data.fhir.path}}extension-minvalue.html">minValue</a>
 				</td>
@@ -1151,7 +1128,8 @@
 				<td>Questionnaire, item</td>
 				<td>complex</td>
 				<td>
-					<a href="examples.html#ordinalvalue-constraint">example</a>
+					<a href="examples.html#ordinalvalue-constraint">constraint example</a><br/>
+					<a href="examples.html#regex">regex example</a>
 				</td>
 			</tr>
 			<tr>
@@ -1160,8 +1138,17 @@
             This allows assertion of constraints across an entire questionnaire or across any item with child items.  All 'error' constraints SHALL evaluate to 'true' 
             before setting a QuestionnaireResponse to complete.  For example, it could be used to require that either the patient identifier or birth date must be 
             specified, that at least 6 of the questions from question 10 through 20 must be answered, or that the sum of questions 1 through 5 must equal exactly 100.  
-            The human field SHOULD be set to inform the user what to do.  The expression is written in FHIRPath and has access to the <a href="expressions.html#fhirpath">additional FHIRPath capabilities</a> defined in
-            <a href="expressions.html">Using Expressions</a>.
+            The human field SHOULD be set to inform the user what to do.  The expression is written in FHIRPath and has access to the 
+            <a href="expressions.html#fhirpath">additional FHIRPath capabilities</a> defined in <a href="expressions.html">Using Expressions</a>.
+          </p>
+					<p>
+					  This extension can also be used to enforce regular expressions (regex) on answers in a Questionnaire.  It replaces the
+					  old use of the <a href="{{site.data.fhir.path}}extension-regex.html">regex</a> extension.  For example, enforcing the 
+					  ANA NAN syntax of a Canadian postal code.  The regular expression is asserted using the FHIRPath 
+					  <a href="https://hl7.org/fhirpath/#matchesregex-string-boolean">matches</a> operation.  Also, see the
+            <a href="rendering.html#entryFormat">entryFormat</a> which might be a good way of displaying the desired format to the user.  (For example,
+            'ANA NAN' which can be conveyed using 'entryFormat' is more intuitive for most users than seeing the actual regex (\d[A-Z]\d [A-Z]\d[A-Z]).
+            Because the more generic 'constraint' mechanism is now used, regular expressions can be enforced as either errors or warnings.
           </p>
 				</td>
 			</tr>

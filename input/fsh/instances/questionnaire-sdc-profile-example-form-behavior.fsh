@@ -54,8 +54,20 @@ Usage: #example
     * text = "Last Name"
     * type = #string
   * item[+]
-    * extension.url = "http://hl7.org/fhir/StructureDefinition/regex"
-    * extension.valueString = "[A-Z][0-9][A-Z] [0-9][A-Z][0-9]"
+    * extension
+      * extension[0]
+        * url = "key"
+        * valueId = "contraint-regex1"
+      * extension[+]
+        * url = "severity"
+        * valueCode = #error
+      * extension[+]
+        * url = "expression"
+        * valueString = "%resource.repeat(item).where(linkId='1.3').answer.all(value.matches('[A-Z][0-9][A-Z] [0-9][A-Z][0-9]'))"
+      * extension[+]
+        * url = "human"
+        * valueString = "Postal code must match syntax A1A 1A1."
+      * url = "http://hl7.org/fhir/StructureDefinition/questionnaire-constraint"
     * linkId = "1.3"
     * text = "Postal Code (A1A 1A1)"
     * type = #string

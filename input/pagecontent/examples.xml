@@ -698,29 +698,6 @@ i.fa {
       <div class="content-in-tab">{% fragment Questionnaire/questionnaire-sdc-profile-example-form-behavior XML BASE:descendants().select(item).where(linkId='1.2') %}</div>
     </div>
   </div>
-<a name="regex"></a>
-  <h4>Using regex</h4>
-  <p>To restrict an answer to be in this format: A1A 1A1 (<a href="Questionnaire-questionnaire-sdc-profile-example-form-behavior.html">Example Questionnaire</a>)</p>
-  <div class="tabs">
-    <div class="tab">
-      <input type="radio" id="tab-regex-1" name="tab-regex-group-2" checked="true"/>
-      <label for="tab-regex-1">Sample Question</label>
-      <div class="content-in-tab">
-      <p>Postal Code (A1A 1A1) <input id="linkitem-1.2-input" type="text"/></p>
-      </div>
-    </div>
-    <div class="tab">
-      <input type="radio" id="tab-regex-2" name="tab-regex-group-2"/>
-      <label for="tab-regex-2">JSON</label>
-      <div class="content-in-tab">{% fragment Questionnaire/questionnaire-sdc-profile-example-form-behavior JSON BASE:descendants().select(item).where(linkId='1.3') %}</div>
-    </div>
-    <div class="tab">
-      <input type="radio" id="tab-regex-3" name="tab-regex-group-2"/>
-      <label for="tab-regex-3">XML</label>
-      <div class="content-in-tab">{% fragment Questionnaire/questionnaire-sdc-profile-example-form-behavior XML BASE:descendants().select(item).where(linkId='1.3') %}</div>
-    </div>
-  </div>
-
 <a name="minValue-maxValue-maxDecimalPlaces"></a>
   <h4>Using minValue, maxValue, and maxDecimalPlaces</h4>
   <p>To restrict an answer to range from 1 to 100, up to 2 decimal places (<a href="Questionnaire-questionnaire-sdc-profile-example-form-behavior.html">Example Questionnaire</a>)</p>
@@ -1492,6 +1469,29 @@ i.fa {
       <div class="content-in-tab">{% fragment Questionnaire/questionnaire-sdc-profile-example-ordinal-value XML BASE:descendants().select(item).where(linkId='1.0' or linkId='1.1' or linkId='1.2' or linkId='1.3' or linkId='1.4' or linkId='6') %}</div>
     </div>
   </div>
+<a name="regex"></a>
+  <h4>Using constraints for regular expressions</h4>
+  <p>To restrict an answer to be in this format: A1A 1A1 (<a href="Questionnaire-questionnaire-sdc-profile-example-form-behavior.html">Example Questionnaire</a>)</p>
+  <div class="tabs">
+    <div class="tab">
+      <input type="radio" id="tab-regex-1" name="tab-regex-group-2" checked="true"/>
+      <label for="tab-regex-1">Sample Question</label>
+      <div class="content-in-tab">
+      <p>Postal Code (A1A 1A1) <input id="linkitem-1.2-input" type="text"/></p>
+      </div>
+    </div>
+    <div class="tab">
+      <input type="radio" id="tab-regex-2" name="tab-regex-group-2"/>
+      <label for="tab-regex-2">JSON</label>
+      <div class="content-in-tab">{% fragment Questionnaire/questionnaire-sdc-profile-example-form-behavior JSON BASE:descendants().select(item).where(linkId='1.3') %}</div>
+    </div>
+    <div class="tab">
+      <input type="radio" id="tab-regex-3" name="tab-regex-group-2"/>
+      <label for="tab-regex-3">XML</label>
+      <div class="content-in-tab">{% fragment Questionnaire/questionnaire-sdc-profile-example-form-behavior XML BASE:descendants().select(item).where(linkId='1.3') %}</div>
+    </div>
+  </div>
+
 
 <a name="signatureRequired-usagemode"></a>
   <h4>Using signatureRequired and usageMode</h4>
