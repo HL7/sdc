@@ -191,5 +191,5 @@ Usage: #inline
         * coding = $sct#387584000 "Simvastatin"
       * strength
         * numerator = 40 'mg' "mcg"
-        * denominator = 1 '1*'
+        * denominator = 1 '1' "dose"
   * search.mode = #include

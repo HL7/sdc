@@ -15,8 +15,8 @@ Usage: #example
   * fullUrl = "http://example.org/AHRQ/form/Questionnaire/3921052v1.0"
   * resource = 3921052v1.0
 * entry[+]
-  * fullUrl = "http://example.org/AHRQ/form/Questionnaire/F2674812v4.0"
-  * resource = F2674812v4.0
+  * fullUrl = "http://example.org/AHRQ/form/Questionnaire/2674812v4.0"
+  * resource = 2674812v4.0
 * entry[+]
   * fullUrl = "http://example.org/AHRQ/form/Questionnaire/3265657v2.0"
   * resource = 3265657v2.0
@@ -846,6 +846,7 @@ Usage: #inline
     * linkId = "Medication/SEC02/74078-7"
     * type = #group
     * repeats = true
+    * required = true
     * item[0]
       * linkId = "Medication/SEC02/74078-7.0"
       * text = "Please provide the following medication details for any medications or other substances directly involved in the event."
@@ -1572,7 +1573,7 @@ Usage: #inline
     * type = #open-choice
     * answerValueSet = "#d1e9025-vs"
 
-Instance: F2674812v4.0
+Instance: 2674812v4.0
 InstanceOf: Questionnaire
 Usage: #inline
 * id = "2674812v4.0"

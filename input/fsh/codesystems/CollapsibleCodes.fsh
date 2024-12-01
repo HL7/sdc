@@ -2,7 +2,7 @@ CodeSystem: CollapsibleCodes
 Id: collapsible
 Title: "Collapsible Codes"
 Description: "Defines mechanisms of displaying child items in collapsible form"
-* ^status = #draft
+* ^status = #active
 * ^experimental = false
 * ^caseSensitive = true
 * ^content = #complete

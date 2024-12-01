@@ -187,7 +187,7 @@ Usage: #example
         * extension[+]
           * extension[0]
             * url = "key"
-            * valueString = "qcontact-1"
+            * valueId = "qcontact-1"
           * extension[+]
             * url = "severity"
             * valueCode = #error
