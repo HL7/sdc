@@ -5,7 +5,7 @@ Description: "An example library of questions showing how questions can be compi
 * ^version = "3.0.0"
 * ^status = #active
 * ^experimental = true
-* ^type = "Demographics"
+//* ^type = "Demographics"
 * . ^short = "SDC Question Library"
   * ^definition = "A set of questions related to demographics"
 * dob 0..1 date "n/a" "n/a"

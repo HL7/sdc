@@ -23,8 +23,7 @@ Description: "Defines how ValueSet is used to reflect code lists found in data e
   * concept MS
   * concept.extension contains
       $valueset-label named conceptLabel 0..1 MS and
-      $valueset-conceptOrder named conceptConceptOrder 0..1 MS and
-      $itemWeight named weight 0..1 MS
+      $valueset-conceptOrder named conceptConceptOrder 0..1 MS
   * concept.extension[conceptLabel].valueString.extension contains
       $rendering-style named code-renderingStyle 0..1 and
       $rendering-xhtml named code-xhtml 0..1

@@ -65,9 +65,9 @@ Usage: #inline
 * description = "The answer list for questions addressing the frequency in which patient reports experiencing behaviors that are assessed in the PHQ-9 Questionnaire."
 * immutable = true
 * compose.include.system = "http://hl7.org/fhir/uv/sdc/CodeSystem/CSPHQ9"
-* insert VSConcept(#Not-at-all, "Not at all", 0)
-* insert VSConcept(#Several-days, "Several days", 1)
-* insert VSConcept(#"More than half the days", "More than half the days", 2)
-* insert VSConcept(#"Nearly every day", "Nearly every day", 3)
+* insert VSConcept(#Not-at-all, "Not at all")
+* insert VSConcept(#Several-days, "Several days")
+* insert VSConcept(#"More than half the days", "More than half the days")
+* insert VSConcept(#"Nearly every day", "Nearly every day")
 
 
