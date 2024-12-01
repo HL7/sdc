@@ -1,6 +1,6 @@
 Logical: SDCExample
 Parent: Element
-Id: structuredefinition-sdc-profile-example
+Id: Structuredefinition-sdc-profile-example
 Title: "Patient Gender"
 Description: "Data element SDC Profile Example"
 * ^identifier.system = "http://nlm.nih.gov/some_other_text/data_element_identifier"

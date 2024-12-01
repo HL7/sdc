@@ -1,5 +1,5 @@
 Logical: SDCQuestionLibrary
-Id: sdc-question-library
+Id: Sdc-question-library
 Title: "SDC Question Library"
 Description: "An example library of questions showing how questions can be compiled into a library for use by modular questionnaires"
 * ^version = "3.0.0"
