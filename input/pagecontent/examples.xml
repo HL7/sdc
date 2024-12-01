@@ -1413,15 +1413,15 @@ i.fa {
   </div>
   <!-- TODO: try to make UI more dynamic -->
 
-<a name="ordinalvalue-constraint"></a>
-  <h4>Using ordinalValue and constraint</h4>
-  <p>Example involving ordinal value and contraints. (<a href="Questionnaire-questionnaire-sdc-profile-example-ordinal-value.html">Example Questionnaire</a>)<br/>
+<a name="itemweight-constraint"></a>
+  <h4>Using itemWeight and constraint</h4>
+  <p>Example involving item weight and contraints. (<a href="Questionnaire-questionnaire-sdc-profile-example-item-weight.html">Example Questionnaire</a>)<br/>
    Note: The questions below are not functional. The total score will not be calculated and displayed after input.
 </p>
   <div class="tabs" style="height:400px">
     <div class="tab">
-      <input type="radio" id="tab-ordinalvalue-constraint-1" name="tab-ordinalvalue-constraint-group-2" checked="true"/>
-      <label for="tab-ordinalvalue-constraint-1">Sample Question</label>
+      <input type="radio" id="tab-itemweight-constraint-1" name="tab-itemweight-constraint-group-2" checked="true"/>
+      <label for="tab-itemweight-constraint-1">Sample Question</label>
       <div class="content-in-tab">
         <p>
         You should answer at least three questions.<br/><br/>
@@ -1459,14 +1459,14 @@ i.fa {
       </div>
     </div>
     <div class="tab">
-      <input type="radio" id="tab-ordinalvalue-constraint-2" name="tab-ordinalvalue-constraint-group-2"/>
-      <label for="tab-ordinalvalue-constraint-2">JSON</label>
-      <div class="content-in-tab">{% fragment Questionnaire/questionnaire-sdc-profile-example-ordinal-value JSON BASE:descendants().select(item).where(linkId='1.0' or linkId='1.1' or linkId='1.2' or linkId='1.3' or linkId='1.4' or linkId='6') %}</div>
+      <input type="radio" id="tab-itemweight-constraint-2" name="tab-itemweight-constraint-group-2"/>
+      <label for="tab-itemweight-constraint-2">JSON</label>
+      <div class="content-in-tab">{% fragment Questionnaire/questionnaire-sdc-profile-example-item-weight JSON BASE:descendants().select(item).where(linkId='1.0' or linkId='1.1' or linkId='1.2' or linkId='1.3' or linkId='1.4' or linkId='6') %}</div>
     </div>
     <div class="tab">
-      <input type="radio" id="tab-ordinalvalue-constraint-3" name="tab-ordinalvalue-constraint-group-2"/>
-      <label for="tab-ordinalvalue-constraint-3">XML</label>
-      <div class="content-in-tab">{% fragment Questionnaire/questionnaire-sdc-profile-example-ordinal-value XML BASE:descendants().select(item).where(linkId='1.0' or linkId='1.1' or linkId='1.2' or linkId='1.3' or linkId='1.4' or linkId='6') %}</div>
+      <input type="radio" id="tab-itemweight-constraint-3" name="tab-itemweight-constraint-group-2"/>
+      <label for="tab-itemweight-constraint-3">XML</label>
+      <div class="content-in-tab">{% fragment Questionnaire/questionnaire-sdc-profile-example-item-weight XML BASE:descendants().select(item).where(linkId='1.0' or linkId='1.1' or linkId='1.2' or linkId='1.3' or linkId='1.4' or linkId='6') %}</div>
     </div>
   </div>
 <a name="regex"></a>

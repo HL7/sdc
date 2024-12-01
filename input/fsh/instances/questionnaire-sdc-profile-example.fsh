@@ -1494,7 +1494,7 @@ Usage: #inline
   * system = "http://example.org/nci.nih.gov/xml/owl/cadsr/form/form_design_identifier"
   * value = "3921052v1.0/"
 * title = "Diagnosis NCI Standard Template"
-* status = #draft
+* status = #active
 * date = "2013-10-16"
 * publisher = "National Cancer Institute (NCI)"
 * useContext

@@ -35,7 +35,7 @@ Usage: #example
 * url = "http://hl7.org/fhir/uv/sdc/Questionnaire/questionnaire-sdc-profile-example-hunger-vital-signs"
 * name = "QuestionnaireSdcProfileExampleHungerVitalSigns"
 * title = "Hunger Vital Sign [HVS]"
-* status = #draft
+* status = #active
 * experimental = true
 * subjectType = #Patient
 * description = "A hunger vital signs form (showing calculatedExpression selecting a value from a list)."

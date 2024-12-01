@@ -11,7 +11,7 @@ Usage: #example
 * url = "http://hl7.org/fhir/uv/sdc/Questionnaire/questionnaire-sdc-profile-example-PHQ9"
 * name = "SDCPHQ9"
 * title = "Patient Health Questionnaire - 9 Item"
-* status = #draft
+* status = #active
 * experimental = true
 * subjectType = #Patient
 * description = "This is a Questionnaire example of how the PHQ-9 Questionnaire could be rendered as a FHIR Questionnaire Resource according to the Structured Data Capture SDC Base Questionnaire Profile. This example also portrays how FHIRpaths can be used to perform total score calculations using answer values."
@@ -78,7 +78,7 @@ Usage: #example
         * description = "Score (0-4: None-minimal; 5-9: Mild; 19-14: Moderate; 15-19: Moderately severe; 20-27: Severe)"
         * name = "score"
         * language = #text/fhirpath
-        * expression = "%resource.answers().value.ordinal().sum()"
+        * expression = "%resource.answers().value.weight().sum()"
     * linkId = "H1/TS"
     * code = $loinc#44261-6 "Patient Health Questionnaire 9 item (PHQ-9) total score [Reported]"
     * text = "Patient health questionnaire 9 item total score"

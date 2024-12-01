@@ -37,7 +37,7 @@ Description: "Defines how the questionnaire response resource is used to reflect
   * answer 0..* MS
     * extension contains
         ItemAnswerMedia named itemAnswerMedia 0..1 and
-        $ordinalValue named ordinalValue 0..1
+        $itemWeight named itemWeight 0..1
     * value[x] 0..1 MS
     * value[x] only boolean or date or dateTime or time or decimal or integer or string or Coding or uri or Quantity or Attachment or Reference
       * extension contains $itemWeight named itemWeight 0..1

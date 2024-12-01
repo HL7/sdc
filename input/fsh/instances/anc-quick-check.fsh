@@ -6,7 +6,7 @@ Usage: #example
 * url = "http://hl7.org/fhir/uv/sdc/Questionnaire/anc-quick-check"
 * name = "ANC_Quick_Check"
 * title = "Questionnaire - ANC Quick Check"
-* status = #draft
+* status = #active
 * experimental = true
 * subjectType = #Patient
 * description = "A sample questionnaire using itemMedia and itemAnswerMedia extensions"

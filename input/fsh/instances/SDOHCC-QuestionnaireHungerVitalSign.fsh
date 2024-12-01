@@ -38,7 +38,7 @@ Usage: #example
 * url = "http://hl7.org/fhir/uv/sdc/Questionnaire/SDOHCC-QuestionnaireHungerVitalSign"
 * name = "SDOHCCQuestionnaireHungerVitalSign"
 * title = "SDOHCC Questionnaire Hunger Vital Sign"
-* status = #draft
+* status = #active
 * subjectType = #Patient
 * description = "Example Questionnaire that shows both definition-based population and StructureMap-based extraction"
 * copyright = "Content is from the Hunger Vital Sign Survey with permission: © 2010 Dr. Erin Hager and Dr. Anna Quigg and the Children’s HealthWatch research team"

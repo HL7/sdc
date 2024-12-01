@@ -2,7 +2,7 @@ ValueSet: DEXMappingLanguageMimeTypes
 Id: dex-mimetype
 Title: "DEX mapping language mime types"
 Description: "The list of mime types that identify mapping languages supported by DEX."
-* ^status = #draft
+* ^status = #active
 * ^experimental = true
 * ^publisher = "HL7 International - FHIR Infrastructure"
 * ^contact.telecom.system = #other

@@ -37,7 +37,7 @@ Usage: #example
   * valueCode = #sequential
 * url = "http://build.fhir.org/ig/HL7/sdc/questionnaire-sdc-profile-example-form-behavior"
 * name = "SDCAdvancedRenderingExample"
-* status = #draft
+* status = #active
 * item[0]
   * linkId = "1"
   * text = "Value constraints"
@@ -63,11 +63,13 @@ Usage: #example
         * valueCode = #error
       * extension[+]
         * url = "expression"
-        * valueString = "%resource.repeat(item).where(linkId='1.3').answer.all(value.matches('[A-Z][0-9][A-Z] [0-9][A-Z][0-9]'))"
+        * valueExpression
+          * language = #text/fhirpath
+          * expression = "%resource.repeat(item).where(linkId='1.3').answer.all(value.matches('[A-Z][0-9][A-Z] [0-9][A-Z][0-9]'))"
       * extension[+]
         * url = "human"
         * valueString = "Postal code must match syntax A1A 1A1."
-      * url = "http://hl7.org/fhir/StructureDefinition/questionnaire-constraint"
+      * url = "http://hl7.org/fhir/StructureDefinition/targetConstraint"
     * linkId = "1.3"
     * text = "Postal Code (A1A 1A1)"
     * type = #string
@@ -204,7 +206,7 @@ Usage: #example
     * answerOption[+].valueCoding = $procedures#U5 "Cardiac pacemaker"
     * extension
       * url = "http://hl7.org/fhir/StructureDefinition/questionnaire-minOccurs"
-      * valueUnsignedInt = 2
+      * valueInteger = 2
   * item[+]
     * linkId = "2.10"
     * text = "Heart History (check no more than 3):"
@@ -218,7 +220,7 @@ Usage: #example
     * answerOption[+].valueCoding = $procedures#U5 "Cardiac pacemaker"
     * extension
       * url = "http://hl7.org/fhir/StructureDefinition/questionnaire-maxOccurs"
-      * valueUnsignedInt = 3 
+      * valueInteger = 3 
   * item[+]
     * extension
       * url = "http://hl7.org/fhir/StructureDefinition/questionnaire-itemControl"
@@ -369,12 +371,16 @@ Usage: #example
       * extension[0]
         * url = "http://hl7.org/fhir/StructureDefinition/minValue"
         * valueDecimal.extension.url = "http://hl7.org/fhir/StructureDefinition/cqf-calculatedValue"
-        * valueDecimal.extension.valueString = "min_weight"
+        * valueDecimal.extension.valueExpression
+          * language = #text/fhirpath
+          * expression = "min_weight"
         * valueDecimal = 1
       * extension[+]
         * url = "http://hl7.org/fhir/StructureDefinition/maxValue"
         * valueDecimal.extension.url = "http://hl7.org/fhir/StructureDefinition/cqf-calculatedValue"
-        * valueDecimal.extension.valueString = "max_weight"
+        * valueDecimal.extension.valueExpression
+          * language = #text/fhirpath
+          * expression = "max_weight"
         * valueDecimal = 100
       * linkId = "3.4.1"
       * text = "Enter weight in kg"

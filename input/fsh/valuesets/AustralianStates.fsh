@@ -3,7 +3,7 @@ Id: sdc-question-library-states
 Title: "Australian States - example value set"
 Description: "An example value set (using fake codes) used by a modular Questionnaire"
 * ^meta.profile = "http://hl7.org/fhir/uv/sdc/StructureDefinition/sdc-valueset"
-* ^status = #draft
+* ^status = #active
 * ^experimental = true
 * ^immutable = false
 * $Australian-States#ACT "Australian Capital Territory"

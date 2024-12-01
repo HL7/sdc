@@ -6,7 +6,7 @@ Usage: #example
 * contained = LL2821-8
 * url = "http://build.fhir.org/ig/HL7/sdc/questionnaire-sdc-profile-example-render"
 * name = "SDCAdvancedRenderingExample"
-* status = #draft
+* status = #active
 // Todo: Create Ruleset for item (when optional argument functionality is released)
 * item[0]
   * linkId = "1"
@@ -33,7 +33,7 @@ Usage: #example
         * text = "The text provides guidance on how the information will be handled from a security perspective."
     * linkId = "1.3"
     * text = "ALL QUESTIONS CONTAINED IN THIS QUESTIONNAIRE ARE OPTIONAL AND WILL BE KEPT STRICTLY CONFIDENTIAL."
-    * type = #string
+    * type = #display
   * item[+]
     * linkId = "1.4"
     * type = #group

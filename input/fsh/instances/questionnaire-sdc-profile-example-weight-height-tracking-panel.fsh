@@ -24,7 +24,7 @@ Usage: #example
   * value = "55418-8"
 * name = "WeightHeightTrackingPanel"
 * title = "Weight & Height tracking panel"
-* status = #draft
+* status = #active
 * experimental = true
 * subjectType = #Patient
 * description = "A weight & height panel (from LOINC) with a FHIRPath rule for calculating the BMI."

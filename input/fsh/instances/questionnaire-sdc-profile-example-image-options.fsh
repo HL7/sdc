@@ -7,7 +7,7 @@ Usage: #example
 * contained[+] = happyImage
 * url = "http://hl7.org/fhir/uv/sdc/questionnaire-sdc-profile-example-image-options"
 * name = "SDCExampleWithImageOptions"
-* status = #draft
+* status = #active
 * item
   * extension
     * url = "http://hl7.org/fhir/StructureDefinition/questionnaire-choiceOrientation"

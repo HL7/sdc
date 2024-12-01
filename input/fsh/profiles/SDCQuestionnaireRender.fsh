@@ -39,6 +39,7 @@ Description: "Defines additional capabilities for controlling the rendering of t
     * extension[expression] ^comment = "Note: The variation cannot change the meaning of the question. The extension can be used even if text is present; and if the extension is supported, the evaluation will replace the text provided (with 'smarter' text). "
   * answerOption
     * extension contains ItemAnswerMedia named itemAnswerMedia 0..1
+    * extension contains QOptionPrefix named optionPrefix 0..1
     * valueString only string
     * valueString.extension contains
         $rendering-style named optionString-renderingStyle 0..1 and

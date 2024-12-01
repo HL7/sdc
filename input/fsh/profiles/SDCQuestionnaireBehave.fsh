@@ -10,7 +10,7 @@ Description: "Defines additional capabilities for controlling data entry and cal
     EntryMode named entryMode 0..* MS and
     EndpointExtension named submissionEndpoint 0..* MS and
     $questionnaire-signatureRequired named signatureRequired 0..* and
-    $questionnaire-constraint named constraint 0..* and
+    $targetConstraint named constraint 0..* and
     $cqf-library named library 0..* and
     LaunchContextExtension named launchContext 0..* and
     Variable named variable 0..*
@@ -43,7 +43,7 @@ Description: "Defines additional capabilities for controlling data entry and cal
       $questionnaire-referenceProfile named allowedProfile 0..* and
       CandidateExpressionExtension named candidateExpression 0..1 and
       LookupQuestionnaireExtension named lookupQuestionnaire 0..1 and
-      $questionnaire-constraint named itemConstraint 0..* and
+      $targetConstraint named itemConstraint 0..* and
       InitialExpressionExtension named initialExpression 0..1 and
       CalculatedExpressionExtension named calculatedExpression 0..1 and
       EnableWhenExpressionExtension named enableWhenExpression 0..1 MS
@@ -77,7 +77,7 @@ Description: "Defines additional capabilities for controlling data entry and cal
   * answerOption
     * extension contains
         $questionnaire-optionExclusive named optionExclusive 0..1 MS and
-        $ordinalValue named ordinalValue 0..1 MS
+        $itemWeight named itemWeight 0..1 MS
     * value[x] 1..1 MS
 
 Invariant: sdc-behave-1

@@ -11,7 +11,7 @@ Usage: #example
 * url = "http://hl7.org/fhir/uv/sdc/Questionnaire/questionnaire-sdc-profile-example-multi-subject"
 * name = "MultiSubject"
 * title = "Example multi-subject Questionnaire"
-* status = #draft
+* status = #active
 * experimental = true
 * subjectType = #Patient
 * description = "A sample Questionnaire that shows the use of the isSubject extension to flag a subject change within a Questionnaire."

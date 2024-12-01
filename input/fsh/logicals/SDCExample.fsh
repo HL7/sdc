@@ -5,7 +5,7 @@ Title: "Patient Gender"
 Description: "Data element SDC Profile Example"
 * ^identifier.system = "http://nlm.nih.gov/some_other_text/data_element_identifier"
 * ^identifier.value = "DE42AHRQ"
-* ^status = #draft
+* ^status = #active
 * ^publisher = "Health Level Seven, International"
 * ^contact.telecom.system = #other
 * ^contact.telecom.value = "http://hl7.org"

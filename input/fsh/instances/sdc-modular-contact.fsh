@@ -14,7 +14,7 @@ Usage: #example
 * url = "http://hl7.org/fhir/uv/sdc/Questionnaire/sdc-modular-contact"
 * name = "QuestionnaireSDCModularContact"
 * title = "Example sub-module Questionnaire for contact"
-* status = #draft
+* status = #active
 * experimental = true
 * description = "Example questionnaire module - represents a patient's contacts and is itself a modular questionnaire that references other questionnaires and element definitions"
 * item[0]

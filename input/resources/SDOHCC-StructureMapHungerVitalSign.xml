@@ -10,7 +10,7 @@
 /// title = &quot;SDOHCC StructureMap HungerVitalSign&quot;
 /// description = &quot;A StructureMap instance that represents the resource that transforms a specific question and answer from the LOINC Hunger Vital Sign [HVS] questionnaire (LOINC code 88121-9) into a corresponding Observation (SDOHCC Observation response Hunger Vital Sign Q3 Example) and derived Condition (SDOHCC Condition Food Insecurity Example).&quot;
 
-map &quot;http://hl7.org/fhir/us/sdoh-clinicalcare/StructureMap/SDOHCC-StructureMapHungerVitalSign&quot; = &quot;SDOHCCHungerVitalSignMap&quot;
+map &quot;http://hl7.org/fhir/uv/sdc/StructureMap/SDOHCC-StructureMapHungerVitalSign&quot; = &quot;SDOHCCHungerVitalSignMap&quot;
 
 uses &quot;http://hl7.org/fhir/StructureDefinition/QuestionnaireResponse&quot; alias questionnaireResponse as source
 uses &quot;http://hl7.org/fhir/StructureDefinition/Bundle&quot; alias bundle as target
@@ -140,7 +140,7 @@ group SetConditionFullUrl(source condition: Condition, target entry)
 }</pre>
     </div>
   </text>
-  <url value="http://hl7.org/fhir/us/sdoh-clinicalcare/StructureMap/SDOHCC-StructureMapHungerVitalSign"/>
+  <url value="http://hl7.org/fhir/uv/sdc/StructureMap/SDOHCC-StructureMapHungerVitalSign"/>
   <name value="SDOHCCHungerVitalSignMap"/>
   <description value= "A StructureMap instance that represents the resource that transforms a specific question and answer from the LOINC Hunger Vital Sign [HVS] questionnaire (LOINC code 88121-9) into a corresponding Observation (SDOHCC Observation response Hunger Vital Sign Q3 Example) and derived Condition (SDOHCC Condition Food Insecurity Example)"/>
   <structure>

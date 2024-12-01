@@ -9,7 +9,7 @@ Usage: #example
 * url = "http://build.fhir.org/ig/HL7/sdc/questionnaire-sdc-profile-example-cqf-PHQ9"
 * name = "PatientHealthQuestionnairePHQ9"
 * title = "Patient Health Questionnaire (PHQ-9)"
-* status = #draft
+* status = #active
 * subjectType = #Patient
 * code = $loinc#44249-1 "PHQ-9 quick depression assessment panel [Reported.PHQ]"
 

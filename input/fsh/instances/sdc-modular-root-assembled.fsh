@@ -30,7 +30,7 @@ Usage: #example
     * url = "http://hl7.org/fhir/uv/sdc/Questionnaire/sdc-modular-root"
     * name = "QuestionnaireSDCModularRoot"
     * title = "Example modular Questionnaire"
-    * status = #draft
+    * status = #active
     * experimental = true
     * item[0]
       * extension[0]
@@ -51,8 +51,10 @@ Usage: #example
           * valueString = "Must have either first or last name"
         * extension[+]
           * url = "expression"
-          * valueString = "item.where(linkId=%linkIdPrefix+'1').exists() or item.where(linkId=%linkIdPrefix+'2').exists()"
-        * url = "http://hl7.org/fhir/StructureDefinition/questionnaire-constraint"
+          * valueExpression
+            * language = #text/fhirpath
+            * expression = "item.where(linkId=%linkIdPrefix+'1').exists() or item.where(linkId=%linkIdPrefix+'2').exists()"
+        * url = "http://hl7.org/fhir/StructureDefinition/targetConstraint"
       * extension[+]
         * url = "http://hl7.org/fhir/StructureDefinition/variable"
         * valueExpression
@@ -196,8 +198,10 @@ Usage: #example
             * valueString = "Must have either first or last name"
           * extension[+]
             * url = "expression"
-            * valueString = "item.where(linkId=%linkIdPrefix+'1').exists() or item.where(linkId=%linkIdPrefix+'2').exists()"
-          * url = "http://hl7.org/fhir/StructureDefinition/questionnaire-constraint"
+            * valueExpression
+              * language = #text/fhirpath
+              * expression = "item.where(linkId=%linkIdPrefix+'1').exists() or item.where(linkId=%linkIdPrefix+'2').exists()"
+          * url = "http://hl7.org/fhir/StructureDefinition/targetConstraint"
         * extension[+]
           * url = "http://hl7.org/fhir/StructureDefinition/variable"
           * valueExpression

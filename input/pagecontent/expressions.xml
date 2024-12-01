@@ -457,7 +457,7 @@
         <td>Questionnaire, item</td>
         <td>any</td>
         <td>all</td>
-        <td><a href="examples.html#using-ordinalvalue-and-constraint">example</a></td>
+        <td><a href="examples.html#using-itemweight-and-constraint">example</a></td>
       </tr>
       <tr>
         <td colspan="6">
@@ -666,7 +666,7 @@
       is equivalent to <code>repeat(item|answer).answer.value</code>
     </li>
     <li>
-      <code>ordinal()</code> returns the item-weight for an element (in SDC, typically a QuestionnaireResponse.item.answer.value[x]). If an <a href="https://hl7.org/fhir/extensions/StructureDefinition-itemWeight.html">itemWeight</a> extension 
+      <code>weight()</code> returns the item-weight for an element (in SDC, typically a QuestionnaireResponse.item.answer.value[x]). If an <a href="https://hl7.org/fhir/extensions/StructureDefinition-itemWeight.html">itemWeight</a> extension 
       is defined on the element, it will be returned.  If not and the answer was drawn from an answerOption with a defined item-weight, it will be taken from there. 
       If not, and there is a bound value set, the weight will be looked up on the bound value set expansion. If not found there, it will be looked up on the underlying
        CodeSystem. If no itemWeight can be found, the result will be an empty set. If the FHIRPath engine is unable to resolve the corresponding value set, code 

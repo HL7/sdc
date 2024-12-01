@@ -1128,7 +1128,7 @@
 				<td>Questionnaire, item</td>
 				<td>complex</td>
 				<td>
-					<a href="examples.html#ordinalvalue-constraint">constraint example</a><br/>
+					<a href="examples.html#itemweight-constraint">constraint example</a><br/>
 					<a href="examples.html#regex">regex example</a>
 				</td>
 			</tr>
@@ -1196,14 +1196,14 @@
 			</tr>
 			<tr>
 				<td>
-					<a name="ordinalValue"> </a>
-					<a href="{{site.data.fhir.path}}extension-ordinalvalue.html">ordinalValue</a>
+					<a name="itemWeight"> </a>
+					<a href="{{site.data.fhir.ver.ext}}extension-itemWeight.html">itemWeight</a>
 				</td>
 				<td>Core</td>
 				<td>Coding, Questionnaire.item.answerOption, CodeSystem.concept, ValueSet.compose.include.concept</td>
 				<td>decimal</td>
 				<td>
-					<a href="examples.html#ordinalvalue-constraint">example</a>
+					<a href="examples.html#itemweight-constraint">example</a>
 				</td>
 			</tr>
 			<tr>
@@ -1213,7 +1213,7 @@
             value set pointed to by <a href="#answerValueSet">answerValueSet</a>) to have an associated numeric weighting.  This numeric weighting can
             be captured as part of the QuestionnaireResponse.item.answer.value.  More importantly it can be referenced by expressions used to
             calculate scores using <a href="#calculatedExpression">calculatedExpression</a> and/or to control the display of elements using
-            <a href="#enableWhenExpression">enableWhenExpression</a>.  For example, the answer 'never' might have an ordinal value of 0, the answer
+            <a href="#enableWhenExpression">enableWhenExpression</a>.  For example, the answer 'never' might have a weight of 0, the answer
             occasionally might have a value of 1, the answer of weekly 2 and daily 4.  The answer given would then be incorporated in an overall risk
             or diagnostic score.
           </p>

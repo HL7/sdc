@@ -344,6 +344,7 @@ Usage: #example
       * answerCoding = $loinc#LA20298-8 "Compounded preparations"
     * enableBehavior = #all
     * repeats = true
+    * required = true
     * item[0]
       * extension
         * url = "http://hl7.org/fhir/StructureDefinition/minLength"

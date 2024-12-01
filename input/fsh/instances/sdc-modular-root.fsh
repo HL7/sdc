@@ -22,7 +22,7 @@ Usage: #example
 * url = "http://hl7.org/fhir/uv/sdc/Questionnaire/sdc-modular-root"
 * name = "QuestionnaireSDCModularRoot"
 * title = "Example modular Questionnaire"
-* status = #draft
+* status = #active
 * experimental = true
 * description = "Example modular questionnaire - root of a questionnaire that references other questionnaires and element definitions"
 * item[0]

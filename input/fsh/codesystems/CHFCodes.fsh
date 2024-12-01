@@ -3,7 +3,7 @@ Id: chf-codes
 Title: "CHF Codes"
 Description: "Codes used in the congestive heart failure pathway. Ideally these shouldn't exist, but where I couldn't find an appropriate code in a standard terminology, I defined codes here."
 * ^version = "1.0.0"
-* ^status = #draft
+* ^status = #active
 * ^experimental = true
 * ^contact.telecom.system = #url
 * ^contact.telecom.value = "http://www.hl7.org/Special/committees/dss/index.cfm"
