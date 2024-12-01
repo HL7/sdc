@@ -12,10 +12,19 @@ Usage: #definition
 * resource = #Questionnaire
 * system = false
 * type = true
-* instance = false
+* instance = true
 * inputProfile = "http://hl7.org/fhir/uv/sdc/StructureDefinition/sdc-questionnaire-modular"
 * parameter[0]
-  * insert parameter(#questionnaire, #in, 1, "1", #Resource, "The [Modular Questionnaire](StructureDefinition-sdc-questionnaire-modular.html\) to assemble the content of.")
+  * insert parameter(#questionnaire, #in, 1, "1", #Element, "The [Modular Questionnaire](StructureDefinition-sdc-questionnaire-modular.html\) to assemble the content of. Can be provided as a canonical for the questionnaire\, a questionnaire reference\, or directly as a questionnaire resource.")
+  * extension[0]
+    * url = "http://hl7.org/fhir/StructureDefinition/operationdefinition-allowed-type"
+    * valueUri = "uri"
+  * extension[+]
+    * url = "http://hl7.org/fhir/StructureDefinition/operationdefinition-allowed-type"
+    * valueUri = "Reference"
+  * extension[+]
+    * url = "http://hl7.org/fhir/StructureDefinition/operationdefinition-allowed-type"
+    * valueUri = "Questionnaire"
 * parameter[+]
   * insert parameter(#return, #out, 0, "1", #Resource, "The fully assembled [Questionnaire](StructureDefinition-sdc-questionnaire.html\) with all subQuestionnaires inlined and all items with item.definitions have had relevant metadata propagated into the item.")
 * parameter[+]
