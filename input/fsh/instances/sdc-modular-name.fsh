@@ -60,7 +60,7 @@ Usage: #example
       * language = #text/fhirpath
       * expression = "%name.given[0]"
   * linkId = "2"
-  * definition = "http://hl7.org/fhir/uv/sdc/StructureDefinition/Sdc-question-library#Sdc-question-library.name.first"
+  * definition = "http://hl7.org/fhir/uv/sdc/StructureDefinition/SdcQuestionLibrary#SdcQuestionLibrary.name.first"
   * type = #string
   * required = true
 * item[+]
@@ -70,6 +70,6 @@ Usage: #example
       * language = #text/fhirpath
       * expression = "%name.given[0]"
   * linkId = "3"
-  * definition = "http://hl7.org/fhir/uv/sdc/StructureDefinition/Sdc-question-library#Sdc-question-library.name.last"
+  * definition = "http://hl7.org/fhir/uv/sdc/StructureDefinition/SdcQuestionLibrary#SdcQuestionLibrary.name.last"
   * type = #string
   * required = true

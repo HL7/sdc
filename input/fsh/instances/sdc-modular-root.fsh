@@ -33,7 +33,7 @@ Usage: #example
       * language = #text/fhirpath
       * expression = "'patientname.'"
   * linkId = "1"
-  * definition = "http://hl7.org/fhir/uv/sdc/StructureDefinition/Sdc-question-library#Sdc-question-library.name"
+  * definition = "http://hl7.org/fhir/uv/sdc/StructureDefinition/SdcQuestionLibrary#SdcQuestionLibrary.name"
   * type = #group
   * item
     * extension
@@ -44,17 +44,17 @@ Usage: #example
     * type = #display
 * item[+]
   * linkId = "2"
-  * definition = "http://hl7.org/fhir/uv/sdc/StructureDefinition/Sdc-question-library#Sdc-question-library.dob"
+  * definition = "http://hl7.org/fhir/uv/sdc/StructureDefinition/SdcQuestionLibrary#SdcQuestionLibrary.dob"
   * type = #date
   * required = true
 * item[+]
   * linkId = "3"
-  * definition = "http://hl7.org/fhir/uv/sdc/StructureDefinition/Sdc-question-library#Sdc-question-library.sex"
+  * definition = "http://hl7.org/fhir/uv/sdc/StructureDefinition/SdcQuestionLibrary#SdcQuestionLibrary.sex"
   * type = #choice
   * required = true
 * item[+]
   * linkId = "4"
-  * definition = "http://hl7.org/fhir/uv/sdc/StructureDefinition/Sdc-question-library#Sdc-question-library.address"
+  * definition = "http://hl7.org/fhir/uv/sdc/StructureDefinition/SdcQuestionLibrary#SdcQuestionLibrary.address"
   * type = #group
   * required = true
   * item

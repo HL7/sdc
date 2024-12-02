@@ -3,6 +3,12 @@ InstanceOf: SDCQuestionnaireBehave
 Title: "SDC-Advanced Form Behavior"
 Description: "Demo questionnaire showing most of the advanced form behavior capabilities of SDC. Each example here is itemized in the Examples page."
 Usage: #example
+* modifierExtension[0]
+  * url = "http://hl7.org/fhir/uv/sdc/StructureDefinition/sdc-rendering-criticalExtension"
+  * valueCanonical = "http://hl7.org/fhir/uv/sdc/StructureDefinition/sdc-questionnaire-entryMode"
+* modifierExtension[+]
+  * url = "http://hl7.org/fhir/uv/sdc/StructureDefinition/sdc-rendering-criticalExtension"
+  * valueCanonical = "http://hl7.org/fhir/uv/sdc/StructureDefinition/sdc-questionnaire-answerOptionsToggleExpression"
 * extension[0]
   * url = "http://hl7.org/fhir/StructureDefinition/variable"
   * valueExpression

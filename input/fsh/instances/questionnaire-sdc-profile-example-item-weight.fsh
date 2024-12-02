@@ -102,26 +102,14 @@ Usage: #inline
 * compose.include
   * system = "http://loinc.org"
   * concept[0]
-    * extension
-      * url = "http://hl7.org/fhir/StructureDefinition/itemWeight"
-      * valueDecimal = 0
     * code = #LA6568-5
     * display = "Not at all"
   * concept[+]
-    * extension
-      * url = "http://hl7.org/fhir/StructureDefinition/itemWeight"
-      * valueDecimal = 1
     * code = #LA6569-3
     * display = "Several days"
   * concept[+]
-    * extension
-      * url = "http://hl7.org/fhir/StructureDefinition/itemWeight"
-      * valueDecimal = 2
     * code = #LA6570-1
     * display = "More than half the days"
   * concept[+]
-    * extension
-      * url = "http://hl7.org/fhir/StructureDefinition/itemWeight"
-      * valueDecimal = 3
     * code = #LA6571-9
     * display = "Nearly every day"
