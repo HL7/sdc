@@ -683,7 +683,7 @@
   <a name="managingcollidingvariable"> </a>
   <h3>Managing colliding variable declarations</h3>
   <p>
-    Variable names SHOULD be unique in a context  (e.g. Questionnaire root or a specific item).  It is an error if the same variable name is assigned a value more than once in a single node.  It is also an error to define a variable name that has the same name as one of the standard FHIRPath names (e.g. %qitem).  If the same variable is assigned on both an element and a descendant element, a warning will be generated, however it is not an error.  The descendant declaration will be treated as overriding the higher-level declaration.
+    Variable names SHOULD be unique in a context  (e.g. Questionnaire root or a specific item).  It is an error if the same variable name is assigned a value more than once in a single node.  It is also an error to define a variable name that has the same name as one of the standard FHIRPath names (e.g. %qitem).  If the same variable is assigned on both an element and a descendant element, a warning will be generated, however it is not an error.  The descendant declaration will be treated as overriding the higher-level declaration.  It is perfectly acceptable for the same variable name to appear in multiple disjoint contexts (for example on sibling items within a Questionnaire).
   </p>
   <a name="fhirpathvscql"> </a>
   <h3>FHIRPath vs. CQL</h3>
