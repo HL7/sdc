@@ -38,10 +38,9 @@ Description: "Defines how the questionnaire response resource is used to reflect
     * extension contains
         ItemAnswerMedia named itemAnswerMedia 0..1 and
         $itemWeight named itemWeight 0..1
+    * extension[itemWeight] ^comment = "Inclusion of weights in QRs can increase performance when calculating based on weights."          
     * value[x] 0..1 MS
     * value[x] only boolean or date or dateTime or time or decimal or integer or string or Coding or uri or Quantity or Attachment or Reference
-      * extension contains $itemWeight named itemWeight 0..1
-      * extension[itemWeight] ^comment = "Inclusion of weights in QRs can increase performance when calculating based on weights."          
     * item 0..* MS
       * ^contentReference = "http://hl7.org/fhir/StructureDefinition/QuestionnaireResponse#QuestionnaireResponse.item"
   * item MS

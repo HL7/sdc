@@ -78,6 +78,7 @@ Description: "Defines additional capabilities for controlling data entry and cal
     * extension contains
         $questionnaire-optionExclusive named optionExclusive 0..1 MS and
         $itemWeight named itemWeight 0..1 MS
+    * extension[itemWeight] ^comment = "NOTE: questionnaire.item.answerOption can have a type of Coding, potentially allowing two different scopes for this extension.  In the case where answerOption is available, the weight SHALL be declared on the answerOption rather than on the answerOption.valueCoding."
     * value[x] 1..1 MS
 
 Invariant: sdc-behave-1

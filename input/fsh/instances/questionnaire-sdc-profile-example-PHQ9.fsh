@@ -78,7 +78,7 @@ Usage: #example
         * description = "Score (0-4: None-minimal; 5-9: Mild; 19-14: Moderate; 15-19: Moderately severe; 20-27: Severe)"
         * name = "score"
         * language = #text/fhirpath
-        * expression = "%resource.answers().value.weight().sum()"
+        * expression = "%resource.item.where(linkId!='H1/TS').answer.value.weight().sum()"
     * linkId = "H1/TS"
     * code = $loinc#44261-6 "Patient Health Questionnaire 9 item (PHQ-9) total score [Reported]"
     * text = "Patient health questionnaire 9 item total score"
