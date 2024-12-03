@@ -6,7 +6,7 @@ Id: ihe-sdc
 Title: "IHE SDC"
 Source: SDCQuestionnaireRender
 * -> "Form_Package"
-* extension[RenderingCriticalExtension] -> "N/A (new requirement)"
+* modifierExtension[RenderingCriticalExtension] -> "N/A (new requirement)"
 * title.extension[title-renderingStyle] -> "../style"
 * title.extension[title-xhtml] -> "(strings can contain xhtml)"
 * item.extension[itemOptionalDisplay] -> "N/A (new requirement)"

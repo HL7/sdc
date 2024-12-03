@@ -16,6 +16,7 @@ Description: "Defines additional capabilities for controlling data entry and cal
     Variable named variable 0..*
 * extension[library] ^definition = "A reference to a library containing cql used in this Questionnaire."
 * extension[variable] ^requirements = "Allows variables to be calculated higher in the context of a QuestionnaireResponse for use with enableWhen-expression."
+* modifierExtension contains RenderingCriticalExtension named rendering-criticalExtension 0..* MS
 * item obeys sdc-behave-2 and sdc-behave-1 and sdc-behave-3
 //To do: Fix the hard-coding of the indexes on the constraints to apply the best-practice extension.
   * ^constraint[15].extension[$best-practice].valueBoolean = true

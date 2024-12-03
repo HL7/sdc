@@ -18,7 +18,7 @@ Description: "An expression that returns a boolean value for whether to enable t
 * value[x] only Expression
 * value[x] obeys sdc-inv1
 //To do: Fix the hard-coding of the indexes 
-* value[x] ^constraint[1].source = "http://hl7.org/fhir/StructureDefinition/Element"
+//* value[x] ^constraint[1].source = "http://hl7.org/fhir/StructureDefinition/Element"
 
 Invariant: sdc-inv1
 Description: "FHIR query language not allowed."

@@ -6,7 +6,7 @@ Description: "Defines additional capabilities for controlling the rendering of t
 * ^status = #active
 * . ^short = "Advanced Rendering Questionnaire"
 * . ^definition = "Defines additional capabilities for controlling the rendering of the questionnaire."
-* extension contains RenderingCriticalExtension named rendering-criticalExtension 0..* MS
+* modifierExtension contains RenderingCriticalExtension named rendering-criticalExtension 0..* MS
 * title.
   * extension contains
       $rendering-style named title-renderingStyle 0..1 and
