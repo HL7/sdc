@@ -3,6 +3,7 @@ Parent: SDCBaseQuestionnaire
 Id: sdc-questionnaire-extr-template
 Title: "Extractable Questionnaire - Template"
 Description: "Defines elements that allow conversion of a QuestionnaireResponse to a FHIR resource or Bundle of FHIR resources using the Template-based extraction mechanism"
+* obeys tev-1
 * ^extension[$standard-status].valueCode = #draft
 * ^extension[$fmm].valueInteger = 0
 * ^status = #draft
@@ -19,4 +20,3 @@ Description: "Defines elements that allow conversion of a QuestionnaireResponse 
       TemplateExtractExtension named templateExtract 0..* MS and
       TemplateExtractContextExtension named extractContext 0..* MS and
       ExtractAllocateIdExtension named extractAllocateId 0..* MS
-  * definition 0..1 MS

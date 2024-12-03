@@ -515,9 +515,24 @@ If an item is presumed to be extracted, it will extract if there are item.codes 
   <a name="template-extract"> </a>
   <h4>Template-based extraction</h4>
   <p>
-    The template based approach provides an alternative to the definition based approach and the full power of StructureMaps isn't required.
+    The template based approach provides an alternative to the definition based approach and where the full power of StructureMaps isn't required.
     It supports the same level of capability, however is unable to leverage any of the information inside a profile where the definition based approach can.<br/>
     The <a href="StructureDefinition-sdc-questionnaire-extr-template.html">SDC Questionnaire Extract - Template</a> profile has been created to support this mechanism. 
+  </p>
+  <p>
+    This technique is called "template-based" because it uses a template resource(s) to provide all the "boiler-plate" content for the resource that is to be extracted.
+    These templated resources are contained within the Questionnaire resource and referred to by either the <a href="StructureDefinition-sdc-questionnaire-templateExtract.html">sdc-questionnaire-templateExtract</a>
+    or <a href="StructureDefinition-sdc-questionnaire-templateExtract.html">sdc-questionnaire-templateExtractBundle</a> extensions.
+  </p>
+  <p>
+    The template is annotated with expressions to indicate which parts of the template should be populated with data from the QuestionnaireResponse, and which 
+    parts should be removed if no data is present. The expressions are defined using the FHIRPath language, and the QuestionnaireResponse context of the expressions is based on the location
+    of the template reference in the questionnaire, and/or any inline context expressions defined in the template.
+  </p>
+  <p>
+    The difference between the <b>templateExtract</b> (resource) and <b>templateExtractBundle</b> extensions is that the template resource extension will extract each resource individually
+    as a separate bundle entry and includes expressions to populate the other bundle entry properties,
+    whereas the template bundle extension extract the transaction bundle as a single resource. The processing of the template is otherwise identical between the two extensions.
   </p>
   <p>
     To use this method:
@@ -531,35 +546,38 @@ If an item is presumed to be extracted, it will extract if there are item.codes 
       to use a template bundle. This is the same as the templateExtract extension but leverages a single bundle that has all templated resources in it.
     </li>
     <li>
-      Each template resource contained in the questionnaire must be referred to by the <a href="StructureDefinition-sdc-questionnaire-templateExtract.html">sdc-questionnaire-templateExtract</a> 
-      or <a href="StructureDefinition-sdc-questionnaire-templateExtractBundle.html">sdc-questionnaire-templateExtractBundle</a> extension.
+      Include any required template resources as contained resources in the questionnaire and refer to them using either the <a href="StructureDefinition-sdc-questionnaire-templateExtract.html">sdc-questionnaire-templateExtract</a> 
+      or <a href="StructureDefinition-sdc-questionnaire-templateExtractBundle.html">sdc-questionnaire-templateExtractBundle</a> extension as described above.
     </li>
     <li>
-      The allocateId extension will be allocated before processing any template extractions.
-      If at the root, it will be allocated once, if on an item, it will be allocated for each related item that has the extension 
-      (a new value per item in a collection).
-      They are only available to child items of the item that has the extension (or itself).
+      If you need to dynamically reference between resources created in the output transaction bundle (using the entry.fullUrl property), include the allocateId extension
+      at a point in the questionnaire that defines the scope that a new uuid is required for each iteration of the item.
+      If at the root, a new value will be allocated only once, if on an item, it will be allocated for each related item that has the extension (a new value per item in a collection).
+      The value is only available to child items of the item that has the extension (or itself).<br/>
+      This value can be used in the templateExtract extension to set the fullUrl property of the extracted resource, and in the templateExtractValue extension to set the value for the referencing property.<br/>
+      The allocateId extension is not a fhirpath expression to be evaluated, it is the name for the variable that will be available to fhirpath expressions, and it's value will be
+      a new uuid for each iteration of the item that has the extension, before any expressions in the templateExtract, templateExtractBundle or templateExtractValue are evaluated.
     </li>
     <li>
       During extraction a new resource will be created for each answer in the QuestionnaireResponse for the item that contains the templateExtract extension.<br/>
-      The resource.id of the new resource will be removed (as it currently has the resource id to refer to in the template from the questionnaire definition),
-      to set its value so the resource can be used with an update, use the `resourceId` property in the `templateExtractValue` extension.
+      The resource.id of the new resource will be removed (as it currently has the resource id to refer to in the template from the questionnaire definition).
+      To set the resource.id property use the `resourceId` property in the `templateExtract` extension (this is not possible using the templateExtractBundle based extraction).
     </li>
     <li>
-      The fhirpath context of the extracted resource will be based on the location of the templateReference in the questionnaire.<br/>
-      If the templateReference is on the root of the questionnaire, the fhirpath context will be the QuestionnaireResponse resource.<br/>
-      If the templateReference is on an item, the fhirpath context will be the item in the QuestionnaireResponse associated with that item's linkId.<br/>
+      The fhirpath context of the extracted resource will be based on the location of the templateExtract extension in the questionnaire.<br/>
+      If templateExtract is on the root of the questionnaire, the fhirpath context will be the QuestionnaireResponse resource.<br/>
+      If templateExtract is on an item, the fhirpath context will be the item in the QuestionnaireResponse associated with that item's linkId.<br/>
     </li>
     <li>
       The extraction engine SHALL scan the templated resource for any <a href="StructureDefinition-sdc-questionnaire-templateExtractContext.html">sdc-questionnaire-templateExtractContext</a> 
-      or <a href="StructureDefinition-sdc-questionnaire-templateExtractValue.html">sdc-questionnaire-templateExtractValue</a> extensions and then:
+      or <a href="StructureDefinition-sdc-questionnaire-templateExtractValue.html">sdc-questionnaire-templateExtractValue</a> extensions (in that order) and then:
       <ul>
         <li>
-          Evaluate the fhirpath expression defined in the extension.
+          Evaluate the fhirpath expression defined in the extension <i>(only FHIRPath is supported)</i>.
         </li>
         <li>
           If the expression returns no results, this templated property (context or value) will be removed from the extracted resource, and no further processing of that property will occur.<br/>
-          If the template property is a on a collection, simply remove the template value from the collection, don't clear the entire collection. There MAY be other
+          If the template property is a in a collection, simply remove the templated value from the collection, don't clear the entire collection. There MAY be other
           templated properties to process in the collection (or static template data).
         </li>
         <li>
@@ -569,7 +587,7 @@ If an item is presumed to be extracted, it will extract if there are item.codes 
           If the context expression is defined as an <b>Expression</b> datatype, and it has a name property, then that variable will be made available to any child property extraction expressions.
         </li>
         <li>
-          Any context results will change the context to use for processing any child properties.
+          Any context results will change the context to use for processing any child properties (and templateExtractValues on the same node).
         </li>
         <li>
           Any extractValue results will be used to replace the property value in the extracted resource.<br/>
