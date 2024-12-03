@@ -14,3 +14,4 @@ Description: "Specifies a reference to a contained transaction bundle resource t
 * value[x] only Reference
   * ^type.targetProfile = "http://hl7.org/fhir/StructureDefinition/Bundle"
   * ^short = "Contained reference to the bundle resource template"
+  * ^type.aggregation = #contained
