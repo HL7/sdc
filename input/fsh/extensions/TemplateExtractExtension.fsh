@@ -26,6 +26,7 @@ Description: "Specifies a reference to a contained resource template (or set of 
   * value[x] 1..1
   * value[x] only Reference
     * ^short = "Contained reference to the resource template"
+    * ^type.aggregation = #contained
 * extension[fullUrl] 
   * ^short = "A fhirpath expression to evaluate to populate the fullUrl property in the `Bundle.entry` (uri/string result)"
   * ^definition = "A fhirpath expression to evaluate to extract the value into the fullUrl property. If no value is evaluated, then the element is not extracted."
