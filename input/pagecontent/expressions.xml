@@ -20,7 +20,12 @@
       However, if the value is leveraged in downstream itemExtractionContexts, then it will need a name.  When an extension with a type of Expression has a name, the result of evaluating that expression becomes available in subsequent expressions (either
       following extensions within the same element, or extensions appearing on descendant items) as a 'variable'.  These variables are referenced by
       prepending '%' to the 'name' of the expression.  I.e. the result of an expression named 'patient' would be available for use in subsequent expressions
-      as '%patient'.
+      as '%patient'.<br/>
+      Collisions between names that are defined more than once within the same containing element will be treated as an error.  I.e. If there is a
+      <a href="#launchContext">launchContext</a> extension called 'patient' and then on the same item there's
+      also a <a href="#variable">variable</a> extension also named 'patient', that would be an error.  However, overriding a name in a descendant
+      element is NOT an error.  For example, if a <a href="#variable">variable</a> with the name 'linkIdPrefix' is defined on an item and then is
+      subsequently re-defined on a variable in a child item, that is ok - and is in fact a common occurrence in <a href="modular.html">modular forms</a>.
     </li>
     <li>
       <code>language</code> indicates the type of expression.  SDC only uses three languages: FHIR queries <a href="#fhirquery">as described below</a>,
@@ -106,6 +111,10 @@
           <p>
             The content type of a variable can be pretty much anything.  It can be a collection or an individual item.  It can be a simple element, a complex
             type, a resource or even a Bundle of resources.
+          </p>
+          <p>
+			      The variable can be <a href="#fhirpath">referenced by its name</a>.  Variable expressions SHALL specify a name.  It is not allowed to define variable
+			      names that are already <a href="{{site.data.fhir.path}}fhirpath.html#vars">reserved by the base specification</a> or by other variables in the questionnaire.
           </p>
         </td>
       </tr>
@@ -633,6 +642,11 @@
       Otherwise, it will be interpreted as the QuestionnaireResponse.item(s) whose linkId matches the linkId of the Questionnaire.item the expression
       extension was defined in.  I.e. while the extensions and expressions are defined in the Questionnaire, they are <i>evaluated</i> in the context of
       the corresponding item(s) in the QuestionnaireResponse.</li>
+    <li>
+      All expressions that specify a 'name' can be accessed by other expressions appearing on the same item or any descendant item as though that
+      name was part of context.  The same is true for the 'name' element in the <a href="#launchContext">launchContext</a> extension.  For example, a variable
+      with the name 'score' could be accessed in FHIRPath or CQL using <code>%score</code>.  (Note: It is an error if a questionnaire is designed such
+      that there is more than one element in the same scope with a colliding context name.)</li>
   </ul>
   <p>
     In addition, a number of extensions have been proposed to the FHIRPath language - some to the base language and some to the FHIR-specific set of extensions
@@ -661,19 +675,16 @@
       </ul>
     </li>
     <li>
-      <code>weight()</code> returns the item-weight for an element (in SDC, typically a QuestionnaireResponse.item.answer.value[x]). If an <a href="https://hl7.org/fhir/extensions/StructureDefinition-itemWeight.html">itemWeight</a> extension 
-      is defined on the element, it will be returned.  If not and the answer was drawn from an answerOption with a defined item-weight, it will be taken from there. 
-      If not, and there is a bound value set, the weight will be looked up on the bound value set expansion. If not found there, it will be looked up on the underlying
-       CodeSystem. If no itemWeight can be found, the result will be an empty set. If the FHIRPath engine is unable to resolve the corresponding value set, code 
-       system or questionnaire options, it SHOULD cause the expression to fail.<br/>
-      This function will typically be used to support scoring of Questionnaires, but it can be used with observations or potentially other elements as well.<br/>
-      There are two common approaches to implement the weight() function:
-      <ol>
-        <li>Ensure that the <a href="{{site.data.fhir.ver.ext}}/StructureDefinition-itemWeight.html">itemWeight extension</a> is present on each answer, even if it is not in the source 
-        data for the loaded QuestionnaireResponse.</li>
-        <li>Leverage the %qitem variable to return access the associated Questionnaire item, from which the answerOptions/answerValueSet/answerExpression can be found and the answer can
-        be looked up and the weight extension associated with that value retrieved.</li>
-      </ol>
+      <code>answers()</code> returns a list of all answers for items beneath the current node, but excluding the current node, including descendant questions.  This
+      is typically used with an aggregation function.  For example answers().sum() would provide the total of all answers beneath the current node.  The function
+      is equivalent to <code>descendants().where($this is QuestionnaireResponse.item.answer.value)</code>
+    </li>
+    <li>
+      <code>ordinal()</code> returns the ordinal value for code or Coding.  If an <a href="{{site.data.fhir.path}}extension-ordinalvalue.html">ordinalValue</a> extension
+      is defined on the element, it will be returned.  If not, will be looked up on the bound value set expansion (or for Questionnaires, on the corresponding Questionnaire.answerOption).  If not found there, will be looked up on the underlying CodeSystem.  If the type is other than code or Coding or no ordinal value
+      is defined for the context element, the result will be an empty set.  If the FHIRPath engine is unable to resolve the corresponding value set, code system or questionnaire
+      options, it SHOULD cause the expression to fail.<br/>
+      This function will typically be used to support scoring of Questionnaires, but it can be used with observations or potentially other elements as well.
     </li>
   </ul>
   <p>
