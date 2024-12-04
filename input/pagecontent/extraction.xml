@@ -422,6 +422,9 @@ If an item is presumed to be extracted, it will extract if there are item.codes 
           (For items that repeat, a new instance of the resource will be created for each repetition).
         </li>
         <li>
+          If the resource is created by a profile definition rather than a core resource type profile, the profile name will be added to the meta of the extracted resource.
+        </li>
+        <li>
           Any <a href="StructureDefinition-sdc-questionnaire-extractAllocateId.html">sdc-questionnaire-extractAllocateId</a> extensions on the same item will be processed before the definitionExtract extension.
         </li>
         <li>
@@ -521,6 +524,73 @@ If an item is presumed to be extracted, it will extract if there are item.codes 
       </ul>
     </li>
     <li>
+      <b>Matching parent/child properties in the extracted resource instance:</b>
+      As described above, the system will create the necessary elements in the resource as needed, but this is not always obvious what to do when it's not a direct 1..1 mapping from the questionnaire to the resource.<br/>
+      So this table is here to help guide the process with examples of how to populate the resource properties based various parent/child questionnaire item configurations:
+      <table class="grid">
+        <thead>
+          <tr>
+            <th>Example Parent</th>
+            <th>Parent Type</th>
+            <th>Example Child Definition</th>
+            <th>Possible Child Type</th>
+            <th>Notes</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr><td>
+          Patient</td><td><i>definitionExtract</i></td><td>Patient.name</td><td><i>group item</i></td><td>Create a new <code>HumanName</code> object and add it to the name collection in patient
+          </td></tr>
+          <tr><td>
+            Patient.name</td><td><i>group item</i></td><td>Patient.name.text</td><td><i>value item</i></td><td>Set the text property in the name object
+          </td></tr>
+          <tr><td>
+            Patient</td><td><i>definitionExtract</i></td><td>Patient.name.text</td><td><i>value item/extractValue</i></td><td>Create a new <code>HumanName</code> object, add it to the name collection in patient, and set the text property
+          </td></tr>
+          <tr><td>
+            Patient</td><td><i>definitionExtract</i></td><td>Patient.identifier.value</td><td><i>value item/extractValue</i></td><td>Create a new <code>Identifier</code> object, add it to the identifier collection in patient, and set the value property
+          </td></tr>
+          <tr><td>
+            Patient</td><td><i>definitionExtract</i></td><td>Patient.extension</td><td><i>group item</i></td><td>Create a new <code>Extension</code> object and add it to the extension collection in patient
+          </td></tr>
+          <tr><td>
+            Patient.extension</td><td><i>group item</i></td><td>Patient.extension.value</td><td><i>value item</i></td><td>Set the value property in the extension object
+          </td></tr>
+          <tr><td>
+            Patient.extension</td><td><i>group item</i></td><td>Patient.extension.url</td><td><i>value item/extractValue</i></td><td>Set the URL property in the extension object
+          </td></tr>
+
+          <tr><td>
+            Patient.extension.value</td><td><i>value item</i></td><td>Patient.extension.url</td><td><i>value item/extractValue</i></td><td>Set the URL property for the same extension instance that has the value in it (walks up the tree to the common ancestor)
+          </td></tr>
+          <tr><td>
+            Patient.identifier.value</td><td><i>value item</i></td><td>Patient.identifier.type.text</td><td><i>value item/extractValue</i></td><td>Create a new <code>CodeableConcept</code> object, add it to the type collection of the identifier object that has the value in it, and set the text property in that type object
+          </td></tr>
+        </tbody>
+      </table>
+      <blockquote>
+        <b>Note:</b> Anywhere in a resource that you need to set multiple item's values into properties of a backbone element, you will need to use a group item to collect the values together, and set the <code>definition</code> property on this group item
+        to the backbone element.  The system will then create the backbone element and populate it with the child items.
+      </blockquote>
+    </li>
+    <li>
+      <b>Handling sliced properties:</b> If extracting a property via a sliced property:
+      <ul>
+        <li>If there are any associated fixed or pattern values in the slice, also populate those values into the resource instance</li>
+        <li>If the slice limits the types supported, ensure that the created type us supported (and cast the value if required)</li>
+        <li>
+          After the property is extracted, if there are any required properties that have fixed/pattern values, also extract those<br/>
+          e.g. In the <a href="https://hl7.org/fhir/r4/bodyheight.html">body height profile</a>, the category slice VSCat is required, and has a required coding property with a fixed value of "vital-signs".  This would also need to be extracted.
+        </li>
+        <li>
+          A type slice can be invoked without an actual slice for choice typed properties e.g. <code>value[x]</code><br/>
+          The extraction process is able to determine the correct type to use based on the answer in the QuestionnaireResponse, or explicitly
+          define it in the property name in the "definition" value e.g. <code>http://hl7.org/fhir/StructureDefinition/Observation#Observation.valueQuantity</code>
+        </li>
+      </ul>
+      <i>(These could also be considered at the root level when processing a profiled resource)</i>
+    </li>
+    <li>
       <b>Supporting the extraction process:</b> If necessary, define <a href="{{site.data.fhir.path}}extension-questionnaire-hidden.html">questionnaire-hidden</a> items that have <code>
       Questionnaire.item.initial.value[x]</code> or that use the
       <a href="StructureDefinition-sdc-questionnaire-initialExpression.html">questionnaire-initialExpression</a> extension to define their content to use to populate
@@ -540,10 +610,10 @@ If an item is presumed to be extracted, it will extract if there are item.codes 
     This design was used as the target server for the bundle isn't necessarily going to be the same server that was pre-populated from.
   </blockquote>
   <p>
-    An example of a questionnaire using this approach can be found <a href="Questionnaire-demographics.html">here</a> and in <a href="Questionnaire-extract-complex-defn3.html">Questionnaire/extract-complex-defn3</a>.
+    Examples of questionnaires using this approach can be found <a href="Questionnaire-demographics.html">here</a> and in <a href="Questionnaire-extract-complex-defn3.html">Questionnaire/extract-complex-defn3</a>.
   </p>
   <p>
-    Considerations and rules when using this approach:
+    Other considerations and rules when using this approach:
   </p>
   <ul>
     <li>
