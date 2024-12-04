@@ -7,7 +7,7 @@ Usage: #example
 * version = "1.0.0"
 * name = "CHF"
 * title = "Congestive Heart Failure Logic"
-* status = #draft
+* status = #active
 * experimental = true
 * type = $library-type#logic-library "Logic Library"
 * date = "2020-11-29T15:54:22-07:00"

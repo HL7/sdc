@@ -2,7 +2,7 @@ ValueSet: QuestionnaireContextSpecies
 Id: species
 Title: "Questionnaire Context Species"
 Description: "Species for defining the context of Questionnaires"
-* ^status = #draft
+* ^status = #active
 * ^experimental = true
 * ^publisher = "HL7 International - FHIR Infrastructure"
 * ^contact.telecom.system = #other

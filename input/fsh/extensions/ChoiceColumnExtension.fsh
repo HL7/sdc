@@ -2,7 +2,7 @@ Extension: ChoiceColumnExtension
 Id: sdc-questionnaire-choiceColumn
 Title: "Choice column"
 Description: "Provides guidelines for rendering multi-column choices.  I.e. when displaying a list of codes (for `choice` or `open-choice` items) or a list of resources (for `reference` items), this extension allows the drop-down to have multiple columns.  For codes, the author can pick additional code system properties to display - such as alternate display names strength or form for drug codes, etc.  For references, the author can choose particular columns from the resource (e.g. first name, last name, specialty, address)."
-* ^status = #draft
+* ^status = #active
 * ^context[0].type = #element
 * ^context[=].expression = "Questionnaire.item"
 * ^context[+].type = #element

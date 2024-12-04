@@ -3,9 +3,7 @@ Parent: SDCBaseQuestionnaire
 Id: sdc-questionnaire-extr-defn
 Title: "Extractable Questionnaire - Definition"
 Description: "Defines elements that allow conversion of a QuestionnaireResponse to a FHIR resource or Bundle of FHIR resources using the Definition-based extraction mechanism"
-* ^extension[$standard-status].valueCode = #draft
-* ^extension[$fmm].valueInteger = 0
-* ^status = #draft
+* ^status = #active
 * . ^short = "Extractable Questionnaire - Definition"
 * . ^definition = "Defines elements that allow conversion of a QuestionnaireResponse to a FHIR resource or Bundle of FHIR resources using the Definition-based extraction mechanism."
 * extension contains
@@ -29,3 +27,9 @@ Description: "Defines elements that allow conversion of a QuestionnaireResponse 
   * extension[itemExtractionContext] ^extension[$standard-status].valueCode = #deprecated
   * extension[itemExtractionContext] ^mustSupport = false
   * definition 0..1 MS
+
+Invariant: sdc-defn-1
+Description: "An item cannot have both initial.value and initialExpression"
+Severity: #error
+Expression: "initial.empty() or extension('http://hl7.org/fhir/uv/sdc/StructureDefinition/sdc-questionnaire-initialExpression').empty()"
+XPath: "not(exists(f:initial) and exists(f:extension[@url='http://hl7.org/fhir/uv/sdc/StructureDefinition/sdc-questionnaire-initialExpression']))"

@@ -3,20 +3,23 @@ Parent: SDCBaseQuestionnaire
 Id: sdc-questionnaire-behave
 Title: "Advanced Behavior Questionnaire"
 Description: "Defines additional capabilities for controlling data entry and calculating values within the questionnaire."
-* ^status = #draft
+* ^status = #active
 * . ^short = "Advanced Behavior Questionnaire"
   * ^definition = "Defines additional capabilities for controlling data entry and calculating values within the questionnaire."
 * extension contains
     EntryMode named entryMode 0..* MS and
     EndpointExtension named submissionEndpoint 0..* MS and
     $questionnaire-signatureRequired named signatureRequired 0..* and
-    $questionnaire-constraint named constraint 0..* and
+    $targetConstraint named constraint 0..* and
     $cqf-library named library 0..* and
     LaunchContextExtension named launchContext 0..* and
     Variable named variable 0..*
 * extension[library] ^definition = "A reference to a library containing cql used in this Questionnaire."
 * extension[variable] ^requirements = "Allows variables to be calculated higher in the context of a QuestionnaireResponse for use with enableWhen-expression."
-* item obeys sdc-behave-2 and sdc-behave-1
+* modifierExtension contains RenderingCriticalExtension named rendering-criticalExtension 0..* MS
+* item obeys sdc-behave-2 and sdc-behave-1 and sdc-behave-3
+//To do: Fix the hard-coding of the indexes on the constraints to apply the best-practice extension.
+  * ^constraint[15].extension[$best-practice].valueBoolean = true
   * extension contains
       AnswerExpressionExtension named answerExpression 0..1 MS and
       $questionnaire-usageMode named usageMode 0..1 MS and
@@ -41,7 +44,7 @@ Description: "Defines additional capabilities for controlling data entry and cal
       $questionnaire-referenceProfile named allowedProfile 0..* and
       CandidateExpressionExtension named candidateExpression 0..1 and
       LookupQuestionnaireExtension named lookupQuestionnaire 0..1 and
-      $questionnaire-constraint named itemConstraint 0..* and
+      $targetConstraint named itemConstraint 0..* and
       InitialExpressionExtension named initialExpression 0..1 and
       CalculatedExpressionExtension named calculatedExpression 0..1 and
       EnableWhenExpressionExtension named enableWhenExpression 0..1 MS
@@ -75,5 +78,24 @@ Description: "Defines additional capabilities for controlling data entry and cal
   * answerOption
     * extension contains
         $questionnaire-optionExclusive named optionExclusive 0..1 MS and
-        $ordinalValue named ordinalValue 0..1 MS
+        $itemWeight named itemWeight 0..1 MS
+    * extension[itemWeight] ^comment = "NOTE: questionnaire.item.answerOption can have a type of Coding, potentially allowing two different scopes for this extension.  In the case where answerOption is available, the weight SHALL be declared on the answerOption rather than on the answerOption.valueCoding."
     * value[x] 1..1 MS
+
+Invariant: sdc-behave-1
+Description: "An item cannot have both initial.value and initialExpression"
+Severity: #error
+Expression: "initial.empty() or extension('http://hl7.org/fhir/uv/sdc/StructureDefinition/sdc-questionnaire-initialExpression').empty()"
+XPath: "not(exists(f:initial) and exists(f:extension[@url='http://hl7.org/fhir/uv/sdc/StructureDefinition/sdc-questionnaire-initialExpression']))"
+
+Invariant: sdc-behave-2
+Description: "An item cannot have both enableWhen and enableWhenExpression"
+Severity: #error
+Expression: "enableWhen.empty() or extension('http://hl7.org/fhir/uv/sdc/StructureDefinition/sdc-questionnaire-enableWhenExpression').empty()"
+XPath: "not(exists(f:enableWhen) and exists(f:extension[@url='http://hl7.org/fhir/uv/sdc/StructureDefinition/sdc-questionnaire-enableWhenExpression']))"
+
+Invariant: sdc-behave-3
+Severity: #warning
+Description: "For items of type 'quantity', it is best practice to include either a 'unitOption' or 'unitValueSet' extension to provide a list of valid units."
+Expression: "(type = 'quantity' implies (extension('http://hl7.org/fhir/StructureDefinition/questionnaire-unitOption').exists() or extension('http://hl7.org/fhir/StructureDefinition/questionnaire-unitValueSet').exists())) and (descendants().where(type = 'quantity')).all(extension('http://hl7.org/fhir/StructureDefinition/questionnaire-unitOption').exists() or extension('http://hl7.org/fhir/StructureDefinition/questionnaire-unitValueSet').exists())"
+XPath: "(f:type/@value = 'quantity' implies (count(f:extension[@url='http://hl7.org/fhir/StructureDefinition/questionnaire-unitOption']) > 0 or count(f:extension[@url='http://hl7.org/fhir/StructureDefinition/questionnaire-unitValueSet']) > 0)) and not(.//f:item[f:type/@value = 'quantity' and not(f:extension[@url='http://hl7.org/fhir/StructureDefinition/questionnaire-unitOption'] or f:extension[@url='http://hl7.org/fhir/StructureDefinition/questionnaire-unitValueSet'])])"

@@ -111,11 +111,11 @@ RuleSet: itemQuantity(linkId, text, quantityValue, quantityUnit)
 
 // Usage: Instance: adaptive-questionnaireresponse-sdc-example-phq9
 // Define a function to generate a ruleset for a single item
-RuleSet: VSConcept(code, display, ordinalValue)
+RuleSet: VSConcept(code, display)
 * compose.include.concept[+]
   * code = {code}
   * display = {display}
-  * extension[$ordinalValue].valueDecimal = {ordinalValue}
+  * property
 
 //Usage: Instance: anc-quick-check
 // Define a function to generate a ruleset for item's answerOption

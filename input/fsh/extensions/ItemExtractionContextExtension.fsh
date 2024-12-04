@@ -4,7 +4,7 @@ Title: "Extract Definition - Resource (legacy)"
 Description: "Specifies a query or other expression that identifies the resource (or set of resources for a repeating item) to be extracted from this item once the QuestionnaireResponse is complete. This extension is deprecated in favor of the `DefinitionExtractExtension` extension."
 * ^extension[$standard-status].valueCode = #deprecated
 * ^extension[$fmm].valueInteger = 0
-* ^status = #draft
+* ^status = #active
 * ^context[0].type = #element
 * ^context[=].expression = "Questionnaire"
 * ^context[+].type = #element

@@ -3,7 +3,7 @@ Id: assemble-expectation
 Title: "Assemble Expectation Codes"
 Description: "A set of codes that reflect the relevance of the Questionnaire to the $assemble operation - specifically, whether the form needs to be assembled, whether the form can be referenced as a subQuestionnaire and whether the form can be used as the 'root' of a QuestionnaireResponse."
 * ^version = "1.0.0"
-* ^status = #draft
+* ^status = #active
 * ^experimental = false
 * ^caseSensitive = true
 * ^content = #complete

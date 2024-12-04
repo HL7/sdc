@@ -36,7 +36,7 @@ Usage: #example
       * type = #string
     * item[+]
       * extension
-        * url = "http://hl7.org/fhir/uv/sdc/StructureDefinition/sdc-questionnaire-calculatedExpression"
+        * url = "http://hl7.org/fhir/uv/sdc/StructureDefinition/sdc-questionnaire-initialExpression"
         * valueExpression
           * language = #text/fhirpath
           * expression = "%patient.name.first().family.first()"
@@ -45,7 +45,7 @@ Usage: #example
       * type = #string
     * item[+]
       * extension
-        * url = "http://hl7.org/fhir/uv/sdc/StructureDefinition/sdc-questionnaire-calculatedExpression"
+        * url = "http://hl7.org/fhir/uv/sdc/StructureDefinition/sdc-questionnaire-initialExpression"
         * valueExpression
           * language = #text/fhirpath
           * expression = "%patient.name.first().given.first()"
@@ -66,7 +66,7 @@ Usage: #example
     * repeats = true
     * item[0]
       * extension
-        * url = "http://hl7.org/fhir/uv/sdc/StructureDefinition/sdc-questionnaire-calculatedExpression"
+        * url = "http://hl7.org/fhir/uv/sdc/StructureDefinition/sdc-questionnaire-initialExpression"
         * valueExpression
           * language = #text/fhirpath
           * expression = "%selectedContact.name.first().select(text | given.first() & ' ' & family)"
@@ -76,7 +76,7 @@ Usage: #example
       * repeats = true
     * item[+]
       * extension
-        * url = "http://hl7.org/fhir/uv/sdc/StructureDefinition/sdc-questionnaire-calculatedExpression"
+        * url = "http://hl7.org/fhir/uv/sdc/StructureDefinition/sdc-questionnaire-initialExpression"
         * valueExpression
           * language = #text/fhirpath
           * expression = "%selectedContact.telecom.where(system='phone').first().value"

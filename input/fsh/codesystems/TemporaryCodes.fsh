@@ -2,9 +2,7 @@ CodeSystem: TemporaryCodes
 Id: temp
 Title: "Temporary SDC Codes"
 Description: "Defines codes defined within the SDC implementation guide that are expected to migrate elsewhere in future releases"
-* ^extension[$standard-status].valueCode = #draft
-* ^extension[$fmm].valueInteger = 0
-* ^status = #draft
+* ^status = #active
 * ^experimental = false
 * ^caseSensitive = true
 * ^content = #complete

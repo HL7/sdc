@@ -3,7 +3,7 @@ canonical: http://hl7.org/fhir/uv/sdc
 version: 3.0.0
 name: StructuredDataCapture
 title: Structured Data Capture
-status: draft
+status: active
 publisher:
   name: HL7 International / FHIR Infrastructure
   url: http://www.hl7.org/Special/committees/fiwg
@@ -15,9 +15,14 @@ description: The SDC specification provides an infrastructure to standardize the
 license: CC0-1.0
 fhirVersion: 4.0.1
 parameters:
+  auto-oid-root: 2.16.840.1.113883.4.642.40.17
   apply-publisher: true
   apply-contact: true
+  globals-in-artifacts: true
   show-inherited-invariants: false
+  shownav: true
+  version-comparison: 
+   - 3.0.0
 copyrightYear: 2022+
 releaseLabel: STU 3
 jurisdiction: http://unstats.un.org/unsd/methods/m49/m49.htm#001 "World"
@@ -25,7 +30,7 @@ extension:
   - url: http://hl7.org/fhir/StructureDefinition/structuredefinition-standards-status
     valueCode: "trial-use"
   - url: http://hl7.org/fhir/StructureDefinition/structuredefinition-fmm
-    valueInteger: "3"
+    valueInteger: "4"
   - url: http://hl7.org/fhir/StructureDefinition/structuredefinition-wg
     valueCode: "fhir"
 dependencies:
@@ -33,6 +38,9 @@ dependencies:
     id: examples
     uri: http://hl7.org/fhir/ImplementationGuide/fhir
     version: 4.0.1
+  hl7.fhir.uv.extensions:
+    id: ext
+    version: current
 pages:
   index.html:
     title: SDC Home Page
@@ -44,25 +52,49 @@ pages:
     title: Security Details
   expressions.html:
     title: Using Expressions
+    extension:
+      - url: http://hl7.org/fhir/StructureDefinition/structuredefinition-standards-status
+        valueCode: "trial-use"
   workflow.html:
     title: Basic SDC workflow
+    extension:
+      - url: http://hl7.org/fhir/StructureDefinition/structuredefinition-standards-status
+        valueCode: "trial-use"
   search.html:
     title: Finding a Questionnaire
+    extension:
+      - url: http://hl7.org/fhir/StructureDefinition/structuredefinition-standards-status
+        valueCode: "trial-use"
   rendering.html:
     title: Advanced Form Rendering
+    extension:
+      - url: http://hl7.org/fhir/StructureDefinition/structuredefinition-standards-status
+        valueCode: "trial-use"
   behavior.html:
     title: Form Behavior and Calculation
+    extension:
+      - url: http://hl7.org/fhir/StructureDefinition/structuredefinition-standards-status
+        valueCode: "trial-use"
   modular.html:
     title: Modular Forms
     extension:
       - url: http://hl7.org/fhir/StructureDefinition/structuredefinition-standards-status
-        valueCode: "draft"
+        valueCode: "trial-use"
   adaptive.html:
     title: Adaptive Forms
+    extension:
+      - url: http://hl7.org/fhir/StructureDefinition/structuredefinition-standards-status
+        valueCode: "trial-use"
   populate.html:
     title: Form Population
+    extension:
+      - url: http://hl7.org/fhir/StructureDefinition/structuredefinition-standards-status
+        valueCode: "trial-use"
   extraction.html:
     title: Form Data Extraction
+    extension:
+      - url: http://hl7.org/fhir/StructureDefinition/structuredefinition-standards-status
+        valueCode: "trial-use"
   artifacts.html:
     title: Artifact List   
   examples.html:

@@ -3,9 +3,7 @@ Parent: $cqllibrary
 Id: sdc-library
 Title: "SDC Library"
 Description: "Defines how a Library is used as a logic computable library within the ONC's Structured Data Capture standard."
-* ^extension[$standard-status].valueCode = #draft
-* ^extension[$fmm].valueInteger = 0
-* ^status = #draft
+* ^status = #active
 * . ^definition = "Sets expectations for SDC-conformant systems around use of libraries."
 * subject[x] MS
 * relatedArtifact MS

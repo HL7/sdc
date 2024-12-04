@@ -8,7 +8,8 @@
     numerous questions.  The selected questions are based on Item Response Theory (IRT) algorithms which look at the answers provided and select the
     next question based on IRT algorithms.  The questions are selected to quickly obtain the necessary outcomes (e.g. assessing a person's physical
     function) using fewer questions rather than administering a large question bank.  These small sets of questions still provide the necessary confidence and
-    scores required to interpret the data appropriately as if the whole questionnaire was administered.
+    scores required to interpret the data appropriately as if the whole questionnaire was administered. The <a href="StructureDefinition-sdc-questionnaire-adapt.html">Adaptive Questionnaire Profile</a> 
+    describes the structure, extensions, and metadata required to define an adaptive questionnaire.
   </p>
   <a name="model"> </a>
   <h3>Adaptive Questionnaire Administration Abstract Model and Actors</h3>
@@ -42,6 +43,19 @@
   </p>
   <ul>
     <li>
+      <b>Step 0:</b> <p> Before initiating the administration process for an adaptive questionnaire, the app must first locate the appropriate
+       questionnaire. This can be done through various mechanisms such as performing a search operation, referencing a Task resource, 
+       or other mechanism. The questionnaire being located <b>SHALL</b> conform to the <a href="StructureDefinition-sdc-questionnaire-adapt-srch.html">Adaptive Questionnaire Search Profile</a>, which 
+       ensures that it is discoverable and compliant with adaptive questionnaire requirements.
+       </p>
+       <p> Additionally, the located questionnaire <b>SHALL</b> include the <a href="StructureDefinition-sdc-questionnaire-questionnaireAdaptive.html">questionnaireAdaptive</a> extension. This extension explicitly indicates 
+       that the questionnaire supports adaptiveness and may provide details about the endpoints where the $next-question operation can 
+       be invoked. If the questionnaireAdaptive extension doesn't specify a URL, the location must be independently negotiated, though as a fallback, 
+       try the server on which the Questionnaire is hosted. This step ensures that the app knows whether the questionnaire is adaptive and where to send subsequent 
+       requests for the adaptive process.
+       </p>
+    </li>  
+    <li>
       <b>Step 1:</b> The available adaptive questionnaires are loaded into the Assessment Center.<br/>
     </li>  
     <li>
@@ -58,25 +72,12 @@
       <pre>
       <code>{ <i>// start body</i>
         "resourceType": "QuestionnaireResponse",
-        "meta": {
-          "profile": [
-            "http://hl7.org/fhir/uv/sdc/StructureDefinition/sdc-questionnaireresponse-adapt"
-          ]
-        },<i>// end of meta</i>
 
         <i>// contained Questionnaire</i>
         "contained": [
           {
             "resourceType": "Questionnaire",
             "id": "q",
-            "meta": {
-              "profile": [
-                "http://hl7.org/fhir/uv/sdc/StructureDefinition/sdc-questionnaire-adapt"
-              ]
-            },
-            "identifier": {
-             <i>// identifier system and value for "Physical Function 2.0" questionnaire</i>
-            },
 
             <b>//no items since initiating the adaptive questionnaire</b>
             ...
@@ -98,26 +99,13 @@
       <pre>
       <code>{ <i>// start response body</i>
         "resourceType": "QuestionnaireResponse",
-        "meta": {
-          "profile": [
-            "http://hl7.org/fhir/uv/sdc/StructureDefinition/sdc-questionnaireresponse-adapt"
-          ]
-        }, <i>// end of meta</i>
 
         <i>// contained Questionnaire</i>
         "contained": [
           {
             "resourceType": "Questionnaire",
             "id": "q",
-            "meta": {
-              "profile": [
-                "http://hl7.org/fhir/uv/sdc/StructureDefinition/sdc-questionnaire-adapt"
-              ]
-            },
-            "identifier": {
-             <i>// identifier system and value for "Physical Function 2.0" questionnaire</i>
-            },
-
+           
             <b>// First Item being sent back</b>
             "item": [
               {
@@ -156,26 +144,13 @@
       <pre>
       <code>{ <i>// start body</i>
         "resourceType": "QuestionnaireResponse",
-        "meta": {
-            "profile": [
-              "http://hl7.org/fhir/uv/sdc/StructureDefinition/sdc-questionnaireresponse-adapt"
-            ]
-        }, <i>// end of meta</i>
 
         <i>// contained Questionnaire</i>
         "contained": [
           {
             "resourceType": "Questionnaire",
             "id": "q",
-            "meta": {
-              "profile": [
-                "http://hl7.org/fhir/uv/sdc/StructureDefinition/sdc-questionnaire-adapt"
-              ]
-            },
-            "identifier": {
-             <i>// identifier system and value for "Physical Function 2.0" questionnaire</i>
-            },
-
+           
             <b>// List items here that have been already administered.</b>
             "item": [
               {
@@ -222,26 +197,13 @@
       <pre>
       <code>{ <i>// start body</i>
         "resourceType": "QuestionnaireResponse",
-        "meta": {
-          "profile": [
-            "http://hl7.org/fhir/uv/sdc/StructureDefinition/sdc-questionnaireresponse-adapt"
-          ],
-        },<i>// end of meta</i>
 
         <i>// contained Questionnaire</i>
         "contained": [
           {
             "resourceType": "Questionnaire",
             "id": "Id of the Questionnaire Instance on which operation is being invoked",
-            "meta": {
-              "profile": [
-                "http://hl7.org/fhir/uv/sdc/StructureDefinition/sdc-questionnaire-adapt"
-              ]
-            },
-            "identifier": {
-              <i>// identifier system and value for "Physical Function 2.0" questionnaire</i>
-            },
-
+           
             "item": [
             <b>// Item already administered</b>
               {
@@ -317,26 +279,13 @@
       <pre>
       <code>{ <i>// start body</i>
         "resourceType": "QuestionnaireResponse",
-        "meta": {
-          "profile": [
-            "http://hl7.org/fhir/uv/sdc/StructureDefinition/sdc-questionnaireresponse-adapt"
-          ],
-        },<i>// end of meta,</i>
-
+       
         <i>// contained Questionnaire</i>
         "contained": [
           {
             "resourceType": "Questionnaire",
             "id": "Id of the Questionnaire Instance on which operation is being invoked",
-            "meta": {
-              "profile": [
-                "http://hl7.org/fhir/uv/sdc/StructureDefinition/sdc-questionnaire-adapt"
-              ]
-            },
-            "identifier": {
-              <i>// identifier system and value for "Physical Function 2.0" questionnaire</i>
-            },
-
+           
             "item": [
             <b>// Items already administered</b>
               {

@@ -3,9 +3,7 @@ Parent: SDCBaseQuestionnaire
 Id: sdc-questionnaire-pop-smap
 Title: "Populatable Questionnaire - StructureMap"
 Description: "Defines elements that support auto-population and pre-population of questionnaires  using the StructureMap-based population mechanism"
-* ^extension[$standard-status].valueCode = #draft
-* ^extension[$fmm].valueInteger = 0
-* ^status = #draft
+* ^status = #active
 * . ^short = "Populatable Questionnaire - StructureMap"
 * . ^definition = "Defines elements that support auto-population and pre-population of questionnaires  using the StructureMap-based population mechanism."
 * extension contains

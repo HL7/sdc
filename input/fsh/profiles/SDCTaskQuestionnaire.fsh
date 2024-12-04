@@ -3,9 +3,7 @@ Parent: Task
 Id: sdc-task
 Title: "Task Questionnaire"
 Description: "Defines how Task is used to ask for a Questionnaire to be completed"
-* ^extension[$standard-status].valueCode = #draft
-* ^extension[$fmm].valueInteger = 0
-* ^status = #draft
+* ^status = #active
 * obeys sdc-t1
 * . ^mustSupport = false
 * status 1..1 MS
@@ -25,7 +23,7 @@ Description: "Defines how Task is used to ask for a Questionnaire to be complete
   * ^short = "Who should complete questionnaire"
 * reasonCode MS
 * input MS
-  * ^slicing.discriminator.type = #pattern
+  * ^slicing.discriminator.type = #value
   * ^slicing.discriminator.path = "type"
   * ^slicing.rules = #open
 * input contains
@@ -49,7 +47,7 @@ Description: "Defines how Task is used to ask for a Questionnaire to be complete
   * value[x] only url
   * value[x] ^short = "url"
 * output MS
-  * ^slicing.discriminator.type = #pattern
+  * ^slicing.discriminator.type = #value
   * ^slicing.discriminator.path = "type"
   * ^slicing.rules = #open
 * output contains response 0..1 MS
@@ -61,3 +59,8 @@ Description: "Defines how Task is used to ask for a Questionnaire to be complete
   * value[x] 1..1 MS
   * value[x] only Reference(QuestionnaireResponse)
   * value[x] ^short = "url"
+
+Invariant: sdc-t1
+Description: "Either code is 'fulfill', focus is ServiceRequest and no 'questionnaire' input; or code is 'complete-questionnaire', focus is omitted and 'questionnaire' input is present"
+Severity: #error
+Expression: "(code.coding.exists(code='fulfill' and system='http://hl7.org/fhir/CodeSystem/task-code') and \r\n                            (focus.resolve() is ServiceRequest) and \r\n                            input.exists(type.coding.exists(system='http://hl7.org/fhir/uv/sdc/CodeSystem/temp' and code='questionnaire')).not())\r\n                        or (code.coding.exists(code='complete-questionnaire' and system='http://hl7.org/fhir/uv/sdc/CodeSystem/temp') and \r\n                            focus.exists().not() and \r\n                            input.exists(type.coding.exists(system='http://hl7.org/fhir/uv/sdc/CodeSystem/temp' and code='questionnaire')))"

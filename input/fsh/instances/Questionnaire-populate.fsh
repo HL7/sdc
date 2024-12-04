@@ -6,7 +6,7 @@ Usage: #definition
 * url = "http://hl7.org/fhir/uv/sdc/OperationDefinition/Questionnaire-populate"
 * name = "SDCPopulateQuestionnaire"
 * title = "Populate Questionnaire"
-* status = #draft
+* status = #active
 * kind = #operation
 * date = "2018-08-19T21:48:56+10:00"
 * publisher = "HL7 International - FHIR Infrastructure Work Group"
@@ -23,24 +23,32 @@ Usage: #definition
 * parameter[0]
   * insert parameter(#identifier, #in, 0, "1", #Identifier, "A logical questionnaire identifier (i.e. `Questionnaire.identifier`\). The server must know the questionnaire or be able to retrieve it from other known repositories.")
 * parameter[+]
-  * insert parameter(#canonical, #in, 0, "1", #uri, "The canonical identifier for the questionnaire (optionally version-specific\).")
+  * insert parameter(#questionnaire, #in, 0, "1", #Element, "The Questionnaire to populate the response. Can be provided as a canonical for the questionnaire\, a questionnaire reference\, or directly as a questionnaire resource.")
+  * extension[0]
+    * url = "http://hl7.org/fhir/StructureDefinition/operationdefinition-allowed-type"
+    * valueUri = "uri"
+  * extension[+]
+    * url = "http://hl7.org/fhir/StructureDefinition/operationdefinition-allowed-type"
+    * valueUri = "Reference"
+  * extension[+]
+    * url = "http://hl7.org/fhir/StructureDefinition/operationdefinition-allowed-type"
+    * valueUri = "Questionnaire"
 * parameter[+]
-  * insert parameter(#questionnaire, #in, 0, "1", #Questionnaire, "The [Questionnaire](http://hl7.org/fhir/R4/questionnaire.html\) is provided directly as part of the request. Servers may choose not to accept questionnaires in this fashion")
-* parameter[+]
-  * insert parameter(#questionnaireRef, #in, 0, "1", #Reference, "The [Questionnaire](http://hl7.org/fhir/R4/questionnaire.html\) is provided as a resource reference. Servers may choose not to accept questionnaires in this fashion or may fail if they cannot resolve or access the referenced questionnaire.")
-  * targetProfile = "http://hl7.org/fhir/StructureDefinition/Questionnaire"
-* parameter[+]
-  * insert parameter(#subject, #in, 1, "1", #Reference, "The resource that is to be the *QuestionnaireResponse.subject*. The [QuestionnaireResponse](http://hl7.org/fhir/R4/questionnaireresponse.html\) instance will reference the provided subject.  In addition\, if the *local* parameter is set to true\, server information about the specified subject will be used to populate the instance.")
+  * insert parameter(#subject, #in, 0, "1", #Reference, "The resource that is to be the *QuestionnaireResponse.subject*. The [QuestionnaireResponse](http://hl7.org/fhir/R4/questionnaireresponse.html\) instance will reference the provided subject.  In addition\, if the *local* parameter is set to true\, server information about the specified subject will be used to populate the instance.")
 * parameter[+]
   * insert parameterComplex(#context, #in, 0, "*", "Resources containing information to be used to help populate the [QuestionnaireResponse](http://hl7.org/fhir/R4/questionnaireresponse.html\).  These will typically be FHIR resources\, though alternative population mechanisms might allow consumption of binaries containing FHIR documents\, CDA documents or other source materials.  Servers might not support all possible source materials and may ignore materials they do not recognize.  (They MAY provide warnings if ignoring submitted resources.\)")
   * part[0]
-    * insert parameter(#name, #in, 0, "*", #string, "The name of the launchContext or root Questionnaire variable the passed content should be used as for population purposes.  The name SHALL correspond to a launchContext or variable delared at the root of the Questionnaire.")
+    * insert parameter(#name, #in, 1, "1", #string, "The name of the launchContext or root Questionnaire variable the passed content should be used as for population purposes.  The name SHALL correspond to a launchContext or variable delared at the root of the Questionnaire.")
   * part[+]
-    * insert parameter(#content, #in, 0, "*", #Reference, "The actual resource (or resources\) to use as the value of the launchContext or variable.")
+    * insert parameter(#content, #in, 1, "*", #Element, "The actual resource (or resources\) to use as the value of the launchContext or variable.")
+    * extension[0]
+      * url = "http://hl7.org/fhir/StructureDefinition/operationdefinition-allowed-type"
+      * valueUri = "Reference"
+    * extension[+]
+      * url = "http://hl7.org/fhir/StructureDefinition/operationdefinition-allowed-type"
+      * valueUri = "Resource"
 * parameter[+]
   * insert parameter(#local, #in, 0, "1", #boolean,"If specified and set to `true` (and the server is capable\)\, the server should use what resources and other knowledge it has about the referenced subject when pre-populating answers to questions.")
-* parameter[+]
-  * insert parameter(#launchContext, #in, 0, "1", #Extension, "Resources that provide context for form processing logic (pre-population\) when creating/displaying/editing a QuestionnaireResponse.")
 * parameter[+]
   * insert parameter(#response, #out, 1, "1", #QuestionnaireResponse, "The partially (or fully\)-populated set of answers for the specified Questionnaire")
 * parameter[+]

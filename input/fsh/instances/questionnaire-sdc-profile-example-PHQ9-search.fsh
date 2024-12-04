@@ -8,7 +8,7 @@ Usage: #example
 * url = "http://hl7.org/fhir/uv/sdc/Questionnaire/questionnaire-sdc-profile-example-PHQ9-search"
 * name = "SDCPHQ9"
 * title = "Patient Health Questionnaire - adaptive search"
-* status = #draft
+* status = #active
 * experimental = true
 * date = "2016-03-31T08:01:25+11:00"
 * subjectType = #Patient

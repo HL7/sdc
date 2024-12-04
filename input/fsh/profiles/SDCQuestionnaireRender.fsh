@@ -3,10 +3,10 @@ Parent: SDCBaseQuestionnaire
 Id: sdc-questionnaire-render
 Title: "Advanced Rendering Questionnaire"
 Description: "Defines additional capabilities for controlling the rendering of the questionnaire."
-* ^status = #draft
+* ^status = #active
 * . ^short = "Advanced Rendering Questionnaire"
 * . ^definition = "Defines additional capabilities for controlling the rendering of the questionnaire."
-* extension contains $rendering-styleSensitive named styleSensitive 0..1 MS
+* modifierExtension contains RenderingCriticalExtension named rendering-criticalExtension 0..* MS
 * title.
   * extension contains
       $rendering-style named title-renderingStyle 0..1 and
@@ -39,6 +39,7 @@ Description: "Defines additional capabilities for controlling the rendering of t
     * extension[expression] ^comment = "Note: The variation cannot change the meaning of the question. The extension can be used even if text is present; and if the extension is supported, the evaluation will replace the text provided (with 'smarter' text). "
   * answerOption
     * extension contains ItemAnswerMedia named itemAnswerMedia 0..1
+    * extension contains QOptionPrefix named optionPrefix 0..1
     * valueString only string
     * valueString.extension contains
         $rendering-style named optionString-renderingStyle 0..1 and

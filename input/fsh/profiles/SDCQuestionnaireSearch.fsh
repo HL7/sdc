@@ -3,13 +3,13 @@ Parent: SDCBaseQuestionnaire
 Id: sdc-questionnaire-search
 Title: "Search Questionnaire"
 Description: "Describes the elements that should be exposed in a response to a search for questionnaires."
-* ^status = #draft
+* ^status = #active
 * . ^definition = "Describes the elements that should be exposed in a response to a search for questionnaires."
 * extension[assemble-expectation] only AssembleExpectation
 * extension contains AssembledFromExtension named assembledFrom 0..*
 * identifier MS
-* title 1..1 MS
 * experimental MS
+* title 1..1 MS
 * date 1..1 MS
   * ^definition = "Identifies when this version of the form was created.  Changes whenever the form is updated."
 * publisher MS

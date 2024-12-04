@@ -51,7 +51,7 @@
       the existing resources.  For this to work, the <code>id</code> of the resource must be retained through the round-trip process to allow for the update.
       This can be supported by storing the id as a <a href="{{site.data.fhir.path}}extension-questionnaire-hidden.html">hidden</a> question not shown to the
       user.  This question item would have a type of 'string' and, if using the definition-based extraction approach, a definition that corresponded to the 
-      'id' element of the relevant resource type (e.g. <code>http://hl7.org/fhir/AllergyIntolerance#AllergyIntolerance.id</code>).     
+      'id' element of the relevant resource type (e.g. <code>http://hl7.org/fhir/StructureDefinition/AllergyIntolerance#AllergyIntolerance.id</code>).     
       Note that the inclusion of the id as a hidden question is only relevant for the definition-based and StructureMap-based approaches. It is not needed
       for the Observation-based approach.</li>
     <li>

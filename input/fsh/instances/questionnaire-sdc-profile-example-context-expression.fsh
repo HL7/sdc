@@ -13,7 +13,7 @@ Usage: #example
   * url = "http://hl7.org/fhir/uv/sdc/StructureDefinition/sdc-questionnaire-launchContext"
 * url = "http://hl7.org/fhir/uv/sdc/questionnaire-sdc-profile-example-context-expression"
 * name = "SDCExampleUsingContextExpression"
-* status = #draft
+* status = #active
 * item
   * linkId = "1.0"
   * type = #group

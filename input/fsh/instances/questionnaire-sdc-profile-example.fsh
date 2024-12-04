@@ -6,20 +6,20 @@ Usage: #example
 * meta.lastUpdated = "2014-05-15T17:25:15Z"
 * type = #collection
 * entry[0]
-  * fullUrl = "http://AHRQ.org/form/Questionnaire/F8-1.2"
+  * fullUrl = "http://example.org/AHRQ/form/Questionnaire/F8-1.2"
   * resource = F8-1.2
 * entry[+]
-  * fullUrl = "http://AHRQ.org/form/Questionnaire/HERF-1.2"
+  * fullUrl = "http://example.org/AHRQ/form/Questionnaire/HERF-1.2"
   * resource = HERF-1.2
 * entry[+]
-  * fullUrl = "http://AHRQ.org/form/Questionnaire/3921052v1.0"
-  * resource = Inline-Instance-for-questionnaire-sdc-profile-example-1
+  * fullUrl = "http://example.org/AHRQ/form/Questionnaire/3921052v1.0"
+  * resource = 3921052v1.0
 * entry[+]
-  * fullUrl = "http://AHRQ.org/form/Questionnaire/F2674812v4.0"
-  * resource = Inline-Instance-for-questionnaire-sdc-profile-example-2
+  * fullUrl = "http://example.org/AHRQ/form/Questionnaire/2674812v4.0"
+  * resource = 2674812v4.0
 * entry[+]
-  * fullUrl = "http://AHRQ.org/form/Questionnaire/3265657v2.0"
-  * resource = Inline-Instance-for-questionnaire-sdc-profile-example-3
+  * fullUrl = "http://example.org/AHRQ/form/Questionnaire/3265657v2.0"
+  * resource = 3265657v2.0
 
 Instance: F8-1.2
 InstanceOf: Questionnaire
@@ -28,7 +28,7 @@ Usage: #inline
 * contained[0]
   * resourceType = "CodeSystem"
   * id = "d1e551-cs"
-  * url = "http://AHRQ.org/form/question_identifier#Medication/DE270-cs"
+  * url = "http://example.org/AHRQ/form/question_identifier#Medication/DE270-cs"
   * name = "MedicationDE270cs"
   * status = #active
   * caseSensitive = true
@@ -70,7 +70,7 @@ Usage: #inline
   * id = "d1e551-vs"
   * name = "D1e551vs"
   * status = #active
-  * compose.include.system = "http://AHRQ.org/form/question_identifier#Medication/DE270-cs"
+  * compose.include.system = "http://example.org/AHRQ/form/question_identifier#Medication/DE270-cs"
     * extension[0]
       * url = "http://hl7.org/fhir/StructureDefinition/valueset-system"
       * valueCanonical = "#d1e551-cs"
@@ -80,7 +80,7 @@ Usage: #inline
 * contained[+]
   * resourceType = "CodeSystem"
   * id = "d1e639-cs"
-  * url = "http://AHRQ.org/form/question_identifier#Medication/DE273-cs"
+  * url = "http://example.org/AHRQ/form/question_identifier#Medication/DE273-cs"
   * name = "MedicationDE273cs"
   * status = #active
   * caseSensitive = true
@@ -103,7 +103,7 @@ Usage: #inline
   * url = "http://hl7.org/fhir/uv/sdc/ValueSet/d1e639-vs"
   * name = "D1e639vs"
   * status = #active
-  * compose.include.system = "http://AHRQ.org/form/question_identifier#Medication/DE273-cs"
+  * compose.include.system = "http://example.org/AHRQ/form/question_identifier#Medication/DE273-cs"
     * extension[0]
       * url = "http://hl7.org/fhir/StructureDefinition/valueset-system"
       * valueCanonical = "#d1e639-cs"
@@ -113,7 +113,7 @@ Usage: #inline
 * contained[+]
   * resourceType = "CodeSystem"
   * id = "d1e910cs"
-  * url = "http://AHRQ.org/form/question_identifier#Medication/DE279-cs"
+  * url = "http://example.org/AHRQ/form/question_identifier#Medication/DE279-cs"
   * name = "MedicationDE279cs"
   * status = #active
   * caseSensitive = true
@@ -129,7 +129,7 @@ Usage: #inline
   * id = "d1e910-vs"
   * name = "D1e910vs"
   * status = #active
-  * compose.include.system = "http://AHRQ.org/form/question_identifier#Medication/DE279-cs"
+  * compose.include.system = "http://example.org/AHRQ/form/question_identifier#Medication/DE279-cs"
     * extension[0]
       * url = "http://hl7.org/fhir/StructureDefinition/valueset-system"
       * valueCanonical = "#d1e910cs"
@@ -139,7 +139,7 @@ Usage: #inline
 * contained[+]
   * resourceType = "CodeSystem"
   * id = "d1e1125-cs"
-  * url = "http://AHRQ.org/form/question_identifier#Medication/DE285-cs"
+  * url = "http://example.org/AHRQ/form/question_identifier#Medication/DE285-cs"
   * name = "MedicationDE285cs"
   * status = #active
   * caseSensitive = true
@@ -164,7 +164,7 @@ Usage: #inline
   * id = "d1e1125-vs"
   * name = "D1e1125vs"
   * status = #active
-  * compose.include.system = "http://AHRQ.org/form/question_identifier#Medication/DE285-cs"
+  * compose.include.system = "http://example.org/AHRQ/form/question_identifier#Medication/DE285-cs"
     * extension[0]
       * url = "http://hl7.org/fhir/StructureDefinition/valueset-system"
       * valueCanonical = "#d1e1125-cs"
@@ -174,7 +174,7 @@ Usage: #inline
 * contained[+]
   * resourceType = "CodeSystem"
   * id = "d1e1558-cs"
-  * url = "http://AHRQ.org/form/question_identifier#Medication/DE288-cs"
+  * url = "http://example.org/AHRQ/form/question_identifier#Medication/DE288-cs"
   * name = "MedicationDE288cs"
   * status = #active
   * caseSensitive = true
@@ -196,7 +196,7 @@ Usage: #inline
   * id = "d1e1558-vs"
   * name = "D1e1558vs"
   * status = #active
-  * compose.include.system = "http://AHRQ.org/form/question_identifier#Medication/DE288-cs"
+  * compose.include.system = "http://example.org/AHRQ/form/question_identifier#Medication/DE288-cs"
     * extension[0]
       * url = "http://hl7.org/fhir/StructureDefinition/valueset-system"
       * valueCanonical = "#d1e1558-cs"
@@ -206,7 +206,7 @@ Usage: #inline
 * contained[+]
   * resourceType = "CodeSystem"
   * id = "d1e1746-cs"
-  * url = "http://AHRQ.org/form/question_identifier#Medication/DE291-cs"
+  * url = "http://example.org/AHRQ/form/question_identifier#Medication/DE291-cs"
   * name = "MedicationDE291cs"
   * status = #active
   * caseSensitive = true
@@ -261,7 +261,7 @@ Usage: #inline
   * id = "d1e1746-vs"
   * name = "D1e746vs"
   * status = #active
-  * compose.include.system = "http://AHRQ.org/form/question_identifier#Medication/DE291-cs"
+  * compose.include.system = "http://example.org/AHRQ/form/question_identifier#Medication/DE291-cs"
     * extension[0]
       * url = "http://hl7.org/fhir/StructureDefinition/valueset-system"
       * valueCanonical = "#d1e1746-cs"
@@ -271,7 +271,7 @@ Usage: #inline
 * contained[+]
   * resourceType = "CodeSystem"
   * id = "d1e1863-cs"
-  * url = "http://AHRQ.org/form/question_identifier#Medication/DE294-cs"
+  * url = "http://example.org/AHRQ/form/question_identifier#Medication/DE294-cs"
   * name = "MedicationDE294cs"
   * status = #active
   * caseSensitive = true
@@ -296,7 +296,7 @@ Usage: #inline
   * id = "d1e1863-vs"
   * name = "D1e863vs"
   * status = #active
-  * compose.include.system = "http://AHRQ.org/form/question_identifier#Medication/DE294-cs"
+  * compose.include.system = "http://example.org/AHRQ/form/question_identifier#Medication/DE294-cs"
     * extension[0]
       * url = "http://hl7.org/fhir/StructureDefinition/valueset-system"
       * valueCanonical = "#d1e1863-cs"
@@ -306,7 +306,7 @@ Usage: #inline
 * contained[+]
   * resourceType = "CodeSystem"
   * id = "d1e2109-cs"
-  * url = "http://AHRQ.org/form/question_identifier#Medication/DE297-cs"
+  * url = "http://example.org/AHRQ/form/question_identifier#Medication/DE297-cs"
   * name = "MedicationDE297cs"
   * status = #active
   * caseSensitive = true
@@ -325,7 +325,7 @@ Usage: #inline
   * id = "d1e2109-vs"
   * name = "D1e2109vs"
   * status = #active
-  * compose.include.system = "http://AHRQ.org/form/question_identifier#Medication/DE297-cs"
+  * compose.include.system = "http://example.org/AHRQ/form/question_identifier#Medication/DE297-cs"
     * extension[0]
       * url = "http://hl7.org/fhir/StructureDefinition/valueset-system"
       * valueCanonical = "#d1e2109-cs"
@@ -335,7 +335,7 @@ Usage: #inline
 * contained[+]
   * resourceType = "CodeSystem"
   * id = "d1e2272-cs"
-  * url = "http://AHRQ.org/form/question_identifier#Medication/DE300-cs"
+  * url = "http://example.org/AHRQ/form/question_identifier#Medication/DE300-cs"
   * name = "MedicationDE300cs"
   * status = #active
   * caseSensitive = true
@@ -354,7 +354,7 @@ Usage: #inline
   * id = "d1e2272-vs"
   * name = "D1e2272vs"
   * status = #active
-  * compose.include.system = "http://AHRQ.org/form/question_identifier#Medication/DE300-cs"
+  * compose.include.system = "http://example.org/AHRQ/form/question_identifier#Medication/DE300-cs"
     * extension[0]
       * url = "http://hl7.org/fhir/StructureDefinition/valueset-system"
       * valueCanonical = "#d1e2272-cs"
@@ -364,7 +364,7 @@ Usage: #inline
 * contained[+]
   * resourceType = "CodeSystem"
   * id = "d1e2489-cs"
-  * url = "http://AHRQ.org/form/question_identifier#Medication/DE303-cs"
+  * url = "http://example.org/AHRQ/form/question_identifier#Medication/DE303-cs"
   * name = "MedicationDE303cs"
   * status = #active
   * caseSensitive = true
@@ -383,7 +383,7 @@ Usage: #inline
   * id = "d1e2489-vs"
   * name = "D1e2489vs"
   * status = #active
-  * compose.include.system = "http://AHRQ.org/form/question_identifier#Medication/DE303-cs"
+  * compose.include.system = "http://example.org/AHRQ/form/question_identifier#Medication/DE303-cs"
     * extension[0]
       * url = "http://hl7.org/fhir/StructureDefinition/valueset-system"
       * valueCanonical = "#d1e2489-cs"
@@ -393,7 +393,7 @@ Usage: #inline
 * contained[+]
   * resourceType = "CodeSystem"
   * id = "d1e2768-cs"
-  * url = "http://AHRQ.org/form/question_identifier#Medication/DE309-cs"
+  * url = "http://example.org/AHRQ/form/question_identifier#Medication/DE309-cs"
   * name = "MedicationDE309cs"
   * status = #active
   * caseSensitive = true
@@ -412,7 +412,7 @@ Usage: #inline
   * id = "d1e2768-vs"
   * name = "D1e2768vs"
   * status = #active
-  * compose.include.system = "http://AHRQ.org/form/question_identifier#Medication/DE309-cs"
+  * compose.include.system = "http://example.org/AHRQ/form/question_identifier#Medication/DE309-cs"
     * extension[0]
       * url = "http://hl7.org/fhir/StructureDefinition/valueset-system"
       * valueCanonical = "#d1e2768-cs"
@@ -422,7 +422,7 @@ Usage: #inline
 * contained[+]
   * resourceType = "CodeSystem"
   * id = "d1e2928-cs"
-  * url = "http://AHRQ.org/form/question_identifier#Medication/DE312-cs"
+  * url = "http://example.org/AHRQ/form/question_identifier#Medication/DE312-cs"
   * name = "MedicationDE312cs"
   * status = #active
   * caseSensitive = true
@@ -444,7 +444,7 @@ Usage: #inline
   * id = "d1e2928-vs"
   * name = "D1e2928vs"
   * status = #active
-  * compose.include.system = "http://AHRQ.org/form/question_identifier#Medication/DE312-cs"
+  * compose.include.system = "http://example.org/AHRQ/form/question_identifier#Medication/DE312-cs"
     * extension[0]
       * url = "http://hl7.org/fhir/StructureDefinition/valueset-system"
       * valueCanonical = "#d1e2928-cs"
@@ -454,7 +454,7 @@ Usage: #inline
 * contained[+]
   * resourceType = "CodeSystem"
   * id = "d1e3159-cs"
-  * url = "http://AHRQ.org/form/question_identifier#Medication/DE315-cs"
+  * url = "http://example.org/AHRQ/form/question_identifier#Medication/DE315-cs"
   * name = "MedicationDE315cs"
   * status = #active
   * caseSensitive = true
@@ -494,7 +494,7 @@ Usage: #inline
   * id = "d1e3159-vs"
   * name = "D1e3159vs"
   * status = #active
-  * compose.include.system = "http://AHRQ.org/form/question_identifier#Medication/DE315-cs"
+  * compose.include.system = "http://example.org/AHRQ/form/question_identifier#Medication/DE315-cs"
     * extension[0]
       * url = "http://hl7.org/fhir/StructureDefinition/valueset-system"
       * valueCanonical = "#d1e3159-cs"
@@ -504,7 +504,7 @@ Usage: #inline
 * contained[+]
   * resourceType = "CodeSystem"
   * id = "d1e4024-cs"
-  * url = "http://AHRQ.org/form/question_identifier#Medication/DE333-cs"
+  * url = "http://example.org/AHRQ/form/question_identifier#Medication/DE333-cs"
   * name = "MedicationDE333cs"
   * status = #active
   * caseSensitive = true
@@ -520,7 +520,7 @@ Usage: #inline
   * id = "d1e4024-vs"
   * name = "D1e4024vs"
   * status = #active
-  * compose.include.system = "http://AHRQ.org/form/question_identifier#Medication/DE333-cs"
+  * compose.include.system = "http://example.org/AHRQ/form/question_identifier#Medication/DE333-cs"
     * extension[0]
       * url = "http://hl7.org/fhir/StructureDefinition/valueset-system"
       * valueCanonical = "#d1e4024-cs"
@@ -530,7 +530,7 @@ Usage: #inline
 * contained[+]
   * resourceType = "CodeSystem"
   * id = "d1e4118-cs"
-  * url = "http://AHRQ.org/form/question_identifier#Medication/DE336-cs"
+  * url = "http://example.org/AHRQ/form/question_identifier#Medication/DE336-cs"
   * name = "MedicationDE336cs"
   * status = #active
   * caseSensitive = true
@@ -546,7 +546,7 @@ Usage: #inline
   * id = "d1e4118-vs"
   * name = "D1e4118vs"
   * status = #active
-  * compose.include.system = "http://AHRQ.org/form/question_identifier#Medication/DE336-cs"
+  * compose.include.system = "http://example.org/AHRQ/form/question_identifier#Medication/DE336-cs"
     * extension[0]
       * url = "http://hl7.org/fhir/StructureDefinition/valueset-system"
       * valueCanonical = "#d1e4118-cs"
@@ -556,7 +556,7 @@ Usage: #inline
 * contained[+]
   * resourceType = "CodeSystem"
   * id = "d1e4236-cs"
-  * url = "http://AHRQ.org/form/question_identifier#Medication/DE348-cs"
+  * url = "http://example.org/AHRQ/form/question_identifier#Medication/DE348-cs"
   * name = "MedicationDE348cs"
   * status = #active
   * caseSensitive = true
@@ -614,7 +614,7 @@ Usage: #inline
   * id = "d1e4236-vs"
   * name = "D1e4236vs"
   * status = #active
-  * compose.include.system = "http://AHRQ.org/form/question_identifier#Medication/DE348-cs"
+  * compose.include.system = "http://example.org/AHRQ/form/question_identifier#Medication/DE348-cs"
     * extension[0]
       * url = "http://hl7.org/fhir/StructureDefinition/valueset-system"
       * valueCanonical = "#d1e4236-cs"
@@ -624,7 +624,7 @@ Usage: #inline
 * contained[+]
   * resourceType = "CodeSystem"
   * id = "d1e4716-cs"
-  * url = "http://AHRQ.org/form/question_identifier#Medication/DE351-cs"
+  * url = "http://example.org/AHRQ/form/question_identifier#Medication/DE351-cs"
   * name = "MedicationDE351cs"
   * status = #active
   * caseSensitive = true
@@ -682,7 +682,7 @@ Usage: #inline
   * id = "d1e4716-vs"
   * name = "D1e4716vs"
   * status = #active
-  * compose.include.system = "http://AHRQ.org/form/question_identifier#Medication/DE351-cs"
+  * compose.include.system = "http://example.org/AHRQ/form/question_identifier#Medication/DE351-cs"
     * extension[0]
       * url = "http://hl7.org/fhir/StructureDefinition/valueset-system"
       * valueCanonical = "#d1e4716-cs"
@@ -846,6 +846,7 @@ Usage: #inline
     * linkId = "Medication/SEC02/74078-7"
     * type = #group
     * repeats = true
+    * required = true
     * item[0]
       * linkId = "Medication/SEC02/74078-7.0"
       * text = "Please provide the following medication details for any medications or other substances directly involved in the event."
@@ -974,7 +975,7 @@ Usage: #inline
 * contained[0]
   * resourceType = "CodeSystem"
   * id = "d1e5879-cs"
-  * url = "http://AHRQ.org/form/question_identifier#HERF/DE3-cs"
+  * url = "http://example.org/AHRQ/form/question_identifier#HERF/DE3-cs"
   * status = #active
   * caseSensitive = true
   * content = #complete
@@ -994,14 +995,14 @@ Usage: #inline
   * resourceType = "ValueSet"
   * id = "d1e5879-vs"
   * status = #active
-  * compose.include.system = "http://AHRQ.org/form/question_identifier#HERF/DE3-cs"
+  * compose.include.system = "http://example.org/AHRQ/form/question_identifier#HERF/DE3-cs"
     * extension
       * url = "http://hl7.org/fhir/StructureDefinition/valueset-system"
       * valueCanonical = "#d1e5879-cs"
 * contained[+]
   * resourceType = "CodeSystem"
   * id = "d1e6177-cs"
-  * url = "http://AHRQ.org/form/question_identifier#HERF/DE21-cs"
+  * url = "http://example.org/AHRQ/form/question_identifier#HERF/DE21-cs"
   * status = #active
   * caseSensitive = true
   * content = #complete
@@ -1039,14 +1040,14 @@ Usage: #inline
   * resourceType = "ValueSet"
   * id = "d1e6177-vs"
   * status = #active
-  * compose.include.system = "http://AHRQ.org/form/question_identifier#HERF/DE21-cs"
+  * compose.include.system = "http://example.org/AHRQ/form/question_identifier#HERF/DE21-cs"
     * extension
       * url = "http://hl7.org/fhir/StructureDefinition/valueset-system"
       * valueCanonical = "#d1e6177-cs"
 * contained[+]
   * resourceType = "CodeSystem"
   * id = "d1e6853-cs"
-  * url = "http://AHRQ.org/form/question_identifier#HERF/DE42-cs"
+  * url = "http://example.org/AHRQ/form/question_identifier#HERF/DE42-cs"
   * status = #active
   * caseSensitive = true
   * content = #complete
@@ -1063,14 +1064,14 @@ Usage: #inline
   * resourceType = "ValueSet"
   * id = "d1e6853-vs"
   * status = #active
-  * compose.include.system = "http://AHRQ.org/form/question_identifier#HERF/DE42-cs"
+  * compose.include.system = "http://example.org/AHRQ/form/question_identifier#HERF/DE42-cs"
     * extension
       * url = "http://hl7.org/fhir/StructureDefinition/valueset-system"
       * valueCanonical = "#d1e6853-cs"
 * contained[+]
   * resourceType = "CodeSystem"
   * id = "d1e7006-cs"
-  * url = "http://AHRQ.org/form/question_identifier#HERF/Hidden-cs"
+  * url = "http://example.org/AHRQ/form/question_identifier#HERF/Hidden-cs"
   * status = #active
   * caseSensitive = true
   * content = #complete
@@ -1084,14 +1085,14 @@ Usage: #inline
   * resourceType = "ValueSet"
   * id = "d1e7006-vs"
   * status = #active
-  * compose.include.system = "http://AHRQ.org/form/question_identifier#HERF/Hidden-cs"
+  * compose.include.system = "http://example.org/AHRQ/form/question_identifier#HERF/Hidden-cs"
     * extension
       * url = "http://hl7.org/fhir/StructureDefinition/valueset-system"
       * valueCanonical = "#d1e7006-cs"
 * contained[+]
   * resourceType = "CodeSystem"
   * id = "d1e7220-cs"
-  * url = "http://AHRQ.org/form/question_identifier#HERF/DE43-cs"
+  * url = "http://example.org/AHRQ/form/question_identifier#HERF/DE43-cs"
   * status = #active
   * caseSensitive = true
   * content = #complete
@@ -1108,14 +1109,14 @@ Usage: #inline
   * resourceType = "ValueSet"
   * id = "d1e7220-vs"
   * status = #active
-  * compose.include.system = "http://AHRQ.org/form/question_identifier#HERF/DE43-cs"
+  * compose.include.system = "http://example.org/AHRQ/form/question_identifier#HERF/DE43-cs"
     * extension
       * url = "http://hl7.org/fhir/StructureDefinition/valueset-system"
       * valueCanonical = "#d1e7220-cs"
 * contained[+]
   * resourceType = "CodeSystem"
   * id = "d1e7422-cs"
-  * url = "http://AHRQ.org/form/question_identifier#HERF/DE33-cs"
+  * url = "http://example.org/AHRQ/form/question_identifier#HERF/DE33-cs"
   * status = #active
   * caseSensitive = true
   * content = #complete
@@ -1129,13 +1130,13 @@ Usage: #inline
   * resourceType = "ValueSet"
   * id = "d1e7422-vs"
   * status = #active
-  * compose.include.system = "http://AHRQ.org/form/question_identifier#HERF/DE33-cs"
+  * compose.include.system = "http://example.org/AHRQ/form/question_identifier#HERF/DE33-cs"
     * extension
       * url = "http://hl7.org/fhir/StructureDefinition/valueset-system"
       * valueCanonical = "#d1e7422-cs"
 * url = "http://hl7.org/fhir/uv/sdc/Questionnaire/HERF-1.2"
 * identifier
-  * system = "http://AHRQ.org"
+  * system = "http://example.org/AHRQ"
   * value = "identifier/HERF/1.2"
 * title = "Healthcare Event Reporting Form (HERF) Hospital Version 1.2"
 * status = #active
@@ -1338,7 +1339,7 @@ Usage: #inline
     * text = "AHRQ Common Formats - Hospital Version 1.2 - 2012 Medication or Other Substance"
     * type = #display
 
-Instance: Inline-Instance-for-questionnaire-sdc-profile-example-1
+Instance: 3921052v1.0
 InstanceOf: Questionnaire
 Usage: #inline
 * id = "3921052v1.0"
@@ -1493,7 +1494,7 @@ Usage: #inline
   * system = "http://example.org/nci.nih.gov/xml/owl/cadsr/form/form_design_identifier"
   * value = "3921052v1.0/"
 * title = "Diagnosis NCI Standard Template"
-* status = #draft
+* status = #active
 * date = "2013-10-16"
 * publisher = "National Cancer Institute (NCI)"
 * useContext
@@ -1572,7 +1573,7 @@ Usage: #inline
     * type = #open-choice
     * answerValueSet = "#d1e9025-vs"
 
-Instance: Inline-Instance-for-questionnaire-sdc-profile-example-2
+Instance: 2674812v4.0
 InstanceOf: Questionnaire
 Usage: #inline
 * id = "2674812v4.0"
@@ -2129,7 +2130,7 @@ Usage: #inline
     * type = #open-choice
     * answerValueSet = "#d1e14027-vs"
 
-Instance: Inline-Instance-for-questionnaire-sdc-profile-example-3
+Instance: 3265657v2.0
 InstanceOf: Questionnaire
 Usage: #inline
 * id = "3265657v2.0"

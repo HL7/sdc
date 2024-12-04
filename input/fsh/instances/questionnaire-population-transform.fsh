@@ -6,7 +6,7 @@ Usage: #example
 * url = "http://hl7.org/fhir/uv/sdc/StructureMap/questionnaire-population-transform"
 * name = "QuestionnairePopulationTransform"
 * title = "Questionnaire Population Transform"
-* status = #draft
+* status = #active
 * experimental = true
 * description = "Sample structure map showing process for auto-populating a QuestionnaireResponse from a query bundle"
 * structure[0]

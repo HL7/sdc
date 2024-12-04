@@ -22,7 +22,7 @@ Usage: #example
 * url = "http://hl7.org/fhir/uv/sdc/Questionnaire/sdc-modular-root"
 * name = "QuestionnaireSDCModularRoot"
 * title = "Example modular Questionnaire"
-* status = #draft
+* status = #active
 * experimental = true
 * description = "Example modular questionnaire - root of a questionnaire that references other questionnaires and element definitions"
 * item[0]
@@ -33,7 +33,7 @@ Usage: #example
       * language = #text/fhirpath
       * expression = "'patientname.'"
   * linkId = "1"
-  * definition = "http://hl7.org/fhir/uv/sdc/StructureDefinition/sdc-question-library#Demographics.name"
+  * definition = "http://hl7.org/fhir/uv/sdc/StructureDefinition/SdcQuestionLibrary#SdcQuestionLibrary.name"
   * type = #group
   * item
     * extension
@@ -44,17 +44,17 @@ Usage: #example
     * type = #display
 * item[+]
   * linkId = "2"
-  * definition = "http://hl7.org/fhir/uv/sdc/StructureDefinition/sdc-question-library#Demographics.dob"
+  * definition = "http://hl7.org/fhir/uv/sdc/StructureDefinition/SdcQuestionLibrary#SdcQuestionLibrary.dob"
   * type = #date
   * required = true
 * item[+]
   * linkId = "3"
-  * definition = "http://hl7.org/fhir/uv/sdc/StructureDefinition/sdc-question-library#Demographics.sex"
+  * definition = "http://hl7.org/fhir/uv/sdc/StructureDefinition/SdcQuestionLibrary#SdcQuestionLibrary.sex"
   * type = #choice
   * required = true
 * item[+]
   * linkId = "4"
-  * definition = "http://hl7.org/fhir/uv/sdc/StructureDefinition/sdc-question-library#Demographics.address"
+  * definition = "http://hl7.org/fhir/uv/sdc/StructureDefinition/SdcQuestionLibrary#SdcQuestionLibrary.address"
   * type = #group
   * required = true
   * item

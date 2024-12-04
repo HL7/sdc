@@ -182,7 +182,7 @@
       When performing population, the considerations around <a href="expressions.html#expressionerrors">errors and lack of support</a> for expressions may come into
       play.  In addition, similar considerations can also be relevant in terms of what 'population' approach the Questionnaire supports, as opposed to what
       level of population capability the Form Filler has.  The desired behavior of alerting the user that some elements might not have been populated and that
-      other clients might provide more population support is the same whether the variation is "handles FHIRPath vs. CQL" or "uses Observation-based vs. definition-based".</li>
+      other clients might provide more population support is the same whether the variation is "handles FHIRPath vs. CQL" or "uses Observation-based vs. expression-based".</li>
     <li>
       When information from other sources has been used to help populate a QuestionnaireResponse, there may be a desire to capture what information sources
       were used, what software was used to perform the population process, etc.  The way to represent this information in FHIR is using the
@@ -342,7 +342,21 @@
       To signal that the item.code is actually intended for use in population (as opposed to just providing metadata about the Questionnaire item, the
       <a href="StructureDefinition-sdc-questionnaire-observationLinkPeriod.html">questionnaire-observationLinkPeriod</a> extension must also be included).  This extension
       indicates the period of time over which to search for matching observations.  If there are no observations within that window, no population will occur.
-      For observations where how recent they are does not matter (e.g. blood type), simply set the duration to a long period of time - e.g. 200 years.</li>
+      For observations where how recent they are does not matter (e.g. blood type), simply set the duration to a long period of time - e.g. 200 years. If a link period is defined at the Questionnaire root, on a group item, or on a question item with descendent questions, the period will apply to all eligible (those having item.code and being of type question) descendent questions unless overridden by a nearer link period declaration.      
+       <p style="margin-top:10px;">
+       <b>Observation Link Period Hierarchical Diagram:</b> This diagram illustrates the structure and flow of 'observationLinkPeriod' extension in a Questionnaire. It shows how the period applies from the Questionnaire root down to group items and question items, with cases of inheritance, overriding, and items without codes.
+      </p>
+         <div style="text-align: center;">
+          <img src="ObservationLinkPeriod.png" width="800px" alt="It shows how the period applies from the Questionnaire root down to group items and question items, with cases of inheritance, overriding, and items without codes"/>
+        </div>
+
+        <b>Diagram Details:</b>
+        <ul>
+         <li>Questionnaire Root: Contains the initial observationLinkPeriod setting.</li>
+         <li>Group Items: Inherit the observationLinkPeriod from the root or override it if a new period is defined.</li>
+         <li>Question Items: Items with <code>item.code</code> inherit the nearest observationLinkPeriod from their ancestors, such as the root or a parent group, which allows them to participate in observation-based auto-population. If an observationLinkPeriod is defined directly on an item with <code>item.code</code>, this specific period overrides any inherited period. Items without <code>item.code</code> do not inherit any observationLinkPeriod and are excluded from the auto-population mechanism. However, if an item with no <code>item.code</code> has descendants that do have <code>item.code</code>, those descendants can still inherit the nearest applicable observationLinkPeriod from higher levels.</li>
+        </ul>
+      </li>
     <li>
       Multiple <code>item.code</code> elements might be present.  If so, each is considered an acceptable Observation.code for the desired population
       value.</li>

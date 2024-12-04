@@ -6,7 +6,7 @@ Usage: #definition
 * url = "http://hl7.org/fhir/uv/sdc/OperationDefinition/Questionnaire-populatelink"
 * name = "SDCQuestionnairePopulateLink"
 * title = "Generate a link to a Questionnaire completion webpage"
-* status = #draft
+* status = #active
 * kind = #operation
 * date = "2018-08-19T21:48:56+10:00"
 * publisher = "HL7 International - FHIR Infrastructure Work Group"
@@ -23,12 +23,16 @@ Usage: #definition
 * parameter[0]
   * insert parameter(#identifier, #in, 0, "1", #Identifier, "A logical questionnaire identifier (i.e. `Questionnaire.identifier`\). The server must know the questionnaire or be able to retrieve it from other known repositories.")
 * parameter[+]
-  * insert parameter(#canonical, #in, 0, "1", #uri, "The canonical identifier for the questionnaire (optionally version-specific\).")
-* parameter[+]
-  * insert parameter(#questionnaire, #in, 0, "1", #Questionnaire, "The [Questionnaire](http://hl7.org/fhir/R4/questionnaire.html\) is provided directly as part of the request. Servers may choose not to accept questionnaires in this fashion")
-* parameter[+]
-  * insert parameter(#questionnaireRef, #in, 0, "1", #Reference, "The [Questionnaire](http://hl7.org/fhir/R4/questionnaire.html\) is provided as a resource reference. Servers may choose not to accept questionnaires in this fashion or may fail if they cannot resolve or access the referenced questionnaire.")
-  * targetProfile = "http://hl7.org/fhir/StructureDefinition/Questionnaire"
+  * insert parameter(#questionnaire, #in, 0, "1", #Element, "The Questionnaire to populate the response. Can be provided as a canonical for the questionnaire\, a questionnaire reference\, or directly as a questionnaire resource.")
+  * extension[0]
+    * url = "http://hl7.org/fhir/StructureDefinition/operationdefinition-allowed-type"
+    * valueUri = "uri"
+  * extension[+]
+    * url = "http://hl7.org/fhir/StructureDefinition/operationdefinition-allowed-type"
+    * valueUri = "Reference"
+  * extension[+]
+    * url = "http://hl7.org/fhir/StructureDefinition/operationdefinition-allowed-type"
+    * valueUri = "Questionnaire"
 * parameter[+]
   * insert parameterComplex(#context, #in, 0, "*", "Resources containing information to be used to help populate the [QuestionnaireResponse](http://hl7.org/fhir/R4/questionnaireresponse.html\).  These will typically be FHIR resources\, though alternative population mechanisms might allow consumption of binaries containing FHIR documents\, CDA documents or other source materials.  Servers might not support all possible source materials and may ignore materials they do not recognize.  (They MAY provide warnings if ignoring submitted resources.\)")
   * part[0]

@@ -6,7 +6,7 @@ Usage: #example
 * url = "http://hl7.org/fhir/uv/sdc/Questionnaire/questionnaire-sdc-test-required-radios"
 * name = "RequiredRadioButtons"
 * title = "Required Radio Buttons"
-* status = #draft
+* status = #active
 * experimental = true
 * description = "A Test form with required fields"
 * item

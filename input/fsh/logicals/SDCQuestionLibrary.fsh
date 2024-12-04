@@ -1,11 +1,11 @@
 Logical: SDCQuestionLibrary
-Id: sdc-question-library
+Id: SdcQuestionLibrary
 Title: "SDC Question Library"
 Description: "An example library of questions showing how questions can be compiled into a library for use by modular questionnaires"
 * ^version = "3.0.0"
-* ^status = #draft
+* ^status = #active
 * ^experimental = true
-* ^type = "Demographics"
+//* ^type = "Demographics"
 * . ^short = "SDC Question Library"
   * ^definition = "A set of questions related to demographics"
 * dob 0..1 date "n/a" "n/a"

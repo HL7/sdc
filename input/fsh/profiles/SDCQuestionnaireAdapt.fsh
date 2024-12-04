@@ -3,7 +3,7 @@ Parent: Questionnaire
 Id: sdc-questionnaire-adapt
 Title: "Adaptive Questionnaire"
 Description: "Defines the metadata that should be present when embedding a adaptive Questionnaire as part of a QuestionnaireResponse"
-* ^status = #draft
+* ^status = #active
 * . ^short = "Adaptive Questionnaire"
 * . ^definition = "Defines the metadata that should be present when embedding a adaptive Questionnaire as part of a QuestionnaireResponse."
 * extension contains QuestionnaireAdaptiveExtension named questionnaireAdaptive 1..1 MS

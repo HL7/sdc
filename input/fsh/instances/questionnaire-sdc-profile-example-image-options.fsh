@@ -7,7 +7,7 @@ Usage: #example
 * contained[+] = happyImage
 * url = "http://hl7.org/fhir/uv/sdc/questionnaire-sdc-profile-example-image-options"
 * name = "SDCExampleWithImageOptions"
-* status = #draft
+* status = #active
 * item
   * extension
     * url = "http://hl7.org/fhir/StructureDefinition/questionnaire-choiceOrientation"
@@ -24,14 +24,14 @@ Usage: #example
       * url = "http://hl7.org/fhir/StructureDefinition/rendering-xhtml"
       * valueString = "<img src='#okImage'>"
         * extension
-          * url = "http://hl7.org/fhir/uv/sdc/StructureDefinition/sdc-referencesContained"
+          * url = "http://hl7.org/fhir/StructureDefinition/referencesContained"
           * valueReference = Reference(okImage)
   * answerOption[+].valueCoding = $example#happy "Happy"
     * display.extension
       * url = "http://hl7.org/fhir/StructureDefinition/rendering-xhtml"
       * valueString = "<img src='#happyImage'>"
         * extension
-          * url = "http://hl7.org/fhir/uv/sdc/StructureDefinition/sdc-referencesContained"
+          * url = "http://hl7.org/fhir/StructureDefinition/referencesContained"
           * valueReference = Reference(happyImage)
 
 Instance: okImage

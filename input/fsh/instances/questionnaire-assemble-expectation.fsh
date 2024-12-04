@@ -4,7 +4,7 @@ Title: "Questionnaire Is Modular Search Parameter"
 Usage: #definition
 * url = "http://hl7.org/fhir/uv/sdc/SearchParameter/questionnaire-assemble-expectation"
 * name = "SDCQuestionnaireIsModular"
-* status = #draft
+* status = #active
 * description = "Allows searching by 'assemble-expectation' extension on a Questionnaire"
 * code = #assemble-expectation
 * base = #Questionnaire

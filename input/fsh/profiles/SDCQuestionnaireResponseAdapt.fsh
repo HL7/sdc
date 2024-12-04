@@ -3,7 +3,7 @@ Parent: QuestionnaireResponse
 Id: sdc-questionnaireresponse-adapt
 Title: "Adaptive Questionnaire Response"
 Description: "Defines how the questionnaire response resource is used to reflect form data within the ONC's Structured Data Capture standard."
-* ^status = #draft
+* ^status = #active
 * . ^short = "Adaptive Questionnaire Response"
 * . ^definition = "Represents a response to a questionnaire that is dynamically built as each question is answered."
 * . ^alias = "Form Data"

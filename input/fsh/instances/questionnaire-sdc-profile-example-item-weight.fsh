@@ -1,12 +1,12 @@
-Instance: questionnaire-sdc-profile-example-ordinal-value
+Instance: questionnaire-sdc-profile-example-item-weight
 InstanceOf: SDCQuestionnaireBehave
-Title: "SDC-Example using ordinalValue and constraint"
-Description: "Example on how to use ordinal value and contraints in a Questionnaire."
+Title: "SDC-Example using itemWeight and constraint"
+Description: "Example on how to use item weight and contraints in a Questionnaire."
 Usage: #example
 * contained = LL358-3
-* url = "http://hl7.org/fhir/uv/sdc/Questionnaire/questionnaire-sdc-profile-example-ordinal-value"
-* name = "SDCExampleUsingOrdinalValue"
-* status = #draft
+* url = "http://hl7.org/fhir/uv/sdc/Questionnaire/questionnaire-sdc-profile-example-item-weight"
+* name = "SDCExampleUsingItemWeight"
+* status = #active
 * item
   * extension
     * extension[0]
@@ -14,17 +14,19 @@ Usage: #example
       * valueId = "contraint-1"
     * extension[+]
       * url = "requirements"
-      * valueString = "At least three questions must be answered to have a meaningful total."
+      * valueMarkdown = "At least three questions must be answered to have a meaningful total."
     * extension[+]
       * url = "severity"
       * valueCode = #warning
     * extension[+]
       * url = "expression"
-      * valueString = "%resource.repeat(item).where(linkId='1.0').item.where(answer.hasValue()).count() >= 3"
+      * valueExpression
+        * language = #text/fhirpath
+        * expression = "%resource.repeat(item).where(linkId='1.0').item.where(answer.hasValue()).count() >= 3"
     * extension[+]
       * url = "human"
       * valueString = "You should answer at least three questions."
-    * url = "http://hl7.org/fhir/StructureDefinition/questionnaire-constraint"
+    * url = "http://hl7.org/fhir/StructureDefinition/targetConstraint"
   * linkId = "1.0"
   * text = "Over the last 2 weeks, how often have you been bothered by any of the following problems?"
   * type = #group
@@ -83,7 +85,7 @@ Usage: #example
       * valueExpression
         * description = "Total score"
         * language = #text/fhirpath
-        * expression = "%resource.repeat(item).where(linkId='1.0').item.answer.value.ordinal().aggregate($this + $total, 0)"
+        * expression = "%resource.repeat(item).where(linkId='1.0').item.answer.value.weight().aggregate($this + $total, 0)"
     * linkId = "6"
     * text = "Total Score:"
     * type = #integer
@@ -100,26 +102,14 @@ Usage: #inline
 * compose.include
   * system = "http://loinc.org"
   * concept[0]
-    * extension
-      * url = "http://hl7.org/fhir/StructureDefinition/ordinalValue"
-      * valueDecimal = 0
     * code = #LA6568-5
     * display = "Not at all"
   * concept[+]
-    * extension
-      * url = "http://hl7.org/fhir/StructureDefinition/ordinalValue"
-      * valueDecimal = 1
     * code = #LA6569-3
     * display = "Several days"
   * concept[+]
-    * extension
-      * url = "http://hl7.org/fhir/StructureDefinition/ordinalValue"
-      * valueDecimal = 2
     * code = #LA6570-1
     * display = "More than half the days"
   * concept[+]
-    * extension
-      * url = "http://hl7.org/fhir/StructureDefinition/ordinalValue"
-      * valueDecimal = 3
     * code = #LA6571-9
     * display = "Nearly every day"

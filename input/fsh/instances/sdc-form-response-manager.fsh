@@ -6,7 +6,7 @@ Usage: #definition
 * url = "http://hl7.org/fhir/uv/sdc/CapabilityStatement/sdc-form-response-manager"
 * name = "SDCFormResponseManager"
 * title = "SDC Form Response Manager"
-* status = #draft
+* status = #active
 * date = "2014-07-06"
 * publisher = "HL7 International - FHIR Infrastructure"
 * contact.telecom

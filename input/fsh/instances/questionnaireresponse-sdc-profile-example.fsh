@@ -6,6 +6,7 @@ Usage: #example
 * questionnaire = "http://hl7.org/fhir/uv/sdc/Questionnaire/3921052v1.0"
 * status = #completed
 * authored = "2014-01-21"
+* subject = Reference(http://example.org/Patient/123) "Jane Smith"
 * item[0]
   * linkId = "3921053v1.0"
   * text = "Mandatory Diagnosis Questions"

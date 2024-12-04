@@ -3,9 +3,7 @@ Parent: SDCBaseQuestionnaire
 Id: sdc-questionnaire-extr-smap
 Title: "Extractable Questionnaire - StructureMap"
 Description: "Defines elements that allow conversion of a QuestionnaireResponse to a FHIR resource or Bundle of FHIR resources using the StructureMap-based extraction mechanism"
-* ^extension[$standard-status].valueCode = #draft
-* ^extension[$fmm].valueInteger = 0
-* ^status = #draft
+* ^status = #active
 * . ^short = "Extractable Questionnaire - StructureMap"
 * . ^definition = "Defines elements that allow conversion of a QuestionnaireResponse to a FHIR resource or Bundle of FHIR resources using the StructureMap-based extraction mechanism."
 * extension contains TargetStructureMapExtension named targetStructureMap 0..* MS

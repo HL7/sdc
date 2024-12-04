@@ -9,7 +9,7 @@ Usage: #example
 * url = "http://hl7.org/fhir/uv/sdc/Questionnaire/demographics"
 * name = "DemographicExample"
 * title = "Questionnaire - Demographics Example"
-* status = #draft
+* status = #active
 * experimental = true
 * subjectType = #Patient
 * description = "A sample questionnaire using context-based population and extraction"
