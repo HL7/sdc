@@ -68,7 +68,7 @@ Alias: $questionnaire-itemPopulationContext  = http://hl7.org/fhir/uv/sdc/Struct
 Alias: $questionnaire-launchContext          = http://hl7.org/fhir/uv/sdc/StructureDefinition/sdc-questionnaire-launchContext
 
 // Extensions - core
-Alias: $adheres-to                           = http://hl7.org/fhir/StructureDefinition/workflow-adheresTo
+Alias: $adheresTo                            = http://hl7.org/fhir/StructureDefinition/workflow-adheresTo
 Alias: $best-practice                        = http://hl7.org/fhir/StructureDefinition/elementdefinition-bestpractice
 Alias: $conf                                 = http://hl7.org/fhir/StructureDefinition/capabilitystatement-expectation
 Alias: $cqf-calculatedValue                  = http://hl7.org/fhir/StructureDefinition/cqf-calculatedValue
@@ -115,4 +115,4 @@ Alias: $valueset-expansionSource             = http://hl7.org/fhir/StructureDefi
 Alias: $valueset-label                       = http://hl7.org/fhir/StructureDefinition/valueset-label
 Alias: $variable                             = http://hl7.org/fhir/StructureDefinition/variable
 Alias: $wg                                   = http://hl7.org/fhir/StructureDefinition/structuredefinition-wg
-Alias: $triggered-by                         = http://hl7.org/fhir/StructureDefinition/workflow-triggeredBy
+Alias: $triggeredBy                          = http://hl7.org/fhir/StructureDefinition/workflow-triggeredBy

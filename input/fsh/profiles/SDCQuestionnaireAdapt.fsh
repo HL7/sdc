@@ -6,6 +6,7 @@ Description: "Defines the metadata that should be present when embedding a adapt
 * ^status = #active
 * . ^short = "Adaptive Questionnaire"
 * . ^definition = "Defines the metadata that should be present when embedding a adaptive Questionnaire as part of a QuestionnaireResponse."
+* obeys sdc-adapt-1
 * extension contains QuestionnaireAdaptiveExtension named questionnaireAdaptive 1..1 MS
 * url ..0
 * url ^requirements = "We prohibit URL because this Questionnaire is a one-off for a specific response and therefore does not have its own canonical URL.  The URL of the base questionnaire is captured using Questionnaire.derivedFrom"
@@ -29,3 +30,8 @@ Description: "Defines the metadata that should be present when embedding a adapt
   * initial MS
     * value[x] MS
   * item MS
+
+Invariant: sdc-adapt-1
+Description: "An adaptive questionnaire must be a contained resource within a QuestionnaireResponse."
+Severity: #error
+Expression: "%resource.ofType(QuestionnaireResponse).questionnaire='#' + $this.id or %resource.contained.ofType(QuestionnaireResponse).exists(questionnaire='#' + $this.id)"

@@ -10,6 +10,7 @@ Description: "Describes the elements that should be exposed in a response to a s
     QuestionnaireAdaptiveExtension named questionnaireAdaptive 1..* and
     EndpointExtension named submissionEndpoint 0..* MS
 * obeys sdc-adaptive-1
+* item 0..0
 
 Invariant: sdc-adaptive-1
 Description: "If multiple types are present, all must have a value of type 'url'. If no URL is specified, the location to hit the $next-question operation is undefined but typically assumed to be the server hosting the Questionnaire."
