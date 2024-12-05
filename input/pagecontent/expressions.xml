@@ -114,7 +114,7 @@
           </p>
           <p>
 			      The variable can be <a href="#fhirpath">referenced by its name</a>.  Variable expressions SHALL specify a name.  It is not allowed to define variable
-			      names that are already <a href="{{site.data.fhir.path}}fhirpath.html#vars">reserved by the base specification</a> or by other variables in the questionnaire.
+			      names that are already <a href="{{site.data.fhir.path}}fhirpath.html#vars">reserved by the base specification</a> or by other variables in the questionnaire that are either on the same node or part of the same node hierarchy.  However, it's perfectly fine to have two variables with the same name if those extensions variables don't share the same context - for example the variables are declared on sibling items.
           </p>
         </td>
       </tr>
