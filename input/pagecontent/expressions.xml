@@ -703,6 +703,23 @@
     to use one or the other comes down to whether any of the additional capabilities of CQL (such as defining internal variables, iterating loops, etc.)
     is needed.  FHIRPath is more widely implemented than CQL, so questionnaires that only make use of FHIRPath will typically be more widely supported.
   </p>
+  <a name="external"> </a>
+  <h3>External Dependencies</h3>
+  <p>
+    Some of the elements and expressions used in Questionnaires depend on information that is outside the scope of the QuestionnaireResponse being completed and its associated QuestionnaireResponse.  This includes elements that depend on the environment of the user filling out the form (i.e. <a href="StructureDefinition-sdc-questionnaire-launchContext.html">launchContext</a>) as well as elements that point directly to other resources such as <a href="StructureDefinition-sdc-questionnaire-sourceQueries.html">sourceQuery</a> and <a href="StructureDefinition-sdc-questionnaire-definitions.html#Questionnaire.item.answerValueSet">answerValueSet</a> - though in some cases these direct references may be to resources 'contained' within the Questionnaire.  However, it also includes any expression that makes use of <a href="">x-fhir-query</a>, any FHIRPath expression that uses <code>resolve()</code>, and any CQL that performs queries. 
+  </p>
+  <p>
+    When a Questionnaire is defined to depend on external sources, it is possible that information might change between different launches of the editing process and between editing and validation, meaning that information that was once valid might become invalid. (E.g. Questions that were enabled are no longer enabled, questions that were optional are now required, answer choices have changed to exclude previously valid answers, etc.)  It can also cause another problem - that the set of choices available to the user that they didn't pick could be different, possibly creating confusion about what answers were deliberately excluded.
+  </p>
+  <p>
+When referencing external answerValueSets, consideration should be given to linking to a specific version of the ValueSet and/or ensuring that the ValueSet binds to specific versions of the underlying systems.  Otherwise, a change to the ValueSet definition or deprecation of codes from one of the referenced code systems could invalidate previously valid QuestionnaireResponses.  Validators SHOULD check validity against a value set based on the date of QuestionnaireResponse completion (i.e. QuestionnaireResponse.authored) to mitigate this issue.
+  </p>
+  <p>
+Information gleaned from other types of external sources (e.g. launch context, fhir-x-query, etc.) SHOULD only be used for initialExpression and calculatedExpression logic and that any other desired behavior (enableWhen, answerExpression, etc.) should always be driven off of answers within the Questionnaire (even if they're hidden answers that are populated from an initialExpression) because launchContext and search results may vary between edit sessions and will also be different (or perhaps non-existent) when validating the Questionnaire.
+  </p>
+  <p>
+Changes in external context that impacts the value of a calculatedExpression will not cause a problem because if the new calculated value upon re-opening a QuestionniareResponse differs from the stored value, the form filler will interpret the answer as having been overridden and it will therefore remain unchanged.
+  </p>
   <a name="missinginfo"> </a>
   <h3>Missing information</h3>
   <p>
@@ -715,7 +732,7 @@
   <p>
     For unanswered items, expressions or %context that refer to QuestionnaireResponse items that don't actually 'exist' (because they don't have an answer)
     should still resolve as items with no answer rather than 'null'.
-  </p>  
+  </p>
   <a name="expressionerrors"> </a>
   <h3>Dealing with expression errors and system limitations</h3>
   <p>
