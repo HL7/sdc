@@ -342,7 +342,8 @@ If an item is presumed to be extracted, it will extract if there are item.codes 
   <p>
     This approach to extraction is more generic than the observation-based extraction. It supports extracting data into any type of FHIR resource rather than being limited to only Observation.
     It also supports extracting additional Observation properties not defined for the observation-based extract, e.g. explicit effective time ranges, interpretations, comments, etc.<br/>
-    The technique is called "definition-based" because it uses StructureDefinitions to identify resource types/profiles, and their properties which are then associated with items in the Questionnaire.<br/>
+    The technique is called "definition-based" because it uses StructureDefinitions to identify resource types/profiles, and their properties which are then associated with items in the Questionnaire
+    using the <code>Questionnaire.item.definition</code> element.<br/>
     The <a href="StructureDefinition-sdc-questionnaire-extr-defn.html">SDC Questionnaire Extract - Definition</a> profile has been created to support this mechanism. 
   </p>
   <p>
@@ -354,6 +355,7 @@ If an item is presumed to be extracted, it will extract if there are item.codes 
     the system will populate the <code>bundle.entry.resource</code> property with the extracted resource, and the <code>bundle.entry.request.method</code> and
     other properties with values based on the <code>definitionExtract</code> extension. If the definition was to a profile, any slicing information or 
     fixed/pattern values should also be extracted from the profile and applied to the resource where appropriate.
+    For example an identifier might have a fixed system property defined in a profile slice.
   </p>
   <p>
     The item's <code>definition</code> property is composed of:
@@ -493,15 +495,16 @@ If an item is presumed to be extracted, it will extract if there are item.codes 
           e.g. You could have a single item that captures <code>Patient.contact.name.text</code> and the system will create the necessary Patient.contact and Patient.contact.name elements
           to then set the text values in. In this case if the item was repeating, the last node in the iteration is the one that will be repeated (name in this case).<br/>
           If you intend to have a specific level of the element repeated, you should have a group item that repeats, and then have the item that corresponds to the element within that group.<br/>
-          This technique is particularly useful when populating properties in CodeableConcepts, where you can drill direct into the Coding, or text property, and don't require another level
+          This technique is particularly useful when populating properties in CodeableConcepts, where you can drill directly into the Coding, or text property, and don't require another level
           in your questionnaire just to add that in.
         </li>
         <li>
           Add <a href="StructureDefinition-sdc-questionnaire-definitionExtractValue.html">definitionExtractValue</a> extension(s) to the root/item to specify calculated or fixed values
           to populate into the resource when an answer for this item is entered (or always when at the root of questionnaire).<br/>
           This is particularly useful for populating fixed values, or calculated values that are not directly entered by the user.<br/>
-          e.g. To assign the a value from the QuestionnaireResponse.subject property into a property in the extracted resource.<br/>
-          If <code>definitionExtractValue</code> is used on an item that also has its item.definition property set, that would be assumed to be extracted resource context. Hence could set the system and type values in an
+          e.g. To assign the value from the QuestionnaireResponse.subject property into a property in the extracted resource.<br/>
+          If <code>definitionExtractValue</code> is used on an item that also has its item.definition property set, that would be assumed to be extracted resource context. 
+          Hence you could set the system and type values in an
           identifier when associated with that item.
         </li>
         <li>
@@ -577,7 +580,7 @@ If an item is presumed to be extracted, it will extract if there are item.codes 
       <b>Handling sliced properties:</b> If extracting a property via a sliced property:
       <ul>
         <li>If there are any associated fixed or pattern values in the slice, also populate those values into the resource instance</li>
-        <li>If the slice limits the types supported, ensure that the created type us supported (and cast the value if required)</li>
+        <li>If the slice limits the types supported, ensure that the created type is supported (and cast the value if required)</li>
         <li>
           After the property is extracted, if there are any required properties that have fixed/pattern values, also extract those<br/>
           e.g. In the <a href="https://hl7.org/fhir/r4/bodyheight.html">body height profile</a>, the category slice VSCat is required, and has a required coding property with a fixed value of "vital-signs".  This would also need to be extracted.
@@ -585,7 +588,12 @@ If an item is presumed to be extracted, it will extract if there are item.codes 
         <li>
           A type slice can be invoked without an actual slice for choice typed properties e.g. <code>value[x]</code><br/>
           The extraction process is able to determine the correct type to use based on the answer in the QuestionnaireResponse, or explicitly
-          define it in the property name in the "definition" value e.g. <code>http://hl7.org/fhir/StructureDefinition/Observation#Observation.valueQuantity</code>
+          define it in the property name in the "definition" value e.g. <code>http://hl7.org/fhir/StructureDefinition/Observation#Observation.valueQuantity</code><br/>
+          This type slicing is really only required where the type is a choice and the value being set is not directly coming from the QuestionnaireResponse item and there
+          is no ambiguity on the type to use. e.g. assigning an item to <code>Patient.extension.value.code</code> could be a Quantity or a Coding, thus needs to be disambiguated.
+          <code>Patient.extension.valueCoding.code</code> or <code>Patient.extension.valueQuantity.value</code> would be the appropriate definitions to use.
+          However if I was using the definition <code>Patient.extension.value</code> and the item was of type boolean or Coding, there is no need to type slice, 
+          as the value is of the correct type to just assign (it doesn't need to create the intermediate valueQuantity or valueCoding before trying to set the actual value from the item).
         </li>
       </ul>
       <i>(These could also be considered at the root level when processing a profiled resource)</i>
@@ -603,7 +611,7 @@ If an item is presumed to be extracted, it will extract if there are item.codes 
     </li>
   </ol>
   <blockquote>
-    <b>Note:</b> The extraction processes as defined do not support "merging" the answers into an existing instance of a resource as an update. 
+    <b>Note:</b> The extraction processes as defined does not support "merging" the answers into an existing instance of a resource as an update. 
     Instead the "update" mode of this extraction process is a "replace" style process. So if you need to update content that was not created by the 
     extraction routine, you will need to inject ALL data from the resource into the questionnaire (and hide properties as needed).
     This way all the data will be available to fill out into the resource so that it can be included as an update in the outgoing transaction bundle.
