@@ -13,6 +13,8 @@ Description: "Defines how the questionnaire response resource is used to reflect
 * . ^constraint[5].extension[$best-practice].valueBoolean = true
 * . ^constraint[6].extension[$best-practice].valueBoolean = true
 * extension contains
+    $adheresTo named adheresTo 0..* and
+    $triggeredBy named triggeredBy 0..* and
     $questionnaireresponse-signature named signature 0..* and
     $questionnaireresponse-completionMode named completionMode 0..1
 * identifier MS

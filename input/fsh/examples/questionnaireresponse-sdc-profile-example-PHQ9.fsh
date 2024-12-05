@@ -3,6 +3,7 @@ InstanceOf: SDCQuestionnaireResponse
 Title: "SDC-Response to PHQ9"
 Description: "Example response to the SDC-PHQ9 questionnaire"
 Usage: #example
+* extension[triggeredBy].valueReference = Reference("http://example.org/PlanDefinition/someProtocol")
 * questionnaire = "http://hl7.org/fhir/uv/sdc/Questionnaire/questionnaire-sdc-profile-example-PHQ9"
 * status = #completed
 * subject = Reference(http://hl7.org/fhir/Patient/proband)
