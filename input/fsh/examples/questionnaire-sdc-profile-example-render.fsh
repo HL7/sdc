@@ -127,7 +127,9 @@ Usage: #example
       * linkId = "2.4.2"
       * text = "Other Information"
       * type = #choice
-      * answerOption[0].valueCoding = $conditions#otherinformation-hypertension "Hypertension"
+      * answerOption[0].valueCoding = $conditions#diabetes-type1 "Type 1"
+      * answerOption[+].valueCoding = $conditions#diabetes-type2 "Type 2"
+      * answerOption[+].valueCoding = $conditions#otherinformation-hypertension "Hypertension"
       * answerOption[+].valueCoding = $conditions#otherinformation-smoker "Smoker"
   * item[+]
     * extension
@@ -162,6 +164,50 @@ Usage: #example
       * answerOption[+].valueCoding = $administrative-gender#male "Male"
       * answerOption[+].valueCoding = $administrative-gender#other "Other"
       * answerOption[+].valueCoding = $administrative-gender#unknown "Unknown"
+  * item[+]
+    * extension
+      * url = "http://hl7.org/fhir/StructureDefinition/questionnaire-itemControl"
+      * valueCodeableConcept = $questionnaire-item-control#htable "Horizontal Answer Table"
+        * text = "Questions within the group are columns in the table with possible answers as rows. Used for 'choice' questions."
+    * linkId = "2.6"
+    * text = "Lifestyle Factors"
+    * type = #group
+    * item[0]
+      * extension[0]
+        * url = "http://hl7.org/fhir/StructureDefinition/questionnaire-itemControl"
+        * valueCodeableConcept = $questionnaire-item-control#check-box "Check-box"
+          * text = "A control where choices are listed with a box beside them. The box can be toggled to select or de-select a given choice. Multiple selections may be possible."
+      * linkId = "2.6.1"
+      * text = "Exercise Habits"
+      * type = #choice
+      * answerOption[0].valueCoding = $lifestyle#daily "Daily"
+      * answerOption[+].valueCoding = $lifestyle#weekly "Weekly"
+      * answerOption[+].valueCoding = $lifestyle#monthly "Monthly"
+      * answerOption[+].valueCoding = $lifestyle#never "Never"
+    * item[+]
+      * extension[0]
+        * url = "http://hl7.org/fhir/StructureDefinition/questionnaire-itemControl"
+        * valueCodeableConcept = $questionnaire-item-control#check-box "Check-box"
+          * text = "A control where choices are listed with a box beside them. The box can be toggled to select or de-select a given choice. Multiple selections may be possible."
+      * linkId = "2.6.2"
+      * text = "Smoking Frequency"
+      * type = #choice
+      * answerOption[0].valueCoding = $lifestyle#daily "Daily"
+      * answerOption[+].valueCoding = $lifestyle#weekly "Weekly"
+      * answerOption[+].valueCoding = $lifestyle#monthly "Monthly"
+      * answerOption[+].valueCoding = $lifestyle#never "Never"
+    * item[+]
+      * extension[0]
+        * url = "http://hl7.org/fhir/StructureDefinition/questionnaire-itemControl"
+        * valueCodeableConcept = $questionnaire-item-control#check-box "Check-box"
+          * text = "A control where choices are listed with a box beside them. The box can be toggled to select or de-select a given choice. Multiple selections may be possible."
+      * linkId = "2.6.3"
+      * text = "Alcohol Consumption"
+      * type = #choice
+      * answerOption[0].valueCoding = $lifestyle#daily "Daily"
+      * answerOption[+].valueCoding = $lifestyle#weekly "Weekly"
+      * answerOption[+].valueCoding = $lifestyle#monthly "Monthly"
+      * answerOption[+].valueCoding = $lifestyle#never "Never"
 * item[+]
   * linkId = "3"
   * text = "Additional Display Content"
