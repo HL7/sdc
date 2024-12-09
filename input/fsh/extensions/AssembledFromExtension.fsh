@@ -1,12 +1,12 @@
 Extension: AssembledFromExtension
 Id: sdc-questionnaire-assembledFrom
 Title: "Assembled From Questionnaire"
-Description: "Indicates the Questionnaire a variable that must be available on any node that is referencing the Questionnaire as a sub-questionnaire"
+Description: "This extension will appear on the root of an assembled Questionnaire and identifies the subQuestionnaires (including version) that were used as part of the assembly process."
 * ^status = #active
 * ^context.type = #element
 * ^context.expression = "Questionnaire"
 * . 0..1
-* . ^short = "Variable name to be available from referencing Questionnaire"
-* . ^definition = "Indicates a variable that must be available on any node that is referencing the Questionnaire as a sub-questionnaire"
+* . ^short = "Identifies subQuestionnaires used in the assembly process"
+* . ^definition = "This extension will appear on the root of an assembled Questionnaire and identifies the subQuestionnaires (including version) that were used as part of the assembly process."
 * url only uri
 * value[x] only canonical
