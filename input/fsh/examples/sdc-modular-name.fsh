@@ -58,7 +58,7 @@ Usage: #example
     * url = "http://hl7.org/fhir/uv/sdc/StructureDefinition/sdc-questionnaire-initialExpression"
     * valueExpression
       * language = #text/fhirpath
-      * expression = "%name.given[0]"
+      * expression = "%name.given.first()"
   * linkId = "2"
   * definition = "http://hl7.org/fhir/uv/sdc/StructureDefinition/SdcQuestionLibrary#SdcQuestionLibrary.name.first"
   * type = #string
@@ -68,7 +68,7 @@ Usage: #example
     * url = "http://hl7.org/fhir/uv/sdc/StructureDefinition/sdc-questionnaire-initialExpression"
     * valueExpression
       * language = #text/fhirpath
-      * expression = "%name.given[0]"
+      * expression = "%name.family"
   * linkId = "3"
   * definition = "http://hl7.org/fhir/uv/sdc/StructureDefinition/SdcQuestionLibrary#SdcQuestionLibrary.name.last"
   * type = #string

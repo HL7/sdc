@@ -8,4 +8,9 @@
     information on how this use-case is implemented as well as guidance on the elements and extensions included in the profile can be found on the
     <a href="extraction.html">Data Extraction</a> page.
   </p>
+  <blockquote class="stu-note">
+    <p>
+      At present, Questionnaire.item.definition does not repeat, however there are use-cases where the same element could correspond to a data element in multiple data models.  <a href="https://jira.hl7.org/browse/FHIR-48941">Issue FHIR-48941</a> proposes changing this.  It will either happen by making a breaking change to the resource and changing the cardinality from 0..1 to 0..* or by adding a standard extension to allow capturing additional repetitions.  In either case, we expect this profile to be updated, either to support an inter-version extension allowing the additional repetitions or adding support for the new standard extension.  This will allow the same item to be used in multiple extractions.
+    </p>
+  </blockquote>  
 </div>

@@ -34,4 +34,4 @@ Description: "Defines the metadata that should be present when embedding a adapt
 Invariant: sdc-adapt-1
 Description: "An adaptive questionnaire must be a contained resource within a QuestionnaireResponse."
 Severity: #error
-Expression: "%resource.ofType(QuestionnaireResponse).questionnaire='#' + $this.id or %resource.contained.ofType(QuestionnaireResponse).exists(questionnaire='#' + $this.id)"
+Expression: "%rootResource.ofType(QuestionnaireResponse).questionnaire='#' + $this.id or %rootResource.contained.ofType(QuestionnaireResponse).exists(questionnaire='#' + $this.id)"

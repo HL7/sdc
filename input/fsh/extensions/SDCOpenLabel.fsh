@@ -8,7 +8,7 @@ Description: "The label text to display beside free-text and/or unrestricted typ
 * ^context[=].expression = "Questionnaire.item"
 * ^context[+].type = #element
 * ^context[=].expression = "ElementDefinition"
-* ^contextInvariant = "type='open-choice'"
+* ^contextInvariant = "type.exists(code='Coding') or exists(type='open-choice')"
 * . 0..1
 * . ^short = "Image to display"
 * . ^definition = "The label text to display beside free-text and/or unrestricted type values for an 'open' choice element.  E.g. 'Other, please specify', or 'Additional condition', or 'More reason(s)', etc."

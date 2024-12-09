@@ -69,5 +69,12 @@ Usage: #inline
 * insert VSConcept(#Several-days, "Several days")
 * insert VSConcept(#"More than half the days", "More than half the days")
 * insert VSConcept(#"Nearly every day", "Nearly every day")
-
-
+* expansion
+  * extension[expansionProperty]
+    * extension[code].valueCode = #itemWeight
+    * extension[uri].valueUri = "http://hl7.org/fhir/concept-properties#itemWeight"
+  * timestamp = "2024-12-06T22:52:00-07:00"
+  * insert VSContains("http://example.org/CodeSystem/CSPHQ9", #not-at-all, "Not at all", 0.0)
+  * insert VSContains("http://example.org/CodeSystem/CSPHQ9", #Several-days, "Several days", 1.0)
+  * insert VSContains("http://example.org/CodeSystem/CSPHQ9", #"More than half the days", "More than half the days", 2.0)
+  * insert VSContains("http://example.org/CodeSystem/CSPHQ9", #"Nearly every day", "Nearly every day", 4.0)

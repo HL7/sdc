@@ -117,3 +117,7 @@ Alias: $valueset-label                       = http://hl7.org/fhir/StructureDefi
 Alias: $variable                             = http://hl7.org/fhir/StructureDefinition/variable
 Alias: $wg                                   = http://hl7.org/fhir/StructureDefinition/structuredefinition-wg
 Alias: $triggeredBy                          = http://hl7.org/fhir/StructureDefinition/workflow-triggeredBy
+
+// Extensions - Cross-version
+Alias: $valueset-expansionProperty           = http://hl7.org/fhir/5.0/StructureDefinition/extension-ValueSet.expansion.property
+Alias: $valueset-containsProperty            = http://hl7.org/fhir/5.0/StructureDefinition/extension-ValueSet.expansion.contains.property

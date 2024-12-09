@@ -43,16 +43,21 @@ Description: "Defines how ValueSet is used to reflect code lists found in data e
   * valueSet MS
 * compose.exclude MS
 * expansion MS
-  * extension contains $valueset-expansionSource named expansionSource 0..1
+  * extension contains 
+    $valueset-expansionSource named expansionSource 0..1 and
+    $valueset-expansionProperty named expansionProperty 0..* MS
+  * extension[expansionProperty] ^requirements = "... Allows support for itemWeight and other key properties"
   * identifier MS
   * timestamp MS
 * expansion.contains MS
   * extension contains
       $valueset-label named expansionLabel 0..1 MS and
-      $valueset-conceptOrder named conceptConceptOrder 0..1 MS
+      $valueset-conceptOrder named conceptConceptOrder 0..1 MS and
+      $valueset-containsProperty named containsProperty 0..* MS
   * extension[expansionLabel].valueString.extension contains
       $rendering-style named expansion-renderingStyle 0..1 and
       $rendering-xhtml named expansion-xhtml 0..1
+  * extension[containsProperty] ^requirements = "... Allows support for itemWeight and other key properties"
   * extension[conceptConceptOrder] ^comment = "The presence of a sort order implies that sort order is important."
   * system MS
   * abstract MS
