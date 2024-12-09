@@ -16,6 +16,11 @@ Description: "Defines how CodeSystem is used to reflect code lists found in data
 * compositional 0..0
 * versionNeeded 0..0
 * content MS
+* property MS
+  * ^requirements = "...  Property is mustSupport because it is used to express weights as well as elements that may be relevant for rendering or performing logic on codes"
+  * code MS
+  * uri MS
+  * type MS
 * concept MS
   * code MS
   * display MS
@@ -27,4 +32,8 @@ Description: "Defines how CodeSystem is used to reflect code lists found in data
     * value.extension contains
         $rendering-style named conceptDisplayLabel-renderingStyle 0..1 and
         $rendering-xhtml named conceptDisplayLabel-xhtml 0..1
+  * property MS
+    * ^requirements = "...  Property is mustSupport because it is used to express weights as well as elements that may be relevant for rendering or performing logic on codes"
+    * code MS
+    * value[x] MS
   * concept MS
