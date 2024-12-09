@@ -34,6 +34,8 @@ Usage: #definition
     * url = "http://hl7.org/fhir/StructureDefinition/operationdefinition-allowed-type"
     * valueUri = "Questionnaire"
 * parameter[+]
+  * insert parameter(#subject, #in, 0, "1", #Reference, "If the *local* parameter is set to true\, server information about the specified subject will be used to populate the instance.  This may also be used to drive internal processing of the completed form.")
+* parameter[+]
   * insert parameterComplex(#context, #in, 0, "*", "Resources containing information to be used to help populate the [QuestionnaireResponse](http://hl7.org/fhir/R4/questionnaireresponse.html\).  These will typically be FHIR resources\, though alternative population mechanisms might allow consumption of binaries containing FHIR documents\, CDA documents or other source materials.  Servers might not support all possible source materials and may ignore materials they do not recognize.  (They MAY provide warnings if ignoring submitted resources.\)")
   * part[0]
     * insert parameter(#name, #in, 1, "1", #string, "The name of the launchContext or root Questionnaire variable the passed content should be used as for population purposes.  The name SHALL correspond to a launchContext or variable delared at the root of the Questionnaire. Allowed names include 'sourceQueries'\, which specifies that the context is the results of executing the queries in the sdc-questionnaire-sourceQueries extension.")
