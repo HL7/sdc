@@ -20,6 +20,8 @@ Usage: #definition
 * system = false
 * type = true
 * instance = true
+* inputProfile = Canonical(SDCParametersQuestionnairePopulateIn)
+* outputProfile = Canonical(SDCParametersQuestionnairePopulateLinkOut)
 * parameter[0]
   * insert parameter(#identifier, #in, 0, "1", #Identifier, "A logical questionnaire identifier (i.e. `Questionnaire.identifier`\). The server must know the questionnaire or be able to retrieve it from other known repositories.")
 * parameter[+]
