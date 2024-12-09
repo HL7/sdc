@@ -6,6 +6,7 @@ Description: "Defines elements that allow conversion of a QuestionnaireResponse 
 * ^status = #active
 * . ^short = "Extractable Questionnaire - Observation"
 * . ^definition = "Defines elements that allow conversion of a QuestionnaireResponse to an Observation resource or Bundle of Observation resources using the Observation-based extraction mechanism."
+* extension contains ObservationExtractExtension named observationExtract 0..1 MS
 * item obeys sdc-obsn-1
   * extension contains
       $questionnaire-unit named unit 0..1 MS and
