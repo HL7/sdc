@@ -7,7 +7,8 @@ Description: "Defines the metadata that should be present when embedding a adapt
 * . ^short = "Adaptive Questionnaire"
 * . ^definition = "Defines the metadata that should be present when embedding a adaptive Questionnaire as part of a QuestionnaireResponse."
 * obeys sdc-adapt-1
-* extension contains QuestionnaireAdaptiveExtension named questionnaireAdaptive 0..1 MS
+* extension contains QuestionnaireAdaptiveExtension named questionnaireAdaptive 0..* MS
+  * ^comment = "This extension isn't essential because the fact the Questionnaire is adaptive can be inferred from the style, however it may still be useful to assert explicitly, and perhaps to know what servers are useable if amending the form is necessary"
 * url ..0
 * url ^requirements = "We prohibit URL because this Questionnaire is a one-off for a specific response and therefore does not have its own canonical URL.  The URL of the base questionnaire is captured using Questionnaire.derivedFrom"
 * version MS
