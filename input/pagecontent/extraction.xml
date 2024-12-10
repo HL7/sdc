@@ -12,9 +12,12 @@
     to write generic software that can convert any arbitrary QuestionnaireResponse into appropriate FHIR resources leveraging metadata embedded in the
     Questionnaire.  This portion of the SDC guide defines mechanisms for doing so.
   </p>
-	<p>
-	  
-	</p>
+  <blockquote class="stu-note">
+  <b>Note to balloters:</b> The definition based $extract functionality has been refined significantly along with a new mechanism for extraction <a href="#template-extract">Template based extraction</a> that uses contained resource(s) as template(s)
+  for extracting data.<br/>
+  Feedback is encouraged for this new functionality.
+  </blockquote>
+
   <a name="caveats"> </a>
   <h3>Caveats, considerations and rules with form data extraction</h3>
   <ul>
