@@ -347,8 +347,10 @@ If an item is presumed to be extracted, it will extract if there are item.codes 
     <li>On descendant items of that element, fill in the <code>Questionnaire.item.definition</code> to point to the resource or profile element that Questionnaire
       item corresponds to.  (Profiles may be relevant for data that is sliced or has fixed values for some properties.).  The definition SHALL have the full
       canonical URL of the resource (or profile) followed by '#' followed by the snapshot.element.id of the element the Questionnaire item corresponds to.<br/>
-      NOTE: Rather than specifying the
-      id of an element that actually appears in a snapshot, it is also possible to 'extend' an id to walk further into the data types of the specified element.  For example, 
+      When performing definition-based extraction from a profile (rather than just a data type or resource definition), the extraction process SHALL propagate 
+      any pattern or fixed values declared on definition elements that are referenced by the Questionnaire. For example, if a 'group' corresponds to a slice element
+      in the profile, causing that element to appear, then any child elements that have fixed or patterns declared would automatically be filled in.<br/>      
+      NOTE: Rather than specifying the id of an element that actually appears in a snapshot, it is also possible to 'extend' an id to walk further into the data types of the specified element.  For example, 
       a definition might be <code>http://hl7.org/fhir/StructureDefinition/Patient#Patient.name.given</code> even though the referenced profile's snapshot only contains <code>Patient.name</code>, not
       <code>Patient.name.given</code>.  However, for more complex references (e.g. referring to a particular extension or a particular repetition), it will be necessary to define a 
       distinct profile where slicing ensures that a single element id corresponds to the desired element.  I.e. you would need to use 
