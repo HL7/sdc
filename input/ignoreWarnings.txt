@@ -373,10 +373,8 @@ WARNING: StructureDefinition.where(url = 'http://hl7.org/fhir/uv/sdc/StructureDe
 
 # This is a contained adaptive Questionnaire in QuestionnaireReponse profile, so ignoring this warning
 WARNING: StructureDefinition.where(url = 'http://hl7.org/fhir/uv/sdc/StructureDefinition/sdc-questionnaire-adapt'): The Implementation Guide contains no examples for this profile
+
 # Questionnaire examples using the template-based extraction process have contained resources with partially complete content that includes extensions to indicate to the extraction engine how to complete the content - which can then make the extracted resource valid
-ERROR: Questionnaire/extract-complex-template: Questionnaire.contained[2]/*Observation/obsTemplateHeight*/.derivedFrom[0]: Unable to resolve resource with reference 'replaced'
-ERROR: Questionnaire/extract-complex-template: Questionnaire.contained[3]/*Observation/obsTemplateWeight*/.derivedFrom[0]: Unable to resolve resource with reference 'replaced'
-ERROR: Questionnaire/extract-complex-template: Questionnaire.contained[4]/*Observation/obsTemplate*/.derivedFrom[0]: Unable to resolve resource with reference 'replaced'
 WARNING: Questionnaire/extract-complex-template: Questionnaire.contained[1]/*RelatedPerson/rpTemplate*/.patient: A Reference without an actual reference or identifier should have a display
 WARNING: Questionnaire/extract-complex-template: Questionnaire.contained[2]/*Observation/obsTemplateHeight*/.subject: A Reference without an actual reference or identifier should have a display
 WARNING: Questionnaire/extract-complex-template: Questionnaire.contained[2]/*Observation/obsTemplateHeight*/.performer[0]: A Reference without an actual reference or identifier should have a display
@@ -389,23 +387,14 @@ WARNING: Questionnaire/extract-complex-template2: Questionnaire.contained[0]/*Bu
 WARNING: Questionnaire/extract-complex-template2: Questionnaire.contained[0]/*Bundle/bunExtract*/.entry[2].resource/*Observation/null*/.performer[0]: A Reference without an actual reference or identifier should have a display
 WARNING: Questionnaire/extract-complex-template2: Questionnaire.contained[0]/*Bundle/bunExtract*/.entry[3].resource/*Observation/null*/.performer[0]: A Reference without an actual reference or identifier should have a display
 WARNING: Questionnaire/extract-complex-template2: Questionnaire.contained[0]/*Bundle/bunExtract*/.entry[4].resource/*Observation/null*/.performer[0]: A Reference without an actual reference or identifier should have a display
-
-ERROR: Questionnaire/extract-complex-template2: Questionnaire.contained[0]/*Bundle/bunExtract*/.entry[2].resource.derivedFrom[0]: Unable to resolve resource with reference 'replaced'
-ERROR: Questionnaire/extract-complex-template2: Questionnaire.contained[0]/*Bundle/bunExtract*/.entry[3].resource.derivedFrom[0]: Unable to resolve resource with reference 'replaced'
-ERROR: Questionnaire/extract-complex-template2: Questionnaire.contained[0]/*Bundle/bunExtract*/.entry[2].resource/*Observation/null*/.derivedFrom[0]: Unable to resolve resource with reference 'replaced'
-ERROR: Questionnaire/extract-complex-template2: Questionnaire.contained[0]/*Bundle/bunExtract*/.entry[3].resource/*Observation/null*/.derivedFrom[0]: Unable to resolve resource with reference 'replaced'
-ERROR: Questionnaire/extract-complex-template2: Questionnaire.contained[0]/*Bundle/bunExtract*/.entry[4].resource/*Observation/null*/.derivedFrom[0]: Unable to resolve resource with reference 'replaced'
-
-# Transaction bundle entries are not required to have a fullUrl, so these are not errors?
-ERROR: Questionnaire/extract-complex-template2: Questionnaire.contained[0].entry[1]: Bundle entry missing fullUrl
-ERROR: Questionnaire/extract-complex-template2: Questionnaire.contained[0].entry[2]: Bundle entry missing fullUrl
-ERROR: Questionnaire/extract-complex-template2: Questionnaire.contained[0].entry[3]: Bundle entry missing fullUrl
-ERROR: Questionnaire/extract-complex-template2: Questionnaire.contained[0].entry[4]: Bundle entry missing fullUrl
-ERROR: Questionnaire/extract-complex-template2: Questionnaire.contained[0]/*Bundle/bunExtract*/.entry[2].resource.derivedFrom[0]: Relative Reference appears inside Bundle whose entry is missing a fullUrl
-ERROR: Questionnaire/extract-complex-template2: Questionnaire.contained[0]/*Bundle/bunExtract*/.entry[3].resource.derivedFrom[0]: Relative Reference appears inside Bundle whose entry is missing a fullUrl
-ERROR: Questionnaire/extract-complex-template2: Questionnaire.contained[0]/*Bundle/bunExtract*/.entry[2].resource/*Observation/null*/.derivedFrom[0]: Relative Reference appears inside Bundle whose entry is missing a fullUrl
-ERROR: Questionnaire/extract-complex-template2: Questionnaire.contained[0]/*Bundle/bunExtract*/.entry[3].resource/*Observation/null*/.derivedFrom[0]: Relative Reference appears inside Bundle whose entry is missing a fullUrl
-ERROR: Questionnaire/extract-complex-template2: Questionnaire.contained[0]/*Bundle/bunExtract*/.entry[4].resource/*Observation/null*/.derivedFrom[0]: Relative Reference appears inside Bundle whose entry is missing a fullUrl
+WARNING: Questionnaire/extract-complex-template: Questionnaire.contained[2]/*Observation/obsTemplateHeight*/.derivedFrom[0]: A Reference without an actual reference or identifier should have a display
+WARNING: Questionnaire/extract-complex-template: Questionnaire.contained[3]/*Observation/obsTemplateWeight*/.derivedFrom[0]: A Reference without an actual reference or identifier should have a display
+WARNING: Questionnaire/extract-complex-template: Questionnaire.contained[4]/*Observation/obsTemplate*/.derivedFrom[0]: A Reference without an actual reference or identifier should have a display
+WARNING: Questionnaire/extract-complex-template2: Questionnaire.contained[0]/*Bundle/bunExtract*/.entry[2].resource.derivedFrom[0]: A Reference without an actual reference or identifier should have a display
+WARNING: Questionnaire/extract-complex-template2: Questionnaire.contained[0]/*Bundle/bunExtract*/.entry[3].resource.derivedFrom[0]: A Reference without an actual reference or identifier should have a display
+WARNING: Questionnaire/extract-complex-template2: Questionnaire.contained[0]/*Bundle/bunExtract*/.entry[2].resource/*Observation/null*/.derivedFrom[0]: A Reference without an actual reference or identifier should have a display
+WARNING: Questionnaire/extract-complex-template2: Questionnaire.contained[0]/*Bundle/bunExtract*/.entry[3].resource/*Observation/null*/.derivedFrom[0]: A Reference without an actual reference or identifier should have a display
+WARNING: Questionnaire/extract-complex-template2: Questionnaire.contained[0]/*Bundle/bunExtract*/.entry[4].resource/*Observation/null*/.derivedFrom[0]: A Reference without an actual reference or identifier should have a display
 
 # Example terminology codes
 WARNING: Questionnaire/extract-complex-template: Questionnaire.contained[4]/*Observation/obsTemplate*/.code.coding[0]: A definition for CodeSystem 'http://example.org/sdh/demo/CodeSystem/cc-screening-codes' could not be found, so the code cannot be validated
@@ -422,7 +411,7 @@ INFORMATION: StructureDefinition/sdc-questionnaire-extr-defn: Questionnaire.exte
 WARNING: StructureDefinition/sdc-questionnaire-templateExtractContext: StructureDefinition.context[0]: Review the extension type for sdc-questionnaire-templateExtractContext: extensions should not have a context of Element unless it's really intended that they can be used anywhere
 WARNING: StructureDefinition/sdc-questionnaire-templateExtractValue: StructureDefinition.context[0]: Review the extension type for sdc-questionnaire-templateExtractValue: extensions should not have a context of Element unless it's really intended that they can be used anywhere
 
-# profile example contains other unrelated extensions (typically from pre-population) that are not part o fhte extraction profile
+# profile example contains other unrelated extensions (typically from pre-population) that are not part of the extraction profile
 INFORMATION: Questionnaire/SDOHCC-QuestionnaireHungerVitalSign: Questionnaire.item[2].extension[1]: This element does not match any known slice defined in the profile http://hl7.org/fhir/uv/sdc/StructureDefinition/sdc-questionnaire-extr-defn|3.0.0 (this may not be a problem, but you should check that it's not intended to match a slice)
 INFORMATION: Questionnaire/SDOHCC-QuestionnaireHungerVitalSign: Questionnaire.item[2].extension[2]: This element does not match any known slice defined in the profile http://hl7.org/fhir/uv/sdc/StructureDefinition/sdc-questionnaire-extr-defn|3.0.0 (this may not be a problem, but you should check that it's not intended to match a slice)
 INFORMATION: Questionnaire/SDOHCC-QuestionnaireHungerVitalSign: Questionnaire.item[2].extension[3]: This element does not match any known slice defined in the profile http://hl7.org/fhir/uv/sdc/StructureDefinition/sdc-questionnaire-extr-defn|3.0.0 (this may not be a problem, but you should check that it's not intended to match a slice)
