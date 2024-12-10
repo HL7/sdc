@@ -85,6 +85,9 @@
       a distinct subject is communicated using the <a href="StructureDefinition-sdc-questionnaire-isSubject.html">isSubject</a> extension.  An 
       <a href="StructureDefinition-sdc-questionnaireresponse-isSubject.html">equivalent extension</a> flags the element within the 
       QuestionnaireResponse.</li>
+    <li>When selecting data for extraction, systems must always check for the presence of modifier elements or other elements (e.g. Quantity.comparator) 
+    that may shift the meaning of the data elements selected and ensure that records whose meaning might be atypical are either not used for extraction 
+    or are appropriately flagged to the user for review and possible adjustment.</li>
   </ul>
   <a name="service"> </a>
   <h3>Extraction service</h3>

@@ -553,8 +553,9 @@
       It is an error if the type of an initialExpression or candidateExpression disagrees with the type of the item, with the following exceptions: a Resource
       can map to a Reference and a Quantity can map to a <code>integer</code> or <code>decimal</code> provided that the
       <a href="{{site.data.fhir.path}}extension-questionnaire-unit.html">questionnaire-unit</a> extension is present to allow determination of what unit to
-      match on/convert to.  Systems that encounter non-matching expressions that resolve to an element that does not agree SHOULD log it but still populate
-      other elements as best they can.</li>
+      match on/convert to. However, if the Observation selected for population is a Quantity with a comparator (e.g., "greater than", "less than", etc.), then that 
+      Observation cannot be used for population as the semantics of the comparator would be lost.  Systems that encounter non-matching expressions that resolve to 
+      an element that does not agree SHOULD log it but still populate other elements as best they can.</li>
     <li>
       When defining queries in expressions, be sure to filter all relevant elements.  For example, ensuring status excludes entered-in-error elements, practitioners are
       active, etc.</li>
