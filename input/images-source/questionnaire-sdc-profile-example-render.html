@@ -29,7 +29,7 @@
 			<div id="linkitem-1.1" class="string">
 				<form action="http://hl7.org/fhir/">
 				Today's Date
-				<input id="linkitem-1.1-input" type="text" value="01/01/2020" readonly style="color:#bbb"></input>
+				<input id="linkitem-1.1-input" type="text" value="01/01/2020" readonly="readonly" style="color:#bbb"></input>
 				</form>			
 			</div>
 			<div id="linkitem-1.2" class="string">
@@ -106,26 +106,47 @@
 				</table>
 			</form>
 		</div>
+
 		<div id="linkitem-3" class="group">
 			<h2>3 Slider demonstration</h2>
 			<div id="linkitem-3.1" class="slidecontainer">
 			Adjust the slider<br/><br/>
 			<form action="http://hl7.org/fhir/">
-				0<input type="range" list="tickmarks" min="0" max="100" value="50" step="10" class="slider" id="linkitem-3.1-slider">100
-				<datalist id="tickmarks">
-				  <option value="0"></option>
-				  <option value="10"></option>
-				  <option value="20"></option>
-				  <option value="30"></option>
-				  <option value="40"></option>
-				  <option value="50"></option>
-				  <option value="60"></option>
-				  <option value="70"></option>
-				  <option value="80"></option>
-				  <option value="90"></option>
-			  	  <option value="100"></option>
-				</datalist>				
+        <table>
+          <tbody>
+            <tr>
+              <td style="text-align: right;">
+                0<br/>
+                <span style="font-style:italic;" id="linkitem-3.1.1-lower">Completely<br/>
+                dissatisfied</span>
+              </td>
+              <td style="vertical-align: top;">
+                <input type="range" list="tickmarks" min="0" max="100" value="50" step="10" class="slider" id="linkitem-3.1-slider"/>
+                <datalist id="tickmarks">
+                  <option value="0" label="0"></option>
+                  <option value="10"></option>
+                  <option value="20"></option>
+                  <option value="30"></option>
+                  <option value="40"></option>
+                  <option value="50"></option>
+                  <option value="60"></option>
+                  <option value="70"></option>
+                  <option value="80"></option>
+                  <option value="90"></option>
+                  <option value="100" label="100"></option>
+                </datalist>				
+              </td>
+              <td style="text-align: left;">
+                100<br/>
+                <span style="font-style:italic;" id="linkitem-3.1.2-upper">Completely
+                <br/>satisfied</span>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+			  
 			</form>
+      </div>
 		</div>
 		<br/>
 		<br/>		
@@ -134,10 +155,10 @@
 			<div id="linkitem-4.1" class="string">
 				<form action="http://hl7.org/fhir/">
 				Enter timing of harm assessment:<br/>
-				<input id="linkitem-4.1-a" type="radio" name="Timing" value="LA20752-4" checked="checked"/>&nbsp;A. Within 24 hours&#xA0;<br/>
-				<input id="linkitem-4.1-b" type="radio" name="Timing" value="LA20753-2"/>&nbsp;B. After 24 hours but before 3 days&#xA0;<br/>
-				<input id="linkitem-4.1-c" type="radio" name="Timing" value="LA20754-0"/>&nbsp;C. Three days or later&#xA0;<br/>
-				<input id="linkitem-4.1-d" type="radio" name="Timing" value="LA4489-6"/>&nbsp;D. Unknown&#xA0;
+				<input id="linkitem-4.1-a" type="radio" name="Timing" value="LA20752-4" checked="checked"/>&#xA0;A. Within 24 hours&#xA0;<br/>
+				<input id="linkitem-4.1-b" type="radio" name="Timing" value="LA20753-2"/>&#xA0;B. After 24 hours but before 3 days&#xA0;<br/>
+				<input id="linkitem-4.1-c" type="radio" name="Timing" value="LA20754-0"/>&#xA0;C. Three days or later&#xA0;<br/>
+				<input id="linkitem-4.1-d" type="radio" name="Timing" value="LA4489-6"/>&#xA0;D. Unknown&#xA0;
 			</form>
 			</div>
 		</div>		
@@ -147,16 +168,16 @@
 			Select Platelet:<br/>
 			<form action="http://hl7.org/fhir/">
 				<select name="choiceColumnWithCodes" id="choiceColumnWithCodes" size="10">
-				  <option value="header">CODE&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;DESCRIPTION</option>
-				  <option value="LA11165-0">LA11165-0&nbsp;&nbsp;&nbsp;&nbsp;Platelet anisocytosis</option>
-  				  <option value="LA11166-8">LA11166-8&nbsp;&nbsp;&nbsp;&nbsp;Platelet satellitism</option>
-  				  <option value="LA11167-6">LA11167-6&nbsp;&nbsp;&nbsp;&nbsp;Platelet large fragments</option>
-  				  <option value="LA11167-6">LA11167-6&nbsp;&nbsp;&nbsp;&nbsp;Platelet large fragments</option>
-  				  <option value="LA11168-4">LA11168-4&nbsp;&nbsp;&nbsp;&nbsp;Platelet clump</option>
-  				  <option value="LA11169-2">LA11169-2&nbsp;&nbsp;&nbsp;&nbsp;Platelets.agranular</option>  				  
-  				  <option value="LA11170-0">LA11170-0&nbsp;&nbsp;&nbsp;&nbsp;Platelets.giant</option>  				  
-  				  <option value="LA11172-8">LA11172-8&nbsp;&nbsp;&nbsp;&nbsp;Platelets.small</option>  				  
-  				  <option value="LA11172-6">LA11172-6&nbsp;&nbsp;&nbsp;&nbsp;Platelets.large</option>  				  
+				  <option value="header">CODE&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;DESCRIPTION</option>
+				  <option value="LA11165-0">LA11165-0&#xA0;&#xA0;&#xA0;&#xA0;Platelet anisocytosis</option>
+  				  <option value="LA11166-8">LA11166-8&#xA0;&#xA0;&#xA0;&#xA0;Platelet satellitism</option>
+  				  <option value="LA11167-6">LA11167-6&#xA0;&#xA0;&#xA0;&#xA0;Platelet large fragments</option>
+  				  <option value="LA11167-6">LA11167-6&#xA0;&#xA0;&#xA0;&#xA0;Platelet large fragments</option>
+  				  <option value="LA11168-4">LA11168-4&#xA0;&#xA0;&#xA0;&#xA0;Platelet clump</option>
+  				  <option value="LA11169-2">LA11169-2&#xA0;&#xA0;&#xA0;&#xA0;Platelets.agranular</option>  				  
+  				  <option value="LA11170-0">LA11170-0&#xA0;&#xA0;&#xA0;&#xA0;Platelets.giant</option>  				  
+  				  <option value="LA11172-8">LA11172-8&#xA0;&#xA0;&#xA0;&#xA0;Platelets.small</option>  				  
+  				  <option value="LA11172-6">LA11172-6&#xA0;&#xA0;&#xA0;&#xA0;Platelets.large</option>  				  
 				</select>
 			</form>
 			</div>
@@ -167,12 +188,12 @@
 			All the practitioners below can speak the patient's language. Choose all preferred practioners:<br/>
 			<form action="http://hl7.org/fhir/">
 				<select name="choiceColumnWithReferences" id="choiceColumnWithReferences" size="10">
-				  <option value="header">LAST NAME&nbsp;&nbsp;&nbsp;&nbsp;FIRST NAME&nbsp;&nbsp;&nbsp;&nbsp;GENDER</option>
-				  <option value="Adjuster Awali">Adjuster&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Awali&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Male</option>
-  				  <option value="Moseley Henry">Moseley&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Henry&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Male</option>
-  				  <option value="Update Isaac">Upton&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Isaac&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Male</option>
-  				  <option value="Williams Amy">Williams&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Amy&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Female</option>
-  				  <option value="Winters Bill">Winters&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Bill&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Male</option>
+				  <option value="header">LAST NAME&#xA0;&#xA0;&#xA0;&#xA0;FIRST NAME&#xA0;&#xA0;&#xA0;&#xA0;GENDER</option>
+				  <option value="Adjuster Awali">Adjuster&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;Awali&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;Male</option>
+  				  <option value="Moseley Henry">Moseley&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;Henry&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;Male</option>
+  				  <option value="Update Isaac">Upton&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;Isaac&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;Male</option>
+  				  <option value="Williams Amy">Williams&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;Amy&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;Female</option>
+  				  <option value="Winters Bill">Winters&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;Bill&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;Male</option>
 				</select>
 			</form>
 			</div>

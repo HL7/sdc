@@ -303,23 +303,39 @@ i.fa {
       <input type="radio" id="tab-sliderStepValue-1" name="tab-sliderStepValue-group-2" checked="true"/>
       <label for="tab-sliderStepValue-1">Sample Question</label>
       <div class="content-in-tab">
-        <p> Rate your doctor:
-        0<input type="range" list="tickmarks" min="0" max="100" value="50" step="10" class="slider" id="linkitem-3.1-slider">100%
-        <datalist id="tickmarks">
-              <option value="0"/>
-              <option value="10"/>
-              <option value="20"/>
-              <option value="30"/>
-              <option value="40"/>
-              <option value="50"/>
-              <option value="60"/>
-              <option value="70"/>
-              <option value="80"/>
-              <option value="90"/>
-              <option value="100"/>
-            </datalist>
-          </input>
-        </p>
+        <p> Rate your doctor:</p>
+        <table>
+          <tbody>
+            <tr>
+              <td style="text-align: right;">
+                0<br/>
+                <span style="font-style:italic;" id="linkitem-3.1.1-lower">Completely<br/>
+                dissatisfied</span>
+              </td>
+              <td style="vertical-align: top;">
+                <input type="range" list="tickmarks" min="0" max="100" value="50" step="10" class="slider" id="linkitem-3.1-slider"/>
+                <datalist id="tickmarks">
+                  <option value="0" label="0"></option>
+                  <option value="10"></option>
+                  <option value="20"></option>
+                  <option value="30"></option>
+                  <option value="40"></option>
+                  <option value="50"></option>
+                  <option value="60"></option>
+                  <option value="70"></option>
+                  <option value="80"></option>
+                  <option value="90"></option>
+                  <option value="100" label="100"></option>
+                </datalist>				
+              </td>
+              <td style="text-align: left;">
+                100<br/>
+                <span style="font-style:italic;" id="linkitem-3.1.2-upper">Completely
+                <br/>satisfied</span>
+              </td>
+            </tr>
+          </tbody>
+        </table>
       </div>
     </div>
     <div class="tab">

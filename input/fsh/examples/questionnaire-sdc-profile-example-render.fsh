@@ -95,6 +95,20 @@ Usage: #example
     * text = "Rate your doctor:"
     * type = #integer
     * initial.valueInteger = 50
+    * item[+]
+      * extension[0]
+        * url = "http://hl7.org/fhir/StructureDefinition/questionnaire-itemControl"
+        * valueCodeableConcept = $questionnaire-item-control#lower "Lower-bound"
+      * linkId = "2.3.1"
+      * text = "Completely dissatisfied"
+      * type = #display
+    * item[+]
+      * extension[0]
+        * url = "http://hl7.org/fhir/StructureDefinition/questionnaire-itemControl"
+        * valueCodeableConcept = $questionnaire-item-control#upper "Upper-bound"
+      * linkId = "2.3.2"
+      * text = "Completely satisfied"
+      * type = #display
   * item[+]
     * extension
       * url = "http://hl7.org/fhir/StructureDefinition/questionnaire-itemControl"
