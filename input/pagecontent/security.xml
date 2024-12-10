@@ -54,8 +54,7 @@
       resource</li>
 		<li>When evaluating security of alternative channels, transport protocols, user authentication, etc., a risk analysis SHOULD be performed and documented using NIST 800-30
       guidelines of their equivalent</li>
-		<li>Where workflow requires digital signatures on forms or on answer submissions, implementers SHALL make use of the
-      <a href="{{site.data.fhir.path}}provenance.html">Provenance</a> resource to record such signatures.</li>
+		<li>In situations where signatures are necessary, systems SHOULD make use of the <a href="https://hl7.org/fhir/extensions/StructureDefinition-questionnaireresponse-signature.html">signature</a> extension as used in the <a href="behavior.html">SDC behavior profile</a>.</li>
 	</ul>
 	<a name="integrity"> </a>
 	<h3>Transaction Integrity</h3>

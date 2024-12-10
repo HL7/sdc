@@ -47,7 +47,7 @@
   POSSIBILITY OF SUCH DAMAGE.
   
 
-  Generated on Wed, Nov 27, 2024 19:21+0000 for FHIR v6.0.0-ballot2 
+  Generated on Fri, Dec 6, 2024 22:01+0000 for FHIR v6.0.0-ballot2 
 -->
 <xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns="http://hl7.org/fhir" xmlns:xhtml="http://www.w3.org/1999/xhtml" xmlns:xml="http://www.w3.org/XML/1998/namespace" targetNamespace="http://hl7.org/fhir" elementFormDefault="qualified" version="6.0.0-ballot2">
   <!-- Note: When using this schema with some tools, it may also be necessary to declare xmlns:xml="http://www.w3.org/XML/1998/namespace", however this causes performance issues with other tools and thus is not in the base schemas. -->
@@ -32979,6 +32979,11 @@ RegisteredName | UserFriendlyName | PatientReportedName.</xs:documentation>
           <xs:documentation xml:lang="en">Active</xs:documentation>
         </xs:annotation>
       </xs:enumeration>
+      <xs:enumeration value="limited">
+        <xs:annotation>
+          <xs:documentation xml:lang="en">Limited</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
       <xs:enumeration value="suspended">
         <xs:annotation>
           <xs:documentation xml:lang="en">Suspended</xs:documentation>
@@ -43326,12 +43331,12 @@ The origin at the TLHC of the TLHC pixel is 0.0\0.0, the BRHC of the TLHC pixel 
   </xs:complexType>
   <xs:element name="InsurancePlan" type="InsurancePlan">
     <xs:annotation>
-      <xs:documentation xml:lang="en">Details about an insurance plan.</xs:documentation>
+      <xs:documentation xml:lang="en">InsurancePlan describes the costs to the subscriber or beneficiary associated with benefits, as well as additional information about the offering, such as who administers the plan, a coverage area, contact information, etc.  The specific benefits covered by the plan are described in the `InsuranceProduct` referenced in `InsurancePlan.product`.</xs:documentation>
     </xs:annotation>
   </xs:element>
   <xs:complexType name="InsurancePlan">
     <xs:annotation>
-      <xs:documentation xml:lang="en">Details about an insurance plan.</xs:documentation>
+      <xs:documentation xml:lang="en">InsurancePlan describes the costs to the subscriber or beneficiary associated with benefits, as well as additional information about the offering, such as who administers the plan, a coverage area, contact information, etc.  The specific benefits covered by the plan are described in the `InsuranceProduct` referenced in `InsurancePlan.product`.</xs:documentation>
       <xs:documentation xml:lang="en">If the element is present, it must have either a @value, an @id, or extensions</xs:documentation>
     </xs:annotation>
     <xs:complexContent>
@@ -43378,7 +43383,7 @@ The origin at the TLHC of the TLHC pixel is 0.0\0.0, the BRHC of the TLHC pixel 
   </xs:complexType>
   <xs:complexType name="InsurancePlan.GeneralCost">
     <xs:annotation>
-      <xs:documentation xml:lang="en">Details about an insurance plan.</xs:documentation>
+      <xs:documentation xml:lang="en">InsurancePlan describes the costs to the subscriber or beneficiary associated with benefits, as well as additional information about the offering, such as who administers the plan, a coverage area, contact information, etc.  The specific benefits covered by the plan are described in the `InsuranceProduct` referenced in `InsurancePlan.product`.</xs:documentation>
     </xs:annotation>
     <xs:complexContent>
       <xs:extension base="BackboneElement">
@@ -43409,7 +43414,7 @@ The origin at the TLHC of the TLHC pixel is 0.0\0.0, the BRHC of the TLHC pixel 
   </xs:complexType>
   <xs:complexType name="InsurancePlan.SpecificCost">
     <xs:annotation>
-      <xs:documentation xml:lang="en">Details about an insurance plan.</xs:documentation>
+      <xs:documentation xml:lang="en">InsurancePlan describes the costs to the subscriber or beneficiary associated with benefits, as well as additional information about the offering, such as who administers the plan, a coverage area, contact information, etc.  The specific benefits covered by the plan are described in the `InsuranceProduct` referenced in `InsurancePlan.product`.</xs:documentation>
     </xs:annotation>
     <xs:complexContent>
       <xs:extension base="BackboneElement">
@@ -43430,7 +43435,7 @@ The origin at the TLHC of the TLHC pixel is 0.0\0.0, the BRHC of the TLHC pixel 
   </xs:complexType>
   <xs:complexType name="InsurancePlan.Benefit">
     <xs:annotation>
-      <xs:documentation xml:lang="en">Details about an insurance plan.</xs:documentation>
+      <xs:documentation xml:lang="en">InsurancePlan describes the costs to the subscriber or beneficiary associated with benefits, as well as additional information about the offering, such as who administers the plan, a coverage area, contact information, etc.  The specific benefits covered by the plan are described in the `InsuranceProduct` referenced in `InsurancePlan.product`.</xs:documentation>
     </xs:annotation>
     <xs:complexContent>
       <xs:extension base="BackboneElement">
@@ -43451,7 +43456,7 @@ The origin at the TLHC of the TLHC pixel is 0.0\0.0, the BRHC of the TLHC pixel 
   </xs:complexType>
   <xs:complexType name="InsurancePlan.Cost">
     <xs:annotation>
-      <xs:documentation xml:lang="en">Details about an insurance plan.</xs:documentation>
+      <xs:documentation xml:lang="en">InsurancePlan describes the costs to the subscriber or beneficiary associated with benefits, as well as additional information about the offering, such as who administers the plan, a coverage area, contact information, etc.  The specific benefits covered by the plan are described in the `InsuranceProduct` referenced in `InsurancePlan.product`.</xs:documentation>
     </xs:annotation>
     <xs:complexContent>
       <xs:extension base="BackboneElement">
@@ -53064,7 +53069,7 @@ Deceased patients may also be marked as inactive for the same reasons, but may b
           </xs:element>
           <xs:choice minOccurs="0" maxOccurs="1" >
             <xs:annotation>
-              <xs:documentation xml:lang="en">Indicates whether the patient is part of a multiple (boolean) or indicates the actual birth order (integer).  This count is relative to the total of live births and fetal losses.</xs:documentation>
+              <xs:documentation xml:lang="en">Indicates whether the patient is part of a multiple (boolean) or indicates the actual birth order (integer).  This count is relative to the total of live births and fetal losses, which MAY be tracked in the `patient-multipleBirthTotal` extension.The boolean option for this property can also be used to track that there are known to be multiple fetuses prior to birth.</xs:documentation>
             </xs:annotation>
             <xs:element name="multipleBirthBoolean" type="boolean"/>
             <xs:element name="multipleBirthInteger" type="integer"/>
@@ -55179,6 +55184,11 @@ Deceased patients may also be marked as inactive for the same reasons, but may b
           <xs:element name="organization" minOccurs="0" maxOccurs="1" type="Reference">
             <xs:annotation>
               <xs:documentation xml:lang="en">The organization where this role is available.</xs:documentation>
+           </xs:annotation>
+          </xs:element>
+          <xs:element name="network" minOccurs="0" maxOccurs="unbounded" type="Reference">
+            <xs:annotation>
+              <xs:documentation xml:lang="en">The network in which the PractitionerRole provides the role's services (if defined) at the indicated locations (if defined).</xs:documentation>
            </xs:annotation>
           </xs:element>
           <xs:element name="code" minOccurs="0" maxOccurs="unbounded" type="CodeableConcept">
@@ -57427,11 +57437,6 @@ Deceased patients may also be marked as inactive for the same reasons, but may b
               <xs:documentation xml:lang="en">A goal that the study is aiming to achieve in terms of a scientific question to be answered by the analysis of data collected during the study.</xs:documentation>
            </xs:annotation>
           </xs:element>
-          <xs:element name="outcomeMeasure" type="ResearchStudy.OutcomeMeasure" minOccurs="0" maxOccurs="unbounded">
-            <xs:annotation>
-              <xs:documentation xml:lang="en">An &quot;outcome measure&quot;, &quot;endpoint&quot;, &quot;effect measure&quot; or &quot;measure of effect&quot; is a specific measurement or observation used to quantify the effect of experimental variables on the participants in a study, or for observational studies, to describe patterns of diseases or traits or associations with exposures, risk factors or treatment.</xs:documentation>
-           </xs:annotation>
-          </xs:element>
           <xs:element name="result" minOccurs="0" maxOccurs="unbounded" type="Reference">
             <xs:annotation>
               <xs:documentation xml:lang="en">Link to one or more sets of results generated by the study.  Could also link to a research registry holding the results such as ClinicalTrials.gov.</xs:documentation>
@@ -57543,12 +57548,12 @@ Deceased patients may also be marked as inactive for the same reasons, but may b
           </xs:element>
           <xs:element name="eligibility" minOccurs="0" maxOccurs="1" type="Reference">
             <xs:annotation>
-              <xs:documentation xml:lang="en">Inclusion and exclusion criteria.</xs:documentation>
+              <xs:documentation xml:lang="en">Inclusion and exclusion criteria. The referenced Group Resource should have a membership element value of either 'definitional' or 'conceptual'.</xs:documentation>
            </xs:annotation>
           </xs:element>
           <xs:element name="actualGroup" minOccurs="0" maxOccurs="1" type="Reference">
             <xs:annotation>
-              <xs:documentation xml:lang="en">Group of participants who were enrolled in study.</xs:documentation>
+              <xs:documentation xml:lang="en">Group of participants who were enrolled in study. The referenced Group Resource should have a membership element value of 'enumerated'.</xs:documentation>
            </xs:annotation>
           </xs:element>
         </xs:sequence>
@@ -57562,34 +57567,24 @@ Deceased patients may also be marked as inactive for the same reasons, but may b
     <xs:complexContent>
       <xs:extension base="BackboneElement">
         <xs:sequence>
-          <xs:element name="linkId" minOccurs="0" maxOccurs="1" type="id">
+          <xs:element name="targetNumber" minOccurs="0" maxOccurs="1" type="unsignedInt">
             <xs:annotation>
-              <xs:documentation xml:lang="en">Allows the comparisonGroup for the study and the comparisonGroup for the subject to be linked easily.</xs:documentation>
+              <xs:documentation xml:lang="en">Estimated total number of participants to be enrolled in the comparison group.</xs:documentation>
            </xs:annotation>
           </xs:element>
-          <xs:element name="name" minOccurs="1" maxOccurs="1" type="string">
+          <xs:element name="actualNumber" minOccurs="0" maxOccurs="1" type="unsignedInt">
             <xs:annotation>
-              <xs:documentation xml:lang="en">Unique, human-readable label for this comparisonGroup of the study.</xs:documentation>
+              <xs:documentation xml:lang="en">Actual total number of participants enrolled in the comparison group.</xs:documentation>
            </xs:annotation>
           </xs:element>
-          <xs:element name="type" minOccurs="0" maxOccurs="1" type="CodeableConcept">
+          <xs:element name="eligibility" minOccurs="0" maxOccurs="1" type="Reference">
             <xs:annotation>
-              <xs:documentation xml:lang="en">Categorization of study comparisonGroup, e.g. experimental, active comparator, placebo comparater.</xs:documentation>
-           </xs:annotation>
-          </xs:element>
-          <xs:element name="description" minOccurs="0" maxOccurs="1" type="markdown">
-            <xs:annotation>
-              <xs:documentation xml:lang="en">A succinct description of the path through the study that would be followed by a subject adhering to this comparisonGroup.</xs:documentation>
-           </xs:annotation>
-          </xs:element>
-          <xs:element name="intendedExposure" minOccurs="0" maxOccurs="unbounded" type="Reference">
-            <xs:annotation>
-              <xs:documentation xml:lang="en">Interventions or exposures in this comparisonGroup or cohort.</xs:documentation>
+              <xs:documentation xml:lang="en">Inclusion and exclusion criteria for the comparison group as a subset of the eligibility for the overall study. The referenced Group Resource should have a membership element value of either 'definitional' or 'conceptual'.</xs:documentation>
            </xs:annotation>
           </xs:element>
           <xs:element name="observedGroup" minOccurs="0" maxOccurs="1" type="Reference">
             <xs:annotation>
-              <xs:documentation xml:lang="en">Group of participants who were enrolled in study comparisonGroup.</xs:documentation>
+              <xs:documentation xml:lang="en">Group of participants who were enrolled in the comparison group as a subset of those enrolled in the overall study. The referenced Group Resource should have a membership element value of 'enumerated'.</xs:documentation>
            </xs:annotation>
           </xs:element>
         </xs:sequence>
@@ -57618,6 +57613,11 @@ Deceased patients may also be marked as inactive for the same reasons, but may b
               <xs:documentation xml:lang="en">Free text description of the objective of the study.  This is what the study is trying to achieve rather than how it is going to achieve it (see ResearchStudy.description).</xs:documentation>
            </xs:annotation>
           </xs:element>
+          <xs:element name="outcomeMeasure" type="ResearchStudy.OutcomeMeasure" minOccurs="0" maxOccurs="unbounded">
+            <xs:annotation>
+              <xs:documentation xml:lang="en">An &quot;outcome measure&quot;, &quot;endpoint&quot;, &quot;effect measure&quot; or &quot;measure of effect&quot; is a specific measurement or observation used to quantify the effect of experimental variables on the participants in a study, or for observational studies, to describe patterns of diseases or traits or associations with exposures, risk factors or treatment.</xs:documentation>
+           </xs:annotation>
+          </xs:element>
         </xs:sequence>
       </xs:extension>
     </xs:complexContent>
@@ -57631,22 +57631,78 @@ Deceased patients may also be marked as inactive for the same reasons, but may b
         <xs:sequence>
           <xs:element name="name" minOccurs="0" maxOccurs="1" type="string">
             <xs:annotation>
-              <xs:documentation xml:lang="en">Label for the outcome.</xs:documentation>
+              <xs:documentation xml:lang="en">Label for the outcome measure.</xs:documentation>
            </xs:annotation>
           </xs:element>
-          <xs:element name="type" minOccurs="0" maxOccurs="unbounded" type="CodeableConcept">
+          <xs:element name="type" minOccurs="0" maxOccurs="1" type="CodeableConcept">
             <xs:annotation>
-              <xs:documentation xml:lang="en">The parameter or characteristic being assessed as one of the values by which the study is assessed.</xs:documentation>
+              <xs:documentation xml:lang="en">The kind of outcome measure.</xs:documentation>
            </xs:annotation>
           </xs:element>
           <xs:element name="description" minOccurs="0" maxOccurs="1" type="markdown">
             <xs:annotation>
-              <xs:documentation xml:lang="en">Description of the outcome.</xs:documentation>
+              <xs:documentation xml:lang="en">Description of the outcome measure.</xs:documentation>
            </xs:annotation>
           </xs:element>
-          <xs:element name="reference" minOccurs="0" maxOccurs="1" type="Reference">
+          <xs:element name="endpoint" minOccurs="1" maxOccurs="1" type="Reference">
             <xs:annotation>
-              <xs:documentation xml:lang="en">Structured outcome definition.</xs:documentation>
+              <xs:documentation xml:lang="en">Definition of the outcome measure.</xs:documentation>
+           </xs:annotation>
+          </xs:element>
+          <xs:element name="population" minOccurs="0" maxOccurs="1" type="Reference">
+            <xs:annotation>
+              <xs:documentation xml:lang="en">Population for this estimand.</xs:documentation>
+           </xs:annotation>
+          </xs:element>
+          <xs:element name="intervention" minOccurs="0" maxOccurs="1" type="Reference">
+            <xs:annotation>
+              <xs:documentation xml:lang="en">Comparison group of interest.</xs:documentation>
+           </xs:annotation>
+          </xs:element>
+          <xs:element name="comparator" minOccurs="0" maxOccurs="1" type="Reference">
+            <xs:annotation>
+              <xs:documentation xml:lang="en">Comparison group for comparison.</xs:documentation>
+           </xs:annotation>
+          </xs:element>
+          <xs:element name="summaryMeasure" minOccurs="0" maxOccurs="1" type="CodeableConcept">
+            <xs:annotation>
+              <xs:documentation xml:lang="en">Statistical measure for treatment effect estimate.</xs:documentation>
+           </xs:annotation>
+          </xs:element>
+          <xs:element name="eventHandling" type="ResearchStudy.EventHandling" minOccurs="0" maxOccurs="unbounded">
+            <xs:annotation>
+              <xs:documentation xml:lang="en">Handling of intercurrent event.</xs:documentation>
+           </xs:annotation>
+          </xs:element>
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:complexType name="ResearchStudy.EventHandling">
+    <xs:annotation>
+      <xs:documentation xml:lang="en">A scientific study of nature that sometimes includes processes involved in health and disease. For example, clinical trials are research studies that involve people. These studies may be related to new ways to screen, prevent, diagnose, and treat disease. They may also study certain outcomes and certain groups of people by looking at data collected in the past or future.</xs:documentation>
+    </xs:annotation>
+    <xs:complexContent>
+      <xs:extension base="BackboneElement">
+        <xs:sequence>
+          <xs:element name="event" minOccurs="0" maxOccurs="1" type="CodeableConcept">
+            <xs:annotation>
+              <xs:documentation xml:lang="en">The event.</xs:documentation>
+           </xs:annotation>
+          </xs:element>
+          <xs:element name="group" minOccurs="0" maxOccurs="1" type="CodeableConcept">
+            <xs:annotation>
+              <xs:documentation xml:lang="en">The group that is affected by this event handling.</xs:documentation>
+           </xs:annotation>
+          </xs:element>
+          <xs:element name="handling" minOccurs="0" maxOccurs="1" type="CodeableConcept">
+            <xs:annotation>
+              <xs:documentation xml:lang="en">How the data is handled.</xs:documentation>
+           </xs:annotation>
+          </xs:element>
+          <xs:element name="description" minOccurs="0" maxOccurs="1" type="markdown">
+            <xs:annotation>
+              <xs:documentation xml:lang="en">Text summary of event handling.</xs:documentation>
            </xs:annotation>
           </xs:element>
         </xs:sequence>

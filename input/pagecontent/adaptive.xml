@@ -411,4 +411,15 @@
       <br/>
     </li>
   </ul>
+  
+  <a name="security"> </a>
+  <h3>Security Considerations</h3>
+  <p>
+    Because the adaptive process involves sending answers to a separate endpoint in order to determine the "next question", the connection should be appropriately 
+    protected based on the type of information that might be exchanged.  (And given that there is no way to be completely certain what questions will be asked, it 
+    is best to err on the side of safety and presume that sensitive information might be shared.)  As well, there should be trust between the Form Filler and the 
+    nextQuestion endpoint as the server performing the operation will obviously have access to that information.  In general, servers performing the nextQuestion 
+    operation SHOULD NOT take any action with the data other than to return the response and potentially log the information.  "Submission" of a completed form should 
+    always be a distinct action taken by the client.
+  </p>
 </div>

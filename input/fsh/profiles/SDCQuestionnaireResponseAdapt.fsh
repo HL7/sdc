@@ -7,11 +7,17 @@ Description: "Defines how the questionnaire response resource is used to reflect
 * . ^short = "Adaptive Questionnaire Response"
 * . ^definition = "Represents a response to a questionnaire that is dynamically built as each question is answered."
 * . ^alias = "Form Data"
+* extension contains
+    $adheresTo named adheresTo 0..* and
+    $triggeredBy named triggeredBy 0..1
+* extension[adheresTo].value[x] only Canonical(ActivityDefinition or PlanDefinition ) or Reference(ActivityDefinition or PlanDefinition ) or uri
+* extension[triggeredBy].value[x] only Canonical(ActivityDefinition or PlanDefinition ) or Reference(ActivityDefinition or PlanDefinition ) or uri
 * contained 1..* MS
   * ^comment = "The referenced Questionnaire SHALL be sent as a contained resource."
 * questionnaire 1..1 MS
 * questionnaire only canonical
   * ^type.targetProfile = "http://hl7.org/fhir/uv/sdc/StructureDefinition/sdc-questionnaire-adapt"
+  * ^type.aggregation = #contained
 * status MS
 * subject 1..1 MS
 * subject only Reference(Patient)

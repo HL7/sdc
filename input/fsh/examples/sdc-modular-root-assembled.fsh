@@ -60,7 +60,7 @@ Usage: #example
         * valueExpression
           * name = "name"
           * language = #text/fhirpath
-          * expression = "iif(%person.name.where(use='official').exists(),%person.name.where(use='official')[0],%person.name[0])"
+          * expression = "iif(%person.name.where(use='official').exists(),%person.name.where(use='official').first(),%person.name.first())"
       * linkId = "1"
       * definition = "http://hl7.org/fhir/uv/sdc/StructureDefinition/SdcQuestionLibrary#SdcQuestionLibrary.name"
       * text = "What is the person's official name?"
@@ -70,7 +70,7 @@ Usage: #example
           * url = "http://hl7.org/fhir/uv/sdc/StructureDefinition/sdc-questionnaire-initialExpression"
           * valueExpression
             * language = #text/fhirpath
-            * expression = "%name.prefix.where($this in ('Mr.'|'Miss'|'Mrs'|'Ms.'))[0]"
+            * expression = "%name.prefix.where($this in ('Mr.'|'Miss'|'Mrs'|'Ms.'))first()"
         * linkId = "patientname.1"
         * text = "Title"
         * type = #string
@@ -84,7 +84,7 @@ Usage: #example
           * url = "http://hl7.org/fhir/uv/sdc/StructureDefinition/sdc-questionnaire-initialExpression"
           * valueExpression
             * language = #text/fhirpath
-            * expression = "%name.given[0]"
+            * expression = "%name.given.first()"
         * linkId = "patientname.2"
         * definition = "http://hl7.org/fhir/uv/sdc/StructureDefinition/SdcQuestionLibrary#SdcQuestionLibrary.name.first"
         * text = "First"
@@ -96,7 +96,7 @@ Usage: #example
           * url = "http://hl7.org/fhir/uv/sdc/StructureDefinition/sdc-questionnaire-initialExpression"
           * valueExpression
             * language = #text/fhirpath
-            * expression = "%name.last"
+            * expression = "%name.family"
         * linkId = "patientname.3"
         * definition = "http://hl7.org/fhir/uv/sdc/StructureDefinition/SdcQuestionLibrary#SdcQuestionLibrary.name.last"
         * text = "Last"
@@ -207,7 +207,7 @@ Usage: #example
           * valueExpression
             * name = "name"
             * language = #text/fhirpath
-            * expression = "iif(%person.name.where(use='official').exists(),%person.name.where(use='official')[0],%person.name[0])"
+            * expression = "iif(%person.name.where(use='official').exists(),%person.name.where(use='official').first(),%person.name.first())"
         * linkId = "patientcontact.1"
         * definition = "http://hl7.org/fhir/uv/sdc/StructureDefinition/SdcQuestionLibrary#SdcQuestionLibrary.name"
         * text = "What is the person's official name?"
@@ -217,7 +217,7 @@ Usage: #example
             * url = "http://hl7.org/fhir/uv/sdc/StructureDefinition/sdc-questionnaire-initialExpression"
             * valueExpression
               * language = #text/fhirpath
-              * expression = "%name.prefix.where($this in ('Mr.'|'Miss'|'Mrs'|'Ms.'))[0]"
+              * expression = "%name.prefix.where($this in ('Mr.'|'Miss'|'Mrs'|'Ms.')).first()"
           * linkId = "patientcontact.name.1"
           * type = #string
           * required = true

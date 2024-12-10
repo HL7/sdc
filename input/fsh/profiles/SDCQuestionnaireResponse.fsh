@@ -13,8 +13,12 @@ Description: "Defines how the questionnaire response resource is used to reflect
 * . ^constraint[5].extension[$best-practice].valueBoolean = true
 * . ^constraint[6].extension[$best-practice].valueBoolean = true
 * extension contains
+    $adheresTo named adheresTo 0..* and
+    $triggeredBy named triggeredBy 0..1 and
     $questionnaireresponse-signature named signature 0..* and
     $questionnaireresponse-completionMode named completionMode 0..1
+* extension[adheresTo].value[x] only Canonical(ActivityDefinition or PlanDefinition ) or Reference(ActivityDefinition or PlanDefinition ) or uri
+* extension[triggeredBy].value[x] only Canonical(ActivityDefinition or PlanDefinition ) or Reference(ActivityDefinition or PlanDefinition ) or uri
 * identifier MS
 * questionnaire 1..1 MS
 * questionnaire only canonical

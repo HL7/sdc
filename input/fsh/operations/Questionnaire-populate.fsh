@@ -20,6 +20,8 @@ Usage: #definition
 * system = false
 * type = true
 * instance = true
+* inputProfile = Canonical(SDCParametersQuestionnairePopulateIn)
+* outputProfile = Canonical(SDCParametersQuestionnairePopulateOut)
 * parameter[0]
   * insert parameter(#identifier, #in, 0, "1", #Identifier, "A logical questionnaire identifier (i.e. `Questionnaire.identifier`\). The server must know the questionnaire or be able to retrieve it from other known repositories.")
 * parameter[+]
@@ -38,9 +40,9 @@ Usage: #definition
 * parameter[+]
   * insert parameterComplex(#context, #in, 0, "*", "Resources containing information to be used to help populate the [QuestionnaireResponse](http://hl7.org/fhir/R4/questionnaireresponse.html\).  These will typically be FHIR resources\, though alternative population mechanisms might allow consumption of binaries containing FHIR documents\, CDA documents or other source materials.  Servers might not support all possible source materials and may ignore materials they do not recognize.  (They MAY provide warnings if ignoring submitted resources.\)")
   * part[0]
-    * insert parameter(#name, #in, 1, "1", #string, "The name of the launchContext or root Questionnaire variable the passed content should be used as for population purposes.  The name SHALL correspond to a launchContext or variable delared at the root of the Questionnaire.")
+    * insert parameter(#name, #in, 1, "1", #string, "The name of the launchContext or root Questionnaire variable the passed content should be used as for population purposes.  The name SHALL correspond to a launchContext or variable declared at the root of the Questionnaire. Allowed names include 'sourceQueries'\, which specifies that the context is the results of executing the queries in the sdc-questionnaire-sourceQueries extension.")
   * part[+]
-    * insert parameter(#content, #in, 1, "*", #Element, "The actual resource (or resources\) to use as the value of the launchContext or variable.")
+    * insert parameter(#content, #in, 1, "*", #Element, "The actual resource (or resources\) to use as the value of the launchContext or variable. The content should be provided as a resource if the server performing the population may not have access to the content or the content is not available for RESTful retrieval (e.g. it's a search-response Bundle\).")
     * extension[0]
       * url = "http://hl7.org/fhir/StructureDefinition/operationdefinition-allowed-type"
       * valueUri = "Reference"

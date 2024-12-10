@@ -10,7 +10,9 @@ Description: "Sets minimum expectations for questionnaire support for SDC-confor
     PreferredTerminologyServer named terminologyServer 0..* and
     PerformerTypeExtension named performerType 0..* MS and
     AssembleExpectation named assemble-expectation 0..1 MS
-* extension[designNote] ^comment = "Allows capture of todos, rationale for design decisions, etc.  It can also be used to capture comments about the completion of the form in general. Allows commentary to be captured during the process of answering a questionnaire (if not already supported by the form design) as well as after the form is completed. Comments are not part of the \"data\" of the form. If a form prompts for a comment, this should be captured in an answer, not in this element. Formal assessments of the QuestionnareResponse would use [[[Observation]]]."
+//* extension[adheresTo].value[x] only Canonical(ActivityDefinition or PlanDefinition or ObservationDefinition ) or Reference(ActivityDefinition or PlanDefinition or ObservationDefinition ) or uri
+//* extension[triggeredBy].value[x] only Canonical(ActivityDefinition or PlanDefinition or ObservationDefinition ) or Reference(ActivityDefinition or PlanDefinition or ObservationDefinition ) or uri
+* extension[designNote] ^comment = "Allows capture of todos, rationale for design decisions, etc.  It can also be used to capture comments about the completion of the form in general. Allows commentary to be captured during the process of answering a questionnaire (if not already supported by the form design) as well as after the form is completed. Comments are not part of the \"data\" of the form. If a form prompts for a comment, this should be captured in an answer, not in this element. Formal assessments of the QuestionnaireResponse would use [[[Observation]]]."
 * url 1..1 MS
 * version MS
 * title MS
@@ -25,7 +27,7 @@ Description: "Sets minimum expectations for questionnaire support for SDC-confor
   * extension contains
       $designNote named designNote 0..1 and
       PreferredTerminologyServer named terminologyServer 0..*
-  * extension[designNote] ^comment = "Allows capture of todos, rationale for design decisions, etc.  It can also be used to capture comments about specific groups or questions within it. Allows commentary to be captured during the process of answering a questionnaire (if not already supported by the form design) as well as after the form is completed. Comments are not part of the \"data\" of the form. If a form prompts for a comment, this should be captured in an answer, not in this element. Formal assessments of the QuestionnareResponse would use [[[Observation]]]."
+  * extension[designNote] ^comment = "Allows capture of todos, rationale for design decisions, etc.  It can also be used to capture comments about specific groups or questions within it. Allows commentary to be captured during the process of answering a questionnaire (if not already supported by the form design) as well as after the form is completed. Comments are not part of the \"data\" of the form. If a form prompts for a comment, this should be captured in an answer, not in this element. Formal assessments of the QuestionnaireResponse would use [[[Observation]]]."
   * linkId 1..1 MS
   * prefix 0..1 MS
   * text MS
