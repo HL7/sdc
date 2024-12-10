@@ -11,5 +11,5 @@ Description: "Profile used to validate the parameters that are the output of the
 * parameter[out]
   * name = "out" (exactly)
   * value[x] ..0
-  * resource only SDCQuestionnaireAdapt
+  * resource only SDCQuestionnaireResponseAdapt
   * part ..0

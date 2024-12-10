@@ -22,7 +22,7 @@ Usage: #definition
 * type = true
 * instance = false
 * inputProfile = "http://hl7.org/fhir/uv/sdc/StructureDefinition/parameters-questionnaire-next-question-in"
-* outputProfile = "http://hl7.org/fhir/uv/sdc/StructureDefinition/parameters-questionnaire-next-question-in"
+* outputProfile = "http://hl7.org/fhir/uv/sdc/StructureDefinition/parameters-questionnaire-next-question-out"
 * parameter[0]
   * insert parameter(#questionnaire-response, #in, 1, "1", #Resource, "The [Adaptive QuestionnaireResponse Profile](StructureDefinition-sdc-questionnaireresponse-adapt.html\) of the QuestionnaireResponse resource with a *contained* Questionnaire.  When invoking the operation for the first time\, neither the QuestionnaireResponse nor the contained Questionnaire will have any items\, as no questions are yet known.  In subsequent calls\, the QuestionnaireResponse will include answers to all required questions asked so far and the contained QuestionnaireResponse will remain the same as provided back from the operation in the preceding response.")
 * parameter[+]
