@@ -3,7 +3,7 @@ InstanceOf: SDCQuestionnaireResponse
 Title: "SDC-Response to LOINC USSG Family History"
 Description: "Example response to the SDC-LOINC USSG Family History questionnaire"
 Usage: #example
-* questionnaire = "http://hl7.org/fhir/uv/sdc/Questionnaire/questionnaire-sdc-profile-example-ussg-fht|3.0"
+* questionnaire = "http://hl7.org/fhir/uv/sdc/Questionnaire/questionnaire-sdc-profile-example-ussg-fht|4.0.0-ballot"
 * status = #in-progress
 * subject = Reference(http://hl7.org/fhir/Patient/proband)
 * authored = "2008-01-17"

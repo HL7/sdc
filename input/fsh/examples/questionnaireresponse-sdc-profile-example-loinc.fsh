@@ -4,7 +4,7 @@ Title: "SDC-Response to LOINC AHRQ"
 Description: "Example response to te LOINC AHRQ questionnaire."
 Usage: #example
 * extension[adheresTo].valueReference = Reference("http://example.org/ObservationDefinition/74080-3")
-* questionnaire = "http://hl7.org/fhir/uv/sdc/Questionnaire/questionnaire-sdc-profile-example-loinc|3.0"
+* questionnaire = "http://hl7.org/fhir/uv/sdc/Questionnaire/questionnaire-sdc-profile-example-loinc|4.0.0-ballot"
 * status = #completed
 * authored = "2016-03-14"
 * subject = Reference(http://example.org/Patient/123) "Jane Smith"
