@@ -1,6 +1,6 @@
 Extension: ObservationExtractCategory
 Id: sdc-questionnaire-observation-extract-category
-Title: "Observation Extract Category"
+Title: "Extract Observation - Category"
 Description: "Indicates the Observation.category value(s) that should appear on extracted Observations for the entire Questionnaire or for the current item and descendant items.  If this extension appears at multiple levels in the Questionnaire, those defined on lower-level items override those declared on higher-level items."
 * ^status = #active
 * ^context[0].type = #element

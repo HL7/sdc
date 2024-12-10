@@ -5,6 +5,10 @@
     This page provides specific guidelines for use and defines some additional conventions that can be leveraged in queries, FHIRPath and CQL by implementations
     that comply with this implementation guide.
   </p>
+  <blockquote class="stu-note">
+  <b>Note to balloters:</b> The $extract functionality has been refined significantly in this version of the specification, and on this page the 
+  extensions relevant to using expressions have been <a href="#extract-extensions">added</a>.
+  </blockquote>
   <a name="expression"> </a>
   <h3>Use of the Expression type</h3>
   <p>
@@ -67,7 +71,7 @@
       <b>Content:</b> Indicates whether the expression.language is restricted to be "text/cql" (CQL), "text/fhirpath" (FHIRPath), or "application/x-fhir-query" (query) or is unrestricted (any)</li>
     <li>
       <b>Use Cases:</b> Indicates which of the SDC use-cases make use of the extension: <a href="behavior.html">Form Behavior</a> (behavior),
-      <a href="populate.html">Questionnaire Population</a> (population), and/or <a href="extraction.html">Data Extraction</a> (extraction).
+      <a href="populate.html">Questionnaire Population</a> (population), and/or <a href="extraction.html">Data Extraction</a> (extraction - definition/template).
       Other SDC use-cases do not generally have a need for the expression elements.</li>
   </ul>
   <p>
@@ -430,35 +434,6 @@
       </tr>
       <tr>
         <td>
-          <a name="itemExtractionContext"> </a>
-          <a href="StructureDefinition-sdc-questionnaire-itemExtractionContext.html">itemExtractionContext</a>
-        </td>
-        <td>SDC</td>
-        <td>any</td>
-        <td>any</td>
-        <td>extraction</td>
-        <td><a href="examples.html#itemPopulationContext">example</a></td>
-      </tr>
-      <tr>
-        <td colspan="6">
-          <p>
-            This expression identifies the resource(s) that correspond either to an overall questionnaire, a group within the questionnaire or, occasionally,
-            a single question.  The results of executing the specified expression are used to indicate the resources used to identify the data to replace when 
-            performing an extraction and also indicate the relevant resource type.
-          </p>
-          <p>
-            If an expression results in multiple repetitions for a single for the root Questionnaire or for an item where 'repeat' is false, it is an error and no
-            extraction can occur.  When performing an extraction and the expression is executed, if a record is found, the data in the QuestionnaireResponse
-            will be used to update that record.  If the expression returns no results, the data in the QuestionnaireResponse will be used to create a new record.
-          </p>
-          <p>
-            Expression.name does not necessarily need to be present for <a href="extraction.html#definition-extract">definition-based extraction</a>, as that relies on
-            item.definition rather than other expressions.  However, including it is generally a good idea.
-          </p>
-        </td>
-      </tr>
-      <tr>
-        <td>
           <a name="constraint"> </a>
           <a href="{{site.data.fhir.path}}extension-questionnaire-constraint.html">constraint</a>
         </td>
@@ -559,6 +534,179 @@
       </tr>
     </tbody>
   </table>
+
+  <a name="extract"> </a>
+  <h3>$extract extensions</h3>
+  <p>
+    Not all sdc extensions are available in all places. Specifically the <a href="extraction.html">$extract</a> (<a href="extraction.html#definition-extract">definition</a> and <a href="extraction.html#template-extract">template</a>) related extensions are only used during extraction, and the others defined above are not available during extraction. 
+  </p>
+  <p>
+    The fhirpath expressions used in the $extract processing only have access to:
+  </p>
+  <ul>
+    <li><a href="https://hl7.org/fhir/r4/fhirpath.html#variables">%resource</a> - the root of the QuestionnaireResponse</li>
+    <li><a href="https://hl7.org/fhirpath/N1/#environment-variables">%context</a> - the current item in the QuestionnaireResponse (or Questionnaire when processing at the root level)</li>
+    <li><a href="#fhirpath-supplements">%questionnaire</a> - the questionnaire being processed</li>
+    <li><a jref="#fhirpath-supplements">%qitem</a> - the currently processing item in the Questionnaire</li>
+    <li>any variables defined by the <a href="StructureDefinition-sdc-questionnaire-extractAllocateId.html">sdc-questionnaire-allocateId</a> extension (from parent items in the questionnaire definition)</li>
+  </ul>
+
+  <table class="grid">
+    <thead>
+      <tr>
+        <th>Extension</th>
+        <th>Source</th>
+        <th>Location</th>
+        <th>Use Cases</th>
+        <th>Example</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>
+          <a name="allocateId"> </a>
+          <a href="StructureDefinition-sdc-questionnaire-allocateId.html">allocateId</a>
+        </td>
+        <td>SDC</td>
+        <td>Questionnaire, item</td>
+        <td>definition + template extraction</td>
+        <td><a href="Questionnaire-extract-complex-defn3.html">example</a></td>
+      </tr>
+      <tr>
+        <td colspan="5">
+          <p>
+            The allocateId extension is used to allocate a new uuid to be able to use in fhirpath expressions during extraction, specifically to support
+            cross referencing resources in the output transaction bundle which still using server side ID allocation and POST(s).
+          </p>
+          <p>
+            It's value is allocated once for each context that it appears in the QR.<br/>
+            i.e. if it is defined at the root, it will be allocated once.<br/>
+            If it is allocated on a repeating group, it will have a new value for each iteration of the group.<br/>
+            Any child items will use the value that was allocated for the parent item.
+          </p>
+        </td>
+      </tr>
+
+      <tr>
+        <td>
+          <a name="definitionExtract"> </a>
+          <a href="StructureDefinition-sdc-questionnaire-definitionExtract.html">definitionExtract</a>
+        </td>
+        <td>SDC</td>
+        <td>Questionnaire, item</td>
+        <td>definition extraction</td>
+        <td><a href="Questionnaire-extract-complex-defn3.html">example</a></td>
+      </tr>
+      <tr>
+        <td colspan="5">
+          <p>
+            The fhirpath expressions in the definitionExtract are used to provide dynamic values for the
+            <code>bundle.entry.request</code> and <code>bundle.entry.fullUrl</code> properties.
+            These will be evaluated after the allocateId variables have been resolved on the item (and any parent items).
+          </p>
+        </td>
+      </tr>
+
+      <tr>
+        <td>
+          <a name="definitionExtractValue"> </a>
+          <a href="StructureDefinition-sdc-questionnaire-definitionExtractValue.html">definitionExtractValue</a>
+        </td>
+        <td>SDC</td>
+        <td>Questionnaire, item</td>
+        <td>definition extraction</td>
+        <td><a href="Questionnaire-extract-complex-defn3.html">example</a></td>
+      </tr>
+      <tr>
+        <td colspan="5">
+          <p>
+            The fhirpath expressions in the definitionExtractValue provides dynamic values to set a value in the output
+            resource property (based on the definition property in the extension).<br/>
+            These will be evaluated after the allocateId variables have been resolved on the item (and any parent items).
+          </p>
+        </td>
+      </tr>
+
+      <tr>
+        <td>
+          <a name="itemExtractionContext"> </a>
+          <a href="StructureDefinition-sdc-questionnaire-itemExtractionContext.html">itemExtractionContext</a> (deprecated)
+        </td>
+        <td>SDC</td>
+        <td>any</td>
+        <td>definition extraction</td>
+        <td><a href="examples.html#itemPopulationContext">example</a></td>
+      </tr>
+      <tr>
+        <td colspan="6">
+          <blockquote>
+            <b>Note:</b> <i>This extension has been deprecated, migrate to the <a href="StructureDefinition-sdc-questionnaire-definitionExtract.html">definitionExtract</a> extension</i>
+          </blockquote>
+          <p>
+            This expression identifies the resource(s) that correspond either to an overall questionnaire, a group within the questionnaire or, occasionally,
+            a single question.  The results of executing the specified expression are used to indicate the resources used to identify the data to replace when 
+            performing an extraction and also indicate the relevant resource type.
+          </p>
+          <p>
+            If an expression results in multiple repetitions for a single for the root Questionnaire or for an item where 'repeat' is false, it is an error and no
+            extraction can occur.  When performing an extraction and the expression is executed, if a record is found, the data in the QuestionnaireResponse
+            will be used to update that record.  If the expression returns no results, the data in the QuestionnaireResponse will be used to create a new record.
+          </p>
+          <p>
+            Expression.name does not necessarily need to be present for <a href="extraction.html#definition-extract">definition-based extraction</a>, as that relies on
+            item.definition rather than other expressions.  However, including it is generally a good idea.
+          </p>
+        </td>
+      </tr>
+
+      <tr>
+        <td>
+          <a name="templateExtractContext"> </a>
+          <a href="StructureDefinition-sdc-questionnaire-templateExtractContext.html">templateExtractContext</a>
+        </td>
+        <td>SDC</td>
+        <td>(any element - in contained resource))</td>
+        <td>template extraction</td>
+        <td><a href="Questionnaire-extract-complex-template.html">example</a></td>
+      </tr>
+      <tr>
+        <td colspan="5">
+          <p>
+            Selects a new context in the QuestionnaireResponse to be used by subsequent child templateExtractContexts 
+            or templateExtractValue expressions.
+          </p>
+        </td>
+      </tr>
+
+      <tr>
+        <td>
+          <a name="templateExtractValue"> </a>
+          <a href="StructureDefinition-sdc-questionnaire-templateExtractValue.html">templateExtractValue</a>
+        </td>
+        <td>SDC</td>
+        <td>(any element - in contained resource))</td>
+        <td>template extraction</td>
+        <td><a href="Questionnaire-extract-complex-template.html">example</a></td>
+      </tr>
+      <tr>
+        <td colspan="5">
+          <p>
+            Selects a value to replace a value in the extracted resource template.<br/>
+            If the value returns multiple, and the resource property can have multiple values, the values will be added to the resource property.<br/>
+            If the value returns multiple, and the resource property can only have one value, the first value will be used and a warning will be generated.            
+          </p>
+          <p>
+            If there is no result, then the property with the template extension will be removed.
+            With jason, that means removing both the <code>value</code> and <code>_value</code> properties for primitives.
+          </p>
+          <p>
+            For collections, there may be more than 1 template value to replace in the template collection, so don't just clear the collection, remove the tenplated item.
+          </p>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+  
   <a name="fhirquery"> </a>
   <h3>x-fhir-query enhancements</h3>
   <p>
@@ -608,6 +756,7 @@
   <li>
     If the expression resolves to a collection of more than one value, the substitution will be a list of comma-separated values (i.e. behaving as 'or').</li>
   </ul>   
+
   <a name="dependencies"> </a>
   <h3>Dependencies between expressions</h3>
   <p>

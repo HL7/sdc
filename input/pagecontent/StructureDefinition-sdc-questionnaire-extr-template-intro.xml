@@ -1,0 +1,15 @@
+<div xmlns="http://www.w3.org/1999/xhtml" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://hl7.org/fhir ../../input-cache/schemas/R4/fhir-single.xsd">
+  <a name="scope"></a>
+  <h3>Scope and Usage</h3>
+  <p>
+    This profile adds additional constraints and extensions to the base <a href="StructureDefinition-sdc-questionnaire.html">SDC Base Questionnaire Profile</a> that support
+    extracting information from questionnaire responses and producing other FHIR resources.  This profile identifies which core elements and extensions must
+    be supported when using the <a href="extraction.html#template-extract">Template-based</a> extraction mechanism and highlights other elements that, while not required, may be relevant to the questionnaire response data extraction use-case.  Further
+    information on how this use-case is implemented as well as guidance on the elements and extensions included in the profile can be found on the
+    <a href="extraction.html#template-extract">Data Extraction</a> page.
+  </p>
+  <p>
+    The resource(s) in the contained property that are referenced by the <a href="StructureDefinition-sdc-questionnaire-templateExtract.html">templateExtract</a> extension
+    will use the <a href="StructureDefinition-sdc-questionnaire-templateExtractContext.html">templateExtractContext</a> and <a href="StructureDefinition-sdc-questionnaire-templateExtractValue.html">templateExtractValue</a> extensions to indicate what properties need to be replaced with data in the questionnaire response answers.
+  </p>
+</div>

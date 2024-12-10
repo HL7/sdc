@@ -12,9 +12,12 @@
     to write generic software that can convert any arbitrary QuestionnaireResponse into appropriate FHIR resources leveraging metadata embedded in the
     Questionnaire.  This portion of the SDC guide defines mechanisms for doing so.
   </p>
-	<p>
-	  
-	</p>
+  <blockquote class="stu-note">
+  <b>Note to balloters:</b> The definition based $extract functionality has been refined significantly along with a new mechanism for extraction <a href="#template-extract">Template based extraction</a> that uses contained resource(s) as template(s)
+  for extracting data.<br/>
+  Feedback is encouraged for this new functionality.
+  </blockquote>
+
   <a name="caveats"> </a>
   <h3>Caveats, considerations and rules with form data extraction</h3>
   <ul>
@@ -106,7 +109,7 @@
   <a name="design"> </a>
   <h3>Designing Questionnaires to support data extraction</h3>
   <p>
-    This specification defines three different mechanisms to embed information in Questionnaires to support subsequent resource extraction:
+    This specification defines four different mechanisms to embed information in Questionnaires to support subsequent resource extraction:
   </p>
   <ul>
     <li>
@@ -114,6 +117,9 @@
     </li>
     <li>
       <a href="#definition-extract">Definition-based</a>
+    </li>
+    <li>
+      <a href="#template-extract">Template-based</a>
     </li>
     <li>
       <a href="#map-extract">StructureMap-based</a>
@@ -124,7 +130,9 @@
   </p>
   <p>
     Each mechanism has its own profile that includes the additional resource elements or extensions relevant for supporting a particular mechanism: <a href="StructureDefinition-sdc-questionnaire-extr-obsn.html">SDC Questionnaire Extract - Observation</a>, 
-    <a href="StructureDefinition-sdc-questionnaire-extr-defn.html">SDC Questionnaire Extract - Definition</a>, and <a href="StructureDefinition-sdc-questionnaire-extr-smap.html">SDC Questionnaire Extract - Structure Map</a> profiles. Each profile identifies 
+    <a href="StructureDefinition-sdc-questionnaire-extr-defn.html">SDC Questionnaire Extract - Definition</a>, <a href="StructureDefinition-sdc-questionnaire-extr-template.html">SDC Questionnaire Extract - Template</a>, 
+    and <a href="StructureDefinition-sdc-questionnaire-extr-smap.html">SDC Questionnaire Extract - Structure Map</a> profiles.<br/>
+    Each profile identifies 
     specific 'must support' elements and extensions that systems that claim to support a specific SDC extraction mechanism SHALL be capable of extracting data, as befits the CapabilityStatement(s) 
     they claim conformance to. Each system should choose which approach(es) it wishes to use and support based on the elements specified in that profile.
   </p>
@@ -138,7 +146,8 @@
     This is the simplest of the extraction mechanisms.  It leverages the same data elements as are used for the <a href="populate.html#obs-pop">
     Observation-based population</a> mechanism.  It takes advantage of the fact that most questions in the healthcare space typically
     correspond to the <code>value</code> element of an Observation.  It also takes advantage of the <code>Questionnaire.item.code</code> element that
-    identifies what a concept each question or group corresponds to.  The <a href="StructureDefinition-sdc-questionnaire-extr-obsn.html">SDC Questionnaire Extract - Observation</a> profile 
+    identifies what a concept each question or group corresponds to.<br/>
+    The <a href="StructureDefinition-sdc-questionnaire-extr-obsn.html">SDC Questionnaire Extract - Observation</a> profile 
     has been created to support this mechanism. An example for this profile can be found <a href="Questionnaire-questionnaire-sdc-profile-example-cqf-PHQ9.html">here</a>.
   </p>
   <p>
@@ -329,95 +338,434 @@ If an item is presumed to be extracted, it will extract if there are item.codes 
       is discouraged - using one of the other extraction techniques is likely better and safer.</li>
     <li>Obviously, this mechanism only works for questionnaire items that correspond to Observation values.</li>
   </ul>
+
+
+
+
+
   <a name="definition-extract"> </a>
   <h4>Definition-based extraction</h4>
   <p>
-    This approach to extraction is more generic.  It supports extracting data into any type of FHIR resource rather than being limited to only Observation.
-    It also supports more Observation data elements than can be gathered using the Observation element - for example, explicit effective time ranges,
-    interpretations, comments, etc.  The <a href="StructureDefinition-sdc-questionnaire-extr-defn.html">SDC Questionnaire Extract - Definition</a> profile has been created to support this mechanism. 
+    This approach to extraction is more generic than the observation-based extraction. It supports extracting data into any type of FHIR resource rather than being limited to only Observation.
+    It also supports extracting additional Observation properties not defined for the observation-based extract, e.g. explicit effective time ranges, interpretations, comments, etc.<br/>
+    The technique is called "definition-based" because it uses StructureDefinitions to identify resource types/profiles, and their properties which are then associated with items in the Questionnaire
+    using the <code>Questionnaire.item.definition</code> element.<br/>
+    The <a href="StructureDefinition-sdc-questionnaire-extr-defn.html">SDC Questionnaire Extract - Definition</a> profile has been created to support this mechanism. 
   </p>
+  <p>
+    The basic approach to the definition-based extraction mechanism is to walk the QuestionnaireResponse and for each item that has the 
+    <a href="StructureDefinition-sdc-questionnaire-definitionExtract.html">sdc-questionnaire-definitionExtract</a> extension, create a new stub resource of that type/profile,
+    then scan the item and all its children and populate values in the resource based on items that have a matching <code>definition</code> property set, or
+    have <a href="StructureDefinition-sdc-questionnaire-definitionExtractValue.html">sdc-questionnaire-definitionExtractValue</a> extensions on them
+    that have the same definition canonical URL value as in the <code>definitionExtract</code> extension. Once all the children have been processed,
+    the system will populate the <code>bundle.entry.resource</code> property with the extracted resource, and the <code>bundle.entry.request.method</code> and
+    other properties with values based on the <code>definitionExtract</code> extension. If the definition was to a profile, any slicing information or 
+    fixed/pattern values should also be extracted from the profile and applied to the resource where appropriate.
+    For example an identifier might have a fixed system property defined in a profile slice.
+  </p>
+  <p>
+    The item's <code>definition</code> property is composed of:
+  </p>
+    <ul>
+      <li>
+        The full canonical URL of the resource or profile.<br/>
+      e.g. <code>http://hl7.org/fhir/StructureDefinition/Patient</code> or <code>http://example.org/fhir/StructureDefinition/LocalizedPatientProfile</code>
+      </li>
+      <li>Followed by a <code>#</code> symbol.</li>
+      <li>
+        Then the <code>snapshot.element.id</code> of the element in the StructureDefinition that corresponds to the Questionnaire item.<br/>
+        e.g. <code>Patient.name.given</code>
+      </li>
+    </ul>
+  <p>
+    Putting this all together, a definition property looks like this: <code>http://hl7.org/fhir/StructureDefinition/Patient#Patient.name.given</code>.
+  </p>
+  <blockquote>
+    <b>Note:</b> The complete element id does not actually need to appear in a profile snapshot, it is also possible to 'extend' an id to walk further into the data types of the specified element.<br/>
+    For example, the example above <code>http://hl7.org/fhir/StructureDefinition/Patient#Patient.name.given</code> is valid, even though the referenced profile's snapshot only contains <code>Patient.name</code>,
+    not <code>Patient.name.given</code>.<br/>
+    However, for more complex references (e.g. referring to a particular extension or a particular repetition), it will be necessary to define a 
+    distinct profile where slicing ensures that a single element id corresponds to the desired element.  I.e. you would need to use 
+    <code>http://example.org/fhir/StructureDefinition/LocalizedPatientProfile#Patient.name.given:foo</code> where 'foo' was a slice that referred to the first middle name in order to tie to a definition that specific.<br/>
+  </blockquote>
+
   <p>
     To use this method:
   </p>
   <ol>
-    <li>Include the <a href="StructureDefinition-sdc-questionnaire-itemExtractionContext.html">questionnaire-itemExtractionContext</a> extension either on the Questionnaire root or on
-      any item within the Questionnaire to identify the resource that will serve as the context for any extraction.  The itemExtractionContext is used to set the context 
-	  for the item.definition paths. If the itemExtractionContext is empty, then the Questionnaire is being used to create a resource. If the itemExtractionContext has a resource 
-	  (or set of resources), then the Questionnaire is being used to update the resource(s).</li>
-    <li>On descendant items of that element, fill in the <code>Questionnaire.item.definition</code> to point to the resource or profile element that Questionnaire
-      item corresponds to.  (Profiles may be relevant for data that is sliced or has fixed values for some properties.).  The definition SHALL have the full
-      canonical URL of the resource (or profile) followed by '#' followed by the snapshot.element.id of the element the Questionnaire item corresponds to.<br/>
-      When performing definition-based extraction from a profile (rather than just a data type or resource definition), the extraction process SHALL propagate 
-      any pattern or fixed values declared on definition elements that are referenced by the Questionnaire. For example, if a 'group' corresponds to a slice element
-      in the profile, causing that element to appear, then any child elements that have fixed or patterns declared would automatically be filled in.<br/>      
-      NOTE: Rather than specifying the id of an element that actually appears in a snapshot, it is also possible to 'extend' an id to walk further into the data types of the specified element.  For example, 
-      a definition might be <code>http://hl7.org/fhir/StructureDefinition/Patient#Patient.name.given</code> even though the referenced profile's snapshot only contains <code>Patient.name</code>, not
-      <code>Patient.name.given</code>.  However, for more complex references (e.g. referring to a particular extension or a particular repetition), it will be necessary to define a 
-      distinct profile where slicing ensures that a single element id corresponds to the desired element.  I.e. you would need to use 
-      <code>http://somewhere.org/SomePatient#Patient.name.given:foo</code> where 'foo' was a slice that referred to the first middle name in order to tie to a definition that specific.<br/>
-      If a definition is specified on a Group or a Question with nested questions, then nested items might have definitions that refer to a deeper path along the same id structure.
-      For example, a group element might have a definition of <code>http://hl7.org/fhir/StructureDefinition/Patient#Patient.name</code> while nested items would have definitions of
-      <code>http://hl7.org/fhir/StructureDefinition/Patient#Patient.name.given</code> and <code>http://hl7.org/fhir/StructureDefinition/Patient#Patient.name.family</code>.</li>
-    <li>If necessary, define <a href="{{site.data.fhir.path}}extension-questionnaire-hidden.html">questionnaire-hidden</a> items that have <code>
+    <li>
+      Traverse the QuestionnaireResponse from its root through each item iteratively, based on the structure in the Questionnaire.
+    </li>
+    <li>
+      <b>Allocate fullUrl uuid variables (if needed):</b> If an extracted resource needs to reference a resource that is created within the transaction bundle it requires a known <code>entry.fulUrl</code> value (as a new uuid value for each resource instance).
+      The <a href="StructureDefinition-sdc-questionnaire-extractAllocateId.html">sdc-questionnaire-extractAllocateId</a> extension can be used to allocate
+      a named new uuid for this purpose. It should be defined on the item (or root) such that its children cover the resource that is to be created, and also
+      the resources that are to reference it.
+      This variable name can then be used in the definitionExtract extensions's <code>fullUrl</code> fhirpath expression, and also in any reference properties
+      - typically using the <a href="StructureDefinition-sdc-questionnaire-definitionExtractValue.html">definitionExtractValue</a> extension (further described below).
+      <ul>
+        <li>This string value is not a fhirpath expression to be evaluated, it is the name for the variable that will be available to fhirpath expressions.</li>
+        <li>The allocateId extension will be made available to all fhirpath expressions on that node, and any child items.</li>
+        <li>Use the variable name in the allocateId to set the entry.fullUrl of the resource you want to reference in the definitionExtract extension's fullUrl property.</li>
+        <li>Use the variable name to set the reference property using the definitionExtractValue extension's expression property.</li>
+        <li>If this allocateId extension is defined at the root of the questionnaire, a single value will be allocated for the entire extracted transaction bundle.</li>
+        <li>If this allocateId extension is defined on a repeating group, a new value will be allocated for each repetition of the item.</li>
+        <li>The allocateId extension will be processed before any other extract extensions (such as definitionExtract or definitionExtractValue)</li>
+        <li>It is recommended to use meaningful names in the allocateId extension value, e.g. <code>%newPatientUuid</code> or <code>%newEncounterUuid</code></li>
+      </ul>
+      If the extracted resource being referenced repeats (multiple instances could be extracted), then the extract rules for the resources that reference that repeating item must also be within the same repeating group item in order
+      for them to use the same allocated id.
+    </li>
+    <li>
+      <b>Initiate Resource extraction:</b> Include the <a href="StructureDefinition-sdc-questionnaire-definitionExtract.html">sdc-questionnaire-definitionExtract</a> extension on either the Questionnaire root or on
+      other items within the Questionnaire to mark the point at which a new resource will be extracted (and what resource type/profile if applicable).<br/>
+      This is a complex extension that includes the following properties: <code>definition</code> (resource/profile canonical URL),
+      and optionally fullUrl, ifNoneMatch, ifModifiedSince, ifMatch and ifNoneExist (fhirpath expression expressions used to populate the transaction bundle entry containing the extracted resource).
+      <ul>
+        <li>
+          If the extension is at the root of the Questionnaire, the resource will always be extracted, even if there are no answer items within the fully completed QuestionnaireResponse.
+        </li>
+        <li>
+          If the extension is on a specific item, the resource will only be extracted if there are answers to that item in the QuestionnaireResponse.
+          (For items that repeat, a new instance of the resource will be created for each repetition).
+        </li>
+        <li>
+          If the resource is created by a profile definition rather than a core resource type profile, the profile name will be added to the meta of the extracted resource.
+        </li>
+        <li>
+          Any <a href="StructureDefinition-sdc-questionnaire-extractAllocateId.html">sdc-questionnaire-extractAllocateId</a> extensions on the same item will be processed before the definitionExtract extension.
+        </li>
+        <li>
+          Once the resource is completely extracted, the system SHALL populate the <code>bundle.entry.resource</code> property with the extracted resource, then populate the other
+          <code>bundle.entry</code> properties:
+          <ul>
+            <li>
+              <code>fullUrl</code> - the result of the fhirpath expression for the <code>fullUrl</code> property, if none is provided, a new uuid will be allocated for the resource.
+              (this will often be an expression that uses the named variable from the <code>allocateId</code> extension e.g. <code>%newPatientUuid</code>)
+            </li>
+            <li>
+              <code>request.method</code> - if the resource has no <code>id</code> property set the value to <code>POST</code> (requesting a create),
+              otherwise set the value to <code>PUT</code> (requesting an update).<br/>
+              <i>The <code>resource.id</code> could be set using a hidden item (pre-populated during data-entry), or using the <a href="StructureDefinition-sdc-questionnaire-definitionExtractValue.html">definitionExtractValue</a> extension.</i>
+            </li>
+            <li>
+              <code>request.url</code> - if the resource is being updated  the url will be the resource type and the <code>id</code> property of the resource. e.g. <code>Patient/123</code>,
+              otherwise it will be the resource type. e.g. <code>Patient</code>.
+            </li>
+            <li>
+              <code>request.ifNoneMatch</code> - the result of the fhirpath expression for the <code>ifNoneMatch</code> property
+            </li>
+            <li>
+              <code>request.ifModifiedSince</code> - the result of the fhirpath expression for the <code>ifModifiedSince</code> property (evaluates to a date time value - or nothing)
+            </li>
+            <li>
+              <code>request.ifMatch</code> - the result of the fhirpath expression for the <code>ifMatch</code> property
+        </li>
+        <li>
+              <code>request.ifNoneExist</code> - the result of the fhirpath expression for the <code>ifNoneExist</code> property
+            </li>
+          </ul>
+        </li>
+        <li>
+          There can be multiple of these extensions interleaved on separate items, and also on the same item. However the <code>definition</code> property in the extension
+          SHALL be unique in the scope that they are introduced in the questionnaire.
+          i.e. You can't define two <code>http://hl7.org/fhir/StructureDefinition/Condition</code> extractions on the same item (or any of its children), but you can have
+          multiple on sibling items do this.<br/>
+          You could however have different profiles of the same resource overlapping. This is due to the <code>definition</code> property being the "scoper"
+          to identify the resource/property to extract the item answer into.
+        </li>
+      </ul>
+      <blockquote>
+        <i>
+          <b>Note:</b> In previous versions of the SDC specification the <a href="StructureDefinition-sdc-questionnaire-itemExtractionContext.html">questionnaire-itemExtractionContext</a> extension 
+          was used to indicate the resource type, however this has been deprecated and we encourage moving to the newer <a href="StructureDefinition-sdc-questionnaire-definitionExtract.html">sdc-questionnaire-definitionExtract</a> extension.
+        </i>
+      </blockquote>
+    </li>
+    <li>
+      <b>Indicate properties to populate in extracted resource:</b> For the item and any descendant items of an item (or root) with the <a href="StructureDefinition-sdc-questionnaire-definitionExtractValue.html">definitionExtractValue</a> extension:
+      <ul>
+        <li>
+          Set the <code>Questionnaire.item.definition</code> to associate an answer to the item with a property in the extracted resource.<br/>
+          Note that the canonical URL to the profile in the definition MUST match the canonical URL in the definitionExtract extension (or the canonical URL of the resource type in the deprecated itemExtractionContext).<br/>
+          (when interleaving profiles, the definitionExtract extension is the "scoper" for the property to extract the answer into).
+        </li>
+        <li>
+          In cases where you need to make a group item match up with a collection, or backbone element in the StructureDefinition, just use that element to connect them.<br/>
+          e.g. Use the definition: <code>http://hl7.org/fhir/StructureDefinition/Patient#Patient.name</code> on a group item to collect the child items to the same Patient.name element.
+          During extraction, the system will create a new patient name element for each repetition of the group item, and then populate each name with the child items.<br/>
+          With this example, the nested child items would have definitions like <code>http://hl7.org/fhir/StructureDefinition/Patient#Patient.name.given</code> and <code>http://hl7.org/fhir/StructureDefinition/Patient#Patient.name.family</code>.
+        </li>
+        <li>
+          Items are not required in the questionnaire for every element level in the StructureDefinition. The system will create the necessary elements as needed.<br/>
+          e.g. You could have a single item that captures <code>Patient.contact.name.text</code> and the system will create the necessary Patient.contact and Patient.contact.name elements
+          to then set the text values in. In this case if the item was repeating, the last node in the iteration is the one that will be repeated (name in this case).<br/>
+          If you intend to have a specific level of the element repeated, you should have a group item that repeats, and then have the item that corresponds to the element within that group.<br/>
+          This technique is particularly useful when populating properties in CodeableConcepts, where you can drill directly into the Coding, or text property, and don't require another level
+          in your questionnaire just to add that in.
+        </li>
+        <li>
+          Add <a href="StructureDefinition-sdc-questionnaire-definitionExtractValue.html">definitionExtractValue</a> extension(s) to the root/item to specify calculated or fixed values
+          to populate into the resource when an answer for this item is entered (or always when at the root of questionnaire).<br/>
+          This is particularly useful for populating fixed values, or calculated values that are not directly entered by the user.<br/>
+          e.g. To assign the value from the QuestionnaireResponse.subject property into a property in the extracted resource.<br/>
+          If <code>definitionExtractValue</code> is used on an item that also has its item.definition property set, that would be assumed to be extracted resource context. 
+          Hence you could set the system and type values in an
+          identifier when associated with that item.
+        </li>
+        <li>
+          If a profile is used in the definition, any fixed values or patterns in the profile will be included in the extracted resource.
+          These MAY be processed when stepping through sliced properties in the profile.<br/>
+          e.g. To set other properties in an identifier property that is associated with a specific slice, such as a fixed system and type value.
+        </li>
+        <li>
+          Although the answer for a QuestionnaireResponse.item can repeat (indicated by the repeat property), the evaluation of the item will only occur once, and the multiple
+          answers are processed for the one item at the same time. For fhirpath expressions, the answer will be a list of values (for the one item) that the expression must
+          handle correctly to populate the item.<br/>
+          e.g. If the item was for Patient.name.given (which can repeat), that "set" of answers will directly map into the resource property (which is also a collection).
+          However if you tried to map that into the text property, which is singular, this would be an error. A fhirpath expression would be required to concatenate the values 
+          together such as <code>answer.join(', ')</code>.<br/>
+          As "group" items iterate differently to "question" items, the evaluation will process each iteration of the group separately.
+        </li>
+        <li>
+          Some type casting will be required as not all data-types are available in questionnaire items, however these can all be mapped.
+        </li>
+      </ul>
+    </li>
+    <li>
+      <b>Matching parent/child properties in the extracted resource instance:</b>
+      As described above, the system will create the necessary elements in the resource as needed, but this is not always obvious what to do when it's not a direct 1..1 mapping from the questionnaire to the resource.<br/>
+      So this table is here to help guide the process with examples of how to populate the resource properties based various parent/child questionnaire item configurations:
+      <table class="grid">
+        <thead>
+          <tr>
+            <th>Example Parent</th>
+            <th>Parent Type</th>
+            <th>Example Child Definition</th>
+            <th>Possible Child Type</th>
+            <th>Notes</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr><td>
+          Patient</td><td><i>definitionExtract</i></td><td>Patient.name</td><td><i>group item</i></td><td>Create a new <code>HumanName</code> object and add it to the name collection in patient
+          </td></tr>
+          <tr><td>
+            Patient.name</td><td><i>group item</i></td><td>Patient.name.text</td><td><i>value item</i></td><td>Set the text property in the name object
+          </td></tr>
+          <tr><td>
+            Patient</td><td><i>definitionExtract</i></td><td>Patient.name.text</td><td><i>value item/extractValue</i></td><td>Create a new <code>HumanName</code> object, add it to the name collection in patient, and set the text property
+          </td></tr>
+          <tr><td>
+            Patient</td><td><i>definitionExtract</i></td><td>Patient.identifier.value</td><td><i>value item/extractValue</i></td><td>Create a new <code>Identifier</code> object, add it to the identifier collection in patient, and set the value property
+          </td></tr>
+          <tr><td>
+            Patient</td><td><i>definitionExtract</i></td><td>Patient.extension</td><td><i>group item</i></td><td>Create a new <code>Extension</code> object and add it to the extension collection in patient
+          </td></tr>
+          <tr><td>
+            Patient.extension</td><td><i>group item</i></td><td>Patient.extension.value</td><td><i>value item</i></td><td>Set the value property in the extension object
+          </td></tr>
+          <tr><td>
+            Patient.extension</td><td><i>group item</i></td><td>Patient.extension.url</td><td><i>value item/extractValue</i></td><td>Set the URL property in the extension object
+          </td></tr>
+
+          <tr><td>
+            Patient.extension.value</td><td><i>value item</i></td><td>Patient.extension.url</td><td><i>value item/extractValue</i></td><td>Set the URL property for the same extension instance that has the value in it (walks up the tree to the common ancestor)
+          </td></tr>
+          <tr><td>
+            Patient.identifier.value</td><td><i>value item</i></td><td>Patient.identifier.type.text</td><td><i>value item/extractValue</i></td><td>Create a new <code>CodeableConcept</code> object, add it to the type collection of the identifier object that has the value in it, and set the text property in that type object
+          </td></tr>
+        </tbody>
+      </table>
+      <blockquote>
+        <b>Note:</b> Anywhere in a resource that you need to set multiple item's values into properties of a backbone element, you will need to use a group item to collect the values together, and set the <code>definition</code> property on this group item
+        to the backbone element.  The system will then create the backbone element and populate it with the child items.
+      </blockquote>
+    </li>
+    <li>
+      <b>Handling sliced properties:</b> If extracting a property via a sliced property:
+      <ul>
+        <li>If there are any associated fixed or pattern values in the slice, also populate those values into the resource instance</li>
+        <li>If the slice limits the types supported, ensure that the created type is supported (and cast the value if required)</li>
+        <li>
+          After the property is extracted, if there are any required properties that have fixed/pattern values, also extract those<br/>
+          e.g. In the <a href="https://hl7.org/fhir/r4/bodyheight.html">body height profile</a>, the category slice VSCat is required, and has a required coding property with a fixed value of "vital-signs".  This would also need to be extracted.
+        </li>
+        <li>
+          A type slice can be invoked without an actual slice for choice typed properties e.g. <code>value[x]</code><br/>
+          The extraction process is able to determine the correct type to use based on the answer in the QuestionnaireResponse, or explicitly
+          define it in the property name in the "definition" value e.g. <code>http://hl7.org/fhir/StructureDefinition/Observation#Observation.valueQuantity</code><br/>
+          This type slicing is really only required where the type is a choice and the value being set is not directly coming from the QuestionnaireResponse item and there
+          is no ambiguity on the type to use. e.g. assigning an item to <code>Patient.extension.value.code</code> could be a Quantity or a Coding, thus needs to be disambiguated.
+          <code>Patient.extension.valueCoding.code</code> or <code>Patient.extension.valueQuantity.value</code> would be the appropriate definitions to use.
+          However if I was using the definition <code>Patient.extension.value</code> and the item was of type boolean or Coding, there is no need to type slice, 
+          as the value is of the correct type to just assign (it doesn't need to create the intermediate valueQuantity or valueCoding before trying to set the actual value from the item).
+        </li>
+      </ul>
+      <i>(These could also be considered at the root level when processing a profiled resource)</i>
+    </li>
+    <li>
+      <b>Supporting the extraction process:</b> If necessary, define <a href="{{site.data.fhir.path}}extension-questionnaire-hidden.html">questionnaire-hidden</a> items that have <code>
       Questionnaire.item.initial.value[x]</code> or that use the
       <a href="StructureDefinition-sdc-questionnaire-initialExpression.html">questionnaire-initialExpression</a> extension to define their content to use to populate
       resource elements that the user will not be filling in.  (The initialExpressions might in turn depend on
       <a href="{{site.data.fhir.path}}extension-variable.html">variable</a> and
       <a href="StructureDefinition-sdc-questionnaire-launchContext.html">questionnaire-launchContext</a> extensions, used as described in the
       <a href="populate.html#exp-pop">Expression-based population</a>
-      section.</li>
+      section, however that evaluation is all outside the scope of the $extract operation, and those variables are not available to $extract processing.<br/>
+      This is particularly useful for retaining the resource ID of a resource that is extracted to use to update the resource (method = PUT).
+    </li>
   </ol>
+  <blockquote>
+    <b>Note:</b> The extraction processes as defined does not support "merging" the answers into an existing instance of a resource as an update. 
+    Instead the "update" mode of this extraction process is a "replace" style process. So if you need to update content that was not created by the 
+    extraction routine, you will need to inject ALL data from the resource into the questionnaire (and hide properties as needed).
+    This way all the data will be available to fill out into the resource so that it can be included as an update in the outgoing transaction bundle.
+    This design was used as the target server for the bundle isn't necessarily going to be the same server that was pre-populated from.
+  </blockquote>
   <p>
-    To perform the extraction process, first determine whether the context resource should be updated or created:
-  </p>
-  <ul>
-    <li>If the element has a <a href="StructureDefinition-sdc-questionnaire-itemExtractionContext.html">questionnaire-itemExtractionContext</a> that corresponds to
-      an existing resource or set of resources, then the intention is that the extracted content will replace those existing resources.  (Typically in this situation,
-      the same expression would have appeared on the same element as a <a href="StructureDefinition-sdc-questionnaire-itemPopulationContext.html">questionnaire-itemPopulationContext</a>
-      expression.  On the other hand if the itemExtractionContext simply refers to a resource type, then the intention is to create new instances.  When updating, the
-      Questionnaire will typically 'populate' hidden questions with the 'id' elements of the relevant respources for update to ensure that updates are applied to the
-      appropriate instances.  If some repetitions end up not having id elements (e.g. because the user has added additional group repetitions), those additional repetitions
-      will also be handled as creates.</li>
-    <li>In other cases, the record will be created.</li>
-  </ul>
-  <p>
-    If updating, the answer values from the questionnaire (including hidden, calculated answers) will be propagated to the context resource.  If creating, then
-    for each occurrence of each item asserting a <a href="StructureDefinition-sdc-questionnaire-itemExtractionContext.html">questionnaire-itemExtractionContext</a>, a resource of 
-	the context type will be defined.  It will be populated with answers to questions (hidden or not) that have a definition that matches the resource type of 
-	the context.  As well, if the definitions refer to a profile, any child elements of the profile that have fixed values or patterns declared will also be 
-	included in the instance with values matching the fixed or pattern values.
+    Examples of questionnaires using this approach can be found <a href="Questionnaire-demographics.html">here</a> and in <a href="Questionnaire-extract-complex-defn3.html">Questionnaire/extract-complex-defn3</a>.
   </p>
   <p>
-    An example of a questionnaire using this approach can be found <a href="Questionnaire-demographics.html">here</a>.
-  </p>
-  <p>
-    Considerations and rules when using this approach:
+    Other considerations and rules when using this approach:
   </p>
   <ul>
     <li>
-      FHIR queries found in the <a href="StructureDefinition-sdc-questionnaire-initialExpression.html">questionnaire-initialExpression</a>, <a href="StructureDefinition-sdc-questionnaire-calculatedExpression.html">questionnaire-calculatedExpression</a> and variable extensions may contain embedded FHIRPath expressions (surrounded by double curly-braces).
-      Systems SHALL evaluate and substitute the results of such queries before executing them</li>
+      Fhirpath expressions used in the $extract approach do not have access to the launchContext, initialExpression, or variable extensions.  They are only able to
+      access the QuestionnaireResponse data and the Questionnaire data and specific extract only extensions (extractAllocateId). Refer to the 
+      <a href="expressions.html#extract">expressions</a> page for more details.
+    </li>
     <li>
       If the result of evaluating the FHIRPath expressions is an invalid query, that is an error.  Systems SHOULD log it and continue with extraction as if
-      the query had returned no data.</li>
+      the query had returned no data. The error can be returned in the operation outcome alongside the transaction bundle.
+    </li>
     <li>
-      When crafting queries, be sure to filter all relevant elements.  For example, ensuring status excludes entered-in-error elements, practitioners are
-      active, etc.</li>
-    <li>
-      In some cases, the context of an element will switch.  For example, an item might have a definition of
-      "http://hl7.org/fhir/StructureDefinition/MedicationStatement#MedicationStatement.medicationReference" and
-      a <a href="StructureDefinition-sdc-questionnaire-itemExtractionContext.html">questionnaire-itemExtractionContext</a> extension that shifts the context to "Medication".  
-	  Subsequent children would then have definitions based on the "http://hl7.org/fhir/Medication" resource.</li>
-    <li>
-      Note that only one context can be in play at the same time.  When a new context is declared, it takes the place of the old context.</li>
-    <li>
-      If the same context are used for both <a href="StructureDefinition-sdc-questionnaire-itemPopulationContext.html">questionnaire-itemPopulationContext</a> and
-      <a href="StructureDefinition-sdc-questionnaire-itemExtractionContext.html">questionnaire-itemExtractionContext</a>, then the value will be repeated for both extensions.</li>
+      While validating a Questionnaire resource that uses the definition-based extraction mechanism, the system SHALL validate that the <code>definition</code> property
+      matches up with the StructureDefinition that is being referenced.  It can also warn if there is no definitionExtract that would initiate the extraction process for
+      the resource/profile.
+    </li>
     <li>
       The items in the Questionnaire might not have the same order as those in the resource.  When serializing into XML, the official order must still be
       respected.</li>
   </ul>
-  <!-- Todo - can multiple profiles for the same resource be in play? -->
+
+  <a name="template-extract"> </a>
+  <h4>Template-based extraction</h4>
+  <p>
+    The template based approach provides an alternative to the definition based approach and where the full power of StructureMaps isn't required.
+    It supports the same level of capability, however is unable to leverage any of the information inside a profile where the definition based approach can.<br/>
+    The <a href="StructureDefinition-sdc-questionnaire-extr-template.html">SDC Questionnaire Extract - Template</a> profile has been created to support this mechanism. 
+  </p>
+  <p>
+    This technique is called "template-based" because it uses a template resource(s) to provide all the "boiler-plate" content for the resource that is to be extracted.
+    These templated resources are contained within the Questionnaire resource and referred to by either the <a href="StructureDefinition-sdc-questionnaire-templateExtract.html">sdc-questionnaire-templateExtract</a>
+    or <a href="StructureDefinition-sdc-questionnaire-templateExtract.html">sdc-questionnaire-templateExtractBundle</a> extensions.
+  </p>
+  <p>
+    The template is annotated with expressions to indicate which parts of the template should be populated with data from the QuestionnaireResponse, and which 
+    parts should be removed if no data is present. The expressions are defined using the FHIRPath language, and the QuestionnaireResponse context of the expressions is based on the location
+    of the template reference in the questionnaire, and/or any inline context expressions defined in the template.
+  </p>
+  <p>
+    The difference between the <b>templateExtract</b> (resource) and <b>templateExtractBundle</b> extensions is that the template resource extension will extract each resource individually
+    as a separate bundle entry and includes expressions to populate the other bundle entry properties,
+    whereas the template bundle extension extract the transaction bundle as a single resource. The processing of the template is otherwise identical between the two extensions.
+  </p>
+  <p>
+    To use this method:
+  </p>
+  <ol>
+    <li>
+      Include the <a href="StructureDefinition-sdc-questionnaire-templateExtract.html">sdc-questionnaire-templateExtract</a> extension at the root or the questionnaire,
+      and/or any items in the questionnaire that indicate a resource should be created for each answer in a questionnaire response for that item.<br/>
+      This extension includes a relative reference to the resource template which SHALL be contained within the same Questionnaire resource, and will be extracted into a new entry in the output transaction bundle (with other values processed from the complex extension).<br/>
+      Alternately use the <a href="StructureDefinition-sdc-questionnaire-templateExtractBundle.html">sdc-questionnaire-templateExtractBundle</a> extension at the root
+      to use a template bundle. This is the same as the templateExtract extension but leverages a single bundle that has all templated resources in it.
+    </li>
+    <li>
+      Include any required template resources as contained resources in the questionnaire and refer to them using either the <a href="StructureDefinition-sdc-questionnaire-templateExtract.html">sdc-questionnaire-templateExtract</a> 
+      or <a href="StructureDefinition-sdc-questionnaire-templateExtractBundle.html">sdc-questionnaire-templateExtractBundle</a> extension as described above.
+    </li>
+    <li>
+      If you need to dynamically reference between resources created in the output transaction bundle (using the entry.fullUrl property), include the allocateId extension
+      at a point in the questionnaire that defines the scope that a new uuid is required for each iteration of the item.
+      If at the root, a new value will be allocated only once, if on an item, it will be allocated for each related item that has the extension (a new value per item in a collection).
+      The value is only available to child items of the item that has the extension (or itself).<br/>
+      This value can be used in the templateExtract extension to set the fullUrl property of the extracted resource, and in the templateExtractValue extension to set the value for the referencing property.<br/>
+      The allocateId extension is not a fhirpath expression to be evaluated, it is the name for the variable that will be available to fhirpath expressions, and it's value will be
+      a new uuid for each iteration of the item that has the extension, before any expressions in the templateExtract, templateExtractBundle or templateExtractValue are evaluated.
+    </li>
+    <li>
+      During extraction a new resource will be created for each answer in the QuestionnaireResponse for the item that contains the templateExtract extension.<br/>
+      The resource.id of the new resource will be removed (as it currently has the resource id to refer to in the template from the questionnaire definition).
+      To set the resource.id property use the <code>resourceId</code> property in the <code>templateExtract</code> extension (this is not possible using the templateExtractBundle based extraction).
+    </li>
+    <li>
+      The fhirpath context of the extracted resource will be based on the location of the templateExtract extension in the questionnaire.<br/>
+      If templateExtract is on the root of the questionnaire, the fhirpath context will be the QuestionnaireResponse resource.<br/>
+      If templateExtract is on an item, the fhirpath context will be the item in the QuestionnaireResponse associated with that item's linkId.<br/>
+    </li>
+    <li>
+      The extraction engine SHALL scan the templated resource for any <a href="StructureDefinition-sdc-questionnaire-templateExtractContext.html">sdc-questionnaire-templateExtractContext</a> 
+      or <a href="StructureDefinition-sdc-questionnaire-templateExtractValue.html">sdc-questionnaire-templateExtractValue</a> extensions (in that order) and then:
+      <ul>
+        <li>
+          Evaluate the fhirpath expression defined in the extension <i>(only FHIRPath is supported)</i>.
+        </li>
+        <li>
+          If the expression returns no results, this templated property (context or value) will be removed from the extracted resource, and no further processing of that property will occur.<br/>
+          If the template property is a in a collection, simply remove the templated value from the collection, don't clear the entire collection. There MAY be other
+          templated properties to process in the collection (or static template data).
+        </li>
+        <li>
+          For every result returned by the expression, a new copy of the templated property will be cloned and scanning the child properties will continue.
+        </li>
+        <li>
+          If the context expression is defined as an <code>Expression</code> datatype, and it has a name property, then that variable will be made available to any child property extraction expressions.
+        </li>
+        <li>
+          Any context results will change the context to use for processing any child properties (and templateExtractValues on the same node).
+        </li>
+        <li>
+          Any extractValue results will be used to replace the property value in the extracted resource.<br/>
+          Note that for primitive properties in json the <code>_value</code> and <code>value</code> represent the same FHIR property and must be considered the same property.
+          So ensure that the extract extension is removed from <code>_value</code>, the <code>value</code> is set (and any other extensions can remain).<br/>
+          This is important as some properties such as reference properties are required to have a valid <code>value</code> and not just an extension so they will have a value that is expected to be either removed (when no data) or replaced (when data is present).
+        </li>
+      </ul>
+    </li>
+    <li>
+      When using the templateExtract extension (not the templateExtractBundle extension), the extraction engine SHALL create a transaction Bundle containing all the resources that were extracted from the QuestionnaireResponse.
+      Each resource that is extracted will be added into the transaction bundle that is returned by the $extract operation.<br/>
+      The fullUrl, resourceID and entry.request properties SHALL be updated with values calculated from the
+      templateExtract complex extension.<br/>
+      If a resource has it's ID populated, then it will be treated as an update to the existing resource (entry.request.method='PUT'), otherwise it will be treated as a create (entry.request.method='POST').
+    </li>
+  </ol>
+
+  <p>
+    If fhirpath expressions produce errors/exceptions or invalid/incompatible value types, the 
+    extraction engine SHALL log the error and continue processing the next property.
+    If there were any fatal or error level issues, the extraction engine SHALL return an OperationOutcome with the issues.<br/>
+    If there are only warning/information issues, they can be returned along with the transaction bundle.
+  </p>
+  <p>
+    Template based extraction using the templateExtractBundle extension is incompatible with modular forms.<br/>
+    If using the templateExtract extension with modular forms, the assembly will merge all the contained resources 
+    from the module into the output Questionnaire, and may need to rename the contained reference ids if collisions
+    are to occur.
+  </p>
+  <blockquote>
+    <b>Note:</b> Many templating engines have constructs like conditionals and loops. Although not immediately obvious, these can be implemented using this template approach.
+    Conditional properties are implemented with the fhirpath expression in the <a href="StructureDefinition-sdc-questionnaire-templateExtractContext.html">templateExtractContext</a>
+    or <a href="StructureDefinition-sdc-questionnaire-templateExtractValue.html">templateExtractValue</a> extension returning no results, and thus excluding the property, backbone element or
+    entry in a collection from the extracted resource.<br/>
+    Loops are similar in nature where the looping is provided based on the fhirpath expression returning multiple results, and thus creating multiple entries in an array,
+    or even multiple resources in the transaction bundle driven by either multiple items in the questionnaire, or contexts in the bundle template.<br/>
+    There are several examples of both of these in the <a href="">template example</a>, such as how it creates multiple names in the patient resource from multiple items in the
+    questionnaire name item group, or where there is no IHI identifier added if the relevant item hasn't been answered in the questionnaire.
+  </blockquote>
+
   <a name="map-extract"> </a>
   <h4>StructureMap-based extraction</h4>
   <p>
@@ -425,7 +773,7 @@ If an item is presumed to be extracted, it will extract if there are item.codes 
     It allows significant transformation of data, including code translations when generating output resources.  It also allows the conversion process
     between data and Questionnaire to be maintained independently and to draw on shared sources across Questionnaires.  This can be an advantage in
     certain environments where the content of the questionnaire may need tight control, but the data environment can be more dynamic.  This comes at the cost
-    of requiring expertise in the <a href="{{site.data.fhir.path}}mapping-language.html">FHIR mapping language</a>, which is not (yet?) a common skill. 
+    of requiring expertise in the <a href="{{site.data.fhir.path}}mapping-language.html">FHIR mapping language</a>, which is not (yet?) a common skill.<br/>
     The <a href="StructureDefinition-sdc-questionnaire-extr-smap.html">SDC Questionnaire Extract - StructureMap</a> profile has been created to support this mechanism. An example for this profile can be found <a href="Questionnaire-SDOHCC-QuestionnaireHungerVitalSign.html">here</a>.
   </p>
   <p>
