@@ -232,7 +232,6 @@ v: {
   "code" : "image/jpeg",
   "system" : "urn:ietf:bcp:13",
   "server" : "http://tx.fhir.org/r4",
-  "unknown-systems" : "",
   "issues" : {
   "resourceType" : "OperationOutcome"
 }
@@ -253,7 +252,6 @@ v: {
   "code" : "image/jpeg",
   "system" : "urn:ietf:bcp:13",
   "server" : "http://tx.fhir.org/r4",
-  "unknown-systems" : "",
   "issues" : {
   "resourceType" : "OperationOutcome"
 }
@@ -281,7 +279,6 @@ v: {
   "code" : "application/pdf",
   "system" : "urn:ietf:bcp:13",
   "server" : "http://tx.fhir.org/r4",
-  "unknown-systems" : "",
   "issues" : {
   "resourceType" : "OperationOutcome"
 }
@@ -302,7 +299,6 @@ v: {
   "code" : "application/pdf",
   "system" : "urn:ietf:bcp:13",
   "server" : "http://tx.fhir.org/r4",
-  "unknown-systems" : "",
   "issues" : {
   "resourceType" : "OperationOutcome"
 }
@@ -330,7 +326,6 @@ v: {
   "code" : "image/png",
   "system" : "urn:ietf:bcp:13",
   "server" : "http://tx.fhir.org/r4",
-  "unknown-systems" : "",
   "issues" : {
   "resourceType" : "OperationOutcome"
 }
@@ -351,7 +346,6 @@ v: {
   "code" : "image/png",
   "system" : "urn:ietf:bcp:13",
   "server" : "http://tx.fhir.org/r4",
-  "unknown-systems" : "",
   "issues" : {
   "resourceType" : "OperationOutcome"
 }
@@ -373,7 +367,6 @@ v: {
   "system" : "http://unitsofmeasure.org",
   "version" : "2.2",
   "server" : "http://tx.fhir.org/r4",
-  "unknown-systems" : "",
   "issues" : {
   "resourceType" : "OperationOutcome"
 }
@@ -394,7 +387,6 @@ v: {
   "code" : "en",
   "system" : "urn:ietf:bcp:47",
   "server" : "http://tx.fhir.org/r4",
-  "unknown-systems" : "",
   "issues" : {
   "resourceType" : "OperationOutcome"
 }
@@ -416,7 +408,6 @@ v: {
   "system" : "http://unitsofmeasure.org",
   "version" : "2.2",
   "server" : "http://tx.fhir.org/r4",
-  "unknown-systems" : "",
   "issues" : {
   "resourceType" : "OperationOutcome"
 }
@@ -441,9 +432,66 @@ v: {
   "code" : "001",
   "system" : "http://unstats.un.org/unsd/methods/m49/m49.htm",
   "server" : "http://tx.fhir.org/r4",
-  "unknown-systems" : "",
   "issues" : {
   "resourceType" : "OperationOutcome"
+}
+
+}
+-------------------------------------------------------------------------------------
+{"code" : {
+  "system" : "http://example.org/fhir/CodeSystem/usage-contexts",
+  "code" : "form-type"
+}, "url": "http://hl7.org/fhir/ValueSet/usage-context-type", "version": "4.0.1", "langs":"en", "useServer":"true", "useClient":"true", "guessSystem":"false", "activeOnly":"false", "membershipOnly":"false", "displayWarningMode":"false", "versionFlexible":"true", "profile": {
+  "resourceType" : "Parameters",
+  "parameter" : [{
+    "name" : "x-system-cache-id",
+    "valueString" : "dc8fd4bc-091a-424a-8a3b-6198ef146891"
+  }]
+}}####
+v: {
+  "code" : "form-type",
+  "system" : "http://example.org/fhir/CodeSystem/usage-contexts",
+  "severity" : "error",
+  "error" : "A definition for CodeSystem 'http://example.org/fhir/CodeSystem/usage-contexts' could not be found, so the code cannot be validated; The provided code 'http://example.org/fhir/CodeSystem/usage-contexts#form-type' was not found in the value set 'http://hl7.org/fhir/ValueSet/usage-context-type|4.0.1'",
+  "class" : "UNKNOWN",
+  "server" : "http://tx.fhir.org/r4",
+  "unknown-systems" : "http://example.org/fhir/CodeSystem/usage-contexts",
+  "issues" : {
+  "resourceType" : "OperationOutcome",
+  "issue" : [{
+    "extension" : [{
+      "url" : "http://hl7.org/fhir/StructureDefinition/operationoutcome-issue-server",
+      "valueUrl" : "http://tx.fhir.org/r4"
+    }],
+    "severity" : "error",
+    "code" : "not-found",
+    "details" : {
+      "coding" : [{
+        "system" : "http://hl7.org/fhir/tools/CodeSystem/tx-issue-type",
+        "code" : "not-found"
+      }],
+      "text" : "A definition for CodeSystem 'http://example.org/fhir/CodeSystem/usage-contexts' could not be found, so the code cannot be validated"
+    },
+    "location" : ["Coding.system"],
+    "expression" : ["Coding.system"]
+  },
+  {
+    "extension" : [{
+      "url" : "http://hl7.org/fhir/StructureDefinition/operationoutcome-issue-server",
+      "valueUrl" : "http://tx.fhir.org/r4"
+    }],
+    "severity" : "error",
+    "code" : "code-invalid",
+    "details" : {
+      "coding" : [{
+        "system" : "http://hl7.org/fhir/tools/CodeSystem/tx-issue-type",
+        "code" : "not-in-vs"
+      }],
+      "text" : "The provided code 'http://example.org/fhir/CodeSystem/usage-contexts#form-type' was not found in the value set 'http://hl7.org/fhir/ValueSet/usage-context-type|4.0.1'"
+    },
+    "location" : ["Coding.code"],
+    "expression" : ["Coding.code"]
+  }]
 }
 
 }
