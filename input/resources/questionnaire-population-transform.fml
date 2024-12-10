@@ -32,8 +32,8 @@ group main(source src : Bundle, target qr : QuestionnaireResponse) {
       } "patientDetails";
       src.entry as conditions where (resource.link.url.contains("/Condition?")) -> partDetails.item as conditionItem, conditionItem.linkId = 'condition-count' then {
         conditions -> conditionItem.answer as conditionCountAnswer, conditionCountAnswer.value = (conditions.resource.entry.count()) "conditionCountAnswer";
-      } "condition-count";
-    } "part-details";
+      } "conditionCount";
+    } "partDetails";
     src.entry as medications where (resource.link.url.contains("/MedicationStatement?")) -> grp then {
       medications.resource as medRes -> grp then {
         medRes.entry as med where (resource is MedicationStatement) -> grp.item as medsItem, medsItem.linkId = 'meds' then {
