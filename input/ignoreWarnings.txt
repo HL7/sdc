@@ -1,67 +1,22 @@
 == Suppressed Messages ==
 
-# This should go away once we are using the updated version of the extensions pack
+# 01. This should go away once we are using the updated version of the extensions pack
 INFORMATION: QuestionnaireResponse/adaptive-questionnaireresponse-sdc-example-phq9: QuestionnaireResponse.contained[0]/*Questionnaire/contained-adaptive-questionnaire-example-phq9*/.derivedFrom[0].extension[0].value.ofType(Coding): Reference to draft CodeSystem http://hl7.org/fhir/questionnaire-derivationType|5.2.0-ballot
 
-# The is an error with the IG publisher.  It should check that a reference is resolvable before making it a hyperlink - https://chat.fhir.org/#narrow/channel/179252-IG-creation/topic/Narrative.20is.20trying.20to.20hyperlink.20to.20a.20uuid
+# 02. These are fixed in the next release of the extensions pack
+INFORMATION: StructureDefinition/sdc-valueset: ValueSet.expansion.extension: The extension http://hl7.org/fhir/StructureDefinition/valueset-expansionSource|5.2.0-ballot is retired
+
+# 03. The is an error with the IG publisher.  It should check that a reference is resolvable before making it a hyperlink - https://chat.fhir.org/#narrow/channel/179252-IG-creation/topic/Narrative.20is.20trying.20to.20hyperlink.20to.20a.20uuid
 ERROR: Questionnaire/extract-complex-template2: Questionnaire.text.div: Hyperlink scheme 'urn' in 'urn:uuid:6f6177d2-13ee-4d27-b0e8-3eaf663dd031' at 'div/blockquote/p/a' for 'urn:uuid:6f6177d2-13ee-4d27-b0e8-3eaf663dd031' is not a valid hyperlinkable scheme
 
-# I believe this is an issue with the publisher - https://chat.fhir.org/#narrow/channel/179252-IG-creation/topic/Weird.20invariant.20issue
-ERROR: StructureDefinition/sdc-questionnaire-behave: StructureDefinition.snapshot.element[41].constraint[15]: Error in constraint 'sdc-behave-3' with expression '(type = 'quantity' implies (extension('http://hl7.org/fhir/StructureDefinition/questionnaire-unitOption').exists() or extension('http://hl7.org/fhir/StructureDefinition/questionnaire-unitValueSet').exists())) and (descendants().where(type = 'quantity')).all(extension('http://hl7.org/fhir/StructureDefinition/questionnaire-unitOption').exists() or extension('http://hl7.org/fhir/StructureDefinition/questionnaire-unitValueSet').exists())': Error evaluating FHIRPath expression: The type 'http://hl7.org/fhir/StructureDefinition/Questionnairehttp://hl7.org/fhir/StructureDefinition/Questionnaire' is unknown or not supported at getChildTypesByName#1 (@char 13)
+# 04. Bug in StructureMap static validator that doesn't handle up casting for resources from `Resource` in a Bundle.entry.resource https://chat.fhir.org/#narrow/channel/179252-IG-creation/topic/StructureMap.20QA.20message.20-.20possible.20types.20are.20Resource
+ERROR: StructureMap/QuestionnairePopulationTransform: StructureMap.group[0].rule[4].rule[0].rule[0].rule[0].source[0]: The type Bundle is not valid in the source context Bundle.entry.resource. The possible types are [Resource]
+ERROR: StructureMap/QuestionnairePopulationTransform: StructureMap.group[0].rule[4].rule[1].rule[0].source[0]: The type Bundle is not valid in the source context Bundle.entry.resource. The possible types are [Resource]
+ERROR: StructureMap/QuestionnairePopulationTransform: StructureMap.group[2].rule[0].rule[0].source[0]: The type MedicationStatement is not valid in the source context Bundle.entry.resource. The possible types are [Resource]
+ERROR: StructureMap/QuestionnairePopulationTransform: StructureMap.group[2].rule[0].rule[1].source[0]: The type MedicationStatement is not valid in the source context Bundle.entry.resource. The possible types are [Resource]
+ERROR: StructureMap/QuestionnairePopulationTransform: StructureMap.group[2].rule[0].rule[1].rule[0].source[0]: The source path medResource.status refers to the path Bundle.entry.resource.status which is unknown
 
-# This is a publisher issue - https://chat.fhir.org/#narrow/channel/179252-IG-creation/topic/Questionnaire.20narrative.20hyperlink.20issues
-ERROR: Bundle/questionnaire-sdc-profile-example: Bundle.entry[0].resource/*Questionnaire/F8-1.2*/.text.div: Hyperlink '#hcF8-1.2/d1e551-vs' at 'div/blockquote/blockquote/blockquote/p/a' for 'ValueSet D1e551vs' does not resolve
-ERROR: Bundle/questionnaire-sdc-profile-example: Bundle.entry[0].resource/*Questionnaire/F8-1.2*/.text.div: Hyperlink '#hcF8-1.2/d1e639-vs' at 'div/blockquote/blockquote/blockquote/blockquote/p/a' for 'ValueSet D1e639vs' does not resolve
-ERROR: Bundle/questionnaire-sdc-profile-example: Bundle.entry[0].resource/*Questionnaire/F8-1.2*/.text.div: Hyperlink '#hcF8-1.2/d1e910-vs' at 'div/blockquote/blockquote/blockquote/blockquote/p/a' for 'ValueSet D1e910vs' does not resolve
-ERROR: Bundle/questionnaire-sdc-profile-example: Bundle.entry[0].resource/*Questionnaire/F8-1.2*/.text.div: Hyperlink '#hcF8-1.2/d1e1125-vs' at 'div/blockquote/blockquote/blockquote/blockquote/p/a' for 'ValueSet D1e1125vs' does not resolve
-ERROR: Bundle/questionnaire-sdc-profile-example: Bundle.entry[0].resource/*Questionnaire/F8-1.2*/.text.div: Hyperlink '#hcF8-1.2/d1e1558-vs' at 'div/blockquote/blockquote/blockquote/p/a' for 'ValueSet D1e1558vs' does not resolve
-ERROR: Bundle/questionnaire-sdc-profile-example: Bundle.entry[0].resource/*Questionnaire/F8-1.2*/.text.div: Hyperlink '#hcF8-1.2/d1e1746-vs' at 'div/blockquote/blockquote/blockquote/p/a' for 'ValueSet D1e746vs' does not resolve
-ERROR: Bundle/questionnaire-sdc-profile-example: Bundle.entry[0].resource/*Questionnaire/F8-1.2*/.text.div: Hyperlink '#hcF8-1.2/d1e1863-vs' at 'div/blockquote/blockquote/blockquote/table/tr/td/a' for 'ValueSet D1e863vs' does not resolve
-ERROR: Bundle/questionnaire-sdc-profile-example: Bundle.entry[0].resource/*Questionnaire/F8-1.2*/.text.div: Hyperlink '#hcF8-1.2/d1e2109-vs' at 'div/blockquote/blockquote/blockquote/table/tr/td/a' for 'ValueSet D1e2109vs' does not resolve
-ERROR: Bundle/questionnaire-sdc-profile-example: Bundle.entry[0].resource/*Questionnaire/F8-1.2*/.text.div: Hyperlink '#hcF8-1.2/d1e2272-vs' at 'div/blockquote/blockquote/blockquote/table/tr/td/a' for 'ValueSet D1e2272vs' does not resolve
-ERROR: Bundle/questionnaire-sdc-profile-example: Bundle.entry[0].resource/*Questionnaire/F8-1.2*/.text.div: Hyperlink '#hcF8-1.2/d1e2489-vs' at 'div/blockquote/blockquote/blockquote/table/tr/td/a' for 'ValueSet D1e2489vs' does not resolve
-ERROR: Bundle/questionnaire-sdc-profile-example: Bundle.entry[0].resource/*Questionnaire/F8-1.2*/.text.div: Hyperlink '#hcF8-1.2/d1e2768-vs' at 'div/blockquote/blockquote/blockquote/table/tr/td/a' for 'ValueSet D1e2768vs' does not resolve
-ERROR: Bundle/questionnaire-sdc-profile-example: Bundle.entry[0].resource/*Questionnaire/F8-1.2*/.text.div: Hyperlink '#hcF8-1.2/d1e2928-vs' at 'div/blockquote/blockquote/blockquote/table/tr/td/a' for 'ValueSet D1e2928vs' does not resolve
-ERROR: Bundle/questionnaire-sdc-profile-example: Bundle.entry[0].resource/*Questionnaire/F8-1.2*/.text.div: Hyperlink '#hcF8-1.2/d1e3159-vs' at 'div/blockquote/blockquote/blockquote/p/a' for 'ValueSet D1e3159vs' does not resolve
-ERROR: Bundle/questionnaire-sdc-profile-example: Bundle.entry[0].resource/*Questionnaire/F8-1.2*/.text.div: Hyperlink '#hcF8-1.2/d1e4024-vs' at 'div/blockquote/blockquote/table/tr/td/a' for 'ValueSet D1e4024vs' does not resolve
-ERROR: Bundle/questionnaire-sdc-profile-example: Bundle.entry[0].resource/*Questionnaire/F8-1.2*/.text.div: Hyperlink '#hcF8-1.2/d1e4118-vs' at 'div/blockquote/blockquote/table/tr/td/a' for 'ValueSet D1e4118vs' does not resolve
-ERROR: Bundle/questionnaire-sdc-profile-example: Bundle.entry[0].resource/*Questionnaire/F8-1.2*/.text.div: Hyperlink '#hcF8-1.2/d1e4236-vs' at 'div/blockquote/blockquote/table/tr/td/a' for 'ValueSet D1e4236vs' does not resolve
-ERROR: Bundle/questionnaire-sdc-profile-example: Bundle.entry[0].resource/*Questionnaire/F8-1.2*/.text.div: Hyperlink '#hcF8-1.2/d1e4716-vs' at 'div/blockquote/blockquote/table/tr/td/a' for 'ValueSet D1e4716vs' does not resolve
-ERROR: Bundle/questionnaire-sdc-profile-example: Bundle.entry[1].resource/*Questionnaire/HERF-1.2*/.text.div: Hyperlink '#hcHERF-1.2/d1e5879-vs' at 'div/blockquote/table/tr/td/a' for 'ValueSet: status = active' does not resolve
-ERROR: Bundle/questionnaire-sdc-profile-example: Bundle.entry[1].resource/*Questionnaire/HERF-1.2*/.text.div: Hyperlink '#hcHERF-1.2/d1e6177-vs' at 'div/blockquote/table/tr/td/a' for 'ValueSet: status = active' does not resolve
-ERROR: Bundle/questionnaire-sdc-profile-example: Bundle.entry[1].resource/*Questionnaire/HERF-1.2*/.text.div: Hyperlink '#hcHERF-1.2/d1e6853-vs' at 'div/blockquote/table/tr/td/a' for 'ValueSet: status = active' does not resolve
-ERROR: Bundle/questionnaire-sdc-profile-example: Bundle.entry[1].resource/*Questionnaire/HERF-1.2*/.text.div: Hyperlink '#hcHERF-1.2/d1e7006-vs' at 'div/blockquote/blockquote/p/a' for 'ValueSet: status = active' does not resolve
-ERROR: Bundle/questionnaire-sdc-profile-example: Bundle.entry[1].resource/*Questionnaire/HERF-1.2*/.text.div: Hyperlink '#hcHERF-1.2/d1e7220-vs' at 'div/blockquote/blockquote/table/tr/td/a' for 'ValueSet: status = active' does not resolve
-ERROR: Bundle/questionnaire-sdc-profile-example: Bundle.entry[1].resource/*Questionnaire/HERF-1.2*/.text.div: Hyperlink '#hcHERF-1.2/d1e7422-vs' at 'div/blockquote/blockquote/p/a' for 'ValueSet: status = active' does not resolve
-ERROR: Bundle/questionnaire-sdc-profile-example: Bundle.entry[2].resource/*Questionnaire/3921052v1.0*/.text.div: Hyperlink '#hc3921052v1.0/d1e8086-vs' at 'div/blockquote/table/tr/td/a' for 'ValueSet D1e8086vs' does not resolve
-ERROR: Bundle/questionnaire-sdc-profile-example: Bundle.entry[2].resource/*Questionnaire/3921052v1.0*/.text.div: Hyperlink '#hc3921052v1.0/d1e8407-vs' at 'div/blockquote/table/tr/td/a' for 'ValueSet D1e8407vs' does not resolve
-ERROR: Bundle/questionnaire-sdc-profile-example: Bundle.entry[2].resource/*Questionnaire/3921052v1.0*/.text.div: Hyperlink '#hc3921052v1.0/d1e8830-vs' at 'div/blockquote/table/tr/td/a' for 'ValueSet: status = active' does not resolve
-ERROR: Bundle/questionnaire-sdc-profile-example: Bundle.entry[2].resource/*Questionnaire/3921052v1.0*/.text.div: Hyperlink '#hc3921052v1.0/d1e9025-vs' at 'div/blockquote/table/tr/td/a' for 'ValueSet: status = active' does not resolve
-ERROR: Bundle/questionnaire-sdc-profile-example: Bundle.entry[3].resource/*Questionnaire/2674812v4.0*/.text.div: Hyperlink '#hc2674812v4.0/d1e9892-vs' at 'div/blockquote/table/tr/td/a' for 'ValueSet: status = active' does not resolve
-ERROR: Bundle/questionnaire-sdc-profile-example: Bundle.entry[3].resource/*Questionnaire/2674812v4.0*/.text.div: Hyperlink '#hc2674812v4.0/d1e10146-vs' at 'div/blockquote/table/tr/td/a' for 'ValueSet: status = active' does not resolve
-ERROR: Bundle/questionnaire-sdc-profile-example: Bundle.entry[3].resource/*Questionnaire/2674812v4.0*/.text.div: Hyperlink '#hc2674812v4.0/d1e10593-vs' at 'div/blockquote/table/tr/td/a' for 'ValueSet: status = active' does not resolve
-ERROR: Bundle/questionnaire-sdc-profile-example: Bundle.entry[3].resource/*Questionnaire/2674812v4.0*/.text.div: Hyperlink '#hc2674812v4.0/d1e10923-vs' at 'div/blockquote/table/tr/td/a' for 'ValueSet: status = active' does not resolve
-ERROR: Bundle/questionnaire-sdc-profile-example: Bundle.entry[3].resource/*Questionnaire/2674812v4.0*/.text.div: Hyperlink '#hc2674812v4.0/d1e11887-vs' at 'div/blockquote/table/tr/td/a' for 'ValueSet: status = active' does not resolve
-ERROR: Bundle/questionnaire-sdc-profile-example: Bundle.entry[3].resource/*Questionnaire/2674812v4.0*/.text.div: Hyperlink '#hc2674812v4.0/d1e12384-vs' at 'div/blockquote/table/tr/td/a' for 'ValueSet: status = active' does not resolve
-ERROR: Bundle/questionnaire-sdc-profile-example: Bundle.entry[3].resource/*Questionnaire/2674812v4.0*/.text.div: Hyperlink '#hc2674812v4.0/d1e12630-vs' at 'div/blockquote/table/tr/td/a' for 'ValueSet: status = active' does not resolve
-ERROR: Bundle/questionnaire-sdc-profile-example: Bundle.entry[3].resource/*Questionnaire/2674812v4.0*/.text.div: Hyperlink '#hc2674812v4.0/d1e14027-vs' at 'div/blockquote/table/tr/td/a' for 'ValueSet: status = active' does not resolve
-ERROR: Bundle/questionnaire-sdc-profile-example: Bundle.entry[4].resource/*Questionnaire/3265657v2.0*/.text.div: Hyperlink '#hc3265657v2.0/d1e14927-vs' at 'div/blockquote/table/tr/td/a' for 'ValueSet: status = active' does not resolve
-ERROR: Bundle/questionnaire-sdc-profile-example: Bundle.entry[4].resource/*Questionnaire/3265657v2.0*/.text.div: Hyperlink '#hc3265657v2.0/d1e54652-vs' at 'div/blockquote/table/tr/td/a' for 'ValueSet: status = active' does not resolve
-ERROR: Bundle/questionnaire-sdc-profile-example: Bundle.entry[4].resource/*Questionnaire/3265657v2.0*/.text.div: Hyperlink '#hc3265657v2.0/d1e55041-vs' at 'div/blockquote/table/tr/td/a' for 'ValueSet: status = active' does not resolve
-ERROR: Bundle/questionnaire-sdc-profile-example: Bundle.entry[4].resource/*Questionnaire/3265657v2.0*/.text.div: Hyperlink '#hc3265657v2.0/d1e55265-vs' at 'div/blockquote/table/tr/td/a' for 'ValueSet: status = active' does not resolve
-ERROR: Bundle/questionnaire-sdc-profile-example: Bundle.entry[4].resource/*Questionnaire/3265657v2.0*/.text.div: Hyperlink '#hc3265657v2.0/d1e56008-vs' at 'div/blockquote/table/tr/td/a' for 'ValueSet: status = active' does not resolve
-ERROR: Bundle/questionnaire-sdc-profile-example: Bundle.entry[4].resource/*Questionnaire/3265657v2.0*/.text.div: Hyperlink '#hc3265657v2.0/d1e57358-vs' at 'div/blockquote/table/tr/td/a' for 'ValueSet: status = active' does not resolve
-ERROR: Bundle/questionnaire-sdc-profile-example: Bundle.entry[4].resource/*Questionnaire/3265657v2.0*/.text.div: Hyperlink '#hc3265657v2.0/d1e97042-vs' at 'div/blockquote/table/tr/td/a' for 'ValueSet: status = active' does not resolve
-ERROR: Bundle/questionnaire-sdc-profile-example: Bundle.entry[4].resource/*Questionnaire/3265657v2.0*/.text.div: Hyperlink '#hc3265657v2.0/d1e97392-vs' at 'div/blockquote/table/tr/td/a' for 'ValueSet: status = active' does not resolve
-ERROR: Bundle/questionnaire-sdc-profile-example: Bundle.entry[4].resource/*Questionnaire/3265657v2.0*/.text.div: Hyperlink '#hc3265657v2.0/d1e97594-vs' at 'div/blockquote/table/tr/td/a' for 'ValueSet: status = active' does not resolve
-ERROR: Bundle/questionnaire-sdc-profile-example: Bundle.entry[4].resource/*Questionnaire/3265657v2.0*/.text.div: Hyperlink '#hc3265657v2.0/d1e97746-vs' at 'div/blockquote/table/tr/td/a' for 'ValueSet: status = active' does not resolve
-ERROR: Bundle/questionnaire-sdc-profile-example: Bundle.entry[4].resource/*Questionnaire/3265657v2.0*/.text.div: Hyperlink '#hc3265657v2.0/d1e98036-vs' at 'div/blockquote/table/tr/td/a' for 'ValueSet: status = active' does not resolve
-ERROR: Bundle/questionnaire-sdc-profile-example: Bundle.entry[4].resource/*Questionnaire/3265657v2.0*/.text.div: Hyperlink '#hc3265657v2.0/d1e98234-vs' at 'div/blockquote/table/tr/td/a' for 'ValueSet: status = active' does not resolve
-ERROR: Bundle/questionnaire-sdc-profile-example: Bundle.entry[4].resource/*Questionnaire/3265657v2.0*/.text.div: Hyperlink '#hc3265657v2.0/d1e98385-vs' at 'div/blockquote/table/tr/td/a' for 'ValueSet: status = active' does not resolve
-ERROR: Bundle/questionnaire-sdc-profile-example: Bundle.entry[4].resource/*Questionnaire/3265657v2.0*/.text.div: Hyperlink '#hc3265657v2.0/d1e98732-vs' at 'div/blockquote/table/tr/td/a' for 'ValueSet: status = active' does not resolve
-ERROR: Bundle/questionnaire-sdc-profile-example: Bundle.entry[4].resource/*Questionnaire/3265657v2.0*/.text.div: Hyperlink '#hc3265657v2.0/d1e98928-vs' at 'div/blockquote/table/tr/td/a' for 'ValueSet: status = active' does not resolve
-ERROR: Bundle/questionnaire-sdc-profile-example: Bundle.entry[4].resource/*Questionnaire/3265657v2.0*/.text.div: Hyperlink '#hc3265657v2.0/d1e99214-vs' at 'div/blockquote/table/tr/td/a' for 'ValueSet: status = active' does not resolve
-ERROR: Bundle/questionnaire-sdc-profile-example: Bundle.entry[4].resource/*Questionnaire/3265657v2.0*/.text.div: Hyperlink '#hc3265657v2.0/d1e99668-vs' at 'div/blockquote/table/tr/td/a' for 'ValueSet: status = active' does not resolve
+# 05. This is a publisher/template issue - https://chat.fhir.org/#narrow/channel/179252-IG-creation/topic/Questionnaire.20narrative.20hyperlink.20issues
 %The link 'ValueSet-2674812v4.0_d1e10146-vs.html' for "d1e10146-vs" cannot be resolved
 %The link 'ValueSet-2674812v4.0_d1e10593-vs.html' for "d1e10593-vs" cannot be resolved
 %The link 'ValueSet-2674812v4.0_d1e10923-vs.html' for "d1e10923-vs" cannot be resolved
@@ -115,25 +70,7 @@ ERROR: Bundle/questionnaire-sdc-profile-example: Bundle.entry[4].resource/*Quest
 %The link 'ValueSet-HERF-1.2_d1e7220-vs.html' for "d1e7220-vs" cannot be resolved
 %The link 'ValueSet-HERF-1.2_d1e7422-vs.html' for "d1e7422-vs" cannot be resolved
 
-# These are used to template regular resources and can legitimately appear on any element in any resource.  As such, a context of Element is appropriate
-Review the extension type for sdc-questionnaire-templateExtractContext: extensions should not have a context of Element unless it's really intended that they can be used anywhere
-Review the extension type for sdc-questionnaire-templateExtractValue: extensions should not have a context of Element unless it's really intended that they can be used anywhere
-
-# These are fixed in the next release of the extensions pack
-ERROR: Questionnaire/questionnaire-sdc-profile-example-image-options: Questionnaire.item[0].answerOption[1].value.ofType(Coding).display.extension[0].value.ofType(string): The extension http://hl7.org/fhir/StructureDefinition/referencesContained is not allowed to be used at this point (allowed = e:Expression; this element is [Coding.display.extension.value, Coding.display.extension.value.ofType(string), Coding.display.extension.valuestring, Extension.value, Extension.value.ofType(string), Extension.valuestring, Questionnaire.item.answerOption.value.ofType(Coding).display.extension.value.ofType(string), string, string.extension.value, string.extension.value.ofType(string), string.extension.valuestring])
-ERROR: Questionnaire/questionnaire-sdc-profile-example-image-options: Questionnaire.item[0].answerOption[2].value.ofType(Coding).display.extension[0].value.ofType(string): The extension http://hl7.org/fhir/StructureDefinition/referencesContained is not allowed to be used at this point (allowed = e:Expression; this element is [Coding.display.extension.value, Coding.display.extension.value.ofType(string), Coding.display.extension.valuestring, Extension.value, Extension.value.ofType(string), Extension.valuestring, Questionnaire.item.answerOption.value.ofType(Coding).display.extension.value.ofType(string), string, string.extension.value, string.extension.value.ofType(string), string.extension.valuestring])
-The link 'http://hl7.org/fhir/uv/sdc/behavior#unitValusSet' for "SDC implementation guide" cannot be resolved
-Reference to draft CodeSystem http://hl7.org/fhir/questionnaire-usage-mode|5.2.0-ballot
-Reference to draft CodeSystem http://hl7.org/fhir/choice-list-orientation|5.2.0-ballot
-INFORMATION: StructureDefinition/sdc-valueset: ValueSet.expansion.extension: The extension http://hl7.org/fhir/StructureDefinition/valueset-expansionSource|5.2.0-ballot is retired
-The extension http://hl7.org/fhir/StructureDefinition/questionnaire-derivationType is not allowed to be used at this point (allowed = e:Questionnaire.derivation; this element is [Questionnaire.derivedFrom, QuestionnaireResponse.contained/*Questionnaire/contained-adaptive-questionnaire-example-phq9*/.derivedFrom, canonical])
-Reference to experimental CodeSystem http://hl7.org/fhir/questionnaire-derivationType|5.2.0-ballot
-
-# These are incorrect statuss in the FHIR core spec and can't be corrected
-Reference to draft CodeSystem http://hl7.org/fhir/CodeSystem/task-code|4.0.1
-Reference to draft CodeSystem urn:iso-astm:E1762-95:2013|4.0.1
-
-# These links will resolve once the ballot is published.  The issues are a result of interplay between the extensions pack and the SDC IG
+# 06. These links will resolve once the ballot is published.  The issues are a result of interplay between the extensions pack and the SDC IG
 The link 'http://hl7.org/fhir/uv/sdc/STU4-ballot/behavior.html#cqf-calculatedValue' for "SDC implementation guide" cannot be resolved
 The link 'http://hl7.org/fhir/uv/sdc/STU4-ballot/behavior.html#cqf-expression' for "SDC implementation guide" cannot be resolved
 The link 'http://hl7.org/fhir/uv/sdc/STU4-ballot/behavior.html#cqf-library' for "SDC implementation guide" cannot be resolved
@@ -165,38 +102,11 @@ The link 'http://hl7.org/fhir/uv/sdc/STU4-ballot/rendering.html#sliderStepValue'
 The link 'http://hl7.org/fhir/uv/sdc/STU4-ballot/rendering.html#supportLink' for "SDC implementation guide" cannot be resolved
 The link 'http://hl7.org/fhir/uv/sdc/STU4-ballot/rendering.html#valueset-label' for "SDC implementation guide" cannot be resolved
 
-# The example code system isn't expected to resolve
-A definition for CodeSystem 'http://example.org/medications' could not be found, so the code cannot be validated
-A definition for CodeSystem 'http://example.org/medications2' could not be found, so the code cannot be validated
-A definition for CodeSystem 'http://example.org/sdh/demo/CodeSystem/cc-screening-codes' could not be found, so the code cannot be validated
-Code System unknown, so assuming value set expansion is correct (A definition for CodeSystem 'http://example.org/CodeSystem/CSPHQ9' could not be found, so the code cannot be validated)
-Error from http://tx.fhir.org/r4: Unable to provide support for code system http://example.org/CodeSystem/Australian-States
-Error from http://tx.fhir.org/r4: Unable to provide support for code system http://example.org/CodeSystem/CSPHQ9
-Example System 'http://example.org/CodeSystem/Australian-States' specified, so Concepts and Filters can't be checked
-Example System 'http://example.org/CodeSystem/CSPHQ9' specified, so Concepts and Filters can't be checked
-The code provided Primary cannot be validated in the options value set (D1e8086vs) in the questionnaire because the system http://example.org/nci.nih.gov/xml/owl/cadsr/form/form_design_identifier/3921052v1.0/question_identifier#3921060v1.0-cs could not be found
-The code provided AtRestaging cannot be validated in the options value set (D1e8407vs) in the questionnaire because the system http://example.org/nci.nih.gov/xml/owl/cadsr/form/form_design_identifier/3921052v1.0/question_identifier#3921071v1.0-cs could not be found
-The code provided Histologic cannot be validated in the options value set (ValueSet[null]) in the questionnaire because the system http://example.org/nci.nih.gov/xml/owl/cadsr/form/form_design_identifier/3921052v1.0/question_identifier#3921081v1.0-cs could not be found
-The code provided G2 cannot be validated in the options value set (ValueSet[null]) in the questionnaire because the system http://example.org/nci.nih.gov/xml/owl/cadsr/form/form_design_identifier/3921052v1.0/question_identifier#3921085v1.0-cs could not be found
-The code provided Not-at-all cannot be validated in the options value set (VSPHQ9) in the questionnaire because the system http://example.org/CodeSystem/CSPHQ9 could not be found
-The code provided Several-days cannot be validated in the options value set (VSPHQ9) in the questionnaire because the system http://example.org/CodeSystem/CSPHQ9 could not be found
-The code provided More than half the days cannot be validated in the options value set (VSPHQ9) in the questionnaire because the system http://example.org/CodeSystem/CSPHQ9 could not be found
-The code provided Nearly every day cannot be validated in the options value set (VSPHQ9) in the questionnaire because the system http://example.org/CodeSystem/CSPHQ9 could not be found
-
-# Reported this as a publisher issue: https://chat.fhir.org/#narrow/channel/179252-IG-creation/topic/Validator.20is.20making.20incorrect.20assumptions.20about.20.25resource
-WARNING: StructureDefinition/sdc-questionnaire-adapt: StructureDefinition.snapshot.element[0].constraint[7]: sdc-adapt-1: The type specified in ofType() is http://hl7.org/fhir/StructureDefinition/QuestionnaireResponse which is not a possible candidate for the existing types () in the expression ofType(QuestionnaireResponse).questionnaire. Check the paths and types to be sure this is what is intended
-
-# This is a problem with FHIR R4 that can't be fixed
-The link 'http://hl7.org/fhir/R4/valueset-diagnostic-requests.html' for "here" cannot be resolved
-
-# These are example code systems and as such don't ever need to go to THO.  (This message shouldn't be raised by the validator - https://chat.fhir.org/#narrow/channel/179252-IG-creation/topic/Don't.20warn.20about.20moving.20to.20THO.20for.20example.20code.20systems)
+# 07. These are example code systems and as such don't ever need to go to THO.  (This message shouldn't be raised by the validator - https://chat.fhir.org/#narrow/channel/179252-IG-creation/topic/Don't.20warn.20about.20moving.20to.20THO.20for.20example.20code.20systems)
 INFORMATION: CodeSystem/CSPHQ9: CodeSystem: Most code systems defined in HL7 IGs will need to move to THO later during the process. Consider giving this code system a THO URL now (See https://confluence.hl7.org/display/TSMG/Terminology+Play+Book, and/or talk to TSMG)
 INFORMATION: CodeSystem/chf-codes: CodeSystem: Most code systems defined in HL7 IGs will need to move to THO later during the process. Consider giving this code system a THO URL now (See https://confluence.hl7.org/display/TSMG/Terminology+Play+Book, and/or talk to TSMG)
 
-# The codes defined here will be moving to LOINC or some other external code system in a future release
-INFORMATION: CodeSystem/temp: CodeSystem: Most code systems defined in HL7 IGs will need to move to THO later during the process. Consider giving this code system a THO URL now (See https://confluence.hl7.org/display/TSMG/Terminology+Play+Book, and/or talk to TSMG)
-
-# These are code systems for extensions with required bindings.  As such, they're not eligible to move to THO.  (This message shouldn't be raised by the validator - https://chat.fhir.org/#narrow/channel/179252-IG-creation/topic/Don't.20warn.20about.20moving.20to.20THO.20for.20example.20code.20systems)
+# 08. These are code systems for extensions with required bindings.  As such, they're not eligible to move to THO.  (This message shouldn't be raised by the validator - https://chat.fhir.org/#narrow/channel/179252-IG-creation/topic/Don't.20warn.20about.20moving.20to.20THO.20for.20example.20code.20systems)
 INFORMATION: CodeSystem/assemble-expectation: CodeSystem: Most code systems defined in HL7 IGs will need to move to THO later during the process. Consider giving this code system a THO URL now (See https://confluence.hl7.org/display/TSMG/Terminology+Play+Book, and/or talk to TSMG)
 INFORMATION: CodeSystem/collapsible: CodeSystem: Most code systems defined in HL7 IGs will need to move to THO later during the process. Consider giving this code system a THO URL now (See https://confluence.hl7.org/display/TSMG/Terminology+Play+Book, and/or talk to TSMG)
 INFORMATION: CodeSystem/entryMode: CodeSystem: Most code systems defined in HL7 IGs will need to move to THO later during the process. Consider giving this code system a THO URL now (See https://confluence.hl7.org/display/TSMG/Terminology+Play+Book, and/or talk to TSMG)
@@ -204,7 +114,152 @@ INFORMATION: CodeSystem/launchContext: CodeSystem: Most code systems defined in 
 INFORMATION: CodeSystem/observation-extract-relationship: CodeSystem: Most code systems defined in HL7 IGs will need to move to THO later during the process. Consider giving this code system a THO URL now (See https://confluence.hl7.org/display/TSMG/Terminology+Play+Book, and/or talk to TSMG)
 INFORMATION: CodeSystem/questionnaire-answer-constraint: CodeSystem: Most code systems defined in HL7 IGs will need to move to THO later during the process. Consider giving this code system a THO URL now (See https://confluence.hl7.org/display/TSMG/Terminology+Play+Book, and/or talk to TSMG)
 
-# These info messages are because SDC examples have few extensions that are validated against the SDC profile, but these extensions are actually defined in the core or other profiles
+# 09. The codes defined here will be moving to LOINC or some other external code system in a future release
+INFORMATION: CodeSystem/temp: CodeSystem: Most code systems defined in HL7 IGs will need to move to THO later during the process. Consider giving this code system a THO URL now (See https://confluence.hl7.org/display/TSMG/Terminology+Play+Book, and/or talk to TSMG)
+
+# 10. These are used to template regular resources and can legitimately appear on any element in any resource.  As such, a context of Element is appropriate
+Review the extension type for sdc-questionnaire-templateExtractContext: extensions should not have a context of Element unless it's really intended that they can be used anywhere
+Review the extension type for sdc-questionnaire-templateExtractValue: extensions should not have a context of Element unless it's really intended that they can be used anywhere
+
+# 11. The example code system isn't expected to resolve
+A definition for CodeSystem 'http://example.org/medications' could not be found, so the code cannot be validated
+A definition for CodeSystem 'http://example.org/medications2' could not be found, so the code cannot be validated
+A definition for CodeSystem 'http://example.org/sdh/demo/CodeSystem/cc-screening-codes' could not be found, so the code cannot be validated
+Code System unknown, so assuming value set expansion is correct (A definition for CodeSystem 'http://example.org/CodeSystem/CSPHQ9' could not be found, so the code cannot be validated)
+Error from http://tx.fhir.org/r4: Unable to provide support for code system http://example.org/CodeSystem/Australian-States
+Example System 'http://example.org/CodeSystem/Australian-States' specified, so Concepts and Filters can't be checked
+Example System 'http://example.org/CodeSystem/CSPHQ9' specified, so Concepts and Filters can't be checked
+The code provided AtRestaging cannot be validated in the options value set (D1e8407vs) in the questionnaire because the system http://example.org/nci.nih.gov/xml/owl/cadsr/form/form_design_identifier/3921052v1.0/question_identifier#3921071v1.0-cs could not be found
+The code provided G2 cannot be validated in the options value set (ValueSet[null]) in the questionnaire because the system http://example.org/nci.nih.gov/xml/owl/cadsr/form/form_design_identifier/3921052v1.0/question_identifier#3921085v1.0-cs could not be found
+The code provided Histologic cannot be validated in the options value set (ValueSet[null]) in the questionnaire because the system http://example.org/nci.nih.gov/xml/owl/cadsr/form/form_design_identifier/3921052v1.0/question_identifier#3921081v1.0-cs could not be found
+The code provided Not-at-all cannot be validated in the options value set (VSPHQ9) in the questionnaire because the system http://example.org/CodeSystem/CSPHQ9 could not be found
+The code provided Primary cannot be validated in the options value set (D1e8086vs) in the questionnaire because the system http://example.org/nci.nih.gov/xml/owl/cadsr/form/form_design_identifier/3921052v1.0/question_identifier#3921060v1.0-cs could not be found
+
+# 12. The intention here is to provide an example of what a Questionnaire with a contained code system would look like
+%CodeSystems are referred to directly from Coding.system, so it's generally best for them not to be contained resources
+
+# 13. This content reflects a collection of resources used for transformation from a StructureMap, and as such, narrative isn't relevant
+WARNING: Bundle/map-population-example: Bundle.entry[0].resource/*Bundle/2c256377-0dbf-4311-a123-14d87f22c5*/.entry[0].resource/*Patient/a0df9da6-3157-4b72-95f1-729853718c09*/: Constraint failed: dom-6: 'A resource should have narrative for robust management' (defined in http://hl7.org/fhir/StructureDefinition/DomainResource) (Best Practice Recommendation)
+WARNING: Bundle/map-population-example: Bundle.entry[1].resource/*Bundle/7b29ddd9-fdbf-4e6c-81f3-38f2d51934*/.entry[0].resource/*Condition/7cd8b889-5456-43d4-935c-abc10791ebd6*/: Constraint failed: dom-6: 'A resource should have narrative for robust management' (defined in http://hl7.org/fhir/StructureDefinition/DomainResource) (Best Practice Recommendation)
+WARNING: Bundle/map-population-example: Bundle.entry[2].resource/*Bundle/94e7a07b-0f81-4586-ad73-ef8ce3b7b7*/.entry[0].resource/*MedicationStatement/fe376aa6-83fb-4d0e-be60-ad959c57114f*/: Constraint failed: dom-6: 'A resource should have narrative for robust management' (defined in http://hl7.org/fhir/StructureDefinition/DomainResource) (Best Practice Recommendation)
+WARNING: Bundle/map-population-example: Bundle.entry[2].resource/*Bundle/94e7a07b-0f81-4586-ad73-ef8ce3b7b7*/.entry[1].resource/*MedicationStatement/01e65f9e-5412-4ac9-a1c2-c408ed485702*/: Constraint failed: dom-6: 'A resource should have narrative for robust management' (defined in http://hl7.org/fhir/StructureDefinition/DomainResource) (Best Practice Recommendation)
+WARNING: Bundle/map-population-example: Bundle.entry[2].resource/*Bundle/94e7a07b-0f81-4586-ad73-ef8ce3b7b7*/.entry[2].resource/*MedicationStatement/f59e4516-d2c6-4a2f-936b-d2c460bb92c6*/: Constraint failed: dom-6: 'A resource should have narrative for robust management' (defined in http://hl7.org/fhir/StructureDefinition/DomainResource) (Best Practice Recommendation)
+
+# 14. This is a response from an operation and isn't intended for human display, so a narrative isn't necessary/appropriate
+WARNING: Parameters/populate-response: Parameters.parameter[0].resource/*QuestionnaireResponse/questionnaireresponse-sdc-example-ussg-fht-answers*/: Constraint failed: dom-6: 'A resource should have narrative for robust management' (defined in http://hl7.org/fhir/StructureDefinition/DomainResource) (Best Practice Recommendation)
+
+# 15. These Parameters profiles only deal with either consuming or spitting out a bare resource - and we already have examples of that.  (The Parameters profiles only exist to ensure that specific Questionnaire or QuestionnaireRespones are used as the inputs or output - because the operation can't enforce that directly.)
+WARNING: StructureDefinition.where(url = 'http://hl7.org/fhir/uv/sdc/StructureDefinition/parameters-questionnaire-next-question-in'): The Implementation Guide contains no examples for this profile
+WARNING: StructureDefinition.where(url = 'http://hl7.org/fhir/uv/sdc/StructureDefinition/parameters-questionnaire-next-question-out'): The Implementation Guide contains no examples for this profile
+WARNING: StructureDefinition.where(url = 'http://hl7.org/fhir/uv/sdc/StructureDefinition/parameters-questionnaire-process-response-in'): The Implementation Guide contains no examples for this profile
+WARNING: StructureDefinition.where(url = 'http://hl7.org/fhir/uv/sdc/StructureDefinition/parameters-questionnaireresponse-extract-in'): The Implementation Guide contains no examples for this profile
+
+# 16. This is a contained adaptive Questionnaire in QuestionnaireReponse profile, so ignoring this warning
+WARNING: StructureDefinition.where(url = 'http://hl7.org/fhir/uv/sdc/StructureDefinition/sdc-questionnaire-adapt'): The Implementation Guide contains no examples for this profile
+
+# 17. These are incorrect status in the FHIR core spec and can't be corrected
+Reference to draft CodeSystem http://hl7.org/fhir/CodeSystem/task-code|4.0.1
+Reference to draft CodeSystem urn:iso-astm:E1762-95:2013|4.0.1
+
+# 18. This is a problem with FHIR R4 that can't be fixed
+The link 'http://hl7.org/fhir/R4/valueset-diagnostic-requests.html' for "here" cannot be resolved
+
+# 19. This is inherited from CQLLibrary and can't be fixed in this specification
+WARNING: StructureDefinition/sdc-library: StructureDefinition.snapshot.element[17].fixed.ofType(CodeableConcept): For the complex type CodeableConcept, consider using a pattern rather than a fixed value to avoid over-constraining the instance
+
+# 20. Questionnaire examples using the template-based extraction process have contained resources with partially complete content that includes extensions to indicate to the extraction engine how to complete the content - which can then make the extracted resource valid
+WARNING: Questionnaire/extract-complex-template2: Questionnaire.contained[0]/*Bundle/bunExtract*/.entry[2].resource.derivedFrom[0]: A Reference without an actual reference or identifier should have a display
+WARNING: Questionnaire/extract-complex-template2: Questionnaire.contained[0]/*Bundle/bunExtract*/.entry[2].resource.performer[0]: A Reference without an actual reference or identifier should have a display
+WARNING: Questionnaire/extract-complex-template2: Questionnaire.contained[0]/*Bundle/bunExtract*/.entry[2].resource/*Observation/null*/.derivedFrom[0]: A Reference without an actual reference or identifier should have a display
+WARNING: Questionnaire/extract-complex-template2: Questionnaire.contained[0]/*Bundle/bunExtract*/.entry[2].resource/*Observation/null*/.performer[0]: A Reference without an actual reference or identifier should have a display
+WARNING: Questionnaire/extract-complex-template2: Questionnaire.contained[0]/*Bundle/bunExtract*/.entry[3].resource.derivedFrom[0]: A Reference without an actual reference or identifier should have a display
+WARNING: Questionnaire/extract-complex-template2: Questionnaire.contained[0]/*Bundle/bunExtract*/.entry[3].resource.performer[0]: A Reference without an actual reference or identifier should have a display
+WARNING: Questionnaire/extract-complex-template2: Questionnaire.contained[0]/*Bundle/bunExtract*/.entry[3].resource/*Observation/null*/.derivedFrom[0]: A Reference without an actual reference or identifier should have a display
+WARNING: Questionnaire/extract-complex-template2: Questionnaire.contained[0]/*Bundle/bunExtract*/.entry[3].resource/*Observation/null*/.performer[0]: A Reference without an actual reference or identifier should have a display
+WARNING: Questionnaire/extract-complex-template2: Questionnaire.contained[0]/*Bundle/bunExtract*/.entry[4].resource/*Observation/null*/.derivedFrom[0]: A Reference without an actual reference or identifier should have a display
+WARNING: Questionnaire/extract-complex-template2: Questionnaire.contained[0]/*Bundle/bunExtract*/.entry[4].resource/*Observation/null*/.performer[0]: A Reference without an actual reference or identifier should have a display
+WARNING: Questionnaire/extract-complex-template: Questionnaire.contained[1]/*RelatedPerson/rpTemplate*/.patient: A Reference without an actual reference or identifier should have a display
+WARNING: Questionnaire/extract-complex-template: Questionnaire.contained[2]/*Observation/obsTemplateHeight*/.derivedFrom[0]: A Reference without an actual reference or identifier should have a display
+WARNING: Questionnaire/extract-complex-template: Questionnaire.contained[2]/*Observation/obsTemplateHeight*/.performer[0]: A Reference without an actual reference or identifier should have a display
+WARNING: Questionnaire/extract-complex-template: Questionnaire.contained[2]/*Observation/obsTemplateHeight*/.subject: A Reference without an actual reference or identifier should have a display
+WARNING: Questionnaire/extract-complex-template: Questionnaire.contained[3]/*Observation/obsTemplateWeight*/.derivedFrom[0]: A Reference without an actual reference or identifier should have a display
+WARNING: Questionnaire/extract-complex-template: Questionnaire.contained[3]/*Observation/obsTemplateWeight*/.performer[0]: A Reference without an actual reference or identifier should have a display
+WARNING: Questionnaire/extract-complex-template: Questionnaire.contained[3]/*Observation/obsTemplateWeight*/.subject: A Reference without an actual reference or identifier should have a display
+WARNING: Questionnaire/extract-complex-template: Questionnaire.contained[4]/*Observation/obsTemplate*/.derivedFrom[0]: A Reference without an actual reference or identifier should have a display
+WARNING: Questionnaire/extract-complex-template: Questionnaire.contained[4]/*Observation/obsTemplate*/.performer[0]: A Reference without an actual reference or identifier should have a display
+WARNING: Questionnaire/extract-complex-template: Questionnaire.contained[4]/*Observation/obsTemplate*/.subject: A Reference without an actual reference or identifier should have a display
+
+# 21. Static analysis of FML doesn't check `copy`, `cc` or `c` yet
+Transform c not checked yet
+Transform cc not checked yet
+Transform copy not checked yet
+
+# 22. StructureMap uses source statements as a trigger, not a datasource (or alternately uses the name itself rather than an alias)
+INFORMATION: StructureMap/ExtractComplexSmap: StructureMap.group[0].rule[0].rule[0].source[0]: The source statement doesn't assign a variable to the source - check that this is what is intended
+INFORMATION: StructureMap/ExtractComplexSmap: StructureMap.group[0].rule[0].rule[1].rule[0].source[0]: The source statement doesn't assign a variable to the source - check that this is what is intended
+INFORMATION: StructureMap/ExtractComplexSmap: StructureMap.group[0].rule[0].rule[2].rule[0].rule[0].source[0]: The source statement doesn't assign a variable to the source - check that this is what is intended
+INFORMATION: StructureMap/ExtractComplexSmap: StructureMap.group[0].rule[0].rule[2].rule[1].rule[0].source[0]: The source statement doesn't assign a variable to the source - check that this is what is intended
+INFORMATION: StructureMap/ExtractComplexSmap: StructureMap.group[0].rule[0].rule[2].rule[2].rule[0].source[0]: The source statement doesn't assign a variable to the source - check that this is what is intended
+INFORMATION: StructureMap/ExtractComplexSmap: StructureMap.group[1].rule[0].source[0]: The source statement doesn't assign a variable to the source - check that this is what is intended
+INFORMATION: StructureMap/ExtractComplexSmap: StructureMap.group[1].rule[1].rule[0].source[0]: The source statement doesn't assign a variable to the source - check that this is what is intended
+INFORMATION: StructureMap/ExtractComplexSmap: StructureMap.group[1].rule[1].source[0]: The source statement doesn't assign a variable to the source - check that this is what is intended
+INFORMATION: StructureMap/ExtractComplexSmap: StructureMap.group[2].rule[2].rule[0].source[0]: The source statement doesn't assign a variable to the source - check that this is what is intended
+INFORMATION: StructureMap/ExtractComplexSmap: StructureMap.group[2].rule[3].rule[0].source[0]: The source statement doesn't assign a variable to the source - check that this is what is intended
+INFORMATION: StructureMap/ExtractComplexSmap: StructureMap.group[2].rule[3].rule[1].source[0]: The source statement doesn't assign a variable to the source - check that this is what is intended
+INFORMATION: StructureMap/ExtractComplexSmap: StructureMap.group[2].rule[3].rule[2].source[0]: The source statement doesn't assign a variable to the source - check that this is what is intended
+INFORMATION: StructureMap/ExtractComplexSmap: StructureMap.group[3].rule[0].source[0]: The source statement doesn't assign a variable to the source - check that this is what is intended
+INFORMATION: StructureMap/ExtractComplexSmap: StructureMap.group[4].rule[0].source[0]: The source statement doesn't assign a variable to the source - check that this is what is intended
+INFORMATION: StructureMap/ExtractComplexSmap: StructureMap.group[4].rule[1].source[0]: The source statement doesn't assign a variable to the source - check that this is what is intended
+INFORMATION: StructureMap/ExtractComplexSmap: StructureMap.group[4].rule[6].source[0]: The source statement doesn't assign a variable to the source - check that this is what is intended
+INFORMATION: StructureMap/QuestionnairePopulationTransform: StructureMap.group[0].rule[0].source[0]: The source statement doesn't assign a variable to the source - check that this is what is intended
+INFORMATION: StructureMap/QuestionnairePopulationTransform: StructureMap.group[0].rule[1].source[0]: The source statement doesn't assign a variable to the source - check that this is what is intended
+INFORMATION: StructureMap/QuestionnairePopulationTransform: StructureMap.group[0].rule[2].source[0]: The source statement doesn't assign a variable to the source - check that this is what is intended
+INFORMATION: StructureMap/QuestionnairePopulationTransform: StructureMap.group[0].rule[4].rule[0].rule[1].rule[0].source[0]: The source statement doesn't assign a variable to the source - check that this is what is intended
+INFORMATION: StructureMap/QuestionnairePopulationTransform: StructureMap.group[0].rule[4].rule[0].source[0]: The source statement doesn't assign a variable to the source - check that this is what is intended
+INFORMATION: StructureMap/QuestionnairePopulationTransform: StructureMap.group[0].rule[4].source[0]: The source statement doesn't assign a variable to the source - check that this is what is intended
+INFORMATION: StructureMap/QuestionnairePopulationTransform: StructureMap.group[1].rule[0].source[0]: The source statement doesn't assign a variable to the source - check that this is what is intended
+INFORMATION: StructureMap/QuestionnairePopulationTransform: StructureMap.group[1].rule[1].source[0]: The source statement doesn't assign a variable to the source - check that this is what is intended
+INFORMATION: StructureMap/QuestionnairePopulationTransform: StructureMap.group[1].rule[2].source[0]: The source statement doesn't assign a variable to the source - check that this is what is intended
+INFORMATION: StructureMap/QuestionnairePopulationTransform: StructureMap.group[1].rule[3].source[0]: The source statement doesn't assign a variable to the source - check that this is what is intended
+INFORMATION: StructureMap/QuestionnairePopulationTransform: StructureMap.group[2].rule[0].rule[2].rule[0].source[0]: The source statement doesn't assign a variable to the source - check that this is what is intended
+INFORMATION: StructureMap/SDOHCCHungerVitalSignMap: StructureMap.group[0].rule[0].source[0]: The source statement doesn't assign a variable to the source - check that this is what is intended
+INFORMATION: StructureMap/SDOHCCHungerVitalSignMap: StructureMap.group[0].rule[1].source[0]: The source statement doesn't assign a variable to the source - check that this is what is intended
+INFORMATION: StructureMap/SDOHCCHungerVitalSignMap: StructureMap.group[1].rule[0].rule[0].source[0]: The source statement doesn't assign a variable to the source - check that this is what is intended
+INFORMATION: StructureMap/SDOHCCHungerVitalSignMap: StructureMap.group[1].rule[0].rule[1].source[0]: The source statement doesn't assign a variable to the source - check that this is what is intended
+INFORMATION: StructureMap/SDOHCCHungerVitalSignMap: StructureMap.group[1].rule[0].source[0]: The source statement doesn't assign a variable to the source - check that this is what is intended
+INFORMATION: StructureMap/SDOHCCHungerVitalSignMap: StructureMap.group[1].rule[11].source[0]: The source statement doesn't assign a variable to the source - check that this is what is intended
+INFORMATION: StructureMap/SDOHCCHungerVitalSignMap: StructureMap.group[1].rule[1].source[0]: The source statement doesn't assign a variable to the source - check that this is what is intended
+INFORMATION: StructureMap/SDOHCCHungerVitalSignMap: StructureMap.group[1].rule[2].rule[0].source[0]: The source statement doesn't assign a variable to the source - check that this is what is intended
+INFORMATION: StructureMap/SDOHCCHungerVitalSignMap: StructureMap.group[1].rule[2].source[0]: The source statement doesn't assign a variable to the source - check that this is what is intended
+INFORMATION: StructureMap/SDOHCCHungerVitalSignMap: StructureMap.group[1].rule[3].source[0]: The source statement doesn't assign a variable to the source - check that this is what is intended
+INFORMATION: StructureMap/SDOHCCHungerVitalSignMap: StructureMap.group[1].rule[4].source[0]: The source statement doesn't assign a variable to the source - check that this is what is intended
+INFORMATION: StructureMap/SDOHCCHungerVitalSignMap: StructureMap.group[1].rule[5].source[0]: The source statement doesn't assign a variable to the source - check that this is what is intended
+INFORMATION: StructureMap/SDOHCCHungerVitalSignMap: StructureMap.group[1].rule[6].source[0]: The source statement doesn't assign a variable to the source - check that this is what is intended
+INFORMATION: StructureMap/SDOHCCHungerVitalSignMap: StructureMap.group[3].rule[0].source[0]: The source statement doesn't assign a variable to the source - check that this is what is intended
+INFORMATION: StructureMap/SDOHCCHungerVitalSignMap: StructureMap.group[3].rule[10].rule[0].source[0]: The source statement doesn't assign a variable to the source - check that this is what is intended
+INFORMATION: StructureMap/SDOHCCHungerVitalSignMap: StructureMap.group[3].rule[10].rule[1].source[0]: The source statement doesn't assign a variable to the source - check that this is what is intended
+INFORMATION: StructureMap/SDOHCCHungerVitalSignMap: StructureMap.group[3].rule[10].source[0]: The source statement doesn't assign a variable to the source - check that this is what is intended
+INFORMATION: StructureMap/SDOHCCHungerVitalSignMap: StructureMap.group[3].rule[1].rule[0].source[0]: The source statement doesn't assign a variable to the source - check that this is what is intended
+INFORMATION: StructureMap/SDOHCCHungerVitalSignMap: StructureMap.group[3].rule[1].source[0]: The source statement doesn't assign a variable to the source - check that this is what is intended
+INFORMATION: StructureMap/SDOHCCHungerVitalSignMap: StructureMap.group[3].rule[2].source[0]: The source statement doesn't assign a variable to the source - check that this is what is intended
+INFORMATION: StructureMap/SDOHCCHungerVitalSignMap: StructureMap.group[3].rule[3].source[0]: The source statement doesn't assign a variable to the source - check that this is what is intended
+INFORMATION: StructureMap/SDOHCCHungerVitalSignMap: StructureMap.group[3].rule[4].rule[0].rule[0].source[0]: The source statement doesn't assign a variable to the source - check that this is what is intended
+INFORMATION: StructureMap/SDOHCCHungerVitalSignMap: StructureMap.group[3].rule[4].rule[0].rule[1].source[0]: The source statement doesn't assign a variable to the source - check that this is what is intended
+INFORMATION: StructureMap/SDOHCCHungerVitalSignMap: StructureMap.group[3].rule[4].rule[0].rule[2].source[0]: The source statement doesn't assign a variable to the source - check that this is what is intended
+INFORMATION: StructureMap/SDOHCCHungerVitalSignMap: StructureMap.group[3].rule[4].rule[0].source[0]: The source statement doesn't assign a variable to the source - check that this is what is intended
+INFORMATION: StructureMap/SDOHCCHungerVitalSignMap: StructureMap.group[3].rule[4].source[0]: The source statement doesn't assign a variable to the source - check that this is what is intended
+INFORMATION: StructureMap/SDOHCCHungerVitalSignMap: StructureMap.group[3].rule[5].source[0]: The source statement doesn't assign a variable to the source - check that this is what is intended
+INFORMATION: StructureMap/SDOHCCHungerVitalSignMap: StructureMap.group[3].rule[6].rule[0].rule[0].source[0]: The source statement doesn't assign a variable to the source - check that this is what is intended
+INFORMATION: StructureMap/SDOHCCHungerVitalSignMap: StructureMap.group[3].rule[6].rule[0].rule[1].source[0]: The source statement doesn't assign a variable to the source - check that this is what is intended
+INFORMATION: StructureMap/SDOHCCHungerVitalSignMap: StructureMap.group[3].rule[6].rule[0].rule[2].source[0]: The source statement doesn't assign a variable to the source - check that this is what is intended
+INFORMATION: StructureMap/SDOHCCHungerVitalSignMap: StructureMap.group[3].rule[6].rule[0].source[0]: The source statement doesn't assign a variable to the source - check that this is what is intended
+INFORMATION: StructureMap/SDOHCCHungerVitalSignMap: StructureMap.group[3].rule[6].rule[1].rule[0].source[0]: The source statement doesn't assign a variable to the source - check that this is what is intended
+INFORMATION: StructureMap/SDOHCCHungerVitalSignMap: StructureMap.group[3].rule[6].rule[1].rule[1].source[0]: The source statement doesn't assign a variable to the source - check that this is what is intended
+INFORMATION: StructureMap/SDOHCCHungerVitalSignMap: StructureMap.group[3].rule[6].rule[1].rule[2].source[0]: The source statement doesn't assign a variable to the source - check that this is what is intended
+INFORMATION: StructureMap/SDOHCCHungerVitalSignMap: StructureMap.group[3].rule[6].rule[1].source[0]: The source statement doesn't assign a variable to the source - check that this is what is intended
+INFORMATION: StructureMap/SDOHCCHungerVitalSignMap: StructureMap.group[3].rule[6].source[0]: The source statement doesn't assign a variable to the source - check that this is what is intended
+
+# 23. These info messages are because SDC examples have few extensions that are validated against the SDC profile, but these extensions are actually defined in the core or other profiles
 INFORMATION: Parameters/sdc-modular-root-assembled: Parameters.parameter[0].resource/*Questionnaire/null*/.extension[0]: This element does not match any known slice defined in the profile http://hl7.org/fhir/uv/sdc/StructureDefinition/sdc-questionnaire|4.0.0-ballot (this may not be a problem, but you should check that it's not intended to match a slice)
 INFORMATION: Parameters/sdc-modular-root-assembled: Parameters.parameter[0].resource/*Questionnaire/null*/.extension[1]: This element does not match any known slice defined in the profile http://hl7.org/fhir/uv/sdc/StructureDefinition/sdc-questionnaire|4.0.0-ballot (this may not be a problem, but you should check that it's not intended to match a slice)
 INFORMATION: Parameters/sdc-modular-root-assembled: Parameters.parameter[0].resource/*Questionnaire/null*/.extension[2]: This element does not match any known slice defined in the profile http://hl7.org/fhir/uv/sdc/StructureDefinition/sdc-questionnaire|4.0.0-ballot (this may not be a problem, but you should check that it's not intended to match a slice)
@@ -338,7 +393,6 @@ INFORMATION: Questionnaire/questionnaire-sdc-profile-example-hunger-vital-signs:
 INFORMATION: Questionnaire/questionnaire-sdc-profile-example-loinc: Questionnaire.item[0].extension[0]: This element does not match any known slice defined in the profile http://hl7.org/fhir/uv/sdc/StructureDefinition/sdc-questionnaire|4.0.0-ballot (this may not be a problem, but you should check that it's not intended to match a slice)
 INFORMATION: Questionnaire/questionnaire-sdc-profile-example-loinc: Questionnaire.item[2].extension[0]: This element does not match any known slice defined in the profile http://hl7.org/fhir/uv/sdc/StructureDefinition/sdc-questionnaire|4.0.0-ballot (this may not be a problem, but you should check that it's not intended to match a slice)
 INFORMATION: Questionnaire/questionnaire-sdc-profile-example-loinc: Questionnaire.item[3].extension[0]: This element does not match any known slice defined in the profile http://hl7.org/fhir/uv/sdc/StructureDefinition/sdc-questionnaire|4.0.0-ballot (this may not be a problem, but you should check that it's not intended to match a slice)
-INFORMATION: Questionnaire/questionnaire-sdc-profile-example-multi-subject: Questionnaire.extension[0]: This element does not match any known slice defined in the profile http://hl7.org/fhir/uv/sdc/StructureDefinition/sdc-questionnaire-extr-obsn|4.0.0-ballot (this may not be a problem, but you should check that it's not intended to match a slice)
 INFORMATION: Questionnaire/questionnaire-sdc-profile-example-multi-subject: Questionnaire.extension[1]: This element does not match any known slice defined in the profile http://hl7.org/fhir/uv/sdc/StructureDefinition/sdc-questionnaire-extr-obsn|4.0.0-ballot (this may not be a problem, but you should check that it's not intended to match a slice)
 INFORMATION: Questionnaire/questionnaire-sdc-profile-example-weight-height-tracking-panel: Questionnaire.extension[0]: This element does not match any known slice defined in the profile http://hl7.org/fhir/uv/sdc/StructureDefinition/sdc-questionnaire|4.0.0-ballot (this may not be a problem, but you should check that it's not intended to match a slice)
 INFORMATION: Questionnaire/questionnaire-sdc-profile-example-weight-height-tracking-panel: Questionnaire.extension[1]: This element does not match any known slice defined in the profile http://hl7.org/fhir/uv/sdc/StructureDefinition/sdc-questionnaire|4.0.0-ballot (this may not be a problem, but you should check that it's not intended to match a slice)
@@ -362,182 +416,3 @@ INFORMATION: Questionnaire/sdc-modular-root: Questionnaire.extension[2]: This el
 INFORMATION: Questionnaire/sdc-modular-root: Questionnaire.item[0].extension[0]: This element does not match any known slice defined in the profile http://hl7.org/fhir/uv/sdc/StructureDefinition/sdc-questionnaire-modular|4.0.0-ballot (this may not be a problem, but you should check that it's not intended to match a slice)
 INFORMATION: Questionnaire/sdc-modular-root: Questionnaire.item[4].extension[0]: This element does not match any known slice defined in the profile http://hl7.org/fhir/uv/sdc/StructureDefinition/sdc-questionnaire-modular|4.0.0-ballot (this may not be a problem, but you should check that it's not intended to match a slice)
 INFORMATION: Questionnaire/sdc-modular-root: Questionnaire.item[4].extension[1]: This element does not match any known slice defined in the profile http://hl7.org/fhir/uv/sdc/StructureDefinition/sdc-questionnaire-modular|4.0.0-ballot (this may not be a problem, but you should check that it's not intended to match a slice)
-
-# These resources are templates, not actual resources, and the references contain expressions intended to be replaced by real references.  Displays are therefore unnecessary
-WARNING: Questionnaire/extract-complex-template: Questionnaire.contained[1]/*RelatedPerson/rpTemplate*/.patient: A Reference without an actual reference or identifier should have a display
-WARNING: Questionnaire/extract-complex-template: Questionnaire.contained[2]/*Observation/obsTemplateHeight*/.subject: A Reference without an actual reference or identifier should have a display
-WARNING: Questionnaire/extract-complex-template: Questionnaire.contained[2]/*Observation/obsTemplateHeight*/.performer[0]: A Reference without an actual reference or identifier should have a display
-WARNING: Questionnaire/extract-complex-template: Questionnaire.contained[2]/*Observation/obsTemplateHeight*/.derivedFrom[0]: A Reference without an actual reference or identifier should have a display
-WARNING: Questionnaire/extract-complex-template: Questionnaire.contained[3]/*Observation/obsTemplateWeight*/.subject: A Reference without an actual reference or identifier should have a display
-WARNING: Questionnaire/extract-complex-template: Questionnaire.contained[3]/*Observation/obsTemplateWeight*/.performer[0]: A Reference without an actual reference or identifier should have a display
-WARNING: Questionnaire/extract-complex-template: Questionnaire.contained[3]/*Observation/obsTemplateWeight*/.derivedFrom[0]: A Reference without an actual reference or identifier should have a display
-WARNING: Questionnaire/extract-complex-template: Questionnaire.contained[4]/*Observation/obsTemplate*/.subject: A Reference without an actual reference or identifier should have a display
-WARNING: Questionnaire/extract-complex-template: Questionnaire.contained[4]/*Observation/obsTemplate*/.performer[0]: A Reference without an actual reference or identifier should have a display
-WARNING: Questionnaire/extract-complex-template: Questionnaire.contained[4]/*Observation/obsTemplate*/.derivedFrom[0]: A Reference without an actual reference or identifier should have a display
-WARNING: Questionnaire/extract-complex-template2: Questionnaire.contained[0]/*Bundle/bunExtract*/.entry[2].resource.performer[0]: A Reference without an actual reference or identifier should have a display
-WARNING: Questionnaire/extract-complex-template2: Questionnaire.contained[0]/*Bundle/bunExtract*/.entry[2].resource.derivedFrom[0]: A Reference without an actual reference or identifier should have a display
-WARNING: Questionnaire/extract-complex-template2: Questionnaire.contained[0]/*Bundle/bunExtract*/.entry[3].resource.performer[0]: A Reference without an actual reference or identifier should have a display
-WARNING: Questionnaire/extract-complex-template2: Questionnaire.contained[0]/*Bundle/bunExtract*/.entry[3].resource.derivedFrom[0]: A Reference without an actual reference or identifier should have a display
-WARNING: Questionnaire/extract-complex-template2: Questionnaire.contained[0]/*Bundle/bunExtract*/.entry[2].resource/*Observation/null*/.performer[0]: A Reference without an actual reference or identifier should have a display
-WARNING: Questionnaire/extract-complex-template2: Questionnaire.contained[0]/*Bundle/bunExtract*/.entry[2].resource/*Observation/null*/.derivedFrom[0]: A Reference without an actual reference or identifier should have a display
-WARNING: Questionnaire/extract-complex-template2: Questionnaire.contained[0]/*Bundle/bunExtract*/.entry[3].resource/*Observation/null*/.performer[0]: A Reference without an actual reference or identifier should have a display
-WARNING: Questionnaire/extract-complex-template2: Questionnaire.contained[0]/*Bundle/bunExtract*/.entry[3].resource/*Observation/null*/.derivedFrom[0]: A Reference without an actual reference or identifier should have a display
-WARNING: Questionnaire/extract-complex-template2: Questionnaire.contained[0]/*Bundle/bunExtract*/.entry[4].resource/*Observation/null*/.performer[0]: A Reference without an actual reference or identifier should have a display
-WARNING: Questionnaire/extract-complex-template2: Questionnaire.contained[0]/*Bundle/bunExtract*/.entry[4].resource/*Observation/null*/.derivedFrom[0]: A Reference without an actual reference or identifier should have a display
-
-# The intention here is to provide an example of what a Questionnaire with a contained code system would look like
-%CodeSystems are referred to directly from Coding.system, so it's generally best for them not to be contained resources
-
-# This is inherited from CQLLibrary
-WARNING: StructureDefinition/sdc-library: StructureDefinition.snapshot.element[17].fixed.ofType(CodeableConcept): For the complex type CodeableConcept, consider using a pattern rather than a fixed value to avoid over-constraining the instance
-
-# This content reflects a collection of resources used for transformation from a StructureMap, and as such, narrative isn't relevant
-WARNING: Bundle/map-population-example: Bundle.entry[0].resource/*Bundle/2c256377-0dbf-4311-a123-14d87f22c5*/.entry[0].resource/*Patient/a0df9da6-3157-4b72-95f1-729853718c09*/: Constraint failed: dom-6: 'A resource should have narrative for robust management' (defined in http://hl7.org/fhir/StructureDefinition/DomainResource) (Best Practice Recommendation)
-WARNING: Bundle/map-population-example: Bundle.entry[1].resource/*Bundle/7b29ddd9-fdbf-4e6c-81f3-38f2d51934*/.entry[0].resource/*Condition/7cd8b889-5456-43d4-935c-abc10791ebd6*/: Constraint failed: dom-6: 'A resource should have narrative for robust management' (defined in http://hl7.org/fhir/StructureDefinition/DomainResource) (Best Practice Recommendation)
-WARNING: Bundle/map-population-example: Bundle.entry[2].resource/*Bundle/94e7a07b-0f81-4586-ad73-ef8ce3b7b7*/.entry[0].resource/*MedicationStatement/fe376aa6-83fb-4d0e-be60-ad959c57114f*/: Constraint failed: dom-6: 'A resource should have narrative for robust management' (defined in http://hl7.org/fhir/StructureDefinition/DomainResource) (Best Practice Recommendation)
-WARNING: Bundle/map-population-example: Bundle.entry[2].resource/*Bundle/94e7a07b-0f81-4586-ad73-ef8ce3b7b7*/.entry[1].resource/*MedicationStatement/01e65f9e-5412-4ac9-a1c2-c408ed485702*/: Constraint failed: dom-6: 'A resource should have narrative for robust management' (defined in http://hl7.org/fhir/StructureDefinition/DomainResource) (Best Practice Recommendation)
-WARNING: Bundle/map-population-example: Bundle.entry[2].resource/*Bundle/94e7a07b-0f81-4586-ad73-ef8ce3b7b7*/.entry[2].resource/*MedicationStatement/f59e4516-d2c6-4a2f-936b-d2c460bb92c6*/: Constraint failed: dom-6: 'A resource should have narrative for robust management' (defined in http://hl7.org/fhir/StructureDefinition/DomainResource) (Best Practice Recommendation)
-
-# This is a response from an operation and isn't intended for human display, so a narrative isn't necessary/appropriate
-WARNING: Parameters/populate-response: Parameters.parameter[0].resource/*QuestionnaireResponse/questionnaireresponse-sdc-example-ussg-fht-answers*/: Constraint failed: dom-6: 'A resource should have narrative for robust management' (defined in http://hl7.org/fhir/StructureDefinition/DomainResource) (Best Practice Recommendation)
-
-# These Parameters profiles only deal with either consuming or spitting out a bare resource - and we already have examples of that.  (The Parameters profiles only exist to ensure that specific Questionnaire or QuestionnaireRespones are used as the inputs or output - because the operation can't enforce that directly.)
-WARNING: StructureDefinition.where(url = 'http://hl7.org/fhir/uv/sdc/StructureDefinition/parameters-questionnaire-next-question-in'): The Implementation Guide contains no examples for this profile
-WARNING: StructureDefinition.where(url = 'http://hl7.org/fhir/uv/sdc/StructureDefinition/parameters-questionnaire-next-question-out'): The Implementation Guide contains no examples for this profile
-WARNING: StructureDefinition.where(url = 'http://hl7.org/fhir/uv/sdc/StructureDefinition/parameters-questionnaire-process-response-in'): The Implementation Guide contains no examples for this profile
-WARNING: StructureDefinition.where(url = 'http://hl7.org/fhir/uv/sdc/StructureDefinition/parameters-questionnaireresponse-extract-in'): The Implementation Guide contains no examples for this profile
-
-# This is a contained adaptive Questionnaire in QuestionnaireReponse profile, so ignoring this warning
-WARNING: StructureDefinition.where(url = 'http://hl7.org/fhir/uv/sdc/StructureDefinition/sdc-questionnaire-adapt'): The Implementation Guide contains no examples for this profile
-
-# Questionnaire examples using the template-based extraction process have contained resources with partially complete content that includes extensions to indicate to the extraction engine how to complete the content - which can then make the extracted resource valid
-WARNING: Questionnaire/extract-complex-template: Questionnaire.contained[1]/*RelatedPerson/rpTemplate*/.patient: A Reference without an actual reference or identifier should have a display
-WARNING: Questionnaire/extract-complex-template: Questionnaire.contained[2]/*Observation/obsTemplateHeight*/.subject: A Reference without an actual reference or identifier should have a display
-WARNING: Questionnaire/extract-complex-template: Questionnaire.contained[2]/*Observation/obsTemplateHeight*/.performer[0]: A Reference without an actual reference or identifier should have a display
-WARNING: Questionnaire/extract-complex-template: Questionnaire.contained[3]/*Observation/obsTemplateWeight*/.subject: A Reference without an actual reference or identifier should have a display
-WARNING: Questionnaire/extract-complex-template: Questionnaire.contained[3]/*Observation/obsTemplateWeight*/.performer[0]: A Reference without an actual reference or identifier should have a display
-WARNING: Questionnaire/extract-complex-template: Questionnaire.contained[4]/*Observation/obsTemplate*/.subject: A Reference without an actual reference or identifier should have a display
-WARNING: Questionnaire/extract-complex-template: Questionnaire.contained[4]/*Observation/obsTemplate*/.performer[0]: A Reference without an actual reference or identifier should have a display
-WARNING: Questionnaire/extract-complex-template2: Questionnaire.contained[0]/*Bundle/bunExtract*/.entry[2].resource.performer[0]: A Reference without an actual reference or identifier should have a display
-WARNING: Questionnaire/extract-complex-template2: Questionnaire.contained[0]/*Bundle/bunExtract*/.entry[3].resource.performer[0]: A Reference without an actual reference or identifier should have a display
-WARNING: Questionnaire/extract-complex-template2: Questionnaire.contained[0]/*Bundle/bunExtract*/.entry[2].resource/*Observation/null*/.performer[0]: A Reference without an actual reference or identifier should have a display
-WARNING: Questionnaire/extract-complex-template2: Questionnaire.contained[0]/*Bundle/bunExtract*/.entry[3].resource/*Observation/null*/.performer[0]: A Reference without an actual reference or identifier should have a display
-WARNING: Questionnaire/extract-complex-template2: Questionnaire.contained[0]/*Bundle/bunExtract*/.entry[4].resource/*Observation/null*/.performer[0]: A Reference without an actual reference or identifier should have a display
-WARNING: Questionnaire/extract-complex-template: Questionnaire.contained[2]/*Observation/obsTemplateHeight*/.derivedFrom[0]: A Reference without an actual reference or identifier should have a display
-WARNING: Questionnaire/extract-complex-template: Questionnaire.contained[3]/*Observation/obsTemplateWeight*/.derivedFrom[0]: A Reference without an actual reference or identifier should have a display
-WARNING: Questionnaire/extract-complex-template: Questionnaire.contained[4]/*Observation/obsTemplate*/.derivedFrom[0]: A Reference without an actual reference or identifier should have a display
-WARNING: Questionnaire/extract-complex-template2: Questionnaire.contained[0]/*Bundle/bunExtract*/.entry[2].resource.derivedFrom[0]: A Reference without an actual reference or identifier should have a display
-WARNING: Questionnaire/extract-complex-template2: Questionnaire.contained[0]/*Bundle/bunExtract*/.entry[3].resource.derivedFrom[0]: A Reference without an actual reference or identifier should have a display
-WARNING: Questionnaire/extract-complex-template2: Questionnaire.contained[0]/*Bundle/bunExtract*/.entry[2].resource/*Observation/null*/.derivedFrom[0]: A Reference without an actual reference or identifier should have a display
-WARNING: Questionnaire/extract-complex-template2: Questionnaire.contained[0]/*Bundle/bunExtract*/.entry[3].resource/*Observation/null*/.derivedFrom[0]: A Reference without an actual reference or identifier should have a display
-WARNING: Questionnaire/extract-complex-template2: Questionnaire.contained[0]/*Bundle/bunExtract*/.entry[4].resource/*Observation/null*/.derivedFrom[0]: A Reference without an actual reference or identifier should have a display
-
-# Example terminology codes
-WARNING: Questionnaire/extract-complex-template: Questionnaire.contained[4]/*Observation/obsTemplate*/.code.coding[0]: A definition for CodeSystem 'http://example.org/sdh/demo/CodeSystem/cc-screening-codes' could not be found, so the code cannot be validated
-WARNING: Questionnaire/extract-complex-template2: Questionnaire.contained[0]/*Bundle/bunExtract*/.entry[4].resource/*Observation/null*/.code.coding[0]: A definition for CodeSystem 'http://example.org/sdh/demo/CodeSystem/cc-screening-codes' could not be found, so the code cannot be validated
-
-# Generated narrative invalid?
-ERROR: Questionnaire/extract-complex-template2: Questionnaire.text.div: Hyperlink scheme 'urn' in 'urn:uuid:6f6177d2-13ee-4d27-b0e8-3eaf663dd031' at 'div/blockquote/p/a' for 'urn:uuid:6f6177d2-13ee-4d27-b0e8-3eaf663dd031' is not a valid hyperlinkable scheme
-ERROR: Questionnaire.text.div: Hyperlink 'replaced' at 'div/blockquote/p/a' for 'replaced' does not resolve
-
-# The itemExtractContext extension is deprecated, but still included in the profile for backwards compatibility and discoverability
-INFORMATION: StructureDefinition/sdc-questionnaire-extr-defn: Questionnaire.extension: The extension http://hl7.org/fhir/uv/sdc/StructureDefinition/sdc-questionnaire-itemExtractionContext|4.0.0-ballot is deprecated
-
-# The templateExtractContext and templateExtractValue extensions are intended to markup any contained resource at any point to indicate where to replace templated content
-WARNING: StructureDefinition/sdc-questionnaire-templateExtractContext: StructureDefinition.context[0]: Review the extension type for sdc-questionnaire-templateExtractContext: extensions should not have a context of Element unless it's really intended that they can be used anywhere
-WARNING: StructureDefinition/sdc-questionnaire-templateExtractValue: StructureDefinition.context[0]: Review the extension type for sdc-questionnaire-templateExtractValue: extensions should not have a context of Element unless it's really intended that they can be used anywhere
-
-# profile example contains other unrelated extensions (typically from pre-population) that are not part of the extraction profile
-INFORMATION: Questionnaire/SDOHCC-QuestionnaireHungerVitalSign: Questionnaire.item[2].extension[1]: This element does not match any known slice defined in the profile http://hl7.org/fhir/uv/sdc/StructureDefinition/sdc-questionnaire-extr-defn|4.0.0-ballot (this may not be a problem, but you should check that it's not intended to match a slice)
-INFORMATION: Questionnaire/SDOHCC-QuestionnaireHungerVitalSign: Questionnaire.item[2].extension[2]: This element does not match any known slice defined in the profile http://hl7.org/fhir/uv/sdc/StructureDefinition/sdc-questionnaire-extr-defn|4.0.0-ballot (this may not be a problem, but you should check that it's not intended to match a slice)
-INFORMATION: Questionnaire/SDOHCC-QuestionnaireHungerVitalSign: Questionnaire.item[2].extension[3]: This element does not match any known slice defined in the profile http://hl7.org/fhir/uv/sdc/StructureDefinition/sdc-questionnaire-extr-defn|4.0.0-ballot (this may not be a problem, but you should check that it's not intended to match a slice)
-INFORMATION: Questionnaire/demographics: Questionnaire.item[0].extension[1]: This element does not match any known slice defined in the profile http://hl7.org/fhir/uv/sdc/StructureDefinition/sdc-questionnaire-extr-defn|4.0.0-ballot (this may not be a problem, but you should check that it's not intended to match a slice)
-INFORMATION: Questionnaire/demographics: Questionnaire.item[1].extension[0]: This element does not match any known slice defined in the profile http://hl7.org/fhir/uv/sdc/StructureDefinition/sdc-questionnaire-extr-defn|4.0.0-ballot (this may not be a problem, but you should check that it's not intended to match a slice)
-INFORMATION: Questionnaire/demographics: Questionnaire.item[3].item[2].item[0].extension[0]: This element does not match any known slice defined in the profile http://hl7.org/fhir/uv/sdc/StructureDefinition/sdc-questionnaire-extr-defn|4.0.0-ballot (this may not be a problem, but you should check that it's not intended to match a slice)
-INFORMATION: Questionnaire/demographics: Questionnaire.item[3].item[2].item[1].extension[0]: This element does not match any known slice defined in the profile http://hl7.org/fhir/uv/sdc/StructureDefinition/sdc-questionnaire-extr-defn|4.0.0-ballot (this may not be a problem, but you should check that it's not intended to match a slice)
-
-# Static analysis of FML doesn't check `copy` or `cc` yet
-WARNING: StructureMap/questionnaire-population-transform: StructureMap.group[0].rule[4].rule[0].rule[0].target[0]: Transform copy not checked yet
-WARNING: StructureMap/questionnaire-population-transform: StructureMap.group[0].rule[4].rule[1].target[0]: Transform copy not checked yet
-WARNING: StructureMap/questionnaire-population-transform: StructureMap.group[0].rule[4].rule[1].rule[0].target[0]: Transform copy not checked yet
-WARNING: StructureMap/ExtractComplexSmap: StructureMap.group[0].rule[0].rule[2].rule[0].rule[0].target[1]: Transform cc not checked yet
-WARNING: StructureMap/ExtractComplexSmap: StructureMap.group[0].rule[0].rule[2].rule[1].rule[0].target[1]: Transform cc not checked yet
-WARNING: StructureMap/ExtractComplexSmap: StructureMap.group[0].rule[0].rule[2].rule[2].rule[0].target[1]: Transform cc not checked yet
-WARNING: StructureMap/QuestionnairePopulationTransform: StructureMap.group[0].rule[4].rule[1].rule[0].rule[0].rule[1].rule[0].target[1]: Transform c not checked yet
-WARNING: StructureMap/QuestionnairePopulationTransform: StructureMap.group[2].rule[0].rule[1].rule[0].target[1]: Transform c not checked yet
-
-# StructureMap uses source statements as a trigger, not a datasource (or alternately uses the name itself rather than an alias)
-INFORMATION: StructureMap/ExtractComplexSmap: StructureMap.group[0].rule[0].rule[0].source[0]: The source statement doesn't assign a variable to the source - check that this is what is intended
-INFORMATION: StructureMap/ExtractComplexSmap: StructureMap.group[0].rule[0].rule[1].rule[0].source[0]: The source statement doesn't assign a variable to the source - check that this is what is intended
-INFORMATION: StructureMap/ExtractComplexSmap: StructureMap.group[0].rule[0].rule[2].rule[0].rule[0].source[0]: The source statement doesn't assign a variable to the source - check that this is what is intended
-INFORMATION: StructureMap/ExtractComplexSmap: StructureMap.group[0].rule[0].rule[2].rule[1].rule[0].source[0]: The source statement doesn't assign a variable to the source - check that this is what is intended
-INFORMATION: StructureMap/ExtractComplexSmap: StructureMap.group[0].rule[0].rule[2].rule[2].rule[0].source[0]: The source statement doesn't assign a variable to the source - check that this is what is intended
-INFORMATION: StructureMap/ExtractComplexSmap: StructureMap.group[1].rule[0].source[0]: The source statement doesn't assign a variable to the source - check that this is what is intended
-INFORMATION: StructureMap/ExtractComplexSmap: StructureMap.group[1].rule[1].source[0]: The source statement doesn't assign a variable to the source - check that this is what is intended
-INFORMATION: StructureMap/ExtractComplexSmap: StructureMap.group[1].rule[1].rule[0].source[0]: The source statement doesn't assign a variable to the source - check that this is what is intended
-INFORMATION: StructureMap/ExtractComplexSmap: StructureMap.group[2].rule[2].rule[0].source[0]: The source statement doesn't assign a variable to the source - check that this is what is intended
-INFORMATION: StructureMap/ExtractComplexSmap: StructureMap.group[2].rule[3].rule[0].source[0]: The source statement doesn't assign a variable to the source - check that this is what is intended
-INFORMATION: StructureMap/ExtractComplexSmap: StructureMap.group[2].rule[3].rule[1].source[0]: The source statement doesn't assign a variable to the source - check that this is what is intended
-INFORMATION: StructureMap/ExtractComplexSmap: StructureMap.group[2].rule[3].rule[2].source[0]: The source statement doesn't assign a variable to the source - check that this is what is intended
-INFORMATION: StructureMap/ExtractComplexSmap: StructureMap.group[3].rule[0].source[0]: The source statement doesn't assign a variable to the source - check that this is what is intended
-INFORMATION: StructureMap/ExtractComplexSmap: StructureMap.group[4].rule[0].source[0]: The source statement doesn't assign a variable to the source - check that this is what is intended
-INFORMATION: StructureMap/ExtractComplexSmap: StructureMap.group[4].rule[1].source[0]: The source statement doesn't assign a variable to the source - check that this is what is intended
-INFORMATION: StructureMap/ExtractComplexSmap: StructureMap.group[4].rule[6].source[0]: The source statement doesn't assign a variable to the source - check that this is what is intended
-
-INFORMATION: StructureMap/SDOHCCHungerVitalSignMap: StructureMap.group[0].rule[0].source[0]: The source statement doesn't assign a variable to the source - check that this is what is intended
-INFORMATION: StructureMap/SDOHCCHungerVitalSignMap: StructureMap.group[0].rule[1].source[0]: The source statement doesn't assign a variable to the source - check that this is what is intended
-INFORMATION: StructureMap/SDOHCCHungerVitalSignMap: StructureMap.group[1].rule[0].source[0]: The source statement doesn't assign a variable to the source - check that this is what is intended
-INFORMATION: StructureMap/SDOHCCHungerVitalSignMap: StructureMap.group[1].rule[0].rule[0].source[0]: The source statement doesn't assign a variable to the source - check that this is what is intended
-INFORMATION: StructureMap/SDOHCCHungerVitalSignMap: StructureMap.group[1].rule[0].rule[1].source[0]: The source statement doesn't assign a variable to the source - check that this is what is intended
-INFORMATION: StructureMap/SDOHCCHungerVitalSignMap: StructureMap.group[1].rule[1].source[0]: The source statement doesn't assign a variable to the source - check that this is what is intended
-INFORMATION: StructureMap/SDOHCCHungerVitalSignMap: StructureMap.group[1].rule[2].source[0]: The source statement doesn't assign a variable to the source - check that this is what is intended
-INFORMATION: StructureMap/SDOHCCHungerVitalSignMap: StructureMap.group[1].rule[2].rule[0].source[0]: The source statement doesn't assign a variable to the source - check that this is what is intended
-INFORMATION: StructureMap/SDOHCCHungerVitalSignMap: StructureMap.group[1].rule[3].source[0]: The source statement doesn't assign a variable to the source - check that this is what is intended
-INFORMATION: StructureMap/SDOHCCHungerVitalSignMap: StructureMap.group[1].rule[4].source[0]: The source statement doesn't assign a variable to the source - check that this is what is intended
-INFORMATION: StructureMap/SDOHCCHungerVitalSignMap: StructureMap.group[1].rule[5].source[0]: The source statement doesn't assign a variable to the source - check that this is what is intended
-INFORMATION: StructureMap/SDOHCCHungerVitalSignMap: StructureMap.group[1].rule[6].source[0]: The source statement doesn't assign a variable to the source - check that this is what is intended
-INFORMATION: StructureMap/SDOHCCHungerVitalSignMap: StructureMap.group[1].rule[11].source[0]: The source statement doesn't assign a variable to the source - check that this is what is intended
-INFORMATION: StructureMap/SDOHCCHungerVitalSignMap: StructureMap.group[3].rule[0].source[0]: The source statement doesn't assign a variable to the source - check that this is what is intended
-INFORMATION: StructureMap/SDOHCCHungerVitalSignMap: StructureMap.group[3].rule[1].source[0]: The source statement doesn't assign a variable to the source - check that this is what is intended
-INFORMATION: StructureMap/SDOHCCHungerVitalSignMap: StructureMap.group[3].rule[1].rule[0].source[0]: The source statement doesn't assign a variable to the source - check that this is what is intended
-INFORMATION: StructureMap/SDOHCCHungerVitalSignMap: StructureMap.group[3].rule[2].source[0]: The source statement doesn't assign a variable to the source - check that this is what is intended
-INFORMATION: StructureMap/SDOHCCHungerVitalSignMap: StructureMap.group[3].rule[3].source[0]: The source statement doesn't assign a variable to the source - check that this is what is intended
-INFORMATION: StructureMap/SDOHCCHungerVitalSignMap: StructureMap.group[3].rule[4].source[0]: The source statement doesn't assign a variable to the source - check that this is what is intended
-INFORMATION: StructureMap/SDOHCCHungerVitalSignMap: StructureMap.group[3].rule[4].rule[0].source[0]: The source statement doesn't assign a variable to the source - check that this is what is intended
-INFORMATION: StructureMap/SDOHCCHungerVitalSignMap: StructureMap.group[3].rule[4].rule[0].rule[0].source[0]: The source statement doesn't assign a variable to the source - check that this is what is intended
-INFORMATION: StructureMap/SDOHCCHungerVitalSignMap: StructureMap.group[3].rule[4].rule[0].rule[1].source[0]: The source statement doesn't assign a variable to the source - check that this is what is intended
-INFORMATION: StructureMap/SDOHCCHungerVitalSignMap: StructureMap.group[3].rule[4].rule[0].rule[2].source[0]: The source statement doesn't assign a variable to the source - check that this is what is intended
-INFORMATION: StructureMap/SDOHCCHungerVitalSignMap: StructureMap.group[3].rule[5].source[0]: The source statement doesn't assign a variable to the source - check that this is what is intended
-INFORMATION: StructureMap/SDOHCCHungerVitalSignMap: StructureMap.group[3].rule[6].source[0]: The source statement doesn't assign a variable to the source - check that this is what is intended
-INFORMATION: StructureMap/SDOHCCHungerVitalSignMap: StructureMap.group[3].rule[6].rule[0].source[0]: The source statement doesn't assign a variable to the source - check that this is what is intended
-INFORMATION: StructureMap/SDOHCCHungerVitalSignMap: StructureMap.group[3].rule[6].rule[0].rule[0].source[0]: The source statement doesn't assign a variable to the source - check that this is what is intended
-INFORMATION: StructureMap/SDOHCCHungerVitalSignMap: StructureMap.group[3].rule[6].rule[0].rule[1].source[0]: The source statement doesn't assign a variable to the source - check that this is what is intended
-INFORMATION: StructureMap/SDOHCCHungerVitalSignMap: StructureMap.group[3].rule[6].rule[0].rule[2].source[0]: The source statement doesn't assign a variable to the source - check that this is what is intended
-INFORMATION: StructureMap/SDOHCCHungerVitalSignMap: StructureMap.group[3].rule[6].rule[1].source[0]: The source statement doesn't assign a variable to the source - check that this is what is intended
-INFORMATION: StructureMap/SDOHCCHungerVitalSignMap: StructureMap.group[3].rule[6].rule[1].rule[0].source[0]: The source statement doesn't assign a variable to the source - check that this is what is intended
-INFORMATION: StructureMap/SDOHCCHungerVitalSignMap: StructureMap.group[3].rule[6].rule[1].rule[1].source[0]: The source statement doesn't assign a variable to the source - check that this is what is intended
-INFORMATION: StructureMap/SDOHCCHungerVitalSignMap: StructureMap.group[3].rule[6].rule[1].rule[2].source[0]: The source statement doesn't assign a variable to the source - check that this is what is intended
-INFORMATION: StructureMap/SDOHCCHungerVitalSignMap: StructureMap.group[3].rule[10].source[0]: The source statement doesn't assign a variable to the source - check that this is what is intended
-INFORMATION: StructureMap/SDOHCCHungerVitalSignMap: StructureMap.group[3].rule[10].rule[0].source[0]: The source statement doesn't assign a variable to the source - check that this is what is intended
-INFORMATION: StructureMap/SDOHCCHungerVitalSignMap: StructureMap.group[3].rule[10].rule[1].source[0]: The source statement doesn't assign a variable to the source - check that this is what is intended
-
-INFORMATION: StructureMap/QuestionnairePopulationTransform: StructureMap.group[0].rule[0].source[0]: The source statement doesn't assign a variable to the source - check that this is what is intended
-INFORMATION: StructureMap/QuestionnairePopulationTransform: StructureMap.group[0].rule[1].source[0]: The source statement doesn't assign a variable to the source - check that this is what is intended
-INFORMATION: StructureMap/QuestionnairePopulationTransform: StructureMap.group[0].rule[2].source[0]: The source statement doesn't assign a variable to the source - check that this is what is intended
-INFORMATION: StructureMap/QuestionnairePopulationTransform: StructureMap.group[0].rule[4].source[0]: The source statement doesn't assign a variable to the source - check that this is what is intended
-INFORMATION: StructureMap/QuestionnairePopulationTransform: StructureMap.group[0].rule[4].rule[0].source[0]: The source statement doesn't assign a variable to the source - check that this is what is intended
-INFORMATION: StructureMap/QuestionnairePopulationTransform: StructureMap.group[0].rule[4].rule[0].rule[1].rule[0].source[0]: The source statement doesn't assign a variable to the source - check that this is what is intended
-INFORMATION: StructureMap/QuestionnairePopulationTransform: StructureMap.group[1].rule[0].source[0]: The source statement doesn't assign a variable to the source - check that this is what is intended
-INFORMATION: StructureMap/QuestionnairePopulationTransform: StructureMap.group[1].rule[1].source[0]: The source statement doesn't assign a variable to the source - check that this is what is intended
-INFORMATION: StructureMap/QuestionnairePopulationTransform: StructureMap.group[1].rule[2].source[0]: The source statement doesn't assign a variable to the source - check that this is what is intended
-INFORMATION: StructureMap/QuestionnairePopulationTransform: StructureMap.group[1].rule[3].source[0]: The source statement doesn't assign a variable to the source - check that this is what is intended
-INFORMATION: StructureMap/QuestionnairePopulationTransform: StructureMap.group[2].rule[0].rule[2].rule[0].source[0]: The source statement doesn't assign a variable to the source - check that this is what is intended
-
-# Bug in StructureMap static validator that doesn't handle up casting for resources from `Resource` in a Bundle.entry.resource https://chat.fhir.org/#narrow/channel/179252-IG-creation/topic/StructureMap.20QA.20message.20-.20possible.20types.20are.20Resource
-ERROR: StructureMap/QuestionnairePopulationTransform: StructureMap.group[0].rule[4].rule[0].rule[0].rule[0].source[0]: The type Bundle is not valid in the source context Bundle.entry.resource. The possible types are [Resource]
-ERROR: StructureMap/QuestionnairePopulationTransform: StructureMap.group[0].rule[4].rule[1].rule[0].source[0]: The type Bundle is not valid in the source context Bundle.entry.resource. The possible types are [Resource]
-ERROR: StructureMap/QuestionnairePopulationTransform: StructureMap.group[0].rule[4].rule[0].rule[0].rule[0].source[0]: The type Bundle is not valid in the source context Bundle.entry.resource. The possible types are [Resource]
-ERROR: StructureMap/QuestionnairePopulationTransform: StructureMap.group[0].rule[4].rule[1].rule[0].source[0]: The type Bundle is not valid in the source context Bundle.entry.resource. The possible types are [Resource]
-ERROR: StructureMap/QuestionnairePopulationTransform: StructureMap.group[2].rule[0].rule[0].source[0]: The type MedicationStatement is not valid in the source context Bundle.entry.resource. The possible types are [Resource]
-ERROR: StructureMap/QuestionnairePopulationTransform: StructureMap.group[2].rule[0].rule[1].source[0]: The type MedicationStatement is not valid in the source context Bundle.entry.resource. The possible types are [Resource]
-ERROR: StructureMap/QuestionnairePopulationTransform: StructureMap.group[2].rule[0].rule[1].rule[0].source[0]: The source path medResource.status refers to the path Bundle.entry.resource.status which is unknown

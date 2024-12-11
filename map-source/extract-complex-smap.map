@@ -5,6 +5,8 @@
 /// description = "An example of a StructureMap used to support extraction from a QuestionnaireResponse"
 /// experimental = "true"
 
+map "http://hl7.org/fhir/uv/sdc/StructureMap/ExtractComplexSmap" = "ExtractComplexSmap"
+
 uses "http://hl7.org/fhir/StructureDefinition/QuestionnaireResponse" as source
 uses "http://hl7.org/fhir/StructureDefinition/Bundle" as target
 uses "http://hl7.org/fhir/StructureDefinition/Patient" as target

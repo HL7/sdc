@@ -175,3 +175,7 @@ resources:
     description: Indicates the terminology server(s) that are known to be capable of returning and potentially expanding the value set(s) associated with the whole questionnaire or a particular group or question within the questionnaire (depending on where the extension appears).
   StructureMap/QuestionnairePopulationTransform:
     description: An example of a StructureMap used to support population of a QuestionnaireResponse from a search bundle
+  StructureMap/ExtractComplexSmap:
+    description: An example of a StructureMap used to support extraction from a QuestionnaireResponse
+  StructureMap/SDOHCCHungerVitalSignMap:
+    description: A StructureMap instance that represents the resource that transforms a specific question and answer from the LOINC Hunger Vital Sign [HVS] questionnaire (LOINC code 88121-9) into a corresponding Observation (SDOHCC Observation response Hunger Vital Sign Q3 Example) and derived Condition (SDOHCC Condition Food Insecurity Example).

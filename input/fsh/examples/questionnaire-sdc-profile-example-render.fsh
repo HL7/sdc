@@ -350,6 +350,25 @@ Usage: #example
     * linkId = "3.8"
     * text = "During the past year, what was the total combined income for you and the family members you live with? This information will help us determine if you are eligible for any benefits."
     * type = #decimal
+  * item[+]
+    * extension
+      * url = "http://hl7.org/fhir/uv/sdc/StructureDefinition/sdc-questionnaire-columnCount"
+      * valuePositiveInt = 3
+    * linkId = "3.9"
+    * text = "Which of the following time-slots are you available for?"
+    * type = #string
+    * answerOption[0]
+      * valueString = "9-10am"
+    * answerOption[+]
+      * valueString = "10-11am"
+    * answerOption[+]
+      * valueString = "11am-12pm"
+    * answerOption[+]
+      * valueString = "1-2pm"
+    * answerOption[+]
+      * valueString = "2-3pm"
+    * answerOption[+]
+      * valueString = "3-4pm"
 
 Instance: LL2821-8
 InstanceOf: ValueSet

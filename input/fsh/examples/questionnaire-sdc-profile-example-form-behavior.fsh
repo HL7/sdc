@@ -532,11 +532,6 @@ Usage: #example
       * valueExpression.description = "Home address of the patient"
       * valueExpression.language = #text/fhirpath
       * valueExpression.expression = "%patient.address.where(use='home').first()"
-    * extension[+]
-      * url = "http://hl7.org/fhir/uv/sdc/StructureDefinition/sdc-questionnaire-itemExtractionContext"
-      * valueExpression.description = "Home address of the patient"
-      * valueExpression.language = #text/fhirpath
-      * valueExpression.expression = "%patient.address.where(use='home').first()"
     * linkId = "4.6"
     * type = #group
     * item[0]
