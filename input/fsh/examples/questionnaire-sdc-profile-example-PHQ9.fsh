@@ -3,7 +3,7 @@ InstanceOf: Questionnaire
 Title: "SDC-PHQ9"
 Description: "Patient Health Questionnaire (9 Item) including contained value sets and calculatedExpression"
 Usage: #example
-* meta.profile = "http://hl7.org/fhir/uv/sdc/StructureDefinition/sdc-questionnaire|3.0.0"
+* meta.profile = "http://hl7.org/fhir/uv/sdc/StructureDefinition/sdc-questionnaire|4.0.0-ballot"
 * contained = VSPHQ9
 * extension
   * url = "http://hl7.org/fhir/StructureDefinition/rendering-styleSensitive"

@@ -410,48 +410,48 @@ ERROR: Questionnaire/extract-complex-template2: Questionnaire.text.div: Hyperlin
 ERROR: Questionnaire.text.div: Hyperlink 'replaced' at 'div/blockquote/p/a' for 'replaced' does not resolve
 
 # The itemExtractContext extension is deprecated, but still included in the profile for backwards compatibility and discoverability
-INFORMATION: StructureDefinition/sdc-questionnaire-extr-defn: Questionnaire.extension: The extension http://hl7.org/fhir/uv/sdc/StructureDefinition/sdc-questionnaire-itemExtractionContext|3.0.0 is deprecated
+INFORMATION: StructureDefinition/sdc-questionnaire-extr-defn: Questionnaire.extension: The extension http://hl7.org/fhir/uv/sdc/StructureDefinition/sdc-questionnaire-itemExtractionContext|4.0.0-ballot is deprecated
 
 # The templateExtractContext and templateExtractValue extensions are intended to markup any contained resource at any point to indicate where to replace templated content
 WARNING: StructureDefinition/sdc-questionnaire-templateExtractContext: StructureDefinition.context[0]: Review the extension type for sdc-questionnaire-templateExtractContext: extensions should not have a context of Element unless it's really intended that they can be used anywhere
 WARNING: StructureDefinition/sdc-questionnaire-templateExtractValue: StructureDefinition.context[0]: Review the extension type for sdc-questionnaire-templateExtractValue: extensions should not have a context of Element unless it's really intended that they can be used anywhere
 
 # profile example contains other unrelated extensions (typically from pre-population) that are not part of the extraction profile
-INFORMATION: Questionnaire/SDOHCC-QuestionnaireHungerVitalSign: Questionnaire.item[2].extension[1]: This element does not match any known slice defined in the profile http://hl7.org/fhir/uv/sdc/StructureDefinition/sdc-questionnaire-extr-defn|3.0.0 (this may not be a problem, but you should check that it's not intended to match a slice)
-INFORMATION: Questionnaire/SDOHCC-QuestionnaireHungerVitalSign: Questionnaire.item[2].extension[2]: This element does not match any known slice defined in the profile http://hl7.org/fhir/uv/sdc/StructureDefinition/sdc-questionnaire-extr-defn|3.0.0 (this may not be a problem, but you should check that it's not intended to match a slice)
-INFORMATION: Questionnaire/SDOHCC-QuestionnaireHungerVitalSign: Questionnaire.item[2].extension[3]: This element does not match any known slice defined in the profile http://hl7.org/fhir/uv/sdc/StructureDefinition/sdc-questionnaire-extr-defn|3.0.0 (this may not be a problem, but you should check that it's not intended to match a slice)
-INFORMATION: Questionnaire/demographics: Questionnaire.item[0].extension[1]: This element does not match any known slice defined in the profile http://hl7.org/fhir/uv/sdc/StructureDefinition/sdc-questionnaire-extr-defn|3.0.0 (this may not be a problem, but you should check that it's not intended to match a slice)
-INFORMATION: Questionnaire/demographics: Questionnaire.item[1].extension[0]: This element does not match any known slice defined in the profile http://hl7.org/fhir/uv/sdc/StructureDefinition/sdc-questionnaire-extr-defn|3.0.0 (this may not be a problem, but you should check that it's not intended to match a slice)
-INFORMATION: Questionnaire/demographics: Questionnaire.item[3].item[2].item[0].extension[0]: This element does not match any known slice defined in the profile http://hl7.org/fhir/uv/sdc/StructureDefinition/sdc-questionnaire-extr-defn|3.0.0 (this may not be a problem, but you should check that it's not intended to match a slice)
-INFORMATION: Questionnaire/demographics: Questionnaire.item[3].item[2].item[1].extension[0]: This element does not match any known slice defined in the profile http://hl7.org/fhir/uv/sdc/StructureDefinition/sdc-questionnaire-extr-defn|3.0.0 (this may not be a problem, but you should check that it's not intended to match a slice)
+INFORMATION: Questionnaire/SDOHCC-QuestionnaireHungerVitalSign: Questionnaire.item[2].extension[1]: This element does not match any known slice defined in the profile http://hl7.org/fhir/uv/sdc/StructureDefinition/sdc-questionnaire-extr-defn|4.0.0-ballot (this may not be a problem, but you should check that it's not intended to match a slice)
+INFORMATION: Questionnaire/SDOHCC-QuestionnaireHungerVitalSign: Questionnaire.item[2].extension[2]: This element does not match any known slice defined in the profile http://hl7.org/fhir/uv/sdc/StructureDefinition/sdc-questionnaire-extr-defn|4.0.0-ballot (this may not be a problem, but you should check that it's not intended to match a slice)
+INFORMATION: Questionnaire/SDOHCC-QuestionnaireHungerVitalSign: Questionnaire.item[2].extension[3]: This element does not match any known slice defined in the profile http://hl7.org/fhir/uv/sdc/StructureDefinition/sdc-questionnaire-extr-defn|4.0.0-ballot (this may not be a problem, but you should check that it's not intended to match a slice)
+INFORMATION: Questionnaire/demographics: Questionnaire.item[0].extension[1]: This element does not match any known slice defined in the profile http://hl7.org/fhir/uv/sdc/StructureDefinition/sdc-questionnaire-extr-defn|4.0.0-ballot (this may not be a problem, but you should check that it's not intended to match a slice)
+INFORMATION: Questionnaire/demographics: Questionnaire.item[1].extension[0]: This element does not match any known slice defined in the profile http://hl7.org/fhir/uv/sdc/StructureDefinition/sdc-questionnaire-extr-defn|4.0.0-ballot (this may not be a problem, but you should check that it's not intended to match a slice)
+INFORMATION: Questionnaire/demographics: Questionnaire.item[3].item[2].item[0].extension[0]: This element does not match any known slice defined in the profile http://hl7.org/fhir/uv/sdc/StructureDefinition/sdc-questionnaire-extr-defn|4.0.0-ballot (this may not be a problem, but you should check that it's not intended to match a slice)
+INFORMATION: Questionnaire/demographics: Questionnaire.item[3].item[2].item[1].extension[0]: This element does not match any known slice defined in the profile http://hl7.org/fhir/uv/sdc/StructureDefinition/sdc-questionnaire-extr-defn|4.0.0-ballot (this may not be a problem, but you should check that it's not intended to match a slice)
 
 # Static analysis of FML doesn't check `copy` or `cc` yet
 WARNING: StructureMap/questionnaire-population-transform: StructureMap.group[0].rule[4].rule[0].rule[0].target[0]: Transform copy not checked yet
 WARNING: StructureMap/questionnaire-population-transform: StructureMap.group[0].rule[4].rule[1].target[0]: Transform copy not checked yet
 WARNING: StructureMap/questionnaire-population-transform: StructureMap.group[0].rule[4].rule[1].rule[0].target[0]: Transform copy not checked yet
-WARNING: StructureMap/extractComplexSmap: StructureMap.group[0].rule[0].rule[2].rule[0].rule[0].target[1]: Transform cc not checked yet
-WARNING: StructureMap/extractComplexSmap: StructureMap.group[0].rule[0].rule[2].rule[1].rule[0].target[1]: Transform cc not checked yet
-WARNING: StructureMap/extractComplexSmap: StructureMap.group[0].rule[0].rule[2].rule[2].rule[0].target[1]: Transform cc not checked yet
+WARNING: StructureMap/ExtractComplexSmap: StructureMap.group[0].rule[0].rule[2].rule[0].rule[0].target[1]: Transform cc not checked yet
+WARNING: StructureMap/ExtractComplexSmap: StructureMap.group[0].rule[0].rule[2].rule[1].rule[0].target[1]: Transform cc not checked yet
+WARNING: StructureMap/ExtractComplexSmap: StructureMap.group[0].rule[0].rule[2].rule[2].rule[0].target[1]: Transform cc not checked yet
 WARNING: StructureMap/QuestionnairePopulationTransform: StructureMap.group[0].rule[4].rule[1].rule[0].rule[0].rule[1].rule[0].target[1]: Transform c not checked yet
 WARNING: StructureMap/QuestionnairePopulationTransform: StructureMap.group[2].rule[0].rule[1].rule[0].target[1]: Transform c not checked yet
 
 # StructureMap uses source statements as a trigger, not a datasource (or alternately uses the name itself rather than an alias)
-INFORMATION: StructureMap/extractComplexSmap: StructureMap.group[0].rule[0].rule[0].source[0]: The source statement doesn't assign a variable to the source - check that this is what is intended
-INFORMATION: StructureMap/extractComplexSmap: StructureMap.group[0].rule[0].rule[1].rule[0].source[0]: The source statement doesn't assign a variable to the source - check that this is what is intended
-INFORMATION: StructureMap/extractComplexSmap: StructureMap.group[0].rule[0].rule[2].rule[0].rule[0].source[0]: The source statement doesn't assign a variable to the source - check that this is what is intended
-INFORMATION: StructureMap/extractComplexSmap: StructureMap.group[0].rule[0].rule[2].rule[1].rule[0].source[0]: The source statement doesn't assign a variable to the source - check that this is what is intended
-INFORMATION: StructureMap/extractComplexSmap: StructureMap.group[0].rule[0].rule[2].rule[2].rule[0].source[0]: The source statement doesn't assign a variable to the source - check that this is what is intended
-INFORMATION: StructureMap/extractComplexSmap: StructureMap.group[1].rule[0].source[0]: The source statement doesn't assign a variable to the source - check that this is what is intended
-INFORMATION: StructureMap/extractComplexSmap: StructureMap.group[1].rule[1].source[0]: The source statement doesn't assign a variable to the source - check that this is what is intended
-INFORMATION: StructureMap/extractComplexSmap: StructureMap.group[1].rule[1].rule[0].source[0]: The source statement doesn't assign a variable to the source - check that this is what is intended
-INFORMATION: StructureMap/extractComplexSmap: StructureMap.group[2].rule[2].rule[0].source[0]: The source statement doesn't assign a variable to the source - check that this is what is intended
-INFORMATION: StructureMap/extractComplexSmap: StructureMap.group[2].rule[3].rule[0].source[0]: The source statement doesn't assign a variable to the source - check that this is what is intended
-INFORMATION: StructureMap/extractComplexSmap: StructureMap.group[2].rule[3].rule[1].source[0]: The source statement doesn't assign a variable to the source - check that this is what is intended
-INFORMATION: StructureMap/extractComplexSmap: StructureMap.group[2].rule[3].rule[2].source[0]: The source statement doesn't assign a variable to the source - check that this is what is intended
-INFORMATION: StructureMap/extractComplexSmap: StructureMap.group[3].rule[0].source[0]: The source statement doesn't assign a variable to the source - check that this is what is intended
-INFORMATION: StructureMap/extractComplexSmap: StructureMap.group[4].rule[0].source[0]: The source statement doesn't assign a variable to the source - check that this is what is intended
-INFORMATION: StructureMap/extractComplexSmap: StructureMap.group[4].rule[1].source[0]: The source statement doesn't assign a variable to the source - check that this is what is intended
-INFORMATION: StructureMap/extractComplexSmap: StructureMap.group[4].rule[6].source[0]: The source statement doesn't assign a variable to the source - check that this is what is intended
+INFORMATION: StructureMap/ExtractComplexSmap: StructureMap.group[0].rule[0].rule[0].source[0]: The source statement doesn't assign a variable to the source - check that this is what is intended
+INFORMATION: StructureMap/ExtractComplexSmap: StructureMap.group[0].rule[0].rule[1].rule[0].source[0]: The source statement doesn't assign a variable to the source - check that this is what is intended
+INFORMATION: StructureMap/ExtractComplexSmap: StructureMap.group[0].rule[0].rule[2].rule[0].rule[0].source[0]: The source statement doesn't assign a variable to the source - check that this is what is intended
+INFORMATION: StructureMap/ExtractComplexSmap: StructureMap.group[0].rule[0].rule[2].rule[1].rule[0].source[0]: The source statement doesn't assign a variable to the source - check that this is what is intended
+INFORMATION: StructureMap/ExtractComplexSmap: StructureMap.group[0].rule[0].rule[2].rule[2].rule[0].source[0]: The source statement doesn't assign a variable to the source - check that this is what is intended
+INFORMATION: StructureMap/ExtractComplexSmap: StructureMap.group[1].rule[0].source[0]: The source statement doesn't assign a variable to the source - check that this is what is intended
+INFORMATION: StructureMap/ExtractComplexSmap: StructureMap.group[1].rule[1].source[0]: The source statement doesn't assign a variable to the source - check that this is what is intended
+INFORMATION: StructureMap/ExtractComplexSmap: StructureMap.group[1].rule[1].rule[0].source[0]: The source statement doesn't assign a variable to the source - check that this is what is intended
+INFORMATION: StructureMap/ExtractComplexSmap: StructureMap.group[2].rule[2].rule[0].source[0]: The source statement doesn't assign a variable to the source - check that this is what is intended
+INFORMATION: StructureMap/ExtractComplexSmap: StructureMap.group[2].rule[3].rule[0].source[0]: The source statement doesn't assign a variable to the source - check that this is what is intended
+INFORMATION: StructureMap/ExtractComplexSmap: StructureMap.group[2].rule[3].rule[1].source[0]: The source statement doesn't assign a variable to the source - check that this is what is intended
+INFORMATION: StructureMap/ExtractComplexSmap: StructureMap.group[2].rule[3].rule[2].source[0]: The source statement doesn't assign a variable to the source - check that this is what is intended
+INFORMATION: StructureMap/ExtractComplexSmap: StructureMap.group[3].rule[0].source[0]: The source statement doesn't assign a variable to the source - check that this is what is intended
+INFORMATION: StructureMap/ExtractComplexSmap: StructureMap.group[4].rule[0].source[0]: The source statement doesn't assign a variable to the source - check that this is what is intended
+INFORMATION: StructureMap/ExtractComplexSmap: StructureMap.group[4].rule[1].source[0]: The source statement doesn't assign a variable to the source - check that this is what is intended
+INFORMATION: StructureMap/ExtractComplexSmap: StructureMap.group[4].rule[6].source[0]: The source statement doesn't assign a variable to the source - check that this is what is intended
 
 INFORMATION: StructureMap/SDOHCCHungerVitalSignMap: StructureMap.group[0].rule[0].source[0]: The source statement doesn't assign a variable to the source - check that this is what is intended
 INFORMATION: StructureMap/SDOHCCHungerVitalSignMap: StructureMap.group[0].rule[1].source[0]: The source statement doesn't assign a variable to the source - check that this is what is intended
