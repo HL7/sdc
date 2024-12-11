@@ -47,7 +47,7 @@
   POSSIBILITY OF SUCH DAMAGE.
   
 
-  Generated on Tue, Dec 10, 2024 17:04+0000 for FHIR v6.0.0-ballot2 
+  Generated on Tue, Dec 10, 2024 20:05+0000 for FHIR v6.0.0-ballot2 
 -->
 <xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns="http://hl7.org/fhir" xmlns:xhtml="http://www.w3.org/1999/xhtml" xmlns:xml="http://www.w3.org/XML/1998/namespace" targetNamespace="http://hl7.org/fhir" elementFormDefault="qualified" version="6.0.0-ballot2">
   <!-- Note: When using this schema with some tools, it may also be necessary to declare xmlns:xml="http://www.w3.org/XML/1998/namespace", however this causes performance issues with other tools and thus is not in the base schemas. -->
@@ -21581,6 +21581,11 @@ of the resource representation.</xs:documentation>
               <xs:documentation xml:lang="en">The date (and optionally time) when the citation record was last significantly changed. The date must change when the business version changes and it must change if the status code changes. In addition, it should change when the substantive content of the citation record changes.</xs:documentation>
            </xs:annotation>
           </xs:element>
+          <xs:element name="author" minOccurs="0" maxOccurs="unbounded" type="ContactDetail">
+            <xs:annotation>
+              <xs:documentation xml:lang="en">Who authored or created the citation record.</xs:documentation>
+           </xs:annotation>
+          </xs:element>
           <xs:element name="publisher" minOccurs="0" maxOccurs="1" type="string">
             <xs:annotation>
               <xs:documentation xml:lang="en">The name of the organization or individual that published the citation record.</xs:documentation>
@@ -21636,9 +21641,9 @@ of the resource representation.</xs:documentation>
               <xs:documentation xml:lang="en">The period during which the citation record content was or is planned to be in active use.</xs:documentation>
            </xs:annotation>
           </xs:element>
-          <xs:element name="author" minOccurs="0" maxOccurs="unbounded" type="ContactDetail">
+          <xs:element name="recorder" minOccurs="0" maxOccurs="unbounded" type="ContactDetail">
             <xs:annotation>
-              <xs:documentation xml:lang="en">Who authored or created the citation record.</xs:documentation>
+              <xs:documentation xml:lang="en">Who entered the data for the citation record.</xs:documentation>
            </xs:annotation>
           </xs:element>
           <xs:element name="editor" minOccurs="0" maxOccurs="unbounded" type="ContactDetail">
@@ -21785,7 +21790,7 @@ of the resource representation.</xs:documentation>
               <xs:documentation xml:lang="en">When the cited artifact was accessed.</xs:documentation>
            </xs:annotation>
           </xs:element>
-          <xs:element name="version" type="Citation.Version" minOccurs="0" maxOccurs="1">
+          <xs:element name="version" minOccurs="0" maxOccurs="1" type="string">
             <xs:annotation>
               <xs:documentation xml:lang="en">The defined version of the cited artifact.</xs:documentation>
            </xs:annotation>
@@ -21815,6 +21820,11 @@ of the resource representation.</xs:documentation>
               <xs:documentation xml:lang="en">The component of the article or artifact.</xs:documentation>
            </xs:annotation>
           </xs:element>
+          <xs:element name="baseCitation" minOccurs="0" maxOccurs="1" type="Reference">
+            <xs:annotation>
+              <xs:documentation xml:lang="en">Citation for the primary version and complete form of the cited artifact.</xs:documentation>
+           </xs:annotation>
+          </xs:element>
           <xs:element name="relatesTo" type="Citation.RelatesTo" minOccurs="0" maxOccurs="unbounded">
             <xs:annotation>
               <xs:documentation xml:lang="en">The artifact related to the cited artifact.</xs:documentation>
@@ -21822,7 +21832,7 @@ of the resource representation.</xs:documentation>
           </xs:element>
           <xs:element name="publicationForm" type="Citation.PublicationForm" minOccurs="0" maxOccurs="unbounded">
             <xs:annotation>
-              <xs:documentation xml:lang="en">If multiple, used to represent alternative forms of the article that are not separate citations.</xs:documentation>
+              <xs:documentation xml:lang="en">Where, when and how the artifact was published. If multiple, used to represent alternative forms of the article that are not separate citations.</xs:documentation>
            </xs:annotation>
           </xs:element>
           <xs:element name="webLocation" type="Citation.WebLocation" minOccurs="0" maxOccurs="unbounded">
@@ -21843,27 +21853,6 @@ of the resource representation.</xs:documentation>
           <xs:element name="note" minOccurs="0" maxOccurs="unbounded" type="Annotation">
             <xs:annotation>
               <xs:documentation xml:lang="en">Any additional information or content for the article or artifact.</xs:documentation>
-           </xs:annotation>
-          </xs:element>
-        </xs:sequence>
-      </xs:extension>
-    </xs:complexContent>
-  </xs:complexType>
-  <xs:complexType name="Citation.Version">
-    <xs:annotation>
-      <xs:documentation xml:lang="en">The Citation Resource enables reference to any knowledge artifact for purposes of identification and attribution. The Citation Resource supports existing reference structures and developing publication practices such as versioning, expressing complex contributorship roles, and referencing computable resources.</xs:documentation>
-    </xs:annotation>
-    <xs:complexContent>
-      <xs:extension base="BackboneElement">
-        <xs:sequence>
-          <xs:element name="value" minOccurs="1" maxOccurs="1" type="string">
-            <xs:annotation>
-              <xs:documentation xml:lang="en">The version number or other version identifier.</xs:documentation>
-           </xs:annotation>
-          </xs:element>
-          <xs:element name="baseCitation" minOccurs="0" maxOccurs="1" type="Reference">
-            <xs:annotation>
-              <xs:documentation xml:lang="en">Citation for the main version of the cited artifact.</xs:documentation>
            </xs:annotation>
           </xs:element>
         </xs:sequence>
@@ -21929,7 +21918,7 @@ of the resource representation.</xs:documentation>
     <xs:complexContent>
       <xs:extension base="BackboneElement">
         <xs:sequence>
-          <xs:element name="type" minOccurs="0" maxOccurs="1" type="CodeableConcept">
+          <xs:element name="type" minOccurs="0" maxOccurs="unbounded" type="CodeableConcept">
             <xs:annotation>
               <xs:documentation xml:lang="en">Used to express the reason for or classification of the abstract.</xs:documentation>
            </xs:annotation>
@@ -21968,11 +21957,6 @@ of the resource representation.</xs:documentation>
           <xs:element name="value" minOccurs="0" maxOccurs="1" type="string">
             <xs:annotation>
               <xs:documentation xml:lang="en">The specification of the component.</xs:documentation>
-           </xs:annotation>
-          </xs:element>
-          <xs:element name="baseCitation" minOccurs="0" maxOccurs="1" type="Reference">
-            <xs:annotation>
-              <xs:documentation xml:lang="en">The citation for the full article or artifact.</xs:documentation>
            </xs:annotation>
           </xs:element>
         </xs:sequence>
@@ -22069,7 +22053,7 @@ of the resource representation.</xs:documentation>
           </xs:element>
           <xs:element name="publicationDateSeason" minOccurs="0" maxOccurs="1" type="string">
             <xs:annotation>
-              <xs:documentation xml:lang="en">Spring, Summer, Fall/Autumn, Winter.</xs:documentation>
+              <xs:documentation xml:lang="en">Season in which the cited artifact was published, e.g. Spring, Summer, Fall/Autumn, Winter.</xs:documentation>
            </xs:annotation>
           </xs:element>
           <xs:element name="lastRevisionDate" minOccurs="0" maxOccurs="1" type="dateTime">
@@ -22208,7 +22192,7 @@ of the resource representation.</xs:documentation>
         <xs:sequence>
           <xs:element name="complete" minOccurs="0" maxOccurs="1" type="boolean">
             <xs:annotation>
-              <xs:documentation xml:lang="en">Indicates if the list includes all authors and/or contributors.</xs:documentation>
+              <xs:documentation xml:lang="en">Indication whether all authors are included in the entry content.</xs:documentation>
            </xs:annotation>
           </xs:element>
           <xs:element name="entry" type="Citation.Entry" minOccurs="0" maxOccurs="unbounded">
@@ -22249,7 +22233,7 @@ of the resource representation.</xs:documentation>
           </xs:element>
           <xs:element name="contributionType" minOccurs="0" maxOccurs="unbounded" type="CodeableConcept">
             <xs:annotation>
-              <xs:documentation xml:lang="en">This element identifies the specific nature of an individual’s contribution with respect to the cited work.</xs:documentation>
+              <xs:documentation xml:lang="en">The specific nature of an individual’s contribution with respect to the cited work.</xs:documentation>
            </xs:annotation>
           </xs:element>
           <xs:element name="role" minOccurs="0" maxOccurs="1" type="CodeableConcept">
@@ -22309,7 +22293,7 @@ of the resource representation.</xs:documentation>
               <xs:documentation xml:lang="en">Used most commonly to express an author list or a contributorship statement.</xs:documentation>
            </xs:annotation>
           </xs:element>
-          <xs:element name="style" minOccurs="0" maxOccurs="1" type="CodeableConcept">
+          <xs:element name="style" minOccurs="0" maxOccurs="unbounded" type="CodeableConcept">
             <xs:annotation>
               <xs:documentation xml:lang="en">The format for the display string, such as author last name with first letter capitalized followed by forename initials.</xs:documentation>
            </xs:annotation>

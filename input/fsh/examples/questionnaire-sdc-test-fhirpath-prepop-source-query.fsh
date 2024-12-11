@@ -20,7 +20,7 @@ Usage: #example
   * valueReference = Reference(PrePopQuery)
 * extension[+]
   * url = "http://hl7.org/fhir/uv/sdc/StructureDefinition/sdc-questionnaire-sourceStructureMap"
-  * valueCanonical = "http://hl7.org/fhir/uv/sdc/StructureMap/QuestionnairePopulationTransform"
+  * valueCanonical = "http://hl7.org/fhir/uv/sdc/StructureMap/questionnaire-population-transform"
 * url = "http://hl7.org/fhir/uv/sdc/Questionnaire/questionnaire-sdc-test-fhirpath-prepop-source-query"
 * name = "FhirPathPrepopSourceQuery"
 * title = "Questionnaire Pre-Population"

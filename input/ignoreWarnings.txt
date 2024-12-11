@@ -3,7 +3,7 @@
 # This should go away once we are using the updated version of the extensions pack
 INFORMATION: QuestionnaireResponse/adaptive-questionnaireresponse-sdc-example-phq9: QuestionnaireResponse.contained[0]/*Questionnaire/contained-adaptive-questionnaire-example-phq9*/.derivedFrom[0].extension[0].value.ofType(Coding): Reference to draft CodeSystem http://hl7.org/fhir/questionnaire-derivationType|5.2.0-ballot
 
-# The is an error with the IG publisher.  It should check that a rfeerence is resolvable before making it a hyperlink
+# The is an error with the IG publisher.  It should check that a reference is resolvable before making it a hyperlink - https://chat.fhir.org/#narrow/channel/179252-IG-creation/topic/Narrative.20is.20trying.20to.20hyperlink.20to.20a.20uuid
 ERROR: Questionnaire/extract-complex-template2: Questionnaire.text.div: Hyperlink scheme 'urn' in 'urn:uuid:6f6177d2-13ee-4d27-b0e8-3eaf663dd031' at 'div/blockquote/p/a' for 'urn:uuid:6f6177d2-13ee-4d27-b0e8-3eaf663dd031' is not a valid hyperlinkable scheme
 
 # I believe this is an issue with the publisher - https://chat.fhir.org/#narrow/channel/179252-IG-creation/topic/Weird.20invariant.20issue
@@ -62,58 +62,62 @@ ERROR: Bundle/questionnaire-sdc-profile-example: Bundle.entry[4].resource/*Quest
 ERROR: Bundle/questionnaire-sdc-profile-example: Bundle.entry[4].resource/*Questionnaire/3265657v2.0*/.text.div: Hyperlink '#hc3265657v2.0/d1e98928-vs' at 'div/blockquote/table/tr/td/a' for 'ValueSet: status = active' does not resolve
 ERROR: Bundle/questionnaire-sdc-profile-example: Bundle.entry[4].resource/*Questionnaire/3265657v2.0*/.text.div: Hyperlink '#hc3265657v2.0/d1e99214-vs' at 'div/blockquote/table/tr/td/a' for 'ValueSet: status = active' does not resolve
 ERROR: Bundle/questionnaire-sdc-profile-example: Bundle.entry[4].resource/*Questionnaire/3265657v2.0*/.text.div: Hyperlink '#hc3265657v2.0/d1e99668-vs' at 'div/blockquote/table/tr/td/a' for 'ValueSet: status = active' does not resolve
-%The link '#hcquestionnaire-sdc-profile-example/F8-1.2/d1e551-vs' for "D1e551vs" cannot be resolved (valid targets: 55 targets)
-%The link '#hcquestionnaire-sdc-profile-example/F8-1.2/d1e639-vs' for "D1e639vs" cannot be resolved (valid targets: 55 targets)
-%The link '#hcquestionnaire-sdc-profile-example/F8-1.2/d1e910-vs' for "D1e910vs" cannot be resolved (valid targets: 55 targets)
-%The link '#hcquestionnaire-sdc-profile-example/F8-1.2/d1e1125-vs' for "D1e1125vs" cannot be resolved (valid targets: 55 targets)
-%The link '#hcquestionnaire-sdc-profile-example/F8-1.2/d1e1558-vs' for "D1e1558vs" cannot be resolved (valid targets: 55 targets)
-%The link '#hcquestionnaire-sdc-profile-example/F8-1.2/d1e1746-vs' for "D1e746vs" cannot be resolved (valid targets: 55 targets)
-%The link '#hcquestionnaire-sdc-profile-example/F8-1.2/d1e1863-vs' for "D1e863vs" cannot be resolved (valid targets: 55 targets)
-%The link '#hcquestionnaire-sdc-profile-example/F8-1.2/d1e2109-vs' for "D1e2109vs" cannot be resolved (valid targets: 55 targets)
-%The link '#hcquestionnaire-sdc-profile-example/F8-1.2/d1e2272-vs' for "D1e2272vs" cannot be resolved (valid targets: 55 targets)
-%The link '#hcquestionnaire-sdc-profile-example/F8-1.2/d1e2489-vs' for "D1e2489vs" cannot be resolved (valid targets: 55 targets)
-%The link '#hcquestionnaire-sdc-profile-example/F8-1.2/d1e2768-vs' for "D1e2768vs" cannot be resolved (valid targets: 55 targets)
-%The link '#hcquestionnaire-sdc-profile-example/F8-1.2/d1e2928-vs' for "D1e2928vs" cannot be resolved (valid targets: 55 targets)
-%The link '#hcquestionnaire-sdc-profile-example/F8-1.2/d1e3159-vs' for "D1e3159vs" cannot be resolved (valid targets: 55 targets)
-%The link '#hcquestionnaire-sdc-profile-example/F8-1.2/d1e4024-vs' for "D1e4024vs" cannot be resolved (valid targets: 55 targets)
-%The link '#hcquestionnaire-sdc-profile-example/F8-1.2/d1e4118-vs' for "D1e4118vs" cannot be resolved (valid targets: 55 targets)
-%The link '#hcquestionnaire-sdc-profile-example/F8-1.2/d1e4236-vs' for "D1e4236vs" cannot be resolved (valid targets: 55 targets)
-%The link '#hcquestionnaire-sdc-profile-example/F8-1.2/d1e4716-vs' for "D1e4716vs" cannot be resolved (valid targets: 55 targets)
-%The link '#hcquestionnaire-sdc-profile-example/2674812v4.0/d1e10146-vs' for "d1e10146-vs" cannot be resolved (valid targets: 55 targets)
-%The link '#hcquestionnaire-sdc-profile-example/2674812v4.0/d1e10593-vs' for "d1e10593-vs" cannot be resolved (valid targets: 55 targets)
-%The link '#hcquestionnaire-sdc-profile-example/2674812v4.0/d1e10923-vs' for "d1e10923-vs" cannot be resolved (valid targets: 55 targets)
-%The link '#hcquestionnaire-sdc-profile-example/2674812v4.0/d1e11887-vs' for "d1e11887-vs" cannot be resolved (valid targets: 55 targets)
-%The link '#hcquestionnaire-sdc-profile-example/2674812v4.0/d1e12384-vs' for "d1e12384-vs" cannot be resolved (valid targets: 55 targets)
-%The link '#hcquestionnaire-sdc-profile-example/2674812v4.0/d1e12630-vs' for "d1e12630-vs" cannot be resolved (valid targets: 55 targets)
-%The link '#hcquestionnaire-sdc-profile-example/2674812v4.0/d1e14027-vs' for "d1e14027-vs" cannot be resolved (valid targets: 55 targets)
-%The link '#hcquestionnaire-sdc-profile-example/2674812v4.0/d1e9892-vs' for "d1e9892-vs" cannot be resolved (valid targets: 55 targets)
-%The link '#hcquestionnaire-sdc-profile-example/3265657v2.0/d1e14927-vs' for "d1e14927-vs" cannot be resolved (valid targets: 55 targets)
-%The link '#hcquestionnaire-sdc-profile-example/3265657v2.0/d1e54652-vs' for "d1e54652-vs" cannot be resolved (valid targets: 55 targets)
-%The link '#hcquestionnaire-sdc-profile-example/3265657v2.0/d1e55041-vs' for "d1e55041-vs" cannot be resolved (valid targets: 55 targets)
-%The link '#hcquestionnaire-sdc-profile-example/3265657v2.0/d1e55265-vs' for "d1e55265-vs" cannot be resolved (valid targets: 55 targets)
-%The link '#hcquestionnaire-sdc-profile-example/3265657v2.0/d1e56008-vs' for "d1e56008-vs" cannot be resolved (valid targets: 55 targets)
-%The link '#hcquestionnaire-sdc-profile-example/3265657v2.0/d1e57358-vs' for "d1e57358-vs" cannot be resolved (valid targets: 55 targets)
-%The link '#hcquestionnaire-sdc-profile-example/3265657v2.0/d1e97042-vs' for "d1e97042-vs" cannot be resolved (valid targets: 55 targets)
-%The link '#hcquestionnaire-sdc-profile-example/3265657v2.0/d1e97392-vs' for "d1e97392-vs" cannot be resolved (valid targets: 55 targets)
-%The link '#hcquestionnaire-sdc-profile-example/3265657v2.0/d1e97594-vs' for "d1e97594-vs" cannot be resolved (valid targets: 55 targets)
-%The link '#hcquestionnaire-sdc-profile-example/3265657v2.0/d1e97746-vs' for "d1e97746-vs" cannot be resolved (valid targets: 55 targets)
-%The link '#hcquestionnaire-sdc-profile-example/3265657v2.0/d1e98036-vs' for "d1e98036-vs" cannot be resolved (valid targets: 55 targets)
-%The link '#hcquestionnaire-sdc-profile-example/3265657v2.0/d1e98234-vs' for "d1e98234-vs" cannot be resolved (valid targets: 55 targets)
-%The link '#hcquestionnaire-sdc-profile-example/3265657v2.0/d1e98385-vs' for "d1e98385-vs" cannot be resolved (valid targets: 55 targets)
-%The link '#hcquestionnaire-sdc-profile-example/3265657v2.0/d1e98732-vs' for "d1e98732-vs" cannot be resolved (valid targets: 55 targets)
-%The link '#hcquestionnaire-sdc-profile-example/3265657v2.0/d1e98928-vs' for "d1e98928-vs" cannot be resolved (valid targets: 55 targets)
-%The link '#hcquestionnaire-sdc-profile-example/3265657v2.0/d1e99214-vs' for "d1e99214-vs" cannot be resolved (valid targets: 55 targets)
-%The link '#hcquestionnaire-sdc-profile-example/3265657v2.0/d1e99668-vs' for "d1e99668-vs" cannot be resolved (valid targets: 55 targets)
-%The link '#hcquestionnaire-sdc-profile-example/3921052v1.0/d1e8086-vs' for "D1e8086vs" cannot be resolved (valid targets: 55 targets)
-%The link '#hcquestionnaire-sdc-profile-example/3921052v1.0/d1e8407-vs' for "D1e8407vs" cannot be resolved (valid targets: 55 targets)
-%The link '#hcquestionnaire-sdc-profile-example/3921052v1.0/d1e8830-vs' for "d1e8830-vs" cannot be resolved (valid targets: 55 targets)
-%The link '#hcquestionnaire-sdc-profile-example/3921052v1.0/d1e9025-vs' for "d1e9025-vs" cannot be resolved (valid targets: 55 targets)
-%The link '#hcquestionnaire-sdc-profile-example/HERF-1.2/d1e5879-vs' for "d1e5879-vs" cannot be resolved (valid targets: 55 targets)
-%The link '#hcquestionnaire-sdc-profile-example/HERF-1.2/d1e6177-vs' for "d1e6177-vs" cannot be resolved (valid targets: 55 targets)
-%The link '#hcquestionnaire-sdc-profile-example/HERF-1.2/d1e6853-vs' for "d1e6853-vs" cannot be resolved (valid targets: 55 targets)
-%The link '#hcquestionnaire-sdc-profile-example/HERF-1.2/d1e7006-vs' for "d1e7006-vs" cannot be resolved (valid targets: 55 targets)
-%The link '#hcquestionnaire-sdc-profile-example/HERF-1.2/d1e7220-vs' for "d1e7220-vs" cannot be resolved (valid targets: 55 targets)
-%The link '#hcquestionnaire-sdc-profile-example/HERF-1.2/d1e7422-vs' for "d1e7422-vs" cannot be resolved (valid targets: 55 targets)
+%The link 'ValueSet-2674812v4.0_d1e10146-vs.html' for "d1e10146-vs" cannot be resolved
+%The link 'ValueSet-2674812v4.0_d1e10593-vs.html' for "d1e10593-vs" cannot be resolved
+%The link 'ValueSet-2674812v4.0_d1e10923-vs.html' for "d1e10923-vs" cannot be resolved
+%The link 'ValueSet-2674812v4.0_d1e11887-vs.html' for "d1e11887-vs" cannot be resolved
+%The link 'ValueSet-2674812v4.0_d1e12384-vs.html' for "d1e12384-vs" cannot be resolved
+%The link 'ValueSet-2674812v4.0_d1e12630-vs.html' for "d1e12630-vs" cannot be resolved
+%The link 'ValueSet-2674812v4.0_d1e14027-vs.html' for "d1e14027-vs" cannot be resolved
+%The link 'ValueSet-2674812v4.0_d1e9892-vs.html' for "d1e9892-vs" cannot be resolved
+%The link 'ValueSet-3265657v2.0_d1e14927-vs.html' for "d1e14927-vs" cannot be resolved
+%The link 'ValueSet-3265657v2.0_d1e54652-vs.html' for "d1e54652-vs" cannot be resolved
+%The link 'ValueSet-3265657v2.0_d1e55041-vs.html' for "d1e55041-vs" cannot be resolved
+%The link 'ValueSet-3265657v2.0_d1e55265-vs.html' for "d1e55265-vs" cannot be resolved
+%The link 'ValueSet-3265657v2.0_d1e56008-vs.html' for "d1e56008-vs" cannot be resolved
+%The link 'ValueSet-3265657v2.0_d1e57358-vs.html' for "d1e57358-vs" cannot be resolved
+%The link 'ValueSet-3265657v2.0_d1e97042-vs.html' for "d1e97042-vs" cannot be resolved
+%The link 'ValueSet-3265657v2.0_d1e97392-vs.html' for "d1e97392-vs" cannot be resolved
+%The link 'ValueSet-3265657v2.0_d1e97594-vs.html' for "d1e97594-vs" cannot be resolved
+%The link 'ValueSet-3265657v2.0_d1e97746-vs.html' for "d1e97746-vs" cannot be resolved
+%The link 'ValueSet-3265657v2.0_d1e98036-vs.html' for "d1e98036-vs" cannot be resolved
+%The link 'ValueSet-3265657v2.0_d1e98234-vs.html' for "d1e98234-vs" cannot be resolved
+%The link 'ValueSet-3265657v2.0_d1e98385-vs.html' for "d1e98385-vs" cannot be resolved
+%The link 'ValueSet-3265657v2.0_d1e98732-vs.html' for "d1e98732-vs" cannot be resolved
+%The link 'ValueSet-3265657v2.0_d1e98928-vs.html' for "d1e98928-vs" cannot be resolved
+%The link 'ValueSet-3265657v2.0_d1e99214-vs.html' for "d1e99214-vs" cannot be resolved
+%The link 'ValueSet-3265657v2.0_d1e99668-vs.html' for "d1e99668-vs" cannot be resolved
+%The link 'ValueSet-3921052v1.0_d1e8086-vs.html' for "D1e8086vs" cannot be resolved
+%The link 'ValueSet-3921052v1.0_d1e8407-vs.html' for "D1e8407vs" cannot be resolved
+%The link 'ValueSet-3921052v1.0_d1e8830-vs.html' for "d1e8830-vs" cannot be resolved
+%The link 'ValueSet-3921052v1.0_d1e9025-vs.html' for "d1e9025-vs" cannot be resolved
+%The link 'ValueSet-F8-1.2_d1e1125-vs.html' for "D1e1125vs" cannot be resolved
+%The link 'ValueSet-F8-1.2_d1e1558-vs.html' for "D1e1558vs" cannot be resolved
+%The link 'ValueSet-F8-1.2_d1e1746-vs.html' for "D1e746vs" cannot be resolved
+%The link 'ValueSet-F8-1.2_d1e1863-vs.html' for "D1e863vs" cannot be resolved
+%The link 'ValueSet-F8-1.2_d1e2109-vs.html' for "D1e2109vs" cannot be resolved
+%The link 'ValueSet-F8-1.2_d1e2272-vs.html' for "D1e2272vs" cannot be resolved
+%The link 'ValueSet-F8-1.2_d1e2489-vs.html' for "D1e2489vs" cannot be resolved
+%The link 'ValueSet-F8-1.2_d1e2768-vs.html' for "D1e2768vs" cannot be resolved
+%The link 'ValueSet-F8-1.2_d1e2928-vs.html' for "D1e2928vs" cannot be resolved
+%The link 'ValueSet-F8-1.2_d1e3159-vs.html' for "D1e3159vs" cannot be resolved
+%The link 'ValueSet-F8-1.2_d1e4024-vs.html' for "D1e4024vs" cannot be resolved
+%The link 'ValueSet-F8-1.2_d1e4118-vs.html' for "D1e4118vs" cannot be resolved
+%The link 'ValueSet-F8-1.2_d1e4236-vs.html' for "D1e4236vs" cannot be resolved
+%The link 'ValueSet-F8-1.2_d1e4716-vs.html' for "D1e4716vs" cannot be resolved
+%The link 'ValueSet-F8-1.2_d1e551-vs.html' for "D1e551vs" cannot be resolved
+%The link 'ValueSet-F8-1.2_d1e639-vs.html' for "D1e639vs" cannot be resolved
+%The link 'ValueSet-F8-1.2_d1e910-vs.html' for "D1e910vs" cannot be resolved
+%The link 'ValueSet-HERF-1.2_d1e5879-vs.html' for "d1e5879-vs" cannot be resolved
+%The link 'ValueSet-HERF-1.2_d1e6177-vs.html' for "d1e6177-vs" cannot be resolved
+%The link 'ValueSet-HERF-1.2_d1e6853-vs.html' for "d1e6853-vs" cannot be resolved
+%The link 'ValueSet-HERF-1.2_d1e7006-vs.html' for "d1e7006-vs" cannot be resolved
+%The link 'ValueSet-HERF-1.2_d1e7220-vs.html' for "d1e7220-vs" cannot be resolved
+%The link 'ValueSet-HERF-1.2_d1e7422-vs.html' for "d1e7422-vs" cannot be resolved
+
+# These are used to template regular resources and can legitimately appear on any element in any resource.  As such, a context of Element is appropriate
+Review the extension type for sdc-questionnaire-templateExtractContext: extensions should not have a context of Element unless it's really intended that they can be used anywhere
+Review the extension type for sdc-questionnaire-templateExtractValue: extensions should not have a context of Element unless it's really intended that they can be used anywhere
 
 # These are fixed in the next release of the extensions pack
 ERROR: Questionnaire/questionnaire-sdc-profile-example-image-options: Questionnaire.item[0].answerOption[1].value.ofType(Coding).display.extension[0].value.ofType(string): The extension http://hl7.org/fhir/StructureDefinition/referencesContained is not allowed to be used at this point (allowed = e:Expression; this element is [Coding.display.extension.value, Coding.display.extension.value.ofType(string), Coding.display.extension.valuestring, Extension.value, Extension.value.ofType(string), Extension.valuestring, Questionnaire.item.answerOption.value.ofType(Coding).display.extension.value.ofType(string), string, string.extension.value, string.extension.value.ofType(string), string.extension.valuestring])
@@ -162,12 +166,14 @@ The link 'http://hl7.org/fhir/uv/sdc/STU4-ballot/rendering.html#supportLink' for
 The link 'http://hl7.org/fhir/uv/sdc/STU4-ballot/rendering.html#valueset-label' for "SDC implementation guide" cannot be resolved
 
 # The example code system isn't expected to resolve
+A definition for CodeSystem 'http://example.org/medications' could not be found, so the code cannot be validated
+A definition for CodeSystem 'http://example.org/medications2' could not be found, so the code cannot be validated
+A definition for CodeSystem 'http://example.org/sdh/demo/CodeSystem/cc-screening-codes' could not be found, so the code cannot be validated
+Code System unknown, so assuming value set expansion is correct (A definition for CodeSystem 'http://example.org/CodeSystem/CSPHQ9' could not be found, so the code cannot be validated)
 Error from http://tx.fhir.org/r4: Unable to provide support for code system http://example.org/CodeSystem/Australian-States
 Error from http://tx.fhir.org/r4: Unable to provide support for code system http://example.org/CodeSystem/CSPHQ9
 Example System 'http://example.org/CodeSystem/Australian-States' specified, so Concepts and Filters can't be checked
 Example System 'http://example.org/CodeSystem/CSPHQ9' specified, so Concepts and Filters can't be checked
-A definition for CodeSystem 'http://example.org/medications' could not be found, so the code cannot be validated
-A definition for CodeSystem 'http://example.org/medications2' could not be found, so the code cannot be validated
 The code provided Primary cannot be validated in the options value set (D1e8086vs) in the questionnaire because the system http://example.org/nci.nih.gov/xml/owl/cadsr/form/form_design_identifier/3921052v1.0/question_identifier#3921060v1.0-cs could not be found
 The code provided AtRestaging cannot be validated in the options value set (D1e8407vs) in the questionnaire because the system http://example.org/nci.nih.gov/xml/owl/cadsr/form/form_design_identifier/3921052v1.0/question_identifier#3921071v1.0-cs could not be found
 The code provided Histologic cannot be validated in the options value set (ValueSet[null]) in the questionnaire because the system http://example.org/nci.nih.gov/xml/owl/cadsr/form/form_design_identifier/3921052v1.0/question_identifier#3921081v1.0-cs could not be found
@@ -176,7 +182,6 @@ The code provided Not-at-all cannot be validated in the options value set (VSPHQ
 The code provided Several-days cannot be validated in the options value set (VSPHQ9) in the questionnaire because the system http://example.org/CodeSystem/CSPHQ9 could not be found
 The code provided More than half the days cannot be validated in the options value set (VSPHQ9) in the questionnaire because the system http://example.org/CodeSystem/CSPHQ9 could not be found
 The code provided Nearly every day cannot be validated in the options value set (VSPHQ9) in the questionnaire because the system http://example.org/CodeSystem/CSPHQ9 could not be found
-Code System unknown, so assuming value set expansion is correct (A definition for CodeSystem 'http://example.org/CodeSystem/CSPHQ9' could not be found, so the code cannot be validated)
 
 # Reported this as a publisher issue: https://chat.fhir.org/#narrow/channel/179252-IG-creation/topic/Validator.20is.20making.20incorrect.20assumptions.20about.20.25resource
 WARNING: StructureDefinition/sdc-questionnaire-adapt: StructureDefinition.snapshot.element[0].constraint[7]: sdc-adapt-1: The type specified in ofType() is http://hl7.org/fhir/StructureDefinition/QuestionnaireResponse which is not a possible candidate for the existing types () in the expression ofType(QuestionnaireResponse).questionnaire. Check the paths and types to be sure this is what is intended
@@ -265,9 +270,6 @@ INFORMATION: Questionnaire/questionnaire-sdc-test-fhirpath-prepop-source-query: 
 INFORMATION: Questionnaire/questionnaire-sdc-test-fhirpath-prepop-source-query: Questionnaire.item[0].item[1].item[1].extension[0]: This element does not match any known slice defined in the profile http://hl7.org/fhir/uv/sdc/StructureDefinition/sdc-questionnaire-pop-smap|4.0.0-ballot (this may not be a problem, but you should check that it's not intended to match a slice)
 INFORMATION: Questionnaire/questionnaire-sdc-test-fhirpath-prepop-source-query: Questionnaire.item[0].item[1].item[2].extension[0]: This element does not match any known slice defined in the profile http://hl7.org/fhir/uv/sdc/StructureDefinition/sdc-questionnaire-pop-smap|4.0.0-ballot (this may not be a problem, but you should check that it's not intended to match a slice)
 INFORMATION: Questionnaire/questionnaire-sdc-test-nested-groups: Questionnaire.item[0].item[1].item[0].extension[0]: This element does not match any known slice defined in the profile http://hl7.org/fhir/uv/sdc/StructureDefinition/sdc-questionnaire-behave|4.0.0-ballot (this may not be a problem, but you should check that it's not intended to match a slice)
-
-
-
 INFORMATION: Questionnaire/SDOHCC-QuestionnaireHungerVitalSign: Questionnaire.extension[0]: This element does not match any known slice defined in the profile http://hl7.org/fhir/uv/sdc/StructureDefinition/sdc-questionnaire-extr-defn|4.0.0-ballot (this may not be a problem, but you should check that it's not intended to match a slice)
 INFORMATION: Questionnaire/SDOHCC-QuestionnaireHungerVitalSign: Questionnaire.extension[1]: This element does not match any known slice defined in the profile http://hl7.org/fhir/uv/sdc/StructureDefinition/sdc-questionnaire-extr-defn|4.0.0-ballot (this may not be a problem, but you should check that it's not intended to match a slice)
 INFORMATION: Questionnaire/SDOHCC-QuestionnaireHungerVitalSign: Questionnaire.extension[2]: This element does not match any known slice defined in the profile http://hl7.org/fhir/uv/sdc/StructureDefinition/sdc-questionnaire-extr-defn|4.0.0-ballot (this may not be a problem, but you should check that it's not intended to match a slice)
@@ -277,11 +279,18 @@ INFORMATION: Questionnaire/SDOHCC-QuestionnaireHungerVitalSign: Questionnaire.ex
 INFORMATION: Questionnaire/SDOHCC-QuestionnaireHungerVitalSign: Questionnaire.item[0].extension[0]: This element does not match any known slice defined in the profile http://hl7.org/fhir/uv/sdc/StructureDefinition/sdc-questionnaire-extr-defn|4.0.0-ballot (this may not be a problem, but you should check that it's not intended to match a slice)
 INFORMATION: Questionnaire/SDOHCC-QuestionnaireHungerVitalSign: Questionnaire.item[1].extension[0]: This element does not match any known slice defined in the profile http://hl7.org/fhir/uv/sdc/StructureDefinition/sdc-questionnaire-extr-defn|4.0.0-ballot (this may not be a problem, but you should check that it's not intended to match a slice)
 INFORMATION: Questionnaire/SDOHCC-QuestionnaireHungerVitalSign: Questionnaire.item[2].extension[0]: This element does not match any known slice defined in the profile http://hl7.org/fhir/uv/sdc/StructureDefinition/sdc-questionnaire-extr-defn|4.0.0-ballot (this may not be a problem, but you should check that it's not intended to match a slice)
+INFORMATION: Questionnaire/SDOHCC-QuestionnaireHungerVitalSign: Questionnaire.item[2].extension[1]: This element does not match any known slice defined in the profile http://hl7.org/fhir/uv/sdc/StructureDefinition/sdc-questionnaire-extr-defn|4.0.0-ballot (this may not be a problem, but you should check that it's not intended to match a slice)
+INFORMATION: Questionnaire/SDOHCC-QuestionnaireHungerVitalSign: Questionnaire.item[2].extension[2]: This element does not match any known slice defined in the profile http://hl7.org/fhir/uv/sdc/StructureDefinition/sdc-questionnaire-extr-defn|4.0.0-ballot (this may not be a problem, but you should check that it's not intended to match a slice)
+INFORMATION: Questionnaire/SDOHCC-QuestionnaireHungerVitalSign: Questionnaire.item[2].extension[3]: This element does not match any known slice defined in the profile http://hl7.org/fhir/uv/sdc/StructureDefinition/sdc-questionnaire-extr-defn|4.0.0-ballot (this may not be a problem, but you should check that it's not intended to match a slice)
 INFORMATION: Questionnaire/SDOHCC-QuestionnaireHungerVitalSign: Questionnaire.item[2].extension[4]: This element does not match any known slice defined in the profile http://hl7.org/fhir/uv/sdc/StructureDefinition/sdc-questionnaire-extr-defn|4.0.0-ballot (this may not be a problem, but you should check that it's not intended to match a slice)
 INFORMATION: Questionnaire/SDOHCC-QuestionnaireHungerVitalSign: Questionnaire.item[2].extension[5]: This element does not match any known slice defined in the profile http://hl7.org/fhir/uv/sdc/StructureDefinition/sdc-questionnaire-extr-defn|4.0.0-ballot (this may not be a problem, but you should check that it's not intended to match a slice)
 INFORMATION: Questionnaire/demographics: Questionnaire.extension[0]: This element does not match any known slice defined in the profile http://hl7.org/fhir/uv/sdc/StructureDefinition/sdc-questionnaire-extr-defn|4.0.0-ballot (this may not be a problem, but you should check that it's not intended to match a slice)
+INFORMATION: Questionnaire/demographics: Questionnaire.item[0].extension[1]: This element does not match any known slice defined in the profile http://hl7.org/fhir/uv/sdc/StructureDefinition/sdc-questionnaire-extr-defn|4.0.0-ballot (this may not be a problem, but you should check that it's not intended to match a slice)
+INFORMATION: Questionnaire/demographics: Questionnaire.item[1].extension[0]: This element does not match any known slice defined in the profile http://hl7.org/fhir/uv/sdc/StructureDefinition/sdc-questionnaire-extr-defn|4.0.0-ballot (this may not be a problem, but you should check that it's not intended to match a slice)
 INFORMATION: Questionnaire/demographics: Questionnaire.item[2].extension[0]: This element does not match any known slice defined in the profile http://hl7.org/fhir/uv/sdc/StructureDefinition/sdc-questionnaire-extr-defn|4.0.0-ballot (this may not be a problem, but you should check that it's not intended to match a slice)
 INFORMATION: Questionnaire/demographics: Questionnaire.item[3].extension[0]: This element does not match any known slice defined in the profile http://hl7.org/fhir/uv/sdc/StructureDefinition/sdc-questionnaire-extr-defn|4.0.0-ballot (this may not be a problem, but you should check that it's not intended to match a slice)
+INFORMATION: Questionnaire/demographics: Questionnaire.item[3].item[2].item[0].extension[0]: This element does not match any known slice defined in the profile http://hl7.org/fhir/uv/sdc/StructureDefinition/sdc-questionnaire-extr-defn|4.0.0-ballot (this may not be a problem, but you should check that it's not intended to match a slice)
+INFORMATION: Questionnaire/demographics: Questionnaire.item[3].item[2].item[1].extension[0]: This element does not match any known slice defined in the profile http://hl7.org/fhir/uv/sdc/StructureDefinition/sdc-questionnaire-extr-defn|4.0.0-ballot (this may not be a problem, but you should check that it's not intended to match a slice)
 INFORMATION: Questionnaire/questionnaire-sdc-profile-example-PHQ9: Questionnaire.extension[0]: This element does not match any known slice defined in the profile http://hl7.org/fhir/uv/sdc/StructureDefinition/sdc-questionnaire|4.0.0-ballot (this may not be a problem, but you should check that it's not intended to match a slice)
 INFORMATION: Questionnaire/questionnaire-sdc-profile-example-cqf-PHQ9: Questionnaire.item[8].extension[0]: This element does not match any known slice defined in the profile http://hl7.org/fhir/uv/sdc/StructureDefinition/sdc-questionnaire-extr-obsn|4.0.0-ballot (this may not be a problem, but you should check that it's not intended to match a slice)
 INFORMATION: Questionnaire/questionnaire-sdc-profile-example-framingham-hchd-lhc: Questionnaire.extension[0]: This element does not match any known slice defined in the profile http://hl7.org/fhir/uv/sdc/StructureDefinition/sdc-questionnaire|4.0.0-ballot (this may not be a problem, but you should check that it's not intended to match a slice)
@@ -353,6 +362,28 @@ INFORMATION: Questionnaire/sdc-modular-root: Questionnaire.extension[2]: This el
 INFORMATION: Questionnaire/sdc-modular-root: Questionnaire.item[0].extension[0]: This element does not match any known slice defined in the profile http://hl7.org/fhir/uv/sdc/StructureDefinition/sdc-questionnaire-modular|4.0.0-ballot (this may not be a problem, but you should check that it's not intended to match a slice)
 INFORMATION: Questionnaire/sdc-modular-root: Questionnaire.item[4].extension[0]: This element does not match any known slice defined in the profile http://hl7.org/fhir/uv/sdc/StructureDefinition/sdc-questionnaire-modular|4.0.0-ballot (this may not be a problem, but you should check that it's not intended to match a slice)
 INFORMATION: Questionnaire/sdc-modular-root: Questionnaire.item[4].extension[1]: This element does not match any known slice defined in the profile http://hl7.org/fhir/uv/sdc/StructureDefinition/sdc-questionnaire-modular|4.0.0-ballot (this may not be a problem, but you should check that it's not intended to match a slice)
+
+# These resources are templates, not actual resources, and the references contain expressions intended to be replaced by real references.  Displays are therefore unnecessary
+WARNING: Questionnaire/extract-complex-template: Questionnaire.contained[1]/*RelatedPerson/rpTemplate*/.patient: A Reference without an actual reference or identifier should have a display
+WARNING: Questionnaire/extract-complex-template: Questionnaire.contained[2]/*Observation/obsTemplateHeight*/.subject: A Reference without an actual reference or identifier should have a display
+WARNING: Questionnaire/extract-complex-template: Questionnaire.contained[2]/*Observation/obsTemplateHeight*/.performer[0]: A Reference without an actual reference or identifier should have a display
+WARNING: Questionnaire/extract-complex-template: Questionnaire.contained[2]/*Observation/obsTemplateHeight*/.derivedFrom[0]: A Reference without an actual reference or identifier should have a display
+WARNING: Questionnaire/extract-complex-template: Questionnaire.contained[3]/*Observation/obsTemplateWeight*/.subject: A Reference without an actual reference or identifier should have a display
+WARNING: Questionnaire/extract-complex-template: Questionnaire.contained[3]/*Observation/obsTemplateWeight*/.performer[0]: A Reference without an actual reference or identifier should have a display
+WARNING: Questionnaire/extract-complex-template: Questionnaire.contained[3]/*Observation/obsTemplateWeight*/.derivedFrom[0]: A Reference without an actual reference or identifier should have a display
+WARNING: Questionnaire/extract-complex-template: Questionnaire.contained[4]/*Observation/obsTemplate*/.subject: A Reference without an actual reference or identifier should have a display
+WARNING: Questionnaire/extract-complex-template: Questionnaire.contained[4]/*Observation/obsTemplate*/.performer[0]: A Reference without an actual reference or identifier should have a display
+WARNING: Questionnaire/extract-complex-template: Questionnaire.contained[4]/*Observation/obsTemplate*/.derivedFrom[0]: A Reference without an actual reference or identifier should have a display
+WARNING: Questionnaire/extract-complex-template2: Questionnaire.contained[0]/*Bundle/bunExtract*/.entry[2].resource.performer[0]: A Reference without an actual reference or identifier should have a display
+WARNING: Questionnaire/extract-complex-template2: Questionnaire.contained[0]/*Bundle/bunExtract*/.entry[2].resource.derivedFrom[0]: A Reference without an actual reference or identifier should have a display
+WARNING: Questionnaire/extract-complex-template2: Questionnaire.contained[0]/*Bundle/bunExtract*/.entry[3].resource.performer[0]: A Reference without an actual reference or identifier should have a display
+WARNING: Questionnaire/extract-complex-template2: Questionnaire.contained[0]/*Bundle/bunExtract*/.entry[3].resource.derivedFrom[0]: A Reference without an actual reference or identifier should have a display
+WARNING: Questionnaire/extract-complex-template2: Questionnaire.contained[0]/*Bundle/bunExtract*/.entry[2].resource/*Observation/null*/.performer[0]: A Reference without an actual reference or identifier should have a display
+WARNING: Questionnaire/extract-complex-template2: Questionnaire.contained[0]/*Bundle/bunExtract*/.entry[2].resource/*Observation/null*/.derivedFrom[0]: A Reference without an actual reference or identifier should have a display
+WARNING: Questionnaire/extract-complex-template2: Questionnaire.contained[0]/*Bundle/bunExtract*/.entry[3].resource/*Observation/null*/.performer[0]: A Reference without an actual reference or identifier should have a display
+WARNING: Questionnaire/extract-complex-template2: Questionnaire.contained[0]/*Bundle/bunExtract*/.entry[3].resource/*Observation/null*/.derivedFrom[0]: A Reference without an actual reference or identifier should have a display
+WARNING: Questionnaire/extract-complex-template2: Questionnaire.contained[0]/*Bundle/bunExtract*/.entry[4].resource/*Observation/null*/.performer[0]: A Reference without an actual reference or identifier should have a display
+WARNING: Questionnaire/extract-complex-template2: Questionnaire.contained[0]/*Bundle/bunExtract*/.entry[4].resource/*Observation/null*/.derivedFrom[0]: A Reference without an actual reference or identifier should have a display
 
 # The intention here is to provide an example of what a Questionnaire with a contained code system would look like
 %CodeSystems are referred to directly from Coding.system, so it's generally best for them not to be contained resources

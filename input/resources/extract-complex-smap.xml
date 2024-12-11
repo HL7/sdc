@@ -1,0 +1,1099 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<StructureMap xmlns="http://hl7.org/fhir">
+  <id value="extractComplexSmap"/>
+  <text>
+    <status value="additional"/>
+    <div xmlns="http://www.w3.org/1999/xhtml">
+      <pre>/// name = &quot;ExtractComplexSmap&quot;
+/// status = active
+/// title = &quot;Complex extraction structure map example&quot;
+/// description = &quot;An example of a StructureMap used to support extraction from a QuestionnaireResponse&quot;
+/// experimental = true
+
+map &quot;http://hl7.org/fhir/uv/sdc/StructureMap/extractComplexSmap&quot; = &quot;ExtractComplexSmap&quot;
+
+uses &quot;http://hl7.org/fhir/StructureDefinition/QuestionnaireResponse&quot; as source
+uses &quot;http://hl7.org/fhir/StructureDefinition/Bundle&quot; as target
+uses &quot;http://hl7.org/fhir/StructureDefinition/Patient&quot; as target
+uses &quot;http://hl7.org/fhir/StructureDefinition/RelatedPerson&quot; as target
+uses &quot;http://hl7.org/fhir/StructureDefinition/Observation&quot; as target
+
+group ExtractBundle(source src : QuestionnaireResponse, target tgt : Bundle) {
+
+  // Patient
+    src.item as patientItem where (linkId = 'patient') -&gt; tgt.entry as patientEntry, uuid() as patientFullUrl then {
+      src -&gt; patientEntry.resource = create('Patient') as pat //, pat.id = (%patientFullUrl)
+        then PopulatePatient(src, patientItem, pat), PopulateBundleEntry(src, patientEntry, patientFullUrl) &quot;popPatient&quot;;
+  
+  // Related Person(s)
+    src.item as rpItem where (linkId = 'contacts') -&gt; tgt.entry as entry, uuid() as fullUrl then {
+      src -&gt; entry.resource = create('RelatedPerson') as rp //, rp.id = (%fullUrl)
+        then PopulateRelatedPerson(src, rpItem, rp, patientFullUrl), PopulateBundleEntry(src, entry, fullUrl) &quot;popRelatedPerson&quot;;
+    } &quot;CreateRelatedPersonEntry&quot;;
+  
+  src.item as obsItems where (linkId = 'obs') -&gt; tgt then {
+    // Height Observation
+    obsItems.item as heightItem where (linkId = 'height') -&gt; tgt.entry as entry, uuid() as fullUrl then {
+      src -&gt; entry.resource = create('Observation') as obs,
+        cc('http://loinc.org', '8302-2', 'Body height') as coding,
+        obs.value = create('Quantity') as q, q.value = (%heightItem.answer.value.first()), q.unit = 'm'
+        then PopulateObservation(src, heightItem, obs, coding, patientFullUrl), 
+             PopulateBundleEntry(src, entry, fullUrl) &quot;popObs&quot;;
+    } &quot;CreateHeightObsEntry&quot;;
+  
+    // Weight Observation
+    obsItems.item as weightItem where (linkId = 'weight') -&gt; tgt.entry as entry, uuid() as fullUrl then {
+      src -&gt; entry.resource = create('Observation') as obs,
+        cc('http://loinc.org', '29463-7', 'Weight') as coding,
+        obs.value = create('Quantity') as q, q.value = (%weightItem.answer.value.first()), q.unit = 'kg'
+        then PopulateObservation(src, weightItem, obs, coding, patientFullUrl), 
+             PopulateBundleEntry(src, entry, fullUrl) &quot;popObs&quot;;
+    } &quot;CreateWeightObsEntry&quot;;
+
+    // Prepare the bundle entry
+    obsItems.item as complicationItem where (linkId = 'complication') -&gt; tgt.entry as entry, uuid() as fullUrl then {
+      src -&gt; entry.resource = create('Observation') as obs,
+        cc('http://example.org/sdh/demo/CodeSystem/cc-screening-codes', 'sigmoidoscopy-complication') as coding,
+        obs.value = (%complicationItem.answer.value.first())
+        then PopulateObservation(src, complicationItem, obs, coding, patientFullUrl), 
+             PopulateBundleEntry(src, entry, fullUrl) &quot;popObs&quot;;
+    } &quot;CreateComplicationObsEntry&quot;;
+  };
+    } &quot;CreatePatientEntry&quot;;
+}
+
+group PopulateBundleEntry(source src : QuestionnaireResponse, target entry, target fullUrl) {
+    src -&gt; entry.fullUrl = ('urn:uuid:' &amp; %fullUrl) &quot;SetFullUrl&quot;;
+    src -&gt; entry.request as req then {
+      src -&gt; req.method = 'POST' &quot;setMethod&quot;;
+    } &quot;SetRequest&quot;;
+}
+
+group PopulatePatient(source src: QuestionnaireResponse, source patientItem, target pat : Patient) {
+  patientItem.item as gender where (linkId = 'gender') -&gt; pat.gender = (%gender.answer.value.first().code) &quot;SetGender&quot;;
+  patientItem.item as dob where (linkId = 'dob') -&gt; pat.birthDate = (%dob.answer.value) &quot;SetBirthDate&quot;;
+  
+  // name
+  patientItem.item as name where (linkId = 'name') -&gt; pat.name as tgtName then {
+    name -&gt; tgtName.text = (name.item.where(linkId='given' or linkId='family').answer.value.join(' ')) &quot;SetNameText&quot;;
+    name.item as family where (linkId = 'family') -&gt; tgtName.family = (%family.answer.value) &quot;SetFamily&quot;;
+    name.item as given where (linkId = 'given') then { 
+      given.answer as answer -&gt; tgtName.given = (%answer.value) &quot;AnswerValue&quot;;
+    }  &quot;SetGiven&quot;;
+  } &quot;SetName&quot;;
+  
+  // identifier
+  patientItem.item as itemIdentifier where (linkId = 'ihi') -&gt; pat.identifier as tgtIdentifier then {
+    itemIdentifier -&gt; tgtIdentifier.type as t, t.text = 'National Identifier (IHI)' &quot;SetIdentifierType&quot;;
+    itemIdentifier -&gt; tgtIdentifier.system = 'http://example.org/nhio' &quot;SetIdentifierSystem&quot;;
+    itemIdentifier -&gt; tgtIdentifier.value = (itemIdentifier.answer.value) &quot;SetIdentifierValue&quot;;
+  } &quot;SetIdentifier&quot;;
+  
+  // telecom
+  patientItem.item as itemMobile where (linkId = 'mobile-phone') -&gt; pat.telecom as t, t.system='phone', t.value = (%itemMobile.answer.value), t.use = 'mobile' &quot;SetTelecom&quot;;
+}
+
+group PopulateRelatedPerson(source src: QuestionnaireResponse, source rpItem, target rp : RelatedPerson, target patientFullUrl) {
+  rpItem -&gt; rp.patient as p, p.reference = (%patientFullUrl) &quot;SetPatientRef&quot;;
+  rpItem.item as name where (linkId = 'contact-name') -&gt; rp.name as n, n.text = (%name.answer.value) &quot;SetName&quot;;
+  rpItem.item as rel where (linkId = 'relationship') -&gt; rp.relationship as r, r.coding = (%rel.answer.value) &quot;SetRelationship&quot;;
+  rpItem.item as phone where (linkId = 'phone') -&gt; rp.telecom as t, t.system = 'phone', t.value = (%phone.answer.value), t.use = 'mobile' &quot;SetPhone&quot;;
+}
+
+group PopulateObservation(source src : QuestionnaireResponse, source complicationItem, target tgt : Observation, target coding, target patientFullUrl) {
+  src -&gt; tgt.code = (%coding) &quot;SetObservationCode&quot;;
+  src -&gt; tgt.status = 'final' &quot;SetStatus&quot;;
+  // src.subject as s -&gt; tgt.subject = s; // not using the the subject, as this is intended to be created from the data instead (as is outgoing referral)
+  src.subject as s -&gt; tgt.subject as p, p.reference = (%patientFullUrl) &quot;SetSubjectRef&quot;;
+  src.authored as s -&gt; tgt.issued = s &quot;SetAuthored&quot;;
+  src.authored as s -&gt; tgt.effective = s &quot;SetEffective&quot;;
+  src.author as s -&gt; tgt.performer = s;
+  src.id -&gt; tgt.derivedFrom as df, df.reference = ('QuestionnaireResponse/' &amp; %src.id) &quot;SetDerivedFrom&quot;;
+}</pre>
+    </div>
+  </text>
+  <url value="http://hl7.org/fhir/uv/sdc/StructureMap/extractComplexSmap"/>
+  <name value="ExtractComplexSmap"/>
+  <structure>
+    <url value="http://hl7.org/fhir/StructureDefinition/QuestionnaireResponse"/>
+    <mode value="source"/>
+  </structure>
+  <structure>
+    <url value="http://hl7.org/fhir/StructureDefinition/Bundle"/>
+    <mode value="target"/>
+  </structure>
+  <structure>
+    <url value="http://hl7.org/fhir/StructureDefinition/Patient"/>
+    <mode value="target"/>
+  </structure>
+  <structure>
+    <url value="http://hl7.org/fhir/StructureDefinition/RelatedPerson"/>
+    <mode value="target"/>
+  </structure>
+  <structure>
+    <url value="http://hl7.org/fhir/StructureDefinition/Observation"/>
+    <mode value="target"/>
+  </structure>
+  <group>
+    <name value="ExtractBundle"/>
+    <typeMode value="none"/>
+    <input>
+      <name value="src"/>
+      <type value="QuestionnaireResponse"/>
+      <mode value="source"/>
+    </input>
+    <input>
+      <name value="tgt"/>
+      <type value="Bundle"/>
+      <mode value="target"/>
+    </input>
+    <rule>
+      <name value="CreatePatientEntry"/>
+      <source>
+        <context value="src"/>
+        <element value="item"/>
+        <variable value="patientItem"/>
+        <condition value="(linkId = 'patient')"/>
+      </source>
+      <target>
+        <context value="tgt"/>
+        <contextType value="variable"/>
+        <element value="entry"/>
+        <variable value="patientEntry"/>
+      </target>
+      <target>
+        <contextType value="variable"/>
+        <variable value="patientFullUrl"/>
+        <transform value="uuid"/>
+      </target>
+      <rule>
+        <name value="popPatient"/>
+        <source>
+          <context value="src"/>
+        </source>
+        <target>
+          <context value="patientEntry"/>
+          <contextType value="variable"/>
+          <element value="resource"/>
+          <variable value="pat"/>
+          <transform value="create"/>
+          <parameter>
+            <valueString value="Patient"/>
+          </parameter>
+        </target>
+        <dependent>
+          <name value="PopulatePatient"/>
+          <variable value="src"/>
+          <variable value="patientItem"/>
+          <variable value="pat"/>
+        </dependent>
+        <dependent>
+          <name value="PopulateBundleEntry"/>
+          <variable value="src"/>
+          <variable value="patientEntry"/>
+          <variable value="patientFullUrl"/>
+        </dependent>
+      </rule>
+      <rule>
+        <name value="CreateRelatedPersonEntry"/>
+        <source>
+          <context value="src"/>
+          <element value="item"/>
+          <variable value="rpItem"/>
+          <condition value="(linkId = 'contacts')"/>
+        </source>
+        <target>
+          <context value="tgt"/>
+          <contextType value="variable"/>
+          <element value="entry"/>
+          <variable value="entry"/>
+        </target>
+        <target>
+          <contextType value="variable"/>
+          <variable value="fullUrl"/>
+          <transform value="uuid"/>
+        </target>
+        <rule>
+          <name value="popRelatedPerson"/>
+          <source>
+            <context value="src"/>
+          </source>
+          <target>
+            <context value="entry"/>
+            <contextType value="variable"/>
+            <element value="resource"/>
+            <variable value="rp"/>
+            <transform value="create"/>
+            <parameter>
+              <valueString value="RelatedPerson"/>
+            </parameter>
+          </target>
+          <dependent>
+            <name value="PopulateRelatedPerson"/>
+            <variable value="src"/>
+            <variable value="rpItem"/>
+            <variable value="rp"/>
+            <variable value="patientFullUrl"/>
+          </dependent>
+          <dependent>
+            <name value="PopulateBundleEntry"/>
+            <variable value="src"/>
+            <variable value="entry"/>
+            <variable value="fullUrl"/>
+          </dependent>
+        </rule>
+      </rule>
+      <rule>
+        <name value="item"/>
+        <source>
+          <context value="src"/>
+          <element value="item"/>
+          <variable value="obsItems"/>
+          <condition value="(linkId = 'obs')"/>
+        </source>
+        <target>
+          <contextType value="variable"/>
+          <transform value="copy"/>
+          <parameter>
+            <valueId value="tgt"/>
+          </parameter>
+        </target>
+        <rule>
+          <name value="CreateHeightObsEntry"/>
+          <source>
+            <context value="obsItems"/>
+            <element value="item"/>
+            <variable value="heightItem"/>
+            <condition value="(linkId = 'height')"/>
+          </source>
+          <target>
+            <context value="tgt"/>
+            <contextType value="variable"/>
+            <element value="entry"/>
+            <variable value="entry"/>
+          </target>
+          <target>
+            <contextType value="variable"/>
+            <variable value="fullUrl"/>
+            <transform value="uuid"/>
+          </target>
+          <rule>
+            <name value="popObs"/>
+            <source>
+              <context value="src"/>
+            </source>
+            <target>
+              <context value="entry"/>
+              <contextType value="variable"/>
+              <element value="resource"/>
+              <variable value="obs"/>
+              <transform value="create"/>
+              <parameter>
+                <valueString value="Observation"/>
+              </parameter>
+            </target>
+            <target>
+              <contextType value="variable"/>
+              <variable value="coding"/>
+              <transform value="cc"/>
+              <parameter>
+                <valueString value="http://loinc.org"/>
+              </parameter>
+              <parameter>
+                <valueString value="8302-2"/>
+              </parameter>
+              <parameter>
+                <valueString value="Body height"/>
+              </parameter>
+            </target>
+            <target>
+              <context value="obs"/>
+              <contextType value="variable"/>
+              <element value="value"/>
+              <variable value="q"/>
+              <transform value="create"/>
+              <parameter>
+                <valueString value="Quantity"/>
+              </parameter>
+            </target>
+            <target>
+              <context value="q"/>
+              <contextType value="variable"/>
+              <element value="value"/>
+              <transform value="evaluate"/>
+              <parameter>
+                <valueString value="%heightItem.answer.value.first()"/>
+              </parameter>
+            </target>
+            <target>
+              <context value="q"/>
+              <contextType value="variable"/>
+              <element value="unit"/>
+              <transform value="copy"/>
+              <parameter>
+                <valueString value="m"/>
+              </parameter>
+            </target>
+            <dependent>
+              <name value="PopulateObservation"/>
+              <variable value="src"/>
+              <variable value="heightItem"/>
+              <variable value="obs"/>
+              <variable value="coding"/>
+              <variable value="patientFullUrl"/>
+            </dependent>
+            <dependent>
+              <name value="PopulateBundleEntry"/>
+              <variable value="src"/>
+              <variable value="entry"/>
+              <variable value="fullUrl"/>
+            </dependent>
+          </rule>
+        </rule>
+        <rule>
+          <name value="CreateWeightObsEntry"/>
+          <source>
+            <context value="obsItems"/>
+            <element value="item"/>
+            <variable value="weightItem"/>
+            <condition value="(linkId = 'weight')"/>
+          </source>
+          <target>
+            <context value="tgt"/>
+            <contextType value="variable"/>
+            <element value="entry"/>
+            <variable value="entry"/>
+          </target>
+          <target>
+            <contextType value="variable"/>
+            <variable value="fullUrl"/>
+            <transform value="uuid"/>
+          </target>
+          <rule>
+            <name value="popObs"/>
+            <source>
+              <context value="src"/>
+            </source>
+            <target>
+              <context value="entry"/>
+              <contextType value="variable"/>
+              <element value="resource"/>
+              <variable value="obs"/>
+              <transform value="create"/>
+              <parameter>
+                <valueString value="Observation"/>
+              </parameter>
+            </target>
+            <target>
+              <contextType value="variable"/>
+              <variable value="coding"/>
+              <transform value="cc"/>
+              <parameter>
+                <valueString value="http://loinc.org"/>
+              </parameter>
+              <parameter>
+                <valueString value="29463-7"/>
+              </parameter>
+              <parameter>
+                <valueString value="Weight"/>
+              </parameter>
+            </target>
+            <target>
+              <context value="obs"/>
+              <contextType value="variable"/>
+              <element value="value"/>
+              <variable value="q"/>
+              <transform value="create"/>
+              <parameter>
+                <valueString value="Quantity"/>
+              </parameter>
+            </target>
+            <target>
+              <context value="q"/>
+              <contextType value="variable"/>
+              <element value="value"/>
+              <transform value="evaluate"/>
+              <parameter>
+                <valueString value="%weightItem.answer.value.first()"/>
+              </parameter>
+            </target>
+            <target>
+              <context value="q"/>
+              <contextType value="variable"/>
+              <element value="unit"/>
+              <transform value="copy"/>
+              <parameter>
+                <valueString value="kg"/>
+              </parameter>
+            </target>
+            <dependent>
+              <name value="PopulateObservation"/>
+              <variable value="src"/>
+              <variable value="weightItem"/>
+              <variable value="obs"/>
+              <variable value="coding"/>
+              <variable value="patientFullUrl"/>
+            </dependent>
+            <dependent>
+              <name value="PopulateBundleEntry"/>
+              <variable value="src"/>
+              <variable value="entry"/>
+              <variable value="fullUrl"/>
+            </dependent>
+          </rule>
+        </rule>
+        <rule>
+          <name value="CreateComplicationObsEntry"/>
+          <source>
+            <context value="obsItems"/>
+            <element value="item"/>
+            <variable value="complicationItem"/>
+            <condition value="(linkId = 'complication')"/>
+          </source>
+          <target>
+            <context value="tgt"/>
+            <contextType value="variable"/>
+            <element value="entry"/>
+            <variable value="entry"/>
+          </target>
+          <target>
+            <contextType value="variable"/>
+            <variable value="fullUrl"/>
+            <transform value="uuid"/>
+          </target>
+          <rule>
+            <name value="popObs"/>
+            <source>
+              <context value="src"/>
+            </source>
+            <target>
+              <context value="entry"/>
+              <contextType value="variable"/>
+              <element value="resource"/>
+              <variable value="obs"/>
+              <transform value="create"/>
+              <parameter>
+                <valueString value="Observation"/>
+              </parameter>
+            </target>
+            <target>
+              <contextType value="variable"/>
+              <variable value="coding"/>
+              <transform value="cc"/>
+              <parameter>
+                <valueString value="http://example.org/sdh/demo/CodeSystem/cc-screening-codes"/>
+              </parameter>
+              <parameter>
+                <valueString value="sigmoidoscopy-complication"/>
+              </parameter>
+            </target>
+            <target>
+              <context value="obs"/>
+              <contextType value="variable"/>
+              <element value="value"/>
+              <transform value="evaluate"/>
+              <parameter>
+                <valueString value="%complicationItem.answer.value.first()"/>
+              </parameter>
+            </target>
+            <dependent>
+              <name value="PopulateObservation"/>
+              <variable value="src"/>
+              <variable value="complicationItem"/>
+              <variable value="obs"/>
+              <variable value="coding"/>
+              <variable value="patientFullUrl"/>
+            </dependent>
+            <dependent>
+              <name value="PopulateBundleEntry"/>
+              <variable value="src"/>
+              <variable value="entry"/>
+              <variable value="fullUrl"/>
+            </dependent>
+          </rule>
+        </rule>
+      </rule>
+    </rule>
+  </group>
+  <group>
+    <name value="PopulateBundleEntry"/>
+    <typeMode value="none"/>
+    <input>
+      <name value="src"/>
+      <type value="QuestionnaireResponse"/>
+      <mode value="source"/>
+    </input>
+    <input>
+      <name value="entry"/>
+      <mode value="target"/>
+    </input>
+    <input>
+      <name value="fullUrl"/>
+      <mode value="target"/>
+    </input>
+    <rule>
+      <name value="SetFullUrl"/>
+      <source>
+        <context value="src"/>
+      </source>
+      <target>
+        <context value="entry"/>
+        <contextType value="variable"/>
+        <element value="fullUrl"/>
+        <transform value="evaluate"/>
+        <parameter>
+          <valueString value="'urn:uuid:' &amp; %fullUrl"/>
+        </parameter>
+      </target>
+    </rule>
+    <rule>
+      <name value="SetRequest"/>
+      <source>
+        <context value="src"/>
+      </source>
+      <target>
+        <context value="entry"/>
+        <contextType value="variable"/>
+        <element value="request"/>
+        <variable value="req"/>
+      </target>
+      <rule>
+        <name value="setMethod"/>
+        <source>
+          <context value="src"/>
+        </source>
+        <target>
+          <context value="req"/>
+          <contextType value="variable"/>
+          <element value="method"/>
+          <transform value="copy"/>
+          <parameter>
+            <valueString value="POST"/>
+          </parameter>
+        </target>
+      </rule>
+    </rule>
+  </group>
+  <group>
+    <name value="PopulatePatient"/>
+    <typeMode value="none"/>
+    <input>
+      <name value="src"/>
+      <type value="QuestionnaireResponse"/>
+      <mode value="source"/>
+    </input>
+    <input>
+      <name value="patientItem"/>
+      <mode value="source"/>
+    </input>
+    <input>
+      <name value="pat"/>
+      <type value="Patient"/>
+      <mode value="target"/>
+    </input>
+    <rule>
+      <name value="SetGender"/>
+      <source>
+        <context value="patientItem"/>
+        <element value="item"/>
+        <variable value="gender"/>
+        <condition value="(linkId = 'gender')"/>
+      </source>
+      <target>
+        <context value="pat"/>
+        <contextType value="variable"/>
+        <element value="gender"/>
+        <transform value="evaluate"/>
+        <parameter>
+          <valueString value="%gender.answer.value.first().code"/>
+        </parameter>
+      </target>
+    </rule>
+    <rule>
+      <name value="SetBirthDate"/>
+      <source>
+        <context value="patientItem"/>
+        <element value="item"/>
+        <variable value="dob"/>
+        <condition value="(linkId = 'dob')"/>
+      </source>
+      <target>
+        <context value="pat"/>
+        <contextType value="variable"/>
+        <element value="birthDate"/>
+        <transform value="evaluate"/>
+        <parameter>
+          <valueString value="%dob.answer.value"/>
+        </parameter>
+      </target>
+    </rule>
+    <rule>
+      <name value="SetName"/>
+      <source>
+        <context value="patientItem"/>
+        <element value="item"/>
+        <variable value="name"/>
+        <condition value="(linkId = 'name')"/>
+      </source>
+      <target>
+        <context value="pat"/>
+        <contextType value="variable"/>
+        <element value="name"/>
+        <variable value="tgtName"/>
+      </target>
+      <rule>
+        <name value="SetNameText"/>
+        <source>
+          <context value="name"/>
+        </source>
+        <target>
+          <context value="tgtName"/>
+          <contextType value="variable"/>
+          <element value="text"/>
+          <transform value="evaluate"/>
+          <parameter>
+            <valueString value="name.item.where((linkId = 'given') or (linkId = 'family')).answer.value.join(' ')"/>
+          </parameter>
+        </target>
+      </rule>
+      <rule>
+        <name value="SetFamily"/>
+        <source>
+          <context value="name"/>
+          <element value="item"/>
+          <variable value="family"/>
+          <condition value="(linkId = 'family')"/>
+        </source>
+        <target>
+          <context value="tgtName"/>
+          <contextType value="variable"/>
+          <element value="family"/>
+          <transform value="evaluate"/>
+          <parameter>
+            <valueString value="%family.answer.value"/>
+          </parameter>
+        </target>
+      </rule>
+      <rule>
+        <name value="SetGiven"/>
+        <source>
+          <context value="name"/>
+          <element value="item"/>
+          <variable value="given"/>
+          <condition value="(linkId = 'given')"/>
+        </source>
+        <rule>
+          <name value="AnswerValue"/>
+          <source>
+            <context value="given"/>
+            <element value="answer"/>
+            <variable value="answer"/>
+          </source>
+          <target>
+            <context value="tgtName"/>
+            <contextType value="variable"/>
+            <element value="given"/>
+            <transform value="evaluate"/>
+            <parameter>
+              <valueString value="%answer.value"/>
+            </parameter>
+          </target>
+        </rule>
+      </rule>
+    </rule>
+    <rule>
+      <name value="SetIdentifier"/>
+      <source>
+        <context value="patientItem"/>
+        <element value="item"/>
+        <variable value="itemIdentifier"/>
+        <condition value="(linkId = 'ihi')"/>
+      </source>
+      <target>
+        <context value="pat"/>
+        <contextType value="variable"/>
+        <element value="identifier"/>
+        <variable value="tgtIdentifier"/>
+      </target>
+      <rule>
+        <name value="SetIdentifierType"/>
+        <source>
+          <context value="itemIdentifier"/>
+        </source>
+        <target>
+          <context value="tgtIdentifier"/>
+          <contextType value="variable"/>
+          <element value="type"/>
+          <variable value="t"/>
+        </target>
+        <target>
+          <context value="t"/>
+          <contextType value="variable"/>
+          <element value="text"/>
+          <transform value="copy"/>
+          <parameter>
+            <valueString value="National Identifier (IHI)"/>
+          </parameter>
+        </target>
+      </rule>
+      <rule>
+        <name value="SetIdentifierSystem"/>
+        <source>
+          <context value="itemIdentifier"/>
+        </source>
+        <target>
+          <context value="tgtIdentifier"/>
+          <contextType value="variable"/>
+          <element value="system"/>
+          <transform value="copy"/>
+          <parameter>
+            <valueString value="http://example.org/nhio"/>
+          </parameter>
+        </target>
+      </rule>
+      <rule>
+        <name value="SetIdentifierValue"/>
+        <source>
+          <context value="itemIdentifier"/>
+        </source>
+        <target>
+          <context value="tgtIdentifier"/>
+          <contextType value="variable"/>
+          <element value="value"/>
+          <transform value="evaluate"/>
+          <parameter>
+            <valueString value="itemIdentifier.answer.value"/>
+          </parameter>
+        </target>
+      </rule>
+    </rule>
+    <rule>
+      <name value="SetTelecom"/>
+      <source>
+        <context value="patientItem"/>
+        <element value="item"/>
+        <variable value="itemMobile"/>
+        <condition value="(linkId = 'mobile-phone')"/>
+      </source>
+      <target>
+        <context value="pat"/>
+        <contextType value="variable"/>
+        <element value="telecom"/>
+        <variable value="t"/>
+      </target>
+      <target>
+        <context value="t"/>
+        <contextType value="variable"/>
+        <element value="system"/>
+        <transform value="copy"/>
+        <parameter>
+          <valueString value="phone"/>
+        </parameter>
+      </target>
+      <target>
+        <context value="t"/>
+        <contextType value="variable"/>
+        <element value="value"/>
+        <transform value="evaluate"/>
+        <parameter>
+          <valueString value="%itemMobile.answer.value"/>
+        </parameter>
+      </target>
+      <target>
+        <context value="t"/>
+        <contextType value="variable"/>
+        <element value="use"/>
+        <transform value="copy"/>
+        <parameter>
+          <valueString value="mobile"/>
+        </parameter>
+      </target>
+    </rule>
+  </group>
+  <group>
+    <name value="PopulateRelatedPerson"/>
+    <typeMode value="none"/>
+    <input>
+      <name value="src"/>
+      <type value="QuestionnaireResponse"/>
+      <mode value="source"/>
+    </input>
+    <input>
+      <name value="rpItem"/>
+      <mode value="source"/>
+    </input>
+    <input>
+      <name value="rp"/>
+      <type value="RelatedPerson"/>
+      <mode value="target"/>
+    </input>
+    <input>
+      <name value="patientFullUrl"/>
+      <mode value="target"/>
+    </input>
+    <rule>
+      <name value="SetPatientRef"/>
+      <source>
+        <context value="rpItem"/>
+      </source>
+      <target>
+        <context value="rp"/>
+        <contextType value="variable"/>
+        <element value="patient"/>
+        <variable value="p"/>
+      </target>
+      <target>
+        <context value="p"/>
+        <contextType value="variable"/>
+        <element value="reference"/>
+        <transform value="evaluate"/>
+        <parameter>
+          <valueString value="%patientFullUrl"/>
+        </parameter>
+      </target>
+    </rule>
+    <rule>
+      <name value="SetName"/>
+      <source>
+        <context value="rpItem"/>
+        <element value="item"/>
+        <variable value="name"/>
+        <condition value="(linkId = 'contact-name')"/>
+      </source>
+      <target>
+        <context value="rp"/>
+        <contextType value="variable"/>
+        <element value="name"/>
+        <variable value="n"/>
+      </target>
+      <target>
+        <context value="n"/>
+        <contextType value="variable"/>
+        <element value="text"/>
+        <transform value="evaluate"/>
+        <parameter>
+          <valueString value="%name.answer.value"/>
+        </parameter>
+      </target>
+    </rule>
+    <rule>
+      <name value="SetRelationship"/>
+      <source>
+        <context value="rpItem"/>
+        <element value="item"/>
+        <variable value="rel"/>
+        <condition value="(linkId = 'relationship')"/>
+      </source>
+      <target>
+        <context value="rp"/>
+        <contextType value="variable"/>
+        <element value="relationship"/>
+        <variable value="r"/>
+      </target>
+      <target>
+        <context value="r"/>
+        <contextType value="variable"/>
+        <element value="coding"/>
+        <transform value="evaluate"/>
+        <parameter>
+          <valueString value="%rel.answer.value"/>
+        </parameter>
+      </target>
+    </rule>
+    <rule>
+      <name value="SetPhone"/>
+      <source>
+        <context value="rpItem"/>
+        <element value="item"/>
+        <variable value="phone"/>
+        <condition value="(linkId = 'phone')"/>
+      </source>
+      <target>
+        <context value="rp"/>
+        <contextType value="variable"/>
+        <element value="telecom"/>
+        <variable value="t"/>
+      </target>
+      <target>
+        <context value="t"/>
+        <contextType value="variable"/>
+        <element value="system"/>
+        <transform value="copy"/>
+        <parameter>
+          <valueString value="phone"/>
+        </parameter>
+      </target>
+      <target>
+        <context value="t"/>
+        <contextType value="variable"/>
+        <element value="value"/>
+        <transform value="evaluate"/>
+        <parameter>
+          <valueString value="%phone.answer.value"/>
+        </parameter>
+      </target>
+      <target>
+        <context value="t"/>
+        <contextType value="variable"/>
+        <element value="use"/>
+        <transform value="copy"/>
+        <parameter>
+          <valueString value="mobile"/>
+        </parameter>
+      </target>
+    </rule>
+  </group>
+  <group>
+    <name value="PopulateObservation"/>
+    <typeMode value="none"/>
+    <input>
+      <name value="src"/>
+      <type value="QuestionnaireResponse"/>
+      <mode value="source"/>
+    </input>
+    <input>
+      <name value="complicationItem"/>
+      <mode value="source"/>
+    </input>
+    <input>
+      <name value="tgt"/>
+      <type value="Observation"/>
+      <mode value="target"/>
+    </input>
+    <input>
+      <name value="coding"/>
+      <mode value="target"/>
+    </input>
+    <input>
+      <name value="patientFullUrl"/>
+      <mode value="target"/>
+    </input>
+    <rule>
+      <name value="SetObservationCode"/>
+      <source>
+        <context value="src"/>
+      </source>
+      <target>
+        <context value="tgt"/>
+        <contextType value="variable"/>
+        <element value="code"/>
+        <transform value="evaluate"/>
+        <parameter>
+          <valueString value="%coding"/>
+        </parameter>
+      </target>
+    </rule>
+    <rule>
+      <name value="SetStatus"/>
+      <source>
+        <context value="src"/>
+      </source>
+      <target>
+        <context value="tgt"/>
+        <contextType value="variable"/>
+        <element value="status"/>
+        <transform value="copy"/>
+        <parameter>
+          <valueString value="final"/>
+        </parameter>
+      </target>
+    </rule>
+    <rule>
+      <name value="SetSubjectRef"/>
+      <source>
+        <context value="src"/>
+        <element value="subject"/>
+        <variable value="s"/>
+      </source>
+      <target>
+        <context value="tgt"/>
+        <contextType value="variable"/>
+        <element value="subject"/>
+        <variable value="p"/>
+      </target>
+      <target>
+        <context value="p"/>
+        <contextType value="variable"/>
+        <element value="reference"/>
+        <transform value="evaluate"/>
+        <parameter>
+          <valueString value="%patientFullUrl"/>
+        </parameter>
+      </target>
+    </rule>
+    <rule>
+      <name value="SetAuthored"/>
+      <source>
+        <context value="src"/>
+        <element value="authored"/>
+        <variable value="s"/>
+      </source>
+      <target>
+        <context value="tgt"/>
+        <contextType value="variable"/>
+        <element value="issued"/>
+        <transform value="copy"/>
+        <parameter>
+          <valueId value="s"/>
+        </parameter>
+      </target>
+    </rule>
+    <rule>
+      <name value="SetEffective"/>
+      <source>
+        <context value="src"/>
+        <element value="authored"/>
+        <variable value="s"/>
+      </source>
+      <target>
+        <context value="tgt"/>
+        <contextType value="variable"/>
+        <element value="effective"/>
+        <transform value="copy"/>
+        <parameter>
+          <valueId value="s"/>
+        </parameter>
+      </target>
+    </rule>
+    <rule>
+      <name value="author"/>
+      <source>
+        <context value="src"/>
+        <element value="author"/>
+        <variable value="s"/>
+      </source>
+      <target>
+        <context value="tgt"/>
+        <contextType value="variable"/>
+        <element value="performer"/>
+        <transform value="copy"/>
+        <parameter>
+          <valueId value="s"/>
+        </parameter>
+      </target>
+    </rule>
+    <rule>
+      <name value="SetDerivedFrom"/>
+      <source>
+        <context value="src"/>
+        <element value="id"/>
+      </source>
+      <target>
+        <context value="tgt"/>
+        <contextType value="variable"/>
+        <element value="derivedFrom"/>
+        <variable value="df"/>
+      </target>
+      <target>
+        <context value="df"/>
+        <contextType value="variable"/>
+        <element value="reference"/>
+        <transform value="evaluate"/>
+        <parameter>
+          <valueString value="'QuestionnaireResponse/' &amp; %src.id"/>
+        </parameter>
+      </target>
+    </rule>
+  </group>
+</StructureMap>
