@@ -1,16 +1,16 @@
-/// name = "ExtractComplexSmap"
-/// status = active
+/// url = "http://hl7.org/fhir/uv/sdc/StructureMap/extractComplexSmap"
+/// name = "extractComplexSmap"
+/// status = "active"
 /// title = "Complex extraction structure map example"
 /// description = "An example of a StructureMap used to support extraction from a QuestionnaireResponse"
-/// experimental = true
-
-map "http://hl7.org/fhir/uv/sdc/StructureMap/extractComplexSmap" = "ExtractComplexSmap"
+/// experimental = "true"
 
 uses "http://hl7.org/fhir/StructureDefinition/QuestionnaireResponse" as source
 uses "http://hl7.org/fhir/StructureDefinition/Bundle" as target
 uses "http://hl7.org/fhir/StructureDefinition/Patient" as target
 uses "http://hl7.org/fhir/StructureDefinition/RelatedPerson" as target
 uses "http://hl7.org/fhir/StructureDefinition/Observation" as target
+uses "http://hl7.org/fhir/StructureDefinition/Coding" as target
 
 group ExtractBundle(source src : QuestionnaireResponse, target tgt : Bundle) {
 
@@ -69,7 +69,7 @@ group PopulatePatient(source src: QuestionnaireResponse, source patientItem, tar
   
   // name
   patientItem.item as name where (linkId = 'name') -> pat.name as tgtName then {
-    name -> tgtName.text = (name.item.where(linkId='given' or linkId='family').answer.value.join(' ')) "SetNameText";
+    name -> tgtName.text = (%name.item.where(linkId='given' or linkId='family').answer.value.join(' ')) "SetNameText";
     name.item as family where (linkId = 'family') -> tgtName.family = (%family.answer.value) "SetFamily";
     name.item as given where (linkId = 'given') then { 
       given.answer as answer -> tgtName.given = (%answer.value) "AnswerValue";
@@ -80,7 +80,7 @@ group PopulatePatient(source src: QuestionnaireResponse, source patientItem, tar
   patientItem.item as itemIdentifier where (linkId = 'ihi') -> pat.identifier as tgtIdentifier then {
     itemIdentifier -> tgtIdentifier.type as t, t.text = 'National Identifier (IHI)' "SetIdentifierType";
     itemIdentifier -> tgtIdentifier.system = 'http://example.org/nhio' "SetIdentifierSystem";
-    itemIdentifier -> tgtIdentifier.value = (itemIdentifier.answer.value) "SetIdentifierValue";
+    itemIdentifier -> tgtIdentifier.value = (%itemIdentifier.answer.value) "SetIdentifierValue";
   } "SetIdentifier";
   
   // telecom
@@ -94,7 +94,7 @@ group PopulateRelatedPerson(source src: QuestionnaireResponse, source rpItem, ta
   rpItem.item as phone where (linkId = 'phone') -> rp.telecom as t, t.system = 'phone', t.value = (%phone.answer.value), t.use = 'mobile' "SetPhone";
 }
 
-group PopulateObservation(source src : QuestionnaireResponse, source complicationItem, target tgt : Observation, target coding, target patientFullUrl) {
+group PopulateObservation(source src : QuestionnaireResponse, source complicationItem, target tgt : Observation, target coding : Coding, target patientFullUrl) {
   src -> tgt.code = (%coding) "SetObservationCode";
   src -> tgt.status = 'final' "SetStatus";
   // src.subject as s -> tgt.subject = s; // not using the the subject, as this is intended to be created from the data instead (as is outgoing referral)

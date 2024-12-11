@@ -375,8 +375,138 @@ WARNING: StructureDefinition.where(url = 'http://hl7.org/fhir/uv/sdc/StructureDe
 WARNING: StructureDefinition.where(url = 'http://hl7.org/fhir/uv/sdc/StructureDefinition/parameters-questionnaire-next-question-out'): The Implementation Guide contains no examples for this profile
 WARNING: StructureDefinition.where(url = 'http://hl7.org/fhir/uv/sdc/StructureDefinition/parameters-questionnaire-process-response-in'): The Implementation Guide contains no examples for this profile
 WARNING: StructureDefinition.where(url = 'http://hl7.org/fhir/uv/sdc/StructureDefinition/parameters-questionnaireresponse-extract-in'): The Implementation Guide contains no examples for this profile
-WARNING: StructureDefinition.where(url = 'http://hl7.org/fhir/uv/sdc/StructureDefinition/sdc-questionnaire-extr-smap'): The Implementation Guide contains no examples for this profile
 
 # This is a contained adaptive Questionnaire in QuestionnaireReponse profile, so ignoring this warning
 WARNING: StructureDefinition.where(url = 'http://hl7.org/fhir/uv/sdc/StructureDefinition/sdc-questionnaire-adapt'): The Implementation Guide contains no examples for this profile
 
+# Questionnaire examples using the template-based extraction process have contained resources with partially complete content that includes extensions to indicate to the extraction engine how to complete the content - which can then make the extracted resource valid
+WARNING: Questionnaire/extract-complex-template: Questionnaire.contained[1]/*RelatedPerson/rpTemplate*/.patient: A Reference without an actual reference or identifier should have a display
+WARNING: Questionnaire/extract-complex-template: Questionnaire.contained[2]/*Observation/obsTemplateHeight*/.subject: A Reference without an actual reference or identifier should have a display
+WARNING: Questionnaire/extract-complex-template: Questionnaire.contained[2]/*Observation/obsTemplateHeight*/.performer[0]: A Reference without an actual reference or identifier should have a display
+WARNING: Questionnaire/extract-complex-template: Questionnaire.contained[3]/*Observation/obsTemplateWeight*/.subject: A Reference without an actual reference or identifier should have a display
+WARNING: Questionnaire/extract-complex-template: Questionnaire.contained[3]/*Observation/obsTemplateWeight*/.performer[0]: A Reference without an actual reference or identifier should have a display
+WARNING: Questionnaire/extract-complex-template: Questionnaire.contained[4]/*Observation/obsTemplate*/.subject: A Reference without an actual reference or identifier should have a display
+WARNING: Questionnaire/extract-complex-template: Questionnaire.contained[4]/*Observation/obsTemplate*/.performer[0]: A Reference without an actual reference or identifier should have a display
+WARNING: Questionnaire/extract-complex-template2: Questionnaire.contained[0]/*Bundle/bunExtract*/.entry[2].resource.performer[0]: A Reference without an actual reference or identifier should have a display
+WARNING: Questionnaire/extract-complex-template2: Questionnaire.contained[0]/*Bundle/bunExtract*/.entry[3].resource.performer[0]: A Reference without an actual reference or identifier should have a display
+WARNING: Questionnaire/extract-complex-template2: Questionnaire.contained[0]/*Bundle/bunExtract*/.entry[2].resource/*Observation/null*/.performer[0]: A Reference without an actual reference or identifier should have a display
+WARNING: Questionnaire/extract-complex-template2: Questionnaire.contained[0]/*Bundle/bunExtract*/.entry[3].resource/*Observation/null*/.performer[0]: A Reference without an actual reference or identifier should have a display
+WARNING: Questionnaire/extract-complex-template2: Questionnaire.contained[0]/*Bundle/bunExtract*/.entry[4].resource/*Observation/null*/.performer[0]: A Reference without an actual reference or identifier should have a display
+WARNING: Questionnaire/extract-complex-template: Questionnaire.contained[2]/*Observation/obsTemplateHeight*/.derivedFrom[0]: A Reference without an actual reference or identifier should have a display
+WARNING: Questionnaire/extract-complex-template: Questionnaire.contained[3]/*Observation/obsTemplateWeight*/.derivedFrom[0]: A Reference without an actual reference or identifier should have a display
+WARNING: Questionnaire/extract-complex-template: Questionnaire.contained[4]/*Observation/obsTemplate*/.derivedFrom[0]: A Reference without an actual reference or identifier should have a display
+WARNING: Questionnaire/extract-complex-template2: Questionnaire.contained[0]/*Bundle/bunExtract*/.entry[2].resource.derivedFrom[0]: A Reference without an actual reference or identifier should have a display
+WARNING: Questionnaire/extract-complex-template2: Questionnaire.contained[0]/*Bundle/bunExtract*/.entry[3].resource.derivedFrom[0]: A Reference without an actual reference or identifier should have a display
+WARNING: Questionnaire/extract-complex-template2: Questionnaire.contained[0]/*Bundle/bunExtract*/.entry[2].resource/*Observation/null*/.derivedFrom[0]: A Reference without an actual reference or identifier should have a display
+WARNING: Questionnaire/extract-complex-template2: Questionnaire.contained[0]/*Bundle/bunExtract*/.entry[3].resource/*Observation/null*/.derivedFrom[0]: A Reference without an actual reference or identifier should have a display
+WARNING: Questionnaire/extract-complex-template2: Questionnaire.contained[0]/*Bundle/bunExtract*/.entry[4].resource/*Observation/null*/.derivedFrom[0]: A Reference without an actual reference or identifier should have a display
+
+# Example terminology codes
+WARNING: Questionnaire/extract-complex-template: Questionnaire.contained[4]/*Observation/obsTemplate*/.code.coding[0]: A definition for CodeSystem 'http://example.org/sdh/demo/CodeSystem/cc-screening-codes' could not be found, so the code cannot be validated
+WARNING: Questionnaire/extract-complex-template2: Questionnaire.contained[0]/*Bundle/bunExtract*/.entry[4].resource/*Observation/null*/.code.coding[0]: A definition for CodeSystem 'http://example.org/sdh/demo/CodeSystem/cc-screening-codes' could not be found, so the code cannot be validated
+
+# Generated narrative invalid?
+ERROR: Questionnaire/extract-complex-template2: Questionnaire.text.div: Hyperlink scheme 'urn' in 'urn:uuid:6f6177d2-13ee-4d27-b0e8-3eaf663dd031' at 'div/blockquote/p/a' for 'urn:uuid:6f6177d2-13ee-4d27-b0e8-3eaf663dd031' is not a valid hyperlinkable scheme
+ERROR: Questionnaire.text.div: Hyperlink 'replaced' at 'div/blockquote/p/a' for 'replaced' does not resolve
+
+# The itemExtractContext extension is deprecated, but still included in the profile for backwards compatibility and discoverability
+INFORMATION: StructureDefinition/sdc-questionnaire-extr-defn: Questionnaire.extension: The extension http://hl7.org/fhir/uv/sdc/StructureDefinition/sdc-questionnaire-itemExtractionContext|3.0.0 is deprecated
+
+# The templateExtractContext and templateExtractValue extensions are intended to markup any contained resource at any point to indicate where to replace templated content
+WARNING: StructureDefinition/sdc-questionnaire-templateExtractContext: StructureDefinition.context[0]: Review the extension type for sdc-questionnaire-templateExtractContext: extensions should not have a context of Element unless it's really intended that they can be used anywhere
+WARNING: StructureDefinition/sdc-questionnaire-templateExtractValue: StructureDefinition.context[0]: Review the extension type for sdc-questionnaire-templateExtractValue: extensions should not have a context of Element unless it's really intended that they can be used anywhere
+
+# profile example contains other unrelated extensions (typically from pre-population) that are not part of the extraction profile
+INFORMATION: Questionnaire/SDOHCC-QuestionnaireHungerVitalSign: Questionnaire.item[2].extension[1]: This element does not match any known slice defined in the profile http://hl7.org/fhir/uv/sdc/StructureDefinition/sdc-questionnaire-extr-defn|3.0.0 (this may not be a problem, but you should check that it's not intended to match a slice)
+INFORMATION: Questionnaire/SDOHCC-QuestionnaireHungerVitalSign: Questionnaire.item[2].extension[2]: This element does not match any known slice defined in the profile http://hl7.org/fhir/uv/sdc/StructureDefinition/sdc-questionnaire-extr-defn|3.0.0 (this may not be a problem, but you should check that it's not intended to match a slice)
+INFORMATION: Questionnaire/SDOHCC-QuestionnaireHungerVitalSign: Questionnaire.item[2].extension[3]: This element does not match any known slice defined in the profile http://hl7.org/fhir/uv/sdc/StructureDefinition/sdc-questionnaire-extr-defn|3.0.0 (this may not be a problem, but you should check that it's not intended to match a slice)
+INFORMATION: Questionnaire/demographics: Questionnaire.item[0].extension[1]: This element does not match any known slice defined in the profile http://hl7.org/fhir/uv/sdc/StructureDefinition/sdc-questionnaire-extr-defn|3.0.0 (this may not be a problem, but you should check that it's not intended to match a slice)
+INFORMATION: Questionnaire/demographics: Questionnaire.item[1].extension[0]: This element does not match any known slice defined in the profile http://hl7.org/fhir/uv/sdc/StructureDefinition/sdc-questionnaire-extr-defn|3.0.0 (this may not be a problem, but you should check that it's not intended to match a slice)
+INFORMATION: Questionnaire/demographics: Questionnaire.item[3].item[2].item[0].extension[0]: This element does not match any known slice defined in the profile http://hl7.org/fhir/uv/sdc/StructureDefinition/sdc-questionnaire-extr-defn|3.0.0 (this may not be a problem, but you should check that it's not intended to match a slice)
+INFORMATION: Questionnaire/demographics: Questionnaire.item[3].item[2].item[1].extension[0]: This element does not match any known slice defined in the profile http://hl7.org/fhir/uv/sdc/StructureDefinition/sdc-questionnaire-extr-defn|3.0.0 (this may not be a problem, but you should check that it's not intended to match a slice)
+
+# Static analysis of FML doesn't check `copy` or `cc` yet
+WARNING: StructureMap/questionnaire-population-transform: StructureMap.group[0].rule[4].rule[0].rule[0].target[0]: Transform copy not checked yet
+WARNING: StructureMap/questionnaire-population-transform: StructureMap.group[0].rule[4].rule[1].target[0]: Transform copy not checked yet
+WARNING: StructureMap/questionnaire-population-transform: StructureMap.group[0].rule[4].rule[1].rule[0].target[0]: Transform copy not checked yet
+WARNING: StructureMap/extractComplexSmap: StructureMap.group[0].rule[0].rule[2].rule[0].rule[0].target[1]: Transform cc not checked yet
+WARNING: StructureMap/extractComplexSmap: StructureMap.group[0].rule[0].rule[2].rule[1].rule[0].target[1]: Transform cc not checked yet
+WARNING: StructureMap/extractComplexSmap: StructureMap.group[0].rule[0].rule[2].rule[2].rule[0].target[1]: Transform cc not checked yet
+WARNING: StructureMap/QuestionnairePopulationTransform: StructureMap.group[0].rule[4].rule[1].rule[0].rule[0].rule[1].rule[0].target[1]: Transform c not checked yet
+WARNING: StructureMap/QuestionnairePopulationTransform: StructureMap.group[2].rule[0].rule[1].rule[0].target[1]: Transform c not checked yet
+
+# StructureMap uses source statements as a trigger, not a datasource (or alternately uses the name itself rather than an alias)
+INFORMATION: StructureMap/extractComplexSmap: StructureMap.group[0].rule[0].rule[0].source[0]: The source statement doesn't assign a variable to the source - check that this is what is intended
+INFORMATION: StructureMap/extractComplexSmap: StructureMap.group[0].rule[0].rule[1].rule[0].source[0]: The source statement doesn't assign a variable to the source - check that this is what is intended
+INFORMATION: StructureMap/extractComplexSmap: StructureMap.group[0].rule[0].rule[2].rule[0].rule[0].source[0]: The source statement doesn't assign a variable to the source - check that this is what is intended
+INFORMATION: StructureMap/extractComplexSmap: StructureMap.group[0].rule[0].rule[2].rule[1].rule[0].source[0]: The source statement doesn't assign a variable to the source - check that this is what is intended
+INFORMATION: StructureMap/extractComplexSmap: StructureMap.group[0].rule[0].rule[2].rule[2].rule[0].source[0]: The source statement doesn't assign a variable to the source - check that this is what is intended
+INFORMATION: StructureMap/extractComplexSmap: StructureMap.group[1].rule[0].source[0]: The source statement doesn't assign a variable to the source - check that this is what is intended
+INFORMATION: StructureMap/extractComplexSmap: StructureMap.group[1].rule[1].source[0]: The source statement doesn't assign a variable to the source - check that this is what is intended
+INFORMATION: StructureMap/extractComplexSmap: StructureMap.group[1].rule[1].rule[0].source[0]: The source statement doesn't assign a variable to the source - check that this is what is intended
+INFORMATION: StructureMap/extractComplexSmap: StructureMap.group[2].rule[2].rule[0].source[0]: The source statement doesn't assign a variable to the source - check that this is what is intended
+INFORMATION: StructureMap/extractComplexSmap: StructureMap.group[2].rule[3].rule[0].source[0]: The source statement doesn't assign a variable to the source - check that this is what is intended
+INFORMATION: StructureMap/extractComplexSmap: StructureMap.group[2].rule[3].rule[1].source[0]: The source statement doesn't assign a variable to the source - check that this is what is intended
+INFORMATION: StructureMap/extractComplexSmap: StructureMap.group[2].rule[3].rule[2].source[0]: The source statement doesn't assign a variable to the source - check that this is what is intended
+INFORMATION: StructureMap/extractComplexSmap: StructureMap.group[3].rule[0].source[0]: The source statement doesn't assign a variable to the source - check that this is what is intended
+INFORMATION: StructureMap/extractComplexSmap: StructureMap.group[4].rule[0].source[0]: The source statement doesn't assign a variable to the source - check that this is what is intended
+INFORMATION: StructureMap/extractComplexSmap: StructureMap.group[4].rule[1].source[0]: The source statement doesn't assign a variable to the source - check that this is what is intended
+INFORMATION: StructureMap/extractComplexSmap: StructureMap.group[4].rule[6].source[0]: The source statement doesn't assign a variable to the source - check that this is what is intended
+
+INFORMATION: StructureMap/SDOHCCHungerVitalSignMap: StructureMap.group[0].rule[0].source[0]: The source statement doesn't assign a variable to the source - check that this is what is intended
+INFORMATION: StructureMap/SDOHCCHungerVitalSignMap: StructureMap.group[0].rule[1].source[0]: The source statement doesn't assign a variable to the source - check that this is what is intended
+INFORMATION: StructureMap/SDOHCCHungerVitalSignMap: StructureMap.group[1].rule[0].source[0]: The source statement doesn't assign a variable to the source - check that this is what is intended
+INFORMATION: StructureMap/SDOHCCHungerVitalSignMap: StructureMap.group[1].rule[0].rule[0].source[0]: The source statement doesn't assign a variable to the source - check that this is what is intended
+INFORMATION: StructureMap/SDOHCCHungerVitalSignMap: StructureMap.group[1].rule[0].rule[1].source[0]: The source statement doesn't assign a variable to the source - check that this is what is intended
+INFORMATION: StructureMap/SDOHCCHungerVitalSignMap: StructureMap.group[1].rule[1].source[0]: The source statement doesn't assign a variable to the source - check that this is what is intended
+INFORMATION: StructureMap/SDOHCCHungerVitalSignMap: StructureMap.group[1].rule[2].source[0]: The source statement doesn't assign a variable to the source - check that this is what is intended
+INFORMATION: StructureMap/SDOHCCHungerVitalSignMap: StructureMap.group[1].rule[2].rule[0].source[0]: The source statement doesn't assign a variable to the source - check that this is what is intended
+INFORMATION: StructureMap/SDOHCCHungerVitalSignMap: StructureMap.group[1].rule[3].source[0]: The source statement doesn't assign a variable to the source - check that this is what is intended
+INFORMATION: StructureMap/SDOHCCHungerVitalSignMap: StructureMap.group[1].rule[4].source[0]: The source statement doesn't assign a variable to the source - check that this is what is intended
+INFORMATION: StructureMap/SDOHCCHungerVitalSignMap: StructureMap.group[1].rule[5].source[0]: The source statement doesn't assign a variable to the source - check that this is what is intended
+INFORMATION: StructureMap/SDOHCCHungerVitalSignMap: StructureMap.group[1].rule[6].source[0]: The source statement doesn't assign a variable to the source - check that this is what is intended
+INFORMATION: StructureMap/SDOHCCHungerVitalSignMap: StructureMap.group[1].rule[11].source[0]: The source statement doesn't assign a variable to the source - check that this is what is intended
+INFORMATION: StructureMap/SDOHCCHungerVitalSignMap: StructureMap.group[3].rule[0].source[0]: The source statement doesn't assign a variable to the source - check that this is what is intended
+INFORMATION: StructureMap/SDOHCCHungerVitalSignMap: StructureMap.group[3].rule[1].source[0]: The source statement doesn't assign a variable to the source - check that this is what is intended
+INFORMATION: StructureMap/SDOHCCHungerVitalSignMap: StructureMap.group[3].rule[1].rule[0].source[0]: The source statement doesn't assign a variable to the source - check that this is what is intended
+INFORMATION: StructureMap/SDOHCCHungerVitalSignMap: StructureMap.group[3].rule[2].source[0]: The source statement doesn't assign a variable to the source - check that this is what is intended
+INFORMATION: StructureMap/SDOHCCHungerVitalSignMap: StructureMap.group[3].rule[3].source[0]: The source statement doesn't assign a variable to the source - check that this is what is intended
+INFORMATION: StructureMap/SDOHCCHungerVitalSignMap: StructureMap.group[3].rule[4].source[0]: The source statement doesn't assign a variable to the source - check that this is what is intended
+INFORMATION: StructureMap/SDOHCCHungerVitalSignMap: StructureMap.group[3].rule[4].rule[0].source[0]: The source statement doesn't assign a variable to the source - check that this is what is intended
+INFORMATION: StructureMap/SDOHCCHungerVitalSignMap: StructureMap.group[3].rule[4].rule[0].rule[0].source[0]: The source statement doesn't assign a variable to the source - check that this is what is intended
+INFORMATION: StructureMap/SDOHCCHungerVitalSignMap: StructureMap.group[3].rule[4].rule[0].rule[1].source[0]: The source statement doesn't assign a variable to the source - check that this is what is intended
+INFORMATION: StructureMap/SDOHCCHungerVitalSignMap: StructureMap.group[3].rule[4].rule[0].rule[2].source[0]: The source statement doesn't assign a variable to the source - check that this is what is intended
+INFORMATION: StructureMap/SDOHCCHungerVitalSignMap: StructureMap.group[3].rule[5].source[0]: The source statement doesn't assign a variable to the source - check that this is what is intended
+INFORMATION: StructureMap/SDOHCCHungerVitalSignMap: StructureMap.group[3].rule[6].source[0]: The source statement doesn't assign a variable to the source - check that this is what is intended
+INFORMATION: StructureMap/SDOHCCHungerVitalSignMap: StructureMap.group[3].rule[6].rule[0].source[0]: The source statement doesn't assign a variable to the source - check that this is what is intended
+INFORMATION: StructureMap/SDOHCCHungerVitalSignMap: StructureMap.group[3].rule[6].rule[0].rule[0].source[0]: The source statement doesn't assign a variable to the source - check that this is what is intended
+INFORMATION: StructureMap/SDOHCCHungerVitalSignMap: StructureMap.group[3].rule[6].rule[0].rule[1].source[0]: The source statement doesn't assign a variable to the source - check that this is what is intended
+INFORMATION: StructureMap/SDOHCCHungerVitalSignMap: StructureMap.group[3].rule[6].rule[0].rule[2].source[0]: The source statement doesn't assign a variable to the source - check that this is what is intended
+INFORMATION: StructureMap/SDOHCCHungerVitalSignMap: StructureMap.group[3].rule[6].rule[1].source[0]: The source statement doesn't assign a variable to the source - check that this is what is intended
+INFORMATION: StructureMap/SDOHCCHungerVitalSignMap: StructureMap.group[3].rule[6].rule[1].rule[0].source[0]: The source statement doesn't assign a variable to the source - check that this is what is intended
+INFORMATION: StructureMap/SDOHCCHungerVitalSignMap: StructureMap.group[3].rule[6].rule[1].rule[1].source[0]: The source statement doesn't assign a variable to the source - check that this is what is intended
+INFORMATION: StructureMap/SDOHCCHungerVitalSignMap: StructureMap.group[3].rule[6].rule[1].rule[2].source[0]: The source statement doesn't assign a variable to the source - check that this is what is intended
+INFORMATION: StructureMap/SDOHCCHungerVitalSignMap: StructureMap.group[3].rule[10].source[0]: The source statement doesn't assign a variable to the source - check that this is what is intended
+INFORMATION: StructureMap/SDOHCCHungerVitalSignMap: StructureMap.group[3].rule[10].rule[0].source[0]: The source statement doesn't assign a variable to the source - check that this is what is intended
+INFORMATION: StructureMap/SDOHCCHungerVitalSignMap: StructureMap.group[3].rule[10].rule[1].source[0]: The source statement doesn't assign a variable to the source - check that this is what is intended
+
+INFORMATION: StructureMap/QuestionnairePopulationTransform: StructureMap.group[0].rule[0].source[0]: The source statement doesn't assign a variable to the source - check that this is what is intended
+INFORMATION: StructureMap/QuestionnairePopulationTransform: StructureMap.group[0].rule[1].source[0]: The source statement doesn't assign a variable to the source - check that this is what is intended
+INFORMATION: StructureMap/QuestionnairePopulationTransform: StructureMap.group[0].rule[2].source[0]: The source statement doesn't assign a variable to the source - check that this is what is intended
+INFORMATION: StructureMap/QuestionnairePopulationTransform: StructureMap.group[0].rule[4].source[0]: The source statement doesn't assign a variable to the source - check that this is what is intended
+INFORMATION: StructureMap/QuestionnairePopulationTransform: StructureMap.group[0].rule[4].rule[0].source[0]: The source statement doesn't assign a variable to the source - check that this is what is intended
+INFORMATION: StructureMap/QuestionnairePopulationTransform: StructureMap.group[0].rule[4].rule[0].rule[1].rule[0].source[0]: The source statement doesn't assign a variable to the source - check that this is what is intended
+INFORMATION: StructureMap/QuestionnairePopulationTransform: StructureMap.group[1].rule[0].source[0]: The source statement doesn't assign a variable to the source - check that this is what is intended
+INFORMATION: StructureMap/QuestionnairePopulationTransform: StructureMap.group[1].rule[1].source[0]: The source statement doesn't assign a variable to the source - check that this is what is intended
+INFORMATION: StructureMap/QuestionnairePopulationTransform: StructureMap.group[1].rule[2].source[0]: The source statement doesn't assign a variable to the source - check that this is what is intended
+INFORMATION: StructureMap/QuestionnairePopulationTransform: StructureMap.group[1].rule[3].source[0]: The source statement doesn't assign a variable to the source - check that this is what is intended
+INFORMATION: StructureMap/QuestionnairePopulationTransform: StructureMap.group[2].rule[0].rule[2].rule[0].source[0]: The source statement doesn't assign a variable to the source - check that this is what is intended
+
+# Bug in StructureMap static validator that doesn't handle up casting for resources from `Resource` in a Bundle.entry.resource https://chat.fhir.org/#narrow/channel/179252-IG-creation/topic/StructureMap.20QA.20message.20-.20possible.20types.20are.20Resource
+ERROR: StructureMap/QuestionnairePopulationTransform: StructureMap.group[0].rule[4].rule[0].rule[0].rule[0].source[0]: The type Bundle is not valid in the source context Bundle.entry.resource. The possible types are [Resource]
+ERROR: StructureMap/QuestionnairePopulationTransform: StructureMap.group[0].rule[4].rule[1].rule[0].source[0]: The type Bundle is not valid in the source context Bundle.entry.resource. The possible types are [Resource]
+ERROR: StructureMap/QuestionnairePopulationTransform: StructureMap.group[0].rule[4].rule[0].rule[0].rule[0].source[0]: The type Bundle is not valid in the source context Bundle.entry.resource. The possible types are [Resource]
+ERROR: StructureMap/QuestionnairePopulationTransform: StructureMap.group[0].rule[4].rule[1].rule[0].source[0]: The type Bundle is not valid in the source context Bundle.entry.resource. The possible types are [Resource]
+ERROR: StructureMap/QuestionnairePopulationTransform: StructureMap.group[2].rule[0].rule[0].source[0]: The type MedicationStatement is not valid in the source context Bundle.entry.resource. The possible types are [Resource]
+ERROR: StructureMap/QuestionnairePopulationTransform: StructureMap.group[2].rule[0].rule[1].source[0]: The type MedicationStatement is not valid in the source context Bundle.entry.resource. The possible types are [Resource]
+ERROR: StructureMap/QuestionnairePopulationTransform: StructureMap.group[2].rule[0].rule[1].rule[0].source[0]: The source path medResource.status refers to the path Bundle.entry.resource.status which is unknown

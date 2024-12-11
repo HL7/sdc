@@ -34,7 +34,7 @@ Usage: #example
     * expression = "%worriedAnsCode.exists() or %ranOutAnsCode.exists()"
 * extension[+]
   * url = "http://hl7.org/fhir/uv/sdc/StructureDefinition/sdc-questionnaire-targetStructureMap"
-  * valueCanonical = "http://hl7.org/fhir/uv/sdc/StructureMap/SDOHCC-StructureMapHungerVitalSign"
+  * valueCanonical = "http://hl7.org/fhir/uv/sdc/StructureMap/SDOHCCHungerVitalSignMap"
 * url = "http://hl7.org/fhir/uv/sdc/Questionnaire/SDOHCC-QuestionnaireHungerVitalSign"
 * name = "SDOHCCQuestionnaireHungerVitalSign"
 * title = "SDOHCC Questionnaire Hunger Vital Sign"
