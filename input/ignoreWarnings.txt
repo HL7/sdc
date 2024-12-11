@@ -1,5 +1,8 @@
 == Suppressed Messages ==
 
+# 00. The misalignment is due to an issue with the existing package-list.json.  I've reached out to the product director to get it fixed
+WARNING: The jira specification file appears to be out of date with the versions, artifacts and pages currently defined in the IG.  A proposed revised file to be reviewed and, if appropriate, submitted as a pull request against the XML folder in https://github.com/HL7/JIRA-Spec-Artifacts.  To see the differences, perform a file compare on 'template/jira-current.xml' (a normalized view of what is in Github) and 'template/jira-new.xml' (reflects current IG content)
+
 # 01. This should go away once we are using the updated version of the extensions pack
 INFORMATION: QuestionnaireResponse/adaptive-questionnaireresponse-sdc-example-phq9: QuestionnaireResponse.contained[0]/*Questionnaire/contained-adaptive-questionnaire-example-phq9*/.derivedFrom[0].extension[0].value.ofType(Coding): Reference to draft CodeSystem http://hl7.org/fhir/questionnaire-derivationType|5.2.0-ballot
 

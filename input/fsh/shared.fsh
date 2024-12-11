@@ -121,13 +121,13 @@ RuleSet: VSContains(system, code, display, weight)
   * system = {system}
   * code = {code}
   * display = {display}
-//  * extension[$valueset-containsProperty]
-//    * extension[+]
-//      * url = "code"
-//      * valueCode = #itemWeight
-//    * extension[+]
-//      * url = "value[x]"
-//      * valueDecimal = {weight}
+  * extension[$valueset-containsProperty]
+    * extension[+]
+      * url = "code"
+      * valueCode = #itemWeight
+    * extension[+]
+      * url = "value[x]"
+      * valueDecimal = {weight}
 
 //Usage: Instance: anc-quick-check
 // Define a function to generate a ruleset for item's answerOption
