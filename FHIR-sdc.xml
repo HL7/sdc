@@ -41,6 +41,7 @@
 <artifact id="Questionnaire/extract-complex-smap" key="Questionnaire-extract-complex-smap" name="Complex Extract Demonstration - StructureMap"/>
 <artifact id="Questionnaire/extract-complex-template" key="Questionnaire-extract-complex-template" name="Complex Extract Demonstration - Template"/>
 <artifact id="Questionnaire/extract-complex-template2" key="Questionnaire-extract-complex-template2" name="Complex Extract Demonstration - Template Bundle"/>
+<artifact id="StructureMap/ExtractComplexSmap" key="StructureMap-ExtractComplexSmap" name="Complex extraction structure map example"/>
 <artifact deprecated="true" key="Conformance" name="Conformance"/>
 <artifact id="Library/sdc-CHF" key="Library-sdc-CHF" name="Congestive Heart Failure Logic"/>
 <artifact id="ValueSet/dex-mimetype" key="ValueSet-dex-mimetype" name="DEX mapping language mime types"/>
@@ -69,7 +70,6 @@
 <artifact id="StructureDefinition/sdc-questionnaire-templateExtractContext" key="StructureDefinition-sdc-questionnaire-templateExtractContext" name="Extract Template - Context"/>
 <artifact id="StructureDefinition/sdc-questionnaire-templateExtractValue" key="StructureDefinition-sdc-questionnaire-templateExtractValue" name="Extract Template - Extract value"/>
 <artifact id="StructureDefinition/sdc-questionnaire-templateExtract" key="StructureDefinition-sdc-questionnaire-templateExtract" name="Extract Template - Resource"/>
-<artifact id="StructureMap/extractComplexSmap" key="StructureMap-extractComplexSmap" name="ExtractComplexSmap"/>
 <artifact deprecated="true" id="StructureDefinition/sdc-questionnaire-extract" key="StructureDefinition-sdc-questionnaire-extract" name="Extractable Questionnaire"/>
 <artifact id="StructureDefinition/sdc-questionnaire-extr-defn" key="StructureDefinition-sdc-questionnaire-extr-defn" name="Extractable Questionnaire - Definition"/>
 <artifact id="StructureDefinition/sdc-questionnaire-extr-obsn" key="StructureDefinition-sdc-questionnaire-extr-obsn" name="Extractable Questionnaire - Observation"/>
@@ -125,6 +125,7 @@
 <artifact id="SearchParameter/questionnaire-definition" key="SearchParameter-questionnaire-definition" name="Questionnaire Item definition"/>
 <artifact id="ValueSet/launchContext" key="ValueSet-launchContext" name="Questionnaire Launch Context"/>
 <artifact id="ValueSet/performerType" key="ValueSet-performerType" name="Questionnaire Performer Type"/>
+<artifact id="StructureMap/QuestionnairePopulationTransform" key="StructureMap-QuestionnairePopulationTransform" name="Questionnaire Population Transform Example"/>
 <artifact id="StructureDefinition/sdc-servicerequest" key="StructureDefinition-sdc-servicerequest" name="Questionnaire Service Request"/>
 <artifact id="CodeSystem/questionnaire-answer-constraint" key="CodeSystem-questionnaire-answer-constraint" name="Questionnaire answer constraint codes"/>
 <artifact id="ValueSet/questionnaire-answer-constraint" key="ValueSet-questionnaire-answer-constraint" name="Questionnaire answer constraints value set"/>
@@ -133,7 +134,6 @@
 <artifact id="OperationDefinition/Questionnaire-process-response" key="OperationDefinition-Questionnaire-process-response" name="Questionnaire process response"/>
 <artifact id="StructureDefinition/parameters-questionnaire-process-response-in" key="StructureDefinition-parameters-questionnaire-process-response-in" name="Questionnaire process response operation input parameters"/>
 <artifact id="OperationDefinition/QuestionnaireResponse-extract" key="OperationDefinition-QuestionnaireResponse-extract" name="Questionnaire response extract to resource(s)"/>
-<artifact id="StructureMap/questionnaire-population-transform" key="StructureMap-questionnaire-population-transform" name="QuestionnairePopulationTransform"/>
 <artifact deprecated="true" id="StructureDefinition/sdc-referencesContained" key="StructureDefinition-sdc-referencesContained" name="References contained"/>
 <artifact id="StructureDefinition/sdc-rendering-criticalExtension" key="StructureDefinition-sdc-rendering-criticalExtension" name="Rendering Critical Extension"/>
 <artifact id="ServiceRequest/example" key="ServiceRequest-example" name="Request-based solicitation example - ServiceRequest"/>
@@ -147,6 +147,7 @@
 <artifact id="CapabilityStatement/sdc-form-receiver" key="CapabilityStatement-sdc-form-receiver" name="SDC Form Receiver"/>
 <artifact id="CapabilityStatement/sdc-form-response-manager" key="CapabilityStatement-sdc-form-response-manager" name="SDC Form Response Manager"/>
 <artifact id="StructureDefinition/sdc-library" key="StructureDefinition-sdc-library" name="SDC Library"/>
+<artifact deprecated="true" id="StructureMap/questionnaire-population-transform" key="StructureMap-questionnaire-population-transform" name="SDC Map population StructureMap example"/>
 <artifact id="QuestionnaireResponse/map-populate-out" key="QuestionnaireResponse-map-populate-out" name="SDC Map population StructureMap example output"/>
 <artifact id="Bundle/map-population-example" key="Bundle-map-population-example" name="SDC Map population source bundle example"/>
 <artifact id="StructureDefinition/sdc-questionnaire-modular" key="StructureDefinition-sdc-questionnaire-modular" name="SDC Modular Questionnaire"/>
@@ -187,7 +188,8 @@
 <artifact id="ValueSet/sdc-profile-example" key="ValueSet-sdc-profile-example" name="SDC-ValueSet AHRQ_Medication_Q1"/>
 <artifact id="Questionnaire/questionnaire-sdc-profile-example-weight-height-tracking-panel" key="Questionnaire-questionnaire-sdc-profile-example-weight-height-tracking-panel" name="SDC-Weight and Height Tracking Panel"/>
 <artifact id="Questionnaire/SDOHCC-QuestionnaireHungerVitalSign" key="Questionnaire-SDOHCC-QuestionnaireHungerVitalSign" name="SDOHCC Questionnaire Hunger Vital Sign"/>
-<artifact id="StructureMap/SDOHCC-StructureMapHungerVitalSign" key="StructureMap-SDOHCC-StructureMapHungerVitalSign" name="SDOHCCHungerVitalSignMap"/>
+<artifact deprecated="true" id="StructureMap/SDOHCC-StructureMapHungerVitalSign" key="StructureMap-SDOHCC-StructureMapHungerVitalSign" name="SDOHCC StructureMap Hunger Vital Sign"/>
+<artifact id="StructureMap/SDOHCCHungerVitalSignMap" key="StructureMap-SDOHCCHungerVitalSignMap" name="SDOHCC StructureMap HungerVitalSign"/>
 <artifact id="StructureDefinition/sdc-questionnaire-search" key="StructureDefinition-sdc-questionnaire-search" name="Search Questionnaire"/>
 <artifact id="StructureDefinition/sdc-servicerequest-questionnaire" key="StructureDefinition-sdc-servicerequest-questionnaire" name="ServiceRequest Questionnaire"/>
 <artifact id="StructureDefinition/sdc-questionnaire-shortText" key="StructureDefinition-sdc-questionnaire-shortText" name="Short Text"/>

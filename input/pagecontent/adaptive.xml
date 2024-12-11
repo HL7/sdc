@@ -9,7 +9,9 @@
     next question based on IRT algorithms.  The questions are selected to quickly obtain the necessary outcomes (e.g. assessing a person's physical
     function) using fewer questions rather than administering a large question bank.  These small sets of questions still provide the necessary confidence and
     scores required to interpret the data appropriately as if the whole questionnaire was administered. The <a href="StructureDefinition-sdc-questionnaire-adapt.html">Adaptive Questionnaire Profile</a> 
-    describes the structure, extensions, and metadata required to define an adaptive questionnaire.
+    describes the structure, extensions, and metadata required to define an adaptive questionnaire, while the <a href="StructureDefinition-sdc-questionnaireresponse-adapt.html">Adaptive QuestionnaireResponse Profile</a> defines how 
+    the responses are captured during administration. The adaptive process relies on the <a href="OperationDefinition-Questionnaire-next-question.html">$next-question</a> operation to dynamically determine and retrieve 
+    subsequent questions based on previous answers.
   </p>
   <a name="model"> </a>
   <h3>Adaptive Questionnaire Administration Abstract Model and Actors</h3>
@@ -39,7 +41,7 @@
   <p>
     As shown in Figure 1 above, the Patient Facing Administration App (EHR, Care Delivery System, Independent App or SMART on FHIR App) acts as the client
     and initiates the administration process.<br/><br/>
-    The following section describes the steps that take place when completing an adaptive Questionnaire and also provides examples of the content sent to and received back from the 'next-question' operation. With regard to the server's response, it is possible that more than one new question is returned in the questionnaire, and previously sent questions that were unanswered might not be sent back by the server.
+    The following section describes the steps that take place when completing an adaptive Questionnaire and also provides examples of the content sent to and received back from the <a href="OperationDefinition-Questionnaire-next-question.html">next question</a> operation. With regard to the server's response, it is possible that more than one new question is returned in the questionnaire, and previously sent questions that were unanswered might not be sent back by the server.
   </p>
   <ul>
     <li>
@@ -78,6 +80,7 @@
           {
             "resourceType": "Questionnaire",
             "id": "q",
+            "derivedFrom": "http://example.org/fhir/Questionnaire/12345"
 
             <b>//no items since initiating the adaptive questionnaire</b>
             ...
@@ -105,6 +108,7 @@
           {
             "resourceType": "Questionnaire",
             "id": "q",
+            "derivedFrom": "http://example.org/fhir/Questionnaire/12345",
            
             <b>// First Item being sent back</b>
             "item": [
@@ -150,6 +154,7 @@
           {
             "resourceType": "Questionnaire",
             "id": "q",
+            "derivedFrom": "http://example.org/fhir/Questionnaire/12345",
            
             <b>// List items here that have been already administered.</b>
             "item": [
@@ -203,6 +208,7 @@
           {
             "resourceType": "Questionnaire",
             "id": "Id of the Questionnaire Instance on which operation is being invoked",
+            "derivedFrom": "http://example.org/fhir/Questionnaire/12345",
            
             "item": [
             <b>// Item already administered</b>
@@ -285,6 +291,7 @@
           {
             "resourceType": "Questionnaire",
             "id": "Id of the Questionnaire Instance on which operation is being invoked",
+            "derivedFrom": "http://example.org/fhir/Questionnaire/12345",
            
             "item": [
             <b>// Items already administered</b>

@@ -8,7 +8,7 @@ Description: "A complex expression that provides a list of the allowed options t
 * ^context[=].expression = "Questionnaire.item"
 * ^context[+].type = #element
 * ^context[=].expression = "ElementDefinition"
-* ^contextInvariant = "type.exists(code='Coding') or all(type='choice' or type='open-choice')"
+* ^contextInvariant = "ofType(ElementDefinition).type.exists(code='Coding') or where(%resource.is(Questionnaire)).exists(type.first()='choice' or type.first()='open-choice')"
 * . 0..*
 * . ^short = "Expression constraining allowed answers"
 * . ^definition = "A complex expression that provides a list of the allowed options that should be enabled or disabled based on the evaluation of a provided expression.  It allows toggling of allowed answers based on context, including the answers provided to other expressions."

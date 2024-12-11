@@ -173,3 +173,5 @@ resources:
     description: Indicates if a questionnaire is adaptive - either set to true or set the base URL of the server that can perform the nextQuestion operation of the questionnaire
   StructureDefinition/sdc-questionnaire-preferredTerminologyServer:
     description: Indicates the terminology server(s) that are known to be capable of returning and potentially expanding the value set(s) associated with the whole questionnaire or a particular group or question within the questionnaire (depending on where the extension appears).
+  StructureMap/QuestionnairePopulationTransform:
+    description: An example of a StructureMap used to support population of a QuestionnaireResponse from a search bundle

@@ -9,7 +9,7 @@ Description: "Profile used to validate the parameters that are the output of the
   * ^slicing.rules = #open
 * parameter contains out 0..*
 * parameter[out]
-  * name = "out" (exactly)
+  * name = "return" (exactly)
   * value[x] ..0
-  * resource only SDCQuestionnaireAdapt
+  * resource only SDCQuestionnaireResponseAdapt
   * part ..0
