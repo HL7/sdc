@@ -7,7 +7,7 @@ Description: "The inclusive lower bound on the range of allowed values for a 'qu
 * ^context[=].expression = "Questionnaire.item"
 * ^context[+].type = #element
 * ^context[=].expression = "ElementDefinition"
-* ^contextInvariant = "type.exists(code='Quantity') or exists(type='quantity')"
+* ^contextInvariant = "ofType(ElementDefinition).type.exists(code='Quantity') or where(%resource.is(Questionnaire)).exists(type.first()='quantity')"
 * . 0..1
 * . ^short = "Must be >= this value"
 * . ^definition = "The inclusive lower bound on the range of allowed values for a 'quantity' type question.  Open Issue: Revisit whether this should be folded into the regular minValue extension once there are better capabilities around defining conformance expectations regarding extensions."

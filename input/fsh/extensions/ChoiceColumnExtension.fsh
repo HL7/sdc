@@ -7,7 +7,7 @@ Description: "Provides guidelines for rendering multi-column choices.  I.e. when
 * ^context[=].expression = "Questionnaire.item"
 * ^context[+].type = #element
 * ^context[=].expression = "ElementDefinition"
-* ^contextInvariant = "type.exists(code='Coding' or code='Reference') or exists(type='choice' or type='open-choice' or type='reference')"
+* ^contextInvariant = "ofType(ElementDefinition).type.exists(code='Coding' or code='Reference') or where(%resource.is(Questionnaire)).exists(type.first()='choice' or type.first()='open-choice' or type.first()='reference')"
 * . 0..*
 * . ^short = "Guide for rendering multi-column choices"
 * . ^definition = "Provides guidelines for rendering multi-column choices.  I.e. when displaying a list of codes (for `choice` or `open-choice` items) or a list of resources (for `reference` items), this extension allows the drop-down to have multiple columns.  For codes, the author can pick additional code system properties to display - such as alternate display names strength or form for drug codes, etc.  For references, the author can choose particular columns from the resource (e.g. first name, last name, specialty, address)."
