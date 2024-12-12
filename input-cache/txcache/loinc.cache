@@ -29,8 +29,8 @@ e: {
   "resourceType" : "ValueSet",
   "status" : "active",
   "expansion" : {
-    "identifier" : "urn:uuid:13c120df-0d8c-4d4f-aff5-4872734fb1c0",
-    "timestamp" : "2024-12-05T14:53:59.160Z",
+    "identifier" : "urn:uuid:da1fa42a-8ff5-43f8-9d26-7af0222e01a8",
+    "timestamp" : "2024-12-11T23:32:01.644Z",
     "total" : 4,
     "offset" : 0,
     "parameter" : [{
@@ -208,175 +208,8 @@ e: {
   }
 }}####
 e: {
-  "valueSet" : {
-  "resourceType" : "ValueSet",
-  "status" : "active",
-  "expansion" : {
-    "identifier" : "urn:uuid:c0c78359-c4f4-4956-9db0-f937efb72702",
-    "timestamp" : "2024-12-05T14:53:59.395Z",
-    "total" : 10,
-    "offset" : 0,
-    "parameter" : [{
-      "name" : "excludeNested",
-      "valueBoolean" : true
-    },
-    {
-      "name" : "offset",
-      "valueInteger" : 0
-    },
-    {
-      "name" : "count",
-      "valueInteger" : 1000
-    },
-    {
-      "name" : "used-codesystem",
-      "valueUri" : "http://loinc.org|2.78"
-    },
-    {
-      "name" : "version",
-      "valueUri" : "http://loinc.org|2.78"
-    }],
-    "property" : [{
-      "code" : "label",
-      "uri" : "http://hl7.org/fhir/concept-properties#label"
-    },
-    {
-      "code" : "order",
-      "uri" : "http://hl7.org/fhir/concept-properties#order"
-    }],
-    "contains" : [{
-      "system" : "http://loinc.org",
-      "code" : "LA20271-5",
-      "display" : "Medications",
-      "property" : [{
-        "code" : "label",
-        "valueString" : "a."
-      },
-      {
-        "code" : "order",
-        "valueDecimal" : 1
-      }]
-    },
-    {
-      "system" : "http://loinc.org",
-      "code" : "LA20335-8",
-      "display" : "Biological products",
-      "property" : [{
-        "code" : "label",
-        "valueString" : "b."
-      },
-      {
-        "code" : "order",
-        "valueDecimal" : 2
-      }]
-    },
-    {
-      "system" : "http://loinc.org",
-      "code" : "LA20336-6",
-      "display" : "Nutritional products",
-      "property" : [{
-        "code" : "label",
-        "valueString" : "c."
-      },
-      {
-        "code" : "order",
-        "valueDecimal" : 3
-      }]
-    },
-    {
-      "system" : "http://loinc.org",
-      "code" : "LA20337-4",
-      "display" : "Expressed human breast milk",
-      "property" : [{
-        "code" : "label",
-        "valueString" : "d."
-      },
-      {
-        "code" : "order",
-        "valueDecimal" : 4
-      }]
-    },
-    {
-      "system" : "http://loinc.org",
-      "code" : "LA20338-2",
-      "display" : "Medical gases (e.g., oxygen, nitrogen, nitrous oxide)",
-      "property" : [{
-        "code" : "label",
-        "valueString" : "e."
-      },
-      {
-        "code" : "order",
-        "valueDecimal" : 5
-      }]
-    },
-    {
-      "system" : "http://loinc.org",
-      "code" : "LA20339-0",
-      "display" : "Contrast media",
-      "property" : [{
-        "code" : "label",
-        "valueString" : "f."
-      },
-      {
-        "code" : "order",
-        "valueDecimal" : 6
-      }]
-    },
-    {
-      "system" : "http://loinc.org",
-      "code" : "LA20340-8",
-      "display" : "Radiopharmaceuticals",
-      "property" : [{
-        "code" : "label",
-        "valueString" : "g."
-      },
-      {
-        "code" : "order",
-        "valueDecimal" : 7
-      }]
-    },
-    {
-      "system" : "http://loinc.org",
-      "code" : "LA20341-6",
-      "display" : "Patient food (not suspected in drug-food interactions)",
-      "property" : [{
-        "code" : "label",
-        "valueString" : "h."
-      },
-      {
-        "code" : "order",
-        "valueDecimal" : 8
-      }]
-    },
-    {
-      "system" : "http://loinc.org",
-      "code" : "LA20342-4",
-      "display" : "Drug-drug, drug-food, or adverse drug reaction as a result of a prescription and/or administration of a drug and/or food prior to admission",
-      "property" : [{
-        "code" : "label",
-        "valueString" : "i."
-      },
-      {
-        "code" : "order",
-        "valueDecimal" : 9
-      }]
-    },
-    {
-      "system" : "http://loinc.org",
-      "code" : "LA20343-2",
-      "display" : "Other substance: PLEASE SPECIFY",
-      "property" : [{
-        "code" : "label",
-        "valueString" : "j."
-      },
-      {
-        "code" : "order",
-        "valueDecimal" : 10
-      }]
-    }]
-  }
-},
-  "error" : ""
+  "from-server" : true,
+  "error" : "Cannot invoke \"org.hl7.fhir.r4.model.Extension.getValue()\" because the return value of \"org.hl7.fhir.r4.model.Extension.getExtensionByUrl(String)\" is null"
 }
 -------------------------------------------------------------------------------------
 {"hierarchical" : false, "valueSet" :{
@@ -437,97 +270,8 @@ e: {
   }
 }}####
 e: {
-  "valueSet" : {
-  "resourceType" : "ValueSet",
-  "status" : "active",
-  "expansion" : {
-    "identifier" : "urn:uuid:64ef84c2-f7c1-44ab-91d3-465df1f236bb",
-    "timestamp" : "2024-12-05T14:53:59.691Z",
-    "total" : 4,
-    "offset" : 0,
-    "parameter" : [{
-      "name" : "excludeNested",
-      "valueBoolean" : true
-    },
-    {
-      "name" : "offset",
-      "valueInteger" : 0
-    },
-    {
-      "name" : "count",
-      "valueInteger" : 1000
-    },
-    {
-      "name" : "used-codesystem",
-      "valueUri" : "http://loinc.org|2.78"
-    },
-    {
-      "name" : "version",
-      "valueUri" : "http://loinc.org|2.78"
-    }],
-    "property" : [{
-      "code" : "label",
-      "uri" : "http://hl7.org/fhir/concept-properties#label"
-    },
-    {
-      "code" : "order",
-      "uri" : "http://hl7.org/fhir/concept-properties#order"
-    }],
-    "contains" : [{
-      "system" : "http://loinc.org",
-      "code" : "LA20278-0",
-      "display" : "Prescription or over-the-counter (including herbal supplements)",
-      "property" : [{
-        "code" : "label",
-        "valueString" : "a."
-      },
-      {
-        "code" : "order",
-        "valueDecimal" : 1
-      }]
-    },
-    {
-      "system" : "http://loinc.org",
-      "code" : "LA20298-8",
-      "display" : "Compounded preparations",
-      "property" : [{
-        "code" : "label",
-        "valueString" : "b."
-      },
-      {
-        "code" : "order",
-        "valueDecimal" : 2
-      }]
-    },
-    {
-      "system" : "http://loinc.org",
-      "code" : "LA20299-6",
-      "display" : "Investigational drugs",
-      "property" : [{
-        "code" : "label",
-        "valueString" : "c."
-      },
-      {
-        "code" : "order",
-        "valueDecimal" : 3
-      }]
-    },
-    {
-      "system" : "http://loinc.org",
-      "code" : "LA4489-6",
-      "display" : "Unknown",
-      "property" : [{
-        "code" : "label",
-        "valueString" : "d."
-      },
-      {
-        "code" : "order",
-        "valueDecimal" : 4
-      }]
-    }]
-  }
-},
-  "error" : ""
+  "from-server" : true,
+  "error" : "Cannot invoke \"org.hl7.fhir.r4.model.Extension.getValue()\" because the return value of \"org.hl7.fhir.r4.model.Extension.getExtensionByUrl(String)\" is null"
 }
 -------------------------------------------------------------------------------------
 {"hierarchical" : false, "valueSet" :{
@@ -552,8 +296,8 @@ e: {
   "resourceType" : "ValueSet",
   "status" : "active",
   "expansion" : {
-    "identifier" : "urn:uuid:ba8bf16f-5b27-4bb1-a5b5-7bed27db7d12",
-    "timestamp" : "2024-12-05T14:53:59.910Z",
+    "identifier" : "urn:uuid:3c0cd70b-88be-4baa-9637-cb6338966b88",
+    "timestamp" : "2024-12-11T23:32:03.409Z",
     "total" : 2,
     "offset" : 0,
     "parameter" : [{
@@ -661,110 +405,8 @@ e: {
   }
 }}####
 e: {
-  "valueSet" : {
-  "resourceType" : "ValueSet",
-  "status" : "active",
-  "expansion" : {
-    "identifier" : "urn:uuid:9d430a59-10a4-46c0-b55e-1cf03b420109",
-    "timestamp" : "2024-12-05T14:54:00.129Z",
-    "total" : 5,
-    "offset" : 0,
-    "parameter" : [{
-      "name" : "excludeNested",
-      "valueBoolean" : true
-    },
-    {
-      "name" : "offset",
-      "valueInteger" : 0
-    },
-    {
-      "name" : "count",
-      "valueInteger" : 1000
-    },
-    {
-      "name" : "used-codesystem",
-      "valueUri" : "http://loinc.org|2.78"
-    },
-    {
-      "name" : "version",
-      "valueUri" : "http://loinc.org|2.78"
-    }],
-    "property" : [{
-      "code" : "label",
-      "uri" : "http://hl7.org/fhir/concept-properties#label"
-    },
-    {
-      "code" : "order",
-      "uri" : "http://hl7.org/fhir/concept-properties#order"
-    }],
-    "contains" : [{
-      "system" : "http://loinc.org",
-      "code" : "LA20273-1",
-      "display" : "Dietary supplements (other than vitamins or minerals)",
-      "property" : [{
-        "code" : "label",
-        "valueString" : "a."
-      },
-      {
-        "code" : "order",
-        "valueDecimal" : 1
-      }]
-    },
-    {
-      "system" : "http://loinc.org",
-      "code" : "LA16117-6",
-      "display" : "Vitamins or minerals",
-      "property" : [{
-        "code" : "label",
-        "valueString" : "b."
-      },
-      {
-        "code" : "order",
-        "valueDecimal" : 2
-      }]
-    },
-    {
-      "system" : "http://loinc.org",
-      "code" : "LA20320-0",
-      "display" : "Enteral nutritional products, including infant formula",
-      "property" : [{
-        "code" : "label",
-        "valueString" : "c."
-      },
-      {
-        "code" : "order",
-        "valueDecimal" : 3
-      }]
-    },
-    {
-      "system" : "http://loinc.org",
-      "code" : "LA20321-8",
-      "display" : "Parenteral nutritional products",
-      "property" : [{
-        "code" : "label",
-        "valueString" : "d."
-      },
-      {
-        "code" : "order",
-        "valueDecimal" : 4
-      }]
-    },
-    {
-      "system" : "http://loinc.org",
-      "code" : "LA20318-4",
-      "display" : "Other: PLEASE SPECIFY",
-      "property" : [{
-        "code" : "label",
-        "valueString" : "e."
-      },
-      {
-        "code" : "order",
-        "valueDecimal" : 5
-      }]
-    }]
-  }
-},
-  "error" : ""
+  "from-server" : true,
+  "error" : "Cannot invoke \"org.hl7.fhir.r4.model.Extension.getValue()\" because the return value of \"org.hl7.fhir.r4.model.Extension.getExtensionByUrl(String)\" is null"
 }
 -------------------------------------------------------------------------------------
 {"hierarchical" : false, "valueSet" :{
@@ -809,8 +451,8 @@ e: {
   "resourceType" : "ValueSet",
   "status" : "active",
   "expansion" : {
-    "identifier" : "urn:uuid:8a9dcc54-cbd7-4af8-945e-91865349d390",
-    "timestamp" : "2024-12-05T14:54:00.363Z",
+    "identifier" : "urn:uuid:9297d7de-e02f-42c6-bb14-ebe5ffb7aa89",
+    "timestamp" : "2024-12-11T23:32:04.862Z",
     "total" : 4,
     "offset" : 0,
     "parameter" : [{
@@ -932,8 +574,8 @@ e: {
   "resourceType" : "ValueSet",
   "status" : "active",
   "expansion" : {
-    "identifier" : "urn:uuid:16b85395-98e4-405a-a415-033fc41395a2",
-    "timestamp" : "2024-12-05T14:54:00.582Z",
+    "identifier" : "urn:uuid:87f8cb55-93a9-4a44-8cb4-1f8213975064",
+    "timestamp" : "2024-12-11T23:32:05.659Z",
     "total" : 15,
     "offset" : 0,
     "parameter" : [{
@@ -1070,8 +712,8 @@ e: {
   "resourceType" : "ValueSet",
   "status" : "active",
   "expansion" : {
-    "identifier" : "urn:uuid:912f0f6a-5d13-41fd-b33d-5314e7ec94a9",
-    "timestamp" : "2024-12-05T14:54:00.785Z",
+    "identifier" : "urn:uuid:6d9a6406-b7d8-447d-8495-937c621d3a59",
+    "timestamp" : "2024-12-11T23:32:05.987Z",
     "total" : 5,
     "offset" : 0,
     "parameter" : [{
@@ -1150,8 +792,8 @@ e: {
   "resourceType" : "ValueSet",
   "status" : "active",
   "expansion" : {
-    "identifier" : "urn:uuid:c98557bc-654a-4c72-93a1-b15f22c24742",
-    "timestamp" : "2024-12-05T14:54:00.988Z",
+    "identifier" : "urn:uuid:49d729ee-1d53-452a-8213-e70ef58676c2",
+    "timestamp" : "2024-12-11T23:32:06.284Z",
     "total" : 3,
     "offset" : 0,
     "parameter" : [{
@@ -1220,8 +862,8 @@ e: {
   "resourceType" : "ValueSet",
   "status" : "active",
   "expansion" : {
-    "identifier" : "urn:uuid:50f60bca-4128-4132-abc8-16bf652bf111",
-    "timestamp" : "2024-12-05T14:54:01.191Z",
+    "identifier" : "urn:uuid:2693686a-900f-4e4e-b1a0-5a271e834801",
+    "timestamp" : "2024-12-11T23:32:06.612Z",
     "total" : 3,
     "offset" : 0,
     "parameter" : [{
@@ -1290,8 +932,8 @@ e: {
   "resourceType" : "ValueSet",
   "status" : "active",
   "expansion" : {
-    "identifier" : "urn:uuid:ad1d3269-4484-4c88-882e-f411a0366107",
-    "timestamp" : "2024-12-05T14:54:01.395Z",
+    "identifier" : "urn:uuid:e44f944d-ea25-4668-ac58-dc212d2ee014",
+    "timestamp" : "2024-12-11T23:32:07.081Z",
     "total" : 3,
     "offset" : 0,
     "parameter" : [{
@@ -1360,8 +1002,8 @@ e: {
   "resourceType" : "ValueSet",
   "status" : "active",
   "expansion" : {
-    "identifier" : "urn:uuid:de78d936-42c3-45e4-afc3-e3f29619ee23",
-    "timestamp" : "2024-12-05T14:54:01.598Z",
+    "identifier" : "urn:uuid:12677162-2b7c-410b-9fc2-97d479baaedd",
+    "timestamp" : "2024-12-11T23:32:07.394Z",
     "total" : 3,
     "offset" : 0,
     "parameter" : [{
@@ -1434,8 +1076,8 @@ e: {
   "resourceType" : "ValueSet",
   "status" : "active",
   "expansion" : {
-    "identifier" : "urn:uuid:eaf6ca83-b0eb-4c67-937e-45d678d7bb81",
-    "timestamp" : "2024-12-05T14:54:01.801Z",
+    "identifier" : "urn:uuid:65f5ad68-55f7-4ab2-86a7-d92300b6854c",
+    "timestamp" : "2024-12-11T23:32:07.706Z",
     "total" : 4,
     "offset" : 0,
     "parameter" : [{
@@ -1537,8 +1179,8 @@ e: {
   "resourceType" : "ValueSet",
   "status" : "active",
   "expansion" : {
-    "identifier" : "urn:uuid:4d927b63-e48e-4516-8601-a25c58404465",
-    "timestamp" : "2024-12-05T14:54:02.004Z",
+    "identifier" : "urn:uuid:46ec1c0d-846c-4456-81d2-7f120c5a010e",
+    "timestamp" : "2024-12-11T23:32:08.034Z",
     "total" : 10,
     "offset" : 0,
     "parameter" : [{
@@ -1638,8 +1280,8 @@ e: {
   "resourceType" : "ValueSet",
   "status" : "active",
   "expansion" : {
-    "identifier" : "urn:uuid:b4b52b03-264a-4c11-8110-053dbb76d207",
-    "timestamp" : "2024-12-05T14:54:02.207Z",
+    "identifier" : "urn:uuid:074dab33-61f5-4d95-8031-b247dedfea65",
+    "timestamp" : "2024-12-11T23:32:08.347Z",
     "total" : 2,
     "offset" : 0,
     "parameter" : [{
@@ -1755,8 +1397,8 @@ e: {
   "resourceType" : "ValueSet",
   "status" : "active",
   "expansion" : {
-    "identifier" : "urn:uuid:edfb6314-75ff-47e6-9508-3ff1a126e93e",
-    "timestamp" : "2024-12-05T14:54:02.410Z",
+    "identifier" : "urn:uuid:814fef27-1419-48ff-b8f0-b600baf99ad2",
+    "timestamp" : "2024-12-11T23:32:08.644Z",
     "total" : 16,
     "offset" : 0,
     "parameter" : [{
@@ -1906,77 +1548,8 @@ e: {
   }
 }}####
 e: {
-  "valueSet" : {
-  "resourceType" : "ValueSet",
-  "status" : "active",
-  "expansion" : {
-    "identifier" : "urn:uuid:02da9f2b-17b7-4f57-88ff-04285c4542ce",
-    "timestamp" : "2024-12-05T14:54:02.754Z",
-    "total" : 4,
-    "offset" : 0,
-    "parameter" : [{
-      "name" : "excludeNested",
-      "valueBoolean" : true
-    },
-    {
-      "name" : "offset",
-      "valueInteger" : 0
-    },
-    {
-      "name" : "count",
-      "valueInteger" : 1000
-    },
-    {
-      "name" : "used-codesystem",
-      "valueUri" : "http://loinc.org|2.78"
-    },
-    {
-      "name" : "version",
-      "valueUri" : "http://loinc.org|2.78"
-    }],
-    "property" : [{
-      "code" : "label",
-      "uri" : "http://hl7.org/fhir/concept-properties#label"
-    }],
-    "contains" : [{
-      "system" : "http://loinc.org",
-      "code" : "LA20752-4",
-      "display" : "Within 24 hours",
-      "property" : [{
-        "code" : "label",
-        "valueString" : "A."
-      }]
-    },
-    {
-      "system" : "http://loinc.org",
-      "code" : "LA20753-2",
-      "display" : "After 24 hours but before 3 days",
-      "property" : [{
-        "code" : "label",
-        "valueString" : "B."
-      }]
-    },
-    {
-      "system" : "http://loinc.org",
-      "code" : "LA20754-0",
-      "display" : "Three days or later",
-      "property" : [{
-        "code" : "label",
-        "valueString" : "C."
-      }]
-    },
-    {
-      "system" : "http://loinc.org",
-      "code" : "LA4489-6",
-      "display" : "Unknown",
-      "property" : [{
-        "code" : "label",
-        "valueString" : "D."
-      }]
-    }]
-  }
-},
-  "error" : ""
+  "from-server" : true,
+  "error" : "Cannot invoke \"org.hl7.fhir.r4.model.Extension.getValue()\" because the return value of \"org.hl7.fhir.r4.model.Extension.getExtensionByUrl(String)\" is null"
 }
 -------------------------------------------------------------------------------------
 {"hierarchical" : false, "valueSet" :{
@@ -2033,8 +1606,8 @@ e: {
   "resourceType" : "ValueSet",
   "status" : "active",
   "expansion" : {
-    "identifier" : "urn:uuid:17ade579-4dfc-469a-9328-f4cf8fd64b31",
-    "timestamp" : "2024-12-05T14:54:07.035Z",
+    "identifier" : "urn:uuid:87697963-59f5-4249-b98e-9b14790b82fc",
+    "timestamp" : "2024-12-11T23:32:14.315Z",
     "total" : 10,
     "offset" : 0,
     "parameter" : [{
@@ -2128,6 +1701,7 @@ v: {
   "system" : "http://loinc.org",
   "version" : "2.78",
   "server" : "http://tx.fhir.org/r4",
+  "unknown-systems" : "",
   "issues" : {
   "resourceType" : "OperationOutcome"
 }
@@ -2150,6 +1724,7 @@ v: {
   "system" : "http://loinc.org",
   "version" : "2.78",
   "server" : "http://tx.fhir.org/r4",
+  "unknown-systems" : "",
   "issues" : {
   "resourceType" : "OperationOutcome"
 }
@@ -2172,6 +1747,7 @@ v: {
   "system" : "http://loinc.org",
   "version" : "2.78",
   "server" : "http://tx.fhir.org/r4",
+  "unknown-systems" : "",
   "issues" : {
   "resourceType" : "OperationOutcome"
 }
@@ -2194,6 +1770,7 @@ v: {
   "system" : "http://loinc.org",
   "version" : "2.78",
   "server" : "http://tx.fhir.org/r4",
+  "unknown-systems" : "",
   "issues" : {
   "resourceType" : "OperationOutcome"
 }
@@ -2216,6 +1793,7 @@ v: {
   "system" : "http://loinc.org",
   "version" : "2.78",
   "server" : "http://tx.fhir.org/r4",
+  "unknown-systems" : "",
   "issues" : {
   "resourceType" : "OperationOutcome"
 }
@@ -2238,6 +1816,7 @@ v: {
   "system" : "http://loinc.org",
   "version" : "2.78",
   "server" : "http://tx.fhir.org/r4",
+  "unknown-systems" : "",
   "issues" : {
   "resourceType" : "OperationOutcome"
 }
@@ -2260,6 +1839,7 @@ v: {
   "system" : "http://loinc.org",
   "version" : "2.78",
   "server" : "http://tx.fhir.org/r4",
+  "unknown-systems" : "",
   "issues" : {
   "resourceType" : "OperationOutcome"
 }
@@ -2282,6 +1862,7 @@ v: {
   "system" : "http://loinc.org",
   "version" : "2.78",
   "server" : "http://tx.fhir.org/r4",
+  "unknown-systems" : "",
   "issues" : {
   "resourceType" : "OperationOutcome"
 }
@@ -2304,6 +1885,7 @@ v: {
   "system" : "http://loinc.org",
   "version" : "2.78",
   "server" : "http://tx.fhir.org/r4",
+  "unknown-systems" : "",
   "issues" : {
   "resourceType" : "OperationOutcome"
 }
@@ -2326,6 +1908,7 @@ v: {
   "system" : "http://loinc.org",
   "version" : "2.78",
   "server" : "http://tx.fhir.org/r4",
+  "unknown-systems" : "",
   "issues" : {
   "resourceType" : "OperationOutcome"
 }
@@ -2348,6 +1931,7 @@ v: {
   "system" : "http://loinc.org",
   "version" : "2.78",
   "server" : "http://tx.fhir.org/r4",
+  "unknown-systems" : "",
   "issues" : {
   "resourceType" : "OperationOutcome"
 }
@@ -2370,6 +1954,7 @@ v: {
   "system" : "http://loinc.org",
   "version" : "2.78",
   "server" : "http://tx.fhir.org/r4",
+  "unknown-systems" : "",
   "issues" : {
   "resourceType" : "OperationOutcome"
 }
@@ -2392,6 +1977,7 @@ v: {
   "system" : "http://loinc.org",
   "version" : "2.78",
   "server" : "http://tx.fhir.org/r4",
+  "unknown-systems" : "",
   "issues" : {
   "resourceType" : "OperationOutcome"
 }
@@ -2415,6 +2001,7 @@ v: {
   "system" : "http://loinc.org",
   "version" : "2.78",
   "server" : "http://tx.fhir.org/r4",
+  "unknown-systems" : "",
   "issues" : {
   "resourceType" : "OperationOutcome"
 }
@@ -2438,6 +2025,7 @@ v: {
   "system" : "http://loinc.org",
   "version" : "2.78",
   "server" : "http://tx.fhir.org/r4",
+  "unknown-systems" : "",
   "issues" : {
   "resourceType" : "OperationOutcome"
 }
@@ -2461,6 +2049,7 @@ v: {
   "system" : "http://loinc.org",
   "version" : "2.78",
   "server" : "http://tx.fhir.org/r4",
+  "unknown-systems" : "",
   "issues" : {
   "resourceType" : "OperationOutcome"
 }
@@ -2484,6 +2073,7 @@ v: {
   "system" : "http://loinc.org",
   "version" : "2.78",
   "server" : "http://tx.fhir.org/r4",
+  "unknown-systems" : "",
   "issues" : {
   "resourceType" : "OperationOutcome"
 }
@@ -2507,6 +2097,7 @@ v: {
   "system" : "http://loinc.org",
   "version" : "2.78",
   "server" : "http://tx.fhir.org/r4",
+  "unknown-systems" : "",
   "issues" : {
   "resourceType" : "OperationOutcome"
 }
@@ -2530,6 +2121,7 @@ v: {
   "system" : "http://loinc.org",
   "version" : "2.78",
   "server" : "http://tx.fhir.org/r4",
+  "unknown-systems" : "",
   "issues" : {
   "resourceType" : "OperationOutcome"
 }
@@ -2553,6 +2145,7 @@ v: {
   "system" : "http://loinc.org",
   "version" : "2.78",
   "server" : "http://tx.fhir.org/r4",
+  "unknown-systems" : "",
   "issues" : {
   "resourceType" : "OperationOutcome"
 }
@@ -2576,6 +2169,7 @@ v: {
   "system" : "http://loinc.org",
   "version" : "2.78",
   "server" : "http://tx.fhir.org/r4",
+  "unknown-systems" : "",
   "issues" : {
   "resourceType" : "OperationOutcome"
 }
@@ -2599,6 +2193,7 @@ v: {
   "system" : "http://loinc.org",
   "version" : "2.78",
   "server" : "http://tx.fhir.org/r4",
+  "unknown-systems" : "",
   "issues" : {
   "resourceType" : "OperationOutcome"
 }
@@ -2622,6 +2217,7 @@ v: {
   "system" : "http://loinc.org",
   "version" : "2.78",
   "server" : "http://tx.fhir.org/r4",
+  "unknown-systems" : "",
   "issues" : {
   "resourceType" : "OperationOutcome"
 }
@@ -2645,6 +2241,7 @@ v: {
   "system" : "http://loinc.org",
   "version" : "2.78",
   "server" : "http://tx.fhir.org/r4",
+  "unknown-systems" : "",
   "issues" : {
   "resourceType" : "OperationOutcome"
 }
@@ -2668,6 +2265,7 @@ v: {
   "system" : "http://loinc.org",
   "version" : "2.78",
   "server" : "http://tx.fhir.org/r4",
+  "unknown-systems" : "",
   "issues" : {
   "resourceType" : "OperationOutcome"
 }
@@ -2691,6 +2289,7 @@ v: {
   "system" : "http://loinc.org",
   "version" : "2.78",
   "server" : "http://tx.fhir.org/r4",
+  "unknown-systems" : "",
   "issues" : {
   "resourceType" : "OperationOutcome"
 }
@@ -2713,6 +2312,7 @@ v: {
   "system" : "http://loinc.org",
   "version" : "2.78",
   "server" : "http://tx.fhir.org/r4",
+  "unknown-systems" : "",
   "issues" : {
   "resourceType" : "OperationOutcome"
 }
@@ -2735,6 +2335,7 @@ v: {
   "system" : "http://loinc.org",
   "version" : "2.78",
   "server" : "http://tx.fhir.org/r4",
+  "unknown-systems" : "",
   "issues" : {
   "resourceType" : "OperationOutcome"
 }
@@ -2757,6 +2358,7 @@ v: {
   "system" : "http://loinc.org",
   "version" : "2.78",
   "server" : "http://tx.fhir.org/r4",
+  "unknown-systems" : "",
   "issues" : {
   "resourceType" : "OperationOutcome"
 }
@@ -2779,6 +2381,7 @@ v: {
   "system" : "http://loinc.org",
   "version" : "2.78",
   "server" : "http://tx.fhir.org/r4",
+  "unknown-systems" : "",
   "issues" : {
   "resourceType" : "OperationOutcome"
 }
@@ -2801,6 +2404,7 @@ v: {
   "system" : "http://loinc.org",
   "version" : "2.78",
   "server" : "http://tx.fhir.org/r4",
+  "unknown-systems" : "",
   "issues" : {
   "resourceType" : "OperationOutcome"
 }
@@ -2823,6 +2427,7 @@ v: {
   "system" : "http://loinc.org",
   "version" : "2.78",
   "server" : "http://tx.fhir.org/r4",
+  "unknown-systems" : "",
   "issues" : {
   "resourceType" : "OperationOutcome"
 }
@@ -2845,6 +2450,7 @@ v: {
   "system" : "http://loinc.org",
   "version" : "2.78",
   "server" : "http://tx.fhir.org/r4",
+  "unknown-systems" : "",
   "issues" : {
   "resourceType" : "OperationOutcome"
 }
@@ -2867,6 +2473,7 @@ v: {
   "system" : "http://loinc.org",
   "version" : "2.78",
   "server" : "http://tx.fhir.org/r4",
+  "unknown-systems" : "",
   "issues" : {
   "resourceType" : "OperationOutcome"
 }
@@ -2889,6 +2496,7 @@ v: {
   "system" : "http://loinc.org",
   "version" : "2.78",
   "server" : "http://tx.fhir.org/r4",
+  "unknown-systems" : "",
   "issues" : {
   "resourceType" : "OperationOutcome"
 }
@@ -2911,6 +2519,7 @@ v: {
   "system" : "http://loinc.org",
   "version" : "2.78",
   "server" : "http://tx.fhir.org/r4",
+  "unknown-systems" : "",
   "issues" : {
   "resourceType" : "OperationOutcome"
 }
@@ -2934,6 +2543,7 @@ v: {
   "system" : "http://loinc.org",
   "version" : "2.78",
   "server" : "http://tx.fhir.org/r4",
+  "unknown-systems" : "",
   "issues" : {
   "resourceType" : "OperationOutcome"
 }
@@ -2957,6 +2567,7 @@ v: {
   "system" : "http://loinc.org",
   "version" : "2.78",
   "server" : "http://tx.fhir.org/r4",
+  "unknown-systems" : "",
   "issues" : {
   "resourceType" : "OperationOutcome"
 }
@@ -2980,6 +2591,7 @@ v: {
   "system" : "http://loinc.org",
   "version" : "2.78",
   "server" : "http://tx.fhir.org/r4",
+  "unknown-systems" : "",
   "issues" : {
   "resourceType" : "OperationOutcome"
 }
@@ -3003,6 +2615,7 @@ v: {
   "system" : "http://loinc.org",
   "version" : "2.78",
   "server" : "http://tx.fhir.org/r4",
+  "unknown-systems" : "",
   "issues" : {
   "resourceType" : "OperationOutcome"
 }
@@ -3026,6 +2639,7 @@ v: {
   "system" : "http://loinc.org",
   "version" : "2.78",
   "server" : "http://tx.fhir.org/r4",
+  "unknown-systems" : "",
   "issues" : {
   "resourceType" : "OperationOutcome"
 }
@@ -3049,6 +2663,7 @@ v: {
   "system" : "http://loinc.org",
   "version" : "2.78",
   "server" : "http://tx.fhir.org/r4",
+  "unknown-systems" : "",
   "issues" : {
   "resourceType" : "OperationOutcome"
 }
@@ -3071,6 +2686,7 @@ v: {
   "system" : "http://loinc.org",
   "version" : "2.78",
   "server" : "http://tx.fhir.org/r4",
+  "unknown-systems" : "",
   "issues" : {
   "resourceType" : "OperationOutcome"
 }
@@ -3093,6 +2709,7 @@ v: {
   "system" : "http://loinc.org",
   "version" : "2.78",
   "server" : "http://tx.fhir.org/r4",
+  "unknown-systems" : "",
   "issues" : {
   "resourceType" : "OperationOutcome"
 }
@@ -3115,6 +2732,7 @@ v: {
   "system" : "http://loinc.org",
   "version" : "2.78",
   "server" : "http://tx.fhir.org/r4",
+  "unknown-systems" : "",
   "issues" : {
   "resourceType" : "OperationOutcome"
 }
@@ -3137,6 +2755,7 @@ v: {
   "system" : "http://loinc.org",
   "version" : "2.78",
   "server" : "http://tx.fhir.org/r4",
+  "unknown-systems" : "",
   "issues" : {
   "resourceType" : "OperationOutcome"
 }
@@ -3159,6 +2778,7 @@ v: {
   "system" : "http://loinc.org",
   "version" : "2.78",
   "server" : "http://tx.fhir.org/r4",
+  "unknown-systems" : "",
   "issues" : {
   "resourceType" : "OperationOutcome"
 }
@@ -3181,6 +2801,7 @@ v: {
   "system" : "http://loinc.org",
   "version" : "2.78",
   "server" : "http://tx.fhir.org/r4",
+  "unknown-systems" : "",
   "issues" : {
   "resourceType" : "OperationOutcome"
 }
@@ -3203,6 +2824,7 @@ v: {
   "system" : "http://loinc.org",
   "version" : "2.78",
   "server" : "http://tx.fhir.org/r4",
+  "unknown-systems" : "",
   "issues" : {
   "resourceType" : "OperationOutcome"
 }
@@ -3225,6 +2847,7 @@ v: {
   "system" : "http://loinc.org",
   "version" : "2.78",
   "server" : "http://tx.fhir.org/r4",
+  "unknown-systems" : "",
   "issues" : {
   "resourceType" : "OperationOutcome"
 }
@@ -3247,6 +2870,7 @@ v: {
   "system" : "http://loinc.org",
   "version" : "2.78",
   "server" : "http://tx.fhir.org/r4",
+  "unknown-systems" : "",
   "issues" : {
   "resourceType" : "OperationOutcome"
 }
@@ -3269,6 +2893,7 @@ v: {
   "system" : "http://loinc.org",
   "version" : "2.78",
   "server" : "http://tx.fhir.org/r4",
+  "unknown-systems" : "",
   "issues" : {
   "resourceType" : "OperationOutcome"
 }
@@ -3291,6 +2916,7 @@ v: {
   "system" : "http://loinc.org",
   "version" : "2.78",
   "server" : "http://tx.fhir.org/r4",
+  "unknown-systems" : "",
   "issues" : {
   "resourceType" : "OperationOutcome"
 }
@@ -3313,6 +2939,7 @@ v: {
   "system" : "http://loinc.org",
   "version" : "2.78",
   "server" : "http://tx.fhir.org/r4",
+  "unknown-systems" : "",
   "issues" : {
   "resourceType" : "OperationOutcome"
 }
@@ -3335,6 +2962,7 @@ v: {
   "system" : "http://loinc.org",
   "version" : "2.78",
   "server" : "http://tx.fhir.org/r4",
+  "unknown-systems" : "",
   "issues" : {
   "resourceType" : "OperationOutcome"
 }
@@ -3357,6 +2985,7 @@ v: {
   "system" : "http://loinc.org",
   "version" : "2.78",
   "server" : "http://tx.fhir.org/r4",
+  "unknown-systems" : "",
   "issues" : {
   "resourceType" : "OperationOutcome"
 }
@@ -3379,6 +3008,7 @@ v: {
   "system" : "http://loinc.org",
   "version" : "2.78",
   "server" : "http://tx.fhir.org/r4",
+  "unknown-systems" : "",
   "issues" : {
   "resourceType" : "OperationOutcome"
 }
@@ -3401,6 +3031,7 @@ v: {
   "system" : "http://loinc.org",
   "version" : "2.78",
   "server" : "http://tx.fhir.org/r4",
+  "unknown-systems" : "",
   "issues" : {
   "resourceType" : "OperationOutcome"
 }
@@ -3423,6 +3054,7 @@ v: {
   "system" : "http://loinc.org",
   "version" : "2.78",
   "server" : "http://tx.fhir.org/r4",
+  "unknown-systems" : "",
   "issues" : {
   "resourceType" : "OperationOutcome"
 }
@@ -3445,6 +3077,7 @@ v: {
   "system" : "http://loinc.org",
   "version" : "2.78",
   "server" : "http://tx.fhir.org/r4",
+  "unknown-systems" : "",
   "issues" : {
   "resourceType" : "OperationOutcome"
 }
@@ -3467,6 +3100,7 @@ v: {
   "system" : "http://loinc.org",
   "version" : "2.78",
   "server" : "http://tx.fhir.org/r4",
+  "unknown-systems" : "",
   "issues" : {
   "resourceType" : "OperationOutcome"
 }
@@ -3489,6 +3123,7 @@ v: {
   "system" : "http://loinc.org",
   "version" : "2.78",
   "server" : "http://tx.fhir.org/r4",
+  "unknown-systems" : "",
   "issues" : {
   "resourceType" : "OperationOutcome"
 }
@@ -3511,6 +3146,7 @@ v: {
   "system" : "http://loinc.org",
   "version" : "2.78",
   "server" : "http://tx.fhir.org/r4",
+  "unknown-systems" : "",
   "issues" : {
   "resourceType" : "OperationOutcome"
 }
@@ -3533,6 +3169,7 @@ v: {
   "system" : "http://loinc.org",
   "version" : "2.78",
   "server" : "http://tx.fhir.org/r4",
+  "unknown-systems" : "",
   "issues" : {
   "resourceType" : "OperationOutcome"
 }
@@ -3555,6 +3192,7 @@ v: {
   "system" : "http://loinc.org",
   "version" : "2.78",
   "server" : "http://tx.fhir.org/r4",
+  "unknown-systems" : "",
   "issues" : {
   "resourceType" : "OperationOutcome"
 }
@@ -3577,6 +3215,7 @@ v: {
   "system" : "http://loinc.org",
   "version" : "2.78",
   "server" : "http://tx.fhir.org/r4",
+  "unknown-systems" : "",
   "issues" : {
   "resourceType" : "OperationOutcome"
 }
@@ -3599,6 +3238,7 @@ v: {
   "system" : "http://loinc.org",
   "version" : "2.78",
   "server" : "http://tx.fhir.org/r4",
+  "unknown-systems" : "",
   "issues" : {
   "resourceType" : "OperationOutcome"
 }
@@ -3621,6 +3261,7 @@ v: {
   "system" : "http://loinc.org",
   "version" : "2.78",
   "server" : "http://tx.fhir.org/r4",
+  "unknown-systems" : "",
   "issues" : {
   "resourceType" : "OperationOutcome"
 }
@@ -3643,6 +3284,7 @@ v: {
   "system" : "http://loinc.org",
   "version" : "2.78",
   "server" : "http://tx.fhir.org/r4",
+  "unknown-systems" : "",
   "issues" : {
   "resourceType" : "OperationOutcome"
 }
@@ -3665,6 +3307,7 @@ v: {
   "system" : "http://loinc.org",
   "version" : "2.78",
   "server" : "http://tx.fhir.org/r4",
+  "unknown-systems" : "",
   "issues" : {
   "resourceType" : "OperationOutcome"
 }
@@ -3687,6 +3330,7 @@ v: {
   "system" : "http://loinc.org",
   "version" : "2.78",
   "server" : "http://tx.fhir.org/r4",
+  "unknown-systems" : "",
   "issues" : {
   "resourceType" : "OperationOutcome"
 }
@@ -3709,6 +3353,7 @@ v: {
   "system" : "http://loinc.org",
   "version" : "2.78",
   "server" : "http://tx.fhir.org/r4",
+  "unknown-systems" : "",
   "issues" : {
   "resourceType" : "OperationOutcome"
 }
@@ -3731,6 +3376,7 @@ v: {
   "system" : "http://loinc.org",
   "version" : "2.78",
   "server" : "http://tx.fhir.org/r4",
+  "unknown-systems" : "",
   "issues" : {
   "resourceType" : "OperationOutcome"
 }
@@ -3753,6 +3399,7 @@ v: {
   "system" : "http://loinc.org",
   "version" : "2.78",
   "server" : "http://tx.fhir.org/r4",
+  "unknown-systems" : "",
   "issues" : {
   "resourceType" : "OperationOutcome"
 }
@@ -3775,6 +3422,7 @@ v: {
   "system" : "http://loinc.org",
   "version" : "2.78",
   "server" : "http://tx.fhir.org/r4",
+  "unknown-systems" : "",
   "issues" : {
   "resourceType" : "OperationOutcome"
 }
@@ -3797,6 +3445,7 @@ v: {
   "system" : "http://loinc.org",
   "version" : "2.78",
   "server" : "http://tx.fhir.org/r4",
+  "unknown-systems" : "",
   "issues" : {
   "resourceType" : "OperationOutcome"
 }
@@ -3819,6 +3468,7 @@ v: {
   "system" : "http://loinc.org",
   "version" : "2.78",
   "server" : "http://tx.fhir.org/r4",
+  "unknown-systems" : "",
   "issues" : {
   "resourceType" : "OperationOutcome"
 }
@@ -3841,6 +3491,7 @@ v: {
   "system" : "http://loinc.org",
   "version" : "2.78",
   "server" : "http://tx.fhir.org/r4",
+  "unknown-systems" : "",
   "issues" : {
   "resourceType" : "OperationOutcome"
 }
@@ -3863,6 +3514,7 @@ v: {
   "system" : "http://loinc.org",
   "version" : "2.78",
   "server" : "http://tx.fhir.org/r4",
+  "unknown-systems" : "",
   "issues" : {
   "resourceType" : "OperationOutcome"
 }
@@ -3885,6 +3537,7 @@ v: {
   "system" : "http://loinc.org",
   "version" : "2.78",
   "server" : "http://tx.fhir.org/r4",
+  "unknown-systems" : "",
   "issues" : {
   "resourceType" : "OperationOutcome"
 }
@@ -3907,6 +3560,7 @@ v: {
   "system" : "http://loinc.org",
   "version" : "2.78",
   "server" : "http://tx.fhir.org/r4",
+  "unknown-systems" : "",
   "issues" : {
   "resourceType" : "OperationOutcome"
 }
@@ -3929,6 +3583,7 @@ v: {
   "system" : "http://loinc.org",
   "version" : "2.78",
   "server" : "http://tx.fhir.org/r4",
+  "unknown-systems" : "",
   "issues" : {
   "resourceType" : "OperationOutcome"
 }
@@ -3951,6 +3606,7 @@ v: {
   "system" : "http://loinc.org",
   "version" : "2.78",
   "server" : "http://tx.fhir.org/r4",
+  "unknown-systems" : "",
   "issues" : {
   "resourceType" : "OperationOutcome"
 }
@@ -3973,6 +3629,7 @@ v: {
   "system" : "http://loinc.org",
   "version" : "2.78",
   "server" : "http://tx.fhir.org/r4",
+  "unknown-systems" : "",
   "issues" : {
   "resourceType" : "OperationOutcome"
 }
@@ -3995,6 +3652,7 @@ v: {
   "system" : "http://loinc.org",
   "version" : "2.78",
   "server" : "http://tx.fhir.org/r4",
+  "unknown-systems" : "",
   "issues" : {
   "resourceType" : "OperationOutcome"
 }
@@ -4017,6 +3675,7 @@ v: {
   "system" : "http://loinc.org",
   "version" : "2.78",
   "server" : "http://tx.fhir.org/r4",
+  "unknown-systems" : "",
   "issues" : {
   "resourceType" : "OperationOutcome"
 }
@@ -4039,6 +3698,7 @@ v: {
   "system" : "http://loinc.org",
   "version" : "2.78",
   "server" : "http://tx.fhir.org/r4",
+  "unknown-systems" : "",
   "issues" : {
   "resourceType" : "OperationOutcome"
 }
@@ -4061,6 +3721,7 @@ v: {
   "system" : "http://loinc.org",
   "version" : "2.78",
   "server" : "http://tx.fhir.org/r4",
+  "unknown-systems" : "",
   "issues" : {
   "resourceType" : "OperationOutcome"
 }
@@ -4083,6 +3744,7 @@ v: {
   "system" : "http://loinc.org",
   "version" : "2.78",
   "server" : "http://tx.fhir.org/r4",
+  "unknown-systems" : "",
   "issues" : {
   "resourceType" : "OperationOutcome"
 }
@@ -4105,6 +3767,7 @@ v: {
   "system" : "http://loinc.org",
   "version" : "2.78",
   "server" : "http://tx.fhir.org/r4",
+  "unknown-systems" : "",
   "issues" : {
   "resourceType" : "OperationOutcome"
 }
@@ -4127,6 +3790,7 @@ v: {
   "system" : "http://loinc.org",
   "version" : "2.78",
   "server" : "http://tx.fhir.org/r4",
+  "unknown-systems" : "",
   "issues" : {
   "resourceType" : "OperationOutcome"
 }
@@ -4149,6 +3813,7 @@ v: {
   "system" : "http://loinc.org",
   "version" : "2.78",
   "server" : "http://tx.fhir.org/r4",
+  "unknown-systems" : "",
   "issues" : {
   "resourceType" : "OperationOutcome"
 }
@@ -4171,6 +3836,7 @@ v: {
   "system" : "http://loinc.org",
   "version" : "2.78",
   "server" : "http://tx.fhir.org/r4",
+  "unknown-systems" : "",
   "issues" : {
   "resourceType" : "OperationOutcome"
 }
@@ -4193,6 +3859,7 @@ v: {
   "system" : "http://loinc.org",
   "version" : "2.78",
   "server" : "http://tx.fhir.org/r4",
+  "unknown-systems" : "",
   "issues" : {
   "resourceType" : "OperationOutcome"
 }
@@ -4215,6 +3882,7 @@ v: {
   "system" : "http://loinc.org",
   "version" : "2.78",
   "server" : "http://tx.fhir.org/r4",
+  "unknown-systems" : "",
   "issues" : {
   "resourceType" : "OperationOutcome"
 }
@@ -4237,6 +3905,7 @@ v: {
   "system" : "http://loinc.org",
   "version" : "2.78",
   "server" : "http://tx.fhir.org/r4",
+  "unknown-systems" : "",
   "issues" : {
   "resourceType" : "OperationOutcome"
 }
@@ -4259,6 +3928,7 @@ v: {
   "system" : "http://loinc.org",
   "version" : "2.78",
   "server" : "http://tx.fhir.org/r4",
+  "unknown-systems" : "",
   "issues" : {
   "resourceType" : "OperationOutcome"
 }
@@ -4281,6 +3951,7 @@ v: {
   "system" : "http://loinc.org",
   "version" : "2.78",
   "server" : "http://tx.fhir.org/r4",
+  "unknown-systems" : "",
   "issues" : {
   "resourceType" : "OperationOutcome"
 }
@@ -4303,6 +3974,7 @@ v: {
   "system" : "http://loinc.org",
   "version" : "2.78",
   "server" : "http://tx.fhir.org/r4",
+  "unknown-systems" : "",
   "issues" : {
   "resourceType" : "OperationOutcome"
 }
@@ -4325,6 +3997,7 @@ v: {
   "system" : "http://loinc.org",
   "version" : "2.78",
   "server" : "http://tx.fhir.org/r4",
+  "unknown-systems" : "",
   "issues" : {
   "resourceType" : "OperationOutcome"
 }
@@ -4347,6 +4020,7 @@ v: {
   "system" : "http://loinc.org",
   "version" : "2.78",
   "server" : "http://tx.fhir.org/r4",
+  "unknown-systems" : "",
   "issues" : {
   "resourceType" : "OperationOutcome"
 }
@@ -4369,6 +4043,7 @@ v: {
   "system" : "http://loinc.org",
   "version" : "2.78",
   "server" : "http://tx.fhir.org/r4",
+  "unknown-systems" : "",
   "issues" : {
   "resourceType" : "OperationOutcome"
 }
@@ -4391,6 +4066,7 @@ v: {
   "system" : "http://loinc.org",
   "version" : "2.78",
   "server" : "http://tx.fhir.org/r4",
+  "unknown-systems" : "",
   "issues" : {
   "resourceType" : "OperationOutcome"
 }
@@ -4413,6 +4089,7 @@ v: {
   "system" : "http://loinc.org",
   "version" : "2.78",
   "server" : "http://tx.fhir.org/r4",
+  "unknown-systems" : "",
   "issues" : {
   "resourceType" : "OperationOutcome"
 }
@@ -4435,6 +4112,7 @@ v: {
   "system" : "http://loinc.org",
   "version" : "2.78",
   "server" : "http://tx.fhir.org/r4",
+  "unknown-systems" : "",
   "issues" : {
   "resourceType" : "OperationOutcome"
 }
@@ -4457,6 +4135,7 @@ v: {
   "system" : "http://loinc.org",
   "version" : "2.78",
   "server" : "http://tx.fhir.org/r4",
+  "unknown-systems" : "",
   "issues" : {
   "resourceType" : "OperationOutcome"
 }
@@ -4479,6 +4158,7 @@ v: {
   "system" : "http://loinc.org",
   "version" : "2.78",
   "server" : "http://tx.fhir.org/r4",
+  "unknown-systems" : "",
   "issues" : {
   "resourceType" : "OperationOutcome"
 }
@@ -4501,6 +4181,7 @@ v: {
   "system" : "http://loinc.org",
   "version" : "2.78",
   "server" : "http://tx.fhir.org/r4",
+  "unknown-systems" : "",
   "issues" : {
   "resourceType" : "OperationOutcome"
 }
@@ -4523,6 +4204,7 @@ v: {
   "system" : "http://loinc.org",
   "version" : "2.78",
   "server" : "http://tx.fhir.org/r4",
+  "unknown-systems" : "",
   "issues" : {
   "resourceType" : "OperationOutcome"
 }
@@ -4545,6 +4227,7 @@ v: {
   "system" : "http://loinc.org",
   "version" : "2.78",
   "server" : "http://tx.fhir.org/r4",
+  "unknown-systems" : "",
   "issues" : {
   "resourceType" : "OperationOutcome"
 }
@@ -4567,6 +4250,7 @@ v: {
   "system" : "http://loinc.org",
   "version" : "2.78",
   "server" : "http://tx.fhir.org/r4",
+  "unknown-systems" : "",
   "issues" : {
   "resourceType" : "OperationOutcome"
 }
@@ -4590,6 +4274,7 @@ v: {
   "system" : "http://loinc.org",
   "version" : "2.78",
   "server" : "http://tx.fhir.org/r4",
+  "unknown-systems" : "",
   "issues" : {
   "resourceType" : "OperationOutcome"
 }
@@ -4613,6 +4298,7 @@ v: {
   "system" : "http://loinc.org",
   "version" : "2.78",
   "server" : "http://tx.fhir.org/r4",
+  "unknown-systems" : "",
   "issues" : {
   "resourceType" : "OperationOutcome"
 }
@@ -4636,6 +4322,7 @@ v: {
   "system" : "http://loinc.org",
   "version" : "2.78",
   "server" : "http://tx.fhir.org/r4",
+  "unknown-systems" : "",
   "issues" : {
   "resourceType" : "OperationOutcome"
 }
@@ -4659,6 +4346,7 @@ v: {
   "system" : "http://loinc.org",
   "version" : "2.78",
   "server" : "http://tx.fhir.org/r4",
+  "unknown-systems" : "",
   "issues" : {
   "resourceType" : "OperationOutcome"
 }
@@ -4682,6 +4370,7 @@ v: {
   "system" : "http://loinc.org",
   "version" : "2.78",
   "server" : "http://tx.fhir.org/r4",
+  "unknown-systems" : "",
   "issues" : {
   "resourceType" : "OperationOutcome"
 }
@@ -4705,6 +4394,7 @@ v: {
   "system" : "http://loinc.org",
   "version" : "2.78",
   "server" : "http://tx.fhir.org/r4",
+  "unknown-systems" : "",
   "issues" : {
   "resourceType" : "OperationOutcome"
 }
@@ -4728,6 +4418,7 @@ v: {
   "system" : "http://loinc.org",
   "version" : "2.78",
   "server" : "http://tx.fhir.org/r4",
+  "unknown-systems" : "",
   "issues" : {
   "resourceType" : "OperationOutcome"
 }
@@ -4751,6 +4442,7 @@ v: {
   "system" : "http://loinc.org",
   "version" : "2.78",
   "server" : "http://tx.fhir.org/r4",
+  "unknown-systems" : "",
   "issues" : {
   "resourceType" : "OperationOutcome"
 }
@@ -4774,6 +4466,7 @@ v: {
   "system" : "http://loinc.org",
   "version" : "2.78",
   "server" : "http://tx.fhir.org/r4",
+  "unknown-systems" : "",
   "issues" : {
   "resourceType" : "OperationOutcome"
 }
@@ -4797,6 +4490,7 @@ v: {
   "system" : "http://loinc.org",
   "version" : "2.78",
   "server" : "http://tx.fhir.org/r4",
+  "unknown-systems" : "",
   "issues" : {
   "resourceType" : "OperationOutcome"
 }
@@ -4820,6 +4514,7 @@ v: {
   "system" : "http://loinc.org",
   "version" : "2.78",
   "server" : "http://tx.fhir.org/r4",
+  "unknown-systems" : "",
   "issues" : {
   "resourceType" : "OperationOutcome"
 }
@@ -4843,6 +4538,7 @@ v: {
   "system" : "http://loinc.org",
   "version" : "2.78",
   "server" : "http://tx.fhir.org/r4",
+  "unknown-systems" : "",
   "issues" : {
   "resourceType" : "OperationOutcome"
 }
@@ -4866,6 +4562,7 @@ v: {
   "system" : "http://loinc.org",
   "version" : "2.78",
   "server" : "http://tx.fhir.org/r4",
+  "unknown-systems" : "",
   "issues" : {
   "resourceType" : "OperationOutcome"
 }
@@ -4889,6 +4586,7 @@ v: {
   "system" : "http://loinc.org",
   "version" : "2.78",
   "server" : "http://tx.fhir.org/r4",
+  "unknown-systems" : "",
   "issues" : {
   "resourceType" : "OperationOutcome"
 }
@@ -4912,6 +4610,7 @@ v: {
   "system" : "http://loinc.org",
   "version" : "2.78",
   "server" : "http://tx.fhir.org/r4",
+  "unknown-systems" : "",
   "issues" : {
   "resourceType" : "OperationOutcome"
 }
@@ -4935,6 +4634,7 @@ v: {
   "system" : "http://loinc.org",
   "version" : "2.78",
   "server" : "http://tx.fhir.org/r4",
+  "unknown-systems" : "",
   "issues" : {
   "resourceType" : "OperationOutcome"
 }
@@ -4958,6 +4658,7 @@ v: {
   "system" : "http://loinc.org",
   "version" : "2.78",
   "server" : "http://tx.fhir.org/r4",
+  "unknown-systems" : "",
   "issues" : {
   "resourceType" : "OperationOutcome"
 }
@@ -4981,6 +4682,7 @@ v: {
   "system" : "http://loinc.org",
   "version" : "2.78",
   "server" : "http://tx.fhir.org/r4",
+  "unknown-systems" : "",
   "issues" : {
   "resourceType" : "OperationOutcome"
 }
@@ -5004,6 +4706,7 @@ v: {
   "system" : "http://loinc.org",
   "version" : "2.78",
   "server" : "http://tx.fhir.org/r4",
+  "unknown-systems" : "",
   "issues" : {
   "resourceType" : "OperationOutcome"
 }
@@ -5027,6 +4730,7 @@ v: {
   "system" : "http://loinc.org",
   "version" : "2.78",
   "server" : "http://tx.fhir.org/r4",
+  "unknown-systems" : "",
   "issues" : {
   "resourceType" : "OperationOutcome"
 }
@@ -5050,6 +4754,7 @@ v: {
   "system" : "http://loinc.org",
   "version" : "2.78",
   "server" : "http://tx.fhir.org/r4",
+  "unknown-systems" : "",
   "issues" : {
   "resourceType" : "OperationOutcome"
 }
@@ -5073,6 +4778,7 @@ v: {
   "system" : "http://loinc.org",
   "version" : "2.78",
   "server" : "http://tx.fhir.org/r4",
+  "unknown-systems" : "",
   "issues" : {
   "resourceType" : "OperationOutcome"
 }
@@ -5096,6 +4802,7 @@ v: {
   "system" : "http://loinc.org",
   "version" : "2.78",
   "server" : "http://tx.fhir.org/r4",
+  "unknown-systems" : "",
   "issues" : {
   "resourceType" : "OperationOutcome"
 }
@@ -5118,6 +4825,7 @@ v: {
   "system" : "http://loinc.org",
   "version" : "2.78",
   "server" : "http://tx.fhir.org/r4",
+  "unknown-systems" : "",
   "issues" : {
   "resourceType" : "OperationOutcome"
 }
@@ -5140,6 +4848,7 @@ v: {
   "system" : "http://loinc.org",
   "version" : "2.78",
   "server" : "http://tx.fhir.org/r4",
+  "unknown-systems" : "",
   "issues" : {
   "resourceType" : "OperationOutcome"
 }
@@ -5162,6 +4871,7 @@ v: {
   "system" : "http://loinc.org",
   "version" : "2.78",
   "server" : "http://tx.fhir.org/r4",
+  "unknown-systems" : "",
   "issues" : {
   "resourceType" : "OperationOutcome"
 }
@@ -5184,6 +4894,7 @@ v: {
   "system" : "http://loinc.org",
   "version" : "2.78",
   "server" : "http://tx.fhir.org/r4",
+  "unknown-systems" : "",
   "issues" : {
   "resourceType" : "OperationOutcome"
 }
@@ -5207,6 +4918,7 @@ v: {
   "system" : "http://loinc.org",
   "version" : "2.78",
   "server" : "http://tx.fhir.org/r4",
+  "unknown-systems" : "",
   "issues" : {
   "resourceType" : "OperationOutcome"
 }
@@ -5229,6 +4941,7 @@ v: {
   "system" : "http://loinc.org",
   "version" : "2.78",
   "server" : "http://tx.fhir.org/r4",
+  "unknown-systems" : "",
   "issues" : {
   "resourceType" : "OperationOutcome"
 }
@@ -5251,6 +4964,7 @@ v: {
   "system" : "http://loinc.org",
   "version" : "2.78",
   "server" : "http://tx.fhir.org/r4",
+  "unknown-systems" : "",
   "issues" : {
   "resourceType" : "OperationOutcome"
 }
@@ -5273,6 +4987,7 @@ v: {
   "system" : "http://loinc.org",
   "version" : "2.78",
   "server" : "http://tx.fhir.org/r4",
+  "unknown-systems" : "",
   "issues" : {
   "resourceType" : "OperationOutcome"
 }
@@ -5295,6 +5010,7 @@ v: {
   "system" : "http://loinc.org",
   "version" : "2.78",
   "server" : "http://tx.fhir.org/r4",
+  "unknown-systems" : "",
   "issues" : {
   "resourceType" : "OperationOutcome"
 }
@@ -5317,6 +5033,7 @@ v: {
   "system" : "http://loinc.org",
   "version" : "2.78",
   "server" : "http://tx.fhir.org/r4",
+  "unknown-systems" : "",
   "issues" : {
   "resourceType" : "OperationOutcome"
 }
@@ -5340,6 +5057,7 @@ v: {
   "system" : "http://loinc.org",
   "version" : "2.78",
   "server" : "http://tx.fhir.org/r4",
+  "unknown-systems" : "",
   "issues" : {
   "resourceType" : "OperationOutcome"
 }
@@ -5362,6 +5080,7 @@ v: {
   "system" : "http://loinc.org",
   "version" : "2.78",
   "server" : "http://tx.fhir.org/r4",
+  "unknown-systems" : "",
   "issues" : {
   "resourceType" : "OperationOutcome"
 }
@@ -5384,6 +5103,7 @@ v: {
   "system" : "http://loinc.org",
   "version" : "2.78",
   "server" : "http://tx.fhir.org/r4",
+  "unknown-systems" : "",
   "issues" : {
   "resourceType" : "OperationOutcome"
 }
@@ -5406,6 +5126,7 @@ v: {
   "system" : "http://loinc.org",
   "version" : "2.78",
   "server" : "http://tx.fhir.org/r4",
+  "unknown-systems" : "",
   "issues" : {
   "resourceType" : "OperationOutcome"
 }
@@ -5428,6 +5149,7 @@ v: {
   "system" : "http://loinc.org",
   "version" : "2.78",
   "server" : "http://tx.fhir.org/r4",
+  "unknown-systems" : "",
   "issues" : {
   "resourceType" : "OperationOutcome"
 }
@@ -5450,6 +5172,7 @@ v: {
   "system" : "http://loinc.org",
   "version" : "2.78",
   "server" : "http://tx.fhir.org/r4",
+  "unknown-systems" : "",
   "issues" : {
   "resourceType" : "OperationOutcome"
 }
@@ -5472,6 +5195,7 @@ v: {
   "system" : "http://loinc.org",
   "version" : "2.78",
   "server" : "http://tx.fhir.org/r4",
+  "unknown-systems" : "",
   "issues" : {
   "resourceType" : "OperationOutcome"
 }
@@ -5494,6 +5218,7 @@ v: {
   "system" : "http://loinc.org",
   "version" : "2.78",
   "server" : "http://tx.fhir.org/r4",
+  "unknown-systems" : "",
   "issues" : {
   "resourceType" : "OperationOutcome"
 }
@@ -5516,6 +5241,7 @@ v: {
   "system" : "http://loinc.org",
   "version" : "2.78",
   "server" : "http://tx.fhir.org/r4",
+  "unknown-systems" : "",
   "issues" : {
   "resourceType" : "OperationOutcome"
 }
@@ -5538,6 +5264,7 @@ v: {
   "system" : "http://loinc.org",
   "version" : "2.78",
   "server" : "http://tx.fhir.org/r4",
+  "unknown-systems" : "",
   "issues" : {
   "resourceType" : "OperationOutcome"
 }
@@ -5560,6 +5287,7 @@ v: {
   "system" : "http://loinc.org",
   "version" : "2.78",
   "server" : "http://tx.fhir.org/r4",
+  "unknown-systems" : "",
   "issues" : {
   "resourceType" : "OperationOutcome"
 }
@@ -5582,6 +5310,7 @@ v: {
   "system" : "http://loinc.org",
   "version" : "2.78",
   "server" : "http://tx.fhir.org/r4",
+  "unknown-systems" : "",
   "issues" : {
   "resourceType" : "OperationOutcome"
 }
@@ -5604,6 +5333,7 @@ v: {
   "system" : "http://loinc.org",
   "version" : "2.78",
   "server" : "http://tx.fhir.org/r4",
+  "unknown-systems" : "",
   "issues" : {
   "resourceType" : "OperationOutcome"
 }
@@ -5626,6 +5356,7 @@ v: {
   "system" : "http://loinc.org",
   "version" : "2.78",
   "server" : "http://tx.fhir.org/r4",
+  "unknown-systems" : "",
   "issues" : {
   "resourceType" : "OperationOutcome"
 }
@@ -5648,6 +5379,7 @@ v: {
   "system" : "http://loinc.org",
   "version" : "2.78",
   "server" : "http://tx.fhir.org/r4",
+  "unknown-systems" : "",
   "issues" : {
   "resourceType" : "OperationOutcome"
 }
@@ -5670,6 +5402,7 @@ v: {
   "system" : "http://loinc.org",
   "version" : "2.78",
   "server" : "http://tx.fhir.org/r4",
+  "unknown-systems" : "",
   "issues" : {
   "resourceType" : "OperationOutcome"
 }
@@ -5692,6 +5425,7 @@ v: {
   "system" : "http://loinc.org",
   "version" : "2.78",
   "server" : "http://tx.fhir.org/r4",
+  "unknown-systems" : "",
   "issues" : {
   "resourceType" : "OperationOutcome"
 }
@@ -5714,6 +5448,7 @@ v: {
   "system" : "http://loinc.org",
   "version" : "2.78",
   "server" : "http://tx.fhir.org/r4",
+  "unknown-systems" : "",
   "issues" : {
   "resourceType" : "OperationOutcome"
 }
@@ -5736,6 +5471,7 @@ v: {
   "system" : "http://loinc.org",
   "version" : "2.78",
   "server" : "http://tx.fhir.org/r4",
+  "unknown-systems" : "",
   "issues" : {
   "resourceType" : "OperationOutcome"
 }
@@ -5758,6 +5494,7 @@ v: {
   "system" : "http://loinc.org",
   "version" : "2.78",
   "server" : "http://tx.fhir.org/r4",
+  "unknown-systems" : "",
   "issues" : {
   "resourceType" : "OperationOutcome"
 }
@@ -5780,6 +5517,7 @@ v: {
   "system" : "http://loinc.org",
   "version" : "2.78",
   "server" : "http://tx.fhir.org/r4",
+  "unknown-systems" : "",
   "issues" : {
   "resourceType" : "OperationOutcome"
 }
@@ -5802,6 +5540,7 @@ v: {
   "system" : "http://loinc.org",
   "version" : "2.78",
   "server" : "http://tx.fhir.org/r4",
+  "unknown-systems" : "",
   "issues" : {
   "resourceType" : "OperationOutcome"
 }
@@ -5824,6 +5563,7 @@ v: {
   "system" : "http://loinc.org",
   "version" : "2.78",
   "server" : "http://tx.fhir.org/r4",
+  "unknown-systems" : "",
   "issues" : {
   "resourceType" : "OperationOutcome"
 }
@@ -5846,6 +5586,7 @@ v: {
   "system" : "http://loinc.org",
   "version" : "2.78",
   "server" : "http://tx.fhir.org/r4",
+  "unknown-systems" : "",
   "issues" : {
   "resourceType" : "OperationOutcome"
 }
@@ -5868,6 +5609,7 @@ v: {
   "system" : "http://loinc.org",
   "version" : "2.78",
   "server" : "http://tx.fhir.org/r4",
+  "unknown-systems" : "",
   "issues" : {
   "resourceType" : "OperationOutcome"
 }
@@ -5891,6 +5633,7 @@ v: {
   "system" : "http://loinc.org",
   "version" : "2.78",
   "server" : "http://tx.fhir.org/r4",
+  "unknown-systems" : "",
   "issues" : {
   "resourceType" : "OperationOutcome"
 }
@@ -5914,6 +5657,7 @@ v: {
   "system" : "http://loinc.org",
   "version" : "2.78",
   "server" : "http://tx.fhir.org/r4",
+  "unknown-systems" : "",
   "issues" : {
   "resourceType" : "OperationOutcome"
 }
@@ -5937,6 +5681,7 @@ v: {
   "system" : "http://loinc.org",
   "version" : "2.78",
   "server" : "http://tx.fhir.org/r4",
+  "unknown-systems" : "",
   "issues" : {
   "resourceType" : "OperationOutcome"
 }
@@ -5960,6 +5705,7 @@ v: {
   "system" : "http://loinc.org",
   "version" : "2.78",
   "server" : "http://tx.fhir.org/r4",
+  "unknown-systems" : "",
   "issues" : {
   "resourceType" : "OperationOutcome"
 }
@@ -5983,6 +5729,7 @@ v: {
   "system" : "http://loinc.org",
   "version" : "2.78",
   "server" : "http://tx.fhir.org/r4",
+  "unknown-systems" : "",
   "issues" : {
   "resourceType" : "OperationOutcome"
 }
@@ -6006,6 +5753,101 @@ v: {
   "system" : "http://loinc.org",
   "version" : "2.78",
   "server" : "http://tx.fhir.org/r4",
+  "unknown-systems" : "",
+  "issues" : {
+  "resourceType" : "OperationOutcome"
+}
+
+}
+-------------------------------------------------------------------------------------
+{"code" : {
+  "system" : "http://loinc.org",
+  "code" : "8302-2",
+  "display" : "Body height"
+}, "valueSet" :null, "langs":"en-CA", "useServer":"true", "useClient":"false", "guessSystem":"false", "activeOnly":"false", "membershipOnly":"false", "displayWarningMode":"false", "versionFlexible":"true", "profile": {
+  "resourceType" : "Parameters",
+  "parameter" : [{
+    "name" : "x-system-cache-id",
+    "valueString" : "dc8fd4bc-091a-424a-8a3b-6198ef146891"
+  }]
+}}####
+v: {
+  "display" : "Body height",
+  "code" : "8302-2",
+  "system" : "http://loinc.org",
+  "version" : "2.78",
+  "server" : "http://tx.fhir.org/r4",
+  "unknown-systems" : "",
+  "issues" : {
+  "resourceType" : "OperationOutcome"
+}
+
+}
+-------------------------------------------------------------------------------------
+{"code" : {
+  "system" : "http://loinc.org",
+  "code" : "8302-2"
+}, "url": "http://hl7.org/fhir/ValueSet/observation-vitalsignresult--0", "version": "4.0.1", "langs":"en-CA", "useServer":"true", "useClient":"false", "guessSystem":"false", "activeOnly":"false", "membershipOnly":"false", "displayWarningMode":"false", "versionFlexible":"true", "profile": {
+  "resourceType" : "Parameters",
+  "parameter" : [{
+    "name" : "x-system-cache-id",
+    "valueString" : "dc8fd4bc-091a-424a-8a3b-6198ef146891"
+  }]
+}}####
+v: {
+  "display" : "Body height",
+  "code" : "8302-2",
+  "system" : "http://loinc.org",
+  "version" : "2.78",
+  "server" : "http://tx.fhir.org/r4",
+  "unknown-systems" : "",
+  "issues" : {
+  "resourceType" : "OperationOutcome"
+}
+
+}
+-------------------------------------------------------------------------------------
+{"code" : {
+  "system" : "http://loinc.org",
+  "code" : "29463-7",
+  "display" : "Weight"
+}, "valueSet" :null, "langs":"en-CA", "useServer":"true", "useClient":"false", "guessSystem":"false", "activeOnly":"false", "membershipOnly":"false", "displayWarningMode":"false", "versionFlexible":"true", "profile": {
+  "resourceType" : "Parameters",
+  "parameter" : [{
+    "name" : "x-system-cache-id",
+    "valueString" : "dc8fd4bc-091a-424a-8a3b-6198ef146891"
+  }]
+}}####
+v: {
+  "display" : "Body weight",
+  "code" : "29463-7",
+  "system" : "http://loinc.org",
+  "version" : "2.78",
+  "server" : "http://tx.fhir.org/r4",
+  "unknown-systems" : "",
+  "issues" : {
+  "resourceType" : "OperationOutcome"
+}
+
+}
+-------------------------------------------------------------------------------------
+{"code" : {
+  "system" : "http://loinc.org",
+  "code" : "29463-7"
+}, "url": "http://hl7.org/fhir/ValueSet/observation-vitalsignresult--0", "version": "4.0.1", "langs":"en-CA", "useServer":"true", "useClient":"false", "guessSystem":"false", "activeOnly":"false", "membershipOnly":"false", "displayWarningMode":"false", "versionFlexible":"true", "profile": {
+  "resourceType" : "Parameters",
+  "parameter" : [{
+    "name" : "x-system-cache-id",
+    "valueString" : "dc8fd4bc-091a-424a-8a3b-6198ef146891"
+  }]
+}}####
+v: {
+  "display" : "Body weight",
+  "code" : "29463-7",
+  "system" : "http://loinc.org",
+  "version" : "2.78",
+  "server" : "http://tx.fhir.org/r4",
+  "unknown-systems" : "",
   "issues" : {
   "resourceType" : "OperationOutcome"
 }
@@ -6029,811 +5871,7 @@ v: {
   "system" : "http://loinc.org",
   "version" : "2.78",
   "server" : "http://tx.fhir.org/r4",
-  "issues" : {
-  "resourceType" : "OperationOutcome"
-}
-
-}
--------------------------------------------------------------------------------------
-{"code" : {
-  "system" : "http://loinc.org",
-  "code" : "LA3-6",
-  "display" : "Female"
-}, "valueSet" :null, "langs":"en-CA", "useServer":"true", "useClient":"true", "guessSystem":"false", "activeOnly":"false", "membershipOnly":"false", "displayWarningMode":"false", "versionFlexible":"true", "profile": {
-  "resourceType" : "Parameters",
-  "parameter" : [{
-    "name" : "x-system-cache-id",
-    "valueString" : "dc8fd4bc-091a-424a-8a3b-6198ef146891"
-  }]
-}}####
-v: {
-  "display" : "Female",
-  "code" : "LA3-6",
-  "system" : "http://loinc.org",
-  "version" : "2.78",
-  "server" : "http://tx.fhir.org/r4",
-  "issues" : {
-  "resourceType" : "OperationOutcome"
-}
-
-}
--------------------------------------------------------------------------------------
-{"code" : {
-  "system" : "http://loinc.org",
-  "code" : "LA4457-3",
-  "display" : "White"
-}, "valueSet" :null, "langs":"en-CA", "useServer":"true", "useClient":"true", "guessSystem":"false", "activeOnly":"false", "membershipOnly":"false", "displayWarningMode":"false", "versionFlexible":"true", "profile": {
-  "resourceType" : "Parameters",
-  "parameter" : [{
-    "name" : "x-system-cache-id",
-    "valueString" : "dc8fd4bc-091a-424a-8a3b-6198ef146891"
-  }]
-}}####
-v: {
-  "display" : "White",
-  "code" : "LA4457-3",
-  "system" : "http://loinc.org",
-  "version" : "2.78",
-  "server" : "http://tx.fhir.org/r4",
-  "issues" : {
-  "resourceType" : "OperationOutcome"
-}
-
-}
--------------------------------------------------------------------------------------
-{"code" : {
-  "system" : "http://loinc.org",
-  "code" : "LA4611-5",
-  "display" : "Mexican"
-}, "valueSet" :null, "langs":"en-CA", "useServer":"true", "useClient":"true", "guessSystem":"false", "activeOnly":"false", "membershipOnly":"false", "displayWarningMode":"false", "versionFlexible":"true", "profile": {
-  "resourceType" : "Parameters",
-  "parameter" : [{
-    "name" : "x-system-cache-id",
-    "valueString" : "dc8fd4bc-091a-424a-8a3b-6198ef146891"
-  }]
-}}####
-v: {
-  "display" : "Mexican",
-  "code" : "LA4611-5",
-  "system" : "http://loinc.org",
-  "version" : "2.78",
-  "server" : "http://tx.fhir.org/r4",
-  "issues" : {
-  "resourceType" : "OperationOutcome"
-}
-
-}
--------------------------------------------------------------------------------------
-{"code" : {
-  "system" : "http://loinc.org",
-  "code" : "LA10606-4",
-  "display" : "South American"
-}, "valueSet" :null, "langs":"en-CA", "useServer":"true", "useClient":"true", "guessSystem":"false", "activeOnly":"false", "membershipOnly":"false", "displayWarningMode":"false", "versionFlexible":"true", "profile": {
-  "resourceType" : "Parameters",
-  "parameter" : [{
-    "name" : "x-system-cache-id",
-    "valueString" : "dc8fd4bc-091a-424a-8a3b-6198ef146891"
-  }]
-}}####
-v: {
-  "display" : "South American",
-  "code" : "LA10606-4",
-  "system" : "http://loinc.org",
-  "version" : "2.78",
-  "server" : "http://tx.fhir.org/r4",
-  "issues" : {
-  "resourceType" : "OperationOutcome"
-}
-
-}
--------------------------------------------------------------------------------------
-{"code" : {
-  "system" : "http://loinc.org",
-  "code" : "LA10405-1",
-  "display" : "Daughter"
-}, "valueSet" :null, "langs":"en-CA", "useServer":"true", "useClient":"true", "guessSystem":"false", "activeOnly":"false", "membershipOnly":"false", "displayWarningMode":"false", "versionFlexible":"true", "profile": {
-  "resourceType" : "Parameters",
-  "parameter" : [{
-    "name" : "x-system-cache-id",
-    "valueString" : "dc8fd4bc-091a-424a-8a3b-6198ef146891"
-  }]
-}}####
-v: {
-  "display" : "Daughter",
-  "code" : "LA10405-1",
-  "system" : "http://loinc.org",
-  "version" : "2.78",
-  "server" : "http://tx.fhir.org/r4",
-  "issues" : {
-  "resourceType" : "OperationOutcome"
-}
-
-}
--------------------------------------------------------------------------------------
-{"code" : {
-  "system" : "http://loinc.org",
-  "code" : "LA33-6",
-  "display" : "Yes"
-}, "valueSet" :null, "langs":"en-CA", "useServer":"true", "useClient":"true", "guessSystem":"false", "activeOnly":"false", "membershipOnly":"false", "displayWarningMode":"false", "versionFlexible":"true", "profile": {
-  "resourceType" : "Parameters",
-  "parameter" : [{
-    "name" : "x-system-cache-id",
-    "valueString" : "dc8fd4bc-091a-424a-8a3b-6198ef146891"
-  }]
-}}####
-v: {
-  "display" : "Yes",
-  "code" : "LA33-6",
-  "system" : "http://loinc.org",
-  "version" : "2.78",
-  "server" : "http://tx.fhir.org/r4",
-  "issues" : {
-  "resourceType" : "OperationOutcome"
-}
-
-}
--------------------------------------------------------------------------------------
-{"code" : {
-  "system" : "http://loinc.org",
-  "code" : "LA10415-0",
-  "display" : "Brother"
-}, "valueSet" :null, "langs":"en-CA", "useServer":"true", "useClient":"true", "guessSystem":"false", "activeOnly":"false", "membershipOnly":"false", "displayWarningMode":"false", "versionFlexible":"true", "profile": {
-  "resourceType" : "Parameters",
-  "parameter" : [{
-    "name" : "x-system-cache-id",
-    "valueString" : "dc8fd4bc-091a-424a-8a3b-6198ef146891"
-  }]
-}}####
-v: {
-  "display" : "Brother",
-  "code" : "LA10415-0",
-  "system" : "http://loinc.org",
-  "version" : "2.78",
-  "server" : "http://tx.fhir.org/r4",
-  "issues" : {
-  "resourceType" : "OperationOutcome"
-}
-
-}
--------------------------------------------------------------------------------------
-{"code" : {
-  "system" : "http://loinc.org",
-  "code" : "LA2-8",
-  "display" : "Male"
-}, "valueSet" :null, "langs":"en-CA", "useServer":"true", "useClient":"true", "guessSystem":"false", "activeOnly":"false", "membershipOnly":"false", "displayWarningMode":"false", "versionFlexible":"true", "profile": {
-  "resourceType" : "Parameters",
-  "parameter" : [{
-    "name" : "x-system-cache-id",
-    "valueString" : "dc8fd4bc-091a-424a-8a3b-6198ef146891"
-  }]
-}}####
-v: {
-  "display" : "Male",
-  "code" : "LA2-8",
-  "system" : "http://loinc.org",
-  "version" : "2.78",
-  "server" : "http://tx.fhir.org/r4",
-  "issues" : {
-  "resourceType" : "OperationOutcome"
-}
-
-}
--------------------------------------------------------------------------------------
-{"code" : {
-  "system" : "http://loinc.org",
-  "code" : "LA14284-6",
-  "display" : "Other Cancer"
-}, "valueSet" :null, "langs":"en-CA", "useServer":"true", "useClient":"true", "guessSystem":"false", "activeOnly":"false", "membershipOnly":"false", "displayWarningMode":"false", "versionFlexible":"true", "profile": {
-  "resourceType" : "Parameters",
-  "parameter" : [{
-    "name" : "x-system-cache-id",
-    "valueString" : "dc8fd4bc-091a-424a-8a3b-6198ef146891"
-  }]
-}}####
-v: {
-  "display" : "Other cancer",
-  "code" : "LA14284-6",
-  "system" : "http://loinc.org",
-  "version" : "2.78",
-  "server" : "http://tx.fhir.org/r4",
-  "issues" : {
-  "resourceType" : "OperationOutcome"
-}
-
-}
--------------------------------------------------------------------------------------
-{"code" : {
-  "system" : "http://loinc.org",
-  "code" : "LA10397-0",
-  "display" : "30-39"
-}, "valueSet" :null, "langs":"en-CA", "useServer":"true", "useClient":"true", "guessSystem":"false", "activeOnly":"false", "membershipOnly":"false", "displayWarningMode":"false", "versionFlexible":"true", "profile": {
-  "resourceType" : "Parameters",
-  "parameter" : [{
-    "name" : "x-system-cache-id",
-    "valueString" : "dc8fd4bc-091a-424a-8a3b-6198ef146891"
-  }]
-}}####
-v: {
-  "display" : "30-39",
-  "code" : "LA10397-0",
-  "system" : "http://loinc.org",
-  "version" : "2.78",
-  "server" : "http://tx.fhir.org/r4",
-  "issues" : {
-  "resourceType" : "OperationOutcome"
-}
-
-}
--------------------------------------------------------------------------------------
-{"code" : {
-  "system" : "http://loinc.org",
-  "code" : "LA10418-4",
-  "display" : "Sister"
-}, "valueSet" :null, "langs":"en-CA", "useServer":"true", "useClient":"true", "guessSystem":"false", "activeOnly":"false", "membershipOnly":"false", "displayWarningMode":"false", "versionFlexible":"true", "profile": {
-  "resourceType" : "Parameters",
-  "parameter" : [{
-    "name" : "x-system-cache-id",
-    "valueString" : "dc8fd4bc-091a-424a-8a3b-6198ef146891"
-  }]
-}}####
-v: {
-  "display" : "Sister",
-  "code" : "LA10418-4",
-  "system" : "http://loinc.org",
-  "version" : "2.78",
-  "server" : "http://tx.fhir.org/r4",
-  "issues" : {
-  "resourceType" : "OperationOutcome"
-}
-
-}
--------------------------------------------------------------------------------------
-{"code" : {
-  "system" : "http://loinc.org",
-  "code" : "LA14283-8",
-  "display" : "Breast Cancer"
-}, "valueSet" :null, "langs":"en-CA", "useServer":"true", "useClient":"true", "guessSystem":"false", "activeOnly":"false", "membershipOnly":"false", "displayWarningMode":"false", "versionFlexible":"true", "profile": {
-  "resourceType" : "Parameters",
-  "parameter" : [{
-    "name" : "x-system-cache-id",
-    "valueString" : "dc8fd4bc-091a-424a-8a3b-6198ef146891"
-  }]
-}}####
-v: {
-  "display" : "Breast cancer",
-  "code" : "LA14283-8",
-  "system" : "http://loinc.org",
-  "version" : "2.78",
-  "server" : "http://tx.fhir.org/r4",
-  "issues" : {
-  "resourceType" : "OperationOutcome"
-}
-
-}
--------------------------------------------------------------------------------------
-{"code" : {
-  "system" : "http://loinc.org",
-  "code" : "LA10419-2",
-  "display" : "Nephew"
-}, "valueSet" :null, "langs":"en-CA", "useServer":"true", "useClient":"true", "guessSystem":"false", "activeOnly":"false", "membershipOnly":"false", "displayWarningMode":"false", "versionFlexible":"true", "profile": {
-  "resourceType" : "Parameters",
-  "parameter" : [{
-    "name" : "x-system-cache-id",
-    "valueString" : "dc8fd4bc-091a-424a-8a3b-6198ef146891"
-  }]
-}}####
-v: {
-  "display" : "Nephew",
-  "code" : "LA10419-2",
-  "system" : "http://loinc.org",
-  "version" : "2.78",
-  "server" : "http://tx.fhir.org/r4",
-  "issues" : {
-  "resourceType" : "OperationOutcome"
-}
-
-}
--------------------------------------------------------------------------------------
-{"code" : {
-  "system" : "http://loinc.org",
-  "code" : "LA10420-0",
-  "display" : "Niece"
-}, "valueSet" :null, "langs":"en-CA", "useServer":"true", "useClient":"true", "guessSystem":"false", "activeOnly":"false", "membershipOnly":"false", "displayWarningMode":"false", "versionFlexible":"true", "profile": {
-  "resourceType" : "Parameters",
-  "parameter" : [{
-    "name" : "x-system-cache-id",
-    "valueString" : "dc8fd4bc-091a-424a-8a3b-6198ef146891"
-  }]
-}}####
-v: {
-  "display" : "Niece",
-  "code" : "LA10420-0",
-  "system" : "http://loinc.org",
-  "version" : "2.78",
-  "server" : "http://tx.fhir.org/r4",
-  "issues" : {
-  "resourceType" : "OperationOutcome"
-}
-
-}
--------------------------------------------------------------------------------------
-{"code" : {
-  "system" : "http://loinc.org",
-  "code" : "LA10416-8",
-  "display" : "Father"
-}, "valueSet" :null, "langs":"en-CA", "useServer":"true", "useClient":"true", "guessSystem":"false", "activeOnly":"false", "membershipOnly":"false", "displayWarningMode":"false", "versionFlexible":"true", "profile": {
-  "resourceType" : "Parameters",
-  "parameter" : [{
-    "name" : "x-system-cache-id",
-    "valueString" : "dc8fd4bc-091a-424a-8a3b-6198ef146891"
-  }]
-}}####
-v: {
-  "display" : "Father",
-  "code" : "LA10416-8",
-  "system" : "http://loinc.org",
-  "version" : "2.78",
-  "server" : "http://tx.fhir.org/r4",
-  "issues" : {
-  "resourceType" : "OperationOutcome"
-}
-
-}
--------------------------------------------------------------------------------------
-{"code" : {
-  "system" : "http://loinc.org",
-  "code" : "LA10425-9",
-  "display" : "Paternal Uncle"
-}, "valueSet" :null, "langs":"en-CA", "useServer":"true", "useClient":"true", "guessSystem":"false", "activeOnly":"false", "membershipOnly":"false", "displayWarningMode":"false", "versionFlexible":"true", "profile": {
-  "resourceType" : "Parameters",
-  "parameter" : [{
-    "name" : "x-system-cache-id",
-    "valueString" : "dc8fd4bc-091a-424a-8a3b-6198ef146891"
-  }]
-}}####
-v: {
-  "display" : "Paternal Uncle",
-  "code" : "LA10425-9",
-  "system" : "http://loinc.org",
-  "version" : "2.78",
-  "server" : "http://tx.fhir.org/r4",
-  "issues" : {
-  "resourceType" : "OperationOutcome"
-}
-
-}
--------------------------------------------------------------------------------------
-{"code" : {
-  "system" : "http://loinc.org",
-  "code" : "LA10421-8",
-  "display" : "Paternal Aunt"
-}, "valueSet" :null, "langs":"en-CA", "useServer":"true", "useClient":"true", "guessSystem":"false", "activeOnly":"false", "membershipOnly":"false", "displayWarningMode":"false", "versionFlexible":"true", "profile": {
-  "resourceType" : "Parameters",
-  "parameter" : [{
-    "name" : "x-system-cache-id",
-    "valueString" : "dc8fd4bc-091a-424a-8a3b-6198ef146891"
-  }]
-}}####
-v: {
-  "display" : "Paternal Aunt",
-  "code" : "LA10421-8",
-  "system" : "http://loinc.org",
-  "version" : "2.78",
-  "server" : "http://tx.fhir.org/r4",
-  "issues" : {
-  "resourceType" : "OperationOutcome"
-}
-
-}
--------------------------------------------------------------------------------------
-{"code" : {
-  "system" : "http://loinc.org",
-  "code" : "LA10543-9",
-  "display" : "Skin Cancer"
-}, "valueSet" :null, "langs":"en-CA", "useServer":"true", "useClient":"true", "guessSystem":"false", "activeOnly":"false", "membershipOnly":"false", "displayWarningMode":"false", "versionFlexible":"true", "profile": {
-  "resourceType" : "Parameters",
-  "parameter" : [{
-    "name" : "x-system-cache-id",
-    "valueString" : "dc8fd4bc-091a-424a-8a3b-6198ef146891"
-  }]
-}}####
-v: {
-  "display" : "Skin Cancer",
-  "code" : "LA10543-9",
-  "system" : "http://loinc.org",
-  "version" : "2.78",
-  "server" : "http://tx.fhir.org/r4",
-  "issues" : {
-  "resourceType" : "OperationOutcome"
-}
-
-}
--------------------------------------------------------------------------------------
-{"code" : {
-  "system" : "http://loinc.org",
-  "code" : "LA10423-4",
-  "display" : "Paternal Grandfather"
-}, "valueSet" :null, "langs":"en-CA", "useServer":"true", "useClient":"true", "guessSystem":"false", "activeOnly":"false", "membershipOnly":"false", "displayWarningMode":"false", "versionFlexible":"true", "profile": {
-  "resourceType" : "Parameters",
-  "parameter" : [{
-    "name" : "x-system-cache-id",
-    "valueString" : "dc8fd4bc-091a-424a-8a3b-6198ef146891"
-  }]
-}}####
-v: {
-  "display" : "Paternal Grandfather",
-  "code" : "LA10423-4",
-  "system" : "http://loinc.org",
-  "version" : "2.78",
-  "server" : "http://tx.fhir.org/r4",
-  "issues" : {
-  "resourceType" : "OperationOutcome"
-}
-
-}
--------------------------------------------------------------------------------------
-{"code" : {
-  "system" : "http://loinc.org",
-  "code" : "LA10537-1",
-  "display" : "Colon Cancer"
-}, "valueSet" :null, "langs":"en-CA", "useServer":"true", "useClient":"true", "guessSystem":"false", "activeOnly":"false", "membershipOnly":"false", "displayWarningMode":"false", "versionFlexible":"true", "profile": {
-  "resourceType" : "Parameters",
-  "parameter" : [{
-    "name" : "x-system-cache-id",
-    "valueString" : "dc8fd4bc-091a-424a-8a3b-6198ef146891"
-  }]
-}}####
-v: {
-  "display" : "Colon Cancer",
-  "code" : "LA10537-1",
-  "system" : "http://loinc.org",
-  "version" : "2.78",
-  "server" : "http://tx.fhir.org/r4",
-  "issues" : {
-  "resourceType" : "OperationOutcome"
-}
-
-}
--------------------------------------------------------------------------------------
-{"code" : {
-  "system" : "http://loinc.org",
-  "code" : "LA10400-2",
-  "display" : "OVER 60"
-}, "valueSet" :null, "langs":"en-CA", "useServer":"true", "useClient":"true", "guessSystem":"false", "activeOnly":"false", "membershipOnly":"false", "displayWarningMode":"false", "versionFlexible":"true", "profile": {
-  "resourceType" : "Parameters",
-  "parameter" : [{
-    "name" : "x-system-cache-id",
-    "valueString" : "dc8fd4bc-091a-424a-8a3b-6198ef146891"
-  }]
-}}####
-v: {
-  "display" : "OVER 60",
-  "code" : "LA10400-2",
-  "system" : "http://loinc.org",
-  "version" : "2.78",
-  "server" : "http://tx.fhir.org/r4",
-  "issues" : {
-  "resourceType" : "OperationOutcome"
-}
-
-}
--------------------------------------------------------------------------------------
-{"code" : {
-  "system" : "http://loinc.org",
-  "code" : "LA10424-2",
-  "display" : "Paternal Grandmother"
-}, "valueSet" :null, "langs":"en-CA", "useServer":"true", "useClient":"true", "guessSystem":"false", "activeOnly":"false", "membershipOnly":"false", "displayWarningMode":"false", "versionFlexible":"true", "profile": {
-  "resourceType" : "Parameters",
-  "parameter" : [{
-    "name" : "x-system-cache-id",
-    "valueString" : "dc8fd4bc-091a-424a-8a3b-6198ef146891"
-  }]
-}}####
-v: {
-  "display" : "Paternal Grandmother",
-  "code" : "LA10424-2",
-  "system" : "http://loinc.org",
-  "version" : "2.78",
-  "server" : "http://tx.fhir.org/r4",
-  "issues" : {
-  "resourceType" : "OperationOutcome"
-}
-
-}
--------------------------------------------------------------------------------------
-{"code" : {
-  "system" : "http://loinc.org",
-  "code" : "LA10589-2",
-  "display" : "Other/Unexpected"
-}, "valueSet" :null, "langs":"en-CA", "useServer":"true", "useClient":"true", "guessSystem":"false", "activeOnly":"false", "membershipOnly":"false", "displayWarningMode":"false", "versionFlexible":"true", "profile": {
-  "resourceType" : "Parameters",
-  "parameter" : [{
-    "name" : "x-system-cache-id",
-    "valueString" : "dc8fd4bc-091a-424a-8a3b-6198ef146891"
-  }]
-}}####
-v: {
-  "display" : "Other/Unexpected",
-  "code" : "LA10589-2",
-  "system" : "http://loinc.org",
-  "version" : "2.78",
-  "server" : "http://tx.fhir.org/r4",
-  "issues" : {
-  "resourceType" : "OperationOutcome"
-}
-
-}
--------------------------------------------------------------------------------------
-{"code" : {
-  "system" : "http://loinc.org",
-  "code" : "LA10417-6",
-  "display" : "Mother"
-}, "valueSet" :null, "langs":"en-CA", "useServer":"true", "useClient":"true", "guessSystem":"false", "activeOnly":"false", "membershipOnly":"false", "displayWarningMode":"false", "versionFlexible":"true", "profile": {
-  "resourceType" : "Parameters",
-  "parameter" : [{
-    "name" : "x-system-cache-id",
-    "valueString" : "dc8fd4bc-091a-424a-8a3b-6198ef146891"
-  }]
-}}####
-v: {
-  "display" : "Mother",
-  "code" : "LA10417-6",
-  "system" : "http://loinc.org",
-  "version" : "2.78",
-  "server" : "http://tx.fhir.org/r4",
-  "issues" : {
-  "resourceType" : "OperationOutcome"
-}
-
-}
--------------------------------------------------------------------------------------
-{"code" : {
-  "system" : "http://loinc.org",
-  "code" : "LA15682-0",
-  "display" : "Ovarian Cancer"
-}, "valueSet" :null, "langs":"en-CA", "useServer":"true", "useClient":"true", "guessSystem":"false", "activeOnly":"false", "membershipOnly":"false", "displayWarningMode":"false", "versionFlexible":"true", "profile": {
-  "resourceType" : "Parameters",
-  "parameter" : [{
-    "name" : "x-system-cache-id",
-    "valueString" : "dc8fd4bc-091a-424a-8a3b-6198ef146891"
-  }]
-}}####
-v: {
-  "display" : "Ovarian cancer",
-  "code" : "LA15682-0",
-  "system" : "http://loinc.org",
-  "version" : "2.78",
-  "server" : "http://tx.fhir.org/r4",
-  "issues" : {
-  "resourceType" : "OperationOutcome"
-}
-
-}
--------------------------------------------------------------------------------------
-{"code" : {
-  "system" : "http://loinc.org",
-  "code" : "LA10399-6",
-  "display" : "50-59"
-}, "valueSet" :null, "langs":"en-CA", "useServer":"true", "useClient":"true", "guessSystem":"false", "activeOnly":"false", "membershipOnly":"false", "displayWarningMode":"false", "versionFlexible":"true", "profile": {
-  "resourceType" : "Parameters",
-  "parameter" : [{
-    "name" : "x-system-cache-id",
-    "valueString" : "dc8fd4bc-091a-424a-8a3b-6198ef146891"
-  }]
-}}####
-v: {
-  "display" : "50-59",
-  "code" : "LA10399-6",
-  "system" : "http://loinc.org",
-  "version" : "2.78",
-  "server" : "http://tx.fhir.org/r4",
-  "issues" : {
-  "resourceType" : "OperationOutcome"
-}
-
-}
--------------------------------------------------------------------------------------
-{"code" : {
-  "system" : "http://loinc.org",
-  "code" : "LA10398-8",
-  "display" : "40-49"
-}, "valueSet" :null, "langs":"en-CA", "useServer":"true", "useClient":"true", "guessSystem":"false", "activeOnly":"false", "membershipOnly":"false", "displayWarningMode":"false", "versionFlexible":"true", "profile": {
-  "resourceType" : "Parameters",
-  "parameter" : [{
-    "name" : "x-system-cache-id",
-    "valueString" : "dc8fd4bc-091a-424a-8a3b-6198ef146891"
-  }]
-}}####
-v: {
-  "display" : "40-49",
-  "code" : "LA10398-8",
-  "system" : "http://loinc.org",
-  "version" : "2.78",
-  "server" : "http://tx.fhir.org/r4",
-  "issues" : {
-  "resourceType" : "OperationOutcome"
-}
-
-}
--------------------------------------------------------------------------------------
-{"code" : {
-  "system" : "http://loinc.org",
-  "code" : "LA10414-3",
-  "display" : "Maternal Uncle"
-}, "valueSet" :null, "langs":"en-CA", "useServer":"true", "useClient":"true", "guessSystem":"false", "activeOnly":"false", "membershipOnly":"false", "displayWarningMode":"false", "versionFlexible":"true", "profile": {
-  "resourceType" : "Parameters",
-  "parameter" : [{
-    "name" : "x-system-cache-id",
-    "valueString" : "dc8fd4bc-091a-424a-8a3b-6198ef146891"
-  }]
-}}####
-v: {
-  "display" : "Maternal Uncle",
-  "code" : "LA10414-3",
-  "system" : "http://loinc.org",
-  "version" : "2.78",
-  "server" : "http://tx.fhir.org/r4",
-  "issues" : {
-  "resourceType" : "OperationOutcome"
-}
-
-}
--------------------------------------------------------------------------------------
-{"code" : {
-  "system" : "http://loinc.org",
-  "code" : "LA10410-1",
-  "display" : "Maternal Aunt"
-}, "valueSet" :null, "langs":"en-CA", "useServer":"true", "useClient":"true", "guessSystem":"false", "activeOnly":"false", "membershipOnly":"false", "displayWarningMode":"false", "versionFlexible":"true", "profile": {
-  "resourceType" : "Parameters",
-  "parameter" : [{
-    "name" : "x-system-cache-id",
-    "valueString" : "dc8fd4bc-091a-424a-8a3b-6198ef146891"
-  }]
-}}####
-v: {
-  "display" : "Maternal Aunt",
-  "code" : "LA10410-1",
-  "system" : "http://loinc.org",
-  "version" : "2.78",
-  "server" : "http://tx.fhir.org/r4",
-  "issues" : {
-  "resourceType" : "OperationOutcome"
-}
-
-}
--------------------------------------------------------------------------------------
-{"code" : {
-  "system" : "http://loinc.org",
-  "code" : "LA10412-7",
-  "display" : "Maternal Grandfather"
-}, "valueSet" :null, "langs":"en-CA", "useServer":"true", "useClient":"true", "guessSystem":"false", "activeOnly":"false", "membershipOnly":"false", "displayWarningMode":"false", "versionFlexible":"true", "profile": {
-  "resourceType" : "Parameters",
-  "parameter" : [{
-    "name" : "x-system-cache-id",
-    "valueString" : "dc8fd4bc-091a-424a-8a3b-6198ef146891"
-  }]
-}}####
-v: {
-  "display" : "Maternal Grandfather",
-  "code" : "LA10412-7",
-  "system" : "http://loinc.org",
-  "version" : "2.78",
-  "server" : "http://tx.fhir.org/r4",
-  "issues" : {
-  "resourceType" : "OperationOutcome"
-}
-
-}
--------------------------------------------------------------------------------------
-{"code" : {
-  "system" : "http://loinc.org",
-  "code" : "LA16286-9",
-  "display" : "Heart attack"
-}, "valueSet" :null, "langs":"en-CA", "useServer":"true", "useClient":"true", "guessSystem":"false", "activeOnly":"false", "membershipOnly":"false", "displayWarningMode":"false", "versionFlexible":"true", "profile": {
-  "resourceType" : "Parameters",
-  "parameter" : [{
-    "name" : "x-system-cache-id",
-    "valueString" : "dc8fd4bc-091a-424a-8a3b-6198ef146891"
-  }]
-}}####
-v: {
-  "display" : "Heart attack",
-  "code" : "LA16286-9",
-  "system" : "http://loinc.org",
-  "version" : "2.78",
-  "server" : "http://tx.fhir.org/r4",
-  "issues" : {
-  "resourceType" : "OperationOutcome"
-}
-
-}
--------------------------------------------------------------------------------------
-{"code" : {
-  "system" : "http://loinc.org",
-  "code" : "LA10413-5",
-  "display" : "Maternal Grandmother"
-}, "valueSet" :null, "langs":"en-CA", "useServer":"true", "useClient":"true", "guessSystem":"false", "activeOnly":"false", "membershipOnly":"false", "displayWarningMode":"false", "versionFlexible":"true", "profile": {
-  "resourceType" : "Parameters",
-  "parameter" : [{
-    "name" : "x-system-cache-id",
-    "valueString" : "dc8fd4bc-091a-424a-8a3b-6198ef146891"
-  }]
-}}####
-v: {
-  "display" : "Maternal Grandmother",
-  "code" : "LA10413-5",
-  "system" : "http://loinc.org",
-  "version" : "2.78",
-  "server" : "http://tx.fhir.org/r4",
-  "issues" : {
-  "resourceType" : "OperationOutcome"
-}
-
-}
--------------------------------------------------------------------------------------
-{"code" : {
-  "system" : "http://loinc.org",
-  "code" : "LA16982-3",
-  "display" : "Asthma"
-}, "valueSet" :null, "langs":"en-CA", "useServer":"true", "useClient":"true", "guessSystem":"false", "activeOnly":"false", "membershipOnly":"false", "displayWarningMode":"false", "versionFlexible":"true", "profile": {
-  "resourceType" : "Parameters",
-  "parameter" : [{
-    "name" : "x-system-cache-id",
-    "valueString" : "dc8fd4bc-091a-424a-8a3b-6198ef146891"
-  }]
-}}####
-v: {
-  "display" : "Asthma",
-  "code" : "LA16982-3",
-  "system" : "http://loinc.org",
-  "version" : "2.78",
-  "server" : "http://tx.fhir.org/r4",
-  "issues" : {
-  "resourceType" : "OperationOutcome"
-}
-
-}
--------------------------------------------------------------------------------------
-{"code" : {
-  "system" : "http://loinc.org",
-  "code" : "LA10395-4",
-  "display" : "Childhood"
-}, "valueSet" :null, "langs":"en-CA", "useServer":"true", "useClient":"true", "guessSystem":"false", "activeOnly":"false", "membershipOnly":"false", "displayWarningMode":"false", "versionFlexible":"true", "profile": {
-  "resourceType" : "Parameters",
-  "parameter" : [{
-    "name" : "x-system-cache-id",
-    "valueString" : "dc8fd4bc-091a-424a-8a3b-6198ef146891"
-  }]
-}}####
-v: {
-  "display" : "Childhood",
-  "code" : "LA10395-4",
-  "system" : "http://loinc.org",
-  "version" : "2.78",
-  "server" : "http://tx.fhir.org/r4",
-  "issues" : {
-  "resourceType" : "OperationOutcome"
-}
-
-}
--------------------------------------------------------------------------------------
-{"code" : {
-  "system" : "http://loinc.org",
-  "code" : "LA10411-9",
-  "display" : "Maternal Cousin"
-}, "valueSet" :null, "langs":"en-CA", "useServer":"true", "useClient":"true", "guessSystem":"false", "activeOnly":"false", "membershipOnly":"false", "displayWarningMode":"false", "versionFlexible":"true", "profile": {
-  "resourceType" : "Parameters",
-  "parameter" : [{
-    "name" : "x-system-cache-id",
-    "valueString" : "dc8fd4bc-091a-424a-8a3b-6198ef146891"
-  }]
-}}####
-v: {
-  "display" : "Maternal Cousin",
-  "code" : "LA10411-9",
-  "system" : "http://loinc.org",
-  "version" : "2.78",
-  "server" : "http://tx.fhir.org/r4",
+  "unknown-systems" : "",
   "issues" : {
   "resourceType" : "OperationOutcome"
 }
@@ -6869,6 +5907,7 @@ v: {
   "system" : "http://loinc.org",
   "version" : "2.78",
   "server" : "http://tx.fhir.org/r4",
+  "unknown-systems" : "",
   "issues" : {
   "resourceType" : "OperationOutcome"
 }
@@ -6904,6 +5943,7 @@ v: {
   "system" : "http://loinc.org",
   "version" : "2.78",
   "server" : "http://tx.fhir.org/r4",
+  "unknown-systems" : "",
   "issues" : {
   "resourceType" : "OperationOutcome"
 }
@@ -6939,6 +5979,7 @@ v: {
   "system" : "http://loinc.org",
   "version" : "2.78",
   "server" : "http://tx.fhir.org/r4",
+  "unknown-systems" : "",
   "issues" : {
   "resourceType" : "OperationOutcome"
 }
@@ -6974,6 +6015,7 @@ v: {
   "system" : "http://loinc.org",
   "version" : "2.78",
   "server" : "http://tx.fhir.org/r4",
+  "unknown-systems" : "",
   "issues" : {
   "resourceType" : "OperationOutcome"
 }
@@ -7009,6 +6051,7 @@ v: {
   "system" : "http://loinc.org",
   "version" : "2.78",
   "server" : "http://tx.fhir.org/r4",
+  "unknown-systems" : "",
   "issues" : {
   "resourceType" : "OperationOutcome"
 }
@@ -7044,6 +6087,7 @@ v: {
   "system" : "http://loinc.org",
   "version" : "2.78",
   "server" : "http://tx.fhir.org/r4",
+  "unknown-systems" : "",
   "issues" : {
   "resourceType" : "OperationOutcome"
 }
@@ -7079,6 +6123,7 @@ v: {
   "system" : "http://loinc.org",
   "version" : "2.78",
   "server" : "http://tx.fhir.org/r4",
+  "unknown-systems" : "",
   "issues" : {
   "resourceType" : "OperationOutcome"
 }
@@ -7114,6 +6159,7 @@ v: {
   "system" : "http://loinc.org",
   "version" : "2.78",
   "server" : "http://tx.fhir.org/r4",
+  "unknown-systems" : "",
   "issues" : {
   "resourceType" : "OperationOutcome"
 }
@@ -7149,6 +6195,7 @@ v: {
   "system" : "http://loinc.org",
   "version" : "2.78",
   "server" : "http://tx.fhir.org/r4",
+  "unknown-systems" : "",
   "issues" : {
   "resourceType" : "OperationOutcome"
 }
@@ -7184,6 +6231,7 @@ v: {
   "system" : "http://loinc.org",
   "version" : "2.78",
   "server" : "http://tx.fhir.org/r4",
+  "unknown-systems" : "",
   "issues" : {
   "resourceType" : "OperationOutcome"
 }
@@ -7219,6 +6267,7 @@ v: {
   "system" : "http://loinc.org",
   "version" : "2.78",
   "server" : "http://tx.fhir.org/r4",
+  "unknown-systems" : "",
   "issues" : {
   "resourceType" : "OperationOutcome"
 }
@@ -7254,6 +6303,7 @@ v: {
   "system" : "http://loinc.org",
   "version" : "2.78",
   "server" : "http://tx.fhir.org/r4",
+  "unknown-systems" : "",
   "issues" : {
   "resourceType" : "OperationOutcome"
 }
@@ -7289,6 +6339,7 @@ v: {
   "system" : "http://loinc.org",
   "version" : "2.78",
   "server" : "http://tx.fhir.org/r4",
+  "unknown-systems" : "",
   "issues" : {
   "resourceType" : "OperationOutcome"
 }
@@ -7324,6 +6375,7 @@ v: {
   "system" : "http://loinc.org",
   "version" : "2.78",
   "server" : "http://tx.fhir.org/r4",
+  "unknown-systems" : "",
   "issues" : {
   "resourceType" : "OperationOutcome"
 }
@@ -7359,6 +6411,7 @@ v: {
   "system" : "http://loinc.org",
   "version" : "2.78",
   "server" : "http://tx.fhir.org/r4",
+  "unknown-systems" : "",
   "issues" : {
   "resourceType" : "OperationOutcome"
 }
@@ -7394,6 +6447,7 @@ v: {
   "system" : "http://loinc.org",
   "version" : "2.78",
   "server" : "http://tx.fhir.org/r4",
+  "unknown-systems" : "",
   "issues" : {
   "resourceType" : "OperationOutcome"
 }
@@ -7429,6 +6483,7 @@ v: {
   "system" : "http://loinc.org",
   "version" : "2.78",
   "server" : "http://tx.fhir.org/r4",
+  "unknown-systems" : "",
   "issues" : {
   "resourceType" : "OperationOutcome"
 }
@@ -7464,6 +6519,7 @@ v: {
   "system" : "http://loinc.org",
   "version" : "2.78",
   "server" : "http://tx.fhir.org/r4",
+  "unknown-systems" : "",
   "issues" : {
   "resourceType" : "OperationOutcome"
 }
@@ -7499,6 +6555,7 @@ v: {
   "system" : "http://loinc.org",
   "version" : "2.78",
   "server" : "http://tx.fhir.org/r4",
+  "unknown-systems" : "",
   "issues" : {
   "resourceType" : "OperationOutcome"
 }
@@ -7534,6 +6591,7 @@ v: {
   "system" : "http://loinc.org",
   "version" : "2.78",
   "server" : "http://tx.fhir.org/r4",
+  "unknown-systems" : "",
   "issues" : {
   "resourceType" : "OperationOutcome"
 }
@@ -7569,6 +6627,7 @@ v: {
   "system" : "http://loinc.org",
   "version" : "2.78",
   "server" : "http://tx.fhir.org/r4",
+  "unknown-systems" : "",
   "issues" : {
   "resourceType" : "OperationOutcome"
 }
@@ -7604,6 +6663,7 @@ v: {
   "system" : "http://loinc.org",
   "version" : "2.78",
   "server" : "http://tx.fhir.org/r4",
+  "unknown-systems" : "",
   "issues" : {
   "resourceType" : "OperationOutcome"
 }
@@ -7639,6 +6699,7 @@ v: {
   "system" : "http://loinc.org",
   "version" : "2.78",
   "server" : "http://tx.fhir.org/r4",
+  "unknown-systems" : "",
   "issues" : {
   "resourceType" : "OperationOutcome"
 }
@@ -7674,6 +6735,7 @@ v: {
   "system" : "http://loinc.org",
   "version" : "2.78",
   "server" : "http://tx.fhir.org/r4",
+  "unknown-systems" : "",
   "issues" : {
   "resourceType" : "OperationOutcome"
 }
@@ -7709,6 +6771,7 @@ v: {
   "system" : "http://loinc.org",
   "version" : "2.78",
   "server" : "http://tx.fhir.org/r4",
+  "unknown-systems" : "",
   "issues" : {
   "resourceType" : "OperationOutcome"
 }
@@ -7744,6 +6807,7 @@ v: {
   "system" : "http://loinc.org",
   "version" : "2.78",
   "server" : "http://tx.fhir.org/r4",
+  "unknown-systems" : "",
   "issues" : {
   "resourceType" : "OperationOutcome"
 }
@@ -7779,6 +6843,7 @@ v: {
   "system" : "http://loinc.org",
   "version" : "2.78",
   "server" : "http://tx.fhir.org/r4",
+  "unknown-systems" : "",
   "issues" : {
   "resourceType" : "OperationOutcome"
 }
@@ -7814,6 +6879,7 @@ v: {
   "system" : "http://loinc.org",
   "version" : "2.78",
   "server" : "http://tx.fhir.org/r4",
+  "unknown-systems" : "",
   "issues" : {
   "resourceType" : "OperationOutcome"
 }
@@ -7849,6 +6915,7 @@ v: {
   "system" : "http://loinc.org",
   "version" : "2.78",
   "server" : "http://tx.fhir.org/r4",
+  "unknown-systems" : "",
   "issues" : {
   "resourceType" : "OperationOutcome"
 }
@@ -7884,6 +6951,7 @@ v: {
   "system" : "http://loinc.org",
   "version" : "2.78",
   "server" : "http://tx.fhir.org/r4",
+  "unknown-systems" : "",
   "issues" : {
   "resourceType" : "OperationOutcome"
 }
@@ -7919,6 +6987,7 @@ v: {
   "system" : "http://loinc.org",
   "version" : "2.78",
   "server" : "http://tx.fhir.org/r4",
+  "unknown-systems" : "",
   "issues" : {
   "resourceType" : "OperationOutcome"
 }
@@ -7954,6 +7023,7 @@ v: {
   "system" : "http://loinc.org",
   "version" : "2.78",
   "server" : "http://tx.fhir.org/r4",
+  "unknown-systems" : "",
   "issues" : {
   "resourceType" : "OperationOutcome"
 }
@@ -7989,6 +7059,7 @@ v: {
   "system" : "http://loinc.org",
   "version" : "2.78",
   "server" : "http://tx.fhir.org/r4",
+  "unknown-systems" : "",
   "issues" : {
   "resourceType" : "OperationOutcome"
 }
@@ -8024,6 +7095,7 @@ v: {
   "system" : "http://loinc.org",
   "version" : "2.78",
   "server" : "http://tx.fhir.org/r4",
+  "unknown-systems" : "",
   "issues" : {
   "resourceType" : "OperationOutcome"
 }
@@ -8059,6 +7131,7 @@ v: {
   "system" : "http://loinc.org",
   "version" : "2.78",
   "server" : "http://tx.fhir.org/r4",
+  "unknown-systems" : "",
   "issues" : {
   "resourceType" : "OperationOutcome"
 }
@@ -8094,6 +7167,7 @@ v: {
   "system" : "http://loinc.org",
   "version" : "2.78",
   "server" : "http://tx.fhir.org/r4",
+  "unknown-systems" : "",
   "issues" : {
   "resourceType" : "OperationOutcome"
 }
@@ -8129,6 +7203,7 @@ v: {
   "system" : "http://loinc.org",
   "version" : "2.78",
   "server" : "http://tx.fhir.org/r4",
+  "unknown-systems" : "",
   "issues" : {
   "resourceType" : "OperationOutcome"
 }
@@ -8164,6 +7239,7 @@ v: {
   "system" : "http://loinc.org",
   "version" : "2.78",
   "server" : "http://tx.fhir.org/r4",
+  "unknown-systems" : "",
   "issues" : {
   "resourceType" : "OperationOutcome"
 }
@@ -8199,6 +7275,7 @@ v: {
   "system" : "http://loinc.org",
   "version" : "2.78",
   "server" : "http://tx.fhir.org/r4",
+  "unknown-systems" : "",
   "issues" : {
   "resourceType" : "OperationOutcome"
 }
@@ -8207,8 +7284,8 @@ v: {
 -------------------------------------------------------------------------------------
 {"code" : {
   "system" : "http://loinc.org",
-  "code" : "LA20278-0",
-  "display" : "Prescription or over-the-counter (including herbal supplements)"
+  "code" : "LA3-6",
+  "display" : "Female"
 }, "valueSet" :null, "langs":"en-CA", "useServer":"true", "useClient":"true", "guessSystem":"false", "activeOnly":"false", "membershipOnly":"false", "displayWarningMode":"false", "versionFlexible":"true", "profile": {
   "resourceType" : "Parameters",
   "parameter" : [{
@@ -8217,11 +7294,12 @@ v: {
   }]
 }}####
 v: {
-  "display" : "Prescription or over-the-counter (including herbal supplements)",
-  "code" : "LA20278-0",
+  "display" : "Female",
+  "code" : "LA3-6",
   "system" : "http://loinc.org",
   "version" : "2.78",
   "server" : "http://tx.fhir.org/r4",
+  "unknown-systems" : "",
   "issues" : {
   "resourceType" : "OperationOutcome"
 }
@@ -8230,8 +7308,8 @@ v: {
 -------------------------------------------------------------------------------------
 {"code" : {
   "system" : "http://loinc.org",
-  "code" : "LA20276-4",
-  "display" : "Incorrect patient"
+  "code" : "LA4457-3",
+  "display" : "White"
 }, "valueSet" :null, "langs":"en-CA", "useServer":"true", "useClient":"true", "guessSystem":"false", "activeOnly":"false", "membershipOnly":"false", "displayWarningMode":"false", "versionFlexible":"true", "profile": {
   "resourceType" : "Parameters",
   "parameter" : [{
@@ -8240,11 +7318,12 @@ v: {
   }]
 }}####
 v: {
-  "display" : "Incorrect patient",
-  "code" : "LA20276-4",
+  "display" : "White",
+  "code" : "LA4457-3",
   "system" : "http://loinc.org",
   "version" : "2.78",
   "server" : "http://tx.fhir.org/r4",
+  "unknown-systems" : "",
   "issues" : {
   "resourceType" : "OperationOutcome"
 }
@@ -8253,8 +7332,8 @@ v: {
 -------------------------------------------------------------------------------------
 {"code" : {
   "system" : "http://loinc.org",
-  "code" : "LA20296-2",
-  "display" : "Administering"
+  "code" : "LA4611-5",
+  "display" : "Mexican"
 }, "valueSet" :null, "langs":"en-CA", "useServer":"true", "useClient":"true", "guessSystem":"false", "activeOnly":"false", "membershipOnly":"false", "displayWarningMode":"false", "versionFlexible":"true", "profile": {
   "resourceType" : "Parameters",
   "parameter" : [{
@@ -8263,11 +7342,780 @@ v: {
   }]
 }}####
 v: {
-  "display" : "Administering",
-  "code" : "LA20296-2",
+  "display" : "Mexican",
+  "code" : "LA4611-5",
   "system" : "http://loinc.org",
   "version" : "2.78",
   "server" : "http://tx.fhir.org/r4",
+  "unknown-systems" : "",
+  "issues" : {
+  "resourceType" : "OperationOutcome"
+}
+
+}
+-------------------------------------------------------------------------------------
+{"code" : {
+  "system" : "http://loinc.org",
+  "code" : "LA10606-4",
+  "display" : "South American"
+}, "valueSet" :null, "langs":"en-CA", "useServer":"true", "useClient":"true", "guessSystem":"false", "activeOnly":"false", "membershipOnly":"false", "displayWarningMode":"false", "versionFlexible":"true", "profile": {
+  "resourceType" : "Parameters",
+  "parameter" : [{
+    "name" : "x-system-cache-id",
+    "valueString" : "dc8fd4bc-091a-424a-8a3b-6198ef146891"
+  }]
+}}####
+v: {
+  "display" : "South American",
+  "code" : "LA10606-4",
+  "system" : "http://loinc.org",
+  "version" : "2.78",
+  "server" : "http://tx.fhir.org/r4",
+  "unknown-systems" : "",
+  "issues" : {
+  "resourceType" : "OperationOutcome"
+}
+
+}
+-------------------------------------------------------------------------------------
+{"code" : {
+  "system" : "http://loinc.org",
+  "code" : "LA10405-1",
+  "display" : "Daughter"
+}, "valueSet" :null, "langs":"en-CA", "useServer":"true", "useClient":"true", "guessSystem":"false", "activeOnly":"false", "membershipOnly":"false", "displayWarningMode":"false", "versionFlexible":"true", "profile": {
+  "resourceType" : "Parameters",
+  "parameter" : [{
+    "name" : "x-system-cache-id",
+    "valueString" : "dc8fd4bc-091a-424a-8a3b-6198ef146891"
+  }]
+}}####
+v: {
+  "display" : "Daughter",
+  "code" : "LA10405-1",
+  "system" : "http://loinc.org",
+  "version" : "2.78",
+  "server" : "http://tx.fhir.org/r4",
+  "unknown-systems" : "",
+  "issues" : {
+  "resourceType" : "OperationOutcome"
+}
+
+}
+-------------------------------------------------------------------------------------
+{"code" : {
+  "system" : "http://loinc.org",
+  "code" : "LA33-6",
+  "display" : "Yes"
+}, "valueSet" :null, "langs":"en-CA", "useServer":"true", "useClient":"true", "guessSystem":"false", "activeOnly":"false", "membershipOnly":"false", "displayWarningMode":"false", "versionFlexible":"true", "profile": {
+  "resourceType" : "Parameters",
+  "parameter" : [{
+    "name" : "x-system-cache-id",
+    "valueString" : "dc8fd4bc-091a-424a-8a3b-6198ef146891"
+  }]
+}}####
+v: {
+  "display" : "Yes",
+  "code" : "LA33-6",
+  "system" : "http://loinc.org",
+  "version" : "2.78",
+  "server" : "http://tx.fhir.org/r4",
+  "unknown-systems" : "",
+  "issues" : {
+  "resourceType" : "OperationOutcome"
+}
+
+}
+-------------------------------------------------------------------------------------
+{"code" : {
+  "system" : "http://loinc.org",
+  "code" : "LA10415-0",
+  "display" : "Brother"
+}, "valueSet" :null, "langs":"en-CA", "useServer":"true", "useClient":"true", "guessSystem":"false", "activeOnly":"false", "membershipOnly":"false", "displayWarningMode":"false", "versionFlexible":"true", "profile": {
+  "resourceType" : "Parameters",
+  "parameter" : [{
+    "name" : "x-system-cache-id",
+    "valueString" : "dc8fd4bc-091a-424a-8a3b-6198ef146891"
+  }]
+}}####
+v: {
+  "display" : "Brother",
+  "code" : "LA10415-0",
+  "system" : "http://loinc.org",
+  "version" : "2.78",
+  "server" : "http://tx.fhir.org/r4",
+  "unknown-systems" : "",
+  "issues" : {
+  "resourceType" : "OperationOutcome"
+}
+
+}
+-------------------------------------------------------------------------------------
+{"code" : {
+  "system" : "http://loinc.org",
+  "code" : "LA2-8",
+  "display" : "Male"
+}, "valueSet" :null, "langs":"en-CA", "useServer":"true", "useClient":"true", "guessSystem":"false", "activeOnly":"false", "membershipOnly":"false", "displayWarningMode":"false", "versionFlexible":"true", "profile": {
+  "resourceType" : "Parameters",
+  "parameter" : [{
+    "name" : "x-system-cache-id",
+    "valueString" : "dc8fd4bc-091a-424a-8a3b-6198ef146891"
+  }]
+}}####
+v: {
+  "display" : "Male",
+  "code" : "LA2-8",
+  "system" : "http://loinc.org",
+  "version" : "2.78",
+  "server" : "http://tx.fhir.org/r4",
+  "unknown-systems" : "",
+  "issues" : {
+  "resourceType" : "OperationOutcome"
+}
+
+}
+-------------------------------------------------------------------------------------
+{"code" : {
+  "system" : "http://loinc.org",
+  "code" : "LA14284-6",
+  "display" : "Other Cancer"
+}, "valueSet" :null, "langs":"en-CA", "useServer":"true", "useClient":"true", "guessSystem":"false", "activeOnly":"false", "membershipOnly":"false", "displayWarningMode":"false", "versionFlexible":"true", "profile": {
+  "resourceType" : "Parameters",
+  "parameter" : [{
+    "name" : "x-system-cache-id",
+    "valueString" : "dc8fd4bc-091a-424a-8a3b-6198ef146891"
+  }]
+}}####
+v: {
+  "display" : "Other cancer",
+  "code" : "LA14284-6",
+  "system" : "http://loinc.org",
+  "version" : "2.78",
+  "server" : "http://tx.fhir.org/r4",
+  "unknown-systems" : "",
+  "issues" : {
+  "resourceType" : "OperationOutcome"
+}
+
+}
+-------------------------------------------------------------------------------------
+{"code" : {
+  "system" : "http://loinc.org",
+  "code" : "LA10397-0",
+  "display" : "30-39"
+}, "valueSet" :null, "langs":"en-CA", "useServer":"true", "useClient":"true", "guessSystem":"false", "activeOnly":"false", "membershipOnly":"false", "displayWarningMode":"false", "versionFlexible":"true", "profile": {
+  "resourceType" : "Parameters",
+  "parameter" : [{
+    "name" : "x-system-cache-id",
+    "valueString" : "dc8fd4bc-091a-424a-8a3b-6198ef146891"
+  }]
+}}####
+v: {
+  "display" : "30-39",
+  "code" : "LA10397-0",
+  "system" : "http://loinc.org",
+  "version" : "2.78",
+  "server" : "http://tx.fhir.org/r4",
+  "unknown-systems" : "",
+  "issues" : {
+  "resourceType" : "OperationOutcome"
+}
+
+}
+-------------------------------------------------------------------------------------
+{"code" : {
+  "system" : "http://loinc.org",
+  "code" : "LA10418-4",
+  "display" : "Sister"
+}, "valueSet" :null, "langs":"en-CA", "useServer":"true", "useClient":"true", "guessSystem":"false", "activeOnly":"false", "membershipOnly":"false", "displayWarningMode":"false", "versionFlexible":"true", "profile": {
+  "resourceType" : "Parameters",
+  "parameter" : [{
+    "name" : "x-system-cache-id",
+    "valueString" : "dc8fd4bc-091a-424a-8a3b-6198ef146891"
+  }]
+}}####
+v: {
+  "display" : "Sister",
+  "code" : "LA10418-4",
+  "system" : "http://loinc.org",
+  "version" : "2.78",
+  "server" : "http://tx.fhir.org/r4",
+  "unknown-systems" : "",
+  "issues" : {
+  "resourceType" : "OperationOutcome"
+}
+
+}
+-------------------------------------------------------------------------------------
+{"code" : {
+  "system" : "http://loinc.org",
+  "code" : "LA14283-8",
+  "display" : "Breast Cancer"
+}, "valueSet" :null, "langs":"en-CA", "useServer":"true", "useClient":"true", "guessSystem":"false", "activeOnly":"false", "membershipOnly":"false", "displayWarningMode":"false", "versionFlexible":"true", "profile": {
+  "resourceType" : "Parameters",
+  "parameter" : [{
+    "name" : "x-system-cache-id",
+    "valueString" : "dc8fd4bc-091a-424a-8a3b-6198ef146891"
+  }]
+}}####
+v: {
+  "display" : "Breast cancer",
+  "code" : "LA14283-8",
+  "system" : "http://loinc.org",
+  "version" : "2.78",
+  "server" : "http://tx.fhir.org/r4",
+  "unknown-systems" : "",
+  "issues" : {
+  "resourceType" : "OperationOutcome"
+}
+
+}
+-------------------------------------------------------------------------------------
+{"code" : {
+  "system" : "http://loinc.org",
+  "code" : "LA10419-2",
+  "display" : "Nephew"
+}, "valueSet" :null, "langs":"en-CA", "useServer":"true", "useClient":"true", "guessSystem":"false", "activeOnly":"false", "membershipOnly":"false", "displayWarningMode":"false", "versionFlexible":"true", "profile": {
+  "resourceType" : "Parameters",
+  "parameter" : [{
+    "name" : "x-system-cache-id",
+    "valueString" : "dc8fd4bc-091a-424a-8a3b-6198ef146891"
+  }]
+}}####
+v: {
+  "display" : "Nephew",
+  "code" : "LA10419-2",
+  "system" : "http://loinc.org",
+  "version" : "2.78",
+  "server" : "http://tx.fhir.org/r4",
+  "unknown-systems" : "",
+  "issues" : {
+  "resourceType" : "OperationOutcome"
+}
+
+}
+-------------------------------------------------------------------------------------
+{"code" : {
+  "system" : "http://loinc.org",
+  "code" : "LA10420-0",
+  "display" : "Niece"
+}, "valueSet" :null, "langs":"en-CA", "useServer":"true", "useClient":"true", "guessSystem":"false", "activeOnly":"false", "membershipOnly":"false", "displayWarningMode":"false", "versionFlexible":"true", "profile": {
+  "resourceType" : "Parameters",
+  "parameter" : [{
+    "name" : "x-system-cache-id",
+    "valueString" : "dc8fd4bc-091a-424a-8a3b-6198ef146891"
+  }]
+}}####
+v: {
+  "display" : "Niece",
+  "code" : "LA10420-0",
+  "system" : "http://loinc.org",
+  "version" : "2.78",
+  "server" : "http://tx.fhir.org/r4",
+  "unknown-systems" : "",
+  "issues" : {
+  "resourceType" : "OperationOutcome"
+}
+
+}
+-------------------------------------------------------------------------------------
+{"code" : {
+  "system" : "http://loinc.org",
+  "code" : "LA10416-8",
+  "display" : "Father"
+}, "valueSet" :null, "langs":"en-CA", "useServer":"true", "useClient":"true", "guessSystem":"false", "activeOnly":"false", "membershipOnly":"false", "displayWarningMode":"false", "versionFlexible":"true", "profile": {
+  "resourceType" : "Parameters",
+  "parameter" : [{
+    "name" : "x-system-cache-id",
+    "valueString" : "dc8fd4bc-091a-424a-8a3b-6198ef146891"
+  }]
+}}####
+v: {
+  "display" : "Father",
+  "code" : "LA10416-8",
+  "system" : "http://loinc.org",
+  "version" : "2.78",
+  "server" : "http://tx.fhir.org/r4",
+  "unknown-systems" : "",
+  "issues" : {
+  "resourceType" : "OperationOutcome"
+}
+
+}
+-------------------------------------------------------------------------------------
+{"code" : {
+  "system" : "http://loinc.org",
+  "code" : "LA10425-9",
+  "display" : "Paternal Uncle"
+}, "valueSet" :null, "langs":"en-CA", "useServer":"true", "useClient":"true", "guessSystem":"false", "activeOnly":"false", "membershipOnly":"false", "displayWarningMode":"false", "versionFlexible":"true", "profile": {
+  "resourceType" : "Parameters",
+  "parameter" : [{
+    "name" : "x-system-cache-id",
+    "valueString" : "dc8fd4bc-091a-424a-8a3b-6198ef146891"
+  }]
+}}####
+v: {
+  "display" : "Paternal Uncle",
+  "code" : "LA10425-9",
+  "system" : "http://loinc.org",
+  "version" : "2.78",
+  "server" : "http://tx.fhir.org/r4",
+  "unknown-systems" : "",
+  "issues" : {
+  "resourceType" : "OperationOutcome"
+}
+
+}
+-------------------------------------------------------------------------------------
+{"code" : {
+  "system" : "http://loinc.org",
+  "code" : "LA10421-8",
+  "display" : "Paternal Aunt"
+}, "valueSet" :null, "langs":"en-CA", "useServer":"true", "useClient":"true", "guessSystem":"false", "activeOnly":"false", "membershipOnly":"false", "displayWarningMode":"false", "versionFlexible":"true", "profile": {
+  "resourceType" : "Parameters",
+  "parameter" : [{
+    "name" : "x-system-cache-id",
+    "valueString" : "dc8fd4bc-091a-424a-8a3b-6198ef146891"
+  }]
+}}####
+v: {
+  "display" : "Paternal Aunt",
+  "code" : "LA10421-8",
+  "system" : "http://loinc.org",
+  "version" : "2.78",
+  "server" : "http://tx.fhir.org/r4",
+  "unknown-systems" : "",
+  "issues" : {
+  "resourceType" : "OperationOutcome"
+}
+
+}
+-------------------------------------------------------------------------------------
+{"code" : {
+  "system" : "http://loinc.org",
+  "code" : "LA10543-9",
+  "display" : "Skin Cancer"
+}, "valueSet" :null, "langs":"en-CA", "useServer":"true", "useClient":"true", "guessSystem":"false", "activeOnly":"false", "membershipOnly":"false", "displayWarningMode":"false", "versionFlexible":"true", "profile": {
+  "resourceType" : "Parameters",
+  "parameter" : [{
+    "name" : "x-system-cache-id",
+    "valueString" : "dc8fd4bc-091a-424a-8a3b-6198ef146891"
+  }]
+}}####
+v: {
+  "display" : "Skin Cancer",
+  "code" : "LA10543-9",
+  "system" : "http://loinc.org",
+  "version" : "2.78",
+  "server" : "http://tx.fhir.org/r4",
+  "unknown-systems" : "",
+  "issues" : {
+  "resourceType" : "OperationOutcome"
+}
+
+}
+-------------------------------------------------------------------------------------
+{"code" : {
+  "system" : "http://loinc.org",
+  "code" : "LA10423-4",
+  "display" : "Paternal Grandfather"
+}, "valueSet" :null, "langs":"en-CA", "useServer":"true", "useClient":"true", "guessSystem":"false", "activeOnly":"false", "membershipOnly":"false", "displayWarningMode":"false", "versionFlexible":"true", "profile": {
+  "resourceType" : "Parameters",
+  "parameter" : [{
+    "name" : "x-system-cache-id",
+    "valueString" : "dc8fd4bc-091a-424a-8a3b-6198ef146891"
+  }]
+}}####
+v: {
+  "display" : "Paternal Grandfather",
+  "code" : "LA10423-4",
+  "system" : "http://loinc.org",
+  "version" : "2.78",
+  "server" : "http://tx.fhir.org/r4",
+  "unknown-systems" : "",
+  "issues" : {
+  "resourceType" : "OperationOutcome"
+}
+
+}
+-------------------------------------------------------------------------------------
+{"code" : {
+  "system" : "http://loinc.org",
+  "code" : "LA10537-1",
+  "display" : "Colon Cancer"
+}, "valueSet" :null, "langs":"en-CA", "useServer":"true", "useClient":"true", "guessSystem":"false", "activeOnly":"false", "membershipOnly":"false", "displayWarningMode":"false", "versionFlexible":"true", "profile": {
+  "resourceType" : "Parameters",
+  "parameter" : [{
+    "name" : "x-system-cache-id",
+    "valueString" : "dc8fd4bc-091a-424a-8a3b-6198ef146891"
+  }]
+}}####
+v: {
+  "display" : "Colon Cancer",
+  "code" : "LA10537-1",
+  "system" : "http://loinc.org",
+  "version" : "2.78",
+  "server" : "http://tx.fhir.org/r4",
+  "unknown-systems" : "",
+  "issues" : {
+  "resourceType" : "OperationOutcome"
+}
+
+}
+-------------------------------------------------------------------------------------
+{"code" : {
+  "system" : "http://loinc.org",
+  "code" : "LA10400-2",
+  "display" : "OVER 60"
+}, "valueSet" :null, "langs":"en-CA", "useServer":"true", "useClient":"true", "guessSystem":"false", "activeOnly":"false", "membershipOnly":"false", "displayWarningMode":"false", "versionFlexible":"true", "profile": {
+  "resourceType" : "Parameters",
+  "parameter" : [{
+    "name" : "x-system-cache-id",
+    "valueString" : "dc8fd4bc-091a-424a-8a3b-6198ef146891"
+  }]
+}}####
+v: {
+  "display" : "OVER 60",
+  "code" : "LA10400-2",
+  "system" : "http://loinc.org",
+  "version" : "2.78",
+  "server" : "http://tx.fhir.org/r4",
+  "unknown-systems" : "",
+  "issues" : {
+  "resourceType" : "OperationOutcome"
+}
+
+}
+-------------------------------------------------------------------------------------
+{"code" : {
+  "system" : "http://loinc.org",
+  "code" : "LA10424-2",
+  "display" : "Paternal Grandmother"
+}, "valueSet" :null, "langs":"en-CA", "useServer":"true", "useClient":"true", "guessSystem":"false", "activeOnly":"false", "membershipOnly":"false", "displayWarningMode":"false", "versionFlexible":"true", "profile": {
+  "resourceType" : "Parameters",
+  "parameter" : [{
+    "name" : "x-system-cache-id",
+    "valueString" : "dc8fd4bc-091a-424a-8a3b-6198ef146891"
+  }]
+}}####
+v: {
+  "display" : "Paternal Grandmother",
+  "code" : "LA10424-2",
+  "system" : "http://loinc.org",
+  "version" : "2.78",
+  "server" : "http://tx.fhir.org/r4",
+  "unknown-systems" : "",
+  "issues" : {
+  "resourceType" : "OperationOutcome"
+}
+
+}
+-------------------------------------------------------------------------------------
+{"code" : {
+  "system" : "http://loinc.org",
+  "code" : "LA10589-2",
+  "display" : "Other/Unexpected"
+}, "valueSet" :null, "langs":"en-CA", "useServer":"true", "useClient":"true", "guessSystem":"false", "activeOnly":"false", "membershipOnly":"false", "displayWarningMode":"false", "versionFlexible":"true", "profile": {
+  "resourceType" : "Parameters",
+  "parameter" : [{
+    "name" : "x-system-cache-id",
+    "valueString" : "dc8fd4bc-091a-424a-8a3b-6198ef146891"
+  }]
+}}####
+v: {
+  "display" : "Other/Unexpected",
+  "code" : "LA10589-2",
+  "system" : "http://loinc.org",
+  "version" : "2.78",
+  "server" : "http://tx.fhir.org/r4",
+  "unknown-systems" : "",
+  "issues" : {
+  "resourceType" : "OperationOutcome"
+}
+
+}
+-------------------------------------------------------------------------------------
+{"code" : {
+  "system" : "http://loinc.org",
+  "code" : "LA10417-6",
+  "display" : "Mother"
+}, "valueSet" :null, "langs":"en-CA", "useServer":"true", "useClient":"true", "guessSystem":"false", "activeOnly":"false", "membershipOnly":"false", "displayWarningMode":"false", "versionFlexible":"true", "profile": {
+  "resourceType" : "Parameters",
+  "parameter" : [{
+    "name" : "x-system-cache-id",
+    "valueString" : "dc8fd4bc-091a-424a-8a3b-6198ef146891"
+  }]
+}}####
+v: {
+  "display" : "Mother",
+  "code" : "LA10417-6",
+  "system" : "http://loinc.org",
+  "version" : "2.78",
+  "server" : "http://tx.fhir.org/r4",
+  "unknown-systems" : "",
+  "issues" : {
+  "resourceType" : "OperationOutcome"
+}
+
+}
+-------------------------------------------------------------------------------------
+{"code" : {
+  "system" : "http://loinc.org",
+  "code" : "LA15682-0",
+  "display" : "Ovarian Cancer"
+}, "valueSet" :null, "langs":"en-CA", "useServer":"true", "useClient":"true", "guessSystem":"false", "activeOnly":"false", "membershipOnly":"false", "displayWarningMode":"false", "versionFlexible":"true", "profile": {
+  "resourceType" : "Parameters",
+  "parameter" : [{
+    "name" : "x-system-cache-id",
+    "valueString" : "dc8fd4bc-091a-424a-8a3b-6198ef146891"
+  }]
+}}####
+v: {
+  "display" : "Ovarian cancer",
+  "code" : "LA15682-0",
+  "system" : "http://loinc.org",
+  "version" : "2.78",
+  "server" : "http://tx.fhir.org/r4",
+  "unknown-systems" : "",
+  "issues" : {
+  "resourceType" : "OperationOutcome"
+}
+
+}
+-------------------------------------------------------------------------------------
+{"code" : {
+  "system" : "http://loinc.org",
+  "code" : "LA10399-6",
+  "display" : "50-59"
+}, "valueSet" :null, "langs":"en-CA", "useServer":"true", "useClient":"true", "guessSystem":"false", "activeOnly":"false", "membershipOnly":"false", "displayWarningMode":"false", "versionFlexible":"true", "profile": {
+  "resourceType" : "Parameters",
+  "parameter" : [{
+    "name" : "x-system-cache-id",
+    "valueString" : "dc8fd4bc-091a-424a-8a3b-6198ef146891"
+  }]
+}}####
+v: {
+  "display" : "50-59",
+  "code" : "LA10399-6",
+  "system" : "http://loinc.org",
+  "version" : "2.78",
+  "server" : "http://tx.fhir.org/r4",
+  "unknown-systems" : "",
+  "issues" : {
+  "resourceType" : "OperationOutcome"
+}
+
+}
+-------------------------------------------------------------------------------------
+{"code" : {
+  "system" : "http://loinc.org",
+  "code" : "LA10398-8",
+  "display" : "40-49"
+}, "valueSet" :null, "langs":"en-CA", "useServer":"true", "useClient":"true", "guessSystem":"false", "activeOnly":"false", "membershipOnly":"false", "displayWarningMode":"false", "versionFlexible":"true", "profile": {
+  "resourceType" : "Parameters",
+  "parameter" : [{
+    "name" : "x-system-cache-id",
+    "valueString" : "dc8fd4bc-091a-424a-8a3b-6198ef146891"
+  }]
+}}####
+v: {
+  "display" : "40-49",
+  "code" : "LA10398-8",
+  "system" : "http://loinc.org",
+  "version" : "2.78",
+  "server" : "http://tx.fhir.org/r4",
+  "unknown-systems" : "",
+  "issues" : {
+  "resourceType" : "OperationOutcome"
+}
+
+}
+-------------------------------------------------------------------------------------
+{"code" : {
+  "system" : "http://loinc.org",
+  "code" : "LA10414-3",
+  "display" : "Maternal Uncle"
+}, "valueSet" :null, "langs":"en-CA", "useServer":"true", "useClient":"true", "guessSystem":"false", "activeOnly":"false", "membershipOnly":"false", "displayWarningMode":"false", "versionFlexible":"true", "profile": {
+  "resourceType" : "Parameters",
+  "parameter" : [{
+    "name" : "x-system-cache-id",
+    "valueString" : "dc8fd4bc-091a-424a-8a3b-6198ef146891"
+  }]
+}}####
+v: {
+  "display" : "Maternal Uncle",
+  "code" : "LA10414-3",
+  "system" : "http://loinc.org",
+  "version" : "2.78",
+  "server" : "http://tx.fhir.org/r4",
+  "unknown-systems" : "",
+  "issues" : {
+  "resourceType" : "OperationOutcome"
+}
+
+}
+-------------------------------------------------------------------------------------
+{"code" : {
+  "system" : "http://loinc.org",
+  "code" : "LA10410-1",
+  "display" : "Maternal Aunt"
+}, "valueSet" :null, "langs":"en-CA", "useServer":"true", "useClient":"true", "guessSystem":"false", "activeOnly":"false", "membershipOnly":"false", "displayWarningMode":"false", "versionFlexible":"true", "profile": {
+  "resourceType" : "Parameters",
+  "parameter" : [{
+    "name" : "x-system-cache-id",
+    "valueString" : "dc8fd4bc-091a-424a-8a3b-6198ef146891"
+  }]
+}}####
+v: {
+  "display" : "Maternal Aunt",
+  "code" : "LA10410-1",
+  "system" : "http://loinc.org",
+  "version" : "2.78",
+  "server" : "http://tx.fhir.org/r4",
+  "unknown-systems" : "",
+  "issues" : {
+  "resourceType" : "OperationOutcome"
+}
+
+}
+-------------------------------------------------------------------------------------
+{"code" : {
+  "system" : "http://loinc.org",
+  "code" : "LA10412-7",
+  "display" : "Maternal Grandfather"
+}, "valueSet" :null, "langs":"en-CA", "useServer":"true", "useClient":"true", "guessSystem":"false", "activeOnly":"false", "membershipOnly":"false", "displayWarningMode":"false", "versionFlexible":"true", "profile": {
+  "resourceType" : "Parameters",
+  "parameter" : [{
+    "name" : "x-system-cache-id",
+    "valueString" : "dc8fd4bc-091a-424a-8a3b-6198ef146891"
+  }]
+}}####
+v: {
+  "display" : "Maternal Grandfather",
+  "code" : "LA10412-7",
+  "system" : "http://loinc.org",
+  "version" : "2.78",
+  "server" : "http://tx.fhir.org/r4",
+  "unknown-systems" : "",
+  "issues" : {
+  "resourceType" : "OperationOutcome"
+}
+
+}
+-------------------------------------------------------------------------------------
+{"code" : {
+  "system" : "http://loinc.org",
+  "code" : "LA16286-9",
+  "display" : "Heart attack"
+}, "valueSet" :null, "langs":"en-CA", "useServer":"true", "useClient":"true", "guessSystem":"false", "activeOnly":"false", "membershipOnly":"false", "displayWarningMode":"false", "versionFlexible":"true", "profile": {
+  "resourceType" : "Parameters",
+  "parameter" : [{
+    "name" : "x-system-cache-id",
+    "valueString" : "dc8fd4bc-091a-424a-8a3b-6198ef146891"
+  }]
+}}####
+v: {
+  "display" : "Heart attack",
+  "code" : "LA16286-9",
+  "system" : "http://loinc.org",
+  "version" : "2.78",
+  "server" : "http://tx.fhir.org/r4",
+  "unknown-systems" : "",
+  "issues" : {
+  "resourceType" : "OperationOutcome"
+}
+
+}
+-------------------------------------------------------------------------------------
+{"code" : {
+  "system" : "http://loinc.org",
+  "code" : "LA10413-5",
+  "display" : "Maternal Grandmother"
+}, "valueSet" :null, "langs":"en-CA", "useServer":"true", "useClient":"true", "guessSystem":"false", "activeOnly":"false", "membershipOnly":"false", "displayWarningMode":"false", "versionFlexible":"true", "profile": {
+  "resourceType" : "Parameters",
+  "parameter" : [{
+    "name" : "x-system-cache-id",
+    "valueString" : "dc8fd4bc-091a-424a-8a3b-6198ef146891"
+  }]
+}}####
+v: {
+  "display" : "Maternal Grandmother",
+  "code" : "LA10413-5",
+  "system" : "http://loinc.org",
+  "version" : "2.78",
+  "server" : "http://tx.fhir.org/r4",
+  "unknown-systems" : "",
+  "issues" : {
+  "resourceType" : "OperationOutcome"
+}
+
+}
+-------------------------------------------------------------------------------------
+{"code" : {
+  "system" : "http://loinc.org",
+  "code" : "LA16982-3",
+  "display" : "Asthma"
+}, "valueSet" :null, "langs":"en-CA", "useServer":"true", "useClient":"true", "guessSystem":"false", "activeOnly":"false", "membershipOnly":"false", "displayWarningMode":"false", "versionFlexible":"true", "profile": {
+  "resourceType" : "Parameters",
+  "parameter" : [{
+    "name" : "x-system-cache-id",
+    "valueString" : "dc8fd4bc-091a-424a-8a3b-6198ef146891"
+  }]
+}}####
+v: {
+  "display" : "Asthma",
+  "code" : "LA16982-3",
+  "system" : "http://loinc.org",
+  "version" : "2.78",
+  "server" : "http://tx.fhir.org/r4",
+  "unknown-systems" : "",
+  "issues" : {
+  "resourceType" : "OperationOutcome"
+}
+
+}
+-------------------------------------------------------------------------------------
+{"code" : {
+  "system" : "http://loinc.org",
+  "code" : "LA10395-4",
+  "display" : "Childhood"
+}, "valueSet" :null, "langs":"en-CA", "useServer":"true", "useClient":"true", "guessSystem":"false", "activeOnly":"false", "membershipOnly":"false", "displayWarningMode":"false", "versionFlexible":"true", "profile": {
+  "resourceType" : "Parameters",
+  "parameter" : [{
+    "name" : "x-system-cache-id",
+    "valueString" : "dc8fd4bc-091a-424a-8a3b-6198ef146891"
+  }]
+}}####
+v: {
+  "display" : "Childhood",
+  "code" : "LA10395-4",
+  "system" : "http://loinc.org",
+  "version" : "2.78",
+  "server" : "http://tx.fhir.org/r4",
+  "unknown-systems" : "",
+  "issues" : {
+  "resourceType" : "OperationOutcome"
+}
+
+}
+-------------------------------------------------------------------------------------
+{"code" : {
+  "system" : "http://loinc.org",
+  "code" : "LA10411-9",
+  "display" : "Maternal Cousin"
+}, "valueSet" :null, "langs":"en-CA", "useServer":"true", "useClient":"true", "guessSystem":"false", "activeOnly":"false", "membershipOnly":"false", "displayWarningMode":"false", "versionFlexible":"true", "profile": {
+  "resourceType" : "Parameters",
+  "parameter" : [{
+    "name" : "x-system-cache-id",
+    "valueString" : "dc8fd4bc-091a-424a-8a3b-6198ef146891"
+  }]
+}}####
+v: {
+  "display" : "Maternal Cousin",
+  "code" : "LA10411-9",
+  "system" : "http://loinc.org",
+  "version" : "2.78",
+  "server" : "http://tx.fhir.org/r4",
+  "unknown-systems" : "",
   "issues" : {
   "resourceType" : "OperationOutcome"
 }
@@ -8418,6 +8266,7 @@ v: {
   "system" : "http://loinc.org",
   "version" : "2.78",
   "server" : "http://tx.fhir.org/r4",
+  "unknown-systems" : "",
   "issues" : {
   "resourceType" : "OperationOutcome"
 }
@@ -8496,6 +8345,7 @@ v: {
   "system" : "http://loinc.org",
   "version" : "2.78",
   "server" : "http://tx.fhir.org/r4",
+  "unknown-systems" : "",
   "issues" : {
   "resourceType" : "OperationOutcome"
 }
@@ -8554,6 +8404,7 @@ v: {
   "system" : "http://loinc.org",
   "version" : "2.78",
   "server" : "http://tx.fhir.org/r4",
+  "unknown-systems" : "",
   "issues" : {
   "resourceType" : "OperationOutcome"
 }
@@ -8644,6 +8495,7 @@ v: {
   "system" : "http://loinc.org",
   "version" : "2.78",
   "server" : "http://tx.fhir.org/r4",
+  "unknown-systems" : "",
   "issues" : {
   "resourceType" : "OperationOutcome"
 }
@@ -8714,6 +8566,7 @@ v: {
   "system" : "http://loinc.org",
   "version" : "2.78",
   "server" : "http://tx.fhir.org/r4",
+  "unknown-systems" : "",
   "issues" : {
   "resourceType" : "OperationOutcome"
 }
@@ -8752,6 +8605,7 @@ v: {
   "system" : "http://loinc.org",
   "version" : "2.78",
   "server" : "http://tx.fhir.org/r4",
+  "unknown-systems" : "",
   "issues" : {
   "resourceType" : "OperationOutcome"
 }
@@ -8790,6 +8644,7 @@ v: {
   "system" : "http://loinc.org",
   "version" : "2.78",
   "server" : "http://tx.fhir.org/r4",
+  "unknown-systems" : "",
   "issues" : {
   "resourceType" : "OperationOutcome"
 }
@@ -8812,6 +8667,7 @@ v: {
   "system" : "http://loinc.org",
   "version" : "2.78",
   "server" : "http://tx.fhir.org/r4",
+  "unknown-systems" : "",
   "issues" : {
   "resourceType" : "OperationOutcome"
 }
@@ -8834,6 +8690,7 @@ v: {
   "system" : "http://loinc.org",
   "version" : "2.78",
   "server" : "http://tx.fhir.org/r4",
+  "unknown-systems" : "",
   "issues" : {
   "resourceType" : "OperationOutcome"
 }
@@ -8856,6 +8713,7 @@ v: {
   "system" : "http://loinc.org",
   "version" : "2.78",
   "server" : "http://tx.fhir.org/r4",
+  "unknown-systems" : "",
   "issues" : {
   "resourceType" : "OperationOutcome"
 }
@@ -8878,6 +8736,7 @@ v: {
   "system" : "http://loinc.org",
   "version" : "2.78",
   "server" : "http://tx.fhir.org/r4",
+  "unknown-systems" : "",
   "issues" : {
   "resourceType" : "OperationOutcome"
 }
@@ -8900,6 +8759,7 @@ v: {
   "system" : "http://loinc.org",
   "version" : "2.78",
   "server" : "http://tx.fhir.org/r4",
+  "unknown-systems" : "",
   "issues" : {
   "resourceType" : "OperationOutcome"
 }
@@ -8922,6 +8782,7 @@ v: {
   "system" : "http://loinc.org",
   "version" : "2.78",
   "server" : "http://tx.fhir.org/r4",
+  "unknown-systems" : "",
   "issues" : {
   "resourceType" : "OperationOutcome"
 }
@@ -8944,6 +8805,7 @@ v: {
   "system" : "http://loinc.org",
   "version" : "2.78",
   "server" : "http://tx.fhir.org/r4",
+  "unknown-systems" : "",
   "issues" : {
   "resourceType" : "OperationOutcome"
 }
@@ -8966,6 +8828,7 @@ v: {
   "system" : "http://loinc.org",
   "version" : "2.78",
   "server" : "http://tx.fhir.org/r4",
+  "unknown-systems" : "",
   "issues" : {
   "resourceType" : "OperationOutcome"
 }
@@ -8988,6 +8851,7 @@ v: {
   "system" : "http://loinc.org",
   "version" : "2.78",
   "server" : "http://tx.fhir.org/r4",
+  "unknown-systems" : "",
   "issues" : {
   "resourceType" : "OperationOutcome"
 }
@@ -9010,6 +8874,7 @@ v: {
   "system" : "http://loinc.org",
   "version" : "2.78",
   "server" : "http://tx.fhir.org/r4",
+  "unknown-systems" : "",
   "issues" : {
   "resourceType" : "OperationOutcome"
 }
@@ -9046,8 +8911,8 @@ e: {
   "resourceType" : "ValueSet",
   "status" : "active",
   "expansion" : {
-    "identifier" : "urn:uuid:f096366d-aaed-4671-b119-1d74c615ceb3",
-    "timestamp" : "2024-12-05T15:01:21.567Z",
+    "identifier" : "urn:uuid:9bc1cff5-4666-4f6e-b949-f67c6a350fcc",
+    "timestamp" : "2024-12-11T23:35:22.159Z",
     "total" : 4,
     "offset" : 0,
     "parameter" : [{
@@ -9125,8 +8990,8 @@ e: {
   "resourceType" : "ValueSet",
   "status" : "active",
   "expansion" : {
-    "identifier" : "urn:uuid:3d4624ac-4b26-4ded-9bab-288ef80389b0",
-    "timestamp" : "2024-12-05T15:01:21.848Z",
+    "identifier" : "urn:uuid:4e3bf4dd-630b-484d-8b2a-73d44d55d593",
+    "timestamp" : "2024-12-11T23:35:25.550Z",
     "total" : 4,
     "offset" : 0,
     "parameter" : [{
@@ -9304,175 +9169,141 @@ e: {
   }
 }}####
 e: {
-  "valueSet" : {
+  "from-server" : true,
+  "error" : "Cannot invoke \"org.hl7.fhir.r4.model.Extension.getValue()\" because the return value of \"org.hl7.fhir.r4.model.Extension.getExtensionByUrl(String)\" is null"
+}
+-------------------------------------------------------------------------------------
+{"hierarchical" : false, "valueSet" :{
   "resourceType" : "ValueSet",
-  "status" : "active",
-  "expansion" : {
-    "identifier" : "urn:uuid:9932d4fc-56ee-49ef-95b2-48f4b2afed89",
-    "timestamp" : "2024-12-05T15:01:22.207Z",
-    "total" : 10,
-    "offset" : 0,
-    "parameter" : [{
-      "name" : "excludeNested",
-      "valueBoolean" : true
-    },
-    {
-      "name" : "offset",
-      "valueInteger" : 0
-    },
-    {
-      "name" : "count",
-      "valueInteger" : 1000
-    },
-    {
-      "name" : "used-codesystem",
-      "valueUri" : "http://loinc.org|2.78"
-    },
-    {
-      "name" : "version",
-      "valueUri" : "http://loinc.org|2.78"
-    }],
-    "property" : [{
-      "code" : "label",
-      "uri" : "http://hl7.org/fhir/concept-properties#label"
-    },
-    {
-      "code" : "order",
-      "uri" : "http://hl7.org/fhir/concept-properties#order"
-    }],
-    "contains" : [{
+  "compose" : {
+    "include" : [{
       "system" : "http://loinc.org",
-      "code" : "LA20271-5",
-      "display" : "Medications",
-      "property" : [{
-        "code" : "label",
-        "valueString" : "a."
+      "concept" : [{
+        "extension" : [{
+          "url" : "http://hl7.org/fhir/StructureDefinition/valueset-conceptOrder",
+          "valueInteger" : 1
+        },
+        {
+          "url" : "http://hl7.org/fhir/StructureDefinition/valueset-label",
+          "valueString" : "a."
+        }],
+        "code" : "LA20271-5",
+        "display" : "Medications"
       },
       {
-        "code" : "order",
-        "valueDecimal" : 1
-      }]
-    },
-    {
-      "system" : "http://loinc.org",
-      "code" : "LA20335-8",
-      "display" : "Biological products",
-      "property" : [{
-        "code" : "label",
-        "valueString" : "b."
+        "extension" : [{
+          "url" : "http://hl7.org/fhir/StructureDefinition/valueset-conceptOrder",
+          "valueInteger" : 2
+        },
+        {
+          "url" : "http://hl7.org/fhir/StructureDefinition/valueset-label",
+          "valueString" : "b."
+        }],
+        "code" : "LA20335-8",
+        "display" : "Biological products"
       },
       {
-        "code" : "order",
-        "valueDecimal" : 2
-      }]
-    },
-    {
-      "system" : "http://loinc.org",
-      "code" : "LA20336-6",
-      "display" : "Nutritional products",
-      "property" : [{
-        "code" : "label",
-        "valueString" : "c."
+        "extension" : [{
+          "url" : "http://hl7.org/fhir/StructureDefinition/valueset-conceptOrder",
+          "valueInteger" : 3
+        },
+        {
+          "url" : "http://hl7.org/fhir/StructureDefinition/valueset-label",
+          "valueString" : "c."
+        }],
+        "code" : "LA20336-6",
+        "display" : "Nutritional products"
       },
       {
-        "code" : "order",
-        "valueDecimal" : 3
-      }]
-    },
-    {
-      "system" : "http://loinc.org",
-      "code" : "LA20337-4",
-      "display" : "Expressed human breast milk",
-      "property" : [{
-        "code" : "label",
-        "valueString" : "d."
+        "extension" : [{
+          "url" : "http://hl7.org/fhir/StructureDefinition/valueset-conceptOrder",
+          "valueInteger" : 4
+        },
+        {
+          "url" : "http://hl7.org/fhir/StructureDefinition/valueset-label",
+          "valueString" : "d."
+        }],
+        "code" : "LA20337-4",
+        "display" : "Expressed human breast milk"
       },
       {
-        "code" : "order",
-        "valueDecimal" : 4
-      }]
-    },
-    {
-      "system" : "http://loinc.org",
-      "code" : "LA20338-2",
-      "display" : "Medical gases (e.g., oxygen, nitrogen, nitrous oxide)",
-      "property" : [{
-        "code" : "label",
-        "valueString" : "e."
+        "extension" : [{
+          "url" : "http://hl7.org/fhir/StructureDefinition/valueset-conceptOrder",
+          "valueInteger" : 5
+        },
+        {
+          "url" : "http://hl7.org/fhir/StructureDefinition/valueset-label",
+          "valueString" : "e."
+        }],
+        "code" : "LA20338-2",
+        "display" : "Medical gases (e.g., oxygen, nitrogen, nitrous oxide)"
       },
       {
-        "code" : "order",
-        "valueDecimal" : 5
-      }]
-    },
-    {
-      "system" : "http://loinc.org",
-      "code" : "LA20339-0",
-      "display" : "Contrast media",
-      "property" : [{
-        "code" : "label",
-        "valueString" : "f."
+        "extension" : [{
+          "url" : "http://hl7.org/fhir/StructureDefinition/valueset-conceptOrder",
+          "valueInteger" : 6
+        },
+        {
+          "url" : "http://hl7.org/fhir/StructureDefinition/valueset-label",
+          "valueString" : "f."
+        }],
+        "code" : "LA20339-0",
+        "display" : "Contrast media"
       },
       {
-        "code" : "order",
-        "valueDecimal" : 6
-      }]
-    },
-    {
-      "system" : "http://loinc.org",
-      "code" : "LA20340-8",
-      "display" : "Radiopharmaceuticals",
-      "property" : [{
-        "code" : "label",
-        "valueString" : "g."
+        "extension" : [{
+          "url" : "http://hl7.org/fhir/StructureDefinition/valueset-conceptOrder",
+          "valueInteger" : 7
+        },
+        {
+          "url" : "http://hl7.org/fhir/StructureDefinition/valueset-label",
+          "valueString" : "g."
+        }],
+        "code" : "LA20340-8",
+        "display" : "Radiopharmaceuticals"
       },
       {
-        "code" : "order",
-        "valueDecimal" : 7
-      }]
-    },
-    {
-      "system" : "http://loinc.org",
-      "code" : "LA20341-6",
-      "display" : "Patient food (not suspected in drug-food interactions)",
-      "property" : [{
-        "code" : "label",
-        "valueString" : "h."
+        "extension" : [{
+          "url" : "http://hl7.org/fhir/StructureDefinition/valueset-conceptOrder",
+          "valueInteger" : 8
+        },
+        {
+          "url" : "http://hl7.org/fhir/StructureDefinition/valueset-label",
+          "valueString" : "h."
+        }],
+        "code" : "LA20341-6",
+        "display" : "Patient food (not suspected in drug-food interactions)"
       },
       {
-        "code" : "order",
-        "valueDecimal" : 8
-      }]
-    },
-    {
-      "system" : "http://loinc.org",
-      "code" : "LA20342-4",
-      "display" : "Drug-drug, drug-food, or adverse drug reaction as a result of a prescription and/or administration of a drug and/or food prior to admission",
-      "property" : [{
-        "code" : "label",
-        "valueString" : "i."
+        "extension" : [{
+          "url" : "http://hl7.org/fhir/StructureDefinition/valueset-conceptOrder",
+          "valueInteger" : 9
+        },
+        {
+          "url" : "http://hl7.org/fhir/StructureDefinition/valueset-label",
+          "valueString" : "i."
+        }],
+        "code" : "LA20342-4",
+        "display" : "Drug-drug, drug-food, or adverse drug reaction as a result of a prescription and/or administration of a drug and/or food prior to admission"
       },
       {
-        "code" : "order",
-        "valueDecimal" : 9
-      }]
-    },
-    {
-      "system" : "http://loinc.org",
-      "code" : "LA20343-2",
-      "display" : "Other substance: PLEASE SPECIFY",
-      "property" : [{
-        "code" : "label",
-        "valueString" : "j."
-      },
-      {
-        "code" : "order",
-        "valueDecimal" : 10
+        "extension" : [{
+          "url" : "http://hl7.org/fhir/StructureDefinition/valueset-conceptOrder",
+          "valueInteger" : 10
+        },
+        {
+          "url" : "http://hl7.org/fhir/StructureDefinition/valueset-label",
+          "valueString" : "j."
+        }],
+        "code" : "LA20343-2",
+        "display" : "Other substance: PLEASE SPECIFY"
       }]
     }]
   }
-},
-  "error" : ""
+}}####
+e: {
+  "from-server" : true,
+  "error" : "Cannot invoke \"org.hl7.fhir.r4.model.Extension.getValue()\" because the return value of \"org.hl7.fhir.r4.model.Extension.getExtensionByUrl(String)\" is null"
 }
 -------------------------------------------------------------------------------------
 {"hierarchical" : false, "valueSet" :{
@@ -9533,97 +9364,69 @@ e: {
   }
 }}####
 e: {
-  "valueSet" : {
+  "from-server" : true,
+  "error" : "Cannot invoke \"org.hl7.fhir.r4.model.Extension.getValue()\" because the return value of \"org.hl7.fhir.r4.model.Extension.getExtensionByUrl(String)\" is null"
+}
+-------------------------------------------------------------------------------------
+{"hierarchical" : false, "valueSet" :{
   "resourceType" : "ValueSet",
-  "status" : "active",
-  "expansion" : {
-    "identifier" : "urn:uuid:b1017731-89d3-457e-a7ac-e90609fd53ae",
-    "timestamp" : "2024-12-05T15:01:22.567Z",
-    "total" : 4,
-    "offset" : 0,
-    "parameter" : [{
-      "name" : "excludeNested",
-      "valueBoolean" : true
-    },
-    {
-      "name" : "offset",
-      "valueInteger" : 0
-    },
-    {
-      "name" : "count",
-      "valueInteger" : 1000
-    },
-    {
-      "name" : "used-codesystem",
-      "valueUri" : "http://loinc.org|2.78"
-    },
-    {
-      "name" : "version",
-      "valueUri" : "http://loinc.org|2.78"
-    }],
-    "property" : [{
-      "code" : "label",
-      "uri" : "http://hl7.org/fhir/concept-properties#label"
-    },
-    {
-      "code" : "order",
-      "uri" : "http://hl7.org/fhir/concept-properties#order"
-    }],
-    "contains" : [{
+  "compose" : {
+    "include" : [{
       "system" : "http://loinc.org",
-      "code" : "LA20278-0",
-      "display" : "Prescription or over-the-counter (including herbal supplements)",
-      "property" : [{
-        "code" : "label",
-        "valueString" : "a."
+      "concept" : [{
+        "extension" : [{
+          "url" : "http://hl7.org/fhir/StructureDefinition/valueset-conceptOrder",
+          "valueInteger" : 1
+        },
+        {
+          "url" : "http://hl7.org/fhir/StructureDefinition/valueset-label",
+          "valueString" : "a."
+        }],
+        "code" : "LA20278-0",
+        "display" : "Prescription or over-the-counter (including herbal supplements)"
       },
       {
-        "code" : "order",
-        "valueDecimal" : 1
-      }]
-    },
-    {
-      "system" : "http://loinc.org",
-      "code" : "LA20298-8",
-      "display" : "Compounded preparations",
-      "property" : [{
-        "code" : "label",
-        "valueString" : "b."
+        "extension" : [{
+          "url" : "http://hl7.org/fhir/StructureDefinition/valueset-conceptOrder",
+          "valueInteger" : 2
+        },
+        {
+          "url" : "http://hl7.org/fhir/StructureDefinition/valueset-label",
+          "valueString" : "b."
+        }],
+        "code" : "LA20298-8",
+        "display" : "Compounded preparations"
       },
       {
-        "code" : "order",
-        "valueDecimal" : 2
-      }]
-    },
-    {
-      "system" : "http://loinc.org",
-      "code" : "LA20299-6",
-      "display" : "Investigational drugs",
-      "property" : [{
-        "code" : "label",
-        "valueString" : "c."
+        "extension" : [{
+          "url" : "http://hl7.org/fhir/StructureDefinition/valueset-conceptOrder",
+          "valueInteger" : 3
+        },
+        {
+          "url" : "http://hl7.org/fhir/StructureDefinition/valueset-label",
+          "valueString" : "c."
+        }],
+        "code" : "LA20299-6",
+        "display" : "Investigational drugs"
       },
       {
-        "code" : "order",
-        "valueDecimal" : 3
-      }]
-    },
-    {
-      "system" : "http://loinc.org",
-      "code" : "LA4489-6",
-      "display" : "Unknown",
-      "property" : [{
-        "code" : "label",
-        "valueString" : "d."
-      },
-      {
-        "code" : "order",
-        "valueDecimal" : 4
+        "extension" : [{
+          "url" : "http://hl7.org/fhir/StructureDefinition/valueset-conceptOrder",
+          "valueInteger" : 4
+        },
+        {
+          "url" : "http://hl7.org/fhir/StructureDefinition/valueset-label",
+          "valueString" : "d."
+        }],
+        "code" : "LA4489-6",
+        "display" : "Unknown"
       }]
     }]
   }
-},
-  "error" : ""
+}}####
+e: {
+  "from-server" : true,
+  "error" : "Cannot invoke \"org.hl7.fhir.r4.model.Extension.getValue()\" because the return value of \"org.hl7.fhir.r4.model.Extension.getExtensionByUrl(String)\" is null"
 }
 -------------------------------------------------------------------------------------
 {"hierarchical" : false, "valueSet" :{
@@ -9648,8 +9451,8 @@ e: {
   "resourceType" : "ValueSet",
   "status" : "active",
   "expansion" : {
-    "identifier" : "urn:uuid:73185d85-7f41-4f7a-b8c6-2cf0d2745bb2",
-    "timestamp" : "2024-12-05T15:01:22.817Z",
+    "identifier" : "urn:uuid:e1a2d223-b444-4b41-8fad-53fec9c47029",
+    "timestamp" : "2024-12-11T23:35:27.472Z",
     "total" : 2,
     "offset" : 0,
     "parameter" : [{
@@ -9757,110 +9560,81 @@ e: {
   }
 }}####
 e: {
-  "valueSet" : {
+  "from-server" : true,
+  "error" : "Cannot invoke \"org.hl7.fhir.r4.model.Extension.getValue()\" because the return value of \"org.hl7.fhir.r4.model.Extension.getExtensionByUrl(String)\" is null"
+}
+-------------------------------------------------------------------------------------
+{"hierarchical" : false, "valueSet" :{
   "resourceType" : "ValueSet",
-  "status" : "active",
-  "expansion" : {
-    "identifier" : "urn:uuid:4fb954b9-e1df-42b1-a49c-e9922d800578",
-    "timestamp" : "2024-12-05T15:01:23.098Z",
-    "total" : 5,
-    "offset" : 0,
-    "parameter" : [{
-      "name" : "excludeNested",
-      "valueBoolean" : true
-    },
-    {
-      "name" : "offset",
-      "valueInteger" : 0
-    },
-    {
-      "name" : "count",
-      "valueInteger" : 1000
-    },
-    {
-      "name" : "used-codesystem",
-      "valueUri" : "http://loinc.org|2.78"
-    },
-    {
-      "name" : "version",
-      "valueUri" : "http://loinc.org|2.78"
-    }],
-    "property" : [{
-      "code" : "label",
-      "uri" : "http://hl7.org/fhir/concept-properties#label"
-    },
-    {
-      "code" : "order",
-      "uri" : "http://hl7.org/fhir/concept-properties#order"
-    }],
-    "contains" : [{
+  "compose" : {
+    "include" : [{
       "system" : "http://loinc.org",
-      "code" : "LA20273-1",
-      "display" : "Dietary supplements (other than vitamins or minerals)",
-      "property" : [{
-        "code" : "label",
-        "valueString" : "a."
+      "concept" : [{
+        "extension" : [{
+          "url" : "http://hl7.org/fhir/StructureDefinition/valueset-conceptOrder",
+          "valueInteger" : 1
+        },
+        {
+          "url" : "http://hl7.org/fhir/StructureDefinition/valueset-label",
+          "valueString" : "a."
+        }],
+        "code" : "LA20273-1",
+        "display" : "Dietary supplements (other than vitamins or minerals)"
       },
       {
-        "code" : "order",
-        "valueDecimal" : 1
-      }]
-    },
-    {
-      "system" : "http://loinc.org",
-      "code" : "LA16117-6",
-      "display" : "Vitamins or minerals",
-      "property" : [{
-        "code" : "label",
-        "valueString" : "b."
+        "extension" : [{
+          "url" : "http://hl7.org/fhir/StructureDefinition/valueset-conceptOrder",
+          "valueInteger" : 2
+        },
+        {
+          "url" : "http://hl7.org/fhir/StructureDefinition/valueset-label",
+          "valueString" : "b."
+        }],
+        "code" : "LA16117-6",
+        "display" : "Vitamins or minerals"
       },
       {
-        "code" : "order",
-        "valueDecimal" : 2
-      }]
-    },
-    {
-      "system" : "http://loinc.org",
-      "code" : "LA20320-0",
-      "display" : "Enteral nutritional products, including infant formula",
-      "property" : [{
-        "code" : "label",
-        "valueString" : "c."
+        "extension" : [{
+          "url" : "http://hl7.org/fhir/StructureDefinition/valueset-conceptOrder",
+          "valueInteger" : 3
+        },
+        {
+          "url" : "http://hl7.org/fhir/StructureDefinition/valueset-label",
+          "valueString" : "c."
+        }],
+        "code" : "LA20320-0",
+        "display" : "Enteral nutritional products, including infant formula"
       },
       {
-        "code" : "order",
-        "valueDecimal" : 3
-      }]
-    },
-    {
-      "system" : "http://loinc.org",
-      "code" : "LA20321-8",
-      "display" : "Parenteral nutritional products",
-      "property" : [{
-        "code" : "label",
-        "valueString" : "d."
+        "extension" : [{
+          "url" : "http://hl7.org/fhir/StructureDefinition/valueset-conceptOrder",
+          "valueInteger" : 4
+        },
+        {
+          "url" : "http://hl7.org/fhir/StructureDefinition/valueset-label",
+          "valueString" : "d."
+        }],
+        "code" : "LA20321-8",
+        "display" : "Parenteral nutritional products"
       },
       {
-        "code" : "order",
-        "valueDecimal" : 4
-      }]
-    },
-    {
-      "system" : "http://loinc.org",
-      "code" : "LA20318-4",
-      "display" : "Other: PLEASE SPECIFY",
-      "property" : [{
-        "code" : "label",
-        "valueString" : "e."
-      },
-      {
-        "code" : "order",
-        "valueDecimal" : 5
+        "extension" : [{
+          "url" : "http://hl7.org/fhir/StructureDefinition/valueset-conceptOrder",
+          "valueInteger" : 5
+        },
+        {
+          "url" : "http://hl7.org/fhir/StructureDefinition/valueset-label",
+          "valueString" : "e."
+        }],
+        "code" : "LA20318-4",
+        "display" : "Other: PLEASE SPECIFY"
       }]
     }]
   }
-},
-  "error" : ""
+}}####
+e: {
+  "from-server" : true,
+  "error" : "Cannot invoke \"org.hl7.fhir.r4.model.Extension.getValue()\" because the return value of \"org.hl7.fhir.r4.model.Extension.getExtensionByUrl(String)\" is null"
 }
 -------------------------------------------------------------------------------------
 {"hierarchical" : false, "valueSet" :{
@@ -9905,8 +9679,8 @@ e: {
   "resourceType" : "ValueSet",
   "status" : "active",
   "expansion" : {
-    "identifier" : "urn:uuid:833e95a8-2bc0-4fcf-9bd9-c1d1b0a79cf3",
-    "timestamp" : "2024-12-05T15:01:23.364Z",
+    "identifier" : "urn:uuid:88885de3-644c-4feb-ad6b-9afc06d88e7c",
+    "timestamp" : "2024-12-11T23:35:28.456Z",
     "total" : 4,
     "offset" : 0,
     "parameter" : [{
@@ -10028,8 +9802,8 @@ e: {
   "resourceType" : "ValueSet",
   "status" : "active",
   "expansion" : {
-    "identifier" : "urn:uuid:b21f6c9d-13ad-416d-b421-507d5d6e3f30",
-    "timestamp" : "2024-12-05T15:01:23.598Z",
+    "identifier" : "urn:uuid:08418519-d5d2-4411-b0db-5144639ed52d",
+    "timestamp" : "2024-12-11T23:35:28.784Z",
     "total" : 15,
     "offset" : 0,
     "parameter" : [{
@@ -10166,8 +9940,8 @@ e: {
   "resourceType" : "ValueSet",
   "status" : "active",
   "expansion" : {
-    "identifier" : "urn:uuid:64933388-598d-4453-af5a-83d6561b014b",
-    "timestamp" : "2024-12-05T15:01:23.879Z",
+    "identifier" : "urn:uuid:2b42cfd7-4f81-490b-8180-e6f2038f5587",
+    "timestamp" : "2024-12-11T23:35:29.113Z",
     "total" : 5,
     "offset" : 0,
     "parameter" : [{
@@ -10246,8 +10020,8 @@ e: {
   "resourceType" : "ValueSet",
   "status" : "active",
   "expansion" : {
-    "identifier" : "urn:uuid:fe800d1c-7aed-492d-a428-a6cedcbc4b48",
-    "timestamp" : "2024-12-05T15:01:24.145Z",
+    "identifier" : "urn:uuid:7c1115c1-5bd9-4be8-9445-62f4cf7c57e5",
+    "timestamp" : "2024-12-11T23:35:29.425Z",
     "total" : 3,
     "offset" : 0,
     "parameter" : [{
@@ -10316,8 +10090,8 @@ e: {
   "resourceType" : "ValueSet",
   "status" : "active",
   "expansion" : {
-    "identifier" : "urn:uuid:196cb9db-5fb5-41d4-898a-c3b514ab2c2e",
-    "timestamp" : "2024-12-05T15:01:24.364Z",
+    "identifier" : "urn:uuid:e4807fa0-ec5c-43f3-b6fe-e1cbcebb78cf",
+    "timestamp" : "2024-12-11T23:35:29.753Z",
     "total" : 3,
     "offset" : 0,
     "parameter" : [{
@@ -10386,8 +10160,8 @@ e: {
   "resourceType" : "ValueSet",
   "status" : "active",
   "expansion" : {
-    "identifier" : "urn:uuid:1b3e616d-f749-41f2-9922-3dcf08c920de",
-    "timestamp" : "2024-12-05T15:01:24.583Z",
+    "identifier" : "urn:uuid:dde8d19d-fb4e-49bf-9f21-18a962b3ffbb",
+    "timestamp" : "2024-12-11T23:35:30.066Z",
     "total" : 3,
     "offset" : 0,
     "parameter" : [{
@@ -10456,8 +10230,8 @@ e: {
   "resourceType" : "ValueSet",
   "status" : "active",
   "expansion" : {
-    "identifier" : "urn:uuid:621d7c35-0967-4524-9554-7d65799640d0",
-    "timestamp" : "2024-12-05T15:01:24.817Z",
+    "identifier" : "urn:uuid:f5502f9d-0897-4fb9-8218-e19f072b763c",
+    "timestamp" : "2024-12-11T23:35:33.409Z",
     "total" : 3,
     "offset" : 0,
     "parameter" : [{
@@ -10530,8 +10304,8 @@ e: {
   "resourceType" : "ValueSet",
   "status" : "active",
   "expansion" : {
-    "identifier" : "urn:uuid:9f8b0293-f46a-4ba3-92b4-eca129962c0b",
-    "timestamp" : "2024-12-05T15:01:25.020Z",
+    "identifier" : "urn:uuid:d80a8e6e-d200-409e-966a-aa8f6f5ad1ff",
+    "timestamp" : "2024-12-11T23:35:33.738Z",
     "total" : 4,
     "offset" : 0,
     "parameter" : [{
@@ -10633,8 +10407,8 @@ e: {
   "resourceType" : "ValueSet",
   "status" : "active",
   "expansion" : {
-    "identifier" : "urn:uuid:097556c1-75ef-40d2-b52b-d868cd2aa459",
-    "timestamp" : "2024-12-05T15:01:25.223Z",
+    "identifier" : "urn:uuid:1654838f-725f-42b8-af5e-a10bbcca368e",
+    "timestamp" : "2024-12-11T23:35:34.066Z",
     "total" : 10,
     "offset" : 0,
     "parameter" : [{
@@ -10734,8 +10508,8 @@ e: {
   "resourceType" : "ValueSet",
   "status" : "active",
   "expansion" : {
-    "identifier" : "urn:uuid:dc460d55-5b18-402c-be87-df5983ee1a4a",
-    "timestamp" : "2024-12-05T15:01:25.473Z",
+    "identifier" : "urn:uuid:7b40589a-2cc3-4b4a-806b-2c722f634d59",
+    "timestamp" : "2024-12-11T23:35:34.378Z",
     "total" : 2,
     "offset" : 0,
     "parameter" : [{
@@ -10851,8 +10625,8 @@ e: {
   "resourceType" : "ValueSet",
   "status" : "active",
   "expansion" : {
-    "identifier" : "urn:uuid:0361868c-74de-45c9-ac86-eff4b330a05b",
-    "timestamp" : "2024-12-05T15:01:25.692Z",
+    "identifier" : "urn:uuid:79d04589-7748-47e4-a4ee-413d60b4123d",
+    "timestamp" : "2024-12-11T23:35:34.691Z",
     "total" : 16,
     "offset" : 0,
     "parameter" : [{
@@ -11090,175 +10864,14 @@ e: {
   }
 }}####
 e: {
-  "valueSet" : {
-  "resourceType" : "ValueSet",
-  "status" : "active",
-  "expansion" : {
-    "identifier" : "urn:uuid:f5ed64ea-dfcd-40e4-b71f-59170fc4b388",
-    "timestamp" : "2024-12-05T15:01:26.051Z",
-    "total" : 10,
-    "offset" : 0,
-    "parameter" : [{
-      "name" : "excludeNested",
-      "valueBoolean" : false
-    },
-    {
-      "name" : "offset",
-      "valueInteger" : 0
-    },
-    {
-      "name" : "count",
-      "valueInteger" : 1000
-    },
-    {
-      "name" : "used-codesystem",
-      "valueUri" : "http://loinc.org|2.78"
-    },
-    {
-      "name" : "version",
-      "valueUri" : "http://loinc.org|2.78"
-    }],
-    "property" : [{
-      "code" : "label",
-      "uri" : "http://hl7.org/fhir/concept-properties#label"
-    },
-    {
-      "code" : "order",
-      "uri" : "http://hl7.org/fhir/concept-properties#order"
-    }],
-    "contains" : [{
-      "system" : "http://loinc.org",
-      "code" : "LA20271-5",
-      "display" : "Medications",
-      "property" : [{
-        "code" : "label",
-        "valueString" : "a."
-      },
-      {
-        "code" : "order",
-        "valueDecimal" : 1
-      }]
-    },
-    {
-      "system" : "http://loinc.org",
-      "code" : "LA20335-8",
-      "display" : "Biological products",
-      "property" : [{
-        "code" : "label",
-        "valueString" : "b."
-      },
-      {
-        "code" : "order",
-        "valueDecimal" : 2
-      }]
-    },
-    {
-      "system" : "http://loinc.org",
-      "code" : "LA20336-6",
-      "display" : "Nutritional products",
-      "property" : [{
-        "code" : "label",
-        "valueString" : "c."
-      },
-      {
-        "code" : "order",
-        "valueDecimal" : 3
-      }]
-    },
-    {
-      "system" : "http://loinc.org",
-      "code" : "LA20337-4",
-      "display" : "Expressed human breast milk",
-      "property" : [{
-        "code" : "label",
-        "valueString" : "d."
-      },
-      {
-        "code" : "order",
-        "valueDecimal" : 4
-      }]
-    },
-    {
-      "system" : "http://loinc.org",
-      "code" : "LA20338-2",
-      "display" : "Medical gases (e.g., oxygen, nitrogen, nitrous oxide)",
-      "property" : [{
-        "code" : "label",
-        "valueString" : "e."
-      },
-      {
-        "code" : "order",
-        "valueDecimal" : 5
-      }]
-    },
-    {
-      "system" : "http://loinc.org",
-      "code" : "LA20339-0",
-      "display" : "Contrast media",
-      "property" : [{
-        "code" : "label",
-        "valueString" : "f."
-      },
-      {
-        "code" : "order",
-        "valueDecimal" : 6
-      }]
-    },
-    {
-      "system" : "http://loinc.org",
-      "code" : "LA20340-8",
-      "display" : "Radiopharmaceuticals",
-      "property" : [{
-        "code" : "label",
-        "valueString" : "g."
-      },
-      {
-        "code" : "order",
-        "valueDecimal" : 7
-      }]
-    },
-    {
-      "system" : "http://loinc.org",
-      "code" : "LA20341-6",
-      "display" : "Patient food (not suspected in drug-food interactions)",
-      "property" : [{
-        "code" : "label",
-        "valueString" : "h."
-      },
-      {
-        "code" : "order",
-        "valueDecimal" : 8
-      }]
-    },
-    {
-      "system" : "http://loinc.org",
-      "code" : "LA20342-4",
-      "display" : "Drug-drug, drug-food, or adverse drug reaction as a result of a prescription and/or administration of a drug and/or food prior to admission",
-      "property" : [{
-        "code" : "label",
-        "valueString" : "i."
-      },
-      {
-        "code" : "order",
-        "valueDecimal" : 9
-      }]
-    },
-    {
-      "system" : "http://loinc.org",
-      "code" : "LA20343-2",
-      "display" : "Other substance: PLEASE SPECIFY",
-      "property" : [{
-        "code" : "label",
-        "valueString" : "j."
-      },
-      {
-        "code" : "order",
-        "valueDecimal" : 10
-      }]
-    }]
-  }
-},
-  "error" : ""
+  "from-server" : true,
+  "error" : "Cannot invoke \"org.hl7.fhir.r4.model.Extension.getValue()\" because the return value of \"org.hl7.fhir.r4.model.Extension.getExtensionByUrl(String)\" is null"
+}
+-------------------------------------------------------------------------------------
+{"hierarchical" : true, "url": "http://hl7.org/fhir/uv/sdc/ValueSet/LL2654-3", "version": "4.0.0-ballot"}####
+e: {
+  "from-server" : true,
+  "error" : "Cannot invoke \"org.hl7.fhir.r4.model.Extension.getValue()\" because the return value of \"org.hl7.fhir.r4.model.Extension.getExtensionByUrl(String)\" is null"
 }
 -------------------------------------------------------------------------------------
 {"hierarchical" : true, "valueSet" :{
@@ -11319,97 +10932,14 @@ e: {
   }
 }}####
 e: {
-  "valueSet" : {
-  "resourceType" : "ValueSet",
-  "status" : "active",
-  "expansion" : {
-    "identifier" : "urn:uuid:bd7e78d8-1ce4-4e76-8cda-14a9d9e25fcb",
-    "timestamp" : "2024-12-05T15:01:26.458Z",
-    "total" : 4,
-    "offset" : 0,
-    "parameter" : [{
-      "name" : "excludeNested",
-      "valueBoolean" : false
-    },
-    {
-      "name" : "offset",
-      "valueInteger" : 0
-    },
-    {
-      "name" : "count",
-      "valueInteger" : 1000
-    },
-    {
-      "name" : "used-codesystem",
-      "valueUri" : "http://loinc.org|2.78"
-    },
-    {
-      "name" : "version",
-      "valueUri" : "http://loinc.org|2.78"
-    }],
-    "property" : [{
-      "code" : "label",
-      "uri" : "http://hl7.org/fhir/concept-properties#label"
-    },
-    {
-      "code" : "order",
-      "uri" : "http://hl7.org/fhir/concept-properties#order"
-    }],
-    "contains" : [{
-      "system" : "http://loinc.org",
-      "code" : "LA20278-0",
-      "display" : "Prescription or over-the-counter (including herbal supplements)",
-      "property" : [{
-        "code" : "label",
-        "valueString" : "a."
-      },
-      {
-        "code" : "order",
-        "valueDecimal" : 1
-      }]
-    },
-    {
-      "system" : "http://loinc.org",
-      "code" : "LA20298-8",
-      "display" : "Compounded preparations",
-      "property" : [{
-        "code" : "label",
-        "valueString" : "b."
-      },
-      {
-        "code" : "order",
-        "valueDecimal" : 2
-      }]
-    },
-    {
-      "system" : "http://loinc.org",
-      "code" : "LA20299-6",
-      "display" : "Investigational drugs",
-      "property" : [{
-        "code" : "label",
-        "valueString" : "c."
-      },
-      {
-        "code" : "order",
-        "valueDecimal" : 3
-      }]
-    },
-    {
-      "system" : "http://loinc.org",
-      "code" : "LA4489-6",
-      "display" : "Unknown",
-      "property" : [{
-        "code" : "label",
-        "valueString" : "d."
-      },
-      {
-        "code" : "order",
-        "valueDecimal" : 4
-      }]
-    }]
-  }
-},
-  "error" : ""
+  "from-server" : true,
+  "error" : "Cannot invoke \"org.hl7.fhir.r4.model.Extension.getValue()\" because the return value of \"org.hl7.fhir.r4.model.Extension.getExtensionByUrl(String)\" is null"
+}
+-------------------------------------------------------------------------------------
+{"hierarchical" : true, "url": "http://example.org/ValueSet/ll2655-0", "version": "4.0.0-ballot"}####
+e: {
+  "from-server" : true,
+  "error" : "Cannot invoke \"org.hl7.fhir.r4.model.Extension.getValue()\" because the return value of \"org.hl7.fhir.r4.model.Extension.getExtensionByUrl(String)\" is null"
 }
 -------------------------------------------------------------------------------------
 {"hierarchical" : true, "valueSet" :{
@@ -11434,8 +10964,8 @@ e: {
   "resourceType" : "ValueSet",
   "status" : "active",
   "expansion" : {
-    "identifier" : "urn:uuid:775f20dc-1a6c-4466-8817-acffddbbc2c0",
-    "timestamp" : "2024-12-05T15:01:26.754Z",
+    "identifier" : "urn:uuid:582fa0f6-4fde-48d2-b515-eeeb7cade123",
+    "timestamp" : "2024-12-11T23:35:36.623Z",
     "total" : 2,
     "offset" : 0,
     "parameter" : [{
@@ -11543,110 +11073,14 @@ e: {
   }
 }}####
 e: {
-  "valueSet" : {
-  "resourceType" : "ValueSet",
-  "status" : "active",
-  "expansion" : {
-    "identifier" : "urn:uuid:1ac18509-f9c6-4c3d-a515-bb3fbfb744c8",
-    "timestamp" : "2024-12-05T15:01:27.036Z",
-    "total" : 5,
-    "offset" : 0,
-    "parameter" : [{
-      "name" : "excludeNested",
-      "valueBoolean" : false
-    },
-    {
-      "name" : "offset",
-      "valueInteger" : 0
-    },
-    {
-      "name" : "count",
-      "valueInteger" : 1000
-    },
-    {
-      "name" : "used-codesystem",
-      "valueUri" : "http://loinc.org|2.78"
-    },
-    {
-      "name" : "version",
-      "valueUri" : "http://loinc.org|2.78"
-    }],
-    "property" : [{
-      "code" : "label",
-      "uri" : "http://hl7.org/fhir/concept-properties#label"
-    },
-    {
-      "code" : "order",
-      "uri" : "http://hl7.org/fhir/concept-properties#order"
-    }],
-    "contains" : [{
-      "system" : "http://loinc.org",
-      "code" : "LA20273-1",
-      "display" : "Dietary supplements (other than vitamins or minerals)",
-      "property" : [{
-        "code" : "label",
-        "valueString" : "a."
-      },
-      {
-        "code" : "order",
-        "valueDecimal" : 1
-      }]
-    },
-    {
-      "system" : "http://loinc.org",
-      "code" : "LA16117-6",
-      "display" : "Vitamins or minerals",
-      "property" : [{
-        "code" : "label",
-        "valueString" : "b."
-      },
-      {
-        "code" : "order",
-        "valueDecimal" : 2
-      }]
-    },
-    {
-      "system" : "http://loinc.org",
-      "code" : "LA20320-0",
-      "display" : "Enteral nutritional products, including infant formula",
-      "property" : [{
-        "code" : "label",
-        "valueString" : "c."
-      },
-      {
-        "code" : "order",
-        "valueDecimal" : 3
-      }]
-    },
-    {
-      "system" : "http://loinc.org",
-      "code" : "LA20321-8",
-      "display" : "Parenteral nutritional products",
-      "property" : [{
-        "code" : "label",
-        "valueString" : "d."
-      },
-      {
-        "code" : "order",
-        "valueDecimal" : 4
-      }]
-    },
-    {
-      "system" : "http://loinc.org",
-      "code" : "LA20318-4",
-      "display" : "Other: PLEASE SPECIFY",
-      "property" : [{
-        "code" : "label",
-        "valueString" : "e."
-      },
-      {
-        "code" : "order",
-        "valueDecimal" : 5
-      }]
-    }]
-  }
-},
-  "error" : ""
+  "from-server" : true,
+  "error" : "Cannot invoke \"org.hl7.fhir.r4.model.Extension.getValue()\" because the return value of \"org.hl7.fhir.r4.model.Extension.getExtensionByUrl(String)\" is null"
+}
+-------------------------------------------------------------------------------------
+{"hierarchical" : true, "url": "http://example.org/ValueSet/ll2659-2", "version": "4.0.0-ballot"}####
+e: {
+  "from-server" : true,
+  "error" : "Cannot invoke \"org.hl7.fhir.r4.model.Extension.getValue()\" because the return value of \"org.hl7.fhir.r4.model.Extension.getExtensionByUrl(String)\" is null"
 }
 -------------------------------------------------------------------------------------
 {"hierarchical" : true, "valueSet" :{
@@ -11691,8 +11125,8 @@ e: {
   "resourceType" : "ValueSet",
   "status" : "active",
   "expansion" : {
-    "identifier" : "urn:uuid:eb415875-6e84-4e0e-bb36-1c29b837990a",
-    "timestamp" : "2024-12-05T15:01:27.332Z",
+    "identifier" : "urn:uuid:015b357f-8884-483b-8bdd-208ae8adc9c0",
+    "timestamp" : "2024-12-11T23:35:37.659Z",
     "total" : 4,
     "offset" : 0,
     "parameter" : [{
@@ -11814,8 +11248,8 @@ e: {
   "resourceType" : "ValueSet",
   "status" : "active",
   "expansion" : {
-    "identifier" : "urn:uuid:561083f3-4b4d-425d-865c-a93b41f30c73",
-    "timestamp" : "2024-12-05T15:01:27.598Z",
+    "identifier" : "urn:uuid:5ddd60a2-2ec9-4069-bfaa-2b828cc56b86",
+    "timestamp" : "2024-12-11T23:35:38.035Z",
     "total" : 15,
     "offset" : 0,
     "parameter" : [{
@@ -11952,8 +11386,8 @@ e: {
   "resourceType" : "ValueSet",
   "status" : "active",
   "expansion" : {
-    "identifier" : "urn:uuid:5b6a50cc-dfde-40b2-acc7-259ed71b4e23",
-    "timestamp" : "2024-12-05T15:01:27.895Z",
+    "identifier" : "urn:uuid:10c822e1-ccd0-4081-8972-bc1857a38de2",
+    "timestamp" : "2024-12-11T23:35:38.441Z",
     "total" : 5,
     "offset" : 0,
     "parameter" : [{
@@ -12032,8 +11466,8 @@ e: {
   "resourceType" : "ValueSet",
   "status" : "active",
   "expansion" : {
-    "identifier" : "urn:uuid:cb207cda-aedc-4848-9cdb-0fb1e9a4baff",
-    "timestamp" : "2024-12-05T15:01:28.176Z",
+    "identifier" : "urn:uuid:ac48fcbe-fc61-40b8-8534-ad8167c8ef70",
+    "timestamp" : "2024-12-11T23:35:38.831Z",
     "total" : 3,
     "offset" : 0,
     "parameter" : [{
@@ -12102,8 +11536,8 @@ e: {
   "resourceType" : "ValueSet",
   "status" : "active",
   "expansion" : {
-    "identifier" : "urn:uuid:e1414a78-f591-431e-9322-389cab57040b",
-    "timestamp" : "2024-12-05T15:01:28.520Z",
+    "identifier" : "urn:uuid:92d20bb1-5305-453f-bf72-345bd956bcfe",
+    "timestamp" : "2024-12-11T23:35:39.222Z",
     "total" : 3,
     "offset" : 0,
     "parameter" : [{
@@ -12172,8 +11606,8 @@ e: {
   "resourceType" : "ValueSet",
   "status" : "active",
   "expansion" : {
-    "identifier" : "urn:uuid:f051b613-e44d-4e93-8b3a-d1bc69a371de",
-    "timestamp" : "2024-12-05T15:01:28.817Z",
+    "identifier" : "urn:uuid:fa399f8a-780b-44a9-9c56-a7c2e6e841e3",
+    "timestamp" : "2024-12-11T23:35:39.597Z",
     "total" : 3,
     "offset" : 0,
     "parameter" : [{
@@ -12242,8 +11676,8 @@ e: {
   "resourceType" : "ValueSet",
   "status" : "active",
   "expansion" : {
-    "identifier" : "urn:uuid:93a61f6b-450e-4711-a148-d9f28ca89c79",
-    "timestamp" : "2024-12-05T15:01:29.114Z",
+    "identifier" : "urn:uuid:e60e1b4e-fa40-43de-9116-0ca1f16b0612",
+    "timestamp" : "2024-12-11T23:35:40.722Z",
     "total" : 3,
     "offset" : 0,
     "parameter" : [{
@@ -12316,8 +11750,8 @@ e: {
   "resourceType" : "ValueSet",
   "status" : "active",
   "expansion" : {
-    "identifier" : "urn:uuid:8fe7f922-6ad7-439a-8a48-6cff7aab3fa8",
-    "timestamp" : "2024-12-05T15:01:29.411Z",
+    "identifier" : "urn:uuid:347fb138-4518-4db8-a38d-eba41861f2fe",
+    "timestamp" : "2024-12-11T23:35:41.113Z",
     "total" : 4,
     "offset" : 0,
     "parameter" : [{
@@ -12419,8 +11853,8 @@ e: {
   "resourceType" : "ValueSet",
   "status" : "active",
   "expansion" : {
-    "identifier" : "urn:uuid:f3d68977-61cd-48c4-8681-7d8bb5d8de15",
-    "timestamp" : "2024-12-05T15:01:29.692Z",
+    "identifier" : "urn:uuid:858a5faa-6064-4086-b3c7-a4581bea08f9",
+    "timestamp" : "2024-12-11T23:35:41.488Z",
     "total" : 10,
     "offset" : 0,
     "parameter" : [{
@@ -12520,8 +11954,8 @@ e: {
   "resourceType" : "ValueSet",
   "status" : "active",
   "expansion" : {
-    "identifier" : "urn:uuid:1034b9c7-ab1e-43e7-a7b7-629dea0468eb",
-    "timestamp" : "2024-12-05T15:01:29.973Z",
+    "identifier" : "urn:uuid:0b05e5f0-92b1-4aa3-a76b-d49c84a8a3c0",
+    "timestamp" : "2024-12-11T23:35:41.878Z",
     "total" : 2,
     "offset" : 0,
     "parameter" : [{
@@ -12637,8 +12071,8 @@ e: {
   "resourceType" : "ValueSet",
   "status" : "active",
   "expansion" : {
-    "identifier" : "urn:uuid:f5367f49-7a02-4852-8f61-2a460a12e975",
-    "timestamp" : "2024-12-05T15:01:30.270Z",
+    "identifier" : "urn:uuid:c4562285-8fd2-42c1-a72d-c3934d679ec6",
+    "timestamp" : "2024-12-11T23:35:42.253Z",
     "total" : 16,
     "offset" : 0,
     "parameter" : [{
@@ -12762,6 +12196,7 @@ v: {
   "system" : "http://loinc.org",
   "version" : "2.78",
   "server" : "http://tx.fhir.org/r4",
+  "unknown-systems" : "",
   "issues" : {
   "resourceType" : "OperationOutcome"
 }
@@ -12784,6 +12219,7 @@ v: {
   "system" : "http://loinc.org",
   "version" : "2.78",
   "server" : "http://tx.fhir.org/r4",
+  "unknown-systems" : "",
   "issues" : {
   "resourceType" : "OperationOutcome"
 }
@@ -12832,77 +12268,53 @@ v: {
   }
 }}####
 e: {
-  "valueSet" : {
+  "from-server" : true,
+  "error" : "Cannot invoke \"org.hl7.fhir.r4.model.Extension.getValue()\" because the return value of \"org.hl7.fhir.r4.model.Extension.getExtensionByUrl(String)\" is null"
+}
+-------------------------------------------------------------------------------------
+{"hierarchical" : false, "valueSet" :{
   "resourceType" : "ValueSet",
-  "status" : "active",
-  "expansion" : {
-    "identifier" : "urn:uuid:2da760b0-44a7-432d-9f03-e7e853f0317c",
-    "timestamp" : "2024-12-05T15:01:31.129Z",
-    "total" : 4,
-    "offset" : 0,
-    "parameter" : [{
-      "name" : "excludeNested",
-      "valueBoolean" : true
-    },
-    {
-      "name" : "offset",
-      "valueInteger" : 0
-    },
-    {
-      "name" : "count",
-      "valueInteger" : 1000
-    },
-    {
-      "name" : "used-codesystem",
-      "valueUri" : "http://loinc.org|2.78"
-    },
-    {
-      "name" : "version",
-      "valueUri" : "http://loinc.org|2.78"
-    }],
-    "property" : [{
-      "code" : "label",
-      "uri" : "http://hl7.org/fhir/concept-properties#label"
-    }],
-    "contains" : [{
+  "compose" : {
+    "include" : [{
       "system" : "http://loinc.org",
-      "code" : "LA20752-4",
-      "display" : "Within 24 hours",
-      "property" : [{
-        "code" : "label",
-        "valueString" : "A."
-      }]
-    },
-    {
-      "system" : "http://loinc.org",
-      "code" : "LA20753-2",
-      "display" : "After 24 hours but before 3 days",
-      "property" : [{
-        "code" : "label",
-        "valueString" : "B."
-      }]
-    },
-    {
-      "system" : "http://loinc.org",
-      "code" : "LA20754-0",
-      "display" : "Three days or later",
-      "property" : [{
-        "code" : "label",
-        "valueString" : "C."
-      }]
-    },
-    {
-      "system" : "http://loinc.org",
-      "code" : "LA4489-6",
-      "display" : "Unknown",
-      "property" : [{
-        "code" : "label",
-        "valueString" : "D."
+      "concept" : [{
+        "extension" : [{
+          "url" : "http://hl7.org/fhir/StructureDefinition/valueset-label",
+          "valueString" : "A."
+        }],
+        "code" : "LA20752-4",
+        "display" : "Within 24 hours"
+      },
+      {
+        "extension" : [{
+          "url" : "http://hl7.org/fhir/StructureDefinition/valueset-label",
+          "valueString" : "B."
+        }],
+        "code" : "LA20753-2",
+        "display" : "After 24 hours but before 3 days"
+      },
+      {
+        "extension" : [{
+          "url" : "http://hl7.org/fhir/StructureDefinition/valueset-label",
+          "valueString" : "C."
+        }],
+        "code" : "LA20754-0",
+        "display" : "Three days or later"
+      },
+      {
+        "extension" : [{
+          "url" : "http://hl7.org/fhir/StructureDefinition/valueset-label",
+          "valueString" : "D."
+        }],
+        "code" : "LA4489-6",
+        "display" : "Unknown"
       }]
     }]
   }
-},
-  "error" : ""
+}}####
+e: {
+  "from-server" : true,
+  "error" : "Cannot invoke \"org.hl7.fhir.r4.model.Extension.getValue()\" because the return value of \"org.hl7.fhir.r4.model.Extension.getExtensionByUrl(String)\" is null"
 }
 -------------------------------------------------------------------------------------
 {"hierarchical" : true, "valueSet" :{
@@ -12947,77 +12359,14 @@ e: {
   }
 }}####
 e: {
-  "valueSet" : {
-  "resourceType" : "ValueSet",
-  "status" : "active",
-  "expansion" : {
-    "identifier" : "urn:uuid:90f87dd3-caaa-42e8-ab6e-1ba29879acf2",
-    "timestamp" : "2024-12-05T15:01:31.411Z",
-    "total" : 4,
-    "offset" : 0,
-    "parameter" : [{
-      "name" : "excludeNested",
-      "valueBoolean" : false
-    },
-    {
-      "name" : "offset",
-      "valueInteger" : 0
-    },
-    {
-      "name" : "count",
-      "valueInteger" : 1000
-    },
-    {
-      "name" : "used-codesystem",
-      "valueUri" : "http://loinc.org|2.78"
-    },
-    {
-      "name" : "version",
-      "valueUri" : "http://loinc.org|2.78"
-    }],
-    "property" : [{
-      "code" : "label",
-      "uri" : "http://hl7.org/fhir/concept-properties#label"
-    }],
-    "contains" : [{
-      "system" : "http://loinc.org",
-      "code" : "LA20752-4",
-      "display" : "Within 24 hours",
-      "property" : [{
-        "code" : "label",
-        "valueString" : "A."
-      }]
-    },
-    {
-      "system" : "http://loinc.org",
-      "code" : "LA20753-2",
-      "display" : "After 24 hours but before 3 days",
-      "property" : [{
-        "code" : "label",
-        "valueString" : "B."
-      }]
-    },
-    {
-      "system" : "http://loinc.org",
-      "code" : "LA20754-0",
-      "display" : "Three days or later",
-      "property" : [{
-        "code" : "label",
-        "valueString" : "C."
-      }]
-    },
-    {
-      "system" : "http://loinc.org",
-      "code" : "LA4489-6",
-      "display" : "Unknown",
-      "property" : [{
-        "code" : "label",
-        "valueString" : "D."
-      }]
-    }]
-  }
-},
-  "error" : ""
+  "from-server" : true,
+  "error" : "Cannot invoke \"org.hl7.fhir.r4.model.Extension.getValue()\" because the return value of \"org.hl7.fhir.r4.model.Extension.getExtensionByUrl(String)\" is null"
+}
+-------------------------------------------------------------------------------------
+{"hierarchical" : true, "url": "http://example.org/ValueSet/LL2821-8", "version": "4.0.0-ballot"}####
+e: {
+  "from-server" : true,
+  "error" : "Cannot invoke \"org.hl7.fhir.r4.model.Extension.getValue()\" because the return value of \"org.hl7.fhir.r4.model.Extension.getExtensionByUrl(String)\" is null"
 }
 -------------------------------------------------------------------------------------
 {"code" : {
@@ -13036,6 +12385,7 @@ v: {
   "system" : "http://loinc.org",
   "version" : "2.78",
   "server" : "http://tx.fhir.org/r4",
+  "unknown-systems" : "",
   "issues" : {
   "resourceType" : "OperationOutcome"
 }
@@ -13058,6 +12408,7 @@ v: {
   "system" : "http://loinc.org",
   "version" : "2.78",
   "server" : "http://tx.fhir.org/r4",
+  "unknown-systems" : "",
   "issues" : {
   "resourceType" : "OperationOutcome"
 }
@@ -13080,6 +12431,7 @@ v: {
   "system" : "http://loinc.org",
   "version" : "2.78",
   "server" : "http://tx.fhir.org/r4",
+  "unknown-systems" : "",
   "issues" : {
   "resourceType" : "OperationOutcome"
 }
@@ -13102,6 +12454,7 @@ v: {
   "system" : "http://loinc.org",
   "version" : "2.78",
   "server" : "http://tx.fhir.org/r4",
+  "unknown-systems" : "",
   "issues" : {
   "resourceType" : "OperationOutcome"
 }
@@ -13124,6 +12477,7 @@ v: {
   "system" : "http://loinc.org",
   "version" : "2.78",
   "server" : "http://tx.fhir.org/r4",
+  "unknown-systems" : "",
   "issues" : {
   "resourceType" : "OperationOutcome"
 }
@@ -13146,6 +12500,7 @@ v: {
   "system" : "http://loinc.org",
   "version" : "2.78",
   "server" : "http://tx.fhir.org/r4",
+  "unknown-systems" : "",
   "issues" : {
   "resourceType" : "OperationOutcome"
 }
@@ -13168,6 +12523,7 @@ v: {
   "system" : "http://loinc.org",
   "version" : "2.78",
   "server" : "http://tx.fhir.org/r4",
+  "unknown-systems" : "",
   "issues" : {
   "resourceType" : "OperationOutcome"
 }
@@ -13190,6 +12546,7 @@ v: {
   "system" : "http://loinc.org",
   "version" : "2.78",
   "server" : "http://tx.fhir.org/r4",
+  "unknown-systems" : "",
   "issues" : {
   "resourceType" : "OperationOutcome"
 }
@@ -13212,6 +12569,7 @@ v: {
   "system" : "http://loinc.org",
   "version" : "2.78",
   "server" : "http://tx.fhir.org/r4",
+  "unknown-systems" : "",
   "issues" : {
   "resourceType" : "OperationOutcome"
 }
@@ -13234,6 +12592,7 @@ v: {
   "system" : "http://loinc.org",
   "version" : "2.78",
   "server" : "http://tx.fhir.org/r4",
+  "unknown-systems" : "",
   "issues" : {
   "resourceType" : "OperationOutcome"
 }
@@ -13256,6 +12615,7 @@ v: {
   "system" : "http://loinc.org",
   "version" : "2.78",
   "server" : "http://tx.fhir.org/r4",
+  "unknown-systems" : "",
   "issues" : {
   "resourceType" : "OperationOutcome"
 }
@@ -13278,6 +12638,7 @@ v: {
   "system" : "http://loinc.org",
   "version" : "2.78",
   "server" : "http://tx.fhir.org/r4",
+  "unknown-systems" : "",
   "issues" : {
   "resourceType" : "OperationOutcome"
 }
@@ -13300,6 +12661,7 @@ v: {
   "system" : "http://loinc.org",
   "version" : "2.78",
   "server" : "http://tx.fhir.org/r4",
+  "unknown-systems" : "",
   "issues" : {
   "resourceType" : "OperationOutcome"
 }
@@ -13322,6 +12684,7 @@ v: {
   "system" : "http://loinc.org",
   "version" : "2.78",
   "server" : "http://tx.fhir.org/r4",
+  "unknown-systems" : "",
   "issues" : {
   "resourceType" : "OperationOutcome"
 }
@@ -13344,6 +12707,7 @@ v: {
   "system" : "http://loinc.org",
   "version" : "2.78",
   "server" : "http://tx.fhir.org/r4",
+  "unknown-systems" : "",
   "issues" : {
   "resourceType" : "OperationOutcome"
 }
@@ -13366,6 +12730,7 @@ v: {
   "system" : "http://loinc.org",
   "version" : "2.78",
   "server" : "http://tx.fhir.org/r4",
+  "unknown-systems" : "",
   "issues" : {
   "resourceType" : "OperationOutcome"
 }
@@ -13388,6 +12753,7 @@ v: {
   "system" : "http://loinc.org",
   "version" : "2.78",
   "server" : "http://tx.fhir.org/r4",
+  "unknown-systems" : "",
   "issues" : {
   "resourceType" : "OperationOutcome"
 }
@@ -13410,6 +12776,7 @@ v: {
   "system" : "http://loinc.org",
   "version" : "2.78",
   "server" : "http://tx.fhir.org/r4",
+  "unknown-systems" : "",
   "issues" : {
   "resourceType" : "OperationOutcome"
 }
@@ -13432,6 +12799,7 @@ v: {
   "system" : "http://loinc.org",
   "version" : "2.78",
   "server" : "http://tx.fhir.org/r4",
+  "unknown-systems" : "",
   "issues" : {
   "resourceType" : "OperationOutcome"
 }
@@ -13454,6 +12822,7 @@ v: {
   "system" : "http://loinc.org",
   "version" : "2.78",
   "server" : "http://tx.fhir.org/r4",
+  "unknown-systems" : "",
   "issues" : {
   "resourceType" : "OperationOutcome"
 }
@@ -13476,6 +12845,7 @@ v: {
   "system" : "http://loinc.org",
   "version" : "2.78",
   "server" : "http://tx.fhir.org/r4",
+  "unknown-systems" : "",
   "issues" : {
   "resourceType" : "OperationOutcome"
 }
@@ -13498,6 +12868,7 @@ v: {
   "system" : "http://loinc.org",
   "version" : "2.78",
   "server" : "http://tx.fhir.org/r4",
+  "unknown-systems" : "",
   "issues" : {
   "resourceType" : "OperationOutcome"
 }
@@ -13520,6 +12891,7 @@ v: {
   "system" : "http://loinc.org",
   "version" : "2.78",
   "server" : "http://tx.fhir.org/r4",
+  "unknown-systems" : "",
   "issues" : {
   "resourceType" : "OperationOutcome"
 }
@@ -13542,6 +12914,7 @@ v: {
   "system" : "http://loinc.org",
   "version" : "2.78",
   "server" : "http://tx.fhir.org/r4",
+  "unknown-systems" : "",
   "issues" : {
   "resourceType" : "OperationOutcome"
 }
@@ -13564,6 +12937,7 @@ v: {
   "system" : "http://loinc.org",
   "version" : "2.78",
   "server" : "http://tx.fhir.org/r4",
+  "unknown-systems" : "",
   "issues" : {
   "resourceType" : "OperationOutcome"
 }
@@ -13586,6 +12960,7 @@ v: {
   "system" : "http://loinc.org",
   "version" : "2.78",
   "server" : "http://tx.fhir.org/r4",
+  "unknown-systems" : "",
   "issues" : {
   "resourceType" : "OperationOutcome"
 }
@@ -13608,6 +12983,7 @@ v: {
   "system" : "http://loinc.org",
   "version" : "2.78",
   "server" : "http://tx.fhir.org/r4",
+  "unknown-systems" : "",
   "issues" : {
   "resourceType" : "OperationOutcome"
 }
@@ -13630,6 +13006,7 @@ v: {
   "system" : "http://loinc.org",
   "version" : "2.78",
   "server" : "http://tx.fhir.org/r4",
+  "unknown-systems" : "",
   "issues" : {
   "resourceType" : "OperationOutcome"
 }
@@ -13652,6 +13029,7 @@ v: {
   "system" : "http://loinc.org",
   "version" : "2.78",
   "server" : "http://tx.fhir.org/r4",
+  "unknown-systems" : "",
   "issues" : {
   "resourceType" : "OperationOutcome"
 }
@@ -13712,8 +13090,8 @@ e: {
   "resourceType" : "ValueSet",
   "status" : "active",
   "expansion" : {
-    "identifier" : "urn:uuid:a4c18c06-ed63-477b-9d91-8d35a60a6c9d",
-    "timestamp" : "2024-12-05T15:02:09.067Z",
+    "identifier" : "urn:uuid:bca52f9d-23ef-4e60-8129-f4d0008475a8",
+    "timestamp" : "2024-12-11T23:36:31.206Z",
     "total" : 10,
     "offset" : 0,
     "parameter" : [{
@@ -13789,99 +13167,5 @@ e: {
   }
 },
   "error" : ""
-}
--------------------------------------------------------------------------------------
-{"code" : {
-  "system" : "http://loinc.org",
-  "code" : "8302-2",
-  "display" : "Body height"
-}, "valueSet" :null, "langs":"en-CA", "useServer":"true", "useClient":"false", "guessSystem":"false", "activeOnly":"false", "membershipOnly":"false", "displayWarningMode":"false", "versionFlexible":"true", "profile": {
-  "resourceType" : "Parameters",
-  "parameter" : [{
-    "name" : "x-system-cache-id",
-    "valueString" : "dc8fd4bc-091a-424a-8a3b-6198ef146891"
-  }]
-}}####
-v: {
-  "display" : "Body height",
-  "code" : "8302-2",
-  "system" : "http://loinc.org",
-  "version" : "2.78",
-  "server" : "http://tx.fhir.org/r4",
-  "unknown-systems" : "",
-  "issues" : {
-  "resourceType" : "OperationOutcome"
-}
-
-}
--------------------------------------------------------------------------------------
-{"code" : {
-  "system" : "http://loinc.org",
-  "code" : "8302-2"
-}, "url": "http://hl7.org/fhir/ValueSet/observation-vitalsignresult--0", "version": "4.0.1", "langs":"en-CA", "useServer":"true", "useClient":"false", "guessSystem":"false", "activeOnly":"false", "membershipOnly":"false", "displayWarningMode":"false", "versionFlexible":"true", "profile": {
-  "resourceType" : "Parameters",
-  "parameter" : [{
-    "name" : "x-system-cache-id",
-    "valueString" : "dc8fd4bc-091a-424a-8a3b-6198ef146891"
-  }]
-}}####
-v: {
-  "display" : "Body height",
-  "code" : "8302-2",
-  "system" : "http://loinc.org",
-  "version" : "2.78",
-  "server" : "http://tx.fhir.org/r4",
-  "unknown-systems" : "",
-  "issues" : {
-  "resourceType" : "OperationOutcome"
-}
-
-}
--------------------------------------------------------------------------------------
-{"code" : {
-  "system" : "http://loinc.org",
-  "code" : "29463-7",
-  "display" : "Weight"
-}, "valueSet" :null, "langs":"en-CA", "useServer":"true", "useClient":"false", "guessSystem":"false", "activeOnly":"false", "membershipOnly":"false", "displayWarningMode":"false", "versionFlexible":"true", "profile": {
-  "resourceType" : "Parameters",
-  "parameter" : [{
-    "name" : "x-system-cache-id",
-    "valueString" : "dc8fd4bc-091a-424a-8a3b-6198ef146891"
-  }]
-}}####
-v: {
-  "display" : "Body weight",
-  "code" : "29463-7",
-  "system" : "http://loinc.org",
-  "version" : "2.78",
-  "server" : "http://tx.fhir.org/r4",
-  "unknown-systems" : "",
-  "issues" : {
-  "resourceType" : "OperationOutcome"
-}
-
-}
--------------------------------------------------------------------------------------
-{"code" : {
-  "system" : "http://loinc.org",
-  "code" : "29463-7"
-}, "url": "http://hl7.org/fhir/ValueSet/observation-vitalsignresult--0", "version": "4.0.1", "langs":"en-CA", "useServer":"true", "useClient":"false", "guessSystem":"false", "activeOnly":"false", "membershipOnly":"false", "displayWarningMode":"false", "versionFlexible":"true", "profile": {
-  "resourceType" : "Parameters",
-  "parameter" : [{
-    "name" : "x-system-cache-id",
-    "valueString" : "dc8fd4bc-091a-424a-8a3b-6198ef146891"
-  }]
-}}####
-v: {
-  "display" : "Body weight",
-  "code" : "29463-7",
-  "system" : "http://loinc.org",
-  "version" : "2.78",
-  "server" : "http://tx.fhir.org/r4",
-  "unknown-systems" : "",
-  "issues" : {
-  "resourceType" : "OperationOutcome"
-}
-
 }
 -------------------------------------------------------------------------------------
