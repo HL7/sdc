@@ -1,5 +1,5 @@
 Profile: SDCQuestionnairePopulateExpression
-Parent: SDCBaseQuestionnaire
+Parent: SDCQuestionnaireCommon
 Id: sdc-questionnaire-pop-exp
 Title: "Populatable Questionnaire - Expression"
 Description: "Defines elements that support auto-population and pre-population of questionnaires using the Expression-based population mechanism"

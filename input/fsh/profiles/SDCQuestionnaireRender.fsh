@@ -1,5 +1,5 @@
 Profile: SDCQuestionnaireRender
-Parent: SDCBaseQuestionnaire
+Parent: SDCQuestionnaireCommon
 Id: sdc-questionnaire-render
 Title: "Advanced Rendering Questionnaire"
 Description: "Defines additional capabilities for controlling the rendering of the questionnaire."
@@ -16,7 +16,6 @@ Description: "Defines additional capabilities for controlling the rendering of t
       ItemMedia named itemMedia 0..1 and
       OptionalDisplayExtension named itemOptionalDisplay 0..1 and
       ShortTextExtension named itemShortText 0..1 and
-      $questionnaire-hidden named itemHidden 0..1 MS and
       SDCOpenLabel named openLabel 0..1 and
       $questionnaire-itemControl named itemControl 0..1 MS and
       $questionnaire-choiceOrientation named choiceOrientation 0..1 and

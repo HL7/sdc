@@ -1,10 +1,10 @@
-// WARNING: The following Mapping may be incomplete since the original SDCBaseQuestionnaire
+// WARNING: The following Mapping may be incomplete since the original SDCQuestionnaireCommon
 // StructureDefinition was missing the mapping entry for ihe-sdc.
 // Please review this and add the following properties as necessary: Target, Title, Description
-Mapping: ihe-sdc-for-SDCBaseQuestionnaire
+Mapping: ihe-sdc-for-SDCQuestionnaireCommon
 Id: ihe-sdc
 Title: "IHE SDC"
-Source: SDCBaseQuestionnaire
+Source: SDCQuestionnaireCommon
 * -> "Form_Package"
 * version -> "Not currently in schema"
 * status -> "./administration_package/registration/state/registration_status"

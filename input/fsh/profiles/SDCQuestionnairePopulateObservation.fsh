@@ -1,5 +1,5 @@
 Profile: SDCQuestionnairePopulateObservation
-Parent: SDCBaseQuestionnaire
+Parent: SDCQuestionnaireCommon
 Id: sdc-questionnaire-pop-obsn
 Title: "Populatable Questionnaire - Observation"
 Description: "Defines elements that support auto-population and pre-population of questionnaires using the Observation-based population mechanism"

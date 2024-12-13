@@ -1,5 +1,5 @@
 Profile: SDCQuestionnaireExtractTemplate
-Parent: SDCBaseQuestionnaire
+Parent: SDCQuestionnaireCommon
 Id: sdc-questionnaire-extr-template
 Title: "Extractable Questionnaire - Template"
 Description: "Defines elements that allow conversion of a QuestionnaireResponse to a FHIR resource or Bundle of FHIR resources using the Template-based extraction mechanism"

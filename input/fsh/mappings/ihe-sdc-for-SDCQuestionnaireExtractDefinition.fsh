@@ -6,4 +6,3 @@ Id: ihe-sdc
 Title: "IHE SDC"
 Source: SDCQuestionnaireExtractDefinition
 * -> "Form_Package"
-* item.extension[itemHidden] -> "Any element with @initial_state=\"hidden\" and no rule that unhides the element"
