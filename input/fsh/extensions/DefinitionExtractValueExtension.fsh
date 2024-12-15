@@ -6,7 +6,7 @@ Description: "Provide either a fixed value, or an expression to evaluate, to be 
 * ^extension[$standard-status].valueCode = #draft
 * ^extension[$fmm].valueInteger = 0
 * ^status = #draft
-* ^context[0].type = #element
+* ^context[+].type = #element
 * ^context[=].expression = "Questionnaire"
 * ^context[+].type = #element
 * ^context[=].expression = "Questionnaire.item"

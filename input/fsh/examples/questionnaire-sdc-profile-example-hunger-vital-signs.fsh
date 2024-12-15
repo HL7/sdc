@@ -3,6 +3,9 @@ InstanceOf: SDCBaseQuestionnaire
 Title: "SDC-Hunger Vital Sign"
 Usage: #example
 * extension[+]
+  * url = $questionnaire-versionAlgorithm
+  * valueCoding = $version-algorithm#semver
+* extension[+]
   * url = $variable
   * valueExpression
     * name = "worriedAnsCode"
@@ -40,7 +43,7 @@ Usage: #example
 * subjectType = #Patient
 * description = "A hunger vital signs form (showing calculatedExpression selecting a value from a list)."
 * code = $loinc#88121-9 "Hunger Vital Sign [HVS]"
-* item[0]
+* item[+]
   * extension
     * url = "http://hl7.org/fhir/StructureDefinition/questionnaire-itemControl"
     * valueCodeableConcept = $questionnaire-item-control#drop-down "Drop down"
@@ -50,7 +53,7 @@ Usage: #example
   * text = "Within the past 12Mo we worried whether our food would run out before we got money to buy more"
   * type = #choice
   * required = false
-  * answerOption[0].valueCoding = $loinc#LA28397-0 "Often true"
+  * answerOption[+].valueCoding = $loinc#LA28397-0 "Often true"
   * answerOption[+].valueCoding = $loinc#LA6729-3 "Sometimes true"
   * answerOption[+].valueCoding = $loinc#LA28398-8 "Never true"
   * answerOption[+].valueCoding = $loinc#LA15775-2 "Don't know/refused"
@@ -64,12 +67,12 @@ Usage: #example
   * text = "Within the past 12Mo the food we bought just didn't last and we didn't have money to get more [U.S. FSS]"
   * type = #choice
   * required = false
-  * answerOption[0].valueCoding = $loinc#LA28397-0 "Often true"
+  * answerOption[+].valueCoding = $loinc#LA28397-0 "Often true"
   * answerOption[+].valueCoding = $loinc#LA6729-3 "Sometimes true"
   * answerOption[+].valueCoding = $loinc#LA28398-8 "Never true"
   * answerOption[+].valueCoding = $loinc#LA15775-2 "Don't know/refused"
 * item[+]
-  * extension[0]
+  * extension[+]
     * url = "http://hl7.org/fhir/StructureDefinition/questionnaire-itemControl"
     * valueCodeableConcept = $questionnaire-item-control#drop-down "Drop down"
       * text = "Drop down"
@@ -103,7 +106,7 @@ Usage: #example
   * type = #choice
   * required = false
   * readOnly = true
-  * answerOption[0].valueCoding = $loinc#LA19952-3 "At risk"
+  * answerOption[+].valueCoding = $loinc#LA19952-3 "At risk"
   * answerOption[+].valueCoding = $loinc#LA19983-8 "No risk"
   * item
     * extension

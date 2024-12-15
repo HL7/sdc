@@ -5,7 +5,7 @@ Description: "Specifies a reference to a contained transaction bundle resource t
 * ^extension[$standard-status].valueCode = #draft
 * ^extension[$fmm].valueInteger = 0
 * ^status = #draft
-* ^context[0].type = #element
+* ^context[+].type = #element
 * ^context[=].expression = "Questionnaire"
 * . 0..1
 * . ^short = "Establishes extract context for a Questionnaire to a Transaction Bundle using an extraction template"

@@ -21,6 +21,7 @@ Alias: $derivationType                 = http://hl7.org/fhir/questionnaire-deriv
 Alias: $questionnaire-display-category = http://hl7.org/fhir/questionnaire-display-category
 Alias: $questionnaire-item-control     = http://hl7.org/fhir/questionnaire-item-control
 Alias: $task-code                      = http://hl7.org/fhir/CodeSystem/task-code
+Alias: $version-algorithm              = http://hl7.org/fhir/version-algorithm
 
 // Code systems - external
 Alias: $loinc          = http://loinc.org
@@ -67,6 +68,7 @@ Alias: $questionnaire-initialExpression      = http://hl7.org/fhir/uv/sdc/Struct
 Alias: $questionnaire-itemExtractionContext  = http://hl7.org/fhir/uv/sdc/StructureDefinition/sdc-questionnaire-itemExtractionContext
 Alias: $questionnaire-itemPopulationContext  = http://hl7.org/fhir/uv/sdc/StructureDefinition/sdc-questionnaire-itemPopulationContext
 Alias: $questionnaire-launchContext          = http://hl7.org/fhir/uv/sdc/StructureDefinition/sdc-questionnaire-launchContext
+Alias: $questionnaire-questionnaireAdaptive  = http://hl7.org/fhir/uv/sdc/StructureDefinition/sdc-questionnaire-questionnaireAdaptive
 
 // Extensions - core
 Alias: $adheresTo                            = http://hl7.org/fhir/StructureDefinition/workflow-adheresTo
@@ -121,3 +123,9 @@ Alias: $triggeredBy                          = http://hl7.org/fhir/StructureDefi
 // Extensions - Cross-version
 Alias: $valueset-expansionProperty           = http://hl7.org/fhir/5.0/StructureDefinition/extension-ValueSet.expansion.property
 Alias: $valueset-containsProperty            = http://hl7.org/fhir/5.0/StructureDefinition/extension-ValueSet.expansion.contains.property
+Alias: $questionnaireresponse-source         = http://hl7.org/fhir/5.0/StructureDefinition/extension-QuestionnaireResponse.source
+//Alias: $questionnaire-versionAlgorithm       = http://hl7.org/fhir/5.0/StructureDefinition/extension-Questionnaire.versionAlgorithm%5Bx%5D
+Alias: $questionnaire-versionAlgorithm       = http://hl7.org/fhir/5.0/StructureDefinition/extension-Questionnaire.versionAlgorithm[x]
+Alias: $questionnaire-copyrightLabel         = http://hl7.org/fhir/5.0/StructureDefinition/extension-Questionnaire.copyrightLabel
+Alias: $questionnaire-disabledDisplay        = http://hl7.org/fhir/5.0/StructureDefinition/extension-Questionnaire.item.disabledDisplay
+Alias: $questionnaire-answerConstraint       = http://hl7.org/fhir/5.0/StructureDefinition/extension-Questionnaire.item.answerConstraint

@@ -19,7 +19,7 @@ Usage: #definition
 * type = true
 * instance = true
 * inputProfile = "http://hl7.org/fhir/uv/sdc/StructureDefinition/parameters-questionnaireresponse-extract-in"
-* parameter[0]
+* parameter[+]
   * insert parameter(#questionnaire-response, #in, 0, "1", #Resource,"The QuestionnaireResponse to extract data from.  Used when the operation is invoked at the 'type' level." )
 * parameter[+]
   * insert parameter(#return, #out, 0, "1", #Resource, "The resulting FHIR resource produced after extracting data.  This will either be a single resource or a Transaction Bundle that contains multiple resources.  The operations in the Bundle might be creates\, updates and/or conditional versions of both depending on the nature of the extraction mappings.")

@@ -3,6 +3,7 @@ InstanceOf: SDCQuestionnaireBehave
 Title: "SDC Test Form - Repeats"
 Description: "A test form with repeatable nested groups."
 Usage: #example
+* extension[$questionnaire-versionAlgorithm].valueCoding = $version-algorithm#semver
 * url = "http://hl7.org/fhir/uv/sdc/Questionnaire/questionnaire-sdc-test-nested-groups"
 * name = "NestedGroups"
 * title = "Repeatable group test"
@@ -14,7 +15,7 @@ Usage: #example
   * linkId = "a7837ce4-6ba4-4d01-913c-d20a6685556b"
   * text = "Repeatable group test"
   * type = #group
-  * item[0]
+  * item[+]
     * linkId = "a9f40adc-f194-4efb-b4f7-9396d0ca8e49"
     * text = "First question"
     * type = #string
@@ -23,7 +24,7 @@ Usage: #example
     * text = "Repeatable group 1"
     * type = #group
     * repeats = true
-    * item[0]
+    * item[+]
       * extension
         * url = "http://hl7.org/fhir/StructureDefinition/questionnaire-itemControl"
         * valueCodeableConcept = $questionnaire-item-control#drop-down

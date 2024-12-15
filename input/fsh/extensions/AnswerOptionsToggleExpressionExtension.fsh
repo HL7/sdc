@@ -4,7 +4,7 @@ Title: "Answer Options Toggle Expression"
 Description: "A complex expression that provides a list of the allowed options that should be enabled or disabled based on the evaluation of a provided expression.  It allows toggling of allowed answers based on context, including the answers provided to other expressions.  Any options not listed by one of the answerOptionsToggleExpression occurrences are presumed to be 'enabled'"
 * ^status = #active
 * ^purpose = "This is used when the set of options are fixed, but there is a need to toggle some of them on or off (as opposed to having the entire set of options dynamic, as is supported by answerExpression)."
-* ^context[0].type = #element
+* ^context[+].type = #element
 * ^context[=].expression = "Questionnaire.item"
 * ^context[+].type = #element
 * ^context[=].expression = "ElementDefinition"

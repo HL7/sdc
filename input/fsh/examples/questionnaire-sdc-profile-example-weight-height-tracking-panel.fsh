@@ -3,7 +3,10 @@ InstanceOf: SDCBaseQuestionnaire
 Title: "SDC-Weight and Height Tracking Panel"
 Description: "A weight and height panel (from LOINC) with a FHIRPath rule for calculating the BMI."
 Usage: #example
-* extension[0]
+* extension[+]
+  * url = $questionnaire-versionAlgorithm
+  * valueCoding = $version-algorithm#semver
+* extension[+]
   * url = "http://hl7.org/fhir/StructureDefinition/variable"
   * valueExpression
     * name = "weight"
@@ -30,8 +33,8 @@ Usage: #example
 * description = "A weight & height panel (from LOINC) with a FHIRPath rule for calculating the BMI."
 * purpose = "This Questionnaire example was generated to ensure a non-proprietary, publicly available questionnaire that is available to test the Structured Data Capture profiles"
 * code = $loinc#55418-8 "Weight and Height tracking panel"
-* item[0]
-  * extension[0]
+* item[+]
+  * extension[+]
     * url = "http://hl7.org/fhir/StructureDefinition/questionnaire-unit"
     * valueCoding = $unitsofmeasure#kg
   * extension[+]
@@ -52,11 +55,11 @@ Usage: #example
   * text = "Clothing worn during measure"
   * type = #choice
   * required = false
-  * answerOption[0].valueCoding = $loinc#LA11871-3 "Underwear or less"
+  * answerOption[+].valueCoding = $loinc#LA11871-3 "Underwear or less"
   * answerOption[+].valueCoding = $loinc#LA11872-1 "Street clothes, no shoes"
   * answerOption[+].valueCoding = $loinc#LA11873-9 "Street clothes & shoes"
 * item[+]
-  * extension[0]
+  * extension[+]
     * url = "http://hl7.org/fhir/StructureDefinition/questionnaire-unit"
     * valueCoding = $unitsofmeasure#[in_i]
   * extension[+]
@@ -68,7 +71,7 @@ Usage: #example
   * type = #decimal
   * required = false
 * item[+]
-  * extension[0]
+  * extension[+]
     * url = "http://hl7.org/fhir/StructureDefinition/questionnaire-unit"
     * valueCoding = $unitsofmeasure#kg/m2
   * extension[+]
@@ -92,6 +95,6 @@ Usage: #example
   * text = "Bdy position with respect to gravity"
   * type = #choice
   * required = false
-  * answerOption[0].valueCoding = $loinc#LA11868-9 "Sitting"
+  * answerOption[+].valueCoding = $loinc#LA11868-9 "Sitting"
   * answerOption[+].valueCoding = $loinc#LA11869-7 "Lying"
   * answerOption[+].valueCoding = $loinc#LA11870-5 "Standing"

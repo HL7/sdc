@@ -3,6 +3,7 @@ InstanceOf: SDCQuestionnaireExtractObservation
 Title: "SDC-PHQ9 using an SDC Library"
 Description: "Patient Health Questionnaire using a cqf-expression defined in an SDC Library"
 Usage: #example
+* extension[$questionnaire-versionAlgorithm].valueCoding = $version-algorithm#semver
 * identifier.use = #official
 * identifier.value = "phq-9"
 * version = "1.0.0"
@@ -38,7 +39,7 @@ Usage: #example
 * item[=].code = $loinc#44253-3
 
 * item[+]
-  * extension[0]
+  * extension[+]
     * url = "http://hl7.org/fhir/StructureDefinition/cqf-expression"
     * valueExpression
       * language = #text/cql
@@ -47,7 +48,7 @@ Usage: #example
     * url = "http://hl7.org/fhir/uv/sdc/StructureDefinition/sdc-questionnaire-observation-extract-category"
     * valueCodeableConcept = $observation-category#survey "Survey"
   * linkId = "TotalScore"
-  * code[0] = $loinc#44261-6
+  * code[+] = $loinc#44261-6
     * extension
       * url = "http://hl7.org/fhir/uv/sdc/StructureDefinition/sdc-questionnaire-observationExtract"
       * valueBoolean = true

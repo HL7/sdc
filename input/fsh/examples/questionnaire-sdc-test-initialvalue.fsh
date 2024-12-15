@@ -3,6 +3,7 @@ InstanceOf: SDCQuestionnairePopulateExpression
 Title: "SDC Test Form - Initial Value"
 Description: "A test form with that uses initial values."
 Usage: #example
+* extension[$questionnaire-versionAlgorithm].valueCoding = $version-algorithm#semver
 * url = "http://hl7.org/fhir/uv/sdc/Questionnaire/questionnaire-sdc-test-initialvalue"
 * name = "InitialValue"
 * title = "Initial Values"
@@ -14,7 +15,7 @@ Usage: #example
   * linkId = "02a7536f-06b2-4dee-94e1-f5cfcb0e8622"
   * text = "Root Group"
   * type = #group
-  * item[0]
+  * item[+]
     * linkId = "1acf93a7-0890-44cd-be48-542defb35248"
     * text = "Yes/No/Dont know"
     * type = #choice
@@ -30,6 +31,6 @@ Usage: #example
     * text = "Decimal Values Radio Buttons"
     * type = #choice
     * repeats = false
-    * answerOption[0].valueCoding = $sct#732409008 "1.1"
+    * answerOption[+].valueCoding = $sct#732409008 "1.1"
     * answerOption[+].valueCoding = $sct#732572001 "2.2"
     * answerOption[+].valueCoding = $sct#732646001 "3.3"

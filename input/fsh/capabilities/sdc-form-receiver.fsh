@@ -15,7 +15,7 @@ Usage: #definition
 * description = "This profile defines the expected capabilities of the ''SDC Form Receiver'' role when conforming to the S&I Framework's [[index.html|Structured Data Capture FHIR implementation guide]].  This role is responsible for accepting and processing completed and partially-completed forms.  It only exposes a single operation endpoint - the one needed to 'process' a completed QuestionnaireResponse"
 * kind = #requirements
 * fhirVersion = #1.0.0
-* format[0] = #xml
+* format[+] = #xml
 * format[+] = #json
 * rest
   * mode = #server

@@ -5,7 +5,7 @@ Description: "Set of several examples - medication, AHRQ and NCI forms"
 Usage: #example
 * meta.lastUpdated = "2014-05-15T17:25:15Z"
 * type = #collection
-* entry[0]
+* entry[+]
   * fullUrl = "http://example.org/AHRQ/form/Questionnaire/F8-1.2"
   * resource = F8-1.2
 * entry[+]
@@ -25,7 +25,7 @@ Instance: F8-1.2
 InstanceOf: Questionnaire
 Usage: #inline
 * meta.lastUpdated = "2014-05-15T17:25:15Z"
-* contained[0]
+* contained[+]
   * resourceType = "CodeSystem"
   * id = "d1e551-cs"
   * url = "http://example.org/AHRQ/form/question_identifier#Medication/DE270-cs"
@@ -33,7 +33,7 @@ Usage: #inline
   * status = #active
   * caseSensitive = true
   * content = #complete
-  * concept[0]
+  * concept[+]
     * code = #A1197
     * display = "Medications"
     * definition = "A legal drug that is used to prevent, treat, or relieve symptoms of a disease or abnormal condition."
@@ -71,7 +71,7 @@ Usage: #inline
   * name = "D1e551vs"
   * status = #active
   * compose.include.system = "http://example.org/AHRQ/form/question_identifier#Medication/DE270-cs"
-    * extension[0]
+    * extension[+]
       * url = "http://hl7.org/fhir/StructureDefinition/valueset-system"
       * valueCanonical = "#d1e551-cs"
     * extension[+]
@@ -85,7 +85,7 @@ Usage: #inline
   * status = #active
   * caseSensitive = true
   * content = #complete
-  * concept[0]
+  * concept[+]
     * code = #A1218
     * display = "Prescription or over-the-counter (including herbal supplements)"
   * concept[+]
@@ -104,7 +104,7 @@ Usage: #inline
   * name = "D1e639vs"
   * status = #active
   * compose.include.system = "http://example.org/AHRQ/form/question_identifier#Medication/DE273-cs"
-    * extension[0]
+    * extension[+]
       * url = "http://hl7.org/fhir/StructureDefinition/valueset-system"
       * valueCanonical = "#d1e639-cs"
     * extension[+]
@@ -118,7 +118,7 @@ Usage: #inline
   * status = #active
   * caseSensitive = true
   * content = #complete
-  * concept[0]
+  * concept[+]
     * code = #A1233
     * display = "Vaccines"
   * concept[+]
@@ -130,7 +130,7 @@ Usage: #inline
   * name = "D1e910vs"
   * status = #active
   * compose.include.system = "http://example.org/AHRQ/form/question_identifier#Medication/DE279-cs"
-    * extension[0]
+    * extension[+]
       * url = "http://hl7.org/fhir/StructureDefinition/valueset-system"
       * valueCanonical = "#d1e910cs"
     * extension[+]
@@ -144,7 +144,7 @@ Usage: #inline
   * status = #active
   * caseSensitive = true
   * content = #complete
-  * concept[0]
+  * concept[+]
     * code = #A1242
     * display = "Dietary supplements (other than vitamins or minerals)"
   * concept[+]
@@ -165,7 +165,7 @@ Usage: #inline
   * name = "D1e1125vs"
   * status = #active
   * compose.include.system = "http://example.org/AHRQ/form/question_identifier#Medication/DE285-cs"
-    * extension[0]
+    * extension[+]
       * url = "http://hl7.org/fhir/StructureDefinition/valueset-system"
       * valueCanonical = "#d1e1125-cs"
     * extension[+]
@@ -179,7 +179,7 @@ Usage: #inline
   * status = #active
   * caseSensitive = true
   * content = #complete
-  * concept[0]
+  * concept[+]
     * code = #A1257
     * display = "Incorrect action (process failure or error) (e.g., such as administering overdose or incorrect medication)"
   * concept[+]
@@ -197,7 +197,7 @@ Usage: #inline
   * name = "D1e1558vs"
   * status = #active
   * compose.include.system = "http://example.org/AHRQ/form/question_identifier#Medication/DE288-cs"
-    * extension[0]
+    * extension[+]
       * url = "http://hl7.org/fhir/StructureDefinition/valueset-system"
       * valueCanonical = "#d1e1558-cs"
     * extension[+]
@@ -211,7 +211,7 @@ Usage: #inline
   * status = #active
   * caseSensitive = true
   * content = #complete
-  * concept[0]
+  * concept[+]
     * code = #A585
     * display = "Incorrect patient"
   * concept[+]
@@ -262,7 +262,7 @@ Usage: #inline
   * name = "D1e746vs"
   * status = #active
   * compose.include.system = "http://example.org/AHRQ/form/question_identifier#Medication/DE291-cs"
-    * extension[0]
+    * extension[+]
       * url = "http://hl7.org/fhir/StructureDefinition/valueset-system"
       * valueCanonical = "#d1e1746-cs"
     * extension[+]
@@ -276,7 +276,7 @@ Usage: #inline
   * status = #active
   * caseSensitive = true
   * content = #complete
-  * concept[0]
+  * concept[+]
     * code = #A1314
     * display = "Overdose"
   * concept[+]
@@ -297,7 +297,7 @@ Usage: #inline
   * name = "D1e863vs"
   * status = #active
   * compose.include.system = "http://example.org/AHRQ/form/question_identifier#Medication/DE294-cs"
-    * extension[0]
+    * extension[+]
       * url = "http://hl7.org/fhir/StructureDefinition/valueset-system"
       * valueCanonical = "#d1e1863-cs"
     * extension[+]
@@ -311,7 +311,7 @@ Usage: #inline
   * status = #active
   * caseSensitive = true
   * content = #complete
-  * concept[0]
+  * concept[+]
     * code = #A1329
     * display = "Too early"
   * concept[+]
@@ -326,7 +326,7 @@ Usage: #inline
   * name = "D1e2109vs"
   * status = #active
   * compose.include.system = "http://example.org/AHRQ/form/question_identifier#Medication/DE297-cs"
-    * extension[0]
+    * extension[+]
       * url = "http://hl7.org/fhir/StructureDefinition/valueset-system"
       * valueCanonical = "#d1e2109-cs"
     * extension[+]
@@ -340,7 +340,7 @@ Usage: #inline
   * status = #active
   * caseSensitive = true
   * content = #complete
-  * concept[0]
+  * concept[+]
     * code = #A1338
     * display = "Too quickly"
   * concept[+]
@@ -355,7 +355,7 @@ Usage: #inline
   * name = "D1e2272vs"
   * status = #active
   * compose.include.system = "http://example.org/AHRQ/form/question_identifier#Medication/DE300-cs"
-    * extension[0]
+    * extension[+]
       * url = "http://hl7.org/fhir/StructureDefinition/valueset-system"
       * valueCanonical = "#d1e2272-cs"
     * extension[+]
@@ -369,7 +369,7 @@ Usage: #inline
   * status = #active
   * caseSensitive = true
   * content = #complete
-  * concept[0]
+  * concept[+]
     * code = #A1347
     * display = "Too high"
   * concept[+]
@@ -384,7 +384,7 @@ Usage: #inline
   * name = "D1e2489vs"
   * status = #active
   * compose.include.system = "http://example.org/AHRQ/form/question_identifier#Medication/DE303-cs"
-    * extension[0]
+    * extension[+]
       * url = "http://hl7.org/fhir/StructureDefinition/valueset-system"
       * valueCanonical = "#d1e2489-cs"
     * extension[+]
@@ -398,7 +398,7 @@ Usage: #inline
   * status = #active
   * caseSensitive = true
   * content = #complete
-  * concept[0]
+  * concept[+]
     * code = #A15
     * display = "Yes"
   * concept[+]
@@ -413,7 +413,7 @@ Usage: #inline
   * name = "D1e2768vs"
   * status = #active
   * compose.include.system = "http://example.org/AHRQ/form/question_identifier#Medication/DE309-cs"
-    * extension[0]
+    * extension[+]
       * url = "http://hl7.org/fhir/StructureDefinition/valueset-system"
       * valueCanonical = "#d1e2768-cs"
     * extension[+]
@@ -427,7 +427,7 @@ Usage: #inline
   * status = #active
   * caseSensitive = true
   * content = #complete
-  * concept[0]
+  * concept[+]
     * code = #A1368
     * display = "Drug-drug"
   * concept[+]
@@ -445,7 +445,7 @@ Usage: #inline
   * name = "D1e2928vs"
   * status = #active
   * compose.include.system = "http://example.org/AHRQ/form/question_identifier#Medication/DE312-cs"
-    * extension[0]
+    * extension[+]
       * url = "http://hl7.org/fhir/StructureDefinition/valueset-system"
       * valueCanonical = "#d1e2928-cs"
     * extension[+]
@@ -459,7 +459,7 @@ Usage: #inline
   * status = #active
   * caseSensitive = true
   * content = #complete
-  * concept[0]
+  * concept[+]
     * code = #A1380
     * display = "Purchasing"
   * concept[+]
@@ -495,7 +495,7 @@ Usage: #inline
   * name = "D1e3159vs"
   * status = #active
   * compose.include.system = "http://example.org/AHRQ/form/question_identifier#Medication/DE315-cs"
-    * extension[0]
+    * extension[+]
       * url = "http://hl7.org/fhir/StructureDefinition/valueset-system"
       * valueCanonical = "#d1e3159-cs"
     * extension[+]
@@ -509,7 +509,7 @@ Usage: #inline
   * status = #active
   * caseSensitive = true
   * content = #complete
-  * concept[0]
+  * concept[+]
     * code = #A15
     * display = "Yes"
   * concept[+]
@@ -521,7 +521,7 @@ Usage: #inline
   * name = "D1e4024vs"
   * status = #active
   * compose.include.system = "http://example.org/AHRQ/form/question_identifier#Medication/DE333-cs"
-    * extension[0]
+    * extension[+]
       * url = "http://hl7.org/fhir/StructureDefinition/valueset-system"
       * valueCanonical = "#d1e4024-cs"
     * extension[+]
@@ -535,7 +535,7 @@ Usage: #inline
   * status = #active
   * caseSensitive = true
   * content = #complete
-  * concept[0]
+  * concept[+]
     * code = #A15
     * display = "Yes"
   * concept[+]
@@ -547,7 +547,7 @@ Usage: #inline
   * name = "D1e4118vs"
   * status = #active
   * compose.include.system = "http://example.org/AHRQ/form/question_identifier#Medication/DE336-cs"
-    * extension[0]
+    * extension[+]
       * url = "http://hl7.org/fhir/StructureDefinition/valueset-system"
       * valueCanonical = "#d1e4118-cs"
     * extension[+]
@@ -561,7 +561,7 @@ Usage: #inline
   * status = #active
   * caseSensitive = true
   * content = #complete
-  * concept[0] 
+  * concept[+] 
     * code = #A1440
     * display = "Cutaneous, topical application, including ointment, spray, patch"
   * concept[+] 
@@ -615,7 +615,7 @@ Usage: #inline
   * name = "D1e4236vs"
   * status = #active
   * compose.include.system = "http://example.org/AHRQ/form/question_identifier#Medication/DE348-cs"
-    * extension[0]
+    * extension[+]
       * url = "http://hl7.org/fhir/StructureDefinition/valueset-system"
       * valueCanonical = "#d1e4236-cs"
     * extension[+]
@@ -629,7 +629,7 @@ Usage: #inline
   * status = #active
   * caseSensitive = true
   * content = #complete
-  * concept[0] 
+  * concept[+] 
     * code = #A1440
     * display = "Cutaneous, topical application, including ointment, spray, patch"
   * concept[+] 
@@ -683,12 +683,14 @@ Usage: #inline
   * name = "D1e4716vs"
   * status = #active
   * compose.include.system = "http://example.org/AHRQ/form/question_identifier#Medication/DE351-cs"
-    * extension[0]
+    * extension[+]
       * url = "http://hl7.org/fhir/StructureDefinition/valueset-system"
       * valueCanonical = "#d1e4716-cs"
     * extension[+]
       * url = "http://hl7.org/fhir/StructureDefinition/valueset-system"
       * valueCanonical = "#DE351-cs"
+* extension[$questionnaire-versionAlgorithm].valueCoding = $version-algorithm#semver
+* extension[$questionnaire-copyrightLabel].valueString = "(c) 2013"
 * url = "http://hl7.org/fhir/uv/sdc/Questionnaire/F8-1.2"
 * identifier
   * system = "http://Medication"
@@ -702,13 +704,13 @@ Usage: #inline
 * useContext
   * code = $usage-context-type#venue
   * valueCodeableConcept.text = "Acute Care Hospitals"
-* item[0]
+* item[+]
   * extension
     * url = "http://hl7.org/fhir/StructureDefinition/questionnaire-itemControl"
     * valueCodeableConcept = $questionnaire-item-control#header
   * linkId = "Medication/header"
   * type = #group
-  * item[0]
+  * item[+]
     * extension
       * url = "http://hl7.org/fhir/StructureDefinition/minLength"
       * valueInteger = 3
@@ -725,7 +727,7 @@ Usage: #inline
   * linkId = "Medication/SEC00"
   * text = "Medication or Other Substance"
   * type = #group
-  * item[0]
+  * item[+]
     * linkId = "Medication/SEC00.0"
     * text = "Use this form to report any patient safety event or unsafe condition involving a substance such as a medications, biological products, nutritional products, expressed human breast milk, medical gases, or contrast media. Do not complete this form if the event involves appropriateness of therapeutic choice or decision making (e.g., physician decision to prescribe medication despite known drug-drug interaction). If the event involves a device, please also complete the Device or Medical/Surgical Supply including Health Information Technology (HIT) form. Narrative detail can be captured on the Healthcare Event Reporting Form (HERF)."
     * type = #display
@@ -733,7 +735,7 @@ Usage: #inline
     * linkId = "Medication/SEC01/74080-3"
     * type = #group
     * required = true
-    * item[0]
+    * item[+]
       * extension
         * url = "http://hl7.org/fhir/StructureDefinition/minLength"
         * valueInteger = 1
@@ -743,7 +745,7 @@ Usage: #inline
       * type = #open-choice
       * required = true
       * answerValueSet = "#d1e551-vs"
-      * item[0]
+      * item[+]
         * extension
           * url = "http://hl7.org/fhir/StructureDefinition/minLength"
           * valueInteger = 7
@@ -792,7 +794,7 @@ Usage: #inline
       * text = "What was the incorrect action?"
       * type = #open-choice
       * answerValueSet = "#d1e1746-vs"
-      * item[0]
+      * item[+]
         * linkId = "Medication/DE294"
         * text = "Which best describes the incorrect dose(s)?"
         * type = #open-choice
@@ -847,7 +849,7 @@ Usage: #inline
     * type = #group
     * repeats = true
     * required = true
-    * item[0]
+    * item[+]
       * linkId = "Medication/SEC02/74078-7.0"
       * text = "Please provide the following medication details for any medications or other substances directly involved in the event."
       * type = #display
@@ -929,7 +931,7 @@ Usage: #inline
   * item[+]
     * linkId = "Medication/SEC03"
     * type = #group
-    * item[0]
+    * item[+]
       * linkId = "Medication/DE348"
       * text = "What was the intended route of administration?"
       * type = #open-choice
@@ -972,14 +974,14 @@ Instance: HERF-1.2
 InstanceOf: Questionnaire
 Usage: #inline
 * meta.lastUpdated = "2014-05-15T17:25:15Z"
-* contained[0]
+* contained[+]
   * resourceType = "CodeSystem"
   * id = "d1e5879-cs"
   * url = "http://example.org/AHRQ/form/question_identifier#HERF/DE3-cs"
   * status = #active
   * caseSensitive = true
   * content = #complete
-  * concept[0] 
+  * concept[+] 
     * code = #A3
     * display = "Incident"
     * definition = "A patient safety event that reached the patient, whether or not the patient was harmed."
@@ -1006,7 +1008,7 @@ Usage: #inline
   * status = #active
   * caseSensitive = true
   * content = #complete
-  * concept[0] 
+  * concept[+] 
     * code = #A42
     * display = "Blood or Blood Product"
   * concept[+] 
@@ -1051,7 +1053,7 @@ Usage: #inline
   * status = #active
   * caseSensitive = true
   * content = #complete
-  * concept[0] 
+  * concept[+] 
     * code = #M
     * display = "Male"
   * concept[+] 
@@ -1075,7 +1077,7 @@ Usage: #inline
   * status = #active
   * caseSensitive = true
   * content = #complete
-  * concept[0] 
+  * concept[+] 
     * code = #A15
     * display = "Yes"
   * concept[+] 
@@ -1096,7 +1098,7 @@ Usage: #inline
   * status = #active
   * caseSensitive = true
   * content = #complete
-  * concept[0] 
+  * concept[+] 
     * code = #M
     * display = "Male"
   * concept[+] 
@@ -1120,7 +1122,7 @@ Usage: #inline
   * status = #active
   * caseSensitive = true
   * content = #complete
-  * concept[0] 
+  * concept[+] 
     * code = #A15
     * display = "Yes"
   * concept[+] 
@@ -1140,13 +1142,13 @@ Usage: #inline
   * value = "identifier/HERF/1.2"
 * title = "Healthcare Event Reporting Form (HERF) Hospital Version 1.2"
 * status = #active
-* item[0]
+* item[+]
   * extension
     * url = "http://hl7.org/fhir/StructureDefinition/questionnaire-itemControl"
     * valueCodeableConcept = $questionnaire-item-control#header
   * linkId = "HERF/header"
   * type = #group
-  * item[0]
+  * item[+]
     * extension
       * url = "http://hl7.org/fhir/StructureDefinition/minLength"
       * valueInteger = 3
@@ -1162,7 +1164,7 @@ Usage: #inline
 * item[+]
   * linkId = "HERF/SEC01"
   * type = #group
-  * item[0]
+  * item[+]
     * linkId = "HERF/DE30b"
     * text = "Report Date"
     * type = #string
@@ -1209,7 +1211,7 @@ Usage: #inline
     * question = "HERF/DE3"
     * operator = #=
     * answerCoding = $question_identifier#A3
-  * item[0]
+  * item[+]
     * linkId = "HERF/DE3.0"
     * text = "Please complete the patient identifiers below. Additional patient information is captured on the Patient Information Form (PIF). (When reporting a perinatal incident that affected a mother and a neonate, please complete the patient identifiers below for the mother (Q8 – Q11) and the neonate (Q12 – Q15). Please also complete a separate PIF for the neonate involved.)"
     * type = #display
@@ -1237,7 +1239,7 @@ Usage: #inline
     * question = "HERF/DE3"
     * operator = #=
     * answerCoding = $question_identifier#A3
-  * item[0]
+  * item[+]
     * linkId = "HERF/SEC02.0"
     * text = "Please complete the patient identifiers below. Additional patient information is captured on the Patient Information Form (PIF). (When reporting a perinatal incident that affected a mother and a neonate, please complete the patient identifiers below for the mother (Q8 – Q11) and the neonate (Q12 – Q15). Please also complete a separate PIF for the neonate involved.)"
     * type = #display
@@ -1264,7 +1266,7 @@ Usage: #inline
   * linkId = "HERF/SEC03"
   * text = "Neonatal Patient Information:"
   * type = #group
-  * item[0]
+  * item[+]
     * linkId = "HERF/SEC03.0"
     * text = "COMPLETE ONLY FOR NEONATE AFFECTED BY PERINATAL INCIDENT"
     * type = #display
@@ -1273,7 +1275,7 @@ Usage: #inline
     * text = "Is this event a perinatal incident that affected a neonate?"
     * type = #open-choice
     * answerValueSet = "#d1e7006-vs"
-    * item[0]
+    * item[+]
       * linkId = "HERF/DE34"
       * text = "Neonate's Name"
       * type = #string
@@ -1301,7 +1303,7 @@ Usage: #inline
     * text = "Anonymous Reporter"
     * type = #open-choice
     * answerValueSet = "#d1e7422-vs"
-    * item[0]
+    * item[+]
       * linkId = "HERF/DE50"
       * text = "Reporter's Name"
       * type = #string
@@ -1345,7 +1347,7 @@ Usage: #inline
 * id = "3921052v1.0"
 * meta.lastUpdated = "2014-05-15T17:25:15Z"
 * language = #en
-* contained[0]
+* contained[+]
   * resourceType = "CodeSystem"
   * id = "d1e8086-cs"
   * url = "http://example.org/nci.nih.gov/xml/owl/cadsr/form/form_design_identifier/3921052v1.0/question_identifier#3921060v1.0-cs"
@@ -1353,7 +1355,7 @@ Usage: #inline
   * status = #active
   * caseSensitive = true
   * content = #complete
-  * concept[0] 
+  * concept[+] 
     * code = #Primary
     * display = "Primary Diagnosis"
     * definition = "Occurring first in time or sequence; original; of greatest rank or importance or value.: The investigation, analysis and recognition of the presence and nature of disease, condition, or injury from expressed signs and symptoms; also, the scientific determination of any kind; the concise results of such an investigation."
@@ -1386,7 +1388,7 @@ Usage: #inline
   * status = #active
   * caseSensitive = true
   * content = #complete
-  * concept[0] 
+  * concept[+] 
     * code = #"Initial same as Current"
     * display = "Initial diagnosis same as current"
     * definition = "Initial diagnosis same as current"
@@ -1422,7 +1424,7 @@ Usage: #inline
   * status = #active
   * caseSensitive = true
   * content = #complete
-  * concept[0] 
+  * concept[+] 
     * code = #Cytologic
     * display = "Cytological Procedure"
     * definition = "Technique or procedure for manipulation of cells and analysis of cell properties and subcellular features."
@@ -1449,7 +1451,7 @@ Usage: #inline
   * status = #active
   * caseSensitive = true
   * content = #complete
-  * concept[0] 
+  * concept[+] 
     * code = #G1
     * display = "Well Differentiated"
     * definition = "Describes tumor cells that generally retain the appearance of normal cells and tend to grow and spread at a slower rate than undifferentiated or poorly differentiated tumor cells."
@@ -1500,12 +1502,12 @@ Usage: #inline
 * useContext
   * code = $usage-contexts#form-type
   * valueCodeableConcept.text = "CRF"
-* item[0]
+* item[+]
   * linkId = "3921053v1.0"
   * text = "Mandatory Diagnosis Questions"
   * type = #group
   * required = true
-  * item[0]
+  * item[+]
     * linkId = "3921053v1.0.0"
     * text = "These items must be included when this data is collected for reporting."
     * type = #display
@@ -1529,7 +1531,7 @@ Usage: #inline
   * linkId = "3921066v1.0"
   * text = "Conditional Diagnosis Questions"
   * type = #group
-  * item[0]
+  * item[+]
     * linkId = "3921066v1.0.0"
     * text = "There are business rules to indicate situations under which these elements should be used on a case report form."
     * type = #display
@@ -1543,7 +1545,7 @@ Usage: #inline
   * linkId = "3921077v1.0"
   * text = "Optional Diagnosis Questions"
   * type = #group
-  * item[0]
+  * item[+]
     * linkId = "3921077v1.0.0"
     * text = "There is no requirement for inclusion of these elements on the case report form. If the design and scientific questions posed in the study dictate the need to collect this type of data, these elements should be included."
     * type = #display
@@ -1579,14 +1581,14 @@ Usage: #inline
 * id = "2674812v4.0"
 * meta.lastUpdated = "2014-05-15T17:25:15Z"
 * language = #en
-* contained[0]
+* contained[+]
   * resourceType = "CodeSystem"
   * id = "d1e9892-cs"
   * url = "http://example.org/nci.nih.gov/xml/owl/cadsr/form/form_design_identifier/2674812v4.0/question_identifier#3702892v4.0-cs"
   * status = #active
   * caseSensitive = true
   * content = #complete
-  * concept[0] 
+  * concept[+] 
     * code = #Female
     * display = "Female Gender"
     * definition = "An individual who reports belonging to the cultural gender role distinction of female."
@@ -1617,7 +1619,7 @@ Usage: #inline
   * status = #active
   * caseSensitive = true
   * content = #complete
-  * concept[0] 
+  * concept[+] 
     * code = #"American Indian or Alaska Native"
     * display = "American Indian or Alaska Native"
     * definition = "A person having origins in any of the original peoples of North and South America (including Central America), and who maintains tribal affiliation or community attachment."
@@ -1660,7 +1662,7 @@ Usage: #inline
   * status = #active
   * caseSensitive = true
   * content = #complete
-  * concept[0] 
+  * concept[+] 
     * code = #"Hispanic or Latino"
     * display = "Hispanic or Latino"
     * definition = "A person of Mexican, Puerto Rican, Cuban, Central or South American or other Spanish culture or origin, regardless of race."
@@ -1691,7 +1693,7 @@ Usage: #inline
   * status = #active
   * caseSensitive = true
   * content = #complete
-  * concept[0] 
+  * concept[+] 
     * code = #"Managed Care/Medicare"
     * display = "Managed Care/Medicare"
     * definition = "An arrangement whereby a third-party payer (e.g., insurance company, federal government, or corporation) mediates between physicians and patients, negotiating fees for service and overseeing the types of treatment given. Managed care has virtually replaced unmanaged indemnity plans, where payment is automatic and oversight procedures are minimal. Whereas 96% of American workers had unmanaged indemnity in 1984, only 28% did in 1988. Typically, in managed care, the third-party payer requires second opinions and pre-certification review for patients requiring hospital admission. They obtain wholesale prices from doctors, and carry out cost-containment measures, including auditing hospitals and reviewing claims. Managed care has figured heavily in the national debate over health care.: A program under the U.S. Social Security Administration that reimburses hospitals and physicians for medical care provided to qualifying people over 65 years old."
@@ -1762,7 +1764,7 @@ Usage: #inline
   * status = #active
   * caseSensitive = true
   * content = #complete
-  * concept[0] 
+  * concept[+] 
     * code = #"Bachelor's Degree"
     * display = "Bachelor's Degree"
     * definition = "Bachelor's degree is an award (baccalaureate or equivalent degree, as determined by the Secretary of the U.S. Department of Education) conferred by a college, university, or other postsecondary education institution as official recognition for the successful completion of a program of studies, that normally requires at least four years of full-time equivalent college-level work. This includes bachelor's degrees conferred in a five-year cooperative program."
@@ -1813,7 +1815,7 @@ Usage: #inline
   * status = #active
   * caseSensitive = true
   * content = #complete
-  * concept[0] 
+  * concept[+] 
     * code = #"Other country"
     * display = "Other country"
     * definition = "Other country of birth."
@@ -1844,7 +1846,7 @@ Usage: #inline
   * status = #active
   * caseSensitive = true
   * content = #complete
-  * concept[0] 
+  * concept[+] 
     * code = #"10th Grade"
     * display = "10th Grade"
     * definition = "Indicates that 10th grade is the highest level of educational achievement"
@@ -1963,7 +1965,7 @@ Usage: #inline
   * status = #active
   * caseSensitive = true
   * content = #complete
-  * concept[0] 
+  * concept[+] 
     * code = #Divorced
     * display = "Divorced: C51776"
     * definition = "A person whose marriage has been legally dissolved and has not remarried."
@@ -2003,18 +2005,18 @@ Usage: #inline
 * status = #active
 * date = "2013-03-22"
 * publisher = "National Cancer Institute (NCI)"
-* useContext[0]
+* useContext[+]
   * code = $usage-contexts#form-type
   * valueCodeableConcept.text = "CRF"
 * useContext[+]
   * code = $usage-contexts#form-type
   * valueCodeableConcept.text = "Demographic"
-* item[0]
+* item[+]
   * linkId = "3702891v4.0"
   * text = "Mandatory Demography Questions"
   * type = #group
   * required = true
-  * item[0]
+  * item[+]
     * linkId = "3702891v4.0.0"
     * text = "These items must be included when this data is collected for reporting"
     * type = #display
@@ -2054,7 +2056,7 @@ Usage: #inline
   * linkId = "3702912v4.0"
   * text = "Conditional Demography Questions"
   * type = #group
-  * item[0]
+  * item[+]
     * linkId = "3702912v4.0.0"
     * text = "There are business rules to indicate situations under which these elements should be used on a case report form."
     * type = #display
@@ -2093,7 +2095,7 @@ Usage: #inline
   * linkId = "3702940v4.0"
   * text = "Optional Demography Questions"
   * type = #group
-  * item[0]
+  * item[+]
     * linkId = "3702940v4.0.0"
     * text = "There is no requirement for inclusion of these elements on the case report form. If the design and scientific questions posed in the study dictate the need to collect this type of data, these elements should be included."
     * type = #display
@@ -2136,14 +2138,14 @@ Usage: #inline
 * id = "3265657v2.0"
 * meta.lastUpdated = "2014-05-15T17:25:15Z"
 * language = #en
-* contained[0]
+* contained[+]
   * resourceType = "CodeSystem"
   * id = "d1e14927-cs"
   * url = "http://example.org/nci.nih.gov/xml/owl/cadsr/form/form_design_identifier/3265657v2.0/question_identifier#3556214v2.0-cs"
   * status = #active
   * caseSensitive = true
   * content = #complete
-  * concept[0] 
+  * concept[+] 
     * code = #"Abdominal distension"
     * display = "Abdominal distension"
     * definition = "A disorder characterized by swelling of the abdomen."
@@ -5318,7 +5320,7 @@ Usage: #inline
   * status = #active
   * caseSensitive = true
   * content = #complete
-  * concept[0] 
+  * concept[+] 
     * code = #1
     * display = "Mild Adverse Event"
     * definition = "An adverse event that is asymptomatic; or involves mild or minor symptoms; or is of marginal clinical relevance; or consists of clinical or diagnostic observations alone; or for which intervention is not indicated; or for which only non-prescription intervention is indicated."
@@ -5353,7 +5355,7 @@ Usage: #inline
   * status = #active
   * caseSensitive = true
   * content = #complete
-  * concept[0] 
+  * concept[+] 
     * code = #Yes
     * display = "Yes"
     * definition = "The affirmative response to a question or activity."
@@ -5376,7 +5378,7 @@ Usage: #inline
   * status = #active
   * caseSensitive = true
   * content = #complete
-  * concept[0] 
+  * concept[+] 
     * code = #"Biological Therapy"
     * display = "Biological Therapy"
     * definition = "Biological therapy is a form of treatment that implies the administration of substances which produce a biological reaction in the organism enhancing or restoring the host immune response, modifying the behavior of cancer cells, blocking the pathways of cell neoplastic transformation and tumor ability to metastasize, or facilitating the repairment of cells damaged by aggressive forms of cancer treatment. It includes the use of sera, antitoxins, vaccines, genes, cells, tissues, and organs"
@@ -5439,7 +5441,7 @@ Usage: #inline
   * status = #active
   * caseSensitive = true
   * content = #complete
-  * concept[0] 
+  * concept[+] 
     * code = #"Blood and lymphatic system disorders"
     * display = "Hematopoietic and Lymphoid System Disorder"
     * definition = "Any deviation from the normal structure or function of the blood or lymphatic system that is manifested by a characteristic set of symptoms and signs."
@@ -5558,7 +5560,7 @@ Usage: #inline
   * status = #active
   * caseSensitive = true
   * content = #complete
-  * concept[0] 
+  * concept[+] 
     * code = #10000060
     * display = "Abdominal distension"
     * definition = "A disorder characterized by swelling of the abdomen."
@@ -8733,7 +8735,7 @@ Usage: #inline
   * status = #active
   * caseSensitive = true
   * content = #complete
-  * concept[0] 
+  * concept[+] 
     * code = #Definite
     * display = "DEFINITE"
     * definition = "No Value Exists"
@@ -8768,7 +8770,7 @@ Usage: #inline
   * status = #active
   * caseSensitive = true
   * content = #complete
-  * concept[0] 
+  * concept[+] 
     * code = #Yes
     * display = "Yes"
     * definition = "The affirmative response to a question or activity."
@@ -8795,7 +8797,7 @@ Usage: #inline
   * status = #active
   * caseSensitive = true
   * content = #complete
-  * concept[0] 
+  * concept[+] 
     * code = #Yes
     * display = "Yes"
     * definition = "The affirmative response to a question or activity."
@@ -8818,7 +8820,7 @@ Usage: #inline
   * status = #active
   * caseSensitive = true
   * content = #complete
-  * concept[0] 
+  * concept[+] 
     * code = #Yes
     * display = "Yes"
     * definition = "The affirmative response to a question or activity."
@@ -8841,7 +8843,7 @@ Usage: #inline
   * status = #active
   * caseSensitive = true
   * content = #complete
-  * concept[0] 
+  * concept[+] 
     * code = #Yes
     * display = "Yes"
     * definition = "The affirmative response to a question or activity."
@@ -8864,7 +8866,7 @@ Usage: #inline
   * status = #active
   * caseSensitive = true
   * content = #complete
-  * concept[0] 
+  * concept[+] 
     * code = #Yes
     * display = "Yes"
     * definition = "The affirmative response to a question or activity."
@@ -8887,7 +8889,7 @@ Usage: #inline
   * status = #active
   * caseSensitive = true
   * content = #complete
-  * concept[0] 
+  * concept[+] 
     * code = #Fatal
     * display = "Death"
     * definition = "The absence of life or state of being dead."
@@ -8926,7 +8928,7 @@ Usage: #inline
   * status = #active
   * caseSensitive = true
   * content = #complete
-  * concept[0] 
+  * concept[+] 
     * code = #1
     * display = "single episode"
     * definition = "single episode"
@@ -8953,7 +8955,7 @@ Usage: #inline
   * status = #active
   * caseSensitive = true
   * content = #complete
-  * concept[0] 
+  * concept[+] 
     * code = #Yes
     * display = "Yes"
     * definition = "The affirmative response to a question or activity."
@@ -8980,7 +8982,7 @@ Usage: #inline
   * status = #active
   * caseSensitive = true
   * content = #complete
-  * concept[0] 
+  * concept[+] 
     * code = #1
     * display = "Results in Death"
     * definition = "Results in Death"
@@ -9027,7 +9029,7 @@ Usage: #inline
   * status = #active
   * caseSensitive = true
   * content = #complete
-  * concept[0] 
+  * concept[+] 
     * code = #N
     * display = "No"
     * definition = "The non-affirmative response to a question."
@@ -9055,12 +9057,12 @@ Usage: #inline
 * useContext
   * code = $usage-contexts#form-type
   * valueCodeableConcept.text = "CRF"
-* item[0]
+* item[+]
   * linkId = "3556213v2.0"
   * text = "Mandatory Adverse Event Questions"
   * type = #group
   * required = true
-  * item[0]
+  * item[+]
     * linkId = "3556213v2.0.0"
     * text = "Must be included when this data is collected for reporting."
     * type = #display
@@ -9088,12 +9090,12 @@ Usage: #inline
   * linkId = "3557016v2.0"
   * text = "Conditional Adverse Event Questions"
   * type = #group
-  * item[0]
+  * item[+]
     * linkId = "3557016v2.0.0"
     * text = "There are business rules to indicate situations under which this data element should be used in a CRF."
     * type = #display
   * item[+]
-    * extension[0]
+    * extension[+]
       * url = "http://hl7.org/fhir/StructureDefinition/minLength"
       * valueInteger = 4
     * extension[+]
@@ -9121,7 +9123,7 @@ Usage: #inline
   * linkId = "3557027v2.0"
   * text = "Optional Adverse Event Questions"
   * type = #group
-  * item[0]
+  * item[+]
     * linkId = "3557027v2.0.0"
     * text = "No requirement for inclusion of this element on the CRF; if the design and scientific questions posed in the study dictate the need to collect this type of data, this is the element to include on the CRF."
     * type = #display
@@ -9271,7 +9273,7 @@ Usage: #inline
   * linkId = "3556197v2.0"
   * text = "Optional Serious Adverse Event Questions"
   * type = #group
-  * item[0]
+  * item[+]
     * linkId = "3556197v2.0.0"
     * text = "The following additional elements are optional on a SAE form."
     * type = #display

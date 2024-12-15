@@ -446,6 +446,51 @@ i.fa {
     </div>
   </div>
 
+<a name="columnCount"></a>
+  <h4>Using columnCount</h4>
+  <p>To control the number of columns used for checkboxes or radio buttons. (<a href="Questionnaire-questionnaire-sdc-profile-example-render.html">Example Questionnaire</a>)</p>
+  <div class="tabs">
+    <div class="tab">
+      <input type="radio" id="tab-columnCount-1" name="tab-columnCount-group-2" checked="true"/>
+      <label for="tab-columnCount-1">Sample Question</label>
+      <div class="content-in-tab">
+        <div class="panel panel-info">
+          <div class="panel-heading collapsed" data-toggle="columnCount" data-target="#bar">Availability</div>
+          <div class="panel-body">
+            <div class="columnCount" id="bar">
+              <p>Pick the time-slot that works best for you:</p>
+              <table>
+                <tbody>
+                  <tr>
+                    <td><input id="linkitem-3.9-9" type="radio" name="Timeslot" value="9" checked="checked"/> 9-10am</td>
+                    <td><input id="linkitem-3.9-11" type="radio" name="Timeslot" value="11"/> 11am-12pm</td>
+                    <td><input id="linkitem-3.9-2" type="radio" name="Timeslot" value="2"/> 2-3pm</td>
+                    
+                  </tr>
+                  <tr>
+                    <td><input id="linkitem-3.9-10" type="radio" name="Timeslot" value="10"/> 10-11am</td>
+                    <td><input id="linkitem-3.9-1" type="radio" name="Timeslot" value="1"/> 1-2pm</td>
+                    <td><input id="linkitem-3.9-3" type="radio" name="Timeslot" value="3"/> 3-4pm</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="tab">
+      <input type="radio" id="tab-columnCount-2" name="tab-columnCount-group-2"/>
+      <label for="tab-columnCount-2">JSON</label>
+      <div class="content-in-tab">{% fragment Questionnaire/questionnaire-sdc-profile-example-render JSON BASE:descendants().select(item).where(linkId='3.9') %}</div>
+    </div>
+    <div class="tab">
+      <input type="radio" id="tab-columnCount-3" name="tab-columnCount-group-2"/>
+      <label for="tab-columnCount-3">XML</label>
+      <div class="content-in-tab">{% fragment Questionnaire/questionnaire-sdc-profile-example-render XML BASE:descendants().select(item).where(linkId='3.9') %}</div>
+    </div>
+  </div>
+
   <a name="additional">  </a>
   <h3>Additional Display Content</h3>
 
@@ -1368,52 +1413,58 @@ i.fa {
   </div>
 
 <a name="enableexamples"></a>
-  <h4>Using enableWhen, enableBehavior, and enableWhenExpression</h4>
-  <p>Example of enabling behaviors. (<a href="Questionnaire-questionnaire-sdc-profile-example-form-behavior.html">Example Questionnaire</a>)<br/>
-   Note: The questions below are not functional. Display does not show actual enabling behaviors.
+  <h4>Using enableWhen, enableBehavior, enableWhenExpression and disabledDisplay</h4>
+  <p>Example of enabling behaviors. (<a href="Questionnaire-questionnaire-sdc-profile-example-form-behavior.html">Example Questionnaire</a>)
 </p>
   <div class="tabs" style="height:350px">
     <div class="tab">
       <input type="radio" id="tab-enableexamples-1" name="tab-enableexamples-group-2" checked="true"/>
       <label for="tab-enableexamples-1">Sample Question</label>
       <div class="content-in-tab">
-        <p>Choose Gender    
-          <select id="linkitem-4.2.1" name="genderOptions">
-            <option value="male">Male</option>
-            <option value="female">Female</option>
-            <option value="other">Other</option>
-            <option value="unknown">Unknown</option>
-          </select>
-          <br/>
-          <br/>
-          Are you pregnant? (enableWhen gender = Female)<br/>
-          <input type="radio" id="yes" name="yesnodontknow" value="Y"> Yes  </input>
-          <input type="radio" id="no" name="yesnodontknow" value="N"> No  </input>
-          <input type="radio" id="no" name="yesnodontknow" value="asked-unknown"> Don't know  </input>
-          <br/>
-          <br/>
-          Are you diabetic? (enableWhen gender = Female)<br/>
-          <input type="radio" id="yes" name="yesnodontknow" value="Y"> Yes  </input>
-          <input type="radio" id="no" name="yesnodontknow" value="N"> No  </input>
-          <input type="radio" id="no" name="yesnodontknow" value="asked-unknown"> Don't know  </input>
-          <br/>
-          <br/>
-          Have you been diagnosed with Gestational Diabetes? (enableBehavior = only when pregnant and diabetic)<br/>
-          <input type="radio" id="yes" name="yesnodontknow" value="Y"> Yes  </input>
-          <input type="radio" id="no" name="yesnodontknow" value="N"> No  </input>
-          <input type="radio" id="no" name="yesnodontknow" value="asked-unknown"> Don't know  </input>
-          <br/>
-          <br/>
-          Enter your birthdate (MM/DD/YYYY)<br/>
-          <input id="linkitem-2.2-input" type="text"/>
-          <br/>
-          <br/>
-          Have you had mammogram before?(enableWhenExpression = only when gender is female and age > 40)<br/>
-          <input type="radio" id="yes" name="yesnodontknow" value="Y"> Yes  </input>
-          <input type="radio" id="no" name="yesnodontknow" value="N"> No  </input>
-          <input type="radio" id="no" name="yesnodontknow" value="asked-unknown"> Don't know  </input>
-          <br/>
-        </p>
+        <div id="enableGender">
+          <p>Choose Gender<br/>
+            <select id="linkitem-4.2.1" name="genderOptions" onchange="enableGenderChange()">
+              <option value="male" selected="selected">Male</option>
+              <option value="female">Female</option>
+              <option value="other">Other</option>
+              <option value="unknown">Unknown</option>
+            </select>
+          </p>
+        </div>
+        <div id="enablePregnant" style="color:grey">
+          <p>
+            Are you pregnant? (enableWhen gender = Female, disableDisplay=protected)<br/>
+            <input type="radio" id="pregyes" name="pregnant" value="Y" disabled="disabled"> Yes  </input>
+            <input type="radio" id="pregno" name="pregnant" value="N" disabled="disabled"> No  </input>
+            <input type="radio" id="pregunknown" name="pregnant" value="asked-unknown" disabled="disabled"> Don't know  </input>
+          </p>
+        </div>
+        <div id="enableDiabetic" style="visibility:hidden">
+          <p>Are you diabetic? (enableWhen gender = Female, disableDisplay=hidden)<br/>
+            <input type="radio" id="diabeticyes" name="diabetic" value="Y" onchange="enableDiabeticChange()"> Yes  </input>
+            <input type="radio" id="diabeticno" name="diabetic" value="N" onchange="enableDiabeticChange()"> No  </input>
+            <input type="radio" id="diabeticunknown" name="diabetic" value="asked-unknown" onchange="enableDiabeticChange()"> Don't know  </input>
+          </p>
+        </div>
+        <div id="enableGestational" style="color:grey">
+          <p>Have you been diagnosed with Gestational Diabetes? (enableBehavior = only when pregnant and diabetic, disableDisplay=protected)<br/>
+            <input type="radio" id="gestationalyes" name="gestational" value="Y" disabled="disabled" onchange="enableDiabetesChange()"> Yes  </input>
+            <input type="radio" id="gestationalno" name="gestational" value="N" disabled="disabled" onchange="enableDiabetesChange()"> No  </input>
+            <input type="radio" id="gestationalUnknownno" name="gestational" value="asked-unknown" disabled="disabled" onchange="enableDiabetesChange()"> Don't know  </input>
+          </p>
+        </div>
+        <div id="enableBDate">
+          <p>Enter your birthdate (YYYY/MM/DD)<br/>
+            <input id="bDateText" type="text" onkeyup="enableBDateChange()" style="color:red"/>
+          </p>
+        </div>
+        <div id="enableMamogram" style="color:grey">
+          <p>Have you had mammogram before?(enableWhenExpression = only when gender is female and age &gt; 40, disableDisplay=protected)<br/>
+            <input type="radio" id="mamogramyes" name="mamogram" value="Y" disabled="disabled"> Yes  </input>
+            <input type="radio" id="mamogramno" name="mamogram" value="N" disabled="disabled"> No  </input>
+            <input type="radio" id="mamogramunknown" name="mamogram" value="asked-unknown" disabled="disabled"> Don't know  </input>
+          </p>
+        </div>
       </div>
     </div>
     <div class="tab">

@@ -2,11 +2,14 @@ Instance: sdc-modular-root
 InstanceOf: SDCModularQuestionnaire
 Title: "Example modular Questionnaire"
 Usage: #example
-* extension[0]
+* extension[+]
+  * url = $questionnaire-versionAlgorithm
+  * valueCoding = $version-algorithm#semver
+* extension[+]
   * url = "http://hl7.org/fhir/uv/sdc/StructureDefinition/sdc-questionnaire-assemble-expectation"
   * valueCode = #assemble-root
 * extension[+]
-  * extension[0]
+  * extension[+]
     * url = "name"
     * valueCoding = $launchContext#patient
   * extension[+]
@@ -25,7 +28,7 @@ Usage: #example
 * status = #active
 * experimental = true
 * description = "Example modular questionnaire - root of a questionnaire that references other questionnaires and element definitions"
-* item[0]
+* item[+]
   * extension
     * url = "http://hl7.org/fhir/StructureDefinition/variable"
     * valueExpression
@@ -61,7 +64,7 @@ Usage: #example
     * linkId = "4.1"
     * type = #display
 * item[+]
-  * extension[0]
+  * extension[+]
     * url = "http://hl7.org/fhir/uv/sdc/StructureDefinition/sdc-questionnaire-itemPopulationContext"
     * valueExpression
       * name = "person"

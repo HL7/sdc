@@ -3,7 +3,7 @@ Id: sdc-questionnaire-collapsible
 Title: "Collapsible"
 Description: "Indicates whether the child items of a group or question item is displayed in collapsible form."
 * ^status = #active
-* ^context[0].type = #element
+* ^context[+].type = #element
 * ^context[=].expression = "Questionnaire.item"
 * ^context[+].type = #element
 * ^context[=].expression = "ElementDefinition"

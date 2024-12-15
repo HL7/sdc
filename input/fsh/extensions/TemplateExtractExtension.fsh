@@ -5,7 +5,7 @@ Description: "Specifies a reference to a contained resource template (or set of 
 * ^extension[$standard-status].valueCode = #draft
 * ^extension[$fmm].valueInteger = 0
 * ^status = #draft
-* ^context[0].type = #element
+* ^context[+].type = #element
 * ^context[=].expression = "Questionnaire"
 * ^context[+].type = #element
 * ^context[=].expression = "Questionnaire.item"

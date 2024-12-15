@@ -3,7 +3,7 @@ Id: sdc-questionnaire-subQuestionnaire
 Title: "Sub-questionnaire"
 Description: "Indicates that the display item on which this extension appears should be replaced with the referenced Questionnaire"
 * ^status = #active
-* ^context[0].type = #element
+* ^context[+].type = #element
 * ^context[=].expression = "Questionnaire.item"
 * ^context[+].type = #element
 * ^context[=].expression = "ElementDefinition"

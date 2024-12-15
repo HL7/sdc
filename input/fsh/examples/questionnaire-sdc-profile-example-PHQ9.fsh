@@ -5,7 +5,10 @@ Description: "Patient Health Questionnaire (9 Item) including contained value se
 Usage: #example
 * meta.profile = "http://hl7.org/fhir/uv/sdc/StructureDefinition/sdc-questionnaire|4.0.0-ballot"
 * contained = VSPHQ9
-* extension
+* extension[+]
+  * url = $questionnaire-versionAlgorithm
+  * valueCoding = $version-algorithm#semver
+* extension[+]
   * url = "http://hl7.org/fhir/StructureDefinition/rendering-styleSensitive"
   * valueBoolean = true
 * url = "http://hl7.org/fhir/uv/sdc/Questionnaire/questionnaire-sdc-profile-example-PHQ9"
@@ -26,7 +29,7 @@ Usage: #example
   * linkId = "H1/T1"
   * text = "Over the last two weeks, how often have you been bothered by any of the following problems?"
   * type = #group
-  * item[0]
+  * item[+]
     * linkId = "H1/T1/Q1"
     * text = "Little interest or pleasure in doing things?"
     * type = #choice

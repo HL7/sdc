@@ -3,8 +3,11 @@ InstanceOf: SDCQuestionnaireBehave
 Title: "SDC-Example using contextExpression"
 Description: "Example to indicate the resources to make available for display to the user to aid in answering the question."
 Usage: #example
-* extension
-  * extension[0].url = "name"
+* extension[+]
+  * url = $questionnaire-versionAlgorithm
+  * valueCoding = $version-algorithm#semver
+* extension[+]
+  * extension[+].url = "name"
   * extension[=].valueCoding = $launchContext#patient "Patient"
   * extension[+].url = "type"
   * extension[=].valueCode = #Patient
@@ -17,13 +20,13 @@ Usage: #example
 * item
   * linkId = "1.0"
   * type = #group
-  * item[0]
+  * item[+]
     * linkId = "1.1"
     * text = "Instruction: Click on \"Previous Visits\" button to view all the visits of this patient in the past year."
     * type = #display
   * item[+]
-    * extension[0]
-      * extension[0]
+    * extension[+]
+      * extension[+]
         * url = "label"
         * valueString = "Encounters in past year"
       * extension[+]
@@ -33,7 +36,7 @@ Usage: #example
         * valueExpression.expression = "Encounter?patient={{%patient.id}}&date=ge{{today()-1 year}}&_sort=-date&_include=Encounter:practitioner"
       * url = "http://hl7.org/fhir/uv/sdc/StructureDefinition/sdc-questionnaire-contextExpression"
     * extension[+]
-      * extension[0]
+      * extension[+]
         * url = "path"
         * valueString = "period.start"
       * extension[+]
@@ -47,7 +50,7 @@ Usage: #example
         * valueBoolean = true
       * url = "http://hl7.org/fhir/uv/sdc/StructureDefinition/sdc-questionnaire-choiceColumn"
     * extension[+]
-      * extension[0]
+      * extension[+]
         * url = "path"
         * valueString = "reason.coding.display + ' - ' + type.text"
       * extension[+]

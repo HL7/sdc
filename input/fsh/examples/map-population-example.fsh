@@ -4,7 +4,7 @@ Title: "SDC Map population source bundle example"
 Description: "An example of a Batch response containing search results used as an input to a map-based population process"
 Usage: #example
 * type = #batch-response
-* entry[0]
+* entry[+]
   * resource = 2c256377-0dbf-4311-a123-14d87f22c5
   * insert entryResponse("200", "W/", "1899-12-30T00:00:00.000Z")
 * entry[+]
@@ -54,7 +54,7 @@ Usage: #inline
       * insert name("Doe","John")
       * insert telecom(#phone,"(555\) 555 1212",1 ) 
       * address
-        * line[0] = "50 Another St."
+        * line[+] = "50 Another St."
         * line[+] = "Unit 2"
         * city = "Waterloo"
         * state = "ON"
@@ -103,7 +103,7 @@ Usage: #inline
 * link
   * relation = "self"
   * url = "http://example.org/fhir/MedicationStatement?_format=application/fhir+xml&search-id=27c5cc22-a00c-499f-b217-a60cb94df7&&patient=Patient/a0df9da6%2D3157%2D4b72%2D95f1%2D729853718c09&status=active&_include=MedicationStatement%3Amedication&_sort=_id"
-* entry[0]
+* entry[+]
   * fullUrl = "http://example.org/fhir/MedicationStatement/fe376aa6-83fb-4d0e-be60-ad959c57114f"
   * resource
     * resourceType = "MedicationStatement"
@@ -131,7 +131,7 @@ Usage: #inline
     * insert meta("3", "2021-11-09T22:01:00.007Z")
     * status = #active
     * medicationCodeableConcept
-      * coding[0]
+      * coding[+]
         * system = "http://example.org/medications"
       * coding[+]
         * system = "http://example.org/medications2"

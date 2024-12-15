@@ -17,7 +17,7 @@ Usage: #example
   * value = "http://hl7.org/Special/committees/dss"
 * description = "Logic for an example congestive heart failure pathway"
 * jurisdiction = $m49.htm#001 "World"
-* relatedArtifact[0]
+* relatedArtifact[+]
   * type = #depends-on
   * display = "SNOMED CT"
   * url = "http://snomed.info/sct"
@@ -43,7 +43,7 @@ Usage: #example
   * url = "http://terminology.hl7.org/CodeSystem/condition-ver-status"
   * resource = "http://terminology.hl7.org/CodeSystem/condition-ver-status"
   // Todo: Revise parameter Ruleset (when optional argument functionality is released)
-* parameter[0]
+* parameter[+]
   * name = #Encounter
   * use = #in
   * min = 0
@@ -163,7 +163,7 @@ Usage: #example
   * min = 0
   * max = "*"
   * type = #Condition
-* dataRequirement[0]
+* dataRequirement[+]
   * type = #Observation
   * profile = "http://hl7.org/fhir/StructureDefinition/Observation"
   * codeFilter

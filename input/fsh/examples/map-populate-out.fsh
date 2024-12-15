@@ -8,7 +8,7 @@ Usage: #example
 * subject = Reference(http://example.org/fhir/Patient/a0df9da6-3157-4b72-95f1-729853718c09)
 * authored = "2022-01-03T13:50:53-07:00"
 * item.linkId = "grp"
-* item.item[0]
+* item.item[+]
   * linkId = "part-details"
   * insert subItemAnswerString("participant-id","a0df9da6-3157-4b72-95f1-729853718c09")
   * insert subItemAnswerString("family-name","Doe")

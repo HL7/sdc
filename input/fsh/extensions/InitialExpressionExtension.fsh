@@ -3,7 +3,7 @@ Id: sdc-questionnaire-initialExpression
 Title: "Initial Expression"
 Description: "Initial value for a question answer as determined by an evaluated expression."
 * ^status = #active
-* ^context[0].type = #element
+* ^context[+].type = #element
 * ^context[=].expression = "Questionnaire.item"
 * ^context[+].type = #element
 * ^context[=].expression = "ElementDefinition"

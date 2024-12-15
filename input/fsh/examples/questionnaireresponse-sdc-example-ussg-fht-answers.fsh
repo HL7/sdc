@@ -7,7 +7,7 @@ Usage: #example
 * status = #in-progress
 * subject = Reference(http://hl7.org/fhir/Patient/proband)
 * authored = "2008-01-17"
-* item[0]
+* item[+]
   * linkId = "0"
   * item
     * linkId = "0.1"
@@ -19,7 +19,7 @@ Usage: #example
   * text = "Your health information"
   * item
     * linkId = "1.1"
-    * item[0]
+    * item[+]
       * linkId = "1.1.1"
       * definition = "http://loinc.org/fhir/DataElement/54125-0"
       * text = "Name"
@@ -83,7 +83,7 @@ Usage: #example
       * linkId = "1.1.11"
       * definition = "http://loinc.org/fhir/DataElement/54133-4"
       * text = "Ethnicity"
-      * answer[0].valueCoding = $loinc#LA4611-5 "Mexican"
+      * answer[+].valueCoding = $loinc#LA4611-5 "Mexican"
       * answer[+].valueCoding = $loinc#LA10606-4 "South American"
 * item[+]
   * linkId = "2"
@@ -91,7 +91,7 @@ Usage: #example
   * text = "Family member health information"
   * item
     * linkId = "2.1.1"
-    * item[0]
+    * item[+]
       * linkId = "2.1.1.1"
       * definition = "http://loinc.org/fhir/DataElement/54136-7"
       * text = "Relationship to you"
@@ -133,9 +133,9 @@ Usage: #example
   * linkId = "2"
   * definition = "http://loinc.org/fhir/DataElement/54114-4"
   * text = "Family member health information"
-  * item[0]
+  * item[+]
     * linkId = "2.1.1"
-    * item[0]
+    * item[+]
       * linkId = "2.1.1.1"
       * definition = "http://loinc.org/fhir/DataElement/54136-7"
       * text = "Relationship to you"
@@ -176,7 +176,7 @@ Usage: #example
   * item[+]
     * linkId = "2.1.2"
     * text = "This family member's history of disease"
-    * item[0]
+    * item[+]
       * linkId = "2.1.2.1"
       * text = "Disease or Condition"
       * answer.valueCoding = $loinc#LA14284-6 "Other Cancer"
@@ -188,9 +188,9 @@ Usage: #example
   * linkId = "2"
   * definition = "http://loinc.org/fhir/DataElement/54114-4"
   * text = "Family member health information"
-  * item[0]
+  * item[+]
     * linkId = "2.1.1"
-    * item[0]
+    * item[+]
       * linkId = "2.1.1.1"
       * definition = "http://loinc.org/fhir/DataElement/54136-7"
       * text = "Relationship to you"
@@ -231,7 +231,7 @@ Usage: #example
   * item[+]
     * linkId = "2.1.2"
     * text = "This family member's history of disease"
-    * item[0]
+    * item[+]
       * linkId = "2.1.2.1"
       * text = "Disease or Condition"
       * answer.valueCoding = $loinc#LA14283-8 "Breast Cancer"
@@ -245,7 +245,7 @@ Usage: #example
   * text = "Family member health information"
   * item
     * linkId = "2.1.1"
-    * item[0]
+    * item[+]
       * linkId = "2.1.1.1"
       * definition = "http://loinc.org/fhir/DataElement/54136-7"
       * text = "Relationship to you"
@@ -289,7 +289,7 @@ Usage: #example
   * text = "Family member health information"
   * item
     * linkId = "2.1.1"
-    * item[0]
+    * item[+]
       * linkId = "2.1.1.1"
       * definition = "http://loinc.org/fhir/DataElement/54136-7"
       * text = "Relationship to you"
@@ -333,7 +333,7 @@ Usage: #example
   * text = "Family member health information"
   * item
     * linkId = "2.1.1"
-    * item[0]
+    * item[+]
       * linkId = "2.1.1.1"
       * definition = "http://loinc.org/fhir/DataElement/54136-7"
       * text = "Relationship to you"
@@ -377,7 +377,7 @@ Usage: #example
   * text = "Family member health information"
   * item
     * linkId = "2.1.1"
-    * item[0]
+    * item[+]
       * linkId = "2.1.1.1"
       * definition = "http://loinc.org/fhir/DataElement/54136-7"
       * text = "Relationship to you"
@@ -419,9 +419,9 @@ Usage: #example
   * linkId = "2"
   * definition = "http://loinc.org/fhir/DataElement/54114-4"
   * text = "Family member health information"
-  * item[0]
+  * item[+]
     * linkId = "2.1.1"
-    * item[0]
+    * item[+]
       * linkId = "2.1.1.1"
       * definition = "http://loinc.org/fhir/DataElement/54136-7"
       * text = "Relationship to you"
@@ -470,9 +470,9 @@ Usage: #example
   * linkId = "2"
   * definition = "http://loinc.org/fhir/DataElement/54114-4"
   * text = "Family member health information"
-  * item[0]
+  * item[+]
     * linkId = "2.1.1"
-    * item[0]
+    * item[+]
       * linkId = "2.1.1.1"
       * definition = "http://loinc.org/fhir/DataElement/54136-7"
       * text = "Relationship to you"
@@ -495,7 +495,7 @@ Usage: #example
         * valueCoding = $loinc#LA32-8 "No"
         * item
           * linkId = "2.1.1.4.1"
-          * item[0]
+          * item[+]
             * linkId = "2.1.1.4.1.1"
             * definition = "http://loinc.org/fhir/DataElement/54112-8"
             * text = "Cause of Death"
@@ -518,7 +518,7 @@ Usage: #example
   * item[+]
     * linkId = "2.1.2"
     * text = "This family member's history of disease"
-    * item[0]
+    * item[+]
       * linkId = "2.1.2.1"
       * text = "Disease or Condition"
       * answer.valueCoding = $loinc#LA10537-1 "Colon Cancer"
@@ -532,7 +532,7 @@ Usage: #example
   * text = "Family member health information"
   * item
     * linkId = "2.1.1"
-    * item[0]
+    * item[+]
       * linkId = "2.1.1.1"
       * definition = "http://loinc.org/fhir/DataElement/54136-7"
       * text = "Relationship to you"
@@ -555,7 +555,7 @@ Usage: #example
         * valueCoding = $loinc#LA32-8 "No"
         * item
           * linkId = "2.1.1.4.1"
-          * item[0]
+          * item[+]
             * linkId = "2.1.1.4.1.1"
             * definition = "http://loinc.org/fhir/DataElement/54112-8"
             * text = "Cause of Death"
@@ -584,9 +584,9 @@ Usage: #example
   * linkId = "2"
   * definition = "http://loinc.org/fhir/DataElement/54114-4"
   * text = "Family member health information"
-  * item[0]
+  * item[+]
     * linkId = "2.1.1"
-    * item[0]
+    * item[+]
       * linkId = "2.1.1.1"
       * definition = "http://loinc.org/fhir/DataElement/54136-7"
       * text = "Relationship to you"
@@ -609,7 +609,7 @@ Usage: #example
         * valueCoding = $loinc#LA32-8 "No"
         * item
           * linkId = "2.1.1.4.1"
-          * item[0]
+          * item[+]
             * linkId = "2.1.1.4.1.1"
             * definition = "http://loinc.org/fhir/DataElement/54112-8"
             * text = "Cause of Death"
@@ -632,7 +632,7 @@ Usage: #example
   * item[+]
     * linkId = "2.1.2"
     * text = "This family member's history of disease"
-    * item[0]
+    * item[+]
       * linkId = "2.1.2.1"
       * text = "Disease or Condition"
       * answer.valueCoding = $loinc#LA15682-0 "Ovarian Cancer"
@@ -646,7 +646,7 @@ Usage: #example
   * text = "Family member health information"
   * item
     * linkId = "2.1.1"
-    * item[0]
+    * item[+]
       * linkId = "2.1.1.1"
       * definition = "http://loinc.org/fhir/DataElement/54136-7"
       * text = "Relationship to you"
@@ -690,7 +690,7 @@ Usage: #example
   * text = "Family member health information"
   * item
     * linkId = "2.1.1"
-    * item[0]
+    * item[+]
       * linkId = "2.1.1.1"
       * definition = "http://loinc.org/fhir/DataElement/54136-7"
       * text = "Relationship to you"
@@ -734,7 +734,7 @@ Usage: #example
   * text = "Family member health information"
   * item
     * linkId = "2.1.1"
-    * item[0]
+    * item[+]
       * linkId = "2.1.1.1"
       * definition = "http://loinc.org/fhir/DataElement/54136-7"
       * text = "Relationship to you"
@@ -757,7 +757,7 @@ Usage: #example
         * valueCoding = $loinc#LA32-8 "No"
         * item
           * linkId = "2.1.1.4.1"
-          * item[0]
+          * item[+]
             * linkId = "2.1.1.4.1.1"
             * definition = "http://loinc.org/fhir/DataElement/54112-8"
             * text = "Cause of Death"
@@ -781,9 +781,9 @@ Usage: #example
   * linkId = "2"
   * definition = "http://loinc.org/fhir/DataElement/54114-4"
   * text = "Family member health information"
-  * item[0]
+  * item[+]
     * linkId = "2.1.1"
-    * item[0]
+    * item[+]
       * linkId = "2.1.1.1"
       * definition = "http://loinc.org/fhir/DataElement/54136-7"
       * text = "Relationship to you"
@@ -806,7 +806,7 @@ Usage: #example
         * valueCoding = $loinc#LA32-8 "No"
         * item
           * linkId = "2.1.1.4.1"
-          * item[0]
+          * item[+]
             * linkId = "2.1.1.4.1.1"
             * definition = "http://loinc.org/fhir/DataElement/54112-8"
             * text = "Cause of Death"
@@ -829,7 +829,7 @@ Usage: #example
   * item[+]
     * linkId = "2.1.2"
     * text = "This family member's history of disease"
-    * item[0]
+    * item[+]
       * linkId = "2.1.2.1"
       * text = "Disease or Condition"
       * answer.valueCoding = $loinc#LA14283-8 "Breast Cancer"
@@ -840,7 +840,7 @@ Usage: #example
   * item[+]
     * linkId = "2.1.2"
     * text = "This family member's history of disease"
-    * item[0]
+    * item[+]
       * linkId = "2.1.2.1"
       * text = "Disease or Condition"
       * answer.valueCoding = $loinc#LA16982-3 "Asthma"
@@ -852,9 +852,9 @@ Usage: #example
   * linkId = "2"
   * definition = "http://loinc.org/fhir/DataElement/54114-4"
   * text = "Family member health information"
-  * item[0]
+  * item[+]
     * linkId = "2.1.1"
-    * item[0]
+    * item[+]
       * linkId = "2.1.1.1"
       * definition = "http://loinc.org/fhir/DataElement/54136-7"
       * text = "Relationship to you"
@@ -895,7 +895,7 @@ Usage: #example
   * item[+]
     * linkId = "2.1.2"
     * text = "This family member's history of disease"
-    * item[0]
+    * item[+]
       * linkId = "2.1.2.1"
       * text = "Disease or Condition"
       * answer.valueCoding = $loinc#LA14283-8 "Breast Cancer"
@@ -909,7 +909,7 @@ Usage: #example
   * text = "Family member health information"
   * item
     * linkId = "2.1.1"
-    * item[0]
+    * item[+]
       * linkId = "2.1.1.1"
       * definition = "http://loinc.org/fhir/DataElement/54136-7"
       * text = "Relationship to you"

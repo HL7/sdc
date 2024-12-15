@@ -3,7 +3,7 @@ InstanceOf: SDCBaseQuestionnaire
 Title: "SDC-LOINC AHRQ"
 Description: "LOINC perspective on the AHRQ form found in the SDC - Combination set of questionnaires"
 Usage: #example
-* contained[0] = ll2654-3
+* contained[+] = ll2654-3
 * contained[+] = ll2655-0
 * contained[+] = ll2657-6
 * contained[+] = ll2659-2
@@ -18,7 +18,10 @@ Usage: #example
 * contained[+] = ll2669-1
 * contained[+] = ll2828-3
 * contained[+] = ll2682-4
-* extension
+* extension[+]
+  * url = $questionnaire-versionAlgorithm
+  * valueCoding = $version-algorithm#semver
+* extension[+]
   * url = "http://hl7.org/fhir/uv/sdc/StructureDefinition/sdc-questionnaire-preferredTerminologyServer"
   * valueUrl = "https://tx.fhir.org/r4"
 * url = "http://hl7.org/fhir/uv/sdc/Questionnaire/questionnaire-sdc-profile-example-loinc"
@@ -34,13 +37,13 @@ Usage: #example
 * subjectType = #Patient
 * date = "2012-04-01"
 * publisher = "Agency for Healthcare Research and Quality (AHRQ)"
-* item[0]
+* item[+]
   * extension
     * url = "http://hl7.org/fhir/StructureDefinition/questionnaire-itemControl"
     * valueCodeableConcept = $questionnaire-item-control#header
   * linkId = "Medication/header"
   * type = #group
-  * item[0]
+  * item[+]
     * extension
       * url = "http://hl7.org/fhir/StructureDefinition/questionnaire-hidden"
       * valueBoolean = true
@@ -65,7 +68,7 @@ Usage: #example
   * linkId = "Medication/SEC00"
   * text = "Medication or Other Substance"
   * type = #group
-  * item[0]
+  * item[+]
     * linkId = "Medication/SEC00.0"
     * text = "Use this form to report any patient safety event or unsafe condition involving a substance such as a medications, biological products, nutritional products, expressed human breast milk, medical gases, or contrast media. Do not complete this form if the event involves appropriateness of therapeutic choice or decision making (e.g., physician decision to prescribe medication despite known drug-drug interaction). If the event involves a device, please also complete the Device or Medical/Surgical Supply including Health Information Technology (HIT) form. Narrative detail can be captured on the Healthcare Event Reporting Form (HERF)."
       * extension
@@ -76,7 +79,7 @@ Usage: #example
     * linkId = "Medication/SEC01/74080-3"
     * type = #group
     * required = true
-    * item[0]
+    * item[+]
       * extension
         * url = "http://hl7.org/fhir/StructureDefinition/minLength"
         * valueInteger = 1
@@ -87,7 +90,7 @@ Usage: #example
       * type = #choice
       * required = true
       * answerValueSet = "#ll2654-3"
-      * item[0]
+      * item[+]
         * extension
           * url = "http://hl7.org/fhir/StructureDefinition/minLength"
           * valueInteger = 7
@@ -172,7 +175,7 @@ Usage: #example
       * prefix = "7."
       * text = "Which of the following best characterizes the event?"
       * type = #choice
-      * enableWhen[0]
+      * enableWhen[+]
         * question = "74080-3/74076-1"
         * operator = #!=
         * answerCoding = $loinc#LA20340-8 "Radiopharmaceuticals"
@@ -197,7 +200,7 @@ Usage: #example
         * operator = #=
         * answerCoding = $loinc#LA20275-6 "Incorrect action (process failure or error) (e.g., such as administering overdose or incorrect medication)"
       * answerValueSet = "#ll2661-8"
-      * item[0]
+      * item[+]
         * linkId = "74080-3/74070-4"
         * prefix = "9."
         * text = "Which best describes the incorrect dose(s)?"
@@ -326,7 +329,7 @@ Usage: #example
       * valueInteger = 5
     * linkId = "74080-3/74078-7"
     * type = #group
-    * enableWhen[0]
+    * enableWhen[+]
       * question = "74080-3/74072-0"
       * operator = #!=
       * answerCoding = $loinc#LA20315-0 "Adverse reaction in patient to the administered substance without any apparent incorrect action"
@@ -345,7 +348,7 @@ Usage: #example
     * enableBehavior = #all
     * repeats = true
     * required = true
-    * item[0]
+    * item[+]
       * extension
         * url = "http://hl7.org/fhir/StructureDefinition/minLength"
         * valueInteger = 0
@@ -446,7 +449,7 @@ Usage: #example
       * question = "74080-3/74072-0"
       * operator = #=
       * answerCoding = $loinc#LA20304-4 "Incorrect route of administration"
-    * item[0]
+    * item[+]
       * linkId = "74080-3/74051-4"
       * prefix = "28."
       * text = "What was the intended route of administration?"
@@ -491,7 +494,7 @@ Usage: #example
   * linkId = "Reporting"
   * text = "Reporting information"
   * type = #group
-  * item[0]
+  * item[+]
     * linkId = "Reporting/who"
     * text = "Reported by:"
     * type = #string
@@ -521,8 +524,8 @@ Usage: #inline
 * copyright = "This content from LOINC® is copyright © 1995 Regenstrief Institute, Inc. and the LOINC Committee, and available at no cost under the license at http://loinc.org/terms-of-use"
 * compose.include
   * system = "http://loinc.org"
-  * concept[0]
-    * extension[0]
+  * concept[+]
+    * extension[+]
       * url = "http://hl7.org/fhir/StructureDefinition/valueset-conceptOrder"
       * valueInteger = 1
     * extension[+]
@@ -531,7 +534,7 @@ Usage: #inline
     * code = #LA20271-5
     * display = "Medications"
   * concept[+]
-    * extension[0]
+    * extension[+]
       * url = "http://hl7.org/fhir/StructureDefinition/valueset-conceptOrder"
       * valueInteger = 2
     * extension[+]
@@ -540,7 +543,7 @@ Usage: #inline
     * code = #LA20335-8
     * display = "Biological products"
   * concept[+]
-    * extension[0]
+    * extension[+]
       * url = "http://hl7.org/fhir/StructureDefinition/valueset-conceptOrder"
       * valueInteger = 3
     * extension[+]
@@ -549,7 +552,7 @@ Usage: #inline
     * code = #LA20336-6
     * display = "Nutritional products"
   * concept[+]
-    * extension[0]
+    * extension[+]
       * url = "http://hl7.org/fhir/StructureDefinition/valueset-conceptOrder"
       * valueInteger = 4
     * extension[+]
@@ -558,7 +561,7 @@ Usage: #inline
     * code = #LA20337-4
     * display = "Expressed human breast milk"
   * concept[+]
-    * extension[0]
+    * extension[+]
       * url = "http://hl7.org/fhir/StructureDefinition/valueset-conceptOrder"
       * valueInteger = 5
     * extension[+]
@@ -567,7 +570,7 @@ Usage: #inline
     * code = #LA20338-2
     * display = "Medical gases (e.g., oxygen, nitrogen, nitrous oxide)"
   * concept[+]
-    * extension[0]
+    * extension[+]
       * url = "http://hl7.org/fhir/StructureDefinition/valueset-conceptOrder"
       * valueInteger = 6
     * extension[+]
@@ -576,7 +579,7 @@ Usage: #inline
     * code = #LA20339-0
     * display = "Contrast media"
   * concept[+]
-    * extension[0]
+    * extension[+]
       * url = "http://hl7.org/fhir/StructureDefinition/valueset-conceptOrder"
       * valueInteger = 7
     * extension[+]
@@ -585,7 +588,7 @@ Usage: #inline
     * code = #LA20340-8
     * display = "Radiopharmaceuticals"
   * concept[+]
-    * extension[0]
+    * extension[+]
       * url = "http://hl7.org/fhir/StructureDefinition/valueset-conceptOrder"
       * valueInteger = 8
     * extension[+]
@@ -594,7 +597,7 @@ Usage: #inline
     * code = #LA20341-6
     * display = "Patient food (not suspected in drug-food interactions)"
   * concept[+]
-    * extension[0]
+    * extension[+]
       * url = "http://hl7.org/fhir/StructureDefinition/valueset-conceptOrder"
       * valueInteger = 9
     * extension[+]
@@ -603,7 +606,7 @@ Usage: #inline
     * code = #LA20342-4
     * display = "Drug-drug, drug-food, or adverse drug reaction as a result of a prescription and/or administration of a drug and/or food prior to admission"
   * concept[+]
-    * extension[0]
+    * extension[+]
       * url = "http://hl7.org/fhir/StructureDefinition/valueset-conceptOrder"
       * valueInteger = 10
     * extension[+]
@@ -623,8 +626,8 @@ Usage: #inline
 * copyright = "This content from LOINC® is copyright © 1995 Regenstrief Institute, Inc. and the LOINC Committee, and available at no cost under the license at http://loinc.org/terms-of-use"
 * compose.include
   * system = "http://loinc.org"
-  * concept[0]
-    * extension[0]
+  * concept[+]
+    * extension[+]
       * url = "http://hl7.org/fhir/StructureDefinition/valueset-conceptOrder"
       * valueInteger = 1
     * extension[+]
@@ -633,7 +636,7 @@ Usage: #inline
     * code = #LA20278-0
     * display = "Prescription or over-the-counter (including herbal supplements)"
   * concept[+]
-    * extension[0]
+    * extension[+]
       * url = "http://hl7.org/fhir/StructureDefinition/valueset-conceptOrder"
       * valueInteger = 2
     * extension[+]
@@ -642,7 +645,7 @@ Usage: #inline
     * code = #LA20298-8
     * display = "Compounded preparations"
   * concept[+]
-    * extension[0]
+    * extension[+]
       * url = "http://hl7.org/fhir/StructureDefinition/valueset-conceptOrder"
       * valueInteger = 3
     * extension[+]
@@ -651,7 +654,7 @@ Usage: #inline
     * code = #LA20299-6
     * display = "Investigational drugs"
   * concept[+]
-    * extension[0]
+    * extension[+]
       * url = "http://hl7.org/fhir/StructureDefinition/valueset-conceptOrder"
       * valueInteger = 4
     * extension[+]
@@ -670,7 +673,7 @@ Usage: #inline
 * copyright = "This content from LOINC® is copyright © 1995 Regenstrief Institute, Inc. and the LOINC Committee, and available at no cost under the license at http://loinc.org/terms-of-use"
 * compose.include
   * system = "http://loinc.org"
-  * concept[0]
+  * concept[+]
     * code = #LA20283-0 
     * display = "Vaccines"
   * concept[+]
@@ -688,8 +691,8 @@ Usage: #inline
 * copyright = "This content from LOINC® is copyright © 1995 Regenstrief Institute, Inc. and the LOINC Committee, and available at no cost under the license at http://loinc.org/terms-of-use"
 * compose.include
   * system = "http://loinc.org"
-  * concept[0]
-    * extension[0]
+  * concept[+]
+    * extension[+]
       * url = "http://hl7.org/fhir/StructureDefinition/valueset-conceptOrder"
       * valueInteger = 1
     * extension[+]
@@ -698,7 +701,7 @@ Usage: #inline
     * code = #LA20273-1
     * display = "Dietary supplements (other than vitamins or minerals)"
   * concept[+]
-    * extension[0]
+    * extension[+]
       * url = "http://hl7.org/fhir/StructureDefinition/valueset-conceptOrder"
       * valueInteger = 2
     * extension[+]
@@ -707,7 +710,7 @@ Usage: #inline
     * code = #LA16117-6
     * display = "Vitamins or minerals"
   * concept[+]
-    * extension[0]
+    * extension[+]
       * url = "http://hl7.org/fhir/StructureDefinition/valueset-conceptOrder"
       * valueInteger = 3
     * extension[+]
@@ -716,7 +719,7 @@ Usage: #inline
     * code = #LA20320-0
     * display = "Enteral nutritional products, including infant formula"
   * concept[+]
-    * extension[0]
+    * extension[+]
       * url = "http://hl7.org/fhir/StructureDefinition/valueset-conceptOrder"
       * valueInteger = 4
     * extension[+]
@@ -725,7 +728,7 @@ Usage: #inline
     * code = #LA20321-8
     * display = "Parenteral nutritional products"
   * concept[+]
-    * extension[0]
+    * extension[+]
       * url = "http://hl7.org/fhir/StructureDefinition/valueset-conceptOrder"
       * valueInteger = 5
     * extension[+]
@@ -745,7 +748,7 @@ Usage: #inline
 * copyright = "This content from LOINC® is copyright © 1995 Regenstrief Institute, Inc. and the LOINC Committee, and available at no cost under the license at http://loinc.org/terms-of-use"
 * compose.include
   * system = "http://loinc.org"
-  * concept[0]
+  * concept[+]
     * code = #LA20275-6
     * display = "Incorrect action (process failure or error) (e.g., such as administering overdose or incorrect medication)"
       * extension
@@ -774,7 +777,7 @@ Usage: #inline
 * copyright = "This content from LOINC® is copyright © 1995 Regenstrief Institute, Inc. and the LOINC Committee, and available at no cost under the license at http://loinc.org/terms-of-use"
 * compose.include
   * system = "http://loinc.org"
-  * concept[0].code = #LA20276-4 
+  * concept[+].code = #LA20276-4 
   * concept[=].display = "Incorrect patient"
   * concept[+].code = #LA20302-8 
   * concept[=].display = "Incorrect medication/substance"
@@ -815,7 +818,7 @@ Usage: #inline
 * copyright = "This content from LOINC® is copyright © 1995 Regenstrief Institute, Inc. and the LOINC Committee, and available at no cost under the license at http://loinc.org/terms-of-use"
 * compose.include
   * system = "http://loinc.org"
-  * concept[0].code = #LA20277-2 
+  * concept[+].code = #LA20277-2 
   * concept[=].display = "Overdose"
   * concept[+].code = #LA20300-2 
   * concept[=].display = "Underdose"
@@ -836,7 +839,7 @@ Usage: #inline
 * copyright = "This content from LOINC® is copyright © 1995 Regenstrief Institute, Inc. and the LOINC Committee, and available at no cost under the license at http://loinc.org/terms-of-use"
 * compose.include
   * system = "http://loinc.org"
-  * concept[0].code = #LA20280-6 
+  * concept[+].code = #LA20280-6 
   * concept[=].display = "Too early"
   * concept[+].code = #LA20290-5 
   * concept[=].display = "Too late"
@@ -853,7 +856,7 @@ Usage: #inline
 * copyright = "This content from LOINC® is copyright © 1995 Regenstrief Institute, Inc. and the LOINC Committee, and available at no cost under the license at http://loinc.org/terms-of-use"
 * compose.include
   * system = "http://loinc.org"
-  * concept[0].code = #LA20282-2 
+  * concept[+].code = #LA20282-2 
   * concept[=].display = "Too quickly"
   * concept[+].code = #LA20288-9 
   * concept[=].display = "Too slowly"
@@ -870,7 +873,7 @@ Usage: #inline
 * copyright = "This content from LOINC® is copyright © 1995 Regenstrief Institute, Inc. and the LOINC Committee, and available at no cost under the license at http://loinc.org/terms-of-use"
 * compose.include
   * system = "http://loinc.org"
-  * concept[0].code = #LA20281-4 
+  * concept[+].code = #LA20281-4 
   * concept[=].display = "Too high"
   * concept[+].code = #LA20289-7 
   * concept[=].display = "Too low"
@@ -887,7 +890,7 @@ Usage: #inline
 * copyright = "This content from LOINC® is copyright © 1995 Regenstrief Institute, Inc. and the LOINC Committee, and available at no cost under the license at http://loinc.org/terms-of-use"
 * compose.include
   * system = "http://loinc.org"
-  * concept[0].code = #LA20274-9 
+  * concept[+].code = #LA20274-9 
   * concept[=].display = "Drug-drug"
   * concept[+].code = #LA20316-8 
   * concept[=].display = "Drug-food"
@@ -906,7 +909,7 @@ Usage: #inline
 * copyright = "This content from LOINC® is copyright © 1995 Regenstrief Institute, Inc. and the LOINC Committee, and available at no cost under the license at http://loinc.org/terms-of-use"
 * compose.include
   * system = "http://loinc.org"
-  * concept[0].code = #LA20279-8 
+  * concept[+].code = #LA20279-8 
   * concept[=].display = "Purchasing"
   * concept[+].code = #LA20291-3 
   * concept[=].display = "Storing"
@@ -937,7 +940,7 @@ Usage: #inline
 * copyright = "This content from LOINC® is copyright © 1995 Regenstrief Institute, Inc. and the LOINC Committee, and available at no cost under the license at http://loinc.org/terms-of-use"
 * compose.include
   * system = "http://loinc.org"
-  * concept[0].code = #LA20272-3 
+  * concept[+].code = #LA20272-3 
   * concept[=].display = "Cutaneous, topical application, including ointment, spray, patch"
   * concept[+].code = #LA9451-1 
   * concept[=].display = "Subcutaneous"
@@ -980,7 +983,7 @@ Usage: #inline
 * copyright = "This content from LOINC® is copyright © 1995 Regenstrief Institute, Inc. and the LOINC Committee, and available at no cost under the license at http://loinc.org/terms-of-use"
 * compose.include
   * system = "http://loinc.org"
-  * concept[0].code = #LA33-6 
+  * concept[+].code = #LA33-6 
   * concept[=].display = "Yes"
   * concept[+].code = #LA32-8 
   * concept[=].display = "No"
@@ -997,7 +1000,7 @@ Usage: #inline
 * copyright = "This content from LOINC® is copyright © 1995 Regenstrief Institute, Inc. and the LOINC Committee, and available at no cost under the license at http://loinc.org/terms-of-use"
 * compose.include
   * system = "http://loinc.org"
-  * concept[0].code = #LA33-6 
+  * concept[+].code = #LA33-6 
   * concept[=].display = "Yes" 
   * concept[+].code = #LA32-8 
   * concept[=].display = "No"

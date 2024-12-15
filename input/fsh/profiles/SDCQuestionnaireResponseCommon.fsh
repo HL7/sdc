@@ -16,8 +16,8 @@ Description: "Defines common elements for all SDC Questionnaire Responses (regul
     $adheresTo named adheresTo 0..* and
     $triggeredBy named triggeredBy 0..1 and
     $questionnaireresponse-signature named signature 0..* and
-    $questionnaireresponse-completionMode named completionMode 0..1
-//    $questionnaireresponse-source named source 0..1
+    $questionnaireresponse-completionMode named completionMode 0..1 and
+    $questionnaireresponse-source named source 0..1
 * extension[adheresTo].value[x] only Canonical(ActivityDefinition or PlanDefinition ) or Reference(ActivityDefinition or PlanDefinition ) or uri
 * extension[triggeredBy].value[x] only Canonical(ActivityDefinition or PlanDefinition ) or Reference(ActivityDefinition or PlanDefinition ) or uri
 * extension[source].value[x] only Reference(Device or Organization )
@@ -30,6 +30,7 @@ Description: "Defines common elements for all SDC Questionnaire Responses (regul
   * ^definition = "Identifies when this version of the answer set was created.  Changes whenever the answers are updated."
 * author MS
 * item MS
+  * obeys qrs-2
   * extension contains
       ItemMedia named itemMedia 0..1 and
       $questionnaireresponse-signature named ItemSignature 0..*
@@ -65,3 +66,9 @@ Description: "Can either have source or source extension, but not both"
 Severity: #error
 Expression: "source.count() + extension.where(url='http://hl7.org/fhir/5.0/StructureDefinition/extension-QuestionnaireResponse.source').count() <=1"
 XPath: "count(f:source | f:extension[@url='http://hl7.org/fhir/5.0/StructureDefinition/extension-QuestionnaireResponse.source']) <= 1"
+
+Invariant: qrs-2
+Description: "Repeated answers are combined in the answers array of a single item"
+Severity: #error
+Expression: "repeat(answer|item).select(item.where(answer.value.exists()).linkId.isDistinct()).allTrue()"
+XPath: "true()"

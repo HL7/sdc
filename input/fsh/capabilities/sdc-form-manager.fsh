@@ -15,13 +15,13 @@ Usage: #definition
 * description = "This profile defines the expected capabilities of the ''SDC Form Manager'' role when conforming to the S&I Framework's [[index.html|Structured Data Capture FHIR implementation guide]].  This role is responsible for maintaining a repository of form definitions and also of performing pre-population of form data."
 * kind = #requirements
 * fhirVersion = #1.0.0
-* format[0] = #xml
+* format[+] = #xml
 * format[+] = #json
 * rest
   * mode = #server
   * documentation = "The primary focus of the repository is the definition of [[Questionnaire]]s.  However, [[ValueSet]]s and [[CodeSystem]]s must also be supported to allow definition of coded data elements.  Some data elements will choose to maintain value sets as 'contained' resources, meaning the value set exists only in the context of the data element and cannot be referenced or maintained without also updating the data element.  However, systems should support value set re-use across data elements.  (Version-specific referencing can be used to avoid value sets from changing independent of the referencing [[Questionnaire]].)"
   * security.description = "Implementations must meet the general security requirements documented in the [[security.html|SDC implementation guide]]."
-  * resource[0]
+  * resource[+]
     * type = #Questionnaire
     * profile = "http://hl7.org/fhir/uv/sdc/StructureDefinition/sdc-questionnaire"
     * insert Interaction(#SHALL, #search-type, "Allows a user to search for existing forms")

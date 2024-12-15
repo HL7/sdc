@@ -3,9 +3,12 @@ InstanceOf: SDCQuestionnairePopulateStructureMap
 Title: "SDC Test Form - Source Query"
 Description: "A test form with a FhirPath based prepopulation and StructureMap population that leverages a source query to extract data outside the launch context."
 Usage: #example
-* contained[0] = PrePopQuery
-* extension[0]
-  * extension[0]
+* contained[+] = PrePopQuery
+* extension[+]
+  * url = $questionnaire-versionAlgorithm
+  * valueCoding = $version-algorithm#semver
+* extension[+]
+  * extension[+]
     * url = "name"
     * valueCoding = $launchContext#patient "Patient"
   * extension[+]
@@ -31,12 +34,12 @@ Usage: #example
 * item
   * linkId = "grp"
   * type = #group
-  * item[0]
+  * item[+]
     * linkId = "part-details"
     * text = "Participant details"
     * type = #group
     * repeats = false
-    * item[0]
+    * item[+]
       * linkId = "participant-id"
       * text = "Participant ID number"
       * type = #string
@@ -88,7 +91,7 @@ Usage: #example
     * text = "Medications"
     * type = #group
     * repeats = true
-    * item[0]
+    * item[+]
       * extension
         * url = "http://hl7.org/fhir/uv/sdc/StructureDefinition/sdc-questionnaire-initialExpression"
         * valueExpression
@@ -122,7 +125,7 @@ Instance: PrePopQuery
 InstanceOf: Bundle
 Usage: #inline
 * type = #batch
-* entry[0]
+* entry[+]
   * fullUrl = "urn:uuid:43c8e58d-099f-425c-a219-564266a518dc"
   * request
     * method = #GET

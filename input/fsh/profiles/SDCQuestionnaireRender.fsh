@@ -7,11 +7,11 @@ Description: "Defines additional capabilities for controlling the rendering of t
 * . ^short = "Advanced Rendering Questionnaire"
 * . ^definition = "Defines additional capabilities for controlling the rendering of the questionnaire."
 * modifierExtension contains RenderingCriticalExtension named rendering-criticalExtension 0..* MS
-* title.
+* title
   * extension contains
       $rendering-style named title-renderingStyle 0..1 and
       $rendering-xhtml named title-xhtml 0..1
-* item.
+* item
   * extension contains
       ItemMedia named itemMedia 0..1 and
       OptionalDisplayExtension named itemOptionalDisplay 0..1 and
@@ -31,7 +31,7 @@ Description: "Defines additional capabilities for controlling the rendering of t
     * extension contains
         $rendering-style named itemLabel-renderingStyle 0..1 and
         $rendering-xhtml named itemLabel-xhtml 0..1
-  * text.
+  * text
     * extension contains
         $rendering-style named groupText-renderingStyle 0..1 and
         $rendering-xhtml named groupText-xhtml 0..1 and

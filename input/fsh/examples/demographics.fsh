@@ -2,6 +2,7 @@ Instance: demographics
 InstanceOf: SDCQuestionnaireExtractDefinition
 Title: "Questionnaire - Demographics Example"
 Usage: #example
+* extension[$questionnaire-versionAlgorithm].valueCoding = $version-algorithm#semver
 * extension[$questionnaire-launchContext]
   * extension[name].valueCoding = $launchContext#patient
   * extension[type].valueCode = #Patient
@@ -13,7 +14,7 @@ Usage: #example
 * experimental = true
 * subjectType = #Patient
 * description = "A sample questionnaire using context-based population and extraction"
-* item[0]
+* item[+]
   * insert item(patient.id,http://hl7.org/fhir/StructureDefinition/Patient#Patient.id, (internal use\), #string)
   * readOnly = true
   * insert hidden()
@@ -26,7 +27,7 @@ Usage: #example
   * insert item(patient.name,http://hl7.org/fhir/StructureDefinition/Patient#Patient.name,Name(s\),#group)
   * repeats = true
   * insert itemPopulationContext(patientName, #text/fhirpath, %patient.name)
-  * item[0]
+  * item[+]
     * insert item(patient.name.family, http://hl7.org/fhir/StructureDefinition/Patient#Patient.name.family, Family name,#string)
     * required = true
     * insert initialExpression(%patientName.family)
@@ -40,7 +41,7 @@ Usage: #example
   * repeats = true
   * insert itemPopulationContext(relative, #application/x-fhir-query, RelatedPerson?patient={{%patient.id}})
   * insert definitionExtract(http://hl7.org/fhir/StructureDefinition/RelatedPerson)
-  * item[0]
+  * item[+]
     * insert hidden()
     * insert initialExpression(%relative.id)
     * insert item(relative.id,http://hl7.org/fhir/StructureDefinition/RelatedPerson#RelatedPerson.id,(internal use\),#string)
@@ -55,7 +56,7 @@ Usage: #example
     * insert item(relative.name,http://hl7.org/fhir/StructureDefinition/RelatedPerson#RelatedPerson.name,Name(s\),#group)
     * repeats = true
     * insert itemPopulationContext(relativeName, #text/fhirpath, %relative.name)
-    * item[0]
+    * item[+]
       * insert item(relative.name.family,http://hl7.org/fhir/StructureDefinition/RelatedPerson#RelatedPerson.name.family,Family name,#string)
       * required = true
       * insert initialExpression(%relativeName.family)

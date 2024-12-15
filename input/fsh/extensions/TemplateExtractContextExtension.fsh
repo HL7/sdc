@@ -5,7 +5,7 @@ Description: "Establishes mapping context for replacing template content based o
 * ^extension[$standard-status].valueCode = #draft
 * ^extension[$fmm].valueInteger = 0
 * ^status = #draft
-* ^context[0].type = #element
+* ^context[+].type = #element
 * ^context[=].expression = "Element"
 * . 0..1
 * . ^short = "Establishes mapping context for replacing template content based on a fhirpath expression"

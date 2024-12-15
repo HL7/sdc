@@ -19,8 +19,9 @@ Description: "Defines additional capabilities for controlling data entry and cal
 * modifierExtension contains RenderingCriticalExtension named rendering-criticalExtension 0..* MS
 * item obeys sdc-behave-2 and sdc-behave-1 and sdc-behave-3
 //To do: Fix the hard-coding of the indexes on the constraints to apply the best-practice extension.
-  * ^constraint[15].extension[$best-practice].valueBoolean = true
+  * ^constraint[19].extension[$best-practice].valueBoolean = true
   * extension contains
+      $questionnaire-disabledDisplay named disabledDisplay 0..1 and
       AnswerExpressionExtension named answerExpression 0..1 MS and
       $questionnaire-usageMode named usageMode 0..1 MS and
       $questionnaire-signatureRequired named itemSignatureRequired 0..* and

@@ -2,9 +2,12 @@ Instance: questionnaire-sdc-profile-example-PHQ9-search
 InstanceOf: SDCQuestionnaireAdaptSearch
 Title: "Patient Health Questionnaire - adaptive search"
 Usage: #example
-* extension
+* extension[+]
   * url = "http://hl7.org/fhir/uv/sdc/StructureDefinition/sdc-questionnaire-questionnaireAdaptive"
   * valueUrl = "http://example.org/someFHIRServer"
+* extension[+]
+  * url = $questionnaire-versionAlgorithm
+  * valueCoding = $version-algorithm#semver
 * url = "http://hl7.org/fhir/uv/sdc/Questionnaire/questionnaire-sdc-profile-example-PHQ9-search"
 * name = "SDCPHQ9"
 * title = "Patient Health Questionnaire - adaptive search"

@@ -3,8 +3,11 @@ InstanceOf: SDCQuestionnairePopulateExpression
 Title: "SDC Test Form - Candidate Expression"
 Description: "A test form with a FHIRPath based prepopulation example that includes a candidate expression."
 Usage: #example
-* extension
-  * extension[0]
+* extension[+]
+  * url = $questionnaire-versionAlgorithm
+  * valueCoding = $version-algorithm#semver
+* extension[+]
+  * extension[+]
     * url = "name"
     * valueCoding = $launchContext#patient "Patient"
   * extension[+]
@@ -25,12 +28,12 @@ Usage: #example
 * item
   * linkId = "grp"
   * type = #group
-  * item[0]
+  * item[+]
     * linkId = "part-details"
     * text = "Participant details"
     * type = #group
     * repeats = false
-    * item[0]
+    * item[+]
       * linkId = "participant-id"
       * text = "Participant ID number"
       * type = #string
@@ -64,7 +67,7 @@ Usage: #example
     * text = "Contacts"
     * type = #group
     * repeats = true
-    * item[0]
+    * item[+]
       * extension
         * url = "http://hl7.org/fhir/uv/sdc/StructureDefinition/sdc-questionnaire-initialExpression"
         * valueExpression

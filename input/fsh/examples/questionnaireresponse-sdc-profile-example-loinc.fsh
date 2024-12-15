@@ -8,9 +8,9 @@ Usage: #example
 * status = #completed
 * authored = "2016-03-14"
 * subject = Reference(http://example.org/Patient/123) "Jane Smith"
-* item[0]
+* item[+]
   * linkId = "Medication/header"
-  * item[0]
+  * item[+]
     * linkId = "0"
     * text = "Form ID:"
     * answer.valueString = "000"
@@ -25,9 +25,9 @@ Usage: #example
 * item[+]
   * linkId = "Medication/SEC00"
   * text = "Medication or Other Substance"
-  * item[0]
+  * item[+]
     * linkId = "Medication/SEC01/74080-3"
-    * item[0]
+    * item[+]
       * linkId = "74080-3/74076-1"
       * text = "What type of medication/substance was involved?"
       * answer
@@ -50,7 +50,7 @@ Usage: #example
       * answer.valueCoding = $loinc#LA20296-2 "Administering"
   * item[+]
     * linkId = "74080-3/74078-7"
-    * item[0]
+    * item[+]
       * linkId = "74080-3/74078-7/74062-1"
       * text = "Generic name or investigational drug name"
       * answer.valueString = "Acetaminophen"

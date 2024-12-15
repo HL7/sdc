@@ -2,7 +2,10 @@ Instance: sdc-modular-name
 InstanceOf: SDCModularQuestionnaire
 Title: "Example sub-module Questionnaire for name"
 Usage: #example
-* extension[0]
+* extension[+]
+  * url = $questionnaire-versionAlgorithm
+  * valueCoding = $version-algorithm#semver
+* extension[+]
   * url = "http://hl7.org/fhir/uv/sdc/StructureDefinition/sdc-questionnaire-assemble-expectation"
   * valueCode = #assemble-child
 * extension[+]
@@ -12,7 +15,7 @@ Usage: #example
   * url = "http://hl7.org/fhir/uv/sdc/StructureDefinition/sdc-questionnaire-assembleContext"
   * valueString = "person"
 * extension[+]
-  * extension[0]
+  * extension[+]
     * url = "key"
     * valueId = "qcontact-1"
   * extension[+]
@@ -39,7 +42,7 @@ Usage: #example
 * status = #active
 * experimental = true
 * description = "Example questionnaire module - Used to represent a patient or other human name as an example of a Questionnaire that can be referenced by other Questionnaires.  It is itself modular in that it relies on external element definitions"
-* item[0]
+* item[+]
   * extension
     * url = "http://hl7.org/fhir/uv/sdc/StructureDefinition/sdc-questionnaire-initialExpression"
     * valueExpression
@@ -49,7 +52,7 @@ Usage: #example
   * text = "Title"
   * type = #string
   * required = true
-  * answerOption[0].valueString = "Mr."
+  * answerOption[+].valueString = "Mr."
   * answerOption[+].valueString = "Miss"
   * answerOption[+].valueString = "Mrs."
   * answerOption[+].valueString = "Ms."

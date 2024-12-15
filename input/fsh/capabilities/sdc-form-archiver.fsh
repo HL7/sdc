@@ -15,13 +15,13 @@ Usage: #definition
 * description = "This profile defines the expected capabilities of the ''SDC Form Archiver'' role when conforming to the S&I Framework's [[index.html|Structured Data Capture FHIR implementation guide]].  This role is responsible for persisting (archiving) completed or partially completed forms ([[QuestionnaireResponse]] resource instances).  These instances may be submitted individually or in a bundle together with [[Provenance]] information providing details about the completion of the questionnaire response.  In some cases [[Binary]] or [[DocumentReference]] resources might also be submitted to convey source information used in the population of the questionnaire response.<br/>The purpose of this role is to capture \"work in progress\" for archival reasons.  There is no expectation that submitted form data is subsequently made available for retrieval (at least not in the same format), though it might be made available through out-of-band mechanisms."
 * kind = #requirements
 * fhirVersion = #1.0.0
-* format[0] = #xml
+* format[+] = #xml
 * format[+] = #json
 * rest
   * mode = #client
   * documentation = "The [[QuestionnaireResponse]] may be sent as a single instance or as a FHIR [[Bundle]] also containing [[Provenance]] resources providing details on the sources of information.  A Bundle submission might also include [[Binary]] and/or [[DocumentReference]] instances referring to the data used to populate the form.  A Form Archiver must support persisting, searching and retrieving those resources."
   * security.description = "Implementations must meet the general security requirements documented in the [[security.html|SDC implementation guide]]."
-  * resource[0]
+  * resource[+]
     * type = #QuestionnaireResponse
     * profile = "http://hl7.org/fhir/uv/sdc/StructureDefinition/sdc-questionnaireresponse"
     * insert Interaction(#SHALL, #create, "Allows archiving (storing\) a completed or partially-completed form")

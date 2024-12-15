@@ -5,7 +5,7 @@ Description: "Provides an expression to evaluate any value(s) to replace in the 
 * ^extension[$standard-status].valueCode = #draft
 * ^extension[$fmm].valueInteger = 0
 * ^status = #draft
-* ^context[0].type = #element
+* ^context[+].type = #element
 * ^context[=].expression = "Element"
 * . 0..1
 * . ^short = "Calculate value for template extraction"

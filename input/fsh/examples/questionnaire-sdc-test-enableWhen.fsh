@@ -3,17 +3,18 @@ InstanceOf: SDCQuestionnaireBehave
 Title: "SDC Test Form - Enable When"
 Description: "A test form that has a variety of enable when scenarios for testing."
 Usage: #example
+* extension[$questionnaire-versionAlgorithm].valueCoding = $version-algorithm#semver
 * url = "http://hl7.org/fhir/uv/sdc/Questionnaire/questionnaire-sdc-test-enableWhen"
 * name = "EnableWhenTests"
 * title = "Enable When"
 * status = #active
 * experimental = true
 * description = "A test form that has a variety of enable when scenarios for testing"
-* item[0]
+* item[+]
   * linkId = "3239e619-e2b9-492c-bf05-88b314fbe3e4"
   * text = "Scenario 1"
   * type = #group
-  * item[0]
+  * item[+]
     * linkId = "83d5c1a6-5dc3-44d0-9d9e-d687c72e143e"
     * text = "Question 1 Check"
     * type = #boolean
@@ -26,7 +27,7 @@ Usage: #example
     * text = "Question 3 Radio ( 1 2 3 )"
     * type = #choice
     * repeats = false
-    * answerOption[0].valueCoding = $example#1 "One"
+    * answerOption[+].valueCoding = $example#1 "One"
     * answerOption[+].valueCoding = $example#2 "Two"
     * answerOption[+].valueCoding = $example#3 "Three"
   * item[+]
@@ -34,7 +35,7 @@ Usage: #example
     * text = "Question 4 Radio ( 7 8 9 )"
     * type = #choice
     * repeats = false
-    * answerOption[0].valueCoding = $example#7 "Seven"
+    * answerOption[+].valueCoding = $example#7 "Seven"
     * answerOption[+].valueCoding = $example#8 "Eight"
     * answerOption[+].valueCoding = $example#9 "Nine"
   * item[+]
@@ -45,7 +46,7 @@ Usage: #example
     * text = "Question 3 - enables the question"
     * type = #choice
     * repeats = false
-    * answerOption[0].valueCoding = $example#4 "Four"
+    * answerOption[+].valueCoding = $example#4 "Four"
     * answerOption[+].valueCoding = $example#5 "Five"
     * answerOption[+].valueCoding = $example#6 "Six"
   * item[+]
@@ -140,7 +141,7 @@ Usage: #example
     * linkId = "76daed4f-f957-45cb-9584-aab95f6021d4"
     * text = "Group hidden until 8 and 4 selected"
     * type = #group
-    * enableWhen[0]
+    * enableWhen[+]
       * question = "5e1209b7-c9e0-4bf4-b228-fr096s903m25"
       * operator = #=
       * answerString = "8"
@@ -158,7 +159,7 @@ Usage: #example
   * linkId = "02a7536f-06b2-4dee-94e1-f5cfcb0e8622"
   * text = "Scenario 2"
   * type = #group
-  * item[0]
+  * item[+]
     * linkId = "1acf93a7-0890-44cd-be48-542defb35248"
     * text = "Yes/No/Dont know"
     * type = #choice
@@ -193,12 +194,12 @@ Usage: #example
   * linkId = "02a7536f-06b2-4dee-94e1-f5cfcb0e1234"
   * text = "Scenario 3: Comparator enable when with answeroption data"
   * type = #group
-  * item[0]
+  * item[+]
     * linkId = "s3-radio"
     * text = "Integer Values Radio Buttons"
     * type = #choice
     * repeats = false
-    * answerOption[0].valueCoding = $example#1.1 "1.1"
+    * answerOption[+].valueCoding = $example#1.1 "1.1"
     * answerOption[+].valueCoding = $example#2.2 "2.2"
     * answerOption[+].valueCoding = $example#3.3 "3.3"
   * item[+]
@@ -231,12 +232,12 @@ Usage: #example
   * linkId = "02a7536f-06b2-4dee-94e1-f5cfcb0e5678"
   * text = "Scenario 4: choice selections with groups"
   * type = #group
-  * item[0]
+  * item[+]
     * linkId = "s4-radio"
     * text = "Integer Values Radio Buttons"
     * type = #choice
     * repeats = false
-    * answerOption[0].valueCoding = $example#1 "1"
+    * answerOption[+].valueCoding = $example#1 "1"
     * answerOption[+].valueCoding = $example#2 "2"
     * answerOption[+].valueCoding = $example#3 "3"
   * item[+]
@@ -269,7 +270,7 @@ Usage: #example
   * linkId = "02a7536f-06b2-4dee-94e1-f5cfcb088990"
   * text = "Scenario 5: Test EnableWhen Date Trigger"
   * type = #group
-  * item[0]
+  * item[+]
     * linkId = "date_of_birth_question"
     * text = "Date of Birth"
     * type = #date
@@ -318,7 +319,7 @@ Usage: #example
   * linkId = "02a7536f-06b2-4dee-94e1-f5cfcb0hd732"
   * text = "Scenario 6: Multi-select option enablewhen"
   * type = #group
-  * item[0]
+  * item[+]
     * extension
       * url = "http://hl7.org/fhir/StructureDefinition/questionnaire-itemControl"
       * valueCodeableConcept = $questionnaire-item-control#drop-down
@@ -326,7 +327,7 @@ Usage: #example
     * text = "Adverse outcomes"
     * type = #choice
     * repeats = true
-    * answerOption[0].valueCoding = $example#1 "Bleeding"
+    * answerOption[+].valueCoding = $example#1 "Bleeding"
     * answerOption[+].valueCoding = $example#2 "Infection/sepsis"
     * answerOption[+].valueCoding = $example#3 "Perforation"
     * answerOption[+].valueCoding = $example#4 "Reaction to sedation"

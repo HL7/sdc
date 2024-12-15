@@ -23,7 +23,7 @@ Usage: #definition
 * instance = false
 * inputProfile = "http://hl7.org/fhir/uv/sdc/StructureDefinition/parameters-questionnaire-next-question-in"
 * outputProfile = "http://hl7.org/fhir/uv/sdc/StructureDefinition/parameters-questionnaire-next-question-out"
-* parameter[0]
+* parameter[+]
   * insert parameter(#questionnaire-response, #in, 1, "1", #Resource, "The [Adaptive QuestionnaireResponse Profile](StructureDefinition-sdc-questionnaireresponse-adapt.html\) of the QuestionnaireResponse resource with a *contained* Questionnaire.  When invoking the operation for the first time\, neither the QuestionnaireResponse nor the contained Questionnaire will have any items\, as no questions are yet known.  In subsequent calls\, the QuestionnaireResponse will include answers to all required questions asked so far and the contained QuestionnaireResponse will remain the same as provided back from the operation in the preceding response.")
 * parameter[+]
   * insert parameter(#return, #out, 1, "1", #Resource, "The [Adaptive QuestionnaireResponse Profile](StructureDefinition-sdc-questionnaireresponse-adapt.html\) of the QuestionnaireResponse resource with a *contained* Questionnaire.  The Server updates the QuestionnaireResponse's contained Questionnaire by appending with the next question or questions items and any score or instruction items and returns the QuestionnaireResponse (with all answers completed thus far plus any calculated scores\) as this parameter.  When the questionnaire is complete\, the Server updates the status of the QuestionnaireResponse resource parameter to `complete`.")

@@ -3,7 +3,7 @@ Id: sdc-questionnaire-shortText
 Title: "Short Text"
 Description: "The short text for the item."
 * ^status = #active
-* ^context[0].type = #element
+* ^context[+].type = #element
 * ^context[=].expression = "Questionnaire.item"
 * ^context[+].type = #element
 * ^context[=].expression = "ElementDefinition"

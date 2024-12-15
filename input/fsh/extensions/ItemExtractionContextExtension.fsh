@@ -5,7 +5,7 @@ Description: "Specifies a query or other expression that identifies the resource
 * ^extension[$standard-status].valueCode = #deprecated
 * ^extension[$fmm].valueInteger = 0
 * ^status = #retired
-* ^context[0].type = #element
+* ^context[+].type = #element
 * ^context[=].expression = "Questionnaire"
 * ^context[+].type = #element
 * ^context[=].expression = "Questionnaire.item"

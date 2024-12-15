@@ -7,7 +7,7 @@ Usage: #example
 * status = #completed
 * subject = Reference(http://example.org/fhir/Patient/12345)
 * authored = "2021-12-01"
-* item[0]
+* item[+]
   * linkId = "1"
   * text = "Mother's name"
   * answer.valueString = "Chioma Abubakar"
@@ -26,7 +26,7 @@ Usage: #example
 * item[+]
   * linkId = "5"
   * text = "Children"
-  * item[0]
+  * item[+]
     * extension
       * url = "http://hl7.org/fhir/uv/sdc/StructureDefinition/sdc-questionnaireresponse-isSubject"
       * valueBoolean = true
@@ -52,7 +52,7 @@ Usage: #example
 * item[+]
   * linkId = "5"
   * text = "Children"
-  * item[0]
+  * item[+]
     * extension
       * url = "http://hl7.org/fhir/uv/sdc/StructureDefinition/sdc-questionnaireresponse-isSubject"
       * valueBoolean = true

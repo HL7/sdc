@@ -3,13 +3,16 @@ InstanceOf: SDCQuestionnaireBehave
 Title: "SDC-Advanced Form Behavior"
 Description: "Demo questionnaire showing most of the advanced form behavior capabilities of SDC. Each example here is itemized in the Examples page."
 Usage: #example
-* modifierExtension[0]
+* modifierExtension[+]
   * url = "http://hl7.org/fhir/uv/sdc/StructureDefinition/sdc-rendering-criticalExtension"
   * valueCanonical = "http://hl7.org/fhir/uv/sdc/StructureDefinition/sdc-questionnaire-entryMode"
 * modifierExtension[+]
   * url = "http://hl7.org/fhir/uv/sdc/StructureDefinition/sdc-rendering-criticalExtension"
   * valueCanonical = "http://hl7.org/fhir/uv/sdc/StructureDefinition/sdc-questionnaire-answerOptionsToggleExpression"
-* extension[0]
+* extension[+]
+  * url = $questionnaire-versionAlgorithm
+  * valueCoding = $version-algorithm#semver
+* extension[+]
   * url = "http://hl7.org/fhir/StructureDefinition/variable"
   * valueExpression
     * name = "weight"
@@ -25,7 +28,7 @@ Usage: #example
   * url = "http://hl7.org/fhir/StructureDefinition/cqf-library"
   * valueCanonical = "http://example.org/Library/MeasurementLimits"
 * extension[+]
-  * extension[0]
+  * extension[+]
     * url = "name"
     * valueCoding = $launchContext#patient "Patient"
   * extension[+]
@@ -44,11 +47,11 @@ Usage: #example
 * url = "http://build.fhir.org/ig/HL7/sdc/questionnaire-sdc-profile-example-form-behavior"
 * name = "SDCAdvancedRenderingExample"
 * status = #active
-* item[0]
+* item[+]
   * linkId = "1"
   * text = "Value constraints"
   * type = #group
-  * item[0]
+  * item[+]
     * linkId = "1.1"
     * text = "First Name"
     * type = #string
@@ -61,7 +64,7 @@ Usage: #example
     * type = #string
   * item[+]
     * extension
-      * extension[0]
+      * extension[+]
         * url = "key"
         * valueId = "contraint-regex1"
       * extension[+]
@@ -80,7 +83,7 @@ Usage: #example
     * text = "Postal Code (A1A 1A1)"
     * type = #string
   * item[+]
-    * extension[0]
+    * extension[+]
       * url = "http://hl7.org/fhir/StructureDefinition/minValue"
       * valueDecimal = 1
     * extension[+]
@@ -93,7 +96,7 @@ Usage: #example
     * text = "Enter your weight in kg"
     * type = #decimal
   * item[+]
-    * extension[0]
+    * extension[+]
       * url = "http://hl7.org/fhir/StructureDefinition/questionnaire-unitValueSet"
       * valueCanonical = "http://hl7.org/fhir/ValueSet/ucum-bodyweight"
     * extension[+]
@@ -106,7 +109,7 @@ Usage: #example
     * text = "Body Weight"
     * type = #quantity
   * item[+]
-    * extension[0]
+    * extension[+]
       * url = "http://hl7.org/fhir/StructureDefinition/mimeType"
       * valueCode = #image/jpeg
     * extension[+]
@@ -122,11 +125,11 @@ Usage: #example
   * linkId = "2"
   * text = "Value constraints"
   * type = #group
-  * item[0]
+  * item[+]
     * linkId = "2.1"
     * text = "(I/We) worried whether (my/our) food would run out before (I/we) got money to buy more."
     * type = #choice
-    * answerOption[0]
+    * answerOption[+]
       * valueCoding = $loinc#LA28397-0 "Often true"
     * answerOption[+]      
       * valueCoding = $loinc#LA6729-3 "Sometimes true"
@@ -145,8 +148,8 @@ Usage: #example
     * type = #choice
     * repeats = true
     * answerValueSet = "#vsConditionsAll"
-    * extension[0]
-      * extension[0]
+    * extension[+]
+      * extension[+]
         * url = "option"
         * valueCoding = $conditions#3
       * extension[+]
@@ -155,7 +158,7 @@ Usage: #example
         * valueExpression.expression = "%patient.gender!='male'"
       * url = "http://hl7.org/fhir/uv/sdc/StructureDefinition/sdc-questionnaire-answerOptionsToggleExpression"
     * extension[+]
-      * extension[0]
+      * extension[+]
         * url = "option"
         * valueCoding = $conditions#4
       * extension[+]
@@ -194,7 +197,7 @@ Usage: #example
     * text = "Heart History (check all that applies)"
     * type = #open-choice
     * repeats = true
-    * answerOption[0].valueCoding = $procedures#U1 "Heart attack"
+    * answerOption[+].valueCoding = $procedures#U1 "Heart attack"
     * answerOption[+].valueCoding = $procedures#U2 "Heart surgery"
     * answerOption[+].valueCoding = $procedures#U3 "Cardiac catheterization"
     * answerOption[+].valueCoding = $procedures#U4 "Coronary angioplasty (PTCA)"
@@ -205,7 +208,7 @@ Usage: #example
     * type = #choice
     * required = true
     * repeats = true
-    * answerOption[0].valueCoding = $procedures#U1 "Heart attack"
+    * answerOption[+].valueCoding = $procedures#U1 "Heart attack"
     * answerOption[+].valueCoding = $procedures#U2 "Heart surgery"
     * answerOption[+].valueCoding = $procedures#U3 "Cardiac catheterization"
     * answerOption[+].valueCoding = $procedures#U4 "Coronary angioplasty (PTCA)"
@@ -219,7 +222,7 @@ Usage: #example
     * type = #choice
     * required = true
     * repeats = true
-    * answerOption[0].valueCoding = $procedures#U1 "Heart attack"
+    * answerOption[+].valueCoding = $procedures#U1 "Heart attack"
     * answerOption[+].valueCoding = $procedures#U2 "Heart surgery"
     * answerOption[+].valueCoding = $procedures#U3 "Cardiac catheterization"
     * answerOption[+].valueCoding = $procedures#U4 "Coronary angioplasty (PTCA)"
@@ -235,7 +238,7 @@ Usage: #example
     * text = "What treatments do you now have for heart disease? (select all that applies)"
     * type = #choice
     * repeats = true
-    * answerOption[0].valueCoding = $treatments#noTreatment "NoTreatment"
+    * answerOption[+].valueCoding = $treatments#noTreatment "NoTreatment"
     * answerOption[+].valueCoding = $treatments#aspirin "Aspirin"
     * answerOption[+].valueCoding = $treatments#otherMeds "Other medicines, tablets, or pills"
     * answerOption[+].valueCoding = $treatments#diet "Diet"
@@ -246,7 +249,7 @@ Usage: #example
         * valueBoolean = true
       * valueCoding = $treatments#none "None of the above"
   * item[+]
-    * extension[0]
+    * extension[+]
       * url = "http://hl7.org/fhir/StructureDefinition/questionnaire-unitOption"
       * valueCoding = $unitsofmeasure#mL "mL"
     * extension[+]
@@ -275,7 +278,7 @@ Usage: #example
     * text = "Specify age:"
     * type = #quantity
   * item[+]
-    * extension[0]
+    * extension[+]
       * url = "http://hl7.org/fhir/StructureDefinition/questionnaire-referenceResource"
       * valueCode = #Practitioner
     * extension[+]
@@ -291,7 +294,7 @@ Usage: #example
         * language = #application/x-fhir-query
         * expression = "Practitioner?active=true&_sort=family,given"
     * extension[+]
-      * extension[0]
+      * extension[+]
         * url = "path"
         * valueString = "name.where(use='official').family + ', ' + name.where(use='official').given.first()"
       * extension[+]
@@ -305,7 +308,7 @@ Usage: #example
   * linkId = "3"
   * text = "Calculation"
   * type = #group
-  * item[0]
+  * item[+]
     * extension.url = "http://hl7.org/fhir/uv/sdc/StructureDefinition/sdc-questionnaire-initialExpression"
     * extension.valueExpression.description = "deadline for submission"
     * extension.valueExpression.language = #text/fhirpath
@@ -317,7 +320,7 @@ Usage: #example
   * item[+]
     * linkId = "3.2"
     * type = #group
-    * item[0]
+    * item[+]
       * extension.url = "http://hl7.org/fhir/uv/sdc/StructureDefinition/sdc-questionnaire-initialExpression"
       * extension.valueExpression.description = "patient's last name"
       * extension.valueExpression.language = #text/fhirpath
@@ -348,7 +351,7 @@ Usage: #example
     * linkId = "3.3"
     * text = "Calculated Expression"
     * type = #group
-    * item[0]
+    * item[+]
       * extension.url = "http://hl7.org/fhir/StructureDefinition/questionnaire-unit"
       * extension.valueCoding = $unitsofmeasure#kg
       * linkId = "3.3.1"
@@ -373,8 +376,8 @@ Usage: #example
     * linkId = "3.4"
     * text = "CQF-related Example"
     * type = #group
-    * item[0]
-      * extension[0]
+    * item[+]
+      * extension[+]
         * url = "http://hl7.org/fhir/StructureDefinition/minValue"
         * valueDecimal.extension.url = "http://hl7.org/fhir/StructureDefinition/cqf-calculatedValue"
         * valueDecimal.extension.valueExpression
@@ -411,7 +414,7 @@ Usage: #example
   * linkId = "4"
   * text = "Other Controls"
   * type = #group
-  * item[0]
+  * item[+]
     * linkId = "4.1"
     * text = "Marital Status"
     * type = #choice
@@ -420,32 +423,35 @@ Usage: #example
   * item[+]
     * type = #group
     * linkId = "4.2"      
-    * item[0]
+    * item[+]
       * linkId = "4.2.1"
       * text = "Choose Gender"
       * type = #choice
       * answerValueSet = "http://hl7.org/fhir/ValueSet/administrative-gender"
     * item[+]
+      * extension[$questionnaire-disabledDisplay].valueCode = #protected
       * linkId = "4.2.2"
-      * text = "Are you pregnant? (enableWhen = gender is Female)"
+      * text = "Are you pregnant? (enableWhen = gender is Female, disableDisplay=protected)"
       * type = #choice
       * enableWhen.question = "4.2.1"
       * enableWhen.operator = #=
       * enableWhen.answerCoding = $administrative-gender#female
       * answerValueSet = "http://hl7.org/fhir/ValueSet/yesnodontknow"
     * item[+]
+      * extension[$questionnaire-disabledDisplay].valueCode = #hidden
       * linkId = "4.2.3"
-      * text = "Are you diabetic? (enableWhen = gender is Female)"
+      * text = "Are you diabetic? (enableWhen = gender is Female, disableDisplay=hidden)"
       * type = #choice
       * enableWhen.question = "4.2.1"
       * enableWhen.operator = #=
       * enableWhen.answerCoding = $administrative-gender#female
       * answerValueSet = "http://hl7.org/fhir/ValueSet/yesnodontknow"
     * item[+]
+      * extension[$questionnaire-disabledDisplay].valueCode = #protected
       * linkId = "4.2.4"
-      * text = "Have you been diagnosed with Gestational Diabetes? (enableBehavior = only when pregnant and diabetic)"
+      * text = "Have you been diagnosed with Gestational Diabetes? (enableBehavior = only when pregnant and diabetic, disableDisplay=protected)"
       * type = #choice
-      * enableWhen[0]
+      * enableWhen[+]
         * question = "4.2.2"
         * operator = #=
         * answerCoding = $v2-0136#Y
@@ -464,17 +470,18 @@ Usage: #example
       * type = #date
       * answerValueSet = "http://hl7.org/fhir/ValueSet/administrative-gender"
     * item[+]
+      * extension[$questionnaire-disabledDisplay].valueCode = #protected
       * extension
         * url = "http://hl7.org/fhir/uv/sdc/StructureDefinition/sdc-questionnaire-enableWhenExpression"
         * valueExpression.description = "if last 2 questions were answered"
         * valueExpression.language = #text/fhirpath
         * valueExpression.expression = "%resource.repeat(item).where(linkId='4.2.b.1').answer.value.code ='female' and today().toString().substring(0, 4).toInteger() - %resource.repeat(item).where(linkId='4.2.b.5').answer.value.toString().substring(0, 4).toInteger() >= 40"
       * linkId = "4.2.6"
-      * text = "Have you had mammogram before?(enableWhenExpression = only when gender is female and age > 40)"
+      * text = "Have you had mammogram before?(enableWhenExpression = only when gender is female and age > 40, disableDisplay=protected)"
       * type = #choice
       * answerValueSet = "http://hl7.org/fhir/ValueSet/yesnodontknow"
   * item[+]
-    * extension[0]
+    * extension[+]
       * url = "http://hl7.org/fhir/StructureDefinition/questionnaire-signatureRequired"
       * valueCodeableConcept = urn:iso-astm:E1762-95:2013#1.2.840.10065.1.12.1.8 "Signature Witness Signature"
       * valueCodeableConcept.text = "the signature of a witness to any other signature."
@@ -486,13 +493,13 @@ Usage: #example
     * type = #attachment
     * required = true
   * item[+]
-    * extension[0]
+    * extension[+]
       * url = "http://hl7.org/fhir/uv/sdc/StructureDefinition/sdc-questionnaire-candidateExpression"
       * valueExpression.description = "active practitioners that speak at least one of the patient's language"
       * valueExpression.language = #application/x-fhir-query
       * valueExpression.expression = "Practitioner?communication=&active=true"
     * extension[+]
-      * extension[0].url = "path"
+      * extension[+].url = "path"
       * extension[=].valueString = "name.first().family"
       * extension[+].url = "label"
       * extension[=].valueString = "LAST NAME"
@@ -502,7 +509,7 @@ Usage: #example
       * extension[=].valueBoolean = true
       * url = "http://hl7.org/fhir/uv/sdc/StructureDefinition/sdc-questionnaire-choiceColumn"
     * extension[+]
-      * extension[0].url = "path"
+      * extension[+].url = "path"
       * extension[=].valueString = "name.first().given.first()"
       * extension[+].url = "label"
       * extension[=].valueString = "FIRST NAME"
@@ -512,7 +519,7 @@ Usage: #example
       * extension[=].valueBoolean = true
       * url = "http://hl7.org/fhir/uv/sdc/StructureDefinition/sdc-questionnaire-choiceColumn"
     * extension[+]
-      * extension[0].url = "path"
+      * extension[+].url = "path"
       * extension[=].valueString = "gender"
       * extension[+].url = "label"
       * extension[=].valueString = "GENDER"
@@ -526,7 +533,7 @@ Usage: #example
     * type = #reference
     * repeats = true
   * item[+]
-    * extension[0]
+    * extension[+]
       * url = "http://hl7.org/fhir/uv/sdc/StructureDefinition/sdc-questionnaire-itemPopulationContext"
       * valueExpression.name = "homeAddress"
       * valueExpression.description = "Home address of the patient"
@@ -534,7 +541,7 @@ Usage: #example
       * valueExpression.expression = "%patient.address.where(use='home').first()"
     * linkId = "4.6"
     * type = #group
-    * item[0]
+    * item[+]
       * linkId = "4.6.1"
       * text = "Home Address"
       * type = #display 
@@ -568,7 +575,7 @@ Usage: #example
       * definition = "http://hl7.org/fhir/StructureDefinition/Patient#Patient.address.state"
       * text = "Province"
       * type = #choice
-      * answerOption[0].valueCoding = $provinces#Alberta "Alberta"
+      * answerOption[+].valueCoding = $provinces#Alberta "Alberta"
       * answerOption[+].valueCoding = $provinces#BritishColumbia "British Columbia"
       * answerOption[+].valueCoding = $provinces#Manitoba "Manitoba"
       * answerOption[+].valueCoding = $provinces#NewBrunswick "New Brunswick"

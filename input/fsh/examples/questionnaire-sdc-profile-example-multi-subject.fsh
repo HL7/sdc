@@ -2,7 +2,10 @@ Instance: questionnaire-sdc-profile-example-multi-subject
 InstanceOf: SDCQuestionnaireExtractObservation
 Title: "Example multi-subject Questionnaire"
 Usage: #example
-* extension[0]
+* extension[+]
+  * url = $questionnaire-versionAlgorithm
+  * valueCoding = $version-algorithm#semver
+* extension[+]
   * url = "http://hl7.org/fhir/uv/sdc/StructureDefinition/sdc-questionnaire-observationExtract"
   * valueBoolean = true
 * extension[+]
@@ -16,7 +19,7 @@ Usage: #example
 * subjectType = #Patient
 * description = "A sample Questionnaire that shows the use of the isSubject extension to flag a subject change within a Questionnaire."
 // Todo: Create Ruleset for item (when optional argument functionality is released)
-* item[0]
+* item[+]
   * linkId = "1"
   * text = "Mother's name"
   * type = #string
@@ -44,8 +47,8 @@ Usage: #example
   * type = #group
   * required = true
   * repeats = true
-  * item[0]
-    * extension[0]
+  * item[+]
+    * extension[+]
       * url = "http://hl7.org/fhir/StructureDefinition/questionnaire-referenceResource"
       * valueCode = #Patient
     * extension[+]

@@ -3,7 +3,7 @@ Id: sdc-questionnaire-minQuantity
 Title: "Min quantity"
 Description: "The inclusive lower bound on the range of allowed values for a 'quantity' type question.  Open Issue: Revisit whether this should be folded into the regular minValue extension once there are better capabilities around defining conformance expectations regarding extensions."
 * ^status = #active
-* ^context[0].type = #element
+* ^context[+].type = #element
 * ^context[=].expression = "Questionnaire.item"
 * ^context[+].type = #element
 * ^context[=].expression = "ElementDefinition"

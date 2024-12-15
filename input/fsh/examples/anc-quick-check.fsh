@@ -3,6 +3,7 @@ InstanceOf: SDCQuestionnaireRender
 Title: "Questionnaire - ANC Quick Check"
 Description: "A sample questionnaire using itemMedia and itemAnswerMedia extensions."
 Usage: #example
+* extension[$questionnaire-versionAlgorithm].valueCoding = $version-algorithm#semver
 * url = "http://hl7.org/fhir/uv/sdc/Questionnaire/anc-quick-check"
 * name = "ANC_Quick_Check"
 * title = "Questionnaire - ANC Quick Check"
@@ -21,4 +22,3 @@ Usage: #example
 * insert answerOption("http://hl7.org/fhir/uv/sdc/StructureDefinition/sdc-questionnaire-itemAnswerMedia", "http://example.org/images/reason-for-visit-first.png","First visit")
 * insert answerOption("http://hl7.org/fhir/uv/sdc/StructureDefinition/sdc-questionnaire-itemAnswerMedia", "http://example.org/images/reason-for-visit-follow-up.png","Follow-up visit")
 * insert answerOption("http://hl7.org/fhir/uv/sdc/StructureDefinition/sdc-questionnaire-itemAnswerMedia", "http://example.org/images/reason-for-visit-include-family-member.png","Do you want to include your companion or other family member (parent if adolescent\) in the examination and discussion?")
-

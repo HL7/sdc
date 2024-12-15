@@ -16,7 +16,7 @@ Usage: #definition
 * kind = #requirements
 * instantiates = "http://hl7.org/fhir/uv/sdc/CapabilityStatement/sdc-form-manager"
 * fhirVersion = #1.0.0
-* format[0] = #xml
+* format[+] = #xml
 * format[+] = #json
 * rest
   * mode = #server

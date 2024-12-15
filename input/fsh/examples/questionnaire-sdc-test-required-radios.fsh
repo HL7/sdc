@@ -3,6 +3,7 @@ InstanceOf: SDCQuestionnaireBehave
 Title: "SDC Test Form - Required"
 Description: "A test form with required fields."
 Usage: #example
+* extension[$questionnaire-versionAlgorithm].valueCoding = $version-algorithm#semver
 * url = "http://hl7.org/fhir/uv/sdc/Questionnaire/questionnaire-sdc-test-required-radios"
 * name = "RequiredRadioButtons"
 * title = "Required Radio Buttons"
@@ -13,7 +14,7 @@ Usage: #example
   * linkId = "grp"
   * text = "Test: Required Radio Buttons"
   * type = #group
-  * item[0]
+  * item[+]
     * linkId = "textq"
     * text = "Should I stay text?"
     * type = #string
@@ -29,13 +30,13 @@ Usage: #example
     * text = "Should I go now?"
     * type = #choice
     * required = true
-    * answerOption[0].valueCoding = $example#1 "One"
+    * answerOption[+].valueCoding = $example#1 "One"
     * answerOption[+].valueCoding = $example#2 "Two"
   * item[+]
     * linkId = "radio3"
     * text = "Will there be trouble?"
     * type = #choice
     * required = true
-    * answerOption[0].valueCoding = $example#1 "One"
+    * answerOption[+].valueCoding = $example#1 "One"
     * answerOption[+].valueCoding = $example#2 "Two"
     * answerOption[+].valueCoding = $example#3 "Three"

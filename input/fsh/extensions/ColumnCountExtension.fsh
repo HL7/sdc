@@ -3,8 +3,8 @@ Id: sdc-questionnaire-columnCount
 Title: "Number of columns for child item layout"
 Description: "For questions with a set of options, indicates the number of columns across which those choices should be organized. E.g., 2 columns, 5 columns, etc."
 * ^status = #active
-* ^context[0].type = #element
-* ^context[0].expression = "Questionnaire.item"
+* ^context[+].type = #element
+* ^context[=].expression = "Questionnaire.item"
 * . 0..1
 * . ^short = "Number of columns for layout"
 * . ^definition = "For questions with a set of options, indicates the number of columns across which those choices should be organized. E.g., 2 columns, 5 columns, etc."

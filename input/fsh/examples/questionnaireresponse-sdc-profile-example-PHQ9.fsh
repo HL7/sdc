@@ -12,7 +12,7 @@ Usage: #example
 * item
   * linkId = "H1/T1"
   * text = "Over the last two weeks, how often have you been bothered by any of the following problems?"
-  * item[0]
+  * item[+]
     * linkId = "H1/T1/Q1"
     * text = "Little interest or pleasure in doing things?"
     * answer.valueCoding = $CSPHQ9#Not-at-all "Not at all"

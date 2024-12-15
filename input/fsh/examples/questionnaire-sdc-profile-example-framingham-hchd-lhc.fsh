@@ -4,6 +4,9 @@ Title: "SDC-Hard Coronary Heart Disease"
 Description: "A made-up form for calculating the 10-year-risk of Hard Coronary Heart Disease. It shows how variables and calculatedExpression can be used to compute for the risk probability."
 Usage: #example
 * extension[+]
+  * url = $questionnaire-versionAlgorithm
+  * valueCoding = $version-algorithm#semver
+* extension[+]
   * url = $variable
   * valueExpression
     * name = "age"
@@ -100,7 +103,7 @@ Usage: #example
 * experimental = true
 * subjectType = #Patient
 * description = "A form for calculating the 10-year-risk of Hard Coronary Heart Disease.  The constants used in the formula match those in https://www.framinghamheartstudy.org/fhs-risk-functions/hard-coronary-heart-disease-10-year-risk/, but the actual formulas are not listed there, and so we have not been able to verify them.  However, the output of this form matches the output of a perl program (from which the formulas were taken) which matched the output of a calculator on a website, which regrettably no longer exists.  So, while this form is good enough or a demo, it should not be relied on for real purposes without first verifying its formulas or its output against some other source."
-* item[0]
+* item[+]
   * linkId = "/age"
   * code = $loinc#30525-0 "Age"
   * text = "Age (in years)"
@@ -110,7 +113,7 @@ Usage: #example
   * linkId = "/age_requirement_notice"
   * text = "Sorry, but the formulas are only valid for ages in the range 30 to 79."
   * type = #display
-  * enableWhen[0]
+  * enableWhen[+]
     * question = "/age"
     * operator = #<
     * answerDecimal = 30
@@ -120,7 +123,7 @@ Usage: #example
     * answerDecimal = 79
   * enableBehavior = #any
 * item[+]
-  * extension[0]
+  * extension[+]
     * url = "http://hl7.org/fhir/StructureDefinition/questionnaire-minOccurs"
     * valueInteger = 1
   * extension[+]
@@ -132,10 +135,10 @@ Usage: #example
   * text = "Gender"
   * type = #choice
   * required = true
-  * answerOption[0].valueCoding = $loinc#LA2-8 "Male"
+  * answerOption[+].valueCoding = $loinc#LA2-8 "Male"
   * answerOption[+].valueCoding = $loinc#LA3-6 "Female"
 * item[+]
-  * extension[0]
+  * extension[+]
     * url = "http://hl7.org/fhir/StructureDefinition/questionnaire-minOccurs"
     * valueInteger = 1
   * extension[+]
@@ -146,10 +149,10 @@ Usage: #example
   * text = "Do you smoke?"
   * type = #choice
   * required = true
-  * answerOption[0].valueCoding = $example#Y "Yes"
+  * answerOption[+].valueCoding = $example#Y "Yes"
   * answerOption[+].valueCoding = $example#N "No"
 * item[+]
-  * extension[0]
+  * extension[+]
     * url = "http://hl7.org/fhir/StructureDefinition/questionnaire-minOccurs"
     * valueInteger = 1
   * extension[+]
@@ -161,7 +164,7 @@ Usage: #example
   * type = #decimal
   * required = true
 * item[+]
-  * extension[0]
+  * extension[+]
     * url = "http://hl7.org/fhir/StructureDefinition/questionnaire-minOccurs"
     * valueInteger = 1
   * extension[+]
@@ -173,7 +176,7 @@ Usage: #example
   * type = #decimal
   * required = true
 * item[+]
-  * extension[0]
+  * extension[+]
     * url = "http://hl7.org/fhir/StructureDefinition/questionnaire-minOccurs"
     * valueInteger = 1
   * extension[+]
@@ -185,7 +188,7 @@ Usage: #example
   * type = #decimal
   * required = true
 * item[+]
-  * extension[0]
+  * extension[+]
     * url = "http://hl7.org/fhir/StructureDefinition/questionnaire-minOccurs"
     * valueInteger = 1
   * extension[+]
@@ -196,14 +199,14 @@ Usage: #example
   * text = "Are you taking medication for high blood pressure?"
   * type = #choice
   * required = true
-  * answerOption[0].valueCoding = $example#Y "Yes"
+  * answerOption[+].valueCoding = $example#Y "Yes"
   * answerOption[+].valueCoding = $example#N "No"
 * item[+]
   * linkId = "/all_answers_required_notice"
   * text = "All answers are required before the risk probability can be computed."
   * type = #display
 * item[+]
-  * extension[0]
+  * extension[+]
     * url = "http://hl7.org/fhir/uv/sdc/StructureDefinition/sdc-questionnaire-calculatedExpression"
     * valueExpression
       * description = "HCHD risk as decimal"

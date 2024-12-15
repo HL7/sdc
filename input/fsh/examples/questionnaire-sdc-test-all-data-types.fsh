@@ -3,6 +3,7 @@ InstanceOf: SDCBaseQuestionnaire
 Title: "SDC Test Form - All Data Types"
 Description: "A test form that has one of each data type included, useful in checking compatibility against."
 Usage: #example
+* extension[$questionnaire-versionAlgorithm].valueCoding = $version-algorithm#semver
 * url = "http://hl7.org/fhir/uv/sdc/Questionnaire/questionnaire-sdc-test-all-data-types"
 * name = "AllDataTypes"
 * title = "Bit of everything"
@@ -14,7 +15,7 @@ Usage: #example
   * linkId = "02a7536f-06b2-4dee-94e1-f5cfcb0e8622"
   * text = "Bit of everything - data types"
   * type = #group
-  * item[0]
+  * item[+]
     * linkId = "id-string"
     * text = "string control"
     * type = #string

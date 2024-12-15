@@ -2,7 +2,10 @@ Instance: SDOHCC-QuestionnaireHungerVitalSign
 InstanceOf: SDCQuestionnaireExtractDefinition
 Title: "SDOHCC Questionnaire Hunger Vital Sign"
 Usage: #example
-* extension[0]
+* extension[+]
+  * url = $questionnaire-versionAlgorithm
+  * valueCoding = $version-algorithm#semver
+* extension[+]
   * url = "http://hl7.org/fhir/StructureDefinition/variable"
   * valueExpression
     * name = "worriedAnsCode"
@@ -42,7 +45,7 @@ Usage: #example
 * subjectType = #Patient
 * description = "Example Questionnaire that shows both definition-based population and StructureMap-based extraction"
 * copyright = "Content is from the Hunger Vital Sign Survey with permission: © 2010 Dr. Erin Hager and Dr. Anna Quigg and the Children’s HealthWatch research team"
-* item[0]
+* item[+]
   * extension
     * url = "http://hl7.org/fhir/StructureDefinition/questionnaire-itemControl"
     * valueCodeableConcept = $questionnaire-item-control#drop-down "Drop down"
@@ -52,7 +55,7 @@ Usage: #example
   * text = "(I/We) worried whether (my/our) food would run out before (I/we) got money to buy more."
   * type = #choice
   * required = false
-  * answerOption[0].valueCoding = $loinc#LA28397-0 "Often true"
+  * answerOption[+].valueCoding = $loinc#LA28397-0 "Often true"
   * answerOption[+].valueCoding = $loinc#LA6729-3 "Sometimes true"
   * answerOption[+].valueCoding = $loinc#LA28398-8 "Never true"
   * answerOption[+].valueCoding = $loinc#LA15775-2 "Don't know/refused"
@@ -66,12 +69,12 @@ Usage: #example
   * text = "The food that (I/we) bought just didn't last, and (I/we) didn't have money to get more."
   * type = #choice
   * required = false
-  * answerOption[0].valueCoding = $loinc#LA28397-0 "Often true"
+  * answerOption[+].valueCoding = $loinc#LA28397-0 "Often true"
   * answerOption[+].valueCoding = $loinc#LA6729-3 "Sometimes true"
   * answerOption[+].valueCoding = $loinc#LA28398-8 "Never true"
   * answerOption[+].valueCoding = $loinc#LA15775-2 "Don't know/refused"
 * item[+]
-  * extension[0]
+  * extension[+]
     * url = "http://hl7.org/fhir/StructureDefinition/questionnaire-itemControl"
     * valueCodeableConcept = $questionnaire-item-control#drop-down "Drop down"
       * text = "Drop down"
@@ -110,7 +113,7 @@ Usage: #example
   * text = "Food insecurity risk"
   * type = #choice
   * required = false
-  * answerOption[0].valueCoding = $loinc#LA19952-3 "At risk"
+  * answerOption[+].valueCoding = $loinc#LA19952-3 "At risk"
   * answerOption[+].valueCoding = $loinc#LA19983-8 "No risk"
   * item
     * extension

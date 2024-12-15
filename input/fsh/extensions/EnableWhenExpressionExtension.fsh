@@ -6,7 +6,7 @@ Description: "An expression that returns a boolean value for whether to enable t
 * ^status = #active
 * ^experimental = false
 * ^jurisdiction = $m49.htm#001
-* ^context[0].type = #element
+* ^context[+].type = #element
 * ^context[=].expression = "Questionnaire.item"
 * ^context[+].type = #element
 * ^context[=].expression = "ElementDefinition"

@@ -4,15 +4,16 @@ Title: "SDC-Advanced Rendering"
 Description: "Demo questionnaire showing most of the advanced rendering capabilities of SDC. Each example here is itemized in the Examples page."
 Usage: #example
 * contained = LL2821-8
+* extension[$questionnaire-versionAlgorithm].valueCoding = $version-algorithm#semver
 * url = "http://build.fhir.org/ig/HL7/sdc/questionnaire-sdc-profile-example-render"
 * name = "SDCAdvancedRenderingExample"
 * status = #active
 // Todo: Create Ruleset for item (when optional argument functionality is released)
-* item[0]
+* item[+]
   * linkId = "1"
   * text = "Text Appearance"
   * type = #group
-  * item[0]
+  * item[+]
     * linkId = "1.1"
     * text = "Enter your First Name"
       * extension
@@ -37,7 +38,7 @@ Usage: #example
   * item[+]
     * linkId = "1.4"
     * type = #group
-    * item[0]
+    * item[+]
       * extension
         * url = "http://hl7.org/fhir/StructureDefinition/questionnaire-hidden"
         * valueBoolean = true
@@ -52,7 +53,7 @@ Usage: #example
   * linkId = "2"
   * text = "Control Appearance"
   * type = #group
-  * item[0]
+  * item[+]
     * extension
       * url = "http://hl7.org/fhir/StructureDefinition/questionnaire-itemControl"
       * valueCodeableConcept = $questionnaire-item-control#text-box "Text Box"
@@ -61,7 +62,7 @@ Usage: #example
     * text = "If you have any other medical problems or serious injuries, please describe them here:"
     * type = #text
   * item[+]
-    * extension[0]
+    * extension[+]
       * url = "http://hl7.org/fhir/StructureDefinition/questionnaire-choiceOrientation"
       * valueCode = #horizontal
     * extension[+]
@@ -71,14 +72,14 @@ Usage: #example
     * linkId = "2.2"
     * text = "Gender:"
     * type = #choice
-    * answerOption[0]
+    * answerOption[+]
       * valueCoding = $administrative-gender#female "Female"
       * initialSelected = true
     * answerOption[+].valueCoding = $administrative-gender#male "Male"
     * answerOption[+].valueCoding = $administrative-gender#other "Other"
     * answerOption[+].valueCoding = $administrative-gender#unknown "Unknown"
   * item[+]
-    * extension[0]
+    * extension[+]
       * url = "http://hl7.org/fhir/StructureDefinition/questionnaire-itemControl"
       * valueCodeableConcept = $questionnaire-item-control#slider "Slider"
         * text = "A control where an axis is displayed between the high and low values and the control can be visually manipulated to select a value anywhere on the axis."
@@ -96,14 +97,14 @@ Usage: #example
     * type = #integer
     * initial.valueInteger = 50
     * item[+]
-      * extension[0]
+      * extension[+]
         * url = "http://hl7.org/fhir/StructureDefinition/questionnaire-itemControl"
         * valueCodeableConcept = $questionnaire-item-control#lower "Lower-bound"
       * linkId = "2.3.1"
       * text = "Completely dissatisfied"
       * type = #display
     * item[+]
-      * extension[0]
+      * extension[+]
         * url = "http://hl7.org/fhir/StructureDefinition/questionnaire-itemControl"
         * valueCodeableConcept = $questionnaire-item-control#upper "Upper-bound"
       * linkId = "2.3.2"
@@ -117,8 +118,8 @@ Usage: #example
     * linkId = "2.4"
     * text = "Medical History"
     * type = #group
-    * item[0]
-      * extension[0]
+    * item[+]
+      * extension[+]
         * url = "http://hl7.org/fhir/StructureDefinition/questionnaire-itemControl"
         * valueCodeableConcept = $questionnaire-item-control#check-box "Check-box"
           * text = "A control where choices are listed with a box beside them. The box can be toggled to select or de-select a given choice. Multiple selections may be possible."
@@ -128,10 +129,10 @@ Usage: #example
       * linkId = "2.4.1"
       * text = "Diabetes"
       * type = #choice
-      * answerOption[0].valueCoding = $conditions#diabetes-type1 "Type 1"
+      * answerOption[+].valueCoding = $conditions#diabetes-type1 "Type 1"
       * answerOption[+].valueCoding = $conditions#diabetes-type2 "Type 2"
     * item[+]
-      * extension[0]
+      * extension[+]
         * url = "http://hl7.org/fhir/StructureDefinition/questionnaire-itemControl"
         * valueCodeableConcept = $questionnaire-item-control#check-box "Check-box"
           * text = "A control where choices are listed with a box beside them. The box can be toggled to select or de-select a given choice. Multiple selections may be possible."
@@ -141,7 +142,7 @@ Usage: #example
       * linkId = "2.4.2"
       * text = "Other Information"
       * type = #choice
-      * answerOption[0].valueCoding = $conditions#diabetes-type1 "Type 1"
+      * answerOption[+].valueCoding = $conditions#diabetes-type1 "Type 1"
       * answerOption[+].valueCoding = $conditions#diabetes-type2 "Type 2"
       * answerOption[+].valueCoding = $conditions#otherinformation-hypertension "Hypertension"
       * answerOption[+].valueCoding = $conditions#otherinformation-smoker "Smoker"
@@ -151,14 +152,14 @@ Usage: #example
       * valueCode = #default-closed
     * linkId = "2.5"
     * type = #group
-    * item[0]
+    * item[+]
       * extension
         * url = "http://hl7.org/fhir/StructureDefinition/questionnaire-itemControl"
         * valueCodeableConcept = $questionnaire-item-control#drop-down "Drop down"
       * linkId = "2.5.1"
       * text = "Relationship to patient"
       * type = #choice
-      * answerOption[0].valueCoding = $v3-RoleCode#FTH "Father"
+      * answerOption[+].valueCoding = $v3-RoleCode#FTH "Father"
       * answerOption[+].valueCoding = $v3-RoleCode#MTH "Mother"
       * answerOption[+].valueCoding = $v3-RoleCode#SIB "Sibling"
     * item[+]
@@ -172,7 +173,7 @@ Usage: #example
       * linkId = "2.5.3"
       * text = "Gender"
       * type = #choice
-      * answerOption[0]
+      * answerOption[+]
         * valueCoding = $administrative-gender#female "Female"
         * initialSelected = true
       * answerOption[+].valueCoding = $administrative-gender#male "Male"
@@ -186,39 +187,39 @@ Usage: #example
     * linkId = "2.6"
     * text = "Lifestyle Factors"
     * type = #group
-    * item[0]
-      * extension[0]
+    * item[+]
+      * extension[+]
         * url = "http://hl7.org/fhir/StructureDefinition/questionnaire-itemControl"
         * valueCodeableConcept = $questionnaire-item-control#check-box "Check-box"
           * text = "A control where choices are listed with a box beside them. The box can be toggled to select or de-select a given choice. Multiple selections may be possible."
       * linkId = "2.6.1"
       * text = "Exercise Habits"
       * type = #choice
-      * answerOption[0].valueCoding = $lifestyle#daily "Daily"
+      * answerOption[+].valueCoding = $lifestyle#daily "Daily"
       * answerOption[+].valueCoding = $lifestyle#weekly "Weekly"
       * answerOption[+].valueCoding = $lifestyle#monthly "Monthly"
       * answerOption[+].valueCoding = $lifestyle#never "Never"
     * item[+]
-      * extension[0]
+      * extension[+]
         * url = "http://hl7.org/fhir/StructureDefinition/questionnaire-itemControl"
         * valueCodeableConcept = $questionnaire-item-control#check-box "Check-box"
           * text = "A control where choices are listed with a box beside them. The box can be toggled to select or de-select a given choice. Multiple selections may be possible."
       * linkId = "2.6.2"
       * text = "Smoking Frequency"
       * type = #choice
-      * answerOption[0].valueCoding = $lifestyle#daily "Daily"
+      * answerOption[+].valueCoding = $lifestyle#daily "Daily"
       * answerOption[+].valueCoding = $lifestyle#weekly "Weekly"
       * answerOption[+].valueCoding = $lifestyle#monthly "Monthly"
       * answerOption[+].valueCoding = $lifestyle#never "Never"
     * item[+]
-      * extension[0]
+      * extension[+]
         * url = "http://hl7.org/fhir/StructureDefinition/questionnaire-itemControl"
         * valueCodeableConcept = $questionnaire-item-control#check-box "Check-box"
           * text = "A control where choices are listed with a box beside them. The box can be toggled to select or de-select a given choice. Multiple selections may be possible."
       * linkId = "2.6.3"
       * text = "Alcohol Consumption"
       * type = #choice
-      * answerOption[0].valueCoding = $lifestyle#daily "Daily"
+      * answerOption[+].valueCoding = $lifestyle#daily "Daily"
       * answerOption[+].valueCoding = $lifestyle#weekly "Weekly"
       * answerOption[+].valueCoding = $lifestyle#monthly "Monthly"
       * answerOption[+].valueCoding = $lifestyle#never "Never"
@@ -226,8 +227,8 @@ Usage: #example
   * linkId = "3"
   * text = "Additional Display Content"
   * type = #group
-  * item[0]
-    * extension[0]
+  * item[+]
+    * extension[+]
       * url = "http://hl7.org/fhir/StructureDefinition/questionnaire-supportLink"
       * valueUri = "http://hl7.org/fhir/StructureDefinition/questionnaire-supportLink"
     * extension[+]
@@ -237,14 +238,14 @@ Usage: #example
     * linkId = "3.1"
     * text = "Have you traveled outside the country within the last 14 days?"
     * type = #choice
-    * answerOption[0].valueCoding = $v2-0532#Y "Yes"
+    * answerOption[+].valueCoding = $v2-0532#Y "Yes"
     * answerOption[+].valueCoding = $v2-0532#N "No"
   * item[+]
-    * extension[0]
+    * extension[+]
       * url = "http://hl7.org/fhir/StructureDefinition/questionnaire-itemControl"
       * valueCodeableConcept = $questionnaire-item-control#drop-down "Drop down"
     * extension[+]
-      * extension[0]
+      * extension[+]
         * url = "path"
         * valueString = "code"
       * extension[+]
@@ -258,7 +259,7 @@ Usage: #example
         * valueBoolean = false
       * url = "http://hl7.org/fhir/uv/sdc/StructureDefinition/sdc-questionnaire-choiceColumn"
     * extension[+]
-      * extension[0]
+      * extension[+]
         * url = "path"
         * valueString = "display"
       * extension[+]
@@ -283,7 +284,7 @@ Usage: #example
     * linkId = "3.3"
     * text = "Gender:"
     * type = #choice
-    * answerOption[0]
+    * answerOption[+]
       * extension
         * url = "http://hl7.org/fhir/StructureDefinition/questionnaire-optionPrefix"
         * valueString = "(a)"
@@ -305,7 +306,7 @@ Usage: #example
         * valueString = "(d)"
       * valueCoding = $administrative-gender#unknown "Unknown"
   * item[+]
-    * extension[0]
+    * extension[+]
       * url = "http://hl7.org/fhir/StructureDefinition/questionnaire-choiceOrientation"
       * valueCode = #vertical
     * extension[+]
@@ -329,7 +330,7 @@ Usage: #example
       * valueBoolean = true
     * linkId = "3.6"
     * text = "IMPORTANT: Please complete questionnaire."
-      * extension[0]
+      * extension[+]
         * url = "http://hl7.org/fhir/StructureDefinition/rendering-style"
         * valueString = "color:red;"
       * extension[+]
@@ -357,7 +358,7 @@ Usage: #example
     * linkId = "3.9"
     * text = "Which of the following time-slots are you available for?"
     * type = #string
-    * answerOption[0]
+    * answerOption[+]
       * valueString = "9-10am"
     * answerOption[+]
       * valueString = "10-11am"
@@ -381,7 +382,7 @@ Usage: #inline
 * copyright = "This content from LOINC® is copyright © 1995 Regenstrief Institute, Inc. and the LOINC Committee, and available at no cost under the license at http://loinc.org/terms-of-use"
 * compose.include
   * system = "http://loinc.org"
-  * concept[0]
+  * concept[+]
     * extension
       * url = "http://hl7.org/fhir/StructureDefinition/valueset-label"
       * valueString = "A."

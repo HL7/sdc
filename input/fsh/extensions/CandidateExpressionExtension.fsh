@@ -3,7 +3,7 @@ Id: sdc-questionnaire-candidateExpression
 Title: "Candidate Answers Expression"
 Description: "A FHIRPath or CQL expression, or FHIR Query that resolves to a list of candidate answers for the question item or that establishes context for a group item.  The user may select from among the candidates to choose answers for the question."
 * ^status = #active
-* ^context[0].type = #element
+* ^context[+].type = #element
 * ^context[=].expression = "Questionnaire.item"
 * ^context[+].type = #element
 * ^context[=].expression = "ElementDefinition"

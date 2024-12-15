@@ -3,7 +3,7 @@ InstanceOf: SDCQuestionnaireResponseAdapt
 Title: "SDC-Response to Adaptive PHQ9"
 Description: "Example response to the Adaptive SDC-PHQ9 questionnaire"
 Usage: #example
-* contained[0] = contained-adaptive-questionnaire-example-phq9
+* contained[+] = contained-adaptive-questionnaire-example-phq9
 * contained[+] = VSPHQ9
 * identifier.value = "adaptive-questionnaireresponse-example-phq9"
 * questionnaire = "#contained-adaptive-questionnaire-example-phq9"
@@ -29,6 +29,7 @@ Instance: contained-adaptive-questionnaire-example-phq9
 InstanceOf: Questionnaire
 Usage: #inline
 * extension[QuestionnaireAdaptiveExtension].valueBoolean = true
+* extension[$questionnaire-versionAlgorithm].valueCoding = $version-algorithm#semver
 * version = "0.0.1"
 * name = "SDCPHQ9"
 * title = "Patient Health Questionnaire - 9 Item"

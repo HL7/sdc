@@ -3,13 +3,14 @@ InstanceOf: SDCQuestionnaireBehave
 Title: "SDC-Example using itemWeight and constraint"
 Description: "Example on how to use item weight and contraints in a Questionnaire."
 Usage: #example
+* extension[$questionnaire-versionAlgorithm].valueCoding = $version-algorithm#semver
 * contained = LL358-3
 * url = "http://hl7.org/fhir/uv/sdc/Questionnaire/questionnaire-sdc-profile-example-item-weight"
 * name = "SDCExampleUsingItemWeight"
 * status = #active
 * item
   * extension
-    * extension[0]
+    * extension[+]
       * url = "key"
       * valueId = "contraint-1"
     * extension[+]
@@ -31,8 +32,8 @@ Usage: #example
   * text = "Over the last 2 weeks, how often have you been bothered by any of the following problems?"
   * type = #group
 // Todo: Create Ruleset for item (when optional argument functionality is released)
-  * item[0]
-    * extension[0]
+  * item[+]
+    * extension[+]
       * url = "http://hl7.org/fhir/StructureDefinition/questionnaire-choiceOrientation"
       * valueCode = #horizontal
     * extension[+]
@@ -44,7 +45,7 @@ Usage: #example
     * type = #choice
     * answerValueSet = "#LL358-3"
   * item[+]
-    * extension[0]
+    * extension[+]
       * url = "http://hl7.org/fhir/StructureDefinition/questionnaire-choiceOrientation"
       * valueCode = #horizontal
     * extension[+]
@@ -56,7 +57,7 @@ Usage: #example
     * type = #choice
     * answerValueSet = "#LL358-3"
   * item[+]
-    * extension[0]
+    * extension[+]
       * url = "http://hl7.org/fhir/StructureDefinition/questionnaire-choiceOrientation"
       * valueCode = #horizontal
     * extension[+]
@@ -68,7 +69,7 @@ Usage: #example
     * type = #choice
     * answerValueSet = "#LL358-3"
   * item[+]
-    * extension[0]
+    * extension[+]
       * url = "http://hl7.org/fhir/StructureDefinition/questionnaire-choiceOrientation"
       * valueCode = #horizontal
     * extension[+]
@@ -101,7 +102,7 @@ Usage: #inline
 * copyright = "This content from LOINC® is copyright © 1995 Regenstrief Institute, Inc. and the LOINC Committee, and available at no cost under the license at http://loinc.org/terms-of-use"
 * compose.include
   * system = "http://loinc.org"
-  * concept[0]
+  * concept[+]
     * code = #LA6568-5
     * display = "Not at all"
   * concept[+]

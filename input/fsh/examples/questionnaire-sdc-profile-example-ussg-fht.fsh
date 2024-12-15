@@ -3,11 +3,13 @@ InstanceOf: SDCQuestionnairePopulateObservation
 Title: "SDC-LOINC USSG Family History"
 Description: "LOINC US Surgeon General family history including data elements and value sets."
 Usage: #example
+* extension[$questionnaire-versionAlgorithm].valueCoding = $version-algorithm#semver
 * meta
-  * profile[0] = "http://hl7.org/fhir/uv/sdc/StructureDefinition/sdc-questionnaire-pop-obsn"
+  * profile[+] = "http://hl7.org/fhir/uv/sdc/StructureDefinition/sdc-questionnaire-pop-obsn"
   * profile[+] = "http://hl7.org/fhir/uv/sdc/StructureDefinition/sdc-questionnaire-search"
-* contained[0] = length
+* contained[+] = length
 * contained[+] = weight
+* extension[$questionnaire-versionAlgorithm].valueCoding = $version-algorithm#date
 * url = "http://hl7.org/fhir/uv/sdc/Questionnaire/questionnaire-sdc-profile-example-ussg-fht"
 * identifier
   * system = "http://example.org/panel-id"
@@ -33,10 +35,10 @@ Usage: #example
 * approvalDate = "2015-10-31"
 * lastReviewDate = "2017-03-15"
 * code = $loinc#54127-6 "US Surgeon General family health portrait [USSG-FHT]"
-* item[0]
+* item[+]
   * linkId = "0"
   * type = #group
-  * item[0]
+  * item[+]
     * linkId = "0.1"
     * text = "Date Done"
     * type = #date
@@ -59,10 +61,10 @@ Usage: #example
   * text = "Your health information"
   * type = #group
   * required = true
-  * item[0]
+  * item[+]
     * linkId = "1.1"
     * type = #group
-    * item[0]
+    * item[+]
       * extension
         * url = "http://hl7.org/fhir/uv/sdc/StructureDefinition/sdc-questionnaire-observationLinkPeriod"
         * valueDuration = 200 'a'
@@ -197,7 +199,7 @@ Usage: #example
     * text = "Your diseases history"
     * type = #group
     * repeats = true
-    * item[0]
+    * item[+]
       * extension
         * url = "http://hl7.org/fhir/uv/sdc/StructureDefinition/sdc-questionnaire-observationLinkPeriod"
         * valueDuration = 200 'a'
@@ -224,10 +226,10 @@ Usage: #example
   * text = "Family member health information"
   * type = #group
   * repeats = true
-  * item[0]
+  * item[+]
     * linkId = "2.1.1"
     * type = #group
-    * item[0]
+    * item[+]
       * extension
         * url = "http://hl7.org/fhir/uv/sdc/StructureDefinition/sdc-questionnaire-observationLinkPeriod"
         * valueDuration = 200 'a'
@@ -275,10 +277,10 @@ Usage: #example
       * text = "Living?"
       * type = #choice
       * answerValueSet = "http://loinc.org/vs/LL361-7"
-      * item[0]
+      * item[+]
         * linkId = "2.1.1.4.1"
         * type = #group
-        * item[0]
+        * item[+]
           * extension
             * url = "http://hl7.org/fhir/uv/sdc/StructureDefinition/sdc-questionnaire-observationLinkPeriod"
             * valueDuration = 200 'a'
@@ -309,7 +311,7 @@ Usage: #example
       * item[+]
         * linkId = "2.1.1.4.2"
         * type = #group
-        * item[0]
+        * item[+]
           * extension
             * url = "http://hl7.org/fhir/uv/sdc/StructureDefinition/sdc-questionnaire-observationLinkPeriod"
             * valueDuration = 200 'a'
@@ -376,7 +378,7 @@ Usage: #example
     * text = "This family member's history of disease"
     * type = #group
     * repeats = true
-    * item[0]
+    * item[+]
       * extension
         * url = "http://hl7.org/fhir/uv/sdc/StructureDefinition/sdc-questionnaire-observationLinkPeriod"
         * valueDuration = 200 'a'
@@ -420,7 +422,7 @@ Usage: #inline
 * immutable = true
 * compose.include
   * system = "http://unitsofmeasure.org"
-  * concept[0].code = #[in_i]
+  * concept[+].code = #[in_i]
   * concept[=].display = "inch (international)"
   * concept[+].code = #cm
   * concept[=].display = "centimeters"
@@ -435,7 +437,7 @@ Usage: #inline
 * immutable = true
 * compose.include
   * system = "http://unitsofmeasure.org"
-  * concept[0].code = #[lb_av]
+  * concept[+].code = #[lb_av]
   * concept[=].display = "pound (US and British)"
   * concept[+].code = #kg
   * concept[=].display = "kilograms"

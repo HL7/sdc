@@ -15,13 +15,13 @@ Usage: #definition
 * description = "This profile defines the expected capabilities of the ''SDC Form Designer'' role when conforming to the S&I Framework's [[index.html|Structured Data Capture FHIR implementation guide]].  This role is responsible for defining forms ([[Questionnaire]] resource instances) that include references to [[StructureDefinition]] resouces containing data elements that define the meaning of particular questions and can be used to aid in pre-populating and auto-populating forms."
 * kind = #requirements
 * fhirVersion = #1.0.0
-* format[0] = #xml
+* format[+] = #xml
 * format[+] = #json
 * rest
   * mode = #client
   * documentation = "The [[Questionnaire]] resource is used to create and maintain SDC-compliant forms.  The [[StructureDefinition]] resource is used to look-up existing data elements that can be referenced in forms.  Optionally, [[StructureDefinition]]s can also be created and maintained in conjunction with form editing.  This is an optional feature as not all environments will provide support for data element definitions from form authors.  The [[ValueSet]] and [[CodeSystem]] resources are used to capture allowed values for questions that are to be answered from a pre-defined list of values.  For some forms, some or all of the referenced value sets (and possibly code systems) will be handled as 'contained' resources, meaning the value set exists only in the context of the [[Questionnaire]] and cannot be referenced or maintained without also updating the form.  However, systems should support value set and code system re-use across questionnaires.  (Version-specific referencing can be used to avoid value sets from changing independent of the referencing [[Questionnaire]].)"
   * security.description = "Implementations must meet the general security requirements documented in the [[security.html|SDC implementation guide]]."
-  * resource[0]
+  * resource[+]
     * type = #Questionnaire
     * profile = "http://hl7.org/fhir/uv/sdc/StructureDefinition/sdc-questionnaire"
     * insert Interaction(#SHALL, #search-type, "Allows discovery of existing questionnaires for editing")

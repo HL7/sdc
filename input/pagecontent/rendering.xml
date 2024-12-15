@@ -263,8 +263,7 @@
         <td colspan="5">
           <p>
             Normally, it's up to the render to determine whether to display choices horizontally or vertically or to define multiple columns of choice options.
-            This extension allows forcing the choices to be rendered horizontally or vertically.
-            <!-- Todo - should we instead/as well allow an indication of the number of columns or rows before wrapping? -->
+            This extension allows forcing the choices to be rendered horizontally or vertically.  Also see the <a href="#columnCount">columnCount</a> entry.
           </p>
         </td>
       </tr>
@@ -325,6 +324,24 @@
             This allows the child items of a group or question item to be displayed in a collapsible form (toggle between showing and hiding
             the child items). This is very useful for authors dealing with particularly long questionnaires.  The author might choose to 
             present certain sections collapsed which will provide the user brief overviews before digging into nested items.
+          </p>
+        </td>
+      </tr>
+
+      <tr>
+        <td>
+          <a name="columnCount"> </a>
+          <a href="StructureDefinition-sdc-questionnaire-columnCount.html">columnCount</a>
+        </td>
+        <td>SDC</td>
+        <td>item</td>
+        <td>boolean</td>
+        <td><a href="examples.html#columnCount">example</a></td>
+      </tr>
+      <tr>
+        <td colspan="5">
+          <p>
+            This extension is used with checkboxes and radio buttons to indicate that the list of choices should be split into multiple columns.  The list of options will be spread (as evenly as possible) across the number of columns indicated.  This extension works with <a href="#choiceOrientation">choiceOrientation</a>, in that if the list is horizontally oriented, the options will first list across columns and then after hitting the indicated number of columns will start again at the next row in the first column.  I.e. "list choices across first".  On the other hand, if the list is vertically oriented, choices will be listed down the first column, then the next column, then the last column, aiming to balance the number of entries in the columns, with the last column possibly having fewer items.
           </p>
         </td>
       </tr>
@@ -617,6 +634,29 @@
           </p>
         </td>
       </tr>
+
+
+      <tr>
+        <td>
+          <a name="disabledDisplay"> </a>
+          <a href="https://hl7.org/fhir/r5/questionnaire-definitions.html#Questionnaire.item.disabledDisplay">disabledDisplay</a>
+        </td>
+        <td>R5</td>
+        <td>item</td>
+        <td>code</td>
+        <td><a href="examples.html#enableexamples">example</a></td>
+      </tr>
+      <tr>
+        <td colspan="5">
+          <p>
+            This inter-version extension pre-adopts the FHIR R5 data element and allows control over the appearance of elements that are 'disabled' due to an enableWhen (or enableWhenExpression) that evaluates to false.  It indicates whether disabled content should be hidden (not visible to the user) or should remain visible but simply be disabled, keeping the content from being edited but still allowing the user to see the questions that *could* have been asked.
+          </p>
+          <p>
+            The 'hidden' option makes for a visually simpler form and may also avoid tempting users to change their answers based on what options were disabled based on their previous selections.  However, sometimes it is important that the user *does* have the ability to go back and change their answers if they realize that the disabled questions are relevant.
+          </p>
+        </td>
+      </tr>
+
     </tbody>
   </table>
   <a name="considerations"> </a>

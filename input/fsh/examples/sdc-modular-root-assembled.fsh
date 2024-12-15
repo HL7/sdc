@@ -3,18 +3,21 @@ InstanceOf: SDCParametersQuestionnaireAssembleOut
 Title: "Example $assemble operation response"
 Description: "Shows the result of performing a $assemble operation on the [modular-root](Questionnaire-sdc-modular-root.html) questionnaire"
 Usage: #example
-* parameter[0]
+* parameter[+]
   * name = "return"
   * resource
     * resourceType = "Questionnaire"
-    * extension[0]
+    * extension[+]
+      * url = $questionnaire-versionAlgorithm
+      * valueCoding = $version-algorithm#semver
+    * extension[+]
       * url = "http://hl7.org/fhir/uv/sdc/StructureDefinition/sdc-questionnaire-assembledFrom"
       * valueCanonical = "http://hl7.org/fhir/uv/sdc/Questionnaire/sdc-modular-contact|3.0"
     * extension[+]
       * url = "http://hl7.org/fhir/uv/sdc/StructureDefinition/sdc-questionnaire-assembledFrom"
       * valueCanonical = "http://hl7.org/fhir/uv/sdc/Questionnaire/sdc-modular-name|3.0"
     * extension[+]
-      * extension[0]
+      * extension[+]
         * url = "name"
         * valueCoding = $launchContext#patient
       * extension[+]
@@ -32,15 +35,15 @@ Usage: #example
     * title = "Example modular Questionnaire"
     * status = #active
     * experimental = true
-    * item[0]
-      * extension[0]
+    * item[+]
+      * extension[+]
         * url = "http://hl7.org/fhir/StructureDefinition/variable"
         * valueExpression
           * name = "linkIdPrefix"
           * language = #text/fhirpath
           * expression = "'patientname.'"
       * extension[+]
-        * extension[0]
+        * extension[+]
           * url = "key"
           * valueId = "qcontact-1"
         * extension[+]
@@ -65,7 +68,7 @@ Usage: #example
       * definition = "http://hl7.org/fhir/uv/sdc/StructureDefinition/SdcQuestionLibrary#SdcQuestionLibrary.name"
       * text = "What is the person's official name?"
       * type = #group
-      * item[0]
+      * item[+]
         * extension
           * url = "http://hl7.org/fhir/uv/sdc/StructureDefinition/sdc-questionnaire-initialExpression"
           * valueExpression
@@ -75,7 +78,7 @@ Usage: #example
         * text = "Title"
         * type = #string
         * required = true
-        * answerOption[0].valueString = "Mr."
+        * answerOption[+].valueString = "Mr."
         * answerOption[+].valueString = "Miss"
         * answerOption[+].valueString = "Mrs."
         * answerOption[+].valueString = "Ms."
@@ -104,7 +107,7 @@ Usage: #example
         * required = true
         * maxLength = 100
     * item[+]
-      * extension[0]
+      * extension[+]
         * url = "http://hl7.org/fhir/StructureDefinition/minValue"
         * valueDate = "1900-01-01"
       * extension[+]
@@ -132,7 +135,7 @@ Usage: #example
       * text = "What is this person's current mailing address?"
       * type = #group
       * required = true
-      * item[0]
+      * item[+]
         * linkId = "4.1"
         * type = #display
       * item[+]
@@ -152,7 +155,7 @@ Usage: #example
         * type = #choice
         * answerValueSet = "http://hl7.org/fhir/uv/sdc/ValueSet/sdc-question-library-states"
       * item[+]
-        * extension[0]
+        * extension[+]
           * url = "http://hl7.org/fhir/StructureDefinition/entryFormat"
           * valueString = "9999"
         * extension[+]
@@ -164,7 +167,7 @@ Usage: #example
         * type = #string
         * required = true
     * item[+]
-      * extension[0]
+      * extension[+]
         * url = "http://hl7.org/fhir/uv/sdc/StructureDefinition/sdc-questionnaire-itemPopulationContext"
         * valueExpression
           * name = "person"
@@ -179,15 +182,15 @@ Usage: #example
       * linkId = "5"
       * type = #group
       * required = true
-      * item[0]
-        * extension[0]
+      * item[+]
+        * extension[+]
           * url = "http://hl7.org/fhir/StructureDefinition/variable"
           * valueExpression
             * name = "linkIdPrefix"
             * language = #text/fhirpath
             * expression = "%linkIdPrefix + 'name.'"
         * extension[+]
-          * extension[0]
+          * extension[+]
             * url = "key"
             * valueId = "qcontact-1"
           * extension[+]
@@ -212,7 +215,7 @@ Usage: #example
         * definition = "http://hl7.org/fhir/uv/sdc/StructureDefinition/SdcQuestionLibrary#SdcQuestionLibrary.name"
         * text = "What is the person's official name?"
         * type = #group
-        * item[0]
+        * item[+]
           * extension
             * url = "http://hl7.org/fhir/uv/sdc/StructureDefinition/sdc-questionnaire-initialExpression"
             * valueExpression
@@ -221,7 +224,7 @@ Usage: #example
           * linkId = "patientcontact.name.1"
           * type = #string
           * required = true
-          * answerOption[0].valueString = "Mr."
+          * answerOption[+].valueString = "Mr."
           * answerOption[+].valueString = "Miss"
           * answerOption[+].valueString = "Mrs."
           * answerOption[+].valueString = "Ms."
@@ -267,7 +270,7 @@ Usage: #example
     * text
       * status = #empty
       * div = "<div xmlns=\"http://www.w3.org/1999/xhtml\"><ul><li>Warning: Unable to resolve element definition http://example.org/StructureDefinition/non-existent-library#Stuff.phone when assembling Questionnaire/sdc-modular-contact.  Some constraints and behavior may not be represented</li><li>Unable to resolve element definition http://example.org/StructureDefinition/non-existent-library#Stuff.phone when assembling Questionnaire/sdc-modular-contact.  Some constraints and behavior may not be represented</li></ul></div>"
-    * issue[0]
+    * issue[+]
       * severity = #warning
       * code = #informational
       * details.text = "Unable to resolve element definition http://example.org/StructureDefinition/non-existent-library#Stuff.phone when assembling Questionnaire/sdc-modular-contact.  Some constraints and behavior may not be represented"

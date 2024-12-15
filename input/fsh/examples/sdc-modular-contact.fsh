@@ -2,7 +2,10 @@ Instance: sdc-modular-contact
 InstanceOf: SDCModularQuestionnaire
 Title: "Example sub-module Questionnaire for contact"
 Usage: #example
-* extension[0]
+* extension[+]
+  * url = $questionnaire-versionAlgorithm
+  * valueCoding = $version-algorithm#semver
+* extension[+]
   * url = "http://hl7.org/fhir/uv/sdc/StructureDefinition/sdc-questionnaire-assemble-expectation"
   * valueCode = #assemble-child
 * extension[+]
@@ -17,7 +20,7 @@ Usage: #example
 * status = #active
 * experimental = true
 * description = "Example questionnaire module - represents a patient's contacts and is itself a modular questionnaire that references other questionnaires and element definitions"
-* item[0]
+* item[+]
   * extension
     * url = "http://hl7.org/fhir/StructureDefinition/variable"
     * valueExpression
