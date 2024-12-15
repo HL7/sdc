@@ -5,9 +5,11 @@
     This page provides specific guidelines for use and defines some additional conventions that can be leveraged in queries, FHIRPath and CQL by implementations
     that comply with this implementation guide.
   </p>
-  <blockquote class="stu-note">
-  <b>Note to balloters:</b> The $extract functionality has been refined significantly in this version of the specification, and on this page the 
-  extensions relevant to using expressions have been <a href="#extract">added</a>.
+  <blockquote class="note-to-balloters">
+    <p>
+      The $extract functionality has been refined significantly in this version of the specification, and on this page the 
+      extensions relevant to using expressions have been <a href="#extract">added</a>.
+    </p>
   </blockquote>
   <a name="expression"> </a>
   <h3>Use of the Expression type</h3>
@@ -547,7 +549,7 @@
     <li><a href="https://hl7.org/fhir/r4/fhirpath.html#variables">%resource</a> - the root of the QuestionnaireResponse</li>
     <li><a href="https://hl7.org/fhirpath/N1/#environment-variables">%context</a> - the current item in the QuestionnaireResponse (or Questionnaire when processing at the root level)</li>
     <li><a href="#fhirpath-supplements">%questionnaire</a> - the questionnaire being processed</li>
-    <li><a jref="#fhirpath-supplements">%qitem</a> - the currently processing item in the Questionnaire</li>
+    <li><a href="#fhirpath-supplements">%qitem</a> - the currently processing item in the Questionnaire</li>
     <li>any variables defined by the <a href="StructureDefinition-sdc-questionnaire-extractAllocateId.html">sdc-questionnaire-extractAllocateId</a> extension (from parent items in the questionnaire definition)</li>
   </ul>
 
@@ -640,7 +642,9 @@
       <tr>
         <td colspan="6">
           <blockquote>
-            <b>Note:</b> <i>This extension has been deprecated, migrate to the <a href="StructureDefinition-sdc-questionnaire-definitionExtract.html">definitionExtract</a> extension</i>
+            <p>
+              <b>Note:</b> <i>This extension has been deprecated, migrate to the <a href="StructureDefinition-sdc-questionnaire-definitionExtract.html">definitionExtract</a> extension</i>
+            </p>
           </blockquote>
           <p>
             This expression identifies the resource(s) that correspond either to an overall questionnaire, a group within the questionnaire or, occasionally,
@@ -710,52 +714,11 @@
   <a name="fhirquery"> </a>
   <h3>x-fhir-query enhancements</h3>
   <p>
-    The Expression type indicates that one of the allowed languages is <code>application/x-fhir-query</code>.  This is defined as a FHIR
-    <a href="{{site.data.fhir.path}}search.html">search</a> string.  Normally this will not include the base URL and is intended to be invoked against the
-    system that is completing the QuestionnaireResponse (or whatever FHIR repository the <a href="CapabilityStatement-sdc-form-filler.html">Form Filler</a> is configured to use).
-    However, in some cases, a full URL might be specified, for example if the author of the questionnaire wants values to always be retrieved from a
-    specific source.  </p>
-  <p>
-    In addition to the base query syntax, SDC allows the injection of FHIRPath into the query expressions.  This is to allow the queries to take advantage
-    of context when they are invoked.  Systems SHALL evaluate and substitute the results of such queries before executing them.  The FHIRPaths are denoted by surrounding them with double curly-braces (i.e.
-    <code>{% raw %}{{ fhirpath goes here }}{% endraw %}</code>) in the same way expressions are denoted in the
-    <a href="https://shopify.github.io/liquid">Liquid</a> templating language.
+    x-fhir-query is now formally defined in the <a href="https://hl7.org/fhir/r5/fhir-xquery.html">FHIR R5 specification</a>.  Updates and clarifications may be found in the <a href="https://build.fhir.org/fhir-xquery.html">equivalent page in the FHIR continuous-integration build.  Even though this content was formally migrated into the FHIR core specification in R5, it can still be used with FHIR R4, R4B, and other earlier releases.</a>
   </p>
   <p>
-    For example:
+    When used within the context of a Questionnare, the base URL for the queries is typically that of the server where the QuestionnaireResponse is stored (or whatever FHIR repository the <a href="CapabilityStatement-sdc-form-filler.html">Form Filler</a> is configured to use).  The FHIRPath may use any variables that are in-scope at the point in the x-fhir-query expression is defined (for example, launch-context parameters, variable declarations, etc.).
   </p>
-  <pre><code>Observation?code=http://loinc.org|65972-2&amp;date=gt{% raw %}{{today()-7 days}}{% endraw %}&amp;subject={% raw %}{{%patient.id}}{% endraw %}</code></pre>
-  <p>
-    would return all Observations with the specified LOINC code made in the last week for the specified patient (the %patient variable would likely have been
-    set using <a href="#launchContext">launchContext</a> extension.)
-  </p>
-  <p>
-    NOTE: Some of the FHIRPath content may need to be escaped (precent-encoded) in order to constitute a valid URL.
-  </p>
-  <p>
-    Aside from specifying a FHIR search string, SDC also allows the use of search-type operations (i.e. operations that do not affect state and whose arguments can be expressed 
-    entirely on the URL) to be included in the query expression.
-  </p>
-  <p>
-    For example:
-  </p>
-  <pre><code>Observation/$stats?subject=Patient/123&amp;code=2339-0&amp;system=http://loinc.org&amp;duration=24&amp;statistic=average</code></pre>
-  <p>
-    would return an Observation resource with the average for Glucose [Mass/​volume] in Blood (2339-0) in the last 24 hours for the specified patient.
-  </p>  
-  <p>The SDC IG provides the following rules for the <code>application/x-fhir-query</code> language:
-  </p>
-  <ul>
-    <li>
-    If the expression resolves to a complex element of type Coding, Identifier, or Reference, the element content will be substituted using the standard token format.</li>
-  <li>
-    If the expression resolves to a complex element of type CodeableConcept, the processing will behave as though the expression had an additional node specifying ".coding" 
-    (i.e. the substitution will execute on the collection of codings resolved to within the CodeableConcept).</li>
-  <li>
-    If the expression resolves to an element of type Quantity, it will be converted to a search type of 'quantity'.</li>
-  <li>
-    If the expression resolves to a collection of more than one value, the substitution will be a list of comma-separated values (i.e. behaving as 'or').</li>
-  </ul>   
 
   <a name="dependencies"> </a>
   <h3>Dependencies between expressions</h3>
