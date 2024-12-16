@@ -550,11 +550,23 @@
       Multiple expression extensions can be present at once.  If so, precedence is as follows: initial.value or initialExpression is used if it resolves; if not then candidateExpression
       expression is used.  A link to contextExpression can be present with either of the modes as it may help the user in verifying the content.</li>
     <li>
-      It is an error if the type of an initialExpression or candidateExpression disagrees with the type of the item, with the following exceptions: a Resource
-      can map to a Reference and a Quantity can map to a <code>integer</code> or <code>decimal</code> provided that the
-      <a href="{{site.data.fhir.path}}extension-questionnaire-unit.html">questionnaire-unit</a> extension is present to allow determination of what unit to
-      match on/convert to. However, if the Observation selected for population is a Quantity with a comparator (e.g., "greater than", "less than", etc.), then that 
-      Observation cannot be used for population as the semantics of the comparator would be lost.  Systems that encounter non-matching expressions that resolve to 
+      It is an error if the return type of an initialExpression, calculatedExpression or candidateExpression disagrees with the type of the item, with the following exceptions:
+      <ul>
+        <li>
+          A <code>Resource</code> can map to a <code>Reference</code> item type (populating the reference property with the resource type and id, optionally populating the display)
+        </li>
+        <li>
+          A <code>Quantity</code> can map to an <code>integer</code> or <code>decimal</code> item type provided that the
+          <a href="{{site.data.fhir.path}}extension-questionnaire-unit.html">questionnaire-unit</a> extension is present to allow determination of what unit to
+          match on/convert to. However, if the Observation selected for population is a Quantity with a comparator (e.g., "greater than", "less than", etc.), then that 
+          Observation cannot be used for population as the semantics of the comparator would be lost.
+        </li>
+        <li>
+          A <code>code</code> can be mapped to a <code>coding</code> item type if the value can be uniquely resolved within its answer space,
+          and will be converted to the coding in the QuestionnaireResponse item answer (populating the provided code, and appropriate system value)
+        </li>
+      </ul>
+      Systems that encounter non-matching expressions that resolve to 
       an element that does not agree SHOULD log it but still populate other elements as best they can.</li>
     <li>
       When defining queries in expressions, be sure to filter all relevant elements.  For example, ensuring status excludes entered-in-error elements, practitioners are
