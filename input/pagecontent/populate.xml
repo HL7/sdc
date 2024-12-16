@@ -82,7 +82,7 @@
       by Questionnaire and by item.</li>
     <li>A single Questionnaire can sometimes include data from multiple subjects.  The population process needs to be aware of what the subject
       for a given section of the Questionnaire is and take that into account when retrieving data to populate the record.  (E.g. don't populate
-      an answer asking for a mother's bood type with the child's blood type.)  In SDC, the fact that a particular 'group' in a Questionnaire has
+      an answer asking for a mother's blood type with the child's blood type.)  In SDC, the fact that a particular 'group' in a Questionnaire has
       a distinct subject is communicated using the <a href="StructureDefinition-sdc-questionnaire-isSubject.html">isSubject</a> extension.  An 
       <a href="StructureDefinition-sdc-questionnaireresponse-isSubject.html">equivalent extension</a> flags the element within the 
       QuestionnaireResponse.</li>
@@ -532,7 +532,7 @@
 	  <li>
 	  Variables made available by launch context may be used by any expression within the Questionnaire, however they are most safely used within initialExpression.  
 	  Because the launch context might vary each time the QuestionnaireResponse is opened or edited, by populating launchContext into the values of (possibly hidden) 
-	  questions via iniitalExpression, the 'original' context in which the QuestionnaireResponse was created can be retained..</li>
+	  questions via initialExpression, the 'original' context in which the QuestionnaireResponse was created can be retained..</li>
     <li>
       Unlike initialExpressions, candidateExpressions can appear on groups as well as questions.  If they appear on a group item and the group item is allowed
       to repeat, then a separate group instance is created for each repetition the user selects from the candidates.  The variable named in the candidateExpression
@@ -550,11 +550,23 @@
       Multiple expression extensions can be present at once.  If so, precedence is as follows: initial.value or initialExpression is used if it resolves; if not then candidateExpression
       expression is used.  A link to contextExpression can be present with either of the modes as it may help the user in verifying the content.</li>
     <li>
-      It is an error if the type of an initialExpression or candidateExpression disagrees with the type of the item, with the following exceptions: a Resource
-      can map to a Reference and a Quantity can map to a <code>integer</code> or <code>decimal</code> provided that the
-      <a href="{{site.data.fhir.path}}extension-questionnaire-unit.html">questionnaire-unit</a> extension is present to allow determination of what unit to
-      match on/convert to. However, if the Observation selected for population is a Quantity with a comparator (e.g., "greater than", "less than", etc.), then that 
-      Observation cannot be used for population as the semantics of the comparator would be lost.  Systems that encounter non-matching expressions that resolve to 
+      It is an error if the return type of an initialExpression, calculatedExpression or candidateExpression disagrees with the type of the item, with the following exceptions:
+      <ul>
+        <li>
+          A <code>Resource</code> can map to a <code>Reference</code> item type (populating the reference property with the resource type and id, optionally populating the display)
+        </li>
+        <li>
+          A <code>Quantity</code> can map to an <code>integer</code> or <code>decimal</code> item type provided that the
+          <a href="{{site.data.fhir.path}}extension-questionnaire-unit.html">questionnaire-unit</a> extension is present to allow determination of what unit to
+          match on/convert to. However, if the Observation selected for population is a Quantity with a comparator (e.g., "greater than", "less than", etc.), then that 
+          Observation cannot be used for population as the semantics of the comparator would be lost.
+        </li>
+        <li>
+          A <code>code</code> can be mapped to a <code>coding</code> item type if the value can be uniquely resolved within its answer space,
+          and will be converted to the coding in the QuestionnaireResponse item answer (populating the provided code, and appropriate system value)
+        </li>
+      </ul>
+      Systems that encounter non-matching expressions that resolve to 
       an element that does not agree SHOULD log it but still populate other elements as best they can.</li>
     <li>
       When defining queries in expressions, be sure to filter all relevant elements.  For example, ensuring status excludes entered-in-error elements, practitioners are
@@ -608,7 +620,7 @@
       It is possible that answerExpression and initialExpression can both exist.  InitialExpression runs on launch and answerExpression should run whenever the 
       user interface needs to render the question, the user interacts with the question or during validation.</li>
     <li>
-      An answerExpresssion and calculatedExpression can both exist and are re-calculated when the source for their expressions change.  
+      An answerExpression and calculatedExpression can both exist and are re-calculated when the source for their expressions change.  
       If the calculatedExpression is not valid according to the results of the current answerExpression, the QuestionnaireResponse will fail 
       validation and be unable to be marked as 'completed' until corrected.</li>
     <li>

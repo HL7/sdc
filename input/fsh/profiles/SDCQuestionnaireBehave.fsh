@@ -48,7 +48,8 @@ Description: "Defines additional capabilities for controlling data entry and cal
       $targetConstraint named itemConstraint 0..* and
       InitialExpressionExtension named initialExpression 0..1 and
       CalculatedExpressionExtension named calculatedExpression 0..1 and
-      EnableWhenExpressionExtension named enableWhenExpression 0..1 MS
+      EnableWhenExpressionExtension named enableWhenExpression 0..1 MS and 
+      Keyboard named keyboardType 0..1
   * extension[itemMinOccurs].value[x] ^mustSupport = false
     * extension contains
         $cqf-expression named itemMinOccursExpression 0..1 MS

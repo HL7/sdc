@@ -26,7 +26,8 @@ Description: "Defines additional capabilities for controlling the rendering of t
       $questionnaire-sliderStepValue named sliderStepValue 0..1 and
       $entryFormat named entryFormat 0..1 MS and
       CollapsibleExtension named collapsible 0..1 and
-      ColumnCountExtension named columnCount 0..1
+      ColumnCountExtension named columnCount 0..1 and 
+      Keyboard named keyboardType 0..1
   * prefix
     * extension contains
         $rendering-style named itemLabel-renderingStyle 0..1 and
