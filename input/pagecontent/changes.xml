@@ -13,7 +13,11 @@
         <li><a href="http://jira.hl7.org/browse/FHIR-49000">FHIR-49000</a> - Add interversion extensions to support R5 elements</li>
         <li><a href="http://jira.hl7.org/browse/FHIR-49001">FHIR-49001</a> - Require versionAlgorithm to be declared</li>
         <li><a href="http://jira.hl7.org/browse/FHIR-48949">FHIR-48949</a> - Made 'property' in CodeSystem and ValueSet mustSupport</li>
-        <li><a href="http://jira.hl7.org/browse/FHIR-31077">FHIR-31077</a> - introduced the various workflow instantiates extensions on QuestionnaireResponse</li>
+        <li><a href="http://jira.hl7.org/browse/FHIR-31077">FHIR-31077</a> - Clarified expectations for enableWhen elements in a QuestionnaireResponse</li>
+        <li><a href="http://jira.hl7.org/browse/FHIR-32898">FHIR-32898</a> - Introduced the various workflow instantiates extensions on QuestionnaireResponse</li>
+        <li><a href="http://jira.hl7.org/browse/FHIR-44979">FHIR-44979</a> - Allow weight extension on QuestionnaireResponse</li>
+        <li><a href="http://jira.hl7.org/browse/FHIR-23977">FHIR-23977</a> - Changed preferredTerminologyServer extension to core extension</li>
+        <li><a href="http://jira.hl7.org/browse/FHIR-39693">FHIR-39693</a> - Softened expectations on handling signatures</li>
       </ul>
     </li>
     <li>Adaptive forms changes:
@@ -21,7 +25,6 @@
         <li><a href="http://jira.hl7.org/browse/FHIR-48761">FHIR-48761</a> - Made the adaptive extension 1..* on search and 0..* on the contained Questionnaire</li>
         <li><a href="http://jira.hl7.org/browse/FHIR-49004">FHIR-49004</a> -  Generified subject to be optional and allow any resource, not just Patient</li>
         <li><a href="http://jira.hl7.org/browse/FHIR-35886">FHIR-35886</a> - Enforce that Questionnaires valid against the profile must always be contained within a QuestionnaireResponse and documented security considerations</li>
-        <li><a href="http://jira.hl7.org/browse/FHIR-21023">FHIR-21023</a> - Dropped 'prompt' as a code for itemControl</li>
       </ul>
     </li>
     <li>Advanced behavior changes:
@@ -31,27 +34,30 @@
         <li><a href="http://jira.hl7.org/browse/FHIR-48807">FHIR-48807</a> - Tighened rules on 'page' extension to prohibit non-page/header/footer siblings</li>
         <li><a href="http://jira.hl7.org/browse/FHIR-42990">FHIR-42990</a> - deprecated styleSensitive and added rendering-critical extension (and moved it to the base Questionnaire profile)</li>
         <li><a href="http://jira.hl7.org/browse/FHIR-33675">FHIR-33675</a> - Added an extension to support indicating keyboard type</li>
-        <li><a href="http://jira.hl7.org/browse/FHIR-32898">FHIR-32898</a> - changed ordinalValue to itemWeight and moved it to answer</li>
+        <li><a href="http://jira.hl7.org/browse/FHIR-28611">FHIR-28611</a>, <a href="http://jira.hl7.org/browse/FHIR-46056">FHIR-46056</a> - Changed ordinalValue to itemWeight and moved it to answer</li>
+        <li><a href="http://jira.hl7.org/browse/FHIR-37362">FHIR-37362</a> - Replaced constraint extension with core extension</li>
       </ul>
     </li>
     <li>Modular form changes:
       <ul>
         <li><a href="http://jira.hl7.org/browse/FHIR-40454">FHIR-40454</a> - Allow $assemble to be passed the Questionnaire in the same manner as $populate</li>
-        <li><a href="http://jira.hl7.org/browse/FHIR-40452">FHIR-40452</a> - Corrected statement about url to indicate that url doesn't change</li>
+        <li><a href="http://jira.hl7.org/browse/FHIR-40452">FHIR-40452</a>, <a href="http://jira.hl7.org/browse/FHIR-40554">FHIR-40554</a> - Corrected statement about url and version to indicate that they don't change between unassembled and assembled representations</li>
       </ul>
     </li>
     <li>Extraction changes:
       <ul>
-        <li>Considerably revamped definition-based extraction, including: <a href="http://jira.hl7.org/browse/FHIR-42816">FHIR-42816</a>, <a href="http://jira.hl7.org/browse/FHIR-48691">FHIR-48691</a>, <a href="http://jira.hl7.org/browse/FHIR-48337">FHIR-48337</a></li>
+        <li>Considerably revamped definition-based extraction, including: <a href="http://jira.hl7.org/browse/FHIR-42816">FHIR-42816</a>, <a href="http://jira.hl7.org/browse/FHIR-48691">FHIR-48691</a>, <a href="http://jira.hl7.org/browse/FHIR-48337">FHIR-48337</a>, <a href="http://jira.hl7.org/browse/FHIR-37357">FHIR-37357</a></li>
         <li><a href="http://jira.hl7.org/browse/FHIR-39498">FHIR-39498</a> - Added new template-based extraction mechanism</li>
         <li><a href="http://jira.hl7.org/browse/FHIR-37572">FHIR-37572</a> - Allow ObservationExtract extension to appear on the root and to support member and component extraction</li>
       </ul>
     </li>
-    <li>Expression extension changes:
+    <li>Handling Expressions changes:
       <ul>
         <li><a href="http://jira.hl7.org/browse/FHIR-41331">FHIR-41331</a> - Allow user in launchContext to be Device or Organization</li>
         <li><a href="http://jira.hl7.org/browse/FHIR-48678">FHIR-48678</a> - Added a 'clinical' launchContext code and set rules for other contexts about allowed number of repetitions</li>
         <li><a href="http://jira.hl7.org/browse/FHIR-48334">FHIR-48334</a> - Allow $extract to be passed in the Questionnaire</li>
+        <li><a href="http://jira.hl7.org/browse/FHIR-37508">FHIR-37508</a> - Dropped the answers() FHIRPath function and clarified that answerExpression always returns a Coding, plus additional guidance on how InitialExpression and CalculatedExpression handle non-Coding codes.  Also explain how to implement weight.</li>
+        <li><a href="http://jira.hl7.org/browse/FHIR-43083">FHIR-43083</a> - Added guidance on handling colliding names</li>
       </ul>
     </li>
     <li>Population changes:
@@ -63,20 +69,15 @@
         <li><a href="http://jira.hl7.org/browse/FHIR-48670">FHIR-48670</a> - Corrected $populate launchContext parameter type and cardinality</li>
         <li><a href="http://jira.hl7.org/browse/FHIR-39445">FHIR-39445</a> - Collapsed launchContext and context in the populate operations, allowed Resource as a value for context, and allowed source queries as a type of context</li>
         <li><a href="http://jira.hl7.org/browse/FHIR-46197">FHIR-46197</a> - Allow populate operations to be called without a subject</li>
+        <li><a href="http://jira.hl7.org/browse/FHIR-37341">FHIR-37341</a> - Explain handling of code type when populating</li>
       </ul>
     </li>
-        <li><a href="http://jira.hl7.org/browse/FHIR-28611">FHIR-28611</a> - ?</li>
-        <li><a href="http://jira.hl7.org/browse/FHIR-44979">FHIR-44979</a> - ?</li>
-        <li><a href="http://jira.hl7.org/browse/FHIR-37466">FHIR-37466</a> - ?</li>
-        <li><a href="http://jira.hl7.org/browse/FHIR-37362">FHIR-37362</a> - ?</li>
-        <li><a href="http://jira.hl7.org/browse/FHIR-23977">FHIR-23977</a> - ?</li>
-        <li><a href="http://jira.hl7.org/browse/FHIR-37357">FHIR-37357</a> - ?</li>
-        <li><a href="http://jira.hl7.org/browse/FHIR-37341">FHIR-37341</a> - ?</li>
-        <li><a href="http://jira.hl7.org/browse/FHIR-40554">FHIR-40554</a> - ?</li>
-        <li><a href="http://jira.hl7.org/browse/FHIR-39693">FHIR-39693</a> - ?</li>
-        <li><a href="http://jira.hl7.org/browse/FHIR-37508">FHIR-37508</a> - ?</li>
-        <li><a href="http://jira.hl7.org/browse/FHIR-46056">FHIR-46056</a> - ?</li>
-        <li><a href="http://jira.hl7.org/browse/FHIR-43083">FHIR-43083</a> - ?</li>
+    <li>Advanced rendering changes
+      <ul>
+        <li><a href="http://jira.hl7.org/browse/FHIR-21023">FHIR-21023</a> - Dropped 'prompt' as a code for itemControl</li>
+        <li><a href="http://jira.hl7.org/browse/FHIR-37466">FHIR-37466</a> - Introduced columnCount extension</li>
+      </ul>
+    </li>
   </ul>
 
   <a name="3.0.0"> </a>

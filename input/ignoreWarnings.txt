@@ -31,6 +31,52 @@ WARNING: Questionnaire/questionnaire-sdc-profile-example-ussg-fht: Questionnaire
 # 00d This is a new spurious error.  Reported here: https://chat.fhir.org/#narrow/channel/179252-IG-creation/topic/Unrecognized.20property.20'valueExpression'
 ERROR: Questionnaire.item[3].item[1].item[5].extension[0]: Unrecognized property 'valueExpression'
 
+# 00e These issues all result from pointing to the non-current version of the extensions pack
+INFORMATION: Questionnaire/questionnaire-sdc-profile-example-loinc: Questionnaire.extension[1]: This element does not match any known slice defined in the profile http://hl7.org/fhir/uv/sdc/StructureDefinition/sdc-questionnaire|4.0.0-ballot (this may not be a problem, but you should check that it's not intended to match a slice)
+Reference to draft CodeSystem http://hl7.org/fhir/choice-list-orientation|5.1.0
+Reference to draft CodeSystem http://hl7.org/fhir/questionnaire-usage-mode|5.1.0
+Reference to experimental CodeSystem http://hl7.org/fhir/questionnaire-derivationType|5.1.0
+The extension http://hl7.org/fhir/StructureDefinition/preferredTerminologyServer could not be found so is not allowed here
+The extension http://hl7.org/fhir/StructureDefinition/questionnaire-derivationType is not allowed to be used at this point (allowed = e:Questionnaire.derivation; this element is [Questionnaire.derivedFrom, QuestionnaireResponse.contained/*Questionnaire/contained-adaptive-questionnaire-example-phq9*/.derivedFrom, canonical])
+The extension http://hl7.org/fhir/StructureDefinition/questionnaire-derivationType is not allowed to be used at this point (allowed = e:Questionnaire.derivation; this element is [Questionnaire.derivedFrom, canonical])
+The extension http://hl7.org/fhir/StructureDefinition/referencesContained is not allowed to be used at this point (allowed = e:Expression; this element is [Coding.display.extension.value, Coding.display.extension.value.ofType(string), Coding.display.extension.valuestring, Extension.value, Extension.value.ofType(string), Extension.valuestring, Questionnaire.item.answerOption.value.ofType(Coding).display.extension.value.ofType(string), string, string.extension.value, string.extension.value.ofType(string), string.extension.valuestring])
+The link 'http://hl7.org/fhir/extensions/5.1.0/StructureDefinition-packagesource.html' for "packagesource" cannot be resolved
+The link 'http://hl7.org/fhir/extensions/5.1.0/extension-itemWeight.html' for "itemWeight" cannot be resolved
+The link 'http://hl7.org/fhir/extensions/5.1.0/extension-targetConstraint.html' for "targetConstraint" cannot be resolved
+The link 'http://hl7.org/fhir/extensions/5.1.0codesystem-concept-properties.html#concept-properties-itemWeight' for "itemWeight property" cannot be resolved
+The link 'http://hl7.org/fhir/uv/sdc/behavior#unitValusSet' for "SDC implementation guide" cannot be resolved
+The link 'http://hl7.org/fhir/uv/sdc/behavior.html#cqf-calculatedValue' for "SDC implementation guide" cannot be resolved
+The link 'http://hl7.org/fhir/uv/sdc/behavior.html#cqf-expression' for "SDC implementation guide" cannot be resolved
+The link 'http://hl7.org/fhir/uv/sdc/behavior.html#cqf-library' for "SDC implementation guide" cannot be resolved
+The link 'http://hl7.org/fhir/uv/sdc/behavior.html#maxDecimalPlaces' for "SDC implementation guide" cannot be resolved
+The link 'http://hl7.org/fhir/uv/sdc/behavior.html#maxOccurs' for "SDC implementation guide" cannot be resolved
+The link 'http://hl7.org/fhir/uv/sdc/behavior.html#maxSize' for "SDC implementation guide" cannot be resolved
+The link 'http://hl7.org/fhir/uv/sdc/behavior.html#maxValue' for "SDC implementation guide" cannot be resolved
+The link 'http://hl7.org/fhir/uv/sdc/behavior.html#mimeType' for "SDC implementation guide" cannot be resolved
+The link 'http://hl7.org/fhir/uv/sdc/behavior.html#minLength' for "SDC implementation guide" cannot be resolved
+The link 'http://hl7.org/fhir/uv/sdc/behavior.html#minOccurs' for "SDC implementation guide" cannot be resolved
+The link 'http://hl7.org/fhir/uv/sdc/behavior.html#minValue' for "SDC implementation guide" cannot be resolved
+The link 'http://hl7.org/fhir/uv/sdc/behavior.html#optionExclusive' for "SDC implementation guide" cannot be resolved
+The link 'http://hl7.org/fhir/uv/sdc/behavior.html#referenceProfile' for "SDC implementation guide" cannot be resolved
+The link 'http://hl7.org/fhir/uv/sdc/behavior.html#referenceResource' for "SDC implementation guide" cannot be resolved
+The link 'http://hl7.org/fhir/uv/sdc/behavior.html#signatureRequired' for "SDC implementation guide" cannot be resolved
+The link 'http://hl7.org/fhir/uv/sdc/behavior.html#unitOption' for "SDC implementation guide" cannot be resolved
+The link 'http://hl7.org/fhir/uv/sdc/behavior.html#usageMode' for "SDC implementation guide" cannot be resolved
+The link 'http://hl7.org/fhir/uv/sdc/behavior.html#variable' for "SDC implementation guide" cannot be resolved
+The link 'http://hl7.org/fhir/uv/sdc/rendering.html#choiceOrientation' for "SDC implementation guide" cannot be resolved
+The link 'http://hl7.org/fhir/uv/sdc/rendering.html#displayCategory' for "SDC implementation guide" cannot be resolved
+The link 'http://hl7.org/fhir/uv/sdc/rendering.html#entryFormat' for "SDC implementation guide" cannot be resolved
+The link 'http://hl7.org/fhir/uv/sdc/rendering.html#hidden' for "SDC implementation guide" cannot be resolved
+The link 'http://hl7.org/fhir/uv/sdc/rendering.html#itemControl' for "SDC implementation guide" cannot be resolved
+The link 'http://hl7.org/fhir/uv/sdc/rendering.html#optionPrefix' for "SDC implementation guide" cannot be resolved
+The link 'http://hl7.org/fhir/uv/sdc/rendering.html#rendering-style' for "SDC implementation guide" cannot be resolved
+The link 'http://hl7.org/fhir/uv/sdc/rendering.html#rendering-xhtml' for "SDC implementation guide" cannot be resolved
+The link 'http://hl7.org/fhir/uv/sdc/rendering.html#sliderStepValue' for "SDC implementation guide" cannot be resolved
+The link 'http://hl7.org/fhir/uv/sdc/rendering.html#supportLink' for "SDC implementation guide" cannot be resolved
+The link 'http://hl7.org/fhir/uv/sdc/rendering.html#valueset-label' for "SDC implementation guide" cannot be resolved
+URL value 'http://hl7.org/fhir/StructureDefinition/preferredTerminologyServer' does not resolve
+
+
 # 01. This should go away once we are using the updated version of the extensions pack
 Reference to draft CodeSystem http://hl7.org/fhir/questionnaire-derivationType|5.2.0-ballot
 

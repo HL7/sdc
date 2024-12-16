@@ -9,7 +9,7 @@ Description: "Defines common elements for all SDC Questionnaires (regular or ada
 //To do: Fix the hard-coding of the indexes on the constraints to apply the best-practice extension.
 * . ^constraint[9].extension[$best-practice].valueBoolean = true
 * extension contains
-    $preferredTerminologyServer named terminologyServer 0..* and
+//    $preferredTerminologyServer named terminologyServer 0..* and
     $questionnaire-versionAlgorithm named versionAlgorithm 0..1 MS and
     $questionnaire-copyrightLabel named copyrightLabel 0..1
 * url
@@ -20,7 +20,7 @@ Description: "Defines common elements for all SDC Questionnaires (regular or ada
   * obeys sdc-1 and que-1a and que-1b and que-1c and que-14
   * extension contains 
     $questionnaire-hidden named hidden 0..1 MS and
-    $preferredTerminologyServer named terminologyServer 0..* and
+//    $preferredTerminologyServer named terminologyServer 0..* and
     $questionnaire-answerConstraint named answerConstraint 0..1
   * linkId MS
     * obeys que-15
