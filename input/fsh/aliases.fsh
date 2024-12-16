@@ -91,6 +91,7 @@ Alias: $minLength                            = http://hl7.org/fhir/StructureDefi
 Alias: $minValue                             = http://hl7.org/fhir/StructureDefinition/minValue
 Alias: $preferredTerminologyServer           = http://hl7.org/fhir/StructureDefinition/preferredTerminologyServer
 Alias: $questionnaire-choiceOrientation      = http://hl7.org/fhir/StructureDefinition/questionnaire-choiceOrientation
+Alias: $questionnaire-derivationType         = http://hl7.org/fhir/StructureDefinition/questionnaire-derivationType
 Alias: $questionnaire-displayCategory        = http://hl7.org/fhir/StructureDefinition/questionnaire-displayCategory
 Alias: $questionnaire-hidden                 = http://hl7.org/fhir/StructureDefinition/questionnaire-hidden
 Alias: $questionnaire-itemControl            = http://hl7.org/fhir/StructureDefinition/questionnaire-itemControl

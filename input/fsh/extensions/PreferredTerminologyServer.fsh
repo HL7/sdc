@@ -3,7 +3,7 @@ Id: sdc-questionnaire-preferredTerminologyServer
 Title: "Preferred Terminology Server"
 Description: "Use the new  generic http://hl7.org/fhir/StructureDefinition/preferredTerminologyServer instead"
 * ^extension[$standard-status].valueCode = #deprecated
-* ^status = #active
+* ^status = #retired
 * ^purpose = "Not all terminology servers will necessarily have access to the codes.  If a questionnaire points to value sets, the rendering engine needs to know where to get a current expansion."
 * ^context[+].type = #element
 * ^context[=].expression = "Questionnaire"

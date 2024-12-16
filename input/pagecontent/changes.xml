@@ -2,10 +2,78 @@
 	<p>
     This provides a list of changes to the SDC specification since its initial release
   </p>
+  <a name="4.0.0-ballot"> </a>
+  <h3>2024-12-20 v4.0.0-ballot - SDC R4 ballot</h3>
+  <ul>
+    <li>A large number of non-substantive clarifications and corrections, plus the following substantive changes:</li>
+    <li>General changes:
+      <ul>
+        <li><a href="http://jira.hl7.org/browse/FHIR-49002">FHIR-49002</a> - Created common abstract parents for Questionnaire and QuestionnaireResponse shared across 'adaptive' and 'regular' versions</li>
+      </ul>
+    </li>
+    <li>Adaptive forms changes:
+      <ul>
+        <li><a href="http://jira.hl7.org/browse/FHIR-48761">FHIR-48761</a> - Made the adaptive extension 1..* on search and 0..* on the contained Questionnaire</li>
+        <li><a href="http://jira.hl7.org/browse/FHIR-49004">FHIR-49004</a> -  Generified subject to be optional and allow any resource, not just Patient</li>
+        <li><a href="http://jira.hl7.org/browse/FHIR-35886">FHIR-35886</a> - Enforce that Questionnaires valid against the profile must always be contained within a QuestionnaireResponse and documented security considerations</li>
+      </ul>
+    </li>
+    <li>Advanced behavior changes:
+      <ul>
+        <li><a href="http://jira.hl7.org/browse/FHIR-42970">FHIR-42970</a> - Dropped the use of the regex extension and replaced with the constraint extension</li>
+        <li><a href="http://jira.hl7.org/browse/FHIR-31992">FHIR-31992</a> - dropped cqf-calculatedValue for min and maxOccurs</li>
+        <li><a href="http://jira.hl7.org/browse/FHIR-48807">FHIR-48807</a> - Tighened rules on 'page' extension to prohibit non-page/header/footer siblings</li>
+        <li><a href="http://jira.hl7.org/browse/FHIR-42990">FHIR-42990</a> - deprecated styleSensitive and added rendering-critical extension (and moved it to the base Questionnaire profile)</li>
+      </ul>
+    </li>
+    <li>Modular form changes:
+      <ul>
+        <li></li>
+      </ul>
+    </li>
+    <li><a href="http://jira.hl7.org/browse/FHIR-40454">FHIR-40454</a> - Allow $assemble to be invoked on the Questionnaire rather than just the root</li>
+    <li><a href="http://jira.hl7.org/browse/FHIR-40452">FHIR-40452</a> - ?</li>
+    <li><a href="http://jira.hl7.org/browse/FHIR-42816">FHIR-42816</a> - ?</li>
+    <li><a href="http://jira.hl7.org/browse/FHIR-48691">FHIR-48691</a> - ?</li>
+    <li><a href="http://jira.hl7.org/browse/FHIR-48337">FHIR-48337</a> - ?</li>
+    <li><a href="http://jira.hl7.org/browse/FHIR-39498">FHIR-39498</a> - ?</li>
+    <li><a href="http://jira.hl7.org/browse/FHIR-37572">FHIR-37572</a> - ?</li>
+    <li><a href="http://jira.hl7.org/browse/FHIR-41331">FHIR-41331</a> - ?</li>
+    <li><a href="http://jira.hl7.org/browse/FHIR-48678">FHIR-48678</a> - ?</li>
+    <li><a href="http://jira.hl7.org/browse/FHIR-48652">FHIR-48652</a> - ?</li>
+    <li><a href="http://jira.hl7.org/browse/FHIR-48983">FHIR-48983</a> - ?</li>
+    <li><a href="http://jira.hl7.org/browse/FHIR-39462">FHIR-39462</a> - ?</li>
+    <li><a href="http://jira.hl7.org/browse/FHIR-44578">FHIR-44578</a> - ?</li>
+    <li><a href="http://jira.hl7.org/browse/FHIR-48670">FHIR-48670</a> - ?</li>
+    <li><a href="http://jira.hl7.org/browse/FHIR-39445">FHIR-39445</a> - ?</li>
+    <li><a href="http://jira.hl7.org/browse/FHIR-46197">FHIR-46197</a> - ?</li>
+    <li><a href="http://jira.hl7.org/browse/FHIR-48334">FHIR-48334</a> - ?</li>
+    <li><a href="http://jira.hl7.org/browse/FHIR-43153">FHIR-43153</a> - ?</li>
+    <li><a href="http://jira.hl7.org/browse/FHIR-21023">FHIR-21023</a> - ?</li>
+    <li><a href="http://jira.hl7.org/browse/FHIR-49001">FHIR-49001</a> - ?</li>
+    <li><a href="http://jira.hl7.org/browse/FHIR-49000">FHIR-49000</a> - ?</li>
+    <li><a href="http://jira.hl7.org/browse/FHIR-48949">FHIR-48949</a> - ?</li>
+    <li><a href="http://jira.hl7.org/browse/FHIR-33675">FHIR-33675</a> - ?</li>
+    <li><a href="http://jira.hl7.org/browse/FHIR-31077">FHIR-31077</a> - ?</li>
+    <li><a href="http://jira.hl7.org/browse/FHIR-32898">FHIR-32898</a> - ?</li>
+    <li><a href="http://jira.hl7.org/browse/FHIR-28611">FHIR-28611</a> - ?</li>
+    <li><a href="http://jira.hl7.org/browse/FHIR-44979">FHIR-44979</a> - ?</li>
+    <li><a href="http://jira.hl7.org/browse/FHIR-37466">FHIR-37466</a> - ?</li>
+    <li><a href="http://jira.hl7.org/browse/FHIR-37362">FHIR-37362</a> - ?</li>
+    <li><a href="http://jira.hl7.org/browse/FHIR-23977">FHIR-23977</a> - ?</li>
+    <li><a href="http://jira.hl7.org/browse/FHIR-37357">FHIR-37357</a> - ?</li>
+    <li><a href="http://jira.hl7.org/browse/FHIR-37341">FHIR-37341</a> - ?</li>
+    <li><a href="http://jira.hl7.org/browse/FHIR-40554">FHIR-40554</a> - ?</li>
+    <li><a href="http://jira.hl7.org/browse/FHIR-39693">FHIR-39693</a> - ?</li>
+    <li><a href="http://jira.hl7.org/browse/FHIR-37508">FHIR-37508</a> - ?</li>
+    <li><a href="http://jira.hl7.org/browse/FHIR-46056">FHIR-46056</a> - ?</li>
+    <li><a href="http://jira.hl7.org/browse/FHIR-43083">FHIR-43083</a> - ?</li>
+  </ul>
+
   <a name="3.0.0"> </a>
-  <p>
+  <h3>
 		<b>2021-10-31 v3.0.0 - SDC R3 Official Publication</b> based on FHIR R4 (STU)
-  </p>
+  </h3>
 	<ul>
 		<li>Updated to reflect FHIR version 4.0.1, including new publishing framework and template (with specific template version)
       <ul>
@@ -49,18 +117,18 @@
 		<li>Updated many profiles, clarified the scope and usage of the profiles, and added new examples to the profiles (based on submitted <a href="http://hl7.org/fhir-issues">Change requests</a>)</li>
 		<li>Several updates or enhancements to the documentation text to improve clarity</li>
 	</ul>
-	<p>
+	<h3>
 		<b>2019-03-29 v2.7.0 - SDC R3 (STU ballot 1) Ballot Candidate</b> based on FHIR R4 (STU) ballot candidate
-  </p>
+  </h3>
   <ul>
     <li>Updated to reflect final version of R4, including migration of a number of extensions from core to the SDC specification</li>
     <li>Introduction of several new extensions to support population and extraction</li>
     <li>Clean-up of the specification and completion of description of the rendering and flow control pages</li>
     <li>Numerous other changes based on submitted <a href="http://hl7.org/fhir-issues">Change requests</a></li>
   </ul>
-	<p>
+	<h3>
 		<b>2018-08-31 v2.5.0 - SDC Edition 3 (Draft) Ballot Candidate</b> based on FHIR R4 (STU) ballot candidate
-  </p>
+  </h3>
 	<ul>
 		<li>Updated to reflect changes to the Questionnaire, QuestionnaireResponse and ValueSet resources including alignment of data elements and search criteria.  Significant changes include:
       <ul>
@@ -112,9 +180,9 @@
 		<li>Various changes to the documentation text to improve clarity and add implementation guidance</li>
 		<li>Re-organized pages to have table of contents as the root (which resulted in renumbering of sections)</li>
 	</ul>
-	<p>
+	<h3>
 		<b>2016-08-11 v1.6 - SDC R2 (STU) Ballot Candidate</b> based on FHIR R3 (STU) ballot candidate
-  </p>
+  </h3>
 	<ul>
 		<li>Updated to reflect changes to the Questionnaire, QuestionnaireResponse and ValueSet resources including alignment of data elements and search criteria.  Significant changes include:
       <ul>
@@ -149,9 +217,9 @@
 			</ul>
 		</li>
 	</ul>
-	<p>
+	<h3>
 		<b>2015-10-24 v1.0 - SDC R2 (DSTU) Official Publication</b> based on FHIR R2 (DSTU) publication
-  </p>
+  </h3>
 	<ul>
 		<li>First official release</li>
 	</ul>

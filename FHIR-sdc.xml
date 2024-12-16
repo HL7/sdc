@@ -84,6 +84,8 @@
 <artifact id="StructureDefinition/sdc-questionnaire-itemMedia" key="StructureDefinition-sdc-questionnaire-itemMedia" name="Item Media"/>
 <artifact deprecated="true" id="StructureDefinition/sdc-questionnaire-itemContext" key="StructureDefinition-sdc-questionnaire-itemContext" name="Item context"/>
 <artifact id="StructureDefinition/sdc-questionnaire-itemPopulationContext" key="StructureDefinition-sdc-questionnaire-itemPopulationContext" name="Item population context"/>
+<artifact id="StructureDefinition/sdc-questionnaire-keyboard" key="StructureDefinition-sdc-questionnaire-keyboard" name="Keyboard Type"/>
+<artifact id="CodeSystem/keyboardType" key="CodeSystem-keyboardType" name="Keyboard Type"/>
 <artifact id="StructureDefinition/sdc-questionnaire-openLabel" key="StructureDefinition-sdc-questionnaire-openLabel" name="Label for 'open' items"/>
 <artifact id="CodeSystem/launchContext" key="CodeSystem-launchContext" name="Launch Context"/>
 <artifact id="StructureDefinition/sdc-questionnaire-launchContext" key="StructureDefinition-sdc-questionnaire-launchContext" name="Launch Contexts"/>
@@ -124,6 +126,7 @@
 <artifact id="ValueSet/entryMode" key="ValueSet-entryMode" name="Questionnaire Entry Mode"/>
 <artifact id="SearchParameter/questionnaire-assemble-expectation" key="SearchParameter-questionnaire-assemble-expectation" name="Questionnaire Is Modular Search Parameter"/>
 <artifact id="ValueSet/collapsible" key="ValueSet-collapsible" name="Questionnaire Item Collapsible"/>
+<artifact id="ValueSet/keyboardType" key="ValueSet-keyboardType" name="Questionnaire Item Keyboard Type"/>
 <artifact id="SearchParameter/questionnaire-definition" key="SearchParameter-questionnaire-definition" name="Questionnaire Item definition"/>
 <artifact id="ValueSet/launchContext" key="ValueSet-launchContext" name="Questionnaire Launch Context"/>
 <artifact id="ValueSet/performerType" key="ValueSet-performerType" name="Questionnaire Performer Type"/>
@@ -142,6 +145,8 @@
 <artifact id="Task/request-task-example" key="Task-request-task-example" name="Request-based solicitation example - Task"/>
 <artifact id="StructureDefinition/sdc-questionnaire" key="StructureDefinition-sdc-questionnaire" name="SDC Base Questionnaire"/>
 <artifact id="StructureDefinition/sdc-codesystem" key="StructureDefinition-sdc-codesystem" name="SDC Code System"/>
+<artifact id="Questionnaire/sdc-derivation-child" key="Questionnaire-sdc-derivation-child" name="SDC Derivation Child"/>
+<artifact id="Questionnaire/sdc-derivation-parent" key="Questionnaire-sdc-derivation-parent" name="SDC Derivation Parent"/>
 <artifact id="CapabilityStatement/sdc-form-archiver" key="CapabilityStatement-sdc-form-archiver" name="SDC Form Archiver"/>
 <artifact id="CapabilityStatement/sdc-form-designer" key="CapabilityStatement-sdc-form-designer" name="SDC Form Designer"/>
 <artifact id="CapabilityStatement/sdc-form-filler" key="CapabilityStatement-sdc-form-filler" name="SDC Form Filler"/>
@@ -217,6 +222,7 @@
 <page key="search" name="Finding a Questionnaire"/>
 <page key="behavior" name="Form Behavior and Calculation"/>
 <page key="extraction" name="Form Data Extraction"/>
+<page key="derive" name="Form Derivation"/>
 <page key="populate" name="Form Population"/>
 <page key="changes" name="IG Change History"/>
 <page key="intro" name="Introduction"/>

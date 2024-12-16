@@ -666,29 +666,6 @@ i.fa {
     </div>
   </div>
 
-<a name="optionalDisplay"></a>
-  <h4>Using optionalDisplay</h4>
-  <p>To set an item for optional display. (<a href="Questionnaire-questionnaire-sdc-profile-example-render.html">Example Questionnaire</a>)</p>
-  <div class="tabs">
-    <div class="tab">
-      <input type="radio" id="tab-optionalDisplay-1" name="tab-optionalDisplay-group-2" checked="true"/>
-      <label for="tab-optionalDisplay-1">Sample Question</label>
-      <div class="content-in-tab">
-      <p>Enter your Middle Name <input id="linkitem-1.0-input" type="text"/></p>
-      </div>
-    </div>
-    <div class="tab">
-      <input type="radio" id="tab-optionalDisplay-2" name="tab-optionalDisplay-group-2"/>
-      <label for="tab-optionalDisplay-2">JSON</label>
-      <div class="content-in-tab">{% fragment Questionnaire/questionnaire-sdc-profile-example-render JSON BASE:descendants().select(item).where(linkId='3.8') %}</div>
-    </div>
-    <div class="tab">
-      <input type="radio" id="tab-optionalDisplay-3" name="tab-optionalDisplay-group-2"/>
-      <label for="tab-optionalDisplay-3">XML</label>
-      <div class="content-in-tab">{% fragment Questionnaire/questionnaire-sdc-profile-example-render XML BASE:descendants().select(item).where(linkId='3.8') %}</div>
-    </div>
-  </div>
-
 <a name="shortText"></a>
   <h4>Using shortText</h4>
   <p>To display a shorter text for an item. (<a href="Questionnaire-questionnaire-sdc-profile-example-render.html">Example Questionnaire</a>)</p>
