@@ -22,7 +22,7 @@ Usage: #example
   * url = $questionnaire-versionAlgorithm
   * valueCoding = $version-algorithm#semver
 * extension[+]
-  * url = "http://hl7.org/fhir/uv/sdc/StructureDefinition/sdc-questionnaire-preferredTerminologyServer"
+  * url = "http://hl7.org/fhir/StructureDefinition/preferredTerminologyServer"
   * valueUrl = "https://tx.fhir.org/r4"
 * url = "http://hl7.org/fhir/uv/sdc/Questionnaire/questionnaire-sdc-profile-example-loinc"
 * identifier
