@@ -392,7 +392,7 @@
             extensions whose expressions are evaluated as true.  I.e. the expressions that pertain to a given option are treated as 'or'.
           </p>
           <p>
-            AnswerOptionToggleExpresssions should generally never need a 'name' declared.
+            AnswerOptionToggleExpressions should generally never need a 'name' declared.
           </p>
 <!-- TODO: Add this in R5
           <p>
@@ -547,7 +547,7 @@
     <li><a href="https://hl7.org/fhir/r4/fhirpath.html#variables">%resource</a> - the root of the QuestionnaireResponse</li>
     <li><a href="https://hl7.org/fhirpath/N1/#environment-variables">%context</a> - the current item in the QuestionnaireResponse (or Questionnaire when processing at the root level)</li>
     <li><a href="#fhirpath-supplements">%questionnaire</a> - the questionnaire being processed</li>
-    <li><a jref="#fhirpath-supplements">%qitem</a> - the currently processing item in the Questionnaire</li>
+    <li><a href="#fhirpath-supplements">%qitem</a> - the currently processing item in the Questionnaire</li>
     <li>any variables defined by the <a href="StructureDefinition-sdc-questionnaire-extractAllocateId.html">sdc-questionnaire-extractAllocateId</a> extension (from parent items in the questionnaire definition)</li>
   </ul>
 
@@ -700,7 +700,7 @@
             With jason, that means removing both the <code>value</code> and <code>_value</code> properties for primitives.
           </p>
           <p>
-            For collections, there may be more than 1 template value to replace in the template collection, so don't just clear the collection, remove the tenplated item.
+            For collections, there may be more than 1 template value to replace in the template collection, so don't just clear the collection, remove the templated item.
           </p>
         </td>
       </tr>
@@ -730,7 +730,7 @@
     set using <a href="#launchContext">launchContext</a> extension.)
   </p>
   <p>
-    NOTE: Some of the FHIRPath content may need to be escaped (precent-encoded) in order to constitute a valid URL.
+    NOTE: Some of the FHIRPath content may need to be escaped (percent-encoded) in order to constitute a valid URL.
   </p>
   <p>
     Aside from specifying a FHIR search string, SDC also allows the use of search-type operations (i.e. operations that do not affect state and whose arguments can be expressed 
@@ -867,7 +867,7 @@ When referencing external answerValueSets, consideration should be given to link
 Information gleaned from other types of external sources (e.g. launch context, fhir-x-query, etc.) SHOULD only be used for initialExpression and calculatedExpression logic and that any other desired behavior (enableWhen, answerExpression, etc.) should always be driven off of answers within the Questionnaire (even if they're hidden answers that are populated from an initialExpression) because launchContext and search results may vary between edit sessions and will also be different (or perhaps non-existent) when validating the Questionnaire.
   </p>
   <p>
-Changes in external context that impacts the value of a calculatedExpression will not cause a problem because if the new calculated value upon re-opening a QuestionniareResponse differs from the stored value, the form filler will interpret the answer as having been overridden and it will therefore remain unchanged.
+Changes in external context that impacts the value of a calculatedExpression will not cause a problem because if the new calculated value upon re-opening a QuestionnaireResponse differs from the stored value, the form filler will interpret the answer as having been overridden and it will therefore remain unchanged.
   </p>
   <a name="missinginfo"> </a>
   <h3>Missing information</h3>
