@@ -51,11 +51,9 @@ Description: "Defines additional capabilities for controlling data entry and cal
       EnableWhenExpressionExtension named enableWhenExpression 0..1 MS
   * extension[itemMinOccurs].value[x] ^mustSupport = false
     * extension contains
-        $cqf-calculatedValue named itemMinOccursCalculated 0..1 and
         $cqf-expression named itemMinOccursExpression 0..1 MS
   * extension[itemMaxOccurs].value[x] ^mustSupport = false
     * extension contains
-        $cqf-calculatedValue named itemMaxOccursCalculated 0..1 and
         $cqf-expression named itemMaxOccursExpression 0..1 MS
   * extension[minValue].value[x] ^mustSupport = false
     * extension contains $cqf-calculatedValue named minValueCalculated 0..1
