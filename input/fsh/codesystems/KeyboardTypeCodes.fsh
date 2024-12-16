@@ -1,6 +1,6 @@
 CodeSystem: KeyboardTypeCodes
 Id: keyboardType
-Title: "Keyboard Type"
+Title: "Keyboard Type Codes"
 Description: "For string or text items, indicates the 'keyboard type' that should be used by the user interface to guide entry."
 * ^status = #active
 * ^experimental = false

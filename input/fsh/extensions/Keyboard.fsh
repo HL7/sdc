@@ -1,6 +1,6 @@
 Extension: Keyboard
 Id: sdc-questionnaire-keyboard
-Title: "Keyboard Type"
+Title: "Keyboard Type Extension"
 Description: "For string or text items, indicates the 'keyboard type' that should be used by the user interface to guide entry. It does not dictate any specific functionality, it is only used as a hint to input devices that may have special keyboard modes available."
 * ^status = #active
 * ^purpose = "This may affect what characters are accessible or most easily available as well as what prediction algorithm is used.  It is most typically used by mobile devices."

@@ -28,6 +28,9 @@ INFORMATION: QuestionnaireResponse/adaptive-questionnaireresponse-sdc-example-ph
 # 00c This example is intended to show a non-semver approach
 WARNING: Questionnaire/questionnaire-sdc-profile-example-ussg-fht: Questionnaire: Constraint failed: sdc-3: 'Semver is the preferred version algorithm - package machinery doesn't work well with artifacts using alternate versioning schemes' (defined in http://hl7.org/fhir/uv/sdc/StructureDefinition/sdc-questionnairecommon) (Best Practice Recommendation)
 
+# 00d This is a new spurious error.  Reported here: https://chat.fhir.org/#narrow/channel/179252-IG-creation/topic/Unrecognized.20property.20'valueExpression'
+ERROR: Questionnaire.item[3].item[1].item[5].extension[0]: Unrecognized property 'valueExpression'
+
 # 01. This should go away once we are using the updated version of the extensions pack
 Reference to draft CodeSystem http://hl7.org/fhir/questionnaire-derivationType|5.2.0-ballot
 
@@ -139,6 +142,7 @@ INFORMATION: CodeSystem/assemble-expectation: CodeSystem: Most code systems defi
 INFORMATION: CodeSystem/collapsible: CodeSystem: Most code systems defined in HL7 IGs will need to move to THO later during the process. Consider giving this code system a THO URL now (See https://confluence.hl7.org/display/TSMG/Terminology+Play+Book, and/or talk to TSMG)
 INFORMATION: CodeSystem/entryMode: CodeSystem: Most code systems defined in HL7 IGs will need to move to THO later during the process. Consider giving this code system a THO URL now (See https://confluence.hl7.org/display/TSMG/Terminology+Play+Book, and/or talk to TSMG)
 INFORMATION: CodeSystem/launchContext: CodeSystem: Most code systems defined in HL7 IGs will need to move to THO later during the process. Consider giving this code system a THO URL now (See https://confluence.hl7.org/display/TSMG/Terminology+Play+Book, and/or talk to TSMG)
+INFORMATION: CodeSystem/keyboardType: CodeSystem: Most code systems defined in HL7 IGs will need to move to THO later during the process. Consider giving this code system a THO URL now (See https://confluence.hl7.org/display/TSMG/Terminology+Play+Book, and/or talk to TSMG)
 INFORMATION: CodeSystem/observation-extract-relationship: CodeSystem: Most code systems defined in HL7 IGs will need to move to THO later during the process. Consider giving this code system a THO URL now (See https://confluence.hl7.org/display/TSMG/Terminology+Play+Book, and/or talk to TSMG)
 INFORMATION: CodeSystem/questionnaire-answer-constraint: CodeSystem: Most code systems defined in HL7 IGs will need to move to THO later during the process. Consider giving this code system a THO URL now (See https://confluence.hl7.org/display/TSMG/Terminology+Play+Book, and/or talk to TSMG)
 
