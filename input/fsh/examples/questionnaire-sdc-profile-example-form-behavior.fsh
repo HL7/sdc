@@ -171,6 +171,7 @@ Usage: #example
     * text = "Email*"
     * type = #string
     * required = true
+    * extension[Keyboard].valueCoding = KeyboardTypeCodes#email "email"
   * item[+]
     * extension
       * url = "http://hl7.org/fhir/uv/sdc/StructureDefinition/sdc-questionnaire-initialExpression"
@@ -398,6 +399,7 @@ Usage: #example
       * linkId = "3.4.2"
       * text = "Enter email address"
       * type = #string
+      * extension[Keyboard].valueCoding = KeyboardTypeCodes#email "email"
       * required.extension.url = "http://hl7.org/fhir/StructureDefinition/cqf-expression"
       * required.extension.valueExpression.description = "current date"
       * required.extension.valueExpression.language = #text/fhirpath

@@ -48,7 +48,7 @@ Usage: #example
     * readOnly = true
   * item[+]
     * insert initialExpression(%relative.relationship)
-    * insert item(relative.relationship,http://hl7.org/fhir/StructureDefinition/RelatedPerson#RelatedPerson.relationship,Name(s\),#choice)
+    * insert item(relative.relationship,http://hl7.org/fhir/StructureDefinition/RelatedPerson#RelatedPerson.relationship,Relationship(s\),#choice)
     * required = true
     * repeats = true
     * answerValueSet = "http://hl7.org/fhir/ValueSet/relatedperson-relationshiptype"
