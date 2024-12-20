@@ -787,13 +787,10 @@
       </ul>
     </li>
     <li>
-      <code>answers()</code> returns a list of all answers for items beneath the current node, but excluding the current node, including descendant questions.  This
-      is typically used with an aggregation function.  For example answers().sum() would provide the total of all answers beneath the current node.  The function
-      is equivalent to <code>descendants().where($this is QuestionnaireResponse.item.answer.value)</code>
-    </li>
-    <li>
-      <code>ordinal()</code> returns the ordinal value for code or Coding.  If an <a href="{{site.data.fhir.path}}extension-ordinalvalue.html">ordinalValue</a> extension
-      is defined on the element, it will be returned.  If not, will be looked up on the bound value set expansion (or for Questionnaires, on the corresponding Questionnaire.answerOption).  If not found there, will be looked up on the underlying CodeSystem.  If the type is other than code or Coding or no ordinal value
+      <code>weight()</code> returns the ordinal value for code or Coding.  If an <a href="{{site.data.fhir.ver.ext}}/StructureDefinition-itemWeight.html">itemWeight</a> extension
+      is defined on the QuestionnaireResponse answer, it will be returned.  If not, it will be looked up either as an extension on an answerOption in the Questionnaire or as a 
+      property on the bound value set expansion (or for Questionnaires, on the 
+      corresponding Questionnaire.answerOption).  If not found there, will be looked up on property in the underlying CodeSystem.  If the type is other than code or Coding or no weight
       is defined for the context element, the result will be an empty set.  If the FHIRPath engine is unable to resolve the corresponding value set, code system or questionnaire
       options, it SHOULD cause the expression to fail.<br/>
       This function will typically be used to support scoring of Questionnaires, but it can be used with observations or potentially other elements as well.
