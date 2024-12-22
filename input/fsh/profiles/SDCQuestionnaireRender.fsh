@@ -6,12 +6,14 @@ Description: "Defines additional capabilities for controlling the rendering of t
 * ^status = #active
 * . ^short = "Advanced Rendering Questionnaire"
 * . ^definition = "Defines additional capabilities for controlling the rendering of the questionnaire."
+* obeys sdc-rend-2
 * modifierExtension contains RenderingCriticalExtension named rendering-criticalExtension 0..* MS
 * title
   * extension contains
       $rendering-style named title-renderingStyle 0..1 and
       $rendering-xhtml named title-xhtml 0..1
 * item
+  * obeys sdc-rend-1
   * extension contains
       ItemMedia named itemMedia 0..1 and
       OptionalDisplayExtension named itemOptionalDisplay 0..1 and
@@ -49,3 +51,15 @@ Description: "Defines additional capabilities for controlling the rendering of t
       * display.extension contains
           $rendering-style named optionDisplay-renderingStyle 0..1 and
           $rendering-xhtml named optionDisplay-xhtml 0..1
+
+Invariant: sdc-rend-1
+Severity: #error
+Description: "Items with a controlType of 'page' can only appear in root-level items."
+Expression: "extension('http://hl7.org/fhir/StructureDefinition/questionnaire-itemControl').value.coding.where(system='http://hl7.org/fhir/questionnaire-item-control' and code='page').exists() implies %resource.item.where(linkId=%context.linkId).exists()"
+XPath: "not(exists(f:extension[@url='http://hl7.org/fhir/StructureDefinition/questionnaire-itemControl']/f:valueCodeableConcept/f:coding[f:system/@value='' and f:code/@value='page'])) or not(exists(parent::f:item))"
+
+Invariant: sdc-rend-2
+Severity: #error
+Description: "If a questionnaire has child items with a controlType of page, then all items must have a type of page, header or footer."
+Expression: "item.where(extension('http://hl7.org/fhir/StructureDefinition/questionnaire-itemControl').value.coding.where(system='http://hl7.org/fhir/questionnaire-item-control' and code='page').exists()).exists() implies item.all(extension('http://hl7.org/fhir/StructureDefinition/questionnaire-itemControl').value.coding.where(system='http://hl7.org/fhir/questionnaire-item-control' and (code='page' or code='header' or code='footer')).exists())"
+XPath: "not(exists(f:item[f:extension[@url='http://hl7.org/fhir/StructureDefinition/questionnaire-itemControl' and f:valueCodeableConcept/f:coding[f:system/@value='' and f:code/@value='page']]])) or count(f:item) = count(f:item[f:extension[@url='http://hl7.org/fhir/StructureDefinition/questionnaire-itemControl' and f:valueCodeableConcept/f:coding[f:system/@value='' and f:code[@value='page' or @value='header' or @value='footer']]]])"
