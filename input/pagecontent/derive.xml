@@ -2,7 +2,7 @@
   <p>
     Sometimes there is a desire to use an existing form, but adapt it in some way from the base form to meet more localized requirements.  There are three types of derivation - extends, compliesWith and inspiredBy, which are described in detail <a href="{{site.data.fhir.ver.ext}}/CodeSystem-questionnaire-derivationType.html">here</a> in the code system for the <a href="{{site.data.fhir.ver.ext}}/StructureDefinition-questionnaire-derivationType.html">questionnaire-derivationType</a> extension.  When creating one form from another, the newly created form SHOULD include a <code>derivedFrom</code> element that points to the source Questionnaire and SHOULD make use of the extension to communicate the nature of the relationship.  This relationship indicates how a resulting QuestionnaireResponse can be used, as shown in the following table:
   </p>
-  <table>
+  <table class="grid">
     <tbody>
       <tr>
         <th>Relationship Type</th>
@@ -11,36 +11,36 @@
         <th>Validates against derived Questionnaire</th>
       </tr>
       <tr>
-        <td colspan="2">extends</td>
+        <td rowspan="2">extends</td>
         <td>derived</td>
         <td>not usually</td>
-        <td>yes</td>
+        <td style="background-color:lightgrey">yes</td>
       </tr>
       <tr>
         <td>original</td>
-        <td>yes</td>
+        <td style="background-color:lightgrey">yes</td>
         <td>Possibly (if extended items are optional)</td>
       </tr>
       <tr>
-        <td colspan="2">compliesWith</td>
+        <td rowspan="2">compliesWith</td>
         <td>derived</td>
         <td>yes</td>
-        <td>yes</td>
+        <td style="background-color:lightgrey">yes</td>
       </tr>
       <tr>
         <td>original</td>
-        <td>yes</td>
+        <td style="background-color:lightgrey">yes</td>
         <td>Possibly (depending on nature of constraints)</td>
       </tr>
       <tr>
-        <td colspan="2">inspiredBy</td>
+        <td rowspan="2">inspiredBy</td>
         <td>derived</td>
         <td>no</td>
-        <td>yes</td>
+        <td style="background-color:lightgrey">yes</td>
       </tr>
       <tr>
         <td>original</td>
-        <td>yes</td>
+        <td style="background-color:lightgrey">yes</td>
         <td>no</td>
       </tr>
     </tbody>
@@ -49,7 +49,7 @@
     Note that even if a derived Questionnaire 'compliesWith' the rules of the base Questionnaire, that does not mean that answers gathered against the derived Questionnaire would be considered 'valid' as results against the parent Questionnaire.  Instrument validity often depends on specific answer choices and questions being available.  However, in some cases an instrument might be designed in a way that allows for certain questions to be removed via a derivation process and for the resulting QuestionnaireResponses to still be considered 'valid' against the original Questionnaire.  This is done using the <a href="StructureDefinition-sdc-questionnaire-optionalDisplay.html">optionalDisplay</a> extension.  The presence of this extension on a non-required item means that a derived Questionnaire can omit the element and still be considered valid against its parent.
   </p>
   <p>
-    One common use-case for the creation of 'valid' derived Questionnaires that doesn't require the use of optionalDisplay is where the derivation doesn't change the questions or answer rules of the form at all, but instead merely adds supplementl information, such as <code>item.code</code> or <code>item.value</code> elements, extensions to support population or extraction, or similar metadata.  Creating a translation of a form is another example, though technically this may call into question the validity of the data gathered in the alternate language and is best done by the author of the instrument.
+    One common use-case for the creation of 'valid' derived Questionnaires that doesn't require the use of optionalDisplay is where the derivation doesn't change the questions or answer rules of the form at all, but instead merely adds supplemental information, such as <code>item.code</code> or <code>item.value</code> elements, extensions to support population or extraction, or similar metadata.  Creating a translation of a form is another example, though technically this may call into question the validity of the data gathered in the alternate language and is best done by the author of the instrument.
   </p>
   <p>
     A derived Questionnaire is considered a distinct Questionnaire instance, even if it complies with, or even is considered 'valid' against the original Questionnaire.  As such, the derived Questionnaire SHALL have a distinct canonical url and be versioned as a distinct instance.  However, implementations MAY choose to populate the QuestionnaireResponse.questionnaire with the canonical of the parent Questionnaire <i>if</i> the Questionnaire that was completed is considered to be valid against the parent.
