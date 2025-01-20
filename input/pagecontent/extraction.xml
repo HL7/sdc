@@ -181,7 +181,7 @@
       The presumption of "will extract" will change to false only if an item explicitly sets observationExtract = false at the 'item' level.  It is still possible that descendant items might turn extraction back on again.  I.e. the full depth must be traversed to catch all extraction candidates.
     </li>
 	<li>
-If an item is presumed to be extracted, it will extract if there are item.codes for that item that aren't explicitly marked with observationExtract=false.
+If an item is presumed to be extracted, it will extract if there are <code>item.codes</code> for that item that aren't explicitly marked with observationExtract=false.
     </li>
 	<li>
       The observation-extract-category extension only comes into play if a determination has been made that extraction will occur.  The observation-extract-category on an item will override that declared on the base questionnaire or ancestor items.  If there is a desire to add multiple categories, all must be declared on an item.
@@ -307,9 +307,9 @@ If an item is presumed to be extracted, it will extract if there are item.codes 
       QuestionnaireResponse.item.code</code> (and for interpretation the answer value too), they can be populated, otherwise omit</li>
   </ul>
   <p>
-    If the Questionnaire.item that is linked to an Observation contains child items that are also linked to Observations, then things get more complex as a
+    If the <code>Questionnaire.item</code> that is linked to an Observation contains child items that are also linked to Observations, then things get more complex as a
     determination will need to be made on whether to link the parent to child as <code>Observation.component</code> or as <code>Observation.hasMember</code>.
-    In the ideal situation, the system will recognize the Observation.item.code and know which approach is correct for that type of Observation.  If not, then
+    In the ideal situation, the system will recognize the <code>Observation.item.code</code> and know which approach is correct for that type of Observation.  If not, then
     the system <i>could</i> query for other records of the child type and see if they appear as components anywhere.  If unsure, systems should use "hasMember".
   <!-- TODO: Should we have an extension that covers this? -->
   </p>
@@ -319,7 +319,7 @@ If an item is presumed to be extracted, it will extract if there are item.codes 
   <ul>
     <li>
       If a questionnaire item has the <a href="{{site.data.fhir.path}}extension-questionnaire-unit.html">questionnaire-unit</a> extension, the
-      Observation.value SHOULD be a valueQuantity rather than integer or decimal and the units should be taken from the extension value.</li>
+      <code>Observation.value</code> SHOULD be a valueQuantity rather than integer or decimal and the units should be taken from the extension value.</li>
     <li>
       If a question is skipped (no answer) or cleared, no Observation should be created.  Existing Observations SHALL NOT be deleted.</li>
     <li>
@@ -401,12 +401,12 @@ If an item is presumed to be extracted, it will extract if there are item.codes 
       The <a href="StructureDefinition-sdc-questionnaire-extractAllocateId.html">sdc-questionnaire-extractAllocateId</a> extension can be used to allocate
       a named new uuid for this purpose. It should be defined on the item (or root) such that its children cover the resource that is to be created, and also
       the resources that are to reference it.
-      This variable name can then be used in the definitionExtract extensions's <code>fullUrl</code> fhirpath expression, and also in any reference properties
+      This variable name can then be used in the definitionExtract extensions's <code>fullUrl</code> FHIRPath expression, and also in any reference properties
       - typically using the <a href="StructureDefinition-sdc-questionnaire-definitionExtractValue.html">definitionExtractValue</a> extension (further described below).
       <ul>
-        <li>This string value is not a fhirpath expression to be evaluated, it is the name for the variable that will be available to fhirpath expressions.</li>
-        <li>The allocateId extension will be made available to all fhirpath expressions on that node, and any child items.</li>
-        <li>Use the variable name in the allocateId to set the entry.fullUrl of the resource you want to reference in the definitionExtract extension's fullUrl property.</li>
+        <li>This string value is not a FHIRPath expression to be evaluated, it is the name for the variable that will be available to FHIRPath expressions.</li>
+        <li>The allocateId extension will be made available to all FHIRPath expressions on that node, and any child items.</li>
+        <li>Use the variable name in the allocateId to set the <code>entry.fullUrl</code> of the resource you want to reference in the definitionExtract extension's fullUrl property.</li>
         <li>Use the variable name to set the reference property using the definitionExtractValue extension's expression property.</li>
         <li>If this allocateId extension is defined at the root of the questionnaire, a single value will be allocated for the entire extracted transaction bundle.</li>
         <li>If this allocateId extension is defined on a repeating group, a new value will be allocated for each repetition of the item.</li>
@@ -420,7 +420,7 @@ If an item is presumed to be extracted, it will extract if there are item.codes 
       <b>Initiate Resource extraction:</b> Include the <a href="StructureDefinition-sdc-questionnaire-definitionExtract.html">sdc-questionnaire-definitionExtract</a> extension on either the Questionnaire root or on
       other items within the Questionnaire to mark the point at which a new resource will be extracted (and what resource type/profile if applicable).<br/>
       This is a complex extension that includes the following properties: <code>definition</code> (resource/profile canonical URL),
-      and optionally fullUrl, ifNoneMatch, ifModifiedSince, ifMatch and ifNoneExist (fhirpath expression expressions used to populate the transaction bundle entry containing the extracted resource).
+      and optionally fullUrl, ifNoneMatch, ifModifiedSince, ifMatch and ifNoneExist (FHIRPath expression expressions used to populate the transaction bundle entry containing the extracted resource).
       <ul>
         <li>
           If the extension is at the root of the Questionnaire, the resource will always be extracted, even if there are no answer items within the fully completed QuestionnaireResponse.
@@ -440,7 +440,7 @@ If an item is presumed to be extracted, it will extract if there are item.codes 
           <code>bundle.entry</code> properties:
           <ul>
             <li>
-              <code>fullUrl</code> - the result of the fhirpath expression for the <code>fullUrl</code> property, if none is provided, a new uuid will be allocated for the resource.
+              <code>fullUrl</code> - the result of the FHIRPath expression for the <code>fullUrl</code> property, if none is provided, a new uuid will be allocated for the resource.
               (this will often be an expression that uses the named variable from the <code>allocateId</code> extension e.g. <code>%newPatientUuid</code>)
             </li>
             <li>
@@ -453,16 +453,16 @@ If an item is presumed to be extracted, it will extract if there are item.codes 
               otherwise it will be the resource type. e.g. <code>Patient</code>.
             </li>
             <li>
-              <code>request.ifNoneMatch</code> - the result of the fhirpath expression for the <code>ifNoneMatch</code> property
+              <code>request.ifNoneMatch</code> - the result of the FHIRPath expression for the <code>ifNoneMatch</code> property
             </li>
             <li>
-              <code>request.ifModifiedSince</code> - the result of the fhirpath expression for the <code>ifModifiedSince</code> property (evaluates to a date time value - or nothing)
+              <code>request.ifModifiedSince</code> - the result of the FHIRPath expression for the <code>ifModifiedSince</code> property (evaluates to a date time value - or nothing)
             </li>
             <li>
-              <code>request.ifMatch</code> - the result of the fhirpath expression for the <code>ifMatch</code> property
+              <code>request.ifMatch</code> - the result of the FHIRPath expression for the <code>ifMatch</code> property
         </li>
         <li>
-              <code>request.ifNoneExist</code> - the result of the fhirpath expression for the <code>ifNoneExist</code> property
+              <code>request.ifNoneExist</code> - the result of the FHIRPath expression for the <code>ifNoneExist</code> property
             </li>
           </ul>
         </li>
@@ -508,8 +508,8 @@ If an item is presumed to be extracted, it will extract if there are item.codes 
           Add <a href="StructureDefinition-sdc-questionnaire-definitionExtractValue.html">definitionExtractValue</a> extension(s) to the root/item to specify calculated or fixed values
           to populate into the resource when an answer for this item is entered (or always when at the root of questionnaire).<br/>
           This is particularly useful for populating fixed values, or calculated values that are not directly entered by the user.<br/>
-          e.g. To assign the value from the QuestionnaireResponse.subject property into a property in the extracted resource.<br/>
-          If <code>definitionExtractValue</code> is used on an item that also has its item.definition property set, that would be assumed to be extracted resource context. 
+          e.g. To assign the value from the <code>QuestionnaireResponse.subject</code> property into a property in the extracted resource.<br/>
+          If <code>definitionExtractValue</code> is used on an item that also has its <code>item.definition</code> property set, that would be assumed to be extracted resource context. 
           Hence you could set the system and type values in an
           identifier when associated with that item.
         </li>
@@ -519,11 +519,11 @@ If an item is presumed to be extracted, it will extract if there are item.codes 
           e.g. To set other properties in an identifier property that is associated with a specific slice, such as a fixed system and type value.
         </li>
         <li>
-          Although the answer for a QuestionnaireResponse.item can repeat (indicated by the repeat property), the evaluation of the item will only occur once, and the multiple
-          answers are processed for the one item at the same time. For fhirpath expressions, the answer will be a list of values (for the one item) that the expression must
+          Although the answer for a <code>QuestionnaireResponse.item</code> can repeat (indicated by the repeat property), the evaluation of the item will only occur once, and the multiple
+          answers are processed for the one item at the same time. For FHIRPath expressions, the answer will be a list of values (for the one item) that the expression must
           handle correctly to populate the item.<br/>
-          e.g. If the item was for Patient.name.given (which can repeat), that "set" of answers will directly map into the resource property (which is also a collection).
-          However if you tried to map that into the text property, which is singular, this would be an error. A fhirpath expression would be required to concatenate the values 
+          e.g. If the item was for <code>Patient.name.given</code> (which can repeat), that "set" of answers will directly map into the resource property (which is also a collection).
+          However if you tried to map that into the text property, which is singular, this would be an error. A FHIRPath expression would be required to concatenate the values 
           together such as <code>answer.join(', ')</code>.<br/>
           As "group" items iterate differently to "question" items, the evaluation will process each iteration of the group separately.
         </li>
@@ -596,7 +596,7 @@ If an item is presumed to be extracted, it will extract if there are item.codes 
           The extraction process is able to determine the correct type to use based on the answer in the QuestionnaireResponse, or explicitly
           define it in the property name in the "definition" value e.g. <code>http://hl7.org/fhir/StructureDefinition/Observation#Observation.valueQuantity</code><br/>
           This type slicing is really only required where the type is a choice and the value being set is not directly coming from the QuestionnaireResponse item and there
-          is no ambiguity on the type to use. e.g. assigning an item to <code>Patient.extension.value.code</code> could be a Quantity or a Coding, thus needs to be disambiguated.
+          is no ambiguity on the type to use. E.g. assigning an item to <code>Patient.extension.value.code</code> could be a Quantity or a Coding, thus needs to be disambiguated.
           <code>Patient.extension.valueCoding.code</code> or <code>Patient.extension.valueQuantity.value</code> would be the appropriate definitions to use.
           However if I was using the definition <code>Patient.extension.value</code> and the item was of type boolean or Coding, there is no need to type slice, 
           as the value is of the correct type to just assign (it doesn't need to create the intermediate valueQuantity or valueCoding before trying to set the actual value from the item).
@@ -605,8 +605,8 @@ If an item is presumed to be extracted, it will extract if there are item.codes 
       <i>(These could also be considered at the root level when processing a profiled resource)</i>
     </li>
     <li>
-      <b>Supporting the extraction process:</b> If necessary, define <a href="{{site.data.fhir.path}}extension-questionnaire-hidden.html">questionnaire-hidden</a> items that have <code>
-      Questionnaire.item.initial.value[x]</code> or that use the
+      <b>Supporting the extraction process:</b> If necessary, define <a href="{{site.data.fhir.path}}extension-questionnaire-hidden.html">questionnaire-hidden</a> items 
+      that have <code>Questionnaire.item.initial.value[x]</code> or that use the
       <a href="StructureDefinition-sdc-questionnaire-initialExpression.html">questionnaire-initialExpression</a> extension to define their content to use to populate
       resource elements that the user will not be filling in.  (The initialExpressions might in turn depend on
       <a href="{{site.data.fhir.path}}extension-variable.html">variable</a> and
@@ -631,7 +631,7 @@ If an item is presumed to be extracted, it will extract if there are item.codes 
   </p>
   <ul>
     <li>
-      Fhirpath expressions used in the $extract approach do not have access to the launchContext, initialExpression, or variable extensions.  They are only able to
+      FHIRPath expressions used in the $extract approach do not have access to the launchContext, initialExpression, or variable extensions.  They are only able to
       access the QuestionnaireResponse data and the Questionnaire data and specific extract only extensions (extractAllocateId). Refer to the 
       <a href="expressions.html#extract">expressions</a> page for more details.
     </li>
@@ -692,25 +692,25 @@ If an item is presumed to be extracted, it will extract if there are item.codes 
       If at the root, a new value will be allocated only once, if on an item, it will be allocated for each related item that has the extension (a new value per item in a collection).
       The value is only available to child items of the item that has the extension (or itself).<br/>
       This value can be used in the templateExtract extension to set the fullUrl property of the extracted resource, and in the templateExtractValue extension to set the value for the referencing property.<br/>
-      The allocateId extension is not a fhirpath expression to be evaluated, it is the name for the variable that will be available to fhirpath expressions, and it's value will be
+      The allocateId extension is not a FHIRPath expression to be evaluated, it is the name for the variable that will be available to FHIRPath expressions, and it's value will be
       a new uuid for each iteration of the item that has the extension, before any expressions in the templateExtract, templateExtractBundle or templateExtractValue are evaluated.
     </li>
     <li>
       During extraction a new resource will be created for each answer in the QuestionnaireResponse for the item that contains the templateExtract extension.<br/>
-      The resource.id of the new resource will be removed (as it currently has the resource id to refer to in the template from the questionnaire definition).
-      To set the resource.id property use the <code>resourceId</code> property in the <code>templateExtract</code> extension (this is not possible using the templateExtractBundle based extraction).
+      The <code>resource.id</code> of the new resource will be removed (as it currently has the resource id to refer to in the template from the questionnaire definition).
+      To set the <code>resource.id</code> property use the <code>resourceId</code> property in the <code>templateExtract</code> extension (this is not possible using the templateExtractBundle based extraction).
     </li>
     <li>
-      The fhirpath context of the extracted resource will be based on the location of the templateExtract extension in the questionnaire.<br/>
-      If templateExtract is on the root of the questionnaire, the fhirpath context will be the QuestionnaireResponse resource.<br/>
-      If templateExtract is on an item, the fhirpath context will be the item in the QuestionnaireResponse associated with that item's linkId.<br/>
+      The FHIRPath context of the extracted resource will be based on the location of the templateExtract extension in the questionnaire.<br/>
+      If templateExtract is on the root of the questionnaire, the FHIRPath context will be the QuestionnaireResponse resource.<br/>
+      If templateExtract is on an item, the FHIRPath context will be the item in the QuestionnaireResponse associated with that item's linkId.<br/>
     </li>
     <li>
       The extraction engine SHALL scan the templated resource for any <a href="StructureDefinition-sdc-questionnaire-templateExtractContext.html">sdc-questionnaire-templateExtractContext</a> 
       or <a href="StructureDefinition-sdc-questionnaire-templateExtractValue.html">sdc-questionnaire-templateExtractValue</a> extensions (in that order) and then:
       <ul>
         <li>
-          Evaluate the fhirpath expression defined in the extension <i>(only FHIRPath is supported)</i>.
+          Evaluate the FHIRPath expression defined in the extension <i>(only FHIRPath is supported)</i>.
         </li>
         <li>
           If the expression returns no results, this templated property (context or value) will be removed from the extracted resource, and no further processing of that property will occur.<br/>
@@ -737,14 +737,14 @@ If an item is presumed to be extracted, it will extract if there are item.codes 
     <li>
       When using the templateExtract extension (not the templateExtractBundle extension), the extraction engine SHALL create a transaction Bundle containing all the resources that were extracted from the QuestionnaireResponse.
       Each resource that is extracted will be added into the transaction bundle that is returned by the $extract operation.<br/>
-      The fullUrl, resourceID and entry.request properties SHALL be updated with values calculated from the
+      The fullUrl, resourceID and <code>entry.request</code> properties SHALL be updated with values calculated from the
       templateExtract complex extension.<br/>
-      If a resource has it's ID populated, then it will be treated as an update to the existing resource (entry.request.method='PUT'), otherwise it will be treated as a create (entry.request.method='POST').
+      If a resource has it's ID populated, then it will be treated as an update to the existing resource (<code>entry.request.method='PUT'</code>), otherwise it will be treated as a create (<code>entry.request.method='POST'</code>).
     </li>
   </ol>
 
   <p>
-    If fhirpath expressions produce errors/exceptions or invalid/incompatible value types, the 
+    If FHIRPath expressions produce errors/exceptions or invalid/incompatible value types, the 
     extraction engine SHALL log the error and continue processing the next property.
     If there were any fatal or error level issues, the extraction engine SHALL return an OperationOutcome with the issues.<br/>
     If there are only warning/information issues, they can be returned along with the transaction bundle.
@@ -757,10 +757,10 @@ If an item is presumed to be extracted, it will extract if there are item.codes 
   </p>
   <blockquote>
     <b>Note:</b> Many templating engines have constructs like conditionals and loops. Although not immediately obvious, these can be implemented using this template approach.
-    Conditional properties are implemented with the fhirpath expression in the <a href="StructureDefinition-sdc-questionnaire-templateExtractContext.html">templateExtractContext</a>
+    Conditional properties are implemented with the FHIRPath expression in the <a href="StructureDefinition-sdc-questionnaire-templateExtractContext.html">templateExtractContext</a>
     or <a href="StructureDefinition-sdc-questionnaire-templateExtractValue.html">templateExtractValue</a> extension returning no results, and thus excluding the property, backbone element or
     entry in a collection from the extracted resource.<br/>
-    Loops are similar in nature where the looping is provided based on the fhirpath expression returning multiple results, and thus creating multiple entries in an array,
+    Loops are similar in nature where the looping is provided based on the FHIRPath expression returning multiple results, and thus creating multiple entries in an array,
     or even multiple resources in the transaction bundle driven by either multiple items in the questionnaire, or contexts in the bundle template.<br/>
     There are several examples of both of these in the <a href="">template example</a>, such as how it creates multiple names in the patient resource from multiple items in the
     questionnaire name item group, or where there is no IHI identifier added if the relevant item hasn't been answered in the questionnaire.
