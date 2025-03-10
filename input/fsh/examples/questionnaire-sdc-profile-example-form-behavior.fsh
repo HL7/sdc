@@ -57,8 +57,9 @@ Usage: #example
     * type = #string
     * maxLength = 50
   * item[+]
-    * extension.url = "http://hl7.org/fhir/StructureDefinition/minLength"
-    * extension.valueInteger = 2
+    * extension[+]
+      * url = "http://hl7.org/fhir/StructureDefinition/minLength"
+      * valueInteger = 2
     * linkId = "1.2"
     * text = "Last Name"
     * type = #string
@@ -154,8 +155,9 @@ Usage: #example
         * valueCoding = $conditions#3
       * extension[+]
         * url = "expression"
-        * valueExpression.language = #text/fhirpath
-        * valueExpression.expression = "%patient.gender!='male'"
+        * valueExpression
+          * language = #text/fhirpath
+          * expression = "%patient.gender!='male'"
       * url = "http://hl7.org/fhir/uv/sdc/StructureDefinition/sdc-questionnaire-answerOptionsToggleExpression"
     * extension[+]
       * extension[+]
@@ -163,8 +165,9 @@ Usage: #example
         * valueCoding = $conditions#4
       * extension[+]
         * url = "expression"
-        * valueExpression.language = #text/fhirpath
-        * valueExpression.expression = "%patient.gender!='female'"
+        * valueExpression
+          * language = #text/fhirpath
+          * expression = "%patient.gender!='female'"
       * url = "http://hl7.org/fhir/uv/sdc/StructureDefinition/sdc-questionnaire-answerOptionsToggleExpression"
   * item[+]
     * linkId = "2.6"
@@ -175,9 +178,10 @@ Usage: #example
   * item[+]
     * extension
       * url = "http://hl7.org/fhir/uv/sdc/StructureDefinition/sdc-questionnaire-initialExpression"
-      * valueExpression.description = "current date"
-      * valueExpression.language = #text/fhirpath
-      * valueExpression.expression = "today()"
+      * valueExpression
+        * description = "current date"
+        * language = #text/fhirpath
+        * expression = "today()"
     * linkId = "2.7"
     * text = "Current Date:"
     * type = #date
@@ -186,9 +190,10 @@ Usage: #example
     * linkId = "2.7.1"
     * text.extension
       * url = "http://hl7.org/fhir/StructureDefinition/cqf-expression"
-      * valueExpression.description = "Substitute in current date"
-      * valueExpression.language = #text/fhirpath
-      * valueExpression.expression = "'Please only enter data that has been validated as of ' + today()"
+      * valueExpression
+        * description = "Substitute in current date"
+        * language = #text/fhirpath
+        * expression = "'Please only enter data that has been validated as of ' + today()"
     * type = #display
   * item[+]
     * extension
@@ -310,10 +315,12 @@ Usage: #example
   * text = "Calculation"
   * type = #group
   * item[+]
-    * extension.url = "http://hl7.org/fhir/uv/sdc/StructureDefinition/sdc-questionnaire-initialExpression"
-    * extension.valueExpression.description = "deadline for submission"
-    * extension.valueExpression.language = #text/fhirpath
-    * extension.valueExpression.expression = "today() + 7 days"
+    * extension[+]
+      * url = "http://hl7.org/fhir/uv/sdc/StructureDefinition/sdc-questionnaire-initialExpression"
+      * valueExpression
+        * description = "deadline for submission"
+        * language = #text/fhirpath
+        * expression = "today() + 7 days"
     * linkId = "3.1"
     * text = "Deadline for submission (7 days from now)"
     * type = #date
@@ -322,28 +329,34 @@ Usage: #example
     * linkId = "3.2"
     * type = #group
     * item[+]
-      * extension.url = "http://hl7.org/fhir/uv/sdc/StructureDefinition/sdc-questionnaire-initialExpression"
-      * extension.valueExpression.description = "patient's last name"
-      * extension.valueExpression.language = #text/fhirpath
-      * extension.valueExpression.expression = "%patient.name.where(use='official').given.first()"
+      * extension[+]
+        * url = "http://hl7.org/fhir/uv/sdc/StructureDefinition/sdc-questionnaire-initialExpression"
+        * valueExpression
+          * description = "patient's last name"
+          * language = #text/fhirpath
+          * expression = "%patient.name.where(use='official').given.first()"
       * linkId = "3.2.1"
       * text = "Last Name:"
       * type = #string
       * readOnly = true
     * item[+]
-      * extension.url = "http://hl7.org/fhir/uv/sdc/StructureDefinition/sdc-questionnaire-initialExpression"
-      * extension.valueExpression.description = "patient's first name"
-      * extension.valueExpression.language = #text/fhirpath
-      * extension.valueExpression.expression = "%patient.name.where(use='official').family"
+      * extension[+]
+        * url = "http://hl7.org/fhir/uv/sdc/StructureDefinition/sdc-questionnaire-initialExpression"
+        * valueExpression
+          * description = "patient's first name"
+          * language = #text/fhirpath
+          * expression = "%patient.name.where(use='official').family"
       * linkId = "3.2.2"
       * text = "First Name:"
       * type = #string
       * readOnly = true
     * item[+]
-      * extension.url = "http://hl7.org/fhir/uv/sdc/StructureDefinition/sdc-questionnaire-initialExpression"
-      * extension.valueExpression.description = "patient's gender"
-      * extension.valueExpression.language = #text/fhirpath
-      * extension.valueExpression.expression = "%patient.gender"
+      * extension[+]
+        * url = "http://hl7.org/fhir/uv/sdc/StructureDefinition/sdc-questionnaire-initialExpression"
+        * valueExpression
+          * description = "patient's gender"
+          * language = #text/fhirpath
+          * expression = "%patient.gender"
       * linkId = "3.2.3"
       * text = "Gender:"
       * type = #string
@@ -353,22 +366,26 @@ Usage: #example
     * text = "Calculated Expression"
     * type = #group
     * item[+]
-      * extension.url = "http://hl7.org/fhir/StructureDefinition/questionnaire-unit"
-      * extension.valueCoding = $unitsofmeasure#kg
+      * extension[+]
+        * url = "http://hl7.org/fhir/StructureDefinition/questionnaire-unit"
+        * valueCoding = $unitsofmeasure#kg
       * linkId = "3.3.1"
       * text = "Weight (kg)"
       * type = #decimal
     * item[+]
-      * extension.url = "http://hl7.org/fhir/StructureDefinition/questionnaire-unit"
-      * extension.valueCoding = $unitsofmeasure#[in_i]
+      * extension[+]
+        * url = "http://hl7.org/fhir/StructureDefinition/questionnaire-unit"
+        * valueCoding = $unitsofmeasure#[in_i]
       * linkId = "3.3.2"
       * text = "Body Height (inches)"
       * type = #decimal
     * item[+]
-      * extension.url = "http://hl7.org/fhir/uv/sdc/StructureDefinition/sdc-questionnaire-calculatedExpression"
-      * extension.valueExpression.description = "BMI Calculation"
-      * extension.valueExpression.language = #text/fhirpath
-      * extension.valueExpression.expression = "(%weight/(%height.power(2))).round(1)"
+      * extension[+]
+        * url = "http://hl7.org/fhir/uv/sdc/StructureDefinition/sdc-questionnaire-calculatedExpression"
+        * valueExpression
+          * description = "BMI Calculation"
+          * language = #text/fhirpath
+          * expression = "(%weight/(%height.power(2))).round(1)"
       * linkId = "3.3.3"
       * text = "Your Body Mass Index (BMI)"
       * type = #decimal
@@ -380,17 +397,19 @@ Usage: #example
     * item[+]
       * extension[+]
         * url = "http://hl7.org/fhir/StructureDefinition/minValue"
-        * valueDecimal.extension.url = "http://hl7.org/fhir/StructureDefinition/cqf-calculatedValue"
-        * valueDecimal.extension.valueExpression
-          * language = #text/fhirpath
-          * expression = "min_weight"
+        * valueDecimal.extension[+]
+          * url = "http://hl7.org/fhir/StructureDefinition/cqf-calculatedValue"
+          * valueExpression
+            * language = #text/fhirpath
+            * expression = "min_weight"
         * valueDecimal = 1
       * extension[+]
         * url = "http://hl7.org/fhir/StructureDefinition/maxValue"
-        * valueDecimal.extension.url = "http://hl7.org/fhir/StructureDefinition/cqf-calculatedValue"
-        * valueDecimal.extension.valueExpression
-          * language = #text/fhirpath
-          * expression = "max_weight"
+        * valueDecimal.extension[+]
+          * url = "http://hl7.org/fhir/StructureDefinition/cqf-calculatedValue"
+          * valueExpression
+            * language = #text/fhirpath
+            * expression = "max_weight"
         * valueDecimal = 100
       * linkId = "3.4.1"
       * text = "Enter weight in kg"
@@ -400,17 +419,21 @@ Usage: #example
       * text = "Enter email address"
       * type = #string
       * extension[Keyboard].valueCoding = KeyboardTypeCodes#email "email"
-      * required.extension.url = "http://hl7.org/fhir/StructureDefinition/cqf-expression"
-      * required.extension.valueExpression.description = "current date"
-      * required.extension.valueExpression.language = #text/fhirpath
-      * required.extension.valueExpression.expression = "%patient.active"
+      * required.extension[+]
+        * url = "http://hl7.org/fhir/StructureDefinition/cqf-expression"
+        * valueExpression
+          * description = "current date"
+          * language = #text/fhirpath
+          * expression = "%patient.active"
       * required = false
   * item[+]
     * linkId = "3.5"
-    * text.extension.url = "http://hl7.org/fhir/StructureDefinition/cqf-expression"
-    * text.extension.valueExpression.description = "last immunization date"
-    * text.extension.valueExpression.language = #text/fhirpath
-    * text.extension.valueExpression.expression = "'Your last immunization was on '+ %Immunization.occurrenceDateTime.substring(0,10) + '.'"
+    * text.extension[+]
+      * url = "http://hl7.org/fhir/StructureDefinition/cqf-expression"
+      * valueExpression
+        * description = "last immunization date"
+        * language = #text/fhirpath
+        * expression = "'Your last immunization was on '+ %Immunization.occurrenceDateTime.substring(0,10) + '.'"
     * type = #display
 * item[+]
   * linkId = "4"
@@ -464,7 +487,7 @@ Usage: #example
       * enableBehavior = #all
       * answerValueSet = "http://hl7.org/fhir/ValueSet/yesnodontknow"
     * item[+]
-      * extension
+      * extension[+]
         * url = "http://hl7.org/fhir/StructureDefinition/entryFormat"
         * valueString = "MM/DD/YYYY"
       * linkId = "4.2.5"
@@ -472,12 +495,15 @@ Usage: #example
       * type = #date
       * answerValueSet = "http://hl7.org/fhir/ValueSet/administrative-gender"
     * item[+]
-      * extension[$questionnaire-disabledDisplay].valueCode = #protected
-      * extension
+      * extension[+]
+        * url = $questionnaire-disabledDisplay
+        * valueCode = #protected
+      * extension[+]
         * url = "http://hl7.org/fhir/uv/sdc/StructureDefinition/sdc-questionnaire-enableWhenExpression"
-        * valueExpression.description = "if last 2 questions were answered"
-        * valueExpression.language = #text/fhirpath
-        * valueExpression.expression = "%resource.repeat(item).where(linkId='4.2.b.1').answer.value.code ='female' and today().toString().substring(0, 4).toInteger() - %resource.repeat(item).where(linkId='4.2.b.5').answer.value.toString().substring(0, 4).toInteger() >= 40"
+        * valueExpression
+          * description = "if last 2 questions were answered"
+          * language = #text/fhirpath
+          * expression = "%resource.repeat(item).where(linkId='4.2.b.1').answer.value.code ='female' and today().toString().substring(0, 4).toInteger() - %resource.repeat(item).where(linkId='4.2.b.5').answer.value.toString().substring(0, 4).toInteger() >= 40"
       * linkId = "4.2.6"
       * text = "Have you had mammogram before?(enableWhenExpression = only when gender is female and age > 40, disableDisplay=protected)"
       * type = #choice
@@ -486,7 +512,7 @@ Usage: #example
     * extension[+]
       * url = "http://hl7.org/fhir/StructureDefinition/questionnaire-signatureRequired"
       * valueCodeableConcept = urn:iso-astm:E1762-95:2013#1.2.840.10065.1.12.1.8 "Signature Witness Signature"
-      * valueCodeableConcept.text = "the signature of a witness to any other signature."
+      * valueCodeableConcept[=].text = "the signature of a witness to any other signature."
     * extension[+]
       * url = "http://hl7.org/fhir/StructureDefinition/questionnaire-usageMode"
       * valueCode = #capture
@@ -497,9 +523,10 @@ Usage: #example
   * item[+]
     * extension[+]
       * url = "http://hl7.org/fhir/uv/sdc/StructureDefinition/sdc-questionnaire-candidateExpression"
-      * valueExpression.description = "active practitioners that speak at least one of the patient's language"
-      * valueExpression.language = #application/x-fhir-query
-      * valueExpression.expression = "Practitioner?communication=&active=true"
+      * valueExpression
+        * description = "active practitioners that speak at least one of the patient's language"
+        * language = #application/x-fhir-query
+        * expression = "Practitioner?communication=&active=true"
     * extension[+]
       * extension[+].url = "path"
       * extension[=].valueString = "name.first().family"
@@ -537,10 +564,11 @@ Usage: #example
   * item[+]
     * extension[+]
       * url = "http://hl7.org/fhir/uv/sdc/StructureDefinition/sdc-questionnaire-itemPopulationContext"
-      * valueExpression.name = "homeAddress"
-      * valueExpression.description = "Home address of the patient"
-      * valueExpression.language = #text/fhirpath
-      * valueExpression.expression = "%patient.address.where(use='home').first()"
+      * valueExpression
+        * name = "homeAddress"
+        * description = "Home address of the patient"
+        * language = #text/fhirpath
+        * expression = "%patient.address.where(use='home').first()"
     * linkId = "4.6"
     * type = #group
     * item[+]
@@ -548,31 +576,34 @@ Usage: #example
       * text = "Home Address"
       * type = #display 
     * item[+]
-      * extension
+      * extension[+]
         * url = "http://hl7.org/fhir/uv/sdc/StructureDefinition/sdc-questionnaire-initialExpression"
-        * valueExpression.description = "Address Line 1"
-        * valueExpression.language = #text/fhirpath
-        * valueExpression.expression = "%homeAddress.line.first()"
+        * valueExpression
+          * description = "Address Line 1"
+          * language = #text/fhirpath
+          * expression = "%homeAddress.line.first()"
       * linkId = "4.6.2"
       * definition = "http://hl7.org/fhir/StructureDefinition/Patient#Patient.address.line"
       * text = "Address"
       * type = #string
     * item[+]
-      * extension
+      * extension[+]
         * url = "http://hl7.org/fhir/uv/sdc/StructureDefinition/sdc-questionnaire-initialExpression"
-        * valueExpression.description = "City"
-        * valueExpression.language = #text/fhirpath
-        * valueExpression.expression = "%homeAddress.city"
+        * valueExpression
+          * description = "City"
+          * language = #text/fhirpath
+          * expression = "%homeAddress.city"
       * linkId = "4.6.3"
       * definition = "http://hl7.org/fhir/StructureDefinition/Patient#Patient.address.city"
       * text = "City"
       * type = #string
     * item[+]
-      * extension
+      * extension[+]
         * url = "http://hl7.org/fhir/uv/sdc/StructureDefinition/sdc-questionnaire-initialExpression"
-        * valueExpression.description = "State"
-        * valueExpression.language = #text/fhirpath
-        * valueExpression.expression = "%homeAddress.state"
+        * valueExpression
+          * description = "State"
+          * language = #text/fhirpath
+          * expression = "%homeAddress.state"
       * linkId = "4.6.4"
       * definition = "http://hl7.org/fhir/StructureDefinition/Patient#Patient.address.state"
       * text = "Province"
@@ -588,11 +619,12 @@ Usage: #example
       * answerOption[+].valueCoding = $provinces#Quebec "Quebec"
       * answerOption[+].valueCoding = $provinces#Saskatchewan "Saskatchewan"
     * item[+]
-      * extension
+      * extension[+]
         * url = "http://hl7.org/fhir/uv/sdc/StructureDefinition/sdc-questionnaire-initialExpression"
-        * valueExpression.description = "Postal Code"
-        * valueExpression.language = #text/fhirpath
-        * valueExpression.expression = "%homeAddress.postalCode"
+        * valueExpression
+          * description = "Postal Code"
+          * language = #text/fhirpath
+          * expression = "%homeAddress.postalCode"
       * linkId = "4.6.5"
       * definition = "http://hl7.org/fhir/StructureDefinition/Patient#Patient.address.postalCode"
       * text = "Postal Code"

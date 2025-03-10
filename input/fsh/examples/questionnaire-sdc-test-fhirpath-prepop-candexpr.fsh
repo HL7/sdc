@@ -42,7 +42,7 @@ Usage: #example
         * url = "http://hl7.org/fhir/uv/sdc/StructureDefinition/sdc-questionnaire-initialExpression"
         * valueExpression
           * language = #text/fhirpath
-          * expression = "%patient.name.first().family.first()"
+          * expression = "%patient.name.first().family"
       * linkId = "family-name"
       * text = "Family name"
       * type = #string
@@ -72,7 +72,7 @@ Usage: #example
         * url = "http://hl7.org/fhir/uv/sdc/StructureDefinition/sdc-questionnaire-initialExpression"
         * valueExpression
           * language = #text/fhirpath
-          * expression = "%selectedContact.name.first().select(text | given.first() & ' ' & family)"
+          * expression = "%selectedContact.name.first().select(text | given.first() & ' ' & family).first()"
       * linkId = "cont-name"
       * text = "Contact Name"
       * type = #string
