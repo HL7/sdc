@@ -1,4 +1,4 @@
-CodeSystem: EntryMode
+CodeSystem: EntryModeCodes
 Id: entryMode
 Title: "Entry Mode"
 Description: "Defines mechanisms of capturing data in a QuestionnaireResponse"

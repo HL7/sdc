@@ -1,4 +1,4 @@
-CodeSystem: QuestionnaireAnswerConstraint
+CodeSystem: QuestionnaireAnswerConstraintCodes
 Id: questionnaire-answer-constraint
 Title: "Questionnaire answer constraint codes"
 Description: "Codes that describe the types of constraints possible on a question item that has a list of permitted answers [Note: This is a clone of QuestionnaireAnswerConstraint codesystem from R5 (adopting R5 capability)]"

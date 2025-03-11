@@ -121,8 +121,8 @@ RuleSet: VSContains(system, code, display, weight)
   * system = {system}
   * code = {code}
   * display = {display}
-  * extension[$valueset-containsProperty]
-    * extension[+]
+  * extension[containsProperty]
+    * extension[code]
       * url = "code"
       * valueCode = #itemWeight
     * extension[+]

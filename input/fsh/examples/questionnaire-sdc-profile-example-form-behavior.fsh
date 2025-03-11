@@ -495,9 +495,7 @@ Usage: #example
       * type = #date
       * answerValueSet = "http://hl7.org/fhir/ValueSet/administrative-gender"
     * item[+]
-      * extension[+]
-        * url = $questionnaire-disabledDisplay
-        * valueCode = #protected
+      * extension[$questionnaire-disabledDisplay].valueCode = #protected
       * extension[+]
         * url = "http://hl7.org/fhir/uv/sdc/StructureDefinition/sdc-questionnaire-enableWhenExpression"
         * valueExpression

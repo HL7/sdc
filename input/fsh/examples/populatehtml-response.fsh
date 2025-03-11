@@ -3,9 +3,7 @@ InstanceOf: SDCParametersQuestionnairePopulateHtmlOut
 Title: "Example $populate-html operation response"
 Description: "Shows the response payload when invoking a populate-html operation"
 Usage: #example
-* parameter[+]
-  * name = "form"
-  * resource = HTMLBinary
+* parameter[form].resource = HTMLBinary
 
 Instance: HTMLBinary
 InstanceOf: Binary

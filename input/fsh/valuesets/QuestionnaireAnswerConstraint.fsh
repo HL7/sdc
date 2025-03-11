@@ -8,4 +8,4 @@ Description: "Codes that describe the types of constraints possible on a questio
 * ^version = "4.6.0"
 * ^status = #active
 * ^experimental = false
-* include codes from system QuestionnaireAnswerConstraint
+* include codes from system QuestionnaireAnswerConstraintCodes

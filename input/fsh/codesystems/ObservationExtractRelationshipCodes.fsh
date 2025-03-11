@@ -1,4 +1,4 @@
-CodeSystem: ObservationExtractRelationship
+CodeSystem: ObservationExtractRelationshipCodes
 Id: observation-extract-relationship
 Title: "Observation Extract Relationship Codes"
 Description: "Defines the codes used to specify the relationship type in the ObservationExtractExtension."
