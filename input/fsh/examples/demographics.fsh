@@ -17,7 +17,7 @@ Usage: #example
 * item[+]
   * insert item(patient.id,http://hl7.org/fhir/StructureDefinition/Patient#Patient.id, (internal use\), #string)
   * readOnly = true
-  * insert hidden()
+  * insert hidden
   * insert initialExpression(%patient.id)
 * item[+]
   * insert item(patient.birthDate, http://hl7.org/fhir/StructureDefinition/Patient#Patient.birthDate, Date of birth, #date)
@@ -42,7 +42,7 @@ Usage: #example
   * insert itemPopulationContext(relative, #application/x-fhir-query, RelatedPerson?patient={{%patient.id}})
   * insert definitionExtract(http://hl7.org/fhir/StructureDefinition/RelatedPerson)
   * item[+]
-    * insert hidden()
+    * insert hidden
     * insert initialExpression(%relative.id)
     * insert item(relative.id,http://hl7.org/fhir/StructureDefinition/RelatedPerson#RelatedPerson.id,(internal use\),#string)
     * readOnly = true

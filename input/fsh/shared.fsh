@@ -32,7 +32,7 @@ RuleSet: itemType(linkId, text, type)
 
 
 // Usage: Instance: demographics
-RuleSet: hidden()
+RuleSet: hidden
 * extension[$questionnaire-hidden].valueBoolean = true
 
 // Usage: Instance: demographics
