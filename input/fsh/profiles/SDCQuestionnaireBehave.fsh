@@ -28,7 +28,6 @@ Description: "Defines additional capabilities for controlling data entry and cal
       $questionnaire-minOccurs named itemMinOccurs 0..1 MS and
       $questionnaire-maxOccurs named itemMaxOccurs 0..1 MS and
       $minLength named minLength 0..1 MS and
-      $regex named regex 0..1 MS and
       $minValue named minValue 0..1 MS and
       $maxValue named maxValue 0..1 MS and
       MinQuantityExtension named minQuantity 0..1 and
