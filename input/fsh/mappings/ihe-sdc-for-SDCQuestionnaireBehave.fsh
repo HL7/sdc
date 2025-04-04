@@ -10,7 +10,7 @@ Source: SDCQuestionnaireBehave
 * item.extension[itemMinOccurs] -> "./cardinality/minimum"
 * item.extension[itemMaxOccurs] -> "./cardinality/maximum"
 * item.extension[minLength] -> "./*_Field/datatype/string/maximum_characters"
-* item.extension[regex] -> "./*_Field/datatype/string/reg_ex"
+* item.extension[itemConstraint] -> "./*_Field/datatype/string/reg_ex"
 * item.extension[minValue] -> "./*_Field/datatype/[integer|decimal]/minimum_value"
 * item.extension[maxValue] -> "./*_Field/datatype/[integer|decimal]/maximum_value"
 * item.extension[maxDecimalPlaces] -> "./*_Field/datatype/decimal/fractionDigits"
