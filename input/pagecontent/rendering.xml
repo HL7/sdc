@@ -74,7 +74,7 @@
             This element allows the full capabilities of the HTML style attribute to be applied to the title of a questionnaire, or to the label 
 			or text of a questionnaire item or to the label of an option.  This might mean changing the font or color, changing font style such
             as bold, italics, small caps, etc.  Conformant systems are allowed to ignore this extension unless the
-            <a href="#rendering-styleSensitive">rendering-styleSensitive</a> flag is set to true.
+            <a href="#sdc-rendering-criticalExtension">sdc-rendering-criticalExtension</a> is used to declare it as critical for rendering.
           </p>
         </td>
       </tr>
@@ -97,8 +97,8 @@
             different styles to different portions of the text (via &lt;span/&gt;, &lt;b/&gt; and similar elements).  It also allows embedding structure
             elements such as bullets or even tables in item.text elements.  XHTML must be base64-encoded due to constraints on the values of extensions.
             For title and label, the XHTML should be an inline element, while text can also include block-level elements (paragraph, ul/ol, etc.).
-            Conformant systems are allowed to ignore this extension unless the <a href="#rendering-styleSensitive">rendering-styleSensitive</a> flag is set
-            to true.
+            Conformant systems are allowed to ignore this extension unless it is declared as critical using the <a href="#sdc-rendering-criticalExtension">sdc-rendering-criticalExtension</a> 
+            extension, in which case unsupported systems SHOULD raise an error message or warning and refrain from presenting the form.
           </p>
         </td>
       </tr>
@@ -595,22 +595,21 @@
       </tr>
       <tr>
         <td>
-          <a name="rendering-styleSensitive"> </a>
-          <a href="{{site.data.fhir.path}}extension-rendering-stylesensitive.html">rendering-styleSensitive</a>
+          <a name="sdc-rendering-criticalExtension"> </a>
+          <a href="{{site.data.fhir.path}}extension-sdc-rendering-criticalExtension.html">sdc-rendering-criticalExtension</a>
         </td>
-        <td>Core</td>
-        <td>Questionnaire</td>
-        <td>boolean</td>
+        <td>SDC</td>
+        <td>Resource</td>
+        <td>canonical</td>
         <td><a href="examples.html#rendering-styleSensitive">example</a></td>
       </tr>
       <tr>
         <td colspan="5">
           <p>
-            If set to true, this indicates that the 'style' information conveyed by the <a href="#rendering-style">rendering-style</a> and/or
-            <a href="#rendering-xhtml">rendering-xhtml</a> are considered critical to the accurate rendering of the questionnaire (and appropriate capture of
-            information using the questionnaire).  For example, there are instructions or other text that refer to specific colors or styles and a user would
-            not be able to fill out the questionnaire safely or appropriately if those colors or styles are not accurately rendered.  As a result, only systems 
-            that can render all such extensions appropriately are considered 'safe' to render the Questionnaire.  All other SDC systems SHALL raise an error.
+            If present, this extension indicates that the specific extensions such as <a href="#rendering-style">rendering-style</a> and/or
+            <a href="#rendering-xhtml">rendering-xhtml</a> are critical to the safe rendering or data capture of the resource. Systems that do
+             not recognize or cannot implement the listed extensions should display an error or warning and should refrain from rendering the
+              resource or allowing interaction with it.
           </p>
         </td>
       </tr>
