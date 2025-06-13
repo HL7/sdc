@@ -325,9 +325,12 @@ Usage: #example
     * text = "Birth Date"
     * type = #date
   * item[+]
-    * extension
-      * url = "http://hl7.org/fhir/StructureDefinition/rendering-styleSensitive"
-      * valueBoolean = true
+    * extension[+]
+      * url = "http://hl7.org/fhir/uv/sdc/StructureDefinition/sdc-rendering-criticalExtension"
+      * valueCanonical = "http://hl7.org/fhir/StructureDefinition/rendering-style"
+    * extension[+]
+      * url = "http://hl7.org/fhir/uv/sdc/StructureDefinition/sdc-rendering-criticalExtension"
+      * valueCanonical = "http://hl7.org/fhir/StructureDefinition/rendering-xhtml"
     * linkId = "3.6"
     * text = "IMPORTANT: Please complete questionnaire."
       * extension[+]
