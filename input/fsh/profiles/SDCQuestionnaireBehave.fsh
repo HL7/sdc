@@ -73,7 +73,7 @@ Description: "Defines additional capabilities for controlling data entry and cal
   * required.value.extension contains $cqf-expression named requiredExpression 0..1 MS
   * repeats.value.extension contains $cqf-expression named repeatsExpression 0..1 MS
   * readOnly.value.extension contains $cqf-expression named readOnlyExpression 0..1 MS
-  * answerValueSet.value.extension contains $cqf-expression named answerValueSetExpression 0..1 MS
+  * answerValueSet.value.extension contains $cqf-expression named answerValueSetExpression 0..1
   * answerOption
     * extension contains
         $questionnaire-optionExclusive named optionExclusive 0..1 MS and
