@@ -1,6 +1,6 @@
-Extension: AssembleContextExtension
+Extension: AssembleContext
 Id: sdc-questionnaire-assembleContext
-Title: "Assemble Context extension"
+Title: "Assemble Context"
 Description: "This extension, used on a subQuestionnaire, indicates a FHIRPath variable that must be present in context when the subQuestionnaire is referenced."
 * ^status = #active
 * ^context.type = #element
