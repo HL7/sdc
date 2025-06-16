@@ -162,8 +162,21 @@ Usage: #inline
       * url = "http://hl7.org/fhir/StructureDefinition/entryFormat"
       * valueString = "9999"
     * extension[+]
-      * url = "http://hl7.org/fhir/StructureDefinition/regex"
-      * valueString = "[\\d]{4}"
+      * url = "http://hl7.org/fhir/StructureDefinition/targetConstraint"
+      * extension[+]
+        * url = "key"
+        * valueId = "postalCode-format"
+      * extension[+]
+        * url = "severity"
+        * valueCode = #error
+      * extension[+]
+        * url = "human"
+        * valueString = "Postal code must be a 4-digit number"
+      * extension[+]
+        * url = "expression"
+        * valueExpression
+          * language = #text/fhirpath
+          * expression = "value.matches('^[0-9]{4}$')"
     * linkId = "4Demographics.address.postalCode"
     * definition = "http://hl7.org/fhir/uv/sdc/StructureDefinition/SdcQuestionLibrary#SdcQuestionLibrary.address.postalCode"
     * text = "Postal Code"
