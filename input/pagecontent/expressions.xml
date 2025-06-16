@@ -381,11 +381,11 @@
           <p>
             This is a complex extension that performs a similar function to enableWhen, except that rather than acting on items, it acts on individual answer options within
             an item.  The extension <b>does NOT</b> define what options exist.  Instead, it toggles a subset of the possible options (specified in the <code>option</code>
-            component based on the result of evaluating the expression in the <code>expression</code> component.
+            component) based on the result of evaluating the expression in the <code>expression</code> component.
           </p>
           <p>
             The base set of options available comes from <a href="behavior.html#answerOption">answerOption</a>, <a href="behavior.html#answerValueSet">answerValueSet</a>
-            or <a href="#answerExpression">answerExpression</a>.  If any of the options listed in the <code>option</code> component of this expression is not one of the
+            or <a href="#answerExpression">answerExpression</a>.  If any of the options listed in the <code>option</code> component of this extension is not one of the
             options available for the item, then that SHOULD be treated as an error in the Questionnaire when validating the Questionnaire.  However, when completing forms
             it is safe to ignore any non-available options.
           </p>
