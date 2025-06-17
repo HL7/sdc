@@ -21,4 +21,4 @@ Description: "The answer list for questions 1 through 9 on the Patient Health Qu
   * ^property[=].valueDecimal = 2.0
 * #"Nearly every day" "Nearly every day"
   * ^property[+].code = #itemWeight
-  * ^property[=].valueDecimal = 4.0
+  * ^property[=].valueDecimal = 3.0
