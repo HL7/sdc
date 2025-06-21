@@ -296,6 +296,29 @@ We will set an expectation in SDC about what changes are permitted for 'active' 
       should be generated for each child element of the ElementDefinition pointed to by the <code>item.definition</code>.  This process recurses.  The linkId
       of the generated items should be a concatenation of the linkId of the group and the path of the element.
     </li>
+     <p>If assembling a 'group' item from a definition, the following rules apply:</p>
+   <ul>
+  <li>
+    The <code>linkId</code> of the child questions are taken as the relative paths from the <code>id</code> of the elements in the definition.
+    For example, if a group with <code>linkId</code> 3.2 has a definition that points to <code>Patient.contact</code>, the child questions would have <code>linkId</code> values of
+    <code>3.2.name</code>, <code>3.2.address</code>, <code>3.2.address.line</code>, etc.
+  </li>
+  <li>
+    Elements with <code>maxOccurs</code> of 0 or elements with fixed values or patterns will not be included as items.
+  </li>
+  <li>
+    When generating questions, the <code>id</code>, <code>extension</code>, and <code>modifierExtension</code> elements are not generated as child questions, though slices of them will be.
+  </li>
+  <li>
+    If the model has slices, each slice is treated as a separate item in the assembled Questionnaire.
+  </li>
+  <li>
+    If slicing is not closed, for elements other than <code>extension</code> and <code>modifierExtension</code>, additional items will be added to support "other" values.
+    For example, if a definition pointed to <code>USCore Organization.identifier</code>, there would be groups for the NPI, CLIA, and NIAC identifiers, but there would also be a group for "other identifiers" to handle identifiers not covered by one of the slices.
+    (<code>linkId</code>s would be something like <code>4.5.identifier:NAIC.value</code>, <code>4.5.identifier:NIAC.period.start</code> for the slices, and <code>4.5.identifier.value</code> for the "other" items.)
+  </li>
+</ul>
+<p><strong>NOTE:</strong> While generating complex structures of groups and questions from a FHIR resource profile is possible, in most situations, pointing to logical models specifically designed to be "Questionnaire-friendly" will produce better results.</p>
     <li>
       Alternatively, if the item.type is 'group' and the group does have child questions, the child questions should be matched against the children of
       the ElementDefinition (using item.definition) and any ElementDefinition child elements not present as child questions should produce a warning.
