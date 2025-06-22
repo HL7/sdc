@@ -8,16 +8,17 @@ Description: "Profile used to validate the parameters that are the input of the 
 * parameter ^slicing.discriminator.path = "name"
 * parameter ^slicing.rules = #open
 * parameter contains
-    in 0..* and
+    questionnaire-response 0..1 and
     questionnaire 0..1
-* parameter[in]
-  * name = "in" (exactly)
+* parameter[questionnaire-response]
+  * name = "questionnaire-response" (exactly)
   * value[x] ..0
-  * resource only SDCQuestionnaireExtractObservation or SDCQuestionnaireExtractDefinition or SDCQuestionnaireExtractStructureMap
+  * resource only SDCQuestionnaireResponse
   * part ..0
+  * ^short = "QuestionnarieResponse to extract from"
 * parameter[questionnaire]
   * name = "questionnaire" (exactly)
   * value[x] ..0
-  * resource only Questionnaire
+  * resource only SDCQuestionnaireExtractObservation or SDCQuestionnaireExtractDefinition or SDCQuestionnaireExtractTemplate or SDCQuestionnaireExtractStructureMap
   * part ..0
   * ^short = "Questionnaire reference for extraction"

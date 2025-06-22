@@ -32,7 +32,7 @@ Description: "An example library of questions showing how questions can be compi
   * city 0..1 string "n/a" "n/a"
     * ^label = "City/Town"
   * state 0..1 code "n/a" "n/a"
-  * state from http://hl7.org/fhir/uv/sdc/ValueSet/sdc-question-library-states (required)
+  * state from http://hl7.org/fhir/uv/sdc/ValueSet/sdc-question-library-states (extensible)
     * ^label = "State"
   * postalCode 1..1 string "n/a" "n/a"
     * ^extension.url = "http://hl7.org/fhir/StructureDefinition/entryFormat"

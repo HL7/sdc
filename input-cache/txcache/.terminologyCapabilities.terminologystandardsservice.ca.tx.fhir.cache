@@ -5,15 +5,15 @@
   },
   "text" : {
     "status" : "generated",
-    "div" : "<div xmlns=\"http://www.w3.org/1999/xhtml\"><h1>CSIRO Terminology Server (Ontoserver ®)</h1><table><tr><td>Purpose</td><td>Description of terminology service capabilities</td></tr><tr><td>Publisher</td><td>Canada Health Infoway</td></tr><tr><td>Version</td><td>6.22.1.1741215307913</td></tr><tr><td>Date</td><td>2025-03-05</td></tr></table><p>Ontoserver supports a large portion of the FHIR Terminology Services specification. In particular, it has native support for SNOMED CT, LOINC, and code systems defined via the FHIR CodeSystem resource. This extends to supporting use of all defined and default filters in a FHIR ValueSet, as well as the implicitly defined ValueSets for SNOMED CT and LOINC.</p><p>More details are available in the <a href=\"https://ontoserver.csiro.au/docs/6.22.1/api-fhir.html\">Ontoserver documentation</a></p></div>"
+    "div" : "<div xmlns=\"http://www.w3.org/1999/xhtml\"><h1>CSIRO Terminology Server (Ontoserver ®)</h1><table><tr><td>Purpose</td><td>Description of terminology service capabilities</td></tr><tr><td>Publisher</td><td>Canada Health Infoway</td></tr><tr><td>Version</td><td>6.22.3.1748400850790</td></tr><tr><td>Date</td><td>2025-05-28</td></tr></table><p>Ontoserver supports a large portion of the FHIR Terminology Services specification. In particular, it has native support for SNOMED CT, LOINC, and code systems defined via the FHIR CodeSystem resource. This extends to supporting use of all defined and default filters in a FHIR ValueSet, as well as the implicitly defined ValueSets for SNOMED CT and LOINC.</p><p>More details are available in the <a href=\"https://ontoserver.csiro.au/docs/6.22.3/api-fhir.html\">Ontoserver documentation</a></p></div>"
   },
   "url" : "https://terminologystandardsservice.ca/tx/fhir/metadata?mode=terminology",
-  "version" : "6.22.1.1741215307913",
+  "version" : "6.22.3.1748400850790",
   "name" : "OntoserverTerminologyCapabilities",
   "title" : "Ontoserver® Terminology Capabilities Statement",
   "status" : "active",
   "experimental" : false,
-  "date" : "2025-03-05T22:55:07+00:00",
+  "date" : "2025-05-28T02:54:10+00:00",
   "publisher" : "Canada Health Infoway",
   "contact" : [{
     "name" : "Standards Infodesk",
@@ -30,29 +30,11 @@
   "kind" : "capability",
   "software" : {
     "name" : "Ontoserver®",
-    "version" : "6.22.1"
+    "version" : "6.22.3"
   },
   "lockedDate" : false,
   "codeSystem" : [{
     "uri" : "http://hl7.org/fhir/name-use",
-    "version" : [{
-      "code" : "4.0.1",
-      "isDefault" : true,
-      "compositional" : false
-    }],
-    "subsumption" : true
-  },
-  {
-    "uri" : "http://hl7.org/fhir/contact-point-use",
-    "version" : [{
-      "code" : "4.0.1",
-      "isDefault" : true,
-      "compositional" : false
-    }],
-    "subsumption" : true
-  },
-  {
-    "uri" : "http://hl7.org/fhir/address-type",
     "version" : [{
       "code" : "4.0.1",
       "isDefault" : true,
@@ -70,15 +52,6 @@
     "subsumption" : true
   },
   {
-    "uri" : "http://terminology.hl7.org/CodeSystem/v3-ResponseMode",
-    "version" : [{
-      "code" : "3.0.0",
-      "isDefault" : true,
-      "compositional" : false
-    }],
-    "subsumption" : true
-  },
-  {
     "uri" : "https://fhir.infoway-inforoute.ca/CodeSystem/prescriptiondosageinstructionlinerelationship",
     "version" : [{
       "code" : "1.0.0",
@@ -88,36 +61,9 @@
     "subsumption" : true
   },
   {
-    "uri" : "http://terminology.hl7.org/CodeSystem/v3-ParticipationSignature",
-    "version" : [{
-      "code" : "3.0.0",
-      "isDefault" : true,
-      "compositional" : false
-    }],
-    "subsumption" : true
-  },
-  {
-    "uri" : "https://fhir.infoway-inforoute.ca/CodeSystem/canadianpractitionerrole",
-    "version" : [{
-      "code" : "1.0.0",
-      "isDefault" : true,
-      "compositional" : false
-    }],
-    "subsumption" : true
-  },
-  {
-    "uri" : "http://terminology.hl7.org/CodeSystem/v3-ActReason",
-    "version" : [{
-      "code" : "3.0.0",
-      "isDefault" : true,
-      "compositional" : false
-    }],
-    "subsumption" : true
-  },
-  {
     "uri" : "http://terminology.hl7.org/CodeSystem/epsg-ca",
     "version" : [{
-      "code" : "1.0.0",
+      "code" : "1.1.0",
       "isDefault" : true,
       "compositional" : false
     }],
@@ -125,24 +71,6 @@
   },
   {
     "uri" : "http://terminology.hl7.org/CodeSystem/v3-EntityCode",
-    "version" : [{
-      "code" : "3.0.0",
-      "isDefault" : true,
-      "compositional" : false
-    }],
-    "subsumption" : true
-  },
-  {
-    "uri" : "http://hl7.org/fhir/issue-type",
-    "version" : [{
-      "code" : "4.0.1",
-      "isDefault" : true,
-      "compositional" : false
-    }],
-    "subsumption" : true
-  },
-  {
-    "uri" : "http://terminology.hl7.org/CodeSystem/v3-ResponseModality",
     "version" : [{
       "code" : "3.0.0",
       "isDefault" : true,
@@ -189,25 +117,7 @@
   {
     "uri" : "http://terminology.hl7.org/CodeSystem/practitioner-role",
     "version" : [{
-      "code" : "1.0.0",
-      "isDefault" : true,
-      "compositional" : false
-    }],
-    "subsumption" : true
-  },
-  {
-    "uri" : "http://terminology.hl7.org/CodeSystem/v2-0136",
-    "version" : [{
-      "code" : "2.9",
-      "isDefault" : true,
-      "compositional" : false
-    }],
-    "subsumption" : true
-  },
-  {
-    "uri" : "http://terminology.hl7.org/CodeSystem/v3-NullFlavor",
-    "version" : [{
-      "code" : "3.0.0",
+      "code" : "1.0.1",
       "isDefault" : true,
       "compositional" : false
     }],
@@ -245,15 +155,11 @@
     },
     {
       "code" : "20240930",
-      "isDefault" : true,
+      "isDefault" : false,
       "compositional" : false
-    }],
-    "subsumption" : true
-  },
-  {
-    "uri" : "https://fhir.infoway-inforoute.ca/CodeSystem/authorizationmechanism",
-    "version" : [{
-      "code" : "1.0.0",
+    },
+    {
+      "code" : "20250331",
       "isDefault" : true,
       "compositional" : false
     }],
@@ -269,6 +175,15 @@
     "subsumption" : true
   },
   {
+    "uri" : "http://ctas-phctas.ca/CodeSystem/canadian-triage-acuity-scale",
+    "version" : [{
+      "code" : "1.0.0",
+      "isDefault" : true,
+      "compositional" : false
+    }],
+    "subsumption" : true
+  },
+  {
     "uri" : "http://terminology.hl7.org/CodeSystem/v2-0163",
     "version" : [{
       "code" : "2.0.0",
@@ -278,18 +193,9 @@
     "subsumption" : true
   },
   {
-    "uri" : "https://fhir.infoway-inforoute.ca/CodeSystem/JurisdictionalErrors",
+    "uri" : "http://terminology.hl7.org/CodeSystem/allergyintolerance-verification",
     "version" : [{
-      "code" : "1.0.0",
-      "isDefault" : true,
-      "compositional" : false
-    }],
-    "subsumption" : true
-  },
-  {
-    "uri" : "https://fhir.infoway-inforoute.ca/CodeSystem/sharedmessageevents",
-    "version" : [{
-      "code" : "1.0.0",
+      "code" : "1.0.1",
       "isDefault" : true,
       "compositional" : false
     }],
@@ -332,33 +238,6 @@
     "subsumption" : true
   },
   {
-    "uri" : "http://terminology.hl7.org/CodeSystem/v3-ObservationValue",
-    "version" : [{
-      "code" : "3.0.0",
-      "isDefault" : true,
-      "compositional" : false
-    }],
-    "subsumption" : true
-  },
-  {
-    "uri" : "https://fhir.infoway-inforoute.ca/CodeSystem/formularyjurisdictions",
-    "version" : [{
-      "code" : "1.0.0",
-      "isDefault" : true,
-      "compositional" : false
-    }],
-    "subsumption" : true
-  },
-  {
-    "uri" : "https://fhir.infoway-inforoute.ca/CodeSystem/sharedspecificationversion",
-    "version" : [{
-      "code" : "1.0.0",
-      "isDefault" : true,
-      "compositional" : false
-    }],
-    "subsumption" : true
-  },
-  {
     "uri" : "http://terminology.hl7.org/CodeSystem/v3-AcknowledgementDetailCode",
     "version" : [{
       "code" : "3.0.0",
@@ -370,12 +249,7 @@
   {
     "uri" : "https://fhir.infoway-inforoute.ca/CodeSystem/canadianactreason",
     "version" : [{
-      "code" : "1.0.0",
-      "isDefault" : false,
-      "compositional" : false
-    },
-    {
-      "code" : "1.1.0",
+      "code" : "1.2.0",
       "isDefault" : true,
       "compositional" : false
     }],
@@ -385,20 +259,6 @@
     "uri" : "http://terminology.hl7.org/CodeSystem/v2-0203",
     "version" : [{
       "code" : "4.0.0",
-      "isDefault" : true,
-      "compositional" : false
-    }],
-    "subsumption" : true
-  },
-  {
-    "uri" : "https://fhir.infoway-inforoute.ca/CodeSystem/RxJurisdictionalIdentifierType",
-    "version" : [{
-      "code" : "1.0.0",
-      "isDefault" : false,
-      "compositional" : false
-    },
-    {
-      "code" : "1.1.0",
       "isDefault" : true,
       "compositional" : false
     }],
@@ -423,24 +283,6 @@
     "subsumption" : true
   },
   {
-    "uri" : "http://terminology.hl7.org/CodeSystem/v3-RoleCode",
-    "version" : [{
-      "code" : "3.0.0",
-      "isDefault" : true,
-      "compositional" : false
-    }],
-    "subsumption" : true
-  },
-  {
-    "uri" : "http://terminology.hl7.org/CodeSystem/v3-MessageWaitingPriority",
-    "version" : [{
-      "code" : "3.0.0",
-      "isDefault" : true,
-      "compositional" : false
-    }],
-    "subsumption" : true
-  },
-  {
     "uri" : "http://terminology.hl7.org/CodeSystem/v3-LanguageAbilityProficiency",
     "version" : [{
       "code" : "3.0.0",
@@ -459,9 +301,9 @@
     "subsumption" : true
   },
   {
-    "uri" : "http://terminology.hl7.org/CodeSystem/v3-ProcessingMode",
+    "uri" : "http://terminology.hl7.org/CodeSystem/condition-category",
     "version" : [{
-      "code" : "3.0.0",
+      "code" : "1.0.1",
       "isDefault" : true,
       "compositional" : false
     }],
@@ -505,6 +347,21 @@
     },
     {
       "code" : "20250215",
+      "isDefault" : false,
+      "compositional" : false
+    },
+    {
+      "code" : "20250315",
+      "isDefault" : false,
+      "compositional" : false
+    },
+    {
+      "code" : "20250415",
+      "isDefault" : false,
+      "compositional" : false
+    },
+    {
+      "code" : "20250515",
       "isDefault" : true,
       "compositional" : false
     }],
@@ -512,15 +369,6 @@
   },
   {
     "uri" : "http://terminology.hl7.org/CodeSystem/v3-ProcessingID",
-    "version" : [{
-      "code" : "3.0.0",
-      "isDefault" : true,
-      "compositional" : false
-    }],
-    "subsumption" : true
-  },
-  {
-    "uri" : "http://terminology.hl7.org/CodeSystem/v3-Confidentiality",
     "version" : [{
       "code" : "3.0.0",
       "isDefault" : true,
@@ -538,25 +386,7 @@
     "subsumption" : true
   },
   {
-    "uri" : "http://hl7.org/fhir/contact-point-system",
-    "version" : [{
-      "code" : "4.0.1",
-      "isDefault" : true,
-      "compositional" : false
-    }],
-    "subsumption" : true
-  },
-  {
     "uri" : "urn:ietf:bcp:47",
-    "version" : [{
-      "code" : "1.0.0",
-      "isDefault" : true,
-      "compositional" : false
-    }],
-    "subsumption" : true
-  },
-  {
-    "uri" : "https://fhir.infoway-inforoute.ca/CodeSystem/sharedservicestatus",
     "version" : [{
       "code" : "1.0.0",
       "isDefault" : true,
@@ -567,16 +397,16 @@
   {
     "uri" : "http://terminology.hl7.org/CodeSystem/epsg-crs",
     "version" : [{
-      "code" : "1.0.0",
+      "code" : "1.1.0",
       "isDefault" : true,
       "compositional" : false
     }],
     "subsumption" : true
   },
   {
-    "uri" : "http://terminology.hl7.org/CodeSystem/v3-mediaType",
+    "uri" : "http://hl7.org/fhir/allergy-intolerance-type",
     "version" : [{
-      "code" : "3.0.0",
+      "code" : "4.0.1",
       "isDefault" : true,
       "compositional" : false
     }],
@@ -593,6 +423,496 @@
   },
   {
     "uri" : "http://terminology.hl7.org/CodeSystem/v3-QueryParameterValue",
+    "version" : [{
+      "code" : "3.0.0",
+      "isDefault" : true,
+      "compositional" : false
+    }],
+    "subsumption" : true
+  },
+  {
+    "uri" : "http://terminology.hl7.org/CodeSystem/allergyintolerance-clinical",
+    "version" : [{
+      "code" : "1.0.1",
+      "isDefault" : true,
+      "compositional" : false
+    }],
+    "subsumption" : true
+  },
+  {
+    "uri" : "http://terminology.hl7.org/CodeSystem/medication-admin-status",
+    "version" : [{
+      "code" : "4.0.1",
+      "isDefault" : true,
+      "compositional" : false
+    }],
+    "subsumption" : true
+  },
+  {
+    "uri" : "http://terminology.hl7.org/CodeSystem/v3-RoleClass",
+    "version" : [{
+      "code" : "4.0.0",
+      "isDefault" : true,
+      "compositional" : false
+    }],
+    "subsumption" : true
+  },
+  {
+    "uri" : "http://terminology.hl7.org/CodeSystem/hc-CCDD",
+    "version" : [{
+      "code" : "20240913",
+      "isDefault" : false,
+      "compositional" : false
+    },
+    {
+      "code" : "20240815",
+      "isDefault" : false,
+      "compositional" : false
+    },
+    {
+      "code" : "20240715",
+      "isDefault" : false,
+      "compositional" : false
+    },
+    {
+      "code" : "20240611",
+      "isDefault" : false,
+      "compositional" : false
+    },
+    {
+      "code" : "20240510",
+      "isDefault" : false,
+      "compositional" : false
+    },
+    {
+      "code" : "20240412",
+      "isDefault" : false,
+      "compositional" : false
+    },
+    {
+      "code" : "20241015",
+      "isDefault" : false,
+      "compositional" : false
+    },
+    {
+      "code" : "20241115",
+      "isDefault" : false,
+      "compositional" : false
+    },
+    {
+      "code" : "20241215",
+      "isDefault" : false,
+      "compositional" : false
+    },
+    {
+      "code" : "20250115",
+      "isDefault" : false,
+      "compositional" : false
+    },
+    {
+      "code" : "20250215",
+      "isDefault" : false,
+      "compositional" : false
+    },
+    {
+      "code" : "20250315",
+      "isDefault" : false,
+      "compositional" : false
+    },
+    {
+      "code" : "20250415",
+      "isDefault" : false,
+      "compositional" : false
+    },
+    {
+      "code" : "20250515",
+      "isDefault" : true,
+      "compositional" : false
+    }],
+    "subsumption" : true
+  },
+  {
+    "uri" : "http://terminology.hl7.org/CodeSystem/v3-ParticipationMode",
+    "version" : [{
+      "code" : "4.0.0",
+      "isDefault" : true,
+      "compositional" : false
+    }],
+    "subsumption" : true
+  },
+  {
+    "uri" : "http://terminology.hl7.org/CodeSystem/v2-0062",
+    "version" : [{
+      "code" : "2.0.0",
+      "isDefault" : true,
+      "compositional" : false
+    }],
+    "subsumption" : true
+  },
+  {
+    "uri" : "https://fhir.infoway-inforoute.ca/CodeSystem/scpqual",
+    "version" : [{
+      "code" : "1.1.0",
+      "isDefault" : true,
+      "compositional" : false
+    }],
+    "subsumption" : true
+  },
+  {
+    "uri" : "https://fhir.infoway-inforoute.ca/CodeSystem/communicationcategory",
+    "version" : [{
+      "code" : "1.0.0",
+      "isDefault" : true,
+      "compositional" : false
+    }],
+    "subsumption" : true
+  },
+  {
+    "uri" : "http://hl7.org/fhir/CodeSystem/medication-statement-status",
+    "version" : [{
+      "code" : "4.0.1",
+      "isDefault" : true,
+      "compositional" : false
+    }],
+    "subsumption" : true
+  },
+  {
+    "uri" : "http://terminology.hl7.org/CodeSystem/v3-AcknowledgementCondition",
+    "version" : [{
+      "code" : "3.0.0",
+      "isDefault" : true,
+      "compositional" : false
+    }],
+    "subsumption" : true
+  },
+  {
+    "uri" : "http://terminology.hl7.org/CodeSystem/v3-AcknowledgementDetailType",
+    "version" : [{
+      "code" : "3.0.0",
+      "isDefault" : true,
+      "compositional" : false
+    }],
+    "subsumption" : true
+  },
+  {
+    "uri" : "https://fhir.infoway-inforoute.ca/CodeSystem/prescriptiontype",
+    "version" : [{
+      "code" : "1.0.0",
+      "isDefault" : true,
+      "compositional" : false
+    }],
+    "subsumption" : true
+  },
+  {
+    "uri" : "http://terminology.hl7.org/CodeSystem/v3-AddressUse",
+    "version" : [{
+      "code" : "3.0.1",
+      "isDefault" : true,
+      "compositional" : false
+    }],
+    "subsumption" : true
+  },
+  {
+    "uri" : "http://hl7.org/fhir/reaction-event-severity",
+    "version" : [{
+      "code" : "4.0.1",
+      "isDefault" : true,
+      "compositional" : false
+    }],
+    "subsumption" : true
+  },
+  {
+    "uri" : "https://fhir.infoway-inforoute.ca/CodeSystem/scptype",
+    "version" : [{
+      "code" : "1.2.0",
+      "isDefault" : true,
+      "compositional" : false
+    }],
+    "subsumption" : true
+  },
+  {
+    "uri" : "http://loinc.org",
+    "version" : [{
+      "code" : "2.77",
+      "isDefault" : false,
+      "compositional" : false
+    },
+    {
+      "code" : "2.76",
+      "isDefault" : false,
+      "compositional" : false
+    },
+    {
+      "code" : "2.78",
+      "isDefault" : false,
+      "compositional" : false
+    },
+    {
+      "code" : "2.79",
+      "isDefault" : false,
+      "compositional" : false
+    },
+    {
+      "code" : "2.80",
+      "isDefault" : true,
+      "compositional" : false
+    }],
+    "subsumption" : true
+  },
+  {
+    "uri" : "http://hl7.org/fhir/event-status",
+    "version" : [{
+      "code" : "4.0.1",
+      "isDefault" : true,
+      "compositional" : false
+    }],
+    "subsumption" : true
+  },
+  {
+    "uri" : "http://terminology.hl7.org/CodeSystem/v3-HealthcareProviderTaxonomyHIPAA",
+    "version" : [{
+      "code" : "3.0.1",
+      "isDefault" : true,
+      "compositional" : false
+    }],
+    "subsumption" : true
+  },
+  {
+    "uri" : "http://hl7.org/fhir/contact-point-use",
+    "version" : [{
+      "code" : "4.0.1",
+      "isDefault" : true,
+      "compositional" : false
+    }],
+    "subsumption" : true
+  },
+  {
+    "uri" : "http://hl7.org/fhir/address-type",
+    "version" : [{
+      "code" : "4.0.1",
+      "isDefault" : true,
+      "compositional" : false
+    }],
+    "subsumption" : true
+  },
+  {
+    "uri" : "http://hl7.org/fhir/CodeSystem/medicationrequest-intent",
+    "version" : [{
+      "code" : "4.0.1",
+      "isDefault" : true,
+      "compositional" : false
+    }],
+    "subsumption" : true
+  },
+  {
+    "uri" : "http://terminology.hl7.org/CodeSystem/v3-ResponseMode",
+    "version" : [{
+      "code" : "3.0.0",
+      "isDefault" : true,
+      "compositional" : false
+    }],
+    "subsumption" : true
+  },
+  {
+    "uri" : "http://terminology.hl7.org/CodeSystem/v3-ParticipationSignature",
+    "version" : [{
+      "code" : "3.0.0",
+      "isDefault" : true,
+      "compositional" : false
+    }],
+    "subsumption" : true
+  },
+  {
+    "uri" : "https://fhir.infoway-inforoute.ca/CodeSystem/canadianpractitionerrole",
+    "version" : [{
+      "code" : "1.1.0",
+      "isDefault" : true,
+      "compositional" : false
+    }],
+    "subsumption" : true
+  },
+  {
+    "uri" : "http://hl7.org/fhir/allergy-intolerance-category",
+    "version" : [{
+      "code" : "4.0.1",
+      "isDefault" : true,
+      "compositional" : false
+    }],
+    "subsumption" : true
+  },
+  {
+    "uri" : "http://terminology.hl7.org/CodeSystem/v3-ActReason",
+    "version" : [{
+      "code" : "3.1.0",
+      "isDefault" : true,
+      "compositional" : false
+    }],
+    "subsumption" : true
+  },
+  {
+    "uri" : "http://hl7.org/fhir/address-use",
+    "version" : [{
+      "code" : "4.0.1",
+      "isDefault" : true,
+      "compositional" : false
+    }],
+    "subsumption" : true
+  },
+  {
+    "uri" : "http://hl7.org/fhir/issue-type",
+    "version" : [{
+      "code" : "4.0.1",
+      "isDefault" : true,
+      "compositional" : false
+    }],
+    "subsumption" : true
+  },
+  {
+    "uri" : "http://hl7.org/fhir/CodeSystem/medicationrequest-status",
+    "version" : [{
+      "code" : "4.0.1",
+      "isDefault" : true,
+      "compositional" : false
+    }],
+    "subsumption" : true
+  },
+  {
+    "uri" : "http://terminology.hl7.org/CodeSystem/v3-ResponseModality",
+    "version" : [{
+      "code" : "3.0.0",
+      "isDefault" : true,
+      "compositional" : false
+    }],
+    "subsumption" : true
+  },
+  {
+    "uri" : "http://terminology.hl7.org/CodeSystem/v2-0136",
+    "version" : [{
+      "code" : "2.9",
+      "isDefault" : true,
+      "compositional" : false
+    }],
+    "subsumption" : true
+  },
+  {
+    "uri" : "http://terminology.hl7.org/CodeSystem/v3-NullFlavor",
+    "version" : [{
+      "code" : "3.0.0",
+      "isDefault" : true,
+      "compositional" : false
+    }],
+    "subsumption" : true
+  },
+  {
+    "uri" : "https://fhir.infoway-inforoute.ca/CodeSystem/JurisdictionalErrors",
+    "version" : [{
+      "code" : "1.0.0",
+      "isDefault" : true,
+      "compositional" : false
+    }],
+    "subsumption" : true
+  },
+  {
+    "uri" : "http://terminology.hl7.org/CodeSystem/v3-ObservationValue",
+    "version" : [{
+      "code" : "4.0.0",
+      "isDefault" : true,
+      "compositional" : false
+    }],
+    "subsumption" : true
+  },
+  {
+    "uri" : "https://fhir.infoway-inforoute.ca/CodeSystem/formularyjurisdictions",
+    "version" : [{
+      "code" : "1.1.0",
+      "isDefault" : true,
+      "compositional" : false
+    }],
+    "subsumption" : true
+  },
+  {
+    "uri" : "https://fhir.infoway-inforoute.ca/CodeSystem/RxJurisdictionalIdentifierType",
+    "version" : [{
+      "code" : "1.2.0",
+      "isDefault" : true,
+      "compositional" : false
+    }],
+    "subsumption" : true
+  },
+  {
+    "uri" : "http://terminology.hl7.org/CodeSystem/v3-RoleCode",
+    "version" : [{
+      "code" : "3.0.0",
+      "isDefault" : true,
+      "compositional" : false
+    }],
+    "subsumption" : true
+  },
+  {
+    "uri" : "http://terminology.hl7.org/CodeSystem/v3-MessageWaitingPriority",
+    "version" : [{
+      "code" : "3.0.0",
+      "isDefault" : true,
+      "compositional" : false
+    }],
+    "subsumption" : true
+  },
+  {
+    "uri" : "http://terminology.hl7.org/CodeSystem/condition-ver-status",
+    "version" : [{
+      "code" : "2.0.1",
+      "isDefault" : true,
+      "compositional" : false
+    }],
+    "subsumption" : true
+  },
+  {
+    "uri" : "http://terminology.hl7.org/CodeSystem/v3-ProcessingMode",
+    "version" : [{
+      "code" : "3.0.0",
+      "isDefault" : true,
+      "compositional" : false
+    }],
+    "subsumption" : true
+  },
+  {
+    "uri" : "http://hl7.org/fhir/allergy-intolerance-criticality",
+    "version" : [{
+      "code" : "4.0.1",
+      "isDefault" : true,
+      "compositional" : false
+    }],
+    "subsumption" : true
+  },
+  {
+    "uri" : "http://terminology.hl7.org/CodeSystem/v3-Confidentiality",
+    "version" : [{
+      "code" : "3.0.0",
+      "isDefault" : true,
+      "compositional" : false
+    }],
+    "subsumption" : true
+  },
+  {
+    "uri" : "http://hl7.org/fhir/contact-point-system",
+    "version" : [{
+      "code" : "4.0.1",
+      "isDefault" : true,
+      "compositional" : false
+    }],
+    "subsumption" : true
+  },
+  {
+    "uri" : "http://terminology.hl7.org/CodeSystem/condition-clinical",
+    "version" : [{
+      "code" : "3.0.0",
+      "isDefault" : true,
+      "compositional" : false
+    }],
+    "subsumption" : true
+  },
+  {
+    "uri" : "http://terminology.hl7.org/CodeSystem/v3-mediaType",
     "version" : [{
       "code" : "3.0.0",
       "isDefault" : true,
@@ -680,110 +1000,6 @@
     "subsumption" : true
   },
   {
-    "uri" : "http://terminology.hl7.org/CodeSystem/v3-RoleClass",
-    "version" : [{
-      "code" : "4.0.0",
-      "isDefault" : true,
-      "compositional" : false
-    }],
-    "subsumption" : true
-  },
-  {
-    "uri" : "http://terminology.hl7.org/CodeSystem/hc-CCDD",
-    "version" : [{
-      "code" : "20240913",
-      "isDefault" : false,
-      "compositional" : false
-    },
-    {
-      "code" : "20240815",
-      "isDefault" : false,
-      "compositional" : false
-    },
-    {
-      "code" : "20240715",
-      "isDefault" : false,
-      "compositional" : false
-    },
-    {
-      "code" : "20240611",
-      "isDefault" : false,
-      "compositional" : false
-    },
-    {
-      "code" : "20240510",
-      "isDefault" : false,
-      "compositional" : false
-    },
-    {
-      "code" : "20240412",
-      "isDefault" : false,
-      "compositional" : false
-    },
-    {
-      "code" : "20241015",
-      "isDefault" : false,
-      "compositional" : false
-    },
-    {
-      "code" : "20241115",
-      "isDefault" : false,
-      "compositional" : false
-    },
-    {
-      "code" : "20241215",
-      "isDefault" : false,
-      "compositional" : false
-    },
-    {
-      "code" : "20250115",
-      "isDefault" : false,
-      "compositional" : false
-    },
-    {
-      "code" : "20250215",
-      "isDefault" : true,
-      "compositional" : false
-    }],
-    "subsumption" : true
-  },
-  {
-    "uri" : "http://terminology.hl7.org/CodeSystem/v3-ParticipationMode",
-    "version" : [{
-      "code" : "4.0.0",
-      "isDefault" : true,
-      "compositional" : false
-    }],
-    "subsumption" : true
-  },
-  {
-    "uri" : "http://terminology.hl7.org/CodeSystem/v2-0062",
-    "version" : [{
-      "code" : "2.0.0",
-      "isDefault" : true,
-      "compositional" : false
-    }],
-    "subsumption" : true
-  },
-  {
-    "uri" : "https://fhir.infoway-inforoute.ca/CodeSystem/scpqual",
-    "version" : [{
-      "code" : "1.0.0",
-      "isDefault" : true,
-      "compositional" : false
-    }],
-    "subsumption" : true
-  },
-  {
-    "uri" : "https://fhir.infoway-inforoute.ca/CodeSystem/communicationcategory",
-    "version" : [{
-      "code" : "1.0.0",
-      "isDefault" : true,
-      "compositional" : false
-    }],
-    "subsumption" : true
-  },
-  {
     "uri" : "http://terminology.hl7.org/CodeSystem/v3-substanceAdminSubstitution",
     "version" : [{
       "code" : "3.0.0",
@@ -811,45 +1027,9 @@
     "subsumption" : true
   },
   {
-    "uri" : "http://terminology.hl7.org/CodeSystem/v3-AcknowledgementCondition",
-    "version" : [{
-      "code" : "3.0.0",
-      "isDefault" : true,
-      "compositional" : false
-    }],
-    "subsumption" : true
-  },
-  {
-    "uri" : "http://terminology.hl7.org/CodeSystem/v3-AcknowledgementDetailType",
-    "version" : [{
-      "code" : "3.0.0",
-      "isDefault" : true,
-      "compositional" : false
-    }],
-    "subsumption" : true
-  },
-  {
-    "uri" : "https://fhir.infoway-inforoute.ca/CodeSystem/prescriptiontype",
-    "version" : [{
-      "code" : "1.0.0",
-      "isDefault" : true,
-      "compositional" : false
-    }],
-    "subsumption" : true
-  },
-  {
-    "uri" : "http://terminology.hl7.org/CodeSystem/v3-AddressUse",
-    "version" : [{
-      "code" : "3.0.1",
-      "isDefault" : true,
-      "compositional" : false
-    }],
-    "subsumption" : true
-  },
-  {
     "uri" : "https://fhir.infoway-inforoute.ca/CodeSystem/prescriptionsplitreason",
     "version" : [{
-      "code" : "1.0.0",
+      "code" : "1.1.0",
       "isDefault" : true,
       "compositional" : false
     }],
@@ -869,6 +1049,21 @@
     },
     {
       "code" : "20250215",
+      "isDefault" : false,
+      "compositional" : false
+    },
+    {
+      "code" : "20250315",
+      "isDefault" : false,
+      "compositional" : false
+    },
+    {
+      "code" : "20250415",
+      "isDefault" : false,
+      "compositional" : false
+    },
+    {
+      "code" : "20250515",
       "isDefault" : true,
       "compositional" : false
     }],
@@ -884,88 +1079,9 @@
     "subsumption" : true
   },
   {
-    "uri" : "https://fhir.infoway-inforoute.ca/CodeSystem/scptype",
-    "version" : [{
-      "code" : "1.0.0",
-      "isDefault" : false,
-      "compositional" : false
-    },
-    {
-      "code" : "1.1.0",
-      "isDefault" : true,
-      "compositional" : false
-    }],
-    "subsumption" : true
-  },
-  {
-    "uri" : "http://loinc.org",
-    "version" : [{
-      "code" : "2.77",
-      "isDefault" : false,
-      "compositional" : false
-    },
-    {
-      "code" : "2.76",
-      "isDefault" : false,
-      "compositional" : false
-    },
-    {
-      "code" : "2.78",
-      "isDefault" : false,
-      "compositional" : false
-    },
-    {
-      "code" : "2.79",
-      "isDefault" : false,
-      "compositional" : false
-    },
-    {
-      "code" : "2.80",
-      "isDefault" : true,
-      "compositional" : false
-    }],
-    "subsumption" : true
-  },
-  {
-    "uri" : "https://fhir.infoway-inforoute.ca/CodeSystem/sharedissuedetails",
-    "version" : [{
-      "code" : "1.0.0",
-      "isDefault" : true,
-      "compositional" : false
-    }],
-    "subsumption" : true
-  },
-  {
     "uri" : "http://terminology.hl7.org/CodeSystem/v3-AddressPartType",
     "version" : [{
       "code" : "3.0.0",
-      "isDefault" : true,
-      "compositional" : false
-    }],
-    "subsumption" : true
-  },
-  {
-    "uri" : "https://fhir.infoway-inforoute.ca/CodeSystem/sharedservicetype",
-    "version" : [{
-      "code" : "1.0.0",
-      "isDefault" : true,
-      "compositional" : false
-    }],
-    "subsumption" : true
-  },
-  {
-    "uri" : "http://hl7.org/fhir/event-status",
-    "version" : [{
-      "code" : "4.0.1",
-      "isDefault" : true,
-      "compositional" : false
-    }],
-    "subsumption" : true
-  },
-  {
-    "uri" : "http://terminology.hl7.org/CodeSystem/v3-HealthcareProviderTaxonomyHIPAA",
-    "version" : [{
-      "code" : "3.0.1",
       "isDefault" : true,
       "compositional" : false
     }],

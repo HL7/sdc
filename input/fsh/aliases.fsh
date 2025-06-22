@@ -31,7 +31,6 @@ Alias: $unitsofmeasure = http://unitsofmeasure.org
 
 // Code systems - fake
 Alias: $Australian-States = http://example.org/CodeSystem/Australian-States
-Alias: $CSPHQ9            = http://example.org/CodeSystem/CSPHQ9
 Alias: $chf-codes         = http://example.org/CodeSystem/chf-codes
 Alias: $conditions        = http://example.org/CodeSystem/conditions
 Alias: $lifestyle         = http://example.org/CodeSystem/lifestyle

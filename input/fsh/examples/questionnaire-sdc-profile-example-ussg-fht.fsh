@@ -56,7 +56,6 @@ Usage: #example
     * type = #string
 * item[+]
   * linkId = "1"
-  * definition = "http://loinc.org/fhir/DataElement/54126-8"
   * code = $loinc#54126-8
   * text = "Your health information"
   * type = #group
@@ -69,7 +68,6 @@ Usage: #example
         * url = "http://hl7.org/fhir/uv/sdc/StructureDefinition/sdc-questionnaire-observationLinkPeriod"
         * valueDuration = 200 'a'
       * linkId = "1.1.1"
-      * definition = "http://loinc.org/fhir/DataElement/54125-0"
       * code = $loinc#54125-0
       * text = "Name"
       * type = #string
@@ -79,7 +77,6 @@ Usage: #example
         * url = "http://hl7.org/fhir/uv/sdc/StructureDefinition/sdc-questionnaire-observationLinkPeriod"
         * valueDuration = 200 'a'
       * linkId = "1.1.2"
-      * definition = "http://loinc.org/fhir/DataElement/54131-8"
       * code = $loinc#54131-8
       * text = "Gender"
       * type = #choice
@@ -99,7 +96,6 @@ Usage: #example
         * url = "http://hl7.org/fhir/uv/sdc/StructureDefinition/sdc-questionnaire-observationLinkPeriod"
         * valueDuration = 200 'a'
       * linkId = "1.1.3"
-      * definition = "http://loinc.org/fhir/DataElement/21112-8"
       * code = $loinc#21112-8
       * text = "Date of Birth"
       * type = #date
@@ -108,7 +104,6 @@ Usage: #example
         * url = "http://hl7.org/fhir/uv/sdc/StructureDefinition/sdc-questionnaire-observationLinkPeriod"
         * valueDuration = 200 'a'
       * linkId = "1.1.4"
-      * definition = "http://loinc.org/fhir/DataElement/54132-6"
       * code = $loinc#54132-6
       * text = "Were you born a twin?"
       * type = #choice
@@ -119,7 +114,6 @@ Usage: #example
         * url = "http://hl7.org/fhir/uv/sdc/StructureDefinition/sdc-questionnaire-observationLinkPeriod"
         * valueDuration = 200 'a'
       * linkId = "1.1.5"
-      * definition = "http://loinc.org/fhir/DataElement/54128-4"
       * code = $loinc#54128-4
       * text = "Were you adopted?"
       * type = #choice
@@ -129,7 +123,6 @@ Usage: #example
         * url = "http://hl7.org/fhir/uv/sdc/StructureDefinition/sdc-questionnaire-observationLinkPeriod"
         * valueDuration = 200 'a'
       * linkId = "1.1.6"
-      * definition = "http://loinc.org/fhir/DataElement/54135-9"
       * code = $loinc#54135-9
       * text = "Are your parents related to each other in any way other than marriage?"
       * type = #choice
@@ -139,7 +132,6 @@ Usage: #example
         * url = "http://hl7.org/fhir/uv/sdc/StructureDefinition/sdc-questionnaire-observationLinkPeriod"
         * valueDuration = 200 'a'
       * linkId = "1.1.7"
-      * definition = "http://loinc.org/fhir/DataElement/8302-2"
       * code = $loinc#8302-2
       * text = "Height"
       * type = #decimal
@@ -154,7 +146,6 @@ Usage: #example
         * url = "http://hl7.org/fhir/uv/sdc/StructureDefinition/sdc-questionnaire-observationLinkPeriod"
         * valueDuration = 200 'a'
       * linkId = "1.1.8"
-      * definition = "http://loinc.org/fhir/DataElement/29463-7"
       * code = $loinc#29463-7
       * text = "Weight"
       * type = #decimal
@@ -165,7 +156,6 @@ Usage: #example
         * answerValueSet = "#weight"
     * item[+]
       * linkId = "1.1.9"
-      * definition = "http://loinc.org/fhir/DataElement/39156-5"
       * code = $loinc#39156-5
       * text = "Body mass index (BMI) [Ratio]"
       * type = #decimal
@@ -175,7 +165,6 @@ Usage: #example
         * url = "http://hl7.org/fhir/uv/sdc/StructureDefinition/sdc-questionnaire-observationLinkPeriod"
         * valueDuration = 200 'a'
       * linkId = "1.1.10"
-      * definition = "http://loinc.org/fhir/DataElement/54134-2"
       * code = $loinc#54134-2
       * text = "Race"
       * type = #choice
@@ -186,7 +175,6 @@ Usage: #example
         * url = "http://hl7.org/fhir/uv/sdc/StructureDefinition/sdc-questionnaire-observationLinkPeriod"
         * valueDuration = 200 'a'
       * linkId = "1.1.11"
-      * definition = "http://loinc.org/fhir/DataElement/54133-4"
       * code = $loinc#54133-4
       * text = "Ethnicity"
       * type = #choice
@@ -194,7 +182,6 @@ Usage: #example
       * answerValueSet = "http://loinc.org/vs/LL628-9"
   * item[+]
     * linkId = "1.2"
-    * definition = "http://loinc.org/fhir/DataElement/54137-5"
     * code = $loinc#54137-5
     * text = "Your diseases history"
     * type = #group
@@ -204,7 +191,6 @@ Usage: #example
         * url = "http://hl7.org/fhir/uv/sdc/StructureDefinition/sdc-questionnaire-observationLinkPeriod"
         * valueDuration = 200 'a'
       * linkId = "1.2.1"
-      * definition = "http://loinc.org/fhir/DataElement/54140-9"
       * code = $loinc#54140-9
       * text = "Disease or Condition"
       * type = #choice
@@ -214,14 +200,12 @@ Usage: #example
         * url = "http://hl7.org/fhir/uv/sdc/StructureDefinition/sdc-questionnaire-observationLinkPeriod"
         * valueDuration = 200 'a'
       * linkId = "1.2.2"
-      * definition = "http://loinc.org/fhir/DataElement/54130-0"
       * code = $loinc#54130-0
       * text = "Age at Diagnosis"
       * type = #choice
       * answerValueSet = "http://loinc.org/vs/LL619-8"
 * item[+]
   * linkId = "2"
-  * definition = "http://loinc.org/fhir/DataElement/54114-4"
   * code = $loinc#54114-4
   * text = "Family member health information"
   * type = #group
@@ -234,7 +218,6 @@ Usage: #example
         * url = "http://hl7.org/fhir/uv/sdc/StructureDefinition/sdc-questionnaire-observationLinkPeriod"
         * valueDuration = 200 'a'
       * linkId = "2.1.1.1"
-      * definition = "http://loinc.org/fhir/DataElement/54136-7"
       * code = $loinc#54136-7
       * text = "Relationship to you"
       * type = #choice
@@ -244,7 +227,6 @@ Usage: #example
         * url = "http://hl7.org/fhir/uv/sdc/StructureDefinition/sdc-questionnaire-observationLinkPeriod"
         * valueDuration = 200 'a'
       * linkId = "2.1.1.2"
-      * definition = "http://loinc.org/fhir/DataElement/54138-3"
       * code = $loinc#54138-3
       * text = "Name"
       * type = #string
@@ -253,7 +235,6 @@ Usage: #example
         * url = "http://hl7.org/fhir/uv/sdc/StructureDefinition/sdc-questionnaire-observationLinkPeriod"
         * valueDuration = 200 'a'
       * linkId = "2.1.1.3"
-      * definition = "http://loinc.org/fhir/DataElement/54123-5"
       * code = $loinc#54123-5
       * text = "Gender"
       * type = #choice
@@ -272,7 +253,6 @@ Usage: #example
         * url = "http://hl7.org/fhir/uv/sdc/StructureDefinition/sdc-questionnaire-observationLinkPeriod"
         * valueDuration = 200 'a'
       * linkId = "2.1.1.4"
-      * definition = "http://loinc.org/fhir/DataElement/54139-1"
       * code = $loinc#54139-1
       * text = "Living?"
       * type = #choice
@@ -285,7 +265,6 @@ Usage: #example
             * url = "http://hl7.org/fhir/uv/sdc/StructureDefinition/sdc-questionnaire-observationLinkPeriod"
             * valueDuration = 200 'a'
           * linkId = "2.1.1.4.1.1"
-          * definition = "http://loinc.org/fhir/DataElement/54112-8"
           * code = $loinc#54112-8
           * text = "Cause of Death"
           * type = #choice
@@ -303,7 +282,6 @@ Usage: #example
             * url = "http://hl7.org/fhir/uv/sdc/StructureDefinition/sdc-questionnaire-observationLinkPeriod"
             * valueDuration = 200 'a'
           * linkId = "2.1.1.4.1.2"
-          * definition = "http://loinc.org/fhir/DataElement/54113-6"
           * code = $loinc#54113-6
           * text = "Age at Death"
           * type = #choice
@@ -316,7 +294,6 @@ Usage: #example
             * url = "http://hl7.org/fhir/uv/sdc/StructureDefinition/sdc-questionnaire-observationLinkPeriod"
             * valueDuration = 200 'a'
           * linkId = "2.1.1.4.2.1"
-          * definition = "http://loinc.org/fhir/DataElement/54124-3"
           * code = $loinc#54124-3
           * text = "Date of Birth"
           * type = #date
@@ -325,7 +302,6 @@ Usage: #example
             * url = "http://hl7.org/fhir/uv/sdc/StructureDefinition/sdc-questionnaire-observationLinkPeriod"
             * valueDuration = 200 'a'
           * linkId = "2.1.1.4.2.2"
-          * definition = "http://loinc.org/fhir/DataElement/54141-7"
           * code = $loinc#54141-7
           * text = "Age"
           * type = #decimal
@@ -334,7 +310,6 @@ Usage: #example
         * url = "http://hl7.org/fhir/uv/sdc/StructureDefinition/sdc-questionnaire-observationLinkPeriod"
         * valueDuration = 200 'a'
       * linkId = "2.1.1.5"
-      * definition = "http://loinc.org/fhir/DataElement/54121-9"
       * code = $loinc#54121-9
       * text = "Was this person born a twin?"
       * type = #choice
@@ -344,7 +319,6 @@ Usage: #example
         * url = "http://hl7.org/fhir/uv/sdc/StructureDefinition/sdc-questionnaire-observationLinkPeriod"
         * valueDuration = 200 'a'
       * linkId = "2.1.1.6"
-      * definition = "http://loinc.org/fhir/DataElement/54122-7"
       * code = $loinc#54122-7
       * text = "Was this person adopted?"
       * type = #choice
@@ -354,7 +328,6 @@ Usage: #example
         * url = "http://hl7.org/fhir/uv/sdc/StructureDefinition/sdc-questionnaire-observationLinkPeriod"
         * valueDuration = 200 'a'
       * linkId = "2.1.1.7"
-      * definition = "http://loinc.org/fhir/DataElement/54119-3"
       * code = $loinc#54119-3
       * text = "Race"
       * type = #choice
@@ -365,7 +338,6 @@ Usage: #example
         * url = "http://hl7.org/fhir/uv/sdc/StructureDefinition/sdc-questionnaire-observationLinkPeriod"
         * valueDuration = 200 'a'
       * linkId = "2.1.1.8"
-      * definition = "http://loinc.org/fhir/DataElement/54120-1"
       * code = $loinc#54120-1
       * text = "Ethnicity"
       * type = #choice
@@ -373,7 +345,6 @@ Usage: #example
       * answerValueSet = "http://loinc.org/vs/LL628-9"
   * item[+]
     * linkId = "2.1.2"
-    * definition = "http://loinc.org/fhir/DataElement/54117-7"
     * code = $loinc#54117-7
     * text = "This family member's history of disease"
     * type = #group
@@ -383,7 +354,6 @@ Usage: #example
         * url = "http://hl7.org/fhir/uv/sdc/StructureDefinition/sdc-questionnaire-observationLinkPeriod"
         * valueDuration = 200 'a'
       * linkId = "2.1.2.1"
-      * definition = "http://loinc.org/fhir/DataElement/54116-9"
       * code = $loinc#54116-9
       * text = "Disease or Condition"
       * type = #choice
@@ -394,7 +364,6 @@ Usage: #example
         * url = "http://hl7.org/fhir/uv/sdc/StructureDefinition/sdc-questionnaire-observationLinkPeriod"
         * valueDuration = 200 'a'
       * linkId = "2.1.2.2"
-      * definition = "http://loinc.org/fhir/DataElement/54115-1"
       * code = $loinc#54115-1
       * text = "Age at Diagnosis"
       * type = #choice

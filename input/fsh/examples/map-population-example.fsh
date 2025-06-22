@@ -85,7 +85,6 @@ Usage: #inline
     * verificationStatus = $condition-ver-status#confirmed
     * category = $loinc#75326-9 "Problem"
     * code
-      * coding.version = "http://snomed.info/sct/20611000087101"
       * coding = $sct#95651005 "Chronic progressive paraparesis"
       * text = "Chronic Progressive Paraparesis"
     * subject.reference = "http://example.org/fhir/Patient/a0df9da6-3157-4b72-95f1-729853718c09"
@@ -179,15 +178,12 @@ Usage: #inline
       * status = #generated
       * div = "<div xmlns=\"http://www.w3.org/1999/xhtml\"><p><b>Generated Narrative with Details</b></p><p><b>id</b>: c6222017-94f6-4dbc-8958-fcdf9df3356a</p><p><b>meta</b>: </p><p><b>code</b>: Simvastatin 40 mg oral tablet <span style=\"background: LightGoldenRodYellow \">(Details : {SNOMED CT code \"320000009\" := \"320000009\", given as \"Simvastatin 40 mg oral tablet\"})</span></p><p><b>form</b>: Film-coated tablet <span style=\"background: LightGoldenRodYellow \">(Details : {SNOMED CT code \"385057009\" := \"385057009\", given as \"Film-coated tablet\"})</span></p></div>"
     * code
-      * coding.version = "http://snomed.info/sct/20611000087101"
       * coding = $sct#320000009 "Simvastatin 40 mg oral tablet"
       * text = "Simvastatin 40 mg oral tablet"
     * form
-      * coding.version = "http://snomed.info/sct/20611000087101"
       * coding = $sct#385057009 "Film-coated tablet"
     * ingredient
       * itemCodeableConcept
-        * coding.version = "http://snomed.info/sct/20611000087101"
         * coding = $sct#387584000 "Simvastatin"
       * strength
         * numerator = 40 'mg' "mcg"

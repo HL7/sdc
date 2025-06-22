@@ -148,7 +148,7 @@ Usage: #example
     * text = "Applicable health conditions"
     * type = #choice
     * repeats = true
-    * answerValueSet = "#vsConditionsAll"
+    * answerValueSet = Canonical(QuestionnaireBehaviorConditions)
     * extension[+]
       * extension[+]
         * url = "option"

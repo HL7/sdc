@@ -11,7 +11,7 @@ Description: "Profile used to validate the parameters that are the input of the 
 * parameter contains identifier 0..1 and
   questionnaire 0..1 and
   subject 0..1 and
-  context 0..1 and
+  context 0..* and
   local 0..1
 * parameter[identifier]
   * name = "identifier" (exactly)

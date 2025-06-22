@@ -7,8 +7,8 @@ Description: "Profile used to validate the parameters that are the output of the
 * parameter ^slicing.discriminator.type = #value
   * ^slicing.discriminator.path = "name"
   * ^slicing.rules = #open
-* parameter contains out 0..*
-* parameter[out]
+* parameter contains return 1..1
+* parameter[return]
   * name = "return" (exactly)
   * value[x] ..0
   * resource only SDCQuestionnaireResponseAdapt

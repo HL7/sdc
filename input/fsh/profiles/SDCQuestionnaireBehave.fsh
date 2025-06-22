@@ -65,7 +65,7 @@ Description: "Defines additional capabilities for controlling data entry and cal
   * extension[maxQuantity] ^mustSupport = false
     * value[x] ^mustSupport = false
       * extension contains $cqf-calculatedValue named maxQuantityCalculated 0..1
-  * enableWhen
+  * enableWhen MS
     * question MS
     * operator MS
     * answer[x] MS

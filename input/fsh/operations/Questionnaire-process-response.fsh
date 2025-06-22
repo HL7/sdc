@@ -22,6 +22,6 @@ Usage: #definition
 * instance = true
 * inputProfile = "http://hl7.org/fhir/uv/sdc/StructureDefinition/parameters-questionnaire-process-response-in"
 * parameter[+]
-  * insert parameter(#response, #in, 1, "1", #QuestionnaireResponse, "The questionnaire response to be accepted/processed")
+  * insert parameter(#in, #in, 1, "1", #QuestionnaireResponse, "The questionnaire response to be accepted/processed")
 * parameter[+]
-  * insert parameter(#warnings, #out, 0, "1",  #OperationOutcome, "If the response is successfully procssed\, an OperationOutcome may still be returned indicating warnings.  For example\, identifying questions that were incomplete\, answers that were defaulted\, etc.  It may also convey 'information' messages about the processing of the questionnaire response.")
+  * insert parameter(#return, #out, 0, "1",  #OperationOutcome, "If the response is successfully procssed\, an OperationOutcome may still be returned indicating warnings.  For example\, identifying questions that were incomplete\, answers that were defaulted\, etc.  It may also convey 'information' messages about the processing of the questionnaire response.")

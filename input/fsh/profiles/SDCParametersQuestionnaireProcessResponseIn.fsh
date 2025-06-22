@@ -7,7 +7,7 @@ Description: "Profile used to validate the parameters that are the input of the 
 * parameter ^slicing.discriminator.type = #value
 * parameter ^slicing.discriminator.path = "name"
 * parameter ^slicing.rules = #open
-* parameter contains in 0..*
+* parameter contains in 1..1
 * parameter[in]
   * name = "in" (exactly)
   * value[x] ..0

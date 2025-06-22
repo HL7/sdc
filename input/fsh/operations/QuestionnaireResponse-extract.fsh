@@ -20,7 +20,9 @@ Usage: #definition
 * instance = true
 * inputProfile = "http://hl7.org/fhir/uv/sdc/StructureDefinition/parameters-questionnaireresponse-extract-in"
 * parameter[+]
-  * insert parameter(#questionnaire-response, #in, 0, "1", #Resource,"The QuestionnaireResponse to extract data from.  Used when the operation is invoked at the 'type' level." )
+  * insert parameter(#questionnaire-response, #in, 0, "1", #QuestionnaireResponse,"The QuestionnaireResponse to extract data from.  Used when the operation is invoked at the 'type' level." )
+* parameter[+]
+  * insert parameter(#questionnaire, #in, 0, "1", #Questionnaire,"The Questionnaire associated with the QuestionnaireResponse.  Used if the server might not have access to the Questionnaire" )
 * parameter[+]
   * insert parameter(#return, #out, 0, "1", #Resource, "The resulting FHIR resource produced after extracting data.  This will either be a single resource or a Transaction Bundle that contains multiple resources.  The operations in the Bundle might be creates\, updates and/or conditional versions of both depending on the nature of the extraction mappings.")
 * parameter[+]

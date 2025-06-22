@@ -74,9 +74,6 @@ Usage: #inline
     * extension[+]
       * url = "http://hl7.org/fhir/StructureDefinition/valueset-system"
       * valueCanonical = "#d1e551-cs"
-    * extension[+]
-      * url = "http://hl7.org/fhir/StructureDefinition/valueset-system"
-      * valueCanonical = "#DE270-cs"
 * contained[+]
   * resourceType = "CodeSystem"
   * id = "d1e639-cs"
@@ -107,9 +104,6 @@ Usage: #inline
     * extension[+]
       * url = "http://hl7.org/fhir/StructureDefinition/valueset-system"
       * valueCanonical = "#d1e639-cs"
-    * extension[+]
-      * url = "http://hl7.org/fhir/StructureDefinition/valueset-system"
-      * valueCanonical = "#DE273-cs"
 * contained[+]
   * resourceType = "CodeSystem"
   * id = "d1e910cs"
@@ -133,9 +127,6 @@ Usage: #inline
     * extension[+]
       * url = "http://hl7.org/fhir/StructureDefinition/valueset-system"
       * valueCanonical = "#d1e910cs"
-    * extension[+]
-      * url = "http://hl7.org/fhir/StructureDefinition/valueset-system"
-      * valueCanonical = "#DE279-cs"
 * contained[+]
   * resourceType = "CodeSystem"
   * id = "d1e1125-cs"
@@ -168,9 +159,6 @@ Usage: #inline
     * extension[+]
       * url = "http://hl7.org/fhir/StructureDefinition/valueset-system"
       * valueCanonical = "#d1e1125-cs"
-    * extension[+]
-      * url = "http://hl7.org/fhir/StructureDefinition/valueset-system"
-      * valueCanonical = "#DE285-cs"
 * contained[+]
   * resourceType = "CodeSystem"
   * id = "d1e1558-cs"
@@ -200,9 +188,6 @@ Usage: #inline
     * extension[+]
       * url = "http://hl7.org/fhir/StructureDefinition/valueset-system"
       * valueCanonical = "#d1e1558-cs"
-    * extension[+]
-      * url = "http://hl7.org/fhir/StructureDefinition/valueset-system"
-      * valueCanonical = "#DE288-cs"
 * contained[+]
   * resourceType = "CodeSystem"
   * id = "d1e1746-cs"
@@ -265,9 +250,6 @@ Usage: #inline
     * extension[+]
       * url = "http://hl7.org/fhir/StructureDefinition/valueset-system"
       * valueCanonical = "#d1e1746-cs"
-    * extension[+]
-      * url = "http://hl7.org/fhir/StructureDefinition/valueset-system"
-      * valueCanonical = "#DE291-cs"
 * contained[+]
   * resourceType = "CodeSystem"
   * id = "d1e1863-cs"
@@ -300,9 +282,6 @@ Usage: #inline
     * extension[+]
       * url = "http://hl7.org/fhir/StructureDefinition/valueset-system"
       * valueCanonical = "#d1e1863-cs"
-    * extension[+]
-      * url = "http://hl7.org/fhir/StructureDefinition/valueset-system"
-      * valueCanonical = "#DE294-cs"
 * contained[+]
   * resourceType = "CodeSystem"
   * id = "d1e2109-cs"
@@ -329,9 +308,6 @@ Usage: #inline
     * extension[+]
       * url = "http://hl7.org/fhir/StructureDefinition/valueset-system"
       * valueCanonical = "#d1e2109-cs"
-    * extension[+]
-      * url = "http://hl7.org/fhir/StructureDefinition/valueset-system"
-      * valueCanonical = "#DE297-cs"
 * contained[+]
   * resourceType = "CodeSystem"
   * id = "d1e2272-cs"
@@ -358,9 +334,6 @@ Usage: #inline
     * extension[+]
       * url = "http://hl7.org/fhir/StructureDefinition/valueset-system"
       * valueCanonical = "#d1e2272-cs"
-    * extension[+]
-      * url = "http://hl7.org/fhir/StructureDefinition/valueset-system"
-      * valueCanonical = "#DE300-cs"
 * contained[+]
   * resourceType = "CodeSystem"
   * id = "d1e2489-cs"
@@ -387,9 +360,6 @@ Usage: #inline
     * extension[+]
       * url = "http://hl7.org/fhir/StructureDefinition/valueset-system"
       * valueCanonical = "#d1e2489-cs"
-    * extension[+]
-      * url = "http://hl7.org/fhir/StructureDefinition/valueset-system"
-      * valueCanonical = "#DE303-cs"
 * contained[+]
   * resourceType = "CodeSystem"
   * id = "d1e2768-cs"
@@ -416,9 +386,6 @@ Usage: #inline
     * extension[+]
       * url = "http://hl7.org/fhir/StructureDefinition/valueset-system"
       * valueCanonical = "#d1e2768-cs"
-    * extension[+]
-      * url = "http://hl7.org/fhir/StructureDefinition/valueset-system"
-      * valueCanonical = "#DE303-cs"
 * contained[+]
   * resourceType = "CodeSystem"
   * id = "d1e2928-cs"
@@ -448,9 +415,6 @@ Usage: #inline
     * extension[+]
       * url = "http://hl7.org/fhir/StructureDefinition/valueset-system"
       * valueCanonical = "#d1e2928-cs"
-    * extension[+]
-      * url = "http://hl7.org/fhir/StructureDefinition/valueset-system"
-      * valueCanonical = "#DE312-cs"
 * contained[+]
   * resourceType = "CodeSystem"
   * id = "d1e3159-cs"
@@ -498,9 +462,6 @@ Usage: #inline
     * extension[+]
       * url = "http://hl7.org/fhir/StructureDefinition/valueset-system"
       * valueCanonical = "#d1e3159-cs"
-    * extension[+]
-      * url = "http://hl7.org/fhir/StructureDefinition/valueset-system"
-      * valueCanonical = "#DE315-cs"
 * contained[+]
   * resourceType = "CodeSystem"
   * id = "d1e4024-cs"
@@ -524,9 +485,6 @@ Usage: #inline
     * extension[+]
       * url = "http://hl7.org/fhir/StructureDefinition/valueset-system"
       * valueCanonical = "#d1e4024-cs"
-    * extension[+]
-      * url = "http://hl7.org/fhir/StructureDefinition/valueset-system"
-      * valueCanonical = "#DE333-cs"
 * contained[+]
   * resourceType = "CodeSystem"
   * id = "d1e4118-cs"
@@ -550,9 +508,6 @@ Usage: #inline
     * extension[+]
       * url = "http://hl7.org/fhir/StructureDefinition/valueset-system"
       * valueCanonical = "#d1e4118-cs"
-    * extension[+]
-      * url = "http://hl7.org/fhir/StructureDefinition/valueset-system"
-      * valueCanonical = "#DE336-cs"
 * contained[+]
   * resourceType = "CodeSystem"
   * id = "d1e4236-cs"
@@ -618,9 +573,6 @@ Usage: #inline
     * extension[+]
       * url = "http://hl7.org/fhir/StructureDefinition/valueset-system"
       * valueCanonical = "#d1e4236-cs"
-    * extension[+]
-      * url = "http://hl7.org/fhir/StructureDefinition/valueset-system"
-      * valueCanonical = "#DE348-cs"
 * contained[+]
   * resourceType = "CodeSystem"
   * id = "d1e4716-cs"
@@ -686,14 +638,11 @@ Usage: #inline
     * extension[+]
       * url = "http://hl7.org/fhir/StructureDefinition/valueset-system"
       * valueCanonical = "#d1e4716-cs"
-    * extension[+]
-      * url = "http://hl7.org/fhir/StructureDefinition/valueset-system"
-      * valueCanonical = "#DE351-cs"
 * extension[$questionnaire-versionAlgorithm].valueCoding = $version-algorithm#semver
 * extension[$questionnaire-copyrightLabel].valueString = "(c) 2013"
 * url = "http://hl7.org/fhir/uv/sdc/Questionnaire/F8-1.2"
 * identifier
-  * system = "http://Medication"
+  * system = "http://example.org/Medication"
   * value = "form_identifier/F8/1.2"
 * name = "MedicationOrOtherSubstances"
 * title = "Medication or Other Substance"
@@ -740,7 +689,7 @@ Usage: #inline
         * url = "http://hl7.org/fhir/StructureDefinition/minLength"
         * valueInteger = 1
       * linkId = "Medication/DE270"
-      * definition = "http://AHRQ.gov/data_element_identifier#Type%20of%20substance%20involved"
+      * definition = "http://example.org/AHRQ/data_element_identifier#Type%20of%20substance%20involved"
       * text = "What type of medication/substance was involved?"
       * type = #open-choice
       * required = true
@@ -750,7 +699,7 @@ Usage: #inline
           * url = "http://hl7.org/fhir/StructureDefinition/minLength"
           * valueInteger = 7
         * linkId = "Medication/DE273"
-        * definition = "http://AHRQ.gov/data_element_identifier#Type%20of%20medication%20involved"
+        * definition = "http://example.org/AHRQ/data_element_identifier#Type%20of%20medication%20involved"
         * text = "What type of medication?"
         * type = #open-choice
         * required = true
@@ -760,7 +709,7 @@ Usage: #inline
             * url = "http://hl7.org/fhir/StructureDefinition/minLength"
             * valueInteger = 0
           * linkId = "Medication/DE276"
-          * definition = "http://AHRQ.gov/data_element_identifier#Compounded%20preparation%20ingredients"
+          * definition = "http://example.org/AHRQ/data_element_identifier#Compounded%20preparation%20ingredients"
           * text = "Please list all ingredients:"
           * type = #string
           * repeats = true

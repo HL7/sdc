@@ -3,7 +3,7 @@ Parent: Element
 Id: ProfileExample
 Title: "Patient Gender"
 Description: "Data element SDC Profile Example"
-* ^identifier.system = "http://nlm.nih.gov/some_other_text/data_element_identifier"
+* ^identifier.system = "http://example.org/nlm/some_other_text/data_element_identifier"
 * ^identifier.value = "DE42AHRQ"
 * ^status = #active
 * ^publisher = "Health Level Seven, International"

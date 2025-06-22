@@ -13,9 +13,10 @@ Usage: #definition
 * system = false
 * type = true
 * instance = true
-* inputProfile = "http://hl7.org/fhir/uv/sdc/StructureDefinition/sdc-questionnaire-modular"
+* inputProfile = Canonical(SDCParametersQuestionnaireAssembleIn)
 * parameter[+]
   * insert parameter(#questionnaire, #in, 1, "1", #Element, "The [Modular Questionnaire](StructureDefinition-sdc-questionnaire-modular.html\) to assemble the content of. Can be provided as a canonical for the questionnaire\, a questionnaire reference\, or directly as a questionnaire resource.")
+//  * targetProfile = Canonical(SDCModularQuestionnaire)
   * extension[+]
     * url = "http://hl7.org/fhir/StructureDefinition/operationdefinition-allowed-type"
     * valueUri = "uri"

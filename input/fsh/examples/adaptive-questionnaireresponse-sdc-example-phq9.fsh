@@ -13,15 +13,15 @@ Usage: #example
 * author = Reference(http://hl7.org/fhir/Patient/proband)
 * item.linkId = "H1/T1"
 * item.text = "Over the last two weeks, how often have you been bothered by any of the following problems?"
-* insert itemCoding("H1/T1/Q1", "Little interest or pleasure in doing things?", $CSPHQ9#Not-at-all "Not at all")
-* insert itemCoding("H1/T1/Q2", "Feeling down\, depressed\, or hopeless?", $CSPHQ9#Not-at-all "Not at all")
-* insert itemCoding("H1/T1/Q3", "Trouble falling or staying asleep\, or sleeping too much?", $CSPHQ9#Not-at-all "Not at all")
-* insert itemCoding("H1/T1/Q4", "Feeling tired or having little energy?", $CSPHQ9#Several-days "Several days")
-* insert itemCoding("H1/T1/Q5", "Poor appetite or overeating?", $CSPHQ9#"More than half the days" "More than half the days")
-* insert itemCoding("H1/T1/Q6", "Feeling bad about yourself - or that you are a failure or have let yourself or your family down?", $CSPHQ9#Several-days "Several days")
-* insert itemCoding("H1/T1/Q7", "Trouble concentrating on things\, such as reading the newspaper or watching television?", $CSPHQ9#"Nearly every day" "Nearly every day")
-* insert itemCoding("H1/T1/Q8", "Moving or speaking so slowly that other people could gave noticed? Or so fidgety or restless that you have been moving a lot more than usual?", $CSPHQ9#"More than half the days" "More than half the days")
-* insert itemCoding("H1/T1/Q9", "Thoughts that you would be better off dead\, or thoughts of hurting yourself in some way?", $CSPHQ9#Several-days "Several days")
+* insert itemCoding("H1/T1/Q1", "Little interest or pleasure in doing things?", CodeSystemCSPHQ9#Not-at-all "Not at all")
+* insert itemCoding("H1/T1/Q2", "Feeling down\, depressed\, or hopeless?", CodeSystemCSPHQ9#Not-at-all "Not at all")
+* insert itemCoding("H1/T1/Q3", "Trouble falling or staying asleep\, or sleeping too much?", CodeSystemCSPHQ9#Not-at-all "Not at all")
+* insert itemCoding("H1/T1/Q4", "Feeling tired or having little energy?", CodeSystemCSPHQ9#Several-days "Several days")
+* insert itemCoding("H1/T1/Q5", "Poor appetite or overeating?", CodeSystemCSPHQ9#"More than half the days" "More than half the days")
+* insert itemCoding("H1/T1/Q6", "Feeling bad about yourself - or that you are a failure or have let yourself or your family down?", CodeSystemCSPHQ9#Several-days "Several days")
+* insert itemCoding("H1/T1/Q7", "Trouble concentrating on things\, such as reading the newspaper or watching television?", CodeSystemCSPHQ9#"Nearly every day" "Nearly every day")
+* insert itemCoding("H1/T1/Q8", "Moving or speaking so slowly that other people could gave noticed? Or so fidgety or restless that you have been moving a lot more than usual?", CodeSystemCSPHQ9#"More than half the days" "More than half the days")
+* insert itemCoding("H1/T1/Q9", "Thoughts that you would be better off dead\, or thoughts of hurting yourself in some way?", CodeSystemCSPHQ9#Several-days "Several days")
 * insert itemQuantity("H1/TS", "Patient health questionnaire 9 item total score", 13, "score")
 
 
@@ -65,7 +65,7 @@ Usage: #inline
 * status = #active
 * description = "The answer list for questions addressing the frequency in which patient reports experiencing behaviors that are assessed in the PHQ-9 Questionnaire."
 * immutable = true
-* compose.include.system = "http://example.org/CodeSystem/CSPHQ9"
+* compose.include.system = "http://hl7.org/fhir/uv/sdc/CodeSystem/CSPHQ9"
 * insert VSConcept(#Not-at-all, "Not at all")
 * insert VSConcept(#Several-days, "Several days")
 * insert VSConcept(#"More than half the days", "More than half the days")
@@ -75,7 +75,7 @@ Usage: #inline
     * extension[code].valueCode = #itemWeight
     * extension[uri].valueUri = "http://hl7.org/fhir/concept-properties#itemWeight"
   * timestamp = "2024-12-06T22:52:00-07:00"
-  * insert VSContains("http://example.org/CodeSystem/CSPHQ9", #not-at-all, "Not at all", 0.0)
-  * insert VSContains("http://example.org/CodeSystem/CSPHQ9", #Several-days, "Several days", 1.0)
-  * insert VSContains("http://example.org/CodeSystem/CSPHQ9", #"More than half the days", "More than half the days", 2.0)
-  * insert VSContains("http://example.org/CodeSystem/CSPHQ9", #"Nearly every day", "Nearly every day", 4.0)
+  * insert VSContains("http://hl7.org/fhir/uv/sdc/CodeSystem/CSPHQ9", #Not-at-all, "Not at all", 0.0)
+  * insert VSContains("http://hl7.org/fhir/uv/sdc/CodeSystem/CSPHQ9", #Several-days, "Several days", 1.0)
+  * insert VSContains("http://hl7.org/fhir/uv/sdc/CodeSystem/CSPHQ9", #"More than half the days", "More than half the days", 2.0)
+  * insert VSContains("http://hl7.org/fhir/uv/sdc/CodeSystem/CSPHQ9", #"Nearly every day", "Nearly every day", 4.0)
