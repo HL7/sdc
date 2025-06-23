@@ -17,10 +17,10 @@ Usage: #example
   * type = #group
   * item[+]
     * linkId = "1acf93a7-0890-44cd-be48-542defb35248"
-    * text = "Yes/No/Dont know"
+    * text = "Yes/No/Dont know/NA"
     * type = #choice
-    * answerValueSet = "http://sqlonfhir-r4.azurewebsites.net/fhir/ValueSet/a015b6a1ac024dc19baec940be2c1695"
-    * initial.valueCoding = $sct#373066001 "Yes"
+    * answerValueSet = "http://terminology.hl7.org/ValueSet/yes-no-unknown-not-applicable"
+    * initial.valueCoding = $v2-0532#Y "Yes"
   * item[+]
     * linkId = "init-val-string"
     * text = "String with initial value YUP"

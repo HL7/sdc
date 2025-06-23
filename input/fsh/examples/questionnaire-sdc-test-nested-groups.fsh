@@ -27,12 +27,12 @@ Usage: #example
     * item[+]
       * extension
         * url = "http://hl7.org/fhir/StructureDefinition/questionnaire-itemControl"
-        * valueCodeableConcept = $questionnaire-item-control#drop-down
+        * valueCodeableConcept = $questionnaire-item-control#autocomplete
       * linkId = "34b78239-1df2-49c5-a1ab-8f5691c7ede0"
       * text = "Service type"
       * type = #choice
       * repeats = false
-      * answerValueSet = "https://sqlonfhir-r4.azurewebsites.net/fhir/ValueSet/866d7924e20711d48c540020182939f7"
+      * answerValueSet = "http://terminology.hl7.org/ValueSet/service-type"
     * item[+]
       * linkId = "b7e29109-f729-4359-aa29-6c9e7c7b2318"
       * text = "Text box"

@@ -5,6 +5,12 @@ Description: "Demo questionnaire showing most of the advanced rendering capabili
 Usage: #example
 * contained = LL2821-8
 * extension[$questionnaire-versionAlgorithm].valueCoding = $version-algorithm#semver
+* modifierExtension[+]
+  * url = Canonical(RenderingCriticalExtension)
+  * valueCanonical = "http://hl7.org/fhir/StructureDefinition/rendering-style"
+* modifierExtension[+]
+  * url = Canonical(RenderingCriticalExtension)
+  * valueCanonical = "http://hl7.org/fhir/StructureDefinition/rendering-xhtml"
 * url = "http://build.fhir.org/ig/HL7/sdc/questionnaire-sdc-profile-example-render"
 * name = "SDCAdvancedRenderingExample"
 * status = #active
@@ -325,12 +331,6 @@ Usage: #example
     * text = "Birth Date"
     * type = #date
   * item[+]
-    * extension[+]
-      * url = "http://hl7.org/fhir/uv/sdc/StructureDefinition/sdc-rendering-criticalExtension"
-      * valueCanonical = "http://hl7.org/fhir/StructureDefinition/rendering-style"
-    * extension[+]
-      * url = "http://hl7.org/fhir/uv/sdc/StructureDefinition/sdc-rendering-criticalExtension"
-      * valueCanonical = "http://hl7.org/fhir/StructureDefinition/rendering-xhtml"
     * linkId = "3.6"
     * text = "IMPORTANT: Please complete questionnaire."
       * extension[+]

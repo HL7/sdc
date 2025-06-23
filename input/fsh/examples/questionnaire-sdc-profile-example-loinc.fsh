@@ -84,7 +84,7 @@ Usage: #example
         * url = "http://hl7.org/fhir/StructureDefinition/minLength"
         * valueInteger = 1
       * linkId = "74080-3/74076-1"
-      * definition = "http://loinc.org/74076-1"
+      * code = $loinc#74076-1
       * prefix = "1."
       * text = "What type of medication/substance was involved?"
       * type = #choice
@@ -95,7 +95,7 @@ Usage: #example
           * url = "http://hl7.org/fhir/StructureDefinition/minLength"
           * valueInteger = 7
         * linkId = "74080-3/74075-3"
-        * definition = "http://loinc.org/vs/74075-3"
+        * code = $loinc#74075-3
         * prefix = "2."
         * text = "What type of medication?"
         * type = #choice
@@ -110,7 +110,7 @@ Usage: #example
             * url = "http://hl7.org/fhir/StructureDefinition/minLength"
             * valueInteger = 0
           * linkId = "74080-3/74077-9-q"
-          * definition = "http://loinc.org/74077-9"
+          * code = $loinc#74077-9
           * prefix = "3."
           * text = "Please list all ingredients:"
           * type = #string

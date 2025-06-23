@@ -24,7 +24,7 @@ Usage: #example
     * text = "Should I stay?"
     * type = #choice
     * required = true
-    * answerValueSet = "http://sqlonfhir-r4.azurewebsites.net/fhir/ValueSet/a015b6a1ac024dc19baec940be2c1695"
+    * answerValueSet = "http://terminology.hl7.org/ValueSet/yes-no-unknown-not-applicable"
   * item[+]
     * linkId = "radio2"
     * text = "Should I go now?"

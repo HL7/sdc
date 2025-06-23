@@ -21,7 +21,6 @@ Usage: #example
     * type = #string
   * item[+]
     * linkId = "1acf93a7-0890-44cd-be48-542defb35248"
-    * definition = "a9e99fcf535a4c08a249c77754d5b07d"
     * text = "This is a display field and should expand to both left and right"
     * type = #display
   * item[+]
@@ -68,16 +67,16 @@ Usage: #example
     * text = "radiobuttons"
     * type = #choice
     * repeats = false
-    * answerValueSet = "http://sqlonfhir-r4.azurewebsites.net/fhir/ValueSet/866d7924e20711d48c540020182939f7"
+    * answerValueSet = "http://terminology.hl7.org/ValueSet/gender-identity"
   * item[+]
     * extension
       * url = "http://hl7.org/fhir/StructureDefinition/questionnaire-itemControl"
       * valueCodeableConcept = $questionnaire-item-control#drop-down
     * linkId = "440f8cc6-3ea2-40c2-b03a-d03187131fd3"
-    * text = "ddl (Aus states)"
+    * text = "ddl (gender)"
     * type = #choice
     * repeats = false
-    * answerValueSet = "https://sqlonfhir-r4.azurewebsites.net/fhir/ValueSet/866d7924e20711d48c540020182939f7"
+    * answerValueSet = "http://terminology.hl7.org/ValueSet/gender-identity"
   * item[+]
     * extension
       * url = "http://hl7.org/fhir/StructureDefinition/questionnaire-itemControl"
@@ -86,10 +85,10 @@ Usage: #example
     * text = "autocomplete (countries)"
     * type = #choice
     * repeats = false
-    * answerValueSet = "https://sqlonfhir-r4.azurewebsites.net/fhir/ValueSet/25b0ec04fd3511d28b3e0020182939f7"
+    * answerValueSet = "http://terminology.hl7.org/ValueSet/v3-Country2"
   * item[+]
     * linkId = "EF8E3936-3246-4B3E-A46C-9FDAA5ACB635"
     * text = "open-choice (countries)"
     * type = #open-choice
     * repeats = false
-    * answerValueSet = "https://sqlonfhir-r4.azurewebsites.net/fhir/ValueSet/25b0ec04fd3511d28b3e0020182939f7"
+    * answerValueSet = "http://terminology.hl7.org/ValueSet/v3-Country2"

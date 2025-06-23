@@ -6,11 +6,11 @@ Description: "An example value set (using fake codes) used by a modular Question
 * ^status = #active
 * ^experimental = true
 * ^immutable = false
-* $Australian-States#ACT "Australian Capital Territory"
-* $Australian-States#NSW "New South Wales"
-* $Australian-States#NT "Northern Territory"
-* $Australian-States#Qld "Queensland"
-* $Australian-States#SA "South Australia"
-* $Australian-States#Vic "Victoria"
-* $Australian-States#Tas "Tasmania"
-* $Australian-States#WA "Western Australia"
+* AustralianStateCodes#ACT "Australian Capital Territory"
+* AustralianStateCodes#NSW "New South Wales"
+* AustralianStateCodes#NT "Northern Territory"
+* AustralianStateCodes#Qld "Queensland"
+* AustralianStateCodes#SA "South Australia"
+* AustralianStateCodes#Vic "Victoria"
+* AustralianStateCodes#Tas "Tasmania"
+* AustralianStateCodes#WA "Western Australia"

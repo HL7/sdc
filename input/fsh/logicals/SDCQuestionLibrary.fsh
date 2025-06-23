@@ -38,10 +38,7 @@ Description: "An example library of questions showing how questions can be compi
     * ^extension.url = "http://hl7.org/fhir/StructureDefinition/entryFormat"
     * ^extension.valueString = "9999"
     * ^label = "Postal Code"
-    * ^constraint[+].key = "postalCode-format"
-    * ^constraint[=].severity = #error
-    * ^constraint[=].human = "Postal code must be 4 digits"
-    * ^constraint[=].expression = "value.matches('^[0-9]{4}$')"
+    * obeys sdc-ex-pcode
 * name 0..1 Element "n/a" "n/a"
   * ^label = "What is the person's official name?"
   * prefix 0..1 string "n/a" "n/a"
@@ -52,3 +49,8 @@ Description: "An example library of questions showing how questions can be compi
   * last 0..1 string "n/a" "n/a"
     * ^label = "Last"
     * ^maxLength = 100
+
+Invariant:   sdc-ex-pcode
+Description: "Postal code must be 4 digits"
+Severity:    #error
+Expression:  "value.matches('^[0-9]{4}$')"
