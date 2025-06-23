@@ -1799,6 +1799,37 @@ i.fa {
     </div>
   </div>
 
+<a name="preferredTerminologyServer"></a>
+<h4>Using preferredTerminologyServer</h4>
+<p>To specify which terminology server to use for expanding ValueSets during form rendering. (<a href="Questionnaire-questionnaire-sdc-profile-example-render.html">Example Questionnaire</a>)</p>
+<div class="tabs">
+  <div class="tab">
+    <input type="radio" id="tab-preferredTerminologyServer-1" name="tab-preferredTerminologyServer-group-1" checked="true"/>
+    <label for="tab-preferredTerminologyServer-1">Sample Question</label>
+    <div class="content-in-tab">
+      <p>Select a condition:<br/>
+        <select>
+          <option>Hypertension</option>
+          <option>Diabetes</option>
+          <option>Asthma</option>
+        </select><br/>
+        <small>Options retrieved using terminology server: <b>https://tx.fhir.org/r4</b></small>
+      </p>
+    </div>
+  </div>
+  <div class="tab">
+    <input type="radio" id="tab-preferredTerminologyServer-2" name="tab-preferredTerminologyServer-group-1"/>
+    <label for="tab-preferredTerminologyServer-2">JSON</label>
+    <div class="content-in-tab">{% fragment Questionnaire/questionnaire-sdc-profile-example-render JSON BASE:descendants().select(item).where(linkId='3.10') %}</div>
+  </div>
+  <div class="tab">
+    <input type="radio" id="tab-preferredTerminologyServer-3" name="tab-preferredTerminologyServer-group-1"/>
+    <label for="tab-preferredTerminologyServer-3">XML</label>
+    <div class="content-in-tab">{% fragment Questionnaire/questionnaire-sdc-profile-example-render XML BASE:descendants().select(item).where(linkId='3.10') %}</div>
+  </div>
+</div>
+
+
   <!-- template
 <a name="changeme"></a>
 <h4>Using changeme</h4>

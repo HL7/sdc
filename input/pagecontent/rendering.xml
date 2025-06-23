@@ -633,7 +633,24 @@
           </p>
         </td>
       </tr>
-
+           <tr>
+      <td>
+        <a name="preferredTerminologyServer"> </a>
+        <a href="{{site.data.fhir.ver.ext}}/StructureDefinition-preferredTerminologyServer.html">preferredTerminologyServer</a>
+      </td>
+      <td>Core</td>
+      <td>Questionnaire, Questionnaire.item</td>
+      <td>uri</td>
+      <td><a href="examples.html#preferredTerminologyServer">example</a></td>
+    </tr>
+    <tr>
+      <td colspan="5">
+        <p>
+          This extension allows a Questionnaire or individual item to declare a preferred terminology server to be used for ValueSet expansion during rendering. If not 
+          specified, the renderer will rely on its default terminology service.
+        </p>
+      </td>
+    </tr>
     </tbody>
   </table>
   <a name="considerations"> </a>

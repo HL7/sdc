@@ -373,6 +373,15 @@ Usage: #example
       * valueString = "2-3pm"
     * answerOption[+]
       * valueString = "3-4pm"
+  * item[+]
+    * extension
+      * url = "http://hl7.org/fhir/StructureDefinition/preferredTerminologyServer"
+      * valueUri = "https://tx.fhir.org/r4"
+    * linkId = "3.10"
+    * text = "Select a condition (terminology server: tx.fhir.org)"
+    * type = #choice
+    * answerValueSet = "http://snomed.info/sct?fhir_vs"
+
 
 Instance: LL2821-8
 InstanceOf: ValueSet
