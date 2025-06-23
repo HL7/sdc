@@ -43,8 +43,7 @@ Description: "Defines how ValueSet is used to reflect code lists found in data e
   * valueSet MS
 * compose.exclude MS
 * expansion MS
-  * extension contains 
-    $valueset-expansionSource named expansionSource 0..1 and
+  * extension contains
     $valueset-expansionProperty named expansionProperty 0..* MS
   * extension[expansionProperty] ^requirements = "... Allows support for itemWeight and other key properties"
   * identifier MS
