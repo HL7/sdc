@@ -12,7 +12,7 @@ Usage: #definition
 * contact.telecom
   * system = #other
   * value = "http://wiki.siframework.org/Structured+Data+Capture+Initiative"
-* description = "This profile defines the expected capabilities of the ''SDC Form Manager'' role when conforming to the S&I Framework's [[index.html|Structured Data Capture FHIR implementation guide]].  This role is responsible for maintaining a repository of form definitions and also of performing pre-population of form data."
+* description = "This profile defines the expected capabilities of the SDC Form Manager role when conforming to the S&I Framework's [Structured Data Capture FHIR implementation guide](index.html).  This role is responsible for maintaining a repository of form definitions and also of performing pre-population of form data."
 * kind = #requirements
 * fhirVersion = #1.0.0
 * format[+] = #xml
@@ -41,6 +41,11 @@ Usage: #definition
     * insert SearchParam(#SHALL, "title", #string,  http://hl7.org/fhir/SearchParameter/Questionnaire-title)
     * insert SearchParam(#SHALL, "version", #token,  http://hl7.org/fhir/SearchParameter/Questionnaire-version)
     * insert SearchParam(#SHALL, "definition", #token,  http://hl7.org/fhir/uv/sdc/SearchParameter/questionnaire-definition)
+    * operation[+]
+      * name = "assemble"
+      * definition = "http://hl7.org/fhir/uv/sdc/OperationDefinition/Questionnaire-assemble"
+      * documentation = "Supports assembling a Questionnaire by resolving modular sub-questionnaires and data element definitions into a fully assembled Questionnaire instance."
+
   * resource[+]
     * type = #CodeSystem
     * profile = "http://hl7.org/fhir/uv/sdc/StructureDefinition/sdc-codesystem"
