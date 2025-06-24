@@ -8,7 +8,7 @@ Usage: #example
 
 
 Instance: sdc-modular-root-assembled-questionnaire
-InstanceOf: SDCModularQuestionnaire
+InstanceOf: SDCBaseQuestionnaire
 Usage: #inline
 * extension[+]
   * url = $questionnaire-versionAlgorithm

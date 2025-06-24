@@ -25,9 +25,7 @@ Usage: #example
   * url = "http://hl7.org/fhir/StructureDefinition/preferredTerminologyServer"
   * valueUrl = "https://tx.fhir.org/r4"
 * url = "http://hl7.org/fhir/uv/sdc/Questionnaire/questionnaire-sdc-profile-example-loinc"
-* identifier
-  * system = "http://loinc.org/vs"
-  * value = "74080-3"
+* code = $loinc#74080-3
 * name = "MedicationorOtherSubstance"
 * title = "Medication or Other Substance"
   * extension
