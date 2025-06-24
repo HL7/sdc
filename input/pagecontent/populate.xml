@@ -90,12 +90,12 @@
   <a name="modes"> </a>
   <h3>Population modes</h3>
   <p>
-	  There are four different modes of "population" possible:
+	  There are three different modes of "population" possible:
 	</p>
   <a name="mode"> </a>
   <ul>
     <li>
-      <b>Full population:</b> The questionnaire can identify the specific data element (or set of data elements) that should be used to populate the
+      <b>Automated population:</b> The questionnaire can identify the specific data element (or set of data elements) that should be used to populate the
       form.  No user intervention is required other than to review the content.  E.g. capturing the patient's gender, birth date, most recent weight
       measurement, etc.  In some cases, this might involve performing a calculation based on data retrieved.  For example, determining the patient's BMI by
       querying the most recent weight and height observations.  This is the only type of population the <a href="OperationDefinition-Questionnaire-populate.html">$populate</a>
@@ -111,8 +111,6 @@
       a yes/no/unknown answer choice is not a data element that will exist in the clinical system.  However, it is possible to provide the clinician with a
       list of AdverseEvent, Observation and Condition instances that might be relevant they can scan in choosing how to answer the question.  Providing
       answer contexts can likewise only done interactively, not with the $populate operation.</li>
-    <li>
-      <b>No population:</b> There is no way to query information relevant to the answer - the user will have to fill out that portion of the form unassisted.</li>
   </ul>
   <p>
     "Choice selection" and "answer context" options will generally only be exposed when the user is interacting with the associated question 
@@ -457,7 +455,7 @@
       Observation.value elements based on the <code>item.code</code> while other questions in the same form might be populated based on queries, FHIRPaths and/or CQL 
       specified in the form.</li>
     <li>
-      This mechanism only supports <a href="#mode">Full Population</a>.  It does not work for other modes.</li>
+      This mechanism only supports <a href="#mode">Automated Population</a>.  It does not work for other modes.</li>
     <li>
       This mechanism can only be used for non-repeating items.</li>
     <li>
@@ -496,7 +494,7 @@
       Use the <a href="{{site.data.fhir.path}}extension-variable.html">variable</a> extension on items as well to perform intermediary calculations or
       additional queries that are based on itemPopulationContext values.</li>
     <li>
-      For <a href="#mode">Full Population</a>, use the <a href="StructureDefinition-sdc-questionnaire-initialExpression.html">questionnaire-initialExpression</a> to
+      For <a href="#mode">Automated Population</a>, use the <a href="StructureDefinition-sdc-questionnaire-initialExpression.html">questionnaire-initialExpression</a> to
       cause the initial answer for the question to be set to the specified expression.  This should always be a FHIRPath or CQL expression that resolves to an item of the
       appropriate type unless the element has a type of Reference, in which case the expression can ALSO be a FHIR query - and the item will be populated with a
       reference to the resource.  Another exception is for an element of type Attachment, the query can return a Binary or DocumentReference, 
@@ -707,7 +705,7 @@
   </p>
   <ul>
     <li>
-      This approach will only work for pre-population using the <a href="#mode">Full Population</a> mode.  It cannot support continuous population using
+      This approach will only work for pre-population using the <a href="#mode">Automated Population</a> mode.  It cannot support continuous population using
 	  calculatedExpression nor "choice selection" and "answer context" using the candidateExpression and contextExpression extensions.</li>
     <li>
       This StructureMap-based population has the drawback that if the StructureMap execution fails, there will generally not be any QuestionnaireResponse as output.  As a result, the
