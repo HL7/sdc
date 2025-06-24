@@ -41,10 +41,8 @@ Usage: #definition
     * insert SearchParam(#SHALL, "title", #string,  http://hl7.org/fhir/SearchParameter/Questionnaire-title)
     * insert SearchParam(#SHALL, "version", #token,  http://hl7.org/fhir/SearchParameter/Questionnaire-version)
     * insert SearchParam(#SHALL, "definition", #token,  http://hl7.org/fhir/uv/sdc/SearchParameter/questionnaire-definition)
-    * operation[+]
-      * name = "assemble"
-      * definition = "http://hl7.org/fhir/uv/sdc/OperationDefinition/Questionnaire-assemble"
-      * documentation = "Supports assembling a Questionnaire by resolving modular sub-questionnaires and data element definitions into a fully assembled Questionnaire instance."
+    * insert Operation(#MAY, "populate", $populate)
+    * insert Operation(#MAY, "assemble", $assemble)
 
   * resource[+]
     * type = #CodeSystem

@@ -28,6 +28,10 @@ Usage: #definition
     * insert Interaction(#SHOULD, #read, "Allows retrieval of a specific questionnaire by id.  Allows systems to maintain a 'favorites' list of forms and retrieve them by id.")
     * insert Interaction(#MAY, #history-instance, "Allows review of changes made to a questionnaire over time.  Of interest to some systems\, but probably not most.")
     * insert Interaction(#MAY, #vread, "Allows retrieval of a historical version of a questionnaire.  Most systems will make use of the current version only.")
+    * insert Operation(#MAY, "populate", $populate)
+    * insert Operation(#MAY, "assemble", $assemble)
+    * insert Operation(#MAY, "populatehtml", $populatehtml)
+    * insert Operation(#MAY, "populatelink", $populatelink)
   * resource[+]
     * type = #ValueSet
     * profile = "http://hl7.org/fhir/uv/sdc/StructureDefinition/sdc-valueset"
@@ -49,6 +53,7 @@ Usage: #definition
     * insert Interaction(#SHALL, #update, "Allows updating an existing completed or partially-completed form.  (Systems may place rules on who can update forms and under what circumstances.\)")
     * insert Interaction(#SHALL, #delete, "Allows removal of a completed form from a repository.  Note that the removal may be logical rather than physical.  Some systems may have rules for who can remove a completed form and under what circumstances.")
     * insert Interaction(#SHOULD, #history-instance, "Allows review of prior versions of an answer set - allows reversion to previously recorded versions")
+    * insert Operation(#MAY, "extract", $extract)
   * resource[+]
     * type = #DocumentReference
     * insert Interaction(#SHOULD, #search-type, "Allows discovery of existing documents that may be included in a form pre-population request")
@@ -58,6 +63,3 @@ Usage: #definition
     * insert Interaction(#MAY, #vread, "Allows retrieval of a historical version of a binary.  In general\, the most recent version would be appropriate\, but some may prefer to use the specific version referenced by a DocumentReference.")
   * insert Operation(#SHOULD, "expand", $expand)
   * insert Operation(#SHOULD, "validate code", $validate-code)
-  * insert Operation(#MAY, "populate", $populate)
-  * insert Operation(#MAY, "populatehtml", $populatehtml)
-  * insert Operation(#MAY, "populatelink", $populatelink)

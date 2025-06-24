@@ -31,3 +31,4 @@ Usage: #definition
     * insert Interaction(#SHALL, #search-type, "This allows a user to find previously created responses - whether created by themselves or others.  For thin clients without persistence\, this feature is essential to allow them to find a draft of a previously created response")
     * insert Interaction(#SHALL, #read, "This allows a user to retrieve a previously stored response by id.  (Some thin clients may have limited persistence -e.g. cookies - that could be used to store an id and later retrieve a work-in-progress questionnaire response")
     * insert Interaction(#MAY, #history-instance, "This allows a user to look at previous versions of a response.  It supports identifying what changes were made and potentially retrieving an older version to use as a starting point in the event that data has accidentally been removed or changed")
+    * insert Operation(#MAY, "extract", $extract)
