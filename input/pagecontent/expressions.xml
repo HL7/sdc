@@ -787,7 +787,7 @@
       </ul>
     </li>
     <li>
-      <code>weight()</code> returns the ordinal value for code or Coding.  If an <a href="{{site.data.fhir.ver.ext}}/StructureDefinition-itemWeight.html">itemWeight</a> extension
+      <code>weight()</code> returns the <a href="{{site.data.fhir.ver.ext}}/StructureDefinition-itemWeight.html">itemWeight</a> for a code, Coding or other element eligible to have the <code>itemWeight</code> extension.  If an <a href="{{site.data.fhir.ver.ext}}/StructureDefinition-itemWeight.html">itemWeight</a> extension
       is defined on the QuestionnaireResponse answer, it will be returned.  If not, it will be looked up either as an extension on an answerOption in the Questionnaire or as a 
       property on the bound value set expansion (or for Questionnaires, on the 
       corresponding Questionnaire.answerOption).  If not found there, will be looked up on property in the underlying CodeSystem.  If the type is other than code or Coding or no weight
