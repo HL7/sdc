@@ -16,7 +16,6 @@ Description: "Defines additional capabilities for controlling the rendering of t
   * obeys sdc-rend-1
   * extension contains
       ItemMedia named itemMedia 0..1 and
-      OptionalDisplayExtension named itemOptionalDisplay 0..1 and
       ShortTextExtension named itemShortText 0..1 and
       SDCOpenLabel named openLabel 0..1 and
       $questionnaire-itemControl named itemControl 0..1 MS and
