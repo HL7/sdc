@@ -1,5 +1,5 @@
 Profile: SDCQuestionnaireExtractObservation
-Parent: SDCQuestionnaireCommon
+Parent: SDCBaseQuestionnaire
 Id: sdc-questionnaire-extr-obsn
 Title: "Extractable Questionnaire - Observation"
 Description: "Defines elements that allow conversion of a QuestionnaireResponse to an Observation resource or Bundle of Observation resources using the Observation-based extraction mechanism"

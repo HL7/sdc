@@ -1,5 +1,5 @@
 Profile: SDCQuestionnairePopulateStructureMap
-Parent: SDCQuestionnaireCommon
+Parent: SDCBaseQuestionnaire
 Id: sdc-questionnaire-pop-smap
 Title: "Populatable Questionnaire - StructureMap"
 Description: "Defines elements that support auto-population and pre-population of questionnaires  using the StructureMap-based population mechanism"

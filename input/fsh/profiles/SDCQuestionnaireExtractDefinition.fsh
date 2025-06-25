@@ -1,5 +1,5 @@
 Profile: SDCQuestionnaireExtractDefinition
-Parent: SDCQuestionnaireCommon
+Parent: SDCBaseQuestionnaire
 Id: sdc-questionnaire-extr-defn
 Title: "Extractable Questionnaire - Definition"
 Description: "Defines elements that allow conversion of a QuestionnaireResponse to a FHIR resource or Bundle of FHIR resources using the Definition-based extraction mechanism"

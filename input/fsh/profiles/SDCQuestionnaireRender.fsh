@@ -1,5 +1,5 @@
 Profile: SDCQuestionnaireRender
-Parent: SDCQuestionnaireCommon
+Parent: SDCBaseQuestionnaire
 Id: sdc-questionnaire-render
 Title: "Advanced Rendering Questionnaire"
 Description: "Defines additional capabilities for controlling the rendering of the questionnaire."

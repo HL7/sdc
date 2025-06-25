@@ -1,5 +1,5 @@
 Profile: SDCQuestionnaireExtractStructureMap
-Parent: SDCQuestionnaireCommon
+Parent: SDCBaseQuestionnaire
 Id: sdc-questionnaire-extr-smap
 Title: "Extractable Questionnaire - StructureMap"
 Description: "Defines elements that allow conversion of a QuestionnaireResponse to a FHIR resource or Bundle of FHIR resources using the StructureMap-based extraction mechanism"

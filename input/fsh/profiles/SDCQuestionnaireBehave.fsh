@@ -1,5 +1,5 @@
 Profile: SDCQuestionnaireBehave
-Parent: SDCQuestionnaireCommon
+Parent: SDCBaseQuestionnaire
 Id: sdc-questionnaire-behave
 Title: "Advanced Behavior Questionnaire"
 Description: "Defines additional capabilities for controlling data entry and calculating values within the questionnaire."
