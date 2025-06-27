@@ -463,6 +463,15 @@
   the [implicit conversions](<a href="http://hl7.org/fhirpath/#conversion">http://hl7.org/fhirpath/#conversion</a>) defined in FHIRPath. The only exception is that an expression that resolves
   to a Resource can satisfy a question of type 'Reference', in which case the result will be treated as a Reference to the returned resource.
   </p>
+     <p>
+    <b>Ordering of environment-variable extensions:</b> When extensions define an environment variable (i.e. information that can be accessed in FHIRPath or CQL using
+     '%' followed by a name), then for readability, those extensions <u>SHOULD</u> be ordered such that the extension that defines an environment variable always appears
+      on a higher node, or earlier on the current node, than an extension with an expression that uses that variable. However, tools cannot rely on this ordering occurring. For 
+      example, if there's a launchContext extension that defines the %patient environment variable and a variable extension that defines %patientContact that leverages %patient, 
+      then the launchContext extension would logically be declared in the instance hierarchy prior to the variable extension, but systems can only assume that the extension 
+      is declared on an ancestor node or on the same node, not necessarily prior to the location where it's used. If a reference is not resolved once all in-scope extensions have
+       been processed, that <u>SHOULD</u> be treated as an error.
+  </p>
   <a name="otherextension"> </a>
   <h3>Other extensions</h3>
   <p>

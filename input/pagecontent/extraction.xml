@@ -415,7 +415,6 @@ If an item is presumed to be extracted, it will extract if there are <code>item.
         <li>Use the variable name to set the reference property using the definitionExtractValue extension's expression property.</li>
         <li>If this allocateId extension is defined at the root of the questionnaire, a single value will be allocated for the entire extracted transaction bundle.</li>
         <li>If this allocateId extension is defined on a repeating group, a new value will be allocated for each repetition of the item.</li>
-        <li>The allocateId extension will be processed before any other extract extensions (such as definitionExtract or definitionExtractValue)</li>
         <li>It is recommended to use meaningful names in the allocateId extension value, e.g. <code>%newPatientUuid</code> or <code>%newEncounterUuid</code></li>
       </ul>
       If the extracted resource being referenced repeats (multiple instances could be extracted), then the extract rules for the resources that reference that repeating item must also be within the same repeating group item in order
@@ -436,9 +435,6 @@ If an item is presumed to be extracted, it will extract if there are <code>item.
         </li>
         <li>
           If the resource is created by a profile definition rather than a core resource type profile, the profile name will be added to the meta of the extracted resource.
-        </li>
-        <li>
-          Any <a href="StructureDefinition-sdc-questionnaire-extractAllocateId.html">sdc-questionnaire-extractAllocateId</a> extensions on the same item will be processed before the definitionExtract extension.
         </li>
         <li>
           Once the resource is completely extracted, the system SHALL populate the <code>bundle.entry.resource</code> property with the extracted resource, then populate the other
