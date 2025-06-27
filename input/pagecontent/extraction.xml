@@ -312,6 +312,21 @@ If an item is presumed to be extracted, it will extract if there are <code>item.
     In the ideal situation, the system will recognize the <code>Observation.item.code</code> and know which approach is correct for that type of Observation.  If not, then
     the system <i>could</i> query for other records of the child type and see if they appear as components anywhere.  If unsure, systems should use "hasMember".
   <!-- TODO: Should we have an extension that covers this? -->
+    <p>
+    <b>Use of the <code>member</code> and <code>component</code> options</b><br/>
+    The <a href="StructureDefinition-sdc-questionnaire-observationExtract.html">questionnaire-observationExtract</a> extension specify <code>member</code> or <code>component</code> to distinguish whether an answer
+    should become a standalone Observation member (via <code>hasMember</code>) or a component of a parent Observation (via <code>component</code>).
+    </p>
+      <ul>
+        <li>
+          <b>member</b>: the extracted answer will be linked as an <code>Observation.hasMember</code> on the parent record.
+        </li>
+        <li>
+          <b>component</b>: the extracted answer will be embedded in the parent Observation’s <code>component</code> array.  
+          Systems <strong>SHOULD</strong> locate the correct parent by finding the <em>nearest ancestor</em> Questionnaire item (walking up through grouping items)
+          that has <code>observationExtract</code> enabled.  That ancestor’s associated Observation becomes the target for this component.
+        </li>
+      </ul>
   </p>
   <p>
     Considerations and rules when using this approach:
