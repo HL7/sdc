@@ -215,6 +215,15 @@
     It is expected that a variety of IGs will refine various combinations of SDC functionality and publish additional profiles to meet the needs of
     their specific Questionnaire and QuestionnaireResponse use-cases.
   </p>
+      <h4>Relationship to CRMI</h4>
+      <p>
+      For considerations around shareability and artifact discovery, implementers should refer to the <a href="https://hl7.org/fhir/uv/crmi/">CRMI</a> guide.
+      </p>
+    <ul>
+      <li>This IG doesn't deal with the discovery process for Code Systems, ValueSets, or Libraries. However, systems that need to do so should consider aligning with the CRMI Shareable profiles</li> 
+      <li>Questionnaires that comply with the 'search' profile may wish to declare themselves as 'Shareable'.</li> 
+      <li>Other questionnaires are typically Executable, with the exception of modular forms which have not been assembled which would be Computable</li> 
+    </ul>
 
   <a name="dependencies"> </a>
   <h3>Dependencies</h3>
