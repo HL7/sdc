@@ -6,8 +6,12 @@ Description: "Defines how ValueSet is used to reflect code lists found in data e
 * ^status = #active
 * ^experimental = false
 * . ^definition = "Sets expectations for SDC-conformant systems around value set support for representing permitted question answers."
+* obeys sdc-2 and sdc-3
 * modifierExtension contains RenderingCriticalExtension named rendering-criticalExtension 0..* MS
 * url MS
+* version 0..1 MS
+// Inter-version extension for versionAlgorithm
+* extension contains $questionnaire-versionAlgorithm named versionAlgorithm 0..1 MS 
 * status MS
 * experimental MS
 * date MS

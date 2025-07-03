@@ -5,8 +5,12 @@ Title: "SDC Code System"
 Description: "Defines how CodeSystem is used to reflect code lists found in data element defintions and form definitions to be used within the ONC's Structured Data Capture standard."
 * ^status = #active
 * . ^definition = "Sets expectations for SDC-conformant systems around value set support for representing permitted question answers."
+* obeys sdc-2 and sdc-3
 * modifierExtension contains RenderingCriticalExtension named rendering-criticalExtension 0..* MS
 * url MS
+* version 0..1 MS
+// Inter-version extension for versionAlgorithm
+* extension contains $questionnaire-versionAlgorithm named versionAlgorithm 0..1 MS 
 * name 0..1
 * status MS
 * experimental MS

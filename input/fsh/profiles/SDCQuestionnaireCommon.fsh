@@ -14,6 +14,7 @@ Description: "Defines common elements for all SDC Questionnaires (regular or ada
     $questionnaire-copyrightLabel named copyrightLabel 0..1
 * url
   * obeys cnl-1
+* version 0..1 MS
 * status MS
 * title MS
 * item

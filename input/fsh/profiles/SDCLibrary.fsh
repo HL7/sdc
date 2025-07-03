@@ -5,6 +5,11 @@ Title: "SDC Library"
 Description: "Defines how a Library is used as a logic computable library within the ONC's Structured Data Capture standard."
 * ^status = #active
 * . ^definition = "Sets expectations for SDC-conformant systems around use of libraries."
+* obeys sdc-2 and sdc-3
+* url 1..1 MS
+* version 0..1 MS
+// Inter-version extension for versionAlgorithm
+* extension contains $questionnaire-versionAlgorithm named versionAlgorithm 0..1 MS 
 * subject[x] MS
 * relatedArtifact MS
   * display 1..1 MS
