@@ -318,6 +318,9 @@
     perform supplemental observation-based or expression-based population.  Obviously, the same element should only be populated in one way.  Also, combining methods adds complexity and may reduce the number of systems that are capable of
     appropriately handling the Questionnaire.
   </p>
+  <p>
+  <strong>Note:</strong> <em>StructureMap-based population takes precedence over all other mechanisms.</em> If a StructureMap is present, any observation-based or expression-based population expectations are ignored entirely. Observation-based and expression-based population may be performed simultaneously, item by item. However, if both approaches attempt to populate the same item, behavior is undefined. It is strongly recommended that Questionnaire authors avoid configuring both mechanisms to target the same question item. Systems may choose to raise an error, ignore one of the methods, or include both results in the case of repeating items.
+   </p>
   <a name="obs-pop"> </a>
   <h4>Observation-based Population</h4>
   <p>
