@@ -340,7 +340,13 @@
       To signal that the item.code is actually intended for use in population (as opposed to just providing metadata about the Questionnaire item, the
       <a href="StructureDefinition-sdc-questionnaire-observationLinkPeriod.html">questionnaire-observationLinkPeriod</a> extension must also be included).  This extension
       indicates the period of time over which to search for matching observations.  If there are no observations within that window, no population will occur.
-      For observations where how recent they are does not matter (e.g. blood type), simply set the duration to a long period of time - e.g. 200 years. If a link period is defined at the Questionnaire root, on a group item, or on a question item with descendent questions, the period will apply to all eligible (those having item.code and being of type question) descendent questions unless overridden by a nearer link period declaration.      
+      For observations where how recent they are does not matter (e.g. blood type), simply set the duration to a long period of time - e.g. 200 years. 
+      If an <code>observationLinkPeriod</code> extension is defined at the root Questionnaire, on a group item (even if it has no <code>item.code</code>), or on a question item, 
+      that period applies to all descendant questions that have an <code>item.code</code>, unless a closer (i.e., nearer in the hierarchy) <code>observationLinkPeriod</code> 
+      is defined and overrides it.<br></br>
+      This means that placing the extension on a parent item enables auto-population behavior for all coded descendant items, using the specified period to determine 
+      which Observations to query. Items without <code>item.code</code> do not themselves get populated but pass the <code>observationLinkPeriod</code> 
+      to their coded children.    
        <p style="margin-top:10px;">
        <b>Observation Link Period Hierarchical Diagram:</b> This diagram illustrates the structure and flow of 'observationLinkPeriod' extension in a Questionnaire. It shows how the period applies from the Questionnaire root down to group items and question items, with cases of inheritance, overriding, and items without codes.
       </p>
