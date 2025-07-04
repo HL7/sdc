@@ -38,7 +38,7 @@ Usage: #definition
 * parameter[+]
   * insert parameter(#subject, #in, 0, "1", #Reference, "The resource that is to be the *QuestionnaireResponse.subject*. The [QuestionnaireResponse](http://hl7.org/fhir/R4/questionnaireresponse.html\) instance will reference the provided subject.  In addition\, if the *local* parameter is set to true\, server information about the specified subject will be used to populate the instance.")
 * parameter[+]
-  * insert parameterComplex(#context, #in, 0, "*", "Resources containing information to be used to help populate the [QuestionnaireResponse](http://hl7.org/fhir/R4/questionnaireresponse.html\).  These will typically be FHIR resources\, though alternative population mechanisms might allow consumption of binaries containing FHIR documents\, CDA documents or other source materials.  Servers might not support all possible source materials and may ignore materials they do not recognize.  (They MAY provide warnings if ignoring submitted resources.\)")
+  * insert parameterComplex(#context, #in, 0, "*", "Resources containing information to be used to help populate the [QuestionnaireResponse](http://hl7.org/fhir/R4/questionnaireresponse.html\).  These will typically be FHIR resources\, though alternative population mechanisms might allow consumption of binaries containing FHIR documents\, CDA documents or other source materials.  Servers might not support all possible source materials and may ignore materials they do not recognize.  (They MAY provide warnings if ignoring submitted resources.\) This conveys launchContext and variables with x-fhir-query content used by the Questionnaire to the operation. Where x-fhir-query variables are passed as context\, the name is the variable name and the value is the search result Bundle.")
   * part[+]
     * insert parameter(#name, #in, 1, "1", #string, "The name of the launchContext or root Questionnaire variable the passed content should be used as for population purposes.  The name SHALL correspond to a launchContext or variable declared at the root of the Questionnaire. Allowed names include 'sourceQueries'\, which specifies that the context is the results of executing the queries in the sdc-questionnaire-sourceQueries extension.")
   * part[+]
@@ -49,6 +49,19 @@ Usage: #definition
     * extension[+]
       * url = "http://hl7.org/fhir/StructureDefinition/operationdefinition-allowed-type"
       * valueUri = "Resource"
+* parameter[+]
+  * insert parameter(#dataEndpoint, #in, 0, "1", #Element, "Endpoint allows for specification of headers such as authorization token that are needed for the service executing the operation to access the URI.")
+  * extension[+]
+    * url = "http://hl7.org/fhir/StructureDefinition/operationdefinition-allowed-type"
+    * valueUri = "uri"
+  * extension[+]
+    * url = "http://hl7.org/fhir/StructureDefinition/operationdefinition-allowed-type"
+    * valueUri = "Reference"
+  * extension[+]
+    * url = "http://hl7.org/fhir/StructureDefinition/operationdefinition-allowed-type"
+    * valueUri = "Endpoint"
+* parameter[+]
+  * insert parameter(#data, #in, 0, "1", #Bundle, "In situations where a dataEndpoint is not accessible\, this conveys the data that meets the Library.dataRequirement specifications. The union (no duplicates\) of all resources found when evaluating all dataRequirements for all Libraries will be provided in a single collection Bundle with no specific order. This element can only be populated if the sender can execute and return the full result set for all data requirements for all Libraries.")
 * parameter[+]
   * insert parameter(#local, #in, 0, "1", #boolean,"If specified and set to `true` (and the server is capable\)\, the server should use what resources and other knowledge it has about the referenced subject when pre-populating answers to questions.")
 * parameter[+]

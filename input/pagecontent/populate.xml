@@ -625,6 +625,11 @@
       The result of initialExpression, calculatedExpression and answerExpression must all align with the 'type' of the item they appear 
       on - e.g. can't have an expression that returns a string if the type is Choice/Coding.</li>
   </ul>
+  <a name="cql-execution-context"> </a>
+<p>
+  If a <code>Library</code> has a parameter with a <code>name</code> that corresponds to the name of a launch context, then the value for the launch context is made available as that parameter. Any parameters that do not correspond to launch contexts will generally not be made available to the library as there is no mechanism (other than Library-specific code) to know what content to make available. If there are multiple launch parameters with the same <code>code</code> (but different code systems) that correspond to a Library parameter name, there is no standard mechanism to determine which launch context value to pass to the parameter.
+</p>
+
   <a name="map-pop"> </a>
   <h4>StructureMap-based Population</h4>
   <p>
