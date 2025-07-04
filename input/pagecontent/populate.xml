@@ -577,9 +577,13 @@
       If the same context are used for both <a href="StructureDefinition-sdc-questionnaire-itemPopulationContext.html">questionnaire-itemPopulationContext</a> and
       <a href="StructureDefinition-sdc-questionnaire-itemExtractionContext.html">questionnaire-itemExtractionContext</a>, then the value will be repeated for both extensions.</li>
     <li>
-      If the initialExpression evaluates to a collection size that exceeds the maximum cardinality requirements of the item, the system may either choose not
-      to populate the item at all, or instead may treat the initialExpression as if it were a candidateExpression and give the user a chance to choose from
-      amongst the results being returned.</li>
+     If the <code>initialExpression</code> evaluates to a collection size that exceeds the maximum cardinality requirements of the item, the form filler has 3 options:
+      <ol>
+        <li>It may choose to not populate the item at all;</li>
+        <li>It may treat the <code>initialExpression</code> as if it were a <code>candidateExpression</code> and give the user a chance to choose from amongst the results being returned; or</li>
+        <li>If the answer is a repeating element but the number of found repetitions is greater than the 'max' repetitions allowed, it can populate more rows than the maximum allowed, signal the issue to the user (using standard validation), and let the user choose which repetition(s) to remove.</li>
+      </ol>  
+      </li>
     <li>
       If the initialExpression returns fewer occurrences than the <a href="{{site.data.fhir.path}}extension-questionnaire-minoccurs.html">
       questionnaire-minOccurs</a> value (if specified), it SHALL populate what occurrences it can.  The user can then add in additional repetitions as
