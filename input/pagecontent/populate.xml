@@ -498,7 +498,14 @@
     <li>
       If appropriate, use the <a href="StructureDefinition-sdc-questionnaire-itemPopulationContext.html">questionnaire-itemPopulationContext</a> on group items to establish the context for
       a group.  When populating the questionnaire, this will do two things: it will create a group repetition for each row returned from the query; and it will
-      set the specified variable name to that resource repetition for use in processing descendant items of the group.</li>
+      set the specified variable name to that resource repetition for use in processing descendant items of the group.
+      <p>
+      <code>InitialExpression</code> and <code>itemPopulationContext</code> will only be evaluated once for a given item in a questionnaire. For most items, this is during the initial population; however, it can also occur when a new repeating item (group or question answer with child items) is added. In this case, the <code>contextExpression</code> would be empty—as the repetition has no context from the evaluation. However, all the descendant items of the group or answer with <code>initial.value[x]</code> or <code>initialExpression</code> would be evaluated.
+      </p>
+      <p>
+      For example, defaulting a date item to <code>today()</code> or to the patient's birth date plus 6 months would result in an answer being populated (because the expression doesn't use context). In a different example, with a repeating group with a <code>contextExpression</code> of <code>Patient.contact</code>, the evaluation of a new repetition of the contact group will not have a context value and thus any population instructions tied to that context would not result in answers being populated.
+      </p>     
+      </li>
     <li>
       Use the <a href="{{site.data.fhir.path}}extension-variable.html">variable</a> extension on items as well to perform intermediary calculations or
       additional queries that are based on itemPopulationContext values.</li>
