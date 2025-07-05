@@ -418,7 +418,16 @@
       <br/>
     </li>
   </ul>
-  
+  <a name="adaptive-population"> </a>
+  <h3>Adaptive Population</h3>
+    <p>
+      Adaptive questionnaires can support population under certain constraints. The following guidance applies when using population mechanisms with adaptive forms:
+    </p>
+    <ul>
+      <li>Can use observation-based or expression-based, but not StructureMap.</li>
+      <li>Systems should cache previously populated variable values between calls to <code>$next-question</code>.</li>
+      <li>New variables and even libraries may appear in subsequent iterations of the Questionnaire and clients will need to look for these.</li>
+    </ul>
   <a name="security"> </a>
   <h3>Security Considerations</h3>
   <p>
