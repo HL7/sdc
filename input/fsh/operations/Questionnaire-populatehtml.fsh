@@ -3,10 +3,12 @@ InstanceOf: OperationDefinition
 Title: "Populate HTML Questionnaire"
 Description: "Generates an HTML representation of the Questionnaire as a form, possibly partially populated with data"
 Usage: #definition
+* extension[$standard-status].valueCode = #deprecated
+* extension[$standard-status].valueCode.extension[$standard-status-reason].valueMarkdown = "The $populate-html and $populate-link operations are deprecated due to the lack of known real-world implementations since their introduction, and the adaptive questionnaires possibly having been used instead."
 * url = "http://hl7.org/fhir/uv/sdc/OperationDefinition/Questionnaire-populatehtml"
 * name = "SDCQuestionnairePopulateHTML"
 * title = "Generate HTML for Questionnaire"
-* status = #active
+* status = #retired
 * kind = #operation
 * date = "2018-08-19T21:48:56+10:00"
 * publisher = "HL7 International - FHIR Infrastructure Work Group"

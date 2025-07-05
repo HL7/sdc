@@ -47,7 +47,7 @@
   POSSIBILITY OF SUCH DAMAGE.
   
 
-  Generated on Sun, May 18, 2025 15:14+0000 for FHIR v6.0.0-ballot2 
+  Generated on Fri, Jul 4, 2025 15:03+0000 for FHIR v6.0.0-ballot2 
 -->
 <xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns="http://hl7.org/fhir" xmlns:xhtml="http://www.w3.org/1999/xhtml" xmlns:xml="http://www.w3.org/XML/1998/namespace" targetNamespace="http://hl7.org/fhir" elementFormDefault="qualified" version="6.0.0-ballot2">
   <!-- Note: When using this schema with some tools, it may also be necessary to declare xmlns:xml="http://www.w3.org/XML/1998/namespace", however this causes performance issues with other tools and thus is not in the base schemas. -->
@@ -32569,7 +32569,7 @@ RegisteredName | UserFriendlyName | PatientReportedName.</xs:documentation>
           </xs:element>
           <xs:element name="procedure" minOccurs="0" maxOccurs="unbounded" type="Reference">
             <xs:annotation>
-              <xs:documentation xml:lang="en">The procedure(s) that are reported on in the DiagnosticReport.</xs:documentation>
+              <xs:documentation xml:lang="en">The performed procedure(s) that are reported on in the DiagnosticReport.</xs:documentation>
            </xs:annotation>
           </xs:element>
           <xs:element name="performer" minOccurs="0" maxOccurs="unbounded" type="Reference">
@@ -40252,7 +40252,7 @@ For example, it is possible for a 'family' Group to be a performer of an Observa
           </xs:element>
           <xs:element name="endpoint" minOccurs="0" maxOccurs="unbounded" type="Reference">
             <xs:annotation>
-              <xs:documentation xml:lang="en">The network services providing retrieval access to the selected images, frames, etc. See implementation notes for information about using DICOM endpoints.</xs:documentation>
+              <xs:documentation xml:lang="en">The network services providing access to the selected images, frames, etc. See implementation notes for information about using DICOM endpoints.</xs:documentation>
            </xs:annotation>
           </xs:element>
           <xs:element name="instance" type="ImagingSelection.Instance" minOccurs="0" maxOccurs="unbounded">
@@ -63884,6 +63884,11 @@ Deceased patients may also be marked as inactive for the same reasons, but may b
               <xs:documentation xml:lang="en">Plan/proposal/order fulfilled by this request.</xs:documentation>
            </xs:annotation>
           </xs:element>
+          <xs:element name="groupIdentifier" minOccurs="0" maxOccurs="1" type="Identifier">
+            <xs:annotation>
+              <xs:documentation xml:lang="en">A shared identifier common to multiple independent Request instances that were activated/authorized more or less simultaneously by a single author.  The presence of the same identifier on each request ties those requests together and may have business ramifications in terms of reporting of results, billing, etc.  E.g. a requisition number shared by a set of lab tests ordered together, or a prescription number shared by all meds ordered at one time.</xs:documentation>
+           </xs:annotation>
+          </xs:element>
           <xs:element name="category" minOccurs="0" maxOccurs="1" type="CodeableConcept">
             <xs:annotation>
               <xs:documentation xml:lang="en">Category of supply, e.g.  central, non-stock, etc. This is used to support work flows associated with the supply process.</xs:documentation>
@@ -66237,6 +66242,11 @@ Deceased patients may also be marked as inactive for the same reasons, but may b
               <xs:documentation xml:lang="en">Reference to the resource (containing the contents of the resource needed for operations). This is allowed to be a Parameters resource.</xs:documentation>
            </xs:annotation>
           </xs:element>
+          <xs:element name="expression" minOccurs="0" maxOccurs="1" type="Expression">
+            <xs:annotation>
+              <xs:documentation xml:lang="en">The expression for a specific element to extract from the fixture body.</xs:documentation>
+           </xs:annotation>
+          </xs:element>
         </xs:sequence>
       </xs:extension>
     </xs:complexContent>
@@ -66263,9 +66273,9 @@ Deceased patients may also be marked as inactive for the same reasons, but may b
               <xs:documentation xml:lang="en">A free text natural language description of the variable and its purpose.</xs:documentation>
            </xs:annotation>
           </xs:element>
-          <xs:element name="expression" minOccurs="0" maxOccurs="1" type="string">
+          <xs:element name="expression" minOccurs="0" maxOccurs="1" type="Expression">
             <xs:annotation>
-              <xs:documentation xml:lang="en">The FHIRPath expression for a specific value to evaluate against the fixture body. When variables are defined, only one of either expression, headerField or path must be specified.</xs:documentation>
+              <xs:documentation xml:lang="en">The expression for a specific value to evaluate against the fixture body. When variables are defined, only one of either expression, headerField or path must be specified.</xs:documentation>
            </xs:annotation>
           </xs:element>
           <xs:element name="headerField" minOccurs="0" maxOccurs="1" type="string">
@@ -66510,6 +66520,16 @@ Deceased patients may also be marked as inactive for the same reasons, but may b
               <xs:documentation xml:lang="en">The label would be used for tracking/logging purposes by test engines.</xs:documentation>
            </xs:annotation>
           </xs:element>
+          <xs:element name="key" minOccurs="0" maxOccurs="1" type="id">
+            <xs:annotation>
+              <xs:documentation xml:lang="en">The key that identifies this assert (unique within this TestScript).</xs:documentation>
+           </xs:annotation>
+          </xs:element>
+          <xs:element name="evaluateBasedOn" minOccurs="0" maxOccurs="unbounded" type="id">
+            <xs:annotation>
+              <xs:documentation xml:lang="en">A list of zero or more assert.key references to conditionally determine if this assert will be evaluated.</xs:documentation>
+           </xs:annotation>
+          </xs:element>
           <xs:element name="description" minOccurs="0" maxOccurs="1" type="string">
             <xs:annotation>
               <xs:documentation xml:lang="en">The description would be used by test engines for tracking and reporting purposes.</xs:documentation>
@@ -66522,12 +66542,12 @@ Deceased patients may also be marked as inactive for the same reasons, but may b
           </xs:element>
           <xs:element name="compareToSourceId" minOccurs="0" maxOccurs="1" type="string">
             <xs:annotation>
-              <xs:documentation xml:lang="en">Id of the source fixture used as the contents to be evaluated by either the &quot;source/expression&quot; or &quot;sourceId/path&quot; definition.</xs:documentation>
+              <xs:documentation xml:lang="en">Id of the source fixture used as the contents to be evaluated by either the &quot;assert.compareToSourceExpression&quot; or &quot;assert.compareToSourcePath&quot; definition.</xs:documentation>
            </xs:annotation>
           </xs:element>
-          <xs:element name="compareToSourceExpression" minOccurs="0" maxOccurs="1" type="string">
+          <xs:element name="compareToSourceExpression" minOccurs="0" maxOccurs="1" type="Expression">
             <xs:annotation>
-              <xs:documentation xml:lang="en">The FHIRPath expression for a specific value to evaluate against the source fixture. When compareToSourceId is defined, either compareToSourceExpression or compareToSourcePath must be defined, but not both.</xs:documentation>
+              <xs:documentation xml:lang="en">The expression for a specific value to evaluate against the source fixture. When compareToSourceId is defined, either compareToSourceExpression or compareToSourcePath must be defined, but not both.</xs:documentation>
            </xs:annotation>
           </xs:element>
           <xs:element name="compareToSourcePath" minOccurs="0" maxOccurs="1" type="string">
@@ -66545,9 +66565,9 @@ Deceased patients may also be marked as inactive for the same reasons, but may b
               <xs:documentation xml:lang="en">The default manual completion outcome applied to this assertion.</xs:documentation>
            </xs:annotation>
           </xs:element>
-          <xs:element name="expression" minOccurs="0" maxOccurs="1" type="string">
+          <xs:element name="expression" minOccurs="0" maxOccurs="1" type="Expression">
             <xs:annotation>
-              <xs:documentation xml:lang="en">The FHIRPath expression to be evaluated against the request or response message contents - HTTP headers and payload.</xs:documentation>
+              <xs:documentation xml:lang="en">The expression to be evaluated against the request or response message contents - HTTP headers and payload.</xs:documentation>
            </xs:annotation>
           </xs:element>
           <xs:element name="headerField" minOccurs="0" maxOccurs="1" type="string">

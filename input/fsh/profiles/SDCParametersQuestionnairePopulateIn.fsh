@@ -2,7 +2,7 @@ Profile: SDCParametersQuestionnairePopulateIn
 Parent: Parameters
 Id: parameters-questionnaire-populate-in
 Title: "Populate operation input parameters"
-Description: "Profile used to validate the parameters that are the input of the [$populate](OperationDefinition-Questionnaire-populate.html), [$populate-html](OperationDefinition-Questionnaire-populatehtml.html), and [$populate-link](OperationDefinition-Questionnaire-populatelink.html) questionnaire operations"
+Description: "Profile used to validate the parameters that are the input of the [$populate](OperationDefinition-Questionnaire-populate.html) questionnaire operations"
 * ^status = #active
 * obeys sdc-pop1
 * parameter ^slicing.discriminator.type = #value

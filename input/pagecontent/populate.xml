@@ -11,8 +11,8 @@
 	</p>
 	<ul>
     <li>
-      The <a href="CapabilityStatement-sdc-form-filler.html">SDC Form Filler</a> can invoke one of the <a href="#operations">$populate</a> 
-      operations on a <a href="CapabilityStatement-sdc-form-manager.html">SDC Form Manager</a> to create an initial QuestionnaireResponse before exposing the form
+      The <a href="CapabilityStatement-sdc-form-filler.html">SDC Form Filler</a> can invoke <a href="#operations">$populate</a> 
+      operation on a <a href="CapabilityStatement-sdc-form-manager.html">SDC Form Manager</a> to create an initial QuestionnaireResponse before exposing the form
       to the user.  This approach is known as 'pre-population' and is used by 'simple' Form Fillers that don't have the capacity to execute the logic needed to populate the form themselves.
       This approach is more limited because the population process can't take into account any user-provided information, nor can it provide guidance to the
       user.  Either the population process can fill in an answer or it can't.
@@ -26,26 +26,16 @@
   <a name="operations"> </a>
   <h3>Population operations</h3>
   <p>
-    There are 3 distinct $populate operations.  They all perform the same population process, but the response they pass back (and the ramifications
-    for what a <a href="CapabilityStatement-sdc-form-filler.html">Form Filler</a> or other invoking system will need to do after) will be different.
+    The primary method of form pre-population is the <code>$populate</code> operation. It performs the population process and returns a 
+    <code>QuestionnaireResponse</code>, with relevant fields pre-filled based on the information provided or already known by the server.
   </p>
   <ul>
     <li><a href="OperationDefinition-Questionnaire-populate.html">$populate</a> will pass back the results of the operation in a 
       <a href="{{site.data.fhir.path}}questionnaireresponse.html">QuestionnaireResponse</a>, meaning that the continued filling of the form will
       require a Form Filler to handle the rendering.</li>
-    <li><a href="OperationDefinition-Questionnaire-populatehtml.html">$populate-html</a> returns the results back as a
-      <a href="{{site.data.fhir.path}}binary.html">Binary</a> containing an HTML form where populated values are reflected in initial default
-      elements.  Subsequent review and rendering are handled in an HTML rendering environment within the Form Filler.  The results of completing
-      the form are submitted as <code>application/x-www-form-urlencoded</code> or <code>multipart/form-data</code> rather than as a 
-      QuestionnaireResponse.</li>
-    <li><a href="OperationDefinition-Questionnaire-populatelink.html">$populate-link</a> returns a hyperlink to a website that has the
-      form already pre-populated.  Managing the HTML is handled external to the Form Filler.  Like the $populate-html approach, results are
-      returned as web form content rather than QuestionnaireResponse</li>
   </ul>
-  <p>
-    The latter two modes are intended for form fillers that might not have the capability to support the complexity of the form and offloads the
-    work of figuring out how to render the form in addition to the work of populating it.
-  </p>
+  <p><strong>Note:</strong> The <code>$populate-html</code> and <code>$populate-link</code> operations have been deprecated due to a lack of any known implementation in the entire time it's been present, 
+  and the adaptive questionnaires possibly having been used instead.</p>
   <p>
     If using a populate operation, the operation will typically only be invoked once.  However, there are two circumstances where it might be invoked
     more than once:  
@@ -58,8 +48,7 @@
       the population process to take advantage of new data that wasn't available in the original form.</li>
   </ol>
   <p>
-    Both of these situations involve starting from an existing QuestionnaireResponse, which means that "re-populating" a form is something that will
-    only be a consideration if using $populate, not $populate-html or $populate-link.
+    Both of these situations involve starting from an existing QuestionnaireResponse, which means that "re-populating" a form is only relevant using $populate.
   </p>
   <p>
     If choosing to re-populate a form, there are several considerations to keep in mind:
@@ -201,9 +190,6 @@
     be used to provide a variable degree of offloading - from just handling the population aspect through to handling the rendering of the form and interactive
     data capture completely through a separate site.
 	</p>
-  <p>
-    There are three operations:
-  </p>
   <table class="grid" cellpadding="5">
     <tbody>
       <tr>
@@ -220,41 +206,15 @@
           server supports the pre-population capability, the answers for those questions will be populated in the returned QuestionnaireResponse instance.
         </td>
       </tr>
-      <tr>
-        <td>
-          <a href="OperationDefinition-Questionnaire-populate.html">populatehtml</a>
-        </td>
-        <td>
-          This operation produces an HTML web page as a <a href="{{site.data.fhir.path}}binary.html">Binary</a> instance.  The HTML page provides an
-          interactive rendering of the form, using html-based controls to capture user inputs and scripting languages to support form validation and submission
-          to the server that generated the form and/or the recipient(s) designated by the <a href="{{site.data.fhir.path}}questionnaire.html">Questionnaire</a>.
-          If matching data is available for any of the questions and the server supports the pre-population capability, the form will initially render with the
-          answers for those questions filled in.<br/>
-          NOTE: because the Binary will contain active content, client systems must ensure they trust the server performing the <code>populatehtml</code>
-          operation.
-        </td>
-      </tr>
-      <tr>
-        <td>
-          <a href="OperationDefinition-Questionnaire-populatelink.html">populatelink</a>
-        </td>
-        <td>
-          This operation returns a URL leading to a web page with an interactive rendering of the form that allows a user navigating to the link with a browser
-          to complete and submit a response to the questionnaire.  The response will be transmitted to the server generating the link, hosting the form and/or
-          as designated as part of the <a href="{{site.data.fhir.path}}questionnaire.html">Questionnaire</a> itself.  If matching data is available for any of
-          the questions and the server supports the pre-population capability, the form will initially render with the answers for those questions filled in.
-        </td>
-      </tr>
     </tbody>
   </table>
   <p>
-    In addition to these operations, another alternative is to use the <a href="adaptive.html">Adaptive Form</a> mechanism.  It hides the design of the
+    In addition to the $populate operation, another alternative is to use the <a href="adaptive.html">Adaptive Form</a> mechanism.  It hides the design of the
     questionnaire entirely and, in principle, allows the service to determine the next question to automatically fill in (or perhaps even suppress asking
     questions) based on data the service can access about the patient.
 	</p>
   <p>
-    For SDC purposes, server systems claiming to support CapabilityStatements that require support for the <code>populate</code>, <code>populatehtml</code> or <code>
-    populatelink</code> operations (<a href="CapabilityStatement-sdc-form-manager.html">SDC Form Manager</a>) SHALL, at minimum:
+    For SDC purposes, server systems claiming to support CapabilityStatements that require support for the <code>populate</code> operation (<a href="CapabilityStatement-sdc-form-manager.html">SDC Form Manager</a>) SHALL, at minimum:
   </p>
   <ul>
     <li>Handle the input parameters <code>identifier</code>, <code>questionnaire</code>, <code>questionnaireRef</code>, <code>subject</code> and
@@ -265,7 +225,7 @@
       that have SDC extensions defining population expectations if appropriate data exists in the underlying data repository and/or in the content passed into the populate operation.</li>
   </ul>
   <p>
-    Similarly, client systems claiming to support the <code>populate</code>, <code>populatehtml</code> and/or <code>populatelink</code> operations
+    Similarly, client systems claiming to support the <code>populate</code> operation
     (<a href="CapabilityStatement-sdc-form-filler.html">SDC Form Filler</a>) SHALL, at a minimum:
   </p>
   <ul>

@@ -30,8 +30,8 @@ Usage: #definition
     * insert Interaction(#MAY, #vread, "Allows retrieval of a historical version of a questionnaire.  Most systems will make use of the current version only.")
     * insert Operation(#MAY, "populate", $populate)
     * insert Operation(#MAY, "assemble", $assemble)
-    * insert Operation(#MAY, "populatehtml", $populatehtml)
-    * insert Operation(#MAY, "populatelink", $populatelink)
+   // * insert Operation(#MAY, "populatehtml", $populatehtml)
+   // * insert Operation(#MAY, "populatelink", $populatelink)
   * resource[+]
     * type = #ValueSet
     * profile = "http://hl7.org/fhir/uv/sdc/StructureDefinition/sdc-valueset"

@@ -43,8 +43,8 @@ Alias: $usage-contexts    = http://example.org/fhir/CodeSystem/usage-contexts
 Alias: $assemble      = http://hl7.org/fhir/uv/sdc/OperationDefinition/Questionnaire-assemble
 Alias: $populate      = http://hl7.org/fhir/uv/sdc/OperationDefinition/Questionnaire-populate
 Alias: $extract      = hhttp://hl7.org/fhir/uv/sdc/OperationDefinition/QuestionnaireResponse-extract
-Alias: $populatehtml  = http://hl7.org/fhir/uv/sdc/OperationDefinition/Questionnaire-populatehtml
-Alias: $populatelink  = http://hl7.org/fhir/uv/sdc/OperationDefinition/Questionnaire-populatelink
+//Alias: $populatehtml  = http://hl7.org/fhir/uv/sdc/OperationDefinition/Questionnaire-populatehtml
+//Alias: $populatelink  = http://hl7.org/fhir/uv/sdc/OperationDefinition/Questionnaire-populatelink
 
 // Operations - core
 Alias: $expand        = http://hl7.org/fhir/OperationDefinition/ValueSet-expand
@@ -114,6 +114,7 @@ Alias: $rendering-style                      = http://hl7.org/fhir/StructureDefi
 Alias: $rendering-styleSensitive             = http://hl7.org/fhir/StructureDefinition/rendering-styleSensitive
 Alias: $rendering-xhtml                      = http://hl7.org/fhir/StructureDefinition/rendering-xhtml
 Alias: $standard-status                      = http://hl7.org/fhir/StructureDefinition/structuredefinition-standards-status
+Alias: $standard-status-reason               = http://hl7.org/fhir/StructureDefinition/structuredefinition-standards-status-reason
 Alias: $targetConstraint                     = http://hl7.org/fhir/StructureDefinition/targetConstraint
 Alias: $valueset-conceptOrder                = http://hl7.org/fhir/StructureDefinition/valueset-conceptOrder
 Alias: $valueset-expansionSource             = http://hl7.org/fhir/StructureDefinition/valueset-expansionSource

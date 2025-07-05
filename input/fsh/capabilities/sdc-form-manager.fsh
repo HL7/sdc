@@ -82,6 +82,6 @@ Usage: #definition
   * insert Operation(#SHOULD, "expand", $expand)
   * insert Operation(#SHOULD, "validate code", $validate-code)
   * insert Operation(#MAY, "populate", $populate)
-  * insert Operation(#MAY, "populatehtml", $populatehtml)
-  * insert Operation(#MAY, "populatelink", $populatelink)
+  //* insert Operation(#MAY, "populatehtml", $populatehtml)
+  //* insert Operation(#MAY, "populatelink", $populatelink)
   * insert Operation(#MAY, "assemble", $assemble)
