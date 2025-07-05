@@ -2,7 +2,7 @@ Profile: SDCLibrary
 Parent: $cqllibrary
 Id: sdc-library
 Title: "SDC Library"
-Description: "Defines how a Library is used as a logic computable library within the ONC's Structured Data Capture standard."
+Description: "Defines how a Library is used as a logic computable library."
 * ^status = #active
 * . ^definition = "Sets expectations for SDC-conformant systems around use of libraries."
 * obeys sdc-2 and sdc-3

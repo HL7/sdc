@@ -2,7 +2,7 @@ Profile: SDCQuestionnaireResponseAdapt
 Parent: SDCQuestionnaireResponseCommon
 Id: sdc-questionnaireresponse-adapt
 Title: "Adaptive Questionnaire Response"
-Description: "Defines how the questionnaire response resource is used to reflect form data within the ONC's Structured Data Capture standard."
+Description: "Defines how the questionnaire response resource is used to reflect form data within the Structured Data Capture standard."
 * ^status = #active
 * . ^short = "Adaptive Questionnaire Response"
 * contained 1..* MS

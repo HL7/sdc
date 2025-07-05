@@ -2,7 +2,7 @@ Profile: SDCCodeSystem
 Parent: CodeSystem
 Id: sdc-codesystem
 Title: "SDC Code System"
-Description: "Defines how CodeSystem is used to reflect code lists found in data element defintions and form definitions to be used within the ONC's Structured Data Capture standard."
+Description: "Defines how CodeSystem is used to reflect code lists found in data element defintions and form definitions."
 * ^status = #active
 * . ^definition = "Sets expectations for SDC-conformant systems around value set support for representing permitted question answers."
 * obeys sdc-2 and sdc-3
