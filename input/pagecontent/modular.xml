@@ -268,7 +268,7 @@ We will set an expectation in SDC about what changes are permitted for 'active' 
       element.
     </li>
     <li>
-      If the URL refers to an element in a StructureDefinition and the StructureDefinition resolves but the referenced element does not raise an error.
+      If the URL refers to an element in a StructureDefinition and the StructureDefinition resolves but the referenced element does not, the system SHOULD raise an error.
     </li>
     <li>
       Otherwise, if the referenced element cannot be resolved, raise a warning unless the item has no text element or the item.type is 'choice' or
