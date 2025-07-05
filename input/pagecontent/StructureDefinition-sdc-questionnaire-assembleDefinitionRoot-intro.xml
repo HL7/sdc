@@ -1,0 +1,9 @@
+<div xmlns="http://www.w3.org/1999/xhtml" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://hl7.org/fhir ../../input-cache/schemas/R4/fhir-single.xsd">
+ <p>If present, indicates that the assembly process SHALL only use definitions that have the specified URI as their root. For example, if <code>assembleDefinitionRoot</code> is <code>http://somewhere.org/StructureDefinition/myElementLibrary</code>, then an item with a definition of <code>http://somewhere.org/StructureDefinition/myElementLibrary1#someElement</code> would have that definition used for assembly, while other definitions not starting with that root would not be. If there are multiple definition roots specified, then item definitions matching any of those roots will be used.</p>
+
+<p>If this appears on an item, it overrides those declared on the Questionnaire root. This can be used to disable certain roots for an item if there's a reason that requires more than one definition to appear with a common root. (The <code>assembleDefinitionRoot</code> on an item can be so specific as to specify the full text of one of the item's definitions.) To disable assembly for an element and its descendants that may have definitions present, simply specify an <code>assembleDefinitionRoot</code> of <code>false</code>.</p>
+
+<p>If no <code>assembleDefinitionRoot</code> values are specified, then the presumption is that all definitions present are used for assembly.</p>
+
+<p>It is an error if assembly is enabled and an item has more than one definition and there are no <code>assembleDefinitionRoot</code> values that filter assembly to be based off only one of the definitions.</p>
+</div>

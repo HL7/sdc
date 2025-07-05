@@ -13,7 +13,8 @@ Description: "Defines additional capabilities for controlling data entry and cal
     $targetConstraint named constraint 0..* and
     $cqf-library named library 0..* and
     LaunchContextExtension named launchContext 0..* and
-    Variable named variable 0..*
+    Variable named variable 0..* and
+    AssembleDefinitionRoot named assembleDefinitionRoot 0..* MS
 * extension[library] ^definition = "A reference to a library containing cql used in this Questionnaire."
 * extension[variable] ^requirements = "Allows variables to be calculated higher in the context of a QuestionnaireResponse for use with enableWhen-expression."
 * modifierExtension contains RenderingCriticalExtension named rendering-criticalExtension 0..* MS
@@ -48,7 +49,8 @@ Description: "Defines additional capabilities for controlling data entry and cal
       InitialExpressionExtension named initialExpression 0..1 and
       CalculatedExpressionExtension named calculatedExpression 0..1 and
       EnableWhenExpressionExtension named enableWhenExpression 0..1 MS and 
-      Keyboard named keyboardType 0..1
+      Keyboard named keyboardType 0..1 and
+      AssembleDefinitionRoot named assembleDefinitionRoot 0..* MS
   * extension[itemMinOccurs].value[x] ^mustSupport = false
     * extension contains
         $cqf-expression named itemMinOccursExpression 0..1 MS
