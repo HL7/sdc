@@ -44,6 +44,9 @@ Usage: #example
 * extension[+]
   * url = "http://hl7.org/fhir/uv/sdc/StructureDefinition/sdc-questionnaire-entryMode"
   * valueCode = #sequential
+* extension[+]
+  * url = "http://hl7.org/fhir/uv/sdc/StructureDefinition/sdc-questionnaire-assembleDefinitionRoot"
+  * valueUri = "http://example.org/StructureDefinition/myElementLibrary"
 * url = "http://build.fhir.org/ig/HL7/sdc/questionnaire-sdc-profile-example-form-behavior"
 * name = "SDCAdvancedRenderingExample"
 * status = #active
@@ -386,6 +389,9 @@ Usage: #example
           * description = "BMI Calculation"
           * language = #text/fhirpath
           * expression = "(%weight/(%height.power(2))).round(1)"
+      * extension[+]
+        * url = "http://hl7.org/fhir/uv/sdc/StructureDefinition/sdc-questionnaire-assembleDefinitionRoot"
+        * valueBoolean = false
       * linkId = "3.3.3"
       * text = "Your Body Mass Index (BMI)"
       * type = #decimal
