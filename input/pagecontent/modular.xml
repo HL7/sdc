@@ -359,4 +359,123 @@ We will set an expectation in SDC about what changes are permitted for 'active' 
     <li><a href="StructureDefinition-SdcQuestionLibrary.html">question-library</a> - A library of re-useable questionnaire questions</li>
     <li><a href="Parameters-sdc-modular-root-assembled.html">modular-root-assembled</a> - An assembled version of the <a href="Questionnaire-sdc-modular-root.html">modular-root</a> questionnaire</li>
   </ul>
+
+<a name="fragment-root-questionnaire"> </a>
+  <h4>Root Questionnaire (<a href="Questionnaire-sdc-modular-root.html">modular-root</a>)</h4>
+<p>
+  This is the Questionnaire that uses a mix of direct element definitions (via <code>definition</code>) and modular structure (via <code>subQuestionnaire</code>). It includes a launch context and a variable for <code>linkIdPrefix</code> to support nested item prefixing during assembly. The <code>sdc-questionnaire-subQuestionnaire</code> extension references a submodule Questionnaire that will be inserted during the $assemble operation.
+</p>
+<pre><code>{
+  "url": "http://hl7.org/fhir/uv/sdc/Questionnaire/sdc-modular-root",
+  "extension": [
+    {
+      "url": "http://hl7.org/fhir/uv/sdc/StructureDefinition/sdc-questionnaire-assemble-expectation",
+      "valueCode": "assemble-root"
+    }
+  ],
+  "item": [
+    {
+      "linkId": "1",
+      "definition": "http://hl7.org/fhir/uv/sdc/StructureDefinition/SdcQuestionLibrary#SdcQuestionLibrary.name",
+      "type": "group",
+      "extension": [
+        {
+          "url": "http://hl7.org/fhir/StructureDefinition/variable",
+          "valueExpression": {
+            "name": "linkIdPrefix",
+            "language": "text/fhirpath",
+            "expression": "'patientname.'"
+          }
+        }
+      ],
+      "item": [
+        {
+          "linkId": "1.1",
+          "type": "display",
+          "text": "Unable to resolve 'name' sub-questionnaire",
+          "extension": [
+            {
+              "url": "http://hl7.org/fhir/uv/sdc/StructureDefinition/sdc-questionnaire-subQuestionnaire",
+              "valueCanonical": "http://hl7.org/fhir/uv/sdc/Questionnaire/sdc-modular-name|3.0.0"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}</code></pre>
+
+<a name="fragment-sub-questionnaire"> </a>
+<h4>Sub-Questionnaire (<a href="Questionnaire-sdc-modular-name.html">modular-name</a>)</h4>
+<p>
+  This is a reusable sub-questionnaire module that defines a structure for capturing a name. It includes three items: title, first name, and last name. 
+  The example demonstrates the use of <code>definition</code> to pull structure from a data library and <code>initialExpression</code> to prepopulate 
+  values from context. This module is designed to be referenced from a parent Questionnaire using <code>sdc-questionnaire-subQuestionnaire</code>.
+</p>
+<pre><code>{
+  "url": "http://hl7.org/fhir/uv/sdc/Questionnaire/sdc-modular-name",
+  "extension": [
+    {
+      "url": "http://hl7.org/fhir/uv/sdc/StructureDefinition/sdc-questionnaire-assemble-expectation",
+      "valueCode": "assemble-child"
+    }
+  ],
+  "item": [
+    {
+      "linkId": "1",
+      "text": "Title",
+      "type": "string",
+      "required": true,
+      "answerOption": [
+        { "valueString": "Mr." },
+        { "valueString": "Miss" },
+        { "valueString": "Mrs." },
+        { "valueString": "Ms." }
+      ],
+      "extension": [
+        {
+          "url": "http://hl7.org/fhir/uv/sdc/StructureDefinition/sdc-questionnaire-initialExpression",
+          "valueExpression": {
+            "language": "text/fhirpath",
+            "expression": "%name.prefix.where($this in ('Mr.'|'Miss'|'Mrs'|'Ms.'))[0]"
+          }
+        }
+      ]
+    }
+  ]
+}</code></pre>
+
+<a name="fragment-nested-module"> </a>
+<h4>Nested Module (<a href="Questionnaire-sdc-modular-contact.html">modular-contact</a>)</h4>
+<p>
+  This module represents a patient's contact information and includes its own <code>sdc-questionnaire-subQuestionnaire</code> reference to the <code>modular-name</code> module. It demonstrates nesting of sub-questionnaires.
+</p>
+<pre><code>{
+  "url": "http://hl7.org/fhir/uv/sdc/Questionnaire/sdc-modular-contact",
+  "extension": [
+    {
+      "url": "http://hl7.org/fhir/uv/sdc/StructureDefinition/sdc-questionnaire-assemble-expectation",
+      "valueCode": "assemble-child"
+    }
+  ],
+  "item": [
+    {
+      "linkId": "1",
+      "type": "group",
+      "item": [
+        {
+          "linkId": "1.1",
+          "type": "display",
+          "text": "Unable to resolve 'name' sub-questionnaire",
+          "extension": [
+            {
+              "url": "http://hl7.org/fhir/uv/sdc/StructureDefinition/sdc-questionnaire-subQuestionnaire",
+              "valueCanonical": "http://hl7.org/fhir/uv/sdc/Questionnaire/sdc-modular-name|3.0.0"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}</code></pre>
 </div>
