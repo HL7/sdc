@@ -1,7 +1,13 @@
 <div xmlns="http://www.w3.org/1999/xhtml" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://hl7.org/fhir ../../input-cache/schemas/R4/fhir-single.xsd">
   <p>
-    Sometimes there is a desire to use an existing form, but adapt it in some way from the base form to meet more localized requirements.  There are three types of derivation - extends, compliesWith and inspiredBy, which are described in detail <a href="{{site.data.fhir.ver.ext}}/CodeSystem-questionnaire-derivationType.html">here</a> in the code system for the <a href="{{site.data.fhir.ver.ext}}/StructureDefinition-questionnaire-derivationType.html">questionnaire-derivationType</a> extension.  When creating one form from another, the newly created form SHOULD include a <code>derivedFrom</code> element that points to the source Questionnaire and SHOULD make use of the extension to communicate the nature of the relationship.  This relationship indicates how a resulting QuestionnaireResponse can be used, as shown in the following table:
-  </p>
+There are situations where you want to reuse an existing Questionnaire as a base but make some changes to adapt it to a different context such as adding new questions, translating the form, or adjusting constraints. This process is called <strong>form derivation</strong>. It uses the <code>Questionnaire.derivedFrom</code> element to indicate the base form, and the <code>questionnaire-derivationType</code> extension to describe the type of relationship.
+</p>
+
+<p>
+There are three types of derivation - <code>extends</code>, <code>compliesWith</code> and <code>inspiredBy</code>, which are described in detail in the 
+<a href="StructureDefinition-sdc-questionnaire-derivationType.html">questionnaire-derivationType CodeSystem</a>. When creating one form from another, the newly created form <strong>SHOULD</strong> include a <code>derivedFrom</code> element that points to the source Questionnaire and <strong>SHOULD</strong> 
+make use of the extension to communicate the nature of the relationship. This relationship indicates how a resulting QuestionnaireResponse can be used, as shown in the following table:
+</p>
   <table class="grid">
     <tbody>
       <tr>
