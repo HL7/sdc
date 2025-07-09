@@ -141,7 +141,8 @@
       <tr>
         <td colspan="6">
           <p>
-            Just like <a href="behavior.html#answerOption">answerOption</a> and <a href="behavior.html#answerValueSet">answerValueSet</a>, this is the third mechanism for capturing the allowed set of answers.
+            This is the most sophisticated of the three different mechanisms for defining the allowed set of answers to a set of questions.  
+            (The others being the <a href="{{site.data.fhir.path}}questionnaire-definitions.html#Questionnaire.item.answerOption">Questionnaire.answerOption</a> and the <a href="{{site.data.fhir.path}}questionnaire-definitions.html#Questionnaire.item.answerValueSet">answerValueSet</a> core elements. 
             (This extension is mutually exclusive with the other two mechanisms.)  This expression must evaluate to a collection 
             of elements with the same type as the <code>item.type</code> or, if the type was <code>Reference</code>, to resources allowed as the referenced type.
           </p>
