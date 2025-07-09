@@ -122,8 +122,9 @@
             type, a resource or even a Bundle of resources.
           </p>
           <p>
-			      The variable can be <a href="#fhirpath">referenced by its name</a>.  Variable expressions <code>SHALL</code> specify a name.  It is not allowed to define variable
-			      names that are already <a href="{{site.data.fhir.path}}fhirpath.html#vars">reserved by the base specification</a> or by other variables in the questionnaire that are either on the same node or part of the same node hierarchy.  However, it's perfectly fine to have two variables with the same name if those extensions variables don't share the same context - for example the variables are declared on sibling items.
+			      The variable can be <a href="#fhirpath">referenced by its name</a>.  Variable expressions <code>SHALL</code> specify a name.
+            It is not allowed to define variable names that are already <a href="{{site.data.fhir.path}}fhirpath.html#vars">reserved by the base specification</a>.  (E.g. <code>%questionnaire</code>, <code>%ucum</code>, etc.)  It is also prohibited to define the same variable more than once on the same node, though it is possible to override a variable on descendent nodes.
+            However, it's perfectly fine to have two variables with the same name if those extensions variables don't share the same context - for example the variables are declared on sibling items.
           </p>
         </td>
       </tr>
