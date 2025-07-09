@@ -41,10 +41,16 @@
     Feel free to explore other aspects of the FHIR specification that you feel may be relevant or of interest.
   </p>
 
+	
+	<div style="background-color: #f0f0f0; padding: 1em; border-radius: 5px;">
 	<a name="resources"> </a>
 	<h4>Resources</h4>
 	<p>
-    This implementation guide defines profiles on several resources.  Implementations are expected to be conformant with these profiles to be conformant with this implementation guide.
+    This implementation guide defines profiles on several resources. Implementers should follow the resource links in the table below to understand 
+	the data elements and general business rules associated with these resources.  For convenience, the table below also lists the various profiles this 
+	implementation guide defines on the respective resources.  The implementation expectations around these profiles are defined elsewhere in this guide, 
+	however they are all listed here to give a sense of various contexts in which each resource is used.  Implementations will typically need to conform 
+	to at least some of these profiles to comply with this guide.
   </p>
 	<table class="grid">
 		<tbody>
@@ -189,13 +195,13 @@
     likely to be used in SDC solutions, though no SDC-specific profiles have been created for them.
     <!-- Todo: decide how explicit the list of relevant sections needs to be -->
 	</p>
+	</div>
 
 	<a name="terminologyops"> </a>
 	<h4>Terminology Operations</h4>
 	<p>
-    In addition to the QuestionnaireResponse <a href="populate.html">population operations</a>, <a href="OperationDefinition-QuestionnaireResponse-extract.html">extract operation</a>, <a href="OperationDefinition-Questionnaire-next-question.html">next-question operation</a> and <a href="OperationDefinition-Questionnaire-process-response.html">process response operation</a>, it will be useful for Form Filler and Form Manager systems to support some of FHIR's
-    <a href="{{site.data.fhir.path}}terminology-service.html">terminology service</a> capabilities - specifically the
-    <a href="{{site.data.fhir.path}}operation-valueset-expand.html">Valueset Expand</a> and
+	The FHIR core specification defines the expected capabilities for <a href="{{site.data.fhir.path}}terminology-service.html">terminology services</a>.  Some of the capabilities of such services will be relevant 
+	for certain SDC implementations and implementers should be familiar with them - especially the <a href="{{site.data.fhir.path}}operation-valueset-expand.html">Valueset Expand</a> and
     <a href="{{site.data.fhir.path}}operation-valueset-validate-code.html">Validate code</a>
     operations.
   </p>
