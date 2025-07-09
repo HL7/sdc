@@ -7,7 +7,7 @@
   </p>
   <blockquote class="note-to-balloters">
     <p>
-      The $extract functionality has been refined significantly in this version of the specification, and on this page the 
+      The <code>$extract</code> functionality has been refined significantly in this version of the specification, and on this page the 
       extensions relevant to using expressions have been <a href="#extract">added</a>.
     </p>
   </blockquote>
@@ -26,7 +26,7 @@
       However, if the value is leveraged in downstream itemExtractionContexts, then it will need a name.  When an extension with a type of Expression has a name, the result of evaluating that expression becomes available in subsequent expressions (either
       following extensions within the same element, or extensions appearing on descendant items) as a 'variable'.  These variables are referenced by
       prepending '%' to the 'name' of the expression.  I.e. the result of an expression named 'patient' would be available for use in subsequent expressions
-      as '%patient'.<br/>
+      as <code>%patient</code>.<br/>
       Collisions between names that are defined more than once within the same containing element will be treated as an error.  I.e. If there is a
       <a href="#launchContext">launchContext</a> extension called 'patient' and then on the same item there's
       also a <a href="#variable">variable</a> extension also named 'patient', that would be an error.  However, overriding a name in a descendant
@@ -39,10 +39,10 @@
       <a href="#fhirpathvscql">FHIRPath vs. CQL</a>.
     </li>
     <li>
-      <code>expression</code> contains the expression if it is written in-line (as opposed to by reference).  In the case of CQL, this element may be instead used to contain just the name of an expression (aka identifier) found in a Library.  (In this case the mime type is text/cql-identifier instead of text/cql-expression).  Also see the additional guidance on the use of <a href="#cql-in-expressions">expressions in CQL</a>.
+      <code>expression</code> contains the expression if it is written in-line (as opposed to by reference).  In the case of CQL, this element may be instead used to contain just the name of an expression (aka identifier) found in a Library.  (In this case the mime type is <code>text/cql-identifier</code> instead of <code>text/cql-expression</code>).  Also see the additional guidance on the use of <a href="#cql-in-expressions">expressions in CQL</a>.
     </li>
     <li>
-      <code>reference</code> could theoretically be used to point to x-fhir-query or FHIRPath content maintained in libraries.  However, so far no official syntax for managing or referencing such content in libraries is defined.  Therefore, this element SHOULD be omitted by SDC implementations."
+      <code>reference</code> could theoretically be used to point to x-fhir-query or FHIRPath content maintained in libraries.  However, so far no official syntax for managing or referencing such content in libraries is defined.  Therefore, this element <code>SHOULD</code> be omitted by SDC implementations."
     </li>
   </ul>
   
@@ -73,7 +73,7 @@
       <code>Questionnaire</code> element), 'item' (for those that can appear on any type of item), 'question' (for those that can only appear on question
       items), or 'group' (for those that can appear on group items).  In some cases, additional restrictions/guidance will be provided.</li>
     <li>
-      <b>Content:</b> Indicates whether the expression.language is restricted to be "text/cql" (CQL), "text/fhirpath" (FHIRPath), or "application/x-fhir-query" (query) or is unrestricted (any)</li>
+      <b>Content:</b> Indicates whether the expression.language is restricted to be "<code>text/cql</code>" (CQL), "<code>text/fhirpath</code>" (FHIRPath), or "<code>application/x-fhir-query</code>" (query) or is unrestricted (any)</li>
     <li>
       <b>Use Cases:</b> Indicates which of the SDC use-cases make use of the extension: <a href="behavior.html">Form Behavior</a> (behavior),
       <a href="populate.html">Questionnaire Population</a> (population), and/or <a href="extraction.html">Data Extraction</a> (extraction - definition/template).
@@ -122,7 +122,7 @@
             type, a resource or even a Bundle of resources.
           </p>
           <p>
-			      The variable can be <a href="#fhirpath">referenced by its name</a>.  Variable expressions SHALL specify a name.  It is not allowed to define variable
+			      The variable can be <a href="#fhirpath">referenced by its name</a>.  Variable expressions <code>SHALL</code> specify a name.  It is not allowed to define variable
 			      names that are already <a href="{{site.data.fhir.path}}fhirpath.html#vars">reserved by the base specification</a> or by other variables in the questionnaire that are either on the same node or part of the same node hierarchy.  However, it's perfectly fine to have two variables with the same name if those extensions variables don't share the same context - for example the variables are declared on sibling items.
           </p>
         </td>
@@ -141,20 +141,20 @@
       <tr>
         <td colspan="6">
           <p>
-            Just like answerOption and answerValueSet, this is the third mechanism for capturing the allowed set of answers.
+            Just like <a href="behavior.html#answerOption">answerOption</a> and <a href="behavior.html#answerValueSet">answerValueSet</a>, this is the third mechanism for capturing the allowed set of answers.
             (This extension is mutually exclusive with the other two mechanisms.)  This expression must evaluate to a collection 
-            of elements with the same type as the item.type or, if the type was Reference, to resources allowed as the referenced type.
+            of elements with the same type as the <code>item.type</code> or, if the type was <code>Reference</code>, to resources allowed as the referenced type.
           </p>
           <p>
             This expression could be based on other answers within the questionnaire.  If the allowed set of answers for a question change 
-            after an answer has been specified (whether via population or user entry), the prior answer SHOULD be retained in the user 
+            after an answer has been specified (whether via population or user entry), the prior answer <code>SHOULD</code> be retained in the user 
             interface until such time as the questionnaire is marked as 'complete', even if invalid.  This is to minimize the impact on users if they 
             accidentally toggle elements within the form that govern the answerExpression.  However, in some cases, this will not be possible 
-            depending on the data entry controls.  Systems MAY wipe the answer on the grounds 
+            depending on the data entry controls.  Systems <code>MAY</code> wipe the answer on the grounds 
             that a change to the list of possible answers might result in different answers.
           </p>
           <p>
-            If an answer becomes invalid based on evaluation of answerExpression, calculated values falling out of range, etc., the form SHALL flag the 
+            If an answer becomes invalid based on evaluation of answerExpression, calculated values falling out of range, etc., the form <code>SHALL</code> flag the 
             answer as invalid and prevent the QuestionnaireResponse from being marked as 'complete'.</p>
           <p>
             Note that if the answerExpression relies on content outside the QuestionnaireResponse (e.g. launch context or query results), 
@@ -188,7 +188,7 @@
             If used for a readOnly and/or hidden element, initialExpression essentially calculates a 'fixed value' for the element.  If used for an editable element,
             this extension sets the initial value for the element. Since both initial.value and initialExpression generate values before the user has access to the form,
             it is not allowed to have both present on a Questionnaire.item. In scenarios where the user edits the response directly or edits other dependent elements that cause 
-            the re-evaluation of the response (e.g., calculatedExpression), the value MAY subsequently be overridden by the user authoring or editing the response 
+            the re-evaluation of the response (e.g., <a href="StructureDefinition-sdc-questionnaire-calculatedExpression.html">calculatedExpression</a>), the value MAY subsequently be overridden by the user authoring or editing the response 
             (see considerations in <a href="populate.html#expression-based-population">Expression-based Population</a>).
           </p>
           <p>
@@ -389,7 +389,7 @@
           <p>
             The base set of options available comes from <a href="behavior.html#answerOption">answerOption</a>, <a href="behavior.html#answerValueSet">answerValueSet</a>
             or <a href="#answerExpression">answerExpression</a>.  If any of the options listed in the <code>option</code> component of this extension is not one of the
-            options available for the item, then that SHOULD be treated as an error in the Questionnaire when validating the Questionnaire.  However, when completing forms
+            options available for the item, then that <code>SHOULD</code> be treated as an error in the Questionnaire when validating the Questionnaire.  However, when completing forms
             it is safe to ignore any non-available options.
           </p>
           <p>
@@ -433,7 +433,7 @@
             what the element should be populated with.
           </p>
           <p>
-            Expression.name SHALL be populated when this extension is being used for <a href="populate.html#exp-pop">expression-based population</a>.
+            <code>Expression.name</code> <code>SHALL</code> be populated when this extension is being used for <a href="populate.html#exp-pop">expression-based population</a>.
           </p>
         </td>
       </tr>
@@ -455,7 +455,7 @@
             as part of the complex extension, but should never have a 'name'.
           </p>
           <p>
-            Note: The relative path should follow the same syntax as OperationOutcome.expression.
+            Note: The relative path should follow the same syntax as <code>OperationOutcome.expression</code>.
           </p>
         </td>
       </tr>
@@ -468,12 +468,12 @@
   </p>
      <p>
     <b>Ordering of environment-variable extensions:</b> When extensions define an environment variable (i.e. information that can be accessed in FHIRPath or CQL using
-     '%' followed by a name), then for readability, those extensions SHOULD be ordered such that the extension that defines an environment variable always appears
+     '%' followed by a name), then for readability, those extensions <code>SHOULD</code> be ordered such that the extension that defines an environment variable always appears
       on a higher node, or earlier on the current node, than an extension with an expression that uses that variable. However, tools cannot rely on this ordering occurring. For 
-      example, if there's a launchContext extension that defines the %patient environment variable and a variable extension that defines %patientContact that leverages %patient, 
-      then the launchContext extension would logically be declared in the instance hierarchy prior to the variable extension, but systems can only assume that the extension 
+      example, if there's a launchContext extension that defines the <code>%patient</code> environment variable and a variable extension that defines %patientContact that leverages %patient, 
+      then the <a href="StructureDefinition-sdc-questionnaire-launchContext.html">launchContext</a> extension would logically be declared in the instance hierarchy prior to the variable extension, but systems can only assume that the extension 
       is declared on an ancestor node or on the same node, not necessarily prior to the location where it's used. If a reference is not resolved once all in-scope extensions have
-       been processed, that SHOULD be treated as an error.
+       been processed, that <code>SHOULD</code> be treated as an error.
   </p>
   <a name="otherextension"> </a>
   <h3>Other extensions</h3>
@@ -536,7 +536,7 @@
           </p>
           <p>
             Launch context information is passed to the QuestionnaireResponse evaluation process by the launching application.  It will pass whatever contexts
-            it is aware of.  SDC systems SHOULD support all four of the contexts defined in this specification (e.g. Patient, Encounter, Location, User), but 
+            it is aware of.  SDC systems <code>SHOULD</code> support all four of the contexts defined in this specification (e.g. Patient, Encounter, Location, User), but 
 			are free to support others.  The selected contexts mirror those used by the <a href="http://hl7.org/fhir/smart-app-launch/">SMART on FHIR</a> specification.
           </p>
           <p>
@@ -759,7 +759,7 @@
     <a href="#initialExpression">initialExpressions</a> which might rely on <a href="#itemPopulationContext">itemPopulationContext</a> queries that in turn have embedded
     FHIRPaths that reference elements defined in <a href="#launchContext">launchContext</a>.  If care is not taken, it's possible to construct a
     questionnaire where the value of an answer depends indirectly on itself, or where filling out an answer disables the question being answered or other
-    inappropriate behavior.  Questionnaire rendering systems should check for these situations and gracefully handle them by raising appropriate error messages
+    inappropriate behavior.  Questionnaire rendering systems <code>SHOULD</code> check for these situations and gracefully handle them by raising appropriate error messages
     rather than crashing or locking in an endless loop.
   </p>
   <p>
@@ -768,7 +768,7 @@
     before the second item in the group.
   </p>
   <p>
-    However, in some cases, updates to later elements may trigger an update to earlier elements, which then cascade through again.  Systems should allow
+    However, in some cases, updates to later elements may trigger an update to earlier elements, which then cascade through again.  Systems <code>SHOULD</code> allow
     for this and allow for iterative updating of expressions until values reach a stable state - or until an unstable looping condition is detected.
   </p>
   <a name="fhirpath"> </a>
@@ -794,7 +794,7 @@
   <p>
     In addition, a number of extensions have been proposed to the FHIRPath language - some to the base language and some to the FHIR-specific set of extensions
     to the language.  These extensions have been adopted as 'local' FHIRPath extensions for implementers of this implementation guide.  Systems that accept
-    FHIRPath, CQL or FHIRQuery expressions SHOULD support all of these extensions in their FHIRPath implementations:
+    FHIRPath, CQL or FHIRQuery expressions <code>SHOULD</code> support all of these extensions in their FHIRPath implementations:
   </p>
   <ul>
     <li>
@@ -852,10 +852,10 @@
     When a Questionnaire is defined to depend on external sources, it is possible that information might change between different launches of the editing process and between editing and validation, meaning that information that was once valid might become invalid. (E.g. Questions that were enabled are no longer enabled, questions that were optional are now required, answer choices have changed to exclude previously valid answers, etc.)  It can also cause another problem - that the set of choices available to the user that they didn't pick could be different, possibly creating confusion about what answers were deliberately excluded.
   </p>
   <p>
-When referencing external answerValueSets, consideration should be given to linking to a specific version of the ValueSet and/or ensuring that the ValueSet binds to specific versions of the underlying systems.  Otherwise, a change to the ValueSet definition or deprecation of codes from one of the referenced code systems could invalidate previously valid QuestionnaireResponses.  Validators SHOULD check validity against a value set based on the date of QuestionnaireResponse completion (i.e. QuestionnaireResponse.authored) to mitigate this issue.
+When referencing external answerValueSets, consideration should be given to linking to a specific version of the ValueSet and/or ensuring that the ValueSet binds to specific versions of the underlying systems.  Otherwise, a change to the ValueSet definition or deprecation of codes from one of the referenced code systems could invalidate previously valid QuestionnaireResponses.  Validators <code>SHOULD</code> check validity against a value set based on the date of QuestionnaireResponse completion (i.e. QuestionnaireResponse.authored) to mitigate this issue.
   </p>
   <p>
-Information gleaned from other types of external sources (e.g. launch context, fhir-x-query, etc.) SHOULD only be used for initialExpression and calculatedExpression logic and that any other desired behavior (enableWhen, answerExpression, etc.) should always be driven off of answers within the Questionnaire (even if they're hidden answers that are populated from an initialExpression) because launchContext and search results may vary between edit sessions and will also be different (or perhaps non-existent) when validating the Questionnaire.
+Information gleaned from other types of external sources (e.g. launch context, fhir-x-query, etc.) <code>SHOULD</code> only be used for <a href="StructureDefinition-sdc-questionnaire-initialExpression.html">initialExpression</a> and <a href="StructureDefinition-sdc-questionnaire-calculatedExpression.html">calculatedExpression</a> logic and that any other desired behavior (enableWhen, answerExpression, etc.) should always be driven off of answers within the Questionnaire (even if they're hidden answers that are populated from an initialExpression) because launchContext and search results may vary between edit sessions and will also be different (or perhaps non-existent) when validating the Questionnaire.
   </p>
   <p>
 Changes in external context that impacts the value of a calculatedExpression will not cause a problem because if the new calculated value upon re-opening a QuestionnaireResponse differs from the stored value, the form filler will interpret the answer as having been overridden and it will therefore remain unchanged.
@@ -883,16 +883,16 @@ Changes in external context that impacts the value of a calculatedExpression wil
   </p>
   <ul>
     <li>If the issues interfere with population, the system MAY provide an indication that some elements are not populated because of limitations of the client
-      or problems with the Questionnaire.  Issues with population SHOULD NOT prevent the user from completing the form and marking it 'completed'</li>
-    <li>If the issues interfere with enableWhen or validation, then the system SHOULD indicate to the user up-front that the authoring system cannot properly
-      validate or enforce the Questionnaire rules.  The Form Filler SHOULD NOT mark a QuestionnaireResponse as 'completed' or submit it as complete if it cannot
-      validate all enabled items or determine whether items should be enabled.  It may still be useful for a user to complete the QuestionnaireResponse if
+      or problems with the Questionnaire.  Issues with population <code>SHOULD NOT</code> prevent the user from completing the form and marking it 'completed'</li>
+    <li>If the issues interfere with enableWhen or validation, then the system <code>SHOULD</code> indicate to the user up-front that the authoring system cannot properly
+      validate or enforce the Questionnaire rules.  The Form Filler <code>SHOULD NOT</code> mark a QuestionnaireResponse as 'completed' or submit it as complete if it cannot
+      validate all enabled items or determine whether items <code>SHOULD</code> be enabled.  It may still be useful for a user to complete the QuestionnaireResponse if
       there's a possibility of a different client allowing subsequent editing or if the associated Questionnaire logic might be corrected to allow marking
       the response as 'completed' in the future.  Also, in some cases, a user reading human-readable directions may be able to make the determination that a
       QuestionnaireResponse is 'completed' even if the software can't make that determination.  (Because the user might do this in error, systems consuming
       'completed' QuestionnaireResponses might still want to check that the response is 'valid' against the rules of the Questionnaire.)</li>
     <li>If the issues interfere with extraction, the system MAY provide an indication that the system won't be able to perform extraction once the 
-      response is complete.  Systems SHOULD still allow the form to be filled in and marked as 'completed'.</li>
+      response is complete.  Systems <code>SHOULD</code> still allow the form to be filled in and marked as 'completed'.</li>
   </ul>
   <p>
     Obviously, if the issue with population, extraction or validation comes from invoking an external operation rather than handling the process inline, the result
@@ -902,7 +902,7 @@ Changes in external context that impacts the value of a calculatedExpression wil
   <p>
     The other side of this issue is how a Form Filler can search for a Form Manager that will be able to populate or extract for a particular Questionnaire.
     At present, there is no computable way for systems to expose what expression languages they support, what 'extensions' they support within those languages, etc.
-    However, systems SHALL document their capabilities around languages and language extensions in the textual documentation of their CapabilityStatements so
+    However, systems <code>SHALL</code> document their capabilities around languages and language extensions in the textual documentation of their CapabilityStatements so
     that it is clear to human readers.  A proposed R5 CapabilityStatement refactoring might provide such support in the future.  We will evaluate using those new features 
     in a future release.
   </p>

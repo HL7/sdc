@@ -47,10 +47,10 @@
     <li>
       <b>Step 0:</b> <p> Before initiating the administration process for an adaptive questionnaire, the app must first locate the appropriate
        questionnaire. This can be done through various mechanisms such as performing a search operation, referencing a Task resource, 
-       or other mechanism. The questionnaire being located <b>SHALL</b> conform to the <a href="StructureDefinition-sdc-questionnaire-adapt-srch.html">Adaptive Questionnaire Search Profile</a>, which 
+       or other mechanism. The questionnaire being located <code>SHALL</code> conform to the <a href="StructureDefinition-sdc-questionnaire-adapt-srch.html">Adaptive Questionnaire Search Profile</a>, which 
        ensures that it is discoverable and compliant with adaptive questionnaire requirements.
        </p>
-       <p> Additionally, the located questionnaire <b>SHALL</b> include the <a href="StructureDefinition-sdc-questionnaire-questionnaireAdaptive.html">questionnaireAdaptive</a> extension. This extension explicitly indicates 
+       <p> Additionally, the located questionnaire <code>SHALL</code> include the <a href="StructureDefinition-sdc-questionnaire-questionnaireAdaptive.html">questionnaireAdaptive</a> extension. This extension explicitly indicates 
        that the questionnaire supports adaptiveness and may provide details about the endpoints where the $next-question operation can 
        be invoked. If the questionnaireAdaptive extension doesn't specify a URL, the location must be independently negotiated, though as a fallback, 
        try the server on which the Questionnaire is hosted. This step ensures that the app knows whether the questionnaire is adaptive and where to send subsequent 

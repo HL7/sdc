@@ -133,7 +133,7 @@
     <a href="StructureDefinition-sdc-questionnaire-extr-defn.html">SDC Questionnaire Extract - Definition</a>, <a href="StructureDefinition-sdc-questionnaire-extr-template.html">SDC Questionnaire Extract - Template</a>, 
     and <a href="StructureDefinition-sdc-questionnaire-extr-smap.html">SDC Questionnaire Extract - Structure Map</a> profiles.<br/>
     Each profile identifies 
-    specific 'must support' elements and extensions that systems that claim to support a specific SDC extraction mechanism SHALL be capable of extracting data, as befits the CapabilityStatement(s) 
+    specific 'must support' elements and extensions that systems that claim to support a specific SDC extraction mechanism <code>SHALL</code> be capable of extracting data, as befits the CapabilityStatement(s) 
     they claim conformance to. Each system should choose which approach(es) it wishes to use and support based on the elements specified in that profile.
   </p>
   <p>
@@ -267,7 +267,7 @@ If an item is presumed to be extracted, it will extract if there are <code>item.
     </tbody>
   </table>
   <p>
-    If updating, the original Observation SHALL be adjusted to have the new value or component.value and the status changed to "amended", then PUT to 
+    If updating, the original Observation <code>SHALL</code> be adjusted to have the new value or component.value and the status changed to "amended", then PUT to 
     the source system.  If creating, data elements SHOULD be populated as follows:
   </p>
   <ul>
@@ -336,9 +336,9 @@ If an item is presumed to be extracted, it will extract if there are <code>item.
       If a questionnaire item has the <a href="{{site.data.fhir.path}}extension-questionnaire-unit.html">questionnaire-unit</a> extension, the
       <code>Observation.value</code> SHOULD be a valueQuantity rather than integer or decimal and the units should be taken from the extension value.</li>
     <li>
-      If a question is skipped (no answer) or cleared, no Observation should be created.  Existing Observations SHALL NOT be deleted.</li>
+      If a question is skipped (no answer) or cleared, no Observation should be created.  Existing Observations <code>SHALL NOT</code> be deleted.</li>
     <li>
-      If a question has multiple answers, each answer SHALL be a separate Observation instance.</li>
+      If a question has multiple answers, each answer <code>SHALL</code> be a separate Observation instance.</li>
     <li>
       There is no mechanism to support items that are mapped to Observation codes which then have nested items without codes - e.g. to capture the text
       description for an "other - please specify" code - one of the other extraction mechanisms will need to be used.</li>
@@ -452,7 +452,7 @@ If an item is presumed to be extracted, it will extract if there are <code>item.
           If the resource is created by a profile definition rather than a core resource type profile, the profile name will be added to the meta of the extracted resource.
         </li>
         <li>
-          Once the resource is completely extracted, the system SHALL populate the <code>bundle.entry.resource</code> property with the extracted resource, then populate the other
+          Once the resource is completely extracted, the system <code>SHALL</code> populate the <code>bundle.entry.resource</code> property with the extracted resource, then populate the other
           <code>bundle.entry</code> properties:
           <ul>
             <li>
@@ -484,7 +484,7 @@ If an item is presumed to be extracted, it will extract if there are <code>item.
         </li>
         <li>
           There can be multiple of these extensions interleaved on separate items, and also on the same item. However the <code>definition</code> property in the extension
-          SHALL be unique in the scope that they are introduced in the questionnaire.
+          <code>SHALL</code> be unique in the scope that they are introduced in the questionnaire.
           i.e. You can't define two <code>http://hl7.org/fhir/StructureDefinition/Condition</code> extractions on the same item (or any of its children), but you can have
           multiple on sibling items do this.<br/>
           You could however have different profiles of the same resource overlapping. This is due to the <code>definition</code> property being the "scoper"
@@ -647,7 +647,7 @@ If an item is presumed to be extracted, it will extract if there are <code>item.
   </p>
   <ul>
     <li>
-      FHIRPath expressions used in the $extract approach do not have access to the launchContext, initialExpression, or variable extensions.  They are only able to
+      FHIRPath expressions used in the $extract approach do not have access to the <a href="StructureDefinition-sdc-questionnaire-launchContext.html">launchContext</a>, <a href="StructureDefinition-sdc-questionnaire-initialExpression.html">initialExpression</a>, or <a href="{{site.data.fhir.path}}extension-variable.html">variable</a> extensions.  They are only able to
       access the QuestionnaireResponse data and the Questionnaire data and specific extract only extensions (extractAllocateId). Refer to the 
       <a href="expressions.html#extract">expressions</a> page for more details.
     </li>
@@ -656,7 +656,7 @@ If an item is presumed to be extracted, it will extract if there are <code>item.
       the query had returned no data. The error can be returned in the operation outcome alongside the transaction bundle.
     </li>
     <li>
-      While validating a Questionnaire resource that uses the definition-based extraction mechanism, the system SHALL validate that the <code>definition</code> property
+      While validating a Questionnaire resource that uses the definition-based extraction mechanism, the system <code>SHALL</code> validate that the <code>definition</code> property
       matches up with the StructureDefinition that is being referenced.  It can also warn if there is no definitionExtract that would initiate the extraction process for
       the resource/profile.
     </li>
@@ -683,7 +683,7 @@ If an item is presumed to be extracted, it will extract if there are <code>item.
     of the template reference in the questionnaire, and/or any inline context expressions defined in the template.
   </p>
   <p>
-    The difference between the <b>templateExtract</b> (resource) and <b>templateExtractBundle</b> extensions is that the template resource extension will extract each resource individually
+    The difference between the <a href="StructureDefinition-sdc-questionnaire-templateExtract.html">templateExtract (resource)</a> and <a href="StructureDefinition-sdc-questionnaire-templateExtractBundle.html">templateExtractBundle</a> extensions is that the template resource extension will extract each resource individually
     as a separate bundle entry and includes expressions to populate the other bundle entry properties,
     whereas the template bundle extension extract the transaction bundle as a single resource. The processing of the template is otherwise identical between the two extensions.
   </p>
@@ -694,7 +694,7 @@ If an item is presumed to be extracted, it will extract if there are <code>item.
     <li>
       Include the <a href="StructureDefinition-sdc-questionnaire-templateExtract.html">sdc-questionnaire-templateExtract</a> extension at the root or the questionnaire,
       and/or any items in the questionnaire that indicate a resource should be created for each answer in a questionnaire response for that item.<br/>
-      This extension includes a relative reference to the resource template which SHALL be contained within the same Questionnaire resource, and will be extracted into a new entry in the output transaction bundle (with other values processed from the complex extension).<br/>
+      This extension includes a relative reference to the resource template which <code>SHALL</code> be contained within the same Questionnaire resource, and will be extracted into a new entry in the output transaction bundle (with other values processed from the complex extension).<br/>
       Alternately use the <a href="StructureDefinition-sdc-questionnaire-templateExtractBundle.html">sdc-questionnaire-templateExtractBundle</a> extension at the root
       to use a template bundle. This is the same as the templateExtract extension but leverages a single bundle that has all templated resources in it.
     </li>
@@ -722,7 +722,7 @@ If an item is presumed to be extracted, it will extract if there are <code>item.
       If templateExtract is on an item, the FHIRPath context will be the item in the QuestionnaireResponse associated with that item's linkId.<br/>
     </li>
     <li>
-      The extraction engine SHALL scan the templated resource for any <a href="StructureDefinition-sdc-questionnaire-templateExtractContext.html">sdc-questionnaire-templateExtractContext</a> 
+      The extraction engine <code>SHALL</code> scan the templated resource for any <a href="StructureDefinition-sdc-questionnaire-templateExtractContext.html">sdc-questionnaire-templateExtractContext</a> 
       or <a href="StructureDefinition-sdc-questionnaire-templateExtractValue.html">sdc-questionnaire-templateExtractValue</a> extensions (in that order) and then:
       <ul>
         <li>
@@ -751,9 +751,9 @@ If an item is presumed to be extracted, it will extract if there are <code>item.
       </ul>
     </li>
     <li>
-      When using the templateExtract extension (not the templateExtractBundle extension), the extraction engine SHALL create a transaction Bundle containing all the resources that were extracted from the QuestionnaireResponse.
+      When using the templateExtract extension (not the templateExtractBundle extension), the extraction engine <code>SHALL</code> create a transaction Bundle containing all the resources that were extracted from the QuestionnaireResponse.
       Each resource that is extracted will be added into the transaction bundle that is returned by the $extract operation.<br/>
-      The fullUrl, resourceID and <code>entry.request</code> properties SHALL be updated with values calculated from the
+      The fullUrl, resourceID and <code>entry.request</code> properties <code>SHALL</code> be updated with values calculated from the
       templateExtract complex extension.<br/>
       If a resource has it's ID populated, then it will be treated as an update to the existing resource (<code>entry.request.method='PUT'</code>), otherwise it will be treated as a create (<code>entry.request.method='POST'</code>).
     </li>
@@ -761,8 +761,8 @@ If an item is presumed to be extracted, it will extract if there are <code>item.
 
   <p>
     If FHIRPath expressions produce errors/exceptions or invalid/incompatible value types, the 
-    extraction engine SHALL log the error and continue processing the next property.
-    If there were any fatal or error level issues, the extraction engine SHALL return an OperationOutcome with the issues.<br/>
+    extraction engine <code>SHALL</code> log the error and continue processing the next property.
+    If there were any fatal or error level issues, the extraction engine <code>SHALL</code> return an OperationOutcome with the issues.<br/>
     If there are only warning/information issues, they can be returned along with the transaction bundle.
   </p>
   <p>
@@ -796,7 +796,7 @@ If an item is presumed to be extracted, it will extract if there are <code>item.
     To use this method:
   </p>
   <ol>
-    <li>Include the <a href="StructureDefinition-sdc-questionnaire-targetStructureMap.html">questionnaire-targetStructureMap</a> extension.  This SHALL define a
+    <li>Include the <a href="StructureDefinition-sdc-questionnaire-targetStructureMap.html">questionnaire-targetStructureMap</a> extension.  This <code>SHALL</code> define a
       transform between the QuestionnaireResponse and either a single resource or a transaction Bundle containing the set of resources extracted from the
       QuestionnaireResponse.</li>
   </ol>

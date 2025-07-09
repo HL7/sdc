@@ -155,15 +155,15 @@
   <ol>
     <li>The <a href="StructureDefinition-sdc-questionnaire-subQuestionnaire.html">subQuestionnaire</a> extension will contain the canonical reference to the
       Questionnaire whose content should be substituted for the display item</li>
-    <li>The canonical reference <b>SHOULD</b> be version-specific to ensure that the author of the parent questionnaire has full control over what content
+    <li>The canonical reference <code>SHOULD</code> be version-specific to ensure that the author of the parent questionnaire has full control over what content
       they are importing.  If the subQuestionnaire is not version-specific, then the same version of the parent Questionnaire could include varying
       items as the subQuestionnaires evolve and this is considered an error.  I.e. if canonical references are not version-specific, the content of the
       referenced Questionnaires cannot change in a way that results in differences in allowed QuestionnaireResponses.</li>
     <li>It is possible that the assembly option will be unable to substitute the display item for the referenced Questionnaire or that the system that tries
       to make use of the modular Questionnaire might not recognize or be able to support assembly of the Questionnaire at all.  For this reason, the 'text'
-      of the display element <b>SHOULD</b> say something that is meaningful in situations where it is not replaced.  For example: "Sub-questionnaire 
+      of the display element <code>SHOULD</code> say something that is meaningful in situations where it is not replaced.  For example: "Sub-questionnaire 
       [some URL] not available.  Unable to display all questions."</li>
-    <li>When the Questionnaire goes through the 'assembly' process, the display item having the subQuestionnaire extension will be removed entirely.
+    <li>When the Questionnaire goes through the 'assembly' process, the display item having the <a href="StructureDefinition-sdc-questionnaire-subQuestionnaire.html">subQuestionnaire</a> extension will be removed entirely.
       I.e. that linkId and the associated text will not appear in the assembled Questionnaire.  Instead, all of the 'root' items of the referenced
       Questionnaire - including their descendant elements and items will appear in the same position as the replaced 'display' item was.</li>
     <li>In addition to propagating the items from the referenced Questionnaire, additional items are also propagated as follows:
@@ -207,13 +207,13 @@
           E.g. <code>assemble-root-or-child</code> would change to <code>independent-root-or-child</code>.</li>
       </ul>
     </li>
-    <li>This process occurs recursively.  I.e. If an imported Questionnaire contains display elements with a subQuestionnaire extension, those display
+    <li>This process occurs recursively.  I.e. If an imported Questionnaire contains display elements with a <a href="StructureDefinition-sdc-questionnaire-subQuestionnaire.html">subQuestionnaire</a> extension, those display
       elements are also replaced by the referenced Questionnaire, repeating the process until no further subQuestionnaire extensions are found.</li>
     <li>It is possible that the same Questionnaire might be substituted more than once as part of this process, however it is in an error if 
       the module references recurse.  E.g. if Questionnaire A contains an item that references subQuestionnaire B, which in turn has an element that
       references subQuestionnaire A.</li>
     <li>It is also an error if the resulting fully-assembled Questionnaire has any duplicate linkIds.</li>
-    <li>In order to avoid duplicate linkIds, a parent Questionnaire <b>MAY</b> declare a special <a href="{{site.data.fhir.path}}extension-variable.html">variable</a> with the name <code>linkIdPrefix</code>.  If
+    <li>In order to avoid duplicate linkIds, a parent Questionnaire <code>MAY</code> declare a special <a href="{{site.data.fhir.path}}extension-variable.html">variable</a> with the name <code>linkIdPrefix</code>.  If
       there is a linkIdPrefix in context at the time a subQuestionnaire is substituted, that linkIdPrefix SHALL be pre-pended to the <code>linkId</code> and 
       <code>enableWhen.question</code> elements of all items in that Questionnaire.  See the <a href="#examples">examples</a> to see how this works in practice.
       If linkIdPrefix is not used, care should be taken to ensure that linkIds are appropriately coordinated to avoid overlap across all referenced 
@@ -221,25 +221,25 @@
     <li>LinkIdPrefixes are also prepended to the 'id' elements of any <a href="{{site.data.fhir.path}}references.html#contained">contained</a> resources
       and all references to contained resources (i.e. references or canonicals that start with '#').</li>
     <li>linkIdPrefixes will need to be referenced in any expressions that are dependent on linkId.  For example, if there is an expression that says
-      "%root.descendants().select(item.where(linkId='1.1'))" would need to change to "%root.descendants().select(item.where(linkId=%linkIdPrefix + '1.1'))"</li>
+      <code>%root.descendants().select(item.where(linkId='1.1'))</code> would need to change to <code>%root.descendants().select(item.where(linkId=%linkIdPrefix + '1.1'))</code></li>
     <li>Imported Questionnaires may be defined to be dependent on contextual information passed in from the referencing Questionnaire (including 'linkIdPrefix').
       To allow validating these subQuestionnaires independent of their inclusion in a parent, all such dependencies must be declared using the
       <a href="StructureDefinition-sdc-questionnaire-assembleContext.html">assembleContext</a> extension on the root of the 
-      Questionnaire.  As well, if a Questionnaire is referenced by a subQuestionnaire extension, it is an error if the listed variables are not available
+      Questionnaire.  As well, if a Questionnaire is referenced by a <a href="StructureDefinition-sdc-questionnaire-subQuestionnaire.html">subQuestionnaire</a> extension, it is an error if the listed variables are not available
       in the context of the referencing element.</li>
-    <li>The presence of an <code>assembleContext</code> extension on a Questionnaire indicates that it can ONLY be used as a part of a modular Questionnaire.</li>
+    <li>The presence of an <a href="StructureDefinition-sdc-questionnaire-assembleContext.html">assembleContext</a> extension on a Questionnaire indicates that it can ONLY be used as a part of a modular Questionnaire.</li>
     <li>
     <p>
-    If stored, an assembled Questionnaire <b>SHALL</b> have the same URL and Version as the base Questionnaire.  Note that this means that it's possible 
-    for a server to have multiple Questionnaire instances that share the same URL and Version.  Clients <b>SHOULD</b> populate 
-    the <a href="{{site.data.fhir.ver.ext}}/StructureDefinition-cqf-knowledgeCapability.html">knowledge-capability</a> and <b>SHALL</b> 
+    If stored, an assembled Questionnaire <code>SHALL</code> have the same URL and Version as the base Questionnaire.  Note that this means that it's possible 
+    for a server to have multiple Questionnaire instances that share the same URL and Version.  Clients <code>SHOULD</code> populate 
+    the <a href="{{site.data.fhir.ver.ext}}/StructureDefinition-cqf-knowledgeCapability.html">knowledge-capability</a> and <code>SHALL</code> 
     populate it if they know that both unassembled and assembled versions will be hosted on the same server.  This extension allows differentiating 
-    between assembled (executable) from non-assembled (computable) instances. As part of the assembly process, the assembly engine <b>SHOULD</b> add <a href="StructureDefinition-sdc-questionnaire-assembledFrom.html">assembledFrom</a> extensions 
+    between assembled (executable) from non-assembled (computable) instances. As part of the assembly process, the assembly engine <code>SHOULD</code> add <a href="StructureDefinition-sdc-questionnaire-assembledFrom.html">assembledFrom</a> extensions 
     pointing to the specific versions of all descendant Questionnaires that were used as part of the assembly process.  The root questionnaire 
     doesn't need to be listed as its URL and version will be the same as the assembled Questionnaire.</p>
       <p>  
     In situations where there can be more than one assembled version of 
-    the same questionnaire version hosted on the same server, the assembly process <b>SHALL</b> also populate 
+    the same questionnaire version hosted on the same server, the assembly process <code>SHALL</code> also populate 
     <a href="{{site.data.fhir.ver.ext}}/StructureDefinition-package-source.html">package-source</a> (and the package information that can 
     be gleaned from it) to help differentiate between multiple assembled instances of a Questionnaire.  This will typically only happen where the 
     Questionnaire component hierarchy isn't all version-specific.</p>
@@ -365,7 +365,7 @@ We will set an expectation in SDC about what changes are permitted for 'active' 
 <a name="fragment-root-questionnaire"> </a>
   <h4>Root Questionnaire (<a href="Questionnaire-sdc-modular-root.html">modular-root</a>)</h4>
 <p>
-  This is the Questionnaire that uses a mix of direct element definitions (via <code>definition</code>) and modular structure (via <code>subQuestionnaire</code>). It includes a launch context and a variable for <code>linkIdPrefix</code> to support nested item prefixing during assembly. The <code>sdc-questionnaire-subQuestionnaire</code> extension references a submodule Questionnaire that will be inserted during the $assemble operation.
+  This is the Questionnaire that uses a mix of direct element definitions (via <code>definition</code>) and modular structure (via <code>subQuestionnaire</code>). It includes a launch context and a variable for <code>linkIdPrefix</code> to support nested item prefixing during assembly. The <a href="StructureDefinition-sdc-questionnaire-subQuestionnaire.html">subQuestionnaire</a> extension references a submodule Questionnaire that will be inserted during the $assemble operation.
 </p>
 <pre><code>{
   "url": "http://hl7.org/fhir/uv/sdc/Questionnaire/sdc-modular-root",
@@ -412,7 +412,7 @@ We will set an expectation in SDC about what changes are permitted for 'active' 
 <p>
   This is a reusable sub-questionnaire module that defines a structure for capturing a name. It includes three items: title, first name, and last name. 
   The example demonstrates the use of <code>definition</code> to pull structure from a data library and <code>initialExpression</code> to prepopulate 
-  values from context. This module is designed to be referenced from a parent Questionnaire using <code>sdc-questionnaire-subQuestionnaire</code>.
+  values from context. This module is designed to be referenced from a parent Questionnaire using <a href="StructureDefinition-sdc-questionnaire-subQuestionnaire.html">subQuestionnaire</a>.
 </p>
 <pre><code>{
   "url": "http://hl7.org/fhir/uv/sdc/Questionnaire/sdc-modular-name",
@@ -450,7 +450,7 @@ We will set an expectation in SDC about what changes are permitted for 'active' 
 <a name="fragment-nested-module"> </a>
 <h4>Nested Module (<a href="Questionnaire-sdc-modular-contact.html">modular-contact</a>)</h4>
 <p>
-  This module represents a patient's contact information and includes its own <code>sdc-questionnaire-subQuestionnaire</code> reference to the <code>modular-name</code> module. It demonstrates nesting of sub-questionnaires.
+  This module represents a patient's contact information and includes its own <a href="StructureDefinition-sdc-questionnaire-subQuestionnaire.html">subQuestionnaire</a> reference to the <code>modular-name</code> module. It demonstrates nesting of sub-questionnaires.
 </p>
 <pre><code>{
   "url": "http://hl7.org/fhir/uv/sdc/Questionnaire/sdc-modular-contact",

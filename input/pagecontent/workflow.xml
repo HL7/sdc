@@ -220,13 +220,13 @@
         well.  If any of those endpoints are simple RESTful locations (i.e. ending in QuestionnaireResponse) and the corresponding server supports the <a href="{{site.data.fhir.path}}http.html#read">read</a>
         operation, then that endpoint can be used as the target of the 'responseEndpoint' reference.  If there are no specified endpoints in either the Task or the Questionnaire, or if
         all of the endpoints specified are write-only or operation endpoints such as <a href="OperationDefinition-Questionnaire-process-response.html">$process-response</a>, then the
-        QuestionnaireResponse will need to be posted elsewhere - typically on the same server as the Task, but it can be elsewhere.  It obviously <b>SHOULD</b> be accessible to the system
+        QuestionnaireResponse will need to be posted elsewhere - typically on the same server as the Task, but it can be elsewhere.  It obviously <code>SHOULD</code> be accessible to the system
         that initiated the Task.
       </p>
     </li>
     <li>
       A QuestionnaireResponse may need to be stored <i>before</i> it has been marked as 'complete' - for example if the user has partially completed the form and then needs to save
-      their work to continue later.  This QuestionnaireResponse <b>SHOULD</b> be pointed to as the 'questionnaire-response' <code>Task.output</code>, allowing it to be easily re-loaded on
+      their work to continue later.  This QuestionnaireResponse <code>SHOULD</code> be pointed to as the 'questionnaire-response' <code>Task.output</code>, allowing it to be easily re-loaded on
       resumption of the Task.  The QuestionnaireResponse.status and the Task.status would not be set to 'completed' until the user had decided the form was 'done' and it
       successfully met validation criteria.  Submission to any indicated endpoints would typically not occur until the QuestionnaireResponse was deemed 'completed'.
     </li>
