@@ -860,12 +860,12 @@ i.fa {
     <div class="tab">
       <input type="radio" id="tab-answerOption-img-binary-2" name="tab-answerOption-img-binary-group-2"/>
       <label for="tab-answerOption-img-binary-2">JSON</label>
-      <div class="content-in-tab">{% fragment Questionnaire/questionnaire-sdc-profile-example-image-options JSON BASE:descendants().select(item).where(linkId='1.0') %}</div>
+      <div class="content-in-tab">{% fragment Questionnaire/questionnaire-sdc-profile-example-image-options JSON BASE:select(item).where(linkId='1.0') %}</div>
     </div>
     <div class="tab">
       <input type="radio" id="tab-answerOption-img-binary-3" name="tab-answerOption-img-binary-group-2"/>
       <label for="tab-answerOption-img-binary-3">XML</label>
-      <div class="content-in-tab">{% fragment Questionnaire/questionnaire-sdc-profile-example-image-options XML BASE:descendants().select(item).where(linkId='1.0') %}</div>
+      <div class="content-in-tab">{% fragment Questionnaire/questionnaire-sdc-profile-example-image-options XML BASE:select(item).where(linkId='1.0') %}</div>
     </div>
   </div>
 
@@ -1505,12 +1505,12 @@ i.fa {
     <div class="tab">
       <input type="radio" id="tab-itemweight-constraint-2" name="tab-itemweight-constraint-group-2"/>
       <label for="tab-itemweight-constraint-2">JSON</label>
-      <div class="content-in-tab">{% fragment Questionnaire/questionnaire-sdc-profile-example-item-weight JSON BASE:descendants().select(item).where(linkId='1.0') %}</div>
+      <div class="content-in-tab">{% fragment Questionnaire/questionnaire-sdc-profile-example-item-weight JSON BASE:select(item).where(linkId='1.0') %}</div>
     </div>
     <div class="tab">
       <input type="radio" id="tab-itemweight-constraint-3" name="tab-itemweight-constraint-group-2"/>
       <label for="tab-itemweight-constraint-3">XML</label>
-      <div class="content-in-tab">{% fragment Questionnaire/questionnaire-sdc-profile-example-item-weight XML BASE:descendants().select(item).where(linkId='1.0') %}</div>
+      <div class="content-in-tab">{% fragment Questionnaire/questionnaire-sdc-profile-example-item-weight XML BASE:select(item).where(linkId='1.0') %}</div>
     </div>
   </div>
 <a name="regex"></a>
@@ -1744,12 +1744,12 @@ i.fa {
     <div class="tab">
       <input type="radio" id="tab-contextExpression-2" name="tab-contextExpression-group-2"/>
       <label for="tab-contextExpression-2">JSON</label>
-      <div class="content-in-tab">{% fragment Questionnaire/questionnaire-sdc-profile-example-context-expression JSON BASE:descendants().select(item).where(linkId='1.0') %}</div>
+      <div class="content-in-tab">{% fragment Questionnaire/questionnaire-sdc-profile-example-context-expression JSON BASE:select(item).where(linkId='1.0') %}</div>
     </div>
     <div class="tab">
       <input type="radio" id="tab-contextExpression-3" name="tab-contextExpression-group-2"/>
       <label for="tab-contextExpression-3">XML</label>
-      <div class="content-in-tab">{% fragment Questionnaire/questionnaire-sdc-profile-example-context-expression XML BASE:descendants().select(item).where(linkId='1.0') %}</div>
+      <div class="content-in-tab">{% fragment Questionnaire/questionnaire-sdc-profile-example-context-expression XML BASE:select(item).where(linkId='1.0') %}</div>
     </div>
   </div>
   <!--  TODO: how to specify text for the button or link? -->
