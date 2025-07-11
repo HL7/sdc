@@ -1,0 +1,44 @@
+<div xmlns="http://www.w3.org/1999/xhtml" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://hl7.org/fhir ../../input-cache/schemas/R4/fhir-single.xsd">
+ <a name="conformance"> </a>
+	<h3>Conformance expectations</h3>
+	<p>
+	  This page defines the conformance expectations for systems implementing the SDC (Structured Data Capture) Implementation Guide. SDC defines a wide range of 
+    features for authoring, rendering, pre-populating, dynamically controlling, and extracting data from FHIR Questionnaires. 
+    Obviously SDC IG represents a <b>lot</b> of capabilities and not all systems will necessarily need to take on all of these features.  In fact,
+	  it is unlikely that any one system will support <i>all</i> of the features defined in this guide.  Instead, each downstream implementation guide or implementer
+	  will choose the specific subset of SDC features of interest and build those only.
+	</p>
+  <p>
+    This guide defines a <a href="workflow.html#capabilitystatement">set of CapabilityStatements</a> setting required and suggested RESTful interface capabilities for 
+    different types of systems that work with Questionnaires and QuestionnaireResponses.  Most implementers of this guide SHOULD conform to at least one of these.
+    The guide also defines profiles.  These profiles fall into two categories:
+  </p>
+  <ul>
+    <li><b>Strict adherence profiles</b> such as the population, extraction, adaptive forms, and modular forms profiles SHALL be complied with by systems that wish to
+      implement the associated functionality and claim SDC compliance.</li>
+    <li><b>Advisory profiles</b> MAY be used directly or derived from, but may also be used as the inspiration for other profiles that include the specific combinations
+      of features that are needed.  The elements marked as 'mustSupport' in those profiles are strongly encouraged to be supported, but a system that develops its own
+      profiles that excludes some or all of the mustSupport elements can still be considered conformant with SDC.</li>
+  </ul>
+  <p>
+    In many cases, when complying with SDC, a system may wish to comply with multiple profiles at once.  For example, an implementer may need advanced rendering, advanced
+    behavior, population, and extraction all in a single Questionnaire.  When creating a profile, it is not possible to inherit from multiple profiles at once.  However,
+    it <i>is</i> possible to use extensions in your profile, either to assert an <a href="{{site.data.fhir.ver.ext}}/StructureDefinition-structuredefinition-imposeProfile.html">expectation 
+    for compliance with additional profiles</a> or to manually re-assert the same set of constraints and then assert that the elements in the profile
+    <a href="{{site.data.fhir.ver.ext}}/StructureDefinition-structuredefinition-compliesWithProfile.html">meet the requirements of a reference profile</a>.
+  </p>
+  <p>
+    This IG can also be used as a tool-box of extensions and approaches that an implementation or downstream IG could use as 'inspiration' to their own set of
+    profiles and CapabilityStatements that don't declare conformance with SDC at all.  (Though referencing SDC as a source of additional information and to provide
+    credit is still encouraged.)
+  </p>
+  <p>
+    If you have used SDC in the definition of Questionnaires that are publicly available, we encourage you to provide links to them on our 
+    <a href="https://confluence.hl7.org/display/FHIRI/Questionnaire+Examples+page">SDC Usage Confluence page</a>.  If you don't have edit access to HL7's Confluence site, you 
+    can submit a request to add a link with a post to the <a href="https://chat.fhir.org/#narrow/stream/179255-questionnaire">Questionnaire stream</a> on http://chat.fhir.org.
+  </p>
+  <p>
+    Future versions of this IG may explore additional mechanisms to support implementers who wish to conform with specific common and useful subsets of SDC and combine them
+    in arbitrary ways, likely using the <a href="{{site.data.fhir.ver.ext}}/StructureDefinition-obligation.html">obligation</a> extension.
+  </p>
+</div>
