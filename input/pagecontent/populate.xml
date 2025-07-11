@@ -399,7 +399,7 @@
       conversion factor is known), grab the most recent Observation within the window where conversion is not necessary, or choose not to populate.</li>
     <li>
       Question items being populated from Observations of type <code>Quantity</code> SHOULD also have a type of Quantity.  However, they MAY have a type of
-      <code>integer</code> or <code>decimal</code> provided that the <a href="{{site.data.fhir.path}}extension-questionnaire-unit.html">questionnaire-unit</a>
+      <code>integer</code> or <code>decimal</code> provided that the <a href="{{site.data.fhir.ver.ext}}/StructureDefinition-questionnaire-unit.html">questionnaire-unit</a>
       extension is present to allow determination of what unit to match on/convert to.</li>
     <li>
       Systems need to allow for the possibility that an Observation might not have a value (e.g. if dataAbsentReason is present).</li>
@@ -452,7 +452,7 @@
       being completed, but other elements are also possible (e.g. an AdverseEvent if performing an adverse event report).  These 'context' elements will be
       available as expression variables for use in subsequent steps. </li>
     <li>
-      Use the <a href="{{site.data.fhir.path}}extension-variable.html">variable</a> extension to query for any additional data required, possibly based on
+      Use the <a href="{{site.data.fhir.ver.ext}}/StructureDefinition-variable.html">variable</a> extension to query for any additional data required, possibly based on
       context variables set in the previous step, and/or other variable extensions.  (NOTE: Elements <code>SHALL</code> be evaluated in the following order: questionnaire-launchContext
 	  elements, then all Questionnaire-level variables in order of appearance in the Questionnaire.)</li>
     <li>
@@ -467,7 +467,7 @@
       </p>     
       </li>
     <li>
-      Use the <a href="{{site.data.fhir.path}}extension-variable.html">variable</a> extension on items as well to perform intermediary calculations or
+      Use the <a href="{{site.data.fhir.ver.ext}}/StructureDefinition-variable.html">variable</a> extension on items as well to perform intermediary calculations or
       additional queries that are based on itemPopulationContext values.</li>
     <li>
       For <a href="#mode">Automated Population</a>, use the <a href="StructureDefinition-sdc-questionnaire-initialExpression.html">questionnaire-initialExpression</a> to
@@ -531,7 +531,7 @@
         </li>
         <li>
           A <code>Quantity</code> can map to an <code>integer</code> or <code>decimal</code> item type provided that the
-          <a href="{{site.data.fhir.path}}extension-questionnaire-unit.html">questionnaire-unit</a> extension is present to allow determination of what unit to
+          <a href="{{site.data.fhir.ver.ext}}/StructureDefinition-questionnaire-unit.html">questionnaire-unit</a> extension is present to allow determination of what unit to
           match on/convert to. However, if the Observation selected for population is a Quantity with a comparator (e.g., "greater than", "less than", etc.), then that 
           Observation cannot be used for population as the semantics of the comparator would be lost.
         </li>
@@ -561,11 +561,11 @@
       </ol>  
       </li>
     <li>
-      If the initialExpression returns fewer occurrences than the <a href="{{site.data.fhir.path}}extension-questionnaire-minoccurs.html">
+      If the initialExpression returns fewer occurrences than the <a href="{{site.data.fhir.ver.ext}}/StructureDefinition-questionnaire-minoccurs.html">
       questionnaire-minOccurs</a> value (if specified), it <code>SHALL</code> populate what occurrences it can.  The user can then add in additional repetitions as
       needed.</li>
     <li>
-      If an answer is dependent on other answers within the form, the calculation of the answer will typically be performed using a <a href="{{site.data.fhir.path}}extension-variable.html">variable</a> extension on the nearest
+      If an answer is dependent on other answers within the form, the calculation of the answer will typically be performed using a <a href="{{site.data.fhir.ver.ext}}/StructureDefinition-variable.html">variable</a> extension on the nearest
       common ancestor in which all relevant questions or variables are descendants.  The question will then have an <a href="StructureDefinition-sdc-questionnaire-initialExpression.html">initialExpression</a> extension that references that
       calculated value.  The reason for this is that FHIRPath only has access to the current context node and its descendants, not siblings or ancestors.  However,
       if it is known that there can only be <i>one</i> item with a particular linkId, then the value of that answer can be accessed directly by using 

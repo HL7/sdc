@@ -213,7 +213,7 @@
       the module references recurse.  E.g. if Questionnaire A contains an item that references subQuestionnaire B, which in turn has an element that
       references subQuestionnaire A.</li>
     <li>It is also an error if the resulting fully-assembled Questionnaire has any duplicate linkIds.</li>
-    <li>In order to avoid duplicate linkIds, a parent Questionnaire <code>MAY</code> declare a special <a href="{{site.data.fhir.path}}extension-variable.html">variable</a> with the name <code>linkIdPrefix</code>.  If
+    <li>In order to avoid duplicate linkIds, a parent Questionnaire <code>MAY</code> declare a special <a href="{{site.data.fhir.ver.ext}}/StructureDefinition-variable.html">variable</a> with the name <code>linkIdPrefix</code>.  If
       there is a linkIdPrefix in context at the time a subQuestionnaire is substituted, that linkIdPrefix SHALL be pre-pended to the <code>linkId</code> and 
       <code>enableWhen.question</code> elements of all items in that Questionnaire.  See the <a href="#examples">examples</a> to see how this works in practice.
       If linkIdPrefix is not used, care should be taken to ensure that linkIds are appropriately coordinated to avoid overlap across all referenced 

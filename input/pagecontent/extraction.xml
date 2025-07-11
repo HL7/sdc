@@ -52,7 +52,7 @@
       In theory, it is possible to use Questionnaire as a user-facing interface to allow maintenance of one or more resources.  The source data can be used to
       <a href="populate.html">populate</a> the QuestionnaireResponse and once the response is 'submitted', the data can then be extracted and used to update
       the existing resources.  For this to work, the <code>id</code> of the resource must be retained through the round-trip process to allow for the update.
-      This can be supported by storing the id as a <a href="{{site.data.fhir.path}}extension-questionnaire-hidden.html">hidden</a> question not shown to the
+      This can be supported by storing the id as a <a href="{{site.data.fhir.ver.ext}}/StructureDefinition-questionnaire-hidden.html">hidden</a> question not shown to the
       user.  This question item would have a type of 'string' and, if using the definition-based extraction approach, a definition that corresponded to the 
       'id' element of the relevant resource type (e.g. <code>http://hl7.org/fhir/StructureDefinition/AllergyIntolerance#AllergyIntolerance.id</code>).     
       Note that the inclusion of the id as a hidden question is only relevant for the definition-based and StructureMap-based approaches. It is not needed
@@ -67,7 +67,7 @@
     <li>
       When capturing quantities, it's common for questionnaires to prompt for the numeric value and to note the 'fixed' unit as part of the question.  For
       example, "Please specify the patient's weight in kilograms".  When extracting the value for representation in a resource, a unit will be added.
-      The <a href="{{site.data.fhir.path}}extension-questionnaire-unit.html">questionnaire-unit</a> extension SHOULD be included on the question to support
+      The <a href="{{site.data.fhir.ver.ext}}/StructureDefinition-questionnaire-unit.html">questionnaire-unit</a> extension SHOULD be included on the question to support
       the extraction process.</li>
     <li>
       When performing extraction, the considerations around <a href="expressions.html#expressionerrors">errors and lack of support</a> for expressions may come into
@@ -333,7 +333,7 @@ If an item is presumed to be extracted, it will extract if there are <code>item.
   </p>
   <ul>
     <li>
-      If a questionnaire item has the <a href="{{site.data.fhir.path}}extension-questionnaire-unit.html">questionnaire-unit</a> extension, the
+      If a questionnaire item has the <a href="{{site.data.fhir.ver.ext}}/StructureDefinition-questionnaire-unit.html">questionnaire-unit</a> extension, the
       <code>Observation.value</code> SHOULD be a valueQuantity rather than integer or decimal and the units should be taken from the extension value.</li>
     <li>
       If a question is skipped (no answer) or cleared, no Observation should be created.  Existing Observations <code>SHALL NOT</code> be deleted.</li>
@@ -621,11 +621,11 @@ If an item is presumed to be extracted, it will extract if there are <code>item.
       <i>(These could also be considered at the root level when processing a profiled resource)</i>
     </li>
     <li>
-      <b>Supporting the extraction process:</b> If necessary, define <a href="{{site.data.fhir.path}}extension-questionnaire-hidden.html">questionnaire-hidden</a> items 
+      <b>Supporting the extraction process:</b> If necessary, define <a href="{{site.data.fhir.ver.ext}}/StructureDefinition-questionnaire-hidden.html">questionnaire-hidden</a> items 
       that have <code>Questionnaire.item.initial.value[x]</code> or that use the
       <a href="StructureDefinition-sdc-questionnaire-initialExpression.html">questionnaire-initialExpression</a> extension to define their content to use to populate
       resource elements that the user will not be filling in.  (The initialExpressions might in turn depend on
-      <a href="{{site.data.fhir.path}}extension-variable.html">variable</a> and
+      <a href="{{site.data.fhir.ver.ext}}/StructureDefinition-variable.html">variable</a> and
       <a href="StructureDefinition-sdc-questionnaire-launchContext.html">questionnaire-launchContext</a> extensions, used as described in the
       <a href="populate.html#exp-pop">Expression-based population</a>
       section, however that evaluation is all outside the scope of the $extract operation, and those variables are not available to $extract processing.<br/>
@@ -647,7 +647,7 @@ If an item is presumed to be extracted, it will extract if there are <code>item.
   </p>
   <ul>
     <li>
-      FHIRPath expressions used in the $extract approach do not have access to the <a href="StructureDefinition-sdc-questionnaire-launchContext.html">launchContext</a>, <a href="StructureDefinition-sdc-questionnaire-initialExpression.html">initialExpression</a>, or <a href="{{site.data.fhir.path}}extension-variable.html">variable</a> extensions.  They are only able to
+      FHIRPath expressions used in the $extract approach do not have access to the <a href="StructureDefinition-sdc-questionnaire-launchContext.html">launchContext</a>, <a href="StructureDefinition-sdc-questionnaire-initialExpression.html">initialExpression</a>, or <a href="{{site.data.fhir.ver.ext}}/StructureDefinition-variable.html">variable</a> extensions.  They are only able to
       access the QuestionnaireResponse data and the Questionnaire data and specific extract only extensions (extractAllocateId). Refer to the 
       <a href="expressions.html#extract">expressions</a> page for more details.
     </li>
