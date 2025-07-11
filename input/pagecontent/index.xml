@@ -155,19 +155,13 @@
 	</p>
 	<ul>
     <li>
-      <a href="{{site.data.fhir.path}}questionnaire-extensions.html">questionnaire-extensions</a> defines several less common properties for
-      questionnaire, group and question, several of which are mandated for this profile.</li>
+      <a href="{{site.data.fhir.ver.ext}}/extensions-Questionnaire.html">questionnaire-extensions</a> defines  general core questionnaire extensions that support 
+      rendering and other Questionnaire-relevant behavior"</li>
     <li>
-      <a href="{{site.data.fhir.path}}element-extensions.html">element-extensions</a> defines extensions describing constraints on the values for
+      <a href="{{site.data.fhir.ver.ext}}/extensions-ElementDefinition.html">element-extensions</a> defines extensions describing constraints on the values for
       data elements (e.g. field length, min and max values, etc.). These are used here to constrain the allowed values for questions.</li>
     <li>
-      <a href="{{site.data.fhir.path}}general-extensions.html">general-extensions</a> provides an extension for strings allowing the conveying of
-      translations, which may be relevant in some environments.</li>
-    <li>
-      <a href="{{site.data.fhir.path}}rendering-extensions.html">rendering-extensions</a> defines properties to give fine-grained control over
-      how questions, labels and other strings are rendered, such as providing HTML or markdown equivalents.</li>
-    <li>
-      <a href="{{site.data.fhir.path}}codesystem-extensions.html">codesystem-extensions</a> defines several less common properties for value sets,
+      <a href="{{site.data.fhir.ver.ext}}/extensions-CodeSystem.html">codesystem-extensions</a> defines several less common properties for value sets,
        several of which are mandated for this profile. It also makes use of the rendering-extensions which define rendering information for
        display names and labels of codes.</li>
   </ul>
