@@ -685,6 +685,11 @@
             <a href="#unitOption">unitOption</a> or <a href="#unitValueSet">unitValueSet</a> when a
             <a href="#unitOpen">unitOpen</a> extension is present with a value of <code>optionsOrType</code>.
           </p>
+		  <p>
+			For implementers trying to determine whether an <code>initial.valueQuantity</code> is valid based on these configurations, the behavior is summarized in the 
+			<a href="#initialValues">Handling Units in Initial Values Table</a>. The purpose of this table is to indicate whether an initial value is allowed or not, 
+			and if so, any constraints on behavior..
+			</p>
 				</td>
 			</tr>
 			<tr>
@@ -781,6 +786,163 @@
 			</tr>
 		</tbody>
 	</table>
+	
+	<a name="initialValues"> </a>
+<h5>Handling Units in Initial Values</h5>
+<p>
+  When processing <code>initial.valueQuantity</code>, the behavior of the form depends on a number of elements. Specifically:
+</p>
+<ul>
+  <li>whether a list of allowed units is defined (<code>unitOption</code>/<code>unitValueSet</code>)</li>
+  <li>whether additional units can be entered (<code>unitOpen</code>)</li>
+  <li>whether a <code>unitSupplementalSystem</code> is provided</li>
+</ul>
+<p>
+  Some combinations of these will cause the <code>initial.valueQuantity</code> to be invalid. Others will be valid and interpreted as 'matching' different aspects of the constraints (i.e. one of the defined list, one of alternate coded values, or free-text string). This table indicates what the rules are and how the initial value will be interpreted.
+</p>
+
+<table border="1" cellspacing="0" cellpadding="5">
+  <thead>
+    <tr>
+      <th>Has unit list (<code>unitOption</code>/<code>unitValueSet</code>)</th>
+      <th><code>unitOpen</code></th>
+      <th>unit in <code>initial.valueQuantity</code></th>
+      <th>unit's <code>system</code> and <code>unitSupplementalSystem</code> match</th>
+      <th style="background-color: #f0f7ff;">Initial value valid?</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>No</td>
+      <td>(Not present)</td>
+      <td>Off-list</td>
+      <td>N/A (no unitSupplementalSystem)</td>
+      <td style="background-color: #f0f7ff;">Valid, treated as string or Coding</td>
+    </tr>
+    <tr>
+      <td>No</td>
+      <td>optionsOnly</td>
+      <td>Off-list</td>
+      <td>N/A (no unitSupplementalSystem)</td>
+      <td style="background-color: #f0f7ff;">Invalid</td>
+    </tr>
+    <tr>
+      <td>No</td>
+      <td>optionsOrType</td>
+      <td>Off-list</td>
+      <td>N/A (no unitSupplementalSystem)</td>
+      <td style="background-color: #f0f7ff;">Valid, treated as type</td>
+    </tr>
+	    <tr>
+      <td>No</td>
+      <td>optionsOrType</td>
+      <td>Off-list</td>
+      <td>Yes</td>
+      <td style="background-color: #f0f7ff;">Valid, treated as type</td>
+    </tr>
+    <tr>
+      <td>No</td>
+      <td>optionsOrType</td>
+      <td>Off-list</td>
+      <td>No</td>
+      <td style="background-color: #f0f7ff;">Invalid</td>
+    </tr>
+    <tr>
+      <td>No</td>
+      <td>optionsOrString</td>
+      <td>Off-list (with unit only)</td>
+      <td>N/A (no unitSupplementalSystem)</td>
+      <td style="background-color: #f0f7ff;">Valid, treated as string</td>
+    </tr>
+    <tr>
+      <td>No</td>
+      <td>optionsOrString</td>
+      <td>Off-list (with code and/or system)</td>
+      <td>N/A (no unitSupplementalSystem)</td>
+      <td style="background-color: #f0f7ff;">Invalid</td>
+    </tr>
+    <tr>
+      <td>Yes</td>
+      <td>(Not present)</td>
+      <td>Off-list</td>
+      <td>N/A (no unitSupplementalSystem)</td>
+      <td style="background-color: #f0f7ff;">Invalid</td>
+    </tr>
+    <tr>
+      <td>Yes</td>
+      <td>(Not present)</td>
+      <td>On-list</td>
+      <td>N/A (no unitSupplementalSystem)</td>
+      <td style="background-color: #f0f7ff;">Valid, treated as options</td>
+    </tr>
+    <tr>
+      <td>Yes</td>
+      <td>optionsOnly</td>
+      <td>Off-list</td>
+      <td>N/A (no unitSupplementalSystem)</td>
+      <td style="background-color: #f0f7ff;">Invalid</td>
+    </tr>
+    <tr>
+      <td>Yes</td>
+      <td>optionsOnly</td>
+      <td>On-list</td>
+      <td>N/A (no unitSupplementalSystem)</td>
+      <td style="background-color: #f0f7ff;">Valid, treated as options</td>
+    </tr>
+    <tr>
+      <td>Yes</td>
+      <td>optionsOrType</td>
+      <td>Off-list</td>
+      <td>N/A (no unitSupplementalSystem)</td>
+      <td style="background-color: #f0f7ff;">Valid, treated as type</td>
+    </tr>
+	<tr>
+      <td>Yes</td>
+      <td>optionsOrType</td>
+      <td>Off-list</td>
+      <td>Yes</td>
+      <td style="background-color: #f0f7ff;">Valid, treated as type</td>
+    </tr>
+    <tr>
+      <td>Yes</td>
+      <td>optionsOrType</td>
+      <td>Off-list</td>
+      <td>No</td>
+      <td style="background-color: #f0f7ff;">Invalid</td>
+    </tr>
+    <tr>
+      <td>Yes</td>
+      <td>optionsOrType</td>
+      <td>On-list</td>
+      <td>N/A (no unitSupplementalSystem)</td>
+      <td style="background-color: #f0f7ff;">Valid, treated as options</td>
+    </tr>
+    <tr>
+      <td>Yes</td>
+      <td>optionsOrString</td>
+      <td>Off-list (with unit only)</td>
+      <td>N/A (no unitSupplementalSystem)</td>
+      <td style="background-color: #f0f7ff;">Valid, treated as string</td>
+    </tr>
+    <tr>
+      <td>Yes</td>
+      <td>optionsOrString</td>
+      <td>Off-list (with code and/or system)</td>
+      <td>N/A (no unitSupplementalSystem)</td>
+      <td style="background-color: #f0f7ff;">Invalid</td>
+    </tr>
+    <tr>
+      <td>Yes</td>
+      <td>optionsOrString</td>
+      <td>On-list</td>
+      <td>N/A (no unitSupplementalSystem)</td>
+      <td style="background-color: #f0f7ff;">Valid, treated as options</td>
+    </tr>
+  </tbody>
+</table>
+
+	
+	
 	<a name="calculations"> </a>
 	<h4>Calculations</h4>
 	<p>
@@ -883,6 +1045,9 @@
             Described in detail <a href="expressions.html#initialExpression">here</a>.  This extension allows the initial value of an element to be set
             based on an expression.  For example, defaulting a date to the current date.  (It can also be used to set an answer based on launch context or
             information queried from external sources, though that falls more within the domain of <a href="populate.html">Questionnaire Population</a>.)
+			The specific initial values that could result here cannot be known at design time. However, it's possible that at run time, the results of an 
+			initial expression might not be valid for the constraints imposed for a question (e.g. the allowed values, the ranges, etc.). In this situation, 
+			non-valid initial values should be ignored. (Also see the validation rules for initial quantity.)
           </p>
 				</td>
 			</tr>
@@ -1268,197 +1433,5 @@
 		</tbody>
 	</table>
 
-
-     <a name="initialValues"> </a>
-	 <h4>Handling Units in Initial Values</h4>
-	 <p>
-     When processing <code>initial.valueQuantity</code> in questionnaires, the behavior of the form depends on various configurations, such as whether a list of allowed units is defined (unitOption/unitValueSet), whether additional units can be entered (unitOpen), and if a unitSupplementalSystem is provided. These configurations impact whether the system can accept or reject initial values and how these values are treated.
-    </p>
-
-     <table border="1" cellspacing="0" cellpadding="5">
-    <thead>
-    <tr>
-      <th>Case</th>
-      <th>Has unit list (<code>unitOption</code>/<code>unitValueSet</code>)</th>
-      <th><code>unitOpen</code></th>
-      <th>unit in <code>initial.valueQuantity</code></th>
-      <th>unit's <code>system</code> and <code>unitSupplementalSystem</code> match</th>
-      <th>Accept Initial Values</th>
-      <th>Treated As</th>
-    </tr>
-  </thead>
-  <tbody>
-    <!-- No unitSupplementalSystem section -->
-    <tr>
-      <td colspan="7"><strong>No <code>unitSupplementalSystem</code></strong></td>
-    </tr>
-    <tr>
-      <td>1.1</td>
-      <td>No</td>
-      <td>(Not present)</td>
-      <td>Off-list</td>
-      <td>-</td>
-      <td>Yes</td>
-      <td>string or Coding</td>
-    </tr>
-    <tr>
-      <td>1.2</td>
-      <td>No</td>
-      <td>optionsOnly</td>
-      <td>Off-list</td>
-      <td>-</td>
-      <td>No</td>
-      <td>-</td>
-    </tr>
-    <tr>
-      <td>1.3</td>
-      <td>No</td>
-      <td>optionsOrType</td>
-      <td>Off-list</td>
-      <td>-</td>
-      <td>Yes</td>
-      <td>type</td>
-    </tr>
-    <tr>
-      <td>1.4a</td>
-      <td>No</td>
-      <td>optionsOrString</td>
-      <td>Off-list (with unit only)</td>
-      <td>-</td>
-      <td>Yes</td>
-      <td>string</td>
-    </tr>
-    <tr>
-      <td>1.4b</td>
-      <td>No</td>
-      <td>optionsOrString</td>
-      <td>Off-list (with code and/or system)</td>
-      <td>-</td>
-      <td>No</td>
-      <td>-</td>
-    </tr>
-    <tr>
-      <td>2.1</td>
-      <td>Yes</td>
-      <td>(Not present)</td>
-      <td>Off-list</td>
-      <td>-</td>
-      <td>No</td>
-      <td>-</td>
-    </tr>
-    <tr>
-      <td>2.2</td>
-      <td>Yes</td>
-      <td>(Not present)</td>
-      <td>On-list</td>
-      <td>-</td>
-      <td>Yes</td>
-      <td>options</td>
-    </tr>
-    <tr>
-      <td>3.1</td>
-      <td>Yes</td>
-      <td>optionsOnly</td>
-      <td>Off-list</td>
-      <td>-</td>
-      <td>No</td>
-      <td>-</td>
-    </tr>
-    <tr>
-      <td>3.2</td>
-      <td>Yes</td>
-      <td>optionsOnly</td>
-      <td>On-list</td>
-      <td>-</td>
-      <td>Yes</td>
-      <td>options</td>
-    </tr>
-    <tr>
-      <td>4.1</td>
-      <td>Yes</td>
-      <td>optionsOrType</td>
-      <td>Off-list</td>
-      <td>-</td>
-      <td>Yes</td>
-      <td>type</td>
-    </tr>
-    <tr>
-      <td>4.2</td>
-      <td>Yes</td>
-      <td>optionsOrType</td>
-      <td>On-list</td>
-      <td>-</td>
-      <td>Yes</td>
-      <td>options</td>
-    </tr>
-    <tr>
-      <td>5.1a</td>
-      <td>Yes</td>
-      <td>optionsOrString</td>
-      <td>Off-list (with unit only)</td>
-      <td>-</td>
-      <td>Yes</td>
-      <td>string</td>
-    </tr>
-    <tr>
-      <td>5.1b</td>
-      <td>Yes</td>
-      <td>optionsOrString</td>
-      <td>Off-list (with code and/or system)</td>
-      <td>-</td>
-      <td>No</td>
-      <td>-</td>
-    </tr>
-    <tr>
-      <td>5.2</td>
-      <td>Yes</td>
-      <td>optionsOrString</td>
-      <td>On-list</td>
-      <td>-</td>
-      <td>Yes</td>
-      <td>options</td>
-    </tr>
-
-    <!-- With unitSupplementalSystem section -->
-    <tr>
-      <td colspan="7"><strong>Has <code>unitSupplementalSystem</code> (which only works when unitOpen='optionsOrType')</strong></td>
-    </tr>
-    <tr>
-      <td>1.3a</td>
-      <td>No</td>
-      <td>optionsOrType</td>
-      <td>Off-list</td>
-      <td>Yes</td>
-      <td>Yes</td>
-      <td>type</td>
-    </tr>
-    <tr>
-      <td>1.3b</td>
-      <td>No</td>
-      <td>optionsOrType</td>
-      <td>Off-list</td>
-      <td>No</td>
-      <td>No</td>
-      <td>-</td>
-    </tr>
-    <tr>
-      <td>4.1a</td>
-      <td>Yes</td>
-      <td>optionsOrType</td>
-      <td>Off-list</td>
-      <td>Yes</td>
-      <td>Yes</td>
-      <td>type</td>
-    </tr>
-    <tr>
-      <td>4.1b</td>
-      <td>Yes</td>
-      <td>optionsOrType</td>
-      <td>Off-list</td>
-      <td>No</td>
-      <td>No</td>
-      <td>-</td>
-    </tr>
-  </tbody>
-</table>
 </div>
+   
