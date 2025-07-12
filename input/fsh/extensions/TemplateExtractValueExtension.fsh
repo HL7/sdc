@@ -9,7 +9,7 @@ Description: "Provides an expression to evaluate any value(s) to replace in the 
 * ^context[=].expression = "Element"
 * . 0..1
 * . ^short = "Calculate value for template extraction"
-* . ^definition = "Provides an expression to evaluate any value(s) to replace in the given template extraction context. If no result is evaluated, the element in the templated resource will be removed, and futher processing of it's children is not required."
+* . ^definition = "Provides FHIRPath expression to evaluate any value(s) to replace in the given template extraction context. If no result is evaluated, the element in the templated resource will be removed, and futher processing of it's children is not required."
 * url only uri
 * value[x] only string
 * . ^short = "FhirPath expression"
