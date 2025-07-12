@@ -286,6 +286,23 @@
                         {
                             "extension": [
                                 {
+                                "url": "definition",
+                                "valueUri": "http://hl7.org/fhir/StructureDefinition/Observation#Observation.category.coding"
+                                },
+                                {
+                                "url": "fixed-value",
+                                "valueCoding": {
+                                    "system": "http://terminology.hl7.org/CodeSystem/observation-category",
+                                    "code": "vital-signs",
+                                    "display": "Vital Signs"
+                                }
+                                }
+                            ],
+                            "url": "http://hl7.org/fhir/uv/sdc/StructureDefinition/sdc-questionnaire-definitionExtractValue"
+                        },
+                        {
+                            "extension": [
+                                {
                                     "url": "definition",
                                     "valueUri": "http://hl7.org/fhir/StructureDefinition/Observation#Observation.code.coding"
                                 },
@@ -419,6 +436,23 @@
                                 {
                                     "url": "fixed-value",
                                     "valueCode": "final"
+                                }
+                            ],
+                            "url": "http://hl7.org/fhir/uv/sdc/StructureDefinition/sdc-questionnaire-definitionExtractValue"
+                        },
+                        {
+                            "extension": [
+                                {
+                                "url": "definition",
+                                "valueUri": "http://hl7.org/fhir/StructureDefinition/Observation#Observation.category.coding"
+                                },
+                                {
+                                "url": "fixed-value",
+                                "valueCoding": {
+                                    "system": "http://terminology.hl7.org/CodeSystem/observation-category",
+                                    "code": "vital-signs",
+                                    "display": "Vital Signs"
+                                }
                                 }
                             ],
                             "url": "http://hl7.org/fhir/uv/sdc/StructureDefinition/sdc-questionnaire-definitionExtractValue"
