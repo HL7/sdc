@@ -1,4 +1,4 @@
-This extension will only be processed while extracting a resource based on a parent item (or root) using either the [definitionExtract](StructureDefinition-sdc-questionnaire-definitionExtract.html) or [itemExtractionContext (legacy)](StructureDefinition-sdc-questionnaire-itemExtractionContext.html) extension.
+This extension will only be processed while extracting a resource based on a parent item (or root) using either the [definitionExtract](StructureDefinition-sdc-questionnaire-definitionExtract.html) or [itemExtractionContext (legacy)](StructureDefinition-sdc-questionnaire-itemExtractionContext.html) extension. It is <strong>NOT</strong> valid to specify an extractDefinitionValue prior to (and outside the hierarchy) where the corresponding extractDefinition is found.
 
 It is used to define the value of a property on the resource being extracted, without requiring an item/answer in the questionnaire response (typically for fixed, or derived/calculated values).
 
