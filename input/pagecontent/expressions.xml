@@ -184,7 +184,7 @@
             This expression serves the same purpose as the initial.value on Questionnaire.item, except that rather than specifying a fixed value, the value is
             calculable. Like initial.value, initialExpression is evaluated only once. The value is set on initial creation of the QuestionnaireResponse or upon the question first becoming enabled.
             NOTE: This implementation guide does not prohibit lazy initialization (e.g., delayed calculation of an answer, delayed initialization of a field, etc.),
-            but Questionnaire authors should not assume implementors will use lazy initialization.
+            but Questionnaire authors cannot assume implementors will use lazy initialization.
           </p>
           <p>
             If used for a readOnly and/or hidden element, initialExpression essentially calculates a 'fixed value' for the element.  If used for an editable element,
@@ -244,8 +244,8 @@
           <p>
             NOTE: the set of candidate expressions is intended to be a starter set, not exhaustive.  The user should be free to enter or look-up additional
             values.  The overall set of values from which answers are <b>allowed</b> to be selected (typically independent of what happens to be in the
-            patient record) is defined by <a href="#answerExpression">answerExpression</a>.  Systems should allow multiple selections in situations where 
-            the question is marked as 'repeating' and multiple answers are therefore valid, but should only allow one answer for non-repeating questions.
+            patient record) is defined by <a href="#answerExpression">answerExpression</a>.  Systems <code>SHOULD</code> allow multiple selections in situations where 
+            the question is marked as 'repeating' and multiple answers are therefore valid, but <code>SHOULD</code> only allow one answer for non-repeating questions.
           </p>
           <p>
             As an example, a question might ask "Please identify any concurrent medications that might be related to the reaction".  A candidateExpression
@@ -322,7 +322,7 @@
             In most cases, 'calculated' answers should be marked as 'readOnly', however in some cases it may be legitimate to override a calculated element,
             for example if the calculation cannot be made due to non-available information, but the user still knows the calculated value. This statement applies
             to any context information of any sort. [For example, it might be possible to enter an age but not a date of birth.  If a user has edited a calculated value,
-            it should no longer be changed when other answers in the questionnaire response change.  When loading a previously persisted QuestionnaireResponse,
+            it <code>SHOULD</code> no longer be changed when other answers in the questionnaire response change.  When loading a previously persisted QuestionnaireResponse,
             the determination of whether a user has edited the calculated field can be determined by whether the calculated value differs from invoking the
             calculation on the current values in the questionnaire.  (As a side-effect, this means that calculated values based on 'context' information
             such as an age calculated based on 'now' will be treated as user-edited when subsequently opening the QuestionnaireResponse and will not update
@@ -353,7 +353,7 @@
         <td colspan="6">
           <p>
             This expression does the same thing as the Questionnaire.item.enableWhen structure (and is mutually exclusive with it), but allows for more complex logic 
-            like nested bracketed expressions with AND/OR, use of NOT, comparison of values across questions, etc. (If enableWhen can meet the need, it should be used 
+            like nested bracketed expressions with AND/OR, use of NOT, comparison of values across questions, etc. (If enableWhen can meet the need, it ought to be used 
             instead as it will be more broadly supported.) Specifically, enableWhenExpression allows more complex logic such as support for different types of logic 
             operators (e.g. 'and', 'or', 'not', 'nand', 'nor') among conditions and a mixture of them (e.g. "Enable if Q1=5 and Q2 nand Q3 are true").
             It also allows for logic to be based on calculations across questions (possibly leveraging <a href="#variable">variable</a>) or even based on values passed in by 
@@ -457,7 +457,7 @@
             as part of the complex extension, but should never have a 'name'.
           </p>
           <p>
-            Note: The relative path should follow the same syntax as <code>OperationOutcome.expression</code>.
+            Note: The relative path <code>SHOULD</code> follow the same syntax as <code>OperationOutcome.expression</code>.
           </p>
         </td>
       </tr>
@@ -761,7 +761,7 @@
     <a href="#initialExpression">initialExpressions</a> which might rely on <a href="#itemPopulationContext">itemPopulationContext</a> queries that in turn have embedded
     FHIRPaths that reference elements defined in <a href="#launchContext">launchContext</a>.  If care is not taken, it's possible to construct a
     questionnaire where the value of an answer depends indirectly on itself, or where filling out an answer disables the question being answered or other
-    inappropriate behavior.  Questionnaire rendering systems <code>SHOULD</code> check for these situations and gracefully handle them by raising appropriate error messages
+    inappropriate behavior.  Questionnaire rendering systems need to check for these situations and gracefully handle them by raising appropriate error messages
     rather than crashing or locking in an endless loop.
   </p>
   <p>
@@ -770,7 +770,7 @@
     before the second item in the group.
   </p>
   <p>
-    However, in some cases, updates to later elements may trigger an update to earlier elements, which then cascade through again.  Systems <code>SHOULD</code> allow
+    However, in some cases, updates to later elements may trigger an update to earlier elements, which then cascade through again.  Systems ought to allow
     for this and allow for iterative updating of expressions until values reach a stable state - or until an unstable looping condition is detected.
   </p>
   <a name="fhirpath"> </a>
@@ -873,7 +873,7 @@ Changes in external context that impacts the value of a calculatedExpression wil
   </p>
   <p>
     For unanswered items, expressions or %context that refer to QuestionnaireResponse items that don't actually 'exist' (because they don't have an answer)
-    should still resolve as items with no answer rather than 'null'.
+    will resolve to an empty set, as per standard FHIRPath rules.
   </p>
   <a name="expressionerrors"> </a>
   <h3>Dealing with expression errors and system limitations</h3>
