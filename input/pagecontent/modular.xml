@@ -19,7 +19,7 @@
     Modular questionnaires should adhere to this <a href="StructureDefinition-sdc-questionnaire-modular.html">SDC profile</a>. An example for this profile can be found <a href="Questionnaire-sdc-modular-root.html">here</a>.
   </p>
   <p>
-    This portion of the SDC specification describes two mechanisms for enabling re-use:
+    This portion of the SDC specification describes three mechanisms for enabling re-use:
   </p>
   <ul>    
     <li><a href="#element">Data Element-based Questionnaires</a> are crafted by having items make use of the 
@@ -27,6 +27,10 @@
       include all of the metadata for the question, group or display item including the text, data type, optionality and other characteristics.  
       Questionnaires are authored by assembling these minimal items referencing robust definitions.</li>
       <li><a href="#modular">Modular Questionnaires</a> allow one questionnaire to be composed of sub-questionnaires (which can in turn be composed of further sub-questionnaires, and so on).</li>
+       <li><a href="#reusing-questions">Questionnaire Library Referencing</a> allows any <code>item</code> in a Questionnaire to reference a specific <code>item</code> 
+       in another Questionnaire using the format <code>Questionnaire URL#linkId</code>. This enables reuse of a specific item and its descendants 
+       (if any) without the limitations of <code>StructureDefinition</code>-based referencing. This is the recommended method going forward.
+  </li>
   </ul>
   <p>
     When using the data element-based approach, every single 'item' in the questionnaire must be specified, including all 'display' items, groups, etc. Re-use 
@@ -36,8 +40,8 @@
     for every single question is possible, it would be quite a bit of overhead).
   </p>
   <p>
-    The two mechanisms are not mutually exclusive.  It is possible to have a form that relies on sub-questionnaires and that also has some elements that rely on
-    externally defined element definitions.
+    These reuse mechanisms are not mutually exclusive. It is possible to create forms that mix all three techniques—for example, using subQuestionnaire for group-level reuse, 
+    as well as definitions that point to both StructureDefinition#elementId and Questionnaire#linkId for individual items.
   </p>
   <a name="workflow"> </a>
   <h3>Modular workflow</h3>
@@ -253,6 +257,22 @@ We will set an expectation in SDC about what changes are permitted for 'active' 
   </p>
   <a name="element"> </a>
   <h3>Data Element-based Questionnaires</h3>
+
+<blockquote class="dragon-warning">
+  <p>
+    <strong>⚠️ Warning:</strong> This implementation guide previously supported referencing items from <code>StructureDefinition</code> resources using <code>Questionnaire.item.definition</code>. 
+    While still technically supported, this approach is limited:
+  </p>
+  <ul>
+    <li>It does not map well to all <code>Questionnaire.item</code> features (e.g., <code>display</code>, <code>text</code>, <code>answerOption</code>).</li>
+    <li>It is not widely supported by Questionnaire authoring tools.</li>
+  </ul>
+  <p>
+    Future versions of this guide may remove support for the StructureDefinition-based approach. It is recommended to transition to the <a href="#reusing-questions">Questionnaire Library Referencing</a>  wherever feasible.
+  </p>
+</blockquote>
+
+
   <p>
     Data Element-based Questionnaires rely on the fact that Questionnaire 'item' elements largely correspond to the information found in the
     <a href="{{site.data.fhir.path}}elementdefinition.html">ElementDefinitions</a> that are part of 
@@ -345,6 +365,34 @@ We will set an expectation in SDC about what changes are permitted for 'active' 
     <a href="OperationDefinition-Questionnaire-assemble.html#algorithm">expectations of behavior</a> for situations when the properties for an item in the
     base Questionnaire differ from those in the referenced definition.
   </p>
+
+<a name="reusing-questions"> </a>
+<h3>Questionnaire Library Referencing</h3>
+<p>
+  This section introduces a preferred method for managing reusable items—such as questions, groups, and displays—by referencing them from other Questionnaires during the form assembly process. Instead of duplicating content, implementers can now reference a specific item from another Questionnaire using the format:
+  <code>[Questionnaire URL]#[linkId]</code>
+</p>
+<p>
+  This mechanism allows reuse of complete item definitions, including display text, data types, extensions, and constraints.
+</p>
+<p>
+  While this implementation guide previously supported referencing item definitions from StructureDefinition using <code>item.definition</code>, that approach is limited and may not represent all <code>Questionnaire.item</code> capabilities. This newer method offers a more robust and authoring-friendly alternative.
+</p>
+<p><strong>Note:</strong> If the referenced item has child items, they will also be included during assembly.</p>
+<p>
+  <strong>Example: </strong>To reference an item with <code>linkId = "patient-name"</code> from a Questionnaire located at <code>http://example.org/Questionnaire/QuestionLibrary</code>, the reference would be:
+</p>
+<pre><code>http://example.org/Questionnaire/QuestionLibrary#patient-name</code></pre>
+
+<a name="declaring-question-libraries"> </a>
+<h4>Declaring Questionnaire Libraries</h4>
+<p>
+  To indicate that a Questionnaire serves as a reusable library of items, it should include a <code>usageContext</code> with the code <code>workflow</code> and a value indicating <strong>Question Library</strong>.
+</p>
+<p>
+  This usageContext helps tools and systems distinguish libraries from standard data entry forms. It is recommended to follow the pattern defined in the
+  <a href="StructureDefinition-sdc-usagecontext-questionnaire-library.html">sdc-usagecontext-questionnaire-library</a> profile.
+</p>
 
   <a name="examples"> </a>
   <h3>Examples</h3>

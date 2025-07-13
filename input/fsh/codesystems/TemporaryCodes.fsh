@@ -10,3 +10,4 @@ Description: "Defines codes defined within the SDC implementation guide that are
 * #questionnaire "Questionnaire" "A canonical reference (possibly version-specific) to the Questionnaire to be completed"
 * #questionnaire-response "Questionnaire Response" "A reference to the QuestionnaireResponse resulting from the requested action"
 * #response-endpoint "Response Endpoint" "Identifies the base URL for FHIR servers to which the Questionnaire resulting from the Task should be POSTed"
+* #question-library "Question Library" "Indicates that a Questionnaire is a library of reusable items to be referenced during modular form assembly."
