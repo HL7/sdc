@@ -24,19 +24,6 @@ Usage: #definition
 * parameter[+]
   * insert parameter(#questionnaire, #in, 0, "1", #Questionnaire,"The Questionnaire associated with the QuestionnaireResponse.  Used if the server might not have access to the Questionnaire" )
 * parameter[+]
-  * insert parameter(#dataEndpoint, #in, 0, "1", #Element, "Endpoint allows for specification of headers such as authorization token that are needed for the service executing the operation to access the URI.")
-  * extension[+]
-    * url = "http://hl7.org/fhir/StructureDefinition/operationdefinition-allowed-type"
-    * valueUri = "uri"
-  * extension[+]
-    * url = "http://hl7.org/fhir/StructureDefinition/operationdefinition-allowed-type"
-    * valueUri = "Reference"
-  * extension[+]
-    * url = "http://hl7.org/fhir/StructureDefinition/operationdefinition-allowed-type"
-    * valueUri = "Endpoint"
-* parameter[+]
-  * insert parameter(#data, #in, 0, "1", #Bundle, "In situations where a dataEndpoint is not accessible\, this conveys the data that meets the Library.dataRequirement specifications. The union (no duplicates\) of all resources found when evaluating all dataRequirements for all Libraries will be provided in a single collection Bundle with no specific order. This element can only be populated if the sender can execute and return the full result set for all data requirements for all Libraries.")
-* parameter[+]
   * insert parameter(#return, #out, 0, "1", #Resource, "The resulting FHIR resource produced after extracting data.  This will either be a single resource or a Transaction Bundle that contains multiple resources.  The operations in the Bundle might be creates\, updates and/or conditional versions of both depending on the nature of the extraction mappings.")
 * parameter[+]
   * insert parameter(#issues, #out, 0, "1",  #OperationOutcome, "A list of hints and warnings about problems encountered while extracting the resource(s\) from the QuestionnaireResponse. If there was nothing to extract\, a 'success' OperationOutcome is returned with a warning and/or information messages. In situations where the input is invalid or the operation otherwise fails to complete successfully\, a normal 'erroneous' OperationOutcome would be returned (as happens with all operations\) indicating what the issue was.")
