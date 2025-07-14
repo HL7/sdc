@@ -12,7 +12,8 @@ Description: "Defines elements that allow conversion of a QuestionnaireResponse 
       $questionnaire-unit named unit 0..1 MS and
       ObservationExtractExtension named observationExtract 0..1 MS and
       ObservationExtractCategory named observationExtractCategory 0..* and
-      IsSubjectExtension named isSubject 0..1
+      IsSubjectExtension named isSubject 0..1 and
+      ObservationExtractEntry named observationExtractEntry 0..1
   * extension[isSubject] ^requirements = "Allows the extraction process to leverage the fact that the subject for this group and descendants is distinct"
   * code MS
     * extension contains ObservationExtractExtension named observationExtract 0..1 MS

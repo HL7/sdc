@@ -148,7 +148,10 @@
     correspond to the <code>value</code> element of an Observation.  It also takes advantage of the <code>Questionnaire.item.code</code> element that
     identifies what a concept each question or group corresponds to.<br/>
     The <a href="StructureDefinition-sdc-questionnaire-extr-obsn.html">SDC Questionnaire Extract - Observation</a> profile 
-    has been created to support this mechanism. An example for this profile can be found <a href="Questionnaire-questionnaire-sdc-profile-example-cqf-PHQ9.html">here</a>.
+    has been created to support this mechanism. Observation-based extraction can now also support cross-resource references 
+    (e.g., enabling a ServiceRequest to refer to an extracted Observation) by using the new <a href="StructureDefinition-sdc-questionnaire-observationExtractEntry.html">observationExtractEntry</a> extension. 
+    This allows specifying metadata like fullUrl, resourceId, ifNoneExist, etc. that enable other resources to reference the extracted Observation. 
+    See <a href="#supporting-cross-resource-referencing">Supporting Cross-Resource Referencing</a> for details. An example for this profile can be found <a href="Questionnaire-questionnaire-sdc-profile-example-cqf-PHQ9.html">here</a>.
   </p>
   <p>
     To use this method:
@@ -168,6 +171,13 @@
       <p>If an item has the extension flag set to 'true', some descendant items may have the extension with a value of 'false'.  If this occurs, then the item tagged with 'false' and its descendants will be excluded from the extraction process.
       </p>
 	  </li>
+    <li>
+  Optionally, use the 
+  <a href="StructureDefinition-sdc-questionnaire-observationExtractEntry.html">observationExtractEntry</a> extension on a <code>Questionnaire.item</code> to define metadata such as 
+  <code>fullUrl</code>, <code>resourceId</code>, or conditional  fields (<code>ifNoneExist</code>, <code>ifMatch</code>, etc.) for the extracted <code>Observation</code>. This enables other extracted resources (e.g., 
+  <code>ServiceRequest.supportingInfo</code>) to reference the Observation within the same transaction Bundle. See 
+  <a href="#supporting-cross-resource-referencing">Supporting Cross-Resource Referencing</a> for more details.
+</li>
 	  <li>
 	  Following is the conceptual algorithm for observation-based extraction mechanism:
 	    <ul>
@@ -354,9 +364,21 @@ If an item is presumed to be extracted, it will extract if there are <code>item.
     <li>Obviously, this mechanism only works for questionnaire items that correspond to Observation values.</li>
   </ul>
 
-
-
-
+<a name="supporting-cross-resource-referencing"> </a>
+<h5>Supporting Cross-Resource Referencing</h5>
+<p>
+To enable extracted Observations to be referenced by other resources (e.g., a <code>ServiceRequest.supportingInfo</code>), a new extension 
+<a href="StructureDefinition-sdc-questionnaire-observationExtractEntry.html">ObservationExtractEntry</a> is introduced. This extension may be used on <code>Questionnaire.item</code> to 
+predefine bundle-related metadata for the extracted <code>Observation</code>, such as its <code>fullUrl</code> or <code>resourceId</code>.
+</p>
+<p>
+The extension supports the following elements:
+<ul>
+  <li><b>fullUrl</b> – A unique full URL for the Observation within the Bundle</li>
+  <li><b>resourceId</b> – A specific resource ID to assign to the Observation</li>
+  <li><b>ifNoneMatch</b>, <b>ifModifiedSince</b>, <b>ifMatch</b>, and <b>ifNoneExist</b> </li>
+</ul>
+</p>
 
   <a name="definition-extract"> </a>
   <h4>Definition-based extraction</h4>
