@@ -130,7 +130,7 @@
           <a href="StructureDefinition-sdc-questionnaire-openLabel.html">openLabel</a>
         </td>
         <td>SDC</td>
-        <td>item (where type='open-choice')</td>
+        <td>item (where type='open-choice' in R4 or where answerConstraint != 'optionsOnly')</td>
         <td>string</td>
         <td>
           <a href="examples.html#repeats">example</a>
@@ -139,9 +139,22 @@
       <tr>
         <td colspan="5">
           <p>
-            For items with a type of 'open-choice', this extension provides a label text to display beside the free-text and/or unrestricted type values.  
-            E.g. 'Other, please specify', or 'Additional condition', or 'More reason(s)', etc.
-          </p>
+      This extension provides a label to display beside free-text or unrestricted value input for an 'open' item. In FHIR R4, this applies to items of type <code>open-choice</code>. 
+      In R5 (or when using inter-version extensions in pre-R5 environments), this applies to items where the <code>answerConstraint</code> element has a value other than <code>optionsOnly</code>.
+    </p>
+    <p>
+      For example, it may display text such as <em>"Other, please specify"</em>, <em>"Additional condition"</em>, or <em>"More reason(s)"</em> adjacent to the free-form input box.
+    </p>
+    <p>
+      The following logic applies when determining applicability:
+      <ul>
+        <li><strong>R4:</strong> <code>ofType(ElementDefinition).type.exists(code='Coding') or where(%resource.is(Questionnaire)).exists(type.first()='open-choice' or (extension(...answerConstraint).exists() and extension(...answerConstraint).value!='answerOnly'))</code></li>
+        <li><strong>R5:</strong> <code>ofType(ElementDefinition).type.exists(code='Coding') or where(%resource.is(Questionnaire)).exists(answerConstraint.exists() and answerConstraint!='answerOnly')</code></li>
+      </ul>
+    </p>
+    <p>
+      Not all renderings of 'open' elements will use such a label (e.g. an auto-complete style control won't have a separate label for entries that aren't in the list of options).
+    </p>
         </td>
       </tr>
       <tr>
