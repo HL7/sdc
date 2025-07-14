@@ -404,7 +404,7 @@ Usage: #example
       * extension[+]
         * url = "http://hl7.org/fhir/StructureDefinition/minValue"
         * valueDecimal.extension[+]
-          * url = "http://hl7.org/fhir/StructureDefinition/cqf-calculatedValue"
+          * url = "http://hl7.org/fhir/StructureDefinition/cqf-expression"
           * valueExpression
             * language = #text/fhirpath
             * expression = "min_weight"
@@ -412,7 +412,7 @@ Usage: #example
       * extension[+]
         * url = "http://hl7.org/fhir/StructureDefinition/maxValue"
         * valueDecimal.extension[+]
-          * url = "http://hl7.org/fhir/StructureDefinition/cqf-calculatedValue"
+          * url = "http://hl7.org/fhir/StructureDefinition/cqf-expression"
           * valueExpression
             * language = #text/fhirpath
             * expression = "max_weight"

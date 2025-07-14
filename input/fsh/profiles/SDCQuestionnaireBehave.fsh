@@ -58,15 +58,15 @@ Description: "Defines additional capabilities for controlling data entry and cal
     * extension contains
         $cqf-expression named itemMaxOccursExpression 0..1 MS
   * extension[minValue].value[x] ^mustSupport = false
-    * extension contains $cqf-calculatedValue named minValueCalculated 0..1
+    * extension contains $cqf-expression named minValueCalculated 0..1
   * extension[maxValue].value[x] ^mustSupport = false
-    * extension contains $cqf-calculatedValue named maxValueCalculated 0..1
+    * extension contains $cqf-expression named maxValueCalculated 0..1
   * extension[minQuantity] ^mustSupport = false
     * value[x] ^mustSupport = false
-      * extension contains $cqf-calculatedValue named minQuantityCalculated 0..1
+      * extension contains $cqf-expression named minQuantityCalculated 0..1
   * extension[maxQuantity] ^mustSupport = false
     * value[x] ^mustSupport = false
-      * extension contains $cqf-calculatedValue named maxQuantityCalculated 0..1
+      * extension contains $cqf-expression named maxQuantityCalculated 0..1
   * enableWhen MS
     * question MS
     * operator MS
