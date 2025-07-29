@@ -12,11 +12,6 @@
     to write generic software that can convert any arbitrary QuestionnaireResponse into appropriate FHIR resources leveraging metadata embedded in the
     Questionnaire.  This portion of the SDC guide defines mechanisms for doing so.
   </p>
-  <blockquote class="stu-note">
-  <b>Note to balloters:</b> The definition based $extract functionality has been refined significantly along with a new mechanism for extraction <a href="#template-extract">Template based extraction</a> that uses contained resource(s) as template(s)
-  for extracting data.<br/>
-  Feedback is encouraged for this new functionality.
-  </blockquote>
 
   <a name="caveats"> </a>
   <h3>Caveats, considerations and rules with form data extraction</h3>
@@ -319,24 +314,9 @@ If an item is presumed to be extracted, it will extract if there are <code>item.
   <p>
     If the <code>Questionnaire.item</code> that is linked to an Observation contains child items that are also linked to Observations, then things get more complex as a
     determination will need to be made on whether to link the parent to child as <code>Observation.component</code> or as <code>Observation.hasMember</code>.
-    In the ideal situation, the system will recognize the <code>Observation.item.code</code> and know which approach is correct for that type of Observation.  If not, then
-    the system <i>could</i> query for other records of the child type and see if they appear as components anywhere.  If unsure, systems should use "hasMember".
+    The appropriate relationship to use is conveyed using the code value found in th e<a href="StructureDefinition-sdc-questionnaire-observationExtract.html">questionnaire-observationExtract</a> 
+    extension.  If no extension is present or the value is only a boolean, the expected relationship is undefined and behavior is up to the extracting system.
   <!-- TODO: Should we have an extension that covers this? -->
-    <p>
-    <b>Use of the <code>member</code> and <code>component</code> options</b><br/>
-    The <a href="StructureDefinition-sdc-questionnaire-observationExtract.html">questionnaire-observationExtract</a> extension specify <code>member</code> or <code>component</code> to distinguish whether an answer
-    should become a standalone Observation member (via <code>hasMember</code>) or a component of a parent Observation (via <code>component</code>).
-    </p>
-      <ul>
-        <li>
-          <b>member</b>: the extracted answer will be linked as an <code>Observation.hasMember</code> on the parent record.
-        </li>
-        <li>
-          <b>component</b>: the extracted answer will be embedded in the parent Observation’s <code>component</code> array.  
-          Systems <strong>SHOULD</strong> locate the correct parent by finding the <em>nearest ancestor</em> Questionnaire item (walking up through grouping items)
-          that has <code>observationExtract</code> enabled.  That ancestor’s associated Observation becomes the target for this component.
-        </li>
-      </ul>
   </p>
   <p>
     Considerations and rules when using this approach:
@@ -373,12 +353,12 @@ predefine bundle-related metadata for the extracted <code>Observation</code>, su
 </p>
 <p>
 The extension supports the following elements:
+</p>
 <ul>
   <li><b>fullUrl</b> – A unique full URL for the Observation within the Bundle</li>
   <li><b>resourceId</b> – A specific resource ID to assign to the Observation</li>
   <li><b>ifNoneMatch</b>, <b>ifModifiedSince</b>, <b>ifMatch</b>, and <b>ifNoneExist</b> </li>
 </ul>
-</p>
 
   <a name="definition-extract"> </a>
   <h4>Definition-based extraction</h4>
@@ -423,12 +403,14 @@ The extension supports the following elements:
   </p>
 
   <blockquote>
+  <p>
     <b>Note:</b> The complete element id does not actually need to appear in a profile snapshot, it is also possible to 'extend' an id to walk further into the data types of the specified element.<br/>
     For example, the example above <code>http://hl7.org/fhir/StructureDefinition/Patient#Patient.name.given</code> is valid, even though the referenced profile's snapshot only contains <code>Patient.name</code>,
     not <code>Patient.name.given</code>.<br/>
     However, for more complex references (e.g. referring to a particular extension or a particular repetition), it will be necessary to define a 
     distinct profile where slicing ensures that a single element id corresponds to the desired element.  I.e. you would need to use 
     <code>http://example.org/fhir/StructureDefinition/LocalizedPatientProfile|2.1.1#Patient.name.given:foo</code> where 'foo' was a slice that referred to the first middle name in order to tie to a definition that specific.<br/>
+    </p>
   </blockquote>
 
   <p>
@@ -514,10 +496,12 @@ The extension supports the following elements:
         </li>
       </ul>
       <blockquote>
-        <i>
-          <b>Note:</b> In previous versions of the SDC specification the <a href="StructureDefinition-sdc-questionnaire-itemExtractionContext.html">questionnaire-itemExtractionContext</a> extension 
-          was used to indicate the resource type, however this has been deprecated and we encourage moving to the newer <a href="StructureDefinition-sdc-questionnaire-definitionExtract.html">sdc-questionnaire-definitionExtract</a> extension.
-        </i>
+        <p>
+          <i>
+            <b>Note:</b> In previous versions of the SDC specification the <a href="StructureDefinition-sdc-questionnaire-itemExtractionContext.html">questionnaire-itemExtractionContext</a> extension 
+            was used to indicate the resource type, however this has been deprecated and we encourage moving to the newer <a href="StructureDefinition-sdc-questionnaire-definitionExtract.html">sdc-questionnaire-definitionExtract</a> extension.
+          </i>
+        </p>
       </blockquote>
     </li>
     <li>
@@ -616,8 +600,10 @@ The extension supports the following elements:
         </tbody>
       </table>
       <blockquote>
-        <b>Note:</b> Anywhere in a resource that you need to set multiple item's values into properties of a backbone element, you will need to use a group item to collect the values together, and set the <code>definition</code> property on this group item
-        to the backbone element.  The system will then create the backbone element and populate it with the child items.
+        <p>
+          <b>Note:</b> Anywhere in a resource that you need to set multiple item's values into properties of a backbone element, you will need to use a group item to collect the values together, and set the <code>definition</code> property on this group item
+          to the backbone element.  The system will then create the backbone element and populate it with the child items.
+        </p>
       </blockquote>
     </li>
     <li>
@@ -655,11 +641,13 @@ The extension supports the following elements:
     </li>
   </ol>
   <blockquote>
-    <b>Note:</b> The extraction processes as defined does not support "merging" the answers into an existing instance of a resource as an update. 
-    Instead the "update" mode of this extraction process is a "replace" style process. So if you need to update content that was not created by the 
-    extraction routine, you will need to inject ALL data from the resource into the questionnaire (and hide properties as needed).
-    This way all the data will be available to fill out into the resource so that it can be included as an update in the outgoing transaction bundle.
-    This design was used as the target server for the bundle isn't necessarily going to be the same server that was pre-populated from.
+    <p>
+      <b>Note:</b> The extraction processes as defined does not support "merging" the answers into an existing instance of a resource as an update. 
+      Instead the "update" mode of this extraction process is a "replace" style process. So if you need to update content that was not created by the 
+      extraction routine, you will need to inject ALL data from the resource into the questionnaire (and hide properties as needed).
+      This way all the data will be available to fill out into the resource so that it can be included as an update in the outgoing transaction bundle.
+      This design was used as the target server for the bundle isn't necessarily going to be the same server that was pre-populated from.
+    </p>
   </blockquote>
   <p>
     Examples of questionnaires using this approach can be found <a href="Questionnaire-demographics.html">here</a> and in <a href="Questionnaire-extract-complex-defn3.html">Questionnaire/extract-complex-defn3</a>.
@@ -794,14 +782,16 @@ The extension supports the following elements:
     are to occur.
   </p>
   <blockquote>
-    <b>Note:</b> Many templating engines have constructs like conditionals and loops. Although not immediately obvious, these can be implemented using this template approach.
-    Conditional properties are implemented with the FHIRPath expression in the <a href="StructureDefinition-sdc-questionnaire-templateExtractContext.html">templateExtractContext</a>
-    or <a href="StructureDefinition-sdc-questionnaire-templateExtractValue.html">templateExtractValue</a> extension returning no results, and thus excluding the property, backbone element or
-    entry in a collection from the extracted resource.<br/>
-    Loops are similar in nature where the looping is provided based on the FHIRPath expression returning multiple results, and thus creating multiple entries in an array,
-    or even multiple resources in the transaction bundle driven by either multiple items in the questionnaire, or contexts in the bundle template.<br/>
-    There are several examples of both of these in the <a href="">template example</a>, such as how it creates multiple names in the patient resource from multiple items in the
-    questionnaire name item group, or where there is no IHI identifier added if the relevant item hasn't been answered in the questionnaire.
+    <p>
+      <b>Note:</b> Many templating engines have constructs like conditionals and loops. Although not immediately obvious, these can be implemented using this template approach.
+      Conditional properties are implemented with the FHIRPath expression in the <a href="StructureDefinition-sdc-questionnaire-templateExtractContext.html">templateExtractContext</a>
+      or <a href="StructureDefinition-sdc-questionnaire-templateExtractValue.html">templateExtractValue</a> extension returning no results, and thus excluding the property, backbone element or
+      entry in a collection from the extracted resource.<br/>
+      Loops are similar in nature where the looping is provided based on the FHIRPath expression returning multiple results, and thus creating multiple entries in an array,
+      or even multiple resources in the transaction bundle driven by either multiple items in the questionnaire, or contexts in the bundle template.<br/>
+      There are several examples of both of these in the <a href="">template example</a>, such as how it creates multiple names in the patient resource from multiple items in the
+      questionnaire name item group, or where there is no IHI identifier added if the relevant item hasn't been answered in the questionnaire.
+    </p>
   </blockquote>
 
   <a name="map-extract"> </a>
