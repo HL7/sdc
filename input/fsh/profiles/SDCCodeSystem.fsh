@@ -30,11 +30,13 @@ Description: "Defines how CodeSystem is used to reflect code lists found in data
   * display MS
     * extension contains
         $rendering-style named conceptDisplayLabel-renderingStyle 0..1 and
+        $rendering-markdown named conceptDisplayLabel-markdown 0..1 and
         $rendering-xhtml named conceptDisplayLabel-xhtml 0..1
   * definition MS
   * designation
     * value.extension contains
         $rendering-style named conceptDisplayLabel-renderingStyle 0..1 and
+        $rendering-markdown named conceptDisplayLabel-markdown 0..1 and
         $rendering-xhtml named conceptDisplayLabel-xhtml 0..1
   * property MS
     * ^requirements = "...  Property is mustSupport because it is used to express weights as well as elements that may be relevant for rendering or performing logic on codes"

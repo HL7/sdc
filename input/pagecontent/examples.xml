@@ -170,24 +170,47 @@ i.fa {
     </div>
   </div>
 
+<a name="rendering-markdown"></a>
+  <h4>Using rendering-markdown</h4>
+  <p>To allow different styles to different portions of a question text. (<a href="Questionnaire-questionnaire-sdc-profile-example-markdown.html">Example Questionnaire</a>)</p>
+  <div class="tabs">
+    <div class="tab">
+      <input type="radio" id="tab-markdown-1" name="tab-markdown-group" checked="true"/>
+      <label for="tab-markdown-1">Sample Question</label>
+      <div class="content-in-tab">
+      <p><i>Please</i> answer <b>Yes</b> or <b>No</b> to each of the following questions:</p>
+      </div>
+    </div>
+    <div class="tab">
+      <input type="radio" id="tab-markdown-2" name="tab-markdown-group"/>
+      <label for="tab-markdown-2">JSON</label>
+      <div class="content-in-tab">{% fragment Questionnaire/questionnaire-sdc-profile-example-render JSON BASE:descendants().select(item).where(linkId='1.2b') %}</div>
+    </div>
+    <div class="tab">
+      <input type="radio" id="tab-markdown-3" name="tab-markdown-group"/>
+      <label for="tab-markdown-3">XML</label>
+      <div class="content-in-tab">{% fragment Questionnaire/questionnaire-sdc-profile-example-render XML BASE:descendants().select(item).where(linkId='1.2b') %}</div>
+    </div>
+  </div>
+
 <a name="rendering-xhtml"></a>
   <h4>Using rendering-xhtml</h4>
   <p>To allow different styles to different portions of a question text. (<a href="Questionnaire-questionnaire-sdc-profile-example-render.html">Example Questionnaire</a>)</p>
   <div class="tabs">
     <div class="tab">
-      <input type="radio" id="tab-xhtml-1" name="tab-xhtml-group-2" checked="true"/>
+      <input type="radio" id="tab-xhtml-1" name="tab-xhtml-group" checked="true"/>
       <label for="tab-xhtml-1">Sample Question</label>
       <div class="content-in-tab">
       <p><i>Please</i> answer <b><u>Yes</u></b> or <b><u>No</u></b> to each of the following questions:</p>
       </div>
     </div>
     <div class="tab">
-      <input type="radio" id="tab-xhtml-2" name="tab-xhtml-group-2"/>
+      <input type="radio" id="tab-xhtml-2" name="tab-xhtml-group"/>
       <label for="tab-xhtml-2">JSON</label>
       <div class="content-in-tab">{% fragment Questionnaire/questionnaire-sdc-profile-example-render JSON BASE:descendants().select(item).where(linkId='1.2') %}</div>
     </div>
     <div class="tab">
-      <input type="radio" id="tab-xhtml-3" name="tab-xhtml-group-2"/>
+      <input type="radio" id="tab-xhtml-3" name="tab-xhtml-group"/>
       <label for="tab-xhtml-3">XML</label>
       <div class="content-in-tab">{% fragment Questionnaire/questionnaire-sdc-profile-example-render XML BASE:descendants().select(item).where(linkId='1.2') %}</div>
     </div>

@@ -11,6 +11,7 @@ Description: "Defines additional capabilities for controlling the rendering of t
 * title
   * extension contains
       $rendering-style named title-renderingStyle 0..1 and
+      $rendering-markdown named title-markdown 0..1 and
       $rendering-xhtml named title-xhtml 0..1
 * item
   * obeys sdc-rend-1
@@ -32,10 +33,12 @@ Description: "Defines additional capabilities for controlling the rendering of t
   * prefix
     * extension contains
         $rendering-style named itemLabel-renderingStyle 0..1 and
+        $rendering-markdown named itemLabel-markdown 0..1 and
         $rendering-xhtml named itemLabel-xhtml 0..1
   * text
     * extension contains
         $rendering-style named groupText-renderingStyle 0..1 and
+        $rendering-markdown named groupText-markdown 0..1 and
         $rendering-xhtml named groupText-xhtml 0..1 and
         $cqf-expression named expression 0..1 MS
     * extension[expression] ^comment = "Note: The variation cannot change the meaning of the question. The extension can be used even if text is present; and if the extension is supported, the evaluation will replace the text provided (with 'smarter' text). "
@@ -45,10 +48,12 @@ Description: "Defines additional capabilities for controlling the rendering of t
     * valueString only string
     * valueString.extension contains
         $rendering-style named optionString-renderingStyle 0..1 and
+        $rendering-markdown named optionString-markdown 0..1 and
         $rendering-xhtml named optionString-xhtml 0..1
     * valueCoding only Coding
       * display.extension contains
           $rendering-style named optionDisplay-renderingStyle 0..1 and
+          $rendering-markdown named optionDisplay-markdown 0..1 and
           $rendering-xhtml named optionDisplay-xhtml 0..1
 
 Invariant: sdc-rend-1

@@ -30,15 +30,18 @@ Description: "Defines how ValueSet is used to reflect code lists found in data e
       $valueset-conceptOrder named conceptConceptOrder 0..1 MS
   * concept.extension[conceptLabel].valueString.extension contains
       $rendering-style named code-renderingStyle 0..1 and
+      $rendering-markdown named code-markdown 0..1 and
       $rendering-xhtml named code-xhtml 0..1
   * concept.extension[conceptConceptOrder] ^comment = "The presence of a sort order implies that sort order is important."
   * concept.code MS
   * concept.display MS
   * concept.display.extension contains
       $rendering-style named codeDisplay-renderingStyle 0..1 and
+      $rendering-markdown named codeDisplay-markdown 0..1 and
       $rendering-xhtml named codeDisplay-xhtml 0..1
   * concept.designation.extension contains
       $rendering-style named designation-renderingStyle 0..1 and
+      $rendering-markdown named designation-markdown 0..1 and
       $rendering-xhtml named designation-xhtml 0..1
   * filter MS
     * property MS
@@ -59,6 +62,7 @@ Description: "Defines how ValueSet is used to reflect code lists found in data e
       $valueset-containsProperty named containsProperty 0..* MS
   * extension[expansionLabel].valueString.extension contains
       $rendering-style named expansion-renderingStyle 0..1 and
+      $rendering-markdown named expansion-markdown 0..1 and
       $rendering-xhtml named expansion-xhtml 0..1
   * extension[containsProperty] ^requirements = "... Allows support for itemWeight and other key properties"
   * extension[conceptConceptOrder] ^comment = "The presence of a sort order implies that sort order is important."
@@ -69,8 +73,10 @@ Description: "Defines how ValueSet is used to reflect code lists found in data e
   * display MS
   * display.extension contains
       $rendering-style named expansionDisplay-renderingStyle 0..1 and
+      $rendering-markdown named title-markdown 0..1 and
       $rendering-xhtml named expansionDisplay-xhtml 0..1
   * designation.extension contains
       $rendering-style named expansionDesignation-renderingStyle 0..1 and
+      $rendering-markdown named expansionDesignation-markdown 0..1 and
       $rendering-xhtml named expansionDesignation-xhtml 0..1
 * expansion.contains.contains MS

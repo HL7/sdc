@@ -31,7 +31,14 @@ Usage: #example
     * text = "Please answer Yes or No to each of the following questions:"
       * extension
         * url = "http://hl7.org/fhir/StructureDefinition/rendering-xhtml"
-        * valueString = "Please answer Yes or No to each of the following questions:"
+        * valueString = "<i>Please</i> answer <b><u>Yes</u></b> or <b><u>No</u></b> to each of the following questions:"
+    * type = #display
+  * item[+]
+    * linkId = "1.2b"
+    * text = "Please answer Yes or No to each of the following questions:"
+      * extension
+        * url = "http://hl7.org/fhir/StructureDefinition/rendering-markdown"
+        * valueMarkdown = "_Please_ answer **Yes** or **No** to each of the following questions:"
     * type = #display
   * item[+]
     * extension

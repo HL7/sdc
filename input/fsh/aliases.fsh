@@ -110,6 +110,7 @@ Alias: $questionnaire-usageMode              = http://hl7.org/fhir/StructureDefi
 Alias: $questionnaireresponse-completionMode = http://hl7.org/fhir/StructureDefinition/questionnaireresponse-completionMode
 Alias: $questionnaireresponse-signature      = http://hl7.org/fhir/StructureDefinition/questionnaireresponse-signature
 Alias: $regex                                = http://hl7.org/fhir/StructureDefinition/regex
+Alias: $rendering-markdown                   = http://hl7.org/fhir/StructureDefinition/rendering-markdown
 Alias: $rendering-style                      = http://hl7.org/fhir/StructureDefinition/rendering-style
 Alias: $rendering-styleSensitive             = http://hl7.org/fhir/StructureDefinition/rendering-styleSensitive
 Alias: $rendering-xhtml                      = http://hl7.org/fhir/StructureDefinition/rendering-xhtml
