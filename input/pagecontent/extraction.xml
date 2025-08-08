@@ -185,9 +185,17 @@
       <code>observationExtract</code> extension must also be included (and set to true).  
       This extension can be specified either at the root Questionnaire or on an individual question or group item (not a display item) that indicates that the 
       observation-based approach should be used to extract either that particular item (based on the code present) or all items in the questionnaire (if they have a code present).</li>
-    <li>If the extension appears on specific <code>item.code</code> elements rather than the item as a whole, then only the specified codes should be propagated rather than all.  For example, an item might list codes for "Body weight", "Body weight (clothed)" and "Body weight (unclothed)".  In that case, only the "Body weight" code would be appropriate to include in the extracted content, even though all three might be appropriate for population.  If any item.codes are tagged with 'true', then only the tagged Codings will propagate.  I.e. any sibling item.codes with no extension are considered to have an extension of 'false'.  If no extension appears on any of the item.codes but an extension appears on the item, an ancestor item or the Questionnaire as a whole, then all codes are considered to be roughly equivalent translations and to be appropriate to list as sibling Codings within Observation.code.
-
-      <p>If an item has the extension flag set to 'true', some descendant items may have the extension with a value of 'false'.  If this occurs, then the item tagged with 'false' and its descendants will be excluded from the extraction process.
+    <li>    
+      <p>
+        The extension can also be applied to specific item.code elements to control which codes should be propagated during extraction. For example, an item might list codes for 
+        "Body weight", "Body weight (clothed)" and "Body weight (unclothed)". If only the "Body weight" code should be included in the extracted content, the extension should be set 
+        to 'true' only on that specific code element. When any item.code elements are tagged with 'true', only the tagged codes will propagate - sibling codes with no extension are 
+        considered to have an implicit extension value of 'false'. If no extension appears on any of the <code>item.code</code> elements but an extension appears on the item itself, 
+        an ancestor item, or the Questionnaire root, then all codes are considered equivalent and appropriate to include as sibling codings within <code>Observation.code</code>.
+      </p>
+      <p>
+        The observation-extract extension is inherited.  If an item or code doesn't declare a value for the extension, the element is treated as though it declared the same value as 
+        its nearest ancestor that has the extension.  Note that codes have no descendants, so extensions on a code will not propagate.
       </p>
 	  </li>
     <li>
@@ -197,27 +205,11 @@
   <code>ServiceRequest.supportingInfo</code>) to reference the Observation within the same transaction Bundle. See 
   <a href="#supporting-cross-resource-referencing">Supporting Cross-Resource Referencing</a> for more details.
 </li>
-	  <li>
-	  Following is the conceptual algorithm for observation-based extraction mechanism:
-	    <ul>
-    <li>
-      Start at the root of the Questionnaire and progress down through the items.
-    </li>
-    <li>
-      For a particular item, if the item itself or any of its codings have observationExtract set to 'true', then that item is to be extracted (if possible) and the presumption is that descendant items will also be extracted.
-    </li>
-    <li>
-      The presumption of "will extract" will change to false only if an item explicitly sets observationExtract = false at the 'item' level.  It is still possible that descendant items might turn extraction back on again.  I.e. the full depth must be traversed to catch all extraction candidates.
-    </li>
-	<li>
-If an item is presumed to be extracted, it will extract if there are <code>item.codes</code> for that item that aren't explicitly marked with observationExtract=false.
-    </li>
-	<li>
-      The observation-extract-category extension only comes into play if a determination has been made that extraction will occur.  The observation-extract-category on an item will override that declared on the base questionnaire or ancestor items.  If there is a desire to add multiple categories, all must be declared on an item.
-    </li>
-  </ul>
-	  </li>
   </ol>
+  <p>
+    <b>Category assignment:</b> The <code>observation-extract-category</code> extension only applies when extraction has been determined to occur. The category value on an item or code will 
+    override any category declared on ancestor elements. If multiple categories are needed, all must be declared on the specific item.
+  </p>
   <p>
     When performing the extraction process, the system will create a batch that will contain creates or updates of Observation instances.  It will go through
     the QuestionnaireResponse and identify all answers marked for extraction (if the corresponding Questionnaire item or the root Questionnaire has a
