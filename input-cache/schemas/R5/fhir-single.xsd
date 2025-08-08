@@ -47,7 +47,7 @@
   POSSIBILITY OF SUCH DAMAGE.
   
 
-  Generated on Wed, Aug 6, 2025 19:39+0000 for FHIR v6.0.0-ballot2 
+  Generated on Fri, Aug 8, 2025 21:24+0000 for FHIR v6.0.0-ballot2 
 -->
 <xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns="http://hl7.org/fhir" xmlns:xhtml="http://www.w3.org/1999/xhtml" xmlns:xml="http://www.w3.org/XML/1998/namespace" targetNamespace="http://hl7.org/fhir" elementFormDefault="qualified" version="6.0.0-ballot2">
   <!-- Note: When using this schema with some tools, it may also be necessary to declare xmlns:xml="http://www.w3.org/XML/1998/namespace", however this causes performance issues with other tools and thus is not in the base schemas. -->
@@ -30434,12 +30434,12 @@ The actual author of the section when it is not the author of the composition. I
           </xs:element>
           <xs:element name="carrierAIDC" minOccurs="0" maxOccurs="1" type="base64Binary">
             <xs:annotation>
-              <xs:documentation xml:lang="en">The full UDI carrier of the Automatic Identification and Data Capture (AIDC) technology representation as printed on the packaging of the device - e.g., a barcode or RFID.   Because of limitations on character sets in XML and the need to round-trip JSON data through XML, AIDC Formats *SHALL* be base64 encoded.</xs:documentation>
+              <xs:documentation xml:lang="en">The full UDI carrier of the Automatic Identification and Data Capture (AIDC) technology representation as printed on the packaging of the device - e.g., a barcode , 2D Matrix, or RFID. Some AIDC representations contain non-printable characters and cannot be represented in a string format.  For this reason, AIDC format SHALL be base64Binary encoded.</xs:documentation>
            </xs:annotation>
           </xs:element>
           <xs:element name="carrierHRF" minOccurs="0" maxOccurs="1" type="string">
             <xs:annotation>
-              <xs:documentation xml:lang="en">The full UDI carrier as the human readable form (HRF) representation of the barcode string as printed on the packaging of the device.</xs:documentation>
+              <xs:documentation xml:lang="en">The full UDI carrier as the human readable form (HRF) representation as printed on the packaging of the device.</xs:documentation>
            </xs:annotation>
           </xs:element>
           <xs:element name="entryType" minOccurs="0" maxOccurs="1" type="UDIEntryType">
@@ -31182,7 +31182,7 @@ The actual author of the section when it is not the author of the composition. I
           </xs:element>
           <xs:element name="udiDeviceIdentifier" type="DeviceDefinition.UdiDeviceIdentifier" minOccurs="0" maxOccurs="unbounded">
             <xs:annotation>
-              <xs:documentation xml:lang="en">Unique device identifier (UDI) assigned to device label or package.  Note that the Device may include multiple udiCarriers as it either may include just the udiCarrier for the jurisdiction it is sold, or for multiple jurisdictions it could have been sold.</xs:documentation>
+              <xs:documentation xml:lang="en">The Device Identifier (DI) portion of the Unique Device Identifier (UDI) placed on a device label or package. Also known as UDI-DI. Note that the DeviceDefinition may include multiple UDI-DIs if it is sold in multiple jurisdictions.</xs:documentation>
            </xs:annotation>
           </xs:element>
           <xs:element name="regulatoryIdentifier" type="DeviceDefinition.RegulatoryIdentifier" minOccurs="0" maxOccurs="unbounded">
@@ -31306,6 +31306,11 @@ The actual author of the section when it is not the author of the composition. I
               <xs:documentation xml:lang="en">Indicates where and when the device is available on the market.</xs:documentation>
            </xs:annotation>
           </xs:element>
+          <xs:element name="deviceIdentifierSystem" minOccurs="0" maxOccurs="1" type="uri">
+            <xs:annotation>
+              <xs:documentation xml:lang="en">Establishes the namespace for the issuing agency's system (e.g, GS1's GTIN, ICCBBA's ISBT-128) used to create the device identifier.</xs:documentation>
+           </xs:annotation>
+          </xs:element>
         </xs:sequence>
       </xs:extension>
     </xs:complexContent>
@@ -31356,6 +31361,11 @@ The actual author of the section when it is not the author of the composition. I
           <xs:element name="jurisdiction" minOccurs="1" maxOccurs="1" type="uri">
             <xs:annotation>
               <xs:documentation xml:lang="en">The jurisdiction to which the deviceIdentifier applies.</xs:documentation>
+           </xs:annotation>
+          </xs:element>
+          <xs:element name="deviceIdentifierSystem" minOccurs="0" maxOccurs="1" type="uri">
+            <xs:annotation>
+              <xs:documentation xml:lang="en">Establishes the namespace for the issuing agency's system (e.g, GS1's GTIN, ICCBBA's ISBT-128) used to create the device identifier.</xs:documentation>
            </xs:annotation>
           </xs:element>
         </xs:sequence>
@@ -59972,7 +59982,7 @@ Deceased patients may also be marked as inactive for the same reasons, but may b
               <xs:documentation xml:lang="en">The performer of the processing of the specimen.</xs:documentation>
            </xs:annotation>
           </xs:element>
-          <xs:element name="device" minOccurs="0" maxOccurs="1" type="Reference">
+          <xs:element name="device" minOccurs="0" maxOccurs="1" type="CodeableReference">
             <xs:annotation>
               <xs:documentation xml:lang="en">The device used in the processing of the specimen.</xs:documentation>
            </xs:annotation>
@@ -60001,7 +60011,7 @@ Deceased patients may also be marked as inactive for the same reasons, but may b
     <xs:complexContent>
       <xs:extension base="BackboneElement">
         <xs:sequence>
-          <xs:element name="device" minOccurs="1" maxOccurs="1" type="Reference">
+          <xs:element name="device" minOccurs="1" maxOccurs="1" type="CodeableReference">
             <xs:annotation>
               <xs:documentation xml:lang="en">The device resource for the the container holding the specimen. If the container is in a holder then the referenced device will point to a parent device.</xs:documentation>
            </xs:annotation>
@@ -64099,7 +64109,7 @@ Deceased patients may also be marked as inactive for the same reasons, but may b
               <xs:documentation xml:lang="en">The current status of the task.</xs:documentation>
            </xs:annotation>
           </xs:element>
-          <xs:element name="statusReason" minOccurs="0" maxOccurs="1" type="CodeableReference">
+          <xs:element name="statusReason" minOccurs="0" maxOccurs="unbounded" type="CodeableReference">
             <xs:annotation>
               <xs:documentation xml:lang="en">An explanation as to why this task is held, failed, was refused, etc.</xs:documentation>
            </xs:annotation>
@@ -67997,10 +68007,7 @@ Deceased patients may also be marked as inactive for the same reasons, but may b
           </xs:element>
           <xs:element name="value" minOccurs="1" maxOccurs="1" type="string">
             <xs:annotation>
-              <xs:documentation xml:lang="en">ValueSet.compose.include.filter.value is represented as a string, and the string value must be one of the three types below: 
-When the filter operation (ValueSet.compose.include.filter.op) is equal to &quot;regex&quot;, the value (ValueSet.compose.include.filter.value) is a regex expression. This is used to match string values (including integer and decimal, if necessary).
-When the filter operation (ValueSet.compose.include.filter.op) is equal to &quot;exists&quot;, the value (ValueSet.compose.include.filter.value) is a boolean and must be equal to &quot;true&quot; or &quot;false&quot;.
-For all other filter operations (ValueSet.compose.include.filter.op) the value (ValueSet.compose.include.filter.value) represents a code.</xs:documentation>
+              <xs:documentation xml:lang="en">ValueSet.compose.include.filter.value is represented as a string, and the string value must be [as described](valueset.html#filter-values).</xs:documentation>
            </xs:annotation>
           </xs:element>
         </xs:sequence>

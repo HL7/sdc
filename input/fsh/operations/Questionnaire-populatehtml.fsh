@@ -52,6 +52,19 @@ Usage: #definition
       * url = "http://hl7.org/fhir/StructureDefinition/operationdefinition-allowed-type"
       * valueUri = "Resource"
 * parameter[+]
+  * insert parameter(#dataEndpoint, #in, 0, "1", #Element, "Endpoint allows for specification of headers such as authorization token that are needed for the service executing the operation to access the URI.")
+  * extension[+]
+    * url = "http://hl7.org/fhir/StructureDefinition/operationdefinition-allowed-type"
+    * valueUri = "uri"
+  * extension[+]
+    * url = "http://hl7.org/fhir/StructureDefinition/operationdefinition-allowed-type"
+    * valueUri = "Reference"
+  * extension[+]
+    * url = "http://hl7.org/fhir/StructureDefinition/operationdefinition-allowed-type"
+    * valueUri = "Endpoint"
+* parameter[+]
+  * insert parameter(#data, #in, 0, "1", #Bundle, "In situations where a dataEndpoint is not accessible\, this conveys the data that meets the Library.dataRequirement specifications. The union (no duplicates\) of all resources found when evaluating all dataRequirements for all Libraries will be provided in a single collection Bundle with no specific order. This element can only be populated if the sender can execute and return the full result set for all data requirements for all Libraries.")
+* parameter[+]
   * insert parameter(#local, #in, 0, "1", #boolean, "If specified and set to `true` (and the server is capable\)\, the server should use what resources and other knowledge it has about the referenced subject when pre-populating answers to questions.")
 * parameter[+]
   * insert parameter(#form, #out, 1, "1", #Binary, "The generated HTML page that supports capturing the information defined by questionnaire\, possibly partially (or fully\)-populated with a set of answers for the specified Questionnaire")

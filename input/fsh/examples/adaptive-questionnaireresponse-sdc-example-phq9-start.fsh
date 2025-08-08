@@ -4,9 +4,9 @@ Title: "SDC-Response to Adaptive PHQ9 - Start"
 Description: "Example response to the Adaptive SDC-PHQ9 questionnaire before it has been completed"
 Usage: #example
 * contained[+] = contained-adaptive-questionnaire-example-phq9-start
-* contained[+] = VSPHQ9
-* identifier.value = "adaptive-questionnaireresponse-example-phq9"
-* questionnaire = "#contained-adaptive-questionnaire-example-phq9"
+* contained[+] = VSPHQ9B
+* identifier.value = "adaptive-questionnaireresponse-example-phq9-start"
+* questionnaire = "#contained-adaptive-questionnaire-example-phq9-start"
 * status = #in-progress
 * subject = Reference(http://hl7.org/fhir/Patient/proband)
 * authored = "2019-08-21T20:36:57.544Z"
@@ -29,7 +29,7 @@ Usage: #inline
 * extension[QuestionnaireAdaptiveExtension].valueBoolean = true
 * extension[$questionnaire-versionAlgorithm].valueCoding = $version-algorithm#semver
 * version = "0.0.1"
-* name = "SDCPHQ9"
+* name = "SDCPHQ9Start"
 * title = "Patient Health Questionnaire - 9 Item"
 * derivedFrom = "http://hl7.org/fhir/uv/sdc/Questionnaire/questionnaire-sdc-profile-example-PHQ9"
   * extension[+].url = "http://hl7.org/fhir/StructureDefinition/questionnaire-derivationType"
@@ -41,21 +41,21 @@ Usage: #inline
   * linkId = "H1/T1"
   * text = "Over the last two weeks, how often have you been bothered by any of the following problems?"
   * type = #group
-  * insert itemChoice("H1/T1/Q1", "Little interest or pleasure in doing things?", "#VSPHQ9")
-  * insert itemChoice("H1/T1/Q2", "Feeling down\, depressed\, or hopeless?", "#VSPHQ9")
-  * insert itemChoice("H1/T1/Q3", "Trouble falling or staying asleep\, or sleeping too much?", "#VSPHQ9")
-  * insert itemChoice("H1/T1/Q4", "Feeling tired or having little energy?", "#VSPHQ9")
-  * insert itemChoice("H1/T1/Q5", "Poor appetite or overeating?", "#VSPHQ9")
-  * insert itemChoice("H1/T1/Q6", "Feeling bad about yourself - or that you are a failure or have let yourself or your family down?", "#VSPHQ9")
-  * insert itemChoice("H1/T1/Q7", "Trouble concentrating on things\, such as reading the newspaper or watching television?", "#VSPHQ9")
-  * insert itemChoice("H1/T1/Q8", "Moving or speaking so slowly that other people could gave noticed? Or so fidgety or restless that you have been moving a lot more than usual?", "#VSPHQ9")
-  * insert itemChoice("H1/T1/Q9", "Thoughts that you would be better off dead\, or thoughts of hurting yourself in some way?", "#VSPHQ9")
+  * insert itemChoice("H1/T1/Q1", "Little interest or pleasure in doing things?", "#VSPHQ9B")
+  * insert itemChoice("H1/T1/Q2", "Feeling down\, depressed\, or hopeless?", "#VSPHQ9B")
+  * insert itemChoice("H1/T1/Q3", "Trouble falling or staying asleep\, or sleeping too much?", "#VSPHQ9B")
+  * insert itemChoice("H1/T1/Q4", "Feeling tired or having little energy?", "#VSPHQ9B")
+  * insert itemChoice("H1/T1/Q5", "Poor appetite or overeating?", "#VSPHQ9B")
+  * insert itemChoice("H1/T1/Q6", "Feeling bad about yourself - or that you are a failure or have let yourself or your family down?", "#VSPHQ9B")
+  * insert itemChoice("H1/T1/Q7", "Trouble concentrating on things\, such as reading the newspaper or watching television?", "#VSPHQ9B")
+  * insert itemChoice("H1/T1/Q8", "Moving or speaking so slowly that other people could gave noticed? Or so fidgety or restless that you have been moving a lot more than usual?", "#VSPHQ9B")
+  * insert itemChoice("H1/T1/Q9", "Thoughts that you would be better off dead\, or thoughts of hurting yourself in some way?", "#VSPHQ9B")
 
-Instance: VSPHQ9
+Instance: VSPHQ9B
 InstanceOf: SDCValueSet
 Usage: #inline
-* url = "http://hl7.org/fhir/uv/sdc/ValueSet/VSPHQ9"
-* name = "VSPHQ9"
+//* url = "http://hl7.org/fhir/uv/sdc/ValueSet/VSPHQ9B"
+* name = "VSPHQ9B"
 * status = #active
 * description = "The answer list for questions addressing the frequency in which patient reports experiencing behaviors that are assessed in the PHQ-9 Questionnaire."
 * immutable = true

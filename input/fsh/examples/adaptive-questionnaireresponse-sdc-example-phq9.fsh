@@ -60,7 +60,7 @@ Usage: #inline
 Instance: VSPHQ9
 InstanceOf: SDCValueSet
 Usage: #inline
-* url = "http://hl7.org/fhir/uv/sdc/ValueSet/VSPHQ9"
+//* url = "http://hl7.org/fhir/uv/sdc/ValueSet/VSPHQ9"
 * name = "VSPHQ9"
 * status = #active
 * description = "The answer list for questions addressing the frequency in which patient reports experiencing behaviors that are assessed in the PHQ-9 Questionnaire."

@@ -75,7 +75,6 @@ Usage: #definition
     * insert SearchParam(#SHOULD, "identifier", #token, http://hl7.org/fhir/SearchParameter/conformance-identifier)
     * insert SearchParam(#SHOULD, "supplements", #reference, http://hl7.org/fhir/SearchParameter/CodeSystem-supplements)
     * insert SearchParam(#SHOULD, "title", #string, http://hl7.org/fhir/SearchParameter/conformance-title)
-    * insert SearchParam(#MAY, "description", #string, http://hl7.org/fhir/SearchParameter/conformance-description) 
     * insert SearchParam(#MAY, "jurisdiction", #token, http://hl7.org/fhir/SearchParameter/conformance-jurisdiction)
     * insert SearchParam(#MAY, "language", #token, http://hl7.org/fhir/SearchParameter/CodeSystem-language)
   * resource[+]
