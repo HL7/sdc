@@ -46,8 +46,10 @@
     <li>
       In theory, it is possible to use Questionnaire as a user-facing interface to allow maintenance of one or more resources.  The source data can be used to
       <a href="populate.html">populate</a> the QuestionnaireResponse and once the response is 'submitted', the data can then be extracted and used to update
-      the existing resources.  For this to work, the <code>id</code> of the resource must be retained through the round-trip process to allow for the update.
-      This can be supported by storing the id as a <a href="{{site.data.fhir.ver.ext}}/StructureDefinition-questionnaire-hidden.html">hidden</a> question not shown to the
+      the existing resources.  For this to work, the <code>id</code> of the resource must be retained through the round-trip process to allow for the update,
+      and is only safe if every single data element in the existing resource instance (including extensions) is going to be correctly populated by the Questionnaire.
+      Otherwise, the process will delete any data not present in the QuestionnaireResponse - including data that may not even have been renderable via the Questionnaire.<br/>
+      Updates can be supported by storing the id as a <a href="{{site.data.fhir.ver.ext}}/StructureDefinition-questionnaire-hidden.html">hidden</a> question not shown to the
       user.  This question item would have a type of 'string' and, if using the definition-based extraction approach, a definition that corresponded to the 
       'id' element of the relevant resource type (e.g. <code>http://hl7.org/fhir/StructureDefinition/AllergyIntolerance#AllergyIntolerance.id</code>).     
       Note that the inclusion of the id as a hidden question is only relevant for the definition-based and StructureMap-based approaches. It is not needed
