@@ -22,7 +22,7 @@ Description: "Defines additional capabilities for controlling the rendering of t
       $questionnaire-itemControl named itemControl 0..1 MS and
       $questionnaire-choiceOrientation named choiceOrientation 0..1 and
       $questionnaire-displayCategory named displayCategory 0..1 MS and
-      $questionnaire-supportLink named supportLink 0..* and
+      $questionnaire-supportHyperlink named supportHyperlink 0..* and
       ChoiceColumnExtension named choiceColumn 0..* and
       WidthExtension named width 0..1 and
       $questionnaire-sliderStepValue named sliderStepValue 0..1 and

@@ -242,8 +242,13 @@ Usage: #example
   * type = #group
   * item[+]
     * extension[+]
-      * url = "http://hl7.org/fhir/StructureDefinition/questionnaire-supportLink"
-      * valueUri = "http://hl7.org/fhir/StructureDefinition/questionnaire-supportLink"
+      * url = "http://hl7.org/fhir/StructureDefinition/questionnaire-supportHyperlink"
+      * extension[+]
+        * url = "label"
+        * valueString = "More info"
+      * extension[+]
+        * url = "link"
+        * valueUri = "https://hl7.org/fhir/extensions/StructureDefinition-questionnaire-supportHyperlink.html"
     * extension[+]
       * url = "http://hl7.org/fhir/StructureDefinition/questionnaire-itemControl"
       * valueCodeableConcept = $questionnaire-item-control#radio-button "Radio Button"

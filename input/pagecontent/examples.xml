@@ -522,23 +522,23 @@ i.fa {
   <p>To add a a support link to a question that will provide more information to the user. (<a href="Questionnaire-questionnaire-sdc-profile-example-render.html">Example Questionnaire</a>)</p>
   <div class="tabs">
     <div class="tab">
-      <input type="radio" id="tab-supportLink-1" name="tab-supportLink-group-2" checked="true"/>
-      <label for="tab-supportLink-1">Sample Question</label>
+      <input type="radio" id="tab-supportHyperlink-1" name="tab-supportHyperlink-group-2" checked="true"/>
+      <label for="tab-supportHyperlink-1">Sample Question</label>
       <div class="content-in-tab">
-      <p>Have you traveled outside the country within the last 14 days? <button class="button" onclick="window.open('{{site.data.fhir.ver.ext}}/StructureDefinition-questionnaire-supportlink.html'); return false;">?</button><br/>
+      <p>Have you traveled outside the country within the last 14 days? <button class="button" onclick="window.open('{{site.data.fhir.ver.ext}}/StructureDefinition-questionnaire-supportHyperlink.html'); return false;">More info</button><br/>
         <input type="radio" id="yes" name="yesno" value="Y"> Yes  </input><br/>
-          <input type="radio" id="no" name="yesno" value="N"> No  </input>
+        <input type="radio" id="no" name="yesno" value="N"> No  </input>
         </p>
       </div>
     </div>
     <div class="tab">
-      <input type="radio" id="tab-supportLink-2" name="tab-supportLink-group-2"/>
-      <label for="tab-supportLink-2">JSON</label>
+      <input type="radio" id="tab-supportHyperlink-2" name="tab-supportHyperlink-group-2"/>
+      <label for="tab-supportHyperlink-2">JSON</label>
       <div class="content-in-tab">{% fragment Questionnaire/questionnaire-sdc-profile-example-render JSON BASE:descendants().select(item).where(linkId='3.1') %}</div>
     </div>
     <div class="tab">
-      <input type="radio" id="tab-supportLink-3" name="tab-supportLink-group-2"/>
-      <label for="tab-supportLink-3">XML</label>
+      <input type="radio" id="tab-supportHyperlink-3" name="tab-supportHyperlink-group-2"/>
+      <label for="tab-supportHyperlink-3">XML</label>
       <div class="content-in-tab">{% fragment Questionnaire/questionnaire-sdc-profile-example-render XML BASE:descendants().select(item).where(linkId='3.1') %}</div>
     </div>
   </div>

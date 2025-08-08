@@ -1,8 +1,8 @@
 == Suppressed Messages ==
 # 00a These are issues with inter-version extensions.  They should be fixed when the next inter-version extension package is out
-#Constraint failed: sdc-2: 'If version is present, versionAlgorithm must be present.'%
-#%versionAlgorithm could not be resolved%
-#Value is 'http://hl7.org/fhir/5.0/StructureDefinition/extension-Questionnaire.versionAlgorithm%5Bx%5D' but is fixed to 'http://hl7.org/fhir/5.0/StructureDefinition/extension-Questionnaire.versionAlgorithm[x]' in the profile http://hl7.org/fhir/5.0/StructureDefinition/extension-Questionnaire.versionAlgorithm[x]|4.0.1#Extension.url
+Constraint failed: sdc-2: 'If version is present, versionAlgorithm must be present.'%
+%versionAlgorithm could not be resolved%
+Value is 'http://hl7.org/fhir/5.0/StructureDefinition/extension-Questionnaire.versionAlgorithm%5Bx%5D' but is fixed to 'http://hl7.org/fhir/5.0/StructureDefinition/extension-Questionnaire.versionAlgorithm[x]' in the profile http://hl7.org/fhir/5.0/StructureDefinition/extension-Questionnaire.versionAlgorithm[x]|4.0.1#Extension.url
 ERROR: Questionnaire/questionnaire-sdc-profile-example-PHQ9: Questionnaire.contained[0]/*ValueSet/VSPHQ9*/.expansion.contains[0].extension[0].extension[0]: Constraint failed: ext-1: 'Must have either extensions or value[x], not both' (defined in http://hl7.org/fhir/StructureDefinition/Extension)
 ERROR: Questionnaire/questionnaire-sdc-profile-example-PHQ9: Questionnaire.contained[0]/*ValueSet/VSPHQ9*/.expansion.contains[0].extension[0].extension[0][url='value%5Bx%5D']: Sub-extension url 'value%5Bx%5D' is not defined by the Extension http://hl7.org/fhir/5.0/StructureDefinition/extension-ValueSet.expansion.contains.property|4.0.1
 ERROR: Questionnaire/questionnaire-sdc-profile-example-PHQ9: Questionnaire.contained[0]/*ValueSet/VSPHQ9*/.expansion.contains[0].extension[0].extension[2][url='value[x]']: Sub-extension url 'value[x]' is not defined by the Extension http://hl7.org/fhir/5.0/StructureDefinition/extension-ValueSet.expansion.contains.property|4.0.1
