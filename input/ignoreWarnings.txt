@@ -1,8 +1,5 @@
 == Suppressed Messages ==
-# 00a This is defined in R5, but this IG can't point to R5 to access it.  (This will presumably be resolved with the cross-version extension package when it exists)
-URL value 'http://hl7.org/fhir/version-algorithm' does not resolve
-
-# 00b These are late-breaking issues from the publisher.  Their impact isn't sigificant enough to stop things from going to ballot.  First is raised here: https://chat.fhir.org/#narrow/channel/179252-IG-creation/topic/New.20weird.20terminology.20issue.20in.20SDC.  Second set is ongoing discussioni with toolsmiths
+# 00a These are issues with inter-version extensions.  They should be fixed when the next inter-version extension package is out
 ERROR: Bundle/questionnaire-sdc-profile-example: Bundle.entry[0].resource/*Questionnaire/F8-1.2*/.extension[0].url: Value is 'http://hl7.org/fhir/5.0/StructureDefinition/extension-Questionnaire.versionAlgorithm%5Bx%5D' but is fixed to 'http://hl7.org/fhir/5.0/StructureDefinition/extension-Questionnaire.versionAlgorithm[x]' in the profile http://hl7.org/fhir/5.0/StructureDefinition/extension-Questionnaire.versionAlgorithm[x]|4.0.1#Extension.url
 ERROR: Bundle/questionnaire-sdc-profile-example: Bundle.entry[0].resource/*Questionnaire/F8-1.2*/.extension[0].value.ofType(Coding).system: No definition could be found for URL value 'http://hl7.org/fhir/version-algorithm'
 ERROR: Bundle/questionnaire-sdc-profile-example: Bundle.entry[0].resource/*Questionnaire/F8-1.2*/.extension[0].value.ofType(Coding): Unknown Code System 'http://hl7.org/fhir/version-algorithm'
@@ -254,64 +251,24 @@ ERROR: QuestionnaireResponse/adaptive-questionnaireresponse-sdc-example-phq9: Qu
 ERROR: QuestionnaireResponse/adaptive-questionnaireresponse-sdc-example-phq9: QuestionnaireResponse.contained[1]/*ValueSet/VSPHQ9*/.expansion.contains[3].extension[0].extension[1][url='value[x]']: Sub-extension url 'value[x]' is not defined by the Extension http://hl7.org/fhir/5.0/StructureDefinition/extension-ValueSet.expansion.contains.property|4.0.1
 ERROR: QuestionnaireResponse/adaptive-questionnaireresponse-sdc-example-phq9: QuestionnaireResponse.contained[1]/*ValueSet/VSPHQ9*/.expansion.contains[3].extension[0].extension[2]: Constraint failed: ext-1: 'Must have either extensions or value[x], not both' (defined in http://hl7.org/fhir/StructureDefinition/Extension)
 ERROR: QuestionnaireResponse/adaptive-questionnaireresponse-sdc-example-phq9: QuestionnaireResponse.contained[1]/*ValueSet/VSPHQ9*/.expansion.contains[3].extension[0].extension[2][url='value%5Bx%5D']: Sub-extension url 'value%5Bx%5D' is not defined by the Extension http://hl7.org/fhir/5.0/StructureDefinition/extension-ValueSet.expansion.contains.property|4.0.1
-ERROR: StructureDefinition-sdc-questionnaire-behave-definitions.html#/html/body/div/div/div/div/div/div/div/table/tr/td/p/a at Line 1742, column 1834: The link 'http://hl7.org/fhir/extensions/5.2.0codesystem-concept-properties.html#concept-properties-itemWeight' for "itemWeight property" cannot be resolved
-ERROR: StructureDefinition-sdc-questionnaire-behave-definitions.html#/html/body/div/div/div/div/div/div/div/table/tr/td/p/a at Line 800, column 1842: The link 'http://hl7.org/fhir/extensions/5.2.0codesystem-concept-properties.html#concept-properties-itemWeight' for "itemWeight property" cannot be resolved
-ERROR: StructureDefinition-sdc-questionnaireresponse-adapt-definitions.html#/html/body/div/div/div/div/div/div/div/table/tr/td/p/a at Line 495, column 1847: The link 'http://hl7.org/fhir/extensions/5.2.0codesystem-concept-properties.html#concept-properties-itemWeight' for "itemWeight property" cannot be resolved
-ERROR: StructureDefinition-sdc-questionnaireresponse-adapt-definitions.html#/html/body/div/div/div/div/div/div/div/table/tr/td/p/a at Line 733, column 1839: The link 'http://hl7.org/fhir/extensions/5.2.0codesystem-concept-properties.html#concept-properties-itemWeight' for "itemWeight property" cannot be resolved
-ERROR: StructureDefinition-sdc-questionnaireresponse-definitions.html#/html/body/div/div/div/div/div/div/div/table/tr/td/p/a at Line 501, column 1847: The link 'http://hl7.org/fhir/extensions/5.2.0codesystem-concept-properties.html#concept-properties-itemWeight' for "itemWeight property" cannot be resolved
-ERROR: StructureDefinition-sdc-questionnaireresponse-definitions.html#/html/body/div/div/div/div/div/div/div/table/tr/td/p/a at Line 757, column 1840: The link 'http://hl7.org/fhir/extensions/5.2.0codesystem-concept-properties.html#concept-properties-itemWeight' for "itemWeight property" cannot be resolved
-ERROR: StructureDefinition-sdc-questionnaireresponsecommon-definitions.html#/html/body/div/div/div/div/div/div/div/table/tr/td/p/a at Line 498, column 1847: The link 'http://hl7.org/fhir/extensions/5.2.0codesystem-concept-properties.html#concept-properties-itemWeight' for "itemWeight property" cannot be resolved
-ERROR: StructureDefinition-sdc-questionnaireresponsecommon-definitions.html#/html/body/div/div/div/div/div/div/div/table/tr/td/p/a at Line 794, column 1839: The link 'http://hl7.org/fhir/extensions/5.2.0codesystem-concept-properties.html#concept-properties-itemWeight' for "itemWeight property" cannot be resolved
-ERROR: StructureDefinition/SdcQuestionLibrary: StructureDefinition.snapshot.element[14]: The element maxLength is prohibited on the element SdcQuestionLibrary.name.first in the context of a specialization
-ERROR: StructureDefinition/SdcQuestionLibrary: StructureDefinition.snapshot.element[15]: The element maxLength is prohibited on the element SdcQuestionLibrary.name.last in the context of a specialization
-ERROR: StructureMap/QuestionnairePopulationTransform: StructureMap.group[0].rule[4].rule[0].rule[0].rule[0].source[0]: The type Bundle is not valid in the source context Bundle.entry.resource. The possible types are [Resource]
-ERROR: StructureMap/QuestionnairePopulationTransform: StructureMap.group[0].rule[4].rule[1].rule[0].source[0]: The type Bundle is not valid in the source context Bundle.entry.resource. The possible types are [Resource]
-ERROR: StructureMap/QuestionnairePopulationTransform: StructureMap.group[2].rule[0].rule[0].source[0]: The type MedicationStatement is not valid in the source context Bundle.entry.resource. The possible types are [Resource]
+WARNING: StructureDefinition/sdc-questionnairecommon: StructureDefinition.snapshot.element[33].constraint[16]: que-14: Reference to an unknown extension - double check that the URL 'http://hl7.org/fhir/5.0/StructureDefinition/extension-Questionnaire.item.answerConstraint' is correct
+
+# 00b Other issues
 ERROR: StructureMap/QuestionnairePopulationTransform: StructureMap.group[2].rule[0].rule[1].rule[0].source[0]: The source path medResource.status refers to the path Bundle.entry.resource.status which is unknown
-ERROR: StructureMap/QuestionnairePopulationTransform: StructureMap.group[2].rule[0].rule[1].source[0]: The type MedicationStatement is not valid in the source context Bundle.entry.resource. The possible types are [Resource]
+
+# 00c Other issue
 ERROR: ValueSet.where(id = 'LL2821-8'): Cannot invoke "org.hl7.fhir.r4.model.Extension.getValue()" because the return value of "org.hl7.fhir.r4.model.Extension.getExtensionByUrl(String)" is null
 ERROR: ValueSet.where(id = 'll2654-3'): Cannot invoke "org.hl7.fhir.r4.model.Extension.getValue()" because the return value of "org.hl7.fhir.r4.model.Extension.getExtensionByUrl(String)" is null
 ERROR: ValueSet.where(id = 'll2655-0'): Cannot invoke "org.hl7.fhir.r4.model.Extension.getValue()" because the return value of "org.hl7.fhir.r4.model.Extension.getExtensionByUrl(String)" is null
 ERROR: ValueSet.where(id = 'll2659-2'): Cannot invoke "org.hl7.fhir.r4.model.Extension.getValue()" because the return value of "org.hl7.fhir.r4.model.Extension.getExtensionByUrl(String)" is null
-WARNING: Questionnaire/questionnaire-sdc-profile-example-cqf-PHQ9: Questionnaire.item[0].answerValueSet: A definition could not be found for Canonical URL 'http://loinc.org/vs/LL358-3'
-WARNING: Questionnaire/questionnaire-sdc-profile-example-cqf-PHQ9: Questionnaire.item[1].answerValueSet: A definition could not be found for Canonical URL 'http://loinc.org/vs/LL358-3'
-WARNING: Questionnaire/questionnaire-sdc-profile-example-cqf-PHQ9: Questionnaire.item[2].answerValueSet: A definition could not be found for Canonical URL 'http://loinc.org/vs/LL358-3'
-WARNING: Questionnaire/questionnaire-sdc-profile-example-cqf-PHQ9: Questionnaire.item[3].answerValueSet: A definition could not be found for Canonical URL 'http://loinc.org/vs/LL358-3'
-WARNING: Questionnaire/questionnaire-sdc-profile-example-cqf-PHQ9: Questionnaire.item[4].answerValueSet: A definition could not be found for Canonical URL 'http://loinc.org/vs/LL358-3'
-WARNING: Questionnaire/questionnaire-sdc-profile-example-cqf-PHQ9: Questionnaire.item[5].answerValueSet: A definition could not be found for Canonical URL 'http://loinc.org/vs/LL358-3'
-WARNING: Questionnaire/questionnaire-sdc-profile-example-cqf-PHQ9: Questionnaire.item[6].answerValueSet: A definition could not be found for Canonical URL 'http://loinc.org/vs/LL358-3'
-WARNING: Questionnaire/questionnaire-sdc-profile-example-cqf-PHQ9: Questionnaire.item[7].answerValueSet: A definition could not be found for Canonical URL 'http://loinc.org/vs/LL358-3'
-WARNING: Questionnaire/questionnaire-sdc-profile-example-cqf-PHQ9: Questionnaire.item[9].answerValueSet: A definition could not be found for Canonical URL 'http://loinc.org/vs/LL358-3'
-WARNING: Questionnaire/questionnaire-sdc-profile-example-form-behavior: Questionnaire.item[1].item[1].answerValueSet: A definition could not be found for Canonical URL 'http://loinc.org/vs/LL4882-8'
-WARNING: Questionnaire/questionnaire-sdc-profile-example-render: Questionnaire.item[2].item[1].answerValueSet: A definition could not be found for Canonical URL 'http://loinc.org/vs/LL715-4'
-WARNING: Questionnaire/questionnaire-sdc-profile-example-ussg-fht: Questionnaire.item[1].item[0].item[10].answerValueSet: A definition could not be found for Canonical URL 'http://loinc.org/vs/LL628-9'
-WARNING: Questionnaire/questionnaire-sdc-profile-example-ussg-fht: Questionnaire.item[1].item[0].item[1].answerValueSet: A definition could not be found for Canonical URL 'http://loinc.org/vs/LL1-9'
-WARNING: Questionnaire/questionnaire-sdc-profile-example-ussg-fht: Questionnaire.item[1].item[0].item[3].answerValueSet: A definition could not be found for Canonical URL 'http://loinc.org/vs/LL623-0'
-WARNING: Questionnaire/questionnaire-sdc-profile-example-ussg-fht: Questionnaire.item[1].item[0].item[4].answerValueSet: A definition could not be found for Canonical URL 'http://loinc.org/vs/LL361-7'
-WARNING: Questionnaire/questionnaire-sdc-profile-example-ussg-fht: Questionnaire.item[1].item[0].item[5].answerValueSet: A definition could not be found for Canonical URL 'http://loinc.org/vs/LL361-7'
-WARNING: Questionnaire/questionnaire-sdc-profile-example-ussg-fht: Questionnaire.item[1].item[0].item[9].answerValueSet: A definition could not be found for Canonical URL 'http://loinc.org/vs/LL629-7'
-WARNING: Questionnaire/questionnaire-sdc-profile-example-ussg-fht: Questionnaire.item[1].item[1].item[0].answerValueSet: A definition could not be found for Canonical URL 'http://loinc.org/vs/LL626-3'
-WARNING: Questionnaire/questionnaire-sdc-profile-example-ussg-fht: Questionnaire.item[1].item[1].item[1].answerValueSet: A definition could not be found for Canonical URL 'http://loinc.org/vs/LL619-8'
-WARNING: Questionnaire/questionnaire-sdc-profile-example-ussg-fht: Questionnaire.item[2].item[0].item[0].answerValueSet: A definition could not be found for Canonical URL 'http://loinc.org/vs/LL621-4'
-WARNING: Questionnaire/questionnaire-sdc-profile-example-ussg-fht: Questionnaire.item[2].item[0].item[2].answerValueSet: A definition could not be found for Canonical URL 'http://loinc.org/vs/LL1-9'
-WARNING: Questionnaire/questionnaire-sdc-profile-example-ussg-fht: Questionnaire.item[2].item[0].item[3].answerValueSet: A definition could not be found for Canonical URL 'http://loinc.org/vs/LL361-7'
-WARNING: Questionnaire/questionnaire-sdc-profile-example-ussg-fht: Questionnaire.item[2].item[0].item[3].item[0].item[0].answerValueSet: A definition could not be found for Canonical URL 'http://loinc.org/vs/LL627-1'
-WARNING: Questionnaire/questionnaire-sdc-profile-example-ussg-fht: Questionnaire.item[2].item[0].item[3].item[0].item[1].answerValueSet: A definition could not be found for Canonical URL 'http://loinc.org/vs/LL619-8'
-WARNING: Questionnaire/questionnaire-sdc-profile-example-ussg-fht: Questionnaire.item[2].item[0].item[4].answerValueSet: A definition could not be found for Canonical URL 'http://loinc.org/vs/LL623-0'
-WARNING: Questionnaire/questionnaire-sdc-profile-example-ussg-fht: Questionnaire.item[2].item[0].item[5].answerValueSet: A definition could not be found for Canonical URL 'http://loinc.org/vs/LL623-0'
-WARNING: Questionnaire/questionnaire-sdc-profile-example-ussg-fht: Questionnaire.item[2].item[0].item[6].answerValueSet: A definition could not be found for Canonical URL 'http://loinc.org/vs/LL629-7'
-WARNING: Questionnaire/questionnaire-sdc-profile-example-ussg-fht: Questionnaire.item[2].item[0].item[7].answerValueSet: A definition could not be found for Canonical URL 'http://loinc.org/vs/LL628-9'
-WARNING: Questionnaire/questionnaire-sdc-profile-example-ussg-fht: Questionnaire.item[2].item[1].item[0].answerValueSet: A definition could not be found for Canonical URL 'http://loinc.org/vs/LL626-3'
-WARNING: Questionnaire/questionnaire-sdc-profile-example-ussg-fht: Questionnaire.item[2].item[1].item[1].answerValueSet: A definition could not be found for Canonical URL 'http://loinc.org/vs/LL619-8'
-WARNING: StructureDefinition/sdc-questionnairecommon: StructureDefinition.snapshot.element[33].constraint[16]: que-14: Reference to an unknown extension - double check that the URL 'http://hl7.org/fhir/5.0/StructureDefinition/extension-Questionnaire.item.answerConstraint' is correct
-WARNING: ValueSet/dex-mimetype: ValueSet.compose.include[0].system: No definition could be found for URL value 'urn:ietf:bcp:13'
+
 
 # 01. This resource is being used to invoke an operation and narrative isn't relevant (and isn't auto-generated by the publisher)
 WARNING: Parameters/sdc-assemble-request: Parameters.parameter[0].resource/*Questionnaire/sdc-modular-root*/: Constraint failed: dom-6: 'A resource should have narrative for robust management' (defined in http://hl7.org/fhir/StructureDefinition/DomainResource) (Best Practice Recommendation)
 
 # 02. These are inherited from the R4 core spec (and weren't deprecated at the time R4 was published)
-INFORMATION: StructureDefinition/parameters-questionnaire-assemble-in: StructureDefinition.snapshot.element[4].binding.extension[0]: The extension http://hl7.org/fhir/StructureDefinition/elementdefinition-maxValueSet|5.2.0 is deprecated
-INFORMATION: StructureDefinition/sdc-codesystem: StructureDefinition.snapshot.element[59].type[0].extension[1]: The extension http://hl7.org/fhir/StructureDefinition/regex|5.2.0 is deprecated with the note This was deprecated in favor of using a constraint on the element using FHIRPath, since constraints allow for the provision of a human readable message associated with the regex
+INFORMATION: StructureDefinition/parameters-questionnaire-assemble-in: StructureDefinition.snapshot.element[4].binding.extension[0]: The extension http://hl7.org/fhir/StructureDefinition/elementdefinition-maxValueSet|5.3.0-ballot-tc1
+INFORMATION: StructureDefinition/sdc-codesystem: StructureDefinition.snapshot.element[59].type[0].extension[1]: The extension http://hl7.org/fhir/StructureDefinition/regex|5.3.0-ballot-tc1 is deprecated with the note This was deprecated in favor of using a constraint on the element using FHIRPath, since constraints allow for the provision of a human readable message associated with the regex
 
 # 03. While not inherited as a URL from dependent packages, this is a valid terminology service URL
 WARNING: Questionnaire/questionnaire-sdc-profile-example-loinc: Questionnaire.extension[1].value.ofType(url): No definition could be found for URL value 'https://tx.fhir.org/r4'
@@ -378,45 +335,13 @@ ERROR: StructureMap/QuestionnairePopulationTransform: StructureMap.group[2].rule
 %The link 'ValueSet-HERF-1.2_d1e7220-vs.html' for "d1e7220-vs" cannot be resolved
 %The link 'ValueSet-HERF-1.2_d1e7422-vs.html' for "d1e7422-vs" cannot be resolved
 
-# 06. These links will resolve once the ballot is published.  The issues are a result of interplay between the extensions pack and the SDC IG
-The link 'http://hl7.org/fhir/uv/sdc/STU4-ballot/behavior.html#cqf-calculatedValue' for "SDC implementation guide" cannot be resolved
-The link 'http://hl7.org/fhir/uv/sdc/STU4-ballot/behavior.html#cqf-expression' for "SDC implementation guide" cannot be resolved
-The link 'http://hl7.org/fhir/uv/sdc/STU4-ballot/behavior.html#cqf-library' for "SDC implementation guide" cannot be resolved
-The link 'http://hl7.org/fhir/uv/sdc/STU4-ballot/behavior.html#maxDecimalPlaces' for "SDC implementation guide" cannot be resolved
-The link 'http://hl7.org/fhir/uv/sdc/STU4-ballot/behavior.html#maxOccurs' for "SDC implementation guide" cannot be resolved
-The link 'http://hl7.org/fhir/uv/sdc/STU4-ballot/behavior.html#maxSize' for "SDC implementation guide" cannot be resolved
-The link 'http://hl7.org/fhir/uv/sdc/STU4-ballot/behavior.html#maxValue' for "SDC implementation guide" cannot be resolved
-The link 'http://hl7.org/fhir/uv/sdc/STU4-ballot/behavior.html#mimeType' for "SDC implementation guide" cannot be resolved
-The link 'http://hl7.org/fhir/uv/sdc/STU4-ballot/behavior.html#minLength' for "SDC implementation guide" cannot be resolved
-The link 'http://hl7.org/fhir/uv/sdc/STU4-ballot/behavior.html#minOccurs' for "SDC implementation guide" cannot be resolved
-The link 'http://hl7.org/fhir/uv/sdc/STU4-ballot/behavior.html#minValue' for "SDC implementation guide" cannot be resolved
-The link 'http://hl7.org/fhir/uv/sdc/STU4-ballot/behavior.html#optionExclusive' for "SDC implementation guide" cannot be resolved
-The link 'http://hl7.org/fhir/uv/sdc/STU4-ballot/behavior.html#referenceProfile' for "SDC implementation guide" cannot be resolved
-The link 'http://hl7.org/fhir/uv/sdc/STU4-ballot/behavior.html#referenceResource' for "SDC implementation guide" cannot be resolved
-The link 'http://hl7.org/fhir/uv/sdc/STU4-ballot/behavior.html#signatureRequired' for "SDC implementation guide" cannot be resolved
-The link 'http://hl7.org/fhir/uv/sdc/STU4-ballot/behavior.html#unitOption' for "SDC implementation guide" cannot be resolved
-The link 'http://hl7.org/fhir/uv/sdc/STU4-ballot/behavior.html#unitValusSet' for "SDC implementation guide" cannot be resolved
-The link 'http://hl7.org/fhir/uv/sdc/STU4-ballot/behavior.html#usageMode' for "SDC implementation guide" cannot be resolved
-The link 'http://hl7.org/fhir/uv/sdc/STU4-ballot/behavior.html#variable' for "SDC implementation guide" cannot be resolved
-The link 'http://hl7.org/fhir/uv/sdc/STU4-ballot/rendering.html#choiceOrientation' for "SDC implementation guide" cannot be resolved
-The link 'http://hl7.org/fhir/uv/sdc/STU4-ballot/rendering.html#displayCategory' for "SDC implementation guide" cannot be resolved
-The link 'http://hl7.org/fhir/uv/sdc/STU4-ballot/rendering.html#entryFormat' for "SDC implementation guide" cannot be resolved
-The link 'http://hl7.org/fhir/uv/sdc/STU4-ballot/rendering.html#hidden' for "SDC implementation guide" cannot be resolved
-The link 'http://hl7.org/fhir/uv/sdc/STU4-ballot/rendering.html#itemControl' for "SDC implementation guide" cannot be resolved
-The link 'http://hl7.org/fhir/uv/sdc/STU4-ballot/rendering.html#optionPrefix' for "SDC implementation guide" cannot be resolved
-The link 'http://hl7.org/fhir/uv/sdc/STU4-ballot/rendering.html#rendering-style' for "SDC implementation guide" cannot be resolved
-The link 'http://hl7.org/fhir/uv/sdc/STU4-ballot/rendering.html#rendering-xhtml' for "SDC implementation guide" cannot be resolved
-The link 'http://hl7.org/fhir/uv/sdc/STU4-ballot/rendering.html#sliderStepValue' for "SDC implementation guide" cannot be resolved
-The link 'http://hl7.org/fhir/uv/sdc/STU4-ballot/rendering.html#supportLink' for "SDC implementation guide" cannot be resolved
-The link 'http://hl7.org/fhir/uv/sdc/STU4-ballot/rendering.html#valueset-label' for "SDC implementation guide" cannot be resolved
-
-# 07. These are example code systems and as such don't ever need to go to THO.  (This message shouldn't be raised by the validator - https://chat.fhir.org/#narrow/channel/179252-IG-creation/topic/Don't.20warn.20about.20moving.20to.20THO.20for.20example.20code.20systems)
+# 06. These are example code systems and as such don't ever need to go to THO.  (This message shouldn't be raised by the validator - https://chat.fhir.org/#narrow/channel/179252-IG-creation/topic/Don't.20warn.20about.20moving.20to.20THO.20for.20example.20code.20systems)
 INFORMATION: CodeSystem/AustralianStateCodes: CodeSystem: Most code systems defined in HL7 IGs will need to move to THO later during the process. Consider giving this code system a THO URL now (See https://confluence.hl7.org/display/TSMG/Terminology+Play+Book, and/or talk to TSMG)
 INFORMATION: CodeSystem/CSPHQ9: CodeSystem: Most code systems defined in HL7 IGs will need to move to THO later during the process. Consider giving this code system a THO URL now (See https://confluence.hl7.org/display/TSMG/Terminology+Play+Book, and/or talk to TSMG)
 INFORMATION: CodeSystem/chf-codes: CodeSystem: Most code systems defined in HL7 IGs will need to move to THO later during the process. Consider giving this code system a THO URL now (See https://confluence.hl7.org/display/TSMG/Terminology+Play+Book, and/or talk to TSMG)
 INFORMATION: CodeSystem/questionnaire-behavior-condition: CodeSystem: Most code systems defined in HL7 IGs will need to move to THO later during the process. Consider giving this code system a THO URL now (See https://confluence.hl7.org/display/TSMG/Terminology+Play+Book, and/or talk to TSMG)
 
-# 08. These are code systems for extensions with required bindings.  As such, they're not eligible to move to THO.  (This message shouldn't be raised by the validator - https://chat.fhir.org/#narrow/channel/179252-IG-creation/topic/Don't.20warn.20about.20moving.20to.20THO.20for.20example.20code.20systems)
+# 07. These are code systems for extensions with required bindings.  As such, they're not eligible to move to THO.  (This message shouldn't be raised by the validator - https://chat.fhir.org/#narrow/channel/179252-IG-creation/topic/Don't.20warn.20about.20moving.20to.20THO.20for.20example.20code.20systems)
 INFORMATION: CodeSystem/assemble-expectation: CodeSystem: Most code systems defined in HL7 IGs will need to move to THO later during the process. Consider giving this code system a THO URL now (See https://confluence.hl7.org/display/TSMG/Terminology+Play+Book, and/or talk to TSMG)
 INFORMATION: CodeSystem/collapsible: CodeSystem: Most code systems defined in HL7 IGs will need to move to THO later during the process. Consider giving this code system a THO URL now (See https://confluence.hl7.org/display/TSMG/Terminology+Play+Book, and/or talk to TSMG)
 INFORMATION: CodeSystem/entryMode: CodeSystem: Most code systems defined in HL7 IGs will need to move to THO later during the process. Consider giving this code system a THO URL now (See https://confluence.hl7.org/display/TSMG/Terminology+Play+Book, and/or talk to TSMG)
@@ -425,52 +350,53 @@ INFORMATION: CodeSystem/keyboardType: CodeSystem: Most code systems defined in H
 INFORMATION: CodeSystem/observation-extract-relationship: CodeSystem: Most code systems defined in HL7 IGs will need to move to THO later during the process. Consider giving this code system a THO URL now (See https://confluence.hl7.org/display/TSMG/Terminology+Play+Book, and/or talk to TSMG)
 INFORMATION: CodeSystem/questionnaire-answer-constraint: CodeSystem: Most code systems defined in HL7 IGs will need to move to THO later during the process. Consider giving this code system a THO URL now (See https://confluence.hl7.org/display/TSMG/Terminology+Play+Book, and/or talk to TSMG)
 
-# 09. The codes defined here will be moving to LOINC or some other external code system in a future release
+# 08. The codes defined here will be moving to LOINC or some other external code system in a future release
 INFORMATION: CodeSystem/temp: CodeSystem: Most code systems defined in HL7 IGs will need to move to THO later during the process. Consider giving this code system a THO URL now (See https://confluence.hl7.org/display/TSMG/Terminology+Play+Book, and/or talk to TSMG)
 
-# 10. These are used to template regular resources and can legitimately appear on any element in any resource.  As such, a context of Element is appropriate
+# 09. These are used to template regular resources and can legitimately appear on any element in any resource.  As such, a context of Element is appropriate
 Review the extension type for sdc-questionnaire-templateExtractContext: extensions should not have a context of Element unless it's really intended that they can be used anywhere
 Review the extension type for sdc-questionnaire-templateExtractValue: extensions should not have a context of Element unless it's really intended that they can be used anywhere
 
-# 11. The example code system isn't expected to resolve
+# 10. The example code system isn't expected to resolve
 A definition for CodeSystem 'http://example.org/medications' could not be found, so the code cannot be validated
 A definition for CodeSystem 'http://example.org/medications2' could not be found, so the code cannot be validated
 A definition for CodeSystem 'http://example.org/sdh/demo/CodeSystem/cc-screening-codes' could not be found, so the code cannot be validated
+A definition for CodeSystem 'http://example.org/fhir/CodeSystem/usage-contexts' could not be found, so the code cannot be validated
 The code provided AtRestaging cannot be validated in the options value set (D1e8407vs) in the questionnaire because the system http://example.org/nci.nih.gov/xml/owl/cadsr/form/form_design_identifier/3921052v1.0/question_identifier#3921071v1.0-cs could not be found
 The code provided G2 cannot be validated in the options value set (ValueSet[null]) in the questionnaire because the system http://example.org/nci.nih.gov/xml/owl/cadsr/form/form_design_identifier/3921052v1.0/question_identifier#3921085v1.0-cs could not be found
 The code provided Histologic cannot be validated in the options value set (ValueSet[null]) in the questionnaire because the system http://example.org/nci.nih.gov/xml/owl/cadsr/form/form_design_identifier/3921052v1.0/question_identifier#3921081v1.0-cs could not be found
 The code provided Primary cannot be validated in the options value set (D1e8086vs) in the questionnaire because the system http://example.org/nci.nih.gov/xml/owl/cadsr/form/form_design_identifier/3921052v1.0/question_identifier#3921060v1.0-cs could not be found
 
-# 12. The intention here is to provide an example of what a Questionnaire with a contained code system would look like
+# 11. The intention here is to provide an example of what a Questionnaire with a contained code system would look like
 %CodeSystems are referred to directly from Coding.system, so it's generally best for them not to be contained resources
 
-# 13. This content reflects a collection of resources used for transformation from a StructureMap, and as such, narrative isn't relevant
+# 12. This content reflects a collection of resources used for transformation from a StructureMap, and as such, narrative isn't relevant
 WARNING: Bundle/map-population-example: Bundle.entry[0].resource/*Bundle/2c256377-0dbf-4311-a123-14d87f22c5*/.entry[0].resource/*Patient/a0df9da6-3157-4b72-95f1-729853718c09*/: Constraint failed: dom-6: 'A resource should have narrative for robust management' (defined in http://hl7.org/fhir/StructureDefinition/DomainResource) (Best Practice Recommendation)
 WARNING: Bundle/map-population-example: Bundle.entry[1].resource/*Bundle/7b29ddd9-fdbf-4e6c-81f3-38f2d51934*/.entry[0].resource/*Condition/7cd8b889-5456-43d4-935c-abc10791ebd6*/: Constraint failed: dom-6: 'A resource should have narrative for robust management' (defined in http://hl7.org/fhir/StructureDefinition/DomainResource) (Best Practice Recommendation)
 WARNING: Bundle/map-population-example: Bundle.entry[2].resource/*Bundle/94e7a07b-0f81-4586-ad73-ef8ce3b7b7*/.entry[0].resource/*MedicationStatement/fe376aa6-83fb-4d0e-be60-ad959c57114f*/: Constraint failed: dom-6: 'A resource should have narrative for robust management' (defined in http://hl7.org/fhir/StructureDefinition/DomainResource) (Best Practice Recommendation)
 WARNING: Bundle/map-population-example: Bundle.entry[2].resource/*Bundle/94e7a07b-0f81-4586-ad73-ef8ce3b7b7*/.entry[1].resource/*MedicationStatement/01e65f9e-5412-4ac9-a1c2-c408ed485702*/: Constraint failed: dom-6: 'A resource should have narrative for robust management' (defined in http://hl7.org/fhir/StructureDefinition/DomainResource) (Best Practice Recommendation)
 WARNING: Bundle/map-population-example: Bundle.entry[2].resource/*Bundle/94e7a07b-0f81-4586-ad73-ef8ce3b7b7*/.entry[2].resource/*MedicationStatement/f59e4516-d2c6-4a2f-936b-d2c460bb92c6*/: Constraint failed: dom-6: 'A resource should have narrative for robust management' (defined in http://hl7.org/fhir/StructureDefinition/DomainResource) (Best Practice Recommendation)
 
-# 14. This is a response from an operation and isn't intended for human display, so a narrative isn't necessary/appropriate
+# 13. This is a response from an operation and isn't intended for human display, so a narrative isn't necessary/appropriate
 WARNING: Parameters/populate-response: Parameters.parameter[0].resource/*QuestionnaireResponse/questionnaireresponse-sdc-example-ussg-fht-answers*/: Constraint failed: dom-6: 'A resource should have narrative for robust management' (defined in http://hl7.org/fhir/StructureDefinition/DomainResource) (Best Practice Recommendation)
 
-# 15. These Parameters profiles only deal with either consuming or spitting out a bare resource - and we already have examples of that.  (The Parameters profiles only exist to ensure that specific Questionnaire or QuestionnaireRespones are used as the inputs or output - because the operation can't enforce that directly.)
+# 14. These Parameters profiles only deal with either consuming or spitting out a bare resource - and we already have examples of that.  (The Parameters profiles only exist to ensure that specific Questionnaire or QuestionnaireRespones are used as the inputs or output - because the operation can't enforce that directly.)
 WARNING: StructureDefinition.where(url = 'http://hl7.org/fhir/uv/sdc/StructureDefinition/parameters-questionnaire-next-question-in'): The Implementation Guide contains no examples for this profile
 WARNING: StructureDefinition.where(url = 'http://hl7.org/fhir/uv/sdc/StructureDefinition/parameters-questionnaire-next-question-out'): The Implementation Guide contains no examples for this profile
 WARNING: StructureDefinition.where(url = 'http://hl7.org/fhir/uv/sdc/StructureDefinition/parameters-questionnaire-process-response-in'): The Implementation Guide contains no examples for this profile
 WARNING: StructureDefinition.where(url = 'http://hl7.org/fhir/uv/sdc/StructureDefinition/parameters-questionnaireresponse-extract-in'): The Implementation Guide contains no examples for this profile
 
-# 16. This is a contained adaptive Questionnaire in QuestionnaireReponse profile, so ignoring this warning
+# 15. This is a contained adaptive Questionnaire in QuestionnaireReponse profile, so ignoring this warning
 WARNING: StructureDefinition.where(url = 'http://hl7.org/fhir/uv/sdc/StructureDefinition/sdc-questionnaire-adapt'): The Implementation Guide contains no examples for this profile
 
-# 17. These are incorrect status in the FHIR core spec and can't be corrected
+# 16. These are incorrect status in the FHIR core spec and can't be corrected
 Reference to draft CodeSystem http://hl7.org/fhir/CodeSystem/task-code|4.0.1
 Reference to draft CodeSystem urn:iso-astm:E1762-95:2013|4.0.1
 
-# 19. This is inherited from CQLLibrary and can't be fixed in this specification
-WARNING: StructureDefinition/sdc-library: StructureDefinition.snapshot.element[17].fixed.ofType(CodeableConcept): For the complex type CodeableConcept, consider using a pattern rather than a fixed value to avoid over-constraining the instance
+# 17. This is inherited from CQLLibrary and can't be fixed in this specification
+WARNING: StructureDefinition/sdc-library: StructureDefinition.snapshot.element[18].fixed.ofType(CodeableConcept): For the complex type CodeableConcept, consider using a pattern rather than a fixed value to avoid over-constraining the instance
 
-# 20. Questionnaire examples using the template-based extraction process have contained resources with partially complete content that includes extensions to indicate to the extraction engine how to complete the content - which can then make the extracted resource valid
+# 18. Questionnaire examples using the template-based extraction process have contained resources with partially complete content that includes extensions to indicate to the extraction engine how to complete the content - which can then make the extracted resource valid
 WARNING: Questionnaire/extract-complex-template2: Questionnaire.contained[0]/*Bundle/bunExtract*/.entry[2].resource.derivedFrom[0]: A Reference without an actual reference or identifier should have a display
 WARNING: Questionnaire/extract-complex-template2: Questionnaire.contained[0]/*Bundle/bunExtract*/.entry[2].resource.performer[0]: A Reference without an actual reference or identifier should have a display
 WARNING: Questionnaire/extract-complex-template2: Questionnaire.contained[0]/*Bundle/bunExtract*/.entry[2].resource/*Observation/null*/.derivedFrom[0]: A Reference without an actual reference or identifier should have a display
@@ -492,12 +418,12 @@ WARNING: Questionnaire/extract-complex-template: Questionnaire.contained[4]/*Obs
 WARNING: Questionnaire/extract-complex-template: Questionnaire.contained[4]/*Observation/obsTemplate*/.performer[0]: A Reference without an actual reference or identifier should have a display
 WARNING: Questionnaire/extract-complex-template: Questionnaire.contained[4]/*Observation/obsTemplate*/.subject: A Reference without an actual reference or identifier should have a display
 
-# 21. Static analysis of FML doesn't check `copy`, `cc` or `c` yet
+# 19. Static analysis of FML doesn't check `copy`, `cc` or `c` yet
 Transform c not checked yet
 Transform cc not checked yet
 Transform copy not checked yet
 
-# 22. StructureMap uses source statements as a trigger, not a datasource (or alternately uses the name itself rather than an alias)
+# 20. StructureMap uses source statements as a trigger, not a datasource (or alternately uses the name itself rather than an alias)
 INFORMATION: StructureMap/ExtractComplexSmap: StructureMap.group[0].rule[0].rule[0].source[0]: The source statement doesn't assign a variable to the source - check that this is what is intended
 INFORMATION: StructureMap/ExtractComplexSmap: StructureMap.group[0].rule[0].rule[1].rule[0].source[0]: The source statement doesn't assign a variable to the source - check that this is what is intended
 INFORMATION: StructureMap/ExtractComplexSmap: StructureMap.group[0].rule[0].rule[2].rule[0].rule[0].source[0]: The source statement doesn't assign a variable to the source - check that this is what is intended
@@ -562,7 +488,7 @@ INFORMATION: StructureMap/SDOHCCHungerVitalSignMap: StructureMap.group[3].rule[6
 INFORMATION: StructureMap/SDOHCCHungerVitalSignMap: StructureMap.group[3].rule[6].rule[1].source[0]: The source statement doesn't assign a variable to the source - check that this is what is intended
 INFORMATION: StructureMap/SDOHCCHungerVitalSignMap: StructureMap.group[3].rule[6].source[0]: The source statement doesn't assign a variable to the source - check that this is what is intended
 
-# 23. These info messages are because SDC examples have few extensions that are validated against the SDC profile, but these extensions are actually defined in the core or other profiles
+# 21. These info messages are because SDC examples have few extensions that are validated against the SDC profile, but these extensions are actually defined in the core or other profiles
 INFORMATION: Parameters/sdc-assemble-request: Parameters.parameter[0].resource/*Questionnaire/sdc-modular-root*/.item[0].extension[0]: This element does not match any known slice defined in the profile http://hl7.org/fhir/uv/sdc/StructureDefinition/sdc-questionnaire-modular|4.0.0-ballot (this may not be a problem, but you should check that it's not intended to match a slice)
 INFORMATION: Parameters/sdc-assemble-request: Parameters.parameter[0].resource/*Questionnaire/sdc-modular-root*/.item[4].extension[0]: This element does not match any known slice defined in the profile http://hl7.org/fhir/uv/sdc/StructureDefinition/sdc-questionnaire-modular|4.0.0-ballot (this may not be a problem, but you should check that it's not intended to match a slice)
 INFORMATION: Parameters/sdc-assemble-request: Parameters.parameter[0].resource/*Questionnaire/sdc-modular-root*/.item[4].extension[1]: This element does not match any known slice defined in the profile http://hl7.org/fhir/uv/sdc/StructureDefinition/sdc-questionnaire-modular|4.0.0-ballot (this may not be a problem, but you should check that it's not intended to match a slice)
@@ -699,18 +625,20 @@ INFORMATION: QuestionnaireResponse/adaptive-questionnaireresponse-sdc-example-ph
 INFORMATION: QuestionnaireResponse/adaptive-questionnaireresponse-sdc-example-phq9: QuestionnaireResponse.contained[1]/*ValueSet/VSPHQ9*/.expansion.contains[3].extension[0].extension[1]: This element does not match any known slice defined in the profile http://hl7.org/fhir/5.0/StructureDefinition/extension-ValueSet.expansion.contains.property|4.0.1 (this may not be a problem, but you should check that it's not intended to match a slice)
 INFORMATION: QuestionnaireResponse/adaptive-questionnaireresponse-sdc-example-phq9: QuestionnaireResponse.contained[1]/*ValueSet/VSPHQ9*/.expansion.contains[3].extension[0].extension[2]: This element does not match any known slice defined in the profile http://hl7.org/fhir/5.0/StructureDefinition/extension-ValueSet.expansion.contains.property|4.0.1 (this may not be a problem, but you should check that it's not intended to match a slice)
 
-# 24 This is an example code system used in a Questionnaire, so having a definition is unnecessary
+# 22 This is an example code system used in a Questionnaire, so having a definition is unnecessary
 WARNING: CodeSystem/CSPHQ9: CodeSystem.concept[0]: HL7 Defined CodeSystems should ensure that every concept has a definition
 
-# 25 This property exists in R5+ and is recognized by tools, even though the R4 version of the code system doesn't have it
+# 23 This property exists in R5+ and is recognized by tools, even though the R4 version of the code system doesn't have it
 WARNING: CodeSystem/CSPHQ9: CodeSystem.property[0]: The uri 'http://hl7.org/fhir/concept-properties#itemWeight' for the property 'itemWeight' implies a property with that URI exists in the CodeSystem FHIR Defined Concept Properties for http://hl7.org/fhir/concept-properties, or the code 'itemWeight' does, but neither were found
 
-# 26 We do want to pin to the extensions and THO versions, not the examples
-%to 5.2.0 from choices of 4.0.1 (hl7.fhir.r4.examples#4.0.1), 5.2.0 (hl7.fhir.uv.extensions.r4#5.2.0)
-Pinned the version of http://terminology.hl7.org/CodeSystem/condition-clinical to 3.0.0 from choices of 3.0.0 (hl7.terminology.r4#6.4.0), 4.0.1 (hl7.fhir.r4.examples#4.0.1)
-Pinned the version of http://terminology.hl7.org/CodeSystem/condition-ver-status to 2.0.1 from choices of 2.0.1 (hl7.terminology.r4#6.4.0), 4.0.1 (hl7.fhir.r4.examples#4.0.1)
-Pinned the version of http://terminology.hl7.org/ValueSet/v3-ServiceDeliveryLocationRoleType to 3.0.0 from choices of 2014-03-26 (hl7.fhir.r4.examples#4.0.1), 3.0.0 (hl7.terminology.r4#6.4.0)
+# 24 We do want to pin to the extensions and THO versions, not the examples
+%to 2.0.1 from choices of 2.0.1 (hl7.terminology.r4#6.5.0), 4.0.1 (hl7.fhir.r4.examples#4.0.1)
+%to 3.0.0 from choices of 2014-03-26 (hl7.fhir.r4.examples#4.0.1), 3.0.0 (hl7.terminology.r4#6.5.0)
+%to 3.0.0 from choices of 3.0.0 (hl7.terminology.r4#6.5.0), 4.0.1 (hl7.fhir.r4.examples#4.0.1)
+%to 5.3.0-ballot-tc1 from choices of 4.0.1 (hl7.fhir.r4.examples#4.0.1), 5.3.0-ballot-tc1 (hl7.fhir.uv.extensions.r4#5.3.0-ballot-tc1)
 
-# 27 This is a real code.  We don't have a dependency on the defining IG and don't really want one given that this is just for an example
+# 25 This is a real code.  We don't have a dependency on the defining IG and don't really want one given that this is just for an example
 No definition could be found for URL value 'https://fhir.infoway-inforoute.ca/NamingSystem/ca-on-patient-hcn'
 
+# 26 The purpose of this string is to contain XHTML content.  The content is safe.
+INFORMATION: Questionnaire/questionnaire-sdc-profile-example-render: Questionnaire.item[0].item[1].text.extension[0].value.ofType(string): The string value contains text that looks like embedded HTML tags. If this content is rendered to HTML without appropriate post-processing, it may be a security risk

@@ -16,9 +16,6 @@
     not the form filling process.
   </p>
   <p>
-    Modular questionnaires should adhere to this <a href="StructureDefinition-sdc-questionnaire-modular.html">SDC profile</a>. An example for this profile can be found <a href="Questionnaire-sdc-modular-root.html">here</a>.
-  </p>
-  <p>
     This portion of the SDC specification describes three mechanisms for enabling re-use:
   </p>
   <ul>    
@@ -45,6 +42,33 @@
   </p>
   <a name="workflow"> </a>
   <h3>Modular workflow</h3>
+  <table class="grid">
+    <tbody>
+      <tr>
+        <th>Profile:</th>
+        <td><a href="StructureDefinition-sdc-questionnaire-modular.html">Modular Questionnaire profile</a></td>
+      </tr>
+      <tr>
+        <th>Relevant Extensions:</th>
+        <td>
+          <ul>
+            <li><a href="StructureDefinition-sdc-questionnaire-subQuestionnaire.html">sdc-questionnaire-subQuestionnaire</a></li>
+            <li><a href="StructureDefinition-sdc-questionnaire-assemble-expectation.html">sdc-questionnaire-assemble-expectation</a></li>
+            <li><a href="StructureDefinition-sdc-questionnaire-assembleContext.html">sdc-questionnaire-assembleContext</a></li>
+            <li><a href="StructureDefinition-sdc-questionnaire-subQuestionnaire.html">sdc-questionnaire-subQuestionnaire</a></li>
+            <li><a href="StructureDefinition-sdc-questionnaire-assembledFrom.html">sdc-questionnaire-assembledFrom</a></li>
+            <li><a href="{{site.data.fhir.ver.ext}}/StructureDefinition-variable.html">variable</a></li>
+            <li><a href="{{site.data.fhir.ver.ext}}/StructureDefinition-cqf-knowledgeCapability.html">cqf-knowledge-capability</a></li>
+            <li><a href="{{site.data.fhir.ver.ext}}/StructureDefinition-package-source.html">package-source</a></li>
+          </ul>
+        </td>
+      </tr>
+      <tr>
+        <th>Example Questionnaires:</th>
+        <td>See <a href="#examples">below</a></td>
+      </tr>
+    </tbody>
+  </table>
   <p>
     Regardless of mechanism, there are two phases.  First, the questionnaire is authored in its modular form, maximizing re-use and minimizing authoring
     effort.  Then, there is then a need to take the re-useably authored form (or collection of forms) and generate a fully 'assembled'
@@ -56,7 +80,7 @@
     The following diagram shows the results of the assembly process with a set of questionnaires that combine both approaches:
   </p>
   <div>
-    <img src="modularity.png" width="800px" alt="One parent questionnaire referencing two sub-questionnaires, which each in turn reference elements in a StructureDefinition,     
+    <img src="modularity.png" width="800" alt="One parent questionnaire referencing two sub-questionnaires, which each in turn reference elements in a StructureDefinition,     
       followed by the resulting single assembled questionnaire"/>
   </div>
   <p>
@@ -79,10 +103,10 @@
   <p>
     It is helpful to know when a Questionnaire is going to require assembly or not.  It is also helful to know whether a particular questionnaire can be used
     as a 'root' form for entry, can be used as a sub-module or either.  A system can search through for items that declare the 
-    <a href="StructureDefinition-sdc-questionnaire-subQuestionnaire.html">subQuestionnaire</a> extension, though doing so isn't terribly efficient.  However,
+    <code>subQuestionnaire</code> extension, though doing so isn't terribly efficient.  However,
     for <a href="#element">Data Element-based Questionnaires</a>, there is no mechanism to tell with certainty that assembly is required - the 'definition' element may be included in 
     questions for a variety of reasons and some degree of metadata may be maintained in the 'master' Questionnaire for readability.  Therefore, this specification 
-    defines a <a href="StructureDefinition-sdc-questionnaire-assemble-expectation.html">assemble-expectation</a> extension that allows flagging whether a particular Questionnaire requires
+    defines a <code>assemble-expectation</code> extension that allows flagging whether a particular Questionnaire requires
     assembly, whether it is safe to use as a subQuestionnaire and/or whether it can be used as a 'root' Questionnaire.
   </p>
   <table>
@@ -157,7 +181,7 @@
     whose items should be embedded in the resulting assembled Questionnaire in place of the 'display' item.  The details of how this works are as follows:
   </p>
   <ol>
-    <li>The <a href="StructureDefinition-sdc-questionnaire-subQuestionnaire.html">subQuestionnaire</a> extension will contain the canonical reference to the
+    <li>The <code>subQuestionnaire</code> extension will contain the canonical reference to the
       Questionnaire whose content should be substituted for the display item</li>
     <li>The canonical reference <code>SHOULD</code> be version-specific to ensure that the author of the parent questionnaire has full control over what content
       they are importing.  If the subQuestionnaire is not version-specific, then the same version of the parent Questionnaire could include varying
@@ -167,7 +191,7 @@
       to make use of the modular Questionnaire might not recognize or be able to support assembly of the Questionnaire at all.  For this reason, the 'text'
       of the display element <code>SHOULD</code> say something that is meaningful in situations where it is not replaced.  For example: "Sub-questionnaire 
       [some URL] not available.  Unable to display all questions."</li>
-    <li>When the Questionnaire goes through the 'assembly' process, the display item having the <a href="StructureDefinition-sdc-questionnaire-subQuestionnaire.html">subQuestionnaire</a> extension will be removed entirely.
+    <li>When the Questionnaire goes through the 'assembly' process, the display item having the <code>subQuestionnaire</code> extension will be removed entirely.
       I.e. that linkId and the associated text will not appear in the assembled Questionnaire.  Instead, all of the 'root' items of the referenced
       Questionnaire - including their descendant elements and items will appear in the same position as the replaced 'display' item was.</li>
     <li>In addition to propagating the items from the referenced Questionnaire, additional items are also propagated as follows:
@@ -206,18 +230,18 @@
         </li>
         <li>All metadata elements on the subQuestionnaire are ignored.  If there are copyright limitations on the referenced Questionnaire, it is the
           responsibility of the referencing Questionnaire to reflect those in its own Questionnaire.copyright element.</li>
-        <li>The <a href="StructureDefinition-sdc-questionnaire-assemble-expectation.html">assemble-expectation</a> on the resulting Questionnaire should be adjusted to 
+        <li>The <code>assemble-expectation</code> on the resulting Questionnaire should be adjusted to 
           change the 'assemble' part of the code to 'independent', with the exception that if the code was 'assemble-root', then the extension should be removed entirely.  
           E.g. <code>assemble-root-or-child</code> would change to <code>independent-root-or-child</code>.</li>
       </ul>
     </li>
-    <li>This process occurs recursively.  I.e. If an imported Questionnaire contains display elements with a <a href="StructureDefinition-sdc-questionnaire-subQuestionnaire.html">subQuestionnaire</a> extension, those display
+    <li>This process occurs recursively.  I.e. If an imported Questionnaire contains display elements with a <code>subQuestionnaire</code> extension, those display
       elements are also replaced by the referenced Questionnaire, repeating the process until no further subQuestionnaire extensions are found.</li>
     <li>It is possible that the same Questionnaire might be substituted more than once as part of this process, however it is in an error if 
       the module references recurse.  E.g. if Questionnaire A contains an item that references subQuestionnaire B, which in turn has an element that
       references subQuestionnaire A.</li>
     <li>It is also an error if the resulting fully-assembled Questionnaire has any duplicate linkIds.</li>
-    <li>In order to avoid duplicate linkIds, a parent Questionnaire <code>MAY</code> declare a special <a href="{{site.data.fhir.ver.ext}}/StructureDefinition-variable.html">variable</a> with the name <code>linkIdPrefix</code>.  If
+    <li>In order to avoid duplicate linkIds, a parent Questionnaire <code>MAY</code> declare a special <code>variable</code> with the name <code>linkIdPrefix</code>.  If
       there is a linkIdPrefix in context at the time a subQuestionnaire is substituted, that linkIdPrefix SHALL be pre-pended to the <code>linkId</code> and 
       <code>enableWhen.question</code> elements of all items in that Questionnaire.  See the <a href="#examples">examples</a> to see how this works in practice.
       If linkIdPrefix is not used, care should be taken to ensure that linkIds are appropriately coordinated to avoid overlap across all referenced 
@@ -228,23 +252,23 @@
       <code>%root.descendants().select(item.where(linkId='1.1'))</code> would need to change to <code>%root.descendants().select(item.where(linkId=%linkIdPrefix + '1.1'))</code></li>
     <li>Imported Questionnaires may be defined to be dependent on contextual information passed in from the referencing Questionnaire (including 'linkIdPrefix').
       To allow validating these subQuestionnaires independent of their inclusion in a parent, all such dependencies must be declared using the
-      <a href="StructureDefinition-sdc-questionnaire-assembleContext.html">assembleContext</a> extension on the root of the 
-      Questionnaire.  As well, if a Questionnaire is referenced by a <a href="StructureDefinition-sdc-questionnaire-subQuestionnaire.html">subQuestionnaire</a> extension, it is an error if the listed variables are not available
+      <code>assembleContext</code> extension on the root of the 
+      Questionnaire.  As well, if a Questionnaire is referenced by a <code>subQuestionnaire</code> extension, it is an error if the listed variables are not available
       in the context of the referencing element.</li>
-    <li>The presence of an <a href="StructureDefinition-sdc-questionnaire-assembleContext.html">assembleContext</a> extension on a Questionnaire indicates that it can ONLY be used as a part of a modular Questionnaire.</li>
+    <li>The presence of an <code>assembleContext</code> extension on a Questionnaire indicates that it can ONLY be used as a part of a modular Questionnaire.</li>
     <li>
     <p>
     If stored, an assembled Questionnaire <code>SHALL</code> have the same URL and Version as the base Questionnaire.  Note that this means that it's possible 
     for a server to have multiple Questionnaire instances that share the same URL and Version.  Clients <code>SHOULD</code> populate 
-    the <a href="{{site.data.fhir.ver.ext}}/StructureDefinition-cqf-knowledgeCapability.html">knowledge-capability</a> and <code>SHALL</code> 
+    the <code>knowledge-capability</code> and <code>SHALL</code> 
     populate it if they know that both unassembled and assembled versions will be hosted on the same server.  This extension allows differentiating 
-    between assembled (executable) from non-assembled (computable) instances. As part of the assembly process, the assembly engine <code>SHOULD</code> add <a href="StructureDefinition-sdc-questionnaire-assembledFrom.html">assembledFrom</a> extensions 
+    between assembled (executable) from non-assembled (computable) instances. As part of the assembly process, the assembly engine <code>SHOULD</code> add <code>assembledFrom</code> extensions 
     pointing to the specific versions of all descendant Questionnaires that were used as part of the assembly process.  The root questionnaire 
     doesn't need to be listed as its URL and version will be the same as the assembled Questionnaire.</p>
       <p>  
     In situations where there can be more than one assembled version of 
     the same questionnaire version hosted on the same server, the assembly process <code>SHALL</code> also populate 
-    <a href="{{site.data.fhir.ver.ext}}/StructureDefinition-package-source.html">package-source</a> (and the package information that can 
+    <code>package-source</code> (and the package information that can 
     be gleaned from it) to help differentiate between multiple assembled instances of a Questionnaire.  This will typically only happen where the 
     Questionnaire component hierarchy isn't all version-specific.</p>
     </li>
@@ -317,30 +341,30 @@ We will set an expectation in SDC about what changes are permitted for 'active' 
       If the item.type is 'group' and the group has no child items with a type other than 'display', then child question items of the appropriate type
       should be generated for each child element of the ElementDefinition pointed to by the <code>item.definition</code>.  This process recurses.  The linkId
       of the generated items should be a concatenation of the linkId of the group and the path of the element.
+      <p>If assembling a 'group' item from a definition, the following rules apply:</p>
+      <ul>
+        <li>
+          The <code>linkId</code> of the child questions are taken as the relative paths from the <code>id</code> of the elements in the definition.
+          For example, if a group with <code>linkId</code> 3.2 has a definition that points to <code>Patient.contact</code>, the child questions would have <code>linkId</code> values of
+          <code>3.2.name</code>, <code>3.2.address</code>, <code>3.2.address.line</code>, etc.
+        </li>
+        <li>
+          Elements with <code>maxOccurs</code> of 0 or elements with fixed values or patterns will not be included as items.
+        </li>
+        <li>
+          When generating questions, the <code>id</code>, <code>extension</code>, and <code>modifierExtension</code> elements are not generated as child questions, though slices of them will be.
+        </li>
+        <li>
+          If the model has slices, each slice is treated as a separate item in the assembled Questionnaire.
+        </li>
+        <li>
+          If slicing is not closed, for elements other than <code>extension</code> and <code>modifierExtension</code>, additional items will be added to support "other" values.
+          For example, if a definition pointed to <code>USCore Organization.identifier</code>, there would be groups for the NPI, CLIA, and NIAC identifiers, but there would also be a group for "other identifiers" to handle identifiers not covered by one of the slices.
+          (<code>linkId</code>s would be something like <code>4.5.identifier:NAIC.value</code>, <code>4.5.identifier:NIAC.period.start</code> for the slices, and <code>4.5.identifier.value</code> for the "other" items.)
+        </li>
+      </ul>
+      <p><strong>NOTE:</strong> While generating complex structures of groups and questions from a FHIR resource profile is possible, in most situations, pointing to logical models specifically designed to be "Questionnaire-friendly" will produce better results.</p>
     </li>
-     <p>If assembling a 'group' item from a definition, the following rules apply:</p>
-   <ul>
-  <li>
-    The <code>linkId</code> of the child questions are taken as the relative paths from the <code>id</code> of the elements in the definition.
-    For example, if a group with <code>linkId</code> 3.2 has a definition that points to <code>Patient.contact</code>, the child questions would have <code>linkId</code> values of
-    <code>3.2.name</code>, <code>3.2.address</code>, <code>3.2.address.line</code>, etc.
-  </li>
-  <li>
-    Elements with <code>maxOccurs</code> of 0 or elements with fixed values or patterns will not be included as items.
-  </li>
-  <li>
-    When generating questions, the <code>id</code>, <code>extension</code>, and <code>modifierExtension</code> elements are not generated as child questions, though slices of them will be.
-  </li>
-  <li>
-    If the model has slices, each slice is treated as a separate item in the assembled Questionnaire.
-  </li>
-  <li>
-    If slicing is not closed, for elements other than <code>extension</code> and <code>modifierExtension</code>, additional items will be added to support "other" values.
-    For example, if a definition pointed to <code>USCore Organization.identifier</code>, there would be groups for the NPI, CLIA, and NIAC identifiers, but there would also be a group for "other identifiers" to handle identifiers not covered by one of the slices.
-    (<code>linkId</code>s would be something like <code>4.5.identifier:NAIC.value</code>, <code>4.5.identifier:NIAC.period.start</code> for the slices, and <code>4.5.identifier.value</code> for the "other" items.)
-  </li>
-</ul>
-<p><strong>NOTE:</strong> While generating complex structures of groups and questions from a FHIR resource profile is possible, in most situations, pointing to logical models specifically designed to be "Questionnaire-friendly" will produce better results.</p>
     <li>
       Alternatively, if the item.type is 'group' and the group does have child questions, the child questions should be matched against the children of
       the ElementDefinition (using item.definition) and any ElementDefinition child elements not present as child questions should produce a warning.
@@ -413,119 +437,20 @@ We will set an expectation in SDC about what changes are permitted for 'active' 
 <a name="fragment-root-questionnaire"> </a>
   <h4>Root Questionnaire (<a href="Questionnaire-sdc-modular-root.html">modular-root</a>)</h4>
 <p>
-  This is the Questionnaire that uses a mix of direct element definitions (via <code>definition</code>) and modular structure (via <code>subQuestionnaire</code>). It includes a launch context and a variable for <code>linkIdPrefix</code> to support nested item prefixing during assembly. The <a href="StructureDefinition-sdc-questionnaire-subQuestionnaire.html">subQuestionnaire</a> extension references a submodule Questionnaire that will be inserted during the $assemble operation.
+  This is the Questionnaire that uses a mix of direct element definitions (via <code>definition</code>) and modular structure (via <code>subQuestionnaire</code>). It includes a launch context and a variable for <code>linkIdPrefix</code> to support nested item prefixing during assembly. The <code>subQuestionnaire</code> extension references a submodule Questionnaire that will be inserted during the $assemble operation.
 </p>
-<pre><code>{
-  "url": "http://hl7.org/fhir/uv/sdc/Questionnaire/sdc-modular-root",
-  "extension": [
-    {
-      "url": "http://hl7.org/fhir/uv/sdc/StructureDefinition/sdc-questionnaire-assemble-expectation",
-      "valueCode": "assemble-root"
-    }
-  ],
-  "item": [
-    {
-      "linkId": "1",
-      "definition": "http://hl7.org/fhir/uv/sdc/StructureDefinition/SdcQuestionLibrary#SdcQuestionLibrary.name",
-      "type": "group",
-      "extension": [
-        {
-          "url": "http://hl7.org/fhir/StructureDefinition/variable",
-          "valueExpression": {
-            "name": "linkIdPrefix",
-            "language": "text/fhirpath",
-            "expression": "'patientname.'"
-          }
-        }
-      ],
-      "item": [
-        {
-          "linkId": "1.1",
-          "type": "display",
-          "text": "Unable to resolve 'name' sub-questionnaire",
-          "extension": [
-            {
-              "url": "http://hl7.org/fhir/uv/sdc/StructureDefinition/sdc-questionnaire-subQuestionnaire",
-              "valueCanonical": "http://hl7.org/fhir/uv/sdc/Questionnaire/sdc-modular-name|3.0.0"
-            }
-          ]
-        }
-      ]
-    }
-  ]
-}</code></pre>
 
 <a name="fragment-sub-questionnaire"> </a>
 <h4>Sub-Questionnaire (<a href="Questionnaire-sdc-modular-name.html">modular-name</a>)</h4>
 <p>
   This is a reusable sub-questionnaire module that defines a structure for capturing a name. It includes three items: title, first name, and last name. 
   The example demonstrates the use of <code>definition</code> to pull structure from a data library and <code>initialExpression</code> to prepopulate 
-  values from context. This module is designed to be referenced from a parent Questionnaire using <a href="StructureDefinition-sdc-questionnaire-subQuestionnaire.html">subQuestionnaire</a>.
+  values from context. This module is designed to be referenced from a parent Questionnaire using <code>subQuestionnaire</code>.
 </p>
-<pre><code>{
-  "url": "http://hl7.org/fhir/uv/sdc/Questionnaire/sdc-modular-name",
-  "extension": [
-    {
-      "url": "http://hl7.org/fhir/uv/sdc/StructureDefinition/sdc-questionnaire-assemble-expectation",
-      "valueCode": "assemble-child"
-    }
-  ],
-  "item": [
-    {
-      "linkId": "1",
-      "text": "Title",
-      "type": "string",
-      "required": true,
-      "answerOption": [
-        { "valueString": "Mr." },
-        { "valueString": "Miss" },
-        { "valueString": "Mrs." },
-        { "valueString": "Ms." }
-      ],
-      "extension": [
-        {
-          "url": "http://hl7.org/fhir/uv/sdc/StructureDefinition/sdc-questionnaire-initialExpression",
-          "valueExpression": {
-            "language": "text/fhirpath",
-            "expression": "%name.prefix.where($this in ('Mr.'|'Miss'|'Mrs'|'Ms.'))[0]"
-          }
-        }
-      ]
-    }
-  ]
-}</code></pre>
 
 <a name="fragment-nested-module"> </a>
 <h4>Nested Module (<a href="Questionnaire-sdc-modular-contact.html">modular-contact</a>)</h4>
 <p>
-  This module represents a patient's contact information and includes its own <a href="StructureDefinition-sdc-questionnaire-subQuestionnaire.html">subQuestionnaire</a> reference to the <code>modular-name</code> module. It demonstrates nesting of sub-questionnaires.
+  This module represents a patient's contact information and includes its own <code>subQuestionnaire</code> reference to the <code>modular-name</code> module. It demonstrates nesting of sub-questionnaires.
 </p>
-<pre><code>{
-  "url": "http://hl7.org/fhir/uv/sdc/Questionnaire/sdc-modular-contact",
-  "extension": [
-    {
-      "url": "http://hl7.org/fhir/uv/sdc/StructureDefinition/sdc-questionnaire-assemble-expectation",
-      "valueCode": "assemble-child"
-    }
-  ],
-  "item": [
-    {
-      "linkId": "1",
-      "type": "group",
-      "item": [
-        {
-          "linkId": "1.1",
-          "type": "display",
-          "text": "Unable to resolve 'name' sub-questionnaire",
-          "extension": [
-            {
-              "url": "http://hl7.org/fhir/uv/sdc/StructureDefinition/sdc-questionnaire-subQuestionnaire",
-              "valueCanonical": "http://hl7.org/fhir/uv/sdc/Questionnaire/sdc-modular-name|3.0.0"
-            }
-          ]
-        }
-      ]
-    }
-  ]
-}</code></pre>
 </div>

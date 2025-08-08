@@ -80,6 +80,32 @@
       </tr>
       <tr>
         <td>
+          <a name="rendering-markdown"> </a>
+          <a href="{{site.data.fhir.ver.ext}}/StructureDefinition-rendering-markdown.html">rendering-markdown</a>
+        </td>
+        <td>Core</td>
+        <td>Questionnaire.title, item.prefix, item.text, item.answerOption.valueString, item.answerOption.valueCoding.display, <a href="#valueset-label">valueset-label</a>, Valueset.compose.include.concept.display,
+          Valueset.compose.include.concept.designation.value (and expansion equivalents), CodeSystem.concept.designation.value</td>
+        <td>string</td>
+        <td><a href="examples.html#rendering-xhtml">example</a></td>
+      </tr>
+      <tr>
+        <td colspan="5">
+          <p>
+            This element provides an alternate representation of the string value of the extended element that makes use of the FHIR [markdown type]({{site.data.fhir.path}}datatypes.html#markdown).
+            This extension allows applyingdifferent styles to different portions of the text (italics, bold, subscript, etc.).  It also allows embedding structure
+            elements such as bullets or even tables in item.text elements. 
+            For title and label, the markdown SHOULD NOT use block-level elements (paragraphs, bullets, tables, etc.).
+            Conformant systems are allowed to ignore this extension unless it is declared as critical using the <a href="#sdc-rendering-criticalExtension">sdc-rendering-criticalExtension</a> 
+            extension, in which case unsupported systems <code>SHOULD</code> raise an error message or warning and refrain from presenting the form.
+          </p>
+          <p>
+            See further discussion [below](xhtml-vs-md) about choosing between XHTML and markdown for text that requires complex rendering.
+          </p>
+        </td>
+      </tr>
+      <tr>
+        <td>
           <a name="rendering-xhtml"> </a>
           <a href="{{site.data.fhir.ver.ext}}/StructureDefinition-rendering-xhtml.html">rendering-xhtml</a>
         </td>
@@ -100,12 +126,15 @@
             Conformant systems are allowed to ignore this extension unless it is declared as critical using the <a href="#sdc-rendering-criticalExtension">sdc-rendering-criticalExtension</a> 
             extension, in which case unsupported systems <code>SHOULD</code> raise an error message or warning and refrain from presenting the form.
           </p>
+          <p>
+            See further discussion [below](xhtml-vs-md) about choosing between XHTML and markdown for text that requires complex rendering.
+          </p>
         </td>
       </tr>
       <tr>
         <td>
           <a name="displayCategory"> </a>
-          <a href="{{site.data.fhir.ver.ext}}/StructureDefinition-questionnaire-displaycategory.html">displayCategory</a>
+          <a href="{{site.data.fhir.ver.ext}}/StructureDefinition-questionnaire-displayCategory.html">displayCategory</a>
         </td>
         <td>Questionnaire</td>
         <td>item (where type='display')</td>
@@ -139,22 +168,22 @@
       <tr>
         <td colspan="5">
           <p>
-      This extension provides a label to display beside free-text or unrestricted value input for an 'open' item. In FHIR R4, this applies to items of type <code>open-choice</code>. 
-      In R5 (or when using inter-version extensions in pre-R5 environments), this applies to items where the <code>answerConstraint</code> element has a value other than <code>optionsOnly</code>.
-    </p>
-    <p>
-      For example, it may display text such as <em>"Other, please specify"</em>, <em>"Additional condition"</em>, or <em>"More reason(s)"</em> adjacent to the free-form input box.
-    </p>
-    <p>
-      The following logic applies when determining applicability:
-      <ul>
-        <li><strong>R4:</strong> <code>ofType(ElementDefinition).type.exists(code='Coding') or where(%resource.is(Questionnaire)).exists(type.first()='open-choice' or (extension(...answerConstraint).exists() and extension(...answerConstraint).value!='answerOnly'))</code></li>
-        <li><strong>R5:</strong> <code>ofType(ElementDefinition).type.exists(code='Coding') or where(%resource.is(Questionnaire)).exists(answerConstraint.exists() and answerConstraint!='answerOnly')</code></li>
-      </ul>
-    </p>
-    <p>
-      Not all renderings of 'open' elements will use such a label (e.g. an auto-complete style control won't have a separate label for entries that aren't in the list of options).
-    </p>
+            This extension provides a label to display beside free-text or unrestricted value input for an 'open' item. In FHIR R4, this applies to items of type <code>open-choice</code>. 
+            In R5 (or when using inter-version extensions in pre-R5 environments), this applies to items where the <code>answerConstraint</code> element has a value other than <code>optionsOnly</code>.
+          </p>
+          <p>
+            For example, it may display text such as <em>"Other, please specify"</em>, <em>"Additional condition"</em>, or <em>"More reason(s)"</em> adjacent to the free-form input box.
+          </p>
+          <p>
+            The following logic applies when determining applicability:
+          </p>
+          <ul>
+            <li><strong>R4:</strong> <code>ofType(ElementDefinition).type.exists(code='Coding') or where(%resource.is(Questionnaire)).exists(type.first()='open-choice' or (extension(...answerConstraint).exists() and extension(...answerConstraint).value!='answerOnly'))</code></li>
+            <li><strong>R5:</strong> <code>ofType(ElementDefinition).type.exists(code='Coding') or where(%resource.is(Questionnaire)).exists(answerConstraint.exists() and answerConstraint!='answerOnly')</code></li>
+          </ul>
+          <p>
+            Not all renderings of 'open' elements will use such a label (e.g. an auto-complete style control won't have a separate label for entries that aren't in the list of options).
+          </p>
         </td>
       </tr>
       <tr>
@@ -182,7 +211,7 @@
           </p>
         </td>
       </tr>
-	  <tr>
+      <tr>
         <td>
           <a name="itemMedia"> </a>
           <a href="StructureDefinition-sdc-questionnaire-itemMedia.html">itemMedia</a>
@@ -209,7 +238,7 @@
         <td>Attachment</td>
         <td><a href="Questionnaire-anc-quick-check.html">example</a></td>
       </tr>
-	  <tr>
+      <tr>
         <td colspan="5">
           <p>
             Media to render/make available as an accompaniment to a specific answer option.
@@ -218,6 +247,20 @@
       </tr>
     </tbody>
   </table>
+
+  <a name="xhtml-vs-md"> </a>
+  <h5>Markdown vs. XHTML</h5>
+  <p>
+    This guide provides two different mechanisms to provide 'complex' formatted versions of text - <a href="">XHTML</a> and <a href="">markdown</a>.  
+    Each approach has different benefits.  Markdown is seen by many as simpler to author and does not presume that the eventual rendering will be XHTML.  
+    However, there are different markdown styles.  Only one style (the one used by the <a href="{{site.data.fhir.path}}datatypes.html#markdown">FHIR markdown type</a>) 
+    is supported here.  XHTML is more structured and more expressive and is easier to parse for transformation.
+  </p>
+  <p>
+    Many tools will choose to support only one of these mechanisms.  Authors should consider which form rendering tools will be used when selecting which extension to populate.  
+    Questionnaires <b>MAY</b> opt to populate both extensions.  In this case, if a form filler supports both, the filler <b>SHOULD</b> render the XHTML version, as it might be more sophisticated.
+  </p>
+  
   <a name="control"> </a>
   <h4>Control Appearance</h4>
   <p>
@@ -237,7 +280,7 @@
       <tr>
         <td>
           <a name="itemControl"> </a>
-          <a href="{{site.data.fhir.ver.ext}}/StructureDefinition-questionnaire-itemcontrol.html">itemControl</a>
+          <a href="{{site.data.fhir.ver.ext}}/StructureDefinition-questionnaire-itemControl.html">itemControl</a>
         </td>
         <td>Questionnaire</td>
         <td>item</td>
@@ -265,7 +308,7 @@
       <tr>
         <td>
           <a name="choiceOrientation"> </a>
-          <a href="{{site.data.fhir.ver.ext}}/StructureDefinition-questionnaire-choiceorientation.html">choiceOrientation</a>
+          <a href="{{site.data.fhir.ver.ext}}/StructureDefinition-questionnaire-choiceOrientation.html">choiceOrientation</a>
         </td>
         <td>Questionnaire</td>
         <td>question (where type='choice','open-choice'), other items with choice options</td>
@@ -283,7 +326,7 @@
       <tr>
         <td>
           <a name="sliderStepValue"> </a>
-          <a href="{{site.data.fhir.ver.ext}}/StructureDefinition-questionnaire-sliderstepvalue.html">sliderStepValue</a>
+          <a href="{{site.data.fhir.ver.ext}}/StructureDefinition-questionnaire-sliderStepValue.html">sliderStepValue</a>
         </td>
         <td>Questionnaire</td>
         <td>question (where type='integer')</td>
@@ -379,7 +422,7 @@
       <tr>
         <td>
           <a name="supportLink"> </a>
-          <a href="{{site.data.fhir.ver.ext}}/StructureDefinition-questionnaire-supportlink.html">supportLink</a>
+          <a href="{{site.data.fhir.ver.ext}}/StructureDefinition-questionnaire-supportLink.html">supportLink</a>
         </td>
         <td>Questionnaire</td>
         <td>item</td>
@@ -392,7 +435,8 @@
             This allows associating a link to a question, group or display item.  When this extension is present, an icon indicating that a link is available
             should appear immediately following the text of the item.  Clicking on the link will allow the user to navigate to additional descriptive detail,
             generally on a separate page/tab.  This extension allows the use of links without injecting the need to support full HTML via the
-            <a href="#rendering-xhtml">rendering-xhtml</a> extension (which would also allow hyperlinks, though they could appear at any point within the text
+            <a href="#rendering-markdown">rendering-markdown</a> or <a href="#rendering-xhtml">rendering-xhtml</a> extensions (which would also allow hyperlinks, 
+            though they could appear at any point within the text
             and would provide control over the text or image used to launch the link).
           </p>
         </td>
@@ -444,7 +488,7 @@
       <tr>
         <td>
           <a name="optionPrefix"> </a>
-          <a href="{{site.data.fhir.ver.ext}}/StructureDefinition-questionnaire-optionprefix.html">optionPrefix</a>
+          <a href="{{site.data.fhir.ver.ext}}/StructureDefinition-questionnaire-optionPrefix.html">optionPrefix</a>
         </td>
         <td>Questionnaire</td>
         <td>Questionnaire.item.answerOption</td>
@@ -481,7 +525,7 @@
       <tr>
         <td>
           <a name="entryFormat"> </a>
-          <a href="{{site.data.fhir.ver.ext}}/StructureDefinition-entryformat.html">entryFormat</a>
+          <a href="{{site.data.fhir.ver.ext}}/StructureDefinition-entryFormat.html">entryFormat</a>
         </td>
         <td>Core</td>
         <td>question</td>

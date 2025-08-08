@@ -3,7 +3,7 @@ Id: sdc-questionnaire-observationExtractEntry
 Title: "Observation Extract Entry"
 Description: "Allows defining the expectations for the Observation entry to allow cross-referencing across extracted resources."
 * ^url = "http://hl7.org/fhir/uv/sdc/StructureDefinition/sdc-questionnaire-observationExtractEntry"
-* ^status = #draft
+* ^status = #active
 * ^context[+].type = #element
 * ^context[=].expression = "Questionnaire"
 * ^context[+].type = #element

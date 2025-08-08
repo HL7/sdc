@@ -283,10 +283,31 @@
    </p>
   <a name="obs-pop"> </a>
   <h4>Observation-based Population</h4>
+  <table class="grid">
+    <tbody>
+      <tr>
+        <th>Profile:</th>
+        <td><a href="StructureDefinition-sdc-questionnaire-pop-obsn.html">SDC Questionnaire Populate - Observation profile</a></td>
+      </tr>
+      <tr>
+        <th>Relevant Extensions:</th>
+        <td>
+          <ul>
+            <li><a href="StructureDefinition-sdc-questionnaire-observationLinkPeriod.html">sdc-questionnaire-observationLinkPeriod</a></li>
+            <li><a href="{{site.data.fhir.ver.ext}}/StructureDefinition-questionnaire-unit.html">questionnaire-unit</a></li>
+          </ul>
+        </td>
+      </tr>
+      <tr>
+        <th>Example Questionnaires:</th>
+        <td><a href="Questionnaire-questionnaire-sdc-profile-example-ussg-fht.html">USSG Family Health Template</a></td>
+      </tr>
+    </tbody>
+  </table>
   <p>
     This is the simplest of the population mechanisms.  It takes advantage of the fact that most question answers in the healthcare space typically correspond to the
     <code>value</code> element of an Observation.  It also takes advantage of the <code>Questionnaire.item.code</code> element that identifies what a concept
-    each question or group corresponds to. An example for <a href="StructureDefinition-sdc-questionnaire-pop-obsn.html">SDC Questionnaire Populate - Observation profile</a> can be found <a href="Questionnaire-questionnaire-sdc-profile-example-ussg-fht.html">here</a>.
+    each question or group corresponds to.
   </p>
   <p>
     To use this method:
@@ -301,20 +322,20 @@
       Observations or the <code>Observation.component.code</code> values.</li>
     <li>
       To signal that the item.code is actually intended for use in population (as opposed to just providing metadata about the Questionnaire item, the
-      <a href="StructureDefinition-sdc-questionnaire-observationLinkPeriod.html">questionnaire-observationLinkPeriod</a> extension must also be included).  This extension
+      <code>observationLinkPeriod</code> extension must also be included).  This extension
       indicates the period of time over which to search for matching observations.  If there are no observations within that window, no population will occur.
       For observations where how recent they are does not matter (e.g. blood type), simply set the duration to a long period of time - e.g. 200 years. 
-      If an <a href="StructureDefinition-sdc-questionnaire-observationLinkPeriod.html">questionnaire-observationLinkPeriod</a> extension is defined at the root Questionnaire, on a group item (even if it has no <code>item.code</code>), or on a question item, 
+      If an <code>observationLinkPeriod</code> extension is defined at the root Questionnaire, on a group item (even if it has no <code>item.code</code>), or on a question item, 
       that period applies to all descendant questions that have an <code>item.code</code>, unless a closer (i.e., nearer in the hierarchy) <code>observationLinkPeriod</code> 
       is defined and overrides it.<br></br>
       This means that placing the extension on a parent item enables auto-population behavior for all coded descendant items, using the specified period to determine 
       which Observations to query. Items without <code>item.code</code> do not themselves get populated but pass the <code>observationLinkPeriod</code> 
       to their coded children.    
        <p style="margin-top:10px;">
-       <b>Observation Link Period Hierarchical Diagram:</b> This diagram illustrates the structure and flow of <a href="StructureDefinition-sdc-questionnaire-observationLinkPeriod.html">observationLinkPeriod</a> extension in a Questionnaire. It shows how the period applies from the Questionnaire root down to group items and question items, with cases of inheritance, overriding, and items without codes.
+       <b>Observation Link Period Hierarchical Diagram:</b> This diagram illustrates the structure and flow of <code>observationLinkPeriod</code> extension in a Questionnaire. It shows how the period applies from the Questionnaire root down to group items and question items, with cases of inheritance, overriding, and items without codes.
       </p>
          <div style="text-align: center;">
-          <img src="ObservationLinkPeriod.png" width="800px" alt="It shows how the period applies from the Questionnaire root down to group items and question items, with cases of inheritance, overriding, and items without codes"/>
+          <img src="ObservationLinkPeriod.png" width="800" alt="It shows how the period applies from the Questionnaire root down to group items and question items, with cases of inheritance, overriding, and items without codes"/>
         </div>
 
         <b>Diagram Details:</b>
@@ -331,51 +352,20 @@
   <p>
     For example:
   </p>
-  <pre>
-    <textarea rows="40" cols="100" style="resize: none;background-color: rgba(0, 0, 0, 0); border-color: rgba(0, 0, 0, 0)">
-    <item>
-      <extension url="http://hl7.org/fhir/StructureDefinition/questionnaire-observationLinkPeriod">
-        <valueDuration>
-          <value value="3"/>
-          <system value="http://unitsofmeasure.org"/>
-          <code value="mo"/>
-        </valueDuration>
-      </extension>
-      <linkId value="code-pop-demo"/>
-      <code>
-        <system value="http://loinc.org"/>
-        <code value="29463-7"/>7
-        <display value="Body weight"/>
-      </code>
-      <code>
-        <system value="http://loinc.org"/>
-        <code value="3141-9"/>
-        <display value="Body weight Measured"/>
-      </code>
-      <code>
-        <system value="http://loinc.org"/>
-        <code value="8341-0"/>
-        <display value="Dry body weight Measured"/>
-      </code>
-      <text value="What is your current weight?"/>
-      <type value="quantity"/>
-      <unitOption>
-        <valueCoding>
-          <system value="http://unitsofmeasure.org"/>
-          <code value="kg"/>
-        </valueCoding>
-      </unitOption>
-      <unitOption>
-        <valueCoding>
-          <system value="http://unitsofmeasure.org"/>
-          <code value="[lb_av]"/>
-        </valueCoding>
-      </unitOption>
-    </item>
-    </textarea>
-  </pre>
+  <div class="tabs">
+    <div class="tab">
+      <input type="radio" id="code-prop-json" name="code-prop-group"/>
+      <label for="code-prop-json">JSON</label>
+      <div class="content-in-tab">{% fragment Questionnaire/questionnaire-sdc-profile-example-weight-height-tracking-panel JSON BASE:descendants().select(item).where(linkId='/29463-7') %}</div>
+    </div>
+    <div class="tab">
+      <input type="radio" id="code-prop-xml" name="code-prop-group"/>
+      <label for="code-prop-xml">XML</label>
+      <div class="content-in-tab">{% fragment Questionnaire/questionnaire-sdc-profile-example-weight-height-tracking-panel XML BASE:descendants().select(item).where(linkId='/29463-7') %}</div>
+    </div>
+  </div>
   <p>
-    When performing the population operation, the system would look for questions that have the <a href="StructureDefinition-sdc-questionnaire-observationLinkPeriod.html">questionnaire-observationLinkPeriod</a> extension
+    When performing the population operation, the system would look for questions that have the <code>observationLinkPeriod</code> extension
     and would then perform a query on the Observation using the context of the QuestionnaireResponse's subject - typically a Patient.  The query would retrieve
     the most recent observation for that subject whose code matched one of the <code>Questionnaire.item</code>'s codes, that had a value and whose value was of
     the correct data type.
@@ -399,7 +389,7 @@
       conversion factor is known), grab the most recent Observation within the window where conversion is not necessary, or choose not to populate.</li>
     <li>
       Question items being populated from Observations of type <code>Quantity</code> SHOULD also have a type of Quantity.  However, they MAY have a type of
-      <code>integer</code> or <code>decimal</code> provided that the <a href="{{site.data.fhir.ver.ext}}/StructureDefinition-questionnaire-unit.html">questionnaire-unit</a>
+      <code>integer</code> or <code>decimal</code> provided that the <code>unit</code>
       extension is present to allow determination of what unit to match on/convert to.</li>
     <li>
       Systems need to allow for the possibility that an Observation might not have a value (e.g. if dataAbsentReason is present).</li>
@@ -433,30 +423,66 @@
     <li>
       Obviously, this mechanism only works for questionnaire items that correspond to Observation values.</li>
   </ul>
+ 
   <a name="exp-pop"> </a>
   <h4>Expression-based Population</h4>
+  <table class="grid">
+    <tbody>
+      <tr>
+        <th>Profile:</th>
+        <td><a href="StructureDefinition-sdc-questionnaire-pop-exp.html">SDC Questionnaire Populate - Expression profile</a></td>
+      </tr>
+      <tr>
+        <th>Relevant Extensions:</th>
+        <td>
+          <ul>
+            <li><a href="StructureDefinition-sdc-questionnaire-launchContext.html">sdc-questionnaire-launchContext</a></li>
+            <li><a href="{{site.data.fhir.ver.ext}}/StructureDefinition-variable.html">variable</a></li>
+            <li><a href="StructureDefinition-sdc-questionnaire-itemPopulationContext.html">sdc-questionnaire-itemPopulationContext</a></li>
+            <li><a href="StructureDefinition-sdc-questionnaire-initialExpression.html">sdc-questionnaire-initialExpression</a></li>
+            <li><a href="StructureDefinition-sdc-questionnaire-candidateExpression.html">sdc-questionnaire-candidateExpression</a></li>
+            <li><a href="StructureDefinition-sdc-questionnaire-contextExpression.html">sdc-questionnaire-contextExpression</a></li>
+            <li><a href="StructureDefinition-sdc-questionnaire-choiceColumn.html">sdc-questionnaire-choiceColumn</a></li>
+            <li><a href="StructureDefinition-sdc-questionnaire-calculatedExpression.html">sdc-questionnaire-calculatedExpression</a></li>
+            <li><a href="{{site.data.fhir.ver.ext}}/StructureDefinition-questionnaire-unit.html">questionnaire-unit</a></li>
+          </ul>
+        </td>
+      </tr>
+      <tr>
+        <th>Example Questionnaires:</th>
+        <td>
+          <ul>
+            <li><a href="Questionnaire-demographics.html">Demographics</a></li>
+            <li><a href="Questionnaire-questionnaire-sdc-test-fhirpath-prepop-candexpr.html">FHIRPath Prepopulate Candidate Expression</a></li>
+            <li><a href="Questionnaire-questionnaire-sdc-test-fhirpath-prepop-initialexpression.html">FHIRPath Prepopulate Initial Expression</a></li>
+            <li><a href="Questionnaire-questionnaire-sdc-test-fhirpath-prepop-source-query.html">FHIRPath Prepopulate Source Query</a></li>
+          </ul>
+        </td>
+      </tr>
+    </tbody>
+  </table>
   <p>
     This approach to population is more generic.  It supports retrieving data from any queryable FHIR resources available on the source system.  Those queries
     can be based on the context in which the QuestionnaireResponse is being generated and/or on the results of other queries.  Furthermore, it permits
     <a href="http://hl7.org/fhirpath">FHIRPath</a> and <a href="http://cql.hl7.org">CQL</a> operations to be done on the resulting data such as calculations, conditional determinations, etc.
     As such, it is significantly more powerful than the <a href="#obs-pop">Observation-based</a> method.  However, it also requires skill in using FHIR queries,
-    FHIRPath, and/or CQL so it requires more technical expertise than the Observation-based approach. An example for <a href="StructureDefinition-sdc-questionnaire-pop-exp.html">SDC Questionnaire Populate - Expression profile</a> can be found <a href="Questionnaire-demographics.html">here</a>.
+    FHIRPath, and/or CQL so it requires more technical expertise than the Observation-based approach.
   </p>
   <p>
     To use this method:
   </p>
   <ol>
     <li>
-      Include the <a href="StructureDefinition-sdc-questionnaire-launchContext.html">questionnaire-launchContext</a> extension to identify any contextual information
+      Include the <code>launchContext</code> extension to identify any contextual information
       that needs to be passed into the population process.  Typical contexts would be the Patient or Encounter resources in whose context the questionnaire is
       being completed, but other elements are also possible (e.g. an AdverseEvent if performing an adverse event report).  These 'context' elements will be
       available as expression variables for use in subsequent steps. </li>
     <li>
-      Use the <a href="{{site.data.fhir.ver.ext}}/StructureDefinition-variable.html">variable</a> extension to query for any additional data required, possibly based on
+      Use the <code>variable</code> extension to query for any additional data required, possibly based on
       context variables set in the previous step, and/or other variable extensions.  (NOTE: Elements <code>SHALL</code> be evaluated in the following order: questionnaire-launchContext
 	  elements, then all Questionnaire-level variables in order of appearance in the Questionnaire.)</li>
     <li>
-      If appropriate, use the <a href="StructureDefinition-sdc-questionnaire-itemPopulationContext.html">questionnaire-itemPopulationContext</a> on group items to establish the context for
+      If appropriate, use the <code>itemPopulationContext</code> on group items to establish the context for
       a group.  When populating the questionnaire, this will do two things: it will create a group repetition for each row returned from the query; and it will
       set the specified variable name to that resource repetition for use in processing descendant items of the group.
       <p>
@@ -467,29 +493,25 @@
       </p>     
       </li>
     <li>
-      Use the <a href="{{site.data.fhir.ver.ext}}/StructureDefinition-variable.html">variable</a> extension on items as well to perform intermediary calculations or
+      Use the <code>variable</code> extension on items as well to perform intermediary calculations or
       additional queries that are based on itemPopulationContext values.</li>
     <li>
-      For <a href="#mode">Automated Population</a>, use the <a href="StructureDefinition-sdc-questionnaire-initialExpression.html">questionnaire-initialExpression</a> to
+      For <a href="#mode">Automated Population</a>, use the <code>initialExpression</code> to
       cause the initial answer for the question to be set to the specified expression.  This should always be a FHIRPath or CQL expression that resolves to an item of the
       appropriate type unless the element has a type of Reference, in which case the expression can ALSO be a FHIR query - and the item will be populated with a
       reference to the resource.  Another exception is for an element of type Attachment, the query can return a Binary or DocumentReference, 
       with the former populating the Attachment.content and the latter populating content and/or url, depending on what is present in the DocumentReference.
       Note, this extension <code>SHALL NOT</code> appear on groups.</li>
     <li>
-      For <a href="#mode">Choice Selection</a>, use the <a href="StructureDefinition-sdc-questionnaire-candidateExpression.html">sdc-questionnaire-candidateExpression</a>
+      For <a href="#mode">Choice Selection</a>, use the <code>sdc-questionnaire-candidateExpression</code>
       to make available a list of possible answers for the user to choose from.  As with initialExpression, this should always be a FHIRPath or CQL expression that resolves to
       an item of the appropriate type unless the element has a type of Reference, in which case the expression can be a FHIR query - and any selected item will
       be populated with a reference to that resource.</li>
     <li>
-      For <a href="#mode">Answer Context</a>, use the <a href="StructureDefinition-sdc-questionnaire-contextExpression.html">sdc-questionnaire-contextExpression</a> to
+      For <a href="#mode">Answer Context</a>, use the <code>sdc-questionnaire-contextExpression</code> to
       indicate the resources to make available for display to the user to aid in answering the question.  The information SHOULD be made available through user
       action (clicking a button or link to launch a separate window/dialog) rather than being presented by default.</li>
   </ol>
-  <p>
-    Examples of questionnaires using this approach include <a href="Questionnaire-demographics.html">this</a>, <a href="Questionnaire-questionnaire-sdc-test-fhirpath-prepop-candexpr.html">this</a>,
-    <a href="Questionnaire-questionnaire-sdc-test-fhirpath-prepop-initialexpression.html">this</a> and <a href="Questionnaire-questionnaire-sdc-test-fhirpath-prepop-source-query.html">this</a>.
-  </p>
   <p>
     Considerations and rules when using this approach:
   </p>
@@ -502,11 +524,11 @@
     <li>
       An item is not allowed have both initial.value and initialExpression present since both generate values before the user has access to the form.</li>
     <li>
-      If the <a href="StructureDefinition-sdc-questionnaire-candidateExpression.html">candidateExpression</a> or <a href="StructureDefinition-sdc-questionnaire-contextExpression.html">contextExpression</a> resolve to an empty set, do not display them.</li>
+      If the <code>candidateExpression</code> or <code>contextExpression</code> extensions resolve to an empty set, do not display them.</li>
 	  <li>
-	  Variables made available by launch context may be used by any expression within the Questionnaire, however they are most safely used within <a href="StructureDefinition-sdc-questionnaire-initialExpression.html">initialExpression</a>.  
-	  Because the launch context might vary each time the QuestionnaireResponse is opened or edited, by populating <a href="StructureDefinition-sdc-questionnaire-launchContext.html">launchContext</a> into the values of (possibly hidden) 
-	  questions via <a href="StructureDefinition-sdc-questionnaire-initialExpression.html">initialExpression</a>, the 'original' context in which the QuestionnaireResponse was created can be retained..</li>
+	  Variables made available by launch context may be used by any expression within the Questionnaire, however they are most safely used within <code>initialExpression</code> extensions.  
+	  Because the launch context might vary each time the QuestionnaireResponse is opened or edited, by populating <code>launchContext</code> extensions into the values of (possibly hidden) 
+	  questions via <code>initialExpression</code> extensions, the 'original' context in which the QuestionnaireResponse was created can be retained..</li>
     <li>
       Unlike initialExpressions, candidateExpressions can appear on groups as well as questions.  If they appear on a group item and the group item is allowed
       to repeat, then a separate group instance is created for each repetition the user selects from the candidates.  The variable named in the candidateExpression
@@ -514,24 +536,24 @@
       to a list of Conditions.  After the user picks the relevant conditions, a separate group would be created for each and child items for the condition code,
       severity, onset date, etc. could automatically be populated using an initialExpression based on the variable name from the candidateExpression.</li>
     <li>
-      When an <a href="StructureDefinition-sdc-questionnaire-initialExpression.html">initialExpression</a>, <a href="StructureDefinition-sdc-questionnaire-candidateExpression.html">candidateExpression</a> or <a href="StructureDefinition-sdc-questionnaire-contextExpression.html">contextExpression</a> will return a resource, backbone element or complex data type, the
-      <a href="StructureDefinition-sdc-questionnaire-choiceColumn.html">questionnaire-choiceColumn</a> extension can be used to control which data elements should be
+      When an <code>initialExpression</code>, <code>candidateExpression</code> or <code>contextExpression</code> extensionwill return a resource, backbone element or complex data type, the
+      <code>choiceColumn</code> extension can be used to control which data elements should be
       exposed to the user (and what labels and widths should be allocated to each element so exposed).</li>
     <li>
-      When an item has an associated <a href="StructureDefinition-sdc-questionnaire-candidateExpression.html">candidateExpression</a> or <a href="StructureDefinition-sdc-questionnaire-contextExpression.html">contextExpression</a>, consider whether there should be a preceding 'display' item that provides
+      When an item has an associated <code>candidateExpression</code> or <code>contextExpression</code> extension, consider whether there should be a preceding 'display' item that provides
       instructions on how to filter from the available candidates or how to make use of the available context in answering the question.</li>
     <li>
-      Multiple expression extensions can be present at once.  If so, precedence is as follows: initial.value or <a href="StructureDefinition-sdc-questionnaire-initialExpression.html">initialExpression</a> is used if it resolves; if not then <a href="StructureDefinition-sdc-questionnaire-candidateExpression.html">candidateExpression</a>
-      expression is used.  A link to <a href="StructureDefinition-sdc-questionnaire-contextExpression.html">contextExpression</a> can be present with either of the modes as it may help the user in verifying the content.</li>
+      Multiple expression extensions can be present at once.  If so, precedence is as follows: <code>initial.value</code> or <code>initialExpression</code> expression is used if it resolves; if not then <code>candidateExpression</code>
+      extension is used.  A link to <code>contextExpression</code> extension content can be present with either of the modes as it may help the user in verifying the content.</li>
     <li>
-      It is an error if the return type of an <a href="StructureDefinition-sdc-questionnaire-initialExpression.html">initialExpression</a>, <a href="StructureDefinition-sdc-questionnaire-calculatedExpression.html">calculatedExpression</a> or <a href="StructureDefinition-sdc-questionnaire-candidateExpression.html">candidateExpression</a> disagrees with the type of the item, with the following exceptions:
+      It is an error if the return type of an <code>initialExpression</code>, <code>calculatedExpression</code> or <code>candidateExpression</code> extension disagrees with the type of the item, with the following exceptions:
       <ul>
         <li>
           A <code>Resource</code> can map to a <code>Reference</code> item type (populating the reference property with the resource type and id, optionally populating the display)
         </li>
         <li>
           A <code>Quantity</code> can map to an <code>integer</code> or <code>decimal</code> item type provided that the
-          <a href="{{site.data.fhir.ver.ext}}/StructureDefinition-questionnaire-unit.html">questionnaire-unit</a> extension is present to allow determination of what unit to
+          <code>unit</code> extension is present to allow determination of what unit to
           match on/convert to. However, if the Observation selected for population is a Quantity with a comparator (e.g., "greater than", "less than", etc.), then that 
           Observation cannot be used for population as the semantics of the comparator would be lost.
         </li>
@@ -550,7 +572,7 @@
       of the questionnaire.  It's technically ok to have sibling items define the same variable name - they will not collide.  However, if doing so, make sure
       it's being used for the same purpose to avoid confusion.</li>
     <li>
-      If the same context are used for both <a href="StructureDefinition-sdc-questionnaire-itemPopulationContext.html">questionnaire-itemPopulationContext</a> and
+      If the same context are used for both <code>itemPopulationContext</code> and
       <a href="StructureDefinition-sdc-questionnaire-itemExtractionContext.html">questionnaire-itemExtractionContext</a>, then the value will be repeated for both extensions.</li>
     <li>
      If the <code>initialExpression</code> evaluates to a collection size that exceeds the maximum cardinality requirements of the item, the form filler has 3 options:
@@ -565,8 +587,8 @@
       questionnaire-minOccurs</a> value (if specified), it <code>SHALL</code> populate what occurrences it can.  The user can then add in additional repetitions as
       needed.</li>
     <li>
-      If an answer is dependent on other answers within the form, the calculation of the answer will typically be performed using a <a href="{{site.data.fhir.ver.ext}}/StructureDefinition-variable.html">variable</a> extension on the nearest
-      common ancestor in which all relevant questions or variables are descendants.  The question will then have an <a href="StructureDefinition-sdc-questionnaire-initialExpression.html">initialExpression</a> extension that references that
+      If an answer is dependent on other answers within the form, the calculation of the answer will typically be performed using a <code>variable</code> extension on the nearest
+      common ancestor in which all relevant questions or variables are descendants.  The question will then have an <code>initialExpression</code> extension that references that
       calculated value.  The reason for this is that FHIRPath only has access to the current context node and its descendants, not siblings or ancestors.  However,
       if it is known that there can only be <i>one</i> item with a particular linkId, then the value of that answer can be accessed directly by using 
       <code>%context.descendants().select(item).where(linkId='someLinkId').answer</code></li>
@@ -612,6 +634,29 @@
 
   <a name="map-pop"> </a>
   <h4>StructureMap-based Population</h4>
+  <table class="grid">
+    <tbody>
+      <tr>
+        <th>Profile:</th>
+        <td><a href="StructureDefinition-sdc-questionnaire-pop-smap.html">Extractable Questionnaire - StructureMap</a></td>
+      </tr>
+      <tr>
+        <th>Relevant Extensions:</th>
+        <td>
+          <ul>
+            <li><a href="StructureDefinition-sdc-questionnaire-launchContext.html">sdc-questionnaire-launchContext</a></li>
+            <li><a href="StructureDefinition-sdc-questionnaire-sourceQueries.html">sdc-questionnaire-sourceQueries</a></li>
+            <li><a href="StructureDefinition-sdc-questionnaire-sourceStructureMap.html">questionnaire-sourceStructureMap</a></li>
+            <li></li>
+          </ul>
+        </td>
+      </tr>
+      <tr>
+        <th>Example Questionnaires:</th>
+        <td><a href="Questionnaire-questionnaire-sdc-test-fhirpath-prepop-source-query.html">FHIRPath Pre-pop Source Query</a></td>
+      </tr>
+    </tbody>
+  </table>
   <p>
     The <a href="{{site.data.fhir.path}}structuremap.html">StructureMap</a> approach is the most sophisticated approach of the three - and the most powerful.
     It allows iteration of groups based on repeating elements within resources, supports concept translation using structure maps and provides access to
@@ -625,65 +670,36 @@
   </p>
   <ol>
     <li>
-      As done for the Expression-based approach, include the <a href="StructureDefinition-sdc-questionnaire-launchContext.html">questionnaire-launchContext</a> extension to
+      As done for the Expression-based approach, include the <code>launchContext</code> extension to
       identify any contextual information that needs to be passed into the population process.  Typical contexts would be the Patient or Encounter resources in
       whose context the questionnaire is being completed, but other elements are also possible (e.g. an AdverseEvent if performing an adverse event report).
       These 'context' elements will be available as expression variables for use in subsequent steps.</li>
     <li>
-      Include the <a href="StructureDefinition-sdc-questionnaire-sourceQueries.html">sdc-questionnaire-sourceQueries</a> extension which <code>SHALL</code> point to a
+      Include the <code>sdc-questionnaire-sourceQueries</code> extension which <code>SHALL</code> point to a
       <a href="{{site.data.fhir.path}}http.html#transaction">Batch</a> consisting of one or more queries to execute.  Prior to executing, FHIRPaths embedded in
       the queries (referring to elements from the questionnaire-launchContext variables) <code>SHALL</code> be resolved.</li>
     <li>
-      Include the <a href="StructureDefinition-sdc-questionnaire-sourceStructureMap.html">questionnaire-sourceStructureMap</a> extension.  This <code>SHALL</code> define a transform
+      Include the <code>sourceStructureMap</code> extension.  This <code>SHALL</code> define a transform
       between the Bundle of Bundles that will result from executing the sourceQueries Batch and a QuestionnaireResponse that complies with the Questionnaire.</li>
   </ol>
   <p>
     For example:
   </p>
-  <pre>
-    <textarea rows="38" cols="130" style="resize: none;background-color: rgba(0, 0, 0, 0); border-color: rgba(0, 0, 0, 0)">
-    <Questionnaire>
-      ...
-      <extension url="http://hl7.org/fhir/StructureDefinition/questionnaire-launchContext">
-        <extension url="name">
-          <valueId value="patient"/>
-        </extension>
-        <extension url="type">
-          <valueCode value="Patient"/>
-        </extension>
-        <extension url="description">
-          <valueString value="The patient the questionnaire is being completed for"/>
-        </extension>
-      </extension>
-      <extension url="http://hl7.org/fhir/StructureDefinition/questionnaire-launchContext">
-        <extension url="name">
-          <valueId value="encounter"/>
-        </extension>
-        <extension url="type">
-          <valueCode value="Encounter"/>
-        </extension>
-        <extension url="description">
-          <valueString value="The encounter this discharge questionnaire is being completed for"/>
-        </extension>
-      </extension>
-      <extension url="http://hl7.org/fhir/uv/sdc/StructureDefinition/sdc-questionnaire-sourceQueries">
-        <valueReference>
-          <reference value="Bundle/someQueryBatch"/>
-        </valueReference>
-      </extension>
-      <extension url="http://hl7.org/fhir/StructureDefinition/questionnaire-sourceStructureMap">
-        <valueReference>
-          <reference value="StructureMap/someStructureMap"/>
-        </valueReference>
-      </extension>
-      ...
-    </Questionnaire>
-    </textarea>
-  </pre>
+  <div class="tabs">
+    <div class="tab">
+      <input type="radio" id="smap-json" name="smap-group"/>
+      <label for="smap-json">JSON</label>
+      <div class="content-in-tab">{% fragment Questionnaire/questionnaire-sdc-test-fhirpath-prepop-source-query JSON BASE:extension %}</div>
+    </div>
+    <div class="tab">
+      <input type="radio" id="smap-xml" name="smap-group"/>
+      <label for="smap-xml">XML</label>
+      <div class="content-in-tab">{% fragment Questionnaire/questionnaire-sdc-test-fhirpath-prepop-source-query XML BASE:extension %}</div>
+    </div>
+  </div>
   <p>
     To populate the QuestionnaireResponse, evaluate the FHIRPaths in the sourceQueries batch, execute the sourceQueries batch and then execute the StructureMap
-    on the resulting Bundle.  The result of that will be the pre-populated QuestionnaireResponse.  A sample questionnaire that shows this approach can be found 
-    <a href="Questionnaire-questionnaire-sdc-test-fhirpath-prepop-source-query.html">here</a>.
+    on the resulting Bundle.  The result of that will be the pre-populated QuestionnaireResponse.
   </p>
   <p>
     Considerations when using this approach:

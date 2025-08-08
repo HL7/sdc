@@ -12,6 +12,8 @@ Description: "Profile used to validate the parameters that are the input of the 
   questionnaire 0..1 and
   subject 0..1 and
   context 0..* and
+  dataEndpoint 0..1 and
+  data 0..1 and
   local 0..1
 * parameter[identifier]
   * name = "identifier" (exactly)
@@ -51,6 +53,17 @@ Description: "Profile used to validate the parameters that are the input of the 
     * name = "content" (exactly)
     * value[x] only Reference
     * part ..0
+* parameter[dataEndpoint]
+  * name = "dataEndpoint" (exactly)
+  * value[x] only uri or Reference
+  * resource only Endpoint
+  * part ..0
+* parameter[data]
+  * name = "data" (exactly)
+  * value[x] ..0
+  * resource 1..
+  * resource only Bundle
+  * part ..0
 * parameter[local]
   * name = "local" (exactly)
   * value[x] 1..

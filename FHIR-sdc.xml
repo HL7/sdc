@@ -27,6 +27,7 @@
 <artifact id="StructureDefinition/sdc-questionnaire-answerExpression" key="StructureDefinition-sdc-questionnaire-answerExpression" name="Answer Expression"/>
 <artifact id="StructureDefinition/sdc-questionnaire-answerOptionsToggleExpression" key="StructureDefinition-sdc-questionnaire-answerOptionsToggleExpression" name="Answer Options Toggle Expression"/>
 <artifact id="StructureDefinition/sdc-questionnaire-assembleContext" key="StructureDefinition-sdc-questionnaire-assembleContext" name="Assemble Context"/>
+<artifact id="StructureDefinition/sdc-questionnaire-assembleDefinitionRoot" key="StructureDefinition-sdc-questionnaire-assembleDefinitionRoot" name="Assemble Definition Root"/>
 <artifact id="CodeSystem/assemble-expectation" key="CodeSystem-assemble-expectation" name="Assemble Expectation Codes"/>
 <artifact id="OperationDefinition/Questionnaire-assemble" key="OperationDefinition-Questionnaire-assemble" name="Assemble Modular Questionnaire Operation"/>
 <artifact id="StructureDefinition/sdc-questionnaire-assembledFrom" key="StructureDefinition-sdc-questionnaire-assembledFrom" name="Assembled From Questionnaire"/>
@@ -99,6 +100,7 @@
 <artifact id="StructureDefinition/parameters-questionnaire-next-question-out" key="StructureDefinition-parameters-questionnaire-next-question-out" name="Next question operation output parameters"/>
 <artifact id="StructureDefinition/sdc-questionnaire-columnCount" key="StructureDefinition-sdc-questionnaire-columnCount" name="Number of columns for child item layout"/>
 <artifact id="StructureDefinition/sdc-questionnaire-observationLinkPeriod" key="StructureDefinition-sdc-questionnaire-observationLinkPeriod" name="Obervation link period"/>
+<artifact id="StructureDefinition/sdc-questionnaire-observationExtractEntry" key="StructureDefinition-sdc-questionnaire-observationExtractEntry" name="Observation Extract Entry"/>
 <artifact id="CodeSystem/observation-extract-relationship" key="CodeSystem-observation-extract-relationship" name="Observation Extract Relationship Codes"/>
 <artifact id="ValueSet/observation-extract-relationship" key="ValueSet-observation-extract-relationship" name="Observation Extract Relationship Value Set"/>
 <artifact id="StructureDefinition/sdc-questionnaire-optionalDisplay" key="StructureDefinition-sdc-questionnaire-optionalDisplay" name="Optional Display?"/>
@@ -130,7 +132,7 @@
 <artifact id="SearchParameter/questionnaire-assemble-expectation" key="SearchParameter-questionnaire-assemble-expectation" name="Questionnaire Is Modular Search Parameter"/>
 <artifact id="ValueSet/collapsible" key="ValueSet-collapsible" name="Questionnaire Item Collapsible"/>
 <artifact id="ValueSet/keyboardType" key="ValueSet-keyboardType" name="Questionnaire Item Keyboard Type"/>
-<artifact id="SearchParameter/questionnaire-definition" key="SearchParameter-questionnaire-definition" name="Questionnaire Item definition"/>
+<artifact deprecated="true" id="SearchParameter/questionnaire-definition" key="SearchParameter-questionnaire-definition" name="Questionnaire Item definition"/>
 <artifact id="ValueSet/launchContext" key="ValueSet-launchContext" name="Questionnaire Launch Context"/>
 <artifact id="ValueSet/performerType" key="ValueSet-performerType" name="Questionnaire Performer Type"/>
 <artifact id="StructureDefinition/sdc-servicerequest" key="StructureDefinition-sdc-servicerequest" name="Questionnaire Service Request"/>
@@ -195,12 +197,14 @@
 <artifact id="Questionnaire/questionnaire-sdc-profile-example-cqf-PHQ9" key="Questionnaire-questionnaire-sdc-profile-example-cqf-PHQ9" name="SDC-PHQ9 using an SDC Library"/>
 <artifact id="Questionnaire/questionnaire-sdc-profile-example-cap" key="Questionnaire-questionnaire-sdc-profile-example-cap" name="SDC-Pathology"/>
 <artifact id="QuestionnaireResponse/adaptive-questionnaireresponse-sdc-example-phq9" key="QuestionnaireResponse-adaptive-questionnaireresponse-sdc-example-phq9" name="SDC-Response to Adaptive PHQ9"/>
+<artifact id="QuestionnaireResponse/adaptive-questionnaireresponse-sdc-example-phq9-start" key="QuestionnaireResponse-adaptive-questionnaireresponse-sdc-example-phq9-start" name="SDC-Response to Adaptive PHQ9 - Start"/>
 <artifact id="QuestionnaireResponse/questionnaireresponse-sdc-profile-example" key="QuestionnaireResponse-questionnaireresponse-sdc-profile-example" name="SDC-Response to Diagnosis NCI Standard Template"/>
 <artifact id="QuestionnaireResponse/questionnaireresponse-sdc-profile-example-loinc" key="QuestionnaireResponse-questionnaireresponse-sdc-profile-example-loinc" name="SDC-Response to LOINC AHRQ"/>
 <artifact id="QuestionnaireResponse/questionnaireresponse-sdc-example-ussg-fht-answers" key="QuestionnaireResponse-questionnaireresponse-sdc-example-ussg-fht-answers" name="SDC-Response to LOINC USSG Family History"/>
 <artifact id="QuestionnaireResponse/questionnaireresponse-sdc-profile-example-PHQ9" key="QuestionnaireResponse-questionnaireresponse-sdc-profile-example-PHQ9" name="SDC-Response to PHQ9"/>
 <artifact id="ValueSet/sdc-profile-example" key="ValueSet-sdc-profile-example" name="SDC-ValueSet AHRQ_Medication_Q1"/>
 <artifact id="Questionnaire/questionnaire-sdc-profile-example-weight-height-tracking-panel" key="Questionnaire-questionnaire-sdc-profile-example-weight-height-tracking-panel" name="SDC-Weight and Height Tracking Panel"/>
+<artifact id="StructureDefinition/sdc-usagecontext-questionnaire-library" key="StructureDefinition-sdc-usagecontext-questionnaire-library" name="SDCUsageContext: Questionnaire Library"/>
 <artifact id="Questionnaire/SDOHCC-QuestionnaireHungerVitalSign" key="Questionnaire-SDOHCC-QuestionnaireHungerVitalSign" name="SDOHCC Questionnaire Hunger Vital Sign"/>
 <artifact deprecated="true" id="StructureMap/SDOHCC-StructureMapHungerVitalSign" key="StructureMap-SDOHCC-StructureMapHungerVitalSign" name="SDOHCC StructureMap Hunger Vital Sign"/>
 <artifact id="StructureMap/SDOHCCHungerVitalSignMap" key="StructureMap-SDOHCCHungerVitalSignMap" name="SDOHCCHungerVitalSignMap"/>
@@ -223,6 +227,7 @@
 <page key="rendering" name="Advanced Form Rendering"/>
 <page key="artifacts" name="Artifact List"/>
 <page key="workflow" name="Basic SDC workflow"/>
+<page key="conformance" name="Conformance Expectations"/>
 <page key="examples" name="Examples"/>
 <page key="search" name="Finding a Questionnaire"/>
 <page key="behavior" name="Form Behavior and Calculation"/>

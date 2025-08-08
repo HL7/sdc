@@ -7,5 +7,4 @@ Description: "Indicates that a Questionnaire is intended to be used as a library
 * ^status = #active
 * ^date = "2025-07-12"
 * code = http://terminology.hl7.org/CodeSystem/usage-context-type#workflow (exactly)
-* valueCodeableConcept.coding.system = "http://hl7.org/fhir/uv/sdc/CodeSystem/temp" (exactly)
-* valueCodeableConcept.coding.code = #question-library (exactly)
+* valueCodeableConcept = TemporaryCodes#question-library

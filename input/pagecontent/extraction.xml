@@ -137,16 +137,38 @@
   </p>
   <a name="obs-extract"> </a>
   <h4>Observation-based extraction</h4>
+  <table class="grid">
+    <tbody>
+      <tr>
+        <th>Profile:</th>
+        <td><a href="StructureDefinition-sdc-questionnaire-extr-obsn.html">SDC Questionnaire Extract - Observation</a></td>
+      </tr>
+      <tr>
+        <th>Relevant Extensions:</th>
+        <td>
+          <ul>
+            <li><a href="StructureDefinition-sdc-questionnaire-observationExtract.html">sdc-questionnaire-observationExtract</a></li>
+            <li><a href="StructureDefinition-sdc-questionnaire-observationExtractEntry.html">sdc-questionnaire-observationExtractEntry</a></li>
+            <li><a href="StructureDefinition-sdc-questionnaire-observation-extract-category.html">sdc-questionnaire-observation-extract-category</a></li>
+            <li><a href="{{site.data.fhir.ver.ext}}/StructureDefinition-questionnaire-unit.html">questionnaire-unit</a></li>
+          </ul>
+        </td>
+      </tr>
+      <tr>
+        <th>Example Questionnaires:</th>
+        <td><a href="Questionnaire-questionnaire-sdc-profile-example-cqf-PHQ9.html">example-cqf-PHQ9</a></td>
+      </tr>
+    </tbody>
+  </table>
   <p>
     This is the simplest of the extraction mechanisms.  It leverages the same data elements as are used for the <a href="populate.html#obs-pop">
     Observation-based population</a> mechanism.  It takes advantage of the fact that most questions in the healthcare space typically
     correspond to the <code>value</code> element of an Observation.  It also takes advantage of the <code>Questionnaire.item.code</code> element that
     identifies what a concept each question or group corresponds to.<br/>
-    The <a href="StructureDefinition-sdc-questionnaire-extr-obsn.html">SDC Questionnaire Extract - Observation</a> profile 
-    has been created to support this mechanism. Observation-based extraction can now also support cross-resource references 
-    (e.g., enabling a ServiceRequest to refer to an extracted Observation) by using the new <a href="StructureDefinition-sdc-questionnaire-observationExtractEntry.html">observationExtractEntry</a> extension. 
+     Observation-based extraction can now also support cross-resource references 
+    (e.g., enabling a ServiceRequest to refer to an extracted Observation) by using the <code>observationExtractEntry</code> extension. 
     This allows specifying metadata like fullUrl, resourceId, ifNoneExist, etc. that enable other resources to reference the extracted Observation. 
-    See <a href="#supporting-cross-resource-referencing">Supporting Cross-Resource Referencing</a> for details. An example for this profile can be found <a href="Questionnaire-questionnaire-sdc-profile-example-cqf-PHQ9.html">here</a>.
+    See <a href="#supporting-cross-resource-referencing">Supporting Cross-Resource Referencing</a> for details. .
   </p>
   <p>
     To use this method:
@@ -158,7 +180,7 @@
       value but with multiple <code>Observation.component</code> elements.  Child question items can then assert the <code>item.code</code> of the "member-of"
       Observations or the <code>Observation.component.code</code> values.</li>
     <li>To signal that the item.code is intended for use in extraction (as opposed to just providing metadata about the Questionnaire item), the
-      <a href="StructureDefinition-sdc-questionnaire-observationExtract.html">questionnaire-observationExtract</a> extension must also be included (and set to true).  
+      <code>observationExtract</code> extension must also be included (and set to true).  
       This extension can be specified either at the root Questionnaire or on an individual question or group item (not a display item) that indicates that the 
       observation-based approach should be used to extract either that particular item (based on the code present) or all items in the questionnaire (if they have a code present).</li>
     <li>If the extension appears on specific <code>item.code</code> elements rather than the item as a whole, then only the specified codes should be propagated rather than all.  For example, an item might list codes for "Body weight", "Body weight (clothed)" and "Body weight (unclothed)".  In that case, only the "Body weight" code would be appropriate to include in the extracted content, even though all three might be appropriate for population.  If any item.codes are tagged with 'true', then only the tagged Codings will propagate.  I.e. any sibling item.codes with no extension are considered to have an extension of 'false'.  If no extension appears on any of the item.codes but an extension appears on the item, an ancestor item or the Questionnaire as a whole, then all codes are considered to be roughly equivalent translations and to be appropriate to list as sibling Codings within Observation.code.
@@ -168,7 +190,7 @@
 	  </li>
     <li>
   Optionally, use the 
-  <a href="StructureDefinition-sdc-questionnaire-observationExtractEntry.html">observationExtractEntry</a> extension on a <code>Questionnaire.item</code> to define metadata such as 
+  <code>observationExtractEntry</code> extension on a <code>Questionnaire.item</code> to define metadata such as 
   <code>fullUrl</code>, <code>resourceId</code>, or conditional  fields (<code>ifNoneExist</code>, <code>ifMatch</code>, etc.) for the extracted <code>Observation</code>. This enables other extracted resources (e.g., 
   <code>ServiceRequest.supportingInfo</code>) to reference the Observation within the same transaction Bundle. See 
   <a href="#supporting-cross-resource-referencing">Supporting Cross-Resource Referencing</a> for more details.
@@ -195,51 +217,9 @@ If an item is presumed to be extracted, it will extract if there are <code>item.
 	  </li>
   </ol>
   <p>
-    For example:
-  </p>
-  <pre>
-    <code>
-	  &lt;item&gt;
-		&lt;extension url="http://hl7.org/fhir/uv/sdc/StructureDefinition/sdc-questionnaire-observationExtract"&gt;
-		  &lt;valueBoolean value="true" /&gt;
-		&lt;/extension&gt;
-		&lt;linkId value="code-pop-demo"/&gt;
-		&lt;code&gt;
-		  &lt;system value="http://loinc.org"/&gt;
-		  &lt;code value="29463-7"/&gt;
-		  &lt;display value="Body weight"/&gt;
-		&lt;/code&gt;
-		&lt;code&gt;
-		  &lt;system value="http://loinc.org"/&gt;
-		  &lt;code value="3141-9"/&gt;
-		  &lt;display value="Body weight Measured"/&gt;
-		&lt;/code&gt;
-		&lt;code&gt;
-		  &lt;system value="http://loinc.org"/&gt;
-		  &lt;code value="8341-0"/&gt;
-		  &lt;display value="Dry body weight Measured"/&gt;
-		&lt;/code&gt;
-		&lt;text value="What is your current weight?"/&gt;
-		&lt;type value="quantity"/&gt;
-		&lt;answerOption&gt;
-		  &lt;valueCoding&gt;
-			&lt;system value="http://unitsofmeasure.org"/&gt;
-			&lt;code value="kg"/&gt;
-		  &lt;/valueCoding&gt;
-		&lt;/answerOption&gt;
-		&lt;answerOption&gt;
-		  &lt;valueCoding&gt;
-			&lt;system value="http://unitsofmeasure.org"/&gt;
-			&lt;code value="[lb_av]"/&gt;
-		  &lt;/valueCoding&gt;
-		&lt;/answerOption&gt;
-	  &lt;/item&gt;
-	</code>
-  </pre>
-  <p>
     When performing the extraction process, the system will create a batch that will contain creates or updates of Observation instances.  It will go through
     the QuestionnaireResponse and identify all answers marked for extraction (if the corresponding Questionnaire item or the root Questionnaire has a
-    <a href="StructureDefinition-sdc-questionnaire-observationExtract.html">questionnaire-observationExtract</a> extension).  For each of those it will then
+    <code>observationExtract</code> extension).  For each of those it will then
     determine whether to create a new observation, update an existing observation or do nothing.  Guidelines for making this decision are as follows:
   </p>
   <table class="grid">
@@ -283,7 +263,7 @@ If an item is presumed to be extracted, it will extract if there are <code>item.
     <li>
       <code>Observation.category</code> - if this can be inferred from any of the <code>Questionnaire.item.code</code> values or from known context of the
       Questionnaire itself, then fill it in.  It can also be asserted using the 
-      <a href="StructureDefinition-sdc-questionnaire-observation-extract-category.html">observation-extract-category</a> extension.</li>
+      <code>observation-extract-category</code> extension.</li>
     <li>
       <code>Observation.code</code> - add all the <code>Questionnaire.item.code</code> values as <code>Observation.code.coding</code> instances</li>
     <li>
@@ -294,7 +274,7 @@ If an item is presumed to be extracted, it will extract if there are <code>item.
     <li>
       <code>Observation.effectiveDateTime</code> - set to <code>QuestionnaireResponse.authored</code>.<br/>
       <br/>Note, this is an inference.  It is important that the question text implies that the value is 'current' not 'historical' for this to be safe -
-      otherwise do not include the <a href="StructureDefinition-sdc-questionnaire-observationExtract.html">questionnaire-observationExtract</a> extension 
+      otherwise do not include the <code>observationExtract</code> extension 
 	  that marks the question as appropriate for extraction.</li>
     <li>
       <code>Observation.issued</code> - set to <code>QuestionnaireResponse.authored</code>
@@ -314,7 +294,7 @@ If an item is presumed to be extracted, it will extract if there are <code>item.
   <p>
     If the <code>Questionnaire.item</code> that is linked to an Observation contains child items that are also linked to Observations, then things get more complex as a
     determination will need to be made on whether to link the parent to child as <code>Observation.component</code> or as <code>Observation.hasMember</code>.
-    The appropriate relationship to use is conveyed using the code value found in th e<a href="StructureDefinition-sdc-questionnaire-observationExtract.html">questionnaire-observationExtract</a> 
+    The appropriate relationship to use is conveyed using the code value found in the <code>observationExtract</code> 
     extension.  If no extension is present or the value is only a boolean, the expected relationship is undefined and behavior is up to the extracting system.
   <!-- TODO: Should we have an extension that covers this? -->
   </p>
@@ -323,7 +303,7 @@ If an item is presumed to be extracted, it will extract if there are <code>item.
   </p>
   <ul>
     <li>
-      If a questionnaire item has the <a href="{{site.data.fhir.ver.ext}}/StructureDefinition-questionnaire-unit.html">questionnaire-unit</a> extension, the
+      If a questionnaire item has the <code>questionnaire-unit</code> extension, the
       <code>Observation.value</code> SHOULD be a valueQuantity rather than integer or decimal and the units should be taken from the extension value.</li>
     <li>
       If a question is skipped (no answer) or cleared, no Observation should be created.  Existing Observations <code>SHALL NOT</code> be deleted.</li>
@@ -348,7 +328,7 @@ If an item is presumed to be extracted, it will extract if there are <code>item.
 <h5>Supporting Cross-Resource Referencing</h5>
 <p>
 To enable extracted Observations to be referenced by other resources (e.g., a <code>ServiceRequest.supportingInfo</code>), a new extension 
-<a href="StructureDefinition-sdc-questionnaire-observationExtractEntry.html">ObservationExtractEntry</a> is introduced. This extension may be used on <code>Questionnaire.item</code> to 
+<code>ObservationExtractEntry</code> is introduced. This extension may be used on <code>Questionnaire.item</code> to 
 predefine bundle-related metadata for the extracted <code>Observation</code>, such as its <code>fullUrl</code> or <code>resourceId</code>.
 </p>
 <p>
@@ -362,18 +342,49 @@ The extension supports the following elements:
 
   <a name="definition-extract"> </a>
   <h4>Definition-based extraction</h4>
+  <table class="grid">
+    <tbody>
+      <tr>
+        <th>Profile:</th>
+        <td><a href="StructureDefinition-sdc-questionnaire-extr-defn.html">SDC Questionnaire Extract - Definition</a></td>
+      </tr>
+      <tr>
+        <th>Relevant Extensions:</th>
+        <td>
+          <ul>
+            <li><a href="StructureDefinition-sdc-questionnaire-definitionExtract.html">sdc-questionnaire-definitionExtract</a></li>
+            <li><a href="StructureDefinition-sdc-questionnaire-definitionExtractValue.html">sdc-questionnaire-definitionExtractValue</a></li>
+            <li><a href="StructureDefinition-sdc-questionnaire-extractAllocateId.html">sdc-questionnaire-extractAllocateId</a></li>
+            <li><a href="StructureDefinition-sdc-questionnaire-itemExtractionContext.html">questionnaire-itemExtractionContext</a> (deprecated)</li>
+            <li><a href="{{site.data.fhir.ver.ext}}/StructureDefinition-questionnaire-hidden.html">questionnaire-hidden</a></li>
+            <li><a href="StructureDefinition-sdc-questionnaire-initialExpression.html">sdc-questionnaire-initialExpression</a></li>
+            <li><a href="{{site.data.fhir.ver.ext}}/StructureDefinition-variable.html">variable</a></li>
+            <li><a href="StructureDefinition-sdc-questionnaire-launchContext.html">sdc-questionnaire-launchContext</a></li>
+          </ul>
+        </td>
+      </tr>
+      <tr>
+        <th>Example Questionnaires:</th>
+        <td>
+          <ul>
+            <li><a href="Questionnaire-demographics.html">Demographics</a></li>
+            <li><a href="Questionnaire-extract-complex-defn3.html">Complex Definition Extract</a></li>
+          </ul>
+        </td>
+      </tr>
+    </tbody>
+  </table>
   <p>
     This approach to extraction is more generic than the observation-based extraction. It supports extracting data into any type of FHIR resource rather than being limited to only Observation.
     It also supports extracting additional Observation properties not defined for the observation-based extract, e.g. explicit effective time ranges, interpretations, comments, etc.<br/>
     The technique is called "definition-based" because it uses StructureDefinitions to identify resource types/profiles, and their properties which are then associated with items in the Questionnaire
     using the <code>Questionnaire.item.definition</code> element.<br/>
-    The <a href="StructureDefinition-sdc-questionnaire-extr-defn.html">SDC Questionnaire Extract - Definition</a> profile has been created to support this mechanism. 
   </p>
   <p>
     The basic approach to the definition-based extraction mechanism is to walk the QuestionnaireResponse and for each item that has the 
-    <a href="StructureDefinition-sdc-questionnaire-definitionExtract.html">sdc-questionnaire-definitionExtract</a> extension, create a new stub resource of that type/profile,
+    <code>definitionExtract</code> extension, create a new stub resource of that type/profile,
     then scan the item and all its children and populate values in the resource based on items that have a matching <code>definition</code> property set, or
-    have <a href="StructureDefinition-sdc-questionnaire-definitionExtractValue.html">sdc-questionnaire-definitionExtractValue</a> extensions on them
+    have <code>definitionExtractValue</code> extensions on them
     that have the same definition canonical URL value as in the <code>definitionExtract</code> extension. Once all the children have been processed,
     the system will populate the <code>bundle.entry.resource</code> property with the extracted resource, and the <code>bundle.entry.request.method</code> and
     other properties with values based on the <code>definitionExtract</code> extension. If the definition was to a profile, any slicing information or 
@@ -422,11 +433,11 @@ The extension supports the following elements:
     </li>
     <li>
       <b>Allocate fullUrl uuid variables (if needed):</b> If an extracted resource needs to reference a resource that is created within the transaction bundle it requires a known <code>entry.fulUrl</code> value (as a new uuid value for each resource instance).
-      The <a href="StructureDefinition-sdc-questionnaire-extractAllocateId.html">sdc-questionnaire-extractAllocateId</a> extension can be used to allocate
+      The <code>extractAllocateId</code> extension can be used to allocate
       a named new uuid for this purpose. It should be defined on the item (or root) such that its children cover the resource that is to be created, and also
       the resources that are to reference it.
       This variable name can then be used in the definitionExtract extensions's <code>fullUrl</code> FHIRPath expression, and also in any reference properties
-      - typically using the <a href="StructureDefinition-sdc-questionnaire-definitionExtractValue.html">definitionExtractValue</a> extension (further described below).
+      - typically using the <code>definitionExtractValue</code> extension (further described below).
       <ul>
         <li>This string value is not a FHIRPath expression to be evaluated, it is the name for the variable that will be available to FHIRPath expressions.</li>
         <li>The allocateId extension will be made available to all FHIRPath expressions on that node, and any child items.</li>
@@ -440,7 +451,7 @@ The extension supports the following elements:
       for them to use the same allocated id.
     </li>
     <li>
-      <b>Initiate Resource extraction:</b> Include the <a href="StructureDefinition-sdc-questionnaire-definitionExtract.html">sdc-questionnaire-definitionExtract</a> extension on either the Questionnaire root or on
+      <b>Initiate Resource extraction:</b> Include the <code>definitionExtract</code> extension on either the Questionnaire root or on
       other items within the Questionnaire to mark the point at which a new resource will be extracted (and what resource type/profile if applicable).<br/>
       This is a complex extension that includes the following properties: <code>definition</code> (resource/profile canonical URL),
       and optionally fullUrl, ifNoneMatch, ifModifiedSince, ifMatch and ifNoneExist (FHIRPath expression expressions used to populate the transaction bundle entry containing the extracted resource).
@@ -466,7 +477,7 @@ The extension supports the following elements:
             <li>
               <code>request.method</code> - if the resource has no <code>id</code> property set the value to <code>POST</code> (requesting a create),
               otherwise set the value to <code>PUT</code> (requesting an update).<br/>
-              <i>The <code>resource.id</code> could be set using a hidden item (pre-populated during data-entry), or using the <a href="StructureDefinition-sdc-questionnaire-definitionExtractValue.html">definitionExtractValue</a> extension.</i>
+              <i>The <code>resource.id</code> could be set using a hidden item (pre-populated during data-entry), or using the <code>definitionExtractValue</code> extension.</i>
             </li>
             <li>
               <code>request.url</code> - if the resource is being updated  the url will be the resource type and the <code>id</code> property of the resource. e.g. <code>Patient/123</code>,
@@ -498,14 +509,14 @@ The extension supports the following elements:
       <blockquote>
         <p>
           <i>
-            <b>Note:</b> In previous versions of the SDC specification the <a href="StructureDefinition-sdc-questionnaire-itemExtractionContext.html">questionnaire-itemExtractionContext</a> extension 
-            was used to indicate the resource type, however this has been deprecated and we encourage moving to the newer <a href="StructureDefinition-sdc-questionnaire-definitionExtract.html">sdc-questionnaire-definitionExtract</a> extension.
+            <b>Note:</b> In previous versions of the SDC specification the <code>itemExtractionContext</code> extension 
+            was used to indicate the resource type, however this has been deprecated and we encourage moving to the newer <code>definitionExtract</code> extension.
           </i>
         </p>
       </blockquote>
     </li>
     <li>
-      <b>Indicate properties to populate in extracted resource:</b> For the item and any descendant items of an item (or root) with the <a href="StructureDefinition-sdc-questionnaire-definitionExtractValue.html">definitionExtractValue</a> extension:
+      <b>Indicate properties to populate in extracted resource:</b> For the item and any descendant items of an item (or root) with the <code>definitionExtractValue</code> extension:
       <ul>
         <li>
           Set the <code>Questionnaire.item.definition</code> to associate an answer to the item with a property in the extracted resource.<br/>
@@ -527,7 +538,7 @@ The extension supports the following elements:
           in your questionnaire just to add that in.
         </li>
         <li>
-          Add <a href="StructureDefinition-sdc-questionnaire-definitionExtractValue.html">definitionExtractValue</a> extension(s) to the root/item to specify calculated or fixed values
+          Add <code>definitionExtractValue</code> extension(s) to the root/item to specify calculated or fixed values
           to populate into the resource when an answer for this item is entered (or always when at the root of questionnaire).<br/>
           This is particularly useful for populating fixed values, or calculated values that are not directly entered by the user.<br/>
           e.g. To assign the value from the <code>QuestionnaireResponse.subject</code> property into a property in the extracted resource.<br/>
@@ -629,12 +640,12 @@ The extension supports the following elements:
       <i>(These could also be considered at the root level when processing a profiled resource)</i>
     </li>
     <li>
-      <b>Supporting the extraction process:</b> If necessary, define <a href="{{site.data.fhir.ver.ext}}/StructureDefinition-questionnaire-hidden.html">questionnaire-hidden</a> items 
+      <b>Supporting the extraction process:</b> If necessary, define items with the <code>hidden</code> extension 
       that have <code>Questionnaire.item.initial.value[x]</code> or that use the
-      <a href="StructureDefinition-sdc-questionnaire-initialExpression.html">questionnaire-initialExpression</a> extension to define their content to use to populate
+      <code>questionnaire-initialExpression</code> extension to define their content to use to populate
       resource elements that the user will not be filling in.  (The initialExpressions might in turn depend on
-      <a href="{{site.data.fhir.ver.ext}}/StructureDefinition-variable.html">variable</a> and
-      <a href="StructureDefinition-sdc-questionnaire-launchContext.html">questionnaire-launchContext</a> extensions, used as described in the
+      <code>variable</code> and
+      <code>questionnaire-launchContext</code> extensions, used as described in the
       <a href="populate.html#exp-pop">Expression-based population</a>
       section, however that evaluation is all outside the scope of the $extract operation, and those variables are not available to $extract processing.<br/>
       This is particularly useful for retaining the resource ID of a resource that is extracted to use to update the resource (method = PUT).
@@ -650,14 +661,11 @@ The extension supports the following elements:
     </p>
   </blockquote>
   <p>
-    Examples of questionnaires using this approach can be found <a href="Questionnaire-demographics.html">here</a> and in <a href="Questionnaire-extract-complex-defn3.html">Questionnaire/extract-complex-defn3</a>.
-  </p>
-  <p>
     Other considerations and rules when using this approach:
   </p>
   <ul>
     <li>
-      FHIRPath expressions used in the $extract approach do not have access to the <a href="StructureDefinition-sdc-questionnaire-launchContext.html">launchContext</a>, <a href="StructureDefinition-sdc-questionnaire-initialExpression.html">initialExpression</a>, or <a href="{{site.data.fhir.ver.ext}}/StructureDefinition-variable.html">variable</a> extensions.  They are only able to
+      FHIRPath expressions used in the $extract approach do not have access to the <code>launchContext</code>, <code>initialExpression</code>, or <code>variable</code> extensions.  They are only able to
       access the QuestionnaireResponse data and the Questionnaire data and specific extract only extensions (extractAllocateId). Refer to the 
       <a href="expressions.html#extract">expressions</a> page for more details.
     </li>
@@ -677,6 +685,29 @@ The extension supports the following elements:
 
   <a name="template-extract"> </a>
   <h4>Template-based extraction</h4>
+  <table class="grid">
+    <tbody>
+      <tr>
+        <th>Profile:</th>
+        <td></td>
+      </tr>
+      <tr>
+        <th>Relevant Extensions:</th>
+        <td>
+          <ul>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+          </ul>
+        </td>
+      </tr>
+      <tr>
+        <th>Example Questionnaires:</th>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
   <p>
     The template based approach provides an alternative to the definition based approach and where the full power of StructureMaps isn't required.
     It supports the same level of capability, however is unable to leverage any of the information inside a profile where the definition based approach can.<br/>
@@ -789,13 +820,37 @@ The extension supports the following elements:
       entry in a collection from the extracted resource.<br/>
       Loops are similar in nature where the looping is provided based on the FHIRPath expression returning multiple results, and thus creating multiple entries in an array,
       or even multiple resources in the transaction bundle driven by either multiple items in the questionnaire, or contexts in the bundle template.<br/>
-      There are several examples of both of these in the <a href="">template example</a>, such as how it creates multiple names in the patient resource from multiple items in the
+      There are several examples of both of these in the template examples <a href="Questionnaire-extract-complex-template.html">here</a> and 
+      <a href="Questionnaire-extract-complex-template2.html">here</a>, such as how they create multiple names in the patient resource from multiple items in the
       questionnaire name item group, or where there is no IHI identifier added if the relevant item hasn't been answered in the questionnaire.
     </p>
   </blockquote>
 
   <a name="map-extract"> </a>
   <h4>StructureMap-based extraction</h4>
+  <table class="grid">
+    <tbody>
+      <tr>
+        <th>Profile:</th>
+        <td></td>
+      </tr>
+      <tr>
+        <th>Relevant Extensions:</th>
+        <td>
+          <ul>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+          </ul>
+        </td>
+      </tr>
+      <tr>
+        <th>Example Questionnaires:</th>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
   <p>
     The <a href="{{site.data.fhir.path}}structuremap.html">StructureMap</a> approach is the most sophisticated approach of the four - and the most powerful.
     It allows significant transformation of data, including code translations when generating output resources.  It also allows the conversion process

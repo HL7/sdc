@@ -10,7 +10,7 @@ Usage: #definition
 * description = "Allows searching by 'assembledFrom' extension on a Questionnaire"
 * code = #assembled-from
 * base = #Questionnaire
-* type = #token
+* type = #reference
 * expression = "Questionnaire.extension('http://hl7.org/fhir/uv/sdc/StructureDefinition/sdc-questionnaire-assembledFrom').value"
 * xpath = "f:Questionnaire/f:extension[@url='http://hl7.org/fhir/uv/sdc/StructureDefinition/sdc-questionnaire-assembledFrom']/f:value"
 * xpathUsage = #normal
