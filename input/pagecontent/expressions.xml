@@ -27,7 +27,7 @@
       following extensions within the same element, or extensions appearing on descendant items) as a 'variable'.  These variables are referenced by
       prepending '%' to the 'name' of the expression.  I.e. the result of an expression named 'patient' would be available for use in subsequent expressions
       as <code>%patient</code>.<br/>
-      Collisions between names that are defined more than once within the same containing element will be treated as an error.  I.e. If there is a
+      Collisions between names that are defined more than once within the same containing element <b>SHALL</b> be treated as an error.  I.e. If there is a
       <a href="#launchContext">launchContext</a> extension called 'patient' and then on the same item there's
       also a <a href="#variable">variable</a> extension also named 'patient', that would be an error.  However, overriding a name in a descendant
       element is NOT an error.  For example, if a <a href="#variable">variable</a> with the name 'linkIdPrefix' is defined on an item and then is
@@ -242,7 +242,7 @@
             Reference questions, <a href="StructureDefinition-sdc-questionnaire-choiceColumn.html">choiceColumn</a> can be used to manage display.
           </p>
           <p>
-            NOTE: the set of candidate expressions is intended to be a starter set, not exhaustive.  The user should be free to enter or look-up additional
+            NOTE: the set of candidate expressions is intended to be a starter set, not exhaustive.  The user needs to be free to enter or look-up additional
             values.  The overall set of values from which answers are <b>allowed</b> to be selected (typically independent of what happens to be in the
             patient record) is defined by <a href="#answerExpression">answerExpression</a>.  Systems <code>SHOULD</code> allow multiple selections in situations where 
             the question is marked as 'repeating' and multiple answers are therefore valid, but <code>SHOULD</code> only allow one answer for non-repeating questions.
@@ -290,7 +290,7 @@
             to help guide the answer.
           </p>
           <p>
-            Also, like candidateExpressions, contextExpressions should rarely, if ever, declare a name element.
+            Also, like candidateExpressions, contextExpressions will rarely, if ever, declare a name element.
           </p>
         </td>
       </tr>
@@ -319,13 +319,13 @@
             the section below on <a href="#dependencies">dependencies</a> that explains how to handle order of evaluation and other concerns.
           </p>
           <p>
-            In most cases, 'calculated' answers should be marked as 'readOnly', however in some cases it may be legitimate to override a calculated element,
+            In most cases, 'calculated' answers will be marked as 'readOnly', however in some cases it may be legitimate to override a calculated element,
             for example if the calculation cannot be made due to non-available information, but the user still knows the calculated value. This statement applies
             to any context information of any sort. [For example, it might be possible to enter an age but not a date of birth.  If a user has edited a calculated value,
             it <code>SHOULD</code> no longer be changed when other answers in the questionnaire response change.  When loading a previously persisted QuestionnaireResponse,
             the determination of whether a user has edited the calculated field can be determined by whether the calculated value differs from invoking the
             calculation on the current values in the questionnaire.  (As a side-effect, this means that calculated values based on 'context' information
-            such as an age calculated based on 'now' will be treated as user-edited when subsequently opening the QuestionnaireResponse and will not update
+            such as an age calculated based on 'now' <b>SHALL</b> be treated as user-edited when subsequently opening the QuestionnaireResponse and <b>SHALL NOT</b> update
             to reflect the new current date. Client systems MAY provide the user with the ability to reset calculated fields to the calculated value).]
           </p>
           <p>
@@ -395,15 +395,15 @@
             it is safe to ignore any non-available options.
           </p>
           <p>
-            More than one repetition of this extension is possible.  If an option appears in more than one repetition, then it will be enabled if it appears in ANY of the
+            More than one repetition of this extension is possible.  If an option appears in more than one repetition, then it <b>SHALL</b> be enabled if it appears in ANY of the
             extensions whose expressions are evaluated as true.  I.e. the expressions that pertain to a given option are treated as 'or'.
           </p>
           <p>
-            AnswerOptionToggleExpressions should generally never need a 'name' declared.
+            AnswerOptionToggleExpressions will generally never need a 'name' declared.
           </p>
 <!-- TODO: Add this in R5
           <p>
-            If an option is 'disabled', whether it is displayed but non-selectable or removed entirely SHOULD be driven by the value of the <a href="todo">disabledDisplay</a>
+            If an option is 'disabled', whether it is displayed but non-selectable or removed entirely <b>SHOULD</b> be driven by the value of the <a href="todo">disabledDisplay</a>
           </p>-->
         </td>
       </tr>
@@ -432,7 +432,7 @@
           <p>
             This expression does not actually populate an element (that's handled by <a href="#initialExpression">initialExpression</a>).  Instead, it
             establishes a variable that is used to aid in population, often by providing a variable that can be used within the initialExpression that determines
-            what the element should be populated with.
+            what the element is be populated with.
           </p>
           <p>
             <code>Expression.name</code> <code>SHALL</code> be populated when this extension is being used for <a href="populate.html#exp-pop">expression-based population</a>.
@@ -453,11 +453,11 @@
       <tr>
         <td colspan="6">
           <p>
-            An invariant that must or should be satisfied before responses to the questionnaire can be considered "complete".  It contains an expression
-            as part of the complex extension, but should never have a 'name'.
+            An invariant that <b>SHALL</b> or <b>SHOULD</b> be satisfied before responses to the questionnaire can be considered "complete".  It contains an expression
+            as part of the complex extension, but <b>SHALL</b> never have a 'name'.
           </p>
           <p>
-            Note: The relative path <code>SHOULD</code> follow the same syntax as <code>OperationOutcome.expression</code>.
+            Note: The relative path <b>SHOULD</b> follow the same syntax as <code>OperationOutcome.expression</code>.
           </p>
         </td>
       </tr>
@@ -537,12 +537,12 @@
             <a href="#initialExpression">initialExpression</a> elements, they'll be updated to reflect the new user.
           </p>
           <p>
-            Launch context information is passed to the QuestionnaireResponse evaluation process by the launching application.  It will pass whatever contexts
+            Launch context information is passed to the QuestionnaireResponse evaluation process by the launching application.  It <b>SHOULD</b> pass whatever contexts
             it is aware of.  SDC systems <code>SHOULD</code> support all four of the contexts defined in this specification (e.g. Patient, Encounter, Location, User), but 
 			are free to support others.  The selected contexts mirror those used by the <a href="http://hl7.org/fhir/smart-app-launch/">SMART on FHIR</a> specification.
           </p>
           <p>
-            The resource corresponding to each context will be made available at the indicated launch context name as if the value had been set in a
+            The resource corresponding to each context <b>SHALL</b> be made available at the indicated launch context name as if the value had been set in a
             <a href="#variable">variable</a>.  It is not allowed to define names that are already <a href="{{site.data.fhir.path}}fhirpath.html#vars">reserved by the base specification</a> 
             or by other variables in the questionnaire.
           </p>
@@ -598,7 +598,7 @@
             It's value is allocated once for each context that it appears in the QR.<br/>
             i.e. if it is defined at the root, it will be allocated once.<br/>
             If it is allocated on a repeating group, it will have a new value for each iteration of the group.<br/>
-            Any child items will use the value that was allocated for the parent item.
+            Any child items <b>SHALL</b> use the value that was allocated for the parent item.
           </p>
         </td>
       </tr>
@@ -711,7 +711,7 @@
           <p>
             Selects a value to replace a value in the extracted resource template.<br/>
             If the value returns multiple, and the resource property can have multiple values, the values will be added to the resource property.<br/>
-            If the value returns multiple, and the resource property can only have one value, the first value will be used and a warning will be generated.            
+            If the value returns multiple, and the resource property can only have one value, the first value <b>SHALL</b> be used and a warning will be generated.            
           </p>
           <p>
             If there is no result, then the property with the template extension will be removed.
@@ -781,10 +781,10 @@
   </p>
   <ul>
     <li>
-      The <code>%resource</code> variable when it appears in expressions on elements in Questionnaire will be evaluated as the root of the QuestionnaireResponse.</li>
+      The <code>%resource</code> variable when it appears in expressions on elements in Questionnaire <b>SHALL</b> be evaluated as the root of the QuestionnaireResponse.</li>
     <li>
-      The <code>%context</code> variable will be set to the QuestionnaireResponse if the expression extension is defined on the Questionnaire root.
-      Otherwise, it will be interpreted as the QuestionnaireResponse.item(s) whose linkId matches the linkId of the Questionnaire.item the expression
+      The <code>%context</code> variable <b>SHALL</b> be set to the QuestionnaireResponse if the expression extension is defined on the Questionnaire root.
+      Otherwise, it <b>SHALL</b> be interpreted as the QuestionnaireResponse.item(s) whose linkId matches the linkId of the Questionnaire.item the expression
       extension was defined in.  I.e. while the extensions and expressions are defined in the Questionnaire, they are <i>evaluated</i> in the context of
       the corresponding item(s) in the QuestionnaireResponse.</li>
     <li>
@@ -821,10 +821,10 @@
     </li>
     <li>
       <code>weight()</code> returns the <a href="{{site.data.fhir.ver.ext}}/StructureDefinition-itemWeight.html">itemWeight</a> for a code, Coding or other element eligible to have the <code>itemWeight</code> extension.  If an <a href="{{site.data.fhir.ver.ext}}/StructureDefinition-itemWeight.html">itemWeight</a> extension
-      is defined on the QuestionnaireResponse answer, it will be returned.  If not, it will be looked up either as an extension on an answerOption in the Questionnaire or as a 
+      is defined on the QuestionnaireResponse answer, it <b>SHALL</b> be returned.  If not, it will be looked up either as an extension on an answerOption in the Questionnaire or as a 
       property on the bound value set expansion (or for Questionnaires, on the 
       corresponding Questionnaire.answerOption).  If not found there, will be looked up on property in the underlying CodeSystem.  If the type is other than code or Coding or no weight
-      is defined for the context element, the result will be an empty set.  If the FHIRPath engine is unable to resolve the corresponding value set, code system or questionnaire
+      is defined for the context element, the result <b>SHALL</b> be an empty set.  If the FHIRPath engine is unable to resolve the corresponding value set, code system or questionnaire
       options, it SHOULD cause the expression to fail.<br/>
       This function will typically be used to support scoring of Questionnaires, but it can be used with observations or potentially other elements as well.
     </li>
@@ -836,7 +836,7 @@
   <a name="managingcollidingvariable"> </a>
   <h3>Managing colliding variable declarations</h3>
   <p>
-    Variable names SHOULD be unique in a context  (e.g. Questionnaire root or a specific item).  It is an error if the same variable name is assigned a value more than once in a single node.  It is also an error to define a variable name that has the same name as one of the standard FHIRPath names (e.g. %qitem).  If the same variable is assigned on both an element and a descendant element, a warning will be generated, however it is not an error.  The descendant declaration will be treated as overriding the higher-level declaration.  It is perfectly acceptable for the same variable name to appear in multiple disjoint contexts (for example on sibling items within a Questionnaire).
+    Variable names <b>SHOULD</b> be unique in a context  (e.g. Questionnaire root or a specific item).  It is an error if the same variable name is assigned a value more than once in a single node.  It is also an error to define a variable name that has the same name as one of the standard FHIRPath names (e.g. %qitem).  If the same variable is assigned on both an element and a descendant element, a warning <b>SHOULD</b> be generated, however it is not an error.  The descendant declaration <b>SHALL</b> be treated as overriding the higher-level declaration.  It is perfectly acceptable for the same variable name to appear in multiple disjoint contexts (for example on sibling items within a Questionnaire).
   </p>
   <a name="fhirpathvscql"> </a>
   <h3>FHIRPath vs. CQL</h3>
@@ -857,17 +857,17 @@
 When referencing external answerValueSets, consideration should be given to linking to a specific version of the ValueSet and/or ensuring that the ValueSet binds to specific versions of the underlying systems.  Otherwise, a change to the ValueSet definition or deprecation of codes from one of the referenced code systems could invalidate previously valid QuestionnaireResponses.  Validators <code>SHOULD</code> check validity against a value set based on the date of QuestionnaireResponse completion (i.e. QuestionnaireResponse.authored) to mitigate this issue.
   </p>
   <p>
-Information gleaned from other types of external sources (e.g. launch context, fhir-x-query, etc.) <code>SHOULD</code> only be used for <a href="StructureDefinition-sdc-questionnaire-initialExpression.html">initialExpression</a> and <a href="StructureDefinition-sdc-questionnaire-calculatedExpression.html">calculatedExpression</a> logic and that any other desired behavior (enableWhen, answerExpression, etc.) should always be driven off of answers within the Questionnaire (even if they're hidden answers that are populated from an initialExpression) because launchContext and search results may vary between edit sessions and will also be different (or perhaps non-existent) when validating the Questionnaire.
+Information gleaned from other types of external sources (e.g. launch context, fhir-x-query, etc.) <code>SHOULD</code> only be used for <a href="StructureDefinition-sdc-questionnaire-initialExpression.html">initialExpression</a> and <a href="StructureDefinition-sdc-questionnaire-calculatedExpression.html">calculatedExpression</a> logic and that any other desired behavior (enableWhen, answerExpression, etc.) <b>SHOULD</b> always be driven off of answers within the Questionnaire (even if they're hidden answers that are populated from an initialExpression) because launchContext and search results may vary between edit sessions and will also be different (or perhaps non-existent) when validating the Questionnaire.
   </p>
   <p>
-Changes in external context that impacts the value of a calculatedExpression will not cause a problem because if the new calculated value upon re-opening a QuestionnaireResponse differs from the stored value, the form filler will interpret the answer as having been overridden and it will therefore remain unchanged.
+Changes in external context that impacts the value of a calculatedExpression will not cause a problem because if the new calculated value upon re-opening a QuestionnaireResponse differs from the stored value, the form filler <b>SHALL</b> interpret the answer as having been overridden and it will therefore remain unchanged.
   </p>
   <a name="missinginfo"> </a>
   <h3>Missing information</h3>
   <p>
     Sometimes information needed for an expression will not be available.  Perhaps the system cannot pass encounter information - or maybe the
     form is being filled in outside the context of an encounter at all.  Perhaps a query results in an error because of a server issue or perhaps the user
-    or system filling in the questionnaire does not have permission to access the relevant data.  Systems should fail gracefully in such situations.
+    or system filling in the questionnaire does not have permission to access the relevant data.  Systems <b>SHOULD</b> fail gracefully in such situations.
     Populated or calculated elements can be left empty.  Extracted elements can be omitted.  If control logic such as enableWhen is impacted, either display
     a helpful error message or permit entry of potentially relevant information if it cannot be determined whether the data should be allowed or not.
   </p>
