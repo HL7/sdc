@@ -17,6 +17,7 @@ Description: "Defines common elements for all SDC Questionnaires (regular or ada
 * version 0..1 MS
 * status MS
 * title MS
+* subjectType MS
 * item
   * obeys sdc-1 and que-1a and que-1b and que-1c and que-14
   * extension contains 
