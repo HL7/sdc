@@ -47,7 +47,7 @@
   POSSIBILITY OF SUCH DAMAGE.
   
 
-  Generated on Fri, Aug 8, 2025 21:24+0000 for FHIR v6.0.0-ballot2 
+  Generated on Wed, Aug 13, 2025 21:13+0000 for FHIR v6.0.0-ballot2 
 -->
 <xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns="http://hl7.org/fhir" xmlns:xhtml="http://www.w3.org/1999/xhtml" xmlns:xml="http://www.w3.org/XML/1998/namespace" targetNamespace="http://hl7.org/fhir" elementFormDefault="qualified" version="6.0.0-ballot2">
   <!-- Note: When using this schema with some tools, it may also be necessary to declare xmlns:xml="http://www.w3.org/XML/1998/namespace", however this causes performance issues with other tools and thus is not in the base schemas. -->
@@ -18141,7 +18141,7 @@ The duration (usually in minutes) could also be provided to indicate the length 
     <xs:complexContent>
       <xs:extension base="BackboneElement">
         <xs:sequence>
-          <xs:element name="type" minOccurs="1" maxOccurs="1" type="ArtifactRelationshipType">
+          <xs:element name="type" minOccurs="1" maxOccurs="1" type="code">
             <xs:annotation>
               <xs:documentation xml:lang="en">The type of relationship to the related artifact.</xs:documentation>
            </xs:annotation>
@@ -18318,196 +18318,6 @@ The duration (usually in minutes) could also be provided to indicate the length 
     <xs:complexContent>
       <xs:extension base="Element">
         <xs:attribute name="value" type="ArtifactAssessmentWorkflowStatusEnum" use="optional"/>
-      </xs:extension>
-    </xs:complexContent>
-  </xs:complexType>
-  <xs:simpleType name="ArtifactRelationshipTypeEnum">
-    <xs:restriction base="code-primitive">
-      <xs:enumeration value="documentation">
-        <xs:annotation>
-          <xs:documentation xml:lang="en">Documentation</xs:documentation>
-        </xs:annotation>
-      </xs:enumeration>
-      <xs:enumeration value="justification">
-        <xs:annotation>
-          <xs:documentation xml:lang="en">Justification</xs:documentation>
-        </xs:annotation>
-      </xs:enumeration>
-      <xs:enumeration value="predecessor">
-        <xs:annotation>
-          <xs:documentation xml:lang="en">Predecessor</xs:documentation>
-        </xs:annotation>
-      </xs:enumeration>
-      <xs:enumeration value="successor">
-        <xs:annotation>
-          <xs:documentation xml:lang="en">Successor</xs:documentation>
-        </xs:annotation>
-      </xs:enumeration>
-      <xs:enumeration value="derived-from">
-        <xs:annotation>
-          <xs:documentation xml:lang="en">Derived From</xs:documentation>
-        </xs:annotation>
-      </xs:enumeration>
-      <xs:enumeration value="depends-on">
-        <xs:annotation>
-          <xs:documentation xml:lang="en">Depends On</xs:documentation>
-        </xs:annotation>
-      </xs:enumeration>
-      <xs:enumeration value="composed-of">
-        <xs:annotation>
-          <xs:documentation xml:lang="en">Composed Of</xs:documentation>
-        </xs:annotation>
-      </xs:enumeration>
-      <xs:enumeration value="part-of">
-        <xs:annotation>
-          <xs:documentation xml:lang="en">Part Of</xs:documentation>
-        </xs:annotation>
-      </xs:enumeration>
-      <xs:enumeration value="amends">
-        <xs:annotation>
-          <xs:documentation xml:lang="en">Amends</xs:documentation>
-        </xs:annotation>
-      </xs:enumeration>
-      <xs:enumeration value="amended-with">
-        <xs:annotation>
-          <xs:documentation xml:lang="en">Amended With</xs:documentation>
-        </xs:annotation>
-      </xs:enumeration>
-      <xs:enumeration value="appends">
-        <xs:annotation>
-          <xs:documentation xml:lang="en">Appends</xs:documentation>
-        </xs:annotation>
-      </xs:enumeration>
-      <xs:enumeration value="appended-with">
-        <xs:annotation>
-          <xs:documentation xml:lang="en">Appended With</xs:documentation>
-        </xs:annotation>
-      </xs:enumeration>
-      <xs:enumeration value="cites">
-        <xs:annotation>
-          <xs:documentation xml:lang="en">Cites</xs:documentation>
-        </xs:annotation>
-      </xs:enumeration>
-      <xs:enumeration value="cited-by">
-        <xs:annotation>
-          <xs:documentation xml:lang="en">Cited By</xs:documentation>
-        </xs:annotation>
-      </xs:enumeration>
-      <xs:enumeration value="comments-on">
-        <xs:annotation>
-          <xs:documentation xml:lang="en">Is Comment On</xs:documentation>
-        </xs:annotation>
-      </xs:enumeration>
-      <xs:enumeration value="comment-in">
-        <xs:annotation>
-          <xs:documentation xml:lang="en">Has Comment In</xs:documentation>
-        </xs:annotation>
-      </xs:enumeration>
-      <xs:enumeration value="contains">
-        <xs:annotation>
-          <xs:documentation xml:lang="en">Contains</xs:documentation>
-        </xs:annotation>
-      </xs:enumeration>
-      <xs:enumeration value="contained-in">
-        <xs:annotation>
-          <xs:documentation xml:lang="en">Contained In</xs:documentation>
-        </xs:annotation>
-      </xs:enumeration>
-      <xs:enumeration value="corrects">
-        <xs:annotation>
-          <xs:documentation xml:lang="en">Corrects</xs:documentation>
-        </xs:annotation>
-      </xs:enumeration>
-      <xs:enumeration value="correction-in">
-        <xs:annotation>
-          <xs:documentation xml:lang="en">Correction In</xs:documentation>
-        </xs:annotation>
-      </xs:enumeration>
-      <xs:enumeration value="replaces">
-        <xs:annotation>
-          <xs:documentation xml:lang="en">Replaces</xs:documentation>
-        </xs:annotation>
-      </xs:enumeration>
-      <xs:enumeration value="replaced-with">
-        <xs:annotation>
-          <xs:documentation xml:lang="en">Replaced With</xs:documentation>
-        </xs:annotation>
-      </xs:enumeration>
-      <xs:enumeration value="retracts">
-        <xs:annotation>
-          <xs:documentation xml:lang="en">Retracts</xs:documentation>
-        </xs:annotation>
-      </xs:enumeration>
-      <xs:enumeration value="retracted-by">
-        <xs:annotation>
-          <xs:documentation xml:lang="en">Retracted By</xs:documentation>
-        </xs:annotation>
-      </xs:enumeration>
-      <xs:enumeration value="signs">
-        <xs:annotation>
-          <xs:documentation xml:lang="en">Signs</xs:documentation>
-        </xs:annotation>
-      </xs:enumeration>
-      <xs:enumeration value="similar-to">
-        <xs:annotation>
-          <xs:documentation xml:lang="en">Similar To</xs:documentation>
-        </xs:annotation>
-      </xs:enumeration>
-      <xs:enumeration value="supports">
-        <xs:annotation>
-          <xs:documentation xml:lang="en">Supports</xs:documentation>
-        </xs:annotation>
-      </xs:enumeration>
-      <xs:enumeration value="supported-with">
-        <xs:annotation>
-          <xs:documentation xml:lang="en">Supported With</xs:documentation>
-        </xs:annotation>
-      </xs:enumeration>
-      <xs:enumeration value="transforms">
-        <xs:annotation>
-          <xs:documentation xml:lang="en">Transforms</xs:documentation>
-        </xs:annotation>
-      </xs:enumeration>
-      <xs:enumeration value="transformed-into">
-        <xs:annotation>
-          <xs:documentation xml:lang="en">Transformed Into</xs:documentation>
-        </xs:annotation>
-      </xs:enumeration>
-      <xs:enumeration value="transformed-with">
-        <xs:annotation>
-          <xs:documentation xml:lang="en">Transformed With</xs:documentation>
-        </xs:annotation>
-      </xs:enumeration>
-      <xs:enumeration value="specification-of">
-        <xs:annotation>
-          <xs:documentation xml:lang="en">Specification Of</xs:documentation>
-        </xs:annotation>
-      </xs:enumeration>
-      <xs:enumeration value="created-with">
-        <xs:annotation>
-          <xs:documentation xml:lang="en">Created With</xs:documentation>
-        </xs:annotation>
-      </xs:enumeration>
-      <xs:enumeration value="cite-as">
-        <xs:annotation>
-          <xs:documentation xml:lang="en">Cite As</xs:documentation>
-        </xs:annotation>
-      </xs:enumeration>
-      <xs:enumeration value="summarizes">
-        <xs:annotation>
-          <xs:documentation xml:lang="en">Summarizes</xs:documentation>
-        </xs:annotation>
-      </xs:enumeration>
-    </xs:restriction>
-  </xs:simpleType>
-  <xs:complexType name="ArtifactRelationshipType">
-    <xs:annotation>
-      <xs:documentation xml:lang="en"></xs:documentation>
-      <xs:documentation xml:lang="en">If the element is present, it must have either a @value, an @id, or extensions</xs:documentation>
-    </xs:annotation>
-    <xs:complexContent>
-      <xs:extension base="Element">
-        <xs:attribute name="value" type="ArtifactRelationshipTypeEnum" use="optional"/>
       </xs:extension>
     </xs:complexContent>
   </xs:complexType>
@@ -22527,7 +22337,7 @@ of the resource representation.</xs:documentation>
     <xs:complexContent>
       <xs:extension base="BackboneElement">
         <xs:sequence>
-          <xs:element name="type" minOccurs="1" maxOccurs="1" type="ArtifactRelationshipType">
+          <xs:element name="type" minOccurs="1" maxOccurs="1" type="code">
             <xs:annotation>
               <xs:documentation xml:lang="en">The type of relationship to the related artifact.</xs:documentation>
            </xs:annotation>
@@ -22748,7 +22558,7 @@ of the resource representation.</xs:documentation>
     <xs:complexContent>
       <xs:extension base="BackboneElement">
         <xs:sequence>
-          <xs:element name="type" minOccurs="1" maxOccurs="1" type="ArtifactRelationshipType">
+          <xs:element name="type" minOccurs="1" maxOccurs="1" type="code">
             <xs:annotation>
               <xs:documentation xml:lang="en">The type of relationship to the related artifact.</xs:documentation>
            </xs:annotation>
@@ -26712,6 +26522,196 @@ The actual author of the section when it is not the author of the composition. I
     <xs:complexContent>
       <xs:extension base="Element">
         <xs:attribute name="value" type="CompositionStatusEnum" use="optional"/>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:simpleType name="ArtifactRelationshipTypeEnum">
+    <xs:restriction base="code-primitive">
+      <xs:enumeration value="documentation">
+        <xs:annotation>
+          <xs:documentation xml:lang="en">Documentation</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="justification">
+        <xs:annotation>
+          <xs:documentation xml:lang="en">Justification</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="predecessor">
+        <xs:annotation>
+          <xs:documentation xml:lang="en">Predecessor</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="successor">
+        <xs:annotation>
+          <xs:documentation xml:lang="en">Successor</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="derived-from">
+        <xs:annotation>
+          <xs:documentation xml:lang="en">Derived From</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="depends-on">
+        <xs:annotation>
+          <xs:documentation xml:lang="en">Depends On</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="composed-of">
+        <xs:annotation>
+          <xs:documentation xml:lang="en">Composed Of</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="part-of">
+        <xs:annotation>
+          <xs:documentation xml:lang="en">Part Of</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="amends">
+        <xs:annotation>
+          <xs:documentation xml:lang="en">Amends</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="amended-with">
+        <xs:annotation>
+          <xs:documentation xml:lang="en">Amended With</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="appends">
+        <xs:annotation>
+          <xs:documentation xml:lang="en">Appends</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="appended-with">
+        <xs:annotation>
+          <xs:documentation xml:lang="en">Appended With</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="cites">
+        <xs:annotation>
+          <xs:documentation xml:lang="en">Cites</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="cited-by">
+        <xs:annotation>
+          <xs:documentation xml:lang="en">Cited By</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="comments-on">
+        <xs:annotation>
+          <xs:documentation xml:lang="en">Is Comment On</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="comment-in">
+        <xs:annotation>
+          <xs:documentation xml:lang="en">Has Comment In</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="contains">
+        <xs:annotation>
+          <xs:documentation xml:lang="en">Contains</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="contained-in">
+        <xs:annotation>
+          <xs:documentation xml:lang="en">Contained In</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="corrects">
+        <xs:annotation>
+          <xs:documentation xml:lang="en">Corrects</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="correction-in">
+        <xs:annotation>
+          <xs:documentation xml:lang="en">Correction In</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="replaces">
+        <xs:annotation>
+          <xs:documentation xml:lang="en">Replaces</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="replaced-with">
+        <xs:annotation>
+          <xs:documentation xml:lang="en">Replaced With</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="retracts">
+        <xs:annotation>
+          <xs:documentation xml:lang="en">Retracts</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="retracted-by">
+        <xs:annotation>
+          <xs:documentation xml:lang="en">Retracted By</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="signs">
+        <xs:annotation>
+          <xs:documentation xml:lang="en">Signs</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="similar-to">
+        <xs:annotation>
+          <xs:documentation xml:lang="en">Similar To</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="supports">
+        <xs:annotation>
+          <xs:documentation xml:lang="en">Supports</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="supported-with">
+        <xs:annotation>
+          <xs:documentation xml:lang="en">Supported With</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="transforms">
+        <xs:annotation>
+          <xs:documentation xml:lang="en">Transforms</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="transformed-into">
+        <xs:annotation>
+          <xs:documentation xml:lang="en">Transformed Into</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="transformed-with">
+        <xs:annotation>
+          <xs:documentation xml:lang="en">Transformed With</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="specification-of">
+        <xs:annotation>
+          <xs:documentation xml:lang="en">Specification Of</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="created-with">
+        <xs:annotation>
+          <xs:documentation xml:lang="en">Created With</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="cite-as">
+        <xs:annotation>
+          <xs:documentation xml:lang="en">Cite As</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="summarizes">
+        <xs:annotation>
+          <xs:documentation xml:lang="en">Summarizes</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:complexType name="ArtifactRelationshipType">
+    <xs:annotation>
+      <xs:documentation xml:lang="en"></xs:documentation>
+      <xs:documentation xml:lang="en">If the element is present, it must have either a @value, an @id, or extensions</xs:documentation>
+    </xs:annotation>
+    <xs:complexContent>
+      <xs:extension base="Element">
+        <xs:attribute name="value" type="ArtifactRelationshipTypeEnum" use="optional"/>
       </xs:extension>
     </xs:complexContent>
   </xs:complexType>
@@ -34356,7 +34356,7 @@ RegisteredName | UserFriendlyName | PatientReportedName.</xs:documentation>
     <xs:complexContent>
       <xs:extension base="BackboneElement">
         <xs:sequence>
-          <xs:element name="type" minOccurs="1" maxOccurs="1" type="ArtifactRelationshipType">
+          <xs:element name="type" minOccurs="1" maxOccurs="1" type="code">
             <xs:annotation>
               <xs:documentation xml:lang="en">The type of relationship to the related artifact.</xs:documentation>
            </xs:annotation>
@@ -34517,6 +34517,11 @@ RegisteredName | UserFriendlyName | PatientReportedName.</xs:documentation>
           <xs:element name="knownDataCount" minOccurs="0" maxOccurs="1" type="unsignedInt">
             <xs:annotation>
               <xs:documentation xml:lang="en">Number of participants with known results for measured variables.</xs:documentation>
+           </xs:annotation>
+          </xs:element>
+          <xs:element name="numberAnalyzed" minOccurs="0" maxOccurs="1" type="unsignedInt">
+            <xs:annotation>
+              <xs:documentation xml:lang="en">Total number of participants who were analayzed.</xs:documentation>
            </xs:annotation>
           </xs:element>
         </xs:sequence>
@@ -34752,9 +34757,14 @@ RegisteredName | UserFriendlyName | PatientReportedName.</xs:documentation>
           <xs:documentation xml:lang="en">polychotomous variable</xs:documentation>
         </xs:annotation>
       </xs:enumeration>
-      <xs:enumeration value="extension">
+      <xs:enumeration value="time-to-event">
         <xs:annotation>
-          <xs:documentation xml:lang="en">extension</xs:documentation>
+          <xs:documentation xml:lang="en">time-to-event</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="not-specified">
+        <xs:annotation>
+          <xs:documentation xml:lang="en">not-specified</xs:documentation>
         </xs:annotation>
       </xs:enumeration>
     </xs:restriction>
@@ -34942,7 +34952,7 @@ See guidance around (not) making local changes to elements [here](canonicalresou
               <xs:documentation xml:lang="en">Further specification of the definition.</xs:documentation>
            </xs:annotation>
           </xs:element>
-          <xs:element name="handling" minOccurs="0" maxOccurs="1" type="EvidenceVariableHandling">
+          <xs:element name="handling" minOccurs="0" maxOccurs="1" type="CodeableConcept">
             <xs:annotation>
               <xs:documentation xml:lang="en">The method of handling in statistical analysis.</xs:documentation>
            </xs:annotation>
@@ -35003,7 +35013,7 @@ See guidance around (not) making local changes to elements [here](canonicalresou
     <xs:complexContent>
       <xs:extension base="BackboneElement">
         <xs:sequence>
-          <xs:element name="type" minOccurs="1" maxOccurs="1" type="ArtifactRelationshipType">
+          <xs:element name="type" minOccurs="1" maxOccurs="1" type="code">
             <xs:annotation>
               <xs:documentation xml:lang="en">The type of relationship to the related artifact.</xs:documentation>
            </xs:annotation>
@@ -58413,6 +58423,11 @@ Deceased patients may also be marked as inactive for the same reasons, but may b
               <xs:documentation xml:lang="en">The name.</xs:documentation>
            </xs:annotation>
           </xs:element>
+          <xs:element name="language" minOccurs="0" maxOccurs="1" type="code">
+            <xs:annotation>
+              <xs:documentation xml:lang="en">Used to express the specific language of the title.</xs:documentation>
+           </xs:annotation>
+          </xs:element>
         </xs:sequence>
       </xs:extension>
     </xs:complexContent>
@@ -58424,7 +58439,7 @@ Deceased patients may also be marked as inactive for the same reasons, but may b
     <xs:complexContent>
       <xs:extension base="BackboneElement">
         <xs:sequence>
-          <xs:element name="type" minOccurs="1" maxOccurs="1" type="ArtifactRelationshipType">
+          <xs:element name="type" minOccurs="1" maxOccurs="1" type="code">
             <xs:annotation>
               <xs:documentation xml:lang="en">The type of relationship to the related artifact.</xs:documentation>
            </xs:annotation>

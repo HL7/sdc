@@ -26,7 +26,9 @@
 		<li>
 			<a href="CapabilityStatement-sdc-form-filler.html">SDC Form Filler</a> - System responsible for capturing user form input to produce partially or fully completed forms</li>
 		<li>
-			<a href="CapabilityStatement-sdc-form-manager.html">SDC Form Manager</a> - Repository for form definitions.  May also perform pre-population</li>
+			<a href="CapabilityStatement-sdc-form-fill-manager.html">SDC Form Fill Manager</a> - Repository for accessing form definitions.  May also perform pre-population</li>
+		<li>
+			<a href="CapabilityStatement-sdc-form-manager.html">SDC Form Manager</a> - Repository for maintaining form definitions.  (Builds on SDC Form Fill Manager.)</li>
 		<li>
 			<a href="CapabilityStatement-sdc-form-response-manager.html">SDC Form Response Manager</a> - Searchable repository for storage and retrieval of completed and partially completed forms.</li>
 		<li>
@@ -63,12 +65,12 @@
   <a name="curation"> </a>
   <h4>Form curation</h4>
 	<a name="fig2"> </a>
-	<img style="width:400px" alt="Diagram showing interaction between Form Designer, Form Manager and Data Element Registry" src="sdc-form-curation.png"/>
+	<img style="width:400px" alt="Diagram showing interaction between Form Designer, Form Manager and Data Element Source" src="sdc-form-curation.png"/>
 	<p>
 		<b>Figure 2: Form Curation Workflow</b>
 	</p>
 	<p>
-    In form curation, as shown in <a href="#fig2">Figure 2</a>, the Form Designer interacts with both the Form Manager and the Data Element Registry to create, edit and update forms,
+    In form curation, as shown in <a href="#fig2">Figure 2</a>, the Form Designer interacts with both the Form Manager and the Data Element Source to create, edit and update forms,
     including identifying and defining associated terminologies and data elements.  This is an iterative process where an initial version is
     created and then subsequently updated and maintained, eventually changing status to <i>active</i> and later <i>retired</i>.
   </p>
@@ -92,7 +94,7 @@
 	</p>
 	<p>The driver of this workflow is the
     <a href="CapabilityStatement-sdc-form-filler.html">Form Filler</a> system.  It retrieves a form (Questionnaire) from the
-    <a href="CapabilityStatement-sdc-form-manager.html">Form Manager</a>.  It may also request that the Form Manager generate an initial QuestionnaireResponse,
+    <a href="CapabilityStatement-sdc-form-fill-manager.html">Form Fill Manager</a>.  It may also request that the Form Manager generate an initial QuestionnaireResponse,
     potentially partially populated with information known by the Form Manager, supplied by the Form Filler or queried from the underlying EHR.  The Form Filler could generate the
     QuestionnaireResponse itself without the assistance of the Form Manager and in either case could partially fill in the response based on information
     known by the form filler.

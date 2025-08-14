@@ -40,11 +40,13 @@ Alias: $treatments        = http://example.org/CodeSystem/treatments
 Alias: $usage-contexts    = http://example.org/fhir/CodeSystem/usage-contexts
 
 // Operations - sdc
-Alias: $assemble      = http://hl7.org/fhir/uv/sdc/OperationDefinition/Questionnaire-assemble
-Alias: $populate      = http://hl7.org/fhir/uv/sdc/OperationDefinition/Questionnaire-populate
-Alias: $extract       = http://hl7.org/fhir/uv/sdc/OperationDefinition/QuestionnaireResponse-extract
-//Alias: $populatehtml  = http://hl7.org/fhir/uv/sdc/OperationDefinition/Questionnaire-populatehtml
-//Alias: $populatelink  = http://hl7.org/fhir/uv/sdc/OperationDefinition/Questionnaire-populatelink
+Alias: $assemble         = http://hl7.org/fhir/uv/sdc/OperationDefinition/Questionnaire-assemble
+Alias: $populate         = http://hl7.org/fhir/uv/sdc/OperationDefinition/Questionnaire-populate
+Alias: $extract          = http://hl7.org/fhir/uv/sdc/OperationDefinition/QuestionnaireResponse-extract
+Alias: $process-response = http://hl7.org/fhir/uv/sdc/OperationDefinition/Questionnaire-process-response
+Alias: $next-question    = http://hl7.org/fhir/uv/sdc/OperationDefinition/Questionnaire-next-question
+//Alias: $populatehtml     = http://hl7.org/fhir/uv/sdc/OperationDefinition/Questionnaire-populatehtml
+//Alias: $populatelink     = http://hl7.org/fhir/uv/sdc/OperationDefinition/Questionnaire-populatelink
 
 // Operations - core
 Alias: $expand        = http://hl7.org/fhir/OperationDefinition/ValueSet-expand

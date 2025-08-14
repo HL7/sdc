@@ -3,7 +3,7 @@
 	  One of the objectives of the SDC implementation guide is to reduce data entry into forms when the relevant data already exists in discrete form within
 	  the clinical or administrative system completing the form.  This saves the user time and increases accuracy.  If a Questionnaire is created with knowledge
 	  of where the data for different questions within the form is expected to come from, the <a href="CapabilityStatement-sdc-form-filler.html">Form Filler</a> or
-	  <a href="CapabilityStatement-sdc-form-manager.html">Form Manager</a> system can query for the relevant information and automatically fill in some of the answers.  FHIR's
+	  <a href="CapabilityStatement-sdc-form-fill-manager.html">Form Fill Manager</a> system can query for the relevant information and automatically fill in some of the answers.  FHIR's
 	  REST interface provides a standard way to query this data, regardless of the type of client.
 	</p>
 	<p>
@@ -12,7 +12,7 @@
 	<ul>
     <li>
       The <a href="CapabilityStatement-sdc-form-filler.html">SDC Form Filler</a> can invoke <a href="#operations">$populate</a> 
-      operation on a <a href="CapabilityStatement-sdc-form-manager.html">SDC Form Manager</a> to create an initial QuestionnaireResponse before exposing the form
+      operation on a <a href="CapabilityStatement-sdc-form-fill-manager.html">SDC Form Fill Manager</a> to create an initial QuestionnaireResponse before exposing the form
       to the user.  This approach is known as 'pre-population' and is used by 'simple' Form Fillers that don't have the capacity to execute the logic needed to populate the form themselves.
       This approach is more limited because the population process can't take into account any user-provided information, nor can it provide guidance to the
       user.  Either the population process can fill in an answer or it can't.
@@ -214,7 +214,7 @@
     questions) based on data the service can access about the patient.
 	</p>
   <p>
-    For SDC purposes, server systems claiming to support CapabilityStatements that require support for the <code>populate</code> operation (<a href="CapabilityStatement-sdc-form-manager.html">SDC Form Manager</a>) <code>SHALL</code>, at minimum:
+    For SDC purposes, server systems claiming to support CapabilityStatements that require support for the <code>populate</code> operation (<a href="CapabilityStatement-sdc-form-fill-manager.html">SDC Form Manager</a>) <code>SHALL</code>, at minimum:
   </p>
   <ul>
     <li>Handle the input parameters <code>identifier</code>, <code>questionnaire</code>, <code>questionnaireRef</code>, <code>subject</code> and

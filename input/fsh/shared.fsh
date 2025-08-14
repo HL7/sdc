@@ -195,28 +195,49 @@ RuleSet: addContent(id, name, contentType, definition)
   * data 1..1
 
 // CapabiltyStatement RS
+RuleSet: Resource(type, conf, profile, doc)
+* resource[+]
+  * extension[$conf].valueCode = {conf}
+  * type = #{type}
+  * profile = {profile}
+  * documentation = "{doc}"
+
+RuleSet: CoreResource(type, conf, doc)
+* insert Resource({type}, {conf}, "http://hl7.org/fhir/StructureDefinition/{type}", {doc})
+
+RuleSet: SDCResource(type, conf, profile, doc)
+* insert Resource({type}, {conf}, "http://hl7.org/fhir/uv/sdc/StructureDefinition/{profile}", {doc})
+
 RuleSet: SupportedProfile(profile, conf)
 * supportedProfile[+] = Canonical({profile})
   * extension[$conf].valueCode = {conf}
 
 RuleSet: Interaction(conf, code, doc)
-* interaction[+]
+* resource[=].interaction[+]
   * extension[$conf].valueCode = {conf}
   * code  = {code}
   * documentation = {doc}
 
-RuleSet: Operation(conf, name, def)
+RuleSet: RootOperation(conf, name, def, doc)
 * operation[+]
   * extension[$conf].valueCode = {conf}
   * name  = {name}
   * definition = {def}
+  * documentation = "{doc}"
+
+RuleSet: Operation(conf, name, def, doc)
+* resource[=].operation[+]
+  * extension[$conf].valueCode = {conf}
+  * name  = {name}
+  * definition = {def}
+  * documentation = "{doc}"
 
 RuleSet: SearchInclude(include, conf)
-* searchInclude[+] = {include}
+* resource[=].searchInclude[+] = {include}
   * extension[$conf].valueCode = {conf}
 
 RuleSet: SearchParam(conf, name, type, def)
-* searchParam[+]
+* resource[=].searchParam[+]
   * extension[$conf].valueCode = {conf}
   * name = {name}
   * definition = "{def}"

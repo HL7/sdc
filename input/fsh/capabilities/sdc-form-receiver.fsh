@@ -8,18 +8,16 @@ Usage: #definition
 * title = "SDC Form Receiver"
 * status = #active
 * date = "2014-07-06"
-* publisher = "HL7 International - FHIR Infrastructure"
-* contact.telecom
-  * system = #other
-  * value = "http://wiki.siframework.org/Structured+Data+Capture+Initiative"
-* description = "This profile defines the expected capabilities of the ''SDC Form Receiver'' role when conforming to the S&I Framework's [[index.html|Structured Data Capture FHIR implementation guide]].  This role is responsible for accepting and processing completed and partially-completed forms.  It only exposes a single operation endpoint - the one needed to 'process' a completed QuestionnaireResponse"
+* description = "This profile defines the expected capabilities of the *SDC Form Receiver* role when conforming to implementation guide.  This role is responsible for accepting and processing completed and partially-completed forms.  It only exposes a single operation endpoint - the one needed to 'process' a completed [[[QuestionnaireResponse]]]"
 * kind = #requirements
-* fhirVersion = #1.0.0
+* fhirVersion = #4.0.1
 * format[+] = #xml
 * format[+] = #json
-* rest
+* rest[+]
   * mode = #server
-  * security.description = "Implementations must meet the general security requirements documented in the [[security.html|SDC implementation guide]]."
-  * operation
-    * name = "process-response"
-    * definition = "http://hl7.org/fhir/uv/sdc/OperationDefinition/Questionnaire-process-response"
+  * security.description = "Implementations must meet the [general security requirements](security.html) documented in this implementation guide.html."
+  * insert RootOperation(#SHALL, "process-response", $process-response, [[Allows submitting a completed form]])
+* rest[+]
+  * mode = #client
+  * insert SDCResource(QuestionnaireResponse, #MAY, sdc-questionnaireresponse, [[Perform operations based on the received response]])
+    * insert Operation(#MAY, "extract", $extract, [[Convert completed form to resources]])

@@ -38,6 +38,7 @@
 <artifact id="CodeSystem/chf-codes" key="CodeSystem-chf-codes" name="CHF Codes"/>
 <artifact id="StructureDefinition/sdc-questionnaire-calculatedExpression" key="StructureDefinition-sdc-questionnaire-calculatedExpression" name="Calculated Expression"/>
 <artifact id="StructureDefinition/sdc-questionnaire-candidateExpression" key="StructureDefinition-sdc-questionnaire-candidateExpression" name="Candidate Answers Expression"/>
+<artifact id="SearchParameter/canonical-experimental" key="SearchParameter-canonical-experimental" name="Canonical Experimental Search Parameter"/>
 <artifact id="StructureDefinition/sdc-questionnaire-choiceColumn" key="StructureDefinition-sdc-questionnaire-choiceColumn" name="Choice column"/>
 <artifact id="StructureDefinition/sdc-questionnaire-unitSupplementalSystem" key="StructureDefinition-sdc-questionnaire-unitSupplementalSystem" name="Code system for other units"/>
 <artifact id="StructureDefinition/sdc-questionnaire-collapsible" key="StructureDefinition-sdc-questionnaire-collapsible" name="Collapsible"/>
@@ -126,7 +127,9 @@
 <artifact id="Questionnaire/demographics" key="Questionnaire-demographics" name="Questionnaire - Demographics Example"/>
 <artifact id="StructureDefinition/sdc-questionnaire-questionnaireAdaptive" key="StructureDefinition-sdc-questionnaire-questionnaireAdaptive" name="Questionnaire Adaptive"/>
 <artifact id="ValueSet/assemble-expectation" key="ValueSet-assemble-expectation" name="Questionnaire Assemble Expectation"/>
-<artifact id="SearchParameter/questionnaire-assembledFrom" key="SearchParameter-questionnaire-assembledFrom" name="Questionnaire Assembled From Search Parameter"/>
+<artifact id="SearchParameter/questionnaire-assembled-from" key="SearchParameter-questionnaire-assembledFrom" name="Questionnaire Assembled From Search Parameter"/>
+<artifact id="SearchParameter/Questionnaire-questionnaire-code" key="SearchParameter-Questionnaire-questionnaire-code" name="Questionnaire Code Search Parameter"/>
+<artifact id="SearchParameter/Questionnaire-combo-code" key="SearchParameter-Questionnaire-combo-code" name="Questionnaire Combined Code and Item Code Search Parameter"/>
 <artifact id="ValueSet/species" key="ValueSet-species" name="Questionnaire Context Species"/>
 <artifact id="ValueSet/entryMode" key="ValueSet-entryMode" name="Questionnaire Entry Mode"/>
 <artifact id="ValueSet/formBehaviorConditions" key="ValueSet-formBehaviorConditions" name="Questionnaire Form Behavior Conditions"/>
@@ -137,6 +140,7 @@
 <artifact id="ValueSet/launchContext" key="ValueSet-launchContext" name="Questionnaire Launch Context"/>
 <artifact id="ValueSet/performerType" key="ValueSet-performerType" name="Questionnaire Performer Type"/>
 <artifact id="StructureDefinition/sdc-servicerequest" key="StructureDefinition-sdc-servicerequest" name="Questionnaire Service Request"/>
+<artifact id="SearchParameter/Questionnaire-subject-type" key="SearchParameter-Questionnaire-subject-type" name="Questionnaire Subject Type Parameter"/>
 <artifact id="CodeSystem/questionnaire-answer-constraint" key="CodeSystem-questionnaire-answer-constraint" name="Questionnaire answer constraint codes"/>
 <artifact id="ValueSet/questionnaire-answer-constraint" key="ValueSet-questionnaire-answer-constraint" name="Questionnaire answer constraints value set"/>
 <artifact id="StructureDefinition/parameters-questionnaire-assemble-in" key="StructureDefinition-parameters-questionnaire-assemble-in" name="Questionnaire assemble input Parameters profile"/>
@@ -157,6 +161,7 @@
 <artifact id="Questionnaire/sdc-derivation-parent" key="Questionnaire-sdc-derivation-parent" name="SDC Derivation Parent"/>
 <artifact id="CapabilityStatement/sdc-form-archiver" key="CapabilityStatement-sdc-form-archiver" name="SDC Form Archiver"/>
 <artifact id="CapabilityStatement/sdc-form-designer" key="CapabilityStatement-sdc-form-designer" name="SDC Form Designer"/>
+<artifact id="CapabilityStatement/sdc-form-fill-manager" key="CapabilityStatement-sdc-form-fill-manager" name="SDC Form Fill Manager"/>
 <artifact id="CapabilityStatement/sdc-form-filler" key="CapabilityStatement-sdc-form-filler" name="SDC Form Filler"/>
 <artifact id="CapabilityStatement/sdc-form-manager" key="CapabilityStatement-sdc-form-manager" name="SDC Form Manager"/>
 <artifact id="CapabilityStatement/sdc-form-receiver" key="CapabilityStatement-sdc-form-receiver" name="SDC Form Receiver"/>
@@ -214,6 +219,8 @@
 <artifact id="StructureDefinition/sdc-questionnaire-shortText" key="StructureDefinition-sdc-questionnaire-shortText" name="Short Text"/>
 <artifact id="StructureDefinition/sdc-questionnaire-sourceQueries" key="StructureDefinition-sdc-questionnaire-sourceQueries" name="Source queries for population mapping"/>
 <artifact id="StructureDefinition/sdc-questionnaire-sourceStructureMap" key="StructureDefinition-sdc-questionnaire-sourceStructureMap" name="Source structure map"/>
+<artifact id="SearchParameter/StructureMap-source" key="SearchParameter-StructureMap-source" name="StructureMap Source Structure"/>
+<artifact id="SearchParameter/StructureMap-target" key="SearchParameter-StructureMap-target" name="StructureMap Target Structure"/>
 <artifact id="StructureDefinition/sdc-questionnaire-subQuestionnaire" key="StructureDefinition-sdc-questionnaire-subQuestionnaire" name="Sub-questionnaire"/>
 <artifact id="StructureDefinition/sdc-task" key="StructureDefinition-sdc-task" name="Task Questionnaire"/>
 <artifact id="Task/example" key="Task-example" name="Task-based solicitation example"/>

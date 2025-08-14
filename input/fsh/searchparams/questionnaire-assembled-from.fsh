@@ -1,8 +1,8 @@
-Instance: questionnaire-assembledFrom
+Instance: questionnaire-assembled-from
 InstanceOf: SearchParameter
 Title: "Questionnaire Assembled From Search Parameter"
 Usage: #definition
-* url = "http://hl7.org/fhir/uv/sdc/SearchParameter/questionnaire-assembledFrom"
+* url = "http://hl7.org/fhir/uv/sdc/SearchParameter/questionnaire-assembled-from"
 * name = "SDCQuestionnaireAssembledFrom"
 * status = #active
 * date = "2016-03-31T08:01:25+11:00"
