@@ -1,0 +1,117 @@
+<div xmlns="http://www.w3.org/1999/xhtml" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://hl7.org/fhir ../../input-cache/schemas/R4/fhir-single.xsd">
+  <p>
+    One of the main purposes for Questionnaires is defining how QuestionnaireResponse instances should be validated.  This page describes some of the considerations when
+    validating QuestionnaireResponse instances.
+  </p>
+  <a name="QvsSD"> </a>
+  <h3>Questionnaire vs. StructureDefinition</h3>
+  <p>
+    Both the <a href="{{site.data.fhir.path}}Questionnaire.html">Questionnaire</a> and <a href="{{site.data.fhir.path}}StructureDefinition.html">StructureDefinition</a> resources
+    can be used to define rules for the allowed content of QuestionnaireResponses, and both are appropriate for use.  However, they have different purposes:
+  </p>
+  <ul>
+    <li>While it's possible to use StructureDefinition to create a profile on QuestionnaireResponse that enforces the rules for a given Questionnaire, that's not an
+      appropriate use.  Instead, profiles on QuestionnaireResponse should be used to document general expectations on QuestionnaireResponse irrespective of the specific
+      Questionnaire used.  For example, a system might have a profile that indicates that QuestionnaireResponse.subject is limited to only 'Patient', or that the system
+      doesn't support capturing question answers with a data types of 'Reference'.</li>
+    <li>Questionnaire, on the other hand, defines rules for responding to a specific type of form.  The canonical for the Questionnaire instance is what gives the data
+      within the QuestionnaireResponse meaning.  A StructureDefinition can't do that.</li>
+  </ul>
+
+  <a name="expectations"> </a>
+  <h3>Validation Expectations</h3>
+  <p>
+    Validation ensures that a QuestionnaireResponse adheres to the constraints defined by its associated Questionnaire. This is essential for ensuring
+    the quality, consistency, and interpretability of the data collected.
+  </p>
+  <p>
+    Validation typically occurs once the response is considered complete (i.e., status = completed or amended). Until that point, intermediate QuestionnaireResponse 
+    instances may temporarily violate certain constraints, such as missing required answers, invalid cardinalities, or inclusion of disabled items. Questionnaires that 
+    are not 'complete' may be persisted (as 'work in progress') with validation rules not met and with non-enabled items still containing still included and potentially 
+    with populated answers. However, once marked complete, 
+    the response <b>SHALL</b> fully conform to the associated Questionnaire.  A commpleted QuestionnaireResponse that points to a Questionnaire canonical but does not fully validate
+    is considered a non-conformant FHIR resource, in much the same way that an instance that points to a profile but fails to follow the profile rules 
+  </p>
+  <p>
+    Validating a QuestionnaireResponse against a Questionnaire includes checking the following:
+  </p>
+  <table class="grid">
+    <tbody>
+      <tr>
+        <th>EnableWhen conditions</th>
+        <td>Items <b>SHALL</b> only be included in the QuestionnaireResponse instance for items whose enableWhen conditions (including enableWhenExpression) are satisfied.  Other rules for
+         non-enabled items such as cardinality expectations are ignored.</td>
+      </tr>
+      <tr>
+        <th>Required items</th>
+        <td>All items marked as required: true in the Questionnaire must have at least one answer.</td>
+      </tr>
+      <tr>
+        <th>Cardinality rules</th>
+        <td>Items with constraints on the number of allowed answers (e.g., minOccurs, maxOccurs, or questionnaire-minOccurs/questionnaire-maxOccurs extensions) must be satisfied.
+          This includes not having more than a single answer if <code>Questionnaire.repeats</code> is not 'true'.</td>
+      </tr>
+      <tr>
+        <th>Answer constraints</th>
+        <td>Where applicable, constraints on value (e.g., min/max value, length, regex, answerOption bindings, etc.) must be respected.</td>
+      </tr>
+      <tr>
+        <th>Answer type</th>
+        <td>The datatype of the answer (e.g., string, integer, date, coding) must match the item type</td>
+      </tr>
+      <tr>
+        <th>Invariants</th>
+        <td>Any defined constraints or custom invariants of type 'error' must be satisfied.</td>
+      </tr>
+      <tr>
+        <th>Item text</th>
+        <td>If item.text is included in the QuestionnaireResponse (which is required for conformance with this IG), the text <b>SHALL</b> match the text provided
+          in the Questionnaire, unless there is an extension that allows the content to vary (translations, expressions, etc.)</td>
+      </tr>
+      <tr>
+        <th>Display items</th>
+        <td>Display items <b>MAY</b> be retained, particularly if required for context or interpretability.<br/>
+          Extensions like sdc-questionnaire-disabledDisplay or sdc-questionnaire-criticalDisplay may impose additional rules about which display items should remain, even if not technically required.</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <a name="versioning"> </a>
+  <h3>Questionnaire versioning</h3>
+  <p>
+    Questionnaires often evolve over time.  There can be differences of opinion over what constitutes a "new" questionnaire vs. merely a new version of an existing 
+    questionnaire, vs. minor updates to an existing version.
+  </p>
+  <p>
+    To comply with this IG, form maintainers are expected to adhere to the following guidelines when deciding whether to change the Questionnaire.url or new Questionnaire.version:
+  </p>
+  <ul>
+    <li>Most changes that would cause previously created QuestionnaireResponses to be either technically invalid (e.g. addition or removal of questions, changing allowed data types, 
+      etc.) or that could make answers semantically invalid (e.g. changing the text of a question such that a user might answer it differently) <b>SHALL</b> at least change the version.  
+      The only exception to this expectation is if the allowed answers to a question are designed to be dynamic - e.g. pointing to the current list of SNOMED medication codes where new 
+      codes might be added to or removed from the code system without forcing a change to the Questionnaire version.</li>
+    <li>Some organizations may opt to change the canonical URL if QuestionnaireResponses created against older versions could no longer be safely interpreted against the updated 
+      Questionnaire, however this is not a requirement.  Significant structural or semantic changes to a Questionnaire <b>SHOULD</b> result in a new canonical url.
+      Adding or changing extraction or population rules <b>SHOULD NOT</b> result in a change to the canonical or version.</li>
+  </ul>
+
+  <a name="verref"> </a>
+  <h4>Managing Dependency Versions</h4>
+  <p>
+    Questionnaires can depend on external artifacts, including ValueSets, CodeSystems, Libraries, etc.  These can evolve independent of the Questionnaire.  In some cases, this
+    may change the validity of a QuestionnaireResponse against a Questionnaire even though neither of those resources have changed.  For example, if a code system used for an
+    answer deprecates or retires a code, a validation engine checking the item against the Questionnaire item's ValueSet may determine that an answer with that code is no longer
+    valid against the value set.  The same situation could also occur when resuming editing a partially completed questionnaire response - previously answered questions that were 
+    valid at the time might now be flagged as invalid.
+  </p>
+  <p>
+    To minimize such situations, Questionnaire authors <b>SHOULD</b> reference dependent artifacts using version-specific references and furthermore ensure that the dependency
+    chains of referenced artifacts are also version-specific.  For example, if a Questionnaire A points to ValueSet B, which points to ValueSet C, which points to CodeSystem D, 
+    the references A->B, B->C, and C->D would <i>all</i> need to be version-specific to avoid the risk of validity against the Questionnaire changing over time.
+  </p>
+  <p>
+    However, in some situations, there's a need to allow for evolution.  Authors want respondants to the Questionnaire to be able to select new medications, conditions, etc.
+    that may have been introduced to a code system or value set over time.  This intrinsically carries the risk of older QuestionnaireResponses ceasing to be valid.  For this
+    reason, systems should be cautious about strictly enforcing validation on forms that were transitioned to complete some time ago.
+  </p>
+</div>

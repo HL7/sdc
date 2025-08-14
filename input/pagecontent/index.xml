@@ -106,11 +106,6 @@
 		<li>
 			<a href="intro.html">FHIR usage</a> provides information about the FHIR and FHIRPath standards used by this IG and an overview of the resources used
 			and base conformance expectations.</li>
-		<li>
-			<a href="security.html">Security</a> sets base security expectations for systems claiming conformance with this implementation guide.</li>
-		<li>
-			<a href="expressions.html">Using Expressions</a> describes the use of FHIRPath and CQL within Questionnaires and defines additional contexts and
-			rules for using these technologies in FHIR Questionnaires.  (These are technologies used to support several of the SDC capabilities.)</li>
 	</ol>
 	<a name="specification"> </a>
 	<h4>SDC Specification</h4>
@@ -119,8 +114,18 @@
 	</p>
 	<ol>
 		<li>
+			<a href="conformance.html">Conformance</a> defines the general expectations for conforming with this implementation guide.</li>
+		<li>
+			<a href="security.html">Security</a> sets base security expectations for systems claiming conformance with this implementation guide.</li>
+		<li>
 			<a href="workflow.html">Workflow</a> describes the expectations for systems managing the creation, discovery and completion of questionnaires.
 			Systems conforming to SDC are expected to conform to one of the CapabilityStatements defined in this section.</li>
+	  <li>
+      <a href="validation.html">Validation</a> explains considerations for validating QuestionnaireResponses against Questionnnaires.
+	  </li>
+		<li>
+			<a href="expressions.html">Using Expressions</a> describes the use of FHIRPath and CQL within Questionnaires and defines additional contexts and
+			rules for using these technologies in FHIR Questionnaires.  (These are technologies used to support several of the SDC capabilities.)</li>
 		<li>
 			<a href="search.html">Finding a Questionnaire</a> describes expectations for systems serving as form repositories as well as clients who will need
       to search for forms.</li>
@@ -131,12 +136,6 @@
 			<a href="behavior.html">Form Behavior</a> describes how to design 'active' forms that adjust what information is displayed and/or that
 			perform calculations based on user input</li>
 		<li>
-			<a href="populate.html">Questionnaire Population</a> describes how to design questionnaires to support pre-population of answers and how to use
-			services that support pre-populating forms</li>
-		<li>
-			<a href="extraction.html">Data Extraction</a> describes how to design questionnaires to support converting completed forms into a FHIR resource or
-			Bundle of FHIR resources for subsequent analysis</li>
-		<li>
 			<a href="derive.html">Derived Forms</a> describes the process for starting from one Questionnaire and creating a new Questionnaire and considerations
 			around documenting and leveraging the relationship between the original and newly created form</li>
 		<li>
@@ -145,6 +144,12 @@
 		<li>
 			<a href="adaptive.html">Adaptive Forms</a> describes an architecture to support completing forms where the questionnaire is not pre-defined and
 			instead is dynamically developed based on the user's answers</li>
+		<li>
+			<a href="populate.html">Questionnaire Population</a> describes how to design questionnaires to support pre-population of answers and how to use
+			services that support pre-populating forms</li>
+		<li>
+			<a href="extraction.html">Data Extraction</a> describes how to design questionnaires to support converting completed forms into a FHIR resource or
+			Bundle of FHIR resources for subsequent analysis</li>
 	</ol>
 	<a name="boundaries"> </a>
 	<h3>Boundaries and Relationships</h3>
