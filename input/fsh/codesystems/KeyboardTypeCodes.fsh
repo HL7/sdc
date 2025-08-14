@@ -2,6 +2,7 @@ CodeSystem: KeyboardTypeCodes
 Id: keyboardType
 Title: "Keyboard Type Codes"
 Description: "For string or text items, indicates the 'keyboard type' that should be used by the user interface to guide entry."
+* ^extension[$fmm].valueInteger = 1
 * ^status = #active
 * ^experimental = false
 * ^caseSensitive = true
