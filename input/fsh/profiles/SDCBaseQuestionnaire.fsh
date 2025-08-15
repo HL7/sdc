@@ -20,4 +20,27 @@ Description: "Sets minimum expectations for questionnaire support for SDC-confor
   * extension[designNote] ^comment = "Allows capture of todos, rationale for design decisions, etc.  It can also be used to capture comments about specific groups or questions within it. Allows commentary to be captured during the process of answering a questionnaire (if not already supported by the form design) as well as after the form is completed. Comments are not part of the \"data\" of the form. If a form prompts for a comment, this should be captured in an answer, not in this element. Formal assessments of the QuestionnaireResponse would use [[[Observation]]]."
   * text ^comment = "...This is optional only to support form assembly situations where the text may be generated from another source.  In an assembled Questionnaire, it should always be present."
   * answerValueSet MS
+  * answerOption
+    * valueCoding obeys sdc-base-1 and sdc-base-2
+    * valueQuantity
+    * valueReference obeys sdc-base-4
 
+Invariant: sdc-base-1
+Description: "AnswerOption.valueCoding must have at least one of code or display"
+Severity: #error
+Expression: "code.exists() or display.exists()"
+
+Invariant: sdc-base-2
+Description: "If code exists, system must exist"
+Severity: #error
+Expression: "code.exists() implies system.exists()"
+
+Invariant: sdc-base-3
+Description: "Quantity must always have a value"
+Severity: #error
+Expression: "value.exists()"
+
+Invariant: sdc-base-4
+Description: "Reference must have at least one of reference, display, and identifier"
+Severity: #error
+Expression: "reference.exists() or display.exists() or identifier.exists()"
