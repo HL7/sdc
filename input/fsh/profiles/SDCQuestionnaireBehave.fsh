@@ -50,6 +50,7 @@ Description: "Defines additional capabilities for controlling data entry and cal
       CalculatedExpressionExtension named calculatedExpression 0..1 and
       EnableWhenExpressionExtension named enableWhenExpression 0..1 MS and 
       Keyboard named keyboardType 0..1 and
+      Variable named variable 0..* and
       AssembleDefinitionRoot named assembleDefinitionRoot 0..* MS
   * extension[itemMinOccurs].value[x] ^mustSupport = false
     * extension contains
