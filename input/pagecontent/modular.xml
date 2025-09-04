@@ -194,35 +194,51 @@
     <li>When the Questionnaire goes through the 'assembly' process, the display item having the <code>subQuestionnaire</code> extension will be removed entirely.
       I.e. that linkId and the associated text will not appear in the assembled Questionnaire.  Instead, all of the 'root' items of the referenced
       Questionnaire - including their descendant elements and items will appear in the same position as the replaced 'display' item was.</li>
+    <li>Before assembly, the process must check for agreement between the parent Questionnaire and subQuestionnaire for the items listed below.  It's fine if the subQuestionnaire is missing any of these elements.  However, if any elements are present, the values in the subQuestionnaire must match or be a proper subset of the values in the parent Questionnaire.
+      <ul>
+        <li><a href="{{site.data.fhir.path}}resource.html#Meta">Questionnaire.meta.security</a></li>
+        <li><a href="{{site.data.fhir.path}}resource.html#resource">Questionnaire.implicitRules</a></li>
+        <li><a href="{{site.data.fhir.path}}resource.html#resource">Questionnaire.language</a></li>
+        <li><a href="StructureDefinition-sdc-questionnaire-endpoint.html">sdc-questionnaire-endpoint extension</a></li>
+        <li><a href="StructureDefinition-sdc-questionnaire-entryMode.html">sdc-questionnaire-entryMode extension</a></li>
+        <li><a href="StructureDefinition-sdc-questionnaire-questionnaireAdaptive.html">sdc-questionnaire-questionnaireAdaptive extension</a></li>
+        <li><a href="StructureDefinition-sdc-questionnaire-performerType.html">sdc-questionnaire-performerType extension</a></li>
+        <li><a href="StructureDefinition-sdc-rendering-criticalExtension.html">sdc-rendering-criticalExtension extension</a></li>
+      </ul>
+    </li>
+    <li>The engine <b>SHOULD</b> raise an error if the subQuestionnaire contains any modifier extensions, though if the modifier extensions are recognized by the engine and are known to be safe to propagate, the engine <b>MAY</b> do so</li>
     <li>In addition to propagating the items from the referenced Questionnaire, additional items are also propagated as follows:
       <ul>
-        <li>All <a href="{{site.data.fhir.path}}resource.html#Meta">meta</a> information, including security and other tags declared on the imported
-          Questionnaire are ignored.  (If a Questionnaire references a sub-Questionnaire with security restrictions, this needs to be reflected in the
-          referencing Questionnaire as part of its original design</li>
-        <li>If <a href="{{site.data.fhir.path}}resource-definitions.html#Resource.language">language</a> is declared on the imported Questionnaire, it
-          must match the language on the importing Questionnaire.</li>
-        <li><a href="{{site.data.fhir.path}}resource-definitions.html#Resource.implicitRules">implicitRules</a> and
-          <a href="{{site.data.fhir.path}}domainresource-definitions.html#DomainResource.modifierExtension">modifierExtension</a> are
-          prohibited and are considered an error if present.</li>
+        <li>All elements checked for alignment above will not be propagated.  (They don't need to be, as they're already aligned.)</li>
+        <li><a href="{{site.data.fhir.path}}resource.html#Meta">Questionnaire.meta</a> elements other than those listed above will also not be propagated.</li>
         <li>Any <a href="{{site.data.fhir.path}}domainresource-definitions.html#DomainDresource.contained">contained</a> resources in the
           subQuestionnaire are added as contained resources in the parent Questionnaire with the exception that, barring linkIdPrefix requirements
           (see further below), if a subQuestionnaire is imported more than once, contained resources will only be included once in the assembled Questionnaire.</li>
-        <li>Extensions are propagated differently, depending on the nature of the extension:
+        <li>Extensions found at the root of the subQuestionnaire are propagated differently, depending on the nature of the extension:
           <ul>
             <li>propagate to the 'root' of the base Questionnaire:<ul>
                 <li><a href="expressions.html#cqf-library">cqf-library</a> (check for uniqueness by url and only import once)</li>
                 <li><a href="expressions.html#launchContext">launch-context</a> (check for uniqueness by code and only import once)</li>
-                <li><a href="StructureDefinition-sdc-questionnaire-observationExtract.html">questionnaire-observationExtract</a></li>
-                <li><a href="StructureDefinition-sdc-questionnaire-observationLinkPeriod.html">questionnaire-observationLinkPeriod</a></li>
               </ul>
             </li>
             <li>propagate to the item that contains the 'display' item being substituted.  (If the display item is at the root, then this will also be at the root.):<ul>
                 <li><a href="expressions.html#constraint">targetConstraint</a></li>
                 <li><a href="expressions.html#variable">variable</a> (check for uniqueness by name - duplication is an error)</li>
-                <li><a href="StructureDefinition-sdc-questionnaire-itemPopulationContext.html">itemPopulationContext</a> (it is an error if there are multiple 
-                  itemPopulationContext resulting on the item this propagates to)</li>
-                <li><a href="StructureDefinition-sdc-questionnaire-itemExtractionContext.html">itemExtractionContext</a> (it is an error if there are multiple 
-                  itemExtractionContext resulting on the item this propagates to)</li>
+              </ul>
+            </li>
+            <li>
+              It is an error if any of the following extensions appear on the root of a subQuestionnaire.  If they are needed, create a root 'group' item in the subQuestionnaire and put the extensions there.
+              <ul>
+                <li><a href="StructureDefinition-sdc-questionnaire-definitionExtract.html">sdc-questionnaire-definitionExtract</a></li>
+                <li><a href="StructureDefinition-sdc-questionnaire-itemExtractionContext.html">sdc-questionnaire-itemExtractionContext</a></li>
+                <li><a href="StructureDefinition-sdc-questionnaire-itemPopulationContext.html">sdc-questionnaire-itemPopulationContext</a></li>
+                <li><a href="StructureDefinition-sdc-questionnaire-observationExtract.html">sdc-questionnaire-observationExtract</a></li>
+                <li><a href="StructureDefinition-sdc-questionnaire-observation-extract-category.html">sdc-questionnaire-observation-extract-category</a></li>
+                <li><a href="StructureDefinition-sdc-questionnaire-observationLinkPeriod.html">sdc-questionnaire-observationLinkPeriod</a></li>
+                
+                <li><a href="StructureDefinition-sdc-questionnaire-preferredTerminologyServer.html">sdc-questionnaire-preferredTerminologyServer</a></li>
+                <li><a href="StructureDefinition-sdc-questionnaire-templateExtract.html">sdc-questionnaire-templateExtract</a></li>
+                <li><a href="StructureDefinition-sdc-questionnaire-templateExtractContext.html">sdc-questionnaire-templateExtractContext</a></li>
               </ul>
             </li>
             <li>all other extensions are ignored</li>
@@ -249,7 +265,7 @@
     <li>LinkIdPrefixes are also prepended to the 'id' elements of any <a href="{{site.data.fhir.path}}references.html#contained">contained</a> resources
       and all references to contained resources (i.e. references or canonicals that start with '#').</li>
     <li>linkIdPrefixes will need to be referenced in any expressions that are dependent on linkId.  For example, if there is an expression that says
-      <code>%root.descendants().select(item.where(linkId='1.1'))</code> would need to change to <code>%root.descendants().select(item.where(linkId=%linkIdPrefix + '1.1'))</code></li>
+      <code>%root.descendants().select(item.where(linkId='1.1'))</code> would need to change to <code>%root.descendants().select(item.where(linkId=%linkIdPrefix + '1.1'))</code>  This will need to happen in all extensions with a type of expression.</li>
     <li>Imported Questionnaires may be defined to be dependent on contextual information passed in from the referencing Questionnaire (including 'linkIdPrefix').
       To allow validating these subQuestionnaires independent of their inclusion in a parent, all such dependencies must be declared using the
       <code>assembleContext</code> extension on the root of the 
