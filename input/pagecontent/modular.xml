@@ -194,6 +194,7 @@
     <li>When the Questionnaire goes through the 'assembly' process, the display item having the <code>subQuestionnaire</code> extension will be removed entirely.
       I.e. that linkId and the associated text will not appear in the assembled Questionnaire.  Instead, all of the 'root' items of the referenced
       Questionnaire - including their descendant elements and items will appear in the same position as the replaced 'display' item was.</li>
+    <li>SubQuestionnaires are not allowed to be adaptive - i.e. it is an error if they have the <a href="StructureDefinition-sdc-questionnaire-questionnaireAdaptive.html">sdc-questionnaire-questionnaireAdaptive extension</a>.</li>
     <li>Before assembly, the process must check for agreement between the parent Questionnaire and subQuestionnaire for the items listed below.  It's fine if the subQuestionnaire is missing any of these elements.  However, if any elements are present, the values in the subQuestionnaire must match or be a proper subset of the values in the parent Questionnaire.
       <ul>
         <li><a href="{{site.data.fhir.path}}resource.html#Meta">Questionnaire.meta.security</a></li>
@@ -201,7 +202,6 @@
         <li><a href="{{site.data.fhir.path}}resource.html#resource">Questionnaire.language</a></li>
         <li><a href="StructureDefinition-sdc-questionnaire-endpoint.html">sdc-questionnaire-endpoint extension</a></li>
         <li><a href="StructureDefinition-sdc-questionnaire-entryMode.html">sdc-questionnaire-entryMode extension</a></li>
-        <li><a href="StructureDefinition-sdc-questionnaire-questionnaireAdaptive.html">sdc-questionnaire-questionnaireAdaptive extension</a></li>
         <li><a href="StructureDefinition-sdc-questionnaire-performerType.html">sdc-questionnaire-performerType extension</a></li>
         <li><a href="StructureDefinition-sdc-rendering-criticalExtension.html">sdc-rendering-criticalExtension extension</a></li>
       </ul>
@@ -241,11 +241,10 @@
                 <li><a href="StructureDefinition-sdc-questionnaire-templateExtractContext.html">sdc-questionnaire-templateExtractContext</a></li>
               </ul>
             </li>
-            <li>all other extensions are ignored</li>
+            <li>All other extensions <b>SHOULD</b> be ignored and not be propagated into the assembled questionnaire.  However, if the engine recognizes an extension and has custom propagation rules for that extension, it <b>MAY</b> propagate based on those rules instead.</li>
           </ul>
         </li>
-        <li>All metadata elements on the subQuestionnaire are ignored.  If there are copyright limitations on the referenced Questionnaire, it is the
-          responsibility of the referencing Questionnaire to reflect those in its own Questionnaire.copyright element.</li>
+        <li>All elements on the subQuestionnaire not previously mentioned other than Questionnaire.item (i.e. description, useContext, copyright, etc.) are ignored.  If there are copyright limitations on the referenced Questionnaire, it is the responsibility of the referencing Questionnaire to reflect those in its own Questionnaire.copyright element.</li>
         <li>The <code>assemble-expectation</code> on the resulting Questionnaire should be adjusted to 
           change the 'assemble' part of the code to 'independent', with the exception that if the code was 'assemble-root', then the extension should be removed entirely.  
           E.g. <code>assemble-root-or-child</code> would change to <code>independent-root-or-child</code>.</li>
@@ -427,7 +426,7 @@ We will set an expectation in SDC about what changes are permitted for 'active' 
 <a name="declaring-question-libraries"> </a>
 <h4>Declaring Questionnaire Libraries</h4>
 <p>
-  To indicate that a Questionnaire serves as a reusable library of items, it should include a <code>usageContext</code> with the code <code>workflow</code> and a value indicating <strong>Question Library</strong>.
+  To indicate that a Questionnaire serves as a reusable library of items, it should follow the <a href="StructureDefinition-sdc-questionnaire-modular-library.html">Questionnaire Modular Library</a> profile, which requires the inclusion of a <code>usageContext</code> with the code <code>workflow</code> and a value indicating <strong>Question Library</strong>.
 </p>
 <p>
   This usageContext helps tools and systems distinguish libraries from standard data entry forms. It is recommended to follow the pattern defined in the
