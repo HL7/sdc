@@ -1,4 +1,64 @@
 <div xmlns="http://www.w3.org/1999/xhtml" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://hl7.org/fhir ../../input-cache/schemas/R4/fhir-single.xsd">
+  <style>
+.xml {
+  font-size: 10px; 
+  line-height: normal;
+  }
+  
+.tabs {
+  position: relative;   
+  min-height: 600px; /* TODO: better way of doing this */
+  clear: both;
+  margin: 35px 0 25px;
+  background: white;
+}
+.tab {
+  float: left;
+   
+}
+.tab label {
+  background: #eee; 
+  padding: 10px; 
+  border: 1px solid #ccc; 
+  margin-left: -1px; 
+  position: relative;
+  left: 1px; 
+  top: -29px;
+  -webkit-transition: background-color .17s linear;
+}
+.tab input[id^="tab-"]{
+  display: none;   
+}
+.content-in-tab {
+  position: absolute;
+  top: 12px;
+  left: 0;
+  background: white;
+  right: 0;
+  bottom: 0;
+  padding: 20px;
+  border: 1px solid #ccc; 
+  -webkit-transition: opacity .6s linear;
+  opacity: 0;
+}
+[type=radio]:checked ~ label {
+  background: white;
+  border-bottom: 1px solid white;
+  z-index: 2;
+}
+[type=radio]:checked ~ label ~ .content-in-tab {
+  z-index: 1;
+  opacity: 1;
+}
+pre.json,pre.xml{
+    height: 100%;
+    width: 100%;
+   -webkit-box-sizing: border-box; /* Safari/Chrome, other WebKit */
+  -moz-box-sizing: border-box;    /* Firefox, other Gecko */
+  box-sizing: border-box;         /* Opera/IE 8+ */
+  resize: none;
+}
+</style>
  <a name="conformance"> </a>
 	<h3>Conformance expectations</h3>
 	<p>
@@ -41,4 +101,76 @@
     Future versions of this IG may explore additional mechanisms to support implementers who wish to conform with specific common and useful subsets of SDC and combine them
     in arbitrary ways, likely using the <a href="{{site.data.fhir.ver.ext}}/StructureDefinition-obligation.html">obligation</a> extension.
   </p>
+  <a name="features"> </a>
+  <h4>Feature declaration</h4>
+  <p>
+    This IG pre-adopts the use of the <a href="{{site.data.fhir.ver.feature}}">FHIR Application Feature Framework</a> to allow SDC conformant systems to declare what 
+    <a href="expressions.html#language">expression languages</a> they support.  This is done by including a 'feature' extension on the <code>CapabilityStatement.rest.resource</code>
+    element for Questionnaire, and potentially for Library.  There are three codes defined: 
+      <a href="CodeSystem-temp.html#temp-behaviorExpressionLanguage">behaviorExpressionLanguage</a>
+      <a href="CodeSystem-temp.html#temp-populationExpressionLanguage">populationExpressionLanguage</a>, and
+      <a href="CodeSystem-temp.html#temp-extractionExpressionLanguage">extractionExpressionLanguage</a>.
+    Additional information about their use can be found <a href="expressions.html#exp-extensions">here</a>.
+  </p>
+  <p>As an example, the following asserts support for CQL for behavioral extensions.  The extension can repeat multiple times, either to convey multiple supported languages or to convey languages for different contexts (behavior, population, and/or extraction).</p>
+  <div class="tabs">
+    <div class="tab">
+      <input type="radio" id="tab-capstmt-1" name="tab-capstmt-group" checked="true"/>
+      <label for="tab-capstmt-1">JSON</label>
+      <div class="content-in-tab"><pre class="json" style="white-space: pre; text-wrap: nowrap; width: auto;"><code class="language-json" style="white-space: pre; text-wrap: nowrap;">"resource" : [{
+  "extension" : [{
+    "url" : "http://hl7.org/fhir/uv/application-feature/StructureDefinition/feature",
+    "extension" : [{
+      "url" : "code",
+      "valueCodeableConcept" : {
+        "coding" : [{
+          "system" : "http://hl7.org/fhir/uv/sdc/CodeSystem/temp",
+          "code" : "behaviorExpressionLanguage"
+        }]
+      }
+    }, {
+      "url" : "value",
+      "valueCodeableConcept" : {
+        "coding" : [{
+          "system" : "urn:ietf:bcp:13",
+          "code" : "text/cql-expression"
+        }]
+      }
+    }]
+  }],
+  "type" : "Questionnaire",
+  ...
+},
+...
+]</code></pre>
+</div>
+    </div>
+    <div class="tab">
+      <input type="radio" id="tab-capstmt-2" name="tab-capstmt-group"/>
+      <label for="tab-capstmt-2">XML</label>
+      <div class="content-in-tab"><pre class="xml" style="white-space: pre; text-wrap: nowrap; width: auto;"><code class="language-xml" style="white-space: pre; text-wrap: nowrap;">&lt;resource&gt;
+  &lt;extension url="http://hl7.org/fhir/uv/application-feature/StructureDefinition/feature"&gt;
+    &lt;extension url="code"&gt;
+      &lt;valueCodeableConcept&gt;
+        &lt;coding&gt;
+          &lt;system value="http://hl7.org/fhir/uv/sdc/CodeSystem/temp"/&gt;
+          &lt;code value="behaviorExpressionLanguage"/&gt;
+        &lt;/coding&gt;
+      &lt;/valueCodeableConcept&gt;
+    &lt;/extension&gt;
+    &lt;extension url="value"&gt;
+      &lt;valueCodeableConcept&gt;
+        &lt;coding&gt;
+          &lt;system value="urn:ietf:bcp:13"/&gt;
+          &lt;code value="text/cql-expression"/&gt;
+        &lt;/coding&gt;
+      &lt;/valueCodeableConcept&gt;
+    &lt;/extension&gt;
+  &lt;/extension&gt;
+  &lt;type value="Questionnaire"&gt;
+  ...
+&lt;/resource&gt;</code></pre>
+</div>
+    </div>
+  </div>  
 </div>

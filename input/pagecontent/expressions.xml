@@ -34,6 +34,7 @@
       subsequently re-defined on a variable in a child item, that is ok - and is in fact a common occurrence in <a href="modular.html">modular forms</a>.
     </li>
     <li>
+      <a name="language"> </a>
       <code>language</code> indicates the type of expression.  SDC only uses three languages: FHIR queries <a href="#fhirquery">as described below</a>,
       <a href="http://hl7.org/fhirpath">FHIRPath</a> and <a href="http://cql.hl7.org">CQL</a>.  Also see the discussion on
       <a href="#fhirpathvscql">FHIRPath vs. CQL</a>.
@@ -77,11 +78,19 @@
     <li>
       <b>Use Cases:</b> Indicates which of the SDC use-cases make use of the extension: <a href="behavior.html">Form Behavior</a> (behavior),
       <a href="populate.html">Questionnaire Population</a> (population), and/or <a href="extraction.html">Data Extraction</a> (extraction - definition/template).
-      Other SDC use-cases do not generally have a need for the expression elements.</li>
+      Other SDC use-cases do not generally have a need for the expression elements.<br/>
+      The use-case also determines which  <a href="conformance.html#features">application feature</a> code that systems can use to define which expression languages they support.  The three categories correspond to the three application feature codes defined in this IG: 
+      <a href="CodeSystem-temp.html#temp-behaviorExpressionLanguage">behaviorExpressionLanguage</a>
+      <a href="CodeSystem-temp.html#temp-populationExpressionLanguage">populationExpressionLanguage</a>, and
+      <a href="CodeSystem-temp.html#temp-extractionExpressionLanguage">extractionExpressionLanguage</a>.
+      If an extension applies to multiple use-cases, then the feature code that corresponds to its actual use applies.  If an extension is being used for multiple purposes, then the language must be drawn from one supported by all relevant features.  If there isn't one, then that system cannot support that Questionnaire
+    </li>
+    <li>Example: Provides a link to a place where the use of the extension can be seen in an instance</li>
   </ul>
   <p>
     Beneath each extension row is an explanation of the purpose of the extension and guidance on its use.
   </p>
+  <a name="table"> </a>
   <table class="grid">
     <thead>
       <tr>
@@ -271,7 +280,7 @@
         <td>SDC</td>
         <td>question</td>
         <td>any</td>
-        <td>population and extraction</td>
+        <td>population</td>
         <td><a href="examples.html#contextExpression">example</a></td>
       </tr>
       <tr>
@@ -447,7 +456,7 @@
         <td>Core</td>
         <td>Questionnaire, item</td>
         <td>any</td>
-        <td>all</td>
+        <td>behavior</td>
         <td><a href="examples.html#using-itemweight-and-constraint">example</a></td>
       </tr>
       <tr>
