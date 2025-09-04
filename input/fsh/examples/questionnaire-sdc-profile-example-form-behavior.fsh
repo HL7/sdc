@@ -3,6 +3,7 @@ InstanceOf: SDCQuestionnaireBehave
 Title: "SDC-Advanced Form Behavior"
 Description: "Demo questionnaire showing most of the advanced form behavior capabilities of SDC. Each example here is itemized in the Examples page."
 Usage: #example
+* contained[+] = WeightUnits
 * modifierExtension[+]
   * url = "http://hl7.org/fhir/uv/sdc/StructureDefinition/sdc-rendering-criticalExtension"
   * valueCanonical = "http://hl7.org/fhir/uv/sdc/StructureDefinition/sdc-questionnaire-entryMode"
@@ -102,7 +103,7 @@ Usage: #example
   * item[+]
     * extension[+]
       * url = "http://hl7.org/fhir/StructureDefinition/questionnaire-unitValueSet"
-      * valueCanonical = "http://hl7.org/fhir/ValueSet/ucum-bodyweight"
+      * valueCanonical = "#WeightUnits"
     * extension[+]
       * url = "http://hl7.org/fhir/uv/sdc/StructureDefinition/sdc-questionnaire-minQuantity"
       * valueQuantity = 10 'kg'
@@ -633,3 +634,18 @@ Usage: #example
       * definition = "http://hl7.org/fhir/StructureDefinition/Patient#Patient.address.postalCode"
       * text = "Postal Code"
       * type = #string
+
+Instance: WeightUnits
+InstanceOf: SDCValueSet
+Usage: #inline
+* name = "WeightUnits"
+* status = #active
+* description = "Adds 'unknown' to the ucum body weight value set"
+* immutable = false
+* compose
+  * include[+].valueSet = "http://hl7.org/fhir/ValueSet/ucum-bodyweight"
+  * include[+].system = "http://terminology.hl7.org/CodeSystem/data-absent-reason"
+  * include[=].version = "1.0.0"
+  * include[=].concept[+]
+    * code = #unknown
+    * display = "Unknown"
