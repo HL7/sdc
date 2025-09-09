@@ -30,7 +30,7 @@ Usage: #example
   * item
     * linkId = "3921071v1.0"
     * text = "Diagnosis Time Point"
-    * answer.valueCoding = $question_identifier_2#AtRestaging "Restaging"
+    * answer.valueCoding = $question_identifier_2#"At Restaging" "Restaging"
 * item[+]
   * linkId = "3921077v1.0"
   * text = "Optional Diagnosis Questions"
