@@ -47,7 +47,7 @@
   POSSIBILITY OF SUCH DAMAGE.
   
 
-  Generated on Thu, Sep 4, 2025 16:54+0000 for FHIR v6.0.0-ballot3 
+  Generated on Tue, Sep 9, 2025 15:39+0000 for FHIR v6.0.0-ballot3 
 -->
 <xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns="http://hl7.org/fhir" xmlns:xhtml="http://www.w3.org/1999/xhtml" xmlns:xml="http://www.w3.org/XML/1998/namespace" targetNamespace="http://hl7.org/fhir" elementFormDefault="qualified" version="6.0.0-ballot3">
   <!-- Note: When using this schema with some tools, it may also be necessary to declare xmlns:xml="http://www.w3.org/XML/1998/namespace", however this causes performance issues with other tools and thus is not in the base schemas. -->
@@ -2209,6 +2209,11 @@
       <xs:enumeration value="AuditEvent">
         <xs:annotation>
           <xs:documentation xml:lang="en">AuditEvent</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="BiologicallyDerivedProductDispense">
+        <xs:annotation>
+          <xs:documentation xml:lang="en">BiologicallyDerivedProductDispense</xs:documentation>
         </xs:annotation>
       </xs:enumeration>
       <xs:enumeration value="ChargeItem">
@@ -32463,6 +32468,11 @@ RegisteredName | UserFriendlyName | PatientReportedName.</xs:documentation>
   </xs:complexType>
   <xs:simpleType name="DeviceUsageStatusEnum">
     <xs:restriction base="code-primitive">
+      <xs:enumeration value="preparation">
+        <xs:annotation>
+          <xs:documentation xml:lang="en">Preparation</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
       <xs:enumeration value="active">
         <xs:annotation>
           <xs:documentation xml:lang="en">Active</xs:documentation>
@@ -47265,7 +47275,7 @@ The origin at the TLHC of the TLHC pixel is 0.0\0.0, the BRHC of the TLHC pixel 
           </xs:element>
           <xs:element name="statusReason" minOccurs="0" maxOccurs="unbounded" type="CodeableConcept">
             <xs:annotation>
-              <xs:documentation xml:lang="en">A code indicating why the administration was not performed.</xs:documentation>
+              <xs:documentation xml:lang="en">A code indicating why the status of the administration changed.</xs:documentation>
            </xs:annotation>
           </xs:element>
           <xs:element name="category" minOccurs="0" maxOccurs="unbounded" type="CodeableConcept">
@@ -47569,7 +47579,7 @@ The origin at the TLHC of the TLHC pixel is 0.0\0.0, the BRHC of the TLHC pixel 
           </xs:element>
           <xs:element name="fillNumber" minOccurs="0" maxOccurs="1" type="positiveInt">
             <xs:annotation>
-              <xs:documentation xml:lang="en">Represents the known number of the fill over the entire lifetime of the prescription, i.e. if this is the first dispense by this pharmacy but the third fill overall, then the fillNumber will be 3.  Each fill number represents one dispensation, even if that dispensation is not for the full quantity.  Partial fills are not represented by decimal quantities, i.e., a partial fill of 40 tablets (full quantity is 100 tablets) adds 1 to the prior fill number, not 0.4.</xs:documentation>
+              <xs:documentation xml:lang="en">Represents the known number of the fill over the entire lifetime of the prescription, i.e. if this is the first dispense by this pharmacy but the third fill overall, then the fillNumber will be 3.  Each fill number represents one dispensation, even if that dispensation is not for the full quantity.  Partial fills are not represented by decimal quantities, i.e., a partial fill of 40 tablets (full quantity is 100 tablets) adds 1 to the prior fill number, not 0.4. This means that the 'fillNumber' may sometimes be higher than the MedicationRequest.numberOfRepeatsAllowed, as the latter assumes full fills, while fillNumber does not.</xs:documentation>
            </xs:annotation>
           </xs:element>
           <xs:element name="recorded" minOccurs="0" maxOccurs="1" type="dateTime">
@@ -47594,7 +47604,7 @@ The origin at the TLHC of the TLHC pixel is 0.0\0.0, the BRHC of the TLHC pixel 
           </xs:element>
           <xs:element name="receiver" minOccurs="0" maxOccurs="unbounded" type="Reference">
             <xs:annotation>
-              <xs:documentation xml:lang="en">Identifies the person who picked up the medication or the location of where the medication was delivered.  This will usually be a patient or their caregiver, but some cases exist where it can be a healthcare professional or a location.</xs:documentation>
+              <xs:documentation xml:lang="en">Identifies the person who picked up the medication or the location or organization where the medication was delivered. This will usually be a patient or their caregiver, but some cases exist where it can be a healthcare professional or a location, or organization.</xs:documentation>
            </xs:annotation>
           </xs:element>
           <xs:element name="note" minOccurs="0" maxOccurs="unbounded" type="Annotation">
@@ -66813,9 +66823,9 @@ Deceased patients may also be marked as inactive for the same reasons, but may b
               <xs:documentation xml:lang="en">The healthcare event  (e.g. a patient and healthcare provider interaction) during which this transport was created.</xs:documentation>
            </xs:annotation>
           </xs:element>
-          <xs:element name="completionTime" minOccurs="0" maxOccurs="1" type="dateTime">
+          <xs:element name="period" minOccurs="0" maxOccurs="1" type="Period">
             <xs:annotation>
-              <xs:documentation xml:lang="en">Identifies the completion time of the event (the occurrence).</xs:documentation>
+              <xs:documentation xml:lang="en">The period when the transport event is occurring or did occur.</xs:documentation>
            </xs:annotation>
           </xs:element>
           <xs:element name="authoredOn" minOccurs="0" maxOccurs="1" type="dateTime">

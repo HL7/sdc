@@ -75,3 +75,7 @@ Usage: #example
     * linkId = "5.5"
     * text = "Weight"
     * answer.valueQuantity = 27.3 'kg'
+* item[+]
+  * linkId = "6"
+  * text = "Report text"
+  * answer.valueString = "Birth was normal"
