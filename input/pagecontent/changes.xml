@@ -2,6 +2,52 @@
 	<p>
     This provides a list of changes to the SDC specification since its initial release
   </p>
+  <a name="4.0.0"> </a>
+  <h3>2024-09 v4.0.0 - SDC R4 final publication</h3>
+  <ul>
+    <li>General changes:
+      <ul>
+        <li><a href="http://jira.hl7.org/browse/FHIR-49542">FHIR-49542</a> - Made name 1..1, MS and content.data MS on SDC Library</li>
+        <li><a href="http://jira.hl7.org/browse/FHIR-49585">FHIR-49585</a> - Improved alignment of SDC Library with CRMIShareableLibrary profile (added URL, version and versionAlgorithm)</li>
+        <li><a href="http://jira.hl7.org/browse/FHIR-49581">FHIR-49581</a> - Revamped guidance on using the Expression type with CQL</li>
+        <li><a href="http://jira.hl7.org/browse/FHIR-49152">FHIR-49152</a> - Tidied up conformance language on the expressions page</li>
+        <li><a href="http://jira.hl7.org/browse/FHIR-49654">FHIR-49654</a> - Corrected profiles that were pointing to CommonQuestionnaire instead of BaseQuestionnaire</li>
+        <li><a href="http://jira.hl7.org/browse/FHIR-49555">FHIR-49555</a>, <a href="http://jira.hl7.org/browse/FHIR-49217">FHIR-49217</a> - Added new page on validation and versioning</li>
+        <li><a href="http://jira.hl7.org/browse/FHIR-49173">FHIR-49173</a> - Added a 'markdown' extension alongside the existing HTML extension in rendering</li>
+        <li><a href="http://jira.hl7.org/browse/FHIR-49728">FHIR-49728</a> - Replaced supportLink extension with new supportHyperlink extension</li>
+        <li><a href="http://jira.hl7.org/browse/FHIR-24890">FHIR-24890</a> - Added 'page' item control code to group value set</li>
+        <li><a href="http://jira.hl7.org/browse/FHIR-46837">FHIR-46837</a> - Cleaned up definition of header, footer, and page item control codes</li>
+        <li><a href="http://jira.hl7.org/browse/FHIR-25599">FHIR-25599</a> - Improved description of 'grid' item control</li>
+        <li><a href="http://jira.hl7.org/browse/FHIR-49842">FHIR-49842</a> - Added preferredTerminologyServer extension to the advanced rendering profile</li>
+        <li><a href="http://jira.hl7.org/browse/FHIR-49553">FHIR-49553</a> - Allow maxDecimalPlaces extension on Quantity</li>
+        <li><a href="http://jira.hl7.org/browse/FHIR-49817">FHIR-49817</a>, <a href="http://jira.hl7.org/browse/FHIR-49932">FHIR-49932</a>, <a href="http://jira.hl7.org/browse/FHIR-49026">FHIR-49026</a> - Revamped CapabilityStatements to include $assemble and refactored what capabilities were SHALL vs. SHOULD vs. MAY</li>
+        <li><a href="http://jira.hl7.org/browse/FHIR-50151">FHIR-50151</a> - Removed mustSupport on the cqf-expression extension on answerValueset</li>
+        <li><a href="http://jira.hl7.org/browse/FHIR-50238">FHIR-50238</a> - Made answerOptionToggleExpresion.option 1..*</li>
+        <li><a href="http://jira.hl7.org/browse/FHIR-50121">FHIR-50121</a> - Removed the context constraint on the answerOptionToggleExpression extension</li>
+        <li><a href="http://jira.hl7.org/browse/FHIR-49016">FHIR-49016</a> - Replaced all references to the cqf-calculatedValue extension with cqf-expression</li>
+      </ul>
+    </li>
+    <li>Population and Extraction changes:
+      <ul>
+        <li><a href="http://jira.hl7.org/browse/FHIR-49566">FHIR-49566</a> - Added section on adaptive population</li>
+        <li><a href="http://jira.hl7.org/browse/FHIR-49582">FHIR-49582</a> - Added 'data' and 'dataEndpoint' parameters to $populate and $extract operations and added more guidance on the context parameter</li>
+        <li><a href="http://jira.hl7.org/browse/FHIR-49588">FHIR-49588</a> - Revamped guidance on order of extension processing for definition-based extraction</li>
+        <li><a href="http://jira.hl7.org/browse/FHIR-50959">FHIR-50959</a> - Added guidance on where members get added to in Observation-based extraction</li>
+        <li><a href="http://jira.hl7.org/browse/FHIR-48996">FHIR-48996</a> - Added observationExtractEntry extension to support linking extracted observations to other resources (e.g. by definition-based extraction)</li>
+        <li><a href="http://jira.hl7.org/browse/FHIR-49575">FHIR-49575</a> - Added the observationRelationship extension</li>
+        <li><a href="http://jira.hl7.org/browse/FHIR-49567">FHIR-49567</a> - deprecated the $populate-html and $populate-link operations</li>
+      </ul>
+    </li>
+    <li>Modular forms
+      <ul>
+        <li><a href="http://jira.hl7.org/browse/FHIR-49562">FHIR-49562</a> - Introduced the assembleDefinitionRoot extension</li>
+        <li><a href="http://jira.hl7.org/browse/FHIR-49037">FHIR-49037</a> - Added support for Questionnaires to act as data element libraries</li>
+        <li><a href="http://jira.hl7.org/browse/FHIR-49559">FHIR-49559</a> - Revised the rules on extension propagation during assembly</li>
+        <li><a href="http://jira.hl7.org/browse/FHIR-49895">FHIR-49895</a> - Added guidance for setting linkIds when assembling an item from a complex element definition</li>
+      </ul>
+    </li>
+  </ul>
+
   <a name="4.0.0-ballot"> </a>
   <h3>2024-12-20 v4.0.0-ballot - SDC R4 ballot</h3>
   <ul>

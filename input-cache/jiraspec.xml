@@ -1,9 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<specification xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" ballotUrl="http://hl7.org/fhir/uv/sdc/2025Jan" ciUrl="http://build.fhir.org/ig/HL7/sdc" defaultVersion="3.0.0" defaultWorkgroup="fhir-i" gitUrl="https://github.com/HL7/sdc" url="http://hl7.org/fhir/uv/sdc">
+<specification xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" ballotUrl="http://hl7.org/fhir/uv/sdc/2025Jan" ciUrl="http://build.fhir.org/ig/HL7/sdc" defaultVersion="4.0.0" defaultWorkgroup="fhir-i" gitUrl="https://github.com/HL7/sdc" url="http://hl7.org/fhir/uv/sdc">
 <version code="current" url="http://build.fhir.org/ig/HL7/sdc"/>
-<version code="4.0.0-ballot" url="http://hl7.org/fhir/uv/sdc/2025Jan"/>
-<version code="3.0.0" url="http://hl7.org/fhir/uv/sdc/STU3"/>
-<version code="3.0.0-preview" url="http://hl7.org/fhir/uv/sdc/3.0.0-preview"/>
+<version code="4.0.0" url="http://hl7.org/fhir/uv/sdc/STU4"/>
+<version code="4.0.0-ballot" deprecated="true" url="http://hl7.org/fhir/uv/sdc/2025Jan"/>
+<version code="3.0.0" deprecated="true" url="http://hl7.org/fhir/uv/sdc/STU3"/>
+<version code="3.0.0-preview" deprecated="true" url="http://hl7.org/fhir/uv/sdc/3.0.0-preview"/>
 <version code="2.7.0" deprecated="true" url="http://hl7.org/fhir/uv/sdc/2019May"/>
 <version code="2.5.0" deprecated="true" url="http://hl7.org/fhir/uv/sdc/2018Sep"/>
 <version code="2.0.0" deprecated="true" url="http://hl7.org/fhir/us/sdc/STU2"/>
@@ -27,6 +28,7 @@
 <artifact id="StructureDefinition/sdc-questionnaire-answerExpression" key="StructureDefinition-sdc-questionnaire-answerExpression" name="Answer Expression"/>
 <artifact id="StructureDefinition/sdc-questionnaire-answerOptionsToggleExpression" key="StructureDefinition-sdc-questionnaire-answerOptionsToggleExpression" name="Answer Options Toggle Expression"/>
 <artifact id="StructureDefinition/sdc-questionnaire-assembleContext" key="StructureDefinition-sdc-questionnaire-assembleContext" name="Assemble Context"/>
+<artifact id="StructureDefinition/sdc-questionnaire-assembleDefinitionRoot" key="StructureDefinition-sdc-questionnaire-assembleDefinitionRoot" name="Assemble Definition Root"/>
 <artifact id="CodeSystem/assemble-expectation" key="CodeSystem-assemble-expectation" name="Assemble Expectation Codes"/>
 <artifact id="OperationDefinition/Questionnaire-assemble" key="OperationDefinition-Questionnaire-assemble" name="Assemble Modular Questionnaire Operation"/>
 <artifact id="StructureDefinition/sdc-questionnaire-assembledFrom" key="StructureDefinition-sdc-questionnaire-assembledFrom" name="Assembled From Questionnaire"/>
@@ -36,6 +38,7 @@
 <artifact id="CodeSystem/chf-codes" key="CodeSystem-chf-codes" name="CHF Codes"/>
 <artifact id="StructureDefinition/sdc-questionnaire-calculatedExpression" key="StructureDefinition-sdc-questionnaire-calculatedExpression" name="Calculated Expression"/>
 <artifact id="StructureDefinition/sdc-questionnaire-candidateExpression" key="StructureDefinition-sdc-questionnaire-candidateExpression" name="Candidate Answers Expression"/>
+<artifact id="SearchParameter/canonical-experimental" key="SearchParameter-canonical-experimental" name="Canonical Experimental Search Parameter"/>
 <artifact id="StructureDefinition/sdc-questionnaire-choiceColumn" key="StructureDefinition-sdc-questionnaire-choiceColumn" name="Choice column"/>
 <artifact id="StructureDefinition/sdc-questionnaire-unitSupplementalSystem" key="StructureDefinition-sdc-questionnaire-unitSupplementalSystem" name="Code system for other units"/>
 <artifact id="StructureDefinition/sdc-questionnaire-collapsible" key="StructureDefinition-sdc-questionnaire-collapsible" name="Collapsible"/>
@@ -99,6 +102,7 @@
 <artifact id="StructureDefinition/parameters-questionnaire-next-question-out" key="StructureDefinition-parameters-questionnaire-next-question-out" name="Next question operation output parameters"/>
 <artifact id="StructureDefinition/sdc-questionnaire-columnCount" key="StructureDefinition-sdc-questionnaire-columnCount" name="Number of columns for child item layout"/>
 <artifact id="StructureDefinition/sdc-questionnaire-observationLinkPeriod" key="StructureDefinition-sdc-questionnaire-observationLinkPeriod" name="Obervation link period"/>
+<artifact id="StructureDefinition/sdc-questionnaire-observationExtractEntry" key="StructureDefinition-sdc-questionnaire-observationExtractEntry" name="Observation Extract Entry"/>
 <artifact id="CodeSystem/observation-extract-relationship" key="CodeSystem-observation-extract-relationship" name="Observation Extract Relationship Codes"/>
 <artifact id="ValueSet/observation-extract-relationship" key="ValueSet-observation-extract-relationship" name="Observation Extract Relationship Value Set"/>
 <artifact id="StructureDefinition/sdc-questionnaire-optionalDisplay" key="StructureDefinition-sdc-questionnaire-optionalDisplay" name="Optional Display?"/>
@@ -123,17 +127,20 @@
 <artifact id="Questionnaire/demographics" key="Questionnaire-demographics" name="Questionnaire - Demographics Example"/>
 <artifact id="StructureDefinition/sdc-questionnaire-questionnaireAdaptive" key="StructureDefinition-sdc-questionnaire-questionnaireAdaptive" name="Questionnaire Adaptive"/>
 <artifact id="ValueSet/assemble-expectation" key="ValueSet-assemble-expectation" name="Questionnaire Assemble Expectation"/>
-<artifact id="SearchParameter/questionnaire-assembledFrom" key="SearchParameter-questionnaire-assembledFrom" name="Questionnaire Assembled From Search Parameter"/>
+<artifact id="SearchParameter/questionnaire-assembled-from" key="SearchParameter-questionnaire-assembledFrom" name="Questionnaire Assembled From Search Parameter"/>
+<artifact id="SearchParameter/Questionnaire-questionnaire-code" key="SearchParameter-Questionnaire-questionnaire-code" name="Questionnaire Code Search Parameter"/>
+<artifact id="SearchParameter/Questionnaire-combo-code" key="SearchParameter-Questionnaire-combo-code" name="Questionnaire Combined Code and Item Code Search Parameter"/>
 <artifact id="ValueSet/species" key="ValueSet-species" name="Questionnaire Context Species"/>
 <artifact id="ValueSet/entryMode" key="ValueSet-entryMode" name="Questionnaire Entry Mode"/>
 <artifact id="ValueSet/formBehaviorConditions" key="ValueSet-formBehaviorConditions" name="Questionnaire Form Behavior Conditions"/>
 <artifact id="SearchParameter/questionnaire-assemble-expectation" key="SearchParameter-questionnaire-assemble-expectation" name="Questionnaire Is Modular Search Parameter"/>
 <artifact id="ValueSet/collapsible" key="ValueSet-collapsible" name="Questionnaire Item Collapsible"/>
 <artifact id="ValueSet/keyboardType" key="ValueSet-keyboardType" name="Questionnaire Item Keyboard Type"/>
-<artifact id="SearchParameter/questionnaire-definition" key="SearchParameter-questionnaire-definition" name="Questionnaire Item definition"/>
+<artifact deprecated="true" id="SearchParameter/questionnaire-definition" key="SearchParameter-questionnaire-definition" name="Questionnaire Item definition"/>
 <artifact id="ValueSet/launchContext" key="ValueSet-launchContext" name="Questionnaire Launch Context"/>
 <artifact id="ValueSet/performerType" key="ValueSet-performerType" name="Questionnaire Performer Type"/>
 <artifact id="StructureDefinition/sdc-servicerequest" key="StructureDefinition-sdc-servicerequest" name="Questionnaire Service Request"/>
+<artifact id="SearchParameter/Questionnaire-subject-type" key="SearchParameter-Questionnaire-subject-type" name="Questionnaire Subject Type Parameter"/>
 <artifact id="CodeSystem/questionnaire-answer-constraint" key="CodeSystem-questionnaire-answer-constraint" name="Questionnaire answer constraint codes"/>
 <artifact id="ValueSet/questionnaire-answer-constraint" key="ValueSet-questionnaire-answer-constraint" name="Questionnaire answer constraints value set"/>
 <artifact id="StructureDefinition/parameters-questionnaire-assemble-in" key="StructureDefinition-parameters-questionnaire-assemble-in" name="Questionnaire assemble input Parameters profile"/>
@@ -148,12 +155,14 @@
 <artifact id="StructureDefinition/sdc-rendering-criticalExtension" key="StructureDefinition-sdc-rendering-criticalExtension" name="Rendering Critical Extension"/>
 <artifact id="ServiceRequest/example" key="ServiceRequest-example" name="Request-based solicitation example - ServiceRequest"/>
 <artifact id="Task/request-task-example" key="Task-request-task-example" name="Request-based solicitation example - Task"/>
+<artifact id="Questionnaire/rxterms" key="Questionnaire-rxterms" name="RxTerms Lookup"/>
 <artifact id="StructureDefinition/sdc-questionnaire" key="StructureDefinition-sdc-questionnaire" name="SDC Base Questionnaire"/>
 <artifact id="StructureDefinition/sdc-codesystem" key="StructureDefinition-sdc-codesystem" name="SDC Code System"/>
 <artifact id="Questionnaire/sdc-derivation-child" key="Questionnaire-sdc-derivation-child" name="SDC Derivation Child"/>
 <artifact id="Questionnaire/sdc-derivation-parent" key="Questionnaire-sdc-derivation-parent" name="SDC Derivation Parent"/>
 <artifact id="CapabilityStatement/sdc-form-archiver" key="CapabilityStatement-sdc-form-archiver" name="SDC Form Archiver"/>
 <artifact id="CapabilityStatement/sdc-form-designer" key="CapabilityStatement-sdc-form-designer" name="SDC Form Designer"/>
+<artifact id="CapabilityStatement/sdc-form-fill-manager" key="CapabilityStatement-sdc-form-fill-manager" name="SDC Form Fill Manager"/>
 <artifact id="CapabilityStatement/sdc-form-filler" key="CapabilityStatement-sdc-form-filler" name="SDC Form Filler"/>
 <artifact id="CapabilityStatement/sdc-form-manager" key="CapabilityStatement-sdc-form-manager" name="SDC Form Manager"/>
 <artifact id="CapabilityStatement/sdc-form-receiver" key="CapabilityStatement-sdc-form-receiver" name="SDC Form Receiver"/>
@@ -163,8 +172,10 @@
 <artifact id="QuestionnaireResponse/map-populate-out" key="QuestionnaireResponse-map-populate-out" name="SDC Map population StructureMap example output"/>
 <artifact id="Bundle/map-population-example" key="Bundle-map-population-example" name="SDC Map population source bundle example"/>
 <artifact id="StructureDefinition/sdc-questionnaire-modular" key="StructureDefinition-sdc-questionnaire-modular" name="SDC Modular Questionnaire"/>
+<artifact id="StructureDefinition/sdc-questionnaire-modular-library" key="StructureDefinition-sdc-questionnaire-modular-library" name="SDC Modular Questionnaire Library"/>
 <artifact id="StructureDefinition/SdcQuestionLibrary" key="StructureDefinition-sdc-question-library" name="SDC Question Library"/>
 <artifact id="StructureDefinition/sdc-questionnairecommon" key="StructureDefinition-sdc-questionnairecommon" name="SDC Questionnaire Common Elements"/>
+<artifact id="Questionnaire/questionnaire-modular-library" key="Questionnaire-questionnaire-modular-library" name="SDC Questionnaire Library"/>
 <artifact id="StructureDefinition/sdc-questionnaireresponsecommon" key="StructureDefinition-sdc-questionnaireresponsecommon" name="SDC Questionnaire Response Common Elements"/>
 <artifact id="StructureDefinition/sdc-questionnaireresponse" key="QuestionnaireAnswers" name="SDC Standard Questionnaire Response"/>
 <artifact id="ValueSet/task-code" key="ValueSet-task-code" name="SDC Task Code"/>
@@ -195,12 +206,14 @@
 <artifact id="Questionnaire/questionnaire-sdc-profile-example-cqf-PHQ9" key="Questionnaire-questionnaire-sdc-profile-example-cqf-PHQ9" name="SDC-PHQ9 using an SDC Library"/>
 <artifact id="Questionnaire/questionnaire-sdc-profile-example-cap" key="Questionnaire-questionnaire-sdc-profile-example-cap" name="SDC-Pathology"/>
 <artifact id="QuestionnaireResponse/adaptive-questionnaireresponse-sdc-example-phq9" key="QuestionnaireResponse-adaptive-questionnaireresponse-sdc-example-phq9" name="SDC-Response to Adaptive PHQ9"/>
+<artifact id="QuestionnaireResponse/adaptive-questionnaireresponse-sdc-example-phq9-start" key="QuestionnaireResponse-adaptive-questionnaireresponse-sdc-example-phq9-start" name="SDC-Response to Adaptive PHQ9 - Start"/>
 <artifact id="QuestionnaireResponse/questionnaireresponse-sdc-profile-example" key="QuestionnaireResponse-questionnaireresponse-sdc-profile-example" name="SDC-Response to Diagnosis NCI Standard Template"/>
 <artifact id="QuestionnaireResponse/questionnaireresponse-sdc-profile-example-loinc" key="QuestionnaireResponse-questionnaireresponse-sdc-profile-example-loinc" name="SDC-Response to LOINC AHRQ"/>
 <artifact id="QuestionnaireResponse/questionnaireresponse-sdc-example-ussg-fht-answers" key="QuestionnaireResponse-questionnaireresponse-sdc-example-ussg-fht-answers" name="SDC-Response to LOINC USSG Family History"/>
 <artifact id="QuestionnaireResponse/questionnaireresponse-sdc-profile-example-PHQ9" key="QuestionnaireResponse-questionnaireresponse-sdc-profile-example-PHQ9" name="SDC-Response to PHQ9"/>
 <artifact id="ValueSet/sdc-profile-example" key="ValueSet-sdc-profile-example" name="SDC-ValueSet AHRQ_Medication_Q1"/>
 <artifact id="Questionnaire/questionnaire-sdc-profile-example-weight-height-tracking-panel" key="Questionnaire-questionnaire-sdc-profile-example-weight-height-tracking-panel" name="SDC-Weight and Height Tracking Panel"/>
+<artifact id="StructureDefinition/sdc-usagecontext-questionnaire-library" key="StructureDefinition-sdc-usagecontext-questionnaire-library" name="SDCUsageContext: Questionnaire Library"/>
 <artifact id="Questionnaire/SDOHCC-QuestionnaireHungerVitalSign" key="Questionnaire-SDOHCC-QuestionnaireHungerVitalSign" name="SDOHCC Questionnaire Hunger Vital Sign"/>
 <artifact deprecated="true" id="StructureMap/SDOHCC-StructureMapHungerVitalSign" key="StructureMap-SDOHCC-StructureMapHungerVitalSign" name="SDOHCC StructureMap Hunger Vital Sign"/>
 <artifact id="StructureMap/SDOHCCHungerVitalSignMap" key="StructureMap-SDOHCCHungerVitalSignMap" name="SDOHCCHungerVitalSignMap"/>
@@ -209,6 +222,8 @@
 <artifact id="StructureDefinition/sdc-questionnaire-shortText" key="StructureDefinition-sdc-questionnaire-shortText" name="Short Text"/>
 <artifact id="StructureDefinition/sdc-questionnaire-sourceQueries" key="StructureDefinition-sdc-questionnaire-sourceQueries" name="Source queries for population mapping"/>
 <artifact id="StructureDefinition/sdc-questionnaire-sourceStructureMap" key="StructureDefinition-sdc-questionnaire-sourceStructureMap" name="Source structure map"/>
+<artifact id="SearchParameter/StructureMap-source" key="SearchParameter-StructureMap-source" name="StructureMap Source Structure"/>
+<artifact id="SearchParameter/StructureMap-target" key="SearchParameter-StructureMap-target" name="StructureMap Target Structure"/>
 <artifact id="StructureDefinition/sdc-questionnaire-subQuestionnaire" key="StructureDefinition-sdc-questionnaire-subQuestionnaire" name="Sub-questionnaire"/>
 <artifact id="StructureDefinition/sdc-task" key="StructureDefinition-sdc-task" name="Task Questionnaire"/>
 <artifact id="Task/example" key="Task-example" name="Task-based solicitation example"/>
@@ -223,12 +238,14 @@
 <page key="rendering" name="Advanced Form Rendering"/>
 <page key="artifacts" name="Artifact List"/>
 <page key="workflow" name="Basic SDC workflow"/>
+<page key="conformance" name="Conformance Expectations"/>
 <page key="examples" name="Examples"/>
 <page key="search" name="Finding a Questionnaire"/>
 <page key="behavior" name="Form Behavior and Calculation"/>
 <page key="extraction" name="Form Data Extraction"/>
 <page key="derive" name="Form Derivation"/>
 <page key="populate" name="Form Population"/>
+<page key="validation" name="Form Validation"/>
 <page key="changes" name="IG Change History"/>
 <page key="intro" name="Introduction"/>
 <page key="modular" name="Modular Forms"/>
