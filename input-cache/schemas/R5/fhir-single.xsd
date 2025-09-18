@@ -47,7 +47,7 @@
   POSSIBILITY OF SUCH DAMAGE.
   
 
-  Generated on Tue, Sep 9, 2025 20:39+0000 for FHIR v6.0.0-ballot3 
+  Generated on Thu, Sep 18, 2025 17:57+0000 for FHIR v6.0.0-ballot3 
 -->
 <xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns="http://hl7.org/fhir" xmlns:xhtml="http://www.w3.org/1999/xhtml" xmlns:xml="http://www.w3.org/XML/1998/namespace" targetNamespace="http://hl7.org/fhir" elementFormDefault="qualified" version="6.0.0-ballot3">
   <!-- Note: When using this schema with some tools, it may also be necessary to declare xmlns:xml="http://www.w3.org/XML/1998/namespace", however this causes performance issues with other tools and thus is not in the base schemas. -->
@@ -16443,6 +16443,16 @@ A coverage may only be responsible for specific types of charges, and the sequen
       <xs:enumeration value="proposal">
         <xs:annotation>
           <xs:documentation xml:lang="en">Proposal</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="solicit-offer">
+        <xs:annotation>
+          <xs:documentation xml:lang="en">Solicit Offer</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="offer-response">
+        <xs:annotation>
+          <xs:documentation xml:lang="en">Offer Response</xs:documentation>
         </xs:annotation>
       </xs:enumeration>
       <xs:enumeration value="plan">
@@ -63814,16 +63824,6 @@ Deceased patients may also be marked as inactive for the same reasons, but may b
               <xs:documentation xml:lang="en">The business identifier for this task.</xs:documentation>
            </xs:annotation>
           </xs:element>
-          <xs:element name="instantiatesCanonical" minOccurs="0" maxOccurs="1" type="canonical">
-            <xs:annotation>
-              <xs:documentation xml:lang="en">The URL pointing to a *FHIR*-defined protocol, guideline, orderset or other definition that is adhered to in whole or in part by this Task.</xs:documentation>
-           </xs:annotation>
-          </xs:element>
-          <xs:element name="instantiatesUri" minOccurs="0" maxOccurs="1" type="uri">
-            <xs:annotation>
-              <xs:documentation xml:lang="en">The URL pointing to an *externally* maintained  protocol, guideline, orderset or other definition that is adhered to in whole or in part by this Task.</xs:documentation>
-           </xs:annotation>
-          </xs:element>
           <xs:element name="basedOn" minOccurs="0" maxOccurs="unbounded" type="Reference">
             <xs:annotation>
               <xs:documentation xml:lang="en">BasedOn refers to a higher-level authorization that triggered the creation of the task.  It references a &quot;request&quot; resource such as a ServiceRequest, MedicationRequest, CarePlan, etc. which is distinct from the &quot;request&quot; resource the task is seeking to fulfill.  This latter resource is referenced by focus.  For example, based on a CarePlan (= basedOn), a task is created to fulfill a ServiceRequest ( = focus ) to collect a specimen from a patient.</xs:documentation>
@@ -66878,9 +66878,9 @@ Deceased patients may also be marked as inactive for the same reasons, but may b
               <xs:documentation xml:lang="en">A resource reference indicating why this transport needs to be performed.</xs:documentation>
            </xs:annotation>
           </xs:element>
-          <xs:element name="history" minOccurs="0" maxOccurs="1" type="Reference">
+          <xs:element name="priorTransport" minOccurs="0" maxOccurs="1" type="Reference">
             <xs:annotation>
-              <xs:documentation xml:lang="en">The transport event prior to this one.</xs:documentation>
+              <xs:documentation xml:lang="en">The immediately preceding Transport event.</xs:documentation>
            </xs:annotation>
           </xs:element>
         </xs:sequence>
