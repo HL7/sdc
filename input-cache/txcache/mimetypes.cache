@@ -717,7 +717,6 @@ v: {
   "code" : "text/cql",
   "system" : "urn:ietf:bcp:13",
   "server" : "https://tx.fhir.org/r4",
-  "unknown-systems" : "",
   "issues" : {
   "resourceType" : "OperationOutcome"
 }
@@ -743,7 +742,6 @@ v: {
   "code" : "application/sparql-results+xml",
   "system" : "urn:ietf:bcp:13",
   "server" : "https://tx.fhir.org/r4",
-  "unknown-systems" : "",
   "issues" : {
   "resourceType" : "OperationOutcome"
 }
@@ -769,7 +767,6 @@ v: {
   "code" : "application/sql",
   "system" : "urn:ietf:bcp:13",
   "server" : "https://tx.fhir.org/r4",
-  "unknown-systems" : "",
   "issues" : {
   "resourceType" : "OperationOutcome"
 }
@@ -795,7 +792,6 @@ v: {
   "code" : "application/xquery",
   "system" : "urn:ietf:bcp:13",
   "server" : "https://tx.fhir.org/r4",
-  "unknown-systems" : "",
   "issues" : {
   "resourceType" : "OperationOutcome"
 }
@@ -821,10 +817,80 @@ v: {
   "code" : "text/html",
   "system" : "urn:ietf:bcp:13",
   "server" : "https://tx.fhir.org/r4",
-  "unknown-systems" : "",
   "issues" : {
   "resourceType" : "OperationOutcome"
 }
 
+}
+-------------------------------------------------------------------------------------
+{"hierarchical" : true, "valueSet" :{
+  "resourceType" : "ValueSet",
+  "compose" : {
+    "inactive" : false,
+    "include" : [{
+      "system" : "urn:ietf:bcp:13",
+      "concept" : [{
+        "code" : "application/sparql-results+xml",
+        "display" : "SPARQL"
+      },
+      {
+        "code" : "application/sql",
+        "display" : "SQL"
+      },
+      {
+        "code" : "application/xquery",
+        "display" : "X-Query"
+      }]
+    }]
+  }
+}}####
+e: {
+  "source" : tx.fhir.org,
+  "valueSet" : {
+  "resourceType" : "ValueSet",
+  "status" : "active",
+  "expansion" : {
+    "identifier" : "urn:uuid:e218b007-bf59-4805-a61e-919c930b8e19",
+    "timestamp" : "2025-10-09T14:36:26.403Z",
+    "total" : 3,
+    "offset" : 0,
+    "parameter" : [{
+      "name" : "excludeNested",
+      "valueBoolean" : false
+    },
+    {
+      "name" : "offset",
+      "valueInteger" : 0
+    },
+    {
+      "name" : "count",
+      "valueInteger" : 1000
+    },
+    {
+      "name" : "used-codesystem",
+      "valueUri" : "urn:ietf:bcp:13"
+    },
+    {
+      "name" : "version",
+      "valueUri" : "urn:ietf:bcp:13"
+    }],
+    "contains" : [{
+      "system" : "urn:ietf:bcp:13",
+      "code" : "application/sparql-results+xml",
+      "display" : "application/sparql-results+xml"
+    },
+    {
+      "system" : "urn:ietf:bcp:13",
+      "code" : "application/sql",
+      "display" : "application/sql"
+    },
+    {
+      "system" : "urn:ietf:bcp:13",
+      "code" : "application/xquery",
+      "display" : "application/xquery"
+    }]
+  }
+},
+  "error" : ""
 }
 -------------------------------------------------------------------------------------

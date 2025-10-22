@@ -219,10 +219,7 @@ WARNING: StructureDefinition/sdc-questionnairecommon: StructureDefinition.snapsh
 # 00b Bug in StructureMap static validator that doesn't handle up casting for resources from `Resource` in a Bundle.entry.resource https://chat.fhir.org/#narrow/channel/179252-IG-creation/topic/StructureMap.20QA.20message.20-.20possible.20types.20are.20Resource, https://chat.fhir.org/#narrow/channel/179252-IG-creation/topic/SDC.20structure.20map.20issue/with/533397659
 ERROR: StructureMap/QuestionnairePopulationTransform: StructureMap.group[2].rule[0].rule[1].rule[0].source[0]: The source path medResource.status refers to the path Bundle.entry.resource.status which is unknown
 
-# 00c This is in the ballot version.  It should resolve at the official location once the ballot passes and is published
-WARNING: Questionnaire/questionnaire-sdc-profile-example-render: Questionnaire.item[2].item[0].extension[0].extension[1].value.ofType(uri): No definition could be found for URL value 'https://hl7.org/fhir/extensions/StructureDefinition-questionnaire-supportHyperlink.html'
-
-# 00d This is a publisher/template issue - https://chat.fhir.org/#narrow/channel/179252-IG-creation/topic/Questionnaire.20narrative.20hyperlink.20issues
+# 00c This is a publisher/template issue - https://chat.fhir.org/#narrow/channel/179252-IG-creation/topic/Questionnaire.20narrative.20hyperlink.20issues
 %The link 'ValueSet-2674812v4.0_d1e10146-vs.html' for "d1e10146-vs" cannot be resolved
 %The link 'ValueSet-2674812v4.0_d1e10593-vs.html' for "d1e10593-vs" cannot be resolved
 %The link 'ValueSet-2674812v4.0_d1e10923-vs.html' for "d1e10923-vs" cannot be resolved
@@ -276,7 +273,7 @@ WARNING: Questionnaire/questionnaire-sdc-profile-example-render: Questionnaire.i
 %The link 'ValueSet-HERF-1.2_d1e7220-vs.html' for "d1e7220-vs" cannot be resolved
 %The link 'ValueSet-HERF-1.2_d1e7422-vs.html' for "d1e7422-vs" cannot be resolved
 
-# 00e These links all resolve, but because there's no dependency, the publisher doesn't realize that.  These are not actually errors
+# 00d These links all resolve, but because there's no dependency, the publisher doesn't realize that.  These are not actually errors
 ERROR: StructureDefinition-sdc-codesystem-definitions.html#/html/body/div/div/div/div/div/div/div/table/tr/td/p/a at Line 485, column 93: The link 'http://hl7.org/fhir/uv/sdc/2025Jan/rendering.html#rendering-style' for "SDC implementation guide" cannot be resolved
 ERROR: StructureDefinition-sdc-codesystem-definitions.html#/html/body/div/div/div/div/div/div/div/table/tr/td/p/a at Line 495, column 250: The link 'http://hl7.org/fhir/uv/sdc/2025Jan/rendering.html#rendering-xhtml' for "SDC implementation guide" cannot be resolved
 ERROR: StructureDefinition-sdc-codesystem-definitions.html#/html/body/div/div/div/div/div/div/div/table/tr/td/p/a at Line 851, column 93: The link 'http://hl7.org/fhir/uv/sdc/2025Jan/rendering.html#rendering-style' for "SDC implementation guide" cannot be resolved
