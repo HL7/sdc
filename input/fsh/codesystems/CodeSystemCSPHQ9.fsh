@@ -10,6 +10,7 @@ Description: "The answer list for questions 1 through 9 on the Patient Health Qu
 * ^property[+].code = #itemWeight
 * ^property[=].uri = "http://hl7.org/fhir/concept-properties#itemWeight"
 * ^property[=].type = #decimal
+* ^extension[$questionnaire-versionAlgorithm].valueCoding = $version-algorithm#semver
 * #Not-at-all "Not at all"
   * ^property[+].code = #itemWeight
   * ^property[=].valueDecimal = 0.0

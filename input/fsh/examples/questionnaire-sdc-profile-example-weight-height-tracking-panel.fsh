@@ -1,5 +1,5 @@
 Instance: questionnaire-sdc-profile-example-weight-height-tracking-panel
-InstanceOf: SDCBaseQuestionnaire
+InstanceOf: SDCQuestionnaireBehave
 Title: "SDC-Weight and Height Tracking Panel"
 Description: "A weight and height panel (from LOINC) with a FHIRPath rule for calculating the BMI."
 Usage: #example

@@ -50,14 +50,14 @@ XPath: "f:extension[@url='http://hl7.org/fhir/uv/sdc/StructureDefinition/sdc-que
 Invariant: sdc-2
 Description: "If version is present, versionAlgorithm must be present."
 Severity: #error
-Expression: "version.exists() implies extension.where(url='http://hl7.org/fhir/5.0/StructureDefinition/extension-Questionnaire.versionAlgorithm[x]').exists()"
-XPath: "not(exists(f:version)) or exists(f:extension[@url='http://hl7.org/fhir/5.0/StructureDefinition/extension-Questionnaire.versionAlgorithm[x]'])"
+Expression: "version.exists() implies extension.where(url='http://hl7.org/fhir/StructureDefinition/artifact-versionAlgorithm').exists()"
+XPath: "not(exists(f:version)) or exists(f:extension[@url='http://hl7.org/fhir/StructureDefinition/artifact-versionAlgorithm'])"
 
 Invariant: sdc-3
 Description: "Semver is the preferred version algorithm - package machinery doesn't work well with artifacts using alternate versioning schemes"
 Severity: #warning
-Expression: "extension.where(url='http://hl7.org/fhir/5.0/StructureDefinition/extension-Questionnaire.versionAlgorithm[x]').all(value.ofType(Coding).where(system='http://hl7.org/fhir/version-algorithm' and code='semver').exists())"
-XPath: "not(f:extension[@url='http://hl7.org/fhir/5.0/StructureDefinition/extension-Questionnaire.versionAlgorithm[x]' and not(exists(f:valueCoding[f:system/@value='http://hl7.org/fhir/version-algorithm' and f:code/@value='semver'])))"
+Expression: "extension.where(url='http://hl7.org/fhir/StructureDefinition/artifact-versionAlgorithm').all(value.ofType(Coding).where(system='http://hl7.org/fhir/version-algorithm' and code='semver').exists())"
+XPath: "not(f:extension[@url='http://hl7.org/fhir/StructureDefinition/artifact-versionAlgorithm' and not(exists(f:valueCoding[f:system/@value='http://hl7.org/fhir/version-algorithm' and f:code/@value='semver'])))"
 
 Invariant: que-1a
 Description: "Group items must have nested items when Questionanire is complete"

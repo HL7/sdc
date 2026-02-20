@@ -8,7 +8,7 @@ Usage: #example
 * intent = #order
 * code = $task-code#fulfill
 * focus = Reference(ServiceRequest/example)
-* for = Reference(http://hl7.org/fhir/Patient/proband) "Annie Proband"
+* for = Reference(http://example.org/fhir/Patient/proband) "Annie Proband"
 * authoredOn = "2021-09-06"
 * requester = Reference(http://hl7.org/fhir/PractitionerRole/example) "Dr. Adam Careful, Acme Hospital"
-* owner = Reference(http://hl7.org/fhir/Patient/proband) "Annie Proband"
+* owner = Reference(http://example.org/fhir/Patient/proband) "Annie Proband"

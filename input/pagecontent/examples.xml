@@ -274,7 +274,7 @@ i.fa {
       <label for="tab-itemcontrol-1">Sample Question</label>
       <div class="content-in-tab">
         <p>If you have any other medical problems or serious injuries, please describe them here:
-        <textarea class="textarea1" rows="4" cols="30">  </textarea>
+        <input type="text">  </input>
         </p>
       </div>
     </div>
@@ -336,20 +336,7 @@ i.fa {
                 dissatisfied</span>
               </td>
               <td style="vertical-align: top;">
-                <input type="range" list="tickmarks" min="0" max="100" value="50" step="10" class="slider" id="linkitem-3.1-slider"/>
-                <datalist id="tickmarks">
-                  <option value="0" label="0"></option>
-                  <option value="10"></option>
-                  <option value="20"></option>
-                  <option value="30"></option>
-                  <option value="40"></option>
-                  <option value="50"></option>
-                  <option value="60"></option>
-                  <option value="70"></option>
-                  <option value="80"></option>
-                  <option value="90"></option>
-                  <option value="100" label="100"></option>
-                </datalist>				
+                <input type="range" min="0" max="100" value="50" step="10" class="slider" id="linkitem-3.1-slider"/>
               </td>
               <td style="text-align: left;">
                 100<br/>
@@ -1618,13 +1605,13 @@ i.fa {
       <label for="tab-endpoint-3">XML</label>
       <div class="content-in-tab">
         <textarea style="border:none" class="xml">
-          <Questionnaire>
+          &lt;Questionnaire>
           ...
-          <extension url="http://hl7.org/fhir/uv/sdc/StructureDefinition/sdc-questionnaire-endpoint">
-              <valueUri value="http://example.org/QuestionnaireResponse/create"/>
-            </extension>
+          &lt;extension url="http://hl7.org/fhir/uv/sdc/StructureDefinition/sdc-questionnaire-endpoint">
+              &lt;valueUri value="http://example.org/QuestionnaireResponse/create"/>
+            &lt;/extension>
           ...
-        </Questionnaire>
+          &lt;/Questionnaire>
         </textarea>
       </div>
     </div>
@@ -1665,13 +1652,13 @@ i.fa {
       <label for="tab-entrymode-3">XML</label>
       <div class="content-in-tab">
         <textarea style="border:none" class="xml">
-          <Questionnaire>
+          &lt;Questionnaire>
           ...
-          <extension url="http://hl7.org/fhir/uv/sdc/StructureDefinition/sdc-questionnaire-entryMode">
-              <valueCode value="sequential"/>
-            </extension>
+            &lt;extension url="http://hl7.org/fhir/uv/sdc/StructureDefinition/sdc-questionnaire-entryMode">
+              &lt;valueCode value="sequential"/>
+            &lt;/extension>
           ...
-        </Questionnaire>
+          &lt;/Questionnaire>
         </textarea>
       </div>
     </div>
@@ -1836,7 +1823,7 @@ i.fa {
           <option>Diabetes</option>
           <option>Asthma</option>
         </select><br/>
-        <small>Options retrieved using terminology server: <b>https://tx.fhir.org/r4</b></small>
+        Options retrieved using terminology server: <b>https://tx.fhir.org/r4</b>
       </p>
     </div>
   </div>

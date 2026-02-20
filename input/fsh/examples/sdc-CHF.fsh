@@ -5,6 +5,7 @@ Description: "Logic for an example congestive heart failure pathway"
 Usage: #example
 * url = "http://hl7.org/fhir/uv/sdc/Library/sdc-CHF"
 * version = "1.0.0"
+* extension[$questionnaire-versionAlgorithm].valueCoding = $version-algorithm#semver
 * name = "CHF"
 * title = "Congestive Heart Failure Logic"
 * status = #active

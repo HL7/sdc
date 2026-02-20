@@ -7,6 +7,7 @@ Description: "Example code system of Australian state codes"
 * ^experimental = true
 * ^caseSensitive = true
 * ^content = #complete
+* ^extension[$questionnaire-versionAlgorithm].valueCoding = $version-algorithm#semver
 * #ACT "Australian Capital Territory" "Australian Capital Territory"
 * #NSW "New South Wales" "New South Wales"
 * #NT "Northern Territory" "Northern Territory"

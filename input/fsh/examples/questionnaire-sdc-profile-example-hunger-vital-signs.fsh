@@ -1,5 +1,5 @@
 Instance: questionnaire-sdc-profile-example-hunger-vital-signs
-InstanceOf: SDCBaseQuestionnaire
+InstanceOf: SDCQuestionnaireBehave
 Title: "SDC-Hunger Vital Sign"
 Usage: #example
 * extension[+]
@@ -49,7 +49,7 @@ Usage: #example
     * valueCodeableConcept = $questionnaire-item-control#drop-down "Drop down"
       * text = "Drop down"
   * linkId = "/88122-7"
-  * code = $loinc#88122-7 "Within the past 12 months we worried whether our food would run out before we got money to buy more [U.S. FSS]"
+  * code = $loinc#88122-7 "Within the past 12 months we worried whether our food would run out before we got money to buy more"
   * text = "Within the past 12Mo we worried whether our food would run out before we got money to buy more"
   * type = #choice
   * required = false
@@ -63,8 +63,8 @@ Usage: #example
     * valueCodeableConcept = $questionnaire-item-control#drop-down "Drop down"
       * text = "Drop down"
   * linkId = "/88123-5"
-  * code = $loinc#88123-5 "Within the past 12 months the food we bought just didn't last and we didn't have money to get more [U.S. FSS]"
-  * text = "Within the past 12Mo the food we bought just didn't last and we didn't have money to get more [U.S. FSS]"
+  * code = $loinc#88123-5 "Within the past 12 months the food we bought just didn't last and we didn't have money to get more"
+  * text = "Within the past 12Mo the food we bought just didn't last and we didn't have money to get more"
   * type = #choice
   * required = false
   * answerOption[+].valueCoding = $loinc#LA28397-0 "Often true"

@@ -6,6 +6,7 @@ Description: "An example value set (using fake codes) used by a modular Question
 * ^status = #active
 * ^experimental = true
 * ^immutable = false
+* ^extension[$questionnaire-versionAlgorithm].valueCoding = $version-algorithm#semver
 * AustralianStateCodes#ACT "Australian Capital Territory"
 * AustralianStateCodes#NSW "New South Wales"
 * AustralianStateCodes#NT "Northern Territory"

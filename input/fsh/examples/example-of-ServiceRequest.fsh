@@ -9,11 +9,11 @@ Usage: #example
 * status = #active
 * intent = #order
 * code = $temp#complete-questionnaire
-* subject = Reference(http://hl7.org/fhir/Patient/proband) "Annie Proband"
+* subject = Reference(http://example.org/fhir/Patient/proband) "Annie Proband"
 * occurrenceTiming.repeat
   * frequency = 1
   * period = 1
   * periodUnit = #mo
 * requester = Reference(http://hl7.org/fhir/PractitionerRole/example) "Dr. Adam Careful, Acme Hospital"
-* performer = Reference(http://hl7.org/fhir/Patient/proband) "Annie Proband"
+* performer = Reference(http://example.org/fhir/Patient/proband) "Annie Proband"
 * reasonCode.text = "Monitor effects of new anti-depressant"

@@ -1,13 +1,11 @@
 Instance: questionnaire-sdc-profile-example-PHQ9
-InstanceOf: Questionnaire
+InstanceOf: SDCQuestionnaireBehave
 Title: "SDC-PHQ9"
 Description: "Patient Health Questionnaire (9 Item) including contained value sets and calculatedExpression"
 Usage: #example
 * meta.profile = "http://hl7.org/fhir/uv/sdc/StructureDefinition/sdc-questionnaire|4.0.0-ballot"
 * contained = VSPHQ9
-* extension[+]
-  * url = $questionnaire-versionAlgorithm
-  * valueCoding = $version-algorithm#semver
+* extension[$questionnaire-versionAlgorithm].valueCoding = $version-algorithm#semver
 * extension[+]
   * url = "http://hl7.org/fhir/StructureDefinition/rendering-styleSensitive"
   * valueBoolean = true
@@ -82,6 +80,9 @@ Usage: #example
         * name = "score"
         * language = #text/fhirpath
         * expression = "%resource.item.where(linkId!='H1/TS').answer.value.weight().sum()"
+    * extension[+]
+      * url = "http://hl7.org/fhir/StructureDefinition/questionnaire-unitOption"
+      * valueCoding = $unitsofmeasure#1
     * linkId = "H1/TS"
     * code = $loinc#44261-6 "Patient Health Questionnaire 9 item (PHQ-9) total score [Reported]"
     * text = "Patient health questionnaire 9 item total score"

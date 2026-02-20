@@ -392,9 +392,9 @@ Usage: #inline
 * compose.include
   * system = "http://unitsofmeasure.org"
   * concept[+].code = #[in_i]
-  * concept[=].display = "inch (international)"
+  * concept[=].display = "[in_i]"
   * concept[+].code = #cm
-  * concept[=].display = "centimeters"
+  * concept[=].display = "cm"
 
 Instance: weight
 InstanceOf: ValueSet
@@ -407,6 +407,6 @@ Usage: #inline
 * compose.include
   * system = "http://unitsofmeasure.org"
   * concept[+].code = #[lb_av]
-  * concept[=].display = "pound (US and British)"
+  * concept[=].display = "[lb_av]"
   * concept[+].code = #kg
-  * concept[=].display = "kilograms"
+  * concept[=].display = "kg"

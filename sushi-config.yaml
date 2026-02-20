@@ -1,6 +1,6 @@
 id: hl7.fhir.uv.sdc
 canonical: http://hl7.org/fhir/uv/sdc
-version: 4.0.0-snapshot
+version: 4.0.0
 name: StructuredDataCapture
 title: Structured Data Capture
 status: active
@@ -28,7 +28,7 @@ parameters:
   version-comparison: 
    - 3.0.0
 copyrightYear: 2022+
-releaseLabel: STU 4 snapshot
+releaseLabel: STU 4
 jurisdiction: http://unstats.un.org/unsd/methods/m49/m49.htm#001 "World"
 extension:
   - url: http://hl7.org/fhir/StructureDefinition/structuredefinition-standards-status
@@ -38,6 +38,12 @@ extension:
   - url: http://hl7.org/fhir/StructureDefinition/structuredefinition-wg
     valueCode: "fhir"
 dependencies:
+  hl7.fhir.uv.tools.r4:
+    id: tools
+    uri: http://hl7.org/fhir/tools/ImplementationGuide/hl7.fhir.uv.tools
+    version: 1.0.0
+    reason: |
+      Tooling artifacts used by all IGs
   hl7.fhir.r4.examples:
     id: examples
     uri: http://hl7.org/fhir/ImplementationGuide/fhir

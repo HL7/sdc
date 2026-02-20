@@ -58,10 +58,10 @@ Usage: #inline
     * display = "Radiopharmaceuticals"
   * concept[+]
     * code = #A1214
-    * display = "Patient food (not suspected in drug-food interactions"
+    * display = "Patient food (not suspected in drug-food interactions)"
   * concept[+]
     * code = #A1216
-    * display = "Drug-drug, drug-food, or adverse drug reaction as a result of a prescription and/or administration of a drug and/or food frior to admission"
+    * display = "Drug-drug, drug-food, or adverse drug reaction as a result of a prescription and/or administration of a drug and/or food prior to admission"
   * concept[+]
     * code = #A1215
     * display = "Other substance: PLEASE SPECIFY"

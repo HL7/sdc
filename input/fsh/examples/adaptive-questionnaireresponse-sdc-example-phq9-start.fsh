@@ -8,9 +8,9 @@ Usage: #example
 * identifier.value = "adaptive-questionnaireresponse-example-phq9-start"
 * questionnaire = "#contained-adaptive-questionnaire-example-phq9-start"
 * status = #in-progress
-* subject = Reference(http://hl7.org/fhir/Patient/proband)
+* subject = Reference(http://example.org/fhir/Patient/proband)
 * authored = "2019-08-21T20:36:57.544Z"
-* author = Reference(http://hl7.org/fhir/Patient/proband)
+* author = Reference(http://example.org/fhir/Patient/proband)
 * item.linkId = "H1/T1"
 * item.text = "Over the last two weeks, how often have you been bothered by any of the following problems?"
 * insert itemCoding("H1/T1/Q1", "Little interest or pleasure in doing things?", CodeSystemCSPHQ9#Not-at-all "Not at all")
@@ -57,6 +57,7 @@ Usage: #inline
 //* url = "http://hl7.org/fhir/uv/sdc/ValueSet/VSPHQ9B"
 * name = "VSPHQ9B"
 * status = #active
+* experimental = true
 * description = "The answer list for questions addressing the frequency in which patient reports experiencing behaviors that are assessed in the PHQ-9 Questionnaire."
 * immutable = true
 * compose.include.system = "http://hl7.org/fhir/uv/sdc/CodeSystem/CSPHQ9"

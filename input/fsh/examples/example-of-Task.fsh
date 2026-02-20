@@ -7,10 +7,10 @@ Usage: #example
 * status = #completed
 * intent = #order
 * code = $temp#complete-questionnaire
-* for = Reference(http://hl7.org/fhir/Patient/proband) "Annie Proband"
+* for = Reference(http://example.org/fhir/Patient/proband) "Annie Proband"
 * authoredOn = "2021-09-06"
 * requester = Reference(http://hl7.org/fhir/PractitionerRole/example) "Dr. Adam Careful, Acme Hospital"
-* owner = Reference(http://hl7.org/fhir/Patient/proband) "Annie Proband"
+* owner = Reference(http://example.org/fhir/Patient/proband) "Annie Proband"
 * reasonCode.text = "Pre-genomic analysis family history"
 * insert taskInputCanonical($temp#questionnaire, http://hl7.org/fhir/uv/sdc/Questionnaire/questionnaire-sdc-profile-example-ussg-fht)
 * insert taskInputUrl($temp#response-endpoint, http://example.org/someplace/QuestionnaireResponse)

@@ -1,5 +1,5 @@
 Instance: questionnaire-sdc-profile-example-framingham-hchd-lhc
-InstanceOf: SDCBaseQuestionnaire
+InstanceOf: SDCQuestionnaireBehave
 Title: "SDC-Hard Coronary Heart Disease"
 Description: "A made-up form for calculating the 10-year-risk of Hard Coronary Heart Disease. It shows how variables and calculatedExpression can be used to compute for the risk probability."
 Usage: #example

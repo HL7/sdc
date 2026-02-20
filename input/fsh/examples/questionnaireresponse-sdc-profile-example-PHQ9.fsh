@@ -6,9 +6,9 @@ Usage: #example
 * extension[triggeredBy].valueReference = Reference("http://example.org/PlanDefinition/someProtocol")
 * questionnaire = "http://hl7.org/fhir/uv/sdc/Questionnaire/questionnaire-sdc-profile-example-PHQ9"
 * status = #completed
-* subject = Reference(http://hl7.org/fhir/Patient/proband)
+* subject = Reference(http://example.org/fhir/Patient/proband)
 * authored = "2019-08-21T20:36:57.544Z"
-* author = Reference(http://hl7.org/fhir/Patient/proband)
+* author = Reference(http://example.org/fhir/Patient/proband)
 * item
   * linkId = "H1/T1"
   * text = "Over the last two weeks, how often have you been bothered by any of the following problems?"
@@ -53,4 +53,5 @@ Usage: #example
     * text = "Patient health questionnaire 9 item total score"
     * answer.valueQuantity
       * value = 13
-      * unit = "{score}"
+      * code = #1
+      * system = "http://unitsofmeasure.org"

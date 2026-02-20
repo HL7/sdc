@@ -8,7 +8,7 @@ Usage: #example
   * valueUri = "http://hl7.org/fhir/uv/sdc/Questionnaire/questionnaire-sdc-profile-example-ussg-fht"
 * parameter[+]
   * name = "subject"
-  * valueReference = Reference(http://hl7.org/fhir/Patient/proband)
+  * valueReference = Reference(http://example.org/fhir/Patient/proband)
 * parameter[+]
   * name = "local"
   * valueBoolean = true

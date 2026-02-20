@@ -248,7 +248,7 @@ Usage: #example
         * valueString = "More info"
       * extension[+]
         * url = "link"
-        * valueUri = "https://hl7.org/fhir/extensions/StructureDefinition-questionnaire-supportHyperlink"
+        * valueUri = "http://example.org/more-info"
     * extension[+]
       * url = "http://hl7.org/fhir/StructureDefinition/questionnaire-itemControl"
       * valueCodeableConcept = $questionnaire-item-control#radio-button "Radio Button"
