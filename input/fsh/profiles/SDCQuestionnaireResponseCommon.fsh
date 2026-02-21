@@ -16,11 +16,9 @@ Description: "Defines common elements for all SDC Questionnaire Responses (regul
     $adheresTo named adheresTo 0..* and
     $triggeredBy named triggeredBy 0..1 and
     $questionnaireresponse-signature named signature 0..* and
-    $questionnaireresponse-completionMode named completionMode 0..1 and
-    $questionnaireresponse-source named source 0..1
+    $questionnaireresponse-completionMode named completionMode 0..1
 * extension[adheresTo].value[x] only Canonical(ActivityDefinition or PlanDefinition ) or Reference(ActivityDefinition or PlanDefinition ) or uri
 * extension[triggeredBy].value[x] only Canonical(ActivityDefinition or PlanDefinition ) or Reference(ActivityDefinition or PlanDefinition ) or uri
-* extension[source].value[x] only Reference(Device or Organization )
 * identifier MS
 * questionnaire 1..1 MS
 * status MS
@@ -29,6 +27,9 @@ Description: "Defines common elements for all SDC Questionnaire Responses (regul
 * authored 1..1 MS
   * ^definition = "Identifies when this version of the answer set was created.  Changes whenever the answers are updated."
 * author MS
+* source
+  * extension contains $alternate-reference named r5Source 0..1
+  * extension[r5Source].value[x] only Reference(Device or Organization)
 * item MS
   * obeys qrs-2
   * extension contains

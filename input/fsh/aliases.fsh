@@ -127,10 +127,11 @@ Alias: $wg                                   = http://hl7.org/fhir/StructureDefi
 Alias: $triggeredBy                          = http://hl7.org/fhir/StructureDefinition/workflow-triggeredBy
 
 // Extensions - Cross-version
+Alias: $alternate-reference                  = http://hl7.org/fhir/StructureDefinition/alternate-reference
+Alias: $questionnaire-versionAlgorithm       = http://hl7.org/fhir/StructureDefinition/artifact-versionAlgorithm
+Alias: $questionnaire-copyrightLabel         = http://hl7.org/fhir/StructureDefinition/artifact-copyrightLabel
+
 Alias: $valueset-expansionProperty           = http://hl7.org/fhir/5.0/StructureDefinition/extension-ValueSet.expansion.property
 Alias: $valueset-containsProperty            = http://hl7.org/fhir/5.0/StructureDefinition/extension-ValueSet.expansion.contains.property
-Alias: $questionnaireresponse-source         = http://hl7.org/fhir/5.0/StructureDefinition/extension-QuestionnaireResponse.source
-Alias: $questionnaire-versionAlgorithm       = http://hl7.org/fhir/StructureDefinition/artifact-versionAlgorithm
-Alias: $questionnaire-copyrightLabel         = http://hl7.org/fhir/5.0/StructureDefinition/extension-Questionnaire.copyrightLabel
 Alias: $questionnaire-disabledDisplay        = http://hl7.org/fhir/5.0/StructureDefinition/extension-Questionnaire.item.disabledDisplay
 Alias: $questionnaire-answerConstraint       = http://hl7.org/fhir/5.0/StructureDefinition/extension-Questionnaire.item.answerConstraint

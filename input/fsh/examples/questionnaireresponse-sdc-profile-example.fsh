@@ -4,10 +4,12 @@ Title: "SDC-Response to Diagnosis NCI Standard Template"
 Description: "Example responses to the questionnaire found in the SDC - Combination list of questionnaires"
 Usage: #example
 *  contained[+] = containedOrg
-* extension[source].valueReference = Reference(containedOrg) "Some Organization"
 * questionnaire = "http://hl7.org/fhir/uv/sdc/Questionnaire/3921052v1.0"
 * status = #completed
 * authored = "2014-01-21"
+* source
+  * display = "Some Organization"
+  * extension[r5Source].valueReference = Reference(containedOrg) "Some Organization"
 * subject = Reference(http://example.org/Patient/123) "Jane Smith"
 * item[+]
   * linkId = "3921053v1.0"
