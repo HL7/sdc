@@ -356,12 +356,12 @@
     <div class="tab">
       <input type="radio" id="code-prop-json" name="code-prop-group"/>
       <label for="code-prop-json">JSON</label>
-      <div class="content-in-tab">{% fragment Questionnaire/questionnaire-sdc-profile-example-weight-height-tracking-panel JSON BASE:descendants().select(item).where(linkId='/29463-7') %}</div>
+      <div class="content-in-tab">{% fragment Questionnaire/questionnaire-sdc-profile-example-weight-height-tracking-panel JSON BASE:repeat(item).where(linkId='/29463-7') %}</div>
     </div>
     <div class="tab">
       <input type="radio" id="code-prop-xml" name="code-prop-group"/>
       <label for="code-prop-xml">XML</label>
-      <div class="content-in-tab">{% fragment Questionnaire/questionnaire-sdc-profile-example-weight-height-tracking-panel XML BASE:descendants().select(item).where(linkId='/29463-7') %}</div>
+      <div class="content-in-tab">{% fragment Questionnaire/questionnaire-sdc-profile-example-weight-height-tracking-panel XML BASE:repeat(item).where(linkId='/29463-7') %}</div>
     </div>
   </div>
   <p>
@@ -689,12 +689,12 @@
     <div class="tab">
       <input type="radio" id="smap-json" name="smap-group"/>
       <label for="smap-json">JSON</label>
-      <div class="content-in-tab">{% fragment Questionnaire/questionnaire-sdc-test-fhirpath-prepop-source-query JSON BASE:extension %}</div>
+      <div class="content-in-tab">{% fragment Questionnaire/questionnaire-sdc-test-fhirpath-prepop-source-query JSON EXCEPT:contained | extension.where(url!='http://hl7.org/fhir/StructureDefinition/artifact-versionAlgorithm') %}</div>
     </div>
     <div class="tab">
       <input type="radio" id="smap-xml" name="smap-group"/>
       <label for="smap-xml">XML</label>
-      <div class="content-in-tab">{% fragment Questionnaire/questionnaire-sdc-test-fhirpath-prepop-source-query XML BASE:extension %}</div>
+      <div class="content-in-tab">{% fragment Questionnaire/questionnaire-sdc-test-fhirpath-prepop-source-query XML EXCEPT:contained | extension.where(url!='http://hl7.org/fhir/StructureDefinition/artifact-versionAlgorithm') %}</div>
     </div>
   </div>
   <p>
