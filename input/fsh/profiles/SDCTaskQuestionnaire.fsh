@@ -1,5 +1,5 @@
 Profile: SDCTaskQuestionnaire
-Parent: Task
+Parent: Profile_R5_Task_R4
 Id: sdc-task
 Title: "Task Questionnaire"
 Description: "Defines how Task is used to ask for a Questionnaire to be completed"

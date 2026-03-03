@@ -1,5 +1,5 @@
 Profile: SDCQuestionnaireCommon
-Parent: Questionnaire
+Parent: Profile_R5_Questionnaire_R4
 Id: sdc-questionnairecommon
 Title: "SDC Questionnaire Common Elements"
 Description: "Defines common elements for all SDC Questionnaires (regular or adaptive)."
@@ -9,12 +9,11 @@ Description: "Defines common elements for all SDC Questionnaires (regular or ada
 //To do: Fix the hard-coding of the indexes on the constraints to apply the best-practice extension.
 * . ^constraint[9].extension[$best-practice].valueBoolean = true
 * extension contains
-    $preferredTerminologyServer named terminologyServer 0..* and
-    $questionnaire-versionAlgorithm named versionAlgorithm 0..1 MS and
-    $questionnaire-copyrightLabel named copyrightLabel 0..1
+    $preferredTerminologyServer named terminologyServer 0..*
 * url
   * obeys cnl-1
 * version 0..1 MS
+* extension[versionAlgorithm] MS
 * status MS
 * title MS
 * subjectType MS

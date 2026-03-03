@@ -9,7 +9,7 @@ Description: "Defines how a Library is used as a logic computable library."
 * url 1..1 MS
 * version 0..1 MS
 // Inter-version extension for versionAlgorithm
-* extension contains $questionnaire-versionAlgorithm named versionAlgorithm 0..1 MS 
+* extension contains http://hl7.org/fhir/StructureDefinition/artifact-versionAlgorithm named versionAlgorithm 0..1 MS 
 * name 1..1 MS
 * subject[x] MS
 * relatedArtifact MS

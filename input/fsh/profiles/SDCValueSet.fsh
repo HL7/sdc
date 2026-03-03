@@ -1,5 +1,5 @@
 Profile: SDCValueSet
-Parent: ValueSet
+Parent: Profile_R5_ValueSet_R4
 Id: sdc-valueset
 Title: "SDC Value Set"
 Description: "Defines how ValueSet is used to reflect code lists found in data element defintions and form definitions to be used within the Structured Data Capture standard."
@@ -11,7 +11,7 @@ Description: "Defines how ValueSet is used to reflect code lists found in data e
 * url MS
 * version 0..1 MS
 // Inter-version extension for versionAlgorithm
-* extension contains $questionnaire-versionAlgorithm named versionAlgorithm 0..1 MS 
+* extension[versionAlgorithm] MS 
 * status MS
 * experimental MS
 * date MS
@@ -50,21 +50,20 @@ Description: "Defines how ValueSet is used to reflect code lists found in data e
   * valueSet MS
 * compose.exclude MS
 * expansion MS
-  * extension contains
-    $valueset-expansionProperty named expansionProperty 0..* MS
-  * extension[expansionProperty] ^requirements = "... Allows support for itemWeight and other key properties"
+  * extension[property] MS
+    * ^requirements = "... Allows support for itemWeight and other key properties"
   * identifier MS
   * timestamp MS
 * expansion.contains MS
   * extension contains
       $valueset-label named expansionLabel 0..1 MS and
-      $valueset-conceptOrder named conceptConceptOrder 0..1 MS and
-      $valueset-containsProperty named containsProperty 0..* MS
+      $valueset-conceptOrder named conceptConceptOrder 0..1 MS
   * extension[expansionLabel].valueString.extension contains
       $rendering-style named expansion-renderingStyle 0..1 and
       $rendering-markdown named expansion-markdown 0..1 and
       $rendering-xhtml named expansion-xhtml 0..1
-  * extension[containsProperty] ^requirements = "... Allows support for itemWeight and other key properties"
+  * extension[property] MS
+    * ^requirements = "... Allows support for itemWeight and other key properties"
   * extension[conceptConceptOrder] ^comment = "The presence of a sort order implies that sort order is important."
   * system MS
   * abstract MS

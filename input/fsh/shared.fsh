@@ -121,12 +121,13 @@ RuleSet: VSContains(system, code, display, weight)
   * system = {system}
   * code = {code}
   * display = {display}
-  * extension[containsProperty]
-    * extension[code]
+  * extension[+]
+    * url = "http://hl7.org/fhir/5.0/StructureDefinition/extension-ValueSet.expansion.contains.property"
+    * extension[+]
       * url = "code"
       * valueCode = #itemWeight
     * extension[+]
-      * url = "value[x]"
+      * url = "value"
       * valueDecimal = {weight}
 
 //Usage: Instance: anc-quick-check
