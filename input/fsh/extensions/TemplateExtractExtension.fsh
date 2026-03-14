@@ -35,7 +35,7 @@ Description: "Specifies a reference to a contained resource template (or set of 
     * ^short = "Fhirpath Expression value"
 * extension[resourceId] 
   * ^short = "A fhirpath expression to evaluate to populate the resourceId property (string result)"
-  * ^definition = "A fhirpath expression to evaluate to extract the value into the ifNoneMatch property. If no value is evaluated, then the element is not extracted."
+  * ^definition = "A fhirpath expression to evaluate to extract the value into the resourceId property. If no value is evaluated, then the element is not extracted."
   * value[x] 1..1
   * value[x] only string
     * ^short = "Fhirpath Expression value"
