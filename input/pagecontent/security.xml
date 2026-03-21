@@ -123,9 +123,11 @@
   <a name="population"> </a>
   <h3>Population</h3>
   <p>
-    When populating a form from existing data, there is no expectation for consent to pass data to the form or for the form to query information where the user
-    filling out the form would not normally have access to such data.  (The population mechanism merely saves the effort of looking it up manually and copying it across.)
-    However, population does raise two important privacy/security considerations:
+    The form population process can result in data being automatically retrieved from a system and displayed - either passed in as launch context, or retrieved 
+    by queries driven by extensions in the Questionnaire.  The information exposed in this manner SHALL be subject to the normal limitations on the current user's 
+    access.  That is, if the current user would not be permitted to see the data in the source system, then that data would not be propagated to the form.  
+    (The population mechanism merely saves the effort of looking it up manually and copying it across.)
+    Even with this constraint, population does raise two important privacy/security considerations:
   </p>
   <ul>
     <li>
