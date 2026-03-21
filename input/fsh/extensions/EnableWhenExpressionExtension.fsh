@@ -1,7 +1,7 @@
 Extension: EnableWhenExpressionExtension
 Id: sdc-questionnaire-enableWhenExpression
 Title: "Enable when expression"
-Description: "An expression that returns a boolean value for whether to enable the item. If the expression does not resolve to a boolean, it is considered an error in the design of the Questionnaire.  Form renderer behavior is undefined.  Some tools may attempt to force the value to be a boolean (e.g. is it a non-empty collection, non-null, non-zero - if so, then true).  Systems SHOULD present a warning to the user if a non-boolean valued expression result does not trigger an all-out error."
+Description: "An expression that returns a boolean value for whether to enable the item. If the expression resolves to an empty set, it is interpretted as false.  Otherwise, if the expression does not resolve to a boolean, it is considered an error in the design of the Questionnaire.  Form renderer behavior is undefined.  Systems SHOULD present a warning to the user if a non-boolean valued expression result does not trigger an all-out error."
 * ^version = "3.0.0"
 * ^status = #active
 * ^experimental = false

@@ -1,7 +1,7 @@
 Extension: AnswerOptionsToggleExpressionExtension
 Id: sdc-questionnaire-answerOptionsToggleExpression
 Title: "Answer Options Toggle Expression"
-Description: "A complex expression that provides a list of the allowed options that should be enabled or disabled based on the evaluation of a provided expression.  It allows toggling of allowed answers based on context, including the answers provided to other expressions.  Any options not listed by one of the answerOptionsToggleExpression occurrences are presumed to be 'enabled'"
+Description: "A complex expression that provides a list of the allowed options that should be enabled or disabled based on the evaluation of a provided expression.  It allows toggling of allowed answers based on context, including the answers provided to other expressions.  Any options not listed by one of the answerOptionsToggleExpression occurrences are presumed to be 'enabled'.  This expression should evaluate to a boolean.  If it evaluates to an empty set, it will be interpretted as 'false'.  If it evaluates to something other than a boolean, it is considered an error in the design of the Questionnaire.  Form renderer behavior is undefined.  Systems SHOULD present a warning to the user if a non-boolean valued expression result does not trigger an all-out error."
 * ^status = #active
 * ^purpose = "This is used when the set of options are fixed, but there is a need to toggle some of them on or off (as opposed to having the entire set of options dynamic, as is supported by answerExpression)."
 * ^context[+].type = #element
