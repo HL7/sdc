@@ -13,4 +13,4 @@ Description: "For items of type reference, the reference can be populated either
 * . ^short = "Questionnaire to populate a reference"
 * . ^definition = "For items of type reference, the reference can be populated either by picking an existing entity or by creating a new one.  In the latter case, this Questionnaire allows specifying the Questionnaire to use in creating the target instance.  Typically this will result in a QuestionnaireResponse that can be [extracted](extraction.html) to produce the desired resource.  However, if the target resource for the reference is a QuestionnaireResponse, then the QuestionnaireResponse resulting from the Questionnaire can be referenced directly."
 * url only uri
-* value[x] only canonical(Questionnaire)
+* value[x] only Canonical(Questionnaire)
