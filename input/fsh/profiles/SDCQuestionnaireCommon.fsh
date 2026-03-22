@@ -1,5 +1,6 @@
 Profile: SDCQuestionnaireCommon
-Parent: Profile_R5_Questionnaire_R4
+//Parent: Profile_R5_Questionnaire_R4
+Parent: Questionnaire
 Id: sdc-questionnairecommon
 Title: "SDC Questionnaire Common Elements"
 Description: "Defines common elements for all SDC Questionnaires (regular or adaptive)."
@@ -10,13 +11,19 @@ Description: "Defines common elements for all SDC Questionnaires (regular or ada
 * . ^constraint[9].extension[$best-practice].valueBoolean = true
 * extension contains
     $preferredTerminologyServer named terminologyServer 0..*
+    and http://hl7.org/fhir/StructureDefinition/artifact-versionAlgorithm named versionAlgorithm 0..1 MS
+    and http://hl7.org/fhir/StructureDefinition/artifact-copyrightLabel named copyrightLabel 0..1    
 * url
   * obeys cnl-1
 * version 0..1 MS
-* extension[versionAlgorithm] MS
+//* extension[versionAlgorithm] MS
 * status MS
 * title MS
 * subjectType MS
+  * extension contains
+      http://hl7.org/fhir/5.0/StructureDefinition/extension-Questionnaire.subjectType named subjectType 0..*
+      and http://hl7.org/fhir/5.0/StructureDefinition/extension-Questionnaire.item.disabledDisplay named disabledDisplay 0..1
+      and http://hl7.org/fhir/5.0/StructureDefinition/extension-Questionnaire.item.answerConstraint named answerConstraint 0..1
 * item
   * obeys sdc-1 and que-1a and que-1b and que-1c and que-14
   * extension contains 

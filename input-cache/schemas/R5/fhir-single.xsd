@@ -47,7 +47,7 @@
   POSSIBILITY OF SUCH DAMAGE.
   
 
-  Generated on Wed, Mar 18, 2026 20:20+0000 for FHIR v6.0.0-ballot4 
+  Generated on Sun, Mar 22, 2026 03:06+0000 for FHIR v6.0.0-ballot4 
 -->
 <xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns="http://hl7.org/fhir" xmlns:xhtml="http://www.w3.org/1999/xhtml" xmlns:xml="http://www.w3.org/XML/1998/namespace" targetNamespace="http://hl7.org/fhir" elementFormDefault="qualified" version="6.0.0-ballot4">
   <!-- Note: When using this schema with some tools, it may also be necessary to declare xmlns:xml="http://www.w3.org/XML/1998/namespace", however this causes performance issues with other tools and thus is not in the base schemas. -->
@@ -10897,7 +10897,7 @@ The value of mustSupport SHALL be a FHIRPath resolvable on the type of the DataR
               <xs:documentation xml:lang="en">Indicates whether the Medication is only taken based on a precondition for taking the Medication (CodeableConcept).</xs:documentation>
             </xs:annotation>
           </xs:element>
-          <xs:element name="site" type="CodeableConcept" minOccurs="0" maxOccurs="1">
+          <xs:element name="site" type="CodeableReference_BodyStructure" minOccurs="0" maxOccurs="1">
             <xs:annotation>
               <xs:documentation xml:lang="en">Body site to administer to.</xs:documentation>
             </xs:annotation>
@@ -13783,14 +13783,9 @@ Normal practice is to use the 'mo' code as a calendar month when calculating the
     <xs:complexContent>
       <xs:extension base="BackboneType">
         <xs:sequence>
-          <xs:element name="renderedInstruction" type="markdown" minOccurs="0" maxOccurs="1">
+          <xs:element name="renderedInstruction" type="markdown" minOccurs="1" maxOccurs="1">
             <xs:annotation>
-              <xs:documentation xml:lang="en">The full representation of the dose of the medication included in all dosage instructions.  To be used when multiple dosage instructions are included to represent complex dosing such as increasing or tapering doses.</xs:documentation>
-            </xs:annotation>
-          </xs:element>
-          <xs:element name="simple" type="Dosage" minOccurs="0" maxOccurs="1">
-            <xs:annotation>
-              <xs:documentation xml:lang="en">Dosage details if it is a simple dose - a single dosage regime with no dependencies or multiple steps.</xs:documentation>
+              <xs:documentation xml:lang="en">The full representation of the dose of the medication included in all dosage instructions. The renderedInstructions element must always be present to ensure the full dosage intent is communicated in every case.</xs:documentation>
             </xs:annotation>
           </xs:element>
           <xs:element name="step" type="DosageDetails.Step" minOccurs="0" maxOccurs="unbounded">
@@ -41338,7 +41333,7 @@ The committee will revisit these codes, expecting to use a codesystem from [term
           </xs:element>
           <xs:element name="reason" minOccurs="0" maxOccurs="unbounded" type="CodeableReference">
             <xs:annotation>
-              <xs:documentation xml:lang="en">A concept, Condition or observation that supports why the medication is being/was taken.</xs:documentation>
+              <xs:documentation xml:lang="en">The concept(s), Condition(s) or observation(s) that lead to the medication being taken (or not taken).</xs:documentation>
            </xs:annotation>
           </xs:element>
           <xs:element name="note" minOccurs="0" maxOccurs="unbounded" type="Annotation">
@@ -41348,7 +41343,7 @@ The committee will revisit these codes, expecting to use a codesystem from [term
           </xs:element>
           <xs:element name="relatedClinicalInformation" minOccurs="0" maxOccurs="unbounded" type="Reference">
             <xs:annotation>
-              <xs:documentation xml:lang="en">Link to information that is relevant to a medication statement, for example, illicit drug use, gestational age, etc.</xs:documentation>
+              <xs:documentation xml:lang="en">Link to information that is relevant to a medication statement, for example, illicit drug use, gestational age, etc. This is normally not the actual indication for the medication being used - that indication would be represented with .reason.</xs:documentation>
            </xs:annotation>
           </xs:element>
           <xs:element name="dosage" minOccurs="0" maxOccurs="1" type="DosageDetails">
