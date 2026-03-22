@@ -1,15 +1,12 @@
 == Suppressed Messages ==
 
-# 00a - This is an issue with the rendering process for narrative.  Reported here: https://chat.fhir.org/#narrow/channel/179252-IG-creation/topic/Duplicate.20ids.20in.20Questionnaire.20rendering/with/574861392
-The html source has duplicate anchor Ids: questionnaire-sdc-profile-example-PHQ9/VSPHQ9-http://hl7.org/fhir/uv/sdc/CodeSystem/CSPHQ9-More|20than|20half|20the|20days,questionnaire-sdc-profile-example-PHQ9/VSPHQ9-http://hl7.org/fhir/uv/sdc/CodeSystem/CSPHQ9-Nearly|20every|20day,questionnaire-sdc-profile-example-PHQ9/VSPHQ9-http://hl7.org/fhir/uv/sdc/CodeSystem/CSPHQ9-Not-at-all,questionnaire-sdc-profile-example-PHQ9/VSPHQ9-http://hl7.org/fhir/uv/sdc/CodeSystem/CSPHQ9-Several-days
-
-# 00b These are example code systems and as such don't ever need to go to THO.  (This message shouldn't be raised by the validator - https://chat.fhir.org/#narrow/channel/179252-IG-creation/topic/Don't.20warn.20about.20moving.20to.20THO.20for.20example.20code.20systems)
+# 00a These are example code systems and as such don't ever need to go to THO.  (This message shouldn't be raised by the validator - https://chat.fhir.org/#narrow/channel/179252-IG-creation/topic/Don't.20warn.20about.20moving.20to.20THO.20for.20example.20code.20systems)
 INFORMATION: CodeSystem/AustralianStateCodes: CodeSystem: Most code systems defined in HL7 IGs will need to move to THO later during the process. Consider giving this code system a THO URL now (See https://confluence.hl7.org/display/TSMG/Terminology+Play+Book, and/or talk to TSMG)
 INFORMATION: CodeSystem/CSPHQ9: CodeSystem: Most code systems defined in HL7 IGs will need to move to THO later during the process. Consider giving this code system a THO URL now (See https://confluence.hl7.org/display/TSMG/Terminology+Play+Book, and/or talk to TSMG)
 INFORMATION: CodeSystem/chf-codes: CodeSystem: Most code systems defined in HL7 IGs will need to move to THO later during the process. Consider giving this code system a THO URL now (See https://confluence.hl7.org/display/TSMG/Terminology+Play+Book, and/or talk to TSMG)
 INFORMATION: CodeSystem/questionnaire-behavior-condition: CodeSystem: Most code systems defined in HL7 IGs will need to move to THO later during the process. Consider giving this code system a THO URL now (See https://confluence.hl7.org/display/TSMG/Terminology+Play+Book, and/or talk to TSMG)
 
-# 00c These are code systems for extensions with required bindings to 'code' elements.  As such, they're not eligible to move to THO.  (This message shouldn't be raised by the validator - https://chat.fhir.org/#narrow/channel/179252-IG-creation/topic/Don't.20warn.20about.20moving.20to.20THO.20for.20example.20code.20systems)
+# 00b These are code systems for extensions with required bindings to 'code' elements.  As such, they're not eligible to move to THO.  (This message shouldn't be raised by the validator - https://chat.fhir.org/#narrow/channel/179252-IG-creation/topic/Don't.20warn.20about.20moving.20to.20THO.20for.20example.20code.20systems)
 INFORMATION: CodeSystem/assemble-expectation: CodeSystem: Most code systems defined in HL7 IGs will need to move to THO later during the process. Consider giving this code system a THO URL now (See https://confluence.hl7.org/display/TSMG/Terminology+Play+Book, and/or talk to TSMG)
 INFORMATION: CodeSystem/collapsible: CodeSystem: Most code systems defined in HL7 IGs will need to move to THO later during the process. Consider giving this code system a THO URL now (See https://confluence.hl7.org/display/TSMG/Terminology+Play+Book, and/or talk to TSMG)
 INFORMATION: CodeSystem/entryMode: CodeSystem: Most code systems defined in HL7 IGs will need to move to THO later during the process. Consider giving this code system a THO URL now (See https://confluence.hl7.org/display/TSMG/Terminology+Play+Book, and/or talk to TSMG)
@@ -18,7 +15,7 @@ INFORMATION: CodeSystem/keyboardType: CodeSystem: Most code systems defined in H
 INFORMATION: CodeSystem/observation-extract-relationship: CodeSystem: Most code systems defined in HL7 IGs will need to move to THO later during the process. Consider giving this code system a THO URL now (See https://confluence.hl7.org/display/TSMG/Terminology+Play+Book, and/or talk to TSMG)
 INFORMATION: CodeSystem/questionnaire-answer-constraint: CodeSystem: Most code systems defined in HL7 IGs will need to move to THO later during the process. Consider giving this code system a THO URL now (See https://confluence.hl7.org/display/TSMG/Terminology+Play+Book, and/or talk to TSMG)
 
-# 00d Static analysis of FML doesn't check `copy`, `cc` or `c` yet
+# 00c Static analysis of FML doesn't check `copy`, `cc` or `c` yet
 Transform c not checked yet
 Transform cc not checked yet
 Transform copy not checked yet
@@ -78,11 +75,11 @@ WARNING: CodeSystem/CSPHQ9: CodeSystem.concept[0]: HL7 Defined CodeSystems shoul
 # WARNING: CodeSystem/CSPHQ9: CodeSystem.property[0]: The uri 'http://hl7.org/fhir/concept-properties#itemWeight' for the property 'itemWeight' implies a property with that URI exists in the CodeSystem FHIR Defined Concept Properties for http://hl7.org/fhir/concept-properties, or the code 'itemWeight' does, but neither were found
 
 # 14. We do want to pin to the extensions and THO versions, not the examples
-%to 2.0.1 from choices of 0.5.0 (hl7.fhir.uv.xver-r5.r4#0.0.1-snapshot-3), 2.0.1 (hl7.terminology.r4#6.5.0), 4.0.1 (hl7.fhir.r4.examples#4.0.1)
-%to 3.0.0 from choices of 2.0.0 (hl7.fhir.uv.xver-r5.r4#0.0.1-snapshot-3), 3.0.0 (hl7.terminology.r4#6.5.0), 4.0.1 (hl7.fhir.r4.examples#4.0.1)
+%to 2.0.1 from choices of 0.5.0 (hl7.fhir.uv.xver-r5.r4#0.1.0), 2.0.1 (hl7.terminology.r4#6.5.0)
+%to 3.0.0 from choices of 2.0.0 (hl7.fhir.uv.xver-r5.r4#0.1.0), 3.0.0 (hl7.terminology.r4#6.5.0)
 %to 3.0.0 from choices of 2014-03-26 (hl7.fhir.r4.examples#4.0.1), 3.0.0 (hl7.terminology.r4#6.5.0)
-%to 5.0.0 from choices of 4.0.1 (hl7.fhir.r4.examples#4.0.1), 5.0.0 (hl7.fhir.uv.xver-r5.r4#0.0.1-snapshot-3)
-%to 5.3.0-ballot-tc1 from choices of 4.0.1 (hl7.fhir.r4.examples#4.0.1), 5.2.0 (hl7.fhir.uv.extensions.r4#5.2.0), 5.3.0-ballot-tc1 (hl7.fhir.uv.extensions.r4#5.3.0-ballot-tc1)
+%to 5.0.0 from choices of 4.0.1 (hl7.fhir.r4.core#4.0.1), 5.0.0 (hl7.fhir.uv.xver-r5.r4#0.1.0)
+%to 5.3.0-ballot-tc1 from choices of 4.0.1 (hl7.fhir.r4.core#4.0.1), 5.2.0 (hl7.fhir.uv.extensions.r4#5.2.0), 5.3.0-ballot-tc1 (hl7.fhir.uv.extensions.r4#5.3.0-ballot-tc1)
 %to 5.3.0-ballot-tc1 from choices of 5.2.0 (hl7.fhir.uv.extensions.r4#5.2.0), 5.3.0-ballot-tc1 (hl7.fhir.uv.extensions.r4#5.3.0-ballot-tc1)
 
 # 15. This is a real code.  We don't have a dependency on the defining IG and don't really want one given that this is just for an example
