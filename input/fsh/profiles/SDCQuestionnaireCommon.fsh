@@ -22,13 +22,13 @@ Description: "Defines common elements for all SDC Questionnaires (regular or ada
 * subjectType MS
   * extension contains
       http://hl7.org/fhir/5.0/StructureDefinition/extension-Questionnaire.subjectType named subjectType 0..*
-      and http://hl7.org/fhir/5.0/StructureDefinition/extension-Questionnaire.item.disabledDisplay named disabledDisplay 0..1
-      and http://hl7.org/fhir/5.0/StructureDefinition/extension-Questionnaire.item.answerConstraint named answerConstraint 0..1
 * item
   * obeys sdc-1 and que-1a and que-1b and que-1c and que-14
   * extension contains 
     $questionnaire-hidden named hidden 0..1 MS and
     $preferredTerminologyServer named terminologyServer 0..*
+    and http://hl7.org/fhir/5.0/StructureDefinition/extension-Questionnaire.item.disabledDisplay named disabledDisplay 0..1
+    and http://hl7.org/fhir/5.0/StructureDefinition/extension-Questionnaire.item.answerConstraint named answerConstraint 0..1
 //    $questionnaire-answerConstraint named answerConstraint 0..1
   * linkId MS
     * obeys que-15
