@@ -424,7 +424,7 @@
           <a name="supportHyperlink"> </a>
           <a href="{{site.data.fhir.ver.ext}}/StructureDefinition-questionnaire-supportHyperlink.html">supportHyperlink</a>
         </td>
-        <td>Questionnaire</td>
+        <td>Questionnaire, Questionnaire.item</td>
         <td>item</td>
         <td>uri</td>
         <td><a href="examples.html#supportHyperlink">example</a></td>
@@ -432,8 +432,10 @@
       <tr>
         <td colspan="5">
           <p>
-            This allows associating a link to a question, group or display item.  When this extension is present, an icon indicating that a link is available
-            should appear immediately following the text of the item.  Clicking on the link will allow the user to navigate to additional descriptive detail,
+            This allows associating a link to a question, group or display item.  When this extension is present, the form filler will allow the user to see a 
+            label they can click on to go to a page containing support information related to the item or to the overall Questionnaire.  The linked-to page might 
+            contain instructions, legal text, an issue-reporting screen, etc.  The label might appear directly or might be accessed via an icon, dropdown, or 
+            some other control.  Clicking on the link will allow the user to navigate to additional descriptive detail,
             generally on a separate page/tab.  This extension allows the use of links without injecting the need to support full HTML via the
             <a href="#rendering-markdown">rendering-markdown</a> or <a href="#rendering-xhtml">rendering-xhtml</a> extensions (which would also allow hyperlinks, 
             though they could appear at any point within the text
