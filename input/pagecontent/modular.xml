@@ -260,11 +260,14 @@
       there is a linkIdPrefix in context at the time a subQuestionnaire is substituted, that linkIdPrefix SHALL be pre-pended to the <code>linkId</code> and 
       <code>enableWhen.question</code> elements of all items in that Questionnaire.  See the <a href="#examples">examples</a> to see how this works in practice.
       If linkIdPrefix is not used, care should be taken to ensure that linkIds are appropriately coordinated to avoid overlap across all referenced 
-      Questionnaires</li>
+      Questionnaires.</li>
     <li>LinkIdPrefixes are also prepended to the 'id' elements of any <a href="{{site.data.fhir.path}}references.html#contained">contained</a> resources
       and all references to contained resources (i.e. references or canonicals that start with '#').</li>
     <li>linkIdPrefixes will need to be referenced in any expressions that are dependent on linkId.  For example, if there is an expression that says
-      <code>%root.descendants().select(item.where(linkId='1.1'))</code> would need to change to <code>%root.descendants().select(item.where(linkId=%linkIdPrefix + '1.1'))</code>  This will need to happen in all extensions with a type of expression.</li>
+      <code>%root.descendants().select(item.where(linkId='1.1'))</code> would need to change to <code>%root.descendants().select(item.where(linkId=%linkIdPrefix + '1.1'))</code>  
+      This will need to happen in all extensions with a type of expression.</li>
+    <li>If linkIdPrefix is not present in the base questionnaire and the assembly process results in duplicate linkIds and/or contained resource ids, or if the child questionnaire 
+      depends on a linkId declaration that is not present, that constitutes an error."</li>
     <li>Imported Questionnaires may be defined to be dependent on contextual information passed in from the referencing Questionnaire (including 'linkIdPrefix').
       To allow validating these subQuestionnaires independent of their inclusion in a parent, all such dependencies must be declared using the
       <code>assembleContext</code> extension on the root of the 
