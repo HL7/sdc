@@ -1,0 +1,29 @@
+<div xmlns="http://www.w3.org/1999/xhtml" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://hl7.org/fhir ../../input-cache/schemas/R4/fhir-single.xsd">
+  <p>
+    This section covers overarching guidance around the use of Questionnaires and QuestionnaireResponses that does not cleanly fit into any of the other pages.
+  </p>
+  <a name="noanswer"> </a>
+  <h3>Handling QuestionnaireResponse items without answers</h3>
+  <p>
+    When an answer is not present for a question or a set of questions in a group, there are two legal ways to represent this in a completed QuestionnaireResponse:
+  </p>
+  <ul>
+    <li>Keep the item (with its item text), but do not include answers</li>
+    <li>Strip the item out of the QuestionnaireResponse entirely</li>
+  </ul>
+  <p>
+    (Note that when performing <a href="populate.html">population</a>, the recommendation is to not strip out disabled items until such time as the form is marked as completed.)
+  </p>
+  <p>
+    The first approach allows rendering the full response (including unanswered questions) without access to the Questionnaire.  Stripping unanswered items means that rendering 
+    unanswered questions requires access to the Questionnaire, which might not always be possible for downstream systems.  As well, there may be extensions on the item that 
+    convey useful information (e.g. whether the user saw the item, removed populated answers, etc.) even if no answer is present.  Form fillers <b>SHOULD NOT</b> remove items without 
+    answers if there are extensions present unless it is known they are not relevant.
+  </p>
+  <p>
+    The second approach can save a considerable amount of storage space, especially for forms that are often sparsely populated.
+  </p>
+  <p>
+    Systems <b>SHALL</b> safely handle QuestionnaireResponses that use either approach and <b>SHALL NOT</b> ascribe distinct meaning to an item being omitted vs. being present with no answer.
+  </p>
+</div>

@@ -24,9 +24,10 @@ parameters:
   pin-canonicals: pin-multiples
   show-inherited-invariants: false
   shownav: true
+  html-exempt : Library-CardiologyForm.html
 #  validation: strict-identifier-systems
   version-comparison: 
-   - 3.0.0
+   - 4.0.0
 copyrightYear: 2022+
 releaseLabel: STU 4 CI-build
 jurisdiction: http://unstats.un.org/unsd/methods/m49/m49.htm#001 "World"
@@ -73,6 +74,8 @@ pages:
     extension:
       - url: http://hl7.org/fhir/StructureDefinition/structuredefinition-standards-status
         valueCode: "trial-use"
+  general.html:
+    title: General Guidance
   workflow.html:
     title: Basic SDC workflow
     extension:
