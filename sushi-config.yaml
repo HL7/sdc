@@ -1,6 +1,6 @@
 id: hl7.fhir.uv.sdc
 canonical: http://hl7.org/fhir/uv/sdc
-version: 4.0.0
+version: 4.0.0-ci-build
 name: StructuredDataCapture
 title: Structured Data Capture
 status: active
@@ -28,7 +28,7 @@ parameters:
   version-comparison: 
    - 3.0.0
 copyrightYear: 2022+
-releaseLabel: STU 4
+releaseLabel: STU 4 CI-build
 jurisdiction: http://unstats.un.org/unsd/methods/m49/m49.htm#001 "World"
 extension:
   - url: http://hl7.org/fhir/StructureDefinition/structuredefinition-standards-status
@@ -43,12 +43,6 @@ dependencies:
     version: 0.1.0
     reason: |
       Needed to pre-adopt R5 Questionnaire elements in R4
-  hl7.fhir.uv.tools.r4:
-    id: tools
-    uri: http://hl7.org/fhir/tools/ImplementationGuide/hl7.fhir.uv.tools
-    version: 1.1.2
-    reason: |
-      Tooling artifacts used by all IGs
   hl7.fhir.r4.examples:
     id: examples
     uri: http://hl7.org/fhir/ImplementationGuide/fhir
@@ -57,16 +51,11 @@ dependencies:
     id: ext
     version: 5.3.0-ballot-tc1
     uri: http://hl7.org/fhir/extensions/ImplementationGuide/hl7.fhir.uv.extensions
-#  hl7.fhir.uv.xver-r5.r4:
-#    id: xver
-#    version: 0.0.1-snapshot-1
+#  hl7.fhir.extensions.r5:
+#    id: r5ext
+#    version: 4.0.1
 #    reason: |
-#      Needed to pre-adopted R5 elements in R4
-  hl7.fhir.extensions.r5:
-    id: r5ext
-    version: 4.0.1
-    reason: |
-      Makes available certain R5 elements for use as part of this R4 IG
+#      Makes available certain R5 elements for use as part of this R4 IG
 pages:
   index.html:
     title: SDC Home Page
@@ -109,6 +98,11 @@ pages:
     extension:
       - url: http://hl7.org/fhir/StructureDefinition/structuredefinition-standards-status
         valueCode: "trial-use"
+    qrrender.html:
+      title: Rendering QuestionnaireResponses
+      extension:
+        - url: http://hl7.org/fhir/StructureDefinition/structuredefinition-standards-status
+          valueCode: "trial-use"
   behavior.html:
     title: Form Behavior and Calculation
     extension:

@@ -1,0 +1,501 @@
+{
+  "resourceType": "QuestionnaireResponse",
+  "id": "Cardiology-MariaSantos",
+  "text": {
+    "status": "generated",
+    "div": "<div xmlns=\"http://www.w3.org/1999/xhtml\">Patient Information<br/> Surname: Santos<br/>First Name: Maria<br/>DOB: 1948-05-19<br/>Gender: Female<br/>HN PC: ON<br/>Address (Line 1): 85 King St S<br/>Mobile #: 519-555-0362<br/>Home #: 519-555-0198<br/>Email: maria.santos@example.com<br/>[Optional] Additional Patient Information<br/><br/> Sex assigned at birth: Female<br/>Pronouns: She/HerThey/Them<br/>Preferred language: English<br/>Best method of contact: Home<br/><span style=\"display:none;\"><br/></span> Accessibility concerns or disability<br/><br/>Wheelchair; Hearing impaired<br/><br/>Referral Details<br/> Triage Considerations Requested Priority: <br/><span style=\"font-weight:bold;color:#EE6B00;\">Routine<br/></span><br/>Service(s) Requested <span style=\"display:none;\"><br/></span> Cardiology Consultation<br/><b>Concern(s) / Indication(s) Triggering Referral</b><br/><i>Select all that apply:</i><br/><br/> <span style=\"display:none;\"><br/></span> Congestive Heart Failure<br/><span style=\"font-weight:bold;\">Clinical Question / Goal(s) of Referral with Relevant History, Management and Investigations<br/></span> 77F, progressive exertional dyspnea and bilateral ankle edema x 2 months. BNP elevated at 480. CXR shows mild cardiomegaly. On furosemide 20mg with partial response. Please assess and advise on HF management.<br/>Cumulative Patient Profile<br/><br/><i>Please delete any sensitive information you do not intend to share from the CPP</i><br/> Current Problem List: Suspected CHF (onset Jan 2026)\nHypertension\nType 2 diabetes<br/>Past Medical History: Left hip replacement (2020)\nType 2 diabetes (2012)<br/>Current Medications : Furosemide 20 mg PO daily\nPerindopril 4 mg PO daily\nMetformin 500 mg PO BID\nEmpagliflozin 10 mg PO daily<br/>Family History: Mother: CHF, deceased age 80<br/>Allergies: NKDA<br/>Referrer's Information<br/> Site Name: Amplify Primary Care<br/>Address (Line 1): 10248 Yonge St<br/>Phone #: \t416-555-5555<br/>Fax #: \t416-555-5555<br/>Billing Number: 55554<br/>Professional ID: 55555<br/>Signed: Dr. Sean Sender<br/>Role: Family Physician</div>"
+  },
+  "questionnaire": "http://hl7.org/fhir/uv/sdc/Questionnaire/CardiologyForm",
+  "status": "completed",
+  "subject": {
+    "reference": "Patient/pat-53234",
+    "display": "MOMO ABBAS"
+  },
+  "authored": "2026-03-12T22:51:31.735Z",
+  "author": {
+    "reference": "Practitioner/smart-Practitioner-71482713",
+    "type": "Practitioner",
+    "display": "Susan Clark"
+  },
+  "item": [
+    {
+      "linkId": "patient_header",
+      "text": "Patient Information",
+      "item": [
+        {
+          "linkId": "patient_surname",
+          "text": "Surname:",
+          "answer": [
+            {
+              "valueString": "Santos"
+            }
+          ]
+        },
+        {
+          "linkId": "patient_firstname",
+          "text": "First Name:",
+          "answer": [
+            {
+              "valueString": "Maria"
+            }
+          ]
+        },
+        {
+          "linkId": "patient_date_of_birth",
+          "text": "DOB:",
+          "answer": [
+            {
+              "valueDate": "1948-05-19"
+            }
+          ]
+        },
+        {
+          "linkId": "patient_gender",
+          "text": "Gender:",
+          "answer": [
+            {
+              "valueCoding": {
+                "system": "http://hl7.org/fhir/administrative-gender",
+                "code": "female",
+                "display": "Female"
+              }
+            }
+          ]
+        },
+        {
+          "linkId": "patient_hc_pc",
+          "text": "HN PC:",
+          "answer": [
+            {
+              "valueString": "ON",
+              "item": [
+                {
+                  "linkId": "patient_hc_number",
+                  "text": "HN:",
+                  "answer": [
+                    {
+                      "valueString": "7413582609"
+                    }
+                  ]
+                },
+                {
+                  "linkId": "patient_hc_vc",
+                  "text": "HN VC:",
+                  "answer": [
+                    {
+                      "valueString": "TC"
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "linkId": "patient_address_line1",
+          "text": "Address (Line 1):",
+          "answer": [
+            {
+              "valueString": "85 King St S",
+              "item": [
+                {
+                  "linkId": "patient_address_line2",
+                  "text": "Address (Line 2):",
+                  "answer": [
+                    {
+                      "valueString": "Unit 302"
+                    }
+                  ]
+                },
+                {
+                  "linkId": "patient_address_city",
+                  "text": "City:",
+                  "answer": [
+                    {
+                      "valueString": "Waterloo"
+                    }
+                  ]
+                },
+                {
+                  "linkId": "patient_address_province",
+                  "text": "Province:",
+                  "answer": [
+                    {
+                      "valueString": "ON"
+                    }
+                  ]
+                },
+                {
+                  "linkId": "patient_address_postalcode",
+                  "text": "Postal Code:",
+                  "answer": [
+                    {
+                      "valueString": "N2J 1P2"
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "linkId": "patient_phone_mobile",
+          "text": "Mobile #:",
+          "answer": [
+            {
+              "valueString": "519-555-0362"
+            }
+          ]
+        },
+        {
+          "linkId": "patient_phone_home",
+          "text": "Home #:",
+          "answer": [
+            {
+              "valueString": "519-555-0198"
+            }
+          ]
+        },
+        {
+          "linkId": "patient_email",
+          "text": "Email:",
+          "answer": [
+            {
+              "valueString": "maria.santos@example.com"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "linkId": "additionalinfo_header",
+      "text": "[Optional] Additional Patient Information",
+      "item": [
+        {
+          "linkId": "additionalinfo_sexassignedatbirth",
+          "text": "Sex assigned at birth:",
+          "answer": [
+            {
+              "valueCoding": {
+                "system": "http://loinc.org",
+                "code": "LA3-6",
+                "display": "Female"
+              }
+            }
+          ]
+        },
+        {
+          "linkId": "additionalinfo_pronouns",
+          "text": "Pronouns:",
+          "answer": [
+            {
+              "valueCoding": {
+                "system": "http://loinc.org",
+                "code": "LA29519-8",
+                "display": "She/Her"
+              }
+            }
+          ]
+        },
+        {
+          "linkId": "additionalinfo_preferredlanguage",
+          "text": "Preferred language:",
+          "answer": [
+            {
+              "valueCoding": {
+                "system": "urn:ietf:bcp:47",
+                "code": "en",
+                "display": "English"
+              }
+            }
+          ]
+        },
+        {
+          "linkId": "additionalinfo_bestmethodofcontact",
+          "text": "Best method of contact:",
+          "answer": [
+            {
+              "valueCoding": {
+                "system": "http://hl7.org/fhir/contact-point-use",
+                "code": "home",
+                "display": "Home"
+              }
+            }
+          ]
+        },
+        {
+          "linkId": "additionalinfo_accessibilityconcernsordisability_selectt",
+          "text": "Accessibility concerns or disability",
+          "answer": [
+            {
+              "valueString": "Accessibility concerns or disability"
+            }
+          ]
+        },
+        {
+          "linkId": "additionalinfo_accessibilityconcernsordisability",
+          "text": "Accessibility concerns Options",
+          "answer": [
+            {
+              "valueCoding": {
+                "system": "http://snomed.info/sct",
+                "code": "105503008",
+                "display": "Wheelchair"
+              }
+            },
+            {
+              "valueCoding": {
+                "system": "http://snomed.info/sct",
+                "code": "15188001",
+                "display": "Hearing impaired"
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "linkId": "102173268919",
+      "text": "Referral Details",
+      "item": [
+        {
+          "linkId": "cardio_triagecons",
+          "text": "Triage Considerations",
+          "item": [
+            {
+              "linkId": "referral_requestedpriority",
+              "text": "Requested Priority:",
+              "answer": [
+                {
+                  "valueCoding": {
+                    "system": "http://hl7.org/fhir/request-priority",
+                    "code": "routine",
+                    "display": "Routine"
+                  }
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "linkId": "695991571585",
+          "text": "Service(s) Requested Select all that apply:",
+          "item": [
+            {
+              "linkId": "785727177547",
+              "text": "Cardiology Consultation",
+              "answer": [
+                {
+                  "valueCoding": {
+                    "system": "http://example.com/CodeSystem/standardized-referral-form-codes",
+                    "code": "20002",
+                    "display": "Cardiology Consultation"
+                  }
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "linkId": "186952778859",
+          "text": "Concern(s) / Indication(s) Triggering Referral Select all that apply:",
+          "item": [
+            {
+              "linkId": "832263816528",
+              "text": "Congestive Heart Failure",
+              "answer": [
+                {
+                  "valueCoding": {
+                    "system": "http://example.com/CodeSystem/standardized-referral-form-codes",
+                    "code": "20036",
+                    "display": "Congestive Heart Failure"
+                  }
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "linkId": "Descriptionofclinicalquestion",
+          "text": "Clinical Question / Goal(s) of Referral with Relevant History, Management and Investigations",
+          "answer": [
+            {
+              "valueString": "77F, progressive exertional dyspnea and bilateral ankle edema x 2 months. BNP elevated at 480. CXR shows mild cardiomegaly. On furosemide 20mg with partial response. Please assess and advise on HF management."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "linkId": "cpp_header",
+      "text": "Cumulative Patient Profile Please delete any sensitive information you do not intend to share from the CPP",
+      "item": [
+        {
+          "linkId": "cpp_currentprob",
+          "text": "Current Problem List:",
+          "answer": [
+            {
+              "valueString": "Suspected CHF (onset Jan 2026)\nHypertension\nType 2 diabetes"
+            }
+          ]
+        },
+        {
+          "linkId": "cpp_pastmedicalhistory",
+          "text": "Past Medical History:",
+          "answer": [
+            {
+              "valueString": "Left hip replacement (2020)\nType 2 diabetes (2012)"
+            }
+          ]
+        },
+        {
+          "linkId": "cpp_currentmedications",
+          "text": "Current Medications :",
+          "answer": [
+            {
+              "valueString": "Furosemide 20 mg PO daily\nPerindopril 4 mg PO daily\nMetformin 500 mg PO BID\nEmpagliflozin 10 mg PO daily"
+            }
+          ]
+        },
+        {
+          "linkId": "cpp_familyhistory",
+          "text": "Family History:",
+          "answer": [
+            {
+              "valueString": "Mother: CHF, deceased age 80"
+            }
+          ]
+        },
+        {
+          "linkId": "cpp_allergies",
+          "text": "Allergies:",
+          "answer": [
+            {
+              "valueString": "NKDA"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "linkId": "referrer_header",
+      "text": "Referrer's Information",
+      "item": [
+        {
+          "linkId": "referrer_sitename",
+          "text": "Site Name:",
+          "answer": [
+            {
+              "valueString": "Amplify Primary Care"
+            }
+          ]
+        },
+        {
+          "linkId": "referrer_address_line1",
+          "text": "Address (Line 1):",
+          "answer": [
+            {
+              "valueString": "10248 Yonge St",
+              "item": [
+                {
+                  "linkId": "referrer_address_line2",
+                  "text": "Address (Line 2):",
+                  "answer": [
+                    {
+                      "valueString": "Suite 515"
+                    }
+                  ]
+                },
+                {
+                  "linkId": "referrer_address_city",
+                  "text": "City:",
+                  "answer": [
+                    {
+                      "valueString": "Richmond Hill"
+                    }
+                  ]
+                },
+                {
+                  "linkId": "referrer_address_province",
+                  "text": "Province:",
+                  "answer": [
+                    {
+                      "valueString": "ON"
+                    }
+                  ]
+                },
+                {
+                  "linkId": "referrer_address_postalcode",
+                  "text": "Postal Code:",
+                  "answer": [
+                    {
+                      "valueString": "L4C 5K9"
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "linkId": "referrer_phone",
+          "text": "Phone #:",
+          "answer": [
+            {
+              "valueString": "\t416-555-5555"
+            }
+          ]
+        },
+        {
+          "linkId": "referrer_fax",
+          "text": "Fax #:",
+          "answer": [
+            {
+              "valueString": "\t416-555-5555"
+            }
+          ]
+        },
+        {
+          "linkId": "referrer_billing",
+          "text": "Billing Number:",
+          "answer": [
+            {
+              "valueInteger": 55554
+            }
+          ]
+        },
+        {
+          "linkId": "referrer_professionalid",
+          "text": "Professional ID:",
+          "answer": [
+            {
+              "valueInteger": 55555
+            }
+          ]
+        },
+        {
+          "linkId": "referrer_signature",
+          "text": "Signed:",
+          "answer": [
+            {
+              "valueString": "Dr. Sean Sender"
+            }
+          ]
+        },
+        {
+          "linkId": "referrer_role",
+          "text": "Role:",
+          "answer": [
+            {
+              "valueCoding": {
+                "system": "http://snomed.info/sct",
+                "code": "62247001",
+                "display": "Family Physician"
+              }
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

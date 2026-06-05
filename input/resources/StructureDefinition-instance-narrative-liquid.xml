@@ -1,0 +1,57 @@
+<StructureDefinition xmlns="http://hl7.org/fhir">
+  <id value="instance-narrative-liquid" />
+  <version value="1.0.0-draft" />
+  <name value="InstanceNarrativeLiquid" />
+  <title value="Instance Narrative Liquid" />
+  <status value="active" />
+  <description value="Points to a Library containing [FHIR Liquid](https://confluence.hl7.org/spaces/FHIR/pages/66938964/FHIR+Liquid+Profile) template that defines how the narrative for instantiations of this resource should be generated." />
+  <fhirVersion value="4.0.1" />
+  <kind value="complex-type" />
+  <abstract value="false" />
+  <context>
+    <type value="element" />
+    <expression value="ActivityDefinition" />
+  </context>
+  <context>
+    <type value="element" />
+    <expression value="Measure" />
+  </context>
+  <context>
+    <type value="element" />
+    <expression value="ObservationDefinition" />
+  </context>
+  <context>
+    <type value="element" />
+    <expression value="PlanDefinition" />
+  </context>
+  <context>
+    <type value="element" />
+    <expression value="Questionnaire" />
+  </context>
+  <type value="Extension" />
+  <baseDefinition value="http://hl7.org/fhir/StructureDefinition/Extension" />
+  <derivation value="constraint" />
+  <differential>
+    <element id="Extension">
+      <path value="Extension" />
+      <short value="Rendering library for instantiations" />
+      <definition value="Points to a Library containing [FHIR Liquid](https://confluence.hl7.org/spaces/FHIR/pages/66938964/FHIR+Liquid+Profile) template that defines how the narrative for instantiations of this resource should be generated." />
+      <max value="1" />
+    </element>
+    <element id="Extension.extension">
+      <path value="Extension.extension" />
+      <max value="0" />
+    </element>
+    <element id="Extension.url">
+      <path value="Extension.url" />
+      <fixedUri value="http://hl7.org/fhir/uv/sdc/StructureDefinition/sdc-responseRenderingLiquid" />
+    </element>
+    <element id="Extension.value[x]">
+      <path value="Extension.value[x]" />
+      <type>
+        <code value="Reference" />
+        <targetProfile value="http://hl7.org/fhir/StructureDefinition/Library" />
+      </type>
+    </element>
+  </differential>
+</StructureDefinition>

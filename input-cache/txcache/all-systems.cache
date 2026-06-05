@@ -688,7 +688,6 @@ v: {
   "system" : "http://unstats.un.org/unsd/methods/m49/m49.htm",
   "server" : "https://tx.fhir.org/r4",
   "diagnostics" : "0ms tx-op\n0ms http://hl7.org/fhir/5.0/ValueSet/jurisdiction|5.0.0: Analysing http://hl7.org/fhir/5.0/ValueSet/jurisdiction|5.0.0 for validation purposes\n0ms http://hl7.org/fhir/5.0/ValueSet/jurisdiction|5.0.0: Parameters: disp-lang=en, generate-narrative, default-to-latest\n0ms http://hl7.org/fhir/5.0/ValueSet/jurisdiction|5.0.0: Prepare include[0]: \"(urn:iso:std:iso:3166)\"\n0ms http://hl7.org/fhir/5.0/ValueSet/jurisdiction|5.0.0: CodeSystem found: \"urn:iso:std:iso:3166|2018\"\n0ms http://hl7.org/fhir/5.0/ValueSet/jurisdiction|5.0.0: Prepare include[1]: \"(urn:iso:std:iso:3166:-2)\"\n0ms http://hl7.org/fhir/5.0/ValueSet/jurisdiction|5.0.0: CodeSystem found: \"urn:iso:std:iso:3166:-2|2021\"\n0ms http://hl7.org/fhir/5.0/ValueSet/jurisdiction|5.0.0: Prepare include[2]: \"(http://unstats.un.org/unsd/methods/m49/m49.htm)(class=region)\"\n0ms http://hl7.org/fhir/5.0/ValueSet/jurisdiction|5.0.0: CodeSystem found: \"http://unstats.un.org/unsd/methods/m49/m49.htm|null\"\n0ms http://hl7.org/fhir/5.0/ValueSet/jurisdiction|5.0.0: Validate \"[http://unstats.un.org/unsd/methods/m49/m49.htm#001 (\"World\")]\"\n1ms http://hl7.org/fhir/5.0/ValueSet/jurisdiction|5.0.0: Check \"http://unstats.un.org/unsd/methods/m49/m49.htm#001\"\n1ms http://hl7.org/fhir/5.0/ValueSet/jurisdiction|5.0.0: CodeSystem found: http://unstats.un.org/unsd/methods/m49/m49.htm|null for http://unstats.un.org/unsd/methods/m49/m49.htm\n1ms http://hl7.org/fhir/5.0/ValueSet/jurisdiction|5.0.0: check code in (http://unstats.un.org/unsd/methods/m49/m49.htm)(class=region) at CodeableConcept.coding[0]\n1ms http://hl7.org/fhir/5.0/ValueSet/jurisdiction|5.0.0: Filter class = region: Code \"001\" found in http://unstats.un.org/unsd/methods/m49/m49.htm|null",
-  "unknown-systems" : "",
   "issues" : {
   "resourceType" : "OperationOutcome",
   "issue" : [{
@@ -710,6 +709,714 @@ v: {
       "text" : "Reference to deprecated ValueSet http://hl7.org/fhir/5.0/ValueSet/jurisdiction|5.0.0"
     }
   }]
+}
+
+}
+-------------------------------------------------------------------------------------
+{"code" : {
+  "code" : "image/gif"
+}, "valueSet" :{
+  "resourceType" : "ValueSet",
+  "compose" : {
+    "include" : [{
+      "system" : "urn:ietf:bcp:13"
+    }]
+  }
+}, "langs":"en", "useServer":"true", "useClient":"false", "guessSystem":"true", "noAbstract":"false", "activeOnly":"false", "membershipOnly":"false", "displayWarningMode":"false", "versionFlexible":"true", "profile": {
+  "resourceType" : "Parameters",
+  "parameter" : [{
+    "name" : "x-system-cache-id",
+    "valueString" : "dc8fd4bc-091a-424a-8a3b-6198ef146891"
+  },
+  {
+    "name" : "defaultDisplayLanguage",
+    "valueCode" : "en"
+  }]
+}}####
+v: {
+  "display" : "image/gif",
+  "code" : "image/gif",
+  "system" : "urn:ietf:bcp:13",
+  "server" : "https://tx.fhir.org/r4",
+  "diagnostics" : "0ms tx-op\n0ms urn:uuid:ff86ff65-5d70-48c5-a848-6de1a1bec834: Analysing urn:uuid:ff86ff65-5d70-48c5-a848-6de1a1bec834 for validation purposes\n0ms urn:uuid:ff86ff65-5d70-48c5-a848-6de1a1bec834: Parameters: disp-lang=en, generate-narrative, default-to-latest\n0ms urn:uuid:ff86ff65-5d70-48c5-a848-6de1a1bec834: Prepare include[0]: \"(urn:ietf:bcp:13)\"\n1ms urn:uuid:ff86ff65-5d70-48c5-a848-6de1a1bec834: CodeSystem found: \"urn:ietf:bcp:13|null\"\n1ms urn:uuid:ff86ff65-5d70-48c5-a848-6de1a1bec834: Validate \"[undefined#image/gif (\"undefined\")]\" and infer system\n1ms urn:uuid:ff86ff65-5d70-48c5-a848-6de1a1bec834: Check \"undefined#image/gif\"\n1ms urn:uuid:ff86ff65-5d70-48c5-a848-6de1a1bec834: Inferred CodeSystem = \"urn:ietf:bcp:13\"\n1ms urn:uuid:ff86ff65-5d70-48c5-a848-6de1a1bec834: CodeSystem found: urn:ietf:bcp:13|null for urn:ietf:bcp:13\n1ms urn:uuid:ff86ff65-5d70-48c5-a848-6de1a1bec834: check code in (urn:ietf:bcp:13) at \n1ms urn:uuid:ff86ff65-5d70-48c5-a848-6de1a1bec834: Code \"image/gif\" found in urn:ietf:bcp:13|null",
+  "unknown-systems" : "",
+  "issues" : {
+  "resourceType" : "OperationOutcome"
+}
+
+}
+-------------------------------------------------------------------------------------
+{"code" : {
+  "code" : "image/gif"
+}, "url": "http://hl7.org/fhir/ValueSet/mimetypes", "version": "4.0.1", "langs":"en", "useServer":"true", "useClient":"true", "guessSystem":"true", "noAbstract":"false", "activeOnly":"false", "membershipOnly":"false", "displayWarningMode":"false", "versionFlexible":"true", "profile": {
+  "resourceType" : "Parameters",
+  "parameter" : [{
+    "name" : "x-system-cache-id",
+    "valueString" : "dc8fd4bc-091a-424a-8a3b-6198ef146891"
+  },
+  {
+    "name" : "defaultDisplayLanguage",
+    "valueCode" : "en"
+  }]
+}}####
+v: {
+  "display" : "image/gif",
+  "code" : "image/gif",
+  "system" : "urn:ietf:bcp:13",
+  "server" : "https://tx.fhir.org/r4",
+  "diagnostics" : "0ms tx-op\n0ms http://hl7.org/fhir/ValueSet/mimetypes|4.0.1: Analysing http://hl7.org/fhir/ValueSet/mimetypes|4.0.1 for validation purposes\n0ms http://hl7.org/fhir/ValueSet/mimetypes|4.0.1: Parameters: disp-lang=en, generate-narrative, default-to-latest\n0ms http://hl7.org/fhir/ValueSet/mimetypes|4.0.1: Prepare include[0]: \"(urn:ietf:bcp:13)\"\n1ms http://hl7.org/fhir/ValueSet/mimetypes|4.0.1: CodeSystem found: \"urn:ietf:bcp:13|null\"\n1ms http://hl7.org/fhir/ValueSet/mimetypes|4.0.1: Validate \"[undefined#image/gif (\"undefined\")]\" and infer system\n1ms http://hl7.org/fhir/ValueSet/mimetypes|4.0.1: Check \"undefined#image/gif\"\n1ms http://hl7.org/fhir/ValueSet/mimetypes|4.0.1: Inferred CodeSystem = \"urn:ietf:bcp:13\"\n1ms http://hl7.org/fhir/ValueSet/mimetypes|4.0.1: CodeSystem found: urn:ietf:bcp:13|null for urn:ietf:bcp:13\n1ms http://hl7.org/fhir/ValueSet/mimetypes|4.0.1: check code in (urn:ietf:bcp:13) at \n1ms http://hl7.org/fhir/ValueSet/mimetypes|4.0.1: Code \"image/gif\" found in urn:ietf:bcp:13|null",
+  "unknown-systems" : "",
+  "issues" : {
+  "resourceType" : "OperationOutcome"
+}
+
+}
+-------------------------------------------------------------------------------------
+{"code" : {
+  "code" : "image/bmp"
+}, "valueSet" :{
+  "resourceType" : "ValueSet",
+  "compose" : {
+    "include" : [{
+      "system" : "urn:ietf:bcp:13"
+    }]
+  }
+}, "langs":"en", "useServer":"true", "useClient":"false", "guessSystem":"true", "noAbstract":"false", "activeOnly":"false", "membershipOnly":"false", "displayWarningMode":"false", "versionFlexible":"true", "profile": {
+  "resourceType" : "Parameters",
+  "parameter" : [{
+    "name" : "x-system-cache-id",
+    "valueString" : "dc8fd4bc-091a-424a-8a3b-6198ef146891"
+  },
+  {
+    "name" : "defaultDisplayLanguage",
+    "valueCode" : "en"
+  }]
+}}####
+v: {
+  "display" : "image/bmp",
+  "code" : "image/bmp",
+  "system" : "urn:ietf:bcp:13",
+  "server" : "https://tx.fhir.org/r4",
+  "diagnostics" : "0ms tx-op\n0ms urn:uuid:ca44d608-b093-4534-b149-ef3e2e687366: Analysing urn:uuid:ca44d608-b093-4534-b149-ef3e2e687366 for validation purposes\n0ms urn:uuid:ca44d608-b093-4534-b149-ef3e2e687366: Parameters: disp-lang=en, generate-narrative, default-to-latest\n0ms urn:uuid:ca44d608-b093-4534-b149-ef3e2e687366: Prepare include[0]: \"(urn:ietf:bcp:13)\"\n1ms urn:uuid:ca44d608-b093-4534-b149-ef3e2e687366: CodeSystem found: \"urn:ietf:bcp:13|null\"\n1ms urn:uuid:ca44d608-b093-4534-b149-ef3e2e687366: Validate \"[undefined#image/bmp (\"undefined\")]\" and infer system\n1ms urn:uuid:ca44d608-b093-4534-b149-ef3e2e687366: Check \"undefined#image/bmp\"\n1ms urn:uuid:ca44d608-b093-4534-b149-ef3e2e687366: Inferred CodeSystem = \"urn:ietf:bcp:13\"\n1ms urn:uuid:ca44d608-b093-4534-b149-ef3e2e687366: CodeSystem found: urn:ietf:bcp:13|null for urn:ietf:bcp:13\n1ms urn:uuid:ca44d608-b093-4534-b149-ef3e2e687366: check code in (urn:ietf:bcp:13) at \n1ms urn:uuid:ca44d608-b093-4534-b149-ef3e2e687366: Code \"image/bmp\" found in urn:ietf:bcp:13|null",
+  "unknown-systems" : "",
+  "issues" : {
+  "resourceType" : "OperationOutcome"
+}
+
+}
+-------------------------------------------------------------------------------------
+{"code" : {
+  "code" : "image/bmp"
+}, "url": "http://hl7.org/fhir/ValueSet/mimetypes", "version": "4.0.1", "langs":"en", "useServer":"true", "useClient":"true", "guessSystem":"true", "noAbstract":"false", "activeOnly":"false", "membershipOnly":"false", "displayWarningMode":"false", "versionFlexible":"true", "profile": {
+  "resourceType" : "Parameters",
+  "parameter" : [{
+    "name" : "x-system-cache-id",
+    "valueString" : "dc8fd4bc-091a-424a-8a3b-6198ef146891"
+  },
+  {
+    "name" : "defaultDisplayLanguage",
+    "valueCode" : "en"
+  }]
+}}####
+v: {
+  "display" : "image/bmp",
+  "code" : "image/bmp",
+  "system" : "urn:ietf:bcp:13",
+  "server" : "https://tx.fhir.org/r4",
+  "diagnostics" : "0ms tx-op\n0ms http://hl7.org/fhir/ValueSet/mimetypes|4.0.1: Analysing http://hl7.org/fhir/ValueSet/mimetypes|4.0.1 for validation purposes\n0ms http://hl7.org/fhir/ValueSet/mimetypes|4.0.1: Parameters: disp-lang=en, generate-narrative, default-to-latest\n0ms http://hl7.org/fhir/ValueSet/mimetypes|4.0.1: Prepare include[0]: \"(urn:ietf:bcp:13)\"\n1ms http://hl7.org/fhir/ValueSet/mimetypes|4.0.1: CodeSystem found: \"urn:ietf:bcp:13|null\"\n1ms http://hl7.org/fhir/ValueSet/mimetypes|4.0.1: Validate \"[undefined#image/bmp (\"undefined\")]\" and infer system\n1ms http://hl7.org/fhir/ValueSet/mimetypes|4.0.1: Check \"undefined#image/bmp\"\n1ms http://hl7.org/fhir/ValueSet/mimetypes|4.0.1: Inferred CodeSystem = \"urn:ietf:bcp:13\"\n1ms http://hl7.org/fhir/ValueSet/mimetypes|4.0.1: CodeSystem found: urn:ietf:bcp:13|null for urn:ietf:bcp:13\n1ms http://hl7.org/fhir/ValueSet/mimetypes|4.0.1: check code in (urn:ietf:bcp:13) at \n1ms http://hl7.org/fhir/ValueSet/mimetypes|4.0.1: Code \"image/bmp\" found in urn:ietf:bcp:13|null",
+  "unknown-systems" : "",
+  "issues" : {
+  "resourceType" : "OperationOutcome"
+}
+
+}
+-------------------------------------------------------------------------------------
+{"code" : {
+  "code" : "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet"
+}, "valueSet" :{
+  "resourceType" : "ValueSet",
+  "compose" : {
+    "include" : [{
+      "system" : "urn:ietf:bcp:13"
+    }]
+  }
+}, "langs":"en", "useServer":"true", "useClient":"false", "guessSystem":"true", "noAbstract":"false", "activeOnly":"false", "membershipOnly":"false", "displayWarningMode":"false", "versionFlexible":"true", "profile": {
+  "resourceType" : "Parameters",
+  "parameter" : [{
+    "name" : "x-system-cache-id",
+    "valueString" : "dc8fd4bc-091a-424a-8a3b-6198ef146891"
+  },
+  {
+    "name" : "defaultDisplayLanguage",
+    "valueCode" : "en"
+  }]
+}}####
+v: {
+  "display" : "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet",
+  "code" : "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet",
+  "system" : "urn:ietf:bcp:13",
+  "server" : "https://tx.fhir.org/r4",
+  "diagnostics" : "0ms tx-op\n0ms urn:uuid:c4861084-22c5-40d3-88b0-54c597445103: Analysing urn:uuid:c4861084-22c5-40d3-88b0-54c597445103 for validation purposes\n0ms urn:uuid:c4861084-22c5-40d3-88b0-54c597445103: Parameters: disp-lang=en, generate-narrative, default-to-latest\n0ms urn:uuid:c4861084-22c5-40d3-88b0-54c597445103: Prepare include[0]: \"(urn:ietf:bcp:13)\"\n0ms urn:uuid:c4861084-22c5-40d3-88b0-54c597445103: CodeSystem found: \"urn:ietf:bcp:13|null\"\n1ms urn:uuid:c4861084-22c5-40d3-88b0-54c597445103: Validate \"[undefined#application/vnd.openxmlformats-officedocument.spreadsheetml.sheet (\"undefined\")]\" and infer system\n1ms urn:uuid:c4861084-22c5-40d3-88b0-54c597445103: Check \"undefined#application/vnd.openxmlformats-officedocument.spreadsheetml.sheet\"\n1ms urn:uuid:c4861084-22c5-40d3-88b0-54c597445103: Inferred CodeSystem = \"urn:ietf:bcp:13\"\n1ms urn:uuid:c4861084-22c5-40d3-88b0-54c597445103: CodeSystem found: urn:ietf:bcp:13|null for urn:ietf:bcp:13\n1ms urn:uuid:c4861084-22c5-40d3-88b0-54c597445103: check code in (urn:ietf:bcp:13) at \n1ms urn:uuid:c4861084-22c5-40d3-88b0-54c597445103: Code \"application/vnd.openxmlformats-officedocument.spreadsheetml.sheet\" found in urn:ietf:bcp:13|null",
+  "unknown-systems" : "",
+  "issues" : {
+  "resourceType" : "OperationOutcome"
+}
+
+}
+-------------------------------------------------------------------------------------
+{"code" : {
+  "code" : "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet"
+}, "url": "http://hl7.org/fhir/ValueSet/mimetypes", "version": "4.0.1", "langs":"en", "useServer":"true", "useClient":"true", "guessSystem":"true", "noAbstract":"false", "activeOnly":"false", "membershipOnly":"false", "displayWarningMode":"false", "versionFlexible":"true", "profile": {
+  "resourceType" : "Parameters",
+  "parameter" : [{
+    "name" : "x-system-cache-id",
+    "valueString" : "dc8fd4bc-091a-424a-8a3b-6198ef146891"
+  },
+  {
+    "name" : "defaultDisplayLanguage",
+    "valueCode" : "en"
+  }]
+}}####
+v: {
+  "display" : "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet",
+  "code" : "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet",
+  "system" : "urn:ietf:bcp:13",
+  "server" : "https://tx.fhir.org/r4",
+  "diagnostics" : "0ms tx-op\n0ms http://hl7.org/fhir/ValueSet/mimetypes|4.0.1: Analysing http://hl7.org/fhir/ValueSet/mimetypes|4.0.1 for validation purposes\n0ms http://hl7.org/fhir/ValueSet/mimetypes|4.0.1: Parameters: disp-lang=en, generate-narrative, default-to-latest\n0ms http://hl7.org/fhir/ValueSet/mimetypes|4.0.1: Prepare include[0]: \"(urn:ietf:bcp:13)\"\n1ms http://hl7.org/fhir/ValueSet/mimetypes|4.0.1: CodeSystem found: \"urn:ietf:bcp:13|null\"\n1ms http://hl7.org/fhir/ValueSet/mimetypes|4.0.1: Validate \"[undefined#application/vnd.openxmlformats-officedocument.spreadsheetml.sheet (\"undefined\")]\" and infer system\n1ms http://hl7.org/fhir/ValueSet/mimetypes|4.0.1: Check \"undefined#application/vnd.openxmlformats-officedocument.spreadsheetml.sheet\"\n1ms http://hl7.org/fhir/ValueSet/mimetypes|4.0.1: Inferred CodeSystem = \"urn:ietf:bcp:13\"\n1ms http://hl7.org/fhir/ValueSet/mimetypes|4.0.1: CodeSystem found: urn:ietf:bcp:13|null for urn:ietf:bcp:13\n1ms http://hl7.org/fhir/ValueSet/mimetypes|4.0.1: check code in (urn:ietf:bcp:13) at \n1ms http://hl7.org/fhir/ValueSet/mimetypes|4.0.1: Code \"application/vnd.openxmlformats-officedocument.spreadsheetml.sheet\" found in urn:ietf:bcp:13|null",
+  "unknown-systems" : "",
+  "issues" : {
+  "resourceType" : "OperationOutcome"
+}
+
+}
+-------------------------------------------------------------------------------------
+{"code" : {
+  "code" : "video/mp4"
+}, "valueSet" :{
+  "resourceType" : "ValueSet",
+  "compose" : {
+    "include" : [{
+      "system" : "urn:ietf:bcp:13"
+    }]
+  }
+}, "langs":"en", "useServer":"true", "useClient":"false", "guessSystem":"true", "noAbstract":"false", "activeOnly":"false", "membershipOnly":"false", "displayWarningMode":"false", "versionFlexible":"true", "profile": {
+  "resourceType" : "Parameters",
+  "parameter" : [{
+    "name" : "x-system-cache-id",
+    "valueString" : "dc8fd4bc-091a-424a-8a3b-6198ef146891"
+  },
+  {
+    "name" : "defaultDisplayLanguage",
+    "valueCode" : "en"
+  }]
+}}####
+v: {
+  "display" : "video/mp4",
+  "code" : "video/mp4",
+  "system" : "urn:ietf:bcp:13",
+  "server" : "https://tx.fhir.org/r4",
+  "diagnostics" : "0ms tx-op\n0ms urn:uuid:6a453322-756a-4b11-9933-a9a20703cf6f: Analysing urn:uuid:6a453322-756a-4b11-9933-a9a20703cf6f for validation purposes\n0ms urn:uuid:6a453322-756a-4b11-9933-a9a20703cf6f: Parameters: disp-lang=en, generate-narrative, default-to-latest\n0ms urn:uuid:6a453322-756a-4b11-9933-a9a20703cf6f: Prepare include[0]: \"(urn:ietf:bcp:13)\"\n1ms urn:uuid:6a453322-756a-4b11-9933-a9a20703cf6f: CodeSystem found: \"urn:ietf:bcp:13|null\"\n1ms urn:uuid:6a453322-756a-4b11-9933-a9a20703cf6f: Validate \"[undefined#video/mp4 (\"undefined\")]\" and infer system\n1ms urn:uuid:6a453322-756a-4b11-9933-a9a20703cf6f: Check \"undefined#video/mp4\"\n1ms urn:uuid:6a453322-756a-4b11-9933-a9a20703cf6f: Inferred CodeSystem = \"urn:ietf:bcp:13\"\n1ms urn:uuid:6a453322-756a-4b11-9933-a9a20703cf6f: CodeSystem found: urn:ietf:bcp:13|null for urn:ietf:bcp:13\n1ms urn:uuid:6a453322-756a-4b11-9933-a9a20703cf6f: check code in (urn:ietf:bcp:13) at \n1ms urn:uuid:6a453322-756a-4b11-9933-a9a20703cf6f: Code \"video/mp4\" found in urn:ietf:bcp:13|null",
+  "unknown-systems" : "",
+  "issues" : {
+  "resourceType" : "OperationOutcome"
+}
+
+}
+-------------------------------------------------------------------------------------
+{"code" : {
+  "code" : "video/mp4"
+}, "url": "http://hl7.org/fhir/ValueSet/mimetypes", "version": "4.0.1", "langs":"en", "useServer":"true", "useClient":"true", "guessSystem":"true", "noAbstract":"false", "activeOnly":"false", "membershipOnly":"false", "displayWarningMode":"false", "versionFlexible":"true", "profile": {
+  "resourceType" : "Parameters",
+  "parameter" : [{
+    "name" : "x-system-cache-id",
+    "valueString" : "dc8fd4bc-091a-424a-8a3b-6198ef146891"
+  },
+  {
+    "name" : "defaultDisplayLanguage",
+    "valueCode" : "en"
+  }]
+}}####
+v: {
+  "display" : "video/mp4",
+  "code" : "video/mp4",
+  "system" : "urn:ietf:bcp:13",
+  "server" : "https://tx.fhir.org/r4",
+  "diagnostics" : "0ms tx-op\n0ms http://hl7.org/fhir/ValueSet/mimetypes|4.0.1: Analysing http://hl7.org/fhir/ValueSet/mimetypes|4.0.1 for validation purposes\n0ms http://hl7.org/fhir/ValueSet/mimetypes|4.0.1: Parameters: disp-lang=en, generate-narrative, default-to-latest\n0ms http://hl7.org/fhir/ValueSet/mimetypes|4.0.1: Prepare include[0]: \"(urn:ietf:bcp:13)\"\n1ms http://hl7.org/fhir/ValueSet/mimetypes|4.0.1: CodeSystem found: \"urn:ietf:bcp:13|null\"\n1ms http://hl7.org/fhir/ValueSet/mimetypes|4.0.1: Validate \"[undefined#video/mp4 (\"undefined\")]\" and infer system\n1ms http://hl7.org/fhir/ValueSet/mimetypes|4.0.1: Check \"undefined#video/mp4\"\n1ms http://hl7.org/fhir/ValueSet/mimetypes|4.0.1: Inferred CodeSystem = \"urn:ietf:bcp:13\"\n1ms http://hl7.org/fhir/ValueSet/mimetypes|4.0.1: CodeSystem found: urn:ietf:bcp:13|null for urn:ietf:bcp:13\n1ms http://hl7.org/fhir/ValueSet/mimetypes|4.0.1: check code in (urn:ietf:bcp:13) at \n1ms http://hl7.org/fhir/ValueSet/mimetypes|4.0.1: Code \"video/mp4\" found in urn:ietf:bcp:13|null",
+  "unknown-systems" : "",
+  "issues" : {
+  "resourceType" : "OperationOutcome"
+}
+
+}
+-------------------------------------------------------------------------------------
+{"code" : {
+  "code" : "text/csv"
+}, "valueSet" :{
+  "resourceType" : "ValueSet",
+  "compose" : {
+    "include" : [{
+      "system" : "urn:ietf:bcp:13"
+    }]
+  }
+}, "langs":"en", "useServer":"true", "useClient":"false", "guessSystem":"true", "noAbstract":"false", "activeOnly":"false", "membershipOnly":"false", "displayWarningMode":"false", "versionFlexible":"true", "profile": {
+  "resourceType" : "Parameters",
+  "parameter" : [{
+    "name" : "x-system-cache-id",
+    "valueString" : "dc8fd4bc-091a-424a-8a3b-6198ef146891"
+  },
+  {
+    "name" : "defaultDisplayLanguage",
+    "valueCode" : "en"
+  }]
+}}####
+v: {
+  "display" : "text/csv",
+  "code" : "text/csv",
+  "system" : "urn:ietf:bcp:13",
+  "server" : "https://tx.fhir.org/r4",
+  "diagnostics" : "0ms tx-op\n1ms urn:uuid:674e6e1b-b519-4695-8af6-8049f8fe4b87: Analysing urn:uuid:674e6e1b-b519-4695-8af6-8049f8fe4b87 for validation purposes\n1ms urn:uuid:674e6e1b-b519-4695-8af6-8049f8fe4b87: Parameters: disp-lang=en, generate-narrative, default-to-latest\n1ms urn:uuid:674e6e1b-b519-4695-8af6-8049f8fe4b87: Prepare include[0]: \"(urn:ietf:bcp:13)\"\n1ms urn:uuid:674e6e1b-b519-4695-8af6-8049f8fe4b87: CodeSystem found: \"urn:ietf:bcp:13|null\"\n1ms urn:uuid:674e6e1b-b519-4695-8af6-8049f8fe4b87: Validate \"[undefined#text/csv (\"undefined\")]\" and infer system\n1ms urn:uuid:674e6e1b-b519-4695-8af6-8049f8fe4b87: Check \"undefined#text/csv\"\n1ms urn:uuid:674e6e1b-b519-4695-8af6-8049f8fe4b87: Inferred CodeSystem = \"urn:ietf:bcp:13\"\n1ms urn:uuid:674e6e1b-b519-4695-8af6-8049f8fe4b87: CodeSystem found: urn:ietf:bcp:13|null for urn:ietf:bcp:13\n1ms urn:uuid:674e6e1b-b519-4695-8af6-8049f8fe4b87: check code in (urn:ietf:bcp:13) at \n1ms urn:uuid:674e6e1b-b519-4695-8af6-8049f8fe4b87: Code \"text/csv\" found in urn:ietf:bcp:13|null",
+  "unknown-systems" : "",
+  "issues" : {
+  "resourceType" : "OperationOutcome"
+}
+
+}
+-------------------------------------------------------------------------------------
+{"code" : {
+  "code" : "text/csv"
+}, "url": "http://hl7.org/fhir/ValueSet/mimetypes", "version": "4.0.1", "langs":"en", "useServer":"true", "useClient":"true", "guessSystem":"true", "noAbstract":"false", "activeOnly":"false", "membershipOnly":"false", "displayWarningMode":"false", "versionFlexible":"true", "profile": {
+  "resourceType" : "Parameters",
+  "parameter" : [{
+    "name" : "x-system-cache-id",
+    "valueString" : "dc8fd4bc-091a-424a-8a3b-6198ef146891"
+  },
+  {
+    "name" : "defaultDisplayLanguage",
+    "valueCode" : "en"
+  }]
+}}####
+v: {
+  "display" : "text/csv",
+  "code" : "text/csv",
+  "system" : "urn:ietf:bcp:13",
+  "server" : "https://tx.fhir.org/r4",
+  "diagnostics" : "0ms tx-op\n0ms http://hl7.org/fhir/ValueSet/mimetypes|4.0.1: Analysing http://hl7.org/fhir/ValueSet/mimetypes|4.0.1 for validation purposes\n0ms http://hl7.org/fhir/ValueSet/mimetypes|4.0.1: Parameters: disp-lang=en, generate-narrative, default-to-latest\n0ms http://hl7.org/fhir/ValueSet/mimetypes|4.0.1: Prepare include[0]: \"(urn:ietf:bcp:13)\"\n1ms http://hl7.org/fhir/ValueSet/mimetypes|4.0.1: CodeSystem found: \"urn:ietf:bcp:13|null\"\n1ms http://hl7.org/fhir/ValueSet/mimetypes|4.0.1: Validate \"[undefined#text/csv (\"undefined\")]\" and infer system\n1ms http://hl7.org/fhir/ValueSet/mimetypes|4.0.1: Check \"undefined#text/csv\"\n1ms http://hl7.org/fhir/ValueSet/mimetypes|4.0.1: Inferred CodeSystem = \"urn:ietf:bcp:13\"\n1ms http://hl7.org/fhir/ValueSet/mimetypes|4.0.1: CodeSystem found: urn:ietf:bcp:13|null for urn:ietf:bcp:13\n1ms http://hl7.org/fhir/ValueSet/mimetypes|4.0.1: check code in (urn:ietf:bcp:13) at \n1ms http://hl7.org/fhir/ValueSet/mimetypes|4.0.1: Code \"text/csv\" found in urn:ietf:bcp:13|null",
+  "unknown-systems" : "",
+  "issues" : {
+  "resourceType" : "OperationOutcome"
+}
+
+}
+-------------------------------------------------------------------------------------
+{"code" : {
+  "code" : "application/msword"
+}, "valueSet" :{
+  "resourceType" : "ValueSet",
+  "compose" : {
+    "include" : [{
+      "system" : "urn:ietf:bcp:13"
+    }]
+  }
+}, "langs":"en", "useServer":"true", "useClient":"false", "guessSystem":"true", "noAbstract":"false", "activeOnly":"false", "membershipOnly":"false", "displayWarningMode":"false", "versionFlexible":"true", "profile": {
+  "resourceType" : "Parameters",
+  "parameter" : [{
+    "name" : "x-system-cache-id",
+    "valueString" : "dc8fd4bc-091a-424a-8a3b-6198ef146891"
+  },
+  {
+    "name" : "defaultDisplayLanguage",
+    "valueCode" : "en"
+  }]
+}}####
+v: {
+  "display" : "application/msword",
+  "code" : "application/msword",
+  "system" : "urn:ietf:bcp:13",
+  "server" : "https://tx.fhir.org/r4",
+  "diagnostics" : "0ms tx-op\n0ms urn:uuid:33c5dfb0-8709-4861-835b-de072719f348: Analysing urn:uuid:33c5dfb0-8709-4861-835b-de072719f348 for validation purposes\n0ms urn:uuid:33c5dfb0-8709-4861-835b-de072719f348: Parameters: disp-lang=en, generate-narrative, default-to-latest\n0ms urn:uuid:33c5dfb0-8709-4861-835b-de072719f348: Prepare include[0]: \"(urn:ietf:bcp:13)\"\n1ms urn:uuid:33c5dfb0-8709-4861-835b-de072719f348: CodeSystem found: \"urn:ietf:bcp:13|null\"\n1ms urn:uuid:33c5dfb0-8709-4861-835b-de072719f348: Validate \"[undefined#application/msword (\"undefined\")]\" and infer system\n1ms urn:uuid:33c5dfb0-8709-4861-835b-de072719f348: Check \"undefined#application/msword\"\n1ms urn:uuid:33c5dfb0-8709-4861-835b-de072719f348: Inferred CodeSystem = \"urn:ietf:bcp:13\"\n1ms urn:uuid:33c5dfb0-8709-4861-835b-de072719f348: CodeSystem found: urn:ietf:bcp:13|null for urn:ietf:bcp:13\n1ms urn:uuid:33c5dfb0-8709-4861-835b-de072719f348: check code in (urn:ietf:bcp:13) at \n1ms urn:uuid:33c5dfb0-8709-4861-835b-de072719f348: Code \"application/msword\" found in urn:ietf:bcp:13|null",
+  "unknown-systems" : "",
+  "issues" : {
+  "resourceType" : "OperationOutcome"
+}
+
+}
+-------------------------------------------------------------------------------------
+{"code" : {
+  "code" : "application/msword"
+}, "url": "http://hl7.org/fhir/ValueSet/mimetypes", "version": "4.0.1", "langs":"en", "useServer":"true", "useClient":"true", "guessSystem":"true", "noAbstract":"false", "activeOnly":"false", "membershipOnly":"false", "displayWarningMode":"false", "versionFlexible":"true", "profile": {
+  "resourceType" : "Parameters",
+  "parameter" : [{
+    "name" : "x-system-cache-id",
+    "valueString" : "dc8fd4bc-091a-424a-8a3b-6198ef146891"
+  },
+  {
+    "name" : "defaultDisplayLanguage",
+    "valueCode" : "en"
+  }]
+}}####
+v: {
+  "display" : "application/msword",
+  "code" : "application/msword",
+  "system" : "urn:ietf:bcp:13",
+  "server" : "https://tx.fhir.org/r4",
+  "diagnostics" : "0ms tx-op\n0ms http://hl7.org/fhir/ValueSet/mimetypes|4.0.1: Analysing http://hl7.org/fhir/ValueSet/mimetypes|4.0.1 for validation purposes\n0ms http://hl7.org/fhir/ValueSet/mimetypes|4.0.1: Parameters: disp-lang=en, generate-narrative, default-to-latest\n0ms http://hl7.org/fhir/ValueSet/mimetypes|4.0.1: Prepare include[0]: \"(urn:ietf:bcp:13)\"\n1ms http://hl7.org/fhir/ValueSet/mimetypes|4.0.1: CodeSystem found: \"urn:ietf:bcp:13|null\"\n1ms http://hl7.org/fhir/ValueSet/mimetypes|4.0.1: Validate \"[undefined#application/msword (\"undefined\")]\" and infer system\n1ms http://hl7.org/fhir/ValueSet/mimetypes|4.0.1: Check \"undefined#application/msword\"\n1ms http://hl7.org/fhir/ValueSet/mimetypes|4.0.1: Inferred CodeSystem = \"urn:ietf:bcp:13\"\n1ms http://hl7.org/fhir/ValueSet/mimetypes|4.0.1: CodeSystem found: urn:ietf:bcp:13|null for urn:ietf:bcp:13\n1ms http://hl7.org/fhir/ValueSet/mimetypes|4.0.1: check code in (urn:ietf:bcp:13) at \n1ms http://hl7.org/fhir/ValueSet/mimetypes|4.0.1: Code \"application/msword\" found in urn:ietf:bcp:13|null",
+  "unknown-systems" : "",
+  "issues" : {
+  "resourceType" : "OperationOutcome"
+}
+
+}
+-------------------------------------------------------------------------------------
+{"code" : {
+  "code" : "application/vnd.openxmlformats-officedocument.wordprocessingml.document"
+}, "valueSet" :{
+  "resourceType" : "ValueSet",
+  "compose" : {
+    "include" : [{
+      "system" : "urn:ietf:bcp:13"
+    }]
+  }
+}, "langs":"en", "useServer":"true", "useClient":"false", "guessSystem":"true", "noAbstract":"false", "activeOnly":"false", "membershipOnly":"false", "displayWarningMode":"false", "versionFlexible":"true", "profile": {
+  "resourceType" : "Parameters",
+  "parameter" : [{
+    "name" : "x-system-cache-id",
+    "valueString" : "dc8fd4bc-091a-424a-8a3b-6198ef146891"
+  },
+  {
+    "name" : "defaultDisplayLanguage",
+    "valueCode" : "en"
+  }]
+}}####
+v: {
+  "display" : "application/vnd.openxmlformats-officedocument.wordprocessingml.document",
+  "code" : "application/vnd.openxmlformats-officedocument.wordprocessingml.document",
+  "system" : "urn:ietf:bcp:13",
+  "server" : "https://tx.fhir.org/r4",
+  "diagnostics" : "0ms tx-op\n0ms urn:uuid:0794b41a-fb1a-4e00-b0c3-73bda499378e: Analysing urn:uuid:0794b41a-fb1a-4e00-b0c3-73bda499378e for validation purposes\n0ms urn:uuid:0794b41a-fb1a-4e00-b0c3-73bda499378e: Parameters: disp-lang=en, generate-narrative, default-to-latest\n0ms urn:uuid:0794b41a-fb1a-4e00-b0c3-73bda499378e: Prepare include[0]: \"(urn:ietf:bcp:13)\"\n1ms urn:uuid:0794b41a-fb1a-4e00-b0c3-73bda499378e: CodeSystem found: \"urn:ietf:bcp:13|null\"\n1ms urn:uuid:0794b41a-fb1a-4e00-b0c3-73bda499378e: Validate \"[undefined#application/vnd.openxmlformats-officedocument.wordprocessingml.document (\"undefined\")]\" and infer system\n1ms urn:uuid:0794b41a-fb1a-4e00-b0c3-73bda499378e: Check \"undefined#application/vnd.openxmlformats-officedocument.wordprocessingml.document\"\n1ms urn:uuid:0794b41a-fb1a-4e00-b0c3-73bda499378e: Inferred CodeSystem = \"urn:ietf:bcp:13\"\n1ms urn:uuid:0794b41a-fb1a-4e00-b0c3-73bda499378e: CodeSystem found: urn:ietf:bcp:13|null for urn:ietf:bcp:13\n1ms urn:uuid:0794b41a-fb1a-4e00-b0c3-73bda499378e: check code in (urn:ietf:bcp:13) at \n1ms urn:uuid:0794b41a-fb1a-4e00-b0c3-73bda499378e: Code \"application/vnd.openxmlformats-officedocument.wordprocessingml.document\" found in urn:ietf:bcp:13|null",
+  "unknown-systems" : "",
+  "issues" : {
+  "resourceType" : "OperationOutcome"
+}
+
+}
+-------------------------------------------------------------------------------------
+{"code" : {
+  "code" : "application/vnd.openxmlformats-officedocument.wordprocessingml.document"
+}, "url": "http://hl7.org/fhir/ValueSet/mimetypes", "version": "4.0.1", "langs":"en", "useServer":"true", "useClient":"true", "guessSystem":"true", "noAbstract":"false", "activeOnly":"false", "membershipOnly":"false", "displayWarningMode":"false", "versionFlexible":"true", "profile": {
+  "resourceType" : "Parameters",
+  "parameter" : [{
+    "name" : "x-system-cache-id",
+    "valueString" : "dc8fd4bc-091a-424a-8a3b-6198ef146891"
+  },
+  {
+    "name" : "defaultDisplayLanguage",
+    "valueCode" : "en"
+  }]
+}}####
+v: {
+  "display" : "application/vnd.openxmlformats-officedocument.wordprocessingml.document",
+  "code" : "application/vnd.openxmlformats-officedocument.wordprocessingml.document",
+  "system" : "urn:ietf:bcp:13",
+  "server" : "https://tx.fhir.org/r4",
+  "diagnostics" : "0ms tx-op\n0ms http://hl7.org/fhir/ValueSet/mimetypes|4.0.1: Analysing http://hl7.org/fhir/ValueSet/mimetypes|4.0.1 for validation purposes\n0ms http://hl7.org/fhir/ValueSet/mimetypes|4.0.1: Parameters: disp-lang=en, generate-narrative, default-to-latest\n0ms http://hl7.org/fhir/ValueSet/mimetypes|4.0.1: Prepare include[0]: \"(urn:ietf:bcp:13)\"\n1ms http://hl7.org/fhir/ValueSet/mimetypes|4.0.1: CodeSystem found: \"urn:ietf:bcp:13|null\"\n1ms http://hl7.org/fhir/ValueSet/mimetypes|4.0.1: Validate \"[undefined#application/vnd.openxmlformats-officedocument.wordprocessingml.document (\"undefined\")]\" and infer system\n1ms http://hl7.org/fhir/ValueSet/mimetypes|4.0.1: Check \"undefined#application/vnd.openxmlformats-officedocument.wordprocessingml.document\"\n1ms http://hl7.org/fhir/ValueSet/mimetypes|4.0.1: Inferred CodeSystem = \"urn:ietf:bcp:13\"\n1ms http://hl7.org/fhir/ValueSet/mimetypes|4.0.1: CodeSystem found: urn:ietf:bcp:13|null for urn:ietf:bcp:13\n1ms http://hl7.org/fhir/ValueSet/mimetypes|4.0.1: check code in (urn:ietf:bcp:13) at \n1ms http://hl7.org/fhir/ValueSet/mimetypes|4.0.1: Code \"application/vnd.openxmlformats-officedocument.wordprocessingml.document\" found in urn:ietf:bcp:13|null",
+  "unknown-systems" : "",
+  "issues" : {
+  "resourceType" : "OperationOutcome"
+}
+
+}
+-------------------------------------------------------------------------------------
+{"code" : {
+  "code" : "application/vnd.ms-excel"
+}, "valueSet" :{
+  "resourceType" : "ValueSet",
+  "compose" : {
+    "include" : [{
+      "system" : "urn:ietf:bcp:13"
+    }]
+  }
+}, "langs":"en", "useServer":"true", "useClient":"false", "guessSystem":"true", "noAbstract":"false", "activeOnly":"false", "membershipOnly":"false", "displayWarningMode":"false", "versionFlexible":"true", "profile": {
+  "resourceType" : "Parameters",
+  "parameter" : [{
+    "name" : "x-system-cache-id",
+    "valueString" : "dc8fd4bc-091a-424a-8a3b-6198ef146891"
+  },
+  {
+    "name" : "defaultDisplayLanguage",
+    "valueCode" : "en"
+  }]
+}}####
+v: {
+  "display" : "application/vnd.ms-excel",
+  "code" : "application/vnd.ms-excel",
+  "system" : "urn:ietf:bcp:13",
+  "server" : "https://tx.fhir.org/r4",
+  "diagnostics" : "0ms tx-op\n0ms urn:uuid:a2611ffb-9d69-4f1c-9aef-50b8d6e3e2ea: Analysing urn:uuid:a2611ffb-9d69-4f1c-9aef-50b8d6e3e2ea for validation purposes\n0ms urn:uuid:a2611ffb-9d69-4f1c-9aef-50b8d6e3e2ea: Parameters: disp-lang=en, generate-narrative, default-to-latest\n0ms urn:uuid:a2611ffb-9d69-4f1c-9aef-50b8d6e3e2ea: Prepare include[0]: \"(urn:ietf:bcp:13)\"\n1ms urn:uuid:a2611ffb-9d69-4f1c-9aef-50b8d6e3e2ea: CodeSystem found: \"urn:ietf:bcp:13|null\"\n1ms urn:uuid:a2611ffb-9d69-4f1c-9aef-50b8d6e3e2ea: Validate \"[undefined#application/vnd.ms-excel (\"undefined\")]\" and infer system\n1ms urn:uuid:a2611ffb-9d69-4f1c-9aef-50b8d6e3e2ea: Check \"undefined#application/vnd.ms-excel\"\n1ms urn:uuid:a2611ffb-9d69-4f1c-9aef-50b8d6e3e2ea: Inferred CodeSystem = \"urn:ietf:bcp:13\"\n1ms urn:uuid:a2611ffb-9d69-4f1c-9aef-50b8d6e3e2ea: CodeSystem found: urn:ietf:bcp:13|null for urn:ietf:bcp:13\n1ms urn:uuid:a2611ffb-9d69-4f1c-9aef-50b8d6e3e2ea: check code in (urn:ietf:bcp:13) at \n1ms urn:uuid:a2611ffb-9d69-4f1c-9aef-50b8d6e3e2ea: Code \"application/vnd.ms-excel\" found in urn:ietf:bcp:13|null",
+  "unknown-systems" : "",
+  "issues" : {
+  "resourceType" : "OperationOutcome"
+}
+
+}
+-------------------------------------------------------------------------------------
+{"code" : {
+  "code" : "application/vnd.ms-excel"
+}, "url": "http://hl7.org/fhir/ValueSet/mimetypes", "version": "4.0.1", "langs":"en", "useServer":"true", "useClient":"true", "guessSystem":"true", "noAbstract":"false", "activeOnly":"false", "membershipOnly":"false", "displayWarningMode":"false", "versionFlexible":"true", "profile": {
+  "resourceType" : "Parameters",
+  "parameter" : [{
+    "name" : "x-system-cache-id",
+    "valueString" : "dc8fd4bc-091a-424a-8a3b-6198ef146891"
+  },
+  {
+    "name" : "defaultDisplayLanguage",
+    "valueCode" : "en"
+  }]
+}}####
+v: {
+  "display" : "application/vnd.ms-excel",
+  "code" : "application/vnd.ms-excel",
+  "system" : "urn:ietf:bcp:13",
+  "server" : "https://tx.fhir.org/r4",
+  "diagnostics" : "0ms tx-op\n0ms http://hl7.org/fhir/ValueSet/mimetypes|4.0.1: Analysing http://hl7.org/fhir/ValueSet/mimetypes|4.0.1 for validation purposes\n0ms http://hl7.org/fhir/ValueSet/mimetypes|4.0.1: Parameters: disp-lang=en, generate-narrative, default-to-latest\n0ms http://hl7.org/fhir/ValueSet/mimetypes|4.0.1: Prepare include[0]: \"(urn:ietf:bcp:13)\"\n1ms http://hl7.org/fhir/ValueSet/mimetypes|4.0.1: CodeSystem found: \"urn:ietf:bcp:13|null\"\n1ms http://hl7.org/fhir/ValueSet/mimetypes|4.0.1: Validate \"[undefined#application/vnd.ms-excel (\"undefined\")]\" and infer system\n1ms http://hl7.org/fhir/ValueSet/mimetypes|4.0.1: Check \"undefined#application/vnd.ms-excel\"\n1ms http://hl7.org/fhir/ValueSet/mimetypes|4.0.1: Inferred CodeSystem = \"urn:ietf:bcp:13\"\n1ms http://hl7.org/fhir/ValueSet/mimetypes|4.0.1: CodeSystem found: urn:ietf:bcp:13|null for urn:ietf:bcp:13\n1ms http://hl7.org/fhir/ValueSet/mimetypes|4.0.1: check code in (urn:ietf:bcp:13) at \n1ms http://hl7.org/fhir/ValueSet/mimetypes|4.0.1: Code \"application/vnd.ms-excel\" found in urn:ietf:bcp:13|null",
+  "unknown-systems" : "",
+  "issues" : {
+  "resourceType" : "OperationOutcome"
+}
+
+}
+-------------------------------------------------------------------------------------
+{"code" : {
+  "code" : "text/plain"
+}, "valueSet" :{
+  "resourceType" : "ValueSet",
+  "compose" : {
+    "include" : [{
+      "system" : "urn:ietf:bcp:13"
+    }]
+  }
+}, "langs":"en", "useServer":"true", "useClient":"false", "guessSystem":"true", "noAbstract":"false", "activeOnly":"false", "membershipOnly":"false", "displayWarningMode":"false", "versionFlexible":"true", "profile": {
+  "resourceType" : "Parameters",
+  "parameter" : [{
+    "name" : "x-system-cache-id",
+    "valueString" : "dc8fd4bc-091a-424a-8a3b-6198ef146891"
+  },
+  {
+    "name" : "defaultDisplayLanguage",
+    "valueCode" : "en"
+  }]
+}}####
+v: {
+  "display" : "text/plain",
+  "code" : "text/plain",
+  "system" : "urn:ietf:bcp:13",
+  "server" : "https://tx.fhir.org/r4",
+  "diagnostics" : "0ms tx-op\n0ms urn:uuid:0c46aea8-a3f4-4cbf-b8bf-94ae685416ec: Analysing urn:uuid:0c46aea8-a3f4-4cbf-b8bf-94ae685416ec for validation purposes\n0ms urn:uuid:0c46aea8-a3f4-4cbf-b8bf-94ae685416ec: Parameters: disp-lang=en, generate-narrative, default-to-latest\n0ms urn:uuid:0c46aea8-a3f4-4cbf-b8bf-94ae685416ec: Prepare include[0]: \"(urn:ietf:bcp:13)\"\n1ms urn:uuid:0c46aea8-a3f4-4cbf-b8bf-94ae685416ec: CodeSystem found: \"urn:ietf:bcp:13|null\"\n1ms urn:uuid:0c46aea8-a3f4-4cbf-b8bf-94ae685416ec: Validate \"[undefined#text/plain (\"undefined\")]\" and infer system\n1ms urn:uuid:0c46aea8-a3f4-4cbf-b8bf-94ae685416ec: Check \"undefined#text/plain\"\n1ms urn:uuid:0c46aea8-a3f4-4cbf-b8bf-94ae685416ec: Inferred CodeSystem = \"urn:ietf:bcp:13\"\n1ms urn:uuid:0c46aea8-a3f4-4cbf-b8bf-94ae685416ec: CodeSystem found: urn:ietf:bcp:13|null for urn:ietf:bcp:13\n1ms urn:uuid:0c46aea8-a3f4-4cbf-b8bf-94ae685416ec: check code in (urn:ietf:bcp:13) at \n1ms urn:uuid:0c46aea8-a3f4-4cbf-b8bf-94ae685416ec: Code \"text/plain\" found in urn:ietf:bcp:13|null",
+  "unknown-systems" : "",
+  "issues" : {
+  "resourceType" : "OperationOutcome"
+}
+
+}
+-------------------------------------------------------------------------------------
+{"code" : {
+  "code" : "text/plain"
+}, "url": "http://hl7.org/fhir/ValueSet/mimetypes", "version": "4.0.1", "langs":"en", "useServer":"true", "useClient":"true", "guessSystem":"true", "noAbstract":"false", "activeOnly":"false", "membershipOnly":"false", "displayWarningMode":"false", "versionFlexible":"true", "profile": {
+  "resourceType" : "Parameters",
+  "parameter" : [{
+    "name" : "x-system-cache-id",
+    "valueString" : "dc8fd4bc-091a-424a-8a3b-6198ef146891"
+  },
+  {
+    "name" : "defaultDisplayLanguage",
+    "valueCode" : "en"
+  }]
+}}####
+v: {
+  "display" : "text/plain",
+  "code" : "text/plain",
+  "system" : "urn:ietf:bcp:13",
+  "server" : "https://tx.fhir.org/r4",
+  "diagnostics" : "0ms tx-op\n1ms http://hl7.org/fhir/ValueSet/mimetypes|4.0.1: Analysing http://hl7.org/fhir/ValueSet/mimetypes|4.0.1 for validation purposes\n1ms http://hl7.org/fhir/ValueSet/mimetypes|4.0.1: Parameters: disp-lang=en, generate-narrative, default-to-latest\n1ms http://hl7.org/fhir/ValueSet/mimetypes|4.0.1: Prepare include[0]: \"(urn:ietf:bcp:13)\"\n1ms http://hl7.org/fhir/ValueSet/mimetypes|4.0.1: CodeSystem found: \"urn:ietf:bcp:13|null\"\n1ms http://hl7.org/fhir/ValueSet/mimetypes|4.0.1: Validate \"[undefined#text/plain (\"undefined\")]\" and infer system\n1ms http://hl7.org/fhir/ValueSet/mimetypes|4.0.1: Check \"undefined#text/plain\"\n1ms http://hl7.org/fhir/ValueSet/mimetypes|4.0.1: Inferred CodeSystem = \"urn:ietf:bcp:13\"\n1ms http://hl7.org/fhir/ValueSet/mimetypes|4.0.1: CodeSystem found: urn:ietf:bcp:13|null for urn:ietf:bcp:13\n1ms http://hl7.org/fhir/ValueSet/mimetypes|4.0.1: check code in (urn:ietf:bcp:13) at \n1ms http://hl7.org/fhir/ValueSet/mimetypes|4.0.1: Code \"text/plain\" found in urn:ietf:bcp:13|null",
+  "unknown-systems" : "",
+  "issues" : {
+  "resourceType" : "OperationOutcome"
+}
+
+}
+-------------------------------------------------------------------------------------
+{"code" : {
+  "code" : "audio/mp4"
+}, "valueSet" :{
+  "resourceType" : "ValueSet",
+  "compose" : {
+    "include" : [{
+      "system" : "urn:ietf:bcp:13"
+    }]
+  }
+}, "langs":"en", "useServer":"true", "useClient":"false", "guessSystem":"true", "noAbstract":"false", "activeOnly":"false", "membershipOnly":"false", "displayWarningMode":"false", "versionFlexible":"true", "profile": {
+  "resourceType" : "Parameters",
+  "parameter" : [{
+    "name" : "x-system-cache-id",
+    "valueString" : "dc8fd4bc-091a-424a-8a3b-6198ef146891"
+  },
+  {
+    "name" : "defaultDisplayLanguage",
+    "valueCode" : "en"
+  }]
+}}####
+v: {
+  "display" : "audio/mp4",
+  "code" : "audio/mp4",
+  "system" : "urn:ietf:bcp:13",
+  "server" : "https://tx.fhir.org/r4",
+  "diagnostics" : "0ms tx-op\n0ms urn:uuid:158d765c-d1f2-4f09-9398-3f71ed1a9777: Analysing urn:uuid:158d765c-d1f2-4f09-9398-3f71ed1a9777 for validation purposes\n0ms urn:uuid:158d765c-d1f2-4f09-9398-3f71ed1a9777: Parameters: disp-lang=en, generate-narrative, default-to-latest\n0ms urn:uuid:158d765c-d1f2-4f09-9398-3f71ed1a9777: Prepare include[0]: \"(urn:ietf:bcp:13)\"\n1ms urn:uuid:158d765c-d1f2-4f09-9398-3f71ed1a9777: CodeSystem found: \"urn:ietf:bcp:13|null\"\n1ms urn:uuid:158d765c-d1f2-4f09-9398-3f71ed1a9777: Validate \"[undefined#audio/mp4 (\"undefined\")]\" and infer system\n1ms urn:uuid:158d765c-d1f2-4f09-9398-3f71ed1a9777: Check \"undefined#audio/mp4\"\n1ms urn:uuid:158d765c-d1f2-4f09-9398-3f71ed1a9777: Inferred CodeSystem = \"urn:ietf:bcp:13\"\n1ms urn:uuid:158d765c-d1f2-4f09-9398-3f71ed1a9777: CodeSystem found: urn:ietf:bcp:13|null for urn:ietf:bcp:13\n1ms urn:uuid:158d765c-d1f2-4f09-9398-3f71ed1a9777: check code in (urn:ietf:bcp:13) at \n1ms urn:uuid:158d765c-d1f2-4f09-9398-3f71ed1a9777: Code \"audio/mp4\" found in urn:ietf:bcp:13|null",
+  "unknown-systems" : "",
+  "issues" : {
+  "resourceType" : "OperationOutcome"
+}
+
+}
+-------------------------------------------------------------------------------------
+{"code" : {
+  "code" : "audio/mp4"
+}, "url": "http://hl7.org/fhir/ValueSet/mimetypes", "version": "4.0.1", "langs":"en", "useServer":"true", "useClient":"true", "guessSystem":"true", "noAbstract":"false", "activeOnly":"false", "membershipOnly":"false", "displayWarningMode":"false", "versionFlexible":"true", "profile": {
+  "resourceType" : "Parameters",
+  "parameter" : [{
+    "name" : "x-system-cache-id",
+    "valueString" : "dc8fd4bc-091a-424a-8a3b-6198ef146891"
+  },
+  {
+    "name" : "defaultDisplayLanguage",
+    "valueCode" : "en"
+  }]
+}}####
+v: {
+  "display" : "audio/mp4",
+  "code" : "audio/mp4",
+  "system" : "urn:ietf:bcp:13",
+  "server" : "https://tx.fhir.org/r4",
+  "diagnostics" : "0ms tx-op\n0ms http://hl7.org/fhir/ValueSet/mimetypes|4.0.1: Analysing http://hl7.org/fhir/ValueSet/mimetypes|4.0.1 for validation purposes\n0ms http://hl7.org/fhir/ValueSet/mimetypes|4.0.1: Parameters: disp-lang=en, generate-narrative, default-to-latest\n0ms http://hl7.org/fhir/ValueSet/mimetypes|4.0.1: Prepare include[0]: \"(urn:ietf:bcp:13)\"\n1ms http://hl7.org/fhir/ValueSet/mimetypes|4.0.1: CodeSystem found: \"urn:ietf:bcp:13|null\"\n1ms http://hl7.org/fhir/ValueSet/mimetypes|4.0.1: Validate \"[undefined#audio/mp4 (\"undefined\")]\" and infer system\n1ms http://hl7.org/fhir/ValueSet/mimetypes|4.0.1: Check \"undefined#audio/mp4\"\n1ms http://hl7.org/fhir/ValueSet/mimetypes|4.0.1: Inferred CodeSystem = \"urn:ietf:bcp:13\"\n1ms http://hl7.org/fhir/ValueSet/mimetypes|4.0.1: CodeSystem found: urn:ietf:bcp:13|null for urn:ietf:bcp:13\n1ms http://hl7.org/fhir/ValueSet/mimetypes|4.0.1: check code in (urn:ietf:bcp:13) at \n1ms http://hl7.org/fhir/ValueSet/mimetypes|4.0.1: Code \"audio/mp4\" found in urn:ietf:bcp:13|null",
+  "unknown-systems" : "",
+  "issues" : {
+  "resourceType" : "OperationOutcome"
+}
+
+}
+-------------------------------------------------------------------------------------
+{"code" : {
+  "code" : "audio/mpeg"
+}, "valueSet" :{
+  "resourceType" : "ValueSet",
+  "compose" : {
+    "include" : [{
+      "system" : "urn:ietf:bcp:13"
+    }]
+  }
+}, "langs":"en", "useServer":"true", "useClient":"false", "guessSystem":"true", "noAbstract":"false", "activeOnly":"false", "membershipOnly":"false", "displayWarningMode":"false", "versionFlexible":"true", "profile": {
+  "resourceType" : "Parameters",
+  "parameter" : [{
+    "name" : "x-system-cache-id",
+    "valueString" : "dc8fd4bc-091a-424a-8a3b-6198ef146891"
+  },
+  {
+    "name" : "defaultDisplayLanguage",
+    "valueCode" : "en"
+  }]
+}}####
+v: {
+  "display" : "audio/mpeg",
+  "code" : "audio/mpeg",
+  "system" : "urn:ietf:bcp:13",
+  "server" : "https://tx.fhir.org/r4",
+  "diagnostics" : "0ms tx-op\n0ms urn:uuid:c723d9d0-6bd2-4dbf-ae98-de29cfe07f0e: Analysing urn:uuid:c723d9d0-6bd2-4dbf-ae98-de29cfe07f0e for validation purposes\n0ms urn:uuid:c723d9d0-6bd2-4dbf-ae98-de29cfe07f0e: Parameters: disp-lang=en, generate-narrative, default-to-latest\n0ms urn:uuid:c723d9d0-6bd2-4dbf-ae98-de29cfe07f0e: Prepare include[0]: \"(urn:ietf:bcp:13)\"\n1ms urn:uuid:c723d9d0-6bd2-4dbf-ae98-de29cfe07f0e: CodeSystem found: \"urn:ietf:bcp:13|null\"\n1ms urn:uuid:c723d9d0-6bd2-4dbf-ae98-de29cfe07f0e: Validate \"[undefined#audio/mpeg (\"undefined\")]\" and infer system\n1ms urn:uuid:c723d9d0-6bd2-4dbf-ae98-de29cfe07f0e: Check \"undefined#audio/mpeg\"\n1ms urn:uuid:c723d9d0-6bd2-4dbf-ae98-de29cfe07f0e: Inferred CodeSystem = \"urn:ietf:bcp:13\"\n1ms urn:uuid:c723d9d0-6bd2-4dbf-ae98-de29cfe07f0e: CodeSystem found: urn:ietf:bcp:13|null for urn:ietf:bcp:13\n1ms urn:uuid:c723d9d0-6bd2-4dbf-ae98-de29cfe07f0e: check code in (urn:ietf:bcp:13) at \n1ms urn:uuid:c723d9d0-6bd2-4dbf-ae98-de29cfe07f0e: Code \"audio/mpeg\" found in urn:ietf:bcp:13|null",
+  "unknown-systems" : "",
+  "issues" : {
+  "resourceType" : "OperationOutcome"
+}
+
+}
+-------------------------------------------------------------------------------------
+{"code" : {
+  "code" : "audio/mpeg"
+}, "url": "http://hl7.org/fhir/ValueSet/mimetypes", "version": "4.0.1", "langs":"en", "useServer":"true", "useClient":"true", "guessSystem":"true", "noAbstract":"false", "activeOnly":"false", "membershipOnly":"false", "displayWarningMode":"false", "versionFlexible":"true", "profile": {
+  "resourceType" : "Parameters",
+  "parameter" : [{
+    "name" : "x-system-cache-id",
+    "valueString" : "dc8fd4bc-091a-424a-8a3b-6198ef146891"
+  },
+  {
+    "name" : "defaultDisplayLanguage",
+    "valueCode" : "en"
+  }]
+}}####
+v: {
+  "display" : "audio/mpeg",
+  "code" : "audio/mpeg",
+  "system" : "urn:ietf:bcp:13",
+  "server" : "https://tx.fhir.org/r4",
+  "diagnostics" : "0ms tx-op\n0ms http://hl7.org/fhir/ValueSet/mimetypes|4.0.1: Analysing http://hl7.org/fhir/ValueSet/mimetypes|4.0.1 for validation purposes\n0ms http://hl7.org/fhir/ValueSet/mimetypes|4.0.1: Parameters: disp-lang=en, generate-narrative, default-to-latest\n0ms http://hl7.org/fhir/ValueSet/mimetypes|4.0.1: Prepare include[0]: \"(urn:ietf:bcp:13)\"\n1ms http://hl7.org/fhir/ValueSet/mimetypes|4.0.1: CodeSystem found: \"urn:ietf:bcp:13|null\"\n1ms http://hl7.org/fhir/ValueSet/mimetypes|4.0.1: Validate \"[undefined#audio/mpeg (\"undefined\")]\" and infer system\n1ms http://hl7.org/fhir/ValueSet/mimetypes|4.0.1: Check \"undefined#audio/mpeg\"\n1ms http://hl7.org/fhir/ValueSet/mimetypes|4.0.1: Inferred CodeSystem = \"urn:ietf:bcp:13\"\n1ms http://hl7.org/fhir/ValueSet/mimetypes|4.0.1: CodeSystem found: urn:ietf:bcp:13|null for urn:ietf:bcp:13\n1ms http://hl7.org/fhir/ValueSet/mimetypes|4.0.1: check code in (urn:ietf:bcp:13) at \n1ms http://hl7.org/fhir/ValueSet/mimetypes|4.0.1: Code \"audio/mpeg\" found in urn:ietf:bcp:13|null",
+  "unknown-systems" : "",
+  "issues" : {
+  "resourceType" : "OperationOutcome"
+}
+
+}
+-------------------------------------------------------------------------------------
+{"code" : {
+  "code" : "image/tiff"
+}, "valueSet" :{
+  "resourceType" : "ValueSet",
+  "compose" : {
+    "include" : [{
+      "system" : "urn:ietf:bcp:13"
+    }]
+  }
+}, "langs":"en", "useServer":"true", "useClient":"false", "guessSystem":"true", "noAbstract":"false", "activeOnly":"false", "membershipOnly":"false", "displayWarningMode":"false", "versionFlexible":"true", "profile": {
+  "resourceType" : "Parameters",
+  "parameter" : [{
+    "name" : "x-system-cache-id",
+    "valueString" : "dc8fd4bc-091a-424a-8a3b-6198ef146891"
+  },
+  {
+    "name" : "defaultDisplayLanguage",
+    "valueCode" : "en"
+  }]
+}}####
+v: {
+  "display" : "image/tiff",
+  "code" : "image/tiff",
+  "system" : "urn:ietf:bcp:13",
+  "server" : "https://tx.fhir.org/r4",
+  "diagnostics" : "0ms tx-op\n0ms urn:uuid:9a404d7b-723d-4bba-b07d-9375b9ddf5fc: Analysing urn:uuid:9a404d7b-723d-4bba-b07d-9375b9ddf5fc for validation purposes\n0ms urn:uuid:9a404d7b-723d-4bba-b07d-9375b9ddf5fc: Parameters: disp-lang=en, generate-narrative, default-to-latest\n0ms urn:uuid:9a404d7b-723d-4bba-b07d-9375b9ddf5fc: Prepare include[0]: \"(urn:ietf:bcp:13)\"\n1ms urn:uuid:9a404d7b-723d-4bba-b07d-9375b9ddf5fc: CodeSystem found: \"urn:ietf:bcp:13|null\"\n1ms urn:uuid:9a404d7b-723d-4bba-b07d-9375b9ddf5fc: Validate \"[undefined#image/tiff (\"undefined\")]\" and infer system\n1ms urn:uuid:9a404d7b-723d-4bba-b07d-9375b9ddf5fc: Check \"undefined#image/tiff\"\n1ms urn:uuid:9a404d7b-723d-4bba-b07d-9375b9ddf5fc: Inferred CodeSystem = \"urn:ietf:bcp:13\"\n1ms urn:uuid:9a404d7b-723d-4bba-b07d-9375b9ddf5fc: CodeSystem found: urn:ietf:bcp:13|null for urn:ietf:bcp:13\n1ms urn:uuid:9a404d7b-723d-4bba-b07d-9375b9ddf5fc: check code in (urn:ietf:bcp:13) at \n1ms urn:uuid:9a404d7b-723d-4bba-b07d-9375b9ddf5fc: Code \"image/tiff\" found in urn:ietf:bcp:13|null",
+  "unknown-systems" : "",
+  "issues" : {
+  "resourceType" : "OperationOutcome"
+}
+
+}
+-------------------------------------------------------------------------------------
+{"code" : {
+  "code" : "image/tiff"
+}, "url": "http://hl7.org/fhir/ValueSet/mimetypes", "version": "4.0.1", "langs":"en", "useServer":"true", "useClient":"true", "guessSystem":"true", "noAbstract":"false", "activeOnly":"false", "membershipOnly":"false", "displayWarningMode":"false", "versionFlexible":"true", "profile": {
+  "resourceType" : "Parameters",
+  "parameter" : [{
+    "name" : "x-system-cache-id",
+    "valueString" : "dc8fd4bc-091a-424a-8a3b-6198ef146891"
+  },
+  {
+    "name" : "defaultDisplayLanguage",
+    "valueCode" : "en"
+  }]
+}}####
+v: {
+  "display" : "image/tiff",
+  "code" : "image/tiff",
+  "system" : "urn:ietf:bcp:13",
+  "server" : "https://tx.fhir.org/r4",
+  "diagnostics" : "0ms tx-op\n0ms http://hl7.org/fhir/ValueSet/mimetypes|4.0.1: Analysing http://hl7.org/fhir/ValueSet/mimetypes|4.0.1 for validation purposes\n0ms http://hl7.org/fhir/ValueSet/mimetypes|4.0.1: Parameters: disp-lang=en, generate-narrative, default-to-latest\n0ms http://hl7.org/fhir/ValueSet/mimetypes|4.0.1: Prepare include[0]: \"(urn:ietf:bcp:13)\"\n0ms http://hl7.org/fhir/ValueSet/mimetypes|4.0.1: CodeSystem found: \"urn:ietf:bcp:13|null\"\n0ms http://hl7.org/fhir/ValueSet/mimetypes|4.0.1: Validate \"[undefined#image/tiff (\"undefined\")]\" and infer system\n0ms http://hl7.org/fhir/ValueSet/mimetypes|4.0.1: Check \"undefined#image/tiff\"\n0ms http://hl7.org/fhir/ValueSet/mimetypes|4.0.1: Inferred CodeSystem = \"urn:ietf:bcp:13\"\n0ms http://hl7.org/fhir/ValueSet/mimetypes|4.0.1: CodeSystem found: urn:ietf:bcp:13|null for urn:ietf:bcp:13\n0ms http://hl7.org/fhir/ValueSet/mimetypes|4.0.1: check code in (urn:ietf:bcp:13) at \n0ms http://hl7.org/fhir/ValueSet/mimetypes|4.0.1: Code \"image/tiff\" found in urn:ietf:bcp:13|null",
+  "unknown-systems" : "",
+  "issues" : {
+  "resourceType" : "OperationOutcome"
 }
 
 }

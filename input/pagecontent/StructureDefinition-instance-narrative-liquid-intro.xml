@@ -1,0 +1,21 @@
+<div xmlns="http://www.w3.org/1999/xhtml" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://hl7.org/fhir ../../input-cache/schemas/R4/fhir-single.xsd">
+  <p>
+    Narrative generation algorithms are often based on generic rules that are applied for all instances of a given resource.  However, in many cases it is useful
+    to have narrative whose appearance is specific to a narrower subset of resources.  This extension allows defining a narrative generation algorithm that
+    applies to all resources that are instantiations of a particular definition (Questionnaire, ObservationDefinition, PlanDefinition, etc.)  This allows
+    the organization of the narrative to be tied to the specific elements and structure associated with the definition.
+  </p>
+  <p>
+    This extension points to a Library instance.  The Library instance should have a type of <a href="">FHIRPath Liquid</a> and a 
+    <code>content.contentType</code> of "text/html".  The <code>Library.content.data</code> will be a base64 encoded 
+    <a href="https://shopify.github.io/liquid/">Liquid</a> template that uses
+    the <a href="https://confluence.hl7.org/spaces/FHIR/pages/66938964/FHIR+Liquid+Profile">FHIRPath Liquid</a> variant.  
+    This allows the use of FHIRPath expressions as part of the Liquid logic.  When this logic is executed
+    with `%resource` context being set to the resource instantiated from the definition using this extension, it will generate HTML narrative based on the 
+    data present in the resource instance.
+  </p>
+  <p>
+    While the Liquid <i>can</i> be hand-coded, in most cases it will be generated algorithmically based on core elements, and potentially custom extensions,
+    found in the definition resource.  However, once the Liquid is generated, it will be generic and can be executed by any engine that supports FHIRPath Liquid
+  </p>
+</div>

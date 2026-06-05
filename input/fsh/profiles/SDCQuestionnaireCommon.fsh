@@ -66,7 +66,7 @@ Expression: "extension.where(url='http://hl7.org/fhir/StructureDefinition/artifa
 XPath: "not(f:extension[@url='http://hl7.org/fhir/StructureDefinition/artifact-versionAlgorithm' and not(exists(f:valueCoding[f:system/@value='http://hl7.org/fhir/version-algorithm' and f:code/@value='semver'])))"
 
 Invariant: que-1a
-Description: "Group items must have nested items when Questionanire is complete"
+Description: "Group items must have nested items when Questionnaire is complete"
 Severity: #error
 Expression: "(type='group' and %resource.status='complete') implies item.empty().not()"
 XPath: "not(f:type/@value='group' and ancestor::f:Questionnaire/f:status/@value='complete') or exists(f:item)"

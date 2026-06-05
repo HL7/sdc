@@ -2,11 +2,11 @@
   "resourceType" : "TerminologyCapabilities",
   "id" : "FhirServer",
   "url" : "https://node.tx.fhir.org/r4/TerminologyCapabilities/tx",
-  "version" : "0.7.5",
+  "version" : "0.9.6",
   "name" : "FHIRTerminologyServer",
   "title" : "FHIR Terminology Server",
   "status" : "active",
-  "date" : "2026-03-24T02:47:58.206Z",
+  "date" : "2026-06-05T02:31:23.240Z",
   "contact" : [{
     "telecom" : [{
       "system" : "other",
@@ -70,6 +70,16 @@
     "uri" : "http://fdasis.nlm.nih.gov",
     "version" : [{
       "code" : "2024-06-22"
+    }]
+  },
+  {
+    "extension" : [{
+      "url" : "http://hl7.org/fhir/5.0/StructureDefinition/extension-TerminologyCapabilities.codeSystem.content",
+      "valueCode" : "complete"
+    }],
+    "uri" : "http://fhir.org/packages/fhir.tx.support/CodeSystem/designation-usage",
+    "version" : [{
+      "code" : "0.1.0"
     }]
   },
   {
@@ -2509,13 +2519,13 @@
     }],
     "uri" : "http://hl7.org/fhir/sid/icd-10-cm",
     "version" : [{
-      "code" : "2024"
+      "code" : "2026-04-01"
     }]
   },
   {
     "extension" : [{
       "url" : "http://hl7.org/fhir/5.0/StructureDefinition/extension-TerminologyCapabilities.codeSystem.content",
-      "valueCode" : "fragment"
+      "valueCode" : "complete"
     }],
     "uri" : "http://hl7.org/fhir/sid/icd-9-cm",
     "version" : [{
@@ -2755,7 +2765,7 @@
     }],
     "uri" : "http://hl7.org/fhir/us/core/CodeSystem/careplan-category",
     "version" : [{
-      "code" : "9.0.0-ballot"
+      "code" : "9.0.0"
     }]
   },
   {
@@ -2765,7 +2775,7 @@
     }],
     "uri" : "http://hl7.org/fhir/us/core/CodeSystem/condition-category",
     "version" : [{
-      "code" : "9.0.0-ballot"
+      "code" : "9.0.0"
     }]
   },
   {
@@ -2775,7 +2785,7 @@
     }],
     "uri" : "http://hl7.org/fhir/us/core/CodeSystem/us-core-category",
     "version" : [{
-      "code" : "9.0.0-ballot"
+      "code" : "9.0.0"
     }]
   },
   {
@@ -2785,7 +2795,7 @@
     }],
     "uri" : "http://hl7.org/fhir/us/core/CodeSystem/us-core-documentreference-category",
     "version" : [{
-      "code" : "9.0.0-ballot"
+      "code" : "9.0.0"
     }]
   },
   {
@@ -2795,7 +2805,17 @@
     }],
     "uri" : "http://hl7.org/fhir/uv/sdc/CodeSystem/assemble-expectation",
     "version" : [{
-      "code" : "4.0.0-ballot"
+      "code" : "4.0.0"
+    }]
+  },
+  {
+    "extension" : [{
+      "url" : "http://hl7.org/fhir/5.0/StructureDefinition/extension-TerminologyCapabilities.codeSystem.content",
+      "valueCode" : "complete"
+    }],
+    "uri" : "http://hl7.org/fhir/uv/sdc/CodeSystem/AustralianStateCodes",
+    "version" : [{
+      "code" : "4.0.0"
     }]
   },
   {
@@ -2805,7 +2825,7 @@
     }],
     "uri" : "http://hl7.org/fhir/uv/sdc/CodeSystem/chf-codes",
     "version" : [{
-      "code" : "4.0.0-ballot"
+      "code" : "4.0.0"
     }]
   },
   {
@@ -2815,7 +2835,7 @@
     }],
     "uri" : "http://hl7.org/fhir/uv/sdc/CodeSystem/collapsible",
     "version" : [{
-      "code" : "4.0.0-ballot"
+      "code" : "4.0.0"
     }]
   },
   {
@@ -2825,7 +2845,7 @@
     }],
     "uri" : "http://hl7.org/fhir/uv/sdc/CodeSystem/CSPHQ9",
     "version" : [{
-      "code" : "4.0.0-ballot"
+      "code" : "4.0.0"
     }]
   },
   {
@@ -2835,7 +2855,7 @@
     }],
     "uri" : "http://hl7.org/fhir/uv/sdc/CodeSystem/entryMode",
     "version" : [{
-      "code" : "4.0.0-ballot"
+      "code" : "4.0.0"
     }]
   },
   {
@@ -2845,7 +2865,7 @@
     }],
     "uri" : "http://hl7.org/fhir/uv/sdc/CodeSystem/keyboardType",
     "version" : [{
-      "code" : "4.0.0-ballot"
+      "code" : "4.0.0"
     }]
   },
   {
@@ -2855,7 +2875,7 @@
     }],
     "uri" : "http://hl7.org/fhir/uv/sdc/CodeSystem/launchContext",
     "version" : [{
-      "code" : "4.0.0-ballot"
+      "code" : "4.0.0"
     }]
   },
   {
@@ -2865,7 +2885,7 @@
     }],
     "uri" : "http://hl7.org/fhir/uv/sdc/CodeSystem/observation-extract-relationship",
     "version" : [{
-      "code" : "4.0.0-ballot"
+      "code" : "4.0.0"
     }]
   },
   {
@@ -2875,7 +2895,17 @@
     }],
     "uri" : "http://hl7.org/fhir/uv/sdc/CodeSystem/questionnaire-answer-constraint",
     "version" : [{
-      "code" : "4.0.0-ballot"
+      "code" : "4.0.0"
+    }]
+  },
+  {
+    "extension" : [{
+      "url" : "http://hl7.org/fhir/5.0/StructureDefinition/extension-TerminologyCapabilities.codeSystem.content",
+      "valueCode" : "complete"
+    }],
+    "uri" : "http://hl7.org/fhir/uv/sdc/CodeSystem/questionnaire-behavior-condition",
+    "version" : [{
+      "code" : "4.0.0"
     }]
   },
   {
@@ -2885,7 +2915,7 @@
     }],
     "uri" : "http://hl7.org/fhir/uv/sdc/CodeSystem/temp",
     "version" : [{
-      "code" : "4.0.0-ballot"
+      "code" : "4.0.0"
     }]
   },
   {
@@ -2955,7 +2985,7 @@
     }],
     "uri" : "http://loinc.org",
     "version" : [{
-      "code" : "2.81"
+      "code" : "2.82"
     },
     {
       "code" : "2.77"
@@ -3001,19 +3031,10 @@
       "code" : "http://snomed.info/sct/900000000000207008/version/20240201"
     },
     {
-      "code" : "http://snomed.info/sct/45991000052106/version/20231130"
-    },
-    {
-      "code" : "http://snomed.info/sct/32506021000036107/version/20230731"
-    },
-    {
-      "code" : "http://snomed.info/sct/11000172109/version/20231115"
-    },
-    {
       "code" : "http://snomed.info/sct/2011000195101/version/20230607"
     },
     {
-      "code" : "http://snomed.info/sct/554471000005108/version/20250930"
+      "code" : "http://snomed.info/sct/554471000005108/version/20260331"
     },
     {
       "code" : "http://snomed.info/sct/827022005/version/20241216"
@@ -14747,6 +14768,10 @@
     }]
   },
   {
+    "extension" : [{
+      "url" : "http://hl7.org/fhir/5.0/StructureDefinition/extension-TerminologyCapabilities.codeSystem.content",
+      "valueCode" : "complete"
+    }],
     "uri" : "http://www.cms.gov/Medicare/Coding/HCPCSReleaseCodeSets",
     "version" : [{
       "code" : "2025-01"
@@ -14769,7 +14794,7 @@
     }],
     "uri" : "http://www.nlm.nih.gov/research/umls/rxnorm",
     "version" : [{
-      "code" : "02032025"
+      "code" : "03022026"
     }]
   },
   {
@@ -14800,6 +14825,16 @@
     "uri" : "https://fhir-terminology.ohdsi.org",
     "version" : [{
       "code" : "20240716"
+    }]
+  },
+  {
+    "extension" : [{
+      "url" : "http://hl7.org/fhir/5.0/StructureDefinition/extension-TerminologyCapabilities.codeSystem.content",
+      "valueCode" : "supplement"
+    }],
+    "uri" : "https://terminology.dhp.uz/fhir/CodeSystem/loinc-supplement-uz",
+    "version" : [{
+      "code" : "2.80"
     }]
   },
   {
@@ -14917,9 +14952,6 @@
     }],
     "uri" : "urn:iso:std:iso:3166",
     "version" : [{
-      "code" : "20210120"
-    },
-    {
       "code" : "2018"
     }]
   },

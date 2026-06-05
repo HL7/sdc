@@ -1,0 +1,152 @@
+<div xmlns="http://www.w3.org/1999/xhtml" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://hl7.org/fhir ../../input-cache/schemas/R4/fhir-single.xsd">
+  <a name="modes"> </a>
+  <h3>Display Modes</h3>
+  <p>
+    Most of the focus in SDC around the 'display' of QuestionnaireResponses is during the form completion stage.  This is the phase when questions, display,
+    and other items are presented to a user for the purpose of collecting information.  <a href="populate.html">Population</a> happens either prior to or 
+    during this phase, all of the <a href="behavior.html">Form Behavior</a> functionality occurs during this phase, and the vast majority of the 
+    <a href="rendering.html">Form Rendering</a> structures are also used during this process.
+  </p>
+  <p>
+    However, there is a second phase to the QuestionnaireResponse's lifespan that also involves rendering - displaying a completed form to an end user to
+    allow the captured data to be visually consumed.  This representation serves a different purpose.  It is no longer trying to <i>capture</i> data in an
+    efficient manner.  Instead, it is trying to allow users to <i>consume</i> information in an efficient manner.  For this reason, the rendering requirements
+    may differ.
+  </p>
+  <p>
+    In SDC, these two different focuses are referred to as 'usage modes' - `capture` and `display`.
+  </p>
+  
+  <a name="rendering"> </a>
+  <h3>Display rendering approaches</h3>
+  <p>
+    There are four approaches to rendering completed forms defined by SDC: Default, Answers only, Item-controlled, and Custom-Liquid.  These approaches and
+    their pros and cons are described below.
+  </p>
+  
+  <a name="default"> </a>
+  <h4>Default Display</h4>
+  <p>
+    The default approach to rendering a completed form is to display it in exactly the same manner as is used for data capture:
+  </p>
+  <ul>
+    <li>All groups, display items, and questions are rendered</li>
+    <li>Answers appear within the associated entry control structure (selected radio buttons or check boxes, selected items within drop-downs, filled in 
+      text-boxes, etc.</li>
+    <li>Where multiple answer choices were available, all permitted choices are exposed, with those that were and were not selected being made visually evident
+      as appropriate based on the control type used.</li>
+  </ul>
+  <p>
+    Depending on the tool performing the rendering, the controls allowing data capture might or might not be 'locked' as read-only
+  </p>
+  <p>
+    The benefit of this display mode is that a Form Filler does not need to support more than one rendering approach.  It renders completed forms and in-progress
+    questionnaires exactly the same way.  Also, if the reader of the QuestionnaireResponse is not familiar with the design of the Questionnaire, they may be
+    interested in knowing what answer choices were available but not selected and what questions were availble but not answered.
+  </p>
+  <p>
+    However, this approach is quite verbose.  Displaying user instructions, non-selected answers, and non-answered questions may mean a great deal of scrolling
+    will be necessary to read all answers.  This approach can also create confusion about whether the user is in a mode of "form review" or "form data entry",
+    and there's the possibility the user will unintentionally change data as part of the review process.  Finally, this approach doesn't support any customization
+    of the display to optimize it for data consumption, such as displaying different items on data review than were visible on data capture, or displaying
+    content with different formatting, text, or order.
+  </p>
+  
+  <a name="answeronly"> </a>
+  <h4>Answers Only</h4>
+  <p>
+    In this approach the display of the completed form is more limited.  Questions continue to be displayed in order, however only answers provided by the user
+    are visible.  Answer choices not selected by the user are not included and questions not answered are omitted.  Display items are also omitted.  Answers are
+    usually rendered as text strings rather than as item controls such as checkboxes or drop-downs.
+  </p>
+  <p>
+    This approach is considerably more concise and allows readers to consume all entered information in a more efficient manner.  However, as a middle ground, it
+    suffers from two sets of issues.  For users who aren't familiar with the Questionnaire design and find the decision to not answer questions or not select
+    particular choices to be as informative as seeing what the user <i>did</i> select, this approach does not display sufficient information.  And for users who
+    want a display that is more optimized for consumption, this approach can still result in a presentation that is more verbose and less optimized than other
+    rendering modes.  This approach doesn't allow customizing which items are displayed, the item text, item order, or other rendering.
+  </p>
+  
+  <a name="itemcontrol"> </a>
+  <h4>Item controlled</h4>
+  <p>
+    This approach leverages the <a href="{{site.data.fhir.ver.ext}}/StructureDefinition-questionnaire-usageMode.html">usageMode extension</a>.
+    This allows a Questionnaire designer to designate whether items should be visible when capturing data, when displaying a completed form, or both.  With this
+    approach, it is possible to have display items that govern data capture only appear when performing data capture, but not display when a user is reviewing a
+    completed form.  On the other hand, display items that explain how to interpret a completed form might only display when in 'review' mode.  The same can be
+    done with question items, or even whole sections.  A score calculated based on a set of answers might not be displayed during user-entry to prevent influencing
+    the user's choices, however it could be made available once the form is  complete.  Calculated answers migh allow determining a 'summary' of certain answers
+    for more efficient rendering, while the fine-grained questions covered by the summary might be suppressed.
+  </p>
+  <p>
+    This approach provides more control over the appearance of items, and with calculated values, can produce relatively compact presentations which may even
+    change the order of the elements or even display assertions dealing with un-answered questions.  However, there are still limitations to the compactness
+    of the view as information will still be presented as questions, answers, and display items 'in order'.  If there is a desire for custom control of formatting,
+    such as the use of tables or lists that does not rely on attempting to stitch together HTML tags using FHIRPath or CQL expressions, this mechanism may not
+    be sufficiently powerful.  Also, this approach means that additional items must be defined in the Questionnaire to handle the custom display.  Any additional
+    questions or groups will be included in the QuestionnaireResponse.  This may not be dsirable if building off a 'standard' Questionnaire with the intention that
+    the resulting QuestionnaireResponses will remain valid against the original base Questionnaire.
+  </p>
+  
+  <a name="liquid"> </a>
+  <h4>Liquid Rendering</h4>
+  <p>
+    HL7 defines a generic <!-- TODO - move this to extension pack --><a href="StructureDefinition-instance-narrative-liquid.html">instance-narrative-liquid extension</a> that
+    can be used on 'definitional' artifacts (e.g. Questionnaires, PlanDefinitions, Measures, etc.) that allows conveying a computable syntax that defines how
+    the narrative of instances of those definitions should appear.  The language used is a special 
+    <a href="https://confluence.hl7.org/spaces/FHIR/pages/66938964/FHIR+Liquid+Profile">FHIRPath-aware form of Liquid</a>.
+  </p>
+  <p>
+    The base <a href="https://shopify.github.io/liquid">Liquid language</a> is open source and was developed by Shopify as a simple mechanism to help construct 
+    static websites.  The FHIRPath-enabled syntax has slight variations that allow embedding FHIRPath expressions as part of the value content, assignments, and
+    conditional and looping expressions.  The combination of FHIRPath and Liquid allows the definition of HTML form renderings as complex as necessary.  Examples
+    of potential functionality include:
+  </p>
+  <ul>
+    <li>Embedding complex rendering structures such as lists, tables, hyperlinks, etc.</li>
+    <li>Overriding the text and/or formatting of item text and answer values</li>
+    <li>Including conditional logic around what content to expose in what circumstances</li>
+    <li>Adjusting the order in which content appears</li>
+    <li>Choosing separators when presenting lists of elements</li>
+    <li>Controlling whether to display the question text, the answer text, or both</li>
+    <li>Displaying different text depending on the value of a boolean element</li>
+    <li>Displaying different text based on the sum of a 'score' value</li>
+    <li>Choosing when content should appear on separate lines or the same line</li>
+    <li>Combining, splitting, injecting prefixes or suffixes, or otherwise manipulating string content</li>
+  </ul>
+  <p>
+    Most importantly, all of these steps can be performed without injecting any additional items into the Questionnaire.
+  </p>
+  <p>
+    The Liquid to be used in producing the QuestionnaireResponse narratives is placed in a Library pointed to by the <code>instance-narrative-liquid</code> extension
+    appearing at the root of the Questionnare.  The Library will use the 
+    <a href="https://terminology.hl7.org/en/CodeSystem-library-type.html#library-type-narrative-liquid">narrative-liquid</a> code to 
+    confirm its purpose, which will be necessary if accessing the Library outside the scope of the Questionnaire.  However, this Library will generally be transmitted 
+    as a 'contained' resource within the Questionnaire, ensuring it will remain available whenever the Questionnaire is accessed and helping to ensure that the Liquid 
+    will be maintained as part of the Questionnaire.  When a QuestionnaireResponse is complete (or even as the QuestionnaireResponse is being authored), the Form Filler 
+    can execute the Liquid against the QuestionnaireResponse, wrap the results in a <code>&lt;div/&gt;</code> element, and store the resulting HTML as the narrative 
+    for the QuestionnaireResponse.  This provides an 'authoritative' human-readable view of the QuestionnaireResponse, while still allowing a rendering system to fall
+    back to one of the other views if the user wishes.
+  </p>
+  <p>
+    This approach can produce the most concise and user-friendly rendering of completed forms.  Any information about omitted answers or items that is relevant to the
+    consumer can be rendered, while information not relevant can be suppressed.  The order and formatting of presentation can be completely tuned to what makes the most
+    sense for a reader.  The downsides of this approach are:
+  </p>
+  <ol>
+    <li>The form renderer must be able to process liquid or have access to a third party module that can do so</li>
+    <li>The form author either needs to hand-create the Liquid to go with their form or need to embed sufficient metadata in their form to allow custom generation of the
+      Liquid</li>
+  </ol>
+  
+  <a name="liquidauthoring"> </a>
+  <h5>Authoring Liquid</h5>
+  <p>
+    Hand authoring Liquid can be complex and potentially error prone.  If working with multiple Questionnaires, it is often more efficient to embed metadata
+    within the Questionnaire and then generating the Liquid automatically.  At present, SDC does not define any 'standard' extensions to drive Liquid generation
+    because the range of desired rendering behaviors is so wide.  It is possible after there is more community experience with the use of thie approach that a
+    future version of this guide might choose to define standard versions of at least some Liquid-control metadata extensions.  For now, an example of a Questionnaire
+    that has such custom extensionsa as well as the resulting contained Liquid library can be found <a href="Questionnaire-CardiologyForm.html">here</a>.  
+    An example of a response with the narrative generated from that Liquid can be found <a href="QuestionnaireResponse-Cardiology-MariaSantos.html">here</a>.
+  </p>
+</div>
