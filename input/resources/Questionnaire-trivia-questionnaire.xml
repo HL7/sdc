@@ -1,0 +1,132 @@
+<Questionnaire xmlns="http://hl7.org/fhir">
+  <id value="trivia-questionnaire" />
+  <meta>
+    <versionId value="3" />
+    <lastUpdated value="2024-09-12T01:45:56.8905254+00:00" />
+  </meta>
+  <extension url="http://hl7.org/fhir/uv/sdc/StructureDefinition/questionnaire-answerKey">
+    <valueReference>
+      <reference value="QuestionnaireResponse/trivia-response-answer-key" />
+    </valueReference>
+  </extension>
+  <url value="http://fhir.forms-lab.com/Questionnaire/trivia-questionnaire" />
+  <title value="General Knoweldge Quiz - has Answer Key" />
+  <status value="draft" />
+  <subjectType value="Patient" />
+  <publisher value="Brian Postlethwaite" />
+  <description value="An example general knowledge questionnaire using questions from https://games4esl.com/easy-general-knowledge-quiz-questions/" />
+  <useContext>
+    <code>
+      <system value="http://terminology.hl7.org/CodeSystem/usage-context-type" />
+      <code value="user" />
+      <display value="User Type" />
+    </code>
+    <valueCodeableConcept>
+      <coding>
+        <code value="demo" />
+        <display value="Demonstration" />
+      </coding>
+    </valueCodeableConcept>
+  </useContext>
+  <purpose value="Demonstrate a questionnaire that has a key for possible answers" />
+  <item>
+    <linkId value="1" />
+    <text value="What is the orange part of an egg called?" />
+    <type value="string" />
+  </item>
+  <item>
+    <linkId value="2" />
+    <text value="How many legs do insects have?" />
+    <type value="integer" />
+  </item>
+  <item>
+    <linkId value="3" />
+    <text value="What is a baby kangaroo called?" />
+    <type value="string" />
+  </item>
+  <item>
+    <linkId value="4" />
+    <text value="What is the closest planet to the Sun?" />
+    <type value="string" />
+  </item>
+  <item>
+    <linkId value="5" />
+    <text value="In which country can you find the Eiffel Tower?" />
+    <type value="string" />
+  </item>
+  <item>
+    <linkId value="6" />
+    <text value="How many days are there in a year?" />
+    <type value="integer" />
+  </item>
+  <item>
+    <linkId value="7" />
+    <text value="How many players are in a soccer team?" />
+    <type value="integer" />
+  </item>
+  <item>
+    <linkId value="8" />
+    <text value="Where do polar bears live?" />
+    <type value="string" />
+  </item>
+  <item>
+    <linkId value="9" />
+    <text value="Which is faster, light or sound?" />
+    <type value="string" />
+  </item>
+  <item>
+    <linkId value="10" />
+    <text value="How many letters are in the English alphabet?" />
+    <type value="integer" />
+  </item>
+  <item>
+    <linkId value="11" />
+    <text value="What is the name of a shape with 5 sides?" />
+    <type value="string" />
+  </item>
+  <item>
+    <linkId value="12" />
+    <text value="How many Continents are there?" />
+    <type value="integer" />
+  </item>
+  <item>
+    <linkId value="13" />
+    <text value="What is the name of the tallest mountain on earth?" />
+    <type value="string" />
+  </item>
+  <item>
+    <linkId value="14" />
+    <text value="The planet Mars is also known as what? The ( ) planet." />
+    <type value="string" />
+  </item>
+  <item>
+    <linkId value="15" />
+    <text value="How many months have 31 days?" />
+    <type value="integer" />
+  </item>
+  <item>
+    <linkId value="16" />
+    <text value="How many colors of the rainbow are there?" />
+    <type value="integer" />
+  </item>
+  <item>
+    <linkId value="17" />
+    <text value="My mother’s mother is my…what?" />
+    <type value="string" />
+  </item>
+  <item>
+    <linkId value="18" />
+    <text value="Which animal lays the largest eggs?" />
+    <type value="string" />
+  </item>
+  <item>
+    <linkId value="19" />
+    <text value="How many zeros are in ten thousand?" />
+    <type value="integer" />
+  </item>
+  <item>
+    <linkId value="20" />
+    <text value="In which country would you find the Sydney Opera House?" />
+    <type value="string" />
+  </item>
+</Questionnaire>

@@ -26,4 +26,69 @@
   <p>
     Systems <b>SHALL</b> safely handle QuestionnaireResponses that use either approach and <b>SHALL NOT</b> ascribe distinct meaning to an item being omitted vs. being present with no answer.
   </p>
+
+  <div class="new-content">
+    <a name="assessing"> </a>
+    <h3>Assessing QuestionnaireResponses</h3>
+    <p>
+    In some cases, knowing that a QuestionnaireResponse is 'valid' against a particular Questionnaire is not sufficient.  Instead, there is a need to evaluate that answers
+    provided against a set of criteria - to diagnose, evaluate risk, assess competence, or some similar purpose.  There are a number of mechanisms that support such evaluation,
+    as well as special considerations around questionnaire design when doing so.
+    </p>
+    
+    <a name="assessmech"> </a>
+    <h4>Assessment mechanisms</h4>
+    <p>
+    The most common mechanism of evaluation is by 'scoring' particular answers.  Different answers to a question are associated with differing weights.  By performing a
+    mathmatical operation on the weights of the answers (typically simple summation), an overall score can be determined and the desired evaluation can be performed based
+    on the score value.  This is done using two extensions:
+    </p>
+    <ul>
+      <li><a href="{{site.data.fhir.ver.ext}}/StructureDefinition-itemWeight.html">itemWeight</a> allows assigining a weight to answers</li>
+      <li><a href="{{site.data.fhir.ver.ext}}/StructureDefinition-sdc-questionnaire-calculatedExpression.html">sdc-questionnaire-calculatedExpression</a> allows dynamically 
+        calculating a value based on the answers to questions (including an easy way to reference weights using the FHIRPath 
+        <a href="{{site.data.fhir.path}}fhirpath.html#fn-weight">weight()</a> function).</li>
+    </ul>
+    <p>
+    A second mechanism is to use <a href="extraction.html">extraction</a> mechanism to either complete a second QuestionnaireResponse with assessment results of the
+    first form, or a <a href="populate.html">population</a> mechanism to define a second form that grabs information from the originally completed QuestionnaireResponse.
+    Extraction can also be used (with either complex FHIRPath or CQL) to extract a score directly into an Observation.
+    </p>
+    <p>
+    The third mechanism is to leverage a second <a href="StructureDefinition-sdc-questionnaire-answerKey.html">answerKey</a> QuestionnaireResponse that identifies the
+    'correct' or 'preferred' responses.  A human or computer software can then evaluate the completed QuestionnaireResponse against the answerKey, producing an
+    evaluation.  Evaluation comments can also be embedded in the completed QuestionnaireResponse using the 
+    <a href="StructureDefinition-sdc-questionnaire-item-answerAssessment">sdc-questionnaire-item-answerAssessment.html</a> extension.  Examples are provided of both
+    a <a href="QuestionnaireResponse-trivia-response-answer-key.html">key</a>, as well as a <a href="QuestionnaireResponse-trivia-response.html">QuestionnaireResponse</a> 
+    evaluated against that key.
+    </p>
+    
+    <a name="concealing"> </a>
+    <h4>Concealing assessments</h4>
+    <p>
+    In some cases, it can be problematic if the individual completing the Questionnaire is aware of the score as it can change how they complete the form.  (For example,
+    if completing a test, it would not be helpful if the user knew how well they had done and had the ability to adjust their answers.)
+    </p>
+    <p>
+    If the concern is concealing the weights and calculations while the user is completing the form, but no concern that the user will have access to the underlying
+    Questionnaire definition, there are a couple of options.  Which of the two is appropriate depends on whether it is appropriate or necessary for the user to see the 
+    score at some point.
+    </p>
+    <ul>
+      <li>The data element that calculates the score can either be <a href="{{site.data.fhir.ver.ext}}/StructureDefinition-questionnaire-hidden.html">hidden</a>.  The
+        score will be present in the exchanged QuestionnaireResponse, but never visible to end-users.</li>
+      <li>Alternatively, the element can be flagged as only visible during a <a href="{{site.data.fhir.ver.ext}}/StructureDefinition-questionnaire-usageMode.html">usageMode</a> 
+        of <code>display</code>, such that the answer is only visible once the QuestionnaireResponse is marked as complete.  In this case, however, there would need to be a 
+        mechanism that prevents the user from going back into edit mode once the completed form is visible.</li>
+    </ul>
+    <p>
+    If there is a concern about users (or others) having access to the Questionnaire definition itself, then embedding the scores, calculations, or extraction rules in the 
+    Questionnaire completed by the end user is an issue.  In this case, the mechanism for concealment needs to separate the 'assessment' metadata into a separate mechanism.
+    The 'population' approach discussed above provides one mechanism, as the logic lives in the definition of the 'target' instrument rather than the source.  Another
+    option is to use <a href="derive.html">derived Questionnaires</a>.  A secondary Questionnaire that mirrors the first in terms of hierarchy, linkIds, data types, permitted
+    answers, etc. is created that inserts the additional calculation metadata.  That could include weights, extraction logic, or additional items to hold calculated scores.
+    The original Questionnaire is distributed to systems for completion, while the derived Questionnaire is closely held and is used with the resulting QuestionnaireResponses
+    to support assessment.
+    </p>
+  </div>  
 </div>

@@ -1104,7 +1104,7 @@
 	<a name="Other"> </a>
 	<h4>Other Control</h4>
 	<p>
-    These are additional elements and extensions relevant to controlling the completion of the QuestionnaireResponse that do not fit into the previous
+    These are additional elements and extensions relevant to the completion of the QuestionnaireResponse that do not fit into the previous
     categories.
   </p>
 	<table class="grid">
@@ -1383,7 +1383,6 @@
           </p>
 				</td>
 			</tr>
-
 			<tr>
 				<td>
 					<a name="keyboard"> </a>
@@ -1402,12 +1401,33 @@
 						The keyboard extension allows the form designer to specify the type of keyboard that should be displayed when the user is entering data. This can be used to 
 						optimize the user experience by providing the most appropriate keyboard for the type of data being entered.
 						For example, a numeric keyboard can be displayed when entering a phone number in a string field.
-						The extension doesn't specify the exact keyboard layout, or any specific capabilities, but rather the type of keyboard that could be displayed.
+						The extension does not specify the exact keyboard layout, or any specific capabilities, but rather the type of keyboard that could be displayed.
 						This is usually relevant for mobile or tablet devices, but could also be used for desktop applications.
 						It does not imply any validations or restrictions on the data entered.
 					</p>
 				</td>
 			</tr>
+			<tr class="new-content">
+				<td>
+					<a name="answerAssessment"> </a>
+					<a href="StructureDefinition-sdc-questionnaire-item-answerAssessment.html" title="Extension">sdc-questionnaire-item-answerAssessment</a>
+				</td>
+				<td>SDC</td>
+				<td>Questionnaire.item</td>
+				<td>markdown</td>
+				<td>
+					<a href="QuestionnaireResponse-trivia-response.html">example1</a><br/>
+					<a href="QuestionnaireResponse-trivia-response-answer-key.html">example2</a>					
+				</td>
+			</tr>
+			<tr class="new-content">
+				<td colspan="5">
+					<p>
+						This extension allows a reviewer to make comments about a completed QuestionnaireResponse or to provide comments with respect to the evaluation of a QuestionnaireResponse in an answer key.
+					</p>
+				</td>
+			</tr>
+			
 		</tbody>
 	</table>
 
