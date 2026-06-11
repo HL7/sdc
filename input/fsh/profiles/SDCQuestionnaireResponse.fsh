@@ -10,3 +10,5 @@ Description: "Defines how the questionnaire response resource is used to reflect
   * ^type.targetProfile = "http://hl7.org/fhir/uv/sdc/StructureDefinition/sdc-questionnaire"
   * extension contains $display named questionnaireDisplay 0..1 MS
   * extension[questionnaireDisplay] ^comment = "This SHALL be the title of the Questionnaire at the time the QuestionnaireResponse was originally authored."
+* item
+  * extension contains ItemAnswerAssessment named answerAssessment 0..1

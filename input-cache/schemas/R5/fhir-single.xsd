@@ -47,7 +47,7 @@
   POSSIBILITY OF SUCH DAMAGE.
   
 
-  Generated on Fri, Jun 5, 2026 21:01+0000 for FHIR v6.0.0-ballot4 
+  Generated on Tue, Jun 9, 2026 19:08+0000 for FHIR v6.0.0-ballot4 
 -->
 <xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns="http://hl7.org/fhir" xmlns:xhtml="http://www.w3.org/1999/xhtml" xmlns:xml="http://www.w3.org/XML/1998/namespace" targetNamespace="http://hl7.org/fhir" elementFormDefault="qualified" version="6.0.0-ballot4">
   <!-- Note: When using this schema with some tools, it may also be necessary to declare xmlns:xml="http://www.w3.org/XML/1998/namespace", however this causes performance issues with other tools and thus is not in the base schemas. -->
@@ -25190,7 +25190,7 @@ The actual author of the section when it is not the author of the composition. I
           </xs:element>
           <xs:element name="verification" type="Consent.Verification" minOccurs="0" maxOccurs="unbounded">
             <xs:annotation>
-              <xs:documentation xml:lang="en">Whether a treatment instruction (e.g. artificial respiration: yes or no) was verified with the patient, his/her family or another authorized person.</xs:documentation>
+              <xs:documentation xml:lang="en">Whether the consent instructions/rules (e.g. artificial respiration: yes or no) have been verified with the patient, his/her family, or another authorized person.</xs:documentation>
            </xs:annotation>
           </xs:element>
           <xs:element name="decision" minOccurs="0" maxOccurs="1" type="ConsentProvisionType">
@@ -25273,7 +25273,7 @@ The actual author of the section when it is not the author of the composition. I
         <xs:sequence>
           <xs:element name="period" minOccurs="0" maxOccurs="1" type="Period">
             <xs:annotation>
-              <xs:documentation xml:lang="en">Timeframe for this provision.</xs:documentation>
+              <xs:documentation xml:lang="en">Time frame for this provision.</xs:documentation>
            </xs:annotation>
           </xs:element>
           <xs:element name="actor" type="Consent.Actor" minOccurs="0" maxOccurs="unbounded">
@@ -35830,7 +35830,7 @@ The origin at the TLHC of the TLHC pixel is 0.0\0.0, the BRHC of the TLHC pixel 
               <xs:documentation xml:lang="en">The network service providing access for the study. See implementation notes for information about [using DICOM endpoints](imagingstudy.html#endpoints).</xs:documentation>
            </xs:annotation>
           </xs:element>
-          <xs:element name="bodySite" minOccurs="0" maxOccurs="1" type="CodeableReference">
+          <xs:element name="bodySite" minOccurs="0" maxOccurs="unbounded" type="CodeableReference">
             <xs:annotation>
               <xs:documentation xml:lang="en">The anatomic structures examined. See [DICOM Part 16 Annex L](http://dicom.nema.org/medical/dicom/current/output/chtml/part16/chapter_L.html) for DICOM to SNOMED-CT mappings. The bodySite MAY include the laterality of body part imaged.</xs:documentation>
            </xs:annotation>
@@ -49742,7 +49742,7 @@ Deceased patients may also be marked as inactive for the same reasons, but may b
           </xs:element>
           <xs:element name="repeats" minOccurs="0" maxOccurs="1" type="boolean">
             <xs:annotation>
-              <xs:documentation xml:lang="en">An indication, if true, that a QuestionnaireResponse for this item may include multiple answers associated with a single instance of this item (for question-type items) or multiple repetitions of the item (for group-type items).</xs:documentation>
+              <xs:documentation xml:lang="en">An indication, if true, that a QuestionnaireResponse for this item may include multiple distinct answers associated with a single instance of this item (for question-type items) or multiple repetitions of the item (for group-type items).</xs:documentation>
            </xs:annotation>
           </xs:element>
           <xs:element name="readOnly" minOccurs="0" maxOccurs="1" type="boolean">

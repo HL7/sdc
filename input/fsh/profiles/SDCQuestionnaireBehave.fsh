@@ -14,7 +14,8 @@ Description: "Defines additional capabilities for controlling data entry and cal
     $cqf-library named library 0..* and
     LaunchContextExtension named launchContext 0..* and
     Variable named variable 0..* and
-    AssembleDefinitionRoot named assembleDefinitionRoot 0..* MS
+    AssembleDefinitionRoot named assembleDefinitionRoot 0..* MS and
+    QuestionnaireAnswerKey named answerKey 0..1
 * extension[library] ^definition = "A reference to a library containing cql used in this Questionnaire."
 * extension[variable] ^requirements = "Allows variables to be calculated higher in the context of a QuestionnaireResponse for use with enableWhen-expression."
 * modifierExtension contains RenderingCriticalExtension named rendering-criticalExtension 0..* MS
