@@ -94,35 +94,13 @@
     the resulting QuestionnaireResponses will remain valid against the original base Questionnaire.
   </p>
   
-  <a name="cql"> </a>
-  <h4>CQL Rendering</h4>
+  <a name="library"> </a>
+  <h4>Library-driven</h4>
   <p>
-    <a href="">CQL</a> is a language commonly used in FHIR that provides full computable expressivity.  It is often used when generating instances
-    from definitions, and as part of this process can be used to also produce narrative.  The narrative is assembled using string concatenation to
-    assemble the desired XHTML structure, containing whatever data is needed from the source instance.
-  </p>
-  <p>
-    TODO: What extension is used?
-  </p>
-  <p>
-    The benefit of this approach is complete flexibility to define whatever rendering is desired.  However, it is somewhat messy in that code used to
-    perform string manipulation can easily accidentally create invalid XHTML and it may not always be terribly clear what the rendering is intended to look
-    like just from browsing the code.
-  </p>
-
-  <a name="liquid"> </a>
-  <h4>Liquid Rendering</h4>
-  <p>
-    HL7 defines a generic <!-- TODO - move this to extension pack --><a href="StructureDefinition-instance-narrative-liquid.html">instance-narrative-liquid extension</a> that
+    HL7 defines a generic <a href="{{site.data.fhir.ver.ext}}/StructureDefinition-instance-narrative-liquid.html">instance-rendering extension</a> that
     can be used on 'definitional' artifacts (e.g. Questionnaires, PlanDefinitions, Measures, etc.) that allows conveying a computable syntax that defines how
-    the narrative of instances of those definitions should appear.  The language used is a special 
-    <a href="https://confluence.hl7.org/spaces/FHIR/pages/66938964/FHIR+Liquid+Profile">FHIRPath-aware form of Liquid</a>.
-  </p>
-  <p>
-    The base <a href="https://shopify.github.io/liquid">Liquid language</a> is open source and was developed by Shopify as a simple mechanism to help construct 
-    static websites.  The FHIRPath-enabled syntax has slight variations that allow embedding FHIRPath expressions as part of the value content, assignments, and
-    conditional and looping expressions.  The combination of FHIRPath and Liquid allows the definition of HTML form renderings as complex as necessary.  Examples
-    of potential functionality include:
+    the content of those resources should be rendered - including the ability to specify what the narrative of instances of those definitions should look like.    
+    Examples of potential functionality include:
   </p>
   <ul>
     <li>Embedding complex rendering structures such as lists, tables, hyperlinks, etc.</li>
@@ -140,41 +118,24 @@
     Most importantly, all of these steps can be performed without injecting any additional items into the Questionnaire.
   </p>
   <p>
-    The Liquid to be used in producing the QuestionnaireResponse narratives is placed in a Library pointed to by the <code>instance-narrative-liquid</code> extension
-    appearing at the root of the Questionnaire.  The Library will use the 
-    <a href="https://terminology.hl7.org/en/CodeSystem-library-type.html#library-type-narrative-liquid">narrative-liquid</a> code to 
-    confirm its purpose, which will be necessary if accessing the Library outside the scope of the Questionnaire.  However, this Library will generally be transmitted 
-    as a 'contained' resource within the Questionnaire, ensuring it will remain available whenever the Questionnaire is accessed and helping to ensure that the Liquid 
-    will be maintained as part of the Questionnaire.  When a QuestionnaireResponse is complete (or even as the QuestionnaireResponse is being authored), the Form Filler 
-    can execute the Liquid against the QuestionnaireResponse, wrap the results in a <code>&lt;div/&gt;</code> element, and store the resulting HTML as the narrative 
-    for the QuestionnaireResponse.  This provides an 'authoritative' human-readable view of the QuestionnaireResponse, while still allowing a rendering system to fall
-    back to one of the other views if the user wishes.
+    The extension supports any language.  However, for Questionnaires, the safest and most appropriate languages for use are either the 
+    <a href="https://confluence.hl7.org/spaces/FHIR/pages/66938964/FHIR+Liquid+Profile">FHIRPath Liquid</a> or CQL.
   </p>
   <p>
     This approach can produce the most concise and user-friendly rendering of completed forms.  Any information about omitted answers or items that is relevant to the
     consumer can be rendered, while information not relevant can be suppressed.  The order and formatting of presentation can be completely tuned to what makes the most
-    sense for a reader.  Unlike the CQL approach, the content is natively XHTML, which makes validation easier and makes it more obvious what the resulting rendered
-    content will look like.  The downsides of this approach are:
+    sense for a reader.  The downsides of this approach are:
   </p>
   <ol>
-    <li>The form renderer must be able to process liquid or have access to a third party module that can do so</li>
-    <li>The form author either needs to hand-create the Liquid to go with their form or need to embed sufficient metadata in their form to allow custom generation of the
-      Liquid</li>
+    <li>The form renderer must be able to process the specified language (Liquid, CQL, etc.) or have access to a third party module that can do so</li>
+    <li>The form author either needs to hand-create the code to go with their form or need to embed sufficient metadata in their form to allow custom generation of the
+      algorithm</li>
   </ol>
   
   <p>
-    The Liquid approach to rendering is a natural fit for narrative, but it could potentially be used for other types of rendering as well.
-    For example, distinct displays for providers, patients, printing, summaries, etc.
-  </p>
-  
-  <a name="liquidauthoring"> </a>
-  <h5>Authoring Liquid</h5>
-  <p>
-    Hand authoring Liquid can be complex and potentially error prone.  If working with multiple Questionnaires, it is often more efficient to embed metadata
-    within the Questionnaire and then generating the Liquid automatically.  At present, SDC does not define any 'standard' extensions to drive Liquid generation
-    because the range of desired rendering behaviors is so wide.  It is possible after there is more community experience with the use of the approach that a
-    future version of this guide might choose to define standard versions of at least some Liquid-control metadata extensions.  For now, an example of a Questionnaire
-    that has such custom extensions as well as the resulting contained Liquid library can be found <a href="Questionnaire-CardiologyForm.html">here</a>.  
-    An example of a response with the narrative generated from that Liquid can be found <a href="QuestionnaireResponse-Cardiology-MariaSantos.html">here</a>.
+    NOTE: The extension supports other rendering mechanisms as well, so if there were a desire for different renderings for different purposes 
+    (e.g. patient consumption, summary, print view, etc.), the extension supports that as well.  As well, the Library resource allows for multiple representations
+    of the content, so if a Questionnaire author were unsure which languages downstream Form Fillers could support, it is theoretically possible to convey
+    rendering algorithms in multiple languages.
   </p>
 </div>

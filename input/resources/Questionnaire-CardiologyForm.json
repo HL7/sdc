@@ -11,8 +11,8 @@
       "type": {
         "coding": [
           {
-            "system": "http://example.com/CodeSystem/library-types",
-            "code": "qr-narrative-liquid"
+            "system": "http://hl7.terminology.org/CodeSystem/library-types",
+            "code": "logic-library"
           }
         ]
       },
@@ -38,13 +38,25 @@
       "valueCode": "random"
     },
     {
-      "url": "http://example.com/StructureDefinition/sdc-responseRenderingLiquid",
-      "valueReference": {
-        "reference": "#liquid"
-      }
+      "url": "http://hl7.org/fhir/StructureDefinition/instance-rendering",
+      "extension": [
+        {
+          "url": "purpose",
+          "valueCoding": {
+            "system": "http://terminology.hl7.org/CodeSystem/rendering-purpose",
+            "code": "narrative"
+          } 
+        },
+        {
+          "url": "template",
+          "valueReference": {
+            "reference": "#liquid"
+          }
+        }
+      ]
     }
   ],
-  "url": "urn:uuid:d7176d16-5fd4-48a7-b7e6-b488e8df763d",
+  "url": "http://hl7.org/fhir/uv/sdc/Questionnaire/CardiologyForm",
   "version": "1.0",
   "title": "Cardiology Form",
   "status": "active",

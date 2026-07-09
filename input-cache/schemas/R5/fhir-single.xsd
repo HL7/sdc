@@ -47,7 +47,7 @@
   POSSIBILITY OF SUCH DAMAGE.
   
 
-  Generated on Tue, Jun 9, 2026 19:08+0000 for FHIR v6.0.0-ballot4 
+  Generated on Thu, Jun 18, 2026 15:40+0000 for FHIR v6.0.0-ballot4 
 -->
 <xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns="http://hl7.org/fhir" xmlns:xhtml="http://www.w3.org/1999/xhtml" xmlns:xml="http://www.w3.org/XML/1998/namespace" targetNamespace="http://hl7.org/fhir" elementFormDefault="qualified" version="6.0.0-ballot4">
   <!-- Note: When using this schema with some tools, it may also be necessary to declare xmlns:xml="http://www.w3.org/XML/1998/namespace", however this causes performance issues with other tools and thus is not in the base schemas. -->
@@ -4069,6 +4069,11 @@
       <xs:enumeration value="entered-in-error">
         <xs:annotation>
           <xs:documentation xml:lang="en">Entered in Error</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="unknown">
+        <xs:annotation>
+          <xs:documentation xml:lang="en">Unknown</xs:documentation>
         </xs:annotation>
       </xs:enumeration>
     </xs:restriction>
@@ -18080,6 +18085,11 @@ into another (possibly the same) biological entity.</xs:documentation>
               <xs:documentation xml:lang="en">The kind of structure being represented by the body structure at `BodyStructure.location`.  This can define both normal and abnormal morphologies.</xs:documentation>
            </xs:annotation>
           </xs:element>
+          <xs:element name="origin" minOccurs="0" maxOccurs="unbounded" type="CodeableConcept">
+            <xs:annotation>
+              <xs:documentation xml:lang="en">The origin of the included body structure, such as autologous, allogeneic, synthetic, or other source.</xs:documentation>
+           </xs:annotation>
+          </xs:element>
         </xs:sequence>
       </xs:extension>
     </xs:complexContent>
@@ -20976,13 +20986,11 @@ of the resource representation.</xs:documentation>
               <xs:documentation xml:lang="en">A number to uniquely identify diagnosis entries.</xs:documentation>
            </xs:annotation>
           </xs:element>
-          <xs:choice minOccurs="1" maxOccurs="1" >
+          <xs:element name="diagnosis" minOccurs="1" maxOccurs="1" type="CodeableReference">
             <xs:annotation>
               <xs:documentation xml:lang="en">The nature of illness or problem in a coded form or as a reference to an external defined Condition.</xs:documentation>
-            </xs:annotation>
-            <xs:element name="diagnosisCodeableConcept" type="CodeableConcept"/>
-            <xs:element name="diagnosisReference" type="Reference"/>
-          </xs:choice>
+           </xs:annotation>
+          </xs:element>
           <xs:element name="type" minOccurs="0" maxOccurs="unbounded" type="CodeableConcept">
             <xs:annotation>
               <xs:documentation xml:lang="en">When the condition was observed or the relative ranking.</xs:documentation>
@@ -21019,13 +21027,11 @@ of the resource representation.</xs:documentation>
               <xs:documentation xml:lang="en">Date and optionally time the procedure was performed.</xs:documentation>
            </xs:annotation>
           </xs:element>
-          <xs:choice minOccurs="1" maxOccurs="1" >
+          <xs:element name="procedure" minOccurs="1" maxOccurs="1" type="CodeableReference">
             <xs:annotation>
               <xs:documentation xml:lang="en">The code or reference to a Procedure resource which identifies the clinical intervention performed.</xs:documentation>
-            </xs:annotation>
-            <xs:element name="procedureCodeableConcept" type="CodeableConcept"/>
-            <xs:element name="procedureReference" type="Reference"/>
-          </xs:choice>
+           </xs:annotation>
+          </xs:element>
           <xs:element name="udi" minOccurs="0" maxOccurs="unbounded" type="Reference">
             <xs:annotation>
               <xs:documentation xml:lang="en">Unique Device Identifiers associated with this line item.</xs:documentation>
@@ -23591,6 +23597,7 @@ of the resource representation.</xs:documentation>
             <xs:element name="contentAttachment" type="Attachment"/>
             <xs:element name="contentReference" type="Reference"/>
             <xs:element name="contentCodeableConcept" type="CodeableConcept"/>
+            <xs:element name="contentString" type="string"/>
           </xs:choice>
         </xs:sequence>
       </xs:extension>
@@ -23794,6 +23801,7 @@ of the resource representation.</xs:documentation>
             <xs:element name="contentAttachment" type="Attachment"/>
             <xs:element name="contentReference" type="Reference"/>
             <xs:element name="contentCodeableConcept" type="CodeableConcept"/>
+            <xs:element name="contentString" type="string"/>
           </xs:choice>
         </xs:sequence>
       </xs:extension>
@@ -25319,11 +25327,6 @@ The actual author of the section when it is not the author of the composition. I
           <xs:element name="data" type="Consent.Data" minOccurs="0" maxOccurs="unbounded">
             <xs:annotation>
               <xs:documentation xml:lang="en">The resources controlled by this provision if specific resources are referenced.</xs:documentation>
-           </xs:annotation>
-          </xs:element>
-          <xs:element name="expression" minOccurs="0" maxOccurs="1" type="Expression">
-            <xs:annotation>
-              <xs:documentation xml:lang="en">A computable (FHIRPath or other) definition of what is controlled by this consent.</xs:documentation>
            </xs:annotation>
           </xs:element>
           <xs:element name="provision" type="Consent.Provision" minOccurs="0" maxOccurs="unbounded">
@@ -27018,13 +27021,11 @@ The actual author of the section when it is not the author of the composition. I
     <xs:complexContent>
       <xs:extension base="BackboneElement">
         <xs:sequence>
-          <xs:choice minOccurs="0" maxOccurs="1" >
+          <xs:element name="diagnosis" minOccurs="0" maxOccurs="1" type="CodeableReference">
             <xs:annotation>
               <xs:documentation xml:lang="en">The nature of illness or problem in a coded form or as a reference to an external defined Condition.</xs:documentation>
-            </xs:annotation>
-            <xs:element name="diagnosisCodeableConcept" type="CodeableConcept"/>
-            <xs:element name="diagnosisReference" type="Reference"/>
-          </xs:choice>
+           </xs:annotation>
+          </xs:element>
         </xs:sequence>
       </xs:extension>
     </xs:complexContent>
@@ -28072,12 +28073,12 @@ The actual author of the section when it is not the author of the composition. I
           </xs:element>
           <xs:element name="type" minOccurs="0" maxOccurs="1" type="CodeableConcept">
             <xs:annotation>
-              <xs:documentation xml:lang="en">physiological | technical.</xs:documentation>
+              <xs:documentation xml:lang="en">The particular kind of alert, such as whether it is related to the patient condition; to irregular device state; or to workflow or regular device state, such as timers.</xs:documentation>
            </xs:annotation>
           </xs:element>
           <xs:element name="priority" minOccurs="0" maxOccurs="1" type="CodeableConcept">
             <xs:annotation>
-              <xs:documentation xml:lang="en">The alert priority is usually reported by the source device. A priority of `info` SHOULD indicate that the alert is “for information only” and urgent action is not required. The element MAY be omitted if the priority is unknown.</xs:documentation>
+              <xs:documentation xml:lang="en">The urgency by which the condition ought to be addressed. The alert priority is usually reported by the source device. The element MAY be omitted if the priority is unknown.</xs:documentation>
            </xs:annotation>
           </xs:element>
           <xs:element name="code" minOccurs="1" maxOccurs="1" type="CodeableConcept">
@@ -28181,12 +28182,12 @@ The actual author of the section when it is not the author of the composition. I
         <xs:sequence>
           <xs:element name="activationState" minOccurs="1" maxOccurs="1" type="CodeableConcept">
             <xs:annotation>
-              <xs:documentation xml:lang="en">Paused indicates that annunciation has temporarily been disabled (&quot;snooze&quot;).</xs:documentation>
+              <xs:documentation xml:lang="en">The activation state of the signal, e.g., whether it is activated, deactivated or temporarily deactivated (i.e., paused). An activated signal is not necessarily present; a present signal is always activated.</xs:documentation>
            </xs:annotation>
           </xs:element>
           <xs:element name="presence" minOccurs="0" maxOccurs="1" type="CodeableConcept">
             <xs:annotation>
-              <xs:documentation xml:lang="en">Indicates whether the signal is currently being annunciated. An on signal is currently being annunciated; a latched signal is currently being being annunciated although the alert condition has ended; an off signal is not currently being annunciated; and an acknowledged signal is not currently being annunciated because the user has acknowledged the signal.</xs:documentation>
+              <xs:documentation xml:lang="en">Indicates whether signal annunciation is occurring, along with the underlying reason. An `on` signal is currently being annunciated; a `latched` signal is currently being annunciated although the alert condition has ended; an `off` signal is not currently being annunciated; and an `acknowledged` signal is not currently being annunciated because the user has acknowledged the signal.</xs:documentation>
            </xs:annotation>
           </xs:element>
           <xs:element name="annunciator" minOccurs="0" maxOccurs="1" type="CodeableReference">
@@ -29434,6 +29435,11 @@ RegisteredName | UserFriendlyName | PatientReportedName.</xs:documentation>
           <xs:element name="status" minOccurs="1" maxOccurs="1" type="DiagnosticReportStatus">
             <xs:annotation>
               <xs:documentation xml:lang="en">The status of the diagnostic report.</xs:documentation>
+           </xs:annotation>
+          </xs:element>
+          <xs:element name="statusReason" minOccurs="0" maxOccurs="1" type="CodeableConcept">
+            <xs:annotation>
+              <xs:documentation xml:lang="en">Captures the reason for the current state of the DiagnosticReport.</xs:documentation>
            </xs:annotation>
           </xs:element>
           <xs:element name="category" minOccurs="0" maxOccurs="unbounded" type="CodeableConcept">
@@ -32908,13 +32914,11 @@ See guidance around (not) making local changes to elements [here](canonicalresou
               <xs:documentation xml:lang="en">A number to uniquely identify diagnosis entries.</xs:documentation>
            </xs:annotation>
           </xs:element>
-          <xs:choice minOccurs="1" maxOccurs="1" >
+          <xs:element name="diagnosis" minOccurs="1" maxOccurs="1" type="CodeableReference">
             <xs:annotation>
               <xs:documentation xml:lang="en">The nature of illness or problem in a coded form or as a reference to an external defined Condition.</xs:documentation>
-            </xs:annotation>
-            <xs:element name="diagnosisCodeableConcept" type="CodeableConcept"/>
-            <xs:element name="diagnosisReference" type="Reference"/>
-          </xs:choice>
+           </xs:annotation>
+          </xs:element>
           <xs:element name="type" minOccurs="0" maxOccurs="unbounded" type="CodeableConcept">
             <xs:annotation>
               <xs:documentation xml:lang="en">When the condition was observed or the relative ranking.</xs:documentation>
@@ -32951,13 +32955,11 @@ See guidance around (not) making local changes to elements [here](canonicalresou
               <xs:documentation xml:lang="en">Date and optionally time the procedure was performed.</xs:documentation>
            </xs:annotation>
           </xs:element>
-          <xs:choice minOccurs="1" maxOccurs="1" >
+          <xs:element name="procedure" minOccurs="1" maxOccurs="1" type="CodeableReference">
             <xs:annotation>
               <xs:documentation xml:lang="en">The code or reference to a Procedure resource which identifies the clinical intervention performed.</xs:documentation>
-            </xs:annotation>
-            <xs:element name="procedureCodeableConcept" type="CodeableConcept"/>
-            <xs:element name="procedureReference" type="Reference"/>
-          </xs:choice>
+           </xs:annotation>
+          </xs:element>
           <xs:element name="udi" minOccurs="0" maxOccurs="unbounded" type="Reference">
             <xs:annotation>
               <xs:documentation xml:lang="en">Unique Device Identifiers associated with this line item.</xs:documentation>
@@ -34091,7 +34093,7 @@ See guidance around (not) making local changes to elements [here](canonicalresou
           </xs:element>
           <xs:element name="sex" minOccurs="0" maxOccurs="1" type="CodeableConcept">
             <xs:annotation>
-              <xs:documentation xml:lang="en">The birth sex of the family member.</xs:documentation>
+              <xs:documentation xml:lang="en">A context-specific sex value for the family member which can inform clinical decision making in relation to treatment of the patient. This element SHALL NOT be used to reflect the family member's gender identity.</xs:documentation>
            </xs:annotation>
           </xs:element>
           <xs:choice minOccurs="0" maxOccurs="1" >
@@ -39680,7 +39682,7 @@ The origin at the TLHC of the TLHC pixel is 0.0\0.0, the BRHC of the TLHC pixel 
           </xs:element>
           <xs:element name="form" minOccurs="0" maxOccurs="1" type="CodeableConcept">
             <xs:annotation>
-              <xs:documentation xml:lang="en">Physical form of the location, e.g. building, room, vehicle, road, virtual.</xs:documentation>
+              <xs:documentation xml:lang="en">Form of the location, e.g. building, room, vehicle, road, virtual.</xs:documentation>
            </xs:annotation>
           </xs:element>
           <xs:element name="position" type="Location.Position" minOccurs="0" maxOccurs="1">
@@ -44295,6 +44297,11 @@ The primary difference between a medicationstatement and a medicationadministrat
               <xs:documentation xml:lang="en">The status of the result value.</xs:documentation>
            </xs:annotation>
           </xs:element>
+          <xs:element name="statusReason" minOccurs="0" maxOccurs="1" type="CodeableConcept">
+            <xs:annotation>
+              <xs:documentation xml:lang="en">Captures the reason for the current state of the Observation.</xs:documentation>
+           </xs:annotation>
+          </xs:element>
           <xs:element name="category" minOccurs="0" maxOccurs="unbounded" type="CodeableConcept">
             <xs:annotation>
               <xs:documentation xml:lang="en">A code that classifies the general type of observation being made.</xs:documentation>
@@ -44373,7 +44380,7 @@ The primary difference between a medicationstatement and a medicationadministrat
           </xs:element>
           <xs:element name="interpretationContext" minOccurs="0" maxOccurs="unbounded" type="CodeableReference">
             <xs:annotation>
-              <xs:documentation xml:lang="en">Other preceding or concurrent information that is critical to understand the context and significance of the observation.</xs:documentation>
+              <xs:documentation xml:lang="en">Contextual information that is relevant to understanding the observation value or interpretation.  The referenced information may be concurrent or precede the observation.</xs:documentation>
            </xs:annotation>
           </xs:element>
           <xs:element name="note" minOccurs="0" maxOccurs="unbounded" type="Annotation">
@@ -44404,6 +44411,11 @@ The primary difference between a medicationstatement and a medicationadministrat
           <xs:element name="device" minOccurs="0" maxOccurs="1" type="Reference">
             <xs:annotation>
               <xs:documentation xml:lang="en">A reference to the device that generates the measurements or the device settings for the device.</xs:documentation>
+           </xs:annotation>
+          </xs:element>
+          <xs:element name="supportingDevice" minOccurs="0" maxOccurs="unbounded" type="CodeableReference">
+            <xs:annotation>
+              <xs:documentation xml:lang="en">A reference to additional devices, kits, or reagents (e.g., Test Kit, Calibration Kit, QC materials) used to support the generation of the measurement.</xs:documentation>
            </xs:annotation>
           </xs:element>
           <xs:element name="referenceRange" type="Observation.ReferenceRange" minOccurs="0" maxOccurs="unbounded">
@@ -44828,6 +44840,11 @@ Reflex | Repeat | Re-run.</xs:documentation>
             <xs:element name="deviceReference" type="Reference"/>
             <xs:element name="deviceCanonical" type="canonical"/>
           </xs:choice>
+          <xs:element name="supportingDevice" minOccurs="0" maxOccurs="unbounded" type="CodeableReference">
+            <xs:annotation>
+              <xs:documentation xml:lang="en">A reference to additional devices, kits, or reagents (e.g., TestKit, Calibration Kit, QC materials) to support the generation of the measurement.</xs:documentation>
+           </xs:annotation>
+          </xs:element>
           <xs:element name="preferredReportName" minOccurs="0" maxOccurs="1" type="string">
             <xs:annotation>
               <xs:documentation xml:lang="en">The preferred name to be used when reporting the results of observations conforming to this ObservationDefinition.</xs:documentation>
@@ -50269,6 +50286,11 @@ Deceased patients may also be marked as inactive for the same reasons, but may b
           <xs:documentation xml:lang="en">Stopped</xs:documentation>
         </xs:annotation>
       </xs:enumeration>
+      <xs:enumeration value="unknown">
+        <xs:annotation>
+          <xs:documentation xml:lang="en">Unknown</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
     </xs:restriction>
   </xs:simpleType>
   <xs:complexType name="QuestionnaireResponseStatus">
@@ -50487,7 +50509,7 @@ Deceased patients may also be marked as inactive for the same reasons, but may b
           </xs:element>
           <xs:element name="communication" type="RelatedPerson.Communication" minOccurs="0" maxOccurs="unbounded">
             <xs:annotation>
-              <xs:documentation xml:lang="en">A language which may be used to communicate with the related person about the patient's health.</xs:documentation>
+              <xs:documentation xml:lang="en">A language which may be used to communicate with the related person.</xs:documentation>
            </xs:annotation>
           </xs:element>
         </xs:sequence>
@@ -58448,6 +58470,11 @@ Deceased patients may also be marked as inactive for the same reasons, but may b
           <xs:element name="dateWritten" minOccurs="1" maxOccurs="1" type="dateTime">
             <xs:annotation>
               <xs:documentation xml:lang="en">The date (and perhaps time) when the prescription was written.</xs:documentation>
+           </xs:annotation>
+          </xs:element>
+          <xs:element name="effectiveEndDate" minOccurs="0" maxOccurs="1" type="dateTime">
+            <xs:annotation>
+              <xs:documentation xml:lang="en">The date/time after which the prescription is considered expired and can no longer be used to obtain lenses.</xs:documentation>
            </xs:annotation>
           </xs:element>
           <xs:element name="prescriber" minOccurs="1" maxOccurs="1" type="Reference">
