@@ -97,8 +97,8 @@
   <a name="library"> </a>
   <h4>Library-driven</h4>
   <p>
-    HL7 defines a generic <a href="{{site.data.fhir.ver.ext}}/StructureDefinition-instance-narrative-liquid.html">instance-rendering extension</a> that
-    can be used on 'definitional' artifacts (e.g. Questionnaires, PlanDefinitions, Measures, etc.) that allows conveying a computable syntax that defines how
+    HL7 defines a generic <a href="{{site.data.fhir.ver.ext}}/StructureDefinition-instance-rendering.html">instance-rendering extension</a> that
+    can be used on certain 'definitional' artifacts that can be instantiated by other resources (e.g. Questionnaires, PlanDefinitions, Measures, etc.) that allows conveying a computable syntax that defines how
     the content of those resources should be rendered - including the ability to specify what the narrative of instances of those definitions should look like.    
     Examples of potential functionality include:
   </p>
@@ -118,7 +118,7 @@
     Most importantly, all of these steps can be performed without injecting any additional items into the Questionnaire.
   </p>
   <p>
-    The extension supports any language.  However, for Questionnaires, the safest and most appropriate languages for use are either the 
+    The extension supports any language.  However, for Questionnaires, the safest and most appropriate languages for use are either 
     <a href="https://confluence.hl7.org/spaces/FHIR/pages/66938964/FHIR+Liquid+Profile">FHIRPath Liquid</a> or CQL.
   </p>
   <p>
