@@ -73,13 +73,13 @@ Usage: #example
   * use = #out
   * min = 0
   * max = "*"
-  * type = #Any
+  * type = #Observation
 * parameter[+]
   * name = #"Daily Body Weight Change"
   * use = #out
   * min = 0
   * max = "*"
-  * type = #Any
+  * type = #Observation
 * parameter[+]
   * name = #"Body Weight Change"
   * use = #out
